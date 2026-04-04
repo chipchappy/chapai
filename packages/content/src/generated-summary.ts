@@ -1,11 +1,11 @@
 export const contentSummary = {
-  "generatedAt": "2026-04-04T17:49:25.701Z",
+  "generatedAt": "2026-04-04T18:35:12.558Z",
   "ccrn": {
-    "live": 1036,
-    "draft": 3030
+    "live": 1044,
+    "draft": 3035
   },
   "nclex": {
-    "live": 562,
-    "draft": 2777
+    "live": 570,
+    "draft": 2782
   }
 } as const;
