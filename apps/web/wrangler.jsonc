@@ -24,12 +24,11 @@
   ],
   "vars": {
     "NEXTAUTH_URL": "https://chapaisolutions.com",
-    "NEXT_PUBLIC_APP_URL": "https://chapaisolutions.com"
-  }
-  // Secrets (set via: npx wrangler secret put SECRET_NAME):
-  // AUTH_SECRET        — openssl rand -base64 32
-  // STRIPE_SECRET_KEY  — from Stripe dashboard
-  // STRIPE_WEBHOOK_SECRET — from Stripe webhook setup
-  // ANTHROPIC_API_KEY  — from Anthropic console
-  // EMAIL_SERVER_*     — SMTP or Resend/Postmark settings
+    "NEXT_PUBLIC_APP_URL": "https://chapaisolutions.com",
+    "APP_ENV": "production"
+  },
+  "routes": [
+    { "pattern": "chapaisolutions.com/*", "custom_domain": true },
+    { "pattern": "www.chapaisolutions.com/*", "custom_domain": true }
+  ]
 }

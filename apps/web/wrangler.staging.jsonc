@@ -24,10 +24,8 @@
     "NEXTAUTH_URL": "https://dev.chapaisolutions.com",
     "NEXT_PUBLIC_APP_URL": "https://dev.chapaisolutions.com",
     "APP_ENV": "staging"
-  }
-  // Secrets set via: npx wrangler secret put SECRET_NAME --name chapai-web-staging
-  // STRIPE_SECRET_KEY     <- sk_test_... (Stripe TEST key)
-  // STRIPE_WEBHOOK_SECRET <- whsec from Stripe TEST webhook endpoint
-  // ANTHROPIC_API_KEY     <- same as prod is fine
-  // AUTH_SECRET           <- any random string (openssl rand -base64 32)
+  },
+  "routes": [
+    { "pattern": "dev.chapaisolutions.com/*", "custom_domain": true }
+  ]
 }
