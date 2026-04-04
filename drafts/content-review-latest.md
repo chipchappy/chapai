@@ -1,4 +1,4 @@
-# Content review: mixed-batch-516
+# Content review: mixed-batch-521
 
 - QA gate: qa-full-gate-v2
 - QA gate: qa-full-gate-v3
@@ -15,19 +15,19 @@
 - Duplicate-risk items: 0
 
 ## Diagram candidates
-- mb516-c001 [ccrn] hemodynamics_shock
-- mb516-c002 [ccrn] perfusion_cardiac
-- mb516-c003 [ccrn] respiratory_ventilator_management
-- mb516-c004 [ccrn] neurology_icp_management
-- mb516-c005 [ccrn] renal_fluid_electrolyte
-- mb516-n001 [nclex] pharmacology_safety
+- mb521-c001 [ccrn] hemodynamics_shock
+- mb521-c002 [ccrn] perfusion_cardiac
+- mb521-c003 [ccrn] respiratory_ventilator_management
+- mb521-c004 [ccrn] neurology_icp_management
+- mb521-c005 [ccrn] renal_fluid_electrolyte
+- mb521-n001 [nclex] pharmacology_safety
 
 ## Live-promotion slate
-- mb516-c002 [ccrn] perfusion_cardiac
-- mb516-c003 [ccrn] respiratory_ventilator_management
-- mb516-c004 [ccrn] neurology_icp_management
-- mb516-c005 [ccrn] renal_fluid_electrolyte
-- mb516-n001 [nclex] pharmacology_safety
-- mb516-n003 [nclex] prioritization_delegation
-- mb516-n004 [nclex] respiratory_oxygenation
-- mb516-n005 [nclex] safety_infection_control
+- mb521-c002 [ccrn] perfusion_cardiac
+- mb521-c003 [ccrn] respiratory_ventilator_management
+- mb521-c004 [ccrn] neurology_icp_management
+- mb521-c005 [ccrn] renal_fluid_electrolyte
+- mb521-n001 [nclex] pharmacology_safety
+- mb521-n003 [nclex] prioritization_delegation
+- mb521-n004 [nclex] respiratory_oxygenation
+- mb521-n005 [nclex] safety_infection_control

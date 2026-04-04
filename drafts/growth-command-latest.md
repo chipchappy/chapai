@@ -1,6 +1,6 @@
 # Growth Command
 
-Generated: 2026-04-04 09:21:14 -07:00
+Generated: 2026-04-04 10:22:20 -07:00
 
 ## Current priority
 Build the first repeatable subscriber loop by aligning social replies, creator outreach, and the daily-question email around one approval queue.

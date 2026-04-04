@@ -1,6 +1,6 @@
 # Mobile product roadmap
 
-Generated: 2026-04-04T09:30:39.3666900-07:00
+Generated: 2026-04-04T10:33:10.8076874-07:00
 Recommendation: Expo + React Native + Expo Router
 
 ## Core principle

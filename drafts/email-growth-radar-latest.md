@@ -1,6 +1,6 @@
 # Email growth radar
 
-- Generated: 2026-04-04T09:23:07.3206461-07:00
+- Generated: 2026-04-04T10:08:15.5421387-07:00
 - Lead count: 0
 - Readiness: semi-auto
 - Blocker: Resend is selected, but CHAPAI_EMAIL_API_KEY or RESEND_API_KEY is still missing.

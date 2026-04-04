@@ -1,6 +1,6 @@
 # Outreach Campaign Manifest
 
-Generated: 2026-04-04T09:23:07.3037885-07:00
+Generated: 2026-04-04T10:08:15.5055250-07:00
 
 ## Wave 1
 - Audience: hospital educators
