@@ -26,8 +26,8 @@
     "APP_ENV": "staging",
     "DEMO_MODE": "true",
     "OPENROUTER_MODEL": "openrouter/auto"
-  }
-  // Custom domain added in Cloudflare Dashboard:
-  // Workers & Pages → chapai-web-staging → Settings → Triggers → Add custom domain
-  // → dev.chapaisolutions.com
+  },
+  "routes": [
+    { "pattern": "dev.chapaisolutions.com/*", "custom_domain": true }
+  ]
 }

@@ -28,8 +28,9 @@
     "APP_ENV": "production",
     "DEMO_MODE": "false",
     "OPENROUTER_MODEL": "openrouter/auto"
-  }
-  // Custom domains added in Cloudflare Dashboard:
-  // Workers & Pages → chapai-web → Settings → Triggers → Add custom domain
-  // → chapaisolutions.com, www.chapaisolutions.com
+  },
+  "routes": [
+    { "pattern": "chapaisolutions.com/*", "custom_domain": true },
+    { "pattern": "www.chapaisolutions.com/*", "custom_domain": true }
+  ]
 }
