@@ -3,225 +3,136 @@ import { STRIPE_PRICES } from "@/lib/types";
 
 export const metadata = {
   title: "Plans | Clarity Clinical Prep",
-  description: "Choose the launch-week Clarity plan for CCRN and NCLEX prep.",
+  description: "Choose a Clarity plan for CCRN and NCLEX exam prep.",
 };
 
-const PREMIUM_ENTITLEMENTS = ["live-bank", "rich-modes", "practice-exams", "tutor"] as const;
-
-const packageTracks = [
+const PLANS = [
   {
-    exam: "ccrn" as const,
-    title: "CCRN",
-    plans: [
-      {
-        name: "Plus",
-        priceIdMonthly: STRIPE_PRICES.plus_monthly,
-        monthlyPrice: 29,
-        badge: "Launch-week pick",
-        features: [
-          "All 5 full simulations included",
-          "AI tutor, chart-reading, case studies, and NGN modes",
-          "Unlimited premium practice center access",
-        ],
-      },
-      {
-        name: "Pro",
-        priceIdMonthly: STRIPE_PRICES.pro_monthly,
-        monthlyPrice: 59,
-        badge: "Best depth",
-        features: [
-          "Everything in Plus",
-          "Unlimited tutor time",
-          "Priority content drops and deeper study support",
-        ],
-      },
+    key: "trial_7day" as const,
+    name: "7-Day Trial",
+    price: 9,
+    interval: "one-time",
+    badge: "Try it first",
+    priceId: STRIPE_PRICES.trial_7day,
+    tier: "trial" as const,
+    checkoutMode: "payment" as const,
+    features: [
+      "Full access to CCRN + NCLEX question banks",
+      "AI tutor + detailed rationales",
+      "Practice exams included",
     ],
   },
   {
-    exam: "nclex" as const,
-    title: "NCLEX",
-    plans: [
-      {
-        name: "Plus",
-        priceIdMonthly: STRIPE_PRICES.plus_monthly,
-        monthlyPrice: 29,
-        badge: "Launch-week pick",
-        features: [
-          "All 5 full simulations included",
-          "AI tutor, chart-reading, case studies, and NGN modes",
-          "Unlimited premium practice center access",
-        ],
-      },
-      {
-        name: "Pro",
-        priceIdMonthly: STRIPE_PRICES.pro_monthly,
-        monthlyPrice: 59,
-        badge: "Best depth",
-        features: [
-          "Everything in Plus",
-          "Unlimited tutor time",
-          "Priority content drops and deeper study support",
-        ],
-      },
+    key: "base_monthly" as const,
+    name: "Base Monthly",
+    price: 29,
+    interval: "/mo",
+    badge: "Most popular",
+    priceId: STRIPE_PRICES.base_monthly,
+    tier: "base" as const,
+    checkoutMode: "subscription" as const,
+    features: [
+      "1 full practice exam per month",
+      "Core question bank access",
+      "Detailed rationales",
+    ],
+  },
+  {
+    key: "vip_monthly" as const,
+    name: "VIP Monthly",
+    price: 39,
+    interval: "/mo",
+    badge: "Best value",
+    priceId: STRIPE_PRICES.vip_monthly,
+    tier: "vip" as const,
+    checkoutMode: "subscription" as const,
+    features: [
+      "5 full practice exams",
+      "AI tutor with superior rationales",
+      "CCRN + NCLEX full question banks",
+    ],
+  },
+  {
+    key: "unlimited_vip" as const,
+    name: "Unlimited VIP",
+    price: 50,
+    interval: "/mo",
+    badge: "Full access",
+    priceId: STRIPE_PRICES.unlimited_vip,
+    tier: "unlimited" as const,
+    checkoutMode: "subscription" as const,
+    features: [
+      "Unlimited CCRN + NCLEX question sets",
+      "Advanced analytics + performance tracking",
+      "Clinical simulations — real-world nursing scenarios",
+      "Everything VIP includes, plus more",
     ],
   },
 ] as const;
 
-const cramTracks = [
-  {
-    exam: "ccrn" as const,
-    title: "CCRN 24-hour sprint",
-  },
-  {
-    exam: "nclex" as const,
-    title: "NCLEX 24-hour sprint",
-  },
-] as const;
-
-export default async function UpgradePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ interval?: string }>;
-}) {
-  await searchParams;
-
+export default async function UpgradePage() {
   return (
     <main className="min-h-screen bg-bg px-4 py-16">
-      <div className="mx-auto max-w-6xl">
-        <section className="overflow-hidden rounded-[40px] border border-[rgba(214,205,189,0.52)] bg-[linear-gradient(180deg,rgba(252,249,243,0.96),rgba(245,239,229,0.88))] px-6 py-8 shadow-card md:px-10 md:py-10">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.26em] text-muted">Plans</span>
-              <h1 className="mt-4 font-serif text-[3.5rem] leading-[0.9] text-dark md:text-[4.5rem]">
-                Ship with one clean paid path.
-              </h1>
-              <p className="mt-4 max-w-xl text-base leading-7 text-muted">
-                Monthly-only for launch week. Plus now unlocks the full premium practice center, including all 5
-                simulations, rich study modes, and tutor access.
-              </p>
-            </div>
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-12 text-center">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.26em] text-muted">Plans</span>
+          <h1 className="mt-4 font-serif text-[3rem] leading-tight text-dark md:text-[4rem]">
+            Pass your boards with confidence.
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">
+            CCRN and NCLEX prep built by nurses, for nurses. Start with a 7-day trial or go all-in.
+          </p>
+        </div>
 
-            <div className="rounded-full border border-[rgba(214,205,189,0.72)] bg-[rgba(255,252,247,0.72)] px-5 py-3 text-sm font-semibold text-dark">
-              Monthly launch pricing only
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-[0.72fr_1.28fr]">
-            <section id="sprint" className="rounded-[30px] border border-[rgba(214,205,189,0.6)] bg-[rgba(255,251,245,0.74)] p-5 md:p-6">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted">24-hour sprint</div>
-              <div className="mt-5 space-y-4">
-                {cramTracks.map((track) => (
-                  <div
-                    key={track.exam}
-                    className="rounded-[24px] border border-[rgba(214,205,189,0.52)] bg-[rgba(250,246,239,0.76)] p-5"
-                  >
-                    <div className="flex items-end justify-between gap-4">
-                      <div>
-                        <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted">
-                          {track.exam.toUpperCase()}
-                        </div>
-                        <h2 className="mt-2 text-xl font-semibold text-dark">{track.title}</h2>
-                      </div>
-                      <div className="text-right">
-                        <strong className="font-serif text-4xl leading-none text-dark">$10</strong>
-                        <div className="mt-1 text-xs uppercase tracking-[0.18em] text-muted">one time</div>
-                      </div>
-                    </div>
-                    <ul className="mt-5 space-y-2 text-sm text-dark">
-                      <li>Unlimited sessions for 24 hours</li>
-                      <li>AI tutor + rationales</li>
-                      <li>Fastest low-friction entry</li>
-                    </ul>
-                    <div className="mt-5">
-                      <CheckoutButton
-                        checkoutMode="payment"
-                        unitAmount={1000}
-                        accessHours={24}
-                        examTrack={track.exam}
-                        packageLabel={`${track.exam.toUpperCase()} 24-hour sprint`}
-                        tier="plus"
-                        planCode={`${track.exam}-sprint-24h`}
-                        entitlements={[...PREMIUM_ENTITLEMENTS]}
-                        className="btn-primary w-full text-center"
-                      >
-                        Start sprint
-                      </CheckoutButton>
-                    </div>
-                  </div>
-                ))}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {PLANS.map((plan, i) => (
+            <div
+              key={plan.key}
+              className={`card flex flex-col rounded-[24px] border p-6 ${
+                i === 2
+                  ? "border-[rgba(101,133,140,0.5)] bg-[rgba(240,247,246,0.8)]"
+                  : "border-[rgba(214,205,189,0.6)] bg-[rgba(255,251,245,0.78)]"
+              }`}
+            >
+              <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted">{plan.badge}</div>
+              <h2 className="mt-2 text-xl font-semibold text-dark">{plan.name}</h2>
+              <div className="mt-3 flex items-end gap-1">
+                <strong className="font-serif text-4xl leading-none text-dark">${plan.price}</strong>
+                <span className="mb-1 text-xs uppercase tracking-wide text-muted">{plan.interval}</span>
               </div>
-            </section>
 
-            <div className="grid gap-6 xl:grid-cols-2">
-              {packageTracks.map((track) => (
-                <section
-                  key={track.exam}
-                  className="rounded-[30px] border border-[rgba(214,205,189,0.6)] bg-[rgba(255,251,245,0.78)] p-5 md:p-6"
+              <ul className="mt-5 flex-1 space-y-2 text-sm text-dark">
+                {plan.features.map((f) => (
+                  <li key={f} className="flex gap-2">
+                    <span className="mt-0.5 text-[#2e7d8c]">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6">
+                <CheckoutButton
+                  priceId={plan.priceId}
+                  tier={plan.tier}
+                  checkoutMode={plan.checkoutMode}
+                  packageLabel={plan.name}
+                  planCode={plan.key}
+                  className={`w-full rounded-xl py-2.5 text-sm font-semibold transition-colors ${
+                    i === 2
+                      ? "bg-[#2e7d8c] text-white hover:bg-[#265f6e]"
+                      : "btn-secondary"
+                  }`}
                 >
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted">
-                        {track.exam}
-                      </div>
-                      <h2 className="mt-2 font-serif text-[2.35rem] leading-[0.92] text-dark">{track.title}</h2>
-                    </div>
-                    <a href={`/${track.exam}`} className="text-sm font-semibold text-muted transition-colors hover:text-dark">
-                      View product
-                    </a>
-                  </div>
-
-                  <div className="mt-6 space-y-4">
-                    {track.plans.map((plan, planIndex) => (
-                      <div
-                        key={plan.name}
-                        className={`rounded-[24px] border p-5 ${
-                          planIndex === 0
-                            ? "border-[rgba(101,133,140,0.34)] bg-[rgba(240,247,246,0.72)]"
-                            : "border-[rgba(214,205,189,0.52)] bg-[rgba(250,246,239,0.72)]"
-                        }`}
-                      >
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <div className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted">
-                              {plan.badge}
-                            </div>
-                            <h3 className="mt-2 text-2xl font-semibold text-dark">
-                              {track.title} {plan.name}
-                            </h3>
-                          </div>
-                          <div className="text-right">
-                            <strong className="font-serif text-5xl leading-none text-dark">${plan.monthlyPrice}</strong>
-                            <div className="mt-1 text-xs uppercase tracking-[0.18em] text-muted">/mo</div>
-                          </div>
-                        </div>
-
-                        <ul className="mt-5 space-y-2 text-sm text-dark">
-                          {plan.features.map((feature) => (
-                            <li key={feature}>{feature}</li>
-                          ))}
-                        </ul>
-
-                        <div className="mt-5">
-                          <CheckoutButton
-                            priceId={plan.priceIdMonthly}
-                            examTrack={track.exam}
-                            packageLabel={`${track.title} ${plan.name}`}
-                            tier={plan.name === "Plus" ? "plus" : "pro"}
-                            planCode={`${track.exam}-${plan.name.toLowerCase()}-monthly-launch`}
-                            entitlements={[...PREMIUM_ENTITLEMENTS]}
-                            className="btn-primary w-full text-center"
-                          >
-                            Start {plan.name}
-                          </CheckoutButton>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              ))}
+                  {plan.checkoutMode === "payment" ? "Start trial" : "Get started"}
+                </CheckoutButton>
+              </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+
+        <p className="mt-8 text-center text-xs text-muted">
+          All plans include a 30-day money-back guarantee. Cancel anytime.
+        </p>
       </div>
     </main>
   );

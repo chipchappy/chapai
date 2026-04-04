@@ -24,7 +24,7 @@ export default function CheckoutButton({
   checkoutMode?: "subscription" | "payment";
   unitAmount?: number;
   accessHours?: number;
-  tier?: "plus" | "pro";
+  tier?: "free" | "trial" | "base" | "vip" | "unlimited";
   planCode?: string;
   entitlements?: string[];
 }) {
