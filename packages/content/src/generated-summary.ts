@@ -1,5 +1,5 @@
 export const contentSummary = {
-  "generatedAt": "2026-04-04T18:35:12.558Z",
+  "generatedAt": "2026-04-04T18:41:26.544Z",
   "ccrn": {
     "live": 1044,
     "draft": 3035
