@@ -1,0 +1,29 @@
+{
+    "summary":  "Nemoclaw is generating batches at high cadence (~253 promoted as of today) but there is no closed feedback loop: Claude never inspects a sample of those batches to flag schema drift, rationale quality decay, or topic gaps before they accumulate. The Claude lane runs as a task-queue worker; Codex handles code. No lane currently cross-validates output quality from another lane. The swarm experiment below closes that loop with zero new runtimes and minimal token spend.",
+    "recommendations":  [
+                            "Add a \u0027QA sampler\u0027 task type to claude-employee-queue.json: after every N Nemoclaw promotions (suggest N=10), auto-enqueue a Claude task that reads 3 randomly-selected batch files, scores them on schema validity + rationale depth + topic diversity, and writes a 10-line verdict to config/claude-results/qa-sample-{batchRange}.json.",
+                            "Write a 20-line PowerShell function in guild-ops-loop.ps1 that reads the latest promoted batch index from nemoclaw.json (memoryEvents tail), computes mod-10 offset, and conditionally enqueues the QA task ΓÇö no new script file needed, just a function called at loop tick.",
+                            "Gate Nemoclaw\u0027s nextSkillTarget update: only allow capabilityFocus to advance if the most recent QA sample verdict passes a \u0027rationale_depth \u003e= 2\u0027 threshold stored in the verdict JSON. Claude writes the threshold check; guild-ops-loop.ps1 reads it before calling run-core-codex-lane.ps1.",
+                            "Keep the experiment bounded: set a hard cap of 2 Claude QA tasks per guild-ops-loop cycle. If the queue already has a pending QA task, skip. This prevents token blowup if the loop runs fast."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "sampled-QA gating",
+                                        "cross-lane quality feedback loop",
+                                        "conditional task enqueue from loop state"
+                                    ],
+                         "durable_memory":  [
+                                                "QA sampler task type gates Nemoclaw skill advancement; rationale_depth threshold is 2.",
+                                                "Max 2 Claude QA tasks enqueued per guild-ops-loop cycle to cap token spend.",
+                                                "QA verdict files live at config/claude-results/qa-sample-{batchRange}.json."
+                                            ],
+                         "active_context":  [
+                                                "Swarm experiment: Nemoclaw generates, Claude samples at N=10 cadence, guild-ops-loop gates promotion.",
+                                                "No new runtimes introduced; experiment uses existing claude-employee-queue and guild-ops-loop plumbing.",
+                                                "Next promoted batch expected around mixed-batch-254; first QA trigger fires at batch 260 if N=10 from 250."
+                                            ]
+                     },
+    "current_blocker":  "claude-code.json brain file is empty (1 line, no content) ΓÇö Claude lane has no durable memory or skill registry loaded. QA tasks will execute without self-knowledge, reducing verdict consistency.",
+    "suggested_human_fix":  "Rebuild claude-code.json with at minimum: agentId, role, skills array (schema-review, rationale-scoring, topic-gap detection), durableMemory (QA threshold rules), and activeContext (current experiment). Can be copy-scaffolded from nemoclaw.json structure in under 10 minutes.",
+    "next_task":  "Write the QA sampler task schema (fields: taskType=qa-sample, batchRange, sampleSize=3, thresholds={rationale_depth:2}, outputPath) and the 20-line guild-ops-loop function that enqueues it on mod-10 batch count. Assign to Claude Code lane. Estimated time: 90 minutes."
+}

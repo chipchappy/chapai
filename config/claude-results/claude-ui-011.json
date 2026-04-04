@@ -1,0 +1,29 @@
+{
+    "summary":  "Reviewed AmbientEditorialHero.tsx, AnatomyGlobeVisual.tsx, BrandMark.tsx, and the relevant globals.css globe/anatomy block (~L7096–7275). Current state: globe is a well-structured SVG with layered globe shell + anatomy torso overlay. CSS strokes are warm-sepia toned, mostly low-opacity (0.14–0.4). The spine is the strongest accent (teal, 0.9 opacity). Heartline/organ-line use gold (#C29A56) but at modest opacity. BrandMark glyph is a stacked-arc/axis form — conceptually interesting but visually underpowered at 1rem×1.5rem; the 4-class arc system (arch, ring, basin, axis) has no single dominant read. Key weaknesses: (1) globe strokes are collectively too uniform in weight — everything reads at the same visual tier, no hierarchy; (2) anatomy figure sits ON TOP of the globe rather than feeling integrated inside it; (3) the clinical-grid callout lines on the left side (L39–46) are ghost-level faint and add visual noise without payoff; (4) BrandMark logo has 4 arc classes with minimal differentiation — the glyph reads as decoration, not identity.",
+    "recommendations":  [
+                            "In globals.css ~L7134–7210: (a) Push hero-globe-shell-line to stroke rgba(124,115,101,0.44) stroke-width 2.0 — this is the primary container, it must own the space. (b) Drop hero-globe-orbit-soft/latitude-soft/meridian-soft to opacity 0.07 — these are depth, not data. (c) Lift hero-anatomy-figure-line to rgba(35,30,25,0.58) stroke-width 2.8 — the figure should read as the most solid thing inside the globe. Result: globe shell → figure → grid, three readable tiers instead of one flat field.",
+                            "In AnatomyGlobeVisual.tsx L38–47 (hero-globe-clinical-grid group): remove all 4 callout lines and all 4 nodes. Add back exactly 2 nodes — one at the heartline ring apex (~cx=1102, cy=322) and one at the spine mid (~cx=1036, cy=580) — both using hero-anatomy-node class. This kills ambient scatter and replaces it with two precise editorial anchors that echo the callout nodes already on the right side (L70–73).",
+                            "In BrandMark.tsx: the 4-path glyph currently has arch (teal, 0.48), ring (teal, 0.30), basin (gold, 0.58), axis (gold, 0.88). Retire ring and basin — they are mid-weight duplicates of the stronger arch/axis. Keep: axis as the spine (gold, bump to 1.0 opacity, stroke-width 1.5) and arch as the outer arc (teal, bump to 0.72). Two classes, two colors, one clear read. Update site-mark-glyph-ring and site-mark-glyph-basin in globals.css to display:none or remove the SVG paths entirely.",
+                            "globals.css L7267: hero-globe-visual at max-width 900px is right:-46%, which clips 46% of the globe width off-canvas. Shift to right:-28%, top:8%, width:54rem. This keeps the anatomy readable as a compositional element rather than an abstract texture blob on small screens."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "SVG anatomy globe uses 3-group structure: globe-shell-group (wireframe sphere), hero-globe-clinical-grid (left callout nodes), hero-anatomy-torso (figure + organs + callouts)",
+                                        "BrandMark glyph has 4 arc classes (arch/ring/basin/axis) — ring and basin are redundant and should be retired",
+                                        "Globe CSS lives at globals.css L7096–7275 with responsive overrides at 1180px and 900px"
+                                    ],
+                         "durable_memory":  [
+                                                "chapai hero globe: warm sepia rgba(124,115,101) is the current shell palette — candidate for Structural Teal direction swap",
+                                                "chapai hero globe: left callout group (L38-47) is noise — marked for removal",
+                                                "chapai BrandMark: collapse from 4 SVG arc classes to 2 (axis + arch) is approved direction"
+                                            ],
+                         "active_context":  [
+                                                "Task: premium globe/anatomy direction review — 3 directions proposed: Anatomical Instrument, Cartographic Depth, Structural Teal",
+                                                "Recommended next execution: Structural Teal + Rec 1 stroke hierarchy + Rec 2 callout cut, ~35min total",
+                                                "BrandMark arc collapse is a separate independent PR"
+                                            ]
+                     },
+    "current_blocker":  "None — all changes are CSS/SVG, no API dependencies, no build blockers identified.",
+    "suggested_human_fix":  "Pick one of the 3 premium directions first (recommend Structural Teal — lowest risk, highest visual delta, respects existing spine color). Execute Rec 1 (stroke hierarchy) and Rec 2 (cut left callout noise) simultaneously in ~35min. Validate on desktop + 375px mobile before touching BrandMark. BrandMark arc collapse (Rec 3) is independent and can be a separate PR.",
+    "next_task":  "Implement Structural Teal direction: do a global find-replace of rgba(124, 115, 101, across the hero-globe CSS block, swap to rgba(79, 111, 120, at matching opacities, then apply the 3-tier stroke hierarchy from Rec 1. Screenshot before/after at 1440px and 375px."
+}

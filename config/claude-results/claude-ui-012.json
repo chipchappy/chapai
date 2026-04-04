@@ -1,0 +1,32 @@
+{
+    "summary":  "AnatomyGlobeVisual is an SVG-only static composition: a wireframe globe (teal stroke lines) centered right, with a schematic torso-figure overlaid at the globe\u0027s core. BrandMark is a 24×32 SVG glyph (axis + two arch strokes) inside a pill container with \u0027ChapAI\u0027 in Source Serif 4 and a small \u0027NCLEX + CCRN\u0027 sub-label. The globe renders large (min(88rem,96vw)) with mix-blend-mode:multiply on a warm cream background. Main visual weaknesses: (1) the anatomy figure sits inside the globe rather than commanding it — figure lines are low-contrast (0.66 opacity dark strokes) and compete with the globe grid at similar stroke weights; (2) the ghost/torso duplication (hero-anatomy-figure-ghost group) adds blur-noise without depth payoff; (3) callout lines and nodes are undersized (r=7.2, stroke 1.3) and feel accidental not intentional; (4) the globe shell stroke (rgba(79,111,120,0.52)) is close in weight to the figure-line (rgba(35,30,25,0.66) sw:3) creating a cluttered mid-ground; (5) BrandMark glyph mixes a warm-gold axis (rgba(194,154,86,1)) with a teal arch (rgba(79,111,120,0.72)) — two brand colours from two different valence registers fighting each other at 24px; (6) the hero-proofline copy (\u0027Sharper rationale, cleaner product shell, faster route into the right plan\u0027) is generic B2B SaaS — not medical-specific or premium.",
+    "recommendations":  [
+                            "Drop .hero-globe-shell-line stroke-opacity from 0.52 to 0.14 and all orbit/latitude/meridian lines to 0.06–0.08. Push .hero-anatomy-figure-line stroke to rgba(20,18,15,0.82) stroke-width:3.6 and .hero-anatomy-spine-line to rgba(89,125,134,1.0) stroke-width:3. This makes the globe recede into a ghosted coordinate scaffold and the figure reads as the primary object — the same hierarchy Anthropic uses (faint grid, bold centrepiece). Remove the .hero-anatomy-figure-ghost group entirely from AnatomyGlobeVisual.tsx (lines 43–50) — it adds visual noise not depth.",
+                            "Increase circle r from 7.2/7.5 to 10 on the primary nodes. Set .hero-anatomy-node fill to rgba(255,252,244,1) with stroke rgba(89,125,134,0.9) stroke-width:1.8. Remove the four node-soft circles entirely (cx=1036,1366,1360) — soft nodes at sub-10px radii just look like artefacts. Three clean hard nodes beat six ambiguous ones.",
+                            "The glyph currently uses warm-gold on the axis and teal on the arches — two brand primaries colliding in 24px. Pick one: teal is the medical read. Set .site-mark-glyph-axis stroke to rgba(79,111,120,0.96) stroke-width:1.8. Set .site-mark-glyph-arch stroke to rgba(79,111,120,0.44) stroke-width:1.2. The axis becomes the primary stroke and the arches read as dimensional context. If the gold is load-bearing for brand warmth, reverse it: warm-gold arches (rgba(194,154,86,0.72)) and no axis colour separation.",
+                            "Replace \u0027Sharper rationale, cleaner product shell, faster route into the right plan.\u0027 with exam-specific copy that signals premium clinical intelligence, e.g. \u0027Built for nurses who treat patients before they pass the exam.\u0027 The current line is startup-generic and undercuts the premium healthcare positioning on first scroll."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "svg-hierarchy-design",
+                                        "brand-mark-audit",
+                                        "healthcare-brand-naming"
+                                    ],
+                         "durable_memory":  [
+                                                "ChapAI hero globe: mix-blend-mode:multiply on warm cream; globe shell at 0.52 opacity competes with figure lines at 0.66 — primary hierarchy fix is to drop globe strokes to 0.08–0.14",
+                                                "BrandMark glyph uses two competing brand colours (teal arches + gold axis) at 24px — needs single-register decision before creator outreach",
+                                                "Three viable premium healthcare logo families proposed: Meridian (grotesque, navigation), Folio (serif, publishing), Ossian (grotesque, bone/academic)",
+                                                "hero-anatomy-figure-ghost group in AnatomyGlobeVisual.tsx lines 43–50 is dead visual weight — cut it"
+                                            ],
+                         "active_context":  [
+                                                "Task: homepage hero and logo system polish before creator outreach",
+                                                "Globe visual file: apps/web/src/components/marketing/AnatomyGlobeVisual.tsx",
+                                                "Globe CSS block: globals.css lines 7084–7272",
+                                                "BrandMark CSS: globals.css lines 115–182",
+                                                "Primary visual weakness: figure and globe at same contrast plane"
+                                            ]
+                     },
+    "current_blocker":  "None — all fixes are in-repo CSS/TSX with no external dependencies.",
+    "suggested_human_fix":  "Start with R1 (45min): in globals.css drop .hero-globe-shell-line stroke-opacity to 0.14 and bump .hero-anatomy-figure-line to sw:3.6/opacity:0.82, then delete the ghost group from AnatomyGlobeVisual.tsx lines 43–50. That single change will make the globe feel like an Anthropic-tier centrepiece object rather than a wireframe diagram. Then decide gold-vs-teal on the BrandMark (R3, 15min) before any outreach assets are generated.",
+    "next_task":  "Implement R1 globe hierarchy separation and R3 BrandMark colour unification, then screenshot the hero at 1440px for before/after review before creator deck assets are exported."
+}

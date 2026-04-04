@@ -1,0 +1,12 @@
+{
+  "employeeId": "manager",
+  "runtime": "codex",
+  "tokenProfile": "low",
+  "maxPending": 8,
+  "lowTokenRules": [
+    "Keep one exact human unblock per blocked lane.",
+    "Do not duplicate work already owned by another lane.",
+    "Wake only when a lane changes state or an active deadline arrives."
+  ],
+  "tasks": []
+}

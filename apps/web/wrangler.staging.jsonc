@@ -1,0 +1,33 @@
+{
+  "name": "chapai-web-staging",
+  "compatibility_date": "2024-12-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": ".open-next/worker.js",
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "chapai-staging",
+      "database_id": "c2df5fa6-c6c3-40aa-a2c3-476e60c30057"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "21626ceef9e74da5b7337a63a2c62d31"
+    }
+  ],
+  "vars": {
+    "NEXTAUTH_URL": "https://dev.chapaisolutions.com",
+    "NEXT_PUBLIC_APP_URL": "https://dev.chapaisolutions.com",
+    "APP_ENV": "staging"
+  }
+  // Secrets set via: npx wrangler secret put SECRET_NAME --name chapai-web-staging
+  // STRIPE_SECRET_KEY     <- sk_test_... (Stripe TEST key)
+  // STRIPE_WEBHOOK_SECRET <- whsec from Stripe TEST webhook endpoint
+  // ANTHROPIC_API_KEY     <- same as prod is fine
+  // AUTH_SECRET           <- any random string (openssl rand -base64 32)
+}

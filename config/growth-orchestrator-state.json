@@ -1,0 +1,45 @@
+{
+    "status":  "running",
+    "semanticStatus":  "live",
+    "blocker":  "none",
+    "lastRunAt":  "2026-04-04T09:21:14.5247787-07:00",
+    "lastSuccessAt":  "2026-04-04T09:21:14.5247787-07:00",
+    "currentTask":  {
+                        "id":  "growth-orchestrator-sync",
+                        "title":  "Synchronize social, email, and creator growth into one approval queue",
+                        "kind":  "automation"
+                    },
+    "latestResult":  {
+                         "title":  "Growth queue synchronized",
+                         "summary":  "Growth control is keeping Mercury, Beacon, and the creator/email funnel aligned around approval-ready work.",
+                         "suggestedHumanFix":  "none",
+                         "nextTask":  "Keep the approval queue fresh, keep subscriber capture simple, and tighten the first repeatable growth loop.",
+                         "reportPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\drafts\\growth-command-latest.md"
+                     },
+    "handoffPacket":  {
+                          "nextTaskId":  "growth-orchestrator-sync",
+                          "doneWhen":  "The approval queue is current and the next growth move is obvious from the report.",
+                          "handoffTo":  "manager",
+                          "artifactPaths":  [
+                                                "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\drafts\\growth-command-latest.md",
+                                                "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\growth-approval-queue.json",
+                                                "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\social-outbox\\approval-outbox-latest.json",
+                                                "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\email-outbox\\approval-outbox-latest.json"
+                                            ],
+                          "resumeFrom":  "Read the growth report, then approve or unblock the next revenue move.",
+                          "wakeCondition":  "Wake when approval packets change or a provider becomes api-ready."
+                      },
+    "nextCheckAt":  "2026-04-04T09:41:14.5247787-07:00",
+    "nextEligibleRunAt":  null,
+    "blockedUntil":  null,
+    "lastHeartbeatAt":  "2026-04-04T09:21:14.5257957-07:00",
+    "staleAfterMinutes":  45,
+    "approvalPolicy":  "final-human-approval-for-public-sends",
+    "providerRegistryPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\provider-adapter-registry.json",
+    "growthSummary":  {
+                          "queuePath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\growth-approval-queue.json",
+                          "reportPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\drafts\\growth-command-latest.md",
+                          "socialMode":  "semi-auto",
+                          "emailMode":  "semi-auto"
+                      }
+}

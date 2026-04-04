@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es2022"
+    ],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@chapai/db/schema": [
+        "../../packages/db/drizzle/schema.ts"
+      ],
+      "@chapai/content": [
+        "../../packages/content/src/index.ts"
+      ],
+      "@chapai/content/schema": [
+        "../../packages/content/src/schema.ts"
+      ],
+      "@chapai/content/generated-summary": [
+        "../../packages/content/src/generated-summary.ts"
+      ],
+      "@chapai/brains": [
+        "../../packages/brains/src/index.ts"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "generatedAt": "2026-04-02T00:00:00-07:00",
+  "version": "adapter-registry-v2",
+  "principles": [
+    "Every provider integration must be approval-gated before public-facing sends.",
+    "Brains stay file-backed and provider-agnostic.",
+    "Lanes should declare capabilities, auth requirements, and safe operating modes explicitly.",
+    "New tools should plug into the adapter registry before they are trusted in production.",
+    "Acquisition, delivery, and product surfaces should share one lead and approval model instead of branching per tool.",
+    "Mobile, social, email, and AI runtimes should all be swappable without changing the durable brain contract."
+  ],
+  "providers": {
+    "codex": {
+      "role": "primary builder",
+      "capabilities": [
+        "code changes",
+        "site UI iteration",
+        "workflow orchestration",
+        "file-backed memory growth"
+      ],
+      "approvalGate": "none"
+    },
+    "claude": {
+      "role": "premium review",
+      "capabilities": [
+        "design critique",
+        "conversion critique",
+        "premium UX review"
+      ],
+      "approvalGate": "none",
+      "runtimeDependency": "local claude CLI"
+    },
+    "gemini": {
+      "role": "external audit",
+      "capabilities": [
+        "audit memos",
+        "pricing review",
+        "creator pilot review"
+      ],
+      "approvalGate": "none"
+    },
+    "gemma4": {
+      "role": "low-cost routing and precheck",
+      "capabilities": [
+        "trend clustering",
+        "reply-angle generation",
+        "question sanity precheck",
+        "diagram caption cleanup",
+        "low-cost classification and routing"
+      ],
+      "approvalGate": "none",
+      "deliveryRule": "Use first for bounded cheap work where quality loss is acceptable before escalating to premium models.",
+      "implementationStatus": "adoption-ready",
+      "currentOpenModelTarget": "Gemma 4"
+    },
+    "medgemma": {
+      "role": "medical low-cost precheck",
+      "capabilities": [
+        "clinical wording precheck",
+        "diagram caption cleanup",
+        "medical explanation compression",
+        "question category tagging",
+        "low-cost rationale sanity support"
+      ],
+      "approvalGate": "review-before-live",
+      "deliveryRule": "Use for bounded medical wording and categorization support before Hume performs the final promotion gate."
+    },
+    "nemoclaw": {
+      "role": "cheap batch generation",
+      "capabilities": [
+        "question generation",
+        "batch promotion",
+        "low-cost content expansion"
+      ],
+      "approvalGate": "review-before-live"
+    },
+    "x": {
+      "role": "social distribution",
+      "capabilities": [
+        "reply wave",
+        "post queue",
+        "founder-safe updates"
+      ],
+      "approvalGate": "final human approval",
+      "requiredEnv": [
+        "CHAPAI_X_API_KEY",
+        "CHAPAI_X_API_SECRET",
+        "CHAPAI_X_ACCESS_TOKEN",
+        "CHAPAI_X_ACCESS_SECRET"
+      ]
+    },
+    "instagram": {
+      "role": "social distribution",
+      "capabilities": [
+        "reels and feed publishing",
+        "creator collaboration posts",
+        "follower growth experiments"
+      ],
+      "approvalGate": "final human approval",
+      "requiredEnv": [
+        "CHAPAI_META_APP_ID",
+        "CHAPAI_META_APP_SECRET",
+        "CHAPAI_META_ACCESS_TOKEN",
+        "CHAPAI_INSTAGRAM_BUSINESS_ID"
+      ]
+    },
+    "email": {
+      "role": "repeat-touchpoint distribution",
+      "capabilities": [
+        "daily question sends",
+        "educator outreach",
+        "health system sequences"
+      ],
+      "approvalGate": "final human approval for new campaign templates",
+      "requiredEnv": [
+        "CHAPAI_EMAIL_PROVIDER",
+        "CHAPAI_EMAIL_FROM"
+      ]
+    },
+    "mobile-expo": {
+      "role": "mobile shell and delivery surface",
+      "capabilities": [
+        "shared practice flow",
+        "shared tutor panel",
+        "notifications bridge",
+        "offline review path"
+      ],
+      "approvalGate": "none",
+      "deliveryRule": "keep mobile logic shared with web packages whenever possible"
+    },
+    "push": {
+      "role": "retention delivery",
+      "capabilities": [
+        "daily question notifications",
+        "streak nudges",
+        "session reminders"
+      ],
+      "approvalGate": "final human approval for new retention campaigns",
+      "requiredEnv": [
+        "CHAPAI_PUSH_PROVIDER"
+      ]
+    },
+    "billing-mobile": {
+      "role": "mobile subscription path",
+      "capabilities": [
+        "mobile subscription experiments",
+        "retention offer tests"
+      ],
+      "approvalGate": "none",
+      "deliveryRule": "evaluate only after web subscription path is cleaner"
+    },
+    "telegram": {
+      "role": "remote operator surface",
+      "capabilities": [
+        "status",
+        "problem alerts",
+        "approval packet retrieval",
+        "bounded route execution"
+      ],
+      "approvalGate": "none"
+    },
+    "figma-mcp": {
+      "role": "design workflow bridge",
+      "capabilities": [
+        "design context",
+        "component mapping",
+        "design system search",
+        "diagram generation"
+      ],
+      "approvalGate": "none"
+    },
+    "imagegen": {
+      "role": "raster concept exploration",
+      "capabilities": [
+        "hero mockups",
+        "social concepts",
+        "visual references"
+      ],
+      "approvalGate": "manual review before product use"
+    }
+  }
+}

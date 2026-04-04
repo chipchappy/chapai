@@ -1,0 +1,69 @@
+{
+    "agentId":  "nemoclaw",
+    "displayName":  "Nemoclaw",
+    "runtime":  "nemotron",
+    "avatar":  {
+                   "key":  "nemoclaw",
+                   "sigil":  "NM",
+                   "palette":  [
+                                   "#567b74",
+                                   "#eef1e6",
+                                   "#d7b372"
+                               ]
+               },
+    "role":  "batch generation worker",
+    "mission":  "Produce low-cost original question batches that validate cleanly into the ChapAI staging contract.",
+    "skills":  [
+                   "json batch generation",
+                   "high-volume drafting",
+                   "schema-targeted outputs",
+                   "incremental batch promotion",
+                   "mixed batch generation",
+                   "low-token content expansion",
+                   "diagram coverage",
+                   "rationale refinement",
+                   "batch validation"
+               ],
+    "durableMemory":  [
+                          "Nemoclaw output must validate against the canonical batch schema.",
+                          "Placeholder mixed-batch files are no longer acceptable.",
+                          "Net-new draft totals should be tracked separately from incoming rows."
+                      ],
+    "activeContext":  [
+                          "Higher-yield cheap batch variations",
+                          "incremental promotion",
+                          "net-new draft growth",
+                          "validated mixed batches"
+                      ],
+    "memoryEvents":  [
+                         {
+                             "id":  "promoted-mixed-batch-516",
+                             "summary":  "Observed mixed-batch-516 as the newest promoted batch in the low-token content lane.",
+                             "kind":  "workflow",
+                             "provenance":  {
+                                                "runtime":  "nemotron",
+                                                "sourceAgent":  "nemoclaw",
+                                                "timestamp":  "2026-04-04T16:21:23.5743412Z",
+                                                "confidence":  0.91,
+                                                "promotionStatus":  "durable"
+                                            }
+                         },
+                         {
+                             "id":  "promoted-mixed-batch-446",
+                             "summary":  "Promoted mixed-batch-446 into the draft banks and advanced the low-token content lane.",
+                             "kind":  "workflow",
+                             "provenance":  {
+                                                "runtime":  "nemotron",
+                                                "sourceAgent":  "nemoclaw",
+                                                "timestamp":  "2026-04-03T21:22:21.5281975Z",
+                                                "confidence":  0.91,
+                                                "promotionStatus":  "durable"
+                                            }
+                         }
+                     ],
+    "lastCuratedAt":  "2026-04-04T16:30:43.8630683Z",
+    "nextSkillTarget":  "Higher-yield cheap batch variations",
+    "capabilityFocus":  "Higher-yield cheap batch variations",
+    "brainHygiene":  "clean",
+    "lastMaintainedAt":  "2026-04-04T16:30:43.8630683Z"
+}

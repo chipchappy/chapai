@@ -1,0 +1,53 @@
+{
+  "profile": {
+    "displayName": "New Employee",
+    "runtime": "codex",
+    "role": "specialist",
+    "mission": "Ship bounded work, preserve continuity, and avoid token waste."
+  },
+  "queue": {
+    "tokenProfile": "low",
+    "maxPending": 6,
+    "lowTokenRules": [
+      "Prefer bounded tasks with one output artifact.",
+      "Avoid duplicate review of unchanged files.",
+      "Escalate only when blocked by human auth, external systems, or undefined scope."
+    ]
+  },
+  "state": {
+    "staleAfterMinutes": 30,
+    "checkEveryMinutes": 10,
+    "handoffPacket": {
+      "nextTaskId": "employee-idle",
+      "doneWhen": "A bounded task is assigned and the state file is updated.",
+      "handoffTo": "manager",
+      "artifactPaths": [],
+      "resumeFrom": "Read the queue and state file, then continue from the last explicit next step.",
+      "wakeCondition": "Wake when the manager assigns a bounded task or the next scheduled review arrives."
+    }
+  },
+  "dashboard": {
+    "avatar": "desk-analyst",
+    "accent": "fog-teal",
+    "posture": "focused",
+    "scene": "office-floor"
+  },
+  "brain": {
+    "skillSeeds": [
+      "bounded low-token work"
+    ],
+    "durableMemorySeeds": [
+      "Continuity is mandatory: preserve state so work can resume after restarts."
+    ],
+    "activeContextSeeds": [
+      "awaiting first task",
+      "low-token workflow",
+      "continuity"
+    ]
+  },
+  "workflowContract": [
+    "Keep state small, explicit, and restart-safe.",
+    "Use semantic statuses: live, sleeping, blocked, stale.",
+    "Prefer one clear next task and one clear blocker."
+  ]
+}

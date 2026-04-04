@@ -1,0 +1,137 @@
+{
+    "status":  "approval-ready",
+    "blocker":  "none",
+    "lastRunAt":  "2026-04-04T09:00:29.6739392-07:00",
+    "lastSuccessAt":  "2026-04-04T09:00:29.6739392-07:00",
+    "currentTask":  {
+                        "id":  "social-pack-007",
+                        "title":  "Run a warm reply wave on CCRN, CRNA-school, and ICU-study posts",
+                        "kind":  "manual-replies"
+                    },
+    "queue":  {
+                  "pending":  3,
+                  "completed":  33,
+                  "blocked":  0
+              },
+    "latestResult":  {
+                         "taskId":  "social-radar-20260404-b2",
+                         "title":  "Refresh the social opportunity radar and next-thread targets",
+                         "summary":  "Prepared reusable launch assets: Refresh the social opportunity radar and next-thread targets",
+                         "suggestedHumanFix":  "Approve one reply wave, one founder-safe X post, and one Instagram caption so Mercury can dispatch the first coordinated growth packet.",
+                         "nextTask":  "Run a warm reply wave on CCRN, CRNA-school, and ICU-study posts",
+                         "reportPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-reply-bank-ccrn-crna.md"
+                     },
+    "semanticStatus":  "live",
+    "blockedUntil":  null,
+    "nextEligibleRunAt":  null,
+    "lastHeartbeatAt":  "2026-04-04T09:00:29.6739392-07:00",
+    "staleAfterMinutes":  45,
+    "nextCheckAt":  "2026-04-04T09:45:29.6739392-07:00",
+    "handoffPacket":  {
+                          "nextTaskId":  "social-pack-007",
+                          "doneWhen":  "A warm reply wave has been sent and logged.",
+                          "handoffTo":  "human",
+                          "artifactPaths":  [
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-creator-dm-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-reply-bank-ccrn-crna.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\creator-budget-playbook-2026.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\creator-offer-sheet.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\creator-target-shortlist.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\hospital-educator-outreach-email-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\health-system-outreach-email-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-launch-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-subject-bank.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\business-email-followup-sequences.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-launch-posts-april.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-approval-outbox-latest.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-agent-autonomy-roadmap.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-trend-watchlist-april.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-automation-approval-pack.md"
+                                            ],
+                          "resumeFrom":  "Start from the reportPath file, complete the first outreach or reply wave, then rerun the lane.",
+                          "wakeCondition":  "Wake after the first human outreach wave is complete or the queue changes."
+                      },
+    "automationMode":  "semi-auto",
+    "platformReadiness":  {
+                              "x":  {
+                                        "mode":  "api-ready",
+                                        "blocker":  "none",
+                                        "missingKeys":  [
+
+                                                        ]
+                                    },
+                              "instagram":  {
+                                                "mode":  "semi-auto",
+                                                "blocker":  "Instagram professional publishing credentials are not fully configured yet.",
+                                                "missingKeys":  [
+                                                                    "CHAPAI_INSTAGRAM_BUSINESS_ID"
+                                                                ]
+                                            },
+                              "email":  {
+                                            "mode":  "api-ready",
+                                            "blocker":  "none",
+                                            "missingKeys":  [
+
+                                                            ]
+                                        }
+                          },
+    "trendLoop":  {
+                      "status":  "search-tier-blocked",
+                      "watchlist":  [
+                                        "CCRN cram",
+                                        "CRNA school prep",
+                                        "ICU study habits",
+                                        "NCLEX safety and delegation"
+                                    ],
+                      "searchAccess":  "payment-required",
+                      "searchSummary":  "X credentials are valid, but recent-search access is blocked by the current API tier.",
+                      "opportunityCount":  0,
+                      "roadmapPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-agent-autonomy-roadmap.md",
+                      "trendWatchPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-trend-watchlist-april.md",
+                      "approvalPackPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\social-automation-approval-pack.md",
+                      "approvalOutboxPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\config\\\\social-outbox\\\\approval-outbox-latest.json",
+                      "radarPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\social-outbox\\opportunity-radar-latest.json",
+                      "emailPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-launch-pack.md",
+                      "autonomyRule":  "Mercury can prepare, queue, rank, and learn autonomously, but public sends stay final-approval gated."
+                  },
+    "campaignOps":  {
+                        "priorityChannels":  [
+                                                 "x",
+                                                 "instagram",
+                                                 "creator-dm",
+                                                 "educator-email"
+                                             ],
+                        "activeOffer":  "24-hour cram pass",
+                        "activeAudience":  [
+                                               "ICU nurses",
+                                               "CRNA hopefuls",
+                                               "NCLEX crammers",
+                                               "hospital educators"
+                                           ],
+                        "nextAutonomousUnlock":  "Promote Mercury from manual-ready to semi-auto posting with one reviewed outbound queue and explicit send approval.",
+                        "nextHumanDistribution":  "Send one warm reply wave using the latest reply manifest, then let Mercury refresh the next thread set.",
+                        "platformBridge":  {
+                                               "registryVersion":  "adapter-registry-v2",
+                                               "xApprovalGate":  "final human approval",
+                                               "instagramApprovalGate":  "final human approval",
+                                               "emailApprovalGate":  "final human approval for new campaign templates"
+                                           }
+                    },
+    "learningLoop":  {
+                         "trendSignalFocus":  [
+                                                  "cram urgency",
+                                                  "ICU shift fatigue",
+                                                  "CRNA path anxiety",
+                                                  "delegation mistakes",
+                                                  "ventilator confidence"
+                                              ],
+                         "creatorTypes":  [
+                                              "nano nursing creators",
+                                              "micro CCRN educators",
+                                              "study-account operators"
+                                          ],
+                         "improvementRule":  "Promote only hooks, reply angles, and creator filters that can be reused in the next wave."
+                     },
+    "approvalPolicy":  "final-human-approval-required",
+    "providerRegistryPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\provider-adapter-registry.json"
+}

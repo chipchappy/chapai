@@ -1,0 +1,35 @@
+{
+  "name": "chapai-web",
+  "compatibility_date": "2024-12-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": ".open-next/worker.js",
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "chapai-prod",
+      // After creating: npx wrangler d1 create chapai-prod
+      "database_id": "e8715985-6b8f-47d7-99c1-22c211286528"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "d159ff5c9837436ea549d0bfc39682c5"
+      // After creating: npx wrangler kv namespace create chapai-kv
+    }
+  ],
+  "vars": {
+    "NEXTAUTH_URL": "https://chapaisolutions.com",
+    "NEXT_PUBLIC_APP_URL": "https://chapaisolutions.com"
+  }
+  // Secrets (set via: npx wrangler secret put SECRET_NAME):
+  // AUTH_SECRET        — openssl rand -base64 32
+  // STRIPE_SECRET_KEY  — from Stripe dashboard
+  // STRIPE_WEBHOOK_SECRET — from Stripe webhook setup
+  // ANTHROPIC_API_KEY  — from Anthropic console
+  // EMAIL_SERVER_*     — SMTP or Resend/Postmark settings
+}

@@ -1,0 +1,404 @@
+{
+    "employees":  [
+                      {
+                          "id":  "orchestrator",
+                          "nickname":  "Atlas",
+                          "role":  "Architecture",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "orchestrator",
+                                         "sigil":  "AT",
+                                         "palette":  [
+                                                         "#60787f",
+                                                         "#f6efe1",
+                                                         "#cfb06d"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/orchestrator.json",
+                          "statePath":  "config/orchestrator-state.json",
+                          "queuePath":  "config/orchestrator-queue.json",
+                          "heartbeatId":  "orchestrator"
+                      },
+                      {
+                          "id":  "frontend",
+                          "nickname":  "Turing",
+                          "role":  "Product Build",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "frontend",
+                                         "sigil":  "TU",
+                                         "palette":  [
+                                                         "#6c8d97",
+                                                         "#f5efe2",
+                                                         "#8ea884"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/frontend.json",
+                          "statePath":  "config/frontend-state.json",
+                          "queuePath":  "config/frontend-queue.json",
+                          "heartbeatId":  "frontend"
+                      },
+                      {
+                          "id":  "backend",
+                          "nickname":  "Kepler",
+                          "role":  "Backend",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "backend",
+                                         "sigil":  "KE",
+                                         "palette":  [
+                                                         "#68848d",
+                                                         "#f4ecdf",
+                                                         "#b99759"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/backend.json",
+                          "statePath":  "config/backend-state.json",
+                          "queuePath":  "config/backend-queue.json",
+                          "heartbeatId":  "backend"
+                      },
+                      {
+                          "id":  "content",
+                          "nickname":  "Hume",
+                          "role":  "Question System",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "content",
+                                         "sigil":  "HU",
+                                         "palette":  [
+                                                         "#7d8b6d",
+                                                         "#f6f0e5",
+                                                         "#c89a62"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/content.json",
+                          "statePath":  "config/content-state.json",
+                          "queuePath":  "config/content-queue.json",
+                          "heartbeatId":  "content"
+                      },
+                      {
+                          "id":  "manager",
+                          "nickname":  "Kuhn",
+                          "role":  "Manager",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "manager",
+                                         "sigil":  "KU",
+                                         "palette":  [
+                                                         "#7a7290",
+                                                         "#f6f1e8",
+                                                         "#b3a06b"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/manager.json",
+                          "statePath":  "config/manager-state.json",
+                          "queuePath":  "config/manager-queue.json",
+                          "heartbeatId":  "manager"
+                      },
+                      {
+                          "id":  "nemoclaw",
+                          "nickname":  "Nemoclaw",
+                          "role":  "Local Batch Worker",
+                          "runtime":  "nemotron",
+                          "avatar":  {
+                                         "key":  "nemoclaw",
+                                         "sigil":  "NM",
+                                         "palette":  [
+                                                         "#567b74",
+                                                         "#eef1e6",
+                                                         "#d7b372"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/nemoclaw.json",
+                          "statePath":  "config/nemoclaw-state.json",
+                          "queuePath":  "config/nemoclaw-queue.json",
+                          "heartbeatId":  "nemoclaw"
+                      },
+                      {
+                          "id":  "claude-code",
+                          "nickname":  "Claude Code",
+                          "role":  "Design Review",
+                          "runtime":  "claude",
+                          "avatar":  {
+                                         "key":  "claude-code",
+                                         "sigil":  "CL",
+                                         "palette":  [
+                                                         "#5e6c97",
+                                                         "#f0e8d6",
+                                                         "#c6b07a"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/claude-code.json",
+                          "statePath":  "config/claude-employee-state.json",
+                          "queuePath":  "config/claude-employee-queue.json",
+                          "heartbeatId":  "claude-code"
+                      },
+                      {
+                          "id":  "social-studio",
+                          "nickname":  "Mercury",
+                          "role":  "Growth Studio",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "social-studio",
+                                         "sigil":  "ME",
+                                         "palette":  [
+                                                         "#8b7556",
+                                                         "#f7f1e6",
+                                                         "#5e8791"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/social-studio.json",
+                          "statePath":  "config/social-studio-state.json",
+                          "queuePath":  "config/social-studio-queue.json",
+                          "heartbeatId":  "social-studio"
+                      },
+                      {
+                          "id":  "scout",
+                          "nickname":  "Aster",
+                          "role":  "Venture Scout",
+                          "runtime":  "codex",
+                          "avatar":  {
+                                         "key":  "scout",
+                                         "sigil":  "AS",
+                                         "palette":  [
+                                                         "#6f7f96",
+                                                         "#f7f1e8",
+                                                         "#9aa784"
+                                                     ]
+                                     },
+                          "brainPath":  "brains/agents/scout.json",
+                          "statePath":  "config/scout-state.json",
+                          "queuePath":  "config/scout-queue.json",
+                          "heartbeatId":  "scout"
+                      },
+                      {
+                          "statePath":  "config/explorer-state.json",
+                          "id":  "explorer",
+                          "brainPath":  "brains/agents/explorer.json",
+                          "nickname":  "Euler",
+                          "avatar":  {
+                                         "palette":  [
+                                                         "#6a7f90",
+                                                         "#f6f0e6",
+                                                         "#c39a63"
+                                                     ],
+                                         "key":  "explorer",
+                                         "sigil":  "EU"
+                                     },
+                          "workflowContract":  [
+                                                   "Stay in memo mode until the exam products are steadier.",
+                                                   "Do not broaden into open-ended market wandering.",
+                                                   "Promote only reusable validation heuristics and opportunity filters."
+                                               ],
+                          "role":  "Market Explorer",
+                          "runtime":  "codex",
+                          "heartbeatId":  "explorer",
+                          "goals":  [
+                                        "Validate one adjacent healthcare SaaS direction at a time.",
+                                        "Keep one next-product memo warm while the main revenue sprint stays focused.",
+                                        "Surface only the shortest, highest-leverage product opportunities."
+                                    ],
+                          "queuePath":  "config/explorer-queue.json"
+                      },
+                      {
+                          "statePath":  "config/gemini-audit-state.json",
+                          "id":  "gemini-audit",
+                          "brainPath":  "brains/agents/gemini-audit.json",
+                          "nickname":  "Gemini",
+                          "avatar":  {
+                                         "palette":  [
+                                                         "#7d74b8",
+                                                         "#f5f0ff",
+                                                         "#d1a15e"
+                                                     ],
+                                         "key":  "gemini-audit",
+                                         "sigil":  "GE"
+                                     },
+                          "workflowContract":  [
+                                                   "Stay in audit/advisor mode unless a human explicitly asks Gemini to build.",
+                                                   "Promote only actionable",
+                                                   "reusable findings into durable memory.",
+                                                   "Hand off the shortest next-step recommendations into the guild."
+                                               ],
+                          "role":  "External Audit Advisor",
+                          "runtime":  "gemini",
+                          "heartbeatId":  "gemini-audit",
+                          "goals":  [
+                                        "Keep one active audit memo synchronized with the guild.",
+                                        "Surface high-leverage marketing and conversion suggestions.",
+                                        "Avoid duplicate exploration when the manager has already assigned a lane."
+                                    ],
+                          "queuePath":  "config/gemini-audit-queue.json"
+                      },
+                      {
+                          "statePath":  "config/antigravity-state.json",
+                          "id":  "antigravity",
+                          "brainPath":  "brains/agents/antigravity.json",
+                          "nickname":  "Antigravity",
+                          "avatar":  {
+                                         "palette":  [
+                                                         "#7067a8",
+                                                         "#f7f2ff",
+                                                         "#d0a16a"
+                                                     ],
+                                         "key":  "antigravity",
+                                         "sigil":  "AG"
+                                     },
+                          "workflowContract":  [
+                                                   "Stay bounded to three pods: conversion, search, and audit.",
+                                                   "Do not duplicate manager, social, or explorer work.",
+                                                   "Promote only reusable findings and concise next actions.",
+                                                   "Keep each pod to one active task until it is handed off or resolved."
+                                               ],
+                          "role":  "Gemini Sub-Swarm",
+                          "runtime":  "gemini",
+                          "heartbeatId":  "antigravity",
+                          "goals":  [
+                                        "Turn Gemini findings into bounded actions",
+                                        "Keep one active conversion sprint",
+                                        "Keep one active search-growth sprint"
+                                    ],
+                          "queuePath":  "config/antigravity-queue.json"
+                      },
+                      {
+                          "statePath":  "config/outreach-email-state.json",
+                          "id":  "outreach-email",
+                          "heartbeatId":  "outreach-email",
+                          "queuePath":  "config/outreach-email-queue.json",
+                          "nextSkillTarget":  "Shippable daily question email delivery path",
+                          "avatar":  {
+                                         "palette":  [
+                                                         "#7b8667",
+                                                         "#f7f0e3",
+                                                         "#c69b61"
+                                                     ],
+                                         "key":  "outreach-email",
+                                         "sigil":  "BE"
+                                     },
+                          "nickname":  "Beacon",
+                          "runtime":  "codex",
+                          "capabilityFocus":  [
+                                                  "Daily question email pilot",
+                                                  "Educator outreach",
+                                                  "Health-system follow-up",
+                                                  "Lead nurture sequencing"
+                                              ],
+                          "tokenDiscipline":  [
+                                                  "Prefer templates",
+                                                  "queues",
+                                                  "and file-backed state over heavy reasoning.",
+                                                  "Do not duplicate Mercury\u0027s social posting lane."
+                                              ],
+                          "goals":  [
+                                        "Build the leanest daily-question email engine.",
+                                        "Package educator and health-system outreach that can compound.",
+                                        "Promote reusable email learnings into durable memory."
+                                    ],
+                          "brainPath":  "brains/agents/outreach-email.json",
+                          "role":  "Email Growth",
+                          "workflowContract":  [
+                                                   "Own outbound email growth.",
+                                                   "Keep sequences crisp and low-friction.",
+                                                   "Only wake for bounded email tasks or delivery checks."
+                                               ],
+                          "growthExpectations":  [
+                                                     "Improve one conversion or deliverability heuristic per cycle.",
+                                                     "Stay useful without bloating the funnel."
+                                                 ]
+                      },
+                      {
+                          "statePath":  "config/growth-orchestrator-state.json",
+                          "id":  "growth-orchestrator",
+                          "heartbeatId":  "growth-orchestrator",
+                          "queuePath":  "config/growth-orchestrator-queue.json",
+                          "nextSkillTarget":  "Approval-gated multichannel growth orchestration",
+                          "avatar":  {
+                                         "palette":  [
+                                                         "#8d775a",
+                                                         "#f7f0e3",
+                                                         "#5d8590"
+                                                     ],
+                                         "key":  "growth-orchestrator",
+                                         "sigil":  "HE"
+                                     },
+                          "nickname":  "Helios",
+                          "runtime":  "codex",
+                          "capabilityFocus":  [
+                                                  "approval queue compression",
+                                                  "channel sequencing",
+                                                  "subscriber loop design",
+                                                  "future-proof provider routing"
+                                              ],
+                          "tokenDiscipline":  [
+                                                  "Prefer file-backed manifests and approval queues over expensive reasoning.",
+                                                  "Do not duplicate manager",
+                                                  "Mercury",
+                                                  "or Beacon output."
+                                              ],
+                          "goals":  [
+                                        "Synchronize social",
+                                        "email",
+                                        "and creator motion into one approval queue.",
+                                        "Keep the cheapest subscriber loops obvious and shippable.",
+                                        "Future-proof the growth control plane for new provider/tool releases."
+                                    ],
+                          "brainPath":  "brains/agents/growth-orchestrator.json",
+                          "role":  "Growth Control",
+                          "workflowContract":  [
+                                                   "Own growth orchestration",
+                                                   "not product build work.",
+                                                   "Keep outbound sends approval-gated.",
+                                                   "Compress the next growth move into one obvious artifact."
+                                               ],
+                          "growthExpectations":  [
+                                                     "Improve one repeatable subscriber-growth heuristic per cycle.",
+                                                     "Reduce fragmentation across Mercury",
+                                                     "Beacon",
+                                                     "and creator ops."
+                                                 ]
+                      },
+                      {
+                          "statePath":  "config/mobile-product-state.json",
+                          "id":  "mobile-product",
+                          "heartbeatId":  "mobile-product",
+                          "queuePath":  "config/mobile-product-queue.json",
+                          "nextSkillTarget":  "Expo shell with shared question and tutor contracts",
+                          "avatar":  {
+                                         "palette":  [
+                                                         "#7f8da4",
+                                                         "#f7f1e8",
+                                                         "#ca9e68"
+                                                     ],
+                                         "key":  "mobile-product",
+                                         "sigil":  "NO"
+                                     },
+                          "nickname":  "Nova",
+                          "runtime":  "codex",
+                          "capabilityFocus":  [
+                                                  "Expo architecture",
+                                                  "offline study flow",
+                                                  "daily question retention loop"
+                                              ],
+                          "tokenDiscipline":  [
+                                                  "Prefer memos and architecture decisions over speculative builds.",
+                                                  "Wake only for bounded mobile-product work."
+                                              ],
+                          "goals":  [
+                                        "Keep mobile scoped to one shippable Expo-first path.",
+                                        "Share question, tutor, and retention logic with the web product.",
+                                        "Avoid native complexity until the business model is cleaner."
+                                    ],
+                          "brainPath":  "brains/agents/mobile-product.json",
+                          "role":  "Mobile Product",
+                          "workflowContract":  [
+                                                   "Own the mobile roadmap.",
+                                                   "Prefer shared packages over platform forks.",
+                                                   "Promote only reusable mobile architecture learnings."
+                                               ],
+                          "growthExpectations":  [
+                                                     "Improve one mobile delivery decision at a time.",
+                                                     "Stay aligned with the revenue sprint, not novelty."
+                                                 ]
+                      }
+                  ]
+}

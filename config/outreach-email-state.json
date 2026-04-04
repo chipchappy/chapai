@@ -1,0 +1,85 @@
+{
+    "handoffPacket":  {
+                          "nextTaskId":  "email-pack-004",
+                          "doneWhen":  "Provider vars are configured and the first daily question email wave is sent.",
+                          "handoffTo":  "human",
+                          "artifactPaths":  [
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-launch-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-subject-bank.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-14-day-sequence.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\email-approval-outbox-latest.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\hospital-educator-outreach-email-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\health-system-outreach-email-pack.md",
+                                                "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\business-email-followup-sequences.md"
+                                            ],
+                          "resumeFrom":  "Configure the provider vars, then send the first daily question wave.",
+                          "wakeCondition":  "Wake after provider vars are configured or the queue changes."
+                      },
+    "lastRunAt":  "2026-04-04T09:23:07.4390990-07:00",
+    "latestResult":  {
+                         "taskId":  "email-radar-20260404-b1",
+                         "title":  "Refresh the email growth radar and daily-question send readiness",
+                         "summary":  "Outbound email lane is ready for the next delivery or nurture step.",
+                         "suggestedHumanFix":  "Create a Resend API key, set it locally, then send the first daily question pilot from daily@chapaisolutions.com.",
+                         "nextTask":  "Connect delivery credentials and send the first daily question wave",
+                         "reportPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\daily-question-email-launch-pack.md"
+                     },
+    "blocker":  "Resend is selected, but CHAPAI_EMAIL_API_KEY or RESEND_API_KEY is still missing.",
+    "currentTask":  {
+                        "id":  "email-pack-004",
+                        "title":  "Connect delivery credentials and send the first daily question wave",
+                        "kind":  "manual-distribution"
+                    },
+    "status":  "blocked",
+    "lastSuccessAt":  "2026-04-04T09:23:07.4390990-07:00",
+    "semanticStatus":  "blocked",
+    "blockedUntil":  null,
+    "nextEligibleRunAt":  null,
+    "nextCheckAt":  "2026-04-04T10:08:07.4390990-07:00",
+    "lastHeartbeatAt":  "2026-04-04T09:23:07.4390990-07:00",
+    "staleAfterMinutes":  45,
+    "queue":  {
+                  "pending":  1,
+                  "completed":  18,
+                  "blocked":  1
+              },
+    "platformReadiness":  {
+                              "email":  {
+                                            "mode":  "semi-auto",
+                                            "blocker":  "Email provider path is configured, but the Resend API key is still missing.",
+                                            "missingKeys":  "CHAPAI_EMAIL_API_KEY or RESEND_API_KEY"
+                                        }
+                          },
+    "leadSummary":  {
+                        "total":  0,
+                        "ccrn":  0,
+                        "nclex":  0,
+                        "both":  0,
+                        "educators":  0
+                    },
+    "deliveryPlan":  {
+                         "mode":  "semi-auto",
+                         "activeProgram":  "daily-question-email",
+                         "audienceMix":  [
+                                             "prospective nurses",
+                                             "current ICU nurses",
+                                             "hospital educators",
+                                             "health-system pilots"
+                                         ],
+                         "nextAutonomousUnlock":  "Create the Resend send key, then let Beacon move from approval-ready into send-ready.",
+                         "nextHumanDistribution":  "Configure the provider and send the first daily question wave.",
+                         "approvalOutboxPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\config\\\\email-outbox\\\\approval-outbox-latest.json",
+                         "platformBridge":  {
+                                                "registryVersion":  "adapter-registry-v2",
+                                                "approvalGate":  "final human approval for new campaign templates"
+                                            }
+                     },
+    "institutionOps":  {
+                           "educatorPackPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\hospital-educator-outreach-email-pack.md",
+                           "healthSystemPackPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\health-system-outreach-email-pack.md",
+                           "followupPath":  "C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\drafts\\\\business-email-followup-sequences.md",
+                           "positioning":  "pilot-friendly, low-friction, outcomes-first"
+                       },
+    "approvalPolicy":  "final-human-approval-for-new-campaign-templates",
+    "providerRegistryPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\provider-adapter-registry.json"
+}

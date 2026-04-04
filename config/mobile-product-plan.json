@@ -1,0 +1,49 @@
+{
+    "generatedAt":  "2026-04-04T09:30:39.3666900-07:00",
+    "recommendation":  "Expo + React Native + Expo Router",
+    "principle":  "Ship one shared product brain with the fewest platform-specific branches.",
+    "phases":  [
+                   {
+                       "phase":  "phase-1",
+                       "title":  "Mobile shell and practice flow",
+                       "deliverables":  [
+                                            "Expo app shell",
+                                            "shared question session fetch",
+                                            "saved progress basics",
+                                            "offline question cache"
+                                        ]
+                   },
+                   {
+                       "phase":  "phase-2",
+                       "title":  "Tutor, streaks, and daily question notifications",
+                       "deliverables":  [
+                                            "AI tutor panel",
+                                            "daily question push/email bridge",
+                                            "streak loop",
+                                            "review mistakes view"
+                                        ]
+                   },
+                   {
+                       "phase":  "phase-3",
+                       "title":  "Subscription and polish",
+                       "deliverables":  [
+                                            "RevenueCat evaluation",
+                                            "deep links",
+                                            "offline review packs",
+                                            "analytics and retention loops"
+                                        ]
+                   }
+               ],
+    "sharedPackages":  [
+                           "shared question types",
+                           "shared rationale and visual rationale model",
+                           "shared tutor prompts",
+                           "shared growth telemetry hooks"
+                       ],
+    "risks":  [
+                  "Do not fork business logic between web and mobile.",
+                  "Do not start native billing until the subscription path is cleaner.",
+                  "Keep notifications and email loops using the same daily-question source."
+              ],
+    "nextAction":  "Create one Expo-first memo and keep the mobile path scoped to practice, tutor, and retention."
+}

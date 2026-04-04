@@ -1,0 +1,28 @@
+{
+    "summary":  "ChapAI\u0027s tutor and rationale stack is structurally sound but undersells its differentiators. The visual rationale system (metrics grid, nodes, conclusion) is already more sophisticated than Archer/UWorld static text, but it renders passivelyΓÇöno directional arrows, no accent color theming per type, no visual hierarchy that signals \u0027this is the teaching moment.\u0027 The tutor (AiTutorPanel) opens blank with three generic starters and no contextual primer; Archer opens blank too, but ChapAI could win by opening with a personalized hook tied to the takeaway or the student\u0027s wrong choice. The system prompt caps at 120 words/300 tokensΓÇötight enough, but the Socratic rule \u0027never reveal full rationale in one go\u0027 is correct and rare; Archer and UWorld dump the full explanation immediately. The DB path strips takeaway and visualRationale fields (lines 107ΓÇô113 of route.ts), so DB-sourced questions never feed those into the tutor contextΓÇöa silent quality gap.",
+    "recommendations":  [
+                            "Add takeaway and visualRationale selects to the DB query and pass them through. Without this, DB-sourced questions use a weaker tutor prompt than local questionsΓÇösilent downgrade for most real users.",
+                            "On mount, if the panel knows the student answered incorrectly (pass `answeredCorrectly` prop), pre-populate the first assistant message: a one-sentence Socratic hook referencing the takeaway or category (e.g. \u0027Before I explainΓÇöwhat was your clinical reasoning for picking that option?\u0027). This is free at mount time using the existing fallback stream path. Archer and UWorld show nothing; this single touch makes ChapAI feel like a real tutor.",
+                            "Map visualRationale.type (\u0027trend\u0027,\u0027flow\u0027,\u0027pathway\u0027,\u0027signal\u0027,\u0027overview\u0027) to a left-border accent color using the existing accent field or a local map. One tailwind class swap per type. This makes the teaching block scannable at a glanceΓÇöUWorld has zero visual hierarchy in rationale; Archer uses a flat text block. Cost is ~10 lines of a const map.",
+                            "The metric schema already has direction (\u0027up\u0027,\u0027down\u0027,\u0027steady\u0027) and directionLabel, but the render ignores bothΓÇöonly value is shown. Add a small inline arrow SVG or Γåæ/Γåô glyph next to metric.value when direction exists. This makes the physiology trend legible at a glance, which is the core visual-teaching promise. Zero schema changes needed."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "tutor-context-gap-diagnosis",
+                                        "visual-rationale-render-audit"
+                                    ],
+                         "durable_memory":  [
+                                                "DB path in tutor/ask/route.ts strips takeaway and visualRationaleΓÇömust be fixed before DB becomes primary source or tutor quality silently degrades.",
+                                                "Visual rationale schema supports direction, nodes, metrics, and accent but render only partially uses themΓÇöeach unused field is a free premium differentiator.",
+                                                "ChapAI\u0027s Socratic non-dump approach is a real differentiator vs Archer/UWorld; protect it in all future prompt changes."
+                                            ],
+                         "active_context":  [
+                                                "Tutor panel opens blankΓÇöno context-aware primer on wrong answers",
+                                                "visualRationale.metrics direction field unused in QuizQuestion render",
+                                                "DB question path does not populate takeaway/visualRationale into tutor systemPrompt"
+                                            ]
+                     },
+    "current_blocker":  "None blocking shipping. The DB stripping bug (rec #1) is the highest-risk silent quality degraderΓÇöit only matters at scale when DB is the primary question source.",
+    "suggested_human_fix":  "Run rec #1 (DB field fix) firstΓÇöit\u0027s a 30-min query + type change with no UX risk. Then rec #4 (direction arrows) for instant visual premium signal. Both can ship in one PR today.",
+    "next_task":  "Patch route.ts to select takeaway/visualRationale from DB and thread into systemPrompt; add direction arrow rendering to the metrics grid in QuizQuestion.tsx."
+}

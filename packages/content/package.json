@@ -1,0 +1,22 @@
+{
+  "name": "@chapai/content",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts",
+    "./generated-summary": "./src/generated-summary.ts"
+  },
+  "scripts": {
+    "import:legacy": "node ./scripts/import-legacy-questions.mjs",
+    "import:legacy:questions": "node ./scripts/import-legacy-questions.mjs",
+    "import:legacy:review-batches": "node ./scripts/import-legacy-review-batches.mjs",
+    "promote:staged": "node ./scripts/promote-staged-batches.mjs",
+    "refresh:summary": "node ./scripts/refresh-content-summary.mjs",
+    "pipeline:local-batches": "npm run promote:staged"
+  },
+  "dependencies": {
+    "zod": "^3.23.0"
+  }
+}

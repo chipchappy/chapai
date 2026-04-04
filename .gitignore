@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+.next/
+.open-next/
+.turbo/
+dist/
+build/
+
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
+*.dev.vars
+
+# Environment / secrets — NEVER commit these
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+.tmp-*
+*.err.log
+*.out.log
+
+# Local state / temp files
+.local-state/
+dashboard-cookie.txt
+dashboard-login-headers.txt
+dashboard-page.html
+tmp_*
+.tmp-*
+*.ps1
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

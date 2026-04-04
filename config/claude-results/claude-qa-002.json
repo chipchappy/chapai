@@ -1,0 +1,30 @@
+{
+    "summary":  "Hume owns QA over Nemoclaw-generated promoted mixed batches (latest: batch-256). Bank is CCRN 1705 draft/435 live, NCLEX 1452 draft/0 live. Playbook exists but has no numeric thresholds ΓÇö making QA subjective and inconsistent. Task is to define a bounded, repeatable sampler Hume can run each pass without re-deriving criteria.",
+    "recommendations":  [
+                            "{\"id\":\"R1\",\"title\":\"Define 5-dimensional QA scorecard with hard thresholds\",\"detail\":\"Each promoted question gets scored on 5 axes. Fail = rewrite queue. Pass = eligible for live promotion. Thresholds: (1) Rationale depth ΓëÑ3 sentences AND names the physiologic mechanism (not just the action). (2) Distractor quality: each wrong answer must map to a named clinical misconception ΓÇö reject if any distractor is vague/generic. (3) Topic gap: if any CCRN category has \\u003c30 live questions or any NCLEX priority category (safety, pharm, delegation, prioritization) has \\u003c20 live questions, flag batch for gap-fill targeting. (4) Diagram worthiness: tag if stem involves hemodynamic trends, vent settings, oxygenation pathways, or shock comparison ΓÇö target ΓëÑ15% of live CCRN questions to carry a diagram reference. (5) Rewrite priority: score 0-3 (0=pass, 1=minor polish, 2=rationale rewrite, 3=stem+distractor rebuild). Any item scoring 3 blocks promotion.\",\"effort\":\"2h to add scorecard to playbook and Hume brain\"}",
+                            "{\"id\":\"R2\",\"title\":\"Sample rate: QA 20% of each promoted batch, 100% of first 50 per category\",\"detail\":\"Full-batch QA is expensive and slow. 20% random sample is sufficient to detect systemic rationale drift. Exception: for any category entering live for the first time, QA all questions. Current state: NCLEX has 0 live ΓÇö 100% QA the first 50 promoted per priority category before any go live. CCRN: 20% sample per batch is sufficient given 435 already live.\",\"effort\":\"30min ΓÇö document in playbook, add to Hume activeContext\"}",
+                            "{\"id\":\"R3\",\"title\":\"Rewrite budget cap: max 30% of sampled items per batch trigger rewrite\",\"detail\":\"If \\u003e30% of sampled items score 2 or 3, reject the entire batch back to Nemoclaw with a reason tag (rationale_drift | distractor_weakness | stem_vagueness). This prevents Hume from spending more time rewriting than the batch is worth. Reject rate is a health signal: track it in Hume memoryEvents per batch.\",\"effort\":\"30min ΓÇö add reject threshold logic to playbook\"}",
+                            "{\"id\":\"R4\",\"title\":\"Update content.json activeContext and playbook with numeric thresholds now\",\"detail\":\"The playbook has rules but no numbers. Hume will drift without anchors. Write the 5-axis scorecard into content-review-playbook.md and update Hume\\u0027s activeContext to reference \\u0027qa-sampler-v1\\u0027 so every future session loads the right frame. No new tooling needed ΓÇö this is a file edit.\",\"effort\":\"45min\"}"
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "qa-scorecard-v1",
+                                        "batch-rejection-routing",
+                                        "category-gap-detection",
+                                        "diagram-coverage-targeting"
+                                    ],
+                         "durable_memory":  [
+                                                "QA sampler v1: 5 axes ΓÇö rationale depth, distractor specificity, topic gap, diagram worthiness, rewrite priority. Thresholds: rationale ΓëÑ3 sentences + mechanism named; distractors must map to named misconception; diagram target ΓëÑ15% of live CCRN; rewrite score 3 blocks promotion; batch rejected if \u003e30% of sample scores 2-3.",
+                                                "NCLEX 0 live: 100% QA required on first 50 per priority category before any promotion to live.",
+                                                "Batch rejection reason tags: rationale_drift | distractor_weakness | stem_vagueness ΓÇö log in memoryEvents per batch."
+                                            ],
+                         "active_context":  [
+                                                "qa-sampler-v1 active ΓÇö apply 5-axis scorecard to every promoted batch",
+                                                "NCLEX first-promotion gate: 100% QA first 50 per category",
+                                                "Batch reject threshold: \u003e30% of sample scoring 2-3 = full batch rejection back to Nemoclaw"
+                                            ]
+                     },
+    "current_blocker":  "Playbook has no numeric thresholds ΓÇö QA is currently subjective. Hume cannot apply consistent criteria across sessions without anchors baked into the playbook file and brain.",
+    "suggested_human_fix":  "Edit content-review-playbook.md to add the 5-axis scorecard section with hard thresholds (rationale depth, distractor specificity, topic gap floors, diagram % target, rewrite score cap). Then update content.json activeContext array to include \u0027qa-sampler-v1 active\u0027. Both are file edits, under 45 minutes total.",
+    "next_task":  "Run Hume\u0027s first sampler pass against batch-256 using qa-sampler-v1: pull 20% random sample, score all 5 axes, log reject/pass counts and any batch-level reason tags into a new memoryEvent in content.json."
+}

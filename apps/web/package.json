@@ -1,0 +1,49 @@
+{
+  "name": "@chapai/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:worker": "opennextjs-cloudflare build",
+    "deploy": "opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare preview",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit -p tsconfig.typecheck.json"
+  },
+  "dependencies": {
+    "@auth/core": "^0.34.0",
+    "@chapai/brains": "file:../../packages/brains",
+    "@chapai/content": "file:../../packages/content",
+    "@chapai/db": "file:../../packages/db",
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "drizzle-orm": "^0.36.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.400.0",
+    "next": "^15.0.0",
+    "next-auth": "^5.0.0-beta.22",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.12.0",
+    "stripe": "^17.0.0",
+    "tailwind-merge": "^2.3.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.18.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.0",
+    "drizzle-kit": "^0.28.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.0.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.4.0",
+    "wrangler": "^3.65.0"
+  }
+}

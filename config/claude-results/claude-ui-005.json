@@ -1,0 +1,32 @@
+{
+    "summary":  "AmbientEditorialHero renders a two-column poster layout: left copy block + right AnatomyFocalCard. The background globe SVG (hero-globe) is a large ambient anatomical figure that bleeds across the full section. AnatomyFocalCard is a standalone right-column SVG figure with ribs, heart, vessels, organ nodes, and annotation lines — rendered at up to 33rem wide. BrandMark is a pill-shaped icon with a single vertical axis element (two dots, one line) beside \u0027ChapAI / NCLEX + CCRN\u0027 in Source Serif 4. CSS is meticulous but several premium signals are weak or missing.",
+    "recommendations":  [
+                            "Replace the site-mark-axis pseudo-element construction with a minimal inline SVG inside BrandMark: two-node spine segment (top vertebra circle + lower basin arc) in the same gold/teal palette already in globals.css (rgba(194,154,86) gold, rgba(90,127,136) teal). Keep the circle container. Target: 14×22px SVG, 1px stroke, no fill. This is a 30-min change entirely in BrandMark.tsx + the .site-mark-axis block in globals.css.",
+                            "Add two \u003cforeignObject\u003e or absolutely-positioned \u003cdiv\u003e callout labels anchored to the two right-side note lines (cx=286, the shoulder node and the vessel node). Label 1: \u0027400+ CCRN questions\u0027 (gold, 11px, letter-spaced). Label 2: \u0027AI rationale on every answer\u0027 (teal/muted, 10px). Add a top-right corner badge div inside .hero-focal-shell with text \u0027Premium clinical bank\u0027 in a 1px amber-border pill. All text must be real DOM text, not SVG text, for SEO and accessibility.",
+                            "Change title prop in page.tsx to: \u0027The clinical edge for CCRN and NCLEX.\u0027 — or — \u0027Sharper CCRN and NCLEX. Built for the ICU.\u0027 Keep under 8 words so max-width: 7.7ch constraint doesn\u0027t wrap badly. Also update body prop to lead with the hospital differentiator: \u0027Original questions, AI-guided rationale, and a direct package path — built for working ICU nurses, not generic test prep.\u0027",
+                            "Add a second pill slot or change examPill value to \u0027Hospital + CE teams →\u0027 linking to /contact or /hospital (stub page acceptable). In globals.css add .hero-pill-institutional with a 1px teal border (rgba(90,127,136,0.4)) and slightly bolder letter-spacing vs the existing .hero-pill gold style. This creates a visual fork: individual buyer (gold pill) vs institutional buyer (teal pill) — both readable in one eyebrow scan."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "ChapAI hero uses AmbientEditorialHero two-column poster layout with AnatomyFocalCard as dedicated right-column SVG asset",
+                                        "BrandMark icon is CSS-only axis construction — no SVG, no anatomy reference, upgrade pending",
+                                        "hero-grid-poster collapses to single column at 1100px, stacks at 900px",
+                                        "globals.css is very large (63k tokens) — search by class name, never read full file"
+                                    ],
+                         "durable_memory":  [
+                                                "ChapAI brand palette: gold rgba(194,154,86), teal rgba(90,127,136), warm dark rgba(49,42,35), cream rgba(255,252,246)",
+                                                "AnatomyFocalCard has 4 annotation line stubs (hero-focal-note paths) with no text labels — these are designated callout anchors",
+                                                "Site font: Source Serif 4 serif for headings/logo, inferred sans for body",
+                                                "Homepage hero eyebrow has examPill prop slot; currently shows \u0027Two focused packages\u0027",
+                                                "Hospital outreach is a defined revenue lane — needs institutional CTA fork separate from individual buyer flow"
+                                            ],
+                         "active_context":  [
+                                                "Task: homepage premium pass for hospital outreach",
+                                                "Priority gap: BrandMark too abstract, focal card has no copy, h1 language is consumer not clinical",
+                                                "Next human action: implement R3 (10 min copy swap) first for immediate impact, then R2 (callouts), then R1 (logo SVG), then R4 (institutional pill)"
+                                            ]
+                     },
+    "current_blocker":  "No code blocker. All changes are self-contained in existing files. R1 (BrandMark SVG) requires a design decision on exact spine/vertebra path geometry — this needs 15 min of SVG sketching before coding, not a dependency on any external system.",
+    "suggested_human_fix":  "Start with R3 (page.tsx h1 + body copy, 10 min) — highest leverage per minute, zero risk. Then R2 (AnatomyFocalCard callout text, 45 min) — turns a silent graphic into a product signal. R1 and R4 can ship together in the same CSS/component pass after.",
+    "next_task":  "Implement AnatomyFocalCard callout labels: add two foreignObject or absolute-div callouts anchored to the existing hero-focal-note line endpoints, plus a .hero-focal-badge pill in the top-right corner of .hero-focal-shell. This is the highest-visibility delta — it converts a decorative graphic into a product claim carrier visible on hospital-facing demos."
+}

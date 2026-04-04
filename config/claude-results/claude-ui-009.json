@@ -1,0 +1,31 @@
+{
+    "summary":  "AnatomyFocalCard right-side panel is structurally sound but strokes are too soft for premium outreach — figure at 0.26 opacity / 1.2px vs the design board\u0027s 0.30 / 2.15. The ghost figure overlay adds visual noise without clinical specificity. The active focal CSS block (lines 6621+) overrides an older identical block (lines 6138+), leaving dead rules in place. frontpage-46.svg is the strongest concept board — teal accent spine at 0.84 opacity and 2.1px is the right direction. Page shell (#F7F1E7, radial cream, tight editorial type) already passes Apple/Anthropic calm standard. 250+ logo option files in brand/options signal unresolved brand paralysis that blocks creator outreach collateral. Focal card verdict: CONDITIONALLY APPROVED pending 4 targeted CSS lifts; do NOT push to creator outreach until those cuts ship.",
+    "recommendations":  [
+                            "LIFT focal card strokes immediately: in globals.css line 6675 raise .hero-focal-figure to stroke rgba(49,42,35,0.32) stroke-width 2.0; line 6685 raise .hero-focal-rib to rgba(194,154,86,0.38); line 6689 raise .hero-focal-heart to rgba(183,132,91,0.44); line 6693 raise .hero-focal-vessel to rgba(88,107,115,0.22). These four edits bring the live card to design-board spec without a layout change.",
+                            "CUT the hero-focal-figure-ghost group in AnatomyFocalCard.tsx or add opacity=0.25 directly on the \u003cg\u003e tag. At current stroke weights the second silhouette muddies focal intent — it reads as a rendering artifact, not a premium depth layer.",
+                            "PURGE the duplicate .hero-focal-* CSS block at lines 6138–6340. The 6621 block fully overrides it. Dead rules add ~200 lines of confusion and slow design-review diffs. Also audit the 4+ .hero-anatomy-* variant blocks scattered above line 4000 — most belong to retired hero iterations and can be deleted in one pass.",
+                            "LOCK brand direction now: retire logo options 1–249 from public/brand/options. Keep option-250 (warm card + line-art body figure) as the canonical specimen. 250 unresolved SVG files is a direct blocker for creator outreach asset packs — human decision required before any collateral ships."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "css-targeted-stroke-tuning",
+                                        "svg-anatomy-layer-management",
+                                        "globals-css-dead-block-audit"
+                                    ],
+                         "durable_memory":  [
+                                                "AnatomyFocalCard focal card: CONDITIONALLY APPROVED. Requires 4 CSS stroke lifts before creator outreach. Ghost figure group needs opacity cut or removal.",
+                                                "frontpage-46.svg is the locked reference direction: teal accent spine rgba(90,127,136,0.84) 2.1px, headline \u0027A stronger medical front page for serious exam buyers.\u0027, Free/Plus/Pro tier row.",
+                                                "Page shell (#F7F1E7, radial cream top gradient, 8.6ch h1, line-height 0.88) passes premium standard — no shell changes needed.",
+                                                "globals.css has severe CSS duplication: hero-focal-* defined in two blocks (6138 and 6621). 6621 is active. 6138 block is dead. Multiple retired hero-anatomy-* variant blocks exist above line 4000.",
+                                                "Brand options folder has 250+ SVG files — brand decision paralysis. Option-250 is the strongest candidate. Human must lock before outreach collateral can be prepared."
+                                            ],
+                         "active_context":  [
+                                                "Task: premium anatomy focal pass and operator-readiness surface review",
+                                                "Files reviewed: AmbientEditorialHero.tsx, AnatomyFocalCard.tsx, globals.css (focal blocks), frontpage-46.svg, chapai-option-250.svg",
+                                                "Next action owner: human — lock brand option, then engineer executes 4 CSS stroke lifts"
+                                            ]
+                     },
+    "current_blocker":  "Brand option not locked (250+ unresolved SVGs). Without a single canonical logo, creator outreach collateral cannot be finalized. This is a human decision, not a code problem.",
+    "suggested_human_fix":  "Open brand/options, compare option-250 against your top 1–2 other candidates, pick one today. Communicate the locked file name so engineering can reference it in a single brand asset pack. Then engineer can execute the 4 CSS stroke lifts (estimated 20 minutes) and the dead CSS purge (estimated 40 minutes) before any outreach materials are assembled.",
+    "next_task":  "Execute the 4 CSS stroke lifts in globals.css (lines 6675, 6685, 6689, 6693), then cut the ghost figure opacity in AnatomyFocalCard.tsx, then run a dead-CSS purge of the 6138 focal block and the retired hero-anatomy variant blocks above line 4000. Estimated: under 90 minutes total. Gate creator outreach on brand lock + stroke lift completion."
+}

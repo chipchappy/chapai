@@ -1,0 +1,35 @@
+{
+    "metadata":  {
+                     "runtime":  "codex",
+                     "lastUpdatedAt":  "2026-04-04T09:21:14.3957284-07:00",
+                     "lane":  "Growth Control"
+                 },
+    "pending":  [
+                    {
+                        "id":  "growth-sync-20260404-0921",
+                        "title":  "Synchronize social, email, and creator approval surfaces",
+                        "kind":  "automation",
+                        "priority":  12,
+                        "status":  "pending",
+                        "createdAt":  "2026-04-04T09:21:14.3836548-07:00",
+                        "contextFiles":  [
+                                             "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\social-outbox\\approval-outbox-latest.json",
+                                             "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\email-outbox\\approval-outbox-latest.json",
+                                             "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\provider-adapter-registry.json"
+                                         ]
+                    }
+                ],
+    "completed":  [
+
+                  ],
+    "blocked":  [
+                    {
+                        "lane":  "beacon",
+                        "status":  "blocked",
+                        "approvalMode":  "approval-required",
+                        "nextAction":  "Approve the first daily question email pair and the first educator / health-system outreach wave so Beacon can move into send-ready operations.",
+                        "blocker":  "Email provider path is configured, but the Resend API key is still missing.",
+                        "sourcePath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\email-outbox\\approval-outbox-latest.json"
+                    }
+                ]
+}

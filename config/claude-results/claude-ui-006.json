@@ -1,0 +1,32 @@
+{
+    "summary":  "Reviewed all five files plus the full 18-concept frontpage batch and 100 logo options. The anatomy hero pass is credible and the design language is consistent across BrandMark, AnatomyFocalCard, and the frontpage SVG concepts. The primary gap is execution completeness, not direction — the warm ivory + teal + gold palette from frontpage-18 is the right answer and just needs to close the delta with the live hero.",
+    "recommendations":  [
+                            "Lock the premium homepage direction to frontpage-18 as the canonical reference",
+                            "Swap primary CTA to \u0027Start free\u0027 — demote $10 sprint to a badge inside the button",
+                            "Replace the hero-proof-line `\u003ci /\u003e` divider with a gold-ruled stat callout bar",
+                            "Add a four-word hospital-buyer anchor between featured-editorial-band and DailyQuestionSignup"
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "SVG-to-live CSS delta promotion: extract stroke/fill tokens from approved SVG concept and apply to live hero CSS classes",
+                                        "Dual-audience CTA strategy: price-point demotion pattern — move $ to badge, lead with free-tier to serve both creator and institutional buyer"
+                                    ],
+                         "durable_memory":  [
+                                                "ChapAI premium direction locked: warm ivory #F7F1E7 field, teal #5A7F88 CTA, gold #C19A56 accent, serif headline, anatomy globe bleeding right edge — frontpage-18 is canonical reference",
+                                                "Logo recommendation: C-arc + EKG family (options 1/5) for primary product mark; dual-ring emblem (option 10) for favicon/app icon; spine-axis globe (BrandMark.tsx) for nav and lockup — all three in active rotation",
+                                                "BrandMark.tsx spine-axis glyph needs stroke-width increase for sub-20px legibility — current hairline weight breaks at small sizes",
+                                                "Page copy anchor: \u0027Built for the bedside\u0027 is correct and should not be changed — it is the strongest SEO + conversion phrase in the codebase",
+                                                "AnatomyFocalCard floating callouts are premium signal — do not remove; tighten vertical spacing between callout-top, callout-mid, callout-bottom by 12px each"
+                                            ],
+                         "active_context":  [
+                                                "18 frontpage SVG concepts exist in /public/design-review/, frontpage-18 is latest and strongest",
+                                                "100 logo options exist in /public/brand/options/, options 1/5/10/30/50 sampled — C-arc+EKG family is the clear winner",
+                                                "Live hero has correct structural split (copy left / AnatomyFocalCard right) but palette not yet promoted from frontpage-18 tokens",
+                                                "Primary CTA currently reads \u0027Start a $10 sprint\u0027 — flagged for demotion to \u0027Start free\u0027 + badge",
+                                                "Design review page at /design-review requires dashboard auth cookie — visual QA must be done in browser"
+                                            ]
+                     },
+    "current_blocker":  "Cannot visually confirm rendered output of the live hero vs. frontpage-18 without browser access. The design-review page is auth-gated so no automated screenshot comparison is possible. All recommendations are based on SVG source review.",
+    "suggested_human_fix":  "Open http://localhost:3000 and http://localhost:3000/design-review side-by-side. Confirm the live hero matches frontpage-18\u0027s background warmth, globe stroke weight, and headline size. If the live hero reads lighter/cooler than the SVG concept, proceed with R1 (palette token update). This visual confirmation gate should take under 5 minutes.",
+    "next_task":  "Promote frontpage-18 palette into the live hero: update hero-anatomy-shell, hero-anatomy-orbit, and hero-anatomy-figure-group stroke opacities to match the SVG concept values, update hero-shell background to #F7F1E7, and change primaryLabel in page.tsx from \u0027Start a $10 sprint\u0027 to \u0027Start free\u0027. Files: apps/web/src/app/page.tsx (1 prop change), the relevant hero CSS file (palette tokens for .hero-shell, .hero-anatomy-shell, .hero-anatomy-orbit)."
+}

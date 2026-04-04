@@ -1,0 +1,10 @@
+﻿tunnel: 46ef0967-62ab-4f4f-a766-41fb93b4a3fe
+credentials-file: C:\Users\Chapman\.cloudflared\46ef0967-62ab-4f4f-a766-41fb93b4a3fe.json
+ingress:
+  - hostname: chapaisolutions.com
+    service: http://localhost:3103
+  - hostname: www.chapaisolutions.com
+    service: http://localhost:3103
+  - hostname: clarityccrn.chapaisolutions.com
+    service: http://localhost:3103
+  - service: http_status:404

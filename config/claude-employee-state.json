@@ -1,0 +1,38 @@
+{
+    "status":  "idle",
+    "semanticStatus":  "sleeping",
+    "availability":  "installed",
+    "executionState":  "idle",
+    "currentTask":  null,
+    "lastRunAt":  "2026-04-04T09:26:56.4463824-07:00",
+    "lastSuccessAt":  "2026-04-03T12:02:42.1215250-07:00",
+    "blocker":  "none",
+    "blockedUntil":  null,
+    "nextEligibleRunAt":  null,
+    "nextCheckAt":  "2026-04-04T09:56:56.4502922-07:00",
+    "lastHeartbeatAt":  "2026-04-04T09:26:56.4522970-07:00",
+    "staleAfterMinutes":  60,
+    "queue":  {
+                  "pending":  0,
+                  "completed":  8,
+                  "failed":  0
+              },
+    "auth":  {
+                 "availability":  "installed",
+                 "executablePath":  "C:\\Users\\Chapman\\Desktop\\ai\\claude-local\\node_modules\\.bin\\claude.cmd",
+                 "executableExists":  true,
+                 "probeSource":  "workspace-tool",
+                 "loggedIn":  true,
+                 "authState":  "logged-in",
+                 "authMethod":  "claude.ai",
+                 "blocker":  "none"
+             },
+    "latestResult":  {
+                         "taskId":  "claude-ui-014",
+                         "title":  "Critique the anatomical plate hero reset and the 1101-1150 wordmark redesign batch",
+                         "summary":  "Reviewed 9 frontpage concepts (1301-1309), 50 logo options (1101-1150), and the live BrandMark component. The homepage hero structure is typographically clean and the parchment palette is correct, but the right-side illustrations do not read as anatomical plates ΓÇö they are abstract topographic blobs. The logo batch is almost entirely color-variation exhaustion of two mark types (NEURAL ARC and HEARTLINE), producing no new mark geometry. BrandMark.tsx is a dead `\u003cimg\u003e` tag with no live SVG mark at all. The system is not yet premium medical illustration; it is still symbolic medical vector art with editorial typography layered on top.",
+                         "suggestedHumanFix":  "1) Confirm or create AmbientEditorialHero.tsx and AnatomyGlobeVisual.tsx ΓÇö check if they live under a different path or have not been scaffolded yet. 2) Replace BrandMark.tsx `\u003cimg src=\u0027/logo.png\u0027\u003e` with an inline SVG of the HEARTLINE mark ΓÇö extract the heart+ECG paths from chapai-option-1101.svg, drop them inline, and size with viewBox. This is the single highest-leverage 30-minute action in the system right now.",
+                         "nextTask":  "Generate HEARTLINE logo batch 1151-1160: 10 variants derived exclusively from the cardiac outline + PQRST waveform geometry in 1101. Vary (a) cardiac outline fidelity (add aortic arch, left-ventricle asymmetry), (b) ECG wave type (sine vs real PQRST), (c) mark-to-wordmark scale ratio. Use only teal (#5A7F88), gold (#C59B5E), and near-black (#1F1F21) on parchment (#FBF7F0). Kill all new NEURAL ARC generation.",
+                         "reportPath":  "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\claude-results\\claude-ui-014.json"
+                     }
+}

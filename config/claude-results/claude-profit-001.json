@@ -1,0 +1,31 @@
+{
+    "summary":  "Upgrade page is live with a clean CCRN/NCLEX split: $10 one-time sprint, $29/mo Plus, $59/mo Pro. Both exam tracks share the same Stripe price IDs — no exam-level revenue segmentation in Stripe yet. Social assets are fully drafted but unexecuted. No evidence of UTM tracking or checkout event instrumentation. Zero paid traffic. The sprint tier is the fastest conversion wedge but is visually buried in the left column and may be missed on mobile.",
+    "recommendations":  [
+                            "Execute bio update + pin the X post today — assets are complete in social-bios-and-launch-copy.md, cost is 0, time is 30 min. Append ?utm_source=x\u0026utm_medium=bio to the upgrade URL so Stripe metadata and any analytics tool can distinguish click source from day one.",
+                            "Reorder /upgrade on mobile: move the $10 sprint card above the Plus/Pro grid. The sprint is the lowest-friction entry ($10 vs $29) and the most likely first conversion, but it renders left-column on desktop and likely below-fold on mobile. A single CSS reorder or grid-order change unlocks this in under 1 hour.",
+                            "Run reply-farming on X for 72 hours targeting: CCRN study posts, NCLEX prioritization threads, UWorld/Archer fatigue posts. Value-first reply, no link unless fit is explicit. Goal is 5+ warm DMs or replies asking about pricing — these are the first 10 buyers. This is already in the sprint plan; just needs to start today.",
+                            "Wire one Stripe webhook event (checkout.session.completed) to a simple log or Slack/Discord message so you know the exact moment the first sale lands and which exam track triggered it. Without this, you are flying blind on conversion timing and package split."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "sprint-to-revenue: $10 one-time sprint is lowest-friction entry; use it as the wedge before pushing subscriptions",
+                                        "reply-farming: value-first engagement on study community posts outperforms cold posting for early paid conversions",
+                                        "utm-tagging: append utm params to all bio/pinned links from day one to get source attribution in Stripe metadata"
+                                    ],
+                         "durable_memory":  [
+                                                "upgrade page live at /upgrade with $10 sprint, $29 Plus, $59 Pro for both CCRN and NCLEX",
+                                                "CCRN and NCLEX share Stripe price IDs — exam track passed as metadata only, not as separate prices",
+                                                "social assets fully drafted and ready to post: X bio, Instagram bio, pinned post, first caption",
+                                                "$200/month profit target requires 7 Plus monthly subs or ~20 sprint purchases (one-time, not recurring)",
+                                                "no UTM tracking or Stripe webhook instrumentation confirmed in codebase"
+                                            ],
+                         "active_context":  [
+                                                "72h sprint window starts now — Day 1 actions are bio update and pinned X post",
+                                                "sprint card is visually deprioritized on mobile relative to Plus/Pro — reorder is high-leverage and low-effort",
+                                                "reply-farming is the primary warm-traffic channel given zero paid spend"
+                                            ]
+                     },
+    "current_blocker":  "No traffic instrumentation: upgrade link in bio has no UTM params, no Stripe webhook confirmed, no checkout event logging visible. First sales will land silently with no source attribution.",
+    "suggested_human_fix":  "Before posting: append ?utm_source=x\u0026utm_medium=bio to the X bio link and ?utm_source=instagram\u0026utm_medium=bio to the Instagram bio link. Then add a checkout.session.completed webhook in the Stripe dashboard pointing to a simple endpoint or Pipedream/Hookdeck relay that logs to Slack or Discord. Both actions under 45 minutes, unblocks revenue visibility immediately.",
+    "next_task":  "Post the pinned X post and update both bios using the exact copy in social-bios-and-launch-copy.md — with UTM params appended. Then move the sprint card above the Plus/Pro grid in upgrade/page.tsx (CSS grid-order change). These two actions are the entire Day 1 execution block."
+}

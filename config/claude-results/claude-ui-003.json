@@ -1,0 +1,32 @@
+{
+    "summary":  "Hero is an ambient editorial layout with a parallax-panned SVG anatomy figure (globe sphere with body paths), serif h1, eyebrow meta, two CTAs, a proof line, and a stat row. BrandMark is a 28×28 SVG of concentric arcs (teal/gold palette) with \u0027ChapAI\u0027 wordmark and \u0027NCLEX + CCRN\u0027 subtext. The CSS is layered across at least 4 theme blocks, creating redundant overrides for .hero-shell, .hero-anatomy-field, and .hero-anatomy-glow. The anatomy figure is a single floating SVG body-path set—no organ labels, no callout lines, no visible identity anchor. The gold accent (#c29a56) appears only in one BrandMark path and one stat dot; it is underpowered. The overall aesthetic is restrained/editorial but not premium—it reads clinical-minimalist without the confidence signal a health-system buyer needs.",
+    "recommendations":  [
+                            "Delete lines 31–71 (all three refs, the two event handlers, and the useEffect). Remove the style prop and onMouseMove/onMouseLeave from the section element. Keep scroll-based parallax only if scroll magnitude visibly matters—at 0.08×scrollY it currently does nothing meaningful either; drop it.",
+                            "Search for all .hero-shell { blocks, keep only the one at ~4050, delete the others. Repeat for .hero-anatomy-field and .hero-anatomy-glow.",
+                            "Prop-ify proofLabel. Swap SVG body paths for a single focal organ. Increase h1 clamp ceiling to 7rem.",
+                            "Implement Option B first (zero SVG risk, no approval dependency). Replace the 28×28 SVG block with a CSS-only Instrument Serif wordmark + rule + subtext span."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "inline-CSS-audit",
+                                        "SVG-complexity-reduction",
+                                        "rAF-removal-pattern"
+                                    ],
+                         "durable_memory":  [
+                                                "ChapAI brand palette: teal #5a7f88, gold #c29a56, dark #1f262b, muted rgba(108,99,87,0.88)",
+                                                "globals.css has 4+ redundant hero-shell theme blocks; canonical block is at line ~4050",
+                                                "BrandMark SVG is 8 paths in 28×28 viewBox; highest-risk asset for favicon/small-scale legibility",
+                                                "Hero anatomy figure is a single floating body SVG with no callout lines or organ labels",
+                                                "rAF parallax magnitude is ±17px/±11px—imperceptible; safe to remove"
+                                            ],
+                         "active_context":  [
+                                                "Task: premium hero + brand direction post-simplification pass",
+                                                "Target buyers: nursing creators (speed/clarity) + health-system procurement (trust/precision)",
+                                                "Current blocker: no approved single-organ focal SVG asset",
+                                                "Next human action: choose one of three logo families to implement; Option B has zero approval dependency"
+                                            ]
+                     },
+    "current_blocker":  "No replacement focal SVG (single organ with callout lines) exists in the repo. The current full-body anatomy path set cannot be restyled into a precision-clinical anchor without new artwork.",
+    "suggested_human_fix":  "Commission or sketch a 400×500 schematic heart or brain with 2 labeled callout leader lines in Figma, export as optimized SVG with named path IDs. Drop it into /public/brand/. This unblocks recommendation #3 and the \u0027Clinical Clarity\u0027 hero direction. Time estimate: 45–90 min with a designer or Figma AI plugin.",
+    "next_task":  "Implement BrandMark Option B (Instrument Serif wordmark + teal rule + subtext) in BrandMark.tsx—zero SVG, zero approval dependency, ships in under 30 minutes. Then collapse the 4 redundant hero-shell CSS blocks into the canonical line-4050 block."
+}

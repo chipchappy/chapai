@@ -1,0 +1,111 @@
+{
+    "generatedAt":  "2026-04-04T09:30:44.4586505-07:00",
+    "roomState":  "guild-sync",
+    "wins":  [
+                 "orchestrator: Coordinate the active-duty roster, daily question email path, and mobile rollout sequencing",
+                 "frontend: Refine the premium hero, background linework, and logo presentation so the product feels more premium than Archer or UWorld",
+                 "backend: Design the leanest daily question email capture and delivery path without adding fragile complexity",
+                 "social-studio: Run a warm reply wave on CCRN, CRNA-school, and ICU-study posts"
+             ],
+    "blockers":  [
+                     "manager: beacon: Resend is selected, but CHAPAI_EMAIL_API_KEY or RESEND_API_KEY is still missing."
+                 ],
+    "lessons":  [
+                    "Promote only outcome-level memory when a lane actually ships or changes focus.",
+                    "Human blockers should stay compressed to one exact action, not a broad status paragraph.",
+                    "Sleeping lanes should carry a clear next wake condition instead of masquerading as active work."
+                ],
+    "handoffs":  [
+                     "Manager should keep the next bounded owner visible for each active lane.",
+                     "Blocked lanes should emit the shortest direct human unblock and then stop writing noise.",
+                     "Scout and explorer should refresh only when new validation work exists or a handoff changes."
+                 ],
+    "next":  [
+                 "Clear the top external block only after all automated retries are exhausted.",
+                 "Keep Nemoclaw compounding cheap mixed batches.",
+                 "Let manager, Gemini, and Antigravity keep the cram and conversion lanes tight."
+             ],
+    "agentCloseouts":  [
+                           {
+                               "id":  "orchestrator",
+                               "shipped":  "Atlas is on active duty: Atlas is coordinating the active-duty roster, the daily question email path, and the next mobile sequencing decision.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "orchestrator-003",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "frontend",
+                               "shipped":  "Turing is on active duty: Turing is actively pushing the premium surface, hero linework, and logo presentation toward a stronger premium standard.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "frontend-003",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "backend",
+                               "shipped":  "Kepler is on active duty: Kepler is keeping tutor, checkout, and the daily question email path shippable with minimal runtime complexity.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "backend-003",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "content",
+                               "shipped":  "Hume is on active duty: Hume reviewed mixed-batch-516 with decision eligible_for_curated_promotion and surfaced 8 live-promotion candidates while keeping the bank elite (CCRN 3005, NCLEX 2752).",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "content-maintain",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "manager",
+                               "shipped":  "Manager sweep active across atlas: Coordinate the active-duty roster, daily question email path, and mobile rollout sequencing | turing: Refine the premium hero, background linework, and logo presentation so the product feels more premium than Archer or UWorld | kepler: Design the leanest daily question email capture and delivery path without adding fragile complexity | mercury: Run a warm reply wave on CCRN, CRNA-school, and ICU-study posts | beacon: Connect delivery credentials and send the first daily question wave | nova: Maintain the Expo-first mobile product path | scout: Recommend the fastest mobile app path and the best nurse-adjacent follow-on SaaS opportunity | gemini: Audit the first creator-budget pilot and pricing clarity | antigravity: Sharpen the first creator-pilot economics and low-friction offer | content: mixed-batch-516.json",
+                               "learned":  "This lane needs a clearer unblock path.",
+                               "nextTaskId":  "manager-sweep",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "social-studio",
+                               "shipped":  "Prepared reusable launch assets: Refresh the social opportunity radar and next-thread targets",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "social-pack-007",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake when the manager assigns new work or the blocker clears."
+                           },
+                           {
+                               "id":  "scout",
+                               "shipped":  "Scout lane is actively evaluating the fastest mobile app path and the next nurse-adjacent SaaS direction.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "scout-duty-shift",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "gemini-audit",
+                               "shipped":  "Gemini is keeping the audit lane live, using Gemma 4 for low-cost bounded prep, and feeding bounded pod work into Antigravity.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "gemini-audit-creator-001",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "antigravity",
+                               "shipped":  "Antigravity is actively cycling the conversion, search, and audit pods in bounded sequence with Gemma 4 as the first cheap utility lane.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "antigravity-conversion-creator-001",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake on the next scheduled sweep."
+                           },
+                           {
+                               "id":  "claude-code",
+                               "shipped":  "Reviewed 9 frontpage concepts (1301-1309), 50 logo options (1101-1150), and the live BrandMark component. The homepage hero structure is typographically clean and the parchment palette is correct, but the right-side illustrations do not read as anatomical plates Î“Ã‡Ã¶ they are abstract topographic blobs. The logo batch is almost entirely color-variation exhaustion of two mark types (NEURAL ARC and HEARTLINE), producing no new mark geometry. BrandMark.tsx is a dead `\u003cimg\u003e` tag with no live SVG mark at all. The system is not yet premium medical illustration; it is still symbolic medical vector art with editorial typography layered on top.",
+                               "learned":  "Keep the next task bounded and preserve restart-safe continuity.",
+                               "nextTaskId":  "none",
+                               "resumeFrom":  "Open the lane state file and continue from the latestResult and handoffPacket.",
+                               "wakeCondition":  "Wake when the manager assigns new work or the blocker clears."
+                           }
+                       ],
+    "fingerprint":  "orchestrator: Coordinate the active-duty roster, daily question email path, and mobile rollout sequencing|frontend: Refine the premium hero, background linework, and logo presentation so the product feels more premium than Archer or UWorld|backend: Design the leanest daily question email capture and delivery path without adding fragile complexity|social-studio: Run a warm reply wave on CCRN, CRNA-school, and ICU-study posts|manager: beacon: Resend is selected, but CHAPAI_EMAIL_API_KEY or RESEND_API_KEY is still missing.|Promote only outcome-level memory when a lane actually ships or changes focus.|Human blockers should stay compressed to one exact action, not a broad status paragraph.|Sleeping lanes should carry a clear next wake condition instead of masquerading as active work.|Manager should keep the next bounded owner visible for each active lane.|Blocked lanes should emit the shortest direct human unblock and then stop writing noise.|Scout and explorer should refresh only when new validation work exists or a handoff changes.|Clear the top external block only after all automated retries are exhausted.|Keep Nemoclaw compounding cheap mixed batches.|Let manager, Gemini, and Antigravity keep the cram and conversion lanes tight.|orchestrator|orchestrator-003|Atlas is on active duty: Atlas is coordinating the active-duty roster, the daily question email path, and the next mobile sequencing decision.|frontend|frontend-003|Turing is on active duty: Turing is actively pushing the premium surface, hero linework, and logo presentation toward a stronger premium standard.|backend|backend-003|Kepler is on active duty: Kepler is keeping tutor, checkout, and the daily question email path shippable with minimal runtime complexity.|content|content-maintain|Hume is on active duty: Hume reviewed mixed-batch-516 with decision eligible_for_curated_promotion and surfaced 8 live-promotion candidates while keeping the bank elite (CCRN 3005, NCLEX 2752).|manager|manager-sweep|Manager sweep active across atlas: Coordinate the active-duty roster, daily question email path, and mobile rollout sequencing | turing: Refine the premium hero, background linework, and logo presentation so the product feels more premium than Archer or UWorld | kepler: Design the leanest daily question email capture and delivery path without adding fragile complexity | mercury: Run a warm reply wave on CCRN, CRNA-school, and ICU-study posts | beacon: Connect delivery credentials and send the first daily question wave | nova: Maintain the Expo-first mobile product path | scout: Recommend the fastest mobile app path and the best nurse-adjacent follow-on SaaS opportunity | gemini: Audit the first creator-budget pilot and pricing clarity | antigravity: Sharpen the first creator-pilot economics and low-friction offer | content: mixed-batch-516.json|social-studio|social-pack-007|Prepared reusable launch assets: Refresh the social opportunity radar and next-thread targets|scout|scout-duty-shift|Scout lane is actively evaluating the fastest mobile app path and the next nurse-adjacent SaaS direction.|gemini-audit|gemini-audit-creator-001|Gemini is keeping the audit lane live, using Gemma 4 for low-cost bounded prep, and feeding bounded pod work into Antigravity.|antigravity|antigravity-conversion-creator-001|Antigravity is actively cycling the conversion, search, and audit pods in bounded sequence with Gemma 4 as the first cheap utility lane.|claude-code|none|Reviewed 9 frontpage concepts (1301-1309), 50 logo options (1101-1150), and the live BrandMark component. The homepage hero structure is typographically clean and the parchment palette is correct, but the right-side illustrations do not read as anatomical plates Î“Ã‡Ã¶ they are abstract topographic blobs. The logo batch is almost entirely color-variation exhaustion of two mark types (NEURAL ARC and HEARTLINE), producing no new mark geometry. BrandMark.tsx is a dead `\u003cimg\u003e` tag with no live SVG mark at all. The system is not yet premium medical illustration; it is still symbolic medical vector art with editorial typography layered on top."
+}

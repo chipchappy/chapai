@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-04-02T00:00:00-07:00",
+  "version": "capability-inventory-v1",
+  "principles": [
+    "Use the cheapest capable provider first when quality loss is acceptable.",
+    "Escalate intentionally to premium providers for conversion-critical, design-critical, or clinically sensitive work.",
+    "Every sleeping lane must have a wake condition, handoff packet, and reason.",
+    "All provider readiness and secret state must stay out of repo-tracked files."
+  ],
+  "systems": [
+    {
+      "id": "codex",
+      "category": "premium-build",
+      "bestUse": [
+        "implementation",
+        "workflow glue",
+        "runtime architecture"
+      ]
+    },
+    {
+      "id": "claude",
+      "category": "premium-review",
+      "bestUse": [
+        "UI critique",
+        "conversion critique",
+        "premium design review"
+      ]
+    },
+    {
+      "id": "gemini",
+      "category": "external-audit",
+      "bestUse": [
+        "strategy compression",
+        "offer critique",
+        "growth audit"
+      ]
+    },
+    {
+      "id": "gemma4",
+      "category": "low-cost-utility",
+      "bestUse": [
+        "trend clustering",
+        "reply drafting",
+        "question precheck",
+        "diagram-caption cleanup",
+        "classification and routing"
+      ]
+    },
+    {
+      "id": "medgemma",
+      "category": "medical-low-cost-utility",
+      "bestUse": [
+        "medical wording precheck",
+        "diagram caption cleanup",
+        "question taxonomy support",
+        "low-cost rationale sanity support"
+      ]
+    },
+    {
+      "id": "nemoclaw",
+      "category": "cheap-content",
+      "bestUse": [
+        "question generation",
+        "batch growth",
+        "low-cost expansion"
+      ]
+    },
+    {
+      "id": "telegram",
+      "category": "remote-ops",
+      "bestUse": [
+        "status",
+        "approvals",
+        "problem alerts",
+        "bounded exec"
+      ]
+    },
+    {
+      "id": "mobile-expo",
+      "category": "future-surface",
+      "bestUse": [
+        "shared iOS and Android shell",
+        "retention loops",
+        "push-ready study flow"
+      ]
+    },
+    {
+      "id": "figma-mcp",
+      "category": "design-ops",
+      "bestUse": [
+        "design inspection",
+        "component mapping",
+        "diagram generation"
+      ]
+    },
+    {
+      "id": "imagegen",
+      "category": "concepting",
+      "bestUse": [
+        "hero exploration",
+        "social banners",
+        "visual mood boards"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+    "summary":  "Reviewed 9 frontpage concepts (1301-1309), 50 logo options (1101-1150), and the live BrandMark component. The homepage hero structure is typographically clean and the parchment palette is correct, but the right-side illustrations do not read as anatomical plates ΓÇö they are abstract topographic blobs. The logo batch is almost entirely color-variation exhaustion of two mark types (NEURAL ARC and HEARTLINE), producing no new mark geometry. BrandMark.tsx is a dead `\u003cimg\u003e` tag with no live SVG mark at all. The system is not yet premium medical illustration; it is still symbolic medical vector art with editorial typography layered on top.",
+    "recommendations":  [
+                            "PROMOTE 1302 (Coronary Continuum) to primary hero candidate ΓÇö it is the only frontpage with two distinct anatomical layers (cardiac silhouette + ECG waveform overlay), which is the closest thing to a literal, readable medical subject in the batch. Kill all cortical-atlas variants that use the plain topographic-blob form (1301, 1303, 1305, 1307, 1309) as hero candidates until the illustration is redrawn with actual gyri asymmetry and 3-4 labeled structures.",
+                            "Redraw the right-panel anatomical mark with three literal refinements: (1) break the perfect bilateral symmetry of the contour lines ΓÇö real anatomy is asymmetric; (2) add 3ΓÇô4 small serif annotations (e.g., \u0027ant. sulcus\u0027, \u0027lat. fissure\u0027) in 9ΓÇô11px Source Serif 4 italic with leader lines at 0.7px; (3) add a plate number (\u0027Pl. XIV\u0027) in the lower-right corner of the illustration zone. These three moves shift the read from \u0027AI startup blob\u0027 to \u0027anatomical press plate\u0027 without rebuilding the full SVG.",
+                            "Kill the NEURAL ARC mark direction entirely for the next batch. The arc (two endpoint dots + single bezier) has no anatomical content and reads as punctuation. HEARTLINE (1101) is the only mark in 1101ΓÇô1150 with genuine anatomy: cardiac outline + ECG. Derive the next 10 logo options exclusively from the HEARTLINE geometry ΓÇö increase the cardiac outline stroke fidelity (add aortic arch bump, asymmetric left-ventricle curve), vary the ECG waveform from sine to a real PQRST, and test three scale relationships: mark-only, mark+wordmark stacked, mark+wordmark inline.",
+                            "Fix BrandMark.tsx: replace the static `\u003cimg src=\u0027/logo.png\u0027\u003e` with an inline SVG that renders the chosen mark. A PNG logo cannot be color-themed, scaled crisply at all breakpoints, or animated. This is a 30-minute refactor that unblocks every future brand system update."
+                        ],
+    "brain_update":  {
+                         "skills":  [
+                                        "anatomical-plate-illustration critique",
+                                        "SVG mark extraction from design review batch",
+                                        "brand system coherence audit"
+                                    ],
+                         "durable_memory":  [
+                                                "Hero illustration: all 1301-1309 frontpages share identical layout template; differentiation is copy + right-panel illustration only",
+                                                "Right-panel illustration types confirmed: cortical-atlas (abstract topographic blob, majority) and coronary-continuum (cardiac two-lobe + ECG waveform, 1302 only)",
+                                                "Logo batch 1101-1150 is dominated by NEURAL ARC (color/weight variations, ~48 files) + one HEARTLINE type (1101); no new mark geometry introduced",
+                                                "BrandMark.tsx renders only a static PNG ΓÇö no live SVG mark in the codebase",
+                                                "Premium anatomical direction requires: real anatomical asymmetry, serif plate annotations, plate numbering, hatching fills ΓÇö none present yet",
+                                                "HEARTLINE (1101) with cardiac outline + ECG is the only mark with genuine anatomical content; teal (#5A7F88) and gold (#C59B5E) are the strongest color pairings for the parchment ground"
+                                            ],
+                         "active_context":  [
+                                                "Current sprint: push hero + logo toward literal premium medical illustration",
+                                                "Strongest frontpage: 1302 (Coronary Continuum)",
+                                                "Strongest logos (least wrong): 1101 (HEARTLINE teal), 1110 (NEURAL ARC gold), 1135 (NEURAL ARC clay)",
+                                                "Next action: redraw 1302 illustration with plate annotations + derive next logo batch from HEARTLINE geometry only"
+                                            ]
+                     },
+    "current_blocker":  "The source files for AmbientEditorialHero.tsx and AnatomyGlobeVisual.tsx were not found at the declared paths (likely not yet created or path mismatch). Code-side hero system cannot be audited or modified until those files exist. BrandMark.tsx exists but uses a static PNG, blocking all SVG-based brand work.",
+    "suggested_human_fix":  "1) Confirm or create AmbientEditorialHero.tsx and AnatomyGlobeVisual.tsx ΓÇö check if they live under a different path or have not been scaffolded yet. 2) Replace BrandMark.tsx `\u003cimg src=\u0027/logo.png\u0027\u003e` with an inline SVG of the HEARTLINE mark ΓÇö extract the heart+ECG paths from chapai-option-1101.svg, drop them inline, and size with viewBox. This is the single highest-leverage 30-minute action in the system right now.",
+    "next_task":  "Generate HEARTLINE logo batch 1151-1160: 10 variants derived exclusively from the cardiac outline + PQRST waveform geometry in 1101. Vary (a) cardiac outline fidelity (add aortic arch, left-ventricle asymmetry), (b) ECG wave type (sine vs real PQRST), (c) mark-to-wordmark scale ratio. Use only teal (#5A7F88), gold (#C59B5E), and near-black (#1F1F21) on parchment (#FBF7F0). Kill all new NEURAL ARC generation."
+}
