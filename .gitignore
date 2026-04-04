@@ -30,6 +30,22 @@ logs/
 *.err.log
 *.out.log
 
+# Agent runtime state (auto-generated, not for git)
+config/*-state.json
+config/*-queue.json
+config/*-latest.json
+config/*-latest.md
+config/email-outbox/
+config/social-outbox/
+config/active-duty-roster.json
+config/agent-heartbeats.json
+config/brain-maintenance-report.json
+config/guild-loop-state.json
+config/guild-retrospective.json
+config/guild-snapshot.json
+config/credential-ingest-status.json
+packages/content/src/generated-summary.ts
+
 # Local state / temp files
 .local-state/
 dashboard-cookie.txt
