@@ -1,0 +1,320 @@
+import "server-only";
+
+import fs from "node:fs";
+import path from "node:path";
+import type { MissionControlSnapshot } from "@/lib/types";
+import { readOpsOverrides } from "@/lib/ops-control";
+
+type TelegramAlertState = {
+  generatedAt?: string;
+  status?: string;
+  checks?: Record<string, string>;
+  batch?: string;
+  problems?: string[];
+  lastHealthyAt?: string;
+};
+
+type GrowthApprovalQueue = {
+  generatedAt?: string;
+  topGrowthMoves?: string[];
+  items?: Array<{
+    lane?: string;
+    status?: string;
+    approvalMode?: string;
+    nextAction?: string;
+    blocker?: string;
+    sourcePath?: string;
+  }>;
+};
+
+type DispatchState = {
+  generatedAt?: string;
+  status?: string;
+  mode?: string;
+  approved?: number;
+  sent?: number;
+  blocked?: number;
+  blocker?: string;
+  lastDispatchAt?: string;
+};
+
+type GrowthRadar = {
+  generatedAt?: string;
+  title?: string;
+  summary?: string;
+  nextActions?: string[];
+};
+
+type OpportunityRadar = {
+  generatedAt?: string;
+  opportunities?: Array<{
+    title?: string;
+    summary?: string;
+    platform?: string;
+    signal?: string;
+  }>;
+};
+
+function workspaceRoot() {
+  let current = process.cwd();
+  for (let i = 0; i < 6; i += 1) {
+    if (fs.existsSync(path.join(current, "packages", "content"))) {
+      return current;
+    }
+    const next = path.dirname(current);
+    if (next === current) {
+      break;
+    }
+    current = next;
+  }
+  return process.cwd();
+}
+
+function readJson<T>(relativePath: string, fallback: T): T {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(workspaceRoot(), relativePath), "utf8")) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function fileMtime(relativePath: string) {
+  try {
+    return fs.statSync(path.join(workspaceRoot(), relativePath)).mtime.toISOString();
+  } catch {
+    return null;
+  }
+}
+
+function ageMinutes(iso?: string | null) {
+  if (!iso) {
+    return null;
+  }
+  const parsed = Date.parse(iso);
+  if (Number.isNaN(parsed)) {
+    return null;
+  }
+  return Math.max(0, Math.round((Date.now() - parsed) / 60000));
+}
+
+function formatAge(iso?: string | null) {
+  const minutes = ageMinutes(iso);
+  if (minutes === null) {
+    return "unknown";
+  }
+  if (minutes < 1) {
+    return "now";
+  }
+  if (minutes < 60) {
+    return `${minutes}m`;
+  }
+  return `${Math.round(minutes / 60)}h`;
+}
+
+function compactNumber(value: number) {
+  return new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(value);
+}
+
+export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
+  const telegram = readJson<TelegramAlertState>("config/telegram-problem-alert-state.json", {});
+  const growthQueue = readJson<GrowthApprovalQueue>("config/growth-approval-queue.json", {});
+  const socialDispatch = readJson<DispatchState>("config/social-outbox/dispatch-state.json", {});
+  const emailDispatch = readJson<DispatchState>("config/email-outbox/dispatch-state.json", {});
+  const growthRadar = readJson<GrowthRadar>("config/email-outbox/growth-radar-latest.json", {});
+  const opportunityRadar = readJson<OpportunityRadar>("config/social-outbox/opportunity-radar-latest.json", {});
+  const overrides = readOpsOverrides();
+  const agents = snapshot.unifiedGuild.agents.length > 0
+    ? snapshot.unifiedGuild.agents
+    : snapshot.agents.map((agent) => ({
+        id: agent.id,
+        displayName: agent.nickname,
+        nickname: agent.nickname,
+        role: agent.role,
+        runtime: agent.runtime,
+        state: agent.state,
+        truthLevel: agent.truthLevel,
+        currentTask: agent.current,
+        latest: agent.latest,
+        blocker: agent.blocker,
+        plan: agent.workflowSuggestion,
+        theories: [],
+        experiments: [],
+        trialsAndErrors: [],
+        stats: {
+          level: 1,
+          xp: 0,
+          skills: 0,
+          durableMemories: 0,
+          memoryEvents: 0,
+          activeContexts: 0,
+          pendingExperiments: 0,
+          completedTasks: agent.outputToday,
+          blockedTasks: agent.blocker === "none" ? 0 : 1,
+          sourceCount: 1,
+        },
+        brain: {
+          health: agent.brainStatus,
+          lastCuratedAt: agent.lastBrainUpdateAt,
+          nextSkillTarget: null,
+          activeContext: [],
+          durableMemory: [],
+          skills: [],
+          recentEvents: [],
+        },
+        sources: [],
+      }));
+
+  const laneMap = new Map<string, {
+    lane: string;
+    agents: number;
+    live: number;
+    blocked: number;
+    stale: number;
+    queueDepth: number;
+    tokenSpend: string;
+    errorRate: number;
+  }>();
+
+  for (const agent of agents) {
+    const existing = laneMap.get(agent.role) ?? {
+      lane: agent.role,
+      agents: 0,
+      live: 0,
+      blocked: 0,
+      stale: 0,
+      queueDepth: 0,
+      tokenSpend: "unmetered",
+      errorRate: 0,
+    };
+    existing.agents += 1;
+    existing.live += /live|running/i.test(agent.state) ? 1 : 0;
+    existing.blocked += agent.blocker && agent.blocker !== "none" ? 1 : 0;
+    existing.stale += /stale|missing|unwired|presentation/i.test(`${agent.state} ${agent.truthLevel}`) ? 1 : 0;
+    existing.queueDepth += agent.stats.pendingExperiments + agent.stats.blockedTasks;
+    existing.errorRate = Math.round((existing.blocked / Math.max(existing.agents, 1)) * 100);
+    laneMap.set(agent.role, existing);
+  }
+
+  const telegramMessages = [
+    {
+      id: "telegram-health",
+      lane: "alerts",
+      at: telegram.generatedAt ?? telegram.lastHealthyAt ?? fileMtime("config/telegram-problem-alert-state.json"),
+      text: `Telegram alert health is ${telegram.status ?? "unknown"}; public ${telegram.checks?.public ?? "n/a"}, guild ${telegram.checks?.["guild-access"] ?? "n/a"}, tutor ${telegram.checks?.["ai-tutor"] ?? "n/a"}.`,
+      status: telegram.problems?.length ? "attention" : "healthy",
+    },
+    {
+      id: "telegram-ledger-gap",
+      lane: "comms",
+      at: telegram.generatedAt ?? null,
+      text: "No last-100 Telegram message ledger is present in the repo; only alert health state is observable.",
+      status: "missing-ledger",
+    },
+  ];
+
+  const growthItems = growthQueue.items ?? [];
+  const growthKpis = {
+    signups: "unwired",
+    dau: "unwired",
+    conversion: "unwired",
+    trafficSources: ["social approval queue", "email approval queue"],
+    approvals: growthItems.length,
+    blocked: growthItems.filter((item) => item.blocker && item.blocker !== "none").length,
+    socialSent: socialDispatch.sent ?? 0,
+    emailSent: emailDispatch.sent ?? 0,
+    updatedAt: growthQueue.generatedAt ?? fileMtime("config/growth-approval-queue.json"),
+  };
+
+  const intelDigest = [
+    ...snapshot.boardroom.digest,
+    ...snapshot.retrospective.wins.slice(0, 3),
+    ...(growthQueue.topGrowthMoves ?? []).slice(0, 3),
+    ...(growthRadar.nextActions ?? []).slice(0, 2),
+    ...(opportunityRadar.opportunities ?? []).slice(0, 2).map((item) =>
+      [item.platform, item.title, item.signal ?? item.summary].filter(Boolean).join(" - "),
+    ),
+  ].filter(Boolean).slice(0, 12);
+
+  const tokenEconomics = {
+    total: "unmetered",
+    budgetState: "missing meter",
+    rows: agents.slice(0, 12).map((agent) => ({
+      agentId: agent.id,
+      lane: agent.role,
+      model: agent.runtime,
+      spend: "unmetered",
+      budget: "unset",
+      routing: agent.runtime === "claude" ? "premium escalation" : agent.runtime === "gemini" ? "free long-context" : "core/local lane",
+    })),
+  };
+
+  const goalTree = [
+    {
+      id: "goal-nclex-2000",
+      label: "NCLEX live bank to 2,000+ questions",
+      owner: "Product-Ops",
+      progress: Math.min(100, Math.round((snapshot.product.nclexLiveQuestions / 2000) * 100)),
+      blocked: snapshot.product.nclexLiveQuestions < 2000,
+      detail: `${snapshot.product.nclexLiveQuestions} live, ${snapshot.product.nclexDraftQuestions} draft`,
+    },
+    {
+      id: "goal-ngn-60",
+      label: "NGN distribution at or above 60%",
+      owner: "Product-Ops",
+      progress: Math.min(100, Math.round((snapshot.product.nclexNgnRatio / 60) * 100)),
+      blocked: snapshot.product.nclexNgnRatio < 60,
+      detail: `${snapshot.product.nclexNgnRatio}% NGN live`,
+    },
+    {
+      id: "goal-growth-loop",
+      label: "Growth approval loop",
+      owner: "Growth",
+      progress: growthItems.length ? 60 : 15,
+      blocked: growthKpis.blocked > 0,
+      detail: `${growthItems.length} approval lanes, ${growthKpis.blocked} blocked`,
+    },
+    {
+      id: "goal-agent-observability",
+      label: "Swarm observability baseline",
+      owner: "Orchestrator",
+      progress: snapshot.unifiedGuild.stats.totalAgents > 0 ? 70 : 20,
+      blocked: snapshot.urgentFixes.length > 0,
+      detail: `${snapshot.unifiedGuild.stats.totalAgents} agents, ${snapshot.urgentFixes.length} operator issues`,
+    },
+  ];
+
+  return {
+    generatedAt: new Date().toISOString(),
+    generatedAge: "now",
+    agents,
+    lanes: Array.from(laneMap.values()).sort((left, right) => right.blocked - left.blocked || left.lane.localeCompare(right.lane)),
+    goalTree,
+    telegramMessages,
+    growthKpis,
+    intelDigest,
+    tokenEconomics,
+    overrides,
+    stats: {
+      liveAgents: snapshot.unifiedGuild.stats.live || snapshot.agents.filter((agent) => agent.state === "live").length,
+      blockedAgents: snapshot.unifiedGuild.stats.blocked || snapshot.agents.filter((agent) => agent.blocker !== "none").length,
+      totalAgents: agents.length,
+      memoryEntries: snapshot.unifiedGuild.stats.totalDurableMemories,
+      skills: snapshot.unifiedGuild.stats.totalSkills,
+      nclexLive: snapshot.product.nclexLiveQuestions,
+      nclexNgn: snapshot.product.nclexNgnLiveQuestions,
+      nclexNgnRatio: snapshot.product.nclexNgnRatio,
+      nclexDraft: snapshot.product.nclexDraftQuestions,
+      nclexApproved: snapshot.product.nclexApprovedRefinedUsable,
+      nclexTo2000: Math.max(0, 2000 - snapshot.product.nclexLiveQuestions),
+      providerCount: snapshot.capabilities.providerCount || snapshot.unifiedGuild.providerReadiness.totalProviders,
+      approvals: growthItems.length + snapshot.unifiedGuild.approvalQueue.length,
+    },
+    freshness: {
+      telegram: formatAge(telegram.generatedAt ?? telegram.lastHealthyAt),
+      growth: formatAge(growthKpis.updatedAt),
+      boardroom: formatAge(snapshot.boardroom.updatedAt),
+      guildLoop: formatAge(snapshot.unifiedGuild.sourceHealth.guildLoopUpdatedAt),
+    },
+    compactNumber,
+  };
+}
