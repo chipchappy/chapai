@@ -1,0 +1,16 @@
+{
+  "id": "nclex-pipeline-generate-promote",
+  "timestamp": "2026-05-06T22:57:38.312Z",
+  "completedAt": "2026-05-06T22:57:38.426Z",
+  "durationMs": 114,
+  "cwd": "C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U",
+  "command": "node packages/content/scripts/promote-staged-batches.mjs",
+  "inputHash": null,
+  "outputHash": "10a45ab5cba699fc0fb2e5a5944f71b78ade5874f380c2ce717424ac0c43d4a5",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "error": null,
+  "stdout": "{\n  \"promoted\": [\n    {\n      \"batchId\": \"mixed-batch-audit-5\",\n      \"promotedFile\": \"C:\\\\Users\\\\Chapman\\\\AppData\\\\Local\\\\Temp\\\\chapai-phase0-pipeline-klAf7U\\\\packages\\\\content\\\\staging\\\\promoted\\\\mixed-batch-audit-5.json\",\n      \"counts\": {\n        \"ccrn\": 0,\n        \"nclex\": 5\n      },\n      \"mergeStats\": {\n        \"nclex\": {\n          \"totalAfterMerge\": 5,\n          \"netNew\": 5,\n          \"incoming\": 5,\n          \"overwrittenDuplicates\": 0\n        }\n      }\n    }\n  ],\n  \"summary\": {\n    \"generatedAt\": \"2026-05-06T22:57:38.405Z\",\n    \"ccrn\": {\n      \"live\": 0,\n      \"draft\": 0\n    },\n    \"nclex\": {\n      \"live\": 0,\n      \"draft\": 5,\n      \"ngnRatio\": 0,\n      \"passRate\": 0,\n      \"waveLog\": [],\n      \"formatMix\": {\n        \"mcq\": 0,\n        \"sata\": 0,\n        \"case_study\": 0,\n        \"bow_tie\": 0,\n        \"ordering\": 0,\n        \"matrix\": 0,\n        \"highlight\": 0,\n        \"cloze\": 0,\n        \"drag_drop\": 0\n      },\n      \"categoryMix\": {\n        \"management_of_care\": 0,\n        \"safety_infection_control\": 0,\n        \"health_promotion\": 0,\n        \"psychosocial\": 0,\n        \"basic_care_comfort\": 0,\n        \"pharmacological\": 0,\n        \"risk_reduction\": 0,\n        \"physiological_adaptation\": 0\n      },\n      \"thinFamilies\": [],\n      \"milestones\": [\n        {\n          \"target\": 500,\n          \"reached\": false,\n          \"blocker\": \"NGN share below 60%\"\n        },\n        {\n          \"target\": 1000,\n          \"reached\": false,\n          \"blocker\": \"NGN share below 60%\"\n        },\n        {\n          \"target\": 1500,\n          \"reached\": false,\n          \"blocker\": \"NGN share below 60%\"\n        },\n        {\n          \"target\": 2000,\n          \"reached\": false,\n          \"blocker\": \"NGN share below 60%\"\n        }\n      ]\n    }\n  }\n}\n",
+  "stderr": ""
+}

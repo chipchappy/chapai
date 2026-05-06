@@ -1,0 +1,34 @@
+{
+  "id": "agent-explorer-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "609a35d814ef8e35b57aa93adc0b98bbc941e8c6e3b687dde4d93dc90b31599c",
+  "outputHash": "56101fe21c1a47ba4eac26c6f5b458d1b2e6105e143f20fbadf7164560d24f1c",
+  "exitCode": 2,
+  "output": {
+    "agentId": "explorer",
+    "displayName": "Euler",
+    "runtime": "codex",
+    "entrypoint": null,
+    "entrypointExists": false,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 2,
+    "memoryEventCount": 1,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-fail"
+  }
+}

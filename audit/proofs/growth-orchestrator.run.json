@@ -1,0 +1,34 @@
+{
+  "id": "agent-growth-orchestrator-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "d3b07543a5120d9c443917e8d0da44b799e22731dfdfcc1abefdca2d6c2aaa9a",
+  "outputHash": "b18da40343ff4d604890a80635068021cfd86f76a78823f6401c22fdc54dc1b0",
+  "exitCode": 0,
+  "output": {
+    "agentId": "growth-orchestrator",
+    "displayName": "Helios",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-growth-orchestrator.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 2,
+    "memoryEventCount": 1,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

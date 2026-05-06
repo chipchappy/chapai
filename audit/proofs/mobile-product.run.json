@@ -1,0 +1,34 @@
+{
+  "id": "agent-mobile-product-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "50f0568e8b0bd44ff4f4e54513d5432198802a6c273051129a71abac2a5f92a6",
+  "outputHash": "a19c6493b48c77160a066a4d9ef96fdb40313267d24ca5da281cb91b97be2191",
+  "exitCode": 0,
+  "output": {
+    "agentId": "mobile-product",
+    "displayName": "Nova",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-mobile-product-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 2,
+    "memoryEventCount": 1,
+    "skillCount": 8,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "nclex-pipeline-e2e-5-question",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "tempRoot": "C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U",
+  "inputHash": "50451c6d2d0f720eed6e7e95bdd180cab78301151a84bc0699e4f06cf63e573f",
+  "outputHash": "d7aed0633ee54ad2a5d398ddbb4b2da229a4f092c57a662a1de74d36bc2d5966",
+  "exitCode": 0,
+  "hops": [
+    {
+      "name": "seed",
+      "proof": null,
+      "exitCode": 0,
+      "outputHash": "50451c6d2d0f720eed6e7e95bdd180cab78301151a84bc0699e4f06cf63e573f",
+      "questionCount": 5
+    },
+    {
+      "name": "generate-promote",
+      "proof": "nclex-pipeline-generate-promote.run.json",
+      "exitCode": 0,
+      "outputHash": "10a45ab5cba699fc0fb2e5a5944f71b78ade5874f380c2ce717424ac0c43d4a5",
+      "durationMs": 114
+    },
+    {
+      "name": "review",
+      "proof": "nclex-pipeline-review.run.json",
+      "exitCode": 0,
+      "outputHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "durationMs": 703
+    },
+    {
+      "name": "curate-live",
+      "proof": "nclex-pipeline-curate-live.run.json",
+      "exitCode": 0,
+      "outputHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "durationMs": 1163
+    },
+    {
+      "name": "second-pass",
+      "proof": "nclex-pipeline-second-pass.run.json",
+      "exitCode": 0,
+      "outputHash": "9d756c4da6d9b51579ad2cfab325f9e4ccee2727cd205ed7d852757ba54ce3db",
+      "durationMs": 64
+    }
+  ],
+  "result": {
+    "seededQuestions": 5,
+    "liveQuestions": 5,
+    "reviewDecision": "eligible_for_curated_promotion",
+    "strictPromotionReady": 5,
+    "curationPromotedCount": 5,
+    "secondPassSummary": {
+      "sourceCount": 5,
+      "uniqueIds": 5,
+      "approvedRefinedUsableUnique": 5,
+      "needsReview": 0,
+      "approved": 5,
+      "refined": 0,
+      "rejected": 0,
+      "topUpNeeded": false,
+      "remainingTo5000": 0
+    }
+  },
+  "rerunAt": "2026-05-06T23:01:27.364Z",
+  "cleanLocalAppData": "C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U\\localappdata-clean"
+}

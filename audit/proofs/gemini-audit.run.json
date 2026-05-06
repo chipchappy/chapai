@@ -1,0 +1,38 @@
+{
+  "id": "agent-gemini-audit-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "afe8834c4f8c485dc5915cbf65655dccea02959048b5cea86a4974c8ee3e21b5",
+  "outputHash": "67c52259ac96ccdb505597d0fc5d5ac36f232954d8ce45853cf902c00b2c7022",
+  "exitCode": 0,
+  "output": {
+    "agentId": "gemini-audit",
+    "displayName": "Gemini",
+    "runtime": "gemini",
+    "entrypoint": "scripts/run-gemini-audit-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 4,
+    "memoryEventCount": 1,
+    "skillCount": 7,
+    "stateStatus": "running",
+    "currentTask": {
+      "id": "gemini-ngn-shape-gap-audit",
+      "title": "Audit 2-live and 3-live NCLEX families that still lack SATA, case-study, or bow-tie variants",
+      "kind": "audit"
+    },
+    "blocker": "none",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 4,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

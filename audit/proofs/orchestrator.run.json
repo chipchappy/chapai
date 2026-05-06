@@ -1,0 +1,34 @@
+{
+  "id": "agent-orchestrator-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "35f076a72179200f6a2a13b32da696f763887c0c7f9e58b88daa8dd61a0efa74",
+  "outputHash": "f20254715e56d7e8f60755136fcf36c0fb8890dc126bddbb6552346dba5298fc",
+  "exitCode": 0,
+  "output": {
+    "agentId": "orchestrator",
+    "displayName": "Atlas",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-core-codex-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 2,
+    "memoryEventCount": 1,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-fail"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "agent-frontend-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "3b41e0248483093fe5bf9318858f612e05542ed8c1864e4b3108f852f3cb579e",
+  "outputHash": "80a988838e4a9698c77c523492d80ad6c9c2782395923fe3cdde7ea687beebbf",
+  "exitCode": 0,
+  "output": {
+    "agentId": "frontend",
+    "displayName": "Turing",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-core-codex-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 3,
+    "memoryEventCount": 1,
+    "skillCount": 8,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-fail"
+  }
+}

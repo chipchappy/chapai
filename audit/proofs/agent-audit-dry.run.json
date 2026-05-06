@@ -1,0 +1,16 @@
+{
+  "id": "agent-audit-dry",
+  "timestamp": "2026-05-06T23:01:25.395Z",
+  "completedAt": "2026-05-06T23:01:26.133Z",
+  "durationMs": 738,
+  "cwd": "C:/Users/Chapman/Desktop/ai/chapai",
+  "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command npm run agent:audit:dry",
+  "inputHash": null,
+  "outputHash": "6a48a56e834fb187be52dd47779d509eb540f77daedd1f1a2b95cbf4068043ce",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "error": null,
+  "stdout": "\n> agent:audit:dry\n> node scripts/audit-agent-capabilities.mjs --dry-run\n\n{\n  \"ok\": true,\n  \"dryRun\": true,\n  \"repair\": false,\n  \"output\": \"config/agent-capability-audit.json\",\n  \"providers\": {\n    \"totalProviders\": 17,\n    \"live\": 1,\n    \"installedIdle\": 2,\n    \"configuredMissingState\": 1,\n    \"legacyOnly\": 1,\n    \"unwired\": 3,\n    \"blocked\": 0,\n    \"unknown\": 9\n  },\n  \"repairs\": 0,\n  \"learningRecords\": 87,\n  \"approvals\": 3\n}\n",
+  "stderr": ""
+}

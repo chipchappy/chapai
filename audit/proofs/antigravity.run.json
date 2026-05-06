@@ -1,0 +1,38 @@
+{
+  "id": "agent-antigravity-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "6bc3aab21b77123cd6fd367976f1ec66d8e12afc47ac839bd8a786cfe93b55ce",
+  "outputHash": "33976f5159d5ae3cb59b72c273538c38afd1a38be1790bd4f9d7d08b3b15543c",
+  "exitCode": 0,
+  "output": {
+    "agentId": "antigravity",
+    "displayName": "Antigravity",
+    "runtime": "gemini",
+    "entrypoint": "scripts/run-antigravity-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 4,
+    "memoryEventCount": 1,
+    "skillCount": 12,
+    "stateStatus": "running",
+    "currentTask": {
+      "id": "antigravity-ngn-remediation-pod",
+      "title": "Turn Gemini NGN gap audits into seedable NCLEX family briefs",
+      "kind": "audit-pod"
+    },
+    "blocker": "none",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 4,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

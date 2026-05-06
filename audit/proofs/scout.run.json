@@ -1,0 +1,34 @@
+{
+  "id": "agent-scout-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "735294c4a370087bbe2298622c20f0297690c4c5a72a911eb6f0b73e1675f47e",
+  "outputHash": "135ead5d2067e999929ef12905c79851869cbd3ec25e8004265ee5d2b347089b",
+  "exitCode": 0,
+  "output": {
+    "agentId": "scout",
+    "displayName": "Aster",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-scout-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 2,
+    "memoryEventCount": 1,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

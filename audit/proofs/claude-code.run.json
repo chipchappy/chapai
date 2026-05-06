@@ -1,0 +1,34 @@
+{
+  "id": "agent-claude-code-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "653b07ea88544804d35299b56db2cfeedefa5687a3c435de44a360914c19600b",
+  "outputHash": "7c60b0181c425d0eb38ee7b56db30c66baeda7c3c91b43eada0bea36f357599d",
+  "exitCode": 0,
+  "output": {
+    "agentId": "claude-code",
+    "displayName": "Claude Code",
+    "runtime": "claude",
+    "entrypoint": "scripts/run-claude-employee.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 15,
+    "memoryEventCount": 4,
+    "skillCount": 18,
+    "stateStatus": "ready",
+    "currentTask": null,
+    "blocker": "No code editor access from this agent — design spec is complete but implementation requires a human or Code agent with write access to apply CSS and TSX changes.",
+    "queueStats": {
+      "tasks": 7,
+      "pending": 0,
+      "completed": 3,
+      "failed": 4,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}
