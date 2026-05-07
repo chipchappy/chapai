@@ -221,6 +221,11 @@ export default function OpsDashboard({
             </Panel>
 
             <Panel id="telegram" title="Telegram log" eyebrow="comms lane" icon={MessagesSquare}>
+              <div className="mb-3 grid gap-2 sm:grid-cols-3">
+                <Metric label="commands" value={ops.telegramControl.commands} detail={`${ops.telegramControl.acceptedCommands} accepted`} />
+                <Metric label="queued replies" value={ops.telegramControl.outboundQueued} detail="not externally sent" />
+                <Metric label="confirmations" value={ops.telegramControl.confirmationRequired} detail="destructive controls held" />
+              </div>
               <div className="space-y-2">
                 {ops.telegramMessages.map((message) => (
                   <article key={message.id} className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">

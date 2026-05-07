@@ -5,6 +5,7 @@ import path from "node:path";
 import type { MissionControlSnapshot } from "@/lib/types";
 import { readOpsOverrides } from "@/lib/ops-control";
 import { listHeartbeatSupervision } from "@/lib/ops-heartbeats";
+import { getTelegramControlSummary } from "@/lib/telegram-control";
 import { getUnifiedEventSummary } from "@/lib/unified-events";
 
 type TelegramAlertState = {
@@ -178,6 +179,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   const opportunityRadar = readJson<OpportunityRadar>("config/social-outbox/opportunity-radar-latest.json", {});
   const overrides = readOpsOverrides();
   const heartbeats = listHeartbeatSupervision();
+  const telegramControl = getTelegramControlSummary();
   const dataLayer = getUnifiedEventSummary();
   const agents = snapshot.unifiedGuild.agents.length > 0
     ? snapshot.unifiedGuild.agents
@@ -260,11 +262,13 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       status: telegram.problems?.length ? "attention" : "healthy",
     },
     {
-      id: "telegram-ledger-gap",
+      id: "telegram-control-ledger",
       lane: "comms",
-      at: telegram.generatedAt ?? null,
-      text: "No last-100 Telegram message ledger is present in the repo; only alert health state is observable.",
-      status: "missing-ledger",
+      at: telegramControl.latest[0]?.at ?? telegram.generatedAt ?? null,
+      text: telegramControl.health === "live"
+        ? `Telegram control ledger has ${telegramControl.commands} commands, ${telegramControl.outboundQueued} queued replies, ${telegramControl.pendingApproval} approval intents, and ${telegramControl.confirmationRequired} confirmation-required controls.`
+        : "No Telegram control ledger is present yet; webhook and offline command tooling are ready to populate it.",
+      status: telegramControl.health === "live" ? "live" : "missing-ledger",
     },
   ];
 
@@ -388,6 +392,11 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       status: dataLayer.health,
       detail: `${dataLayer.events} events across ${dataLayer.sources.length} sources; ${dataLayer.invalid} invalid rows.`,
     },
+    {
+      item: "Telegram command ledger",
+      status: telegramControl.health,
+      detail: `${telegramControl.commands} commands, ${telegramControl.controlIntents} control intents, ${telegramControl.outboundQueued} queued replies.`,
+    },
   ];
 
   return {
@@ -400,6 +409,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     growthKpis,
     intelDigest,
     tokenEconomics,
+    telegramControl,
     overrides,
     heartbeats,
     brainVaults,
@@ -419,7 +429,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       nclexApproved: snapshot.product.nclexApprovedRefinedUsable,
       nclexTo2000: Math.max(0, 2000 - snapshot.product.nclexLiveQuestions),
       providerCount: snapshot.capabilities.providerCount || snapshot.unifiedGuild.providerReadiness.totalProviders,
-      approvals: growthItems.length + snapshot.unifiedGuild.approvalQueue.length,
+      approvals: growthItems.length + snapshot.unifiedGuild.approvalQueue.length + telegramControl.pendingApproval,
     },
     freshness: {
       telegram: formatAge(telegram.generatedAt ?? telegram.lastHealthyAt),

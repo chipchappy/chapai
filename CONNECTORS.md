@@ -44,6 +44,21 @@ node scripts/connectors/chapai-data-layer.mjs --source=hetzner-vps
 
 Emits host capacity metrics to `connectors/hetzner-vps/metric_sample.jsonl`. On the Windows workstation this is a local validation sample. On the Hetzner box, set `HETZNER_SERVER_ID` before running so events identify the source as the production VPS class without storing hostnames.
 
+### `telegram`
+
+Command:
+
+```bash
+node scripts/ops/telegram-control.mjs --input=audit/proofs/phase5-telegram-commands.jsonl --run-id=phase5-audit-2026-05-07 --reset
+node scripts/ops/telegram-control.mjs --validate
+```
+
+Emits bidirectional operator-control events to `connectors/telegram/*.jsonl`: inbound messages, parsed commands, queued replies, and control intents. The bridge records `/status`, `/goal`, `/goals`, `/pause`, `/resume`, `/approve`, `/reject`, `/deny`, `/reply`, `/brain`, and `/kill`.
+
+Outbound Telegram replies are `queued_only`; the connector does not send public or private human messages. Destructive controls such as `/kill` are recorded as `confirmation_required` and are not executed by the connector.
+
+The webhook endpoint is `POST /api/telegram/webhook`. Production use requires `TELEGRAM_ALLOWED_CHAT_IDS`; `TELEGRAM_WEBHOOK_SECRET` is supported through Telegram's `X-Telegram-Bot-Api-Secret-Token` header.
+
 ## Credential-Gated Connectors
 
 These are intentionally not active until credentials are present in Infisical or the platform-approved credential path:
@@ -55,7 +70,7 @@ These are intentionally not active until credentials are present in Infisical or
 - X: official API where quota permits; RSS/fallback readers only for public web content and only where ToS allows.
 - Discord: bot in operator-owned servers only.
 - Instagram/Facebook: Meta Graph API only; no scraping.
-- Telegram: bot API for approved bidirectional operator control.
+- Telegram: bot API for approved bidirectional operator control; ingestion is implemented, external sends remain approval-held.
 
 No connector should scrape private accounts, bypass platform protections, or send outbound human messages without the approval gate.
 

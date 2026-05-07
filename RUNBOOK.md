@@ -19,6 +19,8 @@ Keep these in Infisical and materialize them to `/etc/chapai/chapai.env` on the 
 - `CHAPAI_HEARTBEAT_TOKEN`
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_ALERT_CHAT_ID`
+- `TELEGRAM_ALLOWED_CHAT_IDS`
+- `TELEGRAM_WEBHOOK_SECRET`
 - `REDIS_URL`
 - `POSTGRES_PASSWORD`
 - `GRAFANA_ADMIN_PASSWORD`
@@ -152,3 +154,22 @@ node scripts/connectors/chapai-data-layer.mjs --validate
 
 Current operational sources are `local-fs` and `hetzner-vps` host metrics. Credential-gated sources and ToS limits are documented in `CONNECTORS.md`.
 The `/ops` dashboard reads the stream through `apps/web/src/lib/unified-events.ts`.
+
+## Phase 5 Telegram Control
+
+Generate and validate the operator-control ledger without sending external messages:
+
+```bash
+node scripts/ops/telegram-control.mjs --input=audit/proofs/phase5-telegram-commands.jsonl --run-id=phase5-audit-2026-05-07 --reset --proof=audit/proofs/phase5-telegram-run.json
+node scripts/ops/telegram-control.mjs --validate
+```
+
+The connector writes:
+
+- `connectors/telegram/message_received.jsonl`
+- `connectors/telegram/command_received.jsonl`
+- `connectors/telegram/outbound_queued.jsonl`
+- `connectors/telegram/control_intent.jsonl`
+- `connectors/telegram/control-state.json`
+
+Webhook ingress is `POST /api/telegram/webhook`. It requires `TELEGRAM_ALLOWED_CHAT_IDS`; if `TELEGRAM_WEBHOOK_SECRET` is set, the Telegram secret-token header must match. Inbound chat IDs and user IDs are hashed before persistence. Replies are queued only, and `/kill` is held as `confirmation_required`.
