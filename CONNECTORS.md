@@ -59,6 +59,17 @@ Outbound Telegram replies are `queued_only`; the connector does not send public 
 
 The webhook endpoint is `POST /api/telegram/webhook`. Production use requires `TELEGRAM_ALLOWED_CHAT_IDS`; `TELEGRAM_WEBHOOK_SECRET` is supported through Telegram's `X-Telegram-Bot-Api-Secret-Token` header.
 
+### `nclex-saas`
+
+Command:
+
+```bash
+node scripts/ops/phase6-nclex-orchestration.mjs --run-id=phase6-audit-2026-05-07 --reset
+node scripts/ops/phase6-nclex-orchestration.mjs --validate
+```
+
+Emits Phase 6 project-lane goals and KPIs for `claritynclex.chapaisolutions.com` to `connectors/nclex-saas/phase6_goal.jsonl`, `phase6_kpi.jsonl`, and `phase6_blocker.jsonl`. It is a read-only orchestration ledger: it does not generate questions, publish content, scrape social platforms, or send outreach.
+
 ## Credential-Gated Connectors
 
 These are intentionally not active until credentials are present in Infisical or the platform-approved credential path:

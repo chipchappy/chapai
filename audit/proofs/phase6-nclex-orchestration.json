@@ -1,0 +1,126 @@
+{
+  "ok": true,
+  "dryRun": false,
+  "runId": "phase6-audit-2026-05-07",
+  "emitted": 6,
+  "connectorRoot": "connectors/nclex-saas",
+  "kpis": {
+    "liveQuestions": 389,
+    "targetQuestions": 2000,
+    "remainingToTarget": 1611,
+    "progressPct": 19,
+    "usableTarget": 5000,
+    "progressToUsableTargetPct": 8,
+    "ngnLive": 132,
+    "ngnRatio": 34,
+    "ngnTarget": 60,
+    "approvedRefinedUsable": 388,
+    "needsReview": 1,
+    "remainingTo5000": 4612,
+    "duplicateFamiliesCollapsed": 20537,
+    "duplicateFingerprintsCollapsed": 20502
+  },
+  "truth": {
+    "deploymentParity": "matched",
+    "syncParity": "matched",
+    "topItemDeficits": [
+      {
+        "key": "mcq",
+        "target": 1500,
+        "live": 256,
+        "deficit": 1244
+      },
+      {
+        "key": "case_study",
+        "target": 875,
+        "live": 39,
+        "deficit": 836
+      },
+      {
+        "key": "bow_tie",
+        "target": 875,
+        "live": 39,
+        "deficit": 836
+      },
+      {
+        "key": "sata",
+        "target": 750,
+        "live": 25,
+        "deficit": 725
+      },
+      {
+        "key": "matrix",
+        "target": 500,
+        "live": 14,
+        "deficit": 486
+      }
+    ],
+    "topClientNeedDeficits": [
+      {
+        "key": "management_of_care",
+        "target": 900,
+        "live": 21,
+        "deficit": 879
+      },
+      {
+        "key": "pharmacological",
+        "target": 800,
+        "live": 28,
+        "deficit": 772
+      },
+      {
+        "key": "safety_infection_control",
+        "target": 650,
+        "live": 20,
+        "deficit": 630
+      },
+      {
+        "key": "risk_reduction",
+        "target": 600,
+        "live": 10,
+        "deficit": 590
+      },
+      {
+        "key": "health_promotion",
+        "target": 450,
+        "live": 5,
+        "deficit": 445
+      }
+    ],
+    "promotion": {
+      "batchId": "mixed-batch-1703",
+      "promotableCount": 24,
+      "duplicateFingerprintCount": 0,
+      "liveCollisionCount": 0
+    },
+    "nextAction": "Do not run blind bulk batching. Use these deficits to allocate reviewed, non-overlapping refinement/generation slices only after the flagged existing bank is reviewed."
+  },
+  "blockers": [
+    {
+      "lane": "Product-Ops",
+      "status": "active_gap",
+      "reason": "active_gap"
+    },
+    {
+      "lane": "Growth",
+      "status": "blocked",
+      "reason": "Email approval outbox is missing."
+    },
+    {
+      "lane": "Bizdev",
+      "status": "missing_public_source_ingest",
+      "reason": "missing_public_source_ingest"
+    },
+    {
+      "lane": "Intel",
+      "status": "watchlist_seeded",
+      "reason": "watchlist_seeded"
+    }
+  ],
+  "validation": {
+    "ok": true,
+    "files": 3,
+    "events": 6,
+    "failures": []
+  }
+}

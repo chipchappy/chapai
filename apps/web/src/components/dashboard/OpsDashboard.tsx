@@ -309,7 +309,70 @@ export default function OpsDashboard({
               <Metric label="live questions" value={snapshot.product.nclexLiveQuestions} detail={`${snapshot.product.nclexApprovedRefinedUsable} approved/refined usable`} />
               <Metric label="ngn share" value={`${snapshot.product.nclexNgnRatio}%`} detail={`${snapshot.product.nclexNgnLiveQuestions} NGN live`} />
               <Metric label="draft backlog" value={snapshot.product.nclexDraftQuestions} detail="draft NCLEX items" />
-              <Metric label="daily growth" value="unmetered" detail="no daily delta ledger connected" />
+              <Metric label="phase 6" value={ops.phase6Nclex.health} detail={`${ops.phase6Nclex.blockers.length} lane blockers`} />
+            </div>
+            <div className="mt-3 rounded-md border border-[#273241] bg-[#0b0e14] p-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <strong className="text-sm text-[#f4eee5]">Phase 6 NCLEX SaaS</strong>
+                <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(ops.phase6Nclex.health)}`}>
+                  {ops.phase6Nclex.domain}
+                </span>
+              </div>
+              <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                <span className="rounded-md border border-[#273241] px-2 py-2 text-xs text-[#c8d0db]">
+                  {ops.phase6Nclex.kpis.progressPct}% to {ops.phase6Nclex.kpis.targetQuestions}
+                </span>
+                <span className="rounded-md border border-[#273241] px-2 py-2 text-xs text-[#c8d0db]">
+                  {ops.phase6Nclex.kpis.progressToUsableTargetPct}% to {ops.phase6Nclex.kpis.usableTarget} usable
+                </span>
+                <span className="rounded-md border border-[#273241] px-2 py-2 text-xs text-[#c8d0db]">
+                  NGN {ops.phase6Nclex.kpis.ngnRatio}% / {ops.phase6Nclex.kpis.ngnTarget}%
+                </span>
+                <span className="rounded-md border border-[#273241] px-2 py-2 text-xs text-[#c8d0db]">
+                  review flags {ops.phase6Nclex.kpis.needsReview}
+                </span>
+                <span className="rounded-md border border-[#273241] px-2 py-2 text-xs text-[#c8d0db]">
+                  dup families {ops.phase6Nclex.kpis.duplicateFamiliesCollapsed}
+                </span>
+                <span className="rounded-md border border-[#273241] px-2 py-2 text-xs text-[#c8d0db]">
+                  parity {ops.phase6Nclex.truth.deploymentParity}/{ops.phase6Nclex.truth.syncParity}
+                </span>
+              </div>
+              <div className="mt-3 space-y-2">
+                {ops.phase6Nclex.lanes.map((lane) => (
+                  <div key={lane.lane} className="rounded-md border border-[#273241] bg-[#10151d] px-3 py-2">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <strong className="font-mono text-xs uppercase tracking-[0.12em] text-[#f4eee5]">{lane.lane}</strong>
+                      <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(lane.blocked ? "attention" : lane.status ?? "live")}`}>
+                        {lane.status ?? "unknown"} / {lane.progress ?? 0}%
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs leading-5 text-[#9aa6b6]">{lane.goal}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 grid gap-2 lg:grid-cols-2">
+                <div className="rounded-md border border-[#273241] bg-[#10151d] px-3 py-2">
+                  <strong className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#d99b72]">item deficits</strong>
+                  <div className="mt-2 space-y-1">
+                    {ops.phase6Nclex.truth.topItemDeficits.slice(0, 3).map((item) => (
+                      <p key={item.key ?? "item"} className="text-xs leading-5 text-[#c8d0db]">
+                        {item.key}: {item.deficit} short
+                      </p>
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-md border border-[#273241] bg-[#10151d] px-3 py-2">
+                  <strong className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#d99b72]">client need deficits</strong>
+                  <div className="mt-2 space-y-1">
+                    {ops.phase6Nclex.truth.topClientNeedDeficits.slice(0, 3).map((item) => (
+                      <p key={item.key ?? "client-need"} className="text-xs leading-5 text-[#c8d0db]">
+                        {item.key}: {item.deficit} short
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </Panel>
 

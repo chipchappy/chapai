@@ -173,3 +173,14 @@ The connector writes:
 - `connectors/telegram/control-state.json`
 
 Webhook ingress is `POST /api/telegram/webhook`. It requires `TELEGRAM_ALLOWED_CHAT_IDS`; if `TELEGRAM_WEBHOOK_SECRET` is set, the Telegram secret-token header must match. Inbound chat IDs and user IDs are hashed before persistence. Replies are queued only, and `/kill` is held as `confirmation_required`.
+
+## Phase 6 NCLEX SaaS Orchestration
+
+Emit the project-lane ledger for `claritynclex.chapaisolutions.com` without generating or publishing questions:
+
+```bash
+node scripts/ops/phase6-nclex-orchestration.mjs --run-id=phase6-audit-2026-05-07 --reset --proof=audit/proofs/phase6-nclex-orchestration.json
+node scripts/ops/phase6-nclex-orchestration.mjs --validate
+```
+
+The ledger reads the NCLEX bank health report, second-pass refinement report, growth approval queue, email dispatch state, and public opportunity radar. It writes `connectors/nclex-saas/phase6_*.jsonl` plus `connectors/nclex-saas/phase6-state.json`, which `/ops` surfaces in the NCLEX panel and goal tree.

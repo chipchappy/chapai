@@ -5,6 +5,7 @@ import path from "node:path";
 import type { MissionControlSnapshot } from "@/lib/types";
 import { readOpsOverrides } from "@/lib/ops-control";
 import { listHeartbeatSupervision } from "@/lib/ops-heartbeats";
+import { getPhase6NclexState } from "@/lib/phase6-nclex";
 import { getTelegramControlSummary } from "@/lib/telegram-control";
 import { getUnifiedEventSummary } from "@/lib/unified-events";
 
@@ -180,6 +181,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   const overrides = readOpsOverrides();
   const heartbeats = listHeartbeatSupervision();
   const telegramControl = getTelegramControlSummary();
+  const phase6Nclex = getPhase6NclexState();
   const dataLayer = getUnifiedEventSummary();
   const agents = snapshot.unifiedGuild.agents.length > 0
     ? snapshot.unifiedGuild.agents
@@ -341,6 +343,14 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       blocked: snapshot.urgentFixes.length > 0,
       detail: `${snapshot.unifiedGuild.stats.totalAgents} agents, ${snapshot.urgentFixes.length} operator issues`,
     },
+    ...phase6Nclex.lanes.map((lane) => ({
+      id: `phase6-${lane.lane ?? "lane"}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      label: lane.goal ?? `${lane.lane ?? "Phase 6"} NCLEX objective`,
+      owner: lane.lane ?? "Phase 6",
+      progress: Number(lane.progress ?? 0),
+      blocked: Boolean(lane.blocked),
+      detail: `${lane.status ?? "unknown"} / ${(lane.nextActions ?? []).slice(0, 1).join(" ") || "no next action recorded"}`,
+    })),
   ];
   const brainVaults = getBrainVaultStatus(agents.map((agent) => agent.id));
 
@@ -397,6 +407,11 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       status: telegramControl.health,
       detail: `${telegramControl.commands} commands, ${telegramControl.controlIntents} control intents, ${telegramControl.outboundQueued} queued replies.`,
     },
+    {
+      item: "Phase 6 NCLEX orchestration",
+      status: phase6Nclex.health,
+      detail: `${phase6Nclex.lanes.length} lanes, ${phase6Nclex.blockers.length} blockers, ${phase6Nclex.kpis.liveQuestions}/${phase6Nclex.kpis.targetQuestions} live questions.`,
+    },
   ];
 
   return {
@@ -409,6 +424,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     growthKpis,
     intelDigest,
     tokenEconomics,
+    phase6Nclex,
     telegramControl,
     overrides,
     heartbeats,
