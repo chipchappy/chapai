@@ -140,3 +140,15 @@ QDRANT_URL=http://127.0.0.1:6333 node scripts/ops/sync-qdrant-brains.mjs
 ```
 
 Canonical files remain under `brains/<agent_id>/`; Qdrant collections are projections and can be deleted/rebuilt.
+
+## Phase 4 Data Layer
+
+Emit and validate the normalized ChapAi event stream:
+
+```bash
+node scripts/connectors/chapai-data-layer.mjs --source=all --max-files=80
+node scripts/connectors/chapai-data-layer.mjs --validate
+```
+
+Current operational sources are `local-fs` and `hetzner-vps` host metrics. Credential-gated sources and ToS limits are documented in `CONNECTORS.md`.
+The `/ops` dashboard reads the stream through `apps/web/src/lib/unified-events.ts`.

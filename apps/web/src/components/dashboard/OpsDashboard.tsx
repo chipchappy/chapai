@@ -133,7 +133,7 @@ export default function OpsDashboard({
             </div>
           </div>
           <nav className="mt-5 flex flex-wrap gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#9aa6b6]">
-            {["agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "tokens", "phase2", "overrides"].map((item) => (
+            {["agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "data", "tokens", "phase2", "overrides"].map((item) => (
               <a key={item} href={`#${item}`} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 transition hover:border-[#d99b72] hover:text-[#f4eee5]">
                 {item}
               </a>
@@ -335,6 +335,38 @@ export default function OpsDashboard({
                   No intel digest has been exported yet.
                 </p>
               )}
+            </div>
+          </Panel>
+
+          <Panel id="data" title="ChapAi data layer" eyebrow="normalized connector stream" icon={Database}>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <Metric label="events" value={ops.dataLayer.events} detail={`${ops.dataLayer.files} jsonl files`} />
+              <Metric label="sources" value={ops.dataLayer.sources.length} detail={ops.dataLayer.health} />
+              <Metric label="invalid" value={ops.dataLayer.invalid} detail="schema failures" />
+            </div>
+            <div className="mt-3 space-y-2">
+              {ops.dataLayer.sources.map((source) => (
+                <div key={source.source} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <strong className="font-mono text-xs uppercase tracking-[0.12em] text-[#f4eee5]">{source.source}</strong>
+                    <span className="font-mono text-[11px] text-[#768194]">{source.events} events</span>
+                  </div>
+                  <p className="mt-1 text-xs leading-5 text-[#8f9aaa]">
+                    {source.eventTypes.join(", ")} / {source.taints.join(", ")}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 max-h-[220px] space-y-2 overflow-auto pr-1">
+              {ops.dataLayer.latest.map((event) => (
+                <div key={event.id} className="rounded-md border border-[#273241] bg-[#10151d] px-3 py-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#d99b72]">{event.source} / {event.type}</span>
+                    <span className="font-mono text-[11px] text-[#768194]">{event.emittedAt ? new Date(event.emittedAt).toLocaleString() : "no time"}</span>
+                  </div>
+                  <p className="mt-1 truncate text-xs text-[#c8d0db]">{event.summary}</p>
+                </div>
+              ))}
             </div>
           </Panel>
 

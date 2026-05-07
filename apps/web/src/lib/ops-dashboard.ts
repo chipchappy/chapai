@@ -5,6 +5,7 @@ import path from "node:path";
 import type { MissionControlSnapshot } from "@/lib/types";
 import { readOpsOverrides } from "@/lib/ops-control";
 import { listHeartbeatSupervision } from "@/lib/ops-heartbeats";
+import { getUnifiedEventSummary } from "@/lib/unified-events";
 
 type TelegramAlertState = {
   generatedAt?: string;
@@ -177,6 +178,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   const opportunityRadar = readJson<OpportunityRadar>("config/social-outbox/opportunity-radar-latest.json", {});
   const overrides = readOpsOverrides();
   const heartbeats = listHeartbeatSupervision();
+  const dataLayer = getUnifiedEventSummary();
   const agents = snapshot.unifiedGuild.agents.length > 0
     ? snapshot.unifiedGuild.agents
     : snapshot.agents.map((agent) => ({
@@ -381,6 +383,11 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       status: phase2Infrastructure.every((item) => item.ready) ? "live" : "partial",
       detail: `${phase2Infrastructure.filter((item) => item.ready).length}/${phase2Infrastructure.length} required deploy artifacts present.`,
     },
+    {
+      item: "Unified event stream",
+      status: dataLayer.health,
+      detail: `${dataLayer.events} events across ${dataLayer.sources.length} sources; ${dataLayer.invalid} invalid rows.`,
+    },
   ];
 
   return {
@@ -396,6 +403,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     overrides,
     heartbeats,
     brainVaults,
+    dataLayer,
     phaseReadiness,
     phase2Infrastructure,
     stats: {
