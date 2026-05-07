@@ -268,20 +268,34 @@ export default function OpsDashboard({
           </Panel>
 
           <Panel id="memory" title="Memory and skills" eyebrow="per-agent brain counts" icon={Brain}>
+            <div className="mb-3 grid grid-cols-2 gap-2 text-xs text-[#c8d0db] md:grid-cols-4">
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">vaults {ops.brainVaults.ready}/{ops.brainVaults.total}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">canonical {ops.brainVaults.canonical}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">staging {ops.brainVaults.staging}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">rejected {ops.brainVaults.rejected}</span>
+            </div>
             <div className="space-y-2">
-              {topAgents.map((agent) => (
-                <div key={agent.id} className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <strong className="text-sm text-[#f4eee5]">{agent.displayName}</strong>
-                    <span className="font-mono text-[11px] text-[#768194]">{agent.brain.health}</span>
+              {topAgents.map((agent) => {
+                const vault = ops.brainVaults.rows.find((row) => row.agentId === agent.id);
+                return (
+                  <div key={agent.id} className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <strong className="text-sm text-[#f4eee5]">{agent.displayName}</strong>
+                      <span className="font-mono text-[11px] text-[#768194]">{agent.brain.health}</span>
+                    </div>
+                    <div className="mt-2 grid grid-cols-3 gap-2 text-xs text-[#c8d0db]">
+                      <span className="rounded-md border border-[#273241] px-2 py-1">canonical {agent.stats.durableMemories}</span>
+                      <span className="rounded-md border border-[#273241] px-2 py-1">staging {agent.stats.memoryEvents}</span>
+                      <span className="rounded-md border border-[#273241] px-2 py-1">skills {agent.stats.skills}</span>
+                    </div>
+                    {vault ? (
+                      <p className="mt-2 font-mono text-[11px] text-[#768194]">
+                        vault {vault.manifest ? "manifest" : "missing"} / {vault.indexStatus}
+                      </p>
+                    ) : null}
                   </div>
-                  <div className="mt-2 grid grid-cols-3 gap-2 text-xs text-[#c8d0db]">
-                    <span className="rounded-md border border-[#273241] px-2 py-1">canonical {agent.stats.durableMemories}</span>
-                    <span className="rounded-md border border-[#273241] px-2 py-1">staging {agent.stats.memoryEvents}</span>
-                    <span className="rounded-md border border-[#273241] px-2 py-1">skills {agent.stats.skills}</span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </Panel>
 

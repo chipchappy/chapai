@@ -56,6 +56,12 @@ type OpportunityRadar = {
   }>;
 };
 
+type VaultManifest = {
+  agentId?: string;
+  qdrantCollection?: string;
+  generatedAt?: string;
+};
+
 function workspaceRoot() {
   let current = process.cwd();
   for (let i = 0; i < 6; i += 1) {
@@ -89,6 +95,52 @@ function fileMtime(relativePath: string) {
 
 function fileExists(relativePath: string) {
   return fs.existsSync(path.join(workspaceRoot(), relativePath));
+}
+
+function countMarkdown(dirPath: string) {
+  try {
+    return fs.readdirSync(dirPath).filter((file) => file.endsWith(".md")).length;
+  } catch {
+    return 0;
+  }
+}
+
+function readVaultManifest(agentId: string): VaultManifest | null {
+  return readJson<VaultManifest | null>(path.join("brains", agentId, ".chapai-vault.json"), null);
+}
+
+function getBrainVaultStatus(agentIds: string[]) {
+  const root = workspaceRoot();
+  const rows = agentIds.map((agentId) => {
+    const vaultRoot = path.join(root, "brains", agentId);
+    const manifest = readVaultManifest(agentId);
+    const facts = countMarkdown(path.join(vaultRoot, "facts"));
+    const skills = countMarkdown(path.join(vaultRoot, "skills"));
+    const staging = countMarkdown(path.join(vaultRoot, "staging"));
+    const rejected = countMarkdown(path.join(vaultRoot, "rejected"));
+    return {
+      agentId,
+      exists: fs.existsSync(vaultRoot),
+      manifest: Boolean(manifest),
+      identity: fs.existsSync(path.join(vaultRoot, "identity.md")),
+      canonical: facts + skills,
+      facts,
+      skills,
+      staging,
+      rejected,
+      qdrantCollection: manifest?.qdrantCollection ?? `chapai_${agentId.replace(/[^a-z0-9]+/gi, "_").toLowerCase()}_brain`,
+      indexStatus: manifest ? "projection-ready" : "missing-manifest",
+    };
+  });
+
+  return {
+    total: rows.length,
+    ready: rows.filter((row) => row.exists && row.manifest && row.identity && row.canonical > 0).length,
+    canonical: rows.reduce((sum, row) => sum + row.canonical, 0),
+    staging: rows.reduce((sum, row) => sum + row.staging, 0),
+    rejected: rows.reduce((sum, row) => sum + row.rejected, 0),
+    rows,
+  };
 }
 
 function ageMinutes(iso?: string | null) {
@@ -284,6 +336,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       detail: `${snapshot.unifiedGuild.stats.totalAgents} agents, ${snapshot.urgentFixes.length} operator issues`,
     },
   ];
+  const brainVaults = getBrainVaultStatus(agents.map((agent) => agent.id));
 
   const phase2Infrastructure = [
     { label: "heartbeat ingress", path: "apps/web/src/app/heartbeats/route.ts", ready: fileExists("apps/web/src/app/heartbeats/route.ts") },
@@ -292,6 +345,9 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     { label: "systemd units", path: "infra/systemd", ready: fileExists("infra/systemd/chapai-watchdog.service") },
     { label: "nightly backup", path: "scripts/ops/chapai-backup.mjs", ready: fileExists("scripts/ops/chapai-backup.mjs") },
     { label: "observability compose", path: "infra/hetzner/docker-compose.phase2.yml", ready: fileExists("infra/hetzner/docker-compose.phase2.yml") },
+    { label: "agent vaults", path: "scripts/ops/initialize-agent-vaults.mjs", ready: fileExists("scripts/ops/initialize-agent-vaults.mjs") },
+    { label: "memory steward", path: "scripts/ops/memory-steward.mjs", ready: fileExists("scripts/ops/memory-steward.mjs") },
+    { label: "qdrant sync", path: "scripts/ops/sync-qdrant-brains.mjs", ready: fileExists("scripts/ops/sync-qdrant-brains.mjs") },
   ];
 
   const phaseReadiness = [
@@ -339,6 +395,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     tokenEconomics,
     overrides,
     heartbeats,
+    brainVaults,
     phaseReadiness,
     phase2Infrastructure,
     stats: {

@@ -114,3 +114,28 @@ systemctl list-timers 'chapai-*'
 - True passkey auth is still open; `/ops` uses existing operator access gating.
 - Realtime websocket push is still open; `/ops` currently refreshes every 30 seconds.
 - Redis queue is implemented as a dependency-free Redis Stream adapter through `redis-cli`, not BullMQ. It is operational and can be swapped for BullMQ once package-lock churn is acceptable.
+
+## Phase 3 Brains
+
+Initialize and audit per-agent vaults:
+
+```bash
+node scripts/ops/initialize-agent-vaults.mjs
+node scripts/ops/audit-stage3-state.mjs
+```
+
+Review staged memory candidates and promote only through Memory-Steward:
+
+```bash
+node scripts/ops/memory-steward.mjs --dry-run
+node scripts/ops/memory-steward.mjs
+```
+
+Mirror vault markdown into Qdrant as a rebuildable projection:
+
+```bash
+node scripts/ops/sync-qdrant-brains.mjs --dry-run
+QDRANT_URL=http://127.0.0.1:6333 node scripts/ops/sync-qdrant-brains.mjs
+```
+
+Canonical files remain under `brains/<agent_id>/`; Qdrant collections are projections and can be deleted/rebuilt.
