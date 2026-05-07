@@ -45,3 +45,16 @@ Observed proof:
 - Qdrant was dry-run verified locally. Live indexing requires Qdrant running at `QDRANT_URL` on Hetzner.
 - CI does not yet enforce that only Memory-Steward writes canonical vault entries.
 - Cross-lane quarantine is implemented in the steward script, but no live agent has submitted staged candidates through it yet.
+
+## Follow-up Hardening Applied
+
+- Added `scripts/ops/guard-canonical-brain-writes.mjs` and wired it into deploy CI so canonical fact/skill entries must carry required provenance and a Memory-Steward writer marker.
+- Added shared vault markdown parsing and summarization helpers in `@chapai/brains` so runtimes can consume Obsidian vault documents through a structured API instead of ad hoc markdown parsing.
+- Ran a real Memory-Steward promotion from `audit/proofs/stage3-memory-steward-candidate.jsonl` into `brains/orchestrator/facts/candidate-stage3-vault-audit-before-production-claim.md`.
+- Recorded the canonical promotion ledger in `brains/_steward/canonical-ledger/2026-05-07.jsonl`.
+
+Follow-up proof:
+
+- Canonical guard: 33 canonical files checked, 0 failures.
+- Stage 3 audit: 15/15 registered vaults present, 15/15 with canonical entries, 1 canonical ledger file, 0 rejected, 0 quarantined.
+- Qdrant dry-run: 16 collections, 97 projected points after the steward promotion.

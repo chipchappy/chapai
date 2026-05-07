@@ -167,6 +167,8 @@ function promote(candidate) {
     agent_id: candidate.targetAgent,
     status: "canonical",
     kind: candidate.kind === "skill" ? "skill" : "fact",
+    promoted_by: "memory-steward",
+    promoted_at: nowIso,
     source_agent: candidate.sourceAgent,
     source_run_id: candidate.sourceRunId,
     tool_used: candidate.toolUsed,

@@ -122,6 +122,7 @@ Initialize and audit per-agent vaults:
 ```bash
 node scripts/ops/initialize-agent-vaults.mjs
 node scripts/ops/audit-stage3-state.mjs
+node scripts/ops/guard-canonical-brain-writes.mjs
 ```
 
 Review staged memory candidates and promote only through Memory-Steward:

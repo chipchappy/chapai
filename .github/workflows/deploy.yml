@@ -22,6 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Guard canonical brain writes
+        working-directory: ${{ github.workspace }}
+        run: node scripts/ops/guard-canonical-brain-writes.mjs
+
       - name: Build
         run: npm run build:worker
 
