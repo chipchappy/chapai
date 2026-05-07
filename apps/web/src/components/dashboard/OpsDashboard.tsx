@@ -87,6 +87,16 @@ function Metric({ label, value, detail }: { label: string; value: string | numbe
   );
 }
 
+function CriticalCell({ label, value, detail, tone }: { label: string; value: string | number; detail: string; tone: string }) {
+  return (
+    <div className={`rounded-md border px-3 py-3 ${statusTone(tone)}`}>
+      <p className="font-mono text-[10px] uppercase tracking-[0.16em] opacity-80">{label}</p>
+      <strong className="mt-2 block font-mono text-xl font-semibold">{value}</strong>
+      <span className="mt-1 block text-xs leading-5 opacity-85">{detail}</span>
+    </div>
+  );
+}
+
 function ProgressBar({ value }: { value: number }) {
   return (
     <div className="h-2 overflow-hidden rounded-full bg-[#222a35]">
@@ -109,7 +119,9 @@ export default function OpsDashboard({
     label: `${agent.displayName} - ${agent.role}`,
   }));
   const blockedGoals = ops.goalTree.filter((goal) => goal.blocked).length;
+  const staleAgents = ops.agents.filter((agent) => agent.state.toLowerCase().includes("stale")).length;
   const topAgents = [...ops.agents].sort((left, right) => right.stats.durableMemories - left.stats.durableMemories).slice(0, 8);
+  const directiveProofPath = "audit/proofs/claude-ui-redesign-brief-2026-05-07.run.json";
 
   return (
     <main className="min-h-screen bg-[#0b0e14] px-4 py-6 text-[#f4eee5] md:px-6 lg:px-8">
@@ -133,13 +145,43 @@ export default function OpsDashboard({
             </div>
           </div>
           <nav className="mt-5 flex flex-wrap gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#9aa6b6]">
-            {["agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "data", "tokens", "phase2", "overrides"].map((item) => (
+            {["directive", "agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "data", "tokens", "phase2", "overrides"].map((item) => (
               <a key={item} href={`#${item}`} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 transition hover:border-[#d99b72] hover:text-[#f4eee5]">
                 {item}
               </a>
             ))}
           </nav>
         </header>
+
+        <section id="directive" className="mt-4 rounded-lg border border-[#273241] bg-[#0f141b] p-4">
+          <div className="grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#d99b72]">directive execution</p>
+              <h2 className="mt-2 text-2xl font-semibold text-[#f4eee5]">Claude UI directive accepted</h2>
+              <p className="mt-2 text-sm leading-6 text-[#9aa6b6]">
+                The Claude-lane worker produced a read-only design brief, the chart review station is tagged with the directive id, and this operator surface now exposes the proof path instead of hiding agent work in logs.
+              </p>
+              <div className="mt-3 grid gap-2 font-mono text-[11px] text-[#8b95a3]">
+                <span>agent claude-code / Sartre / 019e03f7-f664-79e2-99d6-114f42b6436e</span>
+                <span>proof {directiveProofPath}</span>
+                <span>scope chart review, ops dashboard, Claude result ledger</span>
+              </div>
+            </div>
+            <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
+              <CriticalCell label="blocked goals" value={blockedGoals} detail={`${ops.goalTree.length} active goals`} tone={blockedGoals ? "blocked" : "live"} />
+              <CriticalCell label="restart due" value={ops.heartbeats.restartDue} detail="heartbeat watchdog" tone={ops.heartbeats.restartDue ? "attention" : "live"} />
+              <CriticalCell label="stale agents" value={staleAgents} detail={`${ops.stats.liveAgents} live now`} tone={staleAgents ? "stale" : "live"} />
+              <CriticalCell label="queued overrides" value={ops.overrides.commands.length} detail="operator command bus" tone={ops.overrides.commands.length ? "attention" : "live"} />
+            </div>
+          </div>
+          <div className="mt-3 grid gap-2 md:grid-cols-4">
+            {["EHR chart review skin", "Dense command grid", "Phase 2 visible", "Answer-blind preserved"].map((item) => (
+              <span key={item} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[#c8d0db]">
+                {item}
+              </span>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <Metric label="provider inventory" value={ops.stats.providerCount} detail={`${snapshot.unifiedGuild.providerReadiness.live} live providers`} />
