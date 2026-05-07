@@ -1,0 +1,13 @@
+[Unit]
+Description=ChapAI periodic orchestrator sweep enqueue
+After=network-online.target redis-server.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/chapai
+EnvironmentFile=-/etc/chapai/chapai.env
+ExecStart=/usr/bin/bash -lc 'node /opt/chapai/scripts/ops/chapai-queue.mjs --enqueue --lane=Architecture --type=periodic-sweep --payload-json="{\"goal\":\"refresh heartbeat, memory, token, and NCLEX KPI baselines\"}"'
+User=chapai
+Group=chapai
+NoNewPrivileges=true

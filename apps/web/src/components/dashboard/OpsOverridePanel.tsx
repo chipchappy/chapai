@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { Ban, Crosshair, RotateCcw, ShieldAlert, Square, Trash2 } from "lucide-react";
 import type { OpsOverrideAction, OpsOverrideRecord } from "@/lib/ops-control";
 
@@ -45,6 +46,7 @@ const ACTION_LABELS: Record<OpsOverrideAction, { label: string; icon: typeof Ban
 const ACTIONS = Object.keys(ACTION_LABELS) as OpsOverrideAction[];
 
 export default function OpsOverridePanel({ targets, recentOverrides }: OpsOverridePanelProps) {
+  const router = useRouter();
   const [action, setAction] = useState<OpsOverrideAction>("pause-lane");
   const [target, setTarget] = useState(targets[0]?.id ?? "orchestrator");
   const [reason, setReason] = useState("");
@@ -87,6 +89,7 @@ export default function OpsOverridePanel({ targets, recentOverrides }: OpsOverri
 
         setMessage(`Queued ${payload.record.action} for ${payload.record.target}.`);
         setReason("");
+        router.refresh();
       })();
     });
   }

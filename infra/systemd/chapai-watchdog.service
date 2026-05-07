@@ -1,0 +1,18 @@
+[Unit]
+Description=ChapAI heartbeat watchdog and override consumer
+After=network-online.target chapai-dashboard.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/chapai
+EnvironmentFile=-/etc/chapai/chapai.env
+ExecStart=/usr/bin/node /opt/chapai/scripts/ops/chapai-watchdog.mjs --interval-ms=30000
+Restart=always
+RestartSec=10
+User=chapai
+Group=chapai
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

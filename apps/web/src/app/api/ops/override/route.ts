@@ -1,4 +1,4 @@
-import { appendOpsOverride, isOpsOverrideAction } from "@/lib/ops-control";
+import { appendOpsOverride, isOpsOverrideAction, listOpsOverrideActions, readOpsOverrides } from "@/lib/ops-control";
 import { getDashboardAccessContext } from "@/lib/dashboard-access";
 import { NextResponse } from "next/server";
 
@@ -54,4 +54,17 @@ export async function POST(request: Request) {
   });
 
   return NextResponse.json({ ok: true, record });
+}
+
+export async function GET() {
+  const access = await getDashboardAccessContext();
+  if (access.role !== "operator") {
+    return NextResponse.json({ error: "Operator access is required for /ops overrides." }, { status: 403 });
+  }
+
+  return NextResponse.json({
+    ok: true,
+    actions: listOpsOverrideActions(),
+    overrides: readOpsOverrides(),
+  });
 }

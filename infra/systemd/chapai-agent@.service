@@ -1,0 +1,19 @@
+[Unit]
+Description=ChapAI supervised agent %i
+After=network-online.target chapai-dashboard.service redis-server.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/chapai
+EnvironmentFile=-/etc/chapai/chapai.env
+EnvironmentFile=-/etc/chapai/agents/%i.env
+ExecStart=/opt/chapai/scripts/ops/run-agent.sh %i
+Restart=on-failure
+RestartSec=30
+User=chapai
+Group=chapai
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { MissionControlSnapshot } from "@/lib/types";
 import { readOpsOverrides } from "@/lib/ops-control";
+import { listHeartbeatSupervision } from "@/lib/ops-heartbeats";
 
 type TelegramAlertState = {
   generatedAt?: string;
@@ -86,6 +87,10 @@ function fileMtime(relativePath: string) {
   }
 }
 
+function fileExists(relativePath: string) {
+  return fs.existsSync(path.join(workspaceRoot(), relativePath));
+}
+
 function ageMinutes(iso?: string | null) {
   if (!iso) {
     return null;
@@ -111,10 +116,6 @@ function formatAge(iso?: string | null) {
   return `${Math.round(minutes / 60)}h`;
 }
 
-function compactNumber(value: number) {
-  return new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(value);
-}
-
 export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   const telegram = readJson<TelegramAlertState>("config/telegram-problem-alert-state.json", {});
   const growthQueue = readJson<GrowthApprovalQueue>("config/growth-approval-queue.json", {});
@@ -123,6 +124,7 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   const growthRadar = readJson<GrowthRadar>("config/email-outbox/growth-radar-latest.json", {});
   const opportunityRadar = readJson<OpportunityRadar>("config/social-outbox/opportunity-radar-latest.json", {});
   const overrides = readOpsOverrides();
+  const heartbeats = listHeartbeatSupervision();
   const agents = snapshot.unifiedGuild.agents.length > 0
     ? snapshot.unifiedGuild.agents
     : snapshot.agents.map((agent) => ({
@@ -283,6 +285,48 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     },
   ];
 
+  const phase2Infrastructure = [
+    { label: "heartbeat ingress", path: "apps/web/src/app/heartbeats/route.ts", ready: fileExists("apps/web/src/app/heartbeats/route.ts") },
+    { label: "watchdog", path: "scripts/ops/chapai-watchdog.mjs", ready: fileExists("scripts/ops/chapai-watchdog.mjs") },
+    { label: "redis queue adapter", path: "scripts/ops/chapai-queue.mjs", ready: fileExists("scripts/ops/chapai-queue.mjs") },
+    { label: "systemd units", path: "infra/systemd", ready: fileExists("infra/systemd/chapai-watchdog.service") },
+    { label: "nightly backup", path: "scripts/ops/chapai-backup.mjs", ready: fileExists("scripts/ops/chapai-backup.mjs") },
+    { label: "observability compose", path: "infra/hetzner/docker-compose.phase2.yml", ready: fileExists("infra/hetzner/docker-compose.phase2.yml") },
+  ];
+
+  const phaseReadiness = [
+    {
+      item: "Operator route",
+      status: "live",
+      detail: "/ops is operator-gated through the existing dashboard access context.",
+    },
+    {
+      item: "Passkey auth",
+      status: "gap",
+      detail: "WebAuthn credential storage is not present; current auth is private key/session based.",
+    },
+    {
+      item: "Realtime transport",
+      status: "gap",
+      detail: "Pusher/soketi is not provisioned; server refresh runs every 30 seconds.",
+    },
+    {
+      item: "Override command bus",
+      status: "live",
+      detail: `${overrides.commands.length} retained commands; GET/POST API is available for watchdog consumers.`,
+    },
+    {
+      item: "Heartbeat supervision",
+      status: heartbeats.restartDue > 0 ? "attention" : "live",
+      detail: `${heartbeats.total} agents tracked, ${heartbeats.restartDue} restart-due by the 3-missed-ping rule.`,
+    },
+    {
+      item: "Phase 2 deploy files",
+      status: phase2Infrastructure.every((item) => item.ready) ? "live" : "partial",
+      detail: `${phase2Infrastructure.filter((item) => item.ready).length}/${phase2Infrastructure.length} required deploy artifacts present.`,
+    },
+  ];
+
   return {
     generatedAt: new Date().toISOString(),
     generatedAge: "now",
@@ -294,9 +338,12 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     intelDigest,
     tokenEconomics,
     overrides,
+    heartbeats,
+    phaseReadiness,
+    phase2Infrastructure,
     stats: {
-      liveAgents: snapshot.unifiedGuild.stats.live || snapshot.agents.filter((agent) => agent.state === "live").length,
-      blockedAgents: snapshot.unifiedGuild.stats.blocked || snapshot.agents.filter((agent) => agent.blocker !== "none").length,
+      liveAgents: snapshot.unifiedGuild.agents.length > 0 ? snapshot.unifiedGuild.stats.live : snapshot.agents.filter((agent) => agent.state === "live").length,
+      blockedAgents: snapshot.unifiedGuild.agents.length > 0 ? snapshot.unifiedGuild.stats.blocked : snapshot.agents.filter((agent) => agent.blocker !== "none").length,
       totalAgents: agents.length,
       memoryEntries: snapshot.unifiedGuild.stats.totalDurableMemories,
       skills: snapshot.unifiedGuild.stats.totalSkills,
@@ -315,6 +362,5 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       boardroom: formatAge(snapshot.boardroom.updatedAt),
       guildLoop: formatAge(snapshot.unifiedGuild.sourceHealth.guildLoopUpdatedAt),
     },
-    compactNumber,
   };
 }

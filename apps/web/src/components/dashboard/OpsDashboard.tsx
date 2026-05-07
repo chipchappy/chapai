@@ -9,6 +9,7 @@ import {
   Goal,
   MessagesSquare,
   RadioTower,
+  ServerCog,
   ShieldCheck,
   TerminalSquare,
   Users,
@@ -25,10 +26,10 @@ function statusTone(value: string) {
   if (lower.includes("live") || lower.includes("running")) {
     return "border-[#35593f] bg-[#162319] text-[#9dd6aa]";
   }
-  if (lower.includes("block") || lower.includes("missing") || lower.includes("unwired")) {
+  if (lower.includes("block") || lower.includes("missing") || lower.includes("unwired") || lower.includes("gap")) {
     return "border-[#6c4039] bg-[#251716] text-[#efac9d]";
   }
-  if (lower.includes("stale")) {
+  if (lower.includes("stale") || lower.includes("partial") || lower.includes("attention")) {
     return "border-[#5c533f] bg-[#211f18] text-[#d7c18d]";
   }
   return "border-[#313b4a] bg-[#151a24] text-[#aab4c2]";
@@ -132,7 +133,7 @@ export default function OpsDashboard({
             </div>
           </div>
           <nav className="mt-5 flex flex-wrap gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#9aa6b6]">
-            {["agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "tokens", "overrides"].map((item) => (
+            {["agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "tokens", "phase2", "overrides"].map((item) => (
               <a key={item} href={`#${item}`} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 transition hover:border-[#d99b72] hover:text-[#f4eee5]">
                 {item}
               </a>
@@ -338,6 +339,65 @@ export default function OpsDashboard({
                   <p className="mt-1 text-sm text-[#9aa6b6]">{row.model} - {row.routing}</p>
                 </div>
               ))}
+            </div>
+          </Panel>
+
+          <Panel id="phase2" title="Phase 2 supervision" eyebrow="deploy contracts" icon={ServerCog} className="2xl:col-span-3">
+            <div className="grid gap-3 lg:grid-cols-[0.95fr_1.05fr_1fr]">
+              <div className="space-y-2">
+                {ops.phaseReadiness.map((item) => (
+                  <article key={item.item} className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <strong className="text-sm text-[#f4eee5]">{item.item}</strong>
+                      <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(item.status)}`}>
+                        {item.status}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-[#9aa6b6]">{item.detail}</p>
+                  </article>
+                ))}
+              </div>
+
+              <div className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <strong className="text-sm text-[#f4eee5]">Heartbeat watchdog input</strong>
+                  <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(ops.heartbeats.restartDue > 0 ? "attention" : "live")}`}>
+                    {ops.heartbeats.restartDue} restart due
+                  </span>
+                </div>
+                <div className="mt-3 max-h-[360px] space-y-2 overflow-auto pr-1">
+                  {ops.heartbeats.rows.slice(0, 10).map((row) => (
+                    <div key={row.id} className="rounded-md border border-[#273241] bg-[#10151d] px-3 py-2">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <strong className="font-mono text-xs uppercase tracking-[0.12em] text-[#f4eee5]">{row.id}</strong>
+                        <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(row.restartDue ? "attention" : row.state)}`}>
+                          {row.restartDue ? "restart due" : row.state}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-xs leading-5 text-[#8f9aaa]">
+                        age {row.ageSeconds === null ? "missing" : `${Math.round(row.ageSeconds / 60)}m`} / missed {row.missedPings ?? "n/a"} / {row.source}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">
+                <strong className="text-sm text-[#f4eee5]">Hetzner deploy artifacts</strong>
+                <div className="mt-3 space-y-2">
+                  {ops.phase2Infrastructure.map((item) => (
+                    <div key={item.path} className="rounded-md border border-[#273241] bg-[#10151d] px-3 py-2">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="text-sm text-[#c8d0db]">{item.label}</span>
+                        <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(item.ready ? "live" : "missing")}`}>
+                          {item.ready ? "present" : "missing"}
+                        </span>
+                      </div>
+                      <p className="mt-1 font-mono text-[11px] text-[#768194]">{item.path}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </Panel>
         </div>

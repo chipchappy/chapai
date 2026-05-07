@@ -11,15 +11,19 @@ export type OpsOverrideAction =
   | "force-rebaseline"
   | "kill-agent";
 
+export type OpsOverrideStatus = "queued" | "acknowledged" | "completed" | "failed";
+
 export type OpsOverrideRecord = {
   id: string;
   action: OpsOverrideAction;
   target: string;
   reason: string;
-  status: "queued";
+  status: OpsOverrideStatus;
   requestedBy: string;
   requestedAt: string;
   source: "ops-dashboard";
+  updatedAt?: string;
+  note?: string;
 };
 
 const ACTIONS = new Set<OpsOverrideAction>([
@@ -79,6 +83,41 @@ export function readOpsOverrides() {
     overrideSnapshotPath(),
     { updatedAt: null, commands: [] },
   );
+}
+
+export function writeOpsOverrides(snapshot: { updatedAt: string | null; commands: OpsOverrideRecord[] }) {
+  writeJson(overrideSnapshotPath(), snapshot);
+}
+
+export function updateOpsOverrideStatus(id: string, status: OpsOverrideStatus, note?: string) {
+  const snapshot = readOpsOverrides();
+  const updatedAt = new Date().toISOString();
+  let updated: OpsOverrideRecord | null = null;
+  const commands = snapshot.commands.map((command) => {
+    if (command.id !== id) {
+      return command;
+    }
+    updated = {
+      ...command,
+      status,
+      updatedAt,
+      note: note?.trim() || undefined,
+    };
+    return updated;
+  });
+
+  if (!updated) {
+    return null;
+  }
+  const updatedRecord = updated as OpsOverrideRecord;
+
+  const nextSnapshot = {
+    updatedAt,
+    commands,
+  };
+  writeOpsOverrides(nextSnapshot);
+  fs.appendFileSync(overrideLedgerPath(), `${JSON.stringify({ ...updatedRecord, ledgerEvent: "status-update" })}\n`, "utf8");
+  return updatedRecord;
 }
 
 export function appendOpsOverride(input: {
