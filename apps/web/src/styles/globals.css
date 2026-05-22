@@ -3705,9 +3705,9 @@
 
 /* Two-mode brand system: premium pages use these tokens; /quiz sterile mode overrides inside .examScope. */
 :root {
-  --c-bg: #F7F1E6;
-  --c-bg-elevated: #FBF7EE;
-  --c-bg-tinted: #F0E9DB;
+  --c-bg: #F3EAD7;
+  --c-bg-elevated: #F9F2E3;
+  --c-bg-tinted: #ECE1CC;
   --c-text: #1E2A24;
   --c-text-muted: #4E5A53;
   --c-text-hint: #7A857E;
@@ -27463,15 +27463,17 @@ body:has(.nclex-exam-shell) nextjs-portal {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   CANONICAL UI — Soft paper-fiber texture (additive, do not remove)
+   CANONICAL UI — Old fine-paper texture (additive, do not remove)
    ────────────────────────────────────────────────────────────────
-   Adds a faint woven-paper grain over the warm sand aesthetic for a
-   premium, tactile feel. The sand color (--c-bg: #F7F1E6) is NOT
-   changed — this is a translucent multiply overlay only.
+   Two layered noise fields over the warm sand palette for a premium,
+   aged-parchment / fine-paper feel. The sand color (--c-bg) is set in
+   :root; this is a translucent multiply overlay only — it never changes
+   layout or blocks interaction.
 
-   • Fixed, pointer-events:none → never blocks interaction.
-   • mix-blend-mode:multiply at low opacity → reads only on flat sand
-     areas; imperceptible over text and cards.
+   • Layer 1 (fine grain, 200px tile, high freq) → the close-up paper tooth.
+   • Layer 2 (soft mottle, 600px tile, low freq)  → uneven aged-paper tone.
+   • Fixed, pointer-events:none; mix-blend-mode:multiply at low opacity →
+     reads only on flat sand areas; imperceptible over text and cards.
    • Scoped OUT of the sterile exam runner via :not(:has(.examScope)),
      so the NCLEX/CCRN testing environment stays clean and white.
    ════════════════════════════════════════════════════════════════ */
@@ -27482,10 +27484,12 @@ body:not(:has(.examScope))::after {
   z-index: 60;
   pointer-events: none;
   mix-blend-mode: multiply;
-  opacity: 0.5;
-  background-repeat: repeat;
-  background-size: 240px 240px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='pf'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5 0.09' numOctaves='2' seed='17' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.14'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pf)'/%3E%3C/svg%3E");
+  opacity: 0.55;
+  background-repeat: repeat, repeat;
+  background-size: 200px 200px, 600px 600px;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.014' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
 }
 
 @media print {
