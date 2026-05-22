@@ -34,14 +34,15 @@ export const metadata: Metadata = {
     template: "%s | Clarity Clinical Prep",
   },
   description:
-    "Premium NCLEX and CCRN preparation with original clinical scenarios, AI rationale, cleaner design, and a calmer medical-tech study flow.",
+    "Free NCLEX practice test and premium NGN question bank with original clinical scenarios, AI rationale, 5 readiness exams, and a calmer study flow. Start free, full bank $9.99/mo.",
   keywords: [
-    "CCRN practice questions",
+    "free NCLEX practice test",
+    "free NCLEX practice questions",
     "NCLEX practice questions",
-    "CCRN study tool",
-    "NCLEX study tool",
+    "NGN case studies",
+    "NCLEX-RN practice exam",
+    "CCRN practice questions",
     "AI tutor nursing",
-    "critical care exam prep",
     "nursing exam prep",
   ],
   alternates: {
@@ -51,17 +52,24 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/icon.jpg",
+    shortcut: "/icon.jpg",
+    apple: "/apple-icon.jpg",
+  },
   openGraph: {
-    title: "Clarity Clinical Prep | Premium NCLEX and CCRN prep",
-    description: "Original questions, AI tutor, and a cleaner clinical study system for ICU nurses and NCLEX test-takers.",
+    title: "Clarity Clinical Prep | Free NCLEX Practice Test & NGN Bank",
+    description: "Free NCLEX practice test, premium NGN question bank, AI tutor, and 5 readiness exams — for ICU nurses and NCLEX-RN test-takers.",
     type: "website",
     url: "https://claritynclex.chapaisolutions.com",
     siteName: "Clarity Clinical Prep",
+    images: [{ url: "/brand/clarity-c-logo.jpg", width: 251, height: 242, alt: "Clarity Clinical Prep" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clarity Clinical Prep | Premium NCLEX and CCRN prep",
-    description: "Original questions, AI tutor, and a cleaner clinical study system.",
+    title: "Clarity Clinical Prep | Free NCLEX Practice Test & NGN Bank",
+    description: "Free NCLEX practice test, premium NGN bank, AI tutor, and 5 readiness exams.",
+    images: ["/brand/clarity-c-logo.jpg"],
   },
 };
 

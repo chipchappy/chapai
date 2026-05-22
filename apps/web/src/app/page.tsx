@@ -9,9 +9,9 @@ import { getLiveBankStats } from "@/lib/live-bank-stats";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "NCLEX practice questions with NGN case studies",
+  title: "Free NCLEX Practice Test & NGN Question Bank",
   description:
-    "Premium NCLEX-RN prep with NGN case studies, realistic test-mode questions, AI tutor support, and $9.99/mo flat pricing.",
+    "Take a free NCLEX practice test, then unlock a premium NGN question bank with realistic test-mode questions, AI tutor rationales, and 5 readiness exams. Start free — full bank $9.99/mo.",
   alternates: {
     canonical: "/",
   },
@@ -33,14 +33,25 @@ export default async function HomePage() {
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://claritynclex.chapaisolutions.com/#org",
         name: "Clarity Clinical Prep",
         url: "https://claritynclex.chapaisolutions.com",
-        description: "Premium NCLEX preparation with realistic NGN questions and affordable flat pricing.",
+        logo: "https://claritynclex.chapaisolutions.com/brand/clarity-c-logo.jpg",
+        description: "Premium NCLEX-RN preparation with a free NCLEX practice test, realistic NGN questions, AI tutor rationales, and affordable flat pricing.",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://claritynclex.chapaisolutions.com/#website",
+        url: "https://claritynclex.chapaisolutions.com",
+        name: "Clarity Clinical Prep",
+        publisher: { "@id": "https://claritynclex.chapaisolutions.com/#org" },
       },
       {
         "@type": "SoftwareApplication",
         name: "Clarity NCLEX",
         applicationCategory: "EducationalApplication",
+        operatingSystem: "Web",
+        description: "Free NCLEX practice test and premium NGN question bank with AI tutor and 5 readiness exams.",
         offers: {
           "@type": "Offer",
           price: "9.99",

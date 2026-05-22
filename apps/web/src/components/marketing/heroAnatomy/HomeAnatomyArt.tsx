@@ -66,13 +66,13 @@ export default function HomeAnatomyArt({ className }: AnatomyArtProps) {
         </radialGradient>
 
         <filter id="h-mint-blur" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="24" />
+          <feGaussianBlur stdDeviation="14" />
         </filter>
         <filter id="h-pink-blur" x="-24%" y="-24%" width="148%" height="148%">
-          <feGaussianBlur stdDeviation="22" />
+          <feGaussianBlur stdDeviation="11" />
         </filter>
         <filter id="h-teal-glow" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur stdDeviation="15" />
+          <feGaussianBlur stdDeviation="8" />
         </filter>
       </defs>
 
