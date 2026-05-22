@@ -91,6 +91,25 @@ function arraysMatch(left: string[], right: string[]) {
   return nextLeft.every((value, index) => value.toLowerCase() === nextRight[index]?.toLowerCase());
 }
 
+function arraysMatchInOrder(left: string[], right: string[]) {
+  if (left.length !== right.length) {
+    return false;
+  }
+
+  return left.every((value, index) => value.trim().toLowerCase() === right[index]?.trim().toLowerCase());
+}
+
+function recordsMatch(left: Record<string, string>, right: Record<string, string>) {
+  const leftEntries = Object.entries(left);
+  const rightEntries = Object.entries(right);
+
+  if (leftEntries.length !== rightEntries.length) {
+    return false;
+  }
+
+  return rightEntries.every(([key, value]) => (left[key] ?? "").trim().toLowerCase() === value.trim().toLowerCase());
+}
+
 export function evaluateQuestion(question: PracticeQuestion, answer: PracticeAnswer): PracticeEvaluation {
   if (question.kind === "matrix") {
     const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string>;
@@ -104,6 +123,21 @@ export function evaluateQuestion(question: PracticeQuestion, answer: PracticeAns
     };
   }
 
+  if (question.kind === "ordering") {
+    const selected = Array.isArray(answer)
+      ? answer
+      : typeof answer === "string" && answer
+        ? answer.split(",").map((item) => item.trim()).filter(Boolean)
+        : [];
+    const correctAnswer = Array.isArray(question.correctAnswer) ? question.correctAnswer.map(String) : [String(question.correctAnswer)];
+    return {
+      correct: arraysMatchInOrder(selected, correctAnswer),
+      correctAnswer,
+      rationale: question.rationale,
+      takeaway: question.takeaway,
+    };
+  }
+
   if (question.kind === "multi-select") {
     const selected = Array.isArray(answer)
       ? answer
@@ -111,6 +145,32 @@ export function evaluateQuestion(question: PracticeQuestion, answer: PracticeAns
         ? answer.split(",").map((item) => item.trim()).filter(Boolean)
         : [];
     const correctAnswer = Array.isArray(question.correctAnswer) ? question.correctAnswer : [String(question.correctAnswer)];
+    return {
+      correct: arraysMatch(selected, correctAnswer),
+      correctAnswer,
+      rationale: question.rationale,
+      takeaway: question.takeaway,
+    };
+  }
+
+  if (question.correctAnswer && typeof question.correctAnswer === "object" && !Array.isArray(question.correctAnswer)) {
+    const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string>;
+    const correctAnswer = question.correctAnswer as Record<string, string>;
+    return {
+      correct: recordsMatch(selected, correctAnswer),
+      correctAnswer,
+      rationale: question.rationale,
+      takeaway: question.takeaway,
+    };
+  }
+
+  if (Array.isArray(question.correctAnswer)) {
+    const selected = Array.isArray(answer)
+      ? answer
+      : typeof answer === "string" && answer
+        ? answer.split(",").map((item) => item.trim()).filter(Boolean)
+        : [];
+    const correctAnswer = question.correctAnswer.map(String);
     return {
       correct: arraysMatch(selected, correctAnswer),
       correctAnswer,
@@ -137,7 +197,14 @@ export function buildQuestionRecord(question: PracticeQuestion, answer: Practice
     correct: evaluation.correct,
     correctAnswer: evaluation.correctAnswer,
     rationale: evaluation.rationale,
+    deepRationale: question.deepRationale,
     takeaway: evaluation.takeaway,
+    distractorRationales: question.distractorRationales,
+    references: question.references,
+    studyResources: question.studyResources,
+    coachingFrame: question.coachingFrame,
+    visualRationale: question.visualRationale,
+    diagramBlueprint: question.diagramBlueprint,
     submittedAt: Date.now(),
   };
 }
@@ -198,10 +265,17 @@ export function runtimeFromSnapshot(snapshot: string | null) {
     return null;
   }
 
+  const maxIndex = Math.max(0, session.questions.length - 1);
+  const currentIndex = Math.min(Math.max(session.currentIndex ?? 0, 0), maxIndex);
+  const normalizedSession = {
+    ...session,
+    currentIndex,
+  };
+
   return {
-    phase: derivePhaseFromSession(session),
-    session,
-    activeAnswer: draftFromSession(session, session.currentIndex),
+    phase: derivePhaseFromSession(normalizedSession),
+    session: normalizedSession,
+    activeAnswer: draftFromSession(normalizedSession, normalizedSession.currentIndex),
     tutorOpen: false,
     tutorQuestionId: null,
   } satisfies PracticeRuntimeState;

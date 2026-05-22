@@ -1,31 +1,78 @@
 import { NextRequest } from "next/server";
-import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
-import { users } from "@chapai/db/schema";
-import { eq } from "drizzle-orm";
 import Stripe from "stripe";
-import { STRIPE_PRICES } from "@/lib/types";
+import {
+  findBillingEvent,
+  recordBillingEventOnce,
+  upsertBillingState,
+} from "@/lib/billing-store";
+import {
+  buildBillingStateFromCheckout,
+  buildBillingStateFromSubscription,
+} from "@/lib/stripe-billing";
+import { createRequestContext, log, logError } from "@/lib/logger";
+import { getServerEnv } from "@/lib/env";
+import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
+import type { DB } from "@/lib/db";
 
-type Tier = "free" | "trial" | "base" | "vip" | "unlimited";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-/** Map a Stripe price ID to the corresponding access tier */
-function tierFromPriceId(priceId: string | null | undefined): Tier {
-  switch (priceId) {
-    case STRIPE_PRICES.trial_7day:    return "trial";
-    case STRIPE_PRICES.base_monthly:  return "base";
-    case STRIPE_PRICES.vip_monthly:   return "vip";
-    case STRIPE_PRICES.unlimited_vip: return "unlimited";
-    default:                          return "base"; // safe fallback
-  }
+type StripeSubscriptionSnapshot = Stripe.Subscription & {
+  current_period_end?: number | null;
+};
+
+async function handleCheckoutCompleted(eventId: string, session: Stripe.Checkout.Session, db: DB) {
+  const billingState = buildBillingStateFromCheckout(eventId, {
+    ...session,
+    customer: typeof session.customer === "string" ? session.customer : null,
+    subscription: typeof session.subscription === "object" && session.subscription
+      ? {
+          ...(session.subscription as StripeSubscriptionSnapshot),
+          customer: typeof (session.subscription as StripeSubscriptionSnapshot).customer === "string"
+            ? (session.subscription as StripeSubscriptionSnapshot).customer
+            : null,
+        }
+      : (typeof session.subscription === "string" ? session.subscription : null),
+  });
+
+  await upsertBillingState(db, billingState);
 }
 
+async function handleSubscriptionUpdated(eventId: string, subscription: StripeSubscriptionSnapshot, db: DB) {
+  await upsertBillingState(db, buildBillingStateFromSubscription(eventId, {
+    ...subscription,
+    customer: typeof subscription.customer === "string" ? subscription.customer : null,
+  }));
+}
 
-// Stripe sends events as raw body — do NOT parse JSON with Next.js body parser
+async function handleSubscriptionDeleted(eventId: string, subscription: StripeSubscriptionSnapshot, db: DB) {
+  await upsertBillingState(db, {
+    ...buildBillingStateFromSubscription(eventId, {
+      ...subscription,
+      customer: typeof subscription.customer === "string" ? subscription.customer : null,
+    }),
+    status: "canceled",
+    expiresAt: subscription.current_period_end ?? subscription.ended_at ?? null,
+    canceledAt: subscription.canceled_at ?? subscription.ended_at ?? null,
+  });
+}
+
 export async function POST(req: NextRequest) {
-  const env = resolveEnv();
+  const requestContext = createRequestContext(req, { route: "/api/stripe/webhook" });
+  const env = getServerEnv();
+  const runtimeEnv = resolveEnv();
+
   if (!env.STRIPE_WEBHOOK_SECRET) {
-    console.error("Stripe webhook secret is missing.");
+    log("error", "Stripe webhook secret is missing", requestContext);
     return new Response("Webhook secret not configured", { status: 503 });
   }
+
+  if (!hasDatabase(runtimeEnv)) {
+    log("error", "Stripe webhook storage is unavailable", requestContext);
+    return new Response("Webhook storage unavailable", { status: 503 });
+  }
+
+  const db = getDB(runtimeEnv);
 
   const rawBody = await req.text();
   const signature = req.headers.get("stripe-signature");
@@ -36,121 +83,91 @@ export async function POST(req: NextRequest) {
 
   let event: Stripe.Event;
   try {
-    // Cloudflare Workers compatible signature verification
     event = await verifyStripeWebhook(rawBody, signature, env.STRIPE_WEBHOOK_SECRET);
-  } catch (err) {
-    console.error("Webhook signature error:", err);
+  } catch (error) {
+    logError("Stripe webhook signature verification failed", error, requestContext);
     return new Response("Invalid signature", { status: 400 });
   }
 
-  if (!hasDatabase(env)) {
-    console.warn("Stripe webhook received without database binding. Skipping persistence update.");
+  const existing = await findBillingEvent(db, event.id);
+  if (existing) {
+    log("info", "Duplicate Stripe webhook ignored", {
+      ...requestContext,
+      stripeEventId: event.id,
+      stripeEventType: event.type,
+    });
     return new Response("OK", { status: 200 });
   }
 
-  const db = getDB(env);
-
   try {
+    const recorded = await recordBillingEventOnce(db, {
+      stripeEventId: event.id,
+      type: event.type,
+      payload: rawBody,
+    });
+    const eventRowId = recorded.event?.id ?? event.id;
+
     switch (event.type) {
-      case "checkout.session.completed": {
-        const session = event.data.object as Stripe.Checkout.Session;
-        if (!session.customer_email) break;
-
-        const lineItems = session.line_items?.data;
-        const priceId = lineItems?.[0]?.price?.id ?? session.metadata?.price_id;
-        const tier = tierFromPriceId(priceId);
-
-        if (session.mode === "payment") {
-          // One-time purchase (7-day trial) — grant trial tier, set expiry 7 days out
-          await db.update(users)
-            .set({
-              tier,
-              stripeCustomerId: session.customer as string,
-              stripeCurrentPeriodEnd: Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60,
-              updatedAt: Math.floor(Date.now() / 1000),
-            })
-            .where(eq(users.email, session.customer_email));
-        } else if (session.mode === "subscription") {
-          await db.update(users)
-            .set({
-              tier,
-              stripeCustomerId: session.customer as string,
-              stripeSubscriptionId: session.subscription as string,
-              updatedAt: Math.floor(Date.now() / 1000),
-            })
-            .where(eq(users.email, session.customer_email));
-        }
+      case "checkout.session.completed":
+        await handleCheckoutCompleted(eventRowId, event.data.object as Stripe.Checkout.Session, db);
         break;
-      }
-
-      case "customer.subscription.updated": {
-        const sub = event.data.object as Stripe.Subscription;
-        const customerId = sub.customer as string;
-        const priceId = sub.items.data[0]?.price?.id;
-        const tier = tierFromPriceId(priceId);
-        const periodEnd = sub.current_period_end;
-
-        await db.update(users)
-          .set({
-            tier: sub.status === "active" ? tier : "free",
-            stripeCurrentPeriodEnd: periodEnd,
-            updatedAt: Math.floor(Date.now() / 1000),
-          })
-          .where(eq(users.stripeCustomerId, customerId));
+      case "customer.subscription.updated":
+        await handleSubscriptionUpdated(eventRowId, event.data.object as StripeSubscriptionSnapshot, db);
         break;
-      }
-
-      case "customer.subscription.deleted": {
-        const sub = event.data.object as Stripe.Subscription;
-        await db.update(users)
-          .set({
-            tier: "free",
-            stripeSubscriptionId: null,
-            updatedAt: Math.floor(Date.now() / 1000),
-          })
-          .where(eq(users.stripeCustomerId, sub.customer as string));
+      case "customer.subscription.deleted":
+        await handleSubscriptionDeleted(eventRowId, event.data.object as StripeSubscriptionSnapshot, db);
         break;
-      }
+      default:
+        log("info", "Stripe webhook event ignored", {
+          ...requestContext,
+          stripeEventId: event.id,
+          stripeEventType: event.type,
+        });
     }
 
     return new Response("OK", { status: 200 });
-
-  } catch (err) {
-    console.error("Webhook handler error:", err);
+  } catch (error) {
+    logError("Stripe webhook handler failed", error, {
+      ...requestContext,
+      stripeEventId: event.id,
+      stripeEventType: event.type,
+    });
     return new Response("Internal error", { status: 500 });
   }
 }
 
-/** Cloudflare Workers compatible Stripe webhook verification */
 async function verifyStripeWebhook(
   payload: string,
   signature: string,
-  secret: string
+  secret: string,
 ): Promise<Stripe.Event> {
   const parts = signature.split(",");
-  const timestamp = parts.find((p) => p.startsWith("t="))?.slice(2);
-  const v1 = parts.find((p) => p.startsWith("v1="))?.slice(3);
+  const timestamp = parts.find((part) => part.startsWith("t="))?.slice(2);
+  const v1 = parts.find((part) => part.startsWith("v1="))?.slice(3);
 
-  if (!timestamp || !v1) throw new Error("Malformed signature");
+  if (!timestamp || !v1) {
+    throw new Error("Malformed signature");
+  }
 
   const key = await crypto.subtle.importKey(
     "raw",
     new TextEncoder().encode(secret),
     { name: "HMAC", hash: "SHA-256" },
     false,
-    ["sign"]
+    ["sign"],
   );
 
   const data = new TextEncoder().encode(`${timestamp}.${payload}`);
-  const sig = await crypto.subtle.sign("HMAC", key, data);
-  const expected = Array.from(new Uint8Array(sig))
-    .map((b) => b.toString(16).padStart(2, "0"))
+  const signatureBuffer = await crypto.subtle.sign("HMAC", key, data);
+  const expected = Array.from(new Uint8Array(signatureBuffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
 
-  if (expected !== v1) throw new Error("Signature mismatch");
+  if (expected !== v1) {
+    throw new Error("Signature mismatch");
+  }
 
-  // Reject events older than 5 minutes
-  if (Math.abs(Date.now() / 1000 - parseInt(timestamp)) > 300) {
+  if (Math.abs(Date.now() / 1000 - Number.parseInt(timestamp, 10)) > 300) {
     throw new Error("Timestamp too old");
   }
 

@@ -18,6 +18,9 @@ export const telegramSupportedCommands = [
   "/reply",
   "/brain",
   "/kill",
+  "/profit",
+  "/learned",
+  "/approvals",
   "/status",
 ] as const;
 
@@ -31,6 +34,9 @@ export type TelegramCommandAction =
   | "agent-reply"
   | "brain-dump"
   | "kill-agent"
+  | "profit-radar"
+  | "learning-digest"
+  | "list-approvals"
   | "swarm-status"
   | "reject-command";
 
@@ -183,6 +189,12 @@ export function parseTelegramCommand(text: string): TelegramParsedCommand {
       return parts[0] ? ok(command, "brain-dump", { agentId: parts[0] }, { replyOnly: true }) : invalid(command, "Brain target agent is required.");
     case "/kill":
       return parts[0] ? ok(command, "kill-agent", { target: parts[0] }, { intent: "ops-override", requiresConfirmation: true }) : invalid(command, "Kill target agent is required.");
+    case "/profit":
+      return ok(command, "profit-radar", {}, { replyOnly: true });
+    case "/learned":
+      return ok(command, "learning-digest", {}, { replyOnly: true });
+    case "/approvals":
+      return ok(command, "list-approvals", {}, { replyOnly: true });
     case "/status":
       return ok(command, "swarm-status", {}, { replyOnly: true });
     default:
@@ -226,8 +238,52 @@ function replyFor(parsed: TelegramParsedCommand) {
   if (!parsed.ok) return `Command rejected: ${parsed.reason}`;
   if (parsed.requiresConfirmation) return `${parsed.command} queued for confirmation; no destructive action was taken.`;
   if (parsed.requiresApproval) return `${parsed.command} queued for operator approval before any outbound action.`;
+  if (parsed.action === "list-goals") return "/goals accepted; current goal directive summary queued.";
+  if (parsed.action === "profit-radar") return "/profit accepted; profit radar summary queued.";
+  if (parsed.action === "learning-digest") return "/learned accepted; learning and skill growth summary queued.";
+  if (parsed.action === "list-approvals") return "/approvals accepted; approval queue summary queued.";
   if (parsed.intent) return `${parsed.command} accepted as ${parsed.action}; intent recorded.`;
   return `${parsed.command} accepted; dashboard response queued.`;
+}
+
+function buildGoalDirective(text: string, createdAt: string) {
+  return {
+    schemaVersion: "chapai.goal-directive.v1",
+    id: `goal-${stableHash(text)}`,
+    createdAt,
+    updatedAt: createdAt,
+    source: "telegram",
+    sourcePath: "connectors/telegram/control_intent.jsonl",
+    text,
+    owner: "orchestrator",
+    status: "active",
+    linkedLanes: [
+      "manager",
+      "growth-orchestrator",
+      "scout",
+      "social-studio",
+      "outreach-email",
+      "content",
+      "mobile-product",
+    ],
+    successSignals: [
+      "Every lane has a truthful live/stale/sleeping state.",
+      "Every learning claim has proof and a promotion status.",
+      "Every external tool action has an approval state.",
+      "Every profit idea includes cost, risk, confidence, and next test.",
+    ],
+    approvalBoundary: "watch-enrich-draft-stage-approve",
+    proofPaths: [
+      "reports/agentic-progress-2026-05-13.md",
+      "config/agent-invocation-ledger.jsonl",
+      "config/profit-pattern-candidates.jsonl",
+    ],
+    progress: {
+      state: "recorded",
+      percent: 10,
+      detail: "Goal directive is durable; progress is proven by invocation, learning, tool-permission, and profit-pattern ledgers.",
+    },
+  };
 }
 
 export function appendTelegramControlMessage(message: TelegramControlMessage) {
@@ -269,6 +325,7 @@ export function appendTelegramControlMessage(message: TelegramControlMessage) {
   appendJsonl(path.join(root, "outbound_queued.jsonl"), outboundEvent);
 
   let intentEvent: ConnectorEvent | null = null;
+  let goalEvent: ConnectorEvent | null = null;
   if (parsed.intent) {
     intentEvent = event("control_intent", {
       ...basePayload,
@@ -280,10 +337,21 @@ export function appendTelegramControlMessage(message: TelegramControlMessage) {
     }, { runId });
     appendJsonl(path.join(root, "control_intent.jsonl"), intentEvent);
   }
+  if (parsed.ok && parsed.action === "create-goal" && parsed.payload.text) {
+    const goal = buildGoalDirective(parsed.payload.text, new Date().toISOString());
+    goalEvent = event("goal_directive", {
+      ...basePayload,
+      goal,
+    }, {
+      runId,
+      allowedUses: ["dashboard", "audit", "operator-control", "agent-planning"],
+    });
+    appendJsonl(path.join(root, "goal_directive.jsonl"), goalEvent);
+  }
 
   const summary = getTelegramControlSummary();
   writeJson(path.join(root, "control-state.json"), summary);
-  return { parsed, events: [messageEvent, commandEvent, outboundEvent, intentEvent].filter(Boolean) };
+  return { parsed, events: [messageEvent, commandEvent, outboundEvent, intentEvent, goalEvent].filter(Boolean) };
 }
 
 function readJsonl(filePath: string) {
@@ -319,6 +387,7 @@ export function getTelegramControlSummary() {
   const commands = valid.filter((row) => row.event?.event_type === "command_received").map((row) => row.event as ConnectorEvent);
   const intents = valid.filter((row) => row.event?.event_type === "control_intent").map((row) => row.event as ConnectorEvent);
   const outbound = valid.filter((row) => row.event?.event_type === "outbound_queued").map((row) => row.event as ConnectorEvent);
+  const goalEvents = valid.filter((row) => row.event?.event_type === "goal_directive").map((row) => row.event as ConnectorEvent);
   const byCommand = commands.reduce<Record<string, number>>((accumulator, command) => {
     const key = String(command.payload?.command ?? "unknown");
     accumulator[key] = (accumulator[key] ?? 0) + 1;
@@ -335,6 +404,11 @@ export function getTelegramControlSummary() {
     rejectedCommands: commands.filter((item) => !item.payload?.ok).length,
     outboundQueued: outbound.length,
     controlIntents: intents.length,
+    goalDirectives: goalEvents.length,
+    latestGoalDirective: goalEvents
+      .sort((left, right) => Date.parse(String(right.emitted_at ?? "")) - Date.parse(String(left.emitted_at ?? "")))
+      .map((item) => item.payload?.goal)
+      .find(Boolean) ?? null,
     pendingApproval: intents.filter((item) => item.payload?.intent === "approval-decision" || item.payload?.intent === "agent-instruction").length,
     confirmationRequired: intents.filter((item) => item.payload?.status === "confirmation_required").length,
     supportedCommands: [...telegramSupportedCommands],

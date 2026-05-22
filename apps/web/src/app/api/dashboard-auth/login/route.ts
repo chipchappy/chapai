@@ -1,3 +1,4 @@
+import { ACCESS_KEY_COOKIE, validateAccessKeyRuntime } from "@/lib/access-keys";
 import { compareDashboardAccessKey, DASHBOARD_AUTH_COOKIE } from "@/lib/dashboard-auth";
 import { NextResponse } from "next/server";
 
@@ -37,18 +38,28 @@ function resolveOrigin(request: Request) {
 export async function POST(request: Request) {
   const { key, nextPath } = await readLoginPayload(request);
   const safeNext = nextPath.startsWith("/") ? nextPath : "/dashboard";
-  const authenticated = compareDashboardAccessKey(key);
+  const previewKey = await validateAccessKeyRuntime(key);
+  const authenticated = Boolean(previewKey) || compareDashboardAccessKey(key);
   const origin = resolveOrigin(request);
   const target = new URL(authenticated ? safeNext : `/guild-access?error=1&next=${encodeURIComponent(safeNext)}`, origin);
   const response = NextResponse.redirect(target);
 
   if (authenticated) {
-    response.cookies.set(DASHBOARD_AUTH_COOKIE, key, {
-      httpOnly: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 14,
-    });
+    if (previewKey) {
+      response.cookies.set(ACCESS_KEY_COOKIE, previewKey.code, {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 60 * 60 * 24 * 30,
+      });
+    } else {
+      response.cookies.set(DASHBOARD_AUTH_COOKIE, key, {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: 60 * 60 * 24 * 14,
+      });
+    }
   }
 
   return response;

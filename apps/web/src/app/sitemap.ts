@@ -1,10 +1,28 @@
 import type { MetadataRoute } from "next";
+import { DEFAULT_SITE_ORIGIN } from "@/lib/site-origin";
+import { getAllPosts } from "@/content/blog/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://clarityccrn.chapaisolutions.com";
+  const base = DEFAULT_SITE_ORIGIN;
   const now = new Date();
 
+  const blogEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${base}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...getAllPosts().map((post) => ({
+      url: `${base}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.66,
+    })),
+  ];
+
   return [
+    ...blogEntries,
     {
       url: `${base}/`,
       lastModified: now,

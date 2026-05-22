@@ -1,12 +1,13 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { resolveEnv } from "@/lib/db";
 import { validateAccessKey } from "@/lib/access-keys";
+import { getLaunchOffer, getLaunchOfferDisplayLabel, type LaunchPlanType } from "@/lib/launch-offers";
 import type { Tier } from "@/lib/types";
 
 export const PAID_ACCESS_COOKIE = "clarity_paid_access";
 
-export type PremiumEntitlement = "live-bank" | "rich-modes" | "practice-exams" | "tutor";
-export type PremiumAccessSource = "none" | "founder-key" | "preview-key" | "paid-cookie";
+export type PremiumEntitlement = "live-bank" | "rich-modes" | "practice-exams" | "tutor" | "icu-sim-beta";
+export type PremiumAccessSource = "none" | "founder-key" | "preview-key" | "paid-cookie" | "server-entitlement";
 
 type PaidAccessPayload = {
   v: 1;
@@ -24,16 +25,22 @@ export type ResolvedPremiumAccess = {
   tier: Tier;
   source: PremiumAccessSource;
   accessType: string | null;
+  planCode: string | null;
+  planType: LaunchPlanType | null;
   displayLabel: string | null;
   examTrack: "all" | "ccrn" | "nclex";
   entitlements: PremiumEntitlement[];
+  questionBankAccessPercent: number;
+  practiceExamLimit: number;
   canUseTutor: boolean;
   canUseRichModes: boolean;
   canUsePracticeExams: boolean;
+  canUseIcuSimBeta: boolean;
+  canUseAdvancedAnalytics: boolean;
   expiresAt: string | null;
 };
 
-const DEFAULT_ENTITLEMENTS: PremiumEntitlement[] = ["live-bank", "rich-modes", "practice-exams", "tutor"];
+const DEFAULT_ENTITLEMENTS: PremiumEntitlement[] = ["live-bank", "rich-modes", "practice-exams", "tutor", "icu-sim-beta"];
 
 function getAccessSecret() {
   const env = resolveEnv();
@@ -51,10 +58,14 @@ function sanitizeExamTrack(value: string | undefined) {
   return "all" as const;
 }
 
-function sanitizeEntitlements(input: string[] | PremiumEntitlement[] | undefined): PremiumEntitlement[] {
+export function sanitizePremiumEntitlements(input: string[] | PremiumEntitlement[] | undefined): PremiumEntitlement[] {
   const values = Array.isArray(input) ? input : [];
   const next = values.filter((value): value is PremiumEntitlement => (
-    value === "live-bank" || value === "rich-modes" || value === "practice-exams" || value === "tutor"
+    value === "live-bank"
+    || value === "rich-modes"
+    || value === "practice-exams"
+    || value === "tutor"
+    || value === "icu-sim-beta"
   ));
 
   return next.length > 0 ? next : [...DEFAULT_ENTITLEMENTS];
@@ -94,7 +105,7 @@ export function createPaidAccessToken(input: {
     planCode: input.planCode,
     packageLabel: input.packageLabel,
     examTrack: input.examTrack ?? "all",
-    entitlements: sanitizeEntitlements(input.entitlements),
+    entitlements: sanitizePremiumEntitlements(input.entitlements),
     sessionId: input.sessionId,
     issuedAt: Date.now(),
     expiresAt: input.expiresAt,
@@ -134,7 +145,7 @@ export function validatePaidAccessToken(token: string | undefined | null) {
     return {
       ...payload,
       examTrack: sanitizeExamTrack(payload.examTrack),
-      entitlements: sanitizeEntitlements(payload.entitlements),
+      entitlements: sanitizePremiumEntitlements(payload.entitlements),
     } satisfies PaidAccessPayload;
   } catch {
     return null;
@@ -152,29 +163,42 @@ export function resolvePremiumAccess(input: {
       tier: founderAccess ? "pro" : "plus",
       source: founderAccess ? "founder-key" : "preview-key",
       accessType: accessKey.type,
+      planCode: null,
+      planType: null,
       displayLabel: founderAccess ? "Founder full access" : "Preview premium active",
       examTrack: accessKey.scope === "all" ? "all" : accessKey.scope,
       entitlements: [...DEFAULT_ENTITLEMENTS],
+      questionBankAccessPercent: 100,
+      practiceExamLimit: 5,
       canUseTutor: true,
       canUseRichModes: true,
       canUsePracticeExams: true,
+      canUseIcuSimBeta: true,
+      canUseAdvancedAnalytics: true,
       expiresAt: accessKey.expiresAt,
     };
   }
 
   const paidAccess = validatePaidAccessToken(input.paidAccessToken);
   if (paidAccess) {
-    const entitlements = sanitizeEntitlements(paidAccess.entitlements);
+    const entitlements = sanitizePremiumEntitlements(paidAccess.entitlements);
+    const offer = getLaunchOffer(paidAccess.planCode);
     return {
       tier: paidAccess.tier,
       source: "paid-cookie",
       accessType: paidAccess.planCode,
-      displayLabel: paidAccess.tier === "pro" ? "Pro access active" : "Plus access active",
+      planCode: paidAccess.planCode,
+      planType: offer?.planType ?? null,
+      displayLabel: getLaunchOfferDisplayLabel(paidAccess.planCode),
       examTrack: paidAccess.examTrack,
       entitlements,
+      questionBankAccessPercent: offer?.questionBankAccessPercent ?? 100,
+      practiceExamLimit: offer?.practiceExamLimit ?? (hasEntitlement(entitlements, "practice-exams") ? 5 : 0),
       canUseTutor: hasEntitlement(entitlements, "tutor"),
-      canUseRichModes: hasEntitlement(entitlements, "rich-modes"),
+      canUseRichModes: offer?.canUseRichModes ?? hasEntitlement(entitlements, "rich-modes"),
       canUsePracticeExams: hasEntitlement(entitlements, "practice-exams"),
+      canUseIcuSimBeta: offer?.canUseIcuSimBeta ?? hasEntitlement(entitlements, "icu-sim-beta"),
+      canUseAdvancedAnalytics: offer?.canUseAdvancedAnalytics ?? paidAccess.tier === "pro",
       expiresAt: new Date(paidAccess.expiresAt).toISOString(),
     };
   }
@@ -183,12 +207,18 @@ export function resolvePremiumAccess(input: {
     tier: "free",
     source: "none",
     accessType: null,
+    planCode: null,
+    planType: null,
     displayLabel: null,
     examTrack: "all",
     entitlements: [],
+    questionBankAccessPercent: 100,
+    practiceExamLimit: 0,
     canUseTutor: false,
     canUseRichModes: false,
     canUsePracticeExams: false,
+    canUseIcuSimBeta: false,
+    canUseAdvancedAnalytics: false,
     expiresAt: null,
   };
 }

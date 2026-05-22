@@ -1,47 +1,74 @@
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
+import { getHostedUserByAccount } from "@/lib/billing-store";
+import { allowLocalFallbacks } from "@/lib/env";
 import { quizSessions } from "@chapai/db/schema";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
+import { createRequestContext } from "@/lib/logger";
+import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
+import { getAuthenticatedUser } from "@/lib/supabase/server";
 
+export const dynamic = "force-dynamic";
+
+function emptyHistory() {
+  return {
+    sessions: [],
+    stats: {
+      totalSessions: 0,
+      totalQuestions: 0,
+      totalCorrect: 0,
+      overallAccuracy: 0,
+    },
+  };
+}
 
 export async function GET(request: Request) {
+  const requestContext = createRequestContext(request, { route: "/api/quiz/history" });
   const env = resolveEnv();
-  const url = new URL(request.url);
-  const userId = url.searchParams.get("userId");
+  const user = await getAuthenticatedUser();
+  const userId = user?.id ?? null;
 
   if (!userId) {
-    return Response.json({ error: "userId required" }, { status: 400 });
+    return jsonSuccess({
+      ...emptyHistory(),
+      requiresAuth: true,
+    }, 200, { requestId: requestContext.requestId });
   }
 
   try {
     if (!hasDatabase(env)) {
-      return Response.json({
-        sessions: [],
-        stats: {
-          totalSessions: 0,
-          totalQuestions: 0,
-          totalCorrect: 0,
-          overallAccuracy: 0,
-        },
-      });
+      if (!allowLocalFallbacks(env)) {
+        return jsonError(503, "QUIZ_HISTORY_UNAVAILABLE", "Quiz history storage is not configured for production.", requestContext, {
+          requestId: requestContext.requestId,
+        });
+      }
+      return jsonSuccess(emptyHistory(), 200, { requestId: requestContext.requestId });
     }
 
     const db = getDB(env);
+    const hostedUser = await getHostedUserByAccount(db, {
+      userId,
+      email: user?.email ?? null,
+    });
+    if (!hostedUser) {
+      return jsonSuccess(emptyHistory(), 200, { requestId: requestContext.requestId });
+    }
+
     const sessions = await db
       .select()
       .from(quizSessions)
-      .where(and(eq(quizSessions.userId, userId), isNotNull(quizSessions.completedAt)))
+      .where(and(eq(quizSessions.userId, hostedUser.id), isNotNull(quizSessions.completedAt)))
       .orderBy(desc(quizSessions.startedAt))
       .limit(10);
 
     const allSessions = await db
       .select()
       .from(quizSessions)
-      .where(and(eq(quizSessions.userId, userId), isNotNull(quizSessions.completedAt)));
+      .where(and(eq(quizSessions.userId, hostedUser.id), isNotNull(quizSessions.completedAt)));
 
     const totalQuestions = allSessions.reduce((sum, s) => sum + s.totalQuestions, 0);
     const totalCorrect = allSessions.reduce((sum, s) => sum + s.correctCount, 0);
 
-    return Response.json({
+    return jsonSuccess({
       sessions: sessions.map((s) => ({
         id: s.id,
         exam: s.exam,
@@ -61,9 +88,11 @@ export async function GET(request: Request) {
           ? Math.round((totalCorrect / totalQuestions) * 100)
           : 0,
       },
-    });
+    }, 200, { requestId: requestContext.requestId });
   } catch (err) {
-    console.error("quiz/history error:", err);
-    return Response.json({ error: "Internal error" }, { status: 500 });
+    return handleRouteError(err, {
+      requestId: requestContext.requestId,
+      route: "/api/quiz/history",
+    });
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import BoardroomControlPanel from "@/components/dashboard/BoardroomControlPanel";
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
 import type { MissionControlSnapshot } from "@/lib/types";
@@ -7,9 +8,18 @@ import type { MissionControlSnapshot } from "@/lib/types";
 type Member = MissionControlSnapshot["agents"][number] & {
   brain?: MissionControlSnapshot["brains"][number];
 };
+type UnifiedAgent = MissionControlSnapshot["unifiedGuild"]["agents"][number];
 
-type DossierTab = "status" | "brain" | "blocks";
+type DossierTab = "status" | "brain" | "experiments" | "events" | "blocks";
 type WorkerDisplayState = "working" | "idle" | "offline" | "blocked" | "looped";
+
+function uniqueLines(...lists: Array<Array<string | null | undefined> | undefined>) {
+  return lists
+    .flatMap((list) => list ?? [])
+    .map((item) => String(item ?? "").replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .filter((item, index, array) => array.indexOf(item) === index);
+}
 
 function toneClass(value: string) {
   const lower = value.toLowerCase();
@@ -107,6 +117,8 @@ function truthLabel(member: Member) {
     "runtime-file": "runtime file",
     "stale-telemetry": "stale telemetry",
     "brain-only": "brain only",
+    "presentation-only": "presentation only",
+    unwired: "unwired lane",
   };
 
   return map[member.truthLevel] ?? member.truthLevel;
@@ -118,6 +130,24 @@ function shortLine(value: string, limit = 72) {
   }
 
   return `${value.slice(0, limit - 3).trimEnd()}...`;
+}
+
+function xpProgress(xp: number) {
+  return `${Math.max(8, Math.min(100, xp % 100 || 100))}%`;
+}
+
+function stateCounts(members: Member[]) {
+  return members.reduce(
+    (counts, member) => {
+      counts[member.state] += 1;
+      return counts;
+    },
+    { live: 0, sleeping: 0, blocked: 0, stale: 0 } as Record<Member["state"], number>,
+  );
+}
+
+function selectedUnifiedAgent(snapshot: MissionControlSnapshot, selectedId: string): UnifiedAgent | undefined {
+  return snapshot.unifiedGuild.agents.find((agent) => agent.id === selectedId);
 }
 
 function stationClass(member: Member) {
@@ -209,7 +239,20 @@ function AgentSprite({ member }: { member: Member }) {
   );
 }
 
-export default function GuildOfficeScene({ snapshot }: { snapshot: MissionControlSnapshot }) {
+export default function GuildOfficeScene({
+  snapshot,
+  mode = "dashboard",
+  access,
+}: {
+  snapshot: MissionControlSnapshot;
+  mode?: "dashboard" | "boardroom";
+  access?: {
+    role: "viewer" | "operator";
+    displayLabel: string | null;
+    accessType: string | null;
+    canSummon: boolean;
+  };
+}) {
   const members = useMemo<Member[]>(
     () =>
       snapshot.agents.map((agent) => ({
@@ -219,7 +262,7 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
     [snapshot],
   );
 
-  const [selectedId, setSelectedId] = useState(members[0]?.id ?? "");
+  const [selectedId, setSelectedId] = useState(snapshot.boardroom.activeMeeting?.currentPresenterId ?? members[0]?.id ?? "");
   const [selectedTab, setSelectedTab] = useState<DossierTab>("status");
   const selected = members.find((member) => member.id === selectedId) ?? members[0];
 
@@ -234,14 +277,107 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
   const primaryFix = topFixes[0];
   const primaryService = topServices[0];
   const growthOps = members.filter((member) => member.id === "social-studio" || member.id === "outreach-email");
+  const meetingForDossier = snapshot.boardroom.activeMeeting ?? snapshot.boardroom.latestCompletedMeeting;
+  const selectedCheckpoint = meetingForDossier?.checkpoints.find((checkpoint) => checkpoint.agentId === selected.id);
+  const selectedUnified = selectedUnifiedAgent(snapshot, selected.id);
+  const selectedUnifiedHealth = selectedUnified?.brain.health ?? selected.brain?.brainHygiene ?? "clean";
+  const selectedSources = selectedUnified?.sources ?? [];
+  const selectedTheories = selectedUnified?.theories.length ? selectedUnified.theories : selected.brain?.capabilityFocus ?? [];
+  const selectedExperiments = selectedUnified?.experiments.length ? selectedUnified.experiments : selected.brain?.workflowContract ?? [];
+  const selectedTrialErrors = selectedUnified?.trialsAndErrors ?? [];
+  const selectedBrainSkills = selectedUnified?.brain.skills.length ? selectedUnified.brain.skills : selected.brain?.skills ?? [];
+  const selectedActiveContext = selectedUnified?.brain.activeContext.length ? selectedUnified.brain.activeContext : selected.brain?.activeContext ?? [];
+  const selectedDurableMemory = selectedUnified?.brain.durableMemory.length ? selectedUnified.brain.durableMemory : selected.brain?.durableMemory ?? [];
+  const counts = stateCounts(members);
+  const selectedLevel = selectedUnified?.stats.level ?? selected.brain?.growthLevel ?? 1;
+  const selectedXp = selectedUnified?.stats.xp ?? Math.round((selected.brain?.confidence ?? 0.72) * 100);
+  const selectedCurrentGoal = selectedUnified?.currentWorkingGoal ?? selectedUnified?.brain.nextSkillTarget ?? selected.brain?.nextSkillTarget ?? selected.current;
+  const selectedPredictions = uniqueLines(
+    selectedUnified?.predictions,
+    selectedTheories,
+    [deriveSuggestion(selected)],
+  ).slice(0, 5);
+  const selectedExperimentResults = uniqueLines(
+    selectedUnified?.experimentResults,
+    selectedUnified?.brain.recentEvents,
+    selected.brain?.recentEvents?.map((event) => event.summary),
+  ).slice(0, 7);
+  const selectedCommunications = uniqueLines(
+    selectedUnified?.significantCommunications,
+    selectedCheckpoint?.usefulShareouts,
+    snapshot.boardroom.digest,
+    selected.blocker !== "none" ? [`human required: ${selected.blocker}`] : [],
+  ).slice(0, 7);
+  const selectedSignificantEvents = uniqueLines(
+    selectedUnified?.significantEvents,
+    selectedUnified?.brain.recentEvents,
+    selected.brain?.recentEvents?.map((event) => `${event.kind}: ${event.summary}`),
+    selectedCheckpoint ? [`checkpoint: ${selectedCheckpoint.latestFinding}`] : [],
+  ).slice(0, 7);
+  const selectedHumanRequiredBlocks = uniqueLines(
+    selectedUnified?.humanRequiredBlocks,
+    selected.blocker !== "none" ? [needsHuman(selected)] : [],
+    selectedCheckpoint?.status === "blocked" ? [selectedCheckpoint.blocker] : [],
+  ).slice(0, 6);
+  const xpWidth = xpProgress(selectedXp);
 
   return (
     <section className="guild-tavern-shell">
       <div className="guild-tavern-copy">
-        <div className="section-label">Guild tavern</div>
-        <h2>One warm room, one practical rail.</h2>
-        <p>Every worker stays in the tavern. The rail shows only what matters. Click anyone for the real brain and blocker view.</p>
+        <div className="section-label">{mode === "boardroom" ? "boardroom floor" : "guild tavern"}</div>
+        <h2>{mode === "boardroom" ? "one podium, one dossier, one clean control rail." : "One warm room, one practical rail."}</h2>
+        <p>
+          {mode === "boardroom"
+            ? "Summon the swarm, inspect checkpoint bundles, and click any employee for the operational view plus the presentation layer."
+            : "Every worker stays in the tavern. The rail shows only what matters. Click anyone for the real brain and blocker view."}
+        </p>
       </div>
+
+      <div className="guild-command-deck">
+        <div className="guild-command-hero-card">
+          <div className="guild-command-eyebrow">persistent guild command center</div>
+          <h3>{selected.nickname} is selected.</h3>
+          <p>{selectedCurrentGoal}</p>
+          <div className="guild-command-statline">
+            <span>{counts.live} live</span>
+            <span>{counts.sleeping} sleeping</span>
+            <span>{counts.blocked} blocked</span>
+            <span>{counts.stale} stale</span>
+          </div>
+        </div>
+
+        <div className="guild-roster-grid" aria-label="Agent roster">
+          {members.map((member) => {
+            const workerState = displayState(member);
+            const unified = selectedUnifiedAgent(snapshot, member.id);
+            const level = unified?.stats.level ?? member.brain?.growthLevel ?? 1;
+            const xp = unified?.stats.xp ?? Math.round((member.brain?.confidence ?? 0.72) * 100);
+            return (
+              <button
+                key={member.id}
+                type="button"
+                className={`guild-roster-card guild-roster-card-${workerState.tone} ${selected.id === member.id ? "is-selected" : ""}`}
+                onClick={() => {
+                  setSelectedId(member.id);
+                  setSelectedTab("status");
+                }}
+              >
+                <span className="guild-roster-sigil">{member.avatar.sigil}</span>
+                <span className="guild-roster-main">
+                  <strong>{member.nickname}</strong>
+                  <em>{member.role}</em>
+                </span>
+                <span className="guild-roster-level">lv {level}</span>
+                <span className="guild-roster-xp">
+                  <span style={{ width: xpProgress(xp) }} />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {access ? <BoardroomControlPanel boardroom={snapshot.boardroom} access={access} /> : null}
 
       <div className="guild-tavern-grid">
         <div className="guild-tavern-floor">
@@ -252,8 +388,8 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
           <div className="guild-tavern-rug guild-tavern-rug-main" />
           <div className="guild-tavern-rug guild-tavern-rug-stage" />
           <div className="guild-tavern-banner">
-            <span>Guild floor</span>
-            <strong>{snapshot.runtime.runtimeState}</strong>
+            <span>{mode === "boardroom" ? "boardroom" : "Guild floor"}</span>
+            <strong>{snapshot.boardroom.activeMeeting?.status ?? snapshot.runtime.runtimeState}</strong>
           </div>
           <div className="guild-tavern-candle guild-tavern-candle-a" />
           <div className="guild-tavern-candle guild-tavern-candle-b" />
@@ -325,10 +461,23 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
               <div className="guild-tavern-runtime">{selected.runtime}</div>
               <h3>{selected.nickname}</h3>
               <p>{selected.role}</p>
+              {selected.presentation ? <p className="mt-1 text-xs uppercase tracking-[0.22em] text-muted">{selected.presentation.presentationTitle}</p> : null}
               <p className="mt-1 text-sm text-muted">{selected.brain?.mission ?? "No mission recorded yet."}</p>
               <div className={`guild-state-chip guild-state-chip-${selectedDisplayState.tone}`}>{selectedDisplayState.label}</div>
             </div>
           </div>
+
+          {selected.presentation ? (
+            <div className="mt-4 rounded-[20px] border border-border bg-[rgba(251,249,243,0.94)] px-4 py-4">
+              <div className="section-label">Presentation mode</div>
+              <div className="mt-3 space-y-3 text-sm leading-6 text-dark">
+                <p><strong>What they do:</strong> {selected.presentation.whatTheyDo}</p>
+                <p><strong>Business growth:</strong> {selected.presentation.howTheyHelpTheBusinessGrow}</p>
+                <p><strong>Self growth:</strong> {selected.presentation.howTheyGrowThemselves}</p>
+                <p><strong>Off hours:</strong> {selected.presentation.offHours}</p>
+              </div>
+            </div>
+          ) : null}
 
           <div className="guild-tavern-summary">
             <div>
@@ -337,15 +486,38 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
             </div>
             <div>
               <small>Growth</small>
-              <strong>Lv {selected.brain?.growthLevel ?? 1}</strong>
+              <strong>Lv {selectedLevel}</strong>
             </div>
             <div>
-              <small>Trust</small>
-              <strong>{Math.round((selected.brain?.confidence ?? 0.72) * 100)}%</strong>
+              <small>XP</small>
+              <strong>{selectedXp}</strong>
             </div>
             <div>
-              <small>Output</small>
-              <strong>{selected.outputToday} today</strong>
+              <small>Sources</small>
+              <strong>{selectedSources.length || selected.outputToday}</strong>
+            </div>
+          </div>
+
+          <div className="guild-player-meter" aria-label={`${selected.nickname} experience meter`}>
+            <span style={{ width: xpWidth }} />
+          </div>
+
+          <div className="guild-rpg-stat-grid">
+            <div>
+              <small>skills</small>
+              <strong>{selectedBrainSkills.length}</strong>
+            </div>
+            <div>
+              <small>memories</small>
+              <strong>{selectedDurableMemory.length}</strong>
+            </div>
+            <div>
+              <small>events</small>
+              <strong>{selectedSignificantEvents.length}</strong>
+            </div>
+            <div>
+              <small>blocks</small>
+              <strong>{selectedHumanRequiredBlocks.length}</strong>
             </div>
           </div>
 
@@ -357,12 +529,16 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
               </div>
               <div className="guild-terminal-lines">
                 <div className="guild-terminal-line guild-terminal-line-live">
-                  <strong>current</strong>
-                  <span>{selected.current}</span>
+                  <strong>goal</strong>
+                  <span>{selectedCurrentGoal}</span>
                 </div>
                 <div className="guild-terminal-line guild-terminal-line-info">
                   <strong>latest change</strong>
-                  <span>{selected.latest}</span>
+                  <span>{selectedUnified?.latest ?? selected.latest}</span>
+                </div>
+                <div className="guild-terminal-line guild-terminal-line-info">
+                  <strong>prediction</strong>
+                  <span>{selectedPredictions[0] ?? deriveSuggestion(selected)}</span>
                 </div>
                 <div className={`guild-terminal-line guild-terminal-line-${selected.blocker !== "none" ? "warning" : "live"}`}>
                   <strong>human step</strong>
@@ -422,6 +598,29 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
                 })}
               </div>
             </div>
+
+            {mode === "boardroom" && snapshot.boardroom.activeMeeting ? (
+              <div className="guild-terminal-block">
+                <div className="guild-terminal-head">
+                  <span>board meeting</span>
+                  <strong>{snapshot.boardroom.activeMeeting.status}</strong>
+                </div>
+                <div className="guild-terminal-lines">
+                  <div className="guild-terminal-line guild-terminal-line-live">
+                    <strong>summary</strong>
+                    <span>{snapshot.boardroom.activeMeeting.summary}</span>
+                  </div>
+                  <div className="guild-terminal-line guild-terminal-line-info">
+                    <strong>requested by</strong>
+                    <span>{snapshot.boardroom.activeMeeting.requestedBy}</span>
+                  </div>
+                  <div className="guild-terminal-line guild-terminal-line-live">
+                    <strong>podium</strong>
+                    <span>{snapshot.boardroom.activeMeeting.currentPresenterId ?? "rotating"}</span>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
 
           <div className="guild-tab-row" role="tablist" aria-label="Employee dossier">
@@ -430,7 +629,7 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
               className={`guild-tab ${selectedTab === "status" ? "guild-tab-active" : ""}`}
               onClick={() => setSelectedTab("status")}
             >
-              Live
+              Goal
             </button>
             <button
               type="button"
@@ -438,6 +637,20 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
               onClick={() => setSelectedTab("brain")}
             >
               Brain
+            </button>
+            <button
+              type="button"
+              className={`guild-tab ${selectedTab === "experiments" ? "guild-tab-active" : ""}`}
+              onClick={() => setSelectedTab("experiments")}
+            >
+              Experiments
+            </button>
+            <button
+              type="button"
+              className={`guild-tab ${selectedTab === "events" ? "guild-tab-active" : ""}`}
+              onClick={() => setSelectedTab("events")}
+            >
+              Events
             </button>
             <button
               type="button"
@@ -451,22 +664,32 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
           {selectedTab === "status" ? (
             <div className="guild-tavern-details">
               <div className="guild-tavern-body">
-                <p><strong>Current action:</strong> {selected.current}</p>
-                <p><strong>Latest visible change:</strong> {selected.latest}</p>
+                <p><strong>Current working goal:</strong> {selectedCurrentGoal}</p>
+                <p><strong>Current action:</strong> {selectedUnified?.currentTask ?? selected.current}</p>
+                <p><strong>Latest visible change:</strong> {selectedUnified?.latest ?? selected.latest}</p>
+                <p><strong>Prediction:</strong> {selectedPredictions[0] ?? deriveSuggestion(selected)}</p>
                 <p><strong>Worker state:</strong> {selectedDisplayState.label}</p>
-                <p><strong>Truth level:</strong> {truthLabel(selected)}</p>
-                <p><strong>Data source:</strong> {selected.provenance}</p>
-                <p><strong>ETA / pace:</strong> {selected.eta}</p>
+                <p><strong>Truth level:</strong> {selectedUnified?.truthLevel ?? truthLabel(selected)}</p>
+                <p><strong>Data source:</strong> {selectedSources[0]?.label ?? selected.provenance}</p>
+                <p><strong>Plan:</strong> {selectedUnified?.plan ?? selected.workflowSuggestion ?? selected.eta}</p>
                 <p><strong>Runtime updated:</strong> {selected.lastRuntimeUpdateAt ?? "No runtime timestamp yet."}</p>
                 <p><strong>Brain updated:</strong> {selected.lastBrainUpdateAt ?? "No brain timestamp yet."}</p>
                 <p>
                   <strong>Employee health:</strong> {selected.employeeHealth.freshness} / {selected.employeeHealth.taskFit} /{" "}
-                  {selected.employeeHealth.brainHygiene}
+                  {selectedUnifiedHealth}
                 </p>
                 <div className="guild-chip-row">
-                  <span className="guild-chip">{selected.brain?.eventsToday ?? 0} events today</span>
-                  <span className="guild-chip">{selected.brain?.memoryEventCount ?? 0} total events</span>
-                  <span className="guild-chip">{selected.brain?.durableCount ?? 0} durable facts</span>
+                  <span className="guild-chip">{selectedUnified?.stats.memoryEvents ?? selected.brain?.memoryEventCount ?? 0} memory events</span>
+                  <span className="guild-chip">{selectedUnified?.stats.durableMemories ?? selected.brain?.durableCount ?? 0} durable facts</span>
+                  <span className="guild-chip">{selectedUnified?.stats.pendingExperiments ?? 0} active experiments</span>
+                </div>
+                <div className="guild-signal-grid">
+                  {selectedPredictions.slice(0, 3).map((prediction) => (
+                    <div key={prediction} className="guild-signal-card">
+                      <small>prediction</small>
+                      <strong>{prediction}</strong>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -476,21 +699,21 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
             <div className="guild-tavern-details">
               <div className="guild-tavern-body">
                 <p><strong>Latest brain addition:</strong> {brainUpdate(selected)}</p>
-                <p><strong>Next skill target:</strong> {selected.brain?.nextSkillTarget ?? "No target recorded yet."}</p>
-                <p><strong>Brain hygiene:</strong> {selected.brain?.brainHygiene ?? "clean"}</p>
-                <p><strong>Durable memory count:</strong> {selected.brain?.durableCount ?? 0} promoted facts</p>
+                <p><strong>Next skill target:</strong> {selectedUnified?.brain.nextSkillTarget ?? selected.brain?.nextSkillTarget ?? "No target recorded yet."}</p>
+                <p><strong>Brain hygiene:</strong> {selectedUnifiedHealth}</p>
+                <p><strong>Durable memory count:</strong> {selectedUnified?.stats.durableMemories ?? selected.brain?.durableCount ?? 0} promoted facts</p>
                 <div className="guild-chip-row">
-                  {(selected.brain?.capabilityFocus ?? []).slice(0, 4).map((focus) => (
+                  {selectedTheories.slice(0, 4).map((focus) => (
                     <span key={focus} className="guild-chip guild-chip-goal">{focus}</span>
                   ))}
                 </div>
                 <div className="guild-chip-row">
-                  {(selected.brain?.skills ?? []).slice(0, 8).map((skill) => (
+                  {selectedBrainSkills.slice(0, 8).map((skill) => (
                     <span key={skill} className="guild-chip">{skill}</span>
                   ))}
                 </div>
                 <div className="guild-chip-row">
-                  {(selected.brain?.activeContext ?? []).slice(0, 6).map((item) => (
+                  {selectedActiveContext.slice(0, 6).map((item) => (
                     <span key={item} className="guild-chip">{item}</span>
                   ))}
                 </div>
@@ -500,10 +723,21 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
                   ))}
                 </div>
                 <ul className="guild-memory-list">
-                  {(selected.brain?.durableMemory ?? []).slice(0, 5).map((memory) => (
+                  {selectedDurableMemory.slice(0, 5).map((memory) => (
                     <li key={memory}>{memory}</li>
                   ))}
                 </ul>
+                {selectedSources.length > 0 ? (
+                  <div className="guild-source-grid">
+                    {selectedSources.slice(0, 5).map((source) => (
+                      <div key={`${source.kind}-${source.path}`}>
+                        <small>{source.kind}</small>
+                        <strong>{source.label}</strong>
+                        <span>{source.updatedAt}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
                 <div className="guild-events-list">
                   {(selected.brain?.recentEvents ?? []).slice(0, 4).map((event) => (
                     <div key={event.id} className="guild-event-card">
@@ -517,10 +751,119 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
             </div>
           ) : null}
 
+          {selectedTab === "experiments" ? (
+            <div className="guild-tavern-details">
+              <div className="guild-tavern-body">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-[16px] border border-border bg-[rgba(255,252,247,0.72)] p-3">
+                    <small className="text-[10px] uppercase tracking-[0.18em] text-muted">stats</small>
+                    <p className="mt-2 text-sm text-dark">
+                      Lv {selectedUnified?.stats.level ?? selected.brain?.growthLevel ?? 1} | {selectedUnified?.stats.skills ?? selected.brain?.skillCount ?? 0} skills |{" "}
+                      {selectedUnified?.stats.durableMemories ?? selected.brain?.durableCount ?? 0} memories | {selectedUnified?.stats.memoryEvents ?? selected.brain?.eventsToday ?? 0} events
+                    </p>
+                  </div>
+                  <div className="rounded-[16px] border border-border bg-[rgba(255,252,247,0.72)] p-3">
+                    <small className="text-[10px] uppercase tracking-[0.18em] text-muted">runtime truth</small>
+                    <p className="mt-2 text-sm text-dark">
+                      {selectedUnified?.truthLevel ?? truthLabel(selected)} | {selected.brainStatus} brain | {selected.employeeHealth.freshness}
+                    </p>
+                  </div>
+                </div>
+
+                <p><strong>Current theory:</strong> {selectedTheories[0] ?? selectedActiveContext[0] ?? selected.current}</p>
+                <p><strong>Next experiment:</strong> {(selectedExperiments[0] ?? selected.workflowSuggestion) || deriveSuggestion(selected)}</p>
+                <p><strong>Training target:</strong> {selectedUnified?.brain.nextSkillTarget ?? selected.brain?.nextSkillTarget ?? "Keep the lane bounded and promote only reusable learning."}</p>
+
+                <div className="guild-signal-grid">
+                  {(selectedExperimentResults.length > 0 ? selectedExperimentResults : ["No experiment result recorded yet."]).slice(0, 4).map((result) => (
+                    <div key={result} className="guild-signal-card guild-signal-card-result">
+                      <small>experiment result</small>
+                      <strong>{result}</strong>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="guild-chip-row">
+                  {selectedExperiments.slice(0, 5).map((rule) => (
+                    <span key={rule} className="guild-chip guild-chip-goal">experiment: {rule}</span>
+                  ))}
+                </div>
+
+                <div className="guild-chip-row">
+                  {selectedTrialErrors.slice(0, 5).map((rule) => (
+                    <span key={rule} className="guild-chip">trial/error: {rule}</span>
+                  ))}
+                </div>
+
+                <div className="guild-events-list">
+                  {(selected.brain?.recentEvents ?? []).slice(0, 5).map((event) => (
+                    <div key={event.id} className="guild-event-card">
+                      <small>{event.kind} | {Math.round(event.confidence * 100)}% confidence</small>
+                      <strong>{event.summary}</strong>
+                      <span>{event.timestamp}</span>
+                    </div>
+                  ))}
+                  {selectedCheckpoint ? (
+                    <div className="guild-event-card">
+                      <small>{selectedCheckpoint.status} | {selectedCheckpoint.telemetrySource}</small>
+                      <strong>{selectedCheckpoint.latestFinding}</strong>
+                      <span>{selectedCheckpoint.lastCheckpointAt ?? meetingForDossier?.requestedAt ?? "checkpoint pending"}</span>
+                    </div>
+                  ) : null}
+                </div>
+
+                {selectedCheckpoint?.usefulShareouts.length ? (
+                  <ul className="guild-memory-list">
+                    {selectedCheckpoint.usefulShareouts.slice(0, 4).map((shareout) => (
+                      <li key={shareout}>{shareout}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+
+          {selectedTab === "events" ? (
+            <div className="guild-tavern-details">
+              <div className="guild-tavern-body">
+                <p><strong>Significant communication:</strong> {selectedCommunications[0] ?? "No significant communication recorded for this agent yet."}</p>
+                <p><strong>Significant event:</strong> {selectedSignificantEvents[0] ?? "No significant event recorded for this agent yet."}</p>
+                <p><strong>Boardroom checkpoint:</strong> {selectedCheckpoint?.latestFinding ?? "No checkpoint bundle recorded for this agent yet."}</p>
+
+                <div className="guild-signal-grid">
+                  {(selectedCommunications.length > 0 ? selectedCommunications : ["No notable communication recorded yet."]).slice(0, 4).map((communication) => (
+                    <div key={communication} className="guild-signal-card guild-signal-card-comm">
+                      <small>communication</small>
+                      <strong>{communication}</strong>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="guild-events-list">
+                  {(selectedSignificantEvents.length > 0 ? selectedSignificantEvents : ["No notable event recorded yet."]).slice(0, 6).map((event) => (
+                    <div key={event} className="guild-event-card">
+                      <small>significant event</small>
+                      <strong>{event}</strong>
+                      <span>{selectedUnified?.brain.lastCuratedAt ?? selected.lastRuntimeUpdateAt ?? "persistent state"}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {selectedCheckpoint?.candidateDurableMemories.length ? (
+                  <ul className="guild-memory-list">
+                    {selectedCheckpoint.candidateDurableMemories.slice(0, 4).map((memory) => (
+                      <li key={memory}>candidate memory: {memory}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+
           {selectedTab === "blocks" ? (
             <div className="guild-tavern-details">
               <div className="guild-tavern-body">
-                <p><strong>Human fix needed:</strong> {needsHuman(selected)}</p>
+                <p><strong>Human fix needed:</strong> {selectedHumanRequiredBlocks[0] ?? needsHuman(selected)}</p>
                 <p><strong>Blocker severity:</strong> {selected.blockerSeverity}</p>
                 <p><strong>Suggested improvement:</strong> {selected.workflowSuggestion || deriveSuggestion(selected)}</p>
                 <p>
@@ -533,12 +876,20 @@ export default function GuildOfficeScene({ snapshot }: { snapshot: MissionContro
                 </p>
                 <p>
                   <strong>Active context:</strong>{" "}
-                  {(selected.brain?.activeContext ?? []).slice(0, 4).join(" / ") || "No active context recorded."}
+                  {selectedActiveContext.slice(0, 4).join(" / ") || "No active context recorded."}
                 </p>
                 <p><strong>Swarm readiness:</strong> {selected.brain?.swarmReadiness ?? "seedling"}</p>
                 <p><strong>Auto routes already tried:</strong> live probe / runtime file / brain bundle / worker heartbeat.</p>
+                <div className="guild-signal-grid">
+                  {(selectedHumanRequiredBlocks.length > 0 ? selectedHumanRequiredBlocks : ["No direct human-required block is currently recorded."]).slice(0, 4).map((block) => (
+                    <div key={block} className="guild-signal-card guild-signal-card-block">
+                      <small>human-required block</small>
+                      <strong>{block}</strong>
+                    </div>
+                  ))}
+                </div>
                 <div className="guild-contract-list">
-                  {(selected.brain?.workflowContract ?? []).slice(0, 5).map((step) => (
+                  {(selectedTrialErrors.length > 0 ? selectedTrialErrors : selected.brain?.workflowContract ?? []).slice(0, 5).map((step) => (
                     <div key={step}>{step}</div>
                   ))}
                 </div>

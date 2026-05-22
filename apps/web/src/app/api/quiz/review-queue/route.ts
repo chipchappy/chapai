@@ -1,30 +1,57 @@
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
+import { getHostedUserByAccount } from "@/lib/billing-store";
+import { allowLocalFallbacks } from "@/lib/env";
 import { questions, reviewSchedule } from "@chapai/db/schema";
 import { and, asc, eq, lte, sql } from "drizzle-orm";
+import { createRequestContext } from "@/lib/logger";
+import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
+import { getAuthenticatedUser } from "@/lib/supabase/server";
 
+export const dynamic = "force-dynamic";
+
+function emptyQueue() {
+  return {
+    items: [],
+    meta: {
+      dueNow: 0,
+      totalInQueue: 0,
+      checkedAt: new Date().toISOString(),
+    },
+  };
+}
 
 export async function GET(request: Request) {
+  const requestContext = createRequestContext(request, { route: "/api/quiz/review-queue" });
   const env = resolveEnv();
-  const url = new URL(request.url);
-  const userId = url.searchParams.get("userId");
+  const user = await getAuthenticatedUser();
+  const userId = user?.id ?? null;
 
   if (!userId) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
+    return jsonSuccess({
+      ...emptyQueue(),
+      requiresAuth: true,
+    }, 200, { requestId: requestContext.requestId });
   }
 
   try {
     if (!hasDatabase(env)) {
-      return Response.json({
-        items: [],
-        meta: {
-          dueNow: 0,
-          totalInQueue: 0,
-          checkedAt: new Date().toISOString(),
-        },
-      });
+      if (!allowLocalFallbacks(env)) {
+        return jsonError(503, "REVIEW_QUEUE_UNAVAILABLE", "Review queue storage is not configured for production.", requestContext, {
+          requestId: requestContext.requestId,
+        });
+      }
+      return jsonSuccess(emptyQueue(), 200, { requestId: requestContext.requestId });
     }
 
     const db = getDB(env);
+    const hostedUser = await getHostedUserByAccount(db, {
+      userId,
+      email: user?.email ?? null,
+    });
+    if (!hostedUser) {
+      return jsonSuccess(emptyQueue(), 200, { requestId: requestContext.requestId });
+    }
+
     const now = Math.floor(Date.now() / 1000);
 
     // Questions due for review (most overdue first)
@@ -41,18 +68,18 @@ export async function GET(request: Request) {
       })
       .from(reviewSchedule)
       .innerJoin(questions, eq(reviewSchedule.questionId, questions.id))
-      .where(and(eq(reviewSchedule.userId, userId), lte(reviewSchedule.nextReviewAt, now)))
+      .where(and(eq(reviewSchedule.userId, hostedUser.id), lte(reviewSchedule.nextReviewAt, now)))
       .orderBy(asc(reviewSchedule.nextReviewAt))
       .limit(20);
 
     const totalRows = await db
       .select({ count: sql<number>`count(*)` })
       .from(reviewSchedule)
-      .where(eq(reviewSchedule.userId, userId));
+      .where(eq(reviewSchedule.userId, hostedUser.id));
 
     const total = totalRows[0]?.count ?? 0;
 
-    return Response.json({
+    return jsonSuccess({
       items: due.map((rs) => ({
         questionId: rs.questionId,
         nextReviewAt: rs.nextReviewAt ? new Date(rs.nextReviewAt * 1000).toISOString() : null,
@@ -68,9 +95,11 @@ export async function GET(request: Request) {
         totalInQueue: total,
         checkedAt: new Date(now * 1000).toISOString(),
       },
-    });
+    }, 200, { requestId: requestContext.requestId });
   } catch (err) {
-    console.error("quiz/review-queue error:", err);
-    return Response.json({ error: "Internal error" }, { status: 500 });
+    return handleRouteError(err, {
+      requestId: requestContext.requestId,
+      route: "/api/quiz/review-queue",
+    });
   }
 }

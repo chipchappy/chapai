@@ -1,0 +1,35 @@
+.panel {
+  display: grid;
+  width: min(56rem, 100%);
+  margin-top: 1.4rem;
+  border-top: 1px solid var(--exam-border);
+  border-bottom: 1px solid var(--exam-border);
+  background: #fff;
+}
+
+.row {
+  display: grid;
+  min-height: 44px;
+  grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--exam-border);
+  padding: 0 0.85rem;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.icon {
+  color: var(--exam-text-muted);
+}
+
+.label {
+  color: #000;
+}
+
+.value {
+  color: #000;
+  font-weight: 600;
+}

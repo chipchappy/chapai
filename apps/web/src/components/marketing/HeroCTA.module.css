@@ -1,0 +1,125 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  --hero-art-ink: rgba(35, 42, 45, 0.45);
+  background: var(--c-bg);
+  padding: clamp(4rem, 8vw, 7rem) 1rem 3rem;
+}
+
+.hero[data-art="nclex"] {
+  --hero-art-ink: rgba(35, 42, 45, 0.42);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.copy {
+  max-width: 51rem;
+}
+
+.figure {
+  position: relative;
+  display: flex;
+  min-height: clamp(28rem, 52vw, 46rem);
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--hero-art-ink);
+  background: radial-gradient(circle at 62% 46%, rgba(126, 157, 134, 0.18), transparent 66%);
+  pointer-events: none;
+}
+
+.artFigure {
+  width: min(136%, 48rem);
+  margin-left: auto;
+  margin-right: clamp(-7rem, -4vw, -2rem);
+  transform: translateY(0);
+  animation: premium-hero-float-y 8s ease-in-out infinite;
+  filter: drop-shadow(0 16px 30px rgba(35, 42, 45, 0.08));
+  -webkit-mask-image: linear-gradient(180deg, black 90%, transparent 100%);
+  mask-image: linear-gradient(180deg, black 90%, transparent 100%);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--c-gold);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--c-gold);
+  content: "";
+}
+
+.title {
+  margin: 1.1rem 0 0;
+  max-width: 48rem;
+  color: var(--c-text);
+  font-family: var(--font-serif);
+  font-size: clamp(3.4rem, 8vw, 6.6rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.04;
+}
+
+.subhead {
+  margin: 1.35rem 0 0;
+  max-width: 46rem;
+  color: var(--c-text-muted);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.actions {
+  margin-top: 2rem;
+}
+
+.quote {
+  margin: 1.35rem 0 0;
+  max-width: 46rem;
+  color: var(--c-adobe);
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.microcopy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 1rem 0 0;
+  color: var(--c-text-hint);
+  font-size: 0.88rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artFigure {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .figure {
+    display: none;
+  }
+}

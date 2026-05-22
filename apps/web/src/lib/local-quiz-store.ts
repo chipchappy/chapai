@@ -1,5 +1,6 @@
-import type { Exam, QuizQuestion, QuizResults, QuizSessionConfig } from "@/lib/types";
+import type { Exam, QuestionAnswer, QuizQuestion, QuizResults, QuizSessionConfig } from "@/lib/types";
 import { getQuestionBank } from "@/lib/content-bank";
+import { matchesQuestionCategory } from "@/lib/nclex-client-needs";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
@@ -68,8 +69,51 @@ function shuffle<T>(items: T[]) {
   return [...items].sort(() => Math.random() - 0.5);
 }
 
-function parseComparableAnswer(input: string) {
-  const raw = input.trim();
+function matchesQuizFilters(question: QuizQuestion, config: QuizSessionConfig) {
+  const questionType = config.questionType ?? config.type;
+
+  if (!matchesQuestionCategory(question, config.category)) {
+    return false;
+  }
+
+  if (questionType && question.type !== questionType) {
+    return false;
+  }
+
+  if (config.ngnOnly && question.type === "mcq") {
+    return false;
+  }
+
+  return true;
+}
+
+function serializeAnswer(answer: QuestionAnswer) {
+  if (Array.isArray(answer)) {
+    return JSON.stringify(answer);
+  }
+
+  if (answer && typeof answer === "object") {
+    return JSON.stringify(answer);
+  }
+
+  return String(answer ?? "");
+}
+
+function parseComparableAnswer(input: QuestionAnswer | string | null | undefined) {
+  if (Array.isArray(input)) {
+    return [...input]
+      .map((item) => String(item).trim().toLowerCase())
+      .filter(Boolean)
+      .sort();
+  }
+
+  if (input && typeof input === "object") {
+    return Object.entries(input)
+      .map(([key, value]) => `${String(key).trim().toLowerCase()}:${String(value).trim().toLowerCase()}`)
+      .sort();
+  }
+
+  const raw = String(input ?? "").trim();
   if (!raw) {
     return "";
   }
@@ -79,6 +123,11 @@ function parseComparableAnswer(input: string) {
     if (Array.isArray(parsed)) {
       return [...parsed]
         .map((item) => String(item).trim().toLowerCase())
+        .sort();
+    }
+    if (parsed && typeof parsed === "object") {
+      return Object.entries(parsed as Record<string, unknown>)
+        .map(([key, value]) => `${String(key).trim().toLowerCase()}:${String(value).trim().toLowerCase()}`)
         .sort();
     }
   } catch {
@@ -96,7 +145,7 @@ function parseComparableAnswer(input: string) {
   return raw.toLowerCase();
 }
 
-function answersMatch(left: string, right: string) {
+function answersMatch(left: QuestionAnswer | string, right: QuestionAnswer | string) {
   const normalizedLeft = parseComparableAnswer(left);
   const normalizedRight = parseComparableAnswer(right);
 
@@ -110,9 +159,7 @@ function answersMatch(left: string, right: string) {
 
 export function startLocalSession(config: QuizSessionConfig) {
   const bank = getQuestionBank(config.exam);
-  const filtered = config.category
-    ? bank.filter((question) => question.category === config.category)
-    : bank;
+  const filtered = bank.filter((question) => matchesQuizFilters(question, config));
   const deduped = [...new Map(filtered.map((question) => [question.id, question])).values()];
   const questions = shuffle(deduped).slice(0, config.count);
 
@@ -139,7 +186,7 @@ export function startLocalSession(config: QuizSessionConfig) {
 export function answerLocalSession(params: {
   sessionId: string;
   questionId: string;
-  selectedAnswer: string;
+  selectedAnswer: string | QuestionAnswer;
   timeSpentMs?: number;
 }) {
   const store = loadStore();
@@ -157,7 +204,7 @@ export function answerLocalSession(params: {
   const existingIndex = session.answers.findIndex((answer) => answer.questionId === params.questionId);
   const payload = {
     questionId: params.questionId,
-    selectedAnswer: params.selectedAnswer,
+    selectedAnswer: serializeAnswer(params.selectedAnswer),
     isCorrect,
     timeSpentMs: params.timeSpentMs,
   };

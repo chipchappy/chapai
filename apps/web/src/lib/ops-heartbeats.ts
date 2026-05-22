@@ -119,9 +119,10 @@ export function listHeartbeatSupervision() {
     const ageSeconds = parseAgeSeconds(agent.lastSeenAt);
     const staleAfterSeconds = Math.max(30, Math.round((agent.staleAfterMinutes ?? 2) * 60));
     const missedPings = ageSeconds === null ? null : Math.floor(ageSeconds / 30);
+    const missedPingLimit = Math.max(3, Math.ceil(staleAfterSeconds / 30));
     const missing = ageSeconds === null;
     const stale = missing || ageSeconds > staleAfterSeconds;
-    const restartDue = missing || (missedPings !== null && missedPings >= 3);
+    const restartDue = missing || (missedPings !== null && missedPings >= missedPingLimit);
     return {
       id: agent.id,
       state: agent.state,

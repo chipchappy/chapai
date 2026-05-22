@@ -14,31 +14,52 @@ export default function QuizError({
   }, [error]);
 
   return (
-    <main className="min-h-screen bg-bg px-4 py-10 md:py-12">
-      <div className="mx-auto max-w-5xl">
-        <section className="rounded-[34px] border border-[rgba(74,85,89,0.08)] bg-[linear-gradient(135deg,rgba(247,242,233,0.98),rgba(241,245,241,0.94))] p-6 shadow-card md:p-8">
-          <span className="inline-flex rounded-full border border-border bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">
-            Practice center fallback
-          </span>
-          <h1 className="mt-4 font-serif text-[clamp(2.5rem,5vw,4rem)] leading-[0.94] text-dark">
-            The study surface hit an issue.
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-muted">
-            Your broader site session is still intact. Retry the practice center or return to a stable launch page while
-            we keep the experience steady.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button type="button" onClick={() => reset()} className="btn-primary">
-              Retry practice center
-            </button>
-            <a href="/demo" className="btn-secondary">
-              Open preview hub
-            </a>
-            <a href="/upgrade" className="btn-secondary">
-              View plans
-            </a>
+    <main className="quiz-route-screen">
+      <div className="quiz-terminal-app">
+        <header className="quiz-terminal-header">
+          <div>
+            <p className="quiz-terminal-kicker">Clarity terminal</p>
+            <p className="quiz-terminal-copy">Recovery state</p>
           </div>
-        </section>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="quiz-chip">Session intact</span>
+            <span className="quiz-chip quiz-chip-accent">Fallback active</span>
+          </div>
+        </header>
+
+        <div className="quiz-terminal-body">
+          <section className="quiz-terminal-state">
+            <div className="quiz-terminal-panel quiz-terminal-panel-hero max-w-4xl">
+              <span className="quiz-chip quiz-chip-accent">Practice center fallback</span>
+              <h1 className="mt-5 font-serif text-[clamp(2.5rem,5vw,4.4rem)] leading-[0.88] text-[#f4ede0]">
+                The study surface hit an issue.
+              </h1>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-[rgba(230,223,209,0.76)]">
+                Your account session is still safe. Retry the terminal, jump back to the launch deck, or check plans while
+                we keep the route stable.
+              </p>
+
+              {error?.message ? (
+                <div className="quiz-terminal-alert mt-6">
+                  <strong>Diagnostic</strong>
+                  <p className="mt-2 text-sm leading-7 text-[rgba(232,224,211,0.76)]">{error.message}</p>
+                </div>
+              ) : null}
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <button type="button" onClick={() => reset()} className="quiz-terminal-toggle is-active">
+                  Retry terminal
+                </button>
+                <a href="/quiz" className="quiz-terminal-link">
+                  Return to launch
+                </a>
+                <a href="/upgrade" className="quiz-terminal-link">
+                  View plans
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
   );

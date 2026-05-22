@@ -2,7 +2,8 @@ import "server-only";
 
 import fs from "node:fs";
 import path from "node:path";
-import type { MissionControlSnapshot } from "@/lib/types";
+import { getAgenticGrowthState } from "@/lib/agentic-growth";
+import type { AgentLiveTelemetry, MissionControlSnapshot } from "@/lib/types";
 import { readOpsOverrides } from "@/lib/ops-control";
 import { listHeartbeatSupervision } from "@/lib/ops-heartbeats";
 import { getPhase6NclexState } from "@/lib/phase6-nclex";
@@ -171,6 +172,13 @@ function formatAge(iso?: string | null) {
   return `${Math.round(minutes / 60)}h`;
 }
 
+function agentConfidence(agent: MissionControlSnapshot["unifiedGuild"]["agents"][number]) {
+  const base = 0.62 + Math.min(0.18, agent.stats.skills * 0.015) + Math.min(0.12, agent.stats.durableMemories * 0.01);
+  const stalePenalty = agent.state.toLowerCase().includes("stale") || agent.truthLevel.toLowerCase().includes("stale") ? 0.12 : 0;
+  const blockerPenalty = agent.blocker && agent.blocker !== "none" ? 0.05 : 0;
+  return Math.max(0.45, Math.min(0.95, Number((base - stalePenalty - blockerPenalty).toFixed(2))));
+}
+
 export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   const telegram = readJson<TelegramAlertState>("config/telegram-problem-alert-state.json", {});
   const growthQueue = readJson<GrowthApprovalQueue>("config/growth-approval-queue.json", {});
@@ -223,6 +231,58 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
         },
         sources: [],
       }));
+  const agenticGrowth = getAgenticGrowthState(agents.map((agent) => agent.id));
+  const toolPermissions = Array.from(agenticGrowth.lanePermissions.values());
+  const agentNow: AgentLiveTelemetry[] = agents.map((agent) => {
+    const permission = agenticGrowth.lanePermissions.get(agent.id);
+    const latestInvocation = agenticGrowth.invocations.find((row) => row.agentId === agent.id);
+    const latestSkill = agenticGrowth.skillGrowth.find((row) => row.ownerLane === agent.id);
+    const latestMemory = [...agenticGrowth.memoryPromotions, ...agenticGrowth.rejectedMemories].find((row) => row.ownerLane === agent.id);
+    const latestProfit = agenticGrowth.profitPatterns.find((row) => row.ownerLane === agent.id);
+    const proofPath =
+      latestInvocation?.proofPaths[0]
+      ?? latestSkill?.proofPath
+      ?? latestProfit?.sourceProof
+      ?? agent.sources[0]?.path
+      ?? "apps/web/src/lib/mission-control.ts";
+    const learningMoment =
+      latestSkill
+        ? `${latestSkill.skillName}: ${latestSkill.successfulApplications} proven uses, ${latestSkill.confoundedApplications} confounded.`
+        : latestMemory
+          ? `${latestMemory.promotionStatus}: ${latestMemory.candidateMemory}`
+          : agent.brain.recentEvents[0] ?? "No fresh learning event recorded.";
+    const approvalState =
+      latestProfit?.approvalNeeded
+        ?? (permission?.mode === "blocked"
+          ? "blocked"
+          : permission?.mode === "approval-required"
+            ? "approval required for external action"
+            : permission?.mode === "draft-only"
+              ? "draft-only"
+              : "read-only");
+
+    return {
+      agentId: agent.id,
+      displayName: agent.displayName,
+      role: agent.role,
+      runtime: agent.runtime,
+      laneStatus: agent.state,
+      truthLevel: agent.state.toLowerCase().includes("stale") && agent.truthLevel === "stale-telemetry"
+        ? "stale file-backed telemetry"
+        : agent.truthLevel,
+      currentAction: agent.currentTask,
+      nextPlan: agent.plan,
+      blocker: agent.blocker,
+      learningMoment,
+      proofPath,
+      queuePending: agent.stats.pendingExperiments + agent.stats.blockedTasks,
+      approvalState,
+      sourceTaint: permission?.sourceTaintDefault ?? "unvalidated",
+      heartbeatFreshness: formatAge(agent.sources[0]?.updatedAt),
+      confidence: agentConfidence(agent),
+      toolMode: permission?.mode ?? "approval-required",
+    };
+  });
 
   const laneMap = new Map<string, {
     lane: string;
@@ -279,12 +339,14 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     signups: "unwired",
     dau: "unwired",
     conversion: "unwired",
-    trafficSources: ["social approval queue", "email approval queue"],
-    approvals: growthItems.length,
-    blocked: growthItems.filter((item) => item.blocker && item.blocker !== "none").length,
+    trafficSources: agenticGrowth.growthEngine.measurement.rows.length
+      ? agenticGrowth.growthEngine.measurement.rows.map((row) => `${row.source}: ${row.status}`).slice(0, 6)
+      : ["GSC pending", "GA4 pending", "Plausible pending", "billing replica pending"],
+    approvals: growthItems.length + agenticGrowth.growthEngine.queue.pending,
+    blocked: growthItems.filter((item) => item.blocker && item.blocker !== "none").length + agenticGrowth.growthEngine.measurement.pending,
     socialSent: socialDispatch.sent ?? 0,
     emailSent: emailDispatch.sent ?? 0,
-    updatedAt: growthQueue.generatedAt ?? fileMtime("config/growth-approval-queue.json"),
+    updatedAt: agenticGrowth.growthEngine.lastAuditAt ?? growthQueue.generatedAt ?? fileMtime("config/growth-approval-queue.json"),
   };
 
   const intelDigest = [
@@ -311,6 +373,14 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
   };
 
   const goalTree = [
+    ...agenticGrowth.goals.slice(0, 3).map((goal) => ({
+      id: goal.id,
+      label: goal.text,
+      owner: goal.owner,
+      progress: goal.progress.percent,
+      blocked: goal.status === "active" && goal.progress.percent < 100,
+      detail: `${goal.status} / ${goal.approvalBoundary} / ${goal.progress.detail}`,
+    })),
     {
       id: "goal-nclex-2000",
       label: "NCLEX live bank to 2,000+ questions",
@@ -430,6 +500,15 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
     heartbeats,
     brainVaults,
     dataLayer,
+    agentNow,
+    profitRadar: agenticGrowth.profitPatterns.slice(0, 6),
+    agenticGrowth: {
+      ...agenticGrowth.summary,
+      growthEngine: agenticGrowth.growthEngine,
+      guardrailPosture: agenticGrowth.guardrails.posture ?? "approval-gated",
+      blockedExternalActions: agenticGrowth.guardrails.blockedExternalActions ?? [],
+    },
+    toolPermissions,
     phaseReadiness,
     phase2Infrastructure,
     stats: {
@@ -446,6 +525,10 @@ export function getOpsDashboardData(snapshot: MissionControlSnapshot) {
       nclexTo2000: Math.max(0, 2000 - snapshot.product.nclexLiveQuestions),
       providerCount: snapshot.capabilities.providerCount || snapshot.unifiedGuild.providerReadiness.totalProviders,
       approvals: growthItems.length + snapshot.unifiedGuild.approvalQueue.length + telegramControl.pendingApproval,
+      profitCandidates: agenticGrowth.summary.profitCandidates,
+      learningCandidates: agenticGrowth.summary.memoryCandidates,
+      rejectedMemory: agenticGrowth.summary.memoryRejected,
+      confoundedMemory: agenticGrowth.summary.confoundedMemory,
     },
     freshness: {
       telegram: formatAge(telegram.generatedAt ?? telegram.lastHealthyAt),

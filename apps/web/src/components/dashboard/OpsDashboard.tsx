@@ -48,6 +48,10 @@ function agentGoal(agent: OpsAgent) {
   return "currentWorkingGoal" in agent && agent.currentWorkingGoal ? agent.currentWorkingGoal : agent.plan;
 }
 
+function compactPath(value: string) {
+  return value.replace(/\\/g, "/").split("/").slice(-4).join("/");
+}
+
 function Panel({
   id,
   title,
@@ -121,7 +125,8 @@ export default function OpsDashboard({
   const blockedGoals = ops.goalTree.filter((goal) => goal.blocked).length;
   const staleAgents = ops.agents.filter((agent) => agent.state.toLowerCase().includes("stale")).length;
   const topAgents = [...ops.agents].sort((left, right) => right.stats.durableMemories - left.stats.durableMemories).slice(0, 8);
-  const directiveProofPath = "audit/proofs/claude-ui-redesign-brief-2026-05-07.run.json";
+  const operatorGoal = ops.goalTree.find((goal) => goal.id.startsWith("goal-"));
+  const directiveProofPath = operatorGoal?.detail ?? "Goal directive not recorded yet.";
 
   return (
     <main className="min-h-screen bg-[#0b0e14] px-4 py-6 text-[#f4eee5] md:px-6 lg:px-8">
@@ -145,7 +150,7 @@ export default function OpsDashboard({
             </div>
           </div>
           <nav className="mt-5 flex flex-wrap gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#9aa6b6]">
-            {["directive", "agents", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "data", "tokens", "phase2", "overrides"].map((item) => (
+            {["directive", "agents", "profit-radar", "goals", "lanes", "memory", "telegram", "nclex", "growth", "intel", "data", "tokens", "phase2", "overrides"].map((item) => (
               <a key={item} href={`#${item}`} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 transition hover:border-[#d99b72] hover:text-[#f4eee5]">
                 {item}
               </a>
@@ -157,14 +162,14 @@ export default function OpsDashboard({
           <div className="grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#d99b72]">directive execution</p>
-              <h2 className="mt-2 text-2xl font-semibold text-[#f4eee5]">Claude UI directive accepted</h2>
+              <h2 className="mt-2 text-2xl font-semibold text-[#f4eee5]">Current operator goal</h2>
               <p className="mt-2 text-sm leading-6 text-[#9aa6b6]">
-                The Claude-lane worker produced a read-only design brief, the chart review station is tagged with the directive id, and this operator surface now exposes the proof path instead of hiding agent work in logs.
+                {operatorGoal?.label ?? "No durable /goal directive has been recorded yet. Submit a /goal command to bind lane plans, learning, and profit radar to one operator objective."}
               </p>
               <div className="mt-3 grid gap-2 font-mono text-[11px] text-[#8b95a3]">
-                <span>agent claude-code / Sartre / 019e03f7-f664-79e2-99d6-114f42b6436e</span>
-                <span>proof {directiveProofPath}</span>
-                <span>scope chart review, ops dashboard, Claude result ledger</span>
+                <span>owner {operatorGoal?.owner ?? "orchestrator"} / progress {operatorGoal?.progress ?? 0}%</span>
+                <span>boundary {directiveProofPath}</span>
+                <span>scope agent utility, safe tool autonomy, memory hygiene, profit-pattern recognition</span>
               </div>
             </div>
             <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
@@ -175,7 +180,7 @@ export default function OpsDashboard({
             </div>
           </div>
           <div className="mt-3 grid gap-2 md:grid-cols-4">
-            {["EHR chart review skin", "Dense command grid", "Phase 2 visible", "Answer-blind preserved"].map((item) => (
+            {["truth before autonomy", "approval-gated tools", "non-confounding memory", "profit radar"].map((item) => (
               <span key={item} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[#c8d0db]">
                 {item}
               </span>
@@ -186,15 +191,16 @@ export default function OpsDashboard({
         <section className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <Metric label="provider inventory" value={ops.stats.providerCount} detail={`${snapshot.unifiedGuild.providerReadiness.live} live providers`} />
           <Metric label="approval load" value={ops.stats.approvals} detail="growth and guild approvals" />
-          <Metric label="freshness" value={ops.freshness.guildLoop} detail="guild loop age" />
-          <Metric label="blocked goals" value={blockedGoals} detail={`${ops.goalTree.length} active top-level goals`} />
+          <Metric label="profit radar" value={ops.stats.profitCandidates} detail="low-budget candidates" />
+          <Metric label="learning queue" value={ops.stats.learningCandidates} detail={`${ops.stats.rejectedMemory} rejected / ${ops.stats.confoundedMemory} confounded`} />
         </section>
 
         <div className="mt-4 grid gap-4 2xl:grid-cols-[1.25fr_0.75fr]">
-          <Panel id="agents" title="Agent roster" eyebrow="identity cards" icon={Users}>
+          <Panel id="agents" title="Agent Now" eyebrow="live telemetry cards" icon={Users}>
             <div className="grid gap-3 xl:grid-cols-2">
               {ops.agents.map((agent) => {
                 const toolList = agent.sources.map((source) => source.kind).slice(0, 3);
+                const now = ops.agentNow.find((item) => item.agentId === agent.id);
                 return (
                   <article key={agent.id} className="rounded-lg border border-[#273241] bg-[#0b0e14] p-3">
                     <div className="flex items-start gap-3">
@@ -205,11 +211,11 @@ export default function OpsDashboard({
                         <div className="flex flex-wrap items-center justify-between gap-2">
                           <strong className="text-sm text-[#f4eee5]">{agent.displayName}</strong>
                           <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(`${agent.state} ${agent.truthLevel} ${agent.blocker}`)}`}>
-                            {agent.state}
+                            {agent.state} / {now?.toolMode ?? "approval"}
                           </span>
                         </div>
-                        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[#768194]">{agent.role} / {agent.runtime}</p>
-                        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[#c8d0db]">{agent.currentTask}</p>
+                        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[#768194]">{agent.role} / {agent.runtime} / {now?.truthLevel ?? agent.truthLevel}</p>
+                        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[#c8d0db]">{now?.currentAction ?? agent.currentTask}</p>
                       </div>
                     </div>
                     <div className="mt-3 grid gap-2 text-xs text-[#8f9aaa]">
@@ -217,6 +223,19 @@ export default function OpsDashboard({
                         <span className="font-mono uppercase tracking-[0.14em] text-[#768194]">goal</span>
                         <p className="mt-1 line-clamp-2 leading-5">{agentGoal(agent)}</p>
                       </div>
+                      <div>
+                        <span className="font-mono uppercase tracking-[0.14em] text-[#768194]">plan</span>
+                        <p className="mt-1 line-clamp-2 leading-5">{now?.nextPlan ?? agent.plan}</p>
+                      </div>
+                      <div>
+                        <span className="font-mono uppercase tracking-[0.14em] text-[#768194]">learning</span>
+                        <p className="mt-1 line-clamp-2 leading-5">{now?.learningMoment ?? "No fresh learning event recorded."}</p>
+                      </div>
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        <span className={`rounded-md border px-2 py-1 ${statusTone(now?.approvalState ?? agent.blocker)}`}>{now?.approvalState ?? agent.blocker}</span>
+                        <span className="rounded-md border border-[#273241] px-2 py-1">fresh {now?.heartbeatFreshness ?? "unknown"}</span>
+                      </div>
+                      <p className="truncate font-mono text-[11px] text-[#768194]">proof {compactPath(now?.proofPath ?? agent.sources[0]?.path ?? "missing")}</p>
                       <div className="grid grid-cols-3 gap-2">
                         <span className="rounded-md border border-[#273241] px-2 py-1">mem {agent.stats.durableMemories}</span>
                         <span className="rounded-md border border-[#273241] px-2 py-1">skills {agent.stats.skills}</span>
@@ -266,7 +285,7 @@ export default function OpsDashboard({
               <div className="mb-3 grid gap-2 sm:grid-cols-3">
                 <Metric label="commands" value={ops.telegramControl.commands} detail={`${ops.telegramControl.acceptedCommands} accepted`} />
                 <Metric label="queued replies" value={ops.telegramControl.outboundQueued} detail="not externally sent" />
-                <Metric label="confirmations" value={ops.telegramControl.confirmationRequired} detail="destructive controls held" />
+                <Metric label="goals" value={ops.telegramControl.goalDirectives} detail={`${ops.telegramControl.confirmationRequired} confirmations held`} />
               </div>
               <div className="space-y-2">
                 {ops.telegramMessages.map((message) => (
@@ -287,6 +306,33 @@ export default function OpsDashboard({
         </div>
 
         <div className="mt-4 grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+          <Panel id="profit-radar" title="Profit radar" eyebrow="budget-aware candidates" icon={CircleDollarSign}>
+            <div className="space-y-2">
+              {ops.profitRadar.length > 0 ? ops.profitRadar.map((item) => (
+                <article key={item.id} className="rounded-md border border-[#273241] bg-[#0b0e14] p-3">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <strong className="text-sm text-[#f4eee5]">{item.pattern}</strong>
+                    <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(item.status)}`}>
+                      {item.status}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-[#9aa6b6]">{item.targetCustomer} / {item.offerMapping}</p>
+                  <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                    <span className="rounded-md border border-[#273241] px-2 py-1 text-xs">cost ${item.estimatedBudgetUsd}</span>
+                    <span className="rounded-md border border-[#273241] px-2 py-1 text-xs">confidence {Math.round(item.confidence * 100)}%</span>
+                    <span className={`rounded-md border px-2 py-1 text-xs ${statusTone(item.approvalNeeded)}`}>{item.approvalNeeded}</span>
+                  </div>
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-[#c8d0db]">{item.nextTest}</p>
+                  <p className="mt-1 truncate font-mono text-[11px] text-[#768194]">proof {compactPath(item.sourceProof)}</p>
+                </article>
+              )) : (
+                <p className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2 text-sm text-[#8f9aaa]">
+                  No profit-pattern candidates have been staged yet.
+                </p>
+              )}
+            </div>
+          </Panel>
+
           <Panel id="lanes" title="Lane status grid" eyebrow="queues and error rate" icon={RadioTower}>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[620px] border-separate border-spacing-y-2 text-left">
@@ -318,8 +364,12 @@ export default function OpsDashboard({
             <div className="mb-3 grid grid-cols-2 gap-2 text-xs text-[#c8d0db] md:grid-cols-4">
               <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">vaults {ops.brainVaults.ready}/{ops.brainVaults.total}</span>
               <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">canonical {ops.brainVaults.canonical}</span>
-              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">staging {ops.brainVaults.staging}</span>
-              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">rejected {ops.brainVaults.rejected}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">candidate {ops.agenticGrowth.memoryCandidates}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">rejected {ops.agenticGrowth.memoryRejected}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">confounded {ops.agenticGrowth.confoundedMemory}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">skill records {ops.agenticGrowth.skillRecords}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">skill failures {ops.agenticGrowth.skillFailures}</span>
+              <span className="rounded-md border border-[#273241] bg-[#0b0e14] px-2 py-2">{ops.agenticGrowth.guardrailPosture}</span>
             </div>
             <div className="space-y-2">
               {topAgents.map((agent) => {
@@ -424,6 +474,27 @@ export default function OpsDashboard({
               <Metric label="dau" value={ops.growthKpis.dau} detail="analytics connector not wired" />
               <Metric label="conversion" value={ops.growthKpis.conversion} detail="checkout funnel not metered here" />
               <Metric label="approvals" value={ops.growthKpis.approvals} detail={`${ops.growthKpis.blocked} blocked growth lanes`} />
+            </div>
+            <div className="mt-3 grid gap-2 sm:grid-cols-3">
+              <CriticalCell label="draft queue" value={ops.agenticGrowth.growthEngine.queue.pending} detail="human review pending" tone={ops.agenticGrowth.growthEngine.queue.pending ? "attention" : "live"} />
+              <CriticalCell label="audit events" value={ops.agenticGrowth.growthEngine.auditEvents} detail="append-only growth log" tone={ops.agenticGrowth.growthEngine.auditEvents ? "live" : "missing"} />
+              <CriticalCell label="measurement pending" value={ops.agenticGrowth.growthEngine.measurement.pending} detail="read-only access flags" tone={ops.agenticGrowth.growthEngine.measurement.pending ? "blocked" : "live"} />
+              <CriticalCell label="agents" value={ops.agenticGrowth.growthEngine.agents} detail="draft-only growth lanes" tone={ops.agenticGrowth.growthEngine.agents >= 8 ? "live" : "attention"} />
+              <CriticalCell label="campaigns" value={ops.agenticGrowth.growthEngine.campaigns} detail="campaign scaffolds" tone={ops.agenticGrowth.growthEngine.campaigns >= 10 ? "live" : "attention"} />
+              <CriticalCell label="seo pages" value={ops.agenticGrowth.growthEngine.seoPages} detail="registry entries" tone={ops.agenticGrowth.growthEngine.seoPages >= 20 ? "live" : "attention"} />
+            </div>
+            <div className="mt-3 space-y-2">
+              {ops.agenticGrowth.growthEngine.measurement.rows.slice(0, 8).map((row) => (
+                <div key={row.source} className="rounded-md border border-[#273241] bg-[#0b0e14] px-3 py-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <strong className="text-sm text-[#f4eee5]">{row.source}</strong>
+                    <span className={`rounded-md border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${statusTone(row.status)}`}>
+                      {row.status}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-xs leading-5 text-[#8f9aaa]">{row.notes}</p>
+                </div>
+              ))}
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               {ops.growthKpis.trafficSources.map((source) => (

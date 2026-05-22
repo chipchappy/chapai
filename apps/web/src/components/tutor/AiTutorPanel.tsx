@@ -155,11 +155,11 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
         : `You missed this one. Let's find the clue that should have pushed you toward ${questionContext.correctAnswer.toUpperCase()}.`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-4 backdrop-blur-sm sm:items-center">
-      <div className="flex max-h-[85vh] w-full max-w-lg flex-col rounded-2xl bg-white shadow-2xl">
-        <div className="flex items-center justify-between border-b border-border p-4">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-[rgba(35,39,42,0.4)] p-4 backdrop-blur-md sm:items-center">
+      <div className="flex max-h-[86vh] w-full max-w-lg flex-col overflow-hidden rounded-[30px] border border-[rgba(74,85,89,0.1)] bg-[linear-gradient(180deg,rgba(252,249,243,0.98),rgba(247,242,234,0.98))] shadow-[0_28px_80px_rgba(31,38,43,0.18)]">
+        <div className="flex items-center justify-between border-b border-[rgba(74,85,89,0.08)] px-5 py-4">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#4A5559]">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <circle cx="8" cy="8" r="7" stroke="white" strokeWidth="1.5" />
                 <path d="M6 6.5C6 5.67 6.67 5 7.5 5S9 5.67 9 6.5c0 1.17-1.75 1.5-1.5 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
@@ -167,7 +167,7 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
               </svg>
             </div>
             <div>
-              <p className="text-sm font-bold text-dark">AI Tutor</p>
+              <p className="text-sm font-semibold text-dark">AI Tutor</p>
               <p className="text-xs text-muted">Pattern coaching, not just explanations</p>
             </div>
           </div>
@@ -178,15 +178,15 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
           </button>
         </div>
 
-        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4">
+        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-5 py-5">
           {messages.length === 0 && (
-            <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted">Try asking</p>
-              <div className="rounded-xl border border-teal-100 bg-teal-50/70 px-3 py-2 text-xs text-dark">
-                <strong className="text-teal-700">Clinical primer:</strong> {primer}
+            <div className="space-y-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted">Try asking</p>
+              <div className="rounded-[18px] border border-[rgba(90,127,136,0.14)] bg-[rgba(255,252,247,0.92)] px-4 py-3 text-sm leading-6 text-dark">
+                <strong className="text-[#5A7F88]">Clinical primer:</strong> {primer}
               </div>
               {questionContext.visualRationale?.conclusion ? (
-                <div className="rounded-xl border border-[rgba(80,108,120,0.14)] bg-[rgba(255,252,247,0.92)] px-3 py-2 text-xs text-dark">
+                <div className="rounded-[18px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,255,255,0.78)] px-4 py-3 text-sm leading-6 text-dark">
                   <strong className="text-dark">{questionContext.visualRationale.title}:</strong> {questionContext.visualRationale.conclusion}
                 </div>
               ) : null}
@@ -194,7 +194,7 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
                 <button
                   key={prompt}
                   onClick={() => setInput(prompt)}
-                  className="block w-full rounded-lg border border-border px-3 py-2 text-left text-sm text-dark transition-all hover:border-teal-400 hover:bg-teal-50"
+                  className="block w-full rounded-[18px] border border-[rgba(74,85,89,0.12)] bg-[rgba(255,255,255,0.8)] px-4 py-3 text-left text-sm leading-6 text-dark transition hover:border-[rgba(90,127,136,0.35)] hover:bg-white"
                 >
                   {prompt}
                 </button>
@@ -205,10 +205,10 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
           {messages.map((message, index) => (
             <div key={`${message.role}-${index}`} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
               <div
-                className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                className={`max-w-[85%] rounded-[20px] px-4 py-3 text-sm leading-7 ${
                   message.role === "user"
-                    ? "bg-teal-600 text-white"
-                    : "border border-border bg-bg text-dark"
+                    ? "bg-[#4A5559] text-white"
+                    : "border border-[rgba(74,85,89,0.08)] bg-[rgba(255,255,255,0.88)] text-dark"
                 }`}
               >
                 {message.content || (
@@ -224,7 +224,7 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
           <div ref={bottomRef} />
         </div>
 
-        <div className="border-t border-border p-4">
+        <div className="border-t border-[rgba(74,85,89,0.08)] p-5">
           <div className="flex gap-2">
             <textarea
               value={input}
@@ -232,20 +232,18 @@ export default function AiTutorPanel({ questionContext, onClose }: AiTutorPanelP
               onKeyDown={handleKey}
               placeholder="Ask the tutor..."
               rows={1}
-              className="flex-1 resize-none rounded-xl border border-border px-3.5 py-2.5 text-sm text-dark transition-all placeholder:text-muted focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-100"
+              className="flex-1 resize-none rounded-[18px] border border-[rgba(74,85,89,0.14)] bg-white px-4 py-3 text-sm text-dark outline-none transition placeholder:text-muted focus:border-[rgba(90,127,136,0.45)] focus:ring-2 focus:ring-[rgba(90,127,136,0.12)]"
             />
             <button
               onClick={() => void send()}
               disabled={!input.trim() || streaming}
-              className="btn-primary shrink-0 px-4 py-2.5 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex h-[3.25rem] shrink-0 items-center justify-center rounded-full bg-[#4A5559] px-5 text-sm font-semibold text-white transition hover:bg-[#3B4549] disabled:cursor-not-allowed disabled:opacity-40"
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M2 14L14 8 2 2v5l8 1-8 1v5z" fill="currentColor" />
-              </svg>
+              Ask
             </button>
           </div>
-          <p className="mt-2 text-center text-xs text-muted">
-            Powered by Claude - coaching for patterns, traps, and next-step study
+          <p className="mt-3 text-center text-xs text-muted">
+            Coaching for patterns, traps, and the next safest step.
           </p>
         </div>
       </div>

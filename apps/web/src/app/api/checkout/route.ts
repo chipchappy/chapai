@@ -1,134 +1,184 @@
-import { resolveEnv } from "@/lib/db";
+import { resolveEnv, getDB, hasDatabase } from "@/lib/db";
 import { z } from "zod";
+import { createRequestContext, log, logError } from "@/lib/logger";
+import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
+import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { ensureHostedUser, getBillingCustomerForUser } from "@/lib/billing-store";
+import { getLaunchOffer, planCodeFromLegacySignals } from "@/lib/launch-offers";
+import { recordCurrentPolicyAcceptances } from "@/lib/legal-store";
+import { getStripePriceMap } from "@/lib/stripe-config";
+import { resolveStripePriceIdForOffer } from "@/lib/stripe-prices";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 const schema = z.object({
-  priceId: z.string().startsWith("price_").optional(),
-  examTrack: z.enum(["ccrn", "nclex"]).optional(),
-  packageLabel: z.string().max(120).optional(),
-  checkoutMode: z.enum(["subscription", "payment"]).default("subscription"),
-  unitAmount: z.number().int().positive().max(100000).optional(),
-  accessHours: z.number().int().positive().max(72).optional(),
-  tier: z.enum(["plus", "pro"]).optional(),
   planCode: z.string().trim().min(3).max(80).optional(),
-  entitlements: z.array(z.string().trim().min(2).max(40)).max(12).optional(),
+  examTrack: z.enum(["ccrn", "nclex"]).optional(),
+  checkoutMode: z.enum(["subscription", "payment"]).optional(),
+  tier: z.enum(["plus", "pro"]).optional(),
   successUrl: z.string().url().optional(),
   cancelUrl: z.string().url().optional(),
-}).superRefine((value, ctx) => {
-  if (value.checkoutMode === "subscription" && !value.priceId && !value.unitAmount) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      path: ["priceId"],
-      message: "Subscription checkout requires a Stripe price ID or inline monthly price.",
-    });
-  }
-
-  if (value.checkoutMode === "payment" && !value.unitAmount) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      path: ["unitAmount"],
-      message: "One-time checkout requires a unit amount.",
-    });
-  }
+  acceptedTerms: z.literal(true),
+  acceptedPrivacy: z.literal(true),
 });
 
+function getOfferPriceId(planCode: string | null | undefined) {
+  const prices = getStripePriceMap();
+  switch (planCode) {
+    case "nclex_24h_pass":
+      return prices.nclex_24h_pass || null;
+    case "ccrn_24h_pass":
+      return prices.ccrn_24h_pass || null;
+    case "nclex_base_monthly":
+      return prices.nclex_base_monthly || null;
+    case "ccrn_base_monthly":
+      return prices.ccrn_base_monthly || null;
+    case "nclex_4day_pass":
+      return prices.nclex_4day || null;
+    case "ccrn_4day_pass":
+      return prices.ccrn_4day || null;
+    case "core_monthly":
+      return prices.core_monthly || null;
+    case "all_access_monthly":
+      return prices.all_access_monthly || null;
+    default:
+      return null;
+  }
+}
+
 export async function POST(req: Request) {
+  const requestContext = createRequestContext(req, { route: "/api/checkout" });
   try {
     const env = resolveEnv();
+    const user = await getAuthenticatedUser();
+    if (!user?.id || !user.email) {
+      return jsonError(401, "AUTH_REQUIRED", "Sign in before starting checkout.", {
+        ...requestContext,
+        loginUrl: `/auth/login?next=${encodeURIComponent("/upgrade")}`,
+      }, {
+        requestId: requestContext.requestId,
+      });
+    }
+
     if (!env.STRIPE_SECRET_KEY) {
-      return Response.json({ error: "Stripe is not configured for checkout yet." }, { status: 503 });
+      return jsonError(503, "STRIPE_NOT_CONFIGURED", "Stripe is not configured for checkout yet.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
-    const body = await req.json();
-    const {
-      priceId,
-      examTrack,
-      packageLabel,
-      checkoutMode,
-      unitAmount,
-      accessHours,
-      tier,
-      planCode,
-      entitlements,
-      successUrl,
-      cancelUrl,
-    } = schema.parse(body);
+    if (!hasDatabase(env)) {
+      return jsonError(503, "CHECKOUT_STORAGE_UNAVAILABLE", "Hosted checkout storage is not configured.", requestContext, {
+        requestId: requestContext.requestId,
+      });
+    }
 
-    const appUrl = env.NEXT_PUBLIC_APP_URL || "https://chapaisolutions.com";
-    const successTarget = new URL(successUrl || `${appUrl}/success`);
-    if (examTrack) {
-      successTarget.searchParams.set("exam", examTrack);
+    const db = getDB(env);
+    await ensureHostedUser(db, {
+      userId: user.id,
+      email: user.email,
+      name: typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : null,
+    });
+
+    const body = schema.parse(await req.json());
+    const requestedPlanCode = planCodeFromLegacySignals({
+      planCode: body.planCode ?? null,
+      tier: body.tier ?? null,
+      examTrack: body.examTrack ?? null,
+      checkoutMode: body.checkoutMode ?? null,
+    });
+    const offer = getLaunchOffer(requestedPlanCode);
+
+    if (!offer) {
+      return jsonError(400, "UNKNOWN_PLAN", "That offer is not available for checkout.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
-    if (packageLabel) {
-      successTarget.searchParams.set("package", packageLabel);
-    }
-    if (checkoutMode === "payment" && accessHours) {
-      successTarget.searchParams.set("offer", "cram-pass");
-      successTarget.searchParams.set("access_hours", String(accessHours));
-    }
+
+    await recordCurrentPolicyAcceptances(db, {
+      email: user.email,
+      userId: user.id,
+      source: "checkout",
+      request: req,
+    });
+
+    const appUrl = new URL(req.url).origin;
+    const successTarget = new URL(body.successUrl || `${appUrl}/success`);
+    successTarget.searchParams.set("plan", offer.planCode);
+    successTarget.searchParams.set("package", offer.label);
     successTarget.searchParams.set("session_id", "{CHECKOUT_SESSION_ID}");
+    if (offer.examTrackScope !== "all") {
+      successTarget.searchParams.set("exam", offer.examTrackScope);
+    }
 
-    // Create Stripe checkout session via API
     const params = new URLSearchParams({
-      mode: checkoutMode,
+      mode: offer.checkoutMode,
       "line_items[0][quantity]": "1",
       success_url: successTarget.toString(),
-      cancel_url: cancelUrl || `${appUrl}/upgrade`,
+      cancel_url: body.cancelUrl || `${appUrl}/upgrade`,
       allow_promotion_codes: "true",
       billing_address_collection: "auto",
     });
 
-    if (checkoutMode === "subscription" && priceId) {
+    if (offer.checkoutMode === "payment") {
+      params.set("payment_method_types[0]", "card");
+    }
+
+    const billingCustomer = await getBillingCustomerForUser(db, {
+      userId: user.id,
+      email: user.email,
+    });
+    if (billingCustomer?.stripe_customer_id) {
+      params.set("customer", billingCustomer.stripe_customer_id);
+    } else {
+      params.set("customer_email", user.email);
+    }
+
+    const preferredPriceId = getOfferPriceId(offer.planCode);
+    const priceId = await resolveStripePriceIdForOffer(offer, undefined, preferredPriceId);
+    if (priceId) {
       params.set("line_items[0][price]", priceId);
+    } else {
+      params.set("line_items[0][price_data][currency]", "usd");
+      params.set("line_items[0][price_data][unit_amount]", String(Math.round(offer.price * 100)));
+      params.set("line_items[0][price_data][product_data][name]", offer.label);
+      params.set("line_items[0][price_data][product_data][description]", offer.description);
+      if (offer.checkoutMode === "subscription") {
+        params.set("line_items[0][price_data][recurring][interval]", "month");
+      }
     }
 
-    if (checkoutMode === "subscription" && unitAmount) {
-      params.set("line_items[0][price_data][currency]", "usd");
-      params.set("line_items[0][price_data][unit_amount]", String(unitAmount));
-      params.set("line_items[0][price_data][recurring][interval]", "month");
-      params.set(
-        "line_items[0][price_data][product_data][name]",
-        packageLabel || `${examTrack ? examTrack.toUpperCase() : "Clarity"} monthly access`,
-      );
-      params.set(
-        "line_items[0][price_data][product_data][description]",
-        "Monthly premium access to the Clarity practice center, including tutor support, rich modes, and practice exams.",
-      );
-    }
-
-    if (checkoutMode === "payment" && unitAmount) {
-      params.set("line_items[0][price_data][currency]", "usd");
-      params.set("line_items[0][price_data][unit_amount]", String(unitAmount));
-      params.set(
-        "line_items[0][price_data][product_data][name]",
-        packageLabel || `${examTrack ? examTrack.toUpperCase() : "Clarity"} 24-hour cram pass`,
-      );
-      params.set(
-        "line_items[0][price_data][product_data][description]",
-        `24-hour intensive access${examTrack ? ` for ${examTrack.toUpperCase()}` : ""} with focused question sessions, tutor access, and cram-mode review.`,
-      );
-    }
+    const expiresAt = offer.accessHours
+      ? new Date(Date.now() + offer.accessHours * 60 * 60 * 1000).toISOString()
+      : undefined;
 
     const metadataEntries = Object.entries({
-      exam_track: examTrack,
-      package_label: packageLabel,
-      package_type: checkoutMode === "payment" ? "cram-pass" : "subscription",
-      access_hours: checkoutMode === "payment" && accessHours ? String(accessHours) : undefined,
-      tier,
-      plan_code: planCode,
-      entitlements: entitlements?.join(","),
-      unlock_scope: checkoutMode === "subscription" ? "all" : examTrack ?? "all",
+      supabase_user_id: user.id,
+      user_email: user.email,
+      tier: offer.billingTier,
+      plan_code: offer.planCode,
+      plan_type: offer.planType,
+      package_label: offer.label,
+      exam_track_scope: offer.examTrackScope,
+      question_bank_access_percent: String(offer.questionBankAccessPercent),
+      practice_exam_limit: String(offer.practiceExamLimit),
+      entitlements: offer.entitlements.join(","),
+      advanced_analytics: offer.canUseAdvancedAnalytics ? "true" : undefined,
+      access_hours: offer.accessHours ? String(offer.accessHours) : undefined,
+      expires_at: expiresAt,
+      purchase_type: offer.checkoutMode === "payment" ? "fixed-term" : "subscription",
+      price_id: priceId ?? undefined,
     }).filter((entry): entry is [string, string] => typeof entry[1] === "string" && entry[1].length > 0);
 
     for (const [key, value] of metadataEntries) {
       params.set(`metadata[${key}]`, value);
-      if (checkoutMode === "subscription") {
+      if (offer.checkoutMode === "subscription") {
         params.set(`subscription_data[metadata][${key}]`, value);
       }
     }
 
-    if (examTrack) {
-      params.set("client_reference_id", examTrack);
+    if (offer.examTrackScope !== "all") {
+      params.set("client_reference_id", offer.examTrackScope);
     }
 
     const stripeRes = await fetch("https://api.stripe.com/v1/checkout/sessions", {
@@ -142,17 +192,34 @@ export async function POST(req: Request) {
 
     if (!stripeRes.ok) {
       const err = await stripeRes.json();
-      console.error("Stripe error:", err);
-      return Response.json({ error: "Checkout failed" }, { status: 500 });
+      logError("Stripe checkout session creation failed", err, requestContext);
+      return jsonError(500, "CHECKOUT_FAILED", "Checkout failed.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
     const session = await stripeRes.json();
-    return Response.json({ url: session.url, sessionId: session.id });
+    log("info", "Stripe checkout session created", {
+      ...requestContext,
+      stripeSessionId: session.id,
+      planCode: offer.planCode,
+      priceId: priceId ?? "inline-price-data",
+      userId: user.id,
+    });
+
+    return jsonSuccess({
+      url: session.url,
+      sessionId: session.id,
+      planCode: offer.planCode,
+      packageLabel: offer.label,
+    }, 200, {
+      requestId: requestContext.requestId,
+    });
   } catch (err) {
-    if (err instanceof z.ZodError) {
-      return Response.json({ error: "Invalid checkout request." }, { status: 400 });
-    }
-    console.error("checkout error:", err);
-    return Response.json({ error: "Internal error" }, { status: 500 });
+    return handleRouteError(err, {
+      requestId: requestContext.requestId,
+      route: "/api/checkout",
+      fallbackMessage: "Internal checkout error.",
+    });
   }
 }

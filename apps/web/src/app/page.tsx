@@ -1,174 +1,115 @@
 import type { Metadata } from "next";
+import HeroCTA from "@/components/marketing/HeroCTA";
+import PricingCards from "@/components/marketing/PricingCards";
+import TrustStrip from "@/components/marketing/TrustStrip";
 import DailyQuestionSignup from "@/components/marketing/DailyQuestionSignup";
-import PremiumArtHero from "@/components/marketing/PremiumArtHero";
-import { marketingArtwork } from "@/components/marketing/marketingArtwork";
-import { getLiveContentSummary } from "@/lib/live-content-summary";
+import { CompetitiveStudySystem, FrontpageCompareDeck } from "@/components/marketing/frontpage";
+import { getLiveBankStats } from "@/lib/live-bank-stats";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "CCRN and NCLEX practice questions with AI tutor",
+  title: "NCLEX practice questions with NGN case studies",
   description:
-    "Study for CCRN and NCLEX with premium practice questions, AI-guided rationale, and focused package paths built for ICU nurses and nursing students.",
-  keywords: [
-    "CCRN questions",
-    "NCLEX questions",
-    "CCRN cram",
-    "NCLEX cram",
-    "AI nursing tutor",
-    "CCRN practice bank",
-    "NCLEX practice bank",
-  ],
+    "Premium NCLEX-RN prep with NGN case studies, realistic test-mode questions, AI tutor support, and $9.99/mo flat pricing.",
   alternates: {
     canonical: "/",
   },
 };
 
-export default function HomePage() {
-  const summary = getLiveContentSummary();
+const toolCards = [
+  ["NGN case studies", "Scenario, exhibits, vitals, labs, orders, partial-credit scoring, and rationales in one exam-like flow."],
+  ["Practice how you test", "A sterile NCLEX runner with blue test chrome, timer, calculator, review marking, and two-pane rationales."],
+  ["Weak-area review", "Track clinical categories and question types so the next session is based on the misses, not random busywork."],
+  ["AI tutor", "Ask for a cleaner explanation after the rationale, with the clinical decision tree kept close to the question."],
+  ["Readiness exams", "Timed exam sets for confidence checks before the real test window."],
+  ["Daily free reps", "Ten free questions a day keep prospects learning before they decide to unlock the full bank."],
+] as const;
+
+export default async function HomePage() {
+  const stats = await getLiveBankStats();
   const homeSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         name: "Clarity Clinical Prep",
-        url: "https://clarityccrn.chapaisolutions.com",
-        description:
-          "Premium CCRN and NCLEX preparation with original questions, AI-guided rationale, and cleaner clinical product design.",
+        url: "https://claritynclex.chapaisolutions.com",
+        description: "Premium NCLEX preparation with realistic NGN questions and affordable flat pricing.",
       },
       {
-        "@type": "WebSite",
-        name: "Clarity Clinical Prep",
-        url: "https://clarityccrn.chapaisolutions.com",
-      },
-      {
-        "@type": "OfferCatalog",
-        name: "Clarity study packages",
-        itemListElement: [
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "CCRN package",
-              description: "Critical care question bank with AI-guided rationale and focused bedside review.",
-            },
-            url: "https://clarityccrn.chapaisolutions.com/ccrn",
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "NCLEX package",
-              description: "NCLEX preparation focused on priority, delegation, safety, and cleaner review flow.",
-            },
-            url: "https://clarityccrn.chapaisolutions.com/nclex",
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "24-hour cram pass",
-              description: "Short-term sprint access for last-minute high-intent buyers.",
-            },
-            url: "https://clarityccrn.chapaisolutions.com/upgrade",
-          },
-        ],
+        "@type": "SoftwareApplication",
+        name: "Clarity NCLEX",
+        applicationCategory: "EducationalApplication",
+        offers: {
+          "@type": "Offer",
+          price: "9.99",
+          priceCurrency: "USD",
+        },
       },
     ],
   };
 
   return (
-    <main className="space-y-12 px-4 py-8 md:py-10">
+    <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }} />
-      <PremiumArtHero
-        backgroundColor="#F4EFE6"
-        eyebrow="Clarity Clinical Prep"
-        title="Sharper CCRN and NCLEX."
-        body="Original questions, AI-guided rationale, and a direct learning path built for working ICU nurses and students who need a cleaner product."
-        ctaHref="/upgrade"
-        ctaLabel="Get Access"
-        artwork={marketingArtwork.home}
+      <HeroCTA />
+      <TrustStrip />
+      <CompetitiveStudySystem
+        route="home"
+        nclexCount={stats.nclexLive}
+        ccrnCount={stats.ccrnLive}
+        ngnRatio={stats.nclexNgnRatio}
       />
 
-      <section className="featured-editorial-band page-shell pt-0">
-        <div className="featured-editorial-copy">
-          <span className="section-label">Why it stands out</span>
-          <h2>Two exam products, one calmer clinical standard.</h2>
-          <p>
-            Clarity does not lead with clutter. The surface stays editorial and clear, while the system underneath keeps
-            original questions, package paths, AI teaching, and content growth moving together.
-          </p>
-        </div>
-
-        <div className="featured-editorial-grid">
-          <a href="/ccrn" className="featured-editorial-card interactive-card">
-            <div className="featured-editorial-top">
-              <span>CCRN</span>
-              <span>Critical care</span>
+      <section className="bg-[var(--c-bg)] px-4 py-16">
+        <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <span className="text-[0.78rem] font-bold uppercase tracking-[0.18em] text-[var(--c-gold)]">
+              Product surface
+            </span>
+            <h2 className="mt-4 max-w-[32rem] text-[clamp(2.35rem,4vw,4.2rem)]">
+              Premium outside. Sterile when it matters.
+            </h2>
+            <p className="mt-5 max-w-[34rem] text-base leading-8 text-[var(--c-text-muted)]">
+              Students browse, subscribe, and review progress in the warmer Clarity interface. When they start a question,
+              the product switches into a clean NCLEX-style testing environment with no marketing chrome.
+            </p>
+            <div className="mt-6 grid gap-3 text-sm text-[var(--c-text-muted)]">
+              <span>{stats.nclexLive.toLocaleString()} live NCLEX items synced into the current bank.</span>
+              <span>
+                {stats.nclexNgnRatio > 0
+                  ? `${stats.nclexNgnRatio}% NGN-style mix across case study, bow-tie, matrix, select-all, ordering, and chart review formats.`
+                  : "NGN-style practice across case study, bow-tie, matrix, select-all, ordering, and chart review formats."}
+              </span>
             </div>
-            <h3>Sharper shock, vent, rhythm, and hemodynamic review for ICU nurses.</h3>
-            <p>Built for bedside pattern recognition instead of generic qbank drift.</p>
-          </a>
-
-          <a href="/nclex" className="featured-editorial-card interactive-card">
-            <div className="featured-editorial-top">
-              <span>NCLEX</span>
-              <span>Safety first</span>
-            </div>
-            <h3>Priority, delegation, pharmacology, and next-step teaching in one cleaner path.</h3>
-            <p>Built for test takers who want direction, not punishment.</p>
-          </a>
-        </div>
-
-        <div className="featured-intent-band">
-          <div className="featured-intent-copy">
-            <span className="section-label">High-intent routes</span>
-            <h3>Send buyers to the right decision faster.</h3>
           </div>
-          <div className="featured-intent-links">
-            <a href="/ccrn/hemodynamics-questions" className="featured-intent-link interactive-card">
-              <strong>CCRN hemodynamics questions</strong>
-              <span>Shock, preload, perfusion.</span>
-            </a>
-            <a href="/compare/chapai-vs-archer" className="featured-intent-link interactive-card">
-              <strong>ChapAI vs Archer</strong>
-              <span>See how the question depth compares.</span>
-            </a>
-            <a href="/ccrn/ai-tutor" className="featured-intent-link interactive-card">
-              <strong>CCRN AI tutor</strong>
-              <span>Get a rationale after every answer.</span>
-            </a>
-            <a href="/nclex/study-plan" className="featured-intent-link interactive-card">
-              <strong>NCLEX study plan</strong>
-              <span>Know exactly what to study next.</span>
-            </a>
+          <div className="grid gap-3 md:grid-cols-2">
+            {toolCards.map(([title, body]) => (
+              <article
+                key={title}
+                className="rounded-[8px] border border-[var(--c-border)] bg-[var(--c-bg-elevated)] p-5 shadow-[0_16px_38px_rgba(30,42,36,0.05)]"
+              >
+                <h3 className="text-[1.35rem]">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--c-text-muted)]">{body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="page-shell pt-0">
-        <div className="mb-8 grid gap-4 rounded-[28px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.84)] p-6 shadow-card md:grid-cols-3">
-          <div>
-            <span className="section-label">Current build</span>
-            <p className="mt-3 font-sans text-2xl font-semibold text-[#1E2328]">{summary.ccrn.live} live CCRN questions</p>
-          </div>
-          <div>
-            <span className="section-label">NCLEX path</span>
-            <p className="mt-3 font-sans text-2xl font-semibold text-[#1E2328]">{summary.nclex.live} live NCLEX questions</p>
-          </div>
-          <div>
-            <span className="section-label">Study edge</span>
-            <p className="mt-3 font-sans text-2xl font-semibold text-[#1E2328]">Cleaner than generic qbanks</p>
-          </div>
-        </div>
+      <FrontpageCompareDeck route="home" />
 
+      <div className="px-4 py-12">
         <DailyQuestionSignup
+          source="home-front-page"
           exam="both"
-          source="home-daily-question"
-          title="Start the free daily question."
-          body="Capture one clean repeat touchpoint: a daily nursing question, sharper rationale, and a faster route into the right paid plan."
+          title="Free daily NCLEX question, straight to your inbox."
+          body="One sharp, exam-style question every day with a clean rationale. No credit card, unsubscribe anytime — a calm way to keep your streak alive before you unlock the full bank."
         />
       </div>
+
+      <PricingCards />
     </main>
   );
 }

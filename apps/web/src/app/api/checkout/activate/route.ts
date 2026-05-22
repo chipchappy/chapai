@@ -1,71 +1,59 @@
-import { NextResponse } from "next/server";
-import { resolveEnv } from "@/lib/db";
-import { createPaidAccessToken, PAID_ACCESS_COOKIE, type PremiumEntitlement } from "@/lib/premium-access";
+import { NextRequest } from "next/server";
 import { z } from "zod";
+import { createRequestContext, log, logError } from "@/lib/logger";
+import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
+import { getServerEnv } from "@/lib/env";
+import { jsonError, jsonSuccess } from "@/lib/http";
+import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { ensureHostedUser, findEntitlementByCheckoutSessionId, upsertBillingState } from "@/lib/billing-store";
+import { getLaunchOfferDisplayLabel, planCodeFromLegacySignals } from "@/lib/launch-offers";
+import { buildBillingStateFromCheckout, subscriptionIsActive, type StripeCheckoutSessionSnapshot, type StripeSubscriptionSnapshot } from "@/lib/stripe-billing";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 const schema = z.object({
   sessionId: z.string().trim().min(10),
 });
 
-type StripeSubscription = {
-  status?: string;
-  current_period_end?: number;
-};
-
-type StripeCheckoutSession = {
-  id: string;
-  mode: "payment" | "subscription";
-  status?: string;
-  payment_status?: string;
-  metadata?: Record<string, string | undefined>;
-  subscription?: StripeSubscription | string | null;
-};
-
-function parseEntitlements(value: string | undefined): PremiumEntitlement[] {
-  const items = (value ?? "")
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-  const allowed = items.filter((item): item is PremiumEntitlement => (
-    item === "live-bank" || item === "rich-modes" || item === "practice-exams" || item === "tutor"
-  ));
-
-  return allowed.length > 0 ? allowed : ["live-bank", "rich-modes", "practice-exams", "tutor"];
+function buildLoginUrl(sessionId: string) {
+  return `/auth/login?next=${encodeURIComponent(`/success?session_id=${encodeURIComponent(sessionId)}`)}`;
 }
 
-function subscriptionIsActive(subscription: StripeSubscription | string | null | undefined) {
-  if (!subscription || typeof subscription === "string") {
-    return false;
-  }
+export async function POST(request: NextRequest) {
+  const requestContext = createRequestContext(request, { route: "/api/checkout/activate" });
 
-  return subscription.status === "active" || subscription.status === "trialing";
-}
-
-function getExpiresAt(session: StripeCheckoutSession) {
-  const metadata = session.metadata ?? {};
-
-  if (session.mode === "payment") {
-    const accessHours = Number(metadata.access_hours ?? 24);
-    return Date.now() + Math.max(1, accessHours) * 60 * 60 * 1000;
-  }
-
-  if (session.subscription && typeof session.subscription !== "string" && session.subscription.current_period_end) {
-    return session.subscription.current_period_end * 1000;
-  }
-
-  return Date.now() + 30 * 24 * 60 * 60 * 1000;
-}
-
-export async function POST(request: Request) {
   try {
-    const env = resolveEnv();
+    const env = getServerEnv();
     if (!env.STRIPE_SECRET_KEY) {
-      return NextResponse.json({ success: false, error: "Stripe is not configured yet." }, { status: 503 });
+      return jsonError(503, "STRIPE_NOT_CONFIGURED", "Stripe is not configured yet.", requestContext, {
+        requestId: requestContext.requestId,
+      });
+    }
+
+    const runtimeEnv = resolveEnv();
+    if (!hasDatabase(runtimeEnv)) {
+      return jsonError(503, "CHECKOUT_STORAGE_UNAVAILABLE", "Hosted entitlement storage is unavailable.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
     const body = await request.json();
     const { sessionId } = schema.parse(body);
+    let user = null;
+    try {
+      user = await getAuthenticatedUser();
+    } catch (error) {
+      logError("checkout/activate auth lookup failed", error, requestContext);
+    }
+    if (!user?.id || !user.email) {
+      return jsonError(401, "AUTH_REQUIRED", "Sign in to finalize account access.", {
+        ...requestContext,
+        loginUrl: buildLoginUrl(sessionId),
+      }, {
+        requestId: requestContext.requestId,
+      });
+    }
 
     const stripeResponse = await fetch(
       `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}?expand[]=subscription`,
@@ -79,13 +67,17 @@ export async function POST(request: Request) {
 
     if (!stripeResponse.ok) {
       const detail = await stripeResponse.text();
-      console.error("checkout/activate stripe error:", detail);
-      return NextResponse.json({ success: false, error: "Could not verify this checkout session." }, { status: 502 });
+      logError("Stripe checkout activation lookup failed", detail, requestContext);
+      return jsonError(502, "STRIPE_LOOKUP_FAILED", "Could not verify this checkout session.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
-    const session = (await stripeResponse.json()) as StripeCheckoutSession;
+    const session = (await stripeResponse.json()) as StripeCheckoutSessionSnapshot;
     if (session.status !== "complete") {
-      return NextResponse.json({ success: false, error: "Checkout is not complete yet." }, { status: 409 });
+      return jsonError(409, "CHECKOUT_INCOMPLETE", "Checkout is not complete yet.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
     const paid =
@@ -94,57 +86,86 @@ export async function POST(request: Request) {
         : session.payment_status === "paid" || subscriptionIsActive(session.subscription);
 
     if (!paid) {
-      return NextResponse.json({ success: false, error: "Payment has not settled yet." }, { status: 409 });
+      return jsonError(409, "PAYMENT_PENDING", "Payment has not settled yet.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
     const metadata = session.metadata ?? {};
-    const tier = metadata.tier === "pro" ? "pro" : "plus";
-    const planCode = metadata.plan_code ?? `${tier}-launch`;
-    const packageLabel = metadata.package_label ?? "Clarity premium access";
-    const examTrack = metadata.unlock_scope === "all"
-      ? "all"
-      : metadata.exam_track === "ccrn" || metadata.exam_track === "nclex"
-        ? metadata.exam_track
-        : "all";
-    const entitlements = parseEntitlements(metadata.entitlements);
-    const expiresAt = getExpiresAt(session);
-
-    const token = createPaidAccessToken({
-      tier,
-      planCode,
-      packageLabel,
-      examTrack,
-      entitlements,
-      sessionId: session.id,
-      expiresAt,
-    });
-
-    const secure = (request.headers.get("x-forwarded-proto") ?? new URL(request.url).protocol.replace(":", "")) === "https";
-    const response = NextResponse.json({
-      success: true,
-      data: {
-        tier,
-        packageLabel,
-        displayLabel: tier === "pro" ? "Pro access active" : "Plus access active",
-        expiresAt: new Date(expiresAt).toISOString(),
-      },
-    });
-
-    response.cookies.set(PAID_ACCESS_COOKIE, token, {
-      httpOnly: true,
-      sameSite: "lax",
-      secure,
-      path: "/",
-      maxAge: Math.max(60 * 60, Math.floor((expiresAt - Date.now()) / 1000)),
-    });
-
-    return response;
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json({ success: false, error: "Invalid checkout activation request." }, { status: 400 });
+    if (metadata.supabase_user_id && metadata.supabase_user_id !== user.id) {
+      return jsonError(403, "SESSION_OWNERSHIP_MISMATCH", "This checkout session belongs to a different account.", requestContext, {
+        requestId: requestContext.requestId,
+      });
     }
 
-    console.error("checkout/activate error:", error);
-    return NextResponse.json({ success: false, error: "Internal server error." }, { status: 500 });
+    const db = getDB(runtimeEnv);
+    let entitlement = await findEntitlementByCheckoutSessionId(db, session.id);
+    if (!entitlement) {
+      await ensureHostedUser(db, {
+        userId: user.id,
+        email: user.email,
+        name: typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : null,
+      });
+      await upsertBillingState(db, buildBillingStateFromCheckout(session.id, {
+        ...session,
+        customer: typeof session.customer === "string" ? session.customer : null,
+        customer_details: session.customer_details ?? null,
+        subscription: typeof session.subscription === "object" && session.subscription
+          ? {
+              ...(session.subscription as StripeSubscriptionSnapshot),
+              customer: typeof (session.subscription as StripeSubscriptionSnapshot).customer === "string"
+                ? (session.subscription as StripeSubscriptionSnapshot).customer
+                : null,
+            }
+          : (typeof session.subscription === "string" ? session.subscription : null),
+      }));
+      entitlement = await findEntitlementByCheckoutSessionId(db, session.id);
+    }
+
+    if (!entitlement) {
+      log("warn", "Checkout activation requested before entitlement was written", {
+        ...requestContext,
+        stripeSessionId: session.id,
+        userId: user.id,
+      });
+      return jsonSuccess({
+        status: "pending" as const,
+        packageLabel: metadata.package_label ?? "Clarity access",
+        displayLabel: getLaunchOfferDisplayLabel(metadata.plan_code),
+      }, 202, { requestId: requestContext.requestId });
+    }
+
+    if (entitlement.userId && entitlement.userId !== user.id) {
+      return jsonError(403, "ENTITLEMENT_OWNERSHIP_MISMATCH", "The verified entitlement belongs to a different account.", requestContext, {
+        requestId: requestContext.requestId,
+      });
+    }
+
+    const planCode = planCodeFromLegacySignals({
+      planCode: entitlement.planCode,
+      tier: entitlement.tier,
+      examTrack: entitlement.examTrack,
+      checkoutMode: session.mode === "payment" || session.mode === "subscription" ? session.mode : null,
+    });
+
+    return jsonSuccess({
+      tier: entitlement.tier,
+      packageLabel: metadata.package_label ?? "Clarity premium access",
+      displayLabel: getLaunchOfferDisplayLabel(planCode),
+      expiresAt: entitlement.expiresAt,
+      status: "active" as const,
+      planCode,
+    }, 200, { requestId: requestContext.requestId });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return jsonError(400, "VALIDATION_ERROR", "Invalid checkout activation request.", requestContext, {
+        requestId: requestContext.requestId,
+      });
+    }
+
+    logError("checkout/activate error", error, requestContext);
+    return jsonError(500, "INTERNAL_ERROR", "Internal server error.", requestContext, {
+      requestId: requestContext.requestId,
+    });
   }
 }

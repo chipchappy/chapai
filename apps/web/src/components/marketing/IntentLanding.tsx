@@ -1,5 +1,5 @@
 import SplitImageHero from "./SplitImageHero";
-import { getArtworkForIntent, getBackgroundForIntent } from "./marketingArtwork";
+import { getBackgroundForIntent } from "./marketingArtwork";
 
 interface IntentLandingProps {
   eyebrow: string;
@@ -48,8 +48,8 @@ export default function IntentLanding({
   urgencyBody,
   faq,
 }: IntentLandingProps) {
-  const artwork = getArtworkForIntent({ examPill, title, accentLabel });
   const backgroundColor = getBackgroundForIntent(examPill);
+  const tone = examPill?.toLowerCase().includes("ccrn") ? "sage" : examPill?.toLowerCase().includes("nclex") ? "cool" : "warm";
 
   return (
     <main className="page-shell">
@@ -63,7 +63,7 @@ export default function IntentLanding({
         secondaryHref={secondaryHref}
         secondaryLabel={secondaryLabel}
         supportLine={accentLabel}
-        artwork={artwork}
+        tone={tone}
       />
 
       <section className="mt-8 grid gap-4 rounded-[28px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.84)] p-6 shadow-card md:grid-cols-3">

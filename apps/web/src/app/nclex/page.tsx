@@ -1,62 +1,64 @@
 import type { Metadata } from "next";
+import HeroCTA from "@/components/marketing/HeroCTA";
+import PricingCards from "@/components/marketing/PricingCards";
+import TrustStrip from "@/components/marketing/TrustStrip";
 import DailyQuestionSignup from "@/components/marketing/DailyQuestionSignup";
-import PremiumArtHero from "@/components/marketing/PremiumArtHero";
-import { marketingArtwork } from "@/components/marketing/marketingArtwork";
-import { getLiveContentSummary } from "@/lib/live-content-summary";
+import { getLiveBankStats } from "@/lib/live-bank-stats";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "NCLEX practice questions with AI review",
   description:
-    "Premium NCLEX practice questions focused on prioritization, safety, pharmacology, and AI-guided review in a cleaner study tool.",
+    "Premium NCLEX practice questions focused on NGN case studies, prioritization, safety, pharmacology, and realistic test-mode review.",
   alternates: {
     canonical: "/nclex",
   },
 };
 
-export default function NclexPage() {
-  const summary = getLiveContentSummary();
+export default async function NclexPage() {
+  const stats = await getLiveBankStats();
 
   return (
-    <main className="space-y-12 px-4 py-8 md:py-10">
-      <PremiumArtHero
-        backgroundColor="#F5F1E8"
-        title="NCLEX, sharpened for safer next-step thinking."
-        body="Original questions, AI-guided rationale, and a direct learning path built for working ICU nurses and students."
-        ctaHref="/upgrade#nclex"
-        ctaLabel="Learn More"
-        artwork={marketingArtwork.nclex}
-      />
-
-      <section className="page-shell pt-0">
-        <div className="grid gap-5 rounded-[28px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,252,247,0.92)] p-6 shadow-card lg:grid-cols-3">
-          <article>
-            <span className="section-label">Current build</span>
-            <h2 className="mt-3 font-serif text-[2rem] leading-none text-[#1E2328]">{summary.nclex.live} live NCLEX questions</h2>
-            <p className="mt-4 font-sans text-base leading-7 text-[#5E6367]">Built around prioritization, delegation, medication safety, and next-step thinking.</p>
-          </article>
-          <article>
-            <span className="section-label">Review style</span>
-            <h2 className="mt-3 font-serif text-[2rem] leading-none text-[#1E2328]">Priority + safety first</h2>
-            <p className="mt-4 font-sans text-base leading-7 text-[#5E6367]">Rationales are meant to coach the safe move, the wrong-turn pattern, and the next study rep.</p>
-          </article>
-          <article>
-            <span className="section-label">Package path</span>
-            <h2 className="mt-3 font-serif text-[2rem] leading-none text-[#1E2328]">Sprint / Plus / Pro</h2>
-            <p className="mt-4 font-sans text-base leading-7 text-[#5E6367]">A cheaper, cleaner path into the exam without generic qbank clutter.</p>
-          </article>
+    <main>
+      <HeroCTA heroArt="nclex" />
+      <TrustStrip />
+      <section className="bg-[var(--c-bg)] px-4 py-16">
+        <div className="mx-auto max-w-[1180px]">
+          <span className="text-[0.78rem] font-bold uppercase tracking-[0.18em] text-[var(--c-gold)]">
+            NGN structure
+          </span>
+          <h2 className="mt-4 max-w-[46rem] text-[clamp(2.35rem,4vw,4.2rem)]">
+            Case studies are not bonus content. They are the exam.
+          </h2>
+          <div className="mt-8 grid gap-3 md:grid-cols-3">
+            {[
+              [`${stats.nclexLive.toLocaleString()} live items`, "The current bank is wired into practice and review surfaces."],
+              [`${stats.nclexNgnRatio}% NGN mix`, "Case, matrix, bow-tie, ordering, and chart-style formats stay visible."],
+              ["3-5 case studies", "The sample runner treats unfolding cases as a core exam flow, not a worksheet."],
+            ].map(([title, body]) => (
+              <article
+                key={title}
+                className="rounded-[8px] border border-[var(--c-border)] bg-[var(--c-bg-elevated)] p-5"
+              >
+                <h3 className="text-[1.45rem]">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--c-text-muted)]">{body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <div className="page-shell pt-0">
+      <div className="px-4 py-12">
         <DailyQuestionSignup
+          source="nclex-landing"
           exam="nclex"
-          source="nclex-daily-question"
-          title="Get one NCLEX question each day."
-          body="A lighter daily touchpoint for NCLEX buyers who want daily priority and safety reps before the full package."
+          title="Free daily NCLEX question, straight to your inbox."
+          body="One sharp, exam-style NCLEX question every day with a clean rationale. No credit card, unsubscribe anytime — keep your streak alive before you unlock the full bank."
         />
       </div>
+
+      <PricingCards />
     </main>
   );
 }
