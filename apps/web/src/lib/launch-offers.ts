@@ -52,14 +52,14 @@ const LAUNCH_OFFER_MAP: Record<LaunchPlanCode, LaunchOfferPolicy> = {
     planCode: "nclex_24h_pass",
     planType: "track-pass",
     billingTier: "plus",
-    label: "NCLEX 24-Hour Access",
-    shortLabel: "NCLEX 24H",
-    description: "One day of NCLEX access with half of the live bank, full rationales, diagrams, citations, sources, and 1 included practice exam.",
+    label: "NCLEX 7-Day Pass",
+    shortLabel: "NCLEX 7-Day",
+    description: "Seven days of full NCLEX access — the complete live bank, full rationales, diagrams, citations, sources, and 1 included practice exam.",
     price: 4.99,
     checkoutMode: "payment",
     examTrackScope: "nclex",
-    accessHours: 24,
-    questionBankAccessPercent: 50,
+    accessHours: 168,
+    questionBankAccessPercent: 100,
     practiceExamLimit: 1,
     entitlements: ["live-bank", "practice-exams"],
     canUseTutor: false,
@@ -67,20 +67,20 @@ const LAUNCH_OFFER_MAP: Record<LaunchPlanCode, LaunchOfferPolicy> = {
     canUseIcuSimBeta: false,
     canUseAdvancedAnalytics: false,
     activeForSale: true,
-    marketingBadge: "24-hour access",
+    marketingBadge: "7-day pass",
   },
   ccrn_24h_pass: {
     planCode: "ccrn_24h_pass",
     planType: "track-pass",
     billingTier: "plus",
-    label: "CCRN 24-Hour Access",
-    shortLabel: "CCRN 24H",
-    description: "One day of CCRN access with half of the live bank, full rationales, diagrams, citations, sources, and 1 included practice exam.",
+    label: "CCRN 7-Day Pass",
+    shortLabel: "CCRN 7-Day",
+    description: "Seven days of full CCRN access — the complete live bank, full rationales, diagrams, citations, sources, and 1 included practice exam.",
     price: 4.99,
     checkoutMode: "payment",
     examTrackScope: "ccrn",
-    accessHours: 24,
-    questionBankAccessPercent: 50,
+    accessHours: 168,
+    questionBankAccessPercent: 100,
     practiceExamLimit: 1,
     entitlements: ["live-bank", "practice-exams"],
     canUseTutor: false,
@@ -88,7 +88,7 @@ const LAUNCH_OFFER_MAP: Record<LaunchPlanCode, LaunchOfferPolicy> = {
     canUseIcuSimBeta: false,
     canUseAdvancedAnalytics: false,
     activeForSale: true,
-    marketingBadge: "24-hour access",
+    marketingBadge: "7-day pass",
   },
   nclex_base_monthly: {
     planCode: "nclex_base_monthly",
@@ -285,12 +285,12 @@ export function planCodeFromLegacySignals(input: {
 
 export function getPracticeExamIdsForTrack(track: LaunchExamTrackScope) {
   if (track === "nclex") {
-    return ["nclex-sim-1", "nclex-sim-2", "nclex-sim-3"];
+    return ["nclex-sim-1", "nclex-sim-2", "nclex-sim-3", "nclex-sim-4", "nclex-sim-5"];
   }
   if (track === "ccrn") {
     return ["ccrn-sim-1", "ccrn-sim-2"];
   }
-  return ["nclex-sim-1", "nclex-sim-2", "nclex-sim-3", "ccrn-sim-1", "ccrn-sim-2"];
+  return ["nclex-sim-1", "nclex-sim-2", "nclex-sim-3", "nclex-sim-4", "nclex-sim-5", "ccrn-sim-1", "ccrn-sim-2"];
 }
 
 export function examIdMatchesTrack(examId: string, track: LaunchExamTrackScope) {

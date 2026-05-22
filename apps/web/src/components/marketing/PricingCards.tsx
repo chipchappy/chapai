@@ -1,82 +1,130 @@
+import Link from "next/link";
 import CheckoutButton from "@/components/billing/CheckoutButton";
-import { competitorComparisonLine } from "@/lib/brand/competitorPricing";
+import { competitorPricing } from "@/lib/brand/competitorPricing";
 import { getLaunchOffer, type LaunchPlanCode } from "@/lib/launch-offers";
 import styles from "./PricingCards.module.css";
 
-type PlanCard = {
+type PaidTier = {
   code: LaunchPlanCode;
   name: string;
   cadence: string;
   badge: string;
-  tone: "sage" | "ocean" | "plain";
+  tagline: string;
+  highlight?: boolean;
   features: string[];
+  cta: string;
 };
 
-const cards: PlanCard[] = [
+const paidTiers: PaidTier[] = [
+  {
+    code: "nclex_24h_pass",
+    name: "7-Day Pass",
+    cadence: "/ 7 days",
+    badge: "Cram sprint",
+    tagline: "The crunch week before your exam.",
+    features: [
+      "Full NCLEX NGN bank — 7 days",
+      "Every NGN question type",
+      "1 readiness exam",
+      "Elite rationales + citations",
+    ],
+    cta: "Get the 7-day pass",
+  },
   {
     code: "nclex_base_monthly",
-    name: "NCLEX Base",
+    name: "NCLEX Monthly",
     cadence: "/mo",
     badge: "Most popular",
-    tone: "sage",
-    features: ["Full NCLEX question bank", "NGN and case-study modes", "2 readiness exams", "Rationales, citations, diagrams"],
+    tagline: "The full NCLEX-RN bank, every month.",
+    highlight: true,
+    features: [
+      "Full NCLEX NGN question bank",
+      "All 5 readiness exams",
+      "Personalized weak-area analytics",
+      "Rationales, citations & diagrams",
+    ],
+    cta: "Start NCLEX Monthly",
   },
   {
     code: "all_access_monthly",
-    name: "Dual Premium",
+    name: "Premium",
     cadence: "/mo",
-    badge: "Best value if you'll take both",
-    tone: "ocean",
-    features: ["NCLEX + CCRN banks", "All 5 readiness exams", "AI tutor unlocked", "Advanced weak-area analytics"],
-  },
-  {
-    code: "ccrn_base_monthly",
-    name: "CCRN Base",
-    cadence: "/mo",
-    badge: "Critical-care route",
-    tone: "plain",
-    features: ["Full CCRN bank", "Hemodynamics and ICU systems", "2 readiness exams", "Rationales, citations, diagrams"],
+    badge: "Best overall value",
+    tagline: "NCLEX + CCRN + AI tutor.",
+    features: [
+      "Everything in NCLEX Monthly",
+      "CCRN study bank included",
+      "AI tutor on every question",
+      "Clinical simulations — coming soon",
+      "Advanced analytics",
+    ],
+    cta: "Go Premium",
   },
 ];
 
 export default function PricingCards() {
-  const comparison = competitorComparisonLine();
-
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.intro}>
           <span className={styles.eyebrow}>Pricing</span>
-          <h1 className={styles.title}>Premium prep without premium-price theater.</h1>
+          <h2 className={styles.title}>Premium prep, priced on your side.</h2>
           <p className={styles.body}>
-            Choose a single route or unlock both. The main NCLEX plan stays at $9.99/mo so students can practice deeply without turning the test into another bill.
+            Start free with real practice. Upgrade only when you&apos;re ready. Every plan is original NGN content with
+            elite rationales — never a $300+ question-bank tax.
           </p>
         </div>
 
         <div className={styles.cards}>
-          {cards.map((card) => {
-            const offer = getLaunchOffer(card.code);
-            if (!offer) {
-              return null;
-            }
+          {/* FREE — stands out */}
+          <article className={styles.card} data-tone="free" data-highlight="true">
+            <div className={styles.cardHeader}>
+              <span className={styles.badge}>Start free</span>
+              <h3 className={styles.name}>Free</h3>
+              <div className={styles.price}>
+                <strong>$0</strong>
+                <span>forever</span>
+              </div>
+              <p className={styles.tagline}>Real practice before you pay a cent.</p>
+            </div>
+            <ul className={styles.features}>
+              <li>1,000 NCLEX NGN questions</li>
+              <li>1 readiness exam</li>
+              <li>Elite rationales + citations</li>
+              <li className={styles.locked}>Personalized analysis — unlocks with any paid plan</li>
+            </ul>
+            <div className={styles.actions}>
+              <Link
+                href="/auth/signup"
+                className="inline-flex w-full items-center justify-center rounded-[8px] border border-[var(--c-sage-deep)] px-5 py-3 text-sm font-semibold text-[var(--c-sage-deep)] transition hover:bg-[var(--c-sage-deep)] hover:text-white"
+              >
+                Start free
+              </Link>
+            </div>
+          </article>
+
+          {paidTiers.map((tier) => {
+            const offer = getLaunchOffer(tier.code);
+            if (!offer) return null;
             return (
-              <article className={styles.card} data-tone={card.tone} key={card.code}>
-                <div>
-                  <div className={styles.cardHeader}>
-                    <div>
-                      <span className={styles.badge}>{card.badge}</span>
-                      <h2 className={styles.name}>{card.name}</h2>
-                    </div>
-                    <div className={styles.price}>
-                      <strong>${offer.price}</strong>
-                      <span>{card.cadence}</span>
-                    </div>
+              <article
+                className={styles.card}
+                data-tone={tier.code === "all_access_monthly" ? "ocean" : "sage"}
+                data-highlight={tier.highlight ? "true" : undefined}
+                key={tier.code}
+              >
+                <div className={styles.cardHeader}>
+                  <span className={styles.badge}>{tier.badge}</span>
+                  <h3 className={styles.name}>{tier.name}</h3>
+                  <div className={styles.price}>
+                    <strong>${offer.price}</strong>
+                    <span>{tier.cadence}</span>
                   </div>
-                  <p className={styles.compare}>{comparison}</p>
+                  <p className={styles.tagline}>{tier.tagline}</p>
                 </div>
                 <ul className={styles.features}>
-                  {card.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
+                  {tier.features.map((f) => (
+                    <li key={f}>{f}</li>
                   ))}
                 </ul>
                 <div className={styles.actions}>
@@ -87,7 +135,7 @@ export default function PricingCards() {
                     packageLabel={offer.label}
                     className="inline-flex w-full items-center justify-center rounded-[8px] bg-[var(--c-sage-deep)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--c-sage-deep-hover)]"
                   >
-                    Start {offer.shortLabel}
+                    {tier.cta}
                   </CheckoutButton>
                 </div>
               </article>
@@ -95,17 +143,17 @@ export default function PricingCards() {
           })}
         </div>
 
-        <details className={`${styles.card} ${styles.pass}`}>
-          <summary>Just need a sprint? 24-hour passes -- $4.99</summary>
-          <div className={styles.cardBody}>
-            <p className={styles.compare}>{comparison}</p>
-            <ul className={styles.features}>
-              <li>One-time 24-hour access</li>
-              <li>NCLEX or CCRN route</li>
-              <li>Half-bank sprint plus 1 readiness exam</li>
-            </ul>
+        {/* Direct competitor comparison */}
+        <div className={styles.compare}>
+          <p className={styles.compareTitle}>What students pay everywhere else</p>
+          <div className={styles.compareRow}>
+            <span className={styles.compareItem}>UWorld 30-day<strong>${competitorPricing.UWorld_30}</strong></span>
+            <span className={styles.compareItem}>Bootcamp 6-mo<strong>${competitorPricing.Bootcamp_6mo}</strong></span>
+            <span className={styles.compareItem}>ATI 3-mo<strong>${competitorPricing.ATI_3mo}</strong></span>
+            <span className={styles.compareItem}>Kaplan 6-mo<strong>${competitorPricing.Kaplan_6mo}</strong></span>
+            <span className={`${styles.compareItem} ${styles.compareUs}`}>Clarity<strong>free → $15.99/mo</strong></span>
           </div>
-        </details>
+        </div>
       </div>
     </section>
   );
