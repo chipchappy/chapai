@@ -74,6 +74,11 @@ export default function PricingCards() {
                   </div>
                   <p className={styles.compare}>{comparison}</p>
                 </div>
+                <ul className={styles.features}>
+                  {card.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
                 <div className={styles.actions}>
                   <CheckoutButton
                     checkoutMode={offer.checkoutMode}
@@ -85,11 +90,6 @@ export default function PricingCards() {
                     Start {offer.shortLabel}
                   </CheckoutButton>
                 </div>
-                <ul className={`${styles.features} ${styles.cardBody}`}>
-                  {card.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
               </article>
             );
           })}

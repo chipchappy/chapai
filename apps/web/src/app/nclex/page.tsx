@@ -22,7 +22,7 @@ export default async function NclexPage() {
   return (
     <main>
       <HeroCTA heroArt="nclex" />
-      <TrustStrip />
+      <TrustStrip questionCount={stats.nclexLive} examCount={5} />
       <section className="bg-[var(--c-bg)] px-4 py-16">
         <div className="mx-auto max-w-[1180px]">
           <span className="text-[0.78rem] font-bold uppercase tracking-[0.18em] text-[var(--c-gold)]">

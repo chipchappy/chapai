@@ -54,7 +54,7 @@ export default async function HomePage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }} />
       <HeroCTA />
-      <TrustStrip />
+      <TrustStrip questionCount={stats.nclexLive} examCount={5} />
       <CompetitiveStudySystem
         route="home"
         nclexCount={stats.nclexLive}
