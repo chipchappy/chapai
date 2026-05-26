@@ -1,9 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const productionHosts = new Set([
+  "claritynclex.com",
+  "www.claritynclex.com",
   "claritynclex.chapaisolutions.com",
   "clarityccrn.chapaisolutions.com",
   "clarityhome.chapaisolutions.com",
+]);
+
+const CANONICAL_HOST = "claritynclex.com";
+
+const LEGACY_HOSTS_TO_REDIRECT = new Set([
+  "www.claritynclex.com",
+  "claritynclex.chapaisolutions.com",
 ]);
 
 function applySecurityHeaders(response: NextResponse) {
@@ -44,6 +53,13 @@ export function middleware(request: NextRequest) {
     url.protocol = "https:";
     url.host = host;
     return applySecurityHeaders(NextResponse.redirect(url, 308));
+  }
+
+  if (LEGACY_HOSTS_TO_REDIRECT.has(host)) {
+    const url = request.nextUrl.clone();
+    url.protocol = "https:";
+    url.host = CANONICAL_HOST;
+    return applySecurityHeaders(NextResponse.redirect(url, 301));
   }
 
   if (host === "clarityccrn.chapaisolutions.com" && request.nextUrl.pathname === "/") {

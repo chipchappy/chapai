@@ -40,6 +40,46 @@ const QUESTION_TYPE_OPTIONS: Array<{ value: QuestionType; label: string }> = [
   { value: "bow_tie", label: "Bow tie" },
 ];
 
+function loadPracticeSnapshot() {
+  try {
+    return window.localStorage.getItem(PRACTICE_STORAGE_KEY) ?? window.sessionStorage.getItem(PRACTICE_STORAGE_KEY);
+  } catch {
+    try {
+      return window.sessionStorage.getItem(PRACTICE_STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  }
+}
+
+function savePracticeSnapshot(snapshot: string) {
+  try {
+    window.localStorage.setItem(PRACTICE_STORAGE_KEY, snapshot);
+  } catch {
+    // Fall back to tab-only persistence when durable browser storage is blocked.
+  }
+
+  try {
+    window.sessionStorage.setItem(PRACTICE_STORAGE_KEY, snapshot);
+  } catch {
+    // Ignore storage access issues; the active in-memory session still works.
+  }
+}
+
+function clearPracticeSnapshot() {
+  try {
+    window.localStorage.removeItem(PRACTICE_STORAGE_KEY);
+  } catch {
+    // Ignore storage access issues.
+  }
+
+  try {
+    window.sessionStorage.removeItem(PRACTICE_STORAGE_KEY);
+  } catch {
+    // Ignore storage access issues.
+  }
+}
+
 function sanitizeExam(value: string | undefined): Exam {
   return value === "ccrn" ? "ccrn" : "nclex";
 }
@@ -302,7 +342,7 @@ export default function QuizPage({
       return;
     }
 
-    const snapshot = runtimeFromSnapshot(window.sessionStorage.getItem(PRACTICE_STORAGE_KEY));
+    const snapshot = runtimeFromSnapshot(loadPracticeSnapshot());
     if (snapshot) {
       dispatch({ type: "hydrate", payload: snapshot });
     }
@@ -345,11 +385,11 @@ export default function QuizPage({
 
   useEffect(() => {
     if (!state.session) {
-      window.sessionStorage.removeItem(PRACTICE_STORAGE_KEY);
+      clearPracticeSnapshot();
       return;
     }
 
-    window.sessionStorage.setItem(PRACTICE_STORAGE_KEY, createSessionSnapshot(state.session));
+    savePracticeSnapshot(createSessionSnapshot(state.session));
   }, [state.session]);
 
   const liveQuestionType = ngnOnly && selectedQuestionType === "mcq" ? "" : selectedQuestionType;

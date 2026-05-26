@@ -21,15 +21,14 @@ export default function SignupPage() {
           </span>
           <h1 className="mt-4 text-[clamp(2.7rem,5vw,4.8rem)]">Get ten NCLEX questions today.</h1>
           <p className="mt-5 text-base leading-8 text-[var(--c-text-muted)]">
-            Create the account first. Then the dashboard takes you straight into a sterile sample question so the product
-            feels like the test, not a landing page.
+            Create a free study account, then go straight into the NCLEX-style practice runner. No credit card required.
           </p>
           <p className="mt-5 font-serif text-lg italic leading-7 text-[var(--c-adobe)]">
-            Full bank is $9.99/mo. No credit card for the free start.
+            NCLEX Monthly starts at $9.99/mo when you are ready for readiness exams, richer modes, and analytics.
           </p>
         </div>
         <div>
-          <NewsletterOptIn />
+          <NewsletterOptIn nextPath="/quiz?welcome=1" />
         </div>
       </section>
     </main>

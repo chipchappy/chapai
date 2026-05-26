@@ -285,15 +285,25 @@ export async function getActiveEntitlementForUser(
     return null;
   }
 
-  const rows = await db
-    .select()
-    .from(userEntitlements)
-    .where(
-      user
-        ? or(eq(userEntitlements.userId, user.id), eq(userEntitlements.email, user.email))
-        : eq(userEntitlements.email, input.email!),
-    )
-    .orderBy(desc(userEntitlements.updatedAt));
+  const rowsById = user?.id
+    ? await db
+      .select()
+      .from(userEntitlements)
+      .where(eq(userEntitlements.userId, user.id))
+      .orderBy(desc(userEntitlements.updatedAt))
+      .limit(10)
+    : [];
+  const lookupEmail = user?.email ?? input.email ?? null;
+  const rowsByEmail = lookupEmail
+    ? await db
+      .select()
+      .from(userEntitlements)
+      .where(eq(userEntitlements.email, lookupEmail))
+      .orderBy(desc(userEntitlements.updatedAt))
+      .limit(10)
+    : [];
+  const rows = [...new Map([...rowsById, ...rowsByEmail].map((row) => [row.id, row])).values()]
+    .sort((left, right) => right.updatedAt - left.updatedAt);
 
   const now = Math.floor(Date.now() / 1000);
   const row = rows.find((candidate) => {

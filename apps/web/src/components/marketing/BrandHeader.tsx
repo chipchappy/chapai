@@ -26,13 +26,14 @@ export default function BrandHeader() {
         <nav className={styles.nav} aria-label="Primary">
           <Link href="/nclex">NCLEX</Link>
           <Link href="/ccrn">CCRN</Link>
+          <Link href="/free">Free practice</Link>
+          <Link href="/tools/nclex-countdown">Tools</Link>
           <Link href="/quiz">Practice</Link>
           <Link href="/pricing">Pricing</Link>
-          <Link href="/dashboard">Dashboard</Link>
         </nav>
         <div className={styles.actions}>
-          <Link className={styles.ghost} href="/demo-access">
-            Enter key
+          <Link className={styles.ghost} href="/auth/login">
+            Sign in
           </Link>
           <Link
             className={styles.primary}

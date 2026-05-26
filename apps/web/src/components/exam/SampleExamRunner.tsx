@@ -47,8 +47,8 @@ export default function SampleExamRunner({ initialIndex = 0 }: { initialIndex?: 
       totalQuestions={sampleExamItems.length}
       submitted={submitted}
       onEnd={() => {
-        if (window.confirm("End this sample test and return to the dashboard?")) {
-          router.push("/dashboard");
+        if (window.confirm("End this sample test and return to practice?")) {
+          router.push("/quiz");
         }
       }}
       onPrevious={goPrevious}

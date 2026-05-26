@@ -8,16 +8,16 @@ type TrustStripProps = {
 };
 
 function flooredCount(n?: number) {
-  if (!n || n <= 0) return "2,300+";
+  if (!n || n <= 0) return "5,000+";
   return `${(Math.floor(n / 100) * 100).toLocaleString()}+`;
 }
 
 export default function TrustStrip({ questionCount, examCount = 5 }: TrustStripProps) {
   const stats: Array<[string, string]> = [
-    [flooredCount(questionCount), "Practice questions, mostly NGN"],
+    [flooredCount(questionCount), "Live practice items, mostly NGN"],
     [String(examCount), "Timed readiness exams"],
-    ["Free", "Partial access — no credit card"],
-    ["$9.99", "/mo for the full bank"],
+    ["Free", "Study account, no credit card"],
+    ["$9.99", "/mo NCLEX Monthly"],
   ];
 
   return (

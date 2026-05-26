@@ -18,7 +18,7 @@ export default async function LoginPage({
   searchParams?: Promise<{ next?: string; auth?: string }>;
 }) {
   const params = (await searchParams) ?? {};
-  const nextPath = params.next?.startsWith("/") ? params.next : "/account/billing";
+  const nextPath = params.next?.startsWith("/") ? params.next : "/quiz";
   const authState = params.auth;
   const authMessages: Record<string, string> = {
     unavailable: "Sign-in is temporarily unavailable. Give it a minute, then request a fresh link.",
@@ -39,8 +39,8 @@ export default async function LoginPage({
               Sign in to continue.
             </h1>
             <p className="mt-4 text-base leading-7 text-muted">
-              Launch week auth uses a secure sign-in link. Use the same email you want tied to checkout, billing
-              status, quiz history, and tutor usage.
+              Use the email and password from your Clarity account. This keeps quiz history, checkout, billing status,
+              and tutor usage tied to the same study profile.
             </p>
             <p className="mt-3 text-sm leading-6 text-muted">
               Continuing creates or resumes your hosted ChapAI account under Chapai Solutions LLC.

@@ -2,10 +2,23 @@ import type { Metadata } from "next";
 import IntentLanding from "@/components/marketing/IntentLanding";
 
 export const metadata: Metadata = {
-  title: "NCLEX Prioritization Questions | ChapAI",
-  description: "Practice NCLEX prioritization questions with tighter rationales, AI follow-up teaching, and a cleaner package built for safety-first decision making.",
-  alternates: {
-    canonical: "/nclex/prioritization-questions",
+  title: "NCLEX Prioritization Questions — Free Practice with Rationales | Clarity",
+  description:
+    "Free NCLEX prioritization and delegation practice with full rationales. ABC, Maslow, and safety-first frameworks worked through with real clinical scenarios. Updated for the 2026 NCSBN test plan.",
+  alternates: { canonical: "/nclex/prioritization-questions" },
+  keywords: [
+    "NCLEX prioritization questions",
+    "free NCLEX prioritization questions",
+    "NCLEX who do you see first",
+    "NCLEX-RN prioritization practice",
+    "NCLEX safety-first decision making",
+  ],
+  openGraph: {
+    title: "NCLEX Prioritization Questions — Free Practice with Rationales",
+    description:
+      "Free NCLEX prioritization practice with ABC, Maslow, and safety-first frameworks. Updated for 2026.",
+    url: "https://claritynclex.com/nclex/prioritization-questions",
+    type: "article",
   },
 };
 

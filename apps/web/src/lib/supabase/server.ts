@@ -3,6 +3,7 @@ import type { User } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { getServerEnv, hasSupabasePublicConfig } from "@/lib/env";
+import { getLocalAuthenticatedUser } from "@/lib/local-auth";
 
 type CookieAdapter = {
   getAll: () => { name: string; value: string }[];
@@ -130,5 +131,5 @@ export async function getSupabaseRouteUser(request: NextRequest) {
 }
 
 export async function getAuthenticatedUser() {
-  return getSupabaseServerUser();
+  return (await getLocalAuthenticatedUser()) ?? getSupabaseServerUser();
 }

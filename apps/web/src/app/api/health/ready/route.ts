@@ -18,6 +18,7 @@ export async function GET() {
     "billing_events",
     "user_entitlements",
     "legal_acceptances",
+    "auth_accounts",
     "practice_exam_unlocks",
     "questions",
     "quiz_sessions",

@@ -1,12 +1,14 @@
 import { headers } from "next/headers";
 import { getServerEnv } from "@/lib/env";
 
-export const DEFAULT_SITE_ORIGIN = "https://claritynclex.chapaisolutions.com";
+export const DEFAULT_SITE_ORIGIN = "https://claritynclex.com";
 
 const KNOWN_HOSTS = new Set([
+  "claritynclex.com",
+  "www.claritynclex.com",
+  "claritynclex.chapaisolutions.com",
   "clarityccrn.chapaisolutions.com",
   "clarityhome.chapaisolutions.com",
-  "claritynclex.chapaisolutions.com",
 ]);
 
 export function resolveSiteOriginFromHost(host?: string | null) {

@@ -51,8 +51,26 @@ export default function IntentLanding({
   const backgroundColor = getBackgroundForIntent(examPill);
   const tone = examPill?.toLowerCase().includes("ccrn") ? "sage" : examPill?.toLowerCase().includes("nclex") ? "cool" : "warm";
 
+  const faqSchema = faq.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
+
   return (
     <main className="page-shell">
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <SplitImageHero
         backgroundColor={backgroundColor}
         eyebrow={eyebrow}

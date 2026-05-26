@@ -17,7 +17,15 @@ type RouteContext = {
   params: Promise<{ examId: string }>;
 };
 
-const examIdSchema = z.enum(["nclex-sim-1", "nclex-sim-2", "nclex-sim-3", "ccrn-sim-1", "ccrn-sim-2"]);
+const examIdSchema = z.enum([
+  "nclex-sim-1",
+  "nclex-sim-2",
+  "nclex-sim-3",
+  "nclex-sim-4",
+  "nclex-sim-5",
+  "ccrn-sim-1",
+  "ccrn-sim-2",
+]);
 
 function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
   const correctAnswer = (() => {
@@ -165,9 +173,10 @@ function selectByBlueprint(
   const buckets = new Map<string, PracticeQuestion[]>();
 
   for (const question of questions) {
-    const bucket = buckets.get(question.category) ?? [];
+    const category = question.exam === "nclex" ? question.nclexClientNeed ?? question.category : question.category;
+    const bucket = buckets.get(category) ?? [];
     bucket.push(question);
-    buckets.set(question.category, bucket);
+    buckets.set(category, bucket);
   }
 
   const selected: PracticeQuestion[] = [];
@@ -251,9 +260,11 @@ async function buildManifestIndex(exam: Exam) {
   });
   const blueprint = getBlueprint(exam);
   const manifestIndex = new Map<string, { definition: PracticeExamDefinition; questions: PracticeQuestion[] }>();
+  const reservedIds = new Set<string>();
 
   for (const definition of definitions.filter((item) => item.exam === exam)) {
-    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, definition.seed);
+    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, definition.seed, reservedIds);
+    selectedQuestions.forEach((question) => reservedIds.add(question.id));
     manifestIndex.set(definition.id, {
       definition,
       questions: selectedQuestions,

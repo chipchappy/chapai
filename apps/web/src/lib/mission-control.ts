@@ -951,12 +951,14 @@ function loadAgentCapabilityAudit(workspaceRoot: string): CapabilityAuditSlice {
   const raw = safeReadJson<Partial<CapabilityAuditSlice>>(path.join(workspaceRoot, "config", "agent-capability-audit.json"), {});
   const fallback = emptyCapabilityAudit();
   const capabilityMatrix = raw.capabilityMatrix ?? fallback.capabilityMatrix;
+  const providerReadiness = {
+    ...fallback.providerReadiness,
+    ...raw.providerReadiness,
+  };
+  providerReadiness.totalProviders = raw.providerReadiness?.totalProviders ?? capabilityMatrix.length;
+
   return {
-    providerReadiness: {
-      ...fallback.providerReadiness,
-      ...raw.providerReadiness,
-      totalProviders: raw.providerReadiness?.totalProviders ?? capabilityMatrix.length,
-    },
+    providerReadiness,
     capabilityMatrix,
     memoryHygiene: {
       ...fallback.memoryHygiene,

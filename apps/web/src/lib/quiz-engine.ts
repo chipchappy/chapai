@@ -27,6 +27,16 @@ type QuestionRow = {
   reviewStatus: string | null;
   revision: number | null;
   publishState: string | null;
+  scenarioTitle?: string | null;
+  scenario?: string | null;
+  additionalInfo?: string | null;
+  exhibits?: string | null;
+  chartReview?: string | null;
+  matrixColumns?: string | null;
+  matrixRows?: string | null;
+  visualRationale?: string | null;
+  referencesJson?: string | null;
+  correctOrder?: string | null;
 };
 
 function parseJsonValue<T>(raw: string | null | undefined, fallback: T): T {
@@ -149,7 +159,76 @@ function toQuestionAnswer(raw: string): QuizQuestion["answer"] {
   return raw;
 }
 
+function buildSyntheticClinicalContext(row: QuestionRow, tags: string[] | undefined, conceptNotes: string[] | undefined) {
+  const topic = row.subcategory || row.category;
+  const tagLine = (tags ?? []).slice(0, 4).join(", ");
+  const notes = (conceptNotes ?? []).filter(Boolean).slice(0, 3);
+
+  return {
+    scenarioTitle: `${topic.replace(/[_-]+/g, " ")} clinical judgment`,
+    scenario: row.stem,
+    exhibits: [
+      {
+        type: "note" as const,
+        title: "Clinical context",
+        body: row.stem,
+      },
+      {
+        type: "assessment" as const,
+        title: "Decision cues",
+        items: [
+          row.category.replace(/[_-]+/g, " "),
+          ...(tagLine ? [tagLine] : []),
+          ...notes,
+        ].slice(0, 4),
+      },
+    ],
+  };
+}
+
+function buildMatrixFromAnswer(answer: QuizQuestion["answer"], options: QuizQuestion["options"]) {
+  if (!answer || Array.isArray(answer) || typeof answer !== "object") {
+    return {};
+  }
+
+  const answerEntries = Object.entries(answer);
+  if (answerEntries.length === 0) {
+    return {};
+  }
+
+  const optionLabels = options.map((option) => option.text).filter(Boolean);
+  const answerLabels = Array.from(new Set(answerEntries.map(([, value]) => String(value))));
+  const matrixColumns = optionLabels.length >= answerLabels.length ? optionLabels : answerLabels;
+  const matrixRows = answerEntries.map(([label, value]) => ({
+    label,
+    answer: String(value),
+  }));
+
+  return { matrixColumns, matrixRows };
+}
+
 export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
+  const options = toQuestionOptions(row.options);
+  const answer = toQuestionAnswer(row.answer);
+  const tags = parseJsonValue<string[] | undefined>(row.tags, undefined);
+  const conceptNotes = parseJsonValue<string[] | undefined>(row.conceptNotes, undefined);
+  const clinicalContext = buildSyntheticClinicalContext(row, tags, conceptNotes);
+  const storedMatrixColumns = parseJsonValue<QuizQuestion["matrixColumns"] | undefined>(row.matrixColumns, undefined);
+  const storedMatrixRows = parseJsonValue<QuizQuestion["matrixRows"] | undefined>(row.matrixRows, undefined);
+  const fallbackMatrix = row.type === "matrix" ? buildMatrixFromAnswer(answer, options) : {};
+  const matrix = row.type === "matrix"
+    ? {
+        ...fallbackMatrix,
+        ...(storedMatrixColumns?.length ? { matrixColumns: storedMatrixColumns } : {}),
+        ...(storedMatrixRows?.length ? { matrixRows: storedMatrixRows } : {}),
+      }
+    : {};
+  const storedExhibits = parseJsonValue<QuizQuestion["exhibits"] | undefined>(row.exhibits, undefined);
+  const storedChartReview = parseJsonValue<QuizQuestion["chartReview"] | undefined>(row.chartReview, undefined);
+  const storedVisualRationale = parseJsonValue<QuizQuestion["visualRationale"] | undefined>(row.visualRationale, undefined);
+  const storedReferences = parseJsonValue<QuizQuestion["references"] | undefined>(row.referencesJson, undefined);
+  const needsSyntheticContext = row.type === "case_study" || row.type === "bow_tie";
+
   return {
     id: row.id,
     exam: row.exam,
@@ -165,17 +244,25 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
     subcategory: row.subcategory ?? undefined,
     difficulty: (row.difficulty ?? 3) as QuizQuestion["difficulty"],
     stem: row.stem,
-    options: toQuestionOptions(row.options),
-    answer: toQuestionAnswer(row.answer),
+    scenarioTitle: row.scenarioTitle ?? (needsSyntheticContext ? clinicalContext.scenarioTitle : undefined),
+    scenario: row.scenario ?? (needsSyntheticContext ? clinicalContext.scenario : undefined),
+    additionalInfo: row.additionalInfo ?? undefined,
+    exhibits: storedExhibits ?? (needsSyntheticContext ? clinicalContext.exhibits : undefined),
+    chartReview: storedChartReview,
+    options,
+    answer,
+    ...matrix,
     rationale: row.rationale,
     distractorRationales: parseJsonValue<Record<string, string> | undefined>(row.distractorRationales, undefined),
-    tags: parseJsonValue<string[] | undefined>(row.tags, undefined),
+    tags,
     blueprintPct: row.blueprintPct ?? undefined,
-    conceptNotes: parseJsonValue<string[] | undefined>(row.conceptNotes, undefined),
+    conceptNotes,
     provenance: row.provenance ?? undefined,
+    references: storedReferences,
     reviewStatus: (row.reviewStatus as QuizQuestion["reviewStatus"]) ?? undefined,
     revision: row.revision ?? undefined,
     publishState: (row.publishState as QuizQuestion["publishState"]) ?? undefined,
+    visualRationale: storedVisualRationale,
     tutorReady: true,
   };
 }
@@ -194,20 +281,54 @@ export async function selectQuestions(
 ): Promise<QuizQuestion[]> {
   const { exam, count } = config;
   const questionType = config.questionType ?? config.type;
-  const conditions = [eq(questions.exam, exam)];
+  const conditions = [eq(questions.exam, exam), eq(questions.publishState, "published")];
+  if (questionType) {
+    conditions.push(eq(questions.type, questionType));
+  }
+  if (config.ngnOnly) {
+    conditions.push(sql`${questions.type} <> 'mcq'`);
+  }
+  const candidateLimit = config.category
+    ? 900
+    : Math.min(Math.max(count * 12, 120), 300);
 
   const dbRows = await db
     .select({
       id: questions.id,
+      exam: questions.exam,
+      type: questions.type,
+      category: questions.category,
+      subcategory: questions.subcategory,
+      difficulty: questions.difficulty,
+      stem: questions.stem,
+      options: questions.options,
+      answer: questions.answer,
+      rationale: questions.rationale,
+      distractorRationales: questions.distractorRationales,
+      tags: questions.tags,
+      blueprintPct: questions.blueprintPct,
+      conceptNotes: questions.conceptNotes,
+      provenance: questions.provenance,
+      reviewStatus: questions.reviewStatus,
+      revision: questions.revision,
+      publishState: questions.publishState,
+      scenarioTitle: questions.scenarioTitle,
+      scenario: questions.scenario,
+      additionalInfo: questions.additionalInfo,
+      exhibits: questions.exhibits,
+      chartReview: questions.chartReview,
+      matrixColumns: questions.matrixColumns,
+      matrixRows: questions.matrixRows,
+      visualRationale: questions.visualRationale,
+      referencesJson: questions.referencesJson,
+      correctOrder: questions.correctOrder,
     })
     .from(questions)
-    .where(and(...conditions));
-  const availableIds = new Set(dbRows.map((row) => row.id));
-  const canonicalBank = getQuestionBank(exam);
-  const eligibleCanonicalBank = availableIds.size > 0
-    ? canonicalBank.filter((question) => availableIds.has(question.id))
-    : canonicalBank;
-  const filteredBank = eligibleCanonicalBank.filter((question) => matchesQuizFilters(question, config));
+    .where(and(...conditions))
+    .orderBy(sql`random()`)
+    .limit(candidateLimit);
+  const dbBank = dbRows.map(mapQuestionRowToQuizQuestion);
+  const filteredBank = dbBank.filter((question) => matchesQuizFilters(question, config));
   const { eligible, skipped } = filterRenderableQuestions(filteredBank);
   const bank = applyQuestionBankAccessLimit(
     eligible,
@@ -322,6 +443,30 @@ export async function recordAnswer(
       .update(quizSessions)
       .set({ correctCount: sql`correct_count + 1` })
       .where(eq(quizSessions.id, params.sessionId));
+  }
+
+  const session = await db
+    .select({
+      totalQuestions: quizSessions.totalQuestions,
+      completedAt: quizSessions.completedAt,
+    })
+    .from(quizSessions)
+    .where(eq(quizSessions.id, params.sessionId))
+    .get();
+
+  if (session && !session.completedAt) {
+    const answeredRows = await db
+      .select({ questionId: quizAnswers.questionId })
+      .from(quizAnswers)
+      .where(eq(quizAnswers.sessionId, params.sessionId));
+    const uniqueAnsweredCount = new Set(answeredRows.map((answer) => answer.questionId)).size;
+
+    if (uniqueAnsweredCount >= session.totalQuestions) {
+      await db
+        .update(quizSessions)
+        .set({ completedAt: Math.floor(Date.now() / 1000) })
+        .where(eq(quizSessions.id, params.sessionId));
+    }
   }
 }
 

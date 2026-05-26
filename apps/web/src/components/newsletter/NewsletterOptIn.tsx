@@ -4,9 +4,10 @@ import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./NewsletterOptIn.module.css";
 
-export default function NewsletterOptIn({ nextPath = "/dashboard?welcome=1" }: { nextPath?: string }) {
+export default function NewsletterOptIn({ nextPath = "/quiz?welcome=1" }: { nextPath?: string }) {
   const [message, setMessage] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const [acceptedLegal, setAcceptedLegal] = useState(false);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -15,13 +16,23 @@ export default function NewsletterOptIn({ nextPath = "/dashboard?welcome=1" }: {
 
     const form = new FormData(event.currentTarget);
     const newsletterOptIn = form.get("newsletterOptIn") === "on";
+    const email = String(form.get("email") ?? "");
+
+    if (!acceptedLegal) {
+      setMessage("Agree to the Terms and Privacy Policy to create your account.");
+      setPending(false);
+      return;
+    }
+
     const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: form.get("email"),
+        email,
         password: form.get("password"),
         newsletterOptIn,
+        acceptedTerms: true,
+        acceptedPrivacy: true,
         nextPath,
       }),
     });
@@ -43,22 +54,34 @@ export default function NewsletterOptIn({ nextPath = "/dashboard?welcome=1" }: {
       trackEvent("newsletter_optin", { list: "qotd-daily" });
     }
 
-    window.location.assign(payload.data?.redirectPath ?? nextPath);
+    window.location.replace(payload.data?.redirectPath ?? nextPath);
   }
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <label className={styles.field}>
         <span>Email</span>
-        <input name="email" type="email" autoComplete="email" required />
+        <input name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
       </label>
       <label className={styles.field}>
         <span>Password</span>
         <input name="password" type="password" autoComplete="new-password" minLength={8} required />
       </label>
       <label className={styles.checkbox}>
-        <input name="newsletterOptIn" type="checkbox" defaultChecked />
-        <span>Send me the Daily Question and study insights. Unsubscribe any time.</span>
+        <input name="newsletterOptIn" type="checkbox" />
+        <span>Optional: send me the Daily Question and study insights. Unsubscribe any time.</span>
+      </label>
+      <label className={styles.checkbox}>
+        <input
+          type="checkbox"
+          checked={acceptedLegal}
+          onChange={(event) => setAcceptedLegal(event.target.checked)}
+          required
+        />
+        <span>
+          I agree to the <a href="/terms" target="_blank" rel="noreferrer">Terms and Conditions</a> and{" "}
+          <a href="/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>.
+        </span>
       </label>
       <button className={styles.button} type="submit" disabled={pending}>
         {pending ? "Creating account..." : "Create account"}

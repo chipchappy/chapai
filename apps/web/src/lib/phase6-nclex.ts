@@ -66,7 +66,7 @@ export function getPhase6NclexState() {
     health: state ? "live" : "missing",
     generatedAt: state?.generatedAt ?? null,
     project: state?.project ?? "NCLEX SaaS",
-    domain: state?.domain ?? "claritynclex.chapaisolutions.com",
+    domain: state?.domain ?? "claritynclex.com",
     lanes,
     blockers: state?.blockers ?? [],
     sourceFreshness: state?.sourceFreshness ?? {},

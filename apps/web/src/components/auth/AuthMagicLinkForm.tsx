@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function AuthMagicLinkForm({ nextPath = "/account/billing" }: { nextPath?: string }) {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [acceptedLegal, setAcceptedLegal] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
@@ -21,55 +22,34 @@ export default function AuthMagicLinkForm({ nextPath = "/account/billing" }: { n
             throw new Error("You must agree to the Terms and Privacy Policy to continue.");
           }
 
-          const legalResponse = await fetch("/api/legal/accept", {
+          const response = await fetch("/api/auth/password-login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               email,
-              source: "auth_login",
+              password,
               acceptedTerms: true,
               acceptedPrivacy: true,
-            }),
-          });
-
-          if (!legalResponse.ok) {
-            const payload = await legalResponse.json().catch(() => null);
-            throw new Error(payload?.error || "Could not record your policy acceptance.");
-          }
-
-          const response = await fetch("/api/auth/magic-link", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              email,
               nextPath,
             }),
           });
 
           if (!response.ok) {
             const payload = await response.json().catch(() => null);
-            const code = payload?.code;
-            if (code === "AUTH_RATE_LIMITED") {
-              throw new Error("A sign-in link was sent recently. Wait a minute, then try again.");
-            }
+            const code = payload?.code || payload?.error?.code;
             if (code === "AUTH_UNAVAILABLE") {
               throw new Error("Sign-in is temporarily unavailable. Try again in a moment.");
             }
-            throw new Error(payload?.error || "Could not send sign-in link.");
+            throw new Error(payload?.error?.message || payload?.error || "Could not sign in.");
           }
 
           const payload = await response.json().catch(() => null);
           if (payload?.data?.redirectPath) {
-            window.location.href = payload.data.redirectPath;
+            window.location.replace(payload.data.redirectPath);
             return;
           }
-          if (payload?.data?.linkUrl) {
-            window.location.href = payload.data.linkUrl;
-            return;
-          }
-
           setStatus("sent");
-          setMessage(payload?.data?.message || "Check your email for the sign-in link.");
+          setMessage(payload?.data?.message || "Signed in.");
         } catch (error) {
           setStatus("error");
           const message = error instanceof Error ? error.message : "Could not send sign-in link.";
@@ -87,6 +67,20 @@ export default function AuthMagicLinkForm({ nextPath = "/account/billing" }: { n
           onChange={(event) => setEmail(event.target.value)}
           className="mt-2 w-full rounded-[16px] border border-[rgba(74,85,89,0.12)] bg-white/92 px-4 py-3 text-base text-dark outline-none transition duration-200 focus:border-[#7E9D86] focus:ring-2 focus:ring-[rgba(126,157,134,0.16)]"
           placeholder="you@example.com"
+        />
+      </label>
+
+      <label className="block">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">Password</span>
+        <input
+          type="password"
+          autoComplete="current-password"
+          required
+          minLength={8}
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          className="mt-2 w-full rounded-[16px] border border-[rgba(74,85,89,0.12)] bg-white/92 px-4 py-3 text-base text-dark outline-none transition duration-200 focus:border-[#7E9D86] focus:ring-2 focus:ring-[rgba(126,157,134,0.16)]"
+          placeholder="Your password"
         />
       </label>
 
@@ -115,7 +109,7 @@ export default function AuthMagicLinkForm({ nextPath = "/account/billing" }: { n
         disabled={status === "sending"}
         className="inline-flex items-center justify-center rounded-[14px] bg-[#7E9D86] px-5 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-[#6F8D76] disabled:cursor-not-allowed disabled:opacity-70"
       >
-        {status === "sending" ? "Preparing secure sign-in..." : "Continue with secure sign-in"}
+        {status === "sending" ? "Signing in..." : "Sign in"}
       </button>
 
       {message ? (

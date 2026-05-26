@@ -49,7 +49,7 @@ export default function DailyQuestionSignup({
   }
 
   return (
-    <section className="mx-auto max-w-[1180px] rounded-[20px] border border-[rgba(95,99,101,0.12)] bg-[rgba(255,255,255,0.5)] px-6 py-7 md:px-8 md:py-8">
+    <section className="daily-question-signup mx-auto max-w-[1180px] rounded-[36px] border border-[rgba(176,141,87,0.18)] bg-[rgba(255,250,242,0.78)] px-6 py-8 backdrop-blur-md md:px-10 md:py-10">
       <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
         <div className="max-w-[30rem]">
           <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6F6A63]">

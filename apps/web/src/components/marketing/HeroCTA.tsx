@@ -26,16 +26,16 @@ export default function HeroCTA({ heroArt = "home" }: HeroCTAProps) {
     <section className={styles.hero} data-art={heroArt}>
       <div className={styles.inner}>
         <div className={styles.copy}>
-          <span className={styles.eyebrow}>For NCLEX-RN candidates</span>
-          <h1 className={styles.title}>Pass the NCLEX without the noise.</h1>
+          <span className={styles.eyebrow}>NCLEX-RN · From $9.99/mo</span>
+          <h1 className={styles.title}>Stop overpaying for NCLEX prep.</h1>
           <p className={styles.subhead}>
-            Premium NGN bank, AI tutor, and rationales built like the real exam -- for less than the price of a single competitor month.
+            Premium NGN bank, AI tutor, and 5 readiness exams — for the price of a single coffee per week. Less than 10% of what UWorld charges, with the same rigor.
           </p>
           <div className={styles.actions}>
             <CtaButtons />
           </div>
           <p className={styles.quote}>
-            &quot;Built by nurses who refused to pay $500 for question banks. Full bank, $9.99/mo.&quot;
+            UWorld $109/mo. Kaplan $349. Bootcamp $169. <strong>Clarity $9.99.</strong>
           </p>
           <p className={styles.microcopy}>
             <span>&#10003; No credit card</span>

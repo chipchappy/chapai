@@ -381,20 +381,37 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                 <p className="quiz-terminal-copy">{canUseRichModes ? "Rich modes unlocked." : "Standard bank active."}</p>
               </div>
               <div className="mt-5 grid gap-4 xl:grid-cols-3">
-                {catalogCards.map((card) => (
-                  <button key={card.id} type="button" onClick={() => onLaunchCatalogCard(card)} className={`quiz-terminal-lane ${card.featured ? "is-featured" : ""}`}>
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{card.hint}</span>
-                      <span className="quiz-chip">{card.exam ? card.exam.toUpperCase() : selectedExam.toUpperCase()}</span>
-                    </div>
-                    <h3 className="mt-5 text-[var(--quiz-ink-strong)]">{card.label}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--quiz-muted)]">{card.description}</p>
-                    <div className="mt-5 flex items-center justify-between text-sm text-[var(--quiz-muted)]">
-                      <span>{card.count} items</span>
-                      <span>Launch</span>
-                    </div>
-                  </button>
-                ))}
+                {catalogCards.map((card) => {
+                  const standardTrackLocked = card.mode === "standard"
+                    && Boolean(card.exam)
+                    && accessExamTrack !== "all"
+                    && card.exam !== accessExamTrack;
+                  const locked = standardTrackLocked || (card.mode === "practice-exam"
+                    ? !canUsePracticeExams
+                    : card.mode === "standard"
+                      ? false
+                      : !canUseRichModes);
+
+                  return (
+                    <button
+                      key={card.id}
+                      type="button"
+                      onClick={() => onLaunchCatalogCard(card)}
+                      className={`quiz-terminal-lane ${card.featured ? "is-featured" : ""}`}
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="quiz-chip">{card.hint}</span>
+                        <span className="quiz-chip">{locked ? "Locked" : card.exam ? card.exam.toUpperCase() : selectedExam.toUpperCase()}</span>
+                      </div>
+                      <h3 className="mt-5 text-[var(--quiz-ink-strong)]">{card.label}</h3>
+                      <p className="mt-3 text-sm leading-7 text-[var(--quiz-muted)]">{card.description}</p>
+                      <div className="mt-5 flex items-center justify-between text-sm text-[var(--quiz-muted)]">
+                        <span>{card.count} items</span>
+                        <span>{locked ? "Upgrade" : "Launch"}</span>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </section>
 
