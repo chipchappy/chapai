@@ -133,6 +133,20 @@ const repoRoot = path.resolve(scriptDir, "..");
 const defaultInputDir = path.join(repoRoot, "packages", "content", "staging", "promoted");
 const defaultOutputDir = path.join(repoRoot, "packages", "content", "staging", "promoted-v2");
 const normalizedBoilerplate = normalizeText(BOILERPLATE_DISTRACTOR_RATIONALE);
+const BOILERPLATE_PATTERNS = [
+  /less safe because it delays/i,
+  /does not match the highest-risk cue/i,
+  /delays the most important stabilization/i,
+  /does not account for the clinical cue/i,
+  /anchors on the wrong explanation/i,
+  /wrong explanation for the client's cues/i,
+  /it is less defensible because/i,
+  /not a step that delays stabilization/i,
+  /before routine care continues/i,
+  /^the problem with /i,
+  /^the clinical error in /i,
+  /^the reasoning trap in /i,
+];
 
 const SYSTEM_PROMPT = [
   "You rewrite NCLEX distractor rationales for a production question bank.",
@@ -167,6 +181,7 @@ function usage() {
     "  --validate-only         Validate a bank has zero boilerplate matches",
   "  --allow-partial         Permit output validation to report remaining matches after --limit",
     "  --repair-zeroed-batches Regenerate fully zeroed mixed-batch files from the NCLEX draft library",
+    "  --rewrite-all-distractors Rewrite every distractor rationale, not only boilerplate matches",
   "  --force                 Replace an existing promoted-v2 directory by renaming it to a backup",
     "  --delay-ms <n>          Delay between API calls. Default: 250",
     "  --max-retries <n>       Retry invalid model outputs per batch. Default: 2",
@@ -188,6 +203,7 @@ function parseArgs(argv) {
     force: false,
     allowPartial: false,
     repairZeroedBatches: false,
+    rewriteAllDistractors: false,
     delayMs: 250,
     maxRetries: 2,
     maxOutputTokens: 8000,
@@ -217,6 +233,8 @@ function parseArgs(argv) {
       options.allowPartial = true;
     } else if (arg === "--repair-zeroed-batches") {
       options.repairZeroedBatches = true;
+    } else if (arg === "--rewrite-all-distractors") {
+      options.rewriteAllDistractors = true;
     } else if (arg === "--input-dir") {
       options.inputDir = path.resolve(next());
     } else if (arg.startsWith("--input-dir=")) {
@@ -300,7 +318,10 @@ export function normalizeText(value) {
 
 export function matchesBoilerplate(value) {
   const normalized = normalizeText(value);
-  return normalized === normalizedBoilerplate || normalized.includes(normalizedBoilerplate);
+  const text = String(value ?? "");
+  return normalized === normalizedBoilerplate
+    || normalized.includes(normalizedBoilerplate)
+    || BOILERPLATE_PATTERNS.some((pattern) => pattern.test(text));
 }
 
 export function countWords(value) {
@@ -360,13 +381,13 @@ function listBatchFiles(dir, selectedFiles = []) {
     .map((file) => path.join(dir, file));
 }
 
-function getTargetEntries(question) {
+function getTargetEntries(question, options = {}) {
   if (!isPlainObject(question?.distractorRationales)) {
     return [];
   }
 
   return Object.entries(question.distractorRationales)
-    .filter(([, rationale]) => matchesBoilerplate(rationale))
+    .filter(([, rationale]) => options.rewriteAllDistractors || matchesBoilerplate(rationale))
     .map(([optionId, rationale]) => ({
       optionId,
       rationale: String(rationale),
@@ -820,27 +841,59 @@ function extractClinicalCue(question, seed) {
 function inferDistractorError(optionText) {
   const text = normalizeText(optionText);
   if (/(instead of notifying|instead of calling|without notifying|without calling)/.test(text)) {
-    return "substitutes a nonurgent action for required clinical escalation";
+    return {
+      clause: "substitutes a nonurgent task for escalation",
+      secondary: "documentation or reassurance",
+      noun: "escalation",
+    };
   }
   if (/(wait|delay|later|continue monitoring|observe|reassess|watch|routine)/.test(text)) {
-    return "treats an active warning sign as something safe to watch";
+    return {
+      clause: "treats active deterioration as something safe to watch",
+      secondary: "routine observation",
+      noun: "delayed assessment",
+    };
   }
   if (/(normal|expected|benign|transient|sleep|incidental|mild)/.test(text)) {
-    return "normalizes a finding that should change the nurse's priority";
+    return {
+      clause: "normalizes a finding that needs reassessment",
+      secondary: "reassurance",
+      noun: "false reassurance",
+    };
   }
   if (/(discharge|home|ambulate|walk|exercise|oral|juice|feed|eat|water)/.test(text)) {
-    return "moves to a lower-acuity action before the client is clinically stable";
+    return {
+      clause: "moves to activity, intake, or discharge planning too early",
+      secondary: "ambulation, intake, or discharge teaching",
+      noun: "premature activity",
+    };
   }
   if (/(teach|educat|explain|instruct|discuss|counsel|reassurance)/.test(text)) {
-    return "moves to teaching or reassurance before the immediate risk is stabilized";
+    return {
+      clause: "uses teaching before the physiologic risk is controlled",
+      secondary: "teaching or reassurance",
+      noun: "premature teaching",
+    };
   }
   if (/(provider|consult|notify|call|referral)/.test(text)) {
-    return "waits on escalation while the bedside priority remains unresolved";
+    return {
+      clause: "relies on notification without the bedside safety step",
+      secondary: "waiting for a callback",
+      noun: "incomplete escalation",
+    };
   }
   if (/(because|with|from|due to|secondary to)/.test(text)) {
-    return "anchors on the wrong explanation for the client's cues";
+    return {
+      clause: "commits to a competing cause before checking the dangerous pattern",
+      secondary: "diagnostic reassurance",
+      noun: "premature attribution",
+    };
   }
-  return "does not account for the clinical cue most likely to deteriorate first";
+  return {
+    clause: "answers a lower-acuity part of the scenario",
+    secondary: "routine care",
+    noun: "misprioritization",
+  };
 }
 
 function inferActionDomain(question) {
@@ -866,60 +919,82 @@ function inferActionDomain(question) {
   return "bedside safety action";
 }
 
+function lowerFirst(value) {
+  const text = String(value ?? "").trim();
+  return text ? `${text.charAt(0).toLowerCase()}${text.slice(1)}` : text;
+}
+
+function cleanFragment(value, fallback, maxWords = 18) {
+  const cleaned = String(value ?? "")
+    .replace(/\s+/g, " ")
+    .replace(/^[A-D][.)]\s+/i, "")
+    .replace(/[.?!;:,]+$/g, "")
+    .trim();
+  const fragment = truncateWords(cleaned, maxWords).replace(/[.?!;:,]+$/g, "").trim();
+  return fragment || fallback;
+}
+
+function inferDomainDetail(question) {
+  const blob = normalizeText([
+    question.category,
+    question.subcategory,
+    question.stem,
+    question.scenario,
+    question.additionalInfo,
+    question.rationale,
+    getCorrectAnswerText(question),
+  ].join(" "));
+
+  if (/(airway|oxygen|spo2|dyspnea|respir|ventilat|breath)/.test(blob)) {
+    return "Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.";
+  }
+  if (/(bleed|heparin|warfarin|inr|aptt|platelet|hemorrhage)/.test(blob)) {
+    return "Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.";
+  }
+  if (/(glucose|insulin|hypogly|hypergly|dka|diabet)/.test(blob)) {
+    return "Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.";
+  }
+  if (/(sepsis|infection|fever|neutropenic|wound|sterile|isolation|mening)/.test(blob)) {
+    return "Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.";
+  }
+  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) {
+    return "Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.";
+  }
+  if (/(stroke|seizure|neuro|icp|confusion|delirium|glasgow|pupil)/.test(blob)) {
+    return "Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.";
+  }
+  if (/(cardiac|chest|\bmi\b|myocardial|infarct|arrhythm|dysrhythm|perfusion|shock|pressure|dvt|embol|thrombus|clot)/.test(blob)) {
+    return "Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.";
+  }
+  if (/(preeclampsia|eclampsia|fetal|uterine|postpartum|pregnan|placenta|cord)/.test(blob)) {
+    return "Maternal-fetal risk requires immediate safety measures because fetal oxygenation and maternal perfusion can deteriorate quickly.";
+  }
+  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium|metformin|contrast)/.test(blob)) {
+    return "Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.";
+  }
+  return "Nursing safety depends on matching the response to the active clinical risk before routine care.";
+}
+
 function buildLocalRationale(question, optionId) {
   const optionText = getOptionText(question, optionId) ?? `option ${optionId}`;
   const correctText = getCorrectAnswerText(question);
   const seed = `${question.id}:${optionId}:${question.category}:${optionText}`;
-  const cue = extractClinicalCue(question, seed);
+  const cue = cleanFragment(extractClinicalCue(question, seed), inferClinicalFocus(question).toLowerCase(), 18);
   const risk = inferRiskLabel(question);
   const actionDomain = inferActionDomain(question);
   const distractorError = inferDistractorError(optionText);
-  const optionSummary = truncateWords(optionText.replace(/[.?!]+$/, ""), 16);
-  const correctSummary = truncateWords(correctText.replace(/[.?!]+$/, ""), 16);
-  const lead = pickVariant(seed, [
-    `This choice focuses on ${optionSummary}`,
-    `${optionSummary} is not the best answer`,
-    `The problem with ${optionSummary} is that it`,
-    `This distractor pulls attention toward ${optionSummary}`,
-    `Selecting ${optionSummary} would be unsafe`,
-    `The clinical error in ${optionSummary} is that it`,
-    `This option overweights ${optionSummary}`,
-    `${optionSummary} would not address the priority`,
-    `This answer choice treats ${optionSummary} as the key issue`,
-    `The reasoning trap in ${optionSummary} is that it`,
-    `${optionSummary} fits a lower-risk interpretation`,
-    `This option makes ${optionSummary} the focus`,
-  ], "lead");
-  const bridge = pickVariant(seed, [
-    `but the stem cue is ${cue}`,
-    `while the decisive cue is ${cue}`,
-    `even though the higher-risk finding is ${cue}`,
-    `instead of responding to ${cue}`,
-    `and misses that ${cue}`,
-    `rather than acting on ${cue}`,
-    `when the bedside priority is driven by ${cue}`,
-    `despite the clinical warning in ${cue}`,
-    `without accounting for ${cue}`,
-    `although the nurse should be guided by ${cue}`,
-  ], "bridge");
-  const close = pickVariant(seed, [
-    `The safer answer is ${correctSummary} because delaying ${actionDomain} can worsen ${risk}.`,
-    `${correctSummary} is safer because it addresses ${risk} before routine care or reassurance.`,
-    `Choosing it can delay ${actionDomain} and leave ${risk} unresolved.`,
-    `The correct path is ${correctSummary}, which matches the priority cues instead of a secondary concern.`,
-    `That mismatch risks slower recognition of ${risk} and postpones the needed nursing response.`,
-    `${correctSummary} better matches the nursing priority, so this option would slow the needed intervention.`,
-    `The nurse should prioritize ${correctSummary}; otherwise ${risk} remains the active threat.`,
-    `That choice could make the nurse miss the window for ${actionDomain} while ${risk} progresses.`,
-    `The priority is ${correctSummary}, not a step that delays stabilization of ${risk}.`,
-    `It is less defensible because ${correctSummary} targets the problem most likely to deteriorate first.`,
-  ], "close");
+  const optionSummary = cleanFragment(optionText, `option ${optionId}`, 18);
+  const correctSummary = cleanFragment(correctText, "the keyed nursing action", 16);
+  const domainDetail = inferDomainDetail(question);
 
-  if (/\bis that it$/.test(lead)) {
-    return `${lead} ${distractorError}, ${bridge}. ${close}`;
-  }
-
-  return `${lead}, ${bridge}. ${distractorError[0].toUpperCase()}${distractorError.slice(1)}, so ${close}`;
+  return pickVariant(seed, [
+    `"${optionSummary}" ${distractorError.clause}. The cue "${cue}" raises concern for ${risk}, so ${actionDomain} is needed before ${distractorError.secondary}.`,
+    `This distractor shifts care toward ${distractorError.noun} instead of ${actionDomain}. The stem cue "${cue}" makes ${risk} the active safety concern.`,
+    `"${optionSummary}" misses the bedside risk because ${lowerFirst(cue)} points to ${risk}. ${domainDetail}`,
+    `The option can leave ${risk} untreated because it ${distractorError.clause}. "${correctSummary}" fits the safer response to ${lowerFirst(cue)}.`,
+    `Because ${lowerFirst(cue)} suggests ${risk}, "${optionSummary}" would not correct the active problem. ${domainDetail}`,
+    `The safer response addresses ${risk}; "${optionSummary}" moves care toward ${distractorError.secondary} before ${actionDomain}.`,
+  ], "rationale");
 }
 
 function rewriteTargetBatchLocally(targets) {
@@ -943,12 +1018,12 @@ function rewriteTargetBatchLocally(targets) {
   return accepted;
 }
 
-function collectTargets(batch, filePath) {
+function collectTargets(batch, filePath, options = {}) {
   const file = path.basename(filePath);
   const targets = [];
 
   for (const question of batch.questions ?? []) {
-    const entries = getTargetEntries(question);
+    const entries = getTargetEntries(question, options);
     if (entries.length === 0) {
       continue;
     }
@@ -1413,7 +1488,7 @@ async function rewriteBank(options) {
   const allTargets = [];
   for (const filePath of allFiles) {
     const batch = readBatchForRewrite(filePath, options);
-    allTargets.push(...collectTargets(batch, filePath));
+    allTargets.push(...collectTargets(batch, filePath, options));
   }
 
   const selectedQuestionIds = options.limit === undefined
@@ -1445,7 +1520,7 @@ async function rewriteBank(options) {
   try {
     for (const filePath of allFiles) {
       const batch = readBatchForRewrite(filePath, options);
-      const targets = collectTargets(batch, filePath)
+      const targets = collectTargets(batch, filePath, options)
         .filter((target) => selectedQuestionIds.has(target.questionId));
       const outputFile = path.join(tempDir, path.basename(filePath));
 
