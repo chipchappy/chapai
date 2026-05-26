@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-766",
+  "generatedAt": "2026-04-08T18:01:32-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb766-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 6-month-old infant is admitted with RSV bronchiolitis. SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding. The physician orders albuterol. Which nursing action is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer albuterol as ordered; it is the standard of care for RSV bronchiolitis"
+        },
+        {
+          "id": "b",
+          "text": "Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning and supportive care"
+        },
+        {
+          "id": "c",
+          "text": "Hold the albuterol and administer corticosteroids instead"
+        },
+        {
+          "id": "d",
+          "text": "Administer albuterol only if SpO2 drops below 88%"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSV bronchiolitis is managed with supportive care only per AAP guidelines: nasal suctioning (most effective intervention for symptom relief), adequate hydration (NG feeds if needed), and supplemental O2 for SpO2 <90–92%. Bronchodilators (albuterol) and corticosteroids are NOT recommended because bronchiolitis involves viral-induced inflammation and mucus plugging — not bronchospasm — making bronchodilators ineffective. Multiple RCTs have shown no benefit. The nurse should question the order and clarify before administration. Contact precautions (RSV is spread via droplet/contact) are required.",
+      "distractorRationales": {
+        "a": "This option overweights Administer albuterol as ordered; it is the standard of care for RSV bronchiolitis, instead of responding to A 6-month-old infant is admitted with RSV bronchiolitis. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "This distractor pulls attention toward Hold the albuterol and administer corticosteroids instead, and misses that O2 if SpO2 <90–92%. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning targets the problem most likely to deteriorate first.",
+        "d": "The problem with Administer albuterol only if SpO2 drops below 88% is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by A 6-month-old infant is admitted with RSV bronchiolitis. That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+        "conclusion": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight — no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply — laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO ≥8 hours. Light meals (toast, clear liquids): NPO ≥6 hours. Non-clear liquids including milk and formula: NPO ≥6 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid — stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "Nothing by mouth after midnight — no exceptions for any type of food or liquid would not address the priority, but the stem cue is High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water,, which matches the priority cues instead of a secondary concern.",
+        "b": "This option makes Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery the focus, without accounting for High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction. Does not account for the clinical cue most likely to deteriorate first, so Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, is safer because it addresses unstable glucose physiology before routine care or reassurance.",
+        "d": "No restrictions apply — laparoscopic procedures do not carry aspiration risk would not address the priority, but the stem cue is High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction. Does not account for the clinical cue most likely to deteriorate first, so Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, is safer because it addresses unstable glucose physiology before routine care or reassurance."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids ≥6-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "This choice focuses on Drawing up each insulin in a separate syringe, rather than acting on The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved.",
+        "c": "Injecting the aspart subcutaneously 15 minutes before the meal is not the best answer, even though the higher-risk finding is A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type. Does not account for the clinical cue most likely to deteriorate first, so Mixing glargine and aspart in the same syringe before administration better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The problem with Rotating injection sites between the abdomen and thigh is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to It has its own pH and formulation. That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10, but the stem cue is The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of targets the problem most likely to deteriorate first.",
+        "c": "The reasoning trap in A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness. A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This distractor pulls attention toward A 33-year-old with a UTI who asks when the next dose of antibiotics is due, when the bedside priority is driven by Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine. Anchors on the wrong explanation for the client's cues, so It is less defensible because A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) — mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "Providing mammography screening to detect early breast cancer in women over 40 would not address the priority, when the bedside priority is driven by Physical therapy post-fracture is tertiary prevention. Does not account for the clinical cue most likely to deteriorate first, so Administering the influenza vaccine to a healthy adult before flu season is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "c": "The clinical error in Prescribing physical therapy for a patient recovering from a hip fracture is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease. Administering the influenza vaccine to a healthy adult before flu season is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "d": "Selecting Conducting a colonoscopy to identify and remove pre-cancerous polyps would be unsafe, instead of responding to A community health nurse is teaching a group of nursing students about levels of prevention. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Administering the influenza vaccine to a healthy adult before flu season because delaying circulation and perfusion support can worsen circulation or perfusion."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "The reasoning trap in A patient who is anxious about an upcoming procedure is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "A patient who needs discharge teaching before going home is not the best answer, even though the higher-risk finding is A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern. Moves to a lower-acuity action before the client is clinically stable, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "A patient asking for pain medication rated 4/10 would not address the priority, even though the higher-risk finding is Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem. Does not account for the clinical cue most likely to deteriorate first, so The correct path is A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives — alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension — directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "Age >65 and female gender is not the best answer, when the bedside priority is driven by The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls. Does not account for the clinical cue most likely to deteriorate first, so The correct path is History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, which matches the priority cues instead of a secondary concern.",
+        "c": "Mild bilateral hearing loss and BMI of 29 is not the best answer, but the stem cue is The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls. Treats an active warning sign as something safe to watch, so The correct path is History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, which matches the priority cues instead of a secondary concern.",
+        "d": "The clinical error in Mild arthritis in both knees and occasional evening confusion is that it normalizes a finding that should change the nurse's priority, and misses that The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls. History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN is caring for four patients and needs to delegate tasks. Which task is appropriate to assign to an unlicensed assistive personnel (UAP/CNA)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the breath sounds of a patient with new-onset dyspnea"
+        },
+        {
+          "id": "b",
+          "text": "Administer a tube feeding to a stable patient via an established G-tube"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative patient 24 hours after hip replacement surgery"
+        },
+        {
+          "id": "d",
+          "text": "Teach a diabetic patient how to perform foot care"
+        }
+      ],
+      "answer": "c",
+      "rationale": "UAPs can perform tasks that are routine, repetitive, and do not require nursing judgment or assessment. Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the RN has assessed the patient's stability. Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Administering tube feedings (B) — in many states, enteral feeding via established G-tube can be delegated to trained UAPs, but the skill level required is greater than ambulation; this varies by state — ambulation is universally appropriate for CNA delegation. Patient education (D) is an RN responsibility requiring professional judgment.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Assess the breath sounds of a patient with new-onset dyspnea, even though the higher-risk finding is Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the. Moves to a lower-acuity action before the client is clinically stable, so Ambulate a postoperative patient 24 hours after hip replacement surgery is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "b": "Administer a tube feeding to a stable patient via an established G-tube fits a lower-risk interpretation, rather than acting on Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "This option makes Teach a diabetic patient how to perform foot care the focus, even though the higher-risk finding is Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Moves to teaching or reassurance before the immediate risk is stabilized, so It is less defensible because Ambulate a postoperative patient 24 hours after hip replacement surgery targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can perform routine, non-assessment tasks: ambulation, ADLs, vital signs on stable patients, I&O — assessment, teaching, and medication administration remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 4,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "Selecting IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider would be unsafe, rather than acting on (3) IV oxytocin — first-line uterotonic. Waits on escalation while the bedside priority remains unresolved, so Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved.",
+        "c": "This answer choice treats Call the provider, obtain type and crossmatch, begin blood transfusion as the key issue, despite the clinical warning in (3) IV oxytocin — first-line uterotonic. Waits on escalation while the bedside priority remains unresolved, so The priority is Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement, not a step that delays stabilization of bleeding or anticoagulation injury.",
+        "d": "The clinical error in Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent is that it waits on escalation while the bedside priority remains unresolved, even though the higher-risk finding is BP is 94/58, HR 118. The correct path is Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb766-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound — gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "distractorRationales": {
+        "a": "This option overweights Elevate the leg and apply warm compresses, rather than acting on Unilateral calf pain, warmth. Does not account for the clinical cue most likely to deteriorate first, so The priority is Notify the provider and anticipate orders for duplex ultrasound, not a step that delays stabilization of circulation or perfusion.",
+        "b": "The reasoning trap in Perform Homan's sign assessment and document the result is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate. Notify the provider and anticipate orders for duplex ultrasound is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "d": "Administer the scheduled enoxaparin and continue monitoring would not address the priority, and misses that The nurse's priority is to notify the provider so imaging (duplex ultrasound — gold standard for DVT) can. Treats an active warning sign as something safe to watch, so Notify the provider and anticipate orders for duplex ultrasound is safer because it addresses circulation or perfusion before routine care or reassurance."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound — Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

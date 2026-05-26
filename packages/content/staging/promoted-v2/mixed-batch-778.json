@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-778",
+  "generatedAt": "2026-04-08T22:41:02-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb778-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access. The nurse finds the patient diaphoretic, the right groin dressing saturated with blood, and the patient's blood pressure has dropped from 128/76 to 88/50 mmHg. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply direct, firm manual pressure to the right groin site immediately"
+        },
+        {
+          "id": "b",
+          "text": "Elevate the foot of the bed and call the provider"
+        },
+        {
+          "id": "c",
+          "text": "Obtain a STAT hemoglobin and hematocrit"
+        },
+        {
+          "id": "d",
+          "text": "Increase the IV fluid rate per standing orders and reassess in 15 minutes"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient is showing signs of femoral artery hemorrhage with hemodynamic instability (hypotension, diaphoresis, saturated dressing). The priority is hemorrhage control: applying immediate, firm manual pressure directly over the puncture site. This is the most time-critical intervention to stop ongoing blood loss. Calling the provider and obtaining labs are necessary but are performed concurrently by a second nurse after pressure is established. Trendelenburg positioning is not recommended for vascular hemorrhage, and delaying for 15 minutes risks cardiovascular collapse.",
+      "distractorRationales": {
+        "b": "This option overweights Elevate the foot of the bed and call the provider, rather than acting on A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access. Waits on escalation while the bedside priority remains unresolved, so The priority is Apply direct, firm manual pressure to the right groin site immediately, not a step that delays stabilization of bleeding or anticoagulation injury.",
+        "c": "This distractor pulls attention toward Obtain a STAT hemoglobin and hematocrit, even though the higher-risk finding is After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Apply direct, firm manual pressure to the right groin site immediately, which matches the priority cues instead of a secondary concern.",
+        "d": "Increase the IV fluid rate per standing orders and reassess in 15 minutes would not address the priority, when the bedside priority is driven by After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency. Treats an active warning sign as something safe to watch, so The correct path is Apply direct, firm manual pressure to the right groin site immediately, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency. Stop the bleed first (manual pressure), then call and escalate. Hemorrhage control precedes all other actions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A community health nurse is planning an immunization education program. Which statement about adult immunization schedules is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Tdap booster is recommended annually for all adults"
+        },
+        {
+          "id": "b",
+          "text": "Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine is recommended annually for everyone 6 months and older"
+        },
+        {
+          "id": "c",
+          "text": "The shingles (zoster) vaccine is recommended for adults 40 years and older"
+        },
+        {
+          "id": "d",
+          "text": "The MMR vaccine is required annually for healthcare workers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Current ACIP adult immunization priorities: (1) Influenza: annually for everyone ≥6 months; (2) Tdap: once as an adult, then Td booster every 10 years; Tdap specifically recommended during each pregnancy at 27–36 weeks gestation (protects newborn via transplacental antibodies); (3) Pneumococcal: PCV15 or PCV20 for all adults ≥65; PCV20 or PCV15 + PPSV23 for high-risk adults 19–64; (4) Zoster (Shingrix): recommended for adults ≥50 years (not 40), 2-dose series; (5) MMR: not annual; 2-dose series if no immunity; HCWs need 2-dose MMR if no evidence of immunity.",
+      "distractorRationales": {
+        "a": "This answer choice treats The Tdap booster is recommended annually for all adults as the key issue, rather than acting on Shingrix (zoster) at 50+, 2-dose series. Does not account for the clinical cue most likely to deteriorate first, so The priority is Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine, not a step that delays stabilization of pediatric or newborn instability.",
+        "c": "The shingles (zoster) vaccine is recommended for adults 40 years and older is not the best answer, when the bedside priority is driven by HCWs need 2-dose MMR if no evidence of immunity. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine, which matches the priority cues instead of a secondary concern.",
+        "d": "The MMR vaccine is required annually for healthcare workers is not the best answer, even though the higher-risk finding is HCWs need 2-dose MMR if no evidence of immunity. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for maternal-fetal stabilization while pediatric or newborn instability progresses."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Key immunization schedule: flu annually (all ≥6 mo); Tdap in pregnancy (27–36w); pneumococcal at 65+; Shingrix (zoster) at 50+, 2-dose series; Tdap once as adult, Td booster q10y.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with a newly placed right subclavian central venous catheter. To reduce the risk of central line-associated bloodstream infection (CLABSI), which bundle element is MOST important during dressing changes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the dressing every 24 hours regardless of appearance"
+        },
+        {
+          "id": "b",
+          "text": "Use chlorhexidine-based antiseptic and maintain strict sterile technique"
+        },
+        {
+          "id": "c",
+          "text": "Apply antibiotic ointment to the insertion site with each dressing change"
+        },
+        {
+          "id": "d",
+          "text": "Flush the line with normal saline immediately before accessing the port"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The CLABSI prevention bundle includes: hand hygiene, maximal sterile barrier precautions, chlorhexidine skin antisepsis, optimal catheter site selection, and daily review of catheter necessity. Chlorhexidine-based antiseptic (not povidone-iodine) is the evidence-based standard for site care because it has sustained antimicrobial activity. Dressings should be changed every 7 days (transparent) or every 2 days (gauze), or when wet/loose/soiled — not every 24 hours (A). Antibiotic ointment (C) is not recommended and can promote resistant organisms.",
+      "distractorRationales": {
+        "a": "This choice focuses on Change the dressing every 24 hours regardless of appearance, rather than acting on CLABSI bundle: chlorhexidine antiseptic, maximal sterile barriers, hand hygiene, daily necessity assessment, optimal site selection. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Use chlorhexidine-based antiseptic and maintain strict sterile technique because delaying infection or sepsis escalation can worsen infection progression.",
+        "c": "This option makes Apply antibiotic ointment to the insertion site with each dressing change the focus, even though the higher-risk finding is The CLABSI prevention bundle includes: hand hygiene, maximal sterile barrier precautions, chlorhexidine skin antisepsis, optimal catheter site selection. Anchors on the wrong explanation for the client's cues, so The correct path is Use chlorhexidine-based antiseptic and maintain strict sterile technique, which matches the priority cues instead of a secondary concern.",
+        "d": "Flush the line with normal saline immediately before accessing the port would not address the priority, but the stem cue is The CLABSI prevention bundle includes: hand hygiene, maximal sterile barrier precautions, chlorhexidine skin antisepsis, optimal catheter site selection. Normalizes a finding that should change the nurse's priority, so Use chlorhexidine-based antiseptic and maintain strict sterile technique better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "CLABSI bundle: chlorhexidine antiseptic, maximal sterile barriers, hand hygiene, daily necessity assessment, optimal site selection.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression, and GERD takes: amlodipine, diphenhydramine (for sleep), amitriptyline, ibuprofen, and omeprazole. Using Beers Criteria principles, which medications present the GREATEST risk for this elderly patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Omeprazole and amlodipine — both increase fall risk and should be avoided in elderly"
+        },
+        {
+          "id": "b",
+          "text": "Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS Beers Criteria"
+        },
+        {
+          "id": "c",
+          "text": "Ibuprofen alone — GI bleeding is the only significant concern in this patient"
+        },
+        {
+          "id": "d",
+          "text": "Amlodipine and ibuprofen — calcium channel blockers are contraindicated over age 80"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The 2023 AGS Beers Criteria identifies medications potentially inappropriate in adults ≥65. Diphenhydramine (first-generation antihistamine) and amitriptyline (tricyclic antidepressant) are both strongly anticholinergic and explicitly listed as 'avoid' in elderly. Anticholinergic effects (cumulative burden): cognitive impairment, delirium, urinary retention, constipation, dry mouth, tachycardia, blurred vision, and increased fall risk. Amitriptyline additionally causes orthostatic hypotension (fall risk), cardiac conduction abnormalities, and QT prolongation. Additional concerns in this patient: ibuprofen (NSAID) — risk of GI bleeding (especially with GERD), renal impairment, and cardiovascular events (also Beers listed — prefer acetaminophen). Safer alternatives: melatonin or low-dose doxepin for insomnia; SSRIs/SNRIs for depression (avoid TCAs); acetaminophen for pain.",
+      "distractorRationales": {
+        "a": "This option overweights Omeprazole and amlodipine — both increase fall risk and should be avoided in elderly, although the nurse should be guided by Additional concerns in this patient: ibuprofen (NSAID) — risk of GI bleeding (especially with GERD), renal impairment. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS; otherwise bleeding or anticoagulation injury remains the active threat.",
+        "c": "This answer choice treats Ibuprofen alone — GI bleeding is the only significant concern in this patient as the key issue, rather than acting on An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "d": "This choice focuses on Amlodipine and ibuprofen — calcium channel blockers are contraindicated over age 80, while the decisive cue is An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Beers Criteria: anticholinergics (diphenhydramine, TCAs like amitriptyline) are highest risk in elderly — cause delirium, falls, urinary retention. NSAIDs also Beers-listed. Review medications at every hospitalization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "floating_nurse",
+      "subcategory": "Floating Nurse",
+      "difficulty": 3,
+      "stem": "An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Which action by the floating RN is most appropriate regarding scope of limitations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Refuse the assignment because floating to a specialty unit is unsafe"
+        },
+        {
+          "id": "b",
+          "text": "Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP"
+        },
+        {
+          "id": "c",
+          "text": "Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and request supervision for unfamiliar procedures"
+        },
+        {
+          "id": "d",
+          "text": "Accept the assignment only if she is designated as a second nurse, not as primary nurse"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Floating RNs are obligated to inform the charge nurse of limitations in specialty skills. They cannot refuse the assignment categorically (A) — refusing is appropriate only if the assignment is unsafe based on skills AND the unit cannot accommodate limitations. They must not perform tasks outside their competence independently (B). Accepting with disclosure of limitations and requesting supervision (C) is the professional and legally safe approach. The float nurse should receive a patient assignment matched to her competency level, with support for unfamiliar procedures. Simply being a 'second nurse' (D) does not adequately protect the patient or satisfy professional accountability.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Refuse the assignment because floating to a specialty unit is unsafe is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses.",
+        "b": "Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP would not address the priority, and misses that An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Does not account for the clinical cue most likely to deteriorate first, so Inform the charge nurse of any tasks outside her competence, accept patients within her skills, better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This option makes Accept the assignment only if she is designated as a second nurse, not as primary nurse the focus, without accounting for An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Inform the charge nurse of any tasks outside her competence, accept patients within her skills,, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Floating Nurse",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Float nurses: disclose competency limitations to charge nurse, accept assignments within skills, request supervision — outright refusal is not appropriate unless assignment is unsafe and no accommodation is possible.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "After fundal massage and oxytocin, a postpartum patient's uterus remains atonic and bleeding continues. The provider orders methylergonovine (Methergine) 0.2 mg IM. Which patient condition is an absolute contraindication to this medication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "History of asthma"
+        },
+        {
+          "id": "b",
+          "text": "Hypertension with BP currently 158/100 mmHg"
+        },
+        {
+          "id": "c",
+          "text": "Breastfeeding"
+        },
+        {
+          "id": "d",
+          "text": "Gestational diabetes"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Methylergonovine (Methergine) is an ergot alkaloid uterotonic that causes powerful vasoconstriction. It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke, and coronary artery spasm. Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine. Breastfeeding (C) is not a contraindication — it is safe during breastfeeding. Gestational diabetes (D) is not a contraindication.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward History of asthma, even though the higher-risk finding is It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke. Does not account for the clinical cue most likely to deteriorate first, so Hypertension with BP currently 158/100 mmHg is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "c": "Breastfeeding would not address the priority, and misses that It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke. Moves to a lower-acuity action before the client is clinically stable, so It is less defensible because Hypertension with BP currently 158/100 mmHg targets the problem most likely to deteriorate first.",
+        "d": "The clinical error in Gestational diabetes is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is Methylergonovine (Methergine) is absolutely contraindicated in hypertension — causes severe vasospasm and hypertensive crisis. Hypertension with BP currently 158/100 mmHg is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Methylergonovine (Methergine) is absolutely contraindicated in hypertension — causes severe vasospasm and hypertensive crisis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "The nurse is caring for a patient 4 days after bowel surgery. The patient has not passed flatus, bowel sounds are hypoactive in all quadrants, and the abdomen is mildly distended. Vital signs are stable. The nurse CORRECTLY identifies this presentation as:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Paralytic ileus — expected post-operative finding"
+        },
+        {
+          "id": "b",
+          "text": "Small bowel obstruction requiring immediate NG tube decompression"
+        },
+        {
+          "id": "c",
+          "text": "Peritonitis requiring emergent surgical consultation"
+        },
+        {
+          "id": "d",
+          "text": "Large bowel obstruction requiring CT scan and surgical consult"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Paralytic ileus (adynamic ileus) is an expected complication in the first 3–5 days after abdominal or bowel surgery, caused by handling of the bowel and anesthetic effects. It presents with absent or hypoactive bowel sounds, lack of flatus, and mild distension without severe pain, fever, or hemodynamic instability. Mechanical obstruction (B, D) presents with high-pitched borborygmi, crampy pain, and vomiting — not simply hypoactive sounds. Peritonitis (C) would have fever, rigid abdomen, and rebound tenderness.",
+      "distractorRationales": {
+        "b": "Selecting Small bowel obstruction requiring immediate NG tube decompression would be unsafe, rather than acting on mild distension without severe pain, fever, or hemodynamic instability. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Paralytic ileus — expected post-operative finding; otherwise infection progression remains the active threat.",
+        "c": "This choice focuses on Peritonitis requiring emergent surgical consultation, rather than acting on mild distension without severe pain, fever, or hemodynamic instability. Waits on escalation while the bedside priority remains unresolved, so The nurse should prioritize Paralytic ileus — expected post-operative finding; otherwise infection progression remains the active threat.",
+        "d": "Selecting Large bowel obstruction requiring CT scan and surgical consult would be unsafe, rather than acting on mild distension without severe pain, fever, or hemodynamic instability. Waits on escalation while the bedside priority remains unresolved, so The nurse should prioritize Paralytic ileus — expected post-operative finding; otherwise infection progression remains the active threat."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Ileus vs obstruction: ileus = absent/hypoactive sounds, mild distension, expected post-op; obstruction = high-pitched sounds, crampy pain, vomiting.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_stroke",
+      "subcategory": "Neurological / Stroke",
+      "difficulty": 4,
+      "stem": "A patient arrives in the ED with sudden onset of right-sided facial droop, right arm weakness, and slurred speech that began 90 minutes ago. NIHSS score is 12. CT head is negative for hemorrhage. The patient's blood pressure is 178/96 mmHg. Which intervention is the highest priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Begin antihypertensive therapy immediately to bring BP below 140/90 mmHg"
+        },
+        {
+          "id": "b",
+          "text": "Prepare the patient for IV thrombolysis with alteplase (tPA) — notify the provider of eligibility and start the time-critical pre-tPA workup"
+        },
+        {
+          "id": "c",
+          "text": "Administer aspirin 325 mg orally for antiplatelet therapy"
+        },
+        {
+          "id": "d",
+          "text": "Obtain emergent MRI brain to confirm ischemic versus hemorrhagic stroke before any treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient presents within the 4.5-hour tPA window with an ischemic stroke (CT negative for hemorrhage) and a significant neurological deficit (NIHSS 12). IV alteplase is the priority intervention — every minute of delay worsens outcomes ('time is brain' — ~1.9 million neurons lost per minute). In ischemic stroke with tPA candidacy, blood pressure is treated only if > 185/110 mmHg; at 178/96, aggressive BP lowering is not indicated (it can worsen ischemia). Aspirin is not given within 24 hours of tPA. CT is already done — MRI is not required for tPA administration when CT excludes hemorrhage. The nurse should mobilize the stroke team and prepare for tPA.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Begin antihypertensive therapy immediately to bring BP below 140/90 mmHg, but the stem cue is 5-hour tPA window with an ischemic stroke (CT negative for hemorrhage) and a significant neurological deficit (NIHSS 12). Does not account for the clinical cue most likely to deteriorate first, so The correct path is Prepare the patient for IV thrombolysis with alteplase (tPA) — notify the provider of eligibility, which matches the priority cues instead of a secondary concern.",
+        "c": "The reasoning trap in Administer aspirin 325 mg orally for antiplatelet therapy is that it moves to a lower-acuity action before the client is clinically stable, and misses that Ischemic stroke + within 4. Prepare the patient for IV thrombolysis with alteplase (tPA) — notify the provider of eligibility is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "d": "Obtain emergent MRI brain to confirm ischemic versus hemorrhagic stroke before any treatment fits a lower-risk interpretation, rather than acting on 5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response."
+      },
+      "tags": [
+        "Neurological / Stroke",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Neurological / Stroke",
+        "caption": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA.",
+        "conclusion": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 19-year-old with no prior medical or anesthesia history is 30 minutes into general anesthesia for appendectomy. The PACU nurse is called to the OR: temperature 39.9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%, and ETCO2 82 mmHg. What is the priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response"
+        },
+        {
+          "id": "b",
+          "text": "Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart"
+        },
+        {
+          "id": "c",
+          "text": "Administer succinylcholine to relieve the masseter rigidity and improve ventilation"
+        },
+        {
+          "id": "d",
+          "text": "Treat the hyperkalemia first with calcium gluconate — MH-induced hyperkalemia is the immediate threat"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Malignant hyperthermia (MH) is a life-threatening pharmacogenetic disorder triggered in susceptible individuals (RYR1 gene mutation) by volatile anesthetic agents (sevoflurane, desflurane, halothane) and succinylcholine. Uncontrolled calcium release from the sarcoplasmic reticulum causes: sustained muscle contraction → hyperthermia (temperature rises 1°C every 5 minutes if untreated), diffuse rigidity, masseter spasm (early sign), respiratory and metabolic acidosis (CO2 soaring), rhabdomyolysis, hyperkalemia, and ventricular dysrhythmias. Untreated MH mortality exceeds 80%. Protocol: (1) Stop ALL triggering agents immediately; (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia); (3) Dantrolene 2.5 mg/kg IV bolus — repeat every 5 minutes until crisis resolves (max ~10 mg/kg); (4) Cooling measures; (5) Treat hyperkalemia, acidosis, and dysrhythmias as they arise. Succinylcholine IS a triggering agent — administering it would worsen MH.",
+      "distractorRationales": {
+        "a": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response is not the best answer, and misses that (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia). Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "This distractor pulls attention toward Administer succinylcholine to relieve the masseter rigidity and improve ventilation, when the bedside priority is driven by 9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene, which matches the priority cues instead of a secondary concern.",
+        "d": "The problem with Treat the hyperkalemia first with calcium gluconate — MH-induced hyperkalemia is the immediate threat is that it moves to a lower-acuity action before the client is clinically stable, despite the clinical warning in Protocol: (1) Stop ALL triggering agents immediately. The safer answer is Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "MH: rising temp + masseter rigidity + high ETCO2 + tachycardia during general anesthesia. STOP triggering agents immediately. Dantrolene 2.5 mg/kg IV STAT (repeat q5 min). Succinylcholine triggers MH — never give.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb778-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "subcategory": "Pharmacology / Medication Teaching / Oral Hypoglycemics",
+      "difficulty": 2,
+      "stem": "A nurse is teaching a newly diagnosed type 2 diabetes patient about glipizide (a sulfonylurea). Which statement is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This medication works best when taken with a large meal"
+        },
+        {
+          "id": "b",
+          "text": "This medication can cause low blood sugar — carry a fast-acting sugar source at all times"
+        },
+        {
+          "id": "c",
+          "text": "This medication does not cause weight gain"
+        },
+        {
+          "id": "d",
+          "text": "Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Sulfonylureas (glipizide, glyburide, glimepiride) work by stimulating pancreatic beta cells to release insulin, independent of blood glucose levels. This means they can cause hypoglycemia even when the patient is not eating — unlike some other diabetes medications. Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness, diaphoresis, confusion). Glipizide is taken 30 minutes before meals (not with a large meal) to time insulin release with carbohydrate absorption. Sulfonylureas often cause modest weight gain. Blood glucose monitoring remains important for safety and titration.",
+      "distractorRationales": {
+        "a": "This medication works best when taken with a large meal fits a lower-risk interpretation, while the decisive cue is Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness,. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "c": "Selecting This medication does not cause weight gain would be unsafe, instead of responding to Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "d": "The clinical error in Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels is that it waits on escalation while the bedside priority remains unresolved, and misses that Sulfonylureas (glipizide, glyburide, glimepiride) work by stimulating pancreatic beta cells to release insulin, independent of blood glucose levels. That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses."
+      },
+      "tags": [
+        "Pharmacology / Medication Teaching / Oral Hypoglycemics",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Always carry fast-acting carbs. Glipizide: 30 min before meals. Monitor BG. Watch for weight gain. Avoid skipping meals while on this medication.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

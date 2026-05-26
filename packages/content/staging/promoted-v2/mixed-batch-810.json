@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-810",
+  "generatedAt": "2026-04-09T08:10:05-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb810-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_seizure_management",
+      "subcategory": "Neurological / Seizure Management",
+      "difficulty": 2,
+      "stem": "A nurse is with a patient who suddenly begins experiencing a generalized tonic-clonic seizure. What is the PRIORITY nursing action during the seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insert an oral airway to prevent tongue biting and aspiration"
+        },
+        {
+          "id": "b",
+          "text": "Restrain the patient's limbs to prevent injury"
+        },
+        {
+          "id": "c",
+          "text": "Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer diazepam 10 mg IV immediately per standing orders"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an active seizure, the nursing priorities are safety and observation: protect the head (soft padding), clear hazardous objects from the immediate environment, position on the side (lateral decubitus) to prevent aspiration when the seizure subsides, and time the duration. Nothing should be inserted into the mouth during an active seizure — this can cause injury to the patient and the nurse, and the jaw cannot be pried open safely. Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Medication (benzodiazepine) is indicated for prolonged seizures (> 5 minutes, status epilepticus) — not every seizure automatically requires IV medication.",
+      "distractorRationales": {
+        "a": "This choice focuses on Insert an oral airway to prevent tongue biting and aspiration, while the decisive cue is Post-seizure: lateral recovery position, assess airway, vitals, neuro. Moves to a lower-acuity action before the client is clinically stable, so The priority is Protect the patient's head, clear the environment of hazards, turn the patient on their side,, not a step that delays stabilization of neurologic deterioration.",
+        "b": "This option overweights Restrain the patient's limbs to prevent injury, despite the clinical warning in Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Protect the patient's head, clear the environment of hazards, turn the patient on their side, because delaying neurologic safety assessment can worsen neurologic deterioration.",
+        "d": "This option overweights Administer diazepam 10 mg IV immediately per standing orders, while the decisive cue is Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Does not account for the clinical cue most likely to deteriorate first, so The priority is Protect the patient's head, clear the environment of hazards, turn the patient on their side,, not a step that delays stabilization of neurologic deterioration."
+      },
+      "tags": [
+        "Neurological / Seizure Management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Neurological / Seizure Management",
+        "caption": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+        "conclusion": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes)."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 4,
+      "stem": "A parent asks the nurse why their 8-year-old child cannot be given aspirin for a fever during this influenza illness. The nurse's teaching should be based on which evidence-based concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Aspirin causes gastrointestinal bleeding in children under 12"
+        },
+        {
+          "id": "b",
+          "text": "Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome — a rare but potentially fatal encephalopathy and hepatotoxicity"
+        },
+        {
+          "id": "c",
+          "text": "Aspirin causes febrile seizures in school-age children"
+        },
+        {
+          "id": "d",
+          "text": "Aspirin inhibits platelet function and increases bleeding risk in children with viral infections"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Reye's syndrome is a rare but life-threatening condition characterized by non-inflammatory encephalopathy and microvesicular hepatic steatosis. It is strongly associated with aspirin use in children during viral illnesses, particularly influenza (types A and B) and varicella. Pathophysiology: salicylate-induced mitochondrial dysfunction during viral illness. Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%). Since the CDC advisory in the 1980s recommending against aspirin in children <18 during viral illnesses, Reye's syndrome incidence has fallen dramatically. Preferred antipyretics: acetaminophen or ibuprofen.",
+      "distractorRationales": {
+        "a": "This option makes Aspirin causes gastrointestinal bleeding in children under 12 the focus, and misses that Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%). Does not account for the clinical cue most likely to deteriorate first, so The correct path is Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome, which matches the priority cues instead of a secondary concern.",
+        "c": "The problem with Aspirin causes febrile seizures in school-age children is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is never give aspirin to children <18 with viral illness. The nurse should prioritize Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome; otherwise infection progression remains the active threat.",
+        "d": "Selecting Aspirin inhibits platelet function and increases bleeding risk in children with viral infections would be unsafe, despite the clinical warning in A parent asks the nurse why their 8-year-old child cannot be given aspirin for a fever during this. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen.",
+        "conclusion": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A patient in the PACU states she was awake during her surgery — she recalls the surgeons' conversation, felt pressure on her abdomen but no pain, and could not move or signal anyone. She is trembling, tearful, and says 'It was the most terrifying experience of my life.' Which nursing response and plan of care is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassure her that awareness under anesthesia is medically impossible with modern monitoring, and that she was likely dreaming"
+        },
+        {
+          "id": "b",
+          "text": "Validate her experience fully, document her report accurately, notify the anesthesia provider and risk management per policy, provide immediate emotional support, and initiate referral for trauma-focused psychological counseling for potential PTSD"
+        },
+        {
+          "id": "c",
+          "text": "Document 'patient reports dream during anesthesia' and notify only the charge nurse"
+        },
+        {
+          "id": "d",
+          "text": "Administer a PRN anxiolytic and reassess her emotional state in 2 hours before taking further action"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Intraoperative awareness with recall (accidental awareness during general anesthesia — AAGA) affects approximately 1-2 per 1,000 general anesthetics. Patients may recall sounds, conversation, touch, pressure, or in severe cases pain and complete paralysis (most traumatizing — the patient is conscious but paralyzed and unable to alert the team). PTSD develops in up to 70% of awareness cases if not addressed. Nursing priorities: (1) BELIEVE the patient — dismissing her account (gaslighting) causes profound additional psychological harm, violates patient dignity, and creates significant legal liability; (2) Validate her distress and provide immediate compassionate support; (3) Document her exact words accurately and objectively; (4) Notify the anesthesia provider — awareness should trigger review of anesthetic depth monitoring (BIS), neuromuscular blockade management, and volatile agent delivery; (5) Notify risk management per institutional policy; (6) Refer promptly for trauma-focused therapy (EMDR or CBT for PTSD). Administering sedatives to suppress the patient's report is not appropriate.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Reassure her that awareness under anesthesia is medically impossible with modern monitoring, and that she was, when the bedside priority is driven by (2) Validate her distress and provide immediate compassionate support. Waits on escalation while the bedside priority remains unresolved, so Validate her experience fully, document her report accurately, notify the anesthesia provider and risk management per is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "c": "The clinical error in Document 'patient reports dream during anesthesia' and notify only the charge nurse is that it waits on escalation while the bedside priority remains unresolved, without accounting for (5) Notify risk management per institutional policy. That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses.",
+        "d": "This choice focuses on Administer a PRN anxiolytic and reassess her emotional state in 2 hours before taking further action, while the decisive cue is Affects ~1-2/1,000 GAs. Treats an active warning sign as something safe to watch, so The priority is Validate her experience fully, document her report accurately, notify the anesthesia provider and risk management per, not a step that delays stabilization of neurologic deterioration."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intraoperative awareness: BELIEVE and VALIDATE the patient. Document accurately. Notify anesthesia + risk management. Refer for trauma/PTSD counseling. Dismissing the experience causes psychological harm. Affects ~1-2/1,000 GAs.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient receiving a blood transfusion who develops hives, pruritus, and a temperature of 38.5°C (101.3°F) 20 minutes into the transfusion. What is the FIRST nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Slow the transfusion rate and administer diphenhydramine as ordered"
+        },
+        {
+          "id": "b",
+          "text": "Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and blood bank"
+        },
+        {
+          "id": "c",
+          "text": "Complete the transfusion quickly since the reaction appears mild"
+        },
+        {
+          "id": "d",
+          "text": "Obtain a blood culture and administer acetaminophen for the fever"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Any signs of a transfusion reaction—including hives, pruritus, and fever—require immediate cessation of the transfusion. The key concern is that mild symptoms can rapidly progress to severe hemolytic or anaphylactic reactions. The tubing must be disconnected (not just slowed) and the IV kept patent with normal saline using new tubing to prevent infusion of remaining blood product. The provider and blood bank must be notified, and the blood bag and tubing are returned to the blood bank for analysis. Continuing or completing the transfusion risks life-threatening escalation.",
+      "distractorRationales": {
+        "a": "Slow the transfusion rate and administer diphenhydramine as ordered fits a lower-risk interpretation, although the nurse should be guided by Continuing or completing the transfusion risks life-threatening escalation. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider because delaying infection or sepsis escalation can worsen infection progression.",
+        "c": "This option makes Complete the transfusion quickly since the reaction appears mild the focus, but the stem cue is Any signs of a transfusion reaction—including hives, pruritus. Normalizes a finding that should change the nurse's priority, so Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider is safer because it addresses infection progression before routine care or reassurance.",
+        "d": "This option makes Obtain a blood culture and administer acetaminophen for the fever the focus, without accounting for Any signs of a transfusion reaction—including hives, pruritus. Does not account for the clinical cue most likely to deteriorate first, so Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Transfusion reaction protocol: STOP → Saline via new line → Notify provider + blood bank → Return blood bag + tubing → Document. Never slow the rate and continue if a reaction is suspected.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A nurse is working at a migrant farmworker health clinic. A patient presents with signs of pesticide exposure: miosis, excessive salivation, lacrimation, urination, defecation, emesis, and muscle fasciculations. Which class of pesticide is most likely involved and what is the priority antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pyrethroid insecticide; administer diphenhydramine for allergic response"
+        },
+        {
+          "id": "b",
+          "text": "Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates"
+        },
+        {
+          "id": "c",
+          "text": "Organochlorine; administer activated charcoal and benzodiazepines"
+        },
+        {
+          "id": "d",
+          "text": "Herbicide (glyphosate); administer IV sodium bicarbonate"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Organophosphate and carbamate pesticides inhibit acetylcholinesterase, causing accumulation of acetylcholine at muscarinic and nicotinic receptors. Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating. Nicotinic: muscle fasciculations, weakness, paralysis. CNS: seizures, coma. Antidote: (1) Atropine IV (competitive muscarinic antagonist) — dose titrated to dry secretions, not pupil size; (2) Pralidoxime (2-PAM) reactivates cholinesterase if given early (before 'aging') — effective for organophosphates, not carbamates. Migrant farmworkers are at high risk due to occupational pesticide exposure.",
+      "distractorRationales": {
+        "a": "The clinical error in Pyrethroid insecticide; administer diphenhydramine for allergic response is that it does not account for the clinical cue most likely to deteriorate first, without accounting for high risk in farmworkers. Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "c": "This answer choice treats Organochlorine; administer activated charcoal and benzodiazepines as the key issue, despite the clinical warning in Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "d": "This option overweights Herbicide (glyphosate); administer IV sodium bicarbonate, although the nurse should be guided by Migrant farmworkers are at high risk due to occupational pesticide exposure. Does not account for the clinical cue most likely to deteriorate first, so The priority is Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates, not a step that delays stabilization of neurologic deterioration."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Organophosphate poisoning (DUMBELS): atropine (blocks muscarinic effects) + pralidoxime/2-PAM (reactivates cholinesterase); high risk in farmworkers; titrate atropine to dry secretions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A nurse is titrating norepinephrine for a patient in septic shock. Current MAP is 58 mmHg on norepinephrine 0.18 mcg/kg/min. Lactate is 5.4 mmol/L. The provider orders vasopressin 0.03 units/min added as a second vasopressor. The nurse understands the rationale for vasopressin addition is PRIMARILY to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace endogenous vasopressin that is depleted in prolonged septic shock"
+        },
+        {
+          "id": "b",
+          "text": "Improve cardiac output by increasing stroke volume"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the oxygen demand of the myocardium by lowering heart rate"
+        },
+        {
+          "id": "d",
+          "text": "Decrease SVR to improve tissue perfusion in high-output septic shock"
+        }
+      ],
+      "answer": "a",
+      "rationale": "In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the shock state. Exogenous vasopressin (0.03–0.04 units/min) is added as a fixed-dose adjunct — not titrated — to replace depleted stores and allow reduction ('sparing') of norepinephrine dose (to reduce NE-related adverse effects). Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate (C). It does NOT reduce SVR (D).",
+      "distractorRationales": {
+        "b": "The problem with Improve cardiac output by increasing stroke volume is that it does not account for the clinical cue most likely to deteriorate first, rather than acting on In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the. The priority is Replace endogenous vasopressin that is depleted in prolonged septic shock, not a step that delays stabilization of circulation or perfusion.",
+        "c": "The clinical error in Reduce the oxygen demand of the myocardium by lowering heart rate is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate. It is less defensible because Replace endogenous vasopressin that is depleted in prolonged septic shock targets the problem most likely to deteriorate first.",
+        "d": "The reasoning trap in Decrease SVR to improve tissue perfusion in high-output septic shock is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate. It is less defensible because Replace endogenous vasopressin that is depleted in prolonged septic shock targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect). Fixed dose, not titrated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 86-year-old woman with CKD stage 3, atrial fibrillation, type 2 diabetes, hypertension, and heart failure takes: warfarin, metformin, lisinopril, furosemide, spironolactone, digoxin, and glipizide. She is admitted with dizziness, yellow-green visual halos, nausea, and bradycardia (HR 44, irregular). INR is 5.1 and potassium is 3.0 mEq/L. Which drug-drug-disease interaction cascade best explains her presentation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms"
+        },
+        {
+          "id": "b",
+          "text": "Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia"
+        },
+        {
+          "id": "c",
+          "text": "Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance from CKD stage 3"
+        },
+        {
+          "id": "d",
+          "text": "Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia, heart block, dysrhythmias), and visual changes (yellow-green halos, blurred vision, scotomas). Precipitating cascade: (1) Furosemide → hypokalemia (K+ 3.0 mEq/L); (2) Spironolactone partially counteracts furosemide-induced K+ loss but is insufficient; (3) Hypokalemia increases digoxin-Na+/K+-ATPase binding affinity → potentiates digoxin effect even at previously therapeutic serum levels; (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation; (5) Supratherapeutic INR (5.1) is a separate finding — likely from dietary change or drug interaction affecting warfarin metabolism. Management: hold digoxin, carefully replete potassium (IV in symptomatic bradycardia), cardiac monitoring, Digibind (digoxin immune Fab) for severe bradycardia or life-threatening dysrhythmia; hold warfarin and administer vitamin K for INR reversal.",
+      "distractorRationales": {
+        "a": "Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms is not the best answer, when the bedside priority is driven by (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation. Anchors on the wrong explanation for the client's cues, so It is less defensible because Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance targets the problem most likely to deteriorate first.",
+        "b": "The reasoning trap in Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation. That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "d": "The reasoning trap in Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation. The correct path is Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Digoxin toxicity: yellow-green halos + bradycardia + nausea. Hypokalemia potentiates digoxin toxicity even at 'therapeutic' levels. CKD reduces digoxin clearance. Treat: hold digoxin, correct K+, Digibind for severe cases.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "Mandatory Reporting",
+      "difficulty": 3,
+      "stem": "A nurse discovers that a colleague has been diverting controlled substances — taking opioids from the medication dispensing cabinet that are charted as wasted but are not being wasted appropriately. The colleague appears to be under the influence during a shift. Which action is the nurse's ethical and legal obligation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Speak privately with the colleague and give them a chance to self-report before taking action"
+        },
+        {
+          "id": "b",
+          "text": "Document the suspicion in a personal diary for future reference if the behavior continues"
+        },
+        {
+          "id": "c",
+          "text": "Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion"
+        },
+        {
+          "id": "d",
+          "text": "Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Suspected drug diversion by a healthcare colleague must be reported immediately through the chain of command — charge nurse and supervisor — per facility policy. This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the ANA Code of Ethics, and triggers the appropriate investigation process. Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction. Personal documentation (B) does not fulfill the reporting obligation. Going directly to the State BON (D) bypasses the facility process, which should occur first — BON involvement follows internal reporting.",
+      "distractorRationales": {
+        "a": "The clinical error in Speak privately with the colleague and give them a chance to self-report before taking action is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the. That choice could make the nurse miss the window for medication-safety intervention while medication toxicity progresses.",
+        "b": "The clinical error in Document the suspicion in a personal diary for future reference if the behavior continues is that it does not account for the clinical cue most likely to deteriorate first, and misses that This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the. Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This distractor pulls attention toward Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration, but the stem cue is Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction. Anchors on the wrong explanation for the client's cues, so It is less defensible because Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Mandatory Reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected drug diversion: report immediately to charge nurse and supervisor per facility policy — patient safety is the priority; ethical obligation requires reporting, not covering up.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 3,
+      "stem": "A nurse caring for a patient with severe preeclampsia on magnesium sulfate should assess for which finding FIRST in each nursing assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blood pressure and fetal heart rate"
+        },
+        {
+          "id": "b",
+          "text": "Deep tendon reflexes and respiratory rate"
+        },
+        {
+          "id": "c",
+          "text": "Urine output and temperature"
+        },
+        {
+          "id": "d",
+          "text": "Level of consciousness and oxygen saturation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. DTRs serve as an early warning before respiratory arrest occurs — absent DTRs (loss of patellar reflex) signal dangerously high magnesium levels and the need to stop the infusion. This assessment should occur every 1 hour during magnesium infusion. BP and FHR (A) are important but reflect preeclampsia status, not magnesium toxicity. Urine output (C) is also important (magnesium is renally excreted; oliguria leads to accumulation), but the respiratory/reflex check is the most time-critical toxicity indicator.",
+      "distractorRationales": {
+        "a": "Blood pressure and fetal heart rate is not the best answer, and misses that This assessment should occur every 1 hour during magnesium infusion. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "Urine output and temperature fits a lower-risk interpretation, although the nurse should be guided by the respiratory/reflex check is the most time-critical toxicity indicator. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Deep tendon reflexes and respiratory rate because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This option makes Level of consciousness and oxygen saturation the focus, but the stem cue is Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Deep tendon reflexes and respiratory rate targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory arrest.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb810-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient develops respiratory distress 12 hours after total thyroidectomy, with stridor, dysphagia, and progressive anterior neck swelling. SpO2 is 88% on 6 L/min nasal cannula. Which action is the NURSE'S IMMEDIATE PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer calcium gluconate IV and draw ionized calcium level"
+        },
+        {
+          "id": "b",
+          "text": "Open the surgical wound at the bedside to relieve hematoma compression"
+        },
+        {
+          "id": "c",
+          "text": "Increase oxygen to 15 L/min via non-rebreather and call rapid response"
+        },
+        {
+          "id": "d",
+          "text": "Position the patient in high Fowler's and prepare for emergent intubation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Post-thyroidectomy respiratory distress with anterior neck swelling indicates expanding hematoma compressing the trachea. This is an airway emergency. Bedside wound opening to evacuate the hematoma is the immediate intervention — wound opening kits should be at the bedside on all post-thyroidectomy patients for this reason. While this is being done, the team prepares for emergent surgical re-exploration. Calcium gluconate (A) treats hypocalcemia from hypoparathyroidism (tetany, perioral numbness, Trousseau's sign) — not the presenting emergency. NRB mask (C) won't overcome a mechanical airway obstruction.",
+      "distractorRationales": {
+        "a": "Administer calcium gluconate IV and draw ionized calcium level would not address the priority, even though the higher-risk finding is Post-thyroidectomy neck swelling + stridor = hematoma compressing airway → open the surgical wound immediately. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Open the surgical wound at the bedside to relieve hematoma compression, which matches the priority cues instead of a secondary concern.",
+        "c": "Increase oxygen to 15 L/min via non-rebreather and call rapid response would not address the priority, without accounting for Post-thyroidectomy neck swelling + stridor = hematoma compressing airway → open the surgical wound immediately. Moves to a lower-acuity action before the client is clinically stable, so The correct path is Open the surgical wound at the bedside to relieve hematoma compression, which matches the priority cues instead of a secondary concern.",
+        "d": "Selecting Position the patient in high Fowler's and prepare for emergent intubation would be unsafe, while the decisive cue is SpO2 is 88% on 6 L/min nasal cannula. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-thyroidectomy neck swelling + stridor = hematoma compressing airway → open the surgical wound immediately. Keep wound kit at bedside.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

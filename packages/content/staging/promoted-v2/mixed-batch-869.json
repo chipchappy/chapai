@@ -1,0 +1,550 @@
+{
+  "batchId": "mixed-batch-869",
+  "generatedAt": "2026-04-09T20:53:54-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb869-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "heart_failure_worsening",
+      "subcategory": "heart_failure_worsening",
+      "difficulty": 3,
+      "stem": "A patient with heart failure has increasing edema, worsening shortness of breath, and a rising heart rate. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be worsening and needs reassessment"
+        },
+        {
+          "id": "b",
+          "text": "Edema means the heart failure is improving"
+        },
+        {
+          "id": "c",
+          "text": "Shortness of breath is expected and not important"
+        },
+        {
+          "id": "d",
+          "text": "A rising heart rate proves the patient is stable"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fluid retention, dyspnea, and tachycardia can indicate worsening heart failure or poor compensation. **Why the others are wrong:** - B Edema usually suggests congestion, not improvement. - C Dyspnea is an important warning sign. - D Tachycardia can reflect stress and instability.",
+      "distractorRationales": {
+        "b": "Edema means the heart failure is improving would not address the priority, without accounting for Heart failure worsening often shows up in fluid and breathing changes. Does not account for the clinical cue most likely to deteriorate first, so The patient may be worsening and needs reassessment better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "Shortness of breath is expected and not important fits a lower-risk interpretation, despite the clinical warning in tachycardia can indicate worsening heart failure or poor compensation. Normalizes a finding that should change the nurse's priority, so The nurse should prioritize The patient may be worsening and needs reassessment; otherwise oxygenation or ventilation remains the active threat.",
+        "d": "This answer choice treats A rising heart rate proves the patient is stable as the key issue, instead of responding to Fluid retention, dyspnea. Does not account for the clinical cue most likely to deteriorate first, so The priority is The patient may be worsening and needs reassessment, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "heart_failure_worsening",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Heart failure worsening often shows up in fluid and breathing changes.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "level_of_consciousness",
+      "subcategory": "level_of_consciousness",
+      "difficulty": 3,
+      "stem": "A patient who was talking normally 10 minutes ago now answers slowly and seems drowsy. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is a concerning neurologic change that needs prompt assessment"
+        },
+        {
+          "id": "b",
+          "text": "The patient is simply calming down"
+        },
+        {
+          "id": "c",
+          "text": "Slower answers always mean the patient is sleepy from boredom"
+        },
+        {
+          "id": "d",
+          "text": "There is no urgency if the patient still opens their eyes"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Any sudden change in responsiveness can be an early warning sign of neurologic or metabolic deterioration. **Why the others are wrong:** - B Sudden change should not be dismissed. - C Drowsiness can reflect a real clinical decline. - D Eye opening does not rule out a serious problem.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward The patient is simply calming down, even though the higher-risk finding is Any sudden change in responsiveness can be an early warning sign of neurologic or metabolic deterioration. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses.",
+        "c": "This answer choice treats Slower answers always mean the patient is sleepy from boredom as the key issue, while the decisive cue is A patient who was talking normally 10 minutes ago now answers slowly and seems drowsy. Normalizes a finding that should change the nurse's priority, so The priority is This is a concerning neurologic change that needs prompt assessment, not a step that delays stabilization of neurologic deterioration.",
+        "d": "This option overweights There is no urgency if the patient still opens their eyes, instead of responding to **Why the others are wrong:** - B Sudden change should not be dismissed. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize This is a concerning neurologic change that needs prompt assessment; otherwise neurologic deterioration remains the active threat."
+      },
+      "tags": [
+        "level_of_consciousness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New drowsiness or slower responses can be an urgent change.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygenation_trend",
+      "subcategory": "oxygenation_trend",
+      "difficulty": 3,
+      "stem": "A patient on oxygen has a falling saturation trend and is using more effort to breathe. What is the best nurse action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess respiratory status and escalate if needed"
+        },
+        {
+          "id": "b",
+          "text": "Ignore the trend because oxygen is already in place"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a second low reading before acting"
+        },
+        {
+          "id": "d",
+          "text": "Remove the oxygen to see what happens"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A downward oxygen trend with increased effort means the respiratory status may be worsening and needs prompt reassessment. **Why the others are wrong:** - B Oxygen does not guarantee stability. - C Trend changes should not be ignored. - D Removing oxygen is unsafe without a reasoned plan.",
+      "distractorRationales": {
+        "b": "This option overweights Ignore the trend because oxygen is already in place, instead of responding to **Why the others are wrong:** - B Oxygen does not guarantee stability. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "The reasoning trap in Wait for a second low reading before acting is that it treats an active warning sign as something safe to watch, but the stem cue is - D Removing oxygen is unsafe without a reasoned plan. Reassess respiratory status and escalate if needed is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "Remove the oxygen to see what happens fits a lower-risk interpretation, while the decisive cue is **Why the others are wrong:** - B Oxygen does not guarantee stability. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Reassess respiratory status and escalate if needed; otherwise oxygenation or ventilation remains the active threat."
+      },
+      "tags": [
+        "oxygenation_trend",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Worsening oxygen trends deserve immediate attention.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygenation_trend",
+        "caption": "Worsening oxygen trends deserve immediate attention.",
+        "conclusion": "Worsening oxygen trends deserve immediate attention."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "rising_work_of_breathing",
+      "subcategory": "rising_work_of_breathing",
+      "difficulty": 3,
+      "stem": "A patient with pneumonia is breathing faster, using accessory muscles, and says, \"I am getting tired.\" What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess breathing and oxygenation immediately"
+        },
+        {
+          "id": "b",
+          "text": "Encourage the patient to save energy and wait"
+        },
+        {
+          "id": "c",
+          "text": "Turn off the oxygen so the patient can rest"
+        },
+        {
+          "id": "d",
+          "text": "Document that fatigue is expected with infection"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fatigue with escalating work of breathing may signal respiratory failure. The nurse should reassess the patient right away. **Why the others are wrong:** - B Waiting can miss deterioration. - C Removing oxygen is unsafe without reassessment. - D Fatigue can be a warning sign, not just expected illness.",
+      "distractorRationales": {
+        "b": "This choice focuses on Encourage the patient to save energy and wait, rather than acting on - C Removing oxygen is unsafe without reassessment. Treats an active warning sign as something safe to watch, so The safer answer is Reassess breathing and oxygenation immediately because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "This option makes Turn off the oxygen so the patient can rest the focus, and misses that Fatigue with escalating work of breathing may signal respiratory failure. Does not account for the clinical cue most likely to deteriorate first, so Reassess breathing and oxygenation immediately better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Document that fatigue is expected with infection is not the best answer, but the stem cue is A patient with pneumonia is breathing faster, using accessory muscles. Normalizes a finding that should change the nurse's priority, so Reassess breathing and oxygenation immediately is safer because it addresses oxygenation or ventilation before routine care or reassurance."
+      },
+      "tags": [
+        "rising_work_of_breathing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When a patient says they are tiring, treat that as a respiratory warning.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "shock_warning",
+      "subcategory": "shock_warning",
+      "difficulty": 3,
+      "stem": "A patient is pale, clammy, and has a weak pulse after a large amount of blood loss. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be in hypovolemic shock"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because they are still awake"
+        },
+        {
+          "id": "c",
+          "text": "The weak pulse is not important if the skin is pale"
+        },
+        {
+          "id": "d",
+          "text": "Blood loss does not affect circulation until blood pressure is zero"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Blood loss with pale, clammy skin and a weak pulse suggests poor circulating volume and possible shock. **Why the others are wrong:** - B Awake status does not equal stable circulation. - C The weak pulse is a key clue. - D Circulation can worsen well before pressure reaches zero.",
+      "distractorRationales": {
+        "b": "Selecting The patient is stable because they are still awake would be unsafe, rather than acting on - D Circulation can worsen well before pressure reaches zero. Anchors on the wrong explanation for the client's cues, so The priority is The patient may be in hypovolemic shock, not a step that delays stabilization of circulation or perfusion.",
+        "c": "The clinical error in The weak pulse is not important if the skin is pale is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is - D Circulation can worsen well before pressure reaches zero. The patient may be in hypovolemic shock better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This option overweights Blood loss does not affect circulation until blood pressure is zero, while the decisive cue is - D Circulation can worsen well before pressure reaches zero. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize The patient may be in hypovolemic shock; otherwise circulation or perfusion remains the active threat."
+      },
+      "tags": [
+        "shock_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Blood loss plus cold, weak circulation suggests shock.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "shock_warning",
+        "caption": "Blood loss plus cold, weak circulation suggests shock.",
+        "conclusion": "Blood loss plus cold, weak circulation suggests shock."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "unstable_angina_concern",
+      "subcategory": "unstable_angina_concern",
+      "difficulty": 3,
+      "stem": "A patient reports chest pressure that started while resting, and the pain is not relieved by usual measures. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an acute coronary syndrome"
+        },
+        {
+          "id": "b",
+          "text": "Rest pain is always noncardiac"
+        },
+        {
+          "id": "c",
+          "text": "If the patient can speak, the condition is low priority"
+        },
+        {
+          "id": "d",
+          "text": "The pain is not concerning unless the skin is cold"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure at rest that persists is concerning for a cardiac emergency and needs prompt evaluation. **Why the others are wrong:** - B Rest pain can still be cardiac. - C Speaking does not make chest pain safe. - D Cold skin is not required for cardiac concern.",
+      "distractorRationales": {
+        "b": "Rest pain is always noncardiac is not the best answer, without accounting for - C Speaking does not make chest pain safe. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because The patient may be having an acute coronary syndrome targets the problem most likely to deteriorate first.",
+        "c": "The problem with If the patient can speak, the condition is low priority is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is the pain is not relieved by usual measures. Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved.",
+        "d": "This option overweights The pain is not concerning unless the skin is cold, instead of responding to the pain is not relieved by usual measures. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response."
+      },
+      "tags": [
+        "unstable_angina_concern",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest pain at rest can be a major cardiac warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_perfusion",
+      "subcategory": "fever_and_perfusion",
+      "difficulty": 3,
+      "stem": "A child with fever is sleepy, has dry mucous membranes, and has not had a wet diaper since morning. What is the nurse's best concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may have significant dehydration and needs prompt evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Sleepiness means the fever is improving"
+        },
+        {
+          "id": "c",
+          "text": "Dry mucous membranes are not meaningful in children"
+        },
+        {
+          "id": "d",
+          "text": "A wet diaper is irrelevant if the child ate breakfast"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sleepiness, dry mucous membranes, and reduced urine output together suggest a significant fluid deficit. **Why the others are wrong:** - B Sleepiness can be a danger sign. - C Mucous membranes are a useful clue. - D Intake and urine output matter more than breakfast alone.",
+      "distractorRationales": {
+        "b": "This choice focuses on Sleepiness means the fever is improving, although the nurse should be guided by Fever plus low urine output and sleepiness can mean dehydration. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "c": "This answer choice treats Dry mucous membranes are not meaningful in children as the key issue, despite the clinical warning in Fever plus low urine output and sleepiness can mean dehydration. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize The child may have significant dehydration and needs prompt evaluation; otherwise infection progression remains the active threat.",
+        "d": "A wet diaper is irrelevant if the child ate breakfast fits a lower-risk interpretation, while the decisive cue is A child with fever is sleepy, has dry mucous membranes. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response."
+      },
+      "tags": [
+        "fever_and_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus low urine output and sleepiness can mean dehydration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "fever_and_perfusion",
+        "caption": "Fever plus low urine output and sleepiness can mean dehydration.",
+        "conclusion": "Fever plus low urine output and sleepiness can mean dehydration."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "The reasoning trap in This is an expected effect of routine eye fatigue is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma. It is less defensible because The client may have acute angle-closure glaucoma and needs urgent evaluation targets the problem most likely to deteriorate first.",
+        "c": "This answer choice treats The client is likely having a migraine and can rest at home as the key issue, while the decisive cue is Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response.",
+        "d": "This answer choice treats These findings show that prescribed eye drops are working well as the key issue, instead of responding to Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize The client may have acute angle-closure glaucoma and needs urgent evaluation; otherwise clinical safety risk remains the active threat."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "This option makes Restrict oral fluids and monitor weight the focus, but the stem cue is sodium 128 mEq/L. Moves to a lower-acuity action before the client is clinically stable, so Administer IV hydrocortisone and isotonic fluids is safer because it addresses renal injury before routine care or reassurance.",
+        "c": "Hold corticosteroids until the morning cortisol level is drawn is not the best answer, but the stem cue is The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Administer IV hydrocortisone and isotonic fluids targets the problem most likely to deteriorate first.",
+        "d": "This choice focuses on Teach the client about low-sodium foods, instead of responding to Hypotension, hyponatremia, vomiting. Moves to teaching or reassurance before the immediate risk is stabilized, so Choosing it can delay renal protection and leave renal injury unresolved."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "The clinical error in Obtain a full allergy history before intervening is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. Stop the infusion and prepare to administer epinephrine is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "Slow the infusion to reduce the reaction is not the best answer, even though the higher-risk finding is The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. Does not account for the clinical cue most likely to deteriorate first, so Stop the infusion and prepare to administer epinephrine is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This option overweights Document the event and continue monitoring, despite the clinical warning in A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Treats an active warning sign as something safe to watch, so The safer answer is Stop the infusion and prepare to administer epinephrine because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Lay the client flat and increase the room temperature, but the stem cue is Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses.",
+        "c": "Selecting Ask the client to rest quietly until the headache passes would be unsafe, instead of responding to A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure. Does not account for the clinical cue most likely to deteriorate first, so The priority is Sit the client upright and assess for bladder distention, not a step that delays stabilization of neurologic deterioration.",
+        "d": "This option makes Offer oral fluids and reassess in 30 minutes the focus, but the stem cue is Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered. Treats an active warning sign as something safe to watch, so That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb869-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "Slow the transfusion rate and reassess in 5 minutes is not the best answer, even though the higher-risk finding is chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. Treats an active warning sign as something safe to watch, so The correct path is Stop the transfusion and keep the IV line open with normal saline, which matches the priority cues instead of a secondary concern.",
+        "c": "Selecting Administer acetaminophen and continue the transfusion would be unsafe, while the decisive cue is A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Stop the transfusion and keep the IV line open with normal saline; otherwise circulation or perfusion remains the active threat.",
+        "d": "Document the symptoms as an expected febrile response would not address the priority, when the bedside priority is driven by Suspected transfusion reaction means stop the blood first and keep the line open with normal saline. Normalizes a finding that should change the nurse's priority, so The correct path is Stop the transfusion and keep the IV line open with normal saline, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

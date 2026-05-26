@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-853",
+  "generatedAt": "2026-04-09T18:24:11-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb853-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "A patient asking for a pillow would not address the priority, even though the higher-risk finding is Chest symptoms with nausea are high-priority until proven otherwise. Does not account for the clinical cue most likely to deteriorate first, so A patient with new chest pressure and nausea better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "The clinical error in A patient wanting discharge paperwork is that it moves to a lower-acuity action before the client is clinically stable, without accounting for - C Discharge teaching can wait. It is less defensible because A patient with new chest pressure and nausea targets the problem most likely to deteriorate first.",
+        "d": "This option makes A patient asking for ice water the focus, when the bedside priority is driven by Chest symptoms with nausea are high-priority until proven otherwise. Moves to a lower-acuity action before the client is clinically stable, so It is less defensible because A patient with new chest pressure and nausea targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "infection_prevention",
+      "subcategory": "infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action best helps reduce transmission when caring for a patient with a contagious infection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform appropriate hand hygiene before and after care"
+        },
+        {
+          "id": "b",
+          "text": "Reuse gloves if they still look clean"
+        },
+        {
+          "id": "c",
+          "text": "Skip precautions if the patient feels better"
+        },
+        {
+          "id": "d",
+          "text": "Share equipment without cleaning it"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hand hygiene remains one of the most effective infection prevention measures.",
+      "distractorRationales": {
+        "b": "Reuse gloves if they still look clean fits a lower-risk interpretation, while the decisive cue is Hand hygiene remains one of the most effective infection prevention measures. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Perform appropriate hand hygiene before and after care; otherwise infection progression remains the active threat.",
+        "c": "This option overweights Skip precautions if the patient feels better, instead of responding to Hand hygiene remains one of the most effective infection prevention measures. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Perform appropriate hand hygiene before and after care because delaying infection or sepsis escalation can worsen infection progression.",
+        "d": "Selecting Share equipment without cleaning it would be unsafe, while the decisive cue is Hand hygiene remains one of the most effective infection prevention measures. Anchors on the wrong explanation for the client's cues, so The priority is Perform appropriate hand hygiene before and after care, not a step that delays stabilization of infection progression."
+      },
+      "tags": [
+        "infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Simple infection-control steps still matter most.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "infection_prevention",
+        "caption": "Simple infection-control steps still matter most.",
+        "conclusion": "Simple infection-control steps still matter most."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_deterioration",
+      "subcategory": "new_deterioration",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse see first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient needing help setting up a meal tray"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking when rounds will begin"
+        },
+        {
+          "id": "d",
+          "text": "A patient who wants to know if family can visit later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. **Why the others are wrong:** - B Meal setup is not urgent. - C Rounds timing is nonurgent. - D Visiting questions can wait.",
+      "distractorRationales": {
+        "b": "The problem with A patient needing help setting up a meal tray is that it does not account for the clinical cue most likely to deteriorate first, rather than acting on Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "c": "Selecting A patient asking when rounds will begin would be unsafe, instead of responding to Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. Does not account for the clinical cue most likely to deteriorate first, so The priority is A patient with new chest pressure and diaphoresis, not a step that delays stabilization of circulation or perfusion.",
+        "d": "The clinical error in A patient who wants to know if family can visit later is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. The correct path is A patient with new chest pressure and diaphoresis, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "new_deterioration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute chest symptoms outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "This answer choice treats Teaching a patient how to use an inhaler as the key issue, while the decisive cue is - D Chest pain decisions require nursing judgment and escalation. Moves to teaching or reassurance before the immediate risk is stabilized, so The nurse should prioritize Transporting a stable patient to radiology; otherwise circulation or perfusion remains the active threat.",
+        "c": "This choice focuses on Evaluating a new complaint of dizziness, although the nurse should be guided by - D Chest pain decisions require nursing judgment and escalation. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved.",
+        "d": "This option makes Deciding whether chest pain needs an ECG the focus, and misses that - C Dizziness requires assessment first. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stable_vs_unstable",
+      "subcategory": "stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with chest pain and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "A patient waiting for discharge teaching tomorrow"
+        },
+        {
+          "id": "d",
+          "text": "A patient requesting help finding a charger"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent requests.",
+      "distractorRationales": {
+        "b": "The problem with A patient asking for a blanket is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to Unstable symptoms always come before comfort tasks. The safer answer is A patient with chest pain and diaphoresis because delaying circulation and perfusion support can worsen circulation or perfusion.",
+        "c": "A patient waiting for discharge teaching tomorrow would not address the priority, and misses that Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent. Treats an active warning sign as something safe to watch, so A patient with chest pain and diaphoresis is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "d": "The problem with A patient requesting help finding a charger is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by Unstable symptoms always come before comfort tasks. That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response."
+      },
+      "tags": [
+        "stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable symptoms always come before comfort tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_dysrhythmias",
+      "subcategory": "cardiovascular_dysrhythmias",
+      "difficulty": 3,
+      "stem": "A nurse is monitoring a patient on telemetry when the rhythm suddenly changes to a wide-complex, regular tachycardia at 180 bpm. The patient is alert, with BP 102/60 mmHg and reports palpitations but no chest pain. Which intervention should the nurse anticipate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediate unsynchronized defibrillation at 200J"
+        },
+        {
+          "id": "b",
+          "text": "Prepare for synchronized cardioversion at 100J after sedation"
+        },
+        {
+          "id": "c",
+          "text": "Administer IV adenosine 6 mg rapid push to terminate the rhythm"
+        },
+        {
+          "id": "d",
+          "text": "Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring hemodynamics closely"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification before treatment. WCT is most commonly ventricular tachycardia (VT) but can also be supraventricular tachycardia with aberrant conduction (SVT-A). A 12-lead ECG helps differentiate. If VT is confirmed: amiodarone or procainamide IV is the antiarrhythmic of choice for stable VT. Synchronized cardioversion is reserved for hemodynamically unstable stable VT (BP < 90, ischemia, altered mental status). Unsynchronized defibrillation (defib) is for pulseless VT/VF. Adenosine is appropriate for narrow-complex SVT; it is not first-line for wide-complex tachycardia and can be harmful in VT.",
+      "distractorRationales": {
+        "a": "Selecting Immediate unsynchronized defibrillation at 200J would be unsafe, instead of responding to Stable wide-complex tachycardia: 12-lead first → provider → antiarrhythmic (amiodarone or procainamide for VT). Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "b": "Prepare for synchronized cardioversion at 100J after sedation would not address the priority, when the bedside priority is driven by Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring, which matches the priority cues instead of a secondary concern.",
+        "c": "This option makes Administer IV adenosine 6 mg rapid push to terminate the rhythm the focus, and misses that Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses."
+      },
+      "tags": [
+        "cardiovascular_dysrhythmias",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stable wide-complex tachycardia: 12-lead first → provider → antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_heart_failure",
+      "subcategory": "cardiovascular_heart_failure",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with acute decompensated heart failure who has a new order for furosemide 40 mg IV push. Which assessment finding is MOST important to report to the provider before administering this medication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient's weight is 4 lbs above their dry weight"
+        },
+        {
+          "id": "b",
+          "text": "The patient's serum potassium is 3.0 mEq/L"
+        },
+        {
+          "id": "c",
+          "text": "The patient has bilateral 2+ pitting edema of the lower extremities"
+        },
+        {
+          "id": "d",
+          "text": "The patient reports urinary urgency"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Furosemide is a loop diuretic that causes potassium wasting. A pre-dose potassium of 3.0 mEq/L (hypokalemia) is a critical safety concern — administering furosemide will further lower potassium, increasing the risk of life-threatening cardiac arrhythmias (torsades de pointes, ventricular fibrillation), especially in heart failure patients who may be on digoxin. Potassium replacement should be confirmed or ordered before or concurrent with diuresis. Weight gain above dry weight and bilateral edema are the indications FOR furosemide, not contraindications. Urinary urgency is an expected diuretic side effect.",
+      "distractorRationales": {
+        "a": "The patient's weight is 4 lbs above their dry weight would not address the priority, even though the higher-risk finding is A pre-dose potassium of 3. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because The patient's serum potassium is 3.0 mEq/L targets the problem most likely to deteriorate first.",
+        "c": "This answer choice treats The patient has bilateral 2+ pitting edema of the lower extremities as the key issue, although the nurse should be guided by This is especially critical in patients on digoxin or with baseline dysrhythmias. Treats an active warning sign as something safe to watch, so Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved.",
+        "d": "This option makes The patient reports urinary urgency the focus, but the stem cue is A pre-dose potassium of 3. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because The patient's serum potassium is 3.0 mEq/L targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "cardiovascular_heart_failure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_hypertensive_emergency",
+      "subcategory": "cardiovascular_hypertensive_emergency",
+      "difficulty": 3,
+      "stem": "A patient presents with BP 218/130 mmHg, severe headache, blurred vision, and confusion. Fundoscopic exam shows papilledema. Urinalysis shows proteinuria and hematuria. Which condition is present and what is the correct blood pressure management approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypertensive urgency — oral labetalol and discharge home with follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further end-organ damage"
+        },
+        {
+          "id": "d",
+          "text": "Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient has hypertensive emergency (malignant hypertension) — severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments — a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage — treated with oral agents over hours to days.",
+      "distractorRationales": {
+        "a": "This answer choice treats Hypertensive urgency — oral labetalol and discharge home with follow-up as the key issue, rather than acting on The critical teaching point: do NOT lower BP too rapidly. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour; otherwise renal injury remains the active threat.",
+        "c": "This choice focuses on Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further, rather than acting on The critical teaching point: do NOT lower BP too rapidly. Anchors on the wrong explanation for the client's cues, so The nurse should prioritize Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour; otherwise renal injury remains the active threat.",
+        "d": "Selecting Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening would be unsafe, while the decisive cue is The critical teaching point: do NOT lower BP too rapidly. Treats an active warning sign as something safe to watch, so The priority is Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour, not a step that delays stabilization of renal injury."
+      },
+      "tags": [
+        "cardiovascular_hypertensive_emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "subcategory": "delegation_infection_control",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with C. difficile (CDI) colitis. Which instruction is MOST important to give the nursing assistant assigned to this patient's room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread"
+        },
+        {
+          "id": "b",
+          "text": "Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room"
+        },
+        {
+          "id": "c",
+          "text": "Wear only gloves since C. diff is transmitted via droplets"
+        },
+        {
+          "id": "d",
+          "text": "Apply an N95 respirator before entering the room due to airborne risk"
+        }
+      ],
+      "answer": "b",
+      "rationale": "C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers — soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions.",
+      "distractorRationales": {
+        "a": "The problem with Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to diff is not airborne or droplet-transmitted, so N95s are not required. The nurse should prioritize Wear gloves and gown for all contact with the patient and environment, and wash hands; otherwise infection progression remains the active threat.",
+        "c": "This choice focuses on Wear only gloves since C. diff is transmitted via droplets, instead of responding to diff is not airborne or droplet-transmitted, so N95s are not required. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved.",
+        "d": "Apply an N95 respirator before entering the room due to airborne risk is not the best answer, without accounting for Key isolation requirements: contact precautions (gloves AND gown for all room entry). Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses."
+      },
+      "tags": [
+        "delegation_infection_control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. diff = contact precautions (gloves + gown) + soap and water handwashing. Alcohol hand sanitizer does NOT kill C. diff spores. This is one of the few situations where soap/water is explicitly superior to ABHR.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb853-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_safe_staffing",
+      "subcategory": "delegation_safe_staffing",
+      "difficulty": 3,
+      "stem": "A registered nurse receives a new patient assignment at shift start. The RN reviews the five patients and determines that patient care tasks need to be distributed. Which of the following tasks can be appropriately delegated to a licensed practical nurse (LPN)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the admission assessment for a new patient with unstable angina"
+        },
+        {
+          "id": "b",
+          "text": "Develop the care plan for a patient with newly diagnosed type 1 diabetes"
+        },
+        {
+          "id": "c",
+          "text": "Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm"
+        },
+        {
+          "id": "d",
+          "text": "Educate the patient and family about a new diagnosis of atrial fibrillation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate — appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation — this is an RN function.",
+      "distractorRationales": {
+        "a": "The problem with Perform the admission assessment for a new patient with unstable angina is that it anchors on the wrong explanation for the client's cues, despite the clinical warning in Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching. The priority is Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a, not a step that delays stabilization of circulation or perfusion.",
+        "b": "This distractor pulls attention toward Develop the care plan for a patient with newly diagnosed type 1 diabetes, when the bedside priority is driven by RN scope: initial assessment, care planning, teaching, evaluating unstable patients. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses.",
+        "d": "This option makes Educate the patient and family about a new diagnosis of atrial fibrillation the focus, even though the higher-risk finding is RN scope: initial assessment, care planning, teaching, evaluating unstable patients. Moves to teaching or reassurance before the immediate risk is stabilized, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses."
+      },
+      "tags": [
+        "delegation_safe_staffing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications to stable patients, perform routine procedures, collect data for stable conditions. RN scope: initial assessment, care planning, teaching, evaluating unstable patients, and tasks requiring clinical judgment. RNs cannot delegate assessment, teaching, or care planning.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

@@ -2,7 +2,15 @@
 
 export type Exam = "nclex" | "ccrn";
 export type Tier = "free" | "plus" | "pro";
-export type QuestionType = "mcq" | "sata" | "ordering" | "matrix" | "case_study" | "bow_tie";
+export type QuestionType =
+  | "mcq"
+  | "sata"
+  | "ordering"
+  | "matrix"
+  | "case_study"
+  | "bow_tie"
+  | "scenario_mcq"
+  | "decision_map_mcq";
 
 // CCRN Blueprint categories (% of exam)
 export const CCRN_CATEGORIES = {
@@ -48,6 +56,11 @@ export interface QuizQuestion {
   answer: string;           // "b" for MCQ, ["a","c"] serialized for SATA
   rationale: string;
   distractorRationales?: Record<string, string>;
+  scenarioTitle?: string;
+  scenario?: string;
+  additionalInfo?: string;
+  matrixColumns?: string[] | null;
+  matrixRows?: Array<{ label: string; answer: string }> | null;
   tags?: string[];
   blueprintPct?: number;
   takeaway?: string;

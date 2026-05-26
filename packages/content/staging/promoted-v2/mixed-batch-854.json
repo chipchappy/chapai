@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-854",
+  "generatedAt": "2026-04-09T18:24:23-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb854-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "This option overweights A patient asking for a pillow, while the decisive cue is - D Water is not urgent compared with possible cardiac symptoms. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize A patient with new chest pressure and nausea; otherwise circulation or perfusion remains the active threat.",
+        "c": "Selecting A patient wanting discharge paperwork would be unsafe, rather than acting on New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize A patient with new chest pressure and nausea; otherwise circulation or perfusion remains the active threat.",
+        "d": "This choice focuses on A patient asking for ice water, while the decisive cue is New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. Moves to a lower-acuity action before the client is clinically stable, so The priority is A patient with new chest pressure and nausea, not a step that delays stabilization of circulation or perfusion."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "infection_prevention",
+      "subcategory": "infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action best helps reduce transmission when caring for a patient with a contagious infection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform appropriate hand hygiene before and after care"
+        },
+        {
+          "id": "b",
+          "text": "Reuse gloves if they still look clean"
+        },
+        {
+          "id": "c",
+          "text": "Skip precautions if the patient feels better"
+        },
+        {
+          "id": "d",
+          "text": "Share equipment without cleaning it"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hand hygiene remains one of the most effective infection prevention measures.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Reuse gloves if they still look clean is that it does not account for the clinical cue most likely to deteriorate first, and misses that Simple infection-control steps still matter most. Perform appropriate hand hygiene before and after care is safer because it addresses infection progression before routine care or reassurance.",
+        "c": "This distractor pulls attention toward Skip precautions if the patient feels better, without accounting for Simple infection-control steps still matter most. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "d": "This option makes Share equipment without cleaning it the focus, when the bedside priority is driven by Simple infection-control steps still matter most. Anchors on the wrong explanation for the client's cues, so It is less defensible because Perform appropriate hand hygiene before and after care targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Simple infection-control steps still matter most.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "infection_prevention",
+        "caption": "Simple infection-control steps still matter most.",
+        "conclusion": "Simple infection-control steps still matter most."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_deterioration",
+      "subcategory": "new_deterioration",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse see first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient needing help setting up a meal tray"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking when rounds will begin"
+        },
+        {
+          "id": "d",
+          "text": "A patient who wants to know if family can visit later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. **Why the others are wrong:** - B Meal setup is not urgent. - C Rounds timing is nonurgent. - D Visiting questions can wait.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward A patient needing help setting up a meal tray, and misses that Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because A patient with new chest pressure and diaphoresis targets the problem most likely to deteriorate first.",
+        "c": "A patient asking when rounds will begin is not the best answer, but the stem cue is Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because A patient with new chest pressure and diaphoresis targets the problem most likely to deteriorate first.",
+        "d": "Selecting A patient who wants to know if family can visit later would be unsafe, rather than acting on Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. Treats an active warning sign as something safe to watch, so The priority is A patient with new chest pressure and diaphoresis, not a step that delays stabilization of circulation or perfusion."
+      },
+      "tags": [
+        "new_deterioration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute chest symptoms outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "This option makes Teaching a patient how to use an inhaler the focus, and misses that - C Dizziness requires assessment first. Moves to teaching or reassurance before the immediate risk is stabilized, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses.",
+        "c": "The reasoning trap in Evaluating a new complaint of dizziness is that it does not account for the clinical cue most likely to deteriorate first, and misses that Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available. That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses.",
+        "d": "This choice focuses on Deciding whether chest pain needs an ECG, although the nurse should be guided by - D Chest pain decisions require nursing judgment and escalation. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Transporting a stable patient to radiology; otherwise circulation or perfusion remains the active threat."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stable_vs_unstable",
+      "subcategory": "stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with chest pain and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "A patient waiting for discharge teaching tomorrow"
+        },
+        {
+          "id": "d",
+          "text": "A patient requesting help finding a charger"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent requests.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward A patient asking for a blanket, and misses that Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent. Does not account for the clinical cue most likely to deteriorate first, so The correct path is A patient with chest pain and diaphoresis, which matches the priority cues instead of a secondary concern.",
+        "c": "This answer choice treats A patient waiting for discharge teaching tomorrow as the key issue, although the nurse should be guided by Unstable symptoms always come before comfort tasks. Treats an active warning sign as something safe to watch, so Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved.",
+        "d": "The clinical error in A patient requesting help finding a charger is that it does not account for the clinical cue most likely to deteriorate first, and misses that Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent. That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses."
+      },
+      "tags": [
+        "stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable symptoms always come before comfort tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "de_escalation",
+      "subcategory": "de_escalation",
+      "difficulty": 3,
+      "stem": "A patient with schizophrenia becomes increasingly agitated in the day room, pacing, clenching fists, and stating loudly: 'Everyone is trying to poison me!' Which nurse action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approach the patient with two other staff members and prepare for physical restraint"
+        },
+        {
+          "id": "b",
+          "text": "Call security immediately and lock the day room"
+        },
+        {
+          "id": "c",
+          "text": "Calmly approach alone, make brief eye contact, use a low voice, and offer to move to a quieter space"
+        },
+        {
+          "id": "d",
+          "text": "Tell the patient loudly: 'You need to calm down or you will be restrained'"
+        }
+      ],
+      "answer": "c",
+      "rationale": "De-escalation techniques include: calm tone of voice, non-threatening body language, offering choice/control (moving to quiet space), reducing environmental stimulation, and validating feelings without agreeing with delusions. Approaching with multiple staff (A) can feel threatening and escalate the situation. Locking the unit (B) removes the patient's sense of freedom and escalates. Threatening restraint (D) is coercive and contraindicated in de-escalation. Physical restraint is the last resort after verbal de-escalation fails.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Approach the patient with two other staff members and prepare for physical restraint, without accounting for Physical restraint is the last resort after verbal de-escalation fails. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "b": "Call security immediately and lock the day room is not the best answer, even though the higher-risk finding is De-escalation: calm voice, non-threatening approach, reduce stimulation, offer choices — physical restraint is last resort only. Waits on escalation while the bedside priority remains unresolved, so That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "d": "Selecting Tell the patient loudly: 'You need to calm down or you will be restrained' would be unsafe, while the decisive cue is Threatening restraint (D) is coercive and contraindicated in de-escalation. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response."
+      },
+      "tags": [
+        "de_escalation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "De-escalation: calm voice, non-threatening approach, reduce stimulation, offer choices — physical restraint is last resort only.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_management",
+      "subcategory": "delegation_management",
+      "difficulty": 3,
+      "stem": "A charge nurse on a busy medical unit receives four calls simultaneously. Which situation should the charge nurse address PERSONALLY and FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given"
+        },
+        {
+          "id": "b",
+          "text": "A CNA reporting that a patient pulled out their peripheral IV"
+        },
+        {
+          "id": "c",
+          "text": "A family member asking about the patient's discharge plan"
+        },
+        {
+          "id": "d",
+          "text": "A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88% and cannot be aroused"
+        }
+      ],
+      "answer": "d",
+      "rationale": "The patient who is unresponsive, diaphoretic, hypoxic, and has chest pain is in acute cardiovascular or respiratory distress — this is a potential cardiac arrest or shock scenario requiring immediate, high-level nursing assessment and intervention. The charge nurse must respond in person and likely activate a rapid response or code. Missed scheduled medications is an important safety issue but not immediately life-threatening and can be delegated to the LPN's supervising RN. A dislodged IV requires reinsertion — important but not immediately life-threatening. Family discharge questions can be deferred to the primary nurse or case manager.",
+      "distractorRationales": {
+        "a": "The clinical error in A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Triage for charge nurse response: unresponsive patient with chest pain + hypoxia + diaphoresis = potential code =. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "b": "This choice focuses on A CNA reporting that a patient pulled out their peripheral IV, instead of responding to Missed scheduled medications is an important safety issue but not immediately life-threatening and can be delegated to the. Does not account for the clinical cue most likely to deteriorate first, so The priority is A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88%, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "A family member asking about the patient's discharge plan fits a lower-risk interpretation, despite the clinical warning in A dislodged IV requires reinsertion — important but not immediately life-threatening. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved."
+      },
+      "tags": [
+        "delegation_management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Triage for charge nurse response: unresponsive patient with chest pain + hypoxia + diaphoresis = potential code = charge nurse goes first and activates RRT/code response. All other issues can be triaged or delegated.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "floating_nurse",
+      "subcategory": "floating_nurse",
+      "difficulty": 3,
+      "stem": "An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Which action by the floating RN is most appropriate regarding scope of limitations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Refuse the assignment because floating to a specialty unit is unsafe"
+        },
+        {
+          "id": "b",
+          "text": "Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP"
+        },
+        {
+          "id": "c",
+          "text": "Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and request supervision for unfamiliar procedures"
+        },
+        {
+          "id": "d",
+          "text": "Accept the assignment only if she is designated as a second nurse, not as primary nurse"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Floating RNs are obligated to inform the charge nurse of limitations in specialty skills. They cannot refuse the assignment categorically (A) — refusing is appropriate only if the assignment is unsafe based on skills AND the unit cannot accommodate limitations. They must not perform tasks outside their competence independently (B). Accepting with disclosure of limitations and requesting supervision (C) is the professional and legally safe approach. The float nurse should receive a patient assignment matched to her competency level, with support for unfamiliar procedures. Simply being a 'second nurse' (D) does not adequately protect the patient or satisfy professional accountability.",
+      "distractorRationales": {
+        "a": "Refuse the assignment because floating to a specialty unit is unsafe would not address the priority, when the bedside priority is driven by An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Anchors on the wrong explanation for the client's cues, so Inform the charge nurse of any tasks outside her competence, accept patients within her skills, better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "The reasoning trap in Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. It is less defensible because Inform the charge nurse of any tasks outside her competence, accept patients within her skills, targets the problem most likely to deteriorate first.",
+        "d": "Accept the assignment only if she is designated as a second nurse, not as primary nurse is not the best answer, even though the higher-risk finding is An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Does not account for the clinical cue most likely to deteriorate first, so Inform the charge nurse of any tasks outside her competence, accept patients within her skills, is safer because it addresses circulation or perfusion before routine care or reassurance."
+      },
+      "tags": [
+        "floating_nurse",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Float nurses: disclose competency limitations to charge nurse, accept assignments within skills, request supervision — outright refusal is not appropriate unless assignment is unsafe and no accommodation is possible.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_apgar",
+      "subcategory": "neonatal_apgar",
+      "difficulty": 3,
+      "stem": "A neonate is assessed at 1 minute of life. The nurse notes: heart rate 98 bpm, weak cry, some flexion of extremities, grimace only in response to stimulation, and blue hands and feet with pink body. What is the APGAR score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "6"
+        },
+        {
+          "id": "c",
+          "text": "7"
+        },
+        {
+          "id": "d",
+          "text": "8"
+        }
+      ],
+      "answer": "a",
+      "rationale": "APGAR scoring: Appearance (color): pink body, blue hands/feet (acrocyanosis) = 1. Pulse (HR): 98 bpm (<100) = 1. Grimace (reflex): grimace only = 1. Activity (muscle tone): some flexion = 1. Respirations: weak cry = 1. Total APGAR = 5. Score 7–10 = normal. Score 4–6 = moderate depression — requires oxygen and stimulation. Score 0–3 = severe depression requiring immediate resuscitation.",
+      "distractorRationales": {
+        "b": "This option makes 6 the focus, and misses that A neonate is assessed at 1 minute of life. Does not account for the clinical cue most likely to deteriorate first, so 5 better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "7 is not the best answer, but the stem cue is Score 0–3 = severe depression requiring immediate resuscitation. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "This distractor pulls attention toward 8, when the bedside priority is driven by A neonate is assessed at 1 minute of life. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "neonatal_apgar",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "APGAR ≤6 = requires intervention; acrocyanosis (blue hands/feet only) = 1 point; central cyanosis (blue trunk/face) = 0 points.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb854-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_seizure_management",
+      "subcategory": "neurological_seizure_management",
+      "difficulty": 3,
+      "stem": "A nurse is with a patient who suddenly begins experiencing a generalized tonic-clonic seizure. What is the PRIORITY nursing action during the seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insert an oral airway to prevent tongue biting and aspiration"
+        },
+        {
+          "id": "b",
+          "text": "Restrain the patient's limbs to prevent injury"
+        },
+        {
+          "id": "c",
+          "text": "Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer diazepam 10 mg IV immediately per standing orders"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an active seizure, the nursing priorities are safety and observation: protect the head (soft padding), clear hazardous objects from the immediate environment, position on the side (lateral decubitus) to prevent aspiration when the seizure subsides, and time the duration. Nothing should be inserted into the mouth during an active seizure — this can cause injury to the patient and the nurse, and the jaw cannot be pried open safely. Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Medication (benzodiazepine) is indicated for prolonged seizures (> 5 minutes, status epilepticus) — not every seizure automatically requires IV medication.",
+      "distractorRationales": {
+        "a": "Insert an oral airway to prevent tongue biting and aspiration fits a lower-risk interpretation, while the decisive cue is Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize Protect the patient's head, clear the environment of hazards, turn the patient on their side,; otherwise neurologic deterioration remains the active threat.",
+        "b": "This answer choice treats Restrain the patient's limbs to prevent injury as the key issue, despite the clinical warning in Post-seizure: lateral recovery position, assess airway, vitals, neuro. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "d": "This choice focuses on Administer diazepam 10 mg IV immediately per standing orders, although the nurse should be guided by Post-seizure: lateral recovery position, assess airway, vitals, neuro. Does not account for the clinical cue most likely to deteriorate first, so The priority is Protect the patient's head, clear the environment of hazards, turn the patient on their side,, not a step that delays stabilization of neurologic deterioration."
+      },
+      "tags": [
+        "neurological_seizure_management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neurological_seizure_management",
+        "caption": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+        "conclusion": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes)."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

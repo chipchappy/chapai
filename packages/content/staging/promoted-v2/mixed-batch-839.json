@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-839",
+  "generatedAt": "2026-04-09T14:47:55-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb839-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pulse_and_pressure_change",
+      "subcategory": "pulse_and_pressure_change",
+      "difficulty": 3,
+      "stem": "An older adult becomes confused, cool, and has a weak pulse after a GI bleed. What is the best bedside interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be unstable from decreased circulating volume"
+        },
+        {
+          "id": "b",
+          "text": "Confusion means the blood loss is not serious"
+        },
+        {
+          "id": "c",
+          "text": "A weak pulse is expected after every bowel problem"
+        },
+        {
+          "id": "d",
+          "text": "The bleeding is probably resolved because the patient is still awake"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Blood loss can reduce circulating volume and cause poor perfusion, confusion, and weak pulses. **Why the others are wrong:** - B Confusion can be a sign of poor perfusion. - C Weak pulse is not a bowel-specific normal finding. - D Awake status does not rule out instability.",
+      "distractorRationales": {
+        "b": "The clinical error in Confusion means the blood loss is not serious is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Blood loss can reduce circulating volume and cause poor perfusion, confusion. It is less defensible because The patient may be unstable from decreased circulating volume targets the problem most likely to deteriorate first.",
+        "c": "A weak pulse is expected after every bowel problem fits a lower-risk interpretation, rather than acting on An older adult becomes confused, cool. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "d": "The reasoning trap in The bleeding is probably resolved because the patient is still awake is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is Bleeding plus confusion and weak pulse can mean unstable circulation. The correct path is The patient may be unstable from decreased circulating volume, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "pulse_and_pressure_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Bleeding plus confusion and weak pulse can mean unstable circulation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "slowed_response",
+      "subcategory": "slowed_response",
+      "difficulty": 3,
+      "stem": "A patient becomes slower to respond and has trouble keeping their eyes open. What is the nurse's best action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for an acute cause right away"
+        },
+        {
+          "id": "b",
+          "text": "Assume the patient is bored"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the change to pass"
+        },
+        {
+          "id": "d",
+          "text": "Ignore it if the vitals are not extreme"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Slowed responsiveness can signal a neurologic or physiologic change that needs prompt assessment. **Why the others are wrong:** - B Boredom does not explain an acute change. - C Waiting can miss deterioration. - D Vital signs can look acceptable while the patient worsens.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Assume the patient is bored, but the stem cue is Slowed responsiveness can signal a neurologic or physiologic change that needs prompt assessment. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses.",
+        "c": "This option makes Wait for the change to pass the focus, but the stem cue is Slowed responsiveness can signal a neurologic or physiologic change that needs prompt assessment. Treats an active warning sign as something safe to watch, so It is less defensible because Assess for an acute cause right away targets the problem most likely to deteriorate first.",
+        "d": "This option overweights Ignore it if the vitals are not extreme, while the decisive cue is A patient becomes slower to respond and has trouble keeping their eyes open. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Assess for an acute cause right away; otherwise neurologic deterioration remains the active threat."
+      },
+      "tags": [
+        "slowed_response",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Any sudden change in responsiveness deserves attention.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "pharmacology_metformin_safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Administer metformin as scheduled since the procedure is elective, even though the higher-risk finding is Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal. Does not account for the clinical cue most likely to deteriorate first, so Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the is safer because it addresses unstable glucose physiology before routine care or reassurance.",
+        "c": "Switch the patient to insulin therapy permanently before the procedure fits a lower-risk interpretation, instead of responding to Permanent insulin switch is not necessary. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "d": "Administer metformin with the morning meal on the day of the procedure and hold only for fits a lower-risk interpretation, despite the clinical warning in Permanent insulin switch is not necessary. Anchors on the wrong explanation for the client's cues, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved."
+      },
+      "tags": [
+        "pharmacology_metformin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "community_health",
+      "difficulty": 3,
+      "stem": "A public health nurse is investigating a cluster of foodborne illness cases in a community following a church potluck dinner. What is the correct sequence for outbreak investigation according to epidemiologic principles?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Implement control measures → identify cases → form hypothesis → test hypothesis"
+        },
+        {
+          "id": "b",
+          "text": "Identify and count cases → establish case definition → form hypothesis about source → implement control measures → test hypothesis"
+        },
+        {
+          "id": "c",
+          "text": "Notify media → quarantine all attendees → collect stool cultures → identify the organism"
+        },
+        {
+          "id": "d",
+          "text": "Form hypothesis first → identify cases → implement controls → notify CDC"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Epidemiologic outbreak investigation sequence (CDC framework): (1) Prepare for fieldwork; (2) Establish existence of an outbreak; (3) Verify diagnosis; (4) Construct a working case definition; (5) Find and count cases (line listing); (6) Perform descriptive epidemiology (person, place, time — epidemic curve); (7) Develop hypotheses; (8) Evaluate hypotheses (case-control or cohort study); (9) Implement control and prevention measures; (10) Communicate findings. Cases are identified and counted before hypotheses are formed; controls are implemented based on evidence, not assumption. Notification goes to appropriate health authorities, not media first.",
+      "distractorRationales": {
+        "a": "This choice focuses on Implement control measures → identify cases → form hypothesis → test hypothesis, although the nurse should be guided by (7) Develop hypotheses. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Identify and count cases → establish case definition → form hypothesis about source → implement control because delaying bedside safety action can worsen clinical safety risk.",
+        "c": "This option overweights Notify media → quarantine all attendees → collect stool cultures → identify the organism, while the decisive cue is (2) Establish existence of an outbreak. Waits on escalation while the bedside priority remains unresolved, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved.",
+        "d": "This option overweights Form hypothesis first → identify cases → implement controls → notify CDC, rather than acting on (2) Establish existence of an outbreak. Waits on escalation while the bedside priority remains unresolved, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response."
+      },
+      "tags": [
+        "community_health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Outbreak investigation: identify cases first → case definition → descriptive epidemiology → hypothesis → test hypothesis → implement controls; evidence-based sequence prevents premature conclusions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "critical_care_fundamentals",
+      "difficulty": 3,
+      "stem": "During a wound assessment, the nurse observes a pressure injury where the base is entirely covered with yellow, adherent slough and the wound depth cannot be determined. The nurse correctly documents this as:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage III pressure injury"
+        },
+        {
+          "id": "b",
+          "text": "Stage IV pressure injury"
+        },
+        {
+          "id": "c",
+          "text": "Unstageable pressure injury"
+        },
+        {
+          "id": "d",
+          "text": "Suspected deep tissue pressure injury"
+        }
+      ],
+      "answer": "c",
+      "rationale": "An unstageable pressure injury is one in which the base is obscured by slough (yellow, tan, gray) or eschar, preventing accurate staging. The wound cannot be assessed as Stage III or IV without debriding the wound bed. Suspected deep tissue injury (D) presents as intact or non-intact skin with deep purple or maroon discoloration or blood-filled blister from underlying soft tissue damage — not covered with slough. Once debrided, the wound can be restaged.",
+      "distractorRationales": {
+        "a": "This option overweights Stage III pressure injury, while the decisive cue is The wound cannot be assessed as Stage III or IV without debriding the wound bed. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "b": "The clinical error in Stage IV pressure injury is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Once debrided, the wound can be restaged. Unstageable pressure injury is safer because it addresses infection progression before routine care or reassurance.",
+        "d": "This option makes Suspected deep tissue pressure injury the focus, and misses that During a wound assessment, the nurse observes a pressure injury where the base is entirely covered with yellow,. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses."
+      },
+      "tags": [
+        "critical_care_fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstageable = base obscured by slough/eschar, cannot determine depth. Suspected deep tissue injury = intact purple/maroon discoloration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "severe_preeclampsia",
+      "difficulty": 3,
+      "stem": "A patient with severe preeclampsia is receiving IV magnesium sulfate. The nurse assesses: RR 10, deep tendon reflexes absent, urine output 20 mL/hr, serum magnesium level 12 mEq/L. Which action is the immediate priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decrease the magnesium infusion rate by 50% and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and document the findings"
+        },
+        {
+          "id": "d",
+          "text": "Increase IV fluid rate to improve urine output and enhance magnesium excretion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9–10 mEq/L. This patient has multiple toxicity signs (RR 10, absent DTRs, oliguria, Mg 12 mEq/L). The infusion must be stopped immediately. Calcium gluconate 1 g IV (10 mL of 10% solution over 3–5 minutes) is the antidote — calcium antagonizes magnesium's effects. Decreasing the rate (A) is insufficient when toxicity is already established with respiratory compromise. Notifying the provider (C) happens simultaneously but stopping the infusion is the first action. Fluids (D) may help excretion but not fast enough to address impending respiratory arrest.",
+      "distractorRationales": {
+        "a": "Decrease the magnesium infusion rate by 50% and continue monitoring fits a lower-risk interpretation, although the nurse should be guided by The nurse assesses: RR 10, deep tendon reflexes absent, urine output 20 mL/hr, serum magnesium level 12 mEq/L. Treats an active warning sign as something safe to watch, so The nurse should prioritize Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly; otherwise oxygenation or ventilation remains the active threat.",
+        "c": "Notify the provider and document the findings is not the best answer, even though the higher-risk finding is A patient with severe preeclampsia is receiving IV magnesium sulfate. Waits on escalation while the bedside priority remains unresolved, so Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This option overweights Increase IV fluid rate to improve urine output and enhance magnesium excretion, despite the clinical warning in The nurse assesses: RR 10, deep tendon reflexes absent, urine output 20 mL/hr, serum magnesium level 12 mEq/L. Does not account for the clinical cue most likely to deteriorate first, so The priority is Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "severe_preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium toxicity: stop infusion immediately + calcium gluconate 1 g IV as antidote; monitor RR and DTRs every hour during infusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "perioperative_care",
+      "difficulty": 3,
+      "stem": "A patient is 6 hours post open abdominal surgery and reports pain rated 8/10. The patient is on scheduled ketorolac IV and a hydromorphone PCA but frequently presses the PCA demand button. Respiratory rate is 14 and SpO2 is 97%. Which is the most appropriate nursing response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact the physician to increase the PCA demand dose — the patient clearly has inadequate pain control"
+        },
+        {
+          "id": "b",
+          "text": "Withhold all PCA doses and reassess in 2 hours — respiratory rate below 16 requires opioid restriction"
+        },
+        {
+          "id": "c",
+          "text": "Reassess pain using a validated scale, review PCA usage data and lockout history, maximize non-opioid adjuncts (IV acetaminophen if not given), and contact physician if pain remains uncontrolled"
+        },
+        {
+          "id": "d",
+          "text": "Administer naloxone 0.4 mg IV prophylactically to protect respiratory reserve before adjusting the PCA"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Effective post-operative pain management requires a systematic, multimodal approach. Steps: (1) Reassess pain thoroughly — PQRST (location, quality, timing — is this expected surgical pain or a new complication like wound dehiscence?); (2) Review PCA data — are demand attempts successful or being locked out? Is the patient pressing correctly? Is the demand dose reaching the lockout ceiling?; (3) Ensure non-opioid adjuncts are maximized: scheduled acetaminophen (reduces opioid requirements 20-30%), ketorolac, and consider regional analgesia; (4) Contact physician if pain remains uncontrolled despite optimized non-opioids. SpO2 97% + RR 14 indicates adequate ventilation — opioids are NOT contraindicated. The outdated practice of withholding opioids for RR <16 without clinical signs of respiratory depression is not evidence-based and results in undertreated pain. Prophylactic naloxone reverses analgesia and is inappropriate without signs of opioid toxicity.",
+      "distractorRationales": {
+        "a": "This option makes Contact the physician to increase the PCA demand dose — the patient clearly has inadequate pain the focus, when the bedside priority is driven by Steps: (1) Reassess pain thoroughly — PQRST (location, quality, timing — is this expected surgical pain or a. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "b": "Withhold all PCA doses and reassess in 2 hours — respiratory rate below 16 requires opioid would not address the priority, when the bedside priority is driven by Steps: (1) Reassess pain thoroughly — PQRST (location, quality, timing — is this expected surgical pain or a. Treats an active warning sign as something safe to watch, so Reassess pain using a validated scale, review PCA usage data and lockout history, maximize non-opioid adjuncts better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Administer naloxone 0.4 mg IV prophylactically to protect respiratory reserve before adjusting the PCA would not address the priority, but the stem cue is Steps: (1) Reassess pain thoroughly — PQRST (location, quality, timing — is this expected surgical pain or a. Waits on escalation while the bedside priority remains unresolved, so It is less defensible because Reassess pain using a validated scale, review PCA usage data and lockout history, maximize non-opioid adjuncts targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "perioperative_care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op pain: systematic multimodal assessment — maximize non-opioids (acetaminophen, NSAIDs), review PCA data, then escalate to MD. RR 14 + SpO2 97% with no signs of toxicity does NOT justify withholding opioids.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "medical_surgical_advanced",
+      "difficulty": 3,
+      "stem": "A patient in a long leg cast following tibial fracture reports severe, unrelenting pain rated 9/10 that is not relieved by opioids, along with paresthesia in the foot and tenseness of the cast. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the PRN opioid analgesic and elevate the extremity above heart level"
+        },
+        {
+          "id": "b",
+          "text": "Assess the 6 P's and notify the provider immediately"
+        },
+        {
+          "id": "c",
+          "text": "Apply ice pack to reduce swelling and reassess in 30 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast padding and document as a comfort measure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia, and paresthesia (early sign of nerve ischemia). The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment. The nurse must notify the provider IMMEDIATELY — compartment syndrome is a surgical emergency requiring fasciotomy within 6 hours to prevent permanent nerve and muscle damage. Elevating above heart level (A) decreases arterial perfusion, worsening ischemia. Ice (C) and cast loosening (D) delay definitive treatment.",
+      "distractorRationales": {
+        "a": "This option makes Administer the PRN opioid analgesic and elevate the extremity above heart level the focus, without accounting for Compartment syndrome 6 P's: pain out of proportion is the EARLIEST sign. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Assess the 6 P's and notify the provider immediately targets the problem most likely to deteriorate first.",
+        "c": "This choice focuses on Apply ice pack to reduce swelling and reassess in 30 minutes, while the decisive cue is This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia. Treats an active warning sign as something safe to watch, so The priority is Assess the 6 P's and notify the provider immediately, not a step that delays stabilization of circulation or perfusion.",
+        "d": "The problem with Loosen the cast padding and document as a comfort measure is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by The nurse must notify the provider IMMEDIATELY — compartment syndrome is a surgical emergency requiring fasciotomy within 6. The priority is Assess the 6 P's and notify the provider immediately, not a step that delays stabilization of circulation or perfusion."
+      },
+      "tags": [
+        "medical_surgical_advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Compartment syndrome 6 P's: pain out of proportion is the EARLIEST sign. Fasciotomy must occur within 6 hours to prevent permanent damage.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "pediatric_nursing",
+      "difficulty": 3,
+      "stem": "A 5-year-old is admitted with meningococcal meningitis. Which isolation precautions should be initiated immediately, and for how long should they be maintained?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact precautions; maintain until discharge"
+        },
+        {
+          "id": "b",
+          "text": "Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy"
+        },
+        {
+          "id": "c",
+          "text": "Airborne precautions in a negative-pressure room; maintain for 48 hours"
+        },
+        {
+          "id": "d",
+          "text": "Standard precautions only; meningococcal meningitis is not transmissible person-to-person"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neisseria meningitidis (meningococcal meningitis) is transmitted via respiratory droplets (large droplets, short range <3 feet) — not airborne (small droplet nuclei). Droplet precautions are required: surgical mask within 3 feet, private room or cohorting, mask for transport. Duration: droplet precautions are maintained for the first 24 hours after initiation of effective antibiotic therapy (typically ceftriaxone), after which the organism is no longer detectable in respiratory secretions. Close contacts (household members, childcare contacts) should receive prophylaxis with rifampin, ciprofloxacin, or ceftriaxone.",
+      "distractorRationales": {
+        "a": "This choice focuses on Contact precautions; maintain until discharge, rather than acting on Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy; otherwise oxygenation or ventilation remains the active threat.",
+        "c": "This answer choice treats Airborne precautions in a negative-pressure room; maintain for 48 hours as the key issue, instead of responding to Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This answer choice treats Standard precautions only; meningococcal meningitis is not transmissible person-to-person as the key issue, instead of responding to Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "pediatric_nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pediatric_nursing",
+        "caption": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+        "conclusion": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin)."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb839-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "lithium_toxicity",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a patient newly prescribed lithium about safety monitoring. Which statement by the patient indicates correct understanding of lithium toxicity prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.'"
+        },
+        {
+          "id": "b",
+          "text": "'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.'"
+        },
+        {
+          "id": "c",
+          "text": "'I can stop taking lithium when I feel better, as long as my mood is stable.'"
+        },
+        {
+          "id": "d",
+          "text": "'Ibuprofen is safe to take for headaches while on lithium.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Lithium is excreted by the kidney and competes with sodium for reabsorption. When sodium levels drop (from low-sodium diet, diarrhea, vomiting, sweating, diuretics), the kidney retains lithium — causing toxicity. Consistent sodium and fluid intake, and monitoring for dehydration causes, are essential safety measures. Low-sodium diet (A) increases lithium retention and toxicity risk — the opposite of safe. Abrupt discontinuation (C) causes rebound mania. NSAIDs like ibuprofen (D) decrease renal lithium excretion, raising lithium levels significantly — they are contraindicated.",
+      "distractorRationales": {
+        "a": "This option overweights 'I should limit salt in my diet to prevent water retention since lithium can cause edema.', although the nurse should be guided by A nurse is teaching a patient newly prescribed lithium about safety monitoring. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, because delaying renal protection can worsen renal injury.",
+        "c": "The reasoning trap in 'I can stop taking lithium when I feel better, as long as my mood is stable.' is that it does not account for the clinical cue most likely to deteriorate first, and misses that Lithium is excreted by the kidney and competes with sodium for reabsorption. It is less defensible because 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, targets the problem most likely to deteriorate first.",
+        "d": "This option overweights 'Ibuprofen is safe to take for headaches while on lithium.', rather than acting on A nurse is teaching a patient newly prescribed lithium about safety monitoring. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay renal protection and leave renal injury unresolved."
+      },
+      "tags": [
+        "lithium_toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium safety: maintain consistent sodium/fluid intake; avoid NSAIDs (raise lithium levels); report vomiting/diarrhea/excessive sweating immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-864",
+  "generatedAt": "2026-04-09T19:25:28-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb864-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "lithium_toxicity",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a patient newly prescribed lithium about safety monitoring. Which statement by the patient indicates correct understanding of lithium toxicity prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.'"
+        },
+        {
+          "id": "b",
+          "text": "'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.'"
+        },
+        {
+          "id": "c",
+          "text": "'I can stop taking lithium when I feel better, as long as my mood is stable.'"
+        },
+        {
+          "id": "d",
+          "text": "'Ibuprofen is safe to take for headaches while on lithium.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Lithium is excreted by the kidney and competes with sodium for reabsorption. When sodium levels drop (from low-sodium diet, diarrhea, vomiting, sweating, diuretics), the kidney retains lithium — causing toxicity. Consistent sodium and fluid intake, and monitoring for dehydration causes, are essential safety measures. Low-sodium diet (A) increases lithium retention and toxicity risk — the opposite of safe. Abrupt discontinuation (C) causes rebound mania. NSAIDs like ibuprofen (D) decrease renal lithium excretion, raising lithium levels significantly — they are contraindicated.",
+      "distractorRationales": {
+        "a": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.' fits a lower-risk interpretation, instead of responding to A nurse is teaching a patient newly prescribed lithium about safety monitoring. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, because delaying renal protection can worsen renal injury.",
+        "c": "The clinical error in 'I can stop taking lithium when I feel better, as long as my mood is stable.' is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Lithium is excreted by the kidney and competes with sodium for reabsorption. The correct path is 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea,, which matches the priority cues instead of a secondary concern.",
+        "d": "'Ibuprofen is safe to take for headaches while on lithium.' fits a lower-risk interpretation, although the nurse should be guided by A nurse is teaching a patient newly prescribed lithium about safety monitoring. Does not account for the clinical cue most likely to deteriorate first, so The priority is 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea,, not a step that delays stabilization of renal injury."
+      },
+      "tags": [
+        "lithium_toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium safety: maintain consistent sodium/fluid intake; avoid NSAIDs (raise lithium levels); report vomiting/diarrhea/excessive sweating immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "mandatory_reporting",
+      "difficulty": 3,
+      "stem": "A nurse caring for a 7-year-old child notices multiple bruises in various stages of healing on the torso, bilateral arm bruises with patterned marks, and the child flinches when the nurse approaches. The mother explains the bruises are from 'falling off a bike.' Which nursing action is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document the mother's explanation in the chart and continue routine care"
+        },
+        {
+          "id": "b",
+          "text": "Confront the mother and ask her directly if she is abusing the child"
+        },
+        {
+          "id": "c",
+          "text": "Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is certain"
+        },
+        {
+          "id": "d",
+          "text": "Discuss concerns with the healthcare team and only report if the physician agrees the findings are suspicious"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Nurses are mandatory reporters in all 50 states. Mandatory reporting requires reporting SUSPICION of child abuse — absolute certainty is not required. A nurse who fails to report suspected child abuse can face criminal charges, license sanctions, and civil liability. The threshold is reasonable suspicion based on assessment findings. The report goes directly to the state's child protective services (CPS) — this is the nurse's independent legal obligation, not contingent on physician agreement (D). Confronting the caregiver (B) may endanger the child. Documentation alone (A) does not fulfill the mandatory report obligation.",
+      "distractorRationales": {
+        "a": "The clinical error in Document the mother's explanation in the chart and continue routine care is that it treats an active warning sign as something safe to watch, when the bedside priority is driven by A nurse caring for a 7-year-old child notices multiple bruises in various stages of healing on the torso,. Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "This option overweights Confront the mother and ask her directly if she is abusing the child, rather than acting on The threshold is reasonable suspicion based on assessment findings. Does not account for the clinical cue most likely to deteriorate first, so The priority is Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, not a step that delays stabilization of pediatric or newborn instability.",
+        "d": "Discuss concerns with the healthcare team and only report if the physician agrees the findings are would not address the priority, but the stem cue is Nurses are mandatory reporters in all 50 states. Moves to teaching or reassurance before the immediate risk is stabilized, so Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "mandatory_reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reporting: report SUSPICION of abuse — you do not need to be certain; report directly to CPS; this is the nurse's legal obligation regardless of physician agreement.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygen_device_reassessment",
+      "subcategory": "oxygen_device_reassessment",
+      "difficulty": 3,
+      "stem": "A patient on a nasal cannula becomes more restless and starts speaking in short phrases. What is the most useful next step?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess breathing, work of breathing, and oxygenation"
+        },
+        {
+          "id": "b",
+          "text": "Remove the oxygen because the patient is talking"
+        },
+        {
+          "id": "c",
+          "text": "Assume anxiety is the only cause"
+        },
+        {
+          "id": "d",
+          "text": "Document that the patient is stable"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Restlessness and short speech can be early signs of respiratory distress. The nurse should reassess the patient before assuming the device is working well. **Why the others are wrong:** - B Oxygen should not be removed reflexively. - C Anxiety may be present, but respiratory status must be checked first. - D This pattern is not enough to call the patient stable.",
+      "distractorRationales": {
+        "b": "The problem with Remove the oxygen because the patient is talking is that it anchors on the wrong explanation for the client's cues, despite the clinical warning in **Why the others are wrong:** - B Oxygen should not be removed reflexively. Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "c": "This answer choice treats Assume anxiety is the only cause as the key issue, despite the clinical warning in Restlessness and short speech can be early signs of respiratory distress. Does not account for the clinical cue most likely to deteriorate first, so The priority is Reassess breathing, work of breathing, and oxygenation, not a step that delays stabilization of oxygenation or ventilation.",
+        "d": "The problem with Document that the patient is stable is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by **Why the others are wrong:** - B Oxygen should not be removed reflexively. The safer answer is Reassess breathing, work of breathing, and oxygenation because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "oxygen_device_reassessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Changes in speech and restlessness can be early respiratory warning signs.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygen_device_reassessment",
+        "caption": "Changes in speech and restlessness can be early respiratory warning signs.",
+        "conclusion": "Changes in speech and restlessness can be early respiratory warning signs."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "therapeutic_communication",
+      "difficulty": 3,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation — 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "The reasoning trap in 'I understand. Sometimes things feel hopeless, but you have so much to live for.' is that it does not account for the clinical cue most likely to deteriorate first, without accounting for therapeutic communication safety. The correct path is 'Tell me more about what you mean when you say nothing matters.', which matches the priority cues instead of a secondary concern.",
+        "c": "The clinical error in 'Everyone feels that way sometimes. It will get better soon.' is that it does not account for the clinical cue most likely to deteriorate first, and misses that therapeutic communication safety. 'Tell me more about what you mean when you say nothing matters.' better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This choice focuses on 'You shouldn't think like that. Let's focus on the positive things in your life.', rather than acting on therapeutic communication safety. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response."
+      },
+      "tags": [
+        "therapeutic_communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "safety_and_infection_control_stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient 2 days post-abdominal surgery. The patient calls the nurse and states, 'I felt something pop in my stomach and I'm looking at my intestines.' The nurse enters the room and observes evisceration of abdominal contents. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Attempt to manually replace the intestines and apply a sterile dressing"
+        },
+        {
+          "id": "b",
+          "text": "Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and call for help"
+        },
+        {
+          "id": "c",
+          "text": "Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical team"
+        },
+        {
+          "id": "d",
+          "text": "Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document the finding"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Wound evisceration is a surgical emergency. The priority is to protect the eviscerated tissue from desiccation and contamination. Cover the bowel immediately with sterile gauze moistened with normal saline (not dry gauze, which would desiccate tissue; not replaced, which risks contamination and injury). The patient should be kept NPO, positioned to reduce tension on the wound (often supine with knees slightly flexed), and the surgical team notified immediately for emergent return to the OR. Attempting to replace bowel or using dry dressings or binders can cause irreparable harm.",
+      "distractorRationales": {
+        "a": "Attempt to manually replace the intestines and apply a sterile dressing would not address the priority, without accounting for The priority is to protect the eviscerated tissue from desiccation and contamination. Does not account for the clinical cue most likely to deteriorate first, so Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, is safer because it addresses infection progression before routine care or reassurance.",
+        "c": "Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical is not the best answer, but the stem cue is Wound evisceration is a surgical emergency. Anchors on the wrong explanation for the client's cues, so The correct path is Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them,, which matches the priority cues instead of a secondary concern.",
+        "d": "This choice focuses on Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document, instead of responding to Cover the bowel immediately with sterile gauze moistened with normal saline (not dry gauze, which would desiccate tissue. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them,; otherwise infection progression remains the active threat."
+      },
+      "tags": [
+        "safety_and_infection_control_stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evisceration: Cover with sterile saline-soaked gauze (NEVER replace), keep patient still, call surgeon STAT, keep NPO. Dry gauze and binders are contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "severe_preeclampsia",
+      "difficulty": 3,
+      "stem": "A nurse caring for a patient with severe preeclampsia on magnesium sulfate should assess for which finding FIRST in each nursing assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blood pressure and fetal heart rate"
+        },
+        {
+          "id": "b",
+          "text": "Deep tendon reflexes and respiratory rate"
+        },
+        {
+          "id": "c",
+          "text": "Urine output and temperature"
+        },
+        {
+          "id": "d",
+          "text": "Level of consciousness and oxygen saturation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. DTRs serve as an early warning before respiratory arrest occurs — absent DTRs (loss of patellar reflex) signal dangerously high magnesium levels and the need to stop the infusion. This assessment should occur every 1 hour during magnesium infusion. BP and FHR (A) are important but reflect preeclampsia status, not magnesium toxicity. Urine output (C) is also important (magnesium is renally excreted; oliguria leads to accumulation), but the respiratory/reflex check is the most time-critical toxicity indicator.",
+      "distractorRationales": {
+        "a": "Blood pressure and fetal heart rate is not the best answer, and misses that This assessment should occur every 1 hour during magnesium infusion. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "This option overweights Urine output and temperature, although the nurse should be guided by the respiratory/reflex check is the most time-critical toxicity indicator. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This option makes Level of consciousness and oxygen saturation the focus, even though the higher-risk finding is Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Deep tendon reflexes and respiratory rate targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "severe_preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory arrest.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "The clinical error in This is an expected effect of routine eye fatigue is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma. The client may have acute angle-closure glaucoma and needs urgent evaluation better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "This answer choice treats The client is likely having a migraine and can rest at home as the key issue, although the nurse should be guided by A client reports severe eye pain, blurred vision. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response.",
+        "d": "Selecting These findings show that prescribed eye drops are working well would be unsafe, despite the clinical warning in A client reports severe eye pain, blurred vision. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is The client may have acute angle-closure glaucoma and needs urgent evaluation because delaying bedside safety action can worsen clinical safety risk."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "The clinical error in Restrict oral fluids and monitor weight is that it moves to a lower-acuity action before the client is clinically stable, even though the higher-risk finding is The priority is rapid steroid replacement and volume support to prevent circulatory collapse. It is less defensible because Administer IV hydrocortisone and isotonic fluids targets the problem most likely to deteriorate first.",
+        "c": "This option makes Hold corticosteroids until the morning cortisol level is drawn the focus, when the bedside priority is driven by sodium 128 mEq/L. Does not account for the clinical cue most likely to deteriorate first, so Administer IV hydrocortisone and isotonic fluids better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The problem with Teach the client about low-sodium foods is that it moves to teaching or reassurance before the immediate risk is stabilized, although the nurse should be guided by A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg. The priority is Administer IV hydrocortisone and isotonic fluids, not a step that delays stabilization of renal injury."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "Selecting Obtain a full allergy history before intervening would be unsafe, while the decisive cue is A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Stop the infusion and prepare to administer epinephrine because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "This answer choice treats Slow the infusion to reduce the reaction as the key issue, rather than acting on A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Stop the infusion and prepare to administer epinephrine because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This option makes Document the event and continue monitoring the focus, without accounting for The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. Treats an active warning sign as something safe to watch, so The correct path is Stop the infusion and prepare to administer epinephrine, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "The clinical error in Lay the client flat and increase the room temperature is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Delay increases the risk of stroke or seizure. Sit the client upright and assess for bladder distention better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "The problem with Ask the client to rest quietly until the headache passes is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. The nurse should prioritize Sit the client upright and assess for bladder distention; otherwise neurologic deterioration remains the active threat.",
+        "d": "Offer oral fluids and reassess in 30 minutes is not the best answer, when the bedside priority is driven by Delay increases the risk of stroke or seizure. Treats an active warning sign as something safe to watch, so Sit the client upright and assess for bladder distention better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Slow the transfusion rate and reassess in 5 minutes is that it treats an active warning sign as something safe to watch, without accounting for chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. It is less defensible because Stop the transfusion and keep the IV line open with normal saline targets the problem most likely to deteriorate first.",
+        "c": "Selecting Administer acetaminophen and continue the transfusion would be unsafe, rather than acting on A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Does not account for the clinical cue most likely to deteriorate first, so The priority is Stop the transfusion and keep the IV line open with normal saline, not a step that delays stabilization of circulation or perfusion.",
+        "d": "This option makes Document the symptoms as an expected febrile response the focus, but the stem cue is Suspected transfusion reaction means stop the blood first and keep the line open with normal saline. Normalizes a finding that should change the nurse's priority, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb864-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "This choice focuses on Use alcohol-based sanitizer alone because it is faster, although the nurse should be guided by c diff spore precautions infection. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "c": "This distractor pulls attention toward Place the client on droplet precautions only, when the bedside priority is driven by c diff spore precautions infection. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Use soap and water for hand hygiene after removing gloves, which matches the priority cues instead of a secondary concern.",
+        "d": "Selecting Share the blood pressure cuff after wiping it with a dry towel would be unsafe, while the decisive cue is c diff spore precautions infection. Anchors on the wrong explanation for the client's cues, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

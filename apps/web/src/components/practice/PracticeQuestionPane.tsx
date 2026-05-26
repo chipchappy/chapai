@@ -65,6 +65,28 @@ function formatAnswerValue(answer: PracticeAnswer | undefined) {
   return answer.toUpperCase();
 }
 
+function formatKindLabel(question: PracticeQuestion) {
+  if (question.kind === "scenario-mcq") {
+    return "Scenario MCQ";
+  }
+  if (question.kind === "decision-map-mcq") {
+    return "Decision map MCQ";
+  }
+  if (question.kind === "case-study") {
+    return "Case study";
+  }
+  if (question.kind === "multi-select") {
+    return "Select all";
+  }
+  if (question.kind === "matrix") {
+    return "Matrix";
+  }
+  if (question.kind === "chart") {
+    return "Chart";
+  }
+  return "MCQ";
+}
+
 export default function PracticeQuestionPane({
   question,
   draftAnswer,
@@ -96,6 +118,7 @@ export default function PracticeQuestionPane({
         <span className="rounded-full border border-[rgba(74,85,89,0.12)] bg-white/70 px-3 py-1.5 text-dark">
           {question.mode === "practice-exam" ? "Practice exam" : question.mode.replace("-", " ")}
         </span>
+        <span className="rounded-full border border-[rgba(74,85,89,0.08)] bg-white/50 px-3 py-1.5">{formatKindLabel(question)}</span>
         <span className="rounded-full border border-[rgba(74,85,89,0.08)] bg-white/50 px-3 py-1.5">{question.exam.toUpperCase()}</span>
         <span className="rounded-full border border-[rgba(74,85,89,0.08)] bg-white/50 px-3 py-1.5">Q {questionNumber} / {totalQuestions}</span>
         <span className="rounded-full border border-[rgba(74,85,89,0.08)] bg-white/50 px-3 py-1.5">{question.category}</span>

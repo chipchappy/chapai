@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-832",
+  "generatedAt": "2026-04-09T14:01:03-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb832-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A ventilated patient has a PA catheter. Current readings: PCWP 6 mmHg, CVP 2 mmHg, CO 2.4 L/min, SVR 1,840 dyn·s/cm⁵, MAP 52 mmHg. Which hemodynamic profile and etiology is MOST consistent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cardiogenic shock: low CO, high PCWP, high SVR"
+        },
+        {
+          "id": "b",
+          "text": "Distributive (septic) shock: low CO, low PCWP, low SVR"
+        },
+        {
+          "id": "c",
+          "text": "Hypovolemic shock: low CO, low PCWP, high SVR"
+        },
+        {
+          "id": "d",
+          "text": "Obstructive shock: low CO, elevated PCWP, elevated CVP"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Hypovolemic shock profile: low CO (inadequate preload), low PCWP (depleted LV filling), low CVP (low venous return), HIGH SVR (compensatory vasoconstriction to maintain pressure). Distributive/septic shock (B) also has low PCWP but will have LOW SVR (massive vasodilation). Cardiogenic shock (A) has low CO with HIGH PCWP (backed-up fluid). Obstructive shock (D) typically has elevated CVP with equalization of filling pressures. The combination of low CO + low PCWP + HIGH SVR + low MAP = hypovolemia.",
+      "distractorRationales": {
+        "a": "Cardiogenic shock: low CO, high PCWP, high SVR would not address the priority, when the bedside priority is driven by Hypovolemic shock: low CO, low PCWP, HIGH SVR. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "b": "The clinical error in Distributive (septic) shock: low CO, low PCWP, low SVR is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is Distributive/septic shock (B) also has low PCWP but will have LOW SVR (massive vasodilation). It is less defensible because Hypovolemic shock: low CO, low PCWP, high SVR targets the problem most likely to deteriorate first.",
+        "d": "Obstructive shock: low CO, elevated PCWP, elevated CVP fits a lower-risk interpretation, despite the clinical warning in Hypovolemic shock profile: low CO (inadequate preload), low PCWP (depleted LV filling), low CVP (low venous return), HIGH. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypovolemic shock: low CO, low PCWP, HIGH SVR. Distributive: low CO, low PCWP, LOW SVR. Cardiogenic: low CO, HIGH PCWP, high SVR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 85-year-old with moderate Alzheimer's dementia becomes extremely agitated, combative, and confused every evening around 5-6 PM (sundowning behavior). She repeatedly attempts to climb out of bed and is at high fall risk. Her family requests soft wrist restraints. Which nursing approach is MOST appropriate as first-line management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning"
+        },
+        {
+          "id": "b",
+          "text": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes"
+        },
+        {
+          "id": "c",
+          "text": "Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection"
+        },
+        {
+          "id": "d",
+          "text": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Physical restraints in elderly dementia patients with sundowning WORSEN outcomes: they increase agitation and distress, increase fall and injury risk (patients attempt to escape restraints), contribute to delirium, cause pressure injuries, aspiration, and death. Restraints are a last resort, never first-line, and require physician order with regular reassessment. Evidence-based non-pharmacological first-line approaches: (1) Light therapy — bright light exposure in the morning resets circadian rhythm; reduce stimulation in the evening; (2) Consistent daily routine and familiar environment; (3) Family presence during peak agitation times (5-7 PM); (4) Structured meaningful activity during the day prevents excessive daytime sleeping; (5) Calm, simple, one-step verbal redirection. If pharmacotherapy is needed after non-pharmacological failure, low-dose scheduled quetiapine may be considered. High-dose IV haloperidol is not appropriate first-line. Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall risk.",
+      "distractorRationales": {
+        "a": "This option overweights Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning, instead of responding to Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall. Treats an active warning sign as something safe to watch, so The priority is Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation, not a step that delays stabilization of neurologic deterioration.",
+        "b": "The problem with Administer haloperidol 5 mg IV as a PRN order for agitation episodes is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall. Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "d": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening fits a lower-risk interpretation, while the decisive cue is Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation; otherwise neurologic deterioration remains the active threat."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sundowning first-line: non-pharmacological — light therapy, routine, family presence, daytime activity, redirection. Physical restraints WORSEN agitation and cause harm. Benzodiazepines contraindicated in elderly dementia patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "Mandatory Reporting",
+      "difficulty": 3,
+      "stem": "A nurse caring for a 7-year-old child notices multiple bruises in various stages of healing on the torso, bilateral arm bruises with patterned marks, and the child flinches when the nurse approaches. The mother explains the bruises are from 'falling off a bike.' Which nursing action is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document the mother's explanation in the chart and continue routine care"
+        },
+        {
+          "id": "b",
+          "text": "Confront the mother and ask her directly if she is abusing the child"
+        },
+        {
+          "id": "c",
+          "text": "Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is certain"
+        },
+        {
+          "id": "d",
+          "text": "Discuss concerns with the healthcare team and only report if the physician agrees the findings are suspicious"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Nurses are mandatory reporters in all 50 states. Mandatory reporting requires reporting SUSPICION of child abuse — absolute certainty is not required. A nurse who fails to report suspected child abuse can face criminal charges, license sanctions, and civil liability. The threshold is reasonable suspicion based on assessment findings. The report goes directly to the state's child protective services (CPS) — this is the nurse's independent legal obligation, not contingent on physician agreement (D). Confronting the caregiver (B) may endanger the child. Documentation alone (A) does not fulfill the mandatory report obligation.",
+      "distractorRationales": {
+        "a": "This option makes Document the mother's explanation in the chart and continue routine care the focus, even though the higher-risk finding is Nurses are mandatory reporters in all 50 states. Treats an active warning sign as something safe to watch, so Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is is safer because it addresses pediatric or newborn instability before routine care or reassurance.",
+        "b": "Selecting Confront the mother and ask her directly if she is abusing the child would be unsafe, rather than acting on The threshold is reasonable suspicion based on assessment findings. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bedside safety action and leave pediatric or newborn instability unresolved.",
+        "d": "The reasoning trap in Discuss concerns with the healthcare team and only report if the physician agrees the findings are is that it moves to teaching or reassurance before the immediate risk is stabilized, and misses that The threshold is reasonable suspicion based on assessment findings. The correct path is Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Mandatory Reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reporting: report SUSPICION of abuse — you do not need to be certain; report directly to CPS; this is the nurse's legal obligation regardless of physician agreement.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "The nurse is assessing two patients. Patient A has BP 80/50, sodium 124 mEq/L, potassium 6.1 mEq/L, and hyperpigmentation. Patient B has BP 158/94, sodium 148 mEq/L, potassium 3.1 mEq/L, and truncal obesity with purple striae. Which conditions CORRECTLY match these presentations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patient A: Cushing's syndrome; Patient B: Addison's disease"
+        },
+        {
+          "id": "b",
+          "text": "Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome"
+        },
+        {
+          "id": "c",
+          "text": "Patient A: Hypothyroidism; Patient B: Hyperaldosteronism"
+        },
+        {
+          "id": "d",
+          "text": "Patient A: SIADH; Patient B: Diabetes insipidus"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Addison's disease (primary adrenal insufficiency): cortisol and aldosterone deficiency → hyponatremia, hyperkalemia, hypotension, and hyperpigmentation (elevated ACTH stimulates melanocytes). Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae, and moon face from chronic cortisol excess. These are opposite presentations driven by opposite hormonal states.",
+      "distractorRationales": {
+        "a": "This choice focuses on Patient A: Cushing's syndrome; Patient B: Addison's disease, although the nurse should be guided by Patient B has BP 158/94, sodium 148 mEq/L, potassium 3. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome; otherwise renal injury remains the active threat.",
+        "c": "This option overweights Patient A: Hypothyroidism; Patient B: Hyperaldosteronism, despite the clinical warning in Cushing's = hyperNa, hypoK, hypertension, truncal obesity, striae. Does not account for the clinical cue most likely to deteriorate first, so The priority is Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome, not a step that delays stabilization of renal injury.",
+        "d": "The reasoning trap in Patient A: SIADH; Patient B: Diabetes insipidus is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Addison's = hypoNa, hyperK, hypotension, hyperpigmentation. Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome is safer because it addresses renal injury before routine care or reassurance."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addison's = hypoNa, hyperK, hypotension, hyperpigmentation. Cushing's = hyperNa, hypoK, hypertension, truncal obesity, striae.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 4,
+      "stem": "A patient on clozapine for treatment-resistant schizophrenia develops fever 39.8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status, and autonomic instability (fluctuating BP, tachycardia). Which condition is this, and what is the immediate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents"
+        },
+        {
+          "id": "b",
+          "text": "Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; administer IV diphenhydramine 50 mg"
+        },
+        {
+          "id": "d",
+          "text": "Anticholinergic toxicity from clozapine; administer physostigmine"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neuroleptic malignant syndrome (NMS) is a life-threatening idiosyncratic reaction to antipsychotics characterized by the tetrad: hyperthermia, severe muscle rigidity, altered mental status, and autonomic instability. It develops over days-weeks. Immediate management: stop the antipsychotic, aggressive cooling, IV fluids, dantrolene (muscle relaxant) and/or bromocriptine (dopamine agonist). Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. Acute dystonia (C) does not include fever or autonomic instability.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "c": "This answer choice treats Acute dystonia; administer IV diphenhydramine 50 mg as the key issue, although the nurse should be guided by 8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine because delaying infection or sepsis escalation can worsen infection progression.",
+        "d": "This distractor pulls attention toward Anticholinergic toxicity from clozapine; administer physostigmine, when the bedside priority is driven by NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability — stop antipsychotic immediately. Anchors on the wrong explanation for the client's cues, so It is less defensible because Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability — stop antipsychotic immediately; treat with dantrolene and/or bromocriptine.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "Parents bring their 9-month-old to the ED with episodic, inconsolable crying every 15–20 minutes, pulling the knees to the chest, and passage of stools described as 'jelly-like and dark red.' The abdomen is mildly distended. What is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer oral rehydration solution and observe for 2 hours"
+        },
+        {
+          "id": "b",
+          "text": "Prepare the family for a possible emergent surgical laparotomy"
+        },
+        {
+          "id": "c",
+          "text": "Notify the physician; these findings are consistent with intussusception — prepare for diagnostic and potentially therapeutic air or contrast enema"
+        },
+        {
+          "id": "d",
+          "text": "Obtain stool culture for Campylobacter and Salmonella"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Classic intussusception triad: episodic colicky pain (bowel telescoping and releasing), vomiting, and currant jelly stools (blood and mucus from mucosal ischemia). Most common site: ileocecal junction. Peak age: 6–36 months. Diagnosis: ultrasound (target sign). Treatment: air or hydrostatic (contrast) enema under fluoroscopy or ultrasound — diagnostic and therapeutic in ~80% of cases. Surgical reduction is required if enema fails or peritonitis present. Stool culture addresses infectious causes, not mechanical obstruction. Waiting worsens intestinal ischemia.",
+      "distractorRationales": {
+        "a": "Selecting Administer oral rehydration solution and observe for 2 hours would be unsafe, although the nurse should be guided by Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis. Treats an active warning sign as something safe to watch, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "b": "Prepare the family for a possible emergent surgical laparotomy fits a lower-risk interpretation, although the nurse should be guided by Waiting worsens intestinal ischemia. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "d": "The problem with Obtain stool culture for Campylobacter and Salmonella is that it does not account for the clinical cue most likely to deteriorate first, despite the clinical warning in Waiting worsens intestinal ischemia. Choosing it can delay renal protection and leave renal injury unresolved."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails.",
+        "conclusion": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A morbidly obese patient with symptomatic GERD requires urgent surgery. The anesthesiologist plans rapid sequence induction (RSI). During RSI, which nursing action is most important to reduce pulmonary aspiration risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place the patient in Trendelenburg position to maximize airway visualization"
+        },
+        {
+          "id": "b",
+          "text": "Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Insert a nasogastric tube immediately before induction to fully decompress the stomach"
+        },
+        {
+          "id": "d",
+          "text": "Administer metoclopramide IV push 10 minutes before induction to empty the stomach"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSI is used for patients at elevated aspiration risk (obesity, GERD, full stomach, pregnancy, bowel obstruction). It combines: pre-oxygenation → simultaneous administration of a rapid induction agent (propofol/ketamine) and a fast-onset neuromuscular blocking agent (succinylcholine or high-dose rocuronium) → immediate intubation without manual ventilation. The nurse's critical role: apply firm downward pressure on the cricoid cartilage (Sellick maneuver) to compress the esophagus between the cricoid ring and the cervical vertebra, preventing passive regurgitation of gastric contents until ETT cuff is inflated and placement confirmed by capnography. If active vomiting occurs, cricoid pressure must be released immediately (holds vomiting in and increases aspiration risk). NGT cannot adequately empty the stomach in time and does not protect the airway. Trendelenburg (head-down) increases aspiration risk. Metoclopramide is adjunctive preparation, not a substitute for RSI or cricoid pressure.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Place the patient in Trendelenburg position to maximize airway visualization, even though the higher-risk finding is During RSI, which nursing action is most important to reduce pulmonary aspiration risk. Does not account for the clinical cue most likely to deteriorate first, so Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "Insert a nasogastric tube immediately before induction to fully decompress the stomach is not the best answer, and misses that If active vomiting occurs, cricoid pressure must be released immediately (holds vomiting in and increases aspiration risk). Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is targets the problem most likely to deteriorate first.",
+        "d": "This option overweights Administer metoclopramide IV push 10 minutes before induction to empty the stomach, although the nurse should be guided by Trendelenburg (head-down) increases aspiration risk. Does not account for the clinical cue most likely to deteriorate first, so The priority is Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSI aspiration prevention: nurse applies cricoid pressure (Sellick maneuver) — compresses esophagus to prevent passive regurgitation during intubation. Release if active vomiting occurs. Used for all high-risk aspiration patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 4,
+      "stem": "A nurse on a step-down unit is monitoring four patients. Which clinical finding requires the nurse to call the rapid response team (RRT) IMMEDIATELY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the last 2 hours and is now using accessory muscles"
+        },
+        {
+          "id": "b",
+          "text": "A 74-year-old with atrial fibrillation with a ventricular rate of 88 bpm, unchanged from admission"
+        },
+        {
+          "id": "c",
+          "text": "A 55-year-old post-cholecystectomy who reports nausea and has vomited once"
+        },
+        {
+          "id": "d",
+          "text": "A 66-year-old with CHF whose morning weight is 2 lbs higher than yesterday"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A rising respiratory rate to 26/min with accessory muscle use in a pneumonia patient signals deteriorating respiratory status and impending respiratory failure—a classic RRT trigger. Tachypnea > 25/min, increased work of breathing, and a worsening trend over 2 hours meets standard early warning score thresholds for team activation. The AFib patient is at a controlled, unchanged rate (not a new emergency). Post-op nausea with one emesis is common and manageable on the unit. A 2-lb overnight weight gain in CHF warrants provider notification but not RRT activation unless accompanied by respiratory distress.",
+      "distractorRationales": {
+        "b": "This choice focuses on A 74-year-old with atrial fibrillation with a ventricular rate of 88 bpm, unchanged from admission, while the decisive cue is Tachypnea > 25/min, increased work of breathing. Anchors on the wrong explanation for the client's cues, so The safer answer is A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "This answer choice treats A 55-year-old post-cholecystectomy who reports nausea and has vomited once as the key issue, despite the clinical warning in Tachypnea > 25/min, increased work of breathing. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "The reasoning trap in A 66-year-old with CHF whose morning weight is 2 lbs higher than yesterday is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is Trends matter as much as absolute values—worsening over 2 hours is a red flag. A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RRT triggers include: RR > 25, acute accessory muscle use, O2 sat drop, acute altered mental status, SBP < 90. Trends matter as much as absolute values—worsening over 2 hours is a red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400. How should this be documented correctly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Backdate the entry to 0900 to reflect the actual time of administration"
+        },
+        {
+          "id": "b",
+          "text": "Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response"
+        },
+        {
+          "id": "c",
+          "text": "Use correction fluid (Wite-Out) to correct the medication administration record if paper-based"
+        },
+        {
+          "id": "d",
+          "text": "Skip documenting the medication since it was already administered and observed to have been effective"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Late entry documentation: write the current date and time, clearly label as 'late entry,' include the actual time the event occurred, and document the relevant information. This maintains an accurate legal and clinical record without misrepresentation. Backdating (A) is falsification of medical records — a criminal offense and grounds for license revocation. Correction fluid (C) is never used in medical records; errors are corrected by drawing a single line through the error, initialing, dating, and noting 'error' — never obliterating. Omitting documentation (D) creates a legal and clinical record gap.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Backdate the entry to 0900 to reflect the actual time of administration, but the stem cue is Correction fluid (C) is never used in medical records. Does not account for the clinical cue most likely to deteriorate first, so Write the current time (1400), note 'late entry,' document the actual time of administration (0900), better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "The clinical error in Use correction fluid (Wite-Out) to correct the medication administration record if paper-based is that it does not account for the clinical cue most likely to deteriorate first, and misses that Correction fluid (C) is never used in medical records. Write the current time (1400), note 'late entry,' document the actual time of administration (0900), better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This distractor pulls attention toward Skip documenting the medication since it was already administered and observed to have been effective, without accounting for Correction fluid (C) is never used in medical records. Treats an active warning sign as something safe to watch, so Write the current time (1400), note 'late entry,' document the actual time of administration (0900), is safer because it addresses medication toxicity before routine care or reassurance."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Late entry: write current time, label 'late entry,' include actual event time — backdating is falsification; never use Wite-Out on medical records.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb832-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 4,
+      "stem": "A patient on lithium for bipolar disorder presents with tremor, ataxia, slurred speech, and confusion. Serum lithium level is 2.4 mEq/L. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the next lithium dose and recheck level in 12 hours"
+        },
+        {
+          "id": "b",
+          "text": "Administer activated charcoal to reduce absorption"
+        },
+        {
+          "id": "c",
+          "text": "Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Lithium toxicity: therapeutic range 0.6–1.2 mEq/L. Level 1.5–2.0 = mild toxicity (nausea, tremor, polyuria). Level 2.0–2.5 = moderate toxicity (ataxia, confusion, slurred speech — this patient). Level >2.5 = severe (seizures, coma, cardiac arrest). Moderate-severe toxicity requires: stop lithium, IV NS hydration (promotes renal lithium excretion), and consideration for hemodialysis (most effective removal method). Simply holding a dose (A) is inadequate. Activated charcoal (B) does not bind lithium effectively. Sodium bicarbonate (D) is used for salicylate toxicity, not lithium.",
+      "distractorRationales": {
+        "a": "This option makes Hold the next lithium dose and recheck level in 12 hours the focus, but the stem cue is Moderate-severe toxicity requires: stop lithium, IV NS hydration (promotes renal lithium excretion). Does not account for the clinical cue most likely to deteriorate first, so The correct path is Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation, which matches the priority cues instead of a secondary concern.",
+        "b": "The clinical error in Administer activated charcoal to reduce absorption is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is 5 = severe (seizures, coma, cardiac arrest). Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation is safer because it addresses renal injury before routine care or reassurance.",
+        "d": "This answer choice treats Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion as the key issue, while the decisive cue is Lithium toxicity: therapeutic range 0. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation; otherwise renal injury remains the active threat."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium level >2.0 mEq/L with neurological symptoms: stop lithium, IV NS hydration, evaluate for hemodialysis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

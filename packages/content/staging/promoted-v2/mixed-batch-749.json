@@ -1,0 +1,404 @@
+{
+  "batchId": "mixed-batch-749",
+  "generatedAt": "2026-04-08T16:26:18-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb749-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 4-year-old presents to the ED with acute-onset fever, drooling, severe sore throat, tripod positioning, and muffled voice. The parent reports the child refuses to move from the sitting forward-leaning position. Which action is the nurse's highest priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Obtain a throat swab for rapid strep testing"
+        },
+        {
+          "id": "b",
+          "text": "Lie the child flat to assess the oropharynx with a tongue depressor"
+        },
+        {
+          "id": "c",
+          "text": "Notify the physician immediately and keep the child calm in the position of comfort — do not examine the throat"
+        },
+        {
+          "id": "d",
+          "text": "Apply a continuous pulse oximetry probe and administer acetaminophen"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This presentation is classic epiglottitis: tripod positioning (leaning forward on hands), drooling, muffled 'hot potato' voice, high fever, severe dysphagia, and refusal to lie flat. Epiglottitis is a life-threatening airway emergency. CRITICAL: do not attempt throat examination or use a tongue depressor — stimulation can trigger laryngospasm and complete airway obstruction. Do not lay the child down. Keep the child calm in position of comfort, call physician and anesthesiology/ENT immediately, prepare for emergency airway management (intubation or tracheotomy) in OR. This contrasts with croup: 'seal bark' cough, steeple sign on X-ray, treated with racemic epinephrine and dexamethasone.",
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down → call physician, keep calm in comfort position, prepare for emergency airway.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down → call physician, keep calm in comfort position, prepare for emergency airway.",
+        "conclusion": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down → call physician, keep calm in comfort position, prepare for emergency airway."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight — no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply — laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO ≥8 hours. Light meals (toast, clear liquids): NPO ≥6 hours. Non-clear liquids including milk and formula: NPO ≥6 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid — stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids ≥6-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_levothyroxine_teaching",
+      "subcategory": "Pharmacology / Endocrine / Levothyroxine Teaching",
+      "difficulty": 2,
+      "stem": "A nurse is providing discharge teaching to a patient newly prescribed levothyroxine (Synthroid) for hypothyroidism. Which instruction is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Take the medication with a full meal to improve absorption"
+        },
+        {
+          "id": "b",
+          "text": "Take the medication on an empty stomach 30-60 minutes before breakfast with water, and avoid taking it with calcium or iron supplements"
+        },
+        {
+          "id": "c",
+          "text": "Double the dose if a dose is missed to maintain thyroid hormone levels"
+        },
+        {
+          "id": "d",
+          "text": "Expect to see symptom improvement within 24-48 hours of starting therapy"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Levothyroxine absorption is significantly reduced by food, calcium, iron supplements, antacids containing calcium/magnesium, and several other medications. The medication should be taken on an empty stomach (30-60 minutes before breakfast) with a full glass of water. Calcium and iron supplements should be taken at least 4 hours apart from levothyroxine. Doubling a missed dose is incorrect and dangerous — skip the missed dose and continue at the regular schedule. Symptom improvement takes weeks to months (TSH normalization is checked at 4-6 weeks after dose adjustment), not 24-48 hours.",
+      "tags": [
+        "Pharmacology / Endocrine / Levothyroxine Teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Levothyroxine: empty stomach + water + 30-60 min before breakfast. Separate from calcium, iron, antacids by 4h. Never double dose. Onset of therapeutic effect: 4-6 weeks for TSH normalization. Compliance is key — once-daily dosing forever.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "Pharmacology / Metformin Safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "tags": [
+        "Pharmacology / Metformin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_hypoglycemia_treatment",
+      "subcategory": "Pharmacology / Hypoglycemia Treatment",
+      "difficulty": 2,
+      "stem": "A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL and symptoms of shakiness and diaphoresis. The patient is alert and able to swallow. Which is the CORRECT initial treatment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer glucagon 1 mg subcutaneously"
+        },
+        {
+          "id": "b",
+          "text": "Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck glucose in 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50 mL of 50% dextrose (D50) IV push"
+        },
+        {
+          "id": "d",
+          "text": "Give the patient a full meal immediately to restore blood glucose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The '15-15 rule' is the standard for treating conscious, alert patients with mild-to-moderate hypoglycemia who can swallow safely: give 15 grams of rapid-acting carbohydrate (4 oz orange juice, 4 oz regular soda, or 3-4 glucose tablets), wait 15 minutes, and recheck blood glucose. If still < 70 mg/dL, repeat the treatment. This is the safest, most physiologically appropriate approach. Glucagon is reserved for unconscious or unable-to-swallow patients. D50 IV push is reserved for unconscious patients or those without IV access who cannot take oral carbohydrates. A full meal is slower to absorb and can cause a prolonged correction — it is the follow-up after glucose normalizes, not the acute treatment.",
+      "tags": [
+        "Pharmacology / Hypoglycemia Treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Conscious hypoglycemic patient who can swallow: 15g fast-acting carbs (15-15 rule) → recheck in 15 min → repeat if still low → then a snack with protein. Reserve glucagon for unconscious/unable-to-swallow. Reserve D50 for severe hypoglycemia without oral access.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "Pharmacology / Corticosteroid Teaching",
+      "difficulty": 3,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "tags": [
+        "Pharmacology / Corticosteroid Teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_warfarin_safety",
+      "subcategory": "Pharmacology / Warfarin Safety",
+      "difficulty": 3,
+      "stem": "A patient on warfarin therapy for atrial fibrillation has an INR of 4.8 (therapeutic range 2.0-3.0). The patient has no active bleeding. What is the MOST appropriate nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer vitamin K 10 mg IV push immediately"
+        },
+        {
+          "id": "b",
+          "text": "Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs"
+        },
+        {
+          "id": "c",
+          "text": "Administer fresh frozen plasma to rapidly reverse anticoagulation"
+        },
+        {
+          "id": "d",
+          "text": "Continue warfarin at the same dose and recheck INR in 3 days"
+        }
+      ],
+      "answer": "b",
+      "rationale": "An INR of 4.8 represents supratherapeutic anticoagulation with elevated bleeding risk, but no active bleeding is present. Standard management for INR 4-10 without bleeding in a patient on warfarin for non-mechanical valve indication: hold warfarin, monitor for bleeding signs, and the INR will self-correct over 24-72 hours as the drug is metabolized. The provider should be notified to evaluate for dose adjustment. Vitamin K is indicated for INR > 10, or INR 4-10 with bleeding risk factors or active bleeding. High-dose IV vitamin K (10 mg) causes prolonged warfarin resistance and is reserved for emergencies. FFP is for life-threatening bleeding requiring immediate reversal. Continuing the same dose ignores the supratherapeutic level.",
+      "tags": [
+        "Pharmacology / Warfarin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Supratherapeutic INR (no bleeding): INR 4-10 → hold warfarin + notify provider + monitor. INR > 10 or any bleeding → vitamin K. Life-threatening bleeding → FFP or 4-factor PCC (prothrombin complex concentrate). Never continue the same dose if INR is out of range.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_sglt2_inhibitors",
+      "subcategory": "Pharmacology / Endocrine / SGLT2 Inhibitors",
+      "difficulty": 4,
+      "stem": "A patient with type 2 diabetes takes empagliflozin (Jardiance) and is scheduled for a laparoscopic cholecystectomy tomorrow. The anesthesiologist orders 'hold all diabetes medications the morning of surgery.' Which additional concern should the nurse identify and report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to risk of euglycemic diabetic ketoacidosis"
+        },
+        {
+          "id": "b",
+          "text": "Empagliflozin has no pre-surgical risks and can be given the morning of surgery safely"
+        },
+        {
+          "id": "c",
+          "text": "The patient should receive double the dose of empagliflozin pre-operatively to prevent hyperglycemia"
+        },
+        {
+          "id": "d",
+          "text": "SGLT2 inhibitors should be switched to metformin 24 hours before surgery"
+        }
+      ],
+      "answer": "a",
+      "rationale": "SGLT2 inhibitors (empagliflozin, canagliflozin, dapagliflozin) carry a risk of euglycemic DKA — a form of DKA where blood glucose can be near-normal or only mildly elevated, making it easy to miss. This risk is significantly increased perioperatively due to fasting, surgical stress, and altered carbohydrate metabolism. Current guidelines (ADA, FDA, ERAS protocols) recommend holding SGLT2 inhibitors 3-4 days before elective surgery. Holding only the morning of surgery is insufficient. The nurse should escalate this finding to the anesthesiologist and surgeon for clarification and an updated order to hold the medication earlier. This is an emerging but increasingly important perioperative safety issue.",
+      "tags": [
+        "Pharmacology / Endocrine / SGLT2 Inhibitors",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "SGLT2 inhibitors (gliflozins) + surgery = euglycemic DKA risk. Hold 3-4 days before elective procedures. Euglycemic DKA is dangerous because normal blood glucose masks the diagnosis. Key teaching: fasting + SGLT2 inhibitor = starvation ketosis + insulin deficiency = DKA without classic hyperglycemia.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb749-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "subcategory": "Pharmacology / Medication Teaching / Oral Hypoglycemics",
+      "difficulty": 2,
+      "stem": "A nurse is teaching a newly diagnosed type 2 diabetes patient about glipizide (a sulfonylurea). Which statement is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This medication works best when taken with a large meal"
+        },
+        {
+          "id": "b",
+          "text": "This medication can cause low blood sugar — carry a fast-acting sugar source at all times"
+        },
+        {
+          "id": "c",
+          "text": "This medication does not cause weight gain"
+        },
+        {
+          "id": "d",
+          "text": "Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Sulfonylureas (glipizide, glyburide, glimepiride) work by stimulating pancreatic beta cells to release insulin, independent of blood glucose levels. This means they can cause hypoglycemia even when the patient is not eating — unlike some other diabetes medications. Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness, diaphoresis, confusion). Glipizide is taken 30 minutes before meals (not with a large meal) to time insulin release with carbohydrate absorption. Sulfonylureas often cause modest weight gain. Blood glucose monitoring remains important for safety and titration.",
+      "tags": [
+        "Pharmacology / Medication Teaching / Oral Hypoglycemics",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Always carry fast-acting carbs. Glipizide: 30 min before meals. Monitor BG. Watch for weight gain. Avoid skipping meals while on this medication.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

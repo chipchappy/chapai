@@ -1,0 +1,1292 @@
+{
+  "batchId": "mixed-batch-1908",
+  "generatedAt": "2026-05-20T04:21:07-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 24
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb1908-n001",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "warfarin_inr_management_reversal",
+      "subcategory": "warfarin_INR_management_reversal",
+      "difficulty": 3,
+      "stem": "Which conclusion should guide the nurse's next move when a client taking warfarin shows bleeding risk and a rising INR?",
+      "scenarioTitle": "Warfarin reversal case",
+      "scenario": "A client taking warfarin for atrial fibrillation reports black stools and bleeding gums.",
+      "additionalInfo": "Today's INR is markedly above therapeutic range and the next dose is due soon.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the dose, assess bleeding severity, and escalate reversal planning per protocol"
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose on time because stopping anticoagulation is always more dangerous"
+        },
+        {
+          "id": "c",
+          "text": "Encourage extra green vegetables right now instead of notifying the provider"
+        },
+        {
+          "id": "d",
+          "text": "Tell the client mild bleeding is expected and to call back next week if it worsens"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Bleeding symptoms with a supratherapeutic INR require immediate hold-and-escalate thinking, not routine dosing. The nurse should assess the extent of bleeding and follow provider/protocol guidance for reversal or dose adjustment.",
+      "distractorRationales": {
+        "b": "Give the next dose on time because stopping anticoagulation is always more dangerous would not address the priority, without accounting for Bleeding plus high INR means pause the anticoagulant and escalate. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "Selecting Encourage extra green vegetables right now instead of notifying the provider would be unsafe, while the decisive cue is Bleeding symptoms with a supratherapeutic INR require immediate hold-and-escalate thinking, not routine dosing. Substitutes a nonurgent action for required clinical escalation, so The nurse should prioritize Hold the dose, assess bleeding severity, and escalate reversal planning per protocol; otherwise bleeding or anticoagulation injury remains the active threat.",
+        "d": "This option makes Tell the client mild bleeding is expected and to call back next week if it worsens the focus, and misses that Bleeding plus high INR means pause the anticoagulant and escalate. Normalizes a finding that should change the nurse's priority, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses."
+      },
+      "tags": [
+        "warfarin_INR_management_reversal",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Bleeding plus high INR means pause the anticoagulant and escalate.",
+      "speedCue": "Black stools plus high INR means hold before you harm.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n002",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "cauda_equina_bladder_retention",
+      "subcategory": "cauda_equina_bladder_retention",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move with this back-pain presentation?",
+      "scenarioTitle": "Cauda equina emergency case",
+      "scenario": "A client with severe low-back pain reports new urinary retention, numbness in the inner thighs, and increasing leg weakness.",
+      "additionalInfo": "The client asks whether this is just another sciatica flare and whether walking it off would help.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cauda equina syndrome requiring urgent spinal decompression evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Routine lumbar strain that should improve with activity"
+        },
+        {
+          "id": "c",
+          "text": "Expected opioid side effects causing harmless bladder hesitancy"
+        },
+        {
+          "id": "d",
+          "text": "An anxiety response to chronic back pain without neurologic danger"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "New urinary retention, saddle anesthesia symptoms, and weakness create a cauda-equina map. The nurse should answer from cord-compression urgency, not from routine back-pain thinking.",
+      "distractorRationales": {
+        "b": "This choice focuses on Routine lumbar strain that should improve with activity, despite the clinical warning in Bladder retention and saddle numbness are the clues that make back pain urgent. Treats an active warning sign as something safe to watch, so The nurse should prioritize Cauda equina syndrome requiring urgent spinal decompression evaluation; otherwise clinical safety risk remains the active threat.",
+        "c": "The problem with Expected opioid side effects causing harmless bladder hesitancy is that it normalizes a finding that should change the nurse's priority, instead of responding to The nurse should answer from cord-compression urgency, not from routine back-pain thinking. The priority is Cauda equina syndrome requiring urgent spinal decompression evaluation, not a step that delays stabilization of clinical safety risk.",
+        "d": "An anxiety response to chronic back pain without neurologic danger is not the best answer, when the bedside priority is driven by A client with severe low-back pain reports new urinary retention, numbness in the inner thighs. Anchors on the wrong explanation for the client's cues, so The correct path is Cauda equina syndrome requiring urgent spinal decompression evaluation, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "cauda_equina_bladder_retention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Bladder retention and saddle numbness are the clues that make back pain urgent.",
+      "speedCue": "Back pain plus retention plus saddle symptoms is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n003",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "fat_embolism_long_bone_fracture",
+      "subcategory": "fat_embolism_long_bone_fracture",
+      "difficulty": 3,
+      "stem": "Which interpretation best explains this client's sudden change after fracture repair?",
+      "scenarioTitle": "Fat embolism clue cluster",
+      "scenario": "A client with a femur fracture becomes acutely confused and hypoxic 24 hours after injury, and a faint petechial rash appears on the chest.",
+      "additionalInfo": "The nurse is deciding whether to frame this as anxiety, pneumonia, or a fracture-related emergency.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fat embolism syndrome requiring urgent oxygenation-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Simple postoperative anxiety without true pulmonary danger"
+        },
+        {
+          "id": "c",
+          "text": "Expected pain-related tachypnea after fracture stabilization"
+        },
+        {
+          "id": "d",
+          "text": "Minor skin irritation causing an unrelated rash"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Long-bone fracture followed by hypoxia, confusion, and petechiae creates a fat-embolism map. The nurse should answer from respiratory and neurologic decline, not from pain or benign rash thinking.",
+      "distractorRationales": {
+        "b": "This choice focuses on Simple postoperative anxiety without true pulmonary danger, instead of responding to Long-bone fracture followed by hypoxia, confusion. Anchors on the wrong explanation for the client's cues, so The nurse should prioritize Fat embolism syndrome requiring urgent oxygenation-focused escalation; otherwise oxygenation or ventilation remains the active threat.",
+        "c": "Selecting Expected pain-related tachypnea after fracture stabilization would be unsafe, despite the clinical warning in Long-bone fracture followed by hypoxia, confusion. Normalizes a finding that should change the nurse's priority, so The safer answer is Fat embolism syndrome requiring urgent oxygenation-focused escalation because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This option makes Minor skin irritation causing an unrelated rash the focus, and misses that The nurse should answer from respiratory and neurologic decline, not from pain or benign rash thinking. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Fat embolism syndrome requiring urgent oxygenation-focused escalation, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "fat_embolism_long_bone_fracture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypoxia plus confusion plus petechiae is the clue cluster to find fast.",
+      "speedCue": "Long bone fracture plus petechiae plus hypoxia is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n004",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "myxedema_coma_hypothermia",
+      "subcategory": "myxedema_coma_hypothermia",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move with this endocrine collapse pattern?",
+      "scenarioTitle": "Myxedema coma recognition case",
+      "scenario": "An older adult is brought in with hypothermia, bradycardia, slow respirations, and declining mental status.",
+      "additionalInfo": "Family members say the client has known hypothyroidism and has recently seemed increasingly slowed and withdrawn.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Myxedema coma requiring airway, warming, and urgent endocrine-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected age-related slowing without a true emergency"
+        },
+        {
+          "id": "c",
+          "text": "A minor viral illness that should improve with rest alone"
+        },
+        {
+          "id": "d",
+          "text": "A routine sedative effect that can be reassessed later"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Hypothermia, bradycardia, hypoventilation, and mental-status decline in a client with hypothyroidism create a myxedema-coma map. The nurse should answer from endocrine collapse and airway risk, not from general weakness or benign slowing.",
+      "distractorRationales": {
+        "b": "The clinical error in Expected age-related slowing without a true emergency is that it normalizes a finding that should change the nurse's priority, without accounting for The nurse should answer from endocrine collapse and airway risk, not from general weakness or benign slowing. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "This option makes A minor viral illness that should improve with rest alone the focus, without accounting for Hypothermia, bradycardia, hypoventilation. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "The problem with A routine sedative effect that can be reassessed later is that it treats an active warning sign as something safe to watch, instead of responding to Profound slowing plus hypothermia is the clue cluster that makes hypothyroidism emergent. The nurse should prioritize Myxedema coma requiring airway, warming, and urgent endocrine-focused escalation; otherwise oxygenation or ventilation remains the active threat."
+      },
+      "tags": [
+        "myxedema_coma_hypothermia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Profound slowing plus hypothermia is the clue cluster that makes hypothyroidism emergent.",
+      "speedCue": "Cold, slow, and less responsive is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n005",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "pericardial_tamponade_pressure",
+      "subcategory": "pericardial_tamponade_pressure",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move in this hemodynamic decline?",
+      "scenarioTitle": "Tamponade filling-pressure case",
+      "scenario": "A client recovering from cardiac surgery develops muffled heart sounds, jugular venous distention, narrowing pulse pressure, and worsening hypotension.",
+      "additionalInfo": "Urine output is falling and the client becomes more anxious with each reassessment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation"
+        },
+        {
+          "id": "b",
+          "text": "Routine postoperative pain causing temporary vital-sign changes"
+        },
+        {
+          "id": "c",
+          "text": "Simple fluid overload that only needs a diuretic first"
+        },
+        {
+          "id": "d",
+          "text": "Expected anxiety after surgery without true perfusion compromise"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Muffled heart sounds, JVD, and hypotension create a tamponade map because the heart is failing to fill effectively. The nurse should answer from obstructed cardiac output and urgent escalation, not from pain or anxiety assumptions.",
+      "distractorRationales": {
+        "b": "Routine postoperative pain causing temporary vital-sign changes is not the best answer, and misses that hypotension create a tamponade map because the heart is failing to fill effectively. Treats an active warning sign as something safe to watch, so It is less defensible because Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation targets the problem most likely to deteriorate first.",
+        "c": "Simple fluid overload that only needs a diuretic first would not address the priority, and misses that The nurse should answer from obstructed cardiac output and urgent escalation, not from pain or anxiety assumptions. Does not account for the clinical cue most likely to deteriorate first, so Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Selecting Expected anxiety after surgery without true perfusion compromise would be unsafe, rather than acting on Low pressure with JVD after cardiac surgery should make filling failure feel immediate. Normalizes a finding that should change the nurse's priority, so The priority is Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation, not a step that delays stabilization of renal injury."
+      },
+      "tags": [
+        "pericardial_tamponade_pressure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low pressure with JVD after cardiac surgery should make filling failure feel immediate.",
+      "speedCue": "JVD plus muffled tones plus hypotension is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n006",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "right_ventricular_mi_nitrate_drop",
+      "subcategory": "right_ventricular_mi_nitrate_drop",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move in this infarction-related hypotension?",
+      "scenarioTitle": "Right-sided MI preload case",
+      "scenario": "A client with an inferior STEMI becomes more hypotensive after receiving nitroglycerin.",
+      "additionalInfo": "The client has clear lungs, cool skin, and rising jugular venous pressure.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Right ventricular infarction with preload dependence, making nitrates poorly tolerated"
+        },
+        {
+          "id": "b",
+          "text": "Expected medication relaxation without perfusion significance"
+        },
+        {
+          "id": "c",
+          "text": "Simple dehydration that only needs oral fluids"
+        },
+        {
+          "id": "d",
+          "text": "A benign anxiety episode triggered by chest pain"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Inferior MI plus hypotension after nitrates with clear lungs suggests a right-sided infarction that needs preload. The nurse should answer from hemodynamic dependence, not from generic antianginal expectations.",
+      "distractorRationales": {
+        "b": "The problem with Expected medication relaxation without perfusion significance is that it normalizes a finding that should change the nurse's priority, while the decisive cue is Hypotension after nitrates with clear lungs is a clue that preload matters. That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "c": "Simple dehydration that only needs oral fluids would not address the priority, without accounting for rising jugular venous pressure. Moves to a lower-acuity action before the client is clinically stable, so Right ventricular infarction with preload dependence, making nitrates poorly tolerated better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The problem with A benign anxiety episode triggered by chest pain is that it normalizes a finding that should change the nurse's priority, while the decisive cue is rising jugular venous pressure. That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response."
+      },
+      "tags": [
+        "right_ventricular_mi_nitrate_drop",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypotension after nitrates with clear lungs is a clue that preload matters.",
+      "speedCue": "Inferior MI plus nitrate drop plus JVD is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "right_ventricular_mi_nitrate_drop",
+        "caption": "Hypotension after nitrates with clear lungs is a clue that preload matters.",
+        "conclusion": "Hypotension after nitrates with clear lungs is a clue that preload matters."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n007",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "acute_psychosis_deescalation_safety",
+      "subcategory": "acute_psychosis_deescalation_safety",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move when this client becomes increasingly paranoid and agitated?",
+      "scenarioTitle": "Psychosis safety case",
+      "scenario": "A client with schizophrenia is pacing, shouting that staff members are trying to poison him, and clenching his fists.",
+      "additionalInfo": "The unit is noisy, and several other clients have gathered nearby to watch the scene.",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal of excess triggers"
+        },
+        {
+          "id": "b",
+          "text": "The nurse should argue with the delusion to prove the belief is false"
+        },
+        {
+          "id": "c",
+          "text": "The nurse should bring more clients close by to normalize the interaction"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should leave immediately without setting limits or assessing risk"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Acute psychosis with rising agitation should be answered with safety, lower stimulation, and calm limit setting rather than confrontation. Arguing about the delusion or adding more external stimulation increases the risk that the client's distress escalates into violence.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward The nurse should argue with the delusion to prove the belief is false, without accounting for Acute psychosis with rising agitation should be answered with safety, lower stimulation. Anchors on the wrong explanation for the client's cues, so It is less defensible because This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal targets the problem most likely to deteriorate first.",
+        "c": "The reasoning trap in The nurse should bring more clients close by to normalize the interaction is that it normalizes a finding that should change the nurse's priority, even though the higher-risk finding is Acute psychosis with rising agitation should be answered with safety, lower stimulation. It is less defensible because This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal targets the problem most likely to deteriorate first.",
+        "d": "This choice focuses on The nurse should leave immediately without setting limits or assessing risk, instead of responding to In psychosis, the nurse leads with safety and calm structure, not debate. Anchors on the wrong explanation for the client's cues, so The safer answer is This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal because delaying bedside safety action can worsen clinical safety risk."
+      },
+      "tags": [
+        "acute_psychosis_deescalation_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In psychosis, the nurse leads with safety and calm structure, not debate.",
+      "speedCue": "Paranoia plus clenched fists means lower the room before you lower the delusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n008",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "advance_directive_conflict_family",
+      "subcategory": "advance_directive_conflict_family",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move when family demands conflict with a documented client directive?",
+      "scenarioTitle": "Advance directive conflict case",
+      "scenario": "A client with metastatic cancer has a signed advance directive declining intubation and CPR.",
+      "additionalInfo": "The client is now unresponsive, and two adult children insist the nurse should 'do everything' while the provider is en route.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Honor the documented advance directive while escalating the conflict through the provider and ethics chain"
+        },
+        {
+          "id": "b",
+          "text": "Ignore the directive because family requests automatically override prior written wishes"
+        },
+        {
+          "id": "c",
+          "text": "Delay all action until the family agrees on a plan"
+        },
+        {
+          "id": "d",
+          "text": "Ask the family to sign a new code-status form at the bedside before doing anything else"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A valid advance directive reflects the client's expressed wishes and should guide care when the client can no longer speak. The nurse should follow that documented plan while escalating the family conflict through the proper chain rather than treating family pressure as a replacement for the client's autonomy.",
+      "distractorRationales": {
+        "b": "The problem with Ignore the directive because family requests automatically override prior written wishes is that it waits on escalation while the bedside priority remains unresolved, instead of responding to advance directive conflict family safety. Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved.",
+        "c": "The reasoning trap in Delay all action until the family agrees on a plan is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is advance directive conflict family safety. That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses.",
+        "d": "This option makes Ask the family to sign a new code-status form at the bedside before doing anything else the focus, without accounting for advance directive conflict family safety. Does not account for the clinical cue most likely to deteriorate first, so Honor the documented advance directive while escalating the conflict through the provider and ethics chain is safer because it addresses circulation or perfusion before routine care or reassurance."
+      },
+      "tags": [
+        "advance_directive_conflict_family",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When family demands conflict with a valid directive, the client's documented wishes stay at the center of care.",
+      "speedCue": "The shortcut is autonomy first: a signed directive is the client's voice when the family is distressed.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n009",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "adolescent_depression_screening_phq",
+      "subcategory": "adolescent_depression_screening_PHQ",
+      "difficulty": 3,
+      "stem": "Which decision map best explains the nurse's priority after an adolescent screens positive for depression?",
+      "scenarioTitle": "Screen-positive next-step map",
+      "scenario": "A 16-year-old scores in the moderate range on a depression screening tool during a school-based clinic visit.",
+      "additionalInfo": "The adolescent shrugs and says, 'I'm just tired all the time. It's not a big deal.'",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support"
+        },
+        {
+          "id": "b",
+          "text": "Reassure the adolescent that screening tools often overreact and no follow-up is needed"
+        },
+        {
+          "id": "c",
+          "text": "Skip all direct questions about self-harm because they may plant the idea"
+        },
+        {
+          "id": "d",
+          "text": "Wait until the next annual visit to revisit mood symptoms"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A positive depression screen is a prompt for direct safety assessment and follow-up support, not a reassurance cue. The nurse should not avoid suicide questions or delay referral simply because the adolescent is minimizing symptoms.",
+      "distractorRationales": {
+        "b": "This choice focuses on Reassure the adolescent that screening tools often overreact and no follow-up is needed, instead of responding to Screening only helps when a positive result leads to direct safety assessment and follow-up. Does not account for the clinical cue most likely to deteriorate first, so The priority is Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support, not a step that delays stabilization of clinical safety risk.",
+        "c": "This option makes Skip all direct questions about self-harm because they may plant the idea the focus, when the bedside priority is driven by A 16-year-old scores in the moderate range on a depression screening tool during a school-based clinic visit. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "d": "Wait until the next annual visit to revisit mood symptoms would not address the priority, and misses that A positive depression screen is a prompt for direct safety assessment and follow-up support, not a reassurance cue. Treats an active warning sign as something safe to watch, so Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "adolescent_depression_screening_PHQ",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Screening only helps when a positive result leads to direct safety assessment and follow-up.",
+      "speedCue": "A positive screen means ask directly, not later.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n010",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "myasthenic_crisis_airway",
+      "subcategory": "myasthenic_crisis_airway",
+      "difficulty": 3,
+      "stem": "Which decision map best explains the nurse's next move in this airway decline?",
+      "scenarioTitle": "Myasthenic crisis rescue map",
+      "scenario": "A client with myasthenia gravis develops increasing dysphagia, weak cough, and shallow respirations after a respiratory infection.",
+      "additionalInfo": "The client can barely count to 10 before stopping for breath and now sounds exhausted while speaking.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Myasthenic crisis with impending ventilatory failure requiring airway-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Simple anxiety that only needs reassurance and breathing coaching"
+        },
+        {
+          "id": "c",
+          "text": "Expected fatigue from poor sleep without respiratory danger"
+        },
+        {
+          "id": "d",
+          "text": "A routine medication-timing issue that can wait for the next dose"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Bulbar weakness, weak cough, and shallow breathing in myasthenia gravis create an airway-failure map. The nurse should answer from ventilatory rescue and urgent escalation, not from reassurance or routine scheduling logic.",
+      "distractorRationales": {
+        "b": "This choice focuses on Simple anxiety that only needs reassurance and breathing coaching, while the decisive cue is shallow respirations after a respiratory infection. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "Expected fatigue from poor sleep without respiratory danger is not the best answer, even though the higher-risk finding is Weak cough and swallowing trouble are the clues that make this a breathing question. Normalizes a finding that should change the nurse's priority, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "A routine medication-timing issue that can wait for the next dose is not the best answer, when the bedside priority is driven by Weak cough and swallowing trouble are the clues that make this a breathing question. Treats an active warning sign as something safe to watch, so Myasthenic crisis with impending ventilatory failure requiring airway-focused escalation better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "myasthenic_crisis_airway",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Weak cough and swallowing trouble are the clues that make this a breathing question.",
+      "speedCue": "Myasthenia plus bulbar weakness plus fatigue breathing is the shortcut to crisis thinking.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n011",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "neutropenic_fever_sepsis",
+      "subcategory": "neutropenic_fever_sepsis",
+      "difficulty": 3,
+      "stem": "Which decision map best explains the nurse's next move in this oncology emergency?",
+      "scenarioTitle": "Neutropenic fever sepsis map",
+      "scenario": "A client 7 days after chemotherapy has a temperature of 38.6 C (101.5 F), chills, and an absolute neutrophil count of 300.",
+      "additionalInfo": "Blood pressure is still normal, but the client looks ill and asks whether acetaminophen alone is enough.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neutropenic fever requiring sepsis-focused escalation, cultures, and prompt broad-spectrum coverage"
+        },
+        {
+          "id": "b",
+          "text": "Expected chemotherapy flu-like symptoms needing only rest and fluids"
+        },
+        {
+          "id": "c",
+          "text": "A minor temperature change that can wait until morning rounds"
+        },
+        {
+          "id": "d",
+          "text": "A viral syndrome that should be managed with visitors and fresh fruit"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Fever plus profound neutropenia creates a sepsis-risk map even before obvious shock appears. The nurse should answer from rapid escalation and infection workup, not from routine fever comfort care.",
+      "distractorRationales": {
+        "b": "This answer choice treats Expected chemotherapy flu-like symptoms needing only rest and fluids as the key issue, instead of responding to The nurse should answer from rapid escalation and infection workup, not from routine fever comfort care. Normalizes a finding that should change the nurse's priority, so The priority is Neutropenic fever requiring sepsis-focused escalation, cultures, and prompt broad-spectrum coverage, not a step that delays stabilization of infection progression.",
+        "c": "Selecting A minor temperature change that can wait until morning rounds would be unsafe, although the nurse should be guided by The nurse should answer from rapid escalation and infection workup, not from routine fever comfort care. Treats an active warning sign as something safe to watch, so The nurse should prioritize Neutropenic fever requiring sepsis-focused escalation, cultures, and prompt broad-spectrum coverage; otherwise infection progression remains the active threat.",
+        "d": "This answer choice treats A viral syndrome that should be managed with visitors and fresh fruit as the key issue, instead of responding to The nurse should answer from rapid escalation and infection workup, not from routine fever comfort care. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response."
+      },
+      "tags": [
+        "neutropenic_fever_sepsis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Profound neutropenia turns fever into an emergency even when the pressure looks okay.",
+      "speedCue": "Fever plus ANC 300 is the shortcut to sepsis-level urgency.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n012",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "tension_pneumothorax_decompensation",
+      "subcategory": "tension_pneumothorax_decompensation",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's response to this rapid deterioration?",
+      "scenarioTitle": "Tension pneumothorax shock map",
+      "scenario": "Shortly after a central line insertion, a client develops sudden dyspnea, hypotension, distended neck veins, and absent breath sounds on one side.",
+      "additionalInfo": "The client becomes increasingly restless and the monitor shows falling oxygen saturation despite supplemental oxygen.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tension pneumothorax causing obstructive shock and requiring immediate decompression-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Routine post-procedure pain that only needs an analgesic"
+        },
+        {
+          "id": "c",
+          "text": "Expected atelectasis that can wait for incentive spirometry"
+        },
+        {
+          "id": "d",
+          "text": "An anxiety episode without a true ventilation problem"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Unilateral absent breath sounds with hypotension and jugular venous distention after a line procedure creates a tension-pneumothorax map. The nurse should answer from obstructive-shock rescue, not from pain or anxiety framing.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Routine post-procedure pain that only needs an analgesic is that it treats an active warning sign as something safe to watch, but the stem cue is Unilateral absent breath sounds with hypotension and jugular venous distention after a line procedure creates a tension-pneumothorax map. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "The problem with Expected atelectasis that can wait for incentive spirometry is that it treats an active warning sign as something safe to watch, rather than acting on Absent breath sounds plus shock after a procedure is a decompression clue cluster. The nurse should prioritize Tension pneumothorax causing obstructive shock and requiring immediate decompression-focused escalation; otherwise oxygenation or ventilation remains the active threat.",
+        "d": "This option overweights An anxiety episode without a true ventilation problem, rather than acting on Absent breath sounds plus shock after a procedure is a decompression clue cluster. Anchors on the wrong explanation for the client's cues, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved."
+      },
+      "tags": [
+        "tension_pneumothorax_decompensation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Absent breath sounds plus shock after a procedure is a decompression clue cluster.",
+      "speedCue": "One-sided silence plus JVD plus hypotension is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n013",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "contrast_induced_nephropathy_prevention",
+      "subcategory": "contrast_induced_nephropathy_prevention",
+      "difficulty": 3,
+      "stem": "Which decision map best explains the nurse's priority before this client receives IV contrast?",
+      "scenarioTitle": "Contrast-risk prevention map",
+      "scenario": "A client with chronic kidney disease is scheduled for a contrast-enhanced CT study.",
+      "additionalInfo": "The nurse notes elevated creatinine and asks which prevention frame should guide care before transport.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends"
+        },
+        {
+          "id": "b",
+          "text": "Treat the study as risk-free because contrast only affects clients on dialysis"
+        },
+        {
+          "id": "c",
+          "text": "Delay hydration because IV fluids can interfere with the scanner"
+        },
+        {
+          "id": "d",
+          "text": "Ignore baseline creatinine as long as the client is not reporting pain"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Contrast prevention starts with recognizing renal vulnerability and supporting kidney-protective preparation, especially hydration and medication review when ordered. The nurse should not treat contrast risk as absent just because the client is stable at the bedside.",
+      "distractorRationales": {
+        "b": "Treat the study as risk-free because contrast only affects clients on dialysis is not the best answer, but the stem cue is The nurse notes elevated creatinine and asks which prevention frame should guide care before transport. Moves to a lower-acuity action before the client is clinically stable, so The correct path is Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends, which matches the priority cues instead of a secondary concern.",
+        "c": "This option makes Delay hydration because IV fluids can interfere with the scanner the focus, but the stem cue is The nurse notes elevated creatinine and asks which prevention frame should guide care before transport. Treats an active warning sign as something safe to watch, so Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The problem with Ignore baseline creatinine as long as the client is not reporting pain is that it moves to a lower-acuity action before the client is clinically stable, although the nurse should be guided by The nurse notes elevated creatinine and asks which prevention frame should guide care before transport. The nurse should prioritize Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends; otherwise renal injury remains the active threat."
+      },
+      "tags": [
+        "contrast_induced_nephropathy_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stable appearance does not erase contrast risk when the kidneys are already vulnerable.",
+      "speedCue": "High creatinine before contrast means prevention mode, not routine transport mode.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "contrast_induced_nephropathy_prevention",
+        "caption": "Stable appearance does not erase contrast risk when the kidneys are already vulnerable.",
+        "conclusion": "Stable appearance does not erase contrast risk when the kidneys are already vulnerable."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n014",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "incident_report_medication_error_chain",
+      "subcategory": "incident_report_medication_error_chain",
+      "difficulty": 3,
+      "stem": "Which decision map best explains the nurse's priority after recognizing that the wrong dose of insulin was given?",
+      "scenarioTitle": "Medication error response map",
+      "scenario": "The nurse discovers that 10 units of rapid-acting insulin were administered instead of the prescribed 4 units.",
+      "additionalInfo": "The client is awake but now diaphoretic and shaky, and the blood glucose result is pending.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the client as the priority, assess and intervene for hypoglycemia, notify the provider, then complete the reporting chain"
+        },
+        {
+          "id": "b",
+          "text": "Complete the incident report before assessing the client so the timeline is accurate"
+        },
+        {
+          "id": "c",
+          "text": "Wait for symptoms to worsen so the provider has clear evidence of harm"
+        },
+        {
+          "id": "d",
+          "text": "Ask the next nurse to decide whether the error needs to be disclosed"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "After a medication error, the unstable client comes before paperwork. The nurse should assess and treat the potential hypoglycemia first, notify the provider, and then complete the required reporting process rather than allowing documentation to delay urgent care.",
+      "distractorRationales": {
+        "b": "This option makes Complete the incident report before assessing the client so the timeline is accurate the focus, without accounting for The nurse should assess and treat the potential hypoglycemia first, notify the provider. Does not account for the clinical cue most likely to deteriorate first, so Treat the client as the priority, assess and intervene for hypoglycemia, notify the provider, then complete is safer because it addresses unstable glucose physiology before routine care or reassurance.",
+        "c": "Wait for symptoms to worsen so the provider has clear evidence of harm would not address the priority, and misses that The nurse should assess and treat the potential hypoglycemia first, notify the provider. Treats an active warning sign as something safe to watch, so The correct path is Treat the client as the priority, assess and intervene for hypoglycemia, notify the provider, then complete, which matches the priority cues instead of a secondary concern.",
+        "d": "This option overweights Ask the next nurse to decide whether the error needs to be disclosed, while the decisive cue is the harmed or unstable client always comes first. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Treat the client as the priority, assess and intervene for hypoglycemia, notify the provider, then complete because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology."
+      },
+      "tags": [
+        "incident_report_medication_error_chain",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Reporting matters, but the harmed or unstable client always comes first.",
+      "speedCue": "Error chain shortcut: patient first, provider second, paperwork third.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n015",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "insulin_hypoglycemia_bowtie",
+      "subcategory": "insulin_hypoglycemia_bowtie",
+      "difficulty": 3,
+      "stem": "A client with diabetes becomes diaphoretic and confused shortly after receiving insulin. Which decision map best explains the nurse's priority?",
+      "scenarioTitle": "Hypoglycemia bow-tie",
+      "scenario": "Point-of-care glucose is low and the client is awake but shaky.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Prioritize rapid glucose correction and reassessment because neuroglycopenia can worsen quickly"
+        },
+        {
+          "id": "b",
+          "text": "Delay treatment until the provider evaluates the client because insulin is prescribed"
+        },
+        {
+          "id": "c",
+          "text": "Restrict carbohydrates to avoid rebound hyperglycemia while the client is symptomatic"
+        },
+        {
+          "id": "d",
+          "text": "Encourage strenuous exercise to lower glucose further and reduce symptoms"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pharmacologic safety focuses on recognizing hypoglycemia symptoms and correcting glucose promptly to prevent seizures and loss of consciousness, then reassessing.",
+      "distractorRationales": {
+        "b": "This answer choice treats Delay treatment until the provider evaluates the client because insulin is prescribed as the key issue, although the nurse should be guided by Insulin + diaphoresis/confusion = treat hypoglycemia now, then reassess. Treats an active warning sign as something safe to watch, so The safer answer is Prioritize rapid glucose correction and reassessment because neuroglycopenia can worsen quickly because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology.",
+        "c": "Restrict carbohydrates to avoid rebound hyperglycemia while the client is symptomatic would not address the priority, when the bedside priority is driven by Pharmacologic safety focuses on recognizing hypoglycemia symptoms and correcting glucose promptly to prevent seizures and loss of consciousness,. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Prioritize rapid glucose correction and reassessment because neuroglycopenia can worsen quickly targets the problem most likely to deteriorate first.",
+        "d": "Encourage strenuous exercise to lower glucose further and reduce symptoms fits a lower-risk interpretation, while the decisive cue is A client with diabetes becomes diaphoretic and confused shortly after receiving insulin. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is Prioritize rapid glucose correction and reassessment because neuroglycopenia can worsen quickly because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology."
+      },
+      "tags": [
+        "insulin_hypoglycemia_bowtie",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Insulin + diaphoresis/confusion = treat hypoglycemia now, then reassess.",
+      "speedCue": "Symptoms matter more than the insulin order.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n016",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "meningococcal_sepsis_petechiae",
+      "subcategory": "meningococcal_sepsis_petechiae",
+      "difficulty": 3,
+      "stem": "Which findings in this febrile client support the nurse's concern for meningococcal sepsis? Select all that apply.",
+      "scenarioTitle": "Petechial sepsis clues",
+      "scenario": "A college student arrives with fever, severe headache, malaise, and rapidly worsening illness.",
+      "additionalInfo": "The nurse is deciding which additional findings would strengthen concern for a meningococcal emergency rather than a routine viral illness.",
+      "options": [
+        {
+          "id": "a",
+          "text": "A nonblanching petechial or purpuric rash"
+        },
+        {
+          "id": "b",
+          "text": "Hypotension or rapidly worsening perfusion"
+        },
+        {
+          "id": "c",
+          "text": "Neck stiffness and photophobia"
+        },
+        {
+          "id": "d",
+          "text": "A mild itchy rash that fades with pressure"
+        },
+        {
+          "id": "e",
+          "text": "Warm, stable vitals with improving symptoms after fluids"
+        },
+        {
+          "id": "f",
+          "text": "Acute confusion or worsening mental status"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "f"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Meningococcal sepsis clues cluster around invasive infection and rapid deterioration: nonblanching rash, perfusion decline, meningeal irritation, and mental-status change. The nurse should exclude benign or improving patterns that do not fit invasive sepsis.",
+      "distractorRationales": {
+        "d": "Selecting A mild itchy rash that fades with pressure would be unsafe, although the nurse should be guided by rapidly worsening illness. Normalizes a finding that should change the nurse's priority, so The safer answer is A nonblanching petechial or purpuric rash plus Hypotension or rapidly worsening perfusion plus Neck stiffness because delaying infection or sepsis escalation can worsen infection progression.",
+        "e": "Warm, stable vitals with improving symptoms after fluids would not address the priority, but the stem cue is Meningococcal sepsis clues cluster around invasive infection and rapid deterioration: nonblanching rash, perfusion decline, meningeal irritation. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses."
+      },
+      "tags": [
+        "meningococcal_sepsis_petechiae",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The fast clue is not fever alone, but fever plus rash and collapse signs.",
+      "speedCue": "Nonblanching rash plus neuro change or shock is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n017",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "delegation_right_task",
+      "subcategory": "delegation_right_task",
+      "difficulty": 3,
+      "stem": "Which tasks are appropriate for the nurse to delegate to unlicensed assistive personnel (UAP) for a stable adult client? Select all that apply.",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Obtain routine vital signs for a client with chronic heart failure"
+        },
+        {
+          "id": "b",
+          "text": "Teach a client how to use an incentive spirometer"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative day 2 client who has been cleared to walk"
+        },
+        {
+          "id": "d",
+          "text": "Assess a newly admitted client for chest pain"
+        },
+        {
+          "id": "e",
+          "text": "Measure and document intake and output for a stable client"
+        }
+      ],
+      "answer": [
+        "a",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "UAP can perform routine, non-assessment, non-teaching tasks for stable clients (vitals, ambulation per plan, I&O). Teaching and initial assessment require RN judgment.",
+      "distractorRationales": {
+        "b": "The clinical error in Teach a client how to use an incentive spirometer is that it moves to teaching or reassurance before the immediate risk is stabilized, when the bedside priority is driven by Teaching and initial assessment require RN judgment. It is less defensible because Obtain routine vital signs for a client with chronic heart failure plus Ambulate a postoperative day targets the problem most likely to deteriorate first.",
+        "d": "The reasoning trap in Assess a newly admitted client for chest pain is that it does not account for the clinical cue most likely to deteriorate first, and misses that keep assessment and teaching with the RN. That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses."
+      },
+      "tags": [
+        "delegation_right_task",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate stable routine tasks; keep assessment and teaching with the RN.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n018",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "ectopic_pregnancy_rupture",
+      "subcategory": "ectopic_pregnancy_rupture",
+      "difficulty": 3,
+      "stem": "A client with a positive pregnancy test reports sudden unilateral pelvic pain, dizziness, and left shoulder pain. Which findings support the nurse's concern for a ruptured ectopic pregnancy?",
+      "scenarioTitle": "Early-pregnancy shock clues",
+      "scenario": "The client looks pale and anxious in triage. Blood pressure is 86/48 mm Hg and heart rate is 128/min.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypotension"
+        },
+        {
+          "id": "b",
+          "text": "Shoulder pain"
+        },
+        {
+          "id": "c",
+          "text": "Rigid abdomen"
+        },
+        {
+          "id": "d",
+          "text": "Light pink spotting only"
+        },
+        {
+          "id": "e",
+          "text": "Tachycardia"
+        },
+        {
+          "id": "f",
+          "text": "Improving pelvic discomfort after rest"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Ruptured ectopic pregnancy should be recognized quickly from the clue cluster of unilateral pain, hypotension, tachycardia, and referred shoulder pain from intraperitoneal bleeding. The nurse should connect these findings to hemorrhagic instability instead of treating them as routine first-trimester discomfort.",
+      "distractorRationales": {
+        "c": "Rigid abdomen is not the best answer, and misses that A client with a positive pregnancy test reports sudden unilateral pelvic pain, dizziness. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Hypotension plus Shoulder pain plus Tachycardia, which matches the priority cues instead of a secondary concern.",
+        "d": "The clinical error in Light pink spotting only is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is A client with a positive pregnancy test reports sudden unilateral pelvic pain, dizziness. That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "f": "The reasoning trap in Improving pelvic discomfort after rest is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is A client with a positive pregnancy test reports sudden unilateral pelvic pain, dizziness. It is less defensible because Hypotension plus Shoulder pain plus Tachycardia targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "ectopic_pregnancy_rupture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When pregnancy, unilateral pain, shoulder pain, and shock signs appear together, think ruptured ectopic fast.",
+      "speedCue": "Pregnancy plus unilateral pain plus shoulder pain plus hypotension is a hemorrhage pattern, not a routine discomfort pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n019",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "newborn_hypoglycemia_jitteriness",
+      "subcategory": "newborn_hypoglycemia_jitteriness",
+      "difficulty": 3,
+      "stem": "Which findings support the nurse's concern that this newborn is becoming hypoglycemic? Select all that apply.",
+      "scenarioTitle": "Jittery newborn cue cluster",
+      "scenario": "A newborn of a gestational-diabetic parent is 3 hours old and is becoming harder to feed.",
+      "additionalInfo": "The nurse is deciding whether the bedside change fits a glucose problem or a routine transition period.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jitteriness with tremulous extremities"
+        },
+        {
+          "id": "b",
+          "text": "Weak or poor feeding effort"
+        },
+        {
+          "id": "c",
+          "text": "Low axillary temperature"
+        },
+        {
+          "id": "d",
+          "text": "Strong lusty cry with vigorous rooting"
+        },
+        {
+          "id": "e",
+          "text": "Pink color and normal spontaneous wakefulness"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Newborn hypoglycemia often shows up as jitteriness, poor feeding, and temperature instability. The nurse should cluster the subtle findings together quickly instead of waiting for a dramatic crash.",
+      "distractorRationales": {
+        "d": "The reasoning trap in Strong lusty cry with vigorous rooting is that it anchors on the wrong explanation for the client's cues, and misses that A newborn of a gestational-diabetic parent is 3 hours old and is becoming harder to feed. Jitteriness with tremulous extremities plus Weak or poor feeding effort plus Low axillary temperature is safer because it addresses unstable glucose physiology before routine care or reassurance.",
+        "e": "Selecting Pink color and normal spontaneous wakefulness would be unsafe, although the nurse should be guided by Newborn hypoglycemia often shows up as jitteriness, poor feeding. Normalizes a finding that should change the nurse's priority, so The safer answer is Jitteriness with tremulous extremities plus Weak or poor feeding effort plus Low axillary temperature because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology."
+      },
+      "tags": [
+        "newborn_hypoglycemia_jitteriness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In newborns, multiple small instability clues often matter more than one dramatic sign.",
+      "speedCue": "Jitteriness plus poor feeding should move glucose near the top immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "newborn_hypoglycemia_jitteriness",
+        "caption": "In newborns, multiple small instability clues often matter more than one dramatic sign.",
+        "conclusion": "In newborns, multiple small instability clues often matter more than one dramatic sign."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n020",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "subcategory": "C_diff_transmission_prevention_bundle",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for C. difficile. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "C. difficile bundle sequence",
+      "scenario": "The nurse receives the result just before transferring the client to a semi-private room.",
+      "additionalInfo": "The unit has gowns, gloves, soap-and-water handwashing sinks, and sporicidal disinfectant available.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Initiate contact-plus-enteric precautions with gown and gloves"
+        },
+        {
+          "id": "b",
+          "text": "Place the client in an appropriate room and dedicate equipment when possible"
+        },
+        {
+          "id": "c",
+          "text": "Perform soap-and-water hand hygiene after care"
+        },
+        {
+          "id": "d",
+          "text": "Ensure the environment is cleaned with a sporicidal product"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "C. difficile prevention works as a bundle: start precautions, protect room placement and equipment, use soap-and-water hand hygiene, and ensure sporicidal cleaning. The sequence keeps spores from spreading while also protecting the next patient environment.",
+      "distractorRationales": {},
+      "tags": [
+        "C_diff_transmission_prevention_bundle",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning.",
+      "speedCue": "The shortcut is spores: alcohol gel alone is not enough.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "C_diff_transmission_prevention_bundle",
+        "caption": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning.",
+        "conclusion": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n021",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "subcategory": "central_line_insertion_CLABSI_bundle",
+      "difficulty": 3,
+      "stem": "Place the nursing actions in the order that best supports a central-line insertion bundle to reduce bloodstream infection risk.",
+      "scenarioTitle": "CLABSI prevention sequence",
+      "scenario": "A provider is preparing to insert a central venous catheter at the bedside.",
+      "additionalInfo": "The nurse is responsible for bundle support and stopping the procedure if sterile breaks occur.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform hand hygiene and confirm the sterile setup is complete"
+        },
+        {
+          "id": "b",
+          "text": "Use maximal barrier precautions and proper skin antisepsis"
+        },
+        {
+          "id": "c",
+          "text": "Pause the procedure if sterile technique is broken"
+        },
+        {
+          "id": "d",
+          "text": "Document line necessity and bundle completion after insertion"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "CLABSI prevention depends on hand hygiene, maximal barrier technique, chlorhexidine skin prep, speaking up about sterility breaks, and documenting bundle adherence. The nurse should not treat a sterile break as a minor issue when the line is still being placed.",
+      "distractorRationales": {},
+      "tags": [
+        "central_line_insertion_CLABSI_bundle",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sterile discipline is part of the line procedure, not optional aftercare.",
+      "speedCue": "If the sterile field breaks, the next move is stop, not excuse.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n022",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "subcategory": "acute_kidney_injury_RIFLE_staging",
+      "difficulty": 3,
+      "stem": "For each finding, click to specify whether the finding supports worsening acute kidney injury or a less urgent monitoring picture.",
+      "scenarioTitle": "AKI trend sort",
+      "scenario": "The nurse is comparing several renal function trends for a client whose kidney status is worsening.",
+      "additionalInfo": "The provider asks the nurse to identify which findings point to deterioration that needs faster action.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports worsening acute kidney injury"
+        },
+        {
+          "id": "b",
+          "text": "Less urgent monitoring picture"
+        }
+      ],
+      "answer": {
+        "Rising creatinine with falling urine output": "Supports worsening acute kidney injury",
+        "Progressive edema and increasing potassium": "Supports worsening acute kidney injury",
+        "Stable creatinine with adequate hourly urine output": "Less urgent monitoring picture",
+        "Improved intake with steady daily weight": "Less urgent monitoring picture"
+      },
+      "matrixColumns": [
+        "Supports worsening acute kidney injury",
+        "Less urgent monitoring picture"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rising creatinine with falling urine output",
+          "answer": "Supports worsening acute kidney injury"
+        },
+        {
+          "label": "Progressive edema and increasing potassium",
+          "answer": "Supports worsening acute kidney injury"
+        },
+        {
+          "label": "Stable creatinine with adequate hourly urine output",
+          "answer": "Less urgent monitoring picture"
+        },
+        {
+          "label": "Improved intake with steady daily weight",
+          "answer": "Less urgent monitoring picture"
+        }
+      ],
+      "rationale": "Acute kidney injury becomes more urgent when urine output falls, creatinine rises, and electrolyte complications emerge. Stable output and renal trends belong on the less urgent side because they do not signal deterioration.",
+      "distractorRationales": {
+        "a": "Supports worsening acute kidney injury is not the best answer, without accounting for The nurse is comparing several renal function trends for a client whose kidney status is worsening. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for renal protection while renal injury progresses.",
+        "b": "Less urgent monitoring picture is not the best answer, without accounting for The nurse is comparing several renal function trends for a client whose kidney status is worsening. Does not account for the clinical cue most likely to deteriorate first, so the row-specific answer pattern is safer because it addresses renal injury before routine care or reassurance."
+      },
+      "tags": [
+        "acute_kidney_injury_RIFLE_staging",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Falling urine plus rising creatinine is the shortcut to worsening AKI.",
+      "speedCue": "Creatinine up and urine down means kidney injury is moving the wrong way.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n023",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "subcategory": "delegation_postop_floor_RN_to_UAP",
+      "difficulty": 3,
+      "stem": "For each postoperative task, click to specify whether the task should stay with the RN or can be delegated to the UAP.",
+      "scenarioTitle": "Delegation on a postop floor",
+      "scenario": "The RN is caring for several postoperative clients and is working with an experienced UAP.",
+      "additionalInfo": "The RN must decide which work can safely move and which work must stay with licensed nursing judgment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep with RN"
+        },
+        {
+          "id": "b",
+          "text": "Delegate to UAP"
+        }
+      ],
+      "answer": {
+        "Assess a client with new shortness of breath two hours after surgery": "Keep with RN",
+        "Assist a stable client to the bathroom for the first time after the RN has assessed": "Delegate to UAP",
+        "Reinforce coughing and deep-breathing after the RN provides the initial teaching": "Delegate to UAP",
+        "Evaluate a new report of uncontrolled incisional pain": "Keep with RN"
+      },
+      "matrixColumns": [
+        "Keep with RN",
+        "Delegate to UAP"
+      ],
+      "matrixRows": [
+        {
+          "label": "Assess a client with new shortness of breath two hours after surgery",
+          "answer": "Keep with RN"
+        },
+        {
+          "label": "Assist a stable client to the bathroom for the first time after the RN has assessed",
+          "answer": "Delegate to UAP"
+        },
+        {
+          "label": "Reinforce coughing and deep-breathing after the RN provides the initial teaching",
+          "answer": "Delegate to UAP"
+        },
+        {
+          "label": "Evaluate a new report of uncontrolled incisional pain",
+          "answer": "Keep with RN"
+        }
+      ],
+      "rationale": "Delegation becomes faster when the nurse separates stable, predictable tasks from new assessment or evaluation needs. Acute respiratory change and uncontrolled pain require RN judgment, while routine assistance and reinforcement after assessment can move safely to the UAP.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Keep with RN is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is Delegation becomes faster when the nurse separates stable, predictable tasks from new assessment or evaluation needs. the row-specific answer pattern better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "Delegate to UAP would not address the priority, but the stem cue is Delegation becomes faster when the nurse separates stable, predictable tasks from new assessment or evaluation needs. Does not account for the clinical cue most likely to deteriorate first, so the row-specific answer pattern better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "delegation_postop_floor_RN_to_UAP",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New problems stay with the RN; stable, routine assistance can move.",
+      "speedCue": "Ask whether the task needs fresh assessment or evaluation. If yes, it stays with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1908-n024",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pressure_injury_prevention_turning",
+      "subcategory": "pressure_injury_prevention_turning",
+      "difficulty": 3,
+      "stem": "A client is bedbound after a stroke. Which nursing intervention best helps prevent pressure injuries?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Reposition the client at regular intervals and use pressure-relieving support surfaces"
+        },
+        {
+          "id": "b",
+          "text": "Massage reddened bony prominences to increase circulation"
+        },
+        {
+          "id": "c",
+          "text": "Keep the head of bed elevated above 45 degrees at all times"
+        },
+        {
+          "id": "d",
+          "text": "Apply heat packs to the sacrum for comfort"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Regular repositioning and pressure redistribution prevent tissue ischemia. Massaging reddened areas can worsen injury, and high head-of-bed increases shear.",
+      "distractorRationales": {
+        "b": "This answer choice treats Massage reddened bony prominences to increase circulation as the key issue, instead of responding to Massaging reddened areas can worsen injury. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "c": "Keep the head of bed elevated above 45 degrees at all times would not address the priority, without accounting for Prevent pressure injury with turning schedules and pressure relief, not massage. Does not account for the clinical cue most likely to deteriorate first, so Reposition the client at regular intervals and use pressure-relieving support surfaces is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "d": "This distractor pulls attention toward Apply heat packs to the sacrum for comfort, without accounting for high head-of-bed increases shear. Moves to a lower-acuity action before the client is clinically stable, so It is less defensible because Reposition the client at regular intervals and use pressure-relieving support surfaces targets the problem most likely to deteriorate first. Nursing safety depends on matching the option to the client's active clinical risk."
+      },
+      "tags": [
+        "pressure_injury_prevention_turning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Prevent pressure injury with turning schedules and pressure relief, not massage.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pressure_injury_prevention_turning",
+        "caption": "Prevent pressure injury with turning schedules and pressure relief, not massage.",
+        "conclusion": "Prevent pressure injury with turning schedules and pressure relief, not massage."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

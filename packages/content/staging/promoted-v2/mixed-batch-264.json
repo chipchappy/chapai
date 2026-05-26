@@ -1,0 +1,409 @@
+{
+  "batchId": "mixed-batch-264",
+  "generatedAt": "2026-04-01T14:33:52-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": ".openclaw/nemotron-question-gen-prompt.txt"
+  },
+  "examMix": {
+    "ccrn": 5,
+    "nclex": 5
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb264-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_safety",
+      "subcategory": "Pharmacology Safety",
+      "difficulty": 3,
+      "stem": "A client receiving IV heparin has an aPTT of 932 seconds. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the heparin infusion rate."
+        },
+        {
+          "id": "b",
+          "text": "Stop the heparin infusion and notify the provider."
+        },
+        {
+          "id": "c",
+          "text": "Administer vitamin K immediately."
+        },
+        {
+          "id": "d",
+          "text": "Document the result as expected."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This aPTT is markedly supratherapeutic, so the infusion must be stopped before additional anticoagulant is delivered. Provider notification and protocol-based adjustment come next. The other options either worsen bleeding risk or use the wrong antidote.",
+      "tags": [
+        "Pharmacology Safety"
+      ],
+      "takeaway": "Unsafe heparin level -> stop the infusion first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": null
+    },
+    {
+      "id": "mb264-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "endocrine_metabolic",
+      "subcategory": "Endocrine / Metabolic",
+      "difficulty": 3,
+      "stem": "A client with diabetes has blood glucose 308 mg/dL, diaphoresis, and confusion and is unsafe for oral intake. What is the first action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give orange juice by mouth."
+        },
+        {
+          "id": "b",
+          "text": "Administer glucagon IM or dextrose IV based on access."
+        },
+        {
+          "id": "c",
+          "text": "Wait for a repeat glucose check in 15 minutes."
+        },
+        {
+          "id": "d",
+          "text": "Give regular insulin to control rebound hyperglycemia."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This is symptomatic hypoglycemia and requires immediate parenteral rescue because oral intake is unsafe. Delaying treatment risks seizure and coma. Insulin would worsen the emergency.",
+      "tags": [
+        "Endocrine / Metabolic"
+      ],
+      "takeaway": "Hypoglycemia without safe swallowing -> treat immediately with glucagon or IV dextrose.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": null
+    },
+    {
+      "id": "mb264-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "prioritization_delegation",
+      "subcategory": "Prioritization / Delegation",
+      "difficulty": 4,
+      "stem": "Which task is appropriate for the nurse to delegate to a UAP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess a new postoperative incision."
+        },
+        {
+          "id": "b",
+          "text": "Obtain routine vital signs on a stable client."
+        },
+        {
+          "id": "c",
+          "text": "Teach incentive spirometry."
+        },
+        {
+          "id": "d",
+          "text": "Interpret telemetry findings."
+        }
+      ],
+      "answer": "b",
+      "rationale": "Routine, predictable tasks for stable clients can be delegated. Assessment, teaching, and interpretation remain RN responsibilities. The correct option requires no clinical judgment.",
+      "tags": [
+        "Prioritization / Delegation"
+      ],
+      "takeaway": "Delegate stable routine work, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": null
+    },
+    {
+      "id": "mb264-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A client on oxygen has increasing work of breathing and ABGs of pH 7.27, PaCO2 320 mmHg, and PaO2 316 mmHg. What is the priority intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase low-flow oxygen only."
+        },
+        {
+          "id": "b",
+          "text": "Prepare for NIPPV/BiPAP."
+        },
+        {
+          "id": "c",
+          "text": "Delay treatment for a repeat ABG."
+        },
+        {
+          "id": "d",
+          "text": "Prioritize chest X-ray before support."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This pattern shows acute hypercapnic respiratory failure with acidemia. NIPPV supports ventilation and oxygenation and can prevent further deterioration. More oxygen alone does not correct hypoventilation.",
+      "tags": [
+        "Respiratory / Oxygenation"
+      ],
+      "takeaway": "Hypercapnic respiratory failure requires ventilatory support, not just more oxygen.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Hypercapnic respiratory failure requires ventilatory support, not just more oxygen.",
+        "conclusion": "Hypercapnic respiratory failure requires ventilatory support, not just more oxygen."
+      }
+    },
+    {
+      "id": "mb264-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_infection_control",
+      "subcategory": "Safety / Infection Control",
+      "difficulty": 3,
+      "stem": "A client with suspected airborne infection is admitted to the unit. What PPE is required on room entry?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Surgical mask only."
+        },
+        {
+          "id": "b",
+          "text": "N95 respirator with appropriate barrier precautions."
+        },
+        {
+          "id": "c",
+          "text": "Gloves only."
+        },
+        {
+          "id": "d",
+          "text": "No PPE unless aerosol-generating procedures occur."
+        }
+      ],
+      "answer": "b",
+      "rationale": "Airborne pathogens require respiratory protection that filters small particles, which is why an N95 is required. The other options under-protect staff. Barrier additions depend on contact exposure risk, but respiratory protection is non-negotiable.",
+      "tags": [
+        "Safety / Infection Control"
+      ],
+      "takeaway": "Airborne disease -> N95 on entry.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": null
+    },
+    {
+      "id": "mb264-c001",
+      "exam": "ccrn",
+      "type": "mcq",
+      "category": "hemodynamics_shock",
+      "subcategory": "Hemodynamics / Shock",
+      "difficulty": 3,
+      "stem": "A postoperative patient has MAP 322 mmHg, CVP 2 mmHg, PCWP 4 mmHg, and SVR 2100 dynes·s/cm5. Which shock state best fits?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Distributive shock."
+        },
+        {
+          "id": "b",
+          "text": "Obstructive shock."
+        },
+        {
+          "id": "c",
+          "text": "Cardiogenic shock."
+        },
+        {
+          "id": "d",
+          "text": "Hypovolemic shock."
+        }
+      ],
+      "answer": "d",
+      "rationale": "Low filling pressures plus high compensatory SVR indicate a preload problem rather than vasodilatory or pump-failure shock. The body is constricting aggressively to maintain perfusion. This profile is most consistent with hypovolemia.",
+      "tags": [
+        "Hemodynamics / Shock"
+      ],
+      "takeaway": "Low preload pressures + high SVR -> think hypovolemia.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Hemodynamics / Shock",
+        "caption": "Low preload pressures + high SVR -> think hypovolemia.",
+        "conclusion": "Low preload pressures + high SVR -> think hypovolemia."
+      }
+    },
+    {
+      "id": "mb264-c002",
+      "exam": "ccrn",
+      "type": "mcq",
+      "category": "perfusion_cardiac",
+      "subcategory": "Perfusion / Cardiac",
+      "difficulty": 3,
+      "stem": "A patient has inferior STEMI changes with hypotension, bradycardia, and jugular venous distention. What is the priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer nitroglycerin immediately."
+        },
+        {
+          "id": "b",
+          "text": "Support preload with cautious IV fluid while preparing reperfusion."
+        },
+        {
+          "id": "c",
+          "text": "Diurese for occult pulmonary edema."
+        },
+        {
+          "id": "d",
+          "text": "Delay intervention until right-sided ECG is completed."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This is classic right-ventricular infarct physiology. These patients are preload dependent, so nitrates can worsen the collapse. A cautious fluid bolus is the safer immediate support measure while definitive reperfusion is arranged.",
+      "tags": [
+        "Perfusion / Cardiac"
+      ],
+      "takeaway": "Inferior STEMI + JVD + hypotension -> RV infarct until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Perfusion / Cardiac",
+        "caption": "Inferior STEMI + JVD + hypotension -> RV infarct until proven otherwise.",
+        "conclusion": "Inferior STEMI + JVD + hypotension -> RV infarct until proven otherwise."
+      }
+    },
+    {
+      "id": "mb264-c003",
+      "exam": "ccrn",
+      "type": "mcq",
+      "category": "respiratory_ventilator_management",
+      "subcategory": "Respiratory / Ventilator Management",
+      "difficulty": 4,
+      "stem": "An ARDS patient has a plateau pressure of 31 cmH2O. What ventilator adjustment is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase tidal volume to improve ventilation."
+        },
+        {
+          "id": "b",
+          "text": "Lower tidal volume to keep plateau pressure at or below 30 cmH2O."
+        },
+        {
+          "id": "c",
+          "text": "Remove PEEP completely."
+        },
+        {
+          "id": "d",
+          "text": "Ignore plateau pressure if oxygenation is improving."
+        }
+      ],
+      "answer": "b",
+      "rationale": "Plateau pressure above the lung-protective threshold increases volutrauma risk. Lowering tidal volume is the first-line ARDSnet response. The other options either increase harm or ignore the safety signal.",
+      "tags": [
+        "Respiratory / Ventilator Management"
+      ],
+      "takeaway": "High plateau pressure means reduce stretch first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Ventilator Management",
+        "caption": "High plateau pressure means reduce stretch first.",
+        "conclusion": "High plateau pressure means reduce stretch first."
+      }
+    },
+    {
+      "id": "mb264-c004",
+      "exam": "ccrn",
+      "type": "mcq",
+      "category": "neurology_icp_management",
+      "subcategory": "Neurology / ICP Management",
+      "difficulty": 3,
+      "stem": "A TBI patient has ICP 27 mmHg and CPP 50 mmHg. What should the nurse prioritize?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give hypertonic therapy per order and maintain head-neck alignment."
+        },
+        {
+          "id": "b",
+          "text": "Hyperventilate prophylactically to PaCO2 25 mmHg."
+        },
+        {
+          "id": "c",
+          "text": "Flatten the head of bed."
+        },
+        {
+          "id": "d",
+          "text": "Delay treatment until repeat imaging."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Elevated ICP with subgoal CPP requires prompt ICP reduction while preserving perfusion. Hypertonic therapy and neutral alignment directly support that goal. The other choices worsen cerebral physiology or delay needed treatment.",
+      "tags": [
+        "Neurology / ICP Management"
+      ],
+      "takeaway": "Low CPP + high ICP -> lower ICP without sacrificing perfusion.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Neurology / ICP Management",
+        "caption": "Low CPP + high ICP -> lower ICP without sacrificing perfusion.",
+        "conclusion": "Low CPP + high ICP -> lower ICP without sacrificing perfusion."
+      }
+    },
+    {
+      "id": "mb264-c005",
+      "exam": "ccrn",
+      "type": "mcq",
+      "category": "renal_fluid_electrolyte",
+      "subcategory": "Renal / Fluid-Electrolyte",
+      "difficulty": 3,
+      "stem": "A patient with AKI has potassium 32.5 mEq/L and peaked T waves. What is the priority intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for nephrology to arrive before treating."
+        },
+        {
+          "id": "b",
+          "text": "Administer IV calcium gluconate immediately."
+        },
+        {
+          "id": "c",
+          "text": "Give sodium bicarbonate first and reassess later."
+        },
+        {
+          "id": "d",
+          "text": "Encourage oral fluids."
+        }
+      ],
+      "answer": "b",
+      "rationale": "ECG changes from hyperkalemia indicate immediate membrane instability. IV calcium protects the myocardium within minutes and buys time for potassium-shifting and removal therapies. The other options delay the lifesaving first step.",
+      "tags": [
+        "Renal / Fluid-Electrolyte"
+      ],
+      "takeaway": "Hyperkalemia with ECG changes -> stabilize the heart first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/remote-control/scripts/exec_route.py",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Renal / Fluid-Electrolyte",
+        "caption": "Hyperkalemia with ECG changes -> stabilize the heart first.",
+        "conclusion": "Hyperkalemia with ECG changes -> stabilize the heart first."
+      }
+    }
+  ]
+}

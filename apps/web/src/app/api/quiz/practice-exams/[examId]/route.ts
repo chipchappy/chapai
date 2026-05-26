@@ -1,7 +1,7 @@
 import { getQuestionBank } from "@/lib/content-bank";
 import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam, type QuizQuestion } from "@/lib/types";
 import { getPracticeExamDefinitions, getStandardPreviewDeck } from "@/lib/practice-data";
-import type { PracticeExamDefinition, PracticeQuestion } from "@/lib/practice-types";
+import type { PracticeExamDefinition, PracticeQuestion, PracticeQuestionKind } from "@/lib/practice-types";
 import { z } from "zod";
 
 type RouteContext = {
@@ -9,6 +9,25 @@ type RouteContext = {
 };
 
 const examIdSchema = z.enum(["nclex-sim-1", "nclex-sim-2", "nclex-sim-3", "ccrn-sim-1", "ccrn-sim-2"]);
+
+function kindForQuestionType(type: QuizQuestion["type"]): PracticeQuestionKind {
+  if (type === "sata") {
+    return "multi-select";
+  }
+  if (type === "matrix") {
+    return "matrix";
+  }
+  if (type === "case_study") {
+    return "case-study";
+  }
+  if (type === "scenario_mcq") {
+    return "scenario-mcq";
+  }
+  if (type === "decision_map_mcq" || type === "bow_tie") {
+    return "decision-map-mcq";
+  }
+  return "mcq";
+}
 
 function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
   const correctAnswer =
@@ -29,7 +48,8 @@ function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
     category: question.category,
     difficulty: question.difficulty,
     mode: "practice-exam",
-    kind: question.type === "sata" ? "multi-select" : question.type === "matrix" ? "matrix" : "mcq",
+    kind: kindForQuestionType(question.type),
+    questionType: question.type,
     stem: question.stem,
     options: question.options.map((option) => ({ id: option.id, text: option.text })),
     correctAnswer,
@@ -37,6 +57,11 @@ function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
     distractorRationales: question.distractorRationales,
     takeaway: question.takeaway,
     source: "live",
+    scenarioTitle: question.scenarioTitle,
+    scenario: question.scenario,
+    additionalInfo: question.additionalInfo,
+    matrixColumns: question.matrixColumns ?? undefined,
+    matrixRows: question.matrixRows ?? undefined,
     visualRationale: question.visualRationale,
   };
 }

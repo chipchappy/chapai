@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-757",
+  "generatedAt": "2026-04-08T16:33:50-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb757-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient is admitted with acute pancreatitis, amylase 980 units/L, and lipase 1,240 units/L. They are NPO, receiving IV fluids, and reporting pain 7/10. On day 3, the patient is hemodynamically stable with improving pain. The provider considers nutrition. Which approach reflects current evidence-based guidelines?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Continue NPO until amylase and lipase normalize, then advance to clear liquids"
+        },
+        {
+          "id": "b",
+          "text": "Begin total parenteral nutrition (TPN) immediately via central line to rest the pancreas"
+        },
+        {
+          "id": "c",
+          "text": "Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission"
+        },
+        {
+          "id": "d",
+          "text": "Advance to oral clear liquids only if the patient reports no abdominal pain"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current guidelines (ACG, SCCM) recommend early enteral nutrition within 24–72 hours in acute pancreatitis, particularly in moderate-to-severe disease. Early EN maintains gut integrity, reduces bacterial translocation, and decreases infectious complications compared to TPN. Prolonged NPO (A) and waiting for enzyme normalization delay recovery. TPN (B) is associated with higher infection rates and should be used only when enteral access is not achievable. Waiting for complete pain resolution (D) unnecessarily delays nutrition.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Continue NPO until amylase and lipase normalize, then advance to clear liquids is that it normalizes a finding that should change the nurse's priority, without accounting for Waiting for complete pain resolution (D) unnecessarily delays nutrition. The correct path is Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission, which matches the priority cues instead of a secondary concern.",
+        "b": "The problem with Begin total parenteral nutrition (TPN) immediately via central line to rest the pancreas is that it does not account for the clinical cue most likely to deteriorate first, rather than acting on Acute pancreatitis: early enteral nutrition within 24–72 hours is preferred over TPN. The priority is Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission, not a step that delays stabilization of infection progression.",
+        "d": "This distractor pulls attention toward Advance to oral clear liquids only if the patient reports no abdominal pain, and misses that reporting pain 7/10. Moves to a lower-acuity action before the client is clinically stable, so Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission is safer because it addresses infection progression before routine care or reassurance."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute pancreatitis: early enteral nutrition within 24–72 hours is preferred over TPN; NPO is no longer the standard of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "suicide_risk_assessment",
+      "subcategory": "Suicide Risk Assessment",
+      "difficulty": 3,
+      "stem": "A nurse is assessing a client who says: 'I've been thinking about ending my life. I have my grandfather's gun at home and I plan to use it this weekend when my family is away.' Which suicide risk category applies, and what is the immediate nursing priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Low risk; schedule outpatient follow-up within 2 weeks"
+        },
+        {
+          "id": "b",
+          "text": "Moderate risk; increase therapy frequency and provide a safety plan"
+        },
+        {
+          "id": "c",
+          "text": "High risk; initiate involuntary hospitalization and remove access to means immediately"
+        },
+        {
+          "id": "d",
+          "text": "Moderate risk; contact family members to monitor the patient at home"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient has a specific plan (gun), access to lethal means (gun at home), a timeframe (this weekend), and intent (plans to use it). This constellation — ideation + plan + means + timeframe — represents HIGH lethality risk. Immediate action: do not leave the patient alone, initiate emergency psychiatric evaluation, and facilitate involuntary hospitalization if the patient refuses voluntary admission. Means restriction (removing or securing the firearm) is critical. Outpatient follow-up (A) and home monitoring (D) are wholly inadequate for this risk level.",
+      "distractorRationales": {
+        "a": "Low risk; schedule outpatient follow-up within 2 weeks would not address the priority, but the stem cue is what is the immediate nursing priority. Anchors on the wrong explanation for the client's cues, so High risk; initiate involuntary hospitalization and remove access to means immediately better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "This distractor pulls attention toward Moderate risk; increase therapy frequency and provide a safety plan, even though the higher-risk finding is what is the immediate nursing priority. Does not account for the clinical cue most likely to deteriorate first, so The correct path is High risk; initiate involuntary hospitalization and remove access to means immediately, which matches the priority cues instead of a secondary concern.",
+        "d": "This option overweights Moderate risk; contact family members to monitor the patient at home, although the nurse should be guided by High suicide risk = specific plan + lethal means + timeframe + intent. Moves to a lower-acuity action before the client is clinically stable, so The priority is High risk; initiate involuntary hospitalization and remove access to means immediately, not a step that delays stabilization of clinical safety risk."
+      },
+      "tags": [
+        "Suicide Risk Assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "High suicide risk = specific plan + lethal means + timeframe + intent; immediate hospitalization and means restriction are required.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_asthma_exacerbation",
+      "subcategory": "Respiratory / Asthma Exacerbation",
+      "difficulty": 3,
+      "stem": "A patient with severe asthma is admitted with an acute exacerbation. The nurse notes the patient is no longer wheezing despite having difficulty breathing and accessory muscle use. Which interpretation is CORRECT?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient is improving — decreased wheezing indicates reduced bronchospasm"
+        },
+        {
+          "id": "b",
+          "text": "The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,' signaling impending respiratory failure"
+        },
+        {
+          "id": "c",
+          "text": "The patient requires a bronchodilator since the wheezing has resolved"
+        },
+        {
+          "id": "d",
+          "text": "The patient is having an allergic reaction rather than an asthma attack"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A 'silent chest' in an asthmatic patient with severe respiratory distress is an ominous sign — it does not indicate improvement. It indicates airways are so severely obstructed that no air movement is occurring, thus no wheeze can be generated. This is a pre-arrest condition requiring immediate escalation: notify provider, prepare for intubation, consider IV magnesium sulfate, IV epinephrine or terbutaline, and high-dose continuous bronchodilators. The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Wheezing returning with treatment is actually a sign of improvement.",
+      "distractorRationales": {
+        "a": "This option overweights The patient is improving — decreased wheezing indicates reduced bronchospasm, while the decisive cue is The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "c": "This choice focuses on The patient requires a bronchodilator since the wheezing has resolved, although the nurse should be guided by high-dose continuous bronchodilators. Does not account for the clinical cue most likely to deteriorate first, so The priority is The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,', not a step that delays stabilization of oxygenation or ventilation.",
+        "d": "The patient is having an allergic reaction rather than an asthma attack fits a lower-risk interpretation, despite the clinical warning in The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Does not account for the clinical cue most likely to deteriorate first, so The priority is The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,', not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "Respiratory / Asthma Exacerbation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Asthma Exacerbation",
+        "caption": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+        "conclusion": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A nurse needs to assess pain in a 2-year-old who is post-operative and cannot verbalize pain. Which pain assessment tool is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Numeric Rating Scale (0–10) — ask the child to point to a number"
+        },
+        {
+          "id": "b",
+          "text": "FLACC scale (Face, Legs, Activity, Cry, Consolability)"
+        },
+        {
+          "id": "c",
+          "text": "Wong-Baker FACES Pain Rating Scale"
+        },
+        {
+          "id": "d",
+          "text": "Visual Analog Scale (VAS)"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The FLACC scale is validated for infants and young children (<3–4 years) who cannot self-report pain. It assesses five behavioral indicators scored 0–2 each (total 0–10): Face (grimacing vs neutral), Legs (kicking vs relaxed), Activity (arching vs still), Cry (screaming vs quiet), Consolability (inconsolable vs content). Wong-Baker FACES is valid for children ≥3–4 years who can understand the cartoon faces and self-report. Numeric scales require cognitive development typically seen at ≥7 years. VAS requires fine motor pointing and is not validated for toddlers.",
+      "distractorRationales": {
+        "a": "Selecting Numeric Rating Scale (0–10) — ask the child to point to a number would be unsafe, while the decisive cue is A nurse needs to assess pain in a 2-year-old who is post-operative and cannot verbalize pain. Does not account for the clinical cue most likely to deteriorate first, so The priority is FLACC scale (Face, Legs, Activity, Cry, Consolability), not a step that delays stabilization of pediatric or newborn instability.",
+        "c": "This distractor pulls attention toward Wong-Baker FACES Pain Rating Scale, and misses that Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral). Does not account for the clinical cue most likely to deteriorate first, so The correct path is FLACC scale (Face, Legs, Activity, Cry, Consolability), which matches the priority cues instead of a secondary concern.",
+        "d": "Visual Analog Scale (VAS) would not address the priority, and misses that Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral). Does not account for the clinical cue most likely to deteriorate first, so FLACC scale (Face, Legs, Activity, Cry, Consolability) is safer because it addresses pediatric or newborn instability before routine care or reassurance."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+        "conclusion": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A 16-year-old male with no prior anesthesia history is 45 minutes into general anesthesia for scoliosis repair using sevoflurane and succinylcholine for intubation. Temperature is now 41.8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg, and the patient is diffusely rigid. The team administers dantrolene 2.5 mg/kg IV. Which statement about dantrolene's mechanism AND the most critical additional intervention is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation"
+        },
+        {
+          "id": "b",
+          "text": "Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves"
+        },
+        {
+          "id": "c",
+          "text": "Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are sufficient once dantrolene is given"
+        },
+        {
+          "id": "d",
+          "text": "Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Dantrolene mechanism: selectively blocks the RYR1 (ryanodine receptor type 1) on the sarcoplasmic reticulum membrane, directly preventing the uncontrolled calcium efflux that drives the MH hypermetabolic crisis. Without continuous calcium release, muscle contraction ceases, and hyperthermia, rigidity, and acidosis begin to resolve. In this case, sevoflurane MUST be stopped immediately — if it was not stopped when masseter rigidity first occurred during succinylcholine administration (an early warning sign), this was a critical error that escalated the crisis. After first dantrolene bolus: (1) Repeat dantrolene 2.5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total); (2) Hyperventilate 100% O2 at high flow (flush volatile agent, treat hypercapnia); (3) Active cooling (ice packs to axillae, groin, neck); (4) Treat VT — avoid calcium channel blockers (interact fatally with dantrolene causing cardiovascular collapse); (5) Sodium bicarbonate for severe acidosis; (6) Treat hyperkalemia. Masseter spasm after succinylcholine should always trigger MH protocol and cessation of volatile agent.",
+      "distractorRationales": {
+        "a": "This choice focuses on Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation, despite the clinical warning in 8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL; otherwise oxygenation or ventilation remains the active threat.",
+        "c": "Selecting Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are would be unsafe, despite the clinical warning in 8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "The reasoning trap in Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is 5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total). It is less defensible because Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Dantrolene blocks RYR1 calcium release — the direct MH mechanism. Masseter spasm after succinylcholine = abort case immediately, activate MH protocol. Repeat dantrolene q5 min. Avoid calcium channel blockers (interact fatally with dantrolene).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 3,
+      "stem": "A nurse is triaging patients calling the unit. Which patient should the nurse advise to come in for evaluation IMMEDIATELY versus scheduling a same-day appointment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 68-year-old with known hypertension reporting a new headache, sudden in onset, 10/10 severity, that 'feels different from any headache I've ever had'"
+        },
+        {
+          "id": "b",
+          "text": "A 45-year-old with migraines reporting a typical headache with associated nausea, onset gradual, 7/10"
+        },
+        {
+          "id": "c",
+          "text": "A 52-year-old requesting a refill of their blood pressure medication"
+        },
+        {
+          "id": "d",
+          "text": "A 77-year-old with osteoarthritis reporting increased knee pain after gardening"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A sudden-onset, maximal-intensity headache described as 'the worst of my life' or 'different from any previous headache' is a classic presentation of subarachnoid hemorrhage (SAH) until proven otherwise. This is a neurological emergency with high mortality if not diagnosed and treated rapidly. The hallmark is the 'thunderclap' sudden onset reaching maximum intensity within seconds to minutes. The migraine patient has a familiar pattern, the BP refill is routine, and the arthritis flare is non-urgent. SAH screening requires emergent imaging.",
+      "distractorRationales": {
+        "b": "The reasoning trap in A 45-year-old with migraines reporting a typical headache with associated nausea, onset gradual, 7/10 is that it anchors on the wrong explanation for the client's cues, without accounting for The hallmark is the 'thunderclap' sudden onset reaching maximum intensity within seconds to minutes. It is less defensible because A 68-year-old with known hypertension reporting a new headache, sudden in onset, 10/10 severity, that 'feels targets the problem most likely to deteriorate first.",
+        "c": "The reasoning trap in A 52-year-old requesting a refill of their blood pressure medication is that it does not account for the clinical cue most likely to deteriorate first, without accounting for The hallmark is the 'thunderclap' sudden onset reaching maximum intensity within seconds to minutes. That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "d": "Selecting A 77-year-old with osteoarthritis reporting increased knee pain after gardening would be unsafe, instead of responding to This is a neurological emergency with high mortality if not diagnosed and treated rapidly. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The 'thunderclap headache'—sudden onset, maximal severity, described as the worst ever—is SAH until proven otherwise. Always direct these patients to emergency evaluation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after a negative test 6 months ago. Chest X-ray is negative. The patient has no symptoms. What is the recommended follow-up management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the PPD in 3 months to confirm conversion"
+        },
+        {
+          "id": "b",
+          "text": "No treatment needed — latent TB does not require intervention if the patient is asymptomatic"
+        },
+        {
+          "id": "c",
+          "text": "Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity"
+        },
+        {
+          "id": "d",
+          "text": "Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB"
+        }
+      ],
+      "answer": "c",
+      "rationale": "A recent PPD conversion (negative → positive within 2 years) with negative chest X-ray indicates latent TB infection (LTBI). Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard; (2) Rifapentine + INH weekly × 12 weeks (3HP) — shorter, increasingly preferred; (3) Rifampin daily × 4 months. INH monitoring: monthly clinical evaluation for hepatotoxicity symptoms (jaundice, nausea, fatigue, RUQ pain); baseline LFTs for high-risk patients; hold INH if AST >3× ULN with symptoms or >5× ULN asymptomatic. 4-drug RIPE is for active TB, not LTBI.",
+      "distractorRationales": {
+        "a": "This option overweights Repeat the PPD in 3 months to confirm conversion, while the decisive cue is Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity; otherwise infection progression remains the active threat.",
+        "b": "The clinical error in No treatment needed — latent TB does not require intervention if the patient is asymptomatic is that it moves to a lower-acuity action before the client is clinically stable, even though the higher-risk finding is First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard. The correct path is Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity, which matches the priority cues instead of a secondary concern.",
+        "d": "This answer choice treats Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB as the key issue, while the decisive cue is A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Recent PPD conversion + negative CXR = LTBI → INH prophylaxis 9 months (or 3HP 12 weeks); monitor monthly for INH hepatotoxicity; 4-drug RIPE is for active TB only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A ventilated patient has a PA catheter. Current readings: PCWP 6 mmHg, CVP 2 mmHg, CO 2.4 L/min, SVR 1,840 dyn·s/cm⁵, MAP 52 mmHg. Which hemodynamic profile and etiology is MOST consistent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cardiogenic shock: low CO, high PCWP, high SVR"
+        },
+        {
+          "id": "b",
+          "text": "Distributive (septic) shock: low CO, low PCWP, low SVR"
+        },
+        {
+          "id": "c",
+          "text": "Hypovolemic shock: low CO, low PCWP, high SVR"
+        },
+        {
+          "id": "d",
+          "text": "Obstructive shock: low CO, elevated PCWP, elevated CVP"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Hypovolemic shock profile: low CO (inadequate preload), low PCWP (depleted LV filling), low CVP (low venous return), HIGH SVR (compensatory vasoconstriction to maintain pressure). Distributive/septic shock (B) also has low PCWP but will have LOW SVR (massive vasodilation). Cardiogenic shock (A) has low CO with HIGH PCWP (backed-up fluid). Obstructive shock (D) typically has elevated CVP with equalization of filling pressures. The combination of low CO + low PCWP + HIGH SVR + low MAP = hypovolemia.",
+      "distractorRationales": {
+        "a": "The problem with Cardiogenic shock: low CO, high PCWP, high SVR is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by Hypovolemic shock profile: low CO (inadequate preload), low PCWP (depleted LV filling), low CVP (low venous return), HIGH. The nurse should prioritize Hypovolemic shock: low CO, low PCWP, high SVR; otherwise oxygenation or ventilation remains the active threat.",
+        "b": "This answer choice treats Distributive (septic) shock: low CO, low PCWP, low SVR as the key issue, although the nurse should be guided by Cardiogenic shock (A) has low CO with HIGH PCWP (backed-up fluid). Does not account for the clinical cue most likely to deteriorate first, so The priority is Hypovolemic shock: low CO, low PCWP, high SVR, not a step that delays stabilization of oxygenation or ventilation.",
+        "d": "Obstructive shock: low CO, elevated PCWP, elevated CVP would not address the priority, without accounting for Hypovolemic shock: low CO, low PCWP, HIGH SVR. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Hypovolemic shock: low CO, low PCWP, high SVR, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypovolemic shock: low CO, low PCWP, HIGH SVR. Distributive: low CO, low PCWP, LOW SVR. Cardiogenic: low CO, HIGH PCWP, high SVR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 85-year-old with moderate Alzheimer's dementia becomes extremely agitated, combative, and confused every evening around 5-6 PM (sundowning behavior). She repeatedly attempts to climb out of bed and is at high fall risk. Her family requests soft wrist restraints. Which nursing approach is MOST appropriate as first-line management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning"
+        },
+        {
+          "id": "b",
+          "text": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes"
+        },
+        {
+          "id": "c",
+          "text": "Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection"
+        },
+        {
+          "id": "d",
+          "text": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Physical restraints in elderly dementia patients with sundowning WORSEN outcomes: they increase agitation and distress, increase fall and injury risk (patients attempt to escape restraints), contribute to delirium, cause pressure injuries, aspiration, and death. Restraints are a last resort, never first-line, and require physician order with regular reassessment. Evidence-based non-pharmacological first-line approaches: (1) Light therapy — bright light exposure in the morning resets circadian rhythm; reduce stimulation in the evening; (2) Consistent daily routine and familiar environment; (3) Family presence during peak agitation times (5-7 PM); (4) Structured meaningful activity during the day prevents excessive daytime sleeping; (5) Calm, simple, one-step verbal redirection. If pharmacotherapy is needed after non-pharmacological failure, low-dose scheduled quetiapine may be considered. High-dose IV haloperidol is not appropriate first-line. Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall risk.",
+      "distractorRationales": {
+        "a": "Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning would not address the priority, but the stem cue is High-dose IV haloperidol is not appropriate first-line. Treats an active warning sign as something safe to watch, so The correct path is Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation, which matches the priority cues instead of a secondary concern.",
+        "b": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes would not address the priority, but the stem cue is High-dose IV haloperidol is not appropriate first-line. Does not account for the clinical cue most likely to deteriorate first, so Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "d": "This option makes Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening the focus, when the bedside priority is driven by High-dose IV haloperidol is not appropriate first-line. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sundowning first-line: non-pharmacological — light therapy, routine, family presence, daytime activity, redirection. Physical restraints WORSEN agitation and cause harm. Benzodiazepines contraindicated in elderly dementia patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb757-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400. How should this be documented correctly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Backdate the entry to 0900 to reflect the actual time of administration"
+        },
+        {
+          "id": "b",
+          "text": "Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response"
+        },
+        {
+          "id": "c",
+          "text": "Use correction fluid (Wite-Out) to correct the medication administration record if paper-based"
+        },
+        {
+          "id": "d",
+          "text": "Skip documenting the medication since it was already administered and observed to have been effective"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Late entry documentation: write the current date and time, clearly label as 'late entry,' include the actual time the event occurred, and document the relevant information. This maintains an accurate legal and clinical record without misrepresentation. Backdating (A) is falsification of medical records — a criminal offense and grounds for license revocation. Correction fluid (C) is never used in medical records; errors are corrected by drawing a single line through the error, initialing, dating, and noting 'error' — never obliterating. Omitting documentation (D) creates a legal and clinical record gap.",
+      "distractorRationales": {
+        "a": "The clinical error in Backdate the entry to 0900 to reflect the actual time of administration is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Correction fluid (C) is never used in medical records. Write the current time (1400), note 'late entry,' document the actual time of administration (0900), better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "This option makes Use correction fluid (Wite-Out) to correct the medication administration record if paper-based the focus, but the stem cue is Correction fluid (C) is never used in medical records. Does not account for the clinical cue most likely to deteriorate first, so Write the current time (1400), note 'late entry,' document the actual time of administration (0900), better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The reasoning trap in Skip documenting the medication since it was already administered and observed to have been effective is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is Correction fluid (C) is never used in medical records. Write the current time (1400), note 'late entry,' document the actual time of administration (0900), better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Late entry: write current time, label 'late entry,' include actual event time — backdating is falsification; never use Wite-Out on medical records.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

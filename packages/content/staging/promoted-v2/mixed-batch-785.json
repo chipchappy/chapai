@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-785",
+  "generatedAt": "2026-04-09T01:01:02-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb785-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion, and vomiting following a viral illness. Which initial interventions are CORRECT? (Select all that apply.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer hydrocortisone 100 mg IV bolus immediately"
+        },
+        {
+          "id": "b",
+          "text": "Initiate 0.9% normal saline 1 L IV bolus for hemodynamic support"
+        },
+        {
+          "id": "c",
+          "text": "Administer fludrocortisone 0.1 mg orally for mineralocorticoid replacement"
+        },
+        {
+          "id": "d",
+          "text": "Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority), and (2) aggressive NS fluid resuscitation for hypovolemia and hyponatremia (B). Fludrocortisone (C) is used for chronic mineralocorticoid replacement but is not the initial treatment in a crisis — hydrocortisone at high doses provides sufficient mineralocorticoid activity. Withholding steroids to do testing (D) is dangerous — diagnosis is clinical in a crisis. ACTH stimulation can be done later.",
+      "distractorRationales": {
+        "b": "This answer choice treats Initiate 0.9% normal saline 1 L IV bolus for hemodynamic support as the key issue, although the nurse should be guided by Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "c": "Administer fludrocortisone 0.1 mg orally for mineralocorticoid replacement fits a lower-risk interpretation, instead of responding to vomiting following a viral illness. Moves to a lower-acuity action before the client is clinically stable, so The priority is Administer hydrocortisone 100 mg IV bolus immediately, not a step that delays stabilization of renal injury.",
+        "d": "This choice focuses on Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency, rather than acting on Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay renal protection and leave renal injury unresolved."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Do not delay for confirmatory testing.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "subcategory": "Delegation / Infection Control",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with C. difficile (CDI) colitis. Which instruction is MOST important to give the nursing assistant assigned to this patient's room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread"
+        },
+        {
+          "id": "b",
+          "text": "Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room"
+        },
+        {
+          "id": "c",
+          "text": "Wear only gloves since C. diff is transmitted via droplets"
+        },
+        {
+          "id": "d",
+          "text": "Apply an N95 respirator before entering the room due to airborne risk"
+        }
+      ],
+      "answer": "b",
+      "rationale": "C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers — soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions.",
+      "distractorRationales": {
+        "a": "This option makes Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread the focus, and misses that Key isolation requirements: contact precautions (gloves AND gown for all room entry). Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "c": "Wear only gloves since C. diff is transmitted via droplets is not the best answer, even though the higher-risk finding is Key isolation requirements: contact precautions (gloves AND gown for all room entry). Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "d": "Apply an N95 respirator before entering the room due to airborne risk fits a lower-risk interpretation, while the decisive cue is diff is not airborne or droplet-transmitted, so N95s are not required. Anchors on the wrong explanation for the client's cues, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved."
+      },
+      "tags": [
+        "Delegation / Infection Control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. diff = contact precautions (gloves + gown) + soap and water handwashing. Alcohol hand sanitizer does NOT kill C. diff spores. This is one of the few situations where soap/water is explicitly superior to ABHR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient 2 days post-abdominal surgery. The patient calls the nurse and states, 'I felt something pop in my stomach and I'm looking at my intestines.' The nurse enters the room and observes evisceration of abdominal contents. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Attempt to manually replace the intestines and apply a sterile dressing"
+        },
+        {
+          "id": "b",
+          "text": "Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and call for help"
+        },
+        {
+          "id": "c",
+          "text": "Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical team"
+        },
+        {
+          "id": "d",
+          "text": "Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document the finding"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Wound evisceration is a surgical emergency. The priority is to protect the eviscerated tissue from desiccation and contamination. Cover the bowel immediately with sterile gauze moistened with normal saline (not dry gauze, which would desiccate tissue; not replaced, which risks contamination and injury). The patient should be kept NPO, positioned to reduce tension on the wound (often supine with knees slightly flexed), and the surgical team notified immediately for emergent return to the OR. Attempting to replace bowel or using dry dressings or binders can cause irreparable harm.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Attempt to manually replace the intestines and apply a sterile dressing is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Wound evisceration is a surgical emergency. Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, is safer because it addresses infection progression before routine care or reassurance.",
+        "c": "This option makes Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical the focus, when the bedside priority is driven by The priority is to protect the eviscerated tissue from desiccation and contamination. Anchors on the wrong explanation for the client's cues, so The correct path is Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them,, which matches the priority cues instead of a secondary concern.",
+        "d": "This option overweights Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document, rather than acting on The patient should be kept NPO, positioned to reduce tension on the wound (often supine with knees slightly. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evisceration: Cover with sterile saline-soaked gauze (NEVER replace), keep patient still, call surgeon STAT, keep NPO. Dry gauze and binders are contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A nurse at a community health center is providing care for a homeless patient with chronic schizophrenia who has been non-adherent to antipsychotics and presents with decompensated psychosis. The patient refuses hospitalization. Which nursing approach reflects the ethical principle of justice and the public health model for vulnerable populations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediately call law enforcement for involuntary commitment since the patient is homeless"
+        },
+        {
+          "id": "b",
+          "text": "Discharge the patient with a 30-day prescription and advise them to follow up in one month"
+        },
+        {
+          "id": "c",
+          "text": "Apply harm reduction principles: assess immediate safety, engage assertive community treatment (ACT), coordinate long-acting injectable antipsychotic if appropriate, and connect to housing and social services"
+        },
+        {
+          "id": "d",
+          "text": "Refuse care until the patient agrees to hospitalization to protect the healthcare team"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Justice in community health requires equitable care for vulnerable populations, who face structural barriers (housing instability, stigma, limited healthcare access) that increase health disparities. Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to engagement. Assertive Community Treatment (ACT): multidisciplinary team providing intensive outreach, case management, and mental health services to individuals with severe mental illness who are not engaging with traditional services — evidence-based, reduces hospitalization and homelessness. Long-acting injectable antipsychotics address non-adherence barriers. Involuntary commitment requires imminent danger to self/others, not simply homelessness or non-adherence.",
+      "distractorRationales": {
+        "a": "Immediately call law enforcement for involuntary commitment since the patient is homeless would not address the priority, without accounting for Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to. Moves to a lower-acuity action before the client is clinically stable, so Apply harm reduction principles: assess immediate safety, engage assertive community treatment (ACT), coordinate long-acting injectable antipsychotic better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "The reasoning trap in Discharge the patient with a 30-day prescription and advise them to follow up in one month is that it moves to a lower-acuity action before the client is clinically stable, even though the higher-risk finding is Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to. Apply harm reduction principles: assess immediate safety, engage assertive community treatment (ACT), coordinate long-acting injectable antipsychotic is safer because it addresses clinical safety risk before routine care or reassurance.",
+        "d": "Refuse care until the patient agrees to hospitalization to protect the healthcare team is not the best answer, and misses that Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Apply harm reduction principles: assess immediate safety, engage assertive community treatment (ACT), coordinate long-acting injectable antipsychotic, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Homeless, mentally ill, non-adherent patient: apply harm reduction + Assertive Community Treatment (ACT); involuntary commitment requires imminent danger (not just homelessness); address social determinants of health.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A nurse is titrating norepinephrine for a patient in septic shock. Current MAP is 58 mmHg on norepinephrine 0.18 mcg/kg/min. Lactate is 5.4 mmol/L. The provider orders vasopressin 0.03 units/min added as a second vasopressor. The nurse understands the rationale for vasopressin addition is PRIMARILY to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace endogenous vasopressin that is depleted in prolonged septic shock"
+        },
+        {
+          "id": "b",
+          "text": "Improve cardiac output by increasing stroke volume"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the oxygen demand of the myocardium by lowering heart rate"
+        },
+        {
+          "id": "d",
+          "text": "Decrease SVR to improve tissue perfusion in high-output septic shock"
+        }
+      ],
+      "answer": "a",
+      "rationale": "In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the shock state. Exogenous vasopressin (0.03–0.04 units/min) is added as a fixed-dose adjunct — not titrated — to replace depleted stores and allow reduction ('sparing') of norepinephrine dose (to reduce NE-related adverse effects). Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate (C). It does NOT reduce SVR (D).",
+      "distractorRationales": {
+        "b": "Improve cardiac output by increasing stroke volume fits a lower-risk interpretation, instead of responding to In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "c": "Reduce the oxygen demand of the myocardium by lowering heart rate is not the best answer, even though the higher-risk finding is Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Replace endogenous vasopressin that is depleted in prolonged septic shock targets the problem most likely to deteriorate first.",
+        "d": "The reasoning trap in Decrease SVR to improve tissue perfusion in high-output septic shock is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate. Replace endogenous vasopressin that is depleted in prolonged septic shock better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect). Fixed dose, not titrated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 4,
+      "stem": "An RN delegates vital signs assessment to a UAP for four patients. Which patient's vital signs should the RN personally reassess rather than relying solely on the UAP's report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A postoperative day 2 cholecystectomy patient with stable vitals"
+        },
+        {
+          "id": "b",
+          "text": "A patient with hypertension whose BP has been consistently 140-150/88-92 throughout the shift"
+        },
+        {
+          "id": "c",
+          "text": "A patient who recently returned from cardiac catheterization and now has a UAP-reported BP of 80/50 and HR of 118"
+        },
+        {
+          "id": "d",
+          "text": "A patient admitted for cellulitis with temperature reported as 37.8°C (100°F)"
+        }
+      ],
+      "answer": "c",
+      "rationale": "When a UAP reports an abnormal or unexpected finding, the RN must personally assess and verify. A patient returning from cardiac catheterization with BP 80/50 and HR 118 requires immediate RN assessment — this could indicate arterial bleeding at the access site, cardiac tamponade, contrast reaction, or other life-threatening complication. The RN cannot manage this situation based solely on a UAP report; personal assessment, clinical judgment, and immediate intervention may be required. The other patients have findings within expected parameters for their diagnoses. The RN remains accountable for all delegated tasks and must respond to concerning reports.",
+      "distractorRationales": {
+        "a": "This choice focuses on A postoperative day 2 cholecystectomy patient with stable vitals, instead of responding to personal assessment, clinical judgment. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "b": "A patient with hypertension whose BP has been consistently 140-150/88-92 throughout the shift would not address the priority, when the bedside priority is driven by personal assessment, clinical judgment. Anchors on the wrong explanation for the client's cues, so A patient who recently returned from cardiac catheterization and now has a UAP-reported BP of 80/50 better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This choice focuses on A patient admitted for cellulitis with temperature reported as 37.8°C (100°F), instead of responding to personal assessment, clinical judgment. Anchors on the wrong explanation for the client's cues, so The safer answer is A patient who recently returned from cardiac catheterization and now has a UAP-reported BP of 80/50 because delaying bleeding-risk intervention can worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When UAP reports an unexpected or critical finding, the RN must personally assess — do not manage clinical deterioration based solely on UAP-reported data.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 3,
+      "stem": "A nurse caring for a patient with severe preeclampsia on magnesium sulfate should assess for which finding FIRST in each nursing assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blood pressure and fetal heart rate"
+        },
+        {
+          "id": "b",
+          "text": "Deep tendon reflexes and respiratory rate"
+        },
+        {
+          "id": "c",
+          "text": "Urine output and temperature"
+        },
+        {
+          "id": "d",
+          "text": "Level of consciousness and oxygen saturation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. DTRs serve as an early warning before respiratory arrest occurs — absent DTRs (loss of patellar reflex) signal dangerously high magnesium levels and the need to stop the infusion. This assessment should occur every 1 hour during magnesium infusion. BP and FHR (A) are important but reflect preeclampsia status, not magnesium toxicity. Urine output (C) is also important (magnesium is renally excreted; oliguria leads to accumulation), but the respiratory/reflex check is the most time-critical toxicity indicator.",
+      "distractorRationales": {
+        "a": "Selecting Blood pressure and fetal heart rate would be unsafe, while the decisive cue is The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "The clinical error in Urine output and temperature is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by This assessment should occur every 1 hour during magnesium infusion. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "Selecting Level of consciousness and oxygen saturation would be unsafe, instead of responding to The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Deep tendon reflexes and respiratory rate because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory arrest.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_hypertensive_emergency",
+      "subcategory": "Cardiovascular / Hypertensive Emergency",
+      "difficulty": 4,
+      "stem": "A patient presents with BP 218/130 mmHg, severe headache, blurred vision, and confusion. Fundoscopic exam shows papilledema. Urinalysis shows proteinuria and hematuria. Which condition is present and what is the correct blood pressure management approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypertensive urgency — oral labetalol and discharge home with follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further end-organ damage"
+        },
+        {
+          "id": "d",
+          "text": "Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient has hypertensive emergency (malignant hypertension) — severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments — a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage — treated with oral agents over hours to days.",
+      "distractorRationales": {
+        "a": "Hypertensive urgency — oral labetalol and discharge home with follow-up fits a lower-risk interpretation, despite the clinical warning in A patient presents with BP 218/130 mmHg, severe headache, blurred vision. Moves to a lower-acuity action before the client is clinically stable, so The priority is Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour, not a step that delays stabilization of renal injury.",
+        "c": "This option overweights Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further, instead of responding to A patient presents with BP 218/130 mmHg, severe headache, blurred vision. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "d": "This option overweights Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening, although the nurse should be guided by A patient presents with BP 218/130 mmHg, severe headache, blurred vision. Treats an active warning sign as something safe to watch, so The safer answer is Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour because delaying renal protection can worsen renal injury."
+      },
+      "tags": [
+        "Cardiovascular / Hypertensive Emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Hypertensive Emergency",
+        "caption": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+        "conclusion": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_safe_staffing",
+      "subcategory": "Delegation / Safe Staffing",
+      "difficulty": 3,
+      "stem": "A registered nurse receives a new patient assignment at shift start. The RN reviews the five patients and determines that patient care tasks need to be distributed. Which of the following tasks can be appropriately delegated to a licensed practical nurse (LPN)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the admission assessment for a new patient with unstable angina"
+        },
+        {
+          "id": "b",
+          "text": "Develop the care plan for a patient with newly diagnosed type 1 diabetes"
+        },
+        {
+          "id": "c",
+          "text": "Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm"
+        },
+        {
+          "id": "d",
+          "text": "Educate the patient and family about a new diagnosis of atrial fibrillation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate — appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation — this is an RN function.",
+      "distractorRationales": {
+        "a": "The problem with Perform the admission assessment for a new patient with unstable angina is that it anchors on the wrong explanation for the client's cues, instead of responding to Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching. That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "b": "This distractor pulls attention toward Develop the care plan for a patient with newly diagnosed type 1 diabetes, without accounting for RN scope: initial assessment, care planning, teaching, evaluating unstable patients. Anchors on the wrong explanation for the client's cues, so It is less defensible because Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a targets the problem most likely to deteriorate first.",
+        "d": "This distractor pulls attention toward Educate the patient and family about a new diagnosis of atrial fibrillation, and misses that RN scope: initial assessment, care planning, teaching, evaluating unstable patients. Moves to teaching or reassurance before the immediate risk is stabilized, so The correct path is Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Delegation / Safe Staffing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications to stable patients, perform routine procedures, collect data for stable conditions. RN scope: initial assessment, care planning, teaching, evaluating unstable patients, and tasks requiring clinical judgment. RNs cannot delegate assessment, teaching, or care planning.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb785-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure. The nurse inspects the perineum and notes a 4 cm tense, purple, fluctuant mass on the right labia. What does this indicate, and what is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Normal postpartum edema; apply ice pack and reassure the patient"
+        },
+        {
+          "id": "b",
+          "text": "Vulvar hematoma; notify the provider immediately and monitor vital signs"
+        },
+        {
+          "id": "c",
+          "text": "Episiotomy dehiscence; apply sterile dressing and call the surgeon"
+        },
+        {
+          "id": "d",
+          "text": "Bartholin's cyst; apply warm compresses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A tense, purple, fluctuant (fluid-filled), rapidly expanding perineal mass with severe pain is a vulvar hematoma — accumulation of blood in soft tissue from injured blood vessels, often after vaginal delivery or episiotomy. Small hematomas (<3–4 cm) may be managed conservatively with ice and observation; larger or expanding hematomas require surgical incision and evacuation. The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise, and apply an ice pack for comfort. Normal edema (A) is soft, not fluctuant or purple. Episiotomy dehiscence (C) would show wound separation. A Bartholin's cyst (D) is not a postpartum complication.",
+      "distractorRationales": {
+        "a": "Normal postpartum edema; apply ice pack and reassure the patient is not the best answer, but the stem cue is The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise. Normalizes a finding that should change the nurse's priority, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "Episiotomy dehiscence; apply sterile dressing and call the surgeon is not the best answer, and misses that The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise. Waits on escalation while the bedside priority remains unresolved, so The correct path is Vulvar hematoma; notify the provider immediately and monitor vital signs, which matches the priority cues instead of a secondary concern.",
+        "d": "This choice focuses on Bartholin's cyst; apply warm compresses, rather than acting on what is the priority nursing action. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Perineal hematoma: tense, fluctuant, purple mass with severe pain post-delivery — notify provider immediately; monitor for expansion and hemodynamic instability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

@@ -1,0 +1,623 @@
+{
+  "batchId": "mixed-batch-1027",
+  "generatedAt": "2026-04-11T09:20:25-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb1027-n001",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "pheochromocytoma_crisis",
+      "subcategory": "pheochromocytoma_crisis",
+      "difficulty": 3,
+      "stem": "For each finding, click to specify whether the finding is more consistent with pheochromocytoma crisis or less consistent with pheochromocytoma crisis.",
+      "scenarioTitle": "Catecholamine surge pattern",
+      "scenario": "The client reports recurrent episodes of severe headache and pounding palpitations.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with pheochromocytoma crisis"
+        }
+      ],
+      "answer": {
+        "Diaphoresis with severe hypertension": "More consistent with pheochromocytoma crisis",
+        "Sudden pounding headache": "More consistent with pheochromocytoma crisis",
+        "Slow progressive ankle edema only": "Less consistent with pheochromocytoma crisis",
+        "Chronic productive cough": "Less consistent with pheochromocytoma crisis"
+      },
+      "matrixColumns": [
+        "More consistent with pheochromocytoma crisis",
+        "Less consistent with pheochromocytoma crisis"
+      ],
+      "matrixRows": [
+        {
+          "label": "Diaphoresis with severe hypertension",
+          "answer": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Sudden pounding headache",
+          "answer": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Slow progressive ankle edema only",
+          "answer": "Less consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Chronic productive cough",
+          "answer": "Less consistent with pheochromocytoma crisis"
+        }
+      ],
+      "rationale": "Pheochromocytoma crisis is solved faster when the learner bundles headache, diaphoresis, palpitations, and severe hypertension as a catecholamine surge pattern. Chronic, non-episodic findings push the answer away from this diagnosis.",
+      "distractorRationales": {
+        "a": "The clinical error in More consistent with pheochromocytoma crisis is that it anchors on the wrong explanation for the client's cues, without accounting for severe episodic hypertension belong together as a pheochromocytoma pattern. That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "b": "Selecting Less consistent with pheochromocytoma crisis would be unsafe, while the decisive cue is severe hypertension as a catecholamine surge pattern. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response."
+      },
+      "tags": [
+        "pheochromocytoma_crisis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Headache, diaphoresis, palpitations, and severe episodic hypertension belong together as a pheochromocytoma pattern.",
+      "speedCue": "The speed clue is episodic sympathetic surge, not slow chronic symptom drift.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n002",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "hyperkalemia_ecg_emergency",
+      "subcategory": "hyperkalemia_ecg_emergency",
+      "difficulty": 3,
+      "stem": "Which conclusion should guide the nurse's next move for this client with kidney injury?",
+      "scenarioTitle": "Peaked T-wave case",
+      "scenario": "A client with acute kidney injury reports weakness and nausea.",
+      "additionalInfo": "Telemetry shows peaked T waves and the potassium level is 6.8 mEq/L.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hyperkalemia emergency requiring immediate cardiac stabilization and potassium-lowering treatment"
+        },
+        {
+          "id": "b",
+          "text": "Expected fatigue from hospitalization that only needs rest"
+        },
+        {
+          "id": "c",
+          "text": "Mild electrolyte change that can wait for the next lab draw"
+        },
+        {
+          "id": "d",
+          "text": "Simple dehydration without urgent membrane risk"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Peaked T waves plus marked hyperkalemia change this into a cardiac-stability emergency. The nurse should answer from conduction risk first, not from symptom management alone.",
+      "distractorRationales": {
+        "b": "This choice focuses on Expected fatigue from hospitalization that only needs rest, rather than acting on A client with acute kidney injury reports weakness and nausea. Normalizes a finding that should change the nurse's priority, so The safer answer is Hyperkalemia emergency requiring immediate cardiac stabilization and potassium-lowering treatment because delaying renal protection can worsen renal injury.",
+        "c": "This answer choice treats Mild electrolyte change that can wait for the next lab draw as the key issue, despite the clinical warning in A client with acute kidney injury reports weakness and nausea. Treats an active warning sign as something safe to watch, so Choosing it can delay renal protection and leave renal injury unresolved.",
+        "d": "Simple dehydration without urgent membrane risk is not the best answer, but the stem cue is Peaked T waves plus marked hyperkalemia change this into a cardiac-stability emergency. Anchors on the wrong explanation for the client's cues, so It is less defensible because Hyperkalemia emergency requiring immediate cardiac stabilization and potassium-lowering treatment targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "hyperkalemia_ecg_emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Telemetry changes are what make hyperkalemia urgent at the bedside.",
+      "speedCue": "Peaked T waves turn this from a lab problem into a rhythm problem.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n003",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "tumor_lysis_syndrome",
+      "subcategory": "tumor_lysis_syndrome",
+      "difficulty": 3,
+      "stem": "Which conclusion should direct the nurse's next move after this chemotherapy change?",
+      "scenarioTitle": "Electrolyte crash after induction therapy",
+      "scenario": "A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea.",
+      "additionalInfo": "Telemetry now shows peaked T waves, urine output has fallen, potassium is 6.1 mEq/L, phosphate is elevated, and creatinine is rising.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected chemotherapy fatigue that only needs rest"
+        },
+        {
+          "id": "c",
+          "text": "Uncomplicated dehydration that can wait for the next shift"
+        },
+        {
+          "id": "d",
+          "text": "Simple nausea from treatment without true metabolic collapse"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The speed clue is post-chemotherapy electrolyte collapse with telemetry change and falling renal function. The nurse should answer from hyperkalemic and renal risk, not from a vague oncology side-effect frame.",
+      "distractorRationales": {
+        "b": "The problem with Expected chemotherapy fatigue that only needs rest is that it normalizes a finding that should change the nurse's priority, although the nurse should be guided by A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea. The priority is Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation, not a step that delays stabilization of renal injury.",
+        "c": "This option makes Uncomplicated dehydration that can wait for the next shift the focus, but the stem cue is Telemetry now shows peaked T waves, urine output has fallen, potassium is 6. Treats an active warning sign as something safe to watch, so That choice could make the nurse miss the window for renal protection while renal injury progresses.",
+        "d": "This option overweights Simple nausea from treatment without true metabolic collapse, rather than acting on A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response."
+      },
+      "tags": [
+        "tumor_lysis_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In tumor lysis syndrome, the timeline after chemotherapy matters as much as the individual lab values.",
+      "speedCue": "Chemo plus peaked T waves plus worsening creatinine should feel immediate.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n004",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "Which decision map best explains this client's rapid deterioration?",
+      "scenarioTitle": "Adrenal crisis rescue map",
+      "scenario": "A client with chronic adrenal insufficiency has been vomiting for 24 hours and now looks weak and confused.",
+      "additionalInfo": "Blood pressure is 82/46 mm Hg, sodium is 124 mEq/L, potassium is 5.8 mEq/L, and the morning steroid dose was missed.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Simple dehydration that only needs oral fluids"
+        },
+        {
+          "id": "c",
+          "text": "Expected fatigue from chronic illness without emergency risk"
+        },
+        {
+          "id": "d",
+          "text": "A benign stomach virus that can wait for clinic follow-up"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Vomiting, hypotension, hyponatremia, hyperkalemia, and missed steroids create an adrenal-crisis map. The nurse should answer from endocrine shock rescue, not from comfort care or delayed reassessment.",
+      "distractorRationales": {
+        "b": "The clinical error in Simple dehydration that only needs oral fluids is that it moves to a lower-acuity action before the client is clinically stable, and misses that The lab pattern matters most when it arrives with hypotension and missed steroid coverage. Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "The clinical error in Expected fatigue from chronic illness without emergency risk is that it normalizes a finding that should change the nurse's priority, and misses that The lab pattern matters most when it arrives with hypotension and missed steroid coverage. It is less defensible because Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation targets the problem most likely to deteriorate first.",
+        "d": "The clinical error in A benign stomach virus that can wait for clinic follow-up is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is The lab pattern matters most when it arrives with hypotension and missed steroid coverage. That choice could make the nurse miss the window for renal protection while renal injury progresses."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The lab pattern matters most when it arrives with hypotension and missed steroid coverage.",
+      "speedCue": "Hypotension plus low sodium plus high potassium should feel like adrenal crisis fast.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n005",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "Which clinical map should guide the nurse's next move after this transfusion starts?",
+      "scenarioTitle": "Early transfusion reaction map",
+      "scenario": "Fifteen minutes after packed red blood cells begin, a client reports chills, low-back pain, and chest tightness.",
+      "additionalInfo": "The transfusion is still running and the nurse is choosing between documenting, slowing, or stopping the blood.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated"
+        },
+        {
+          "id": "b",
+          "text": "Expected warming discomfort that only needs reassurance"
+        },
+        {
+          "id": "c",
+          "text": "Anxiety from the hospital setting without transfusion relevance"
+        },
+        {
+          "id": "d",
+          "text": "A minor symptom set that should be charted while the blood continues"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Chills, low-back pain, and chest tightness soon after transfusion create a reaction map, not a comfort issue. The nurse should answer from stop-the-blood-first logic.",
+      "distractorRationales": {
+        "b": "Selecting Expected warming discomfort that only needs reassurance would be unsafe, instead of responding to The transfusion is still running and the nurse is choosing between documenting, slowing, or stopping the blood. Normalizes a finding that should change the nurse's priority, so The priority is Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated, not a step that delays stabilization of circulation or perfusion.",
+        "c": "Selecting Anxiety from the hospital setting without transfusion relevance would be unsafe, rather than acting on The transfusion is still running and the nurse is choosing between documenting, slowing, or stopping the blood. Anchors on the wrong explanation for the client's cues, so The safer answer is Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated because delaying circulation and perfusion support can worsen circulation or perfusion.",
+        "d": "This answer choice treats A minor symptom set that should be charted while the blood continues as the key issue, rather than acting on The transfusion is still running and the nurse is choosing between documenting, slowing, or stopping the blood. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated because delaying circulation and perfusion support can worsen circulation or perfusion."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The first safe move is driven by timing plus symptom cluster, not by waiting for more proof.",
+      "speedCue": "New reaction symptoms soon after blood starts means stop the blood first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n006",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "compartment_syndrome_warning",
+      "subcategory": "compartment_syndrome_warning",
+      "difficulty": 3,
+      "stem": "Which decision map best explains this change after fracture care?",
+      "scenarioTitle": "Casted limb perfusion map",
+      "scenario": "A client with a new lower-leg cast reports escalating pain that is not relieved by opioids.",
+      "additionalInfo": "The toes are pale, numb, and increasingly painful with passive stretch.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection"
+        },
+        {
+          "id": "b",
+          "text": "Expected postoperative pain that can wait for the next dose of medication"
+        },
+        {
+          "id": "c",
+          "text": "Routine swelling without perfusion concern"
+        },
+        {
+          "id": "d",
+          "text": "Simple anxiety because the cast feels tight"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pain out of proportion with neurovascular decline creates a compartment syndrome map. The nurse should answer from perfusion rescue, not analgesia alone.",
+      "distractorRationales": {
+        "b": "The clinical error in Expected postoperative pain that can wait for the next dose of medication is that it treats an active warning sign as something safe to watch, without accounting for A client with a new lower-leg cast reports escalating pain that is not relieved by opioids. The correct path is Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection, which matches the priority cues instead of a secondary concern.",
+        "c": "The clinical error in Routine swelling without perfusion concern is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is A client with a new lower-leg cast reports escalating pain that is not relieved by opioids. It is less defensible because Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection targets the problem most likely to deteriorate first.",
+        "d": "Simple anxiety because the cast feels tight is not the best answer, when the bedside priority is driven by A client with a new lower-leg cast reports escalating pain that is not relieved by opioids. Anchors on the wrong explanation for the client's cues, so Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "compartment_syndrome_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The pain pattern matters more than the cast itself.",
+      "speedCue": "Pain out of proportion plus passive-stretch pain is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n007",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "epidural_hypotension_fetal",
+      "subcategory": "epidural_hypotension_fetal",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's next move after this epidural change?",
+      "scenarioTitle": "Maternal perfusion rescue map",
+      "scenario": "Minutes after an epidural is placed, a laboring client becomes pale and dizzy.",
+      "additionalInfo": "Blood pressure drops to 84/48 mm Hg and the fetal heart tracing now shows recurrent late decelerations.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Maternal hypotension after epidural requiring perfusion rescue to protect fetal oxygenation"
+        },
+        {
+          "id": "b",
+          "text": "Expected epidural drowsiness with no fetal consequence"
+        },
+        {
+          "id": "c",
+          "text": "Placenta previa because the fetus shows late decelerations"
+        },
+        {
+          "id": "d",
+          "text": "Normal labor discomfort that only needs reassurance"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is maternal hypotension after epidural with immediate fetal late decelerations. The nurse should answer from maternal perfusion rescue, not from fetal monitoring alone.",
+      "distractorRationales": {
+        "b": "This option makes Expected epidural drowsiness with no fetal consequence the focus, but the stem cue is The pattern is maternal hypotension after epidural with immediate fetal late decelerations. Normalizes a finding that should change the nurse's priority, so Maternal hypotension after epidural requiring perfusion rescue to protect fetal oxygenation is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "Selecting Placenta previa because the fetus shows late decelerations would be unsafe, while the decisive cue is Blood pressure drops to 84/48 mm Hg and the fetal heart tracing now shows recurrent late decelerations. Anchors on the wrong explanation for the client's cues, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "The clinical error in Normal labor discomfort that only needs reassurance is that it normalizes a finding that should change the nurse's priority, even though the higher-risk finding is The nurse should answer from maternal perfusion rescue, not from fetal monitoring alone. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "epidural_hypotension_fetal",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In labor, rescuing maternal blood pressure can be the fetal intervention.",
+      "speedCue": "Epidural plus hypotension plus late decels is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n008",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "epiglottitis_airway_protection",
+      "subcategory": "epiglottitis_airway_protection",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's first move for this child?",
+      "scenarioTitle": "Drooling stridor airway map",
+      "scenario": "A child arrives leaning forward, drooling, with a muffled voice and inspiratory stridor.",
+      "additionalInfo": "The caregiver asks whether the nurse can look in the throat quickly to see what is wrong.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Epiglottitis pattern requiring airway protection and no throat stimulation"
+        },
+        {
+          "id": "b",
+          "text": "Simple sore throat that only needs an oral exam and reassurance"
+        },
+        {
+          "id": "c",
+          "text": "Expected croup that should be managed with home humidification"
+        },
+        {
+          "id": "d",
+          "text": "Behavioral distress without true airway danger"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Drooling, muffled voice, and stridor create an airway-protection map. The safest answer is the one that avoids throat stimulation and prepares for airway control quickly.",
+      "distractorRationales": {
+        "b": "This option overweights Simple sore throat that only needs an oral exam and reassurance, rather than acting on The safest answer is the one that avoids throat stimulation and prepares for airway control quickly. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is Epiglottitis pattern requiring airway protection and no throat stimulation because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "This option overweights Expected croup that should be managed with home humidification, while the decisive cue is The safest answer is the one that avoids throat stimulation and prepares for airway control quickly. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This choice focuses on Behavioral distress without true airway danger, rather than acting on The safest answer is the one that avoids throat stimulation and prepares for airway control quickly. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is Epiglottitis pattern requiring airway protection and no throat stimulation because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "epiglottitis_airway_protection",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When the child is drooling and quiet with stridor, think airway first, not assessment curiosity.",
+      "speedCue": "Drool plus muffled voice plus stridor is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n009",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "hellp_syndrome",
+      "subcategory": "hellp_syndrome",
+      "difficulty": 3,
+      "stem": "Which decision map best explains this late-pregnancy change?",
+      "scenarioTitle": "HELLP escalation map",
+      "scenario": "A pregnant client with worsening hypertension reports severe right-upper-quadrant pain and nausea.",
+      "additionalInfo": "Platelets are falling, AST is elevated, and the client says the pain feels different from heartburn.",
+      "options": [
+        {
+          "id": "a",
+          "text": "HELLP syndrome requiring urgent maternal-fetal escalation and hemorrhage-risk awareness"
+        },
+        {
+          "id": "b",
+          "text": "Expected indigestion late in pregnancy"
+        },
+        {
+          "id": "c",
+          "text": "A benign gallbladder problem without obstetric urgency"
+        },
+        {
+          "id": "d",
+          "text": "Normal musculoskeletal pain from uterine growth"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "RUQ pain with falling platelets, liver injury, and worsening hypertension creates a HELLP map. The nurse should answer from maternal-fetal emergency risk, not from reflux or benign discomfort.",
+      "distractorRationales": {
+        "b": "Expected indigestion late in pregnancy fits a lower-risk interpretation, while the decisive cue is worsening hypertension creates a HELLP map. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "c": "The clinical error in A benign gallbladder problem without obstetric urgency is that it normalizes a finding that should change the nurse's priority, even though the higher-risk finding is RUQ pain with falling platelets, liver injury. That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "d": "Selecting Normal musculoskeletal pain from uterine growth would be unsafe, although the nurse should be guided by A pregnant client with worsening hypertension reports severe right-upper-quadrant pain and nausea. Normalizes a finding that should change the nurse's priority, so The priority is HELLP syndrome requiring urgent maternal-fetal escalation and hemorrhage-risk awareness, not a step that delays stabilization of bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "hellp_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RUQ pain in preeclampsia stems is a clue you should not soften into heartburn.",
+      "speedCue": "Platelets down plus RUQ pain plus hypertension is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n010",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "late_deceleration_rescue",
+      "subcategory": "late_deceleration_rescue",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's response to this fetal tracing pattern?",
+      "scenarioTitle": "Oxytocin late deceleration map",
+      "scenario": "A laboring client receiving oxytocin develops recurrent late fetal heart rate decelerations.",
+      "additionalInfo": "The contraction pattern is frequent and strong, and the client is lying supine.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uteroplacental perfusion compromise requiring intrauterine resuscitation and oxytocin interruption"
+        },
+        {
+          "id": "b",
+          "text": "A reassuring tracing that only needs continued observation"
+        },
+        {
+          "id": "c",
+          "text": "Normal fetal sleep variability without intervention need"
+        },
+        {
+          "id": "d",
+          "text": "A benign maternal discomfort pattern unrelated to the fetus"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Recurrent late decelerations with strong oxytocin-driven contractions create a uteroplacental perfusion rescue map. The nurse should answer from intrauterine resuscitation, not from passive monitoring.",
+      "distractorRationales": {
+        "b": "A reassuring tracing that only needs continued observation is not the best answer, but the stem cue is A laboring client receiving oxytocin develops recurrent late fetal heart rate decelerations. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for circulation and perfusion support while circulation or perfusion progresses.",
+        "c": "Normal fetal sleep variability without intervention need fits a lower-risk interpretation, rather than acting on Late decelerations are about placental perfusion, not just strip interpretation. Normalizes a finding that should change the nurse's priority, so The nurse should prioritize Uteroplacental perfusion compromise requiring intrauterine resuscitation and oxytocin interruption; otherwise circulation or perfusion remains the active threat.",
+        "d": "This option makes A benign maternal discomfort pattern unrelated to the fetus the focus, even though the higher-risk finding is Recurrent late decelerations with strong oxytocin-driven contractions create a uteroplacental perfusion rescue map. Normalizes a finding that should change the nurse's priority, so The correct path is Uteroplacental perfusion compromise requiring intrauterine resuscitation and oxytocin interruption, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "late_deceleration_rescue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Late decelerations are about placental perfusion, not just strip interpretation.",
+      "speedCue": "Oxytocin plus recurrent lates is the shortcut to resuscitation actions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n011",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "magnesium_sulfate_toxicity",
+      "subcategory": "magnesium_sulfate_toxicity",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's next move for this postpartum client?",
+      "scenarioTitle": "Magnesium toxicity rescue map",
+      "scenario": "A postpartum client receiving magnesium sulfate for severe preeclampsia becomes very drowsy.",
+      "additionalInfo": "Respirations are 8/min, deep tendon reflexes are absent, and urine output has fallen to 18 mL/hr.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Magnesium toxicity requiring infusion stop, airway support, and antidote-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected postpartum fatigue that only needs rest"
+        },
+        {
+          "id": "c",
+          "text": "Simple anxiety because the client is sleepy after delivery"
+        },
+        {
+          "id": "d",
+          "text": "A harmless medication effect that can wait for routine reassessment"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Low respirations, absent reflexes, and poor urine output create a magnesium toxicity map. The nurse should answer from airway danger and medication accumulation, not from routine postpartum fatigue.",
+      "distractorRationales": {
+        "b": "This answer choice treats Expected postpartum fatigue that only needs rest as the key issue, while the decisive cue is poor urine output create a magnesium toxicity map. Normalizes a finding that should change the nurse's priority, so The priority is Magnesium toxicity requiring infusion stop, airway support, and antidote-focused escalation, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "Simple anxiety because the client is sleepy after delivery would not address the priority, but the stem cue is A postpartum client receiving magnesium sulfate for severe preeclampsia becomes very drowsy. Normalizes a finding that should change the nurse's priority, so Magnesium toxicity requiring infusion stop, airway support, and antidote-focused escalation is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This choice focuses on A harmless medication effect that can wait for routine reassessment, despite the clinical warning in poor urine output create a magnesium toxicity map. Treats an active warning sign as something safe to watch, so The priority is Magnesium toxicity requiring infusion stop, airway support, and antidote-focused escalation, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "magnesium_sulfate_toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The reflex-respiration-urine trio is the shortcut for magnesium toxicity.",
+      "speedCue": "Absent reflexes plus low respirations should end the debate immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1027-n012",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "malignant_hyperthermia_initial",
+      "subcategory": "malignant_hyperthermia_initial",
+      "difficulty": 3,
+      "stem": "Which clinical map best explains this client's immediate post-anesthesia change?",
+      "scenarioTitle": "OR-to-PACU malignant hyperthermia map",
+      "scenario": "Shortly after surgery, a client develops muscle rigidity, rapidly rising end-tidal CO2, tachycardia, and a temperature that is climbing.",
+      "additionalInfo": "The team is debating whether the fever is the main clue or a later clue.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Malignant hyperthermia requiring trigger removal, dantrolene, cooling, and aggressive support"
+        },
+        {
+          "id": "b",
+          "text": "Routine postoperative shivering that only needs blankets"
+        },
+        {
+          "id": "c",
+          "text": "Expected anxiety from emergence from anesthesia"
+        },
+        {
+          "id": "d",
+          "text": "Simple dehydration without a true anesthetic emergency"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The fast clue is rigidity with rising end-tidal CO2 after anesthesia. The nurse should answer from malignant hyperthermia rescue rather than waiting for temperature to become the only obvious signal.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Routine postoperative shivering that only needs blankets, even though the higher-risk finding is End-tidal CO2 and rigidity usually beat fever to the diagnosis. Treats an active warning sign as something safe to watch, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "c": "Selecting Expected anxiety from emergence from anesthesia would be unsafe, instead of responding to The fast clue is rigidity with rising end-tidal CO2 after anesthesia. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "d": "Selecting Simple dehydration without a true anesthetic emergency would be unsafe, instead of responding to The fast clue is rigidity with rising end-tidal CO2 after anesthesia. Anchors on the wrong explanation for the client's cues, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved."
+      },
+      "tags": [
+        "malignant_hyperthermia_initial",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "End-tidal CO2 and rigidity usually beat fever to the diagnosis.",
+      "speedCue": "CO2 rise plus rigidity after anesthesia is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

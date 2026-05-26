@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-895",
+  "generatedAt": "2026-04-10T04:33:38-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb895-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_intake",
+      "subcategory": "fever_and_intake",
+      "difficulty": 3,
+      "stem": "A child with fever is refusing fluids and has a dry tongue. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for dehydration and monitor intake and output"
+        },
+        {
+          "id": "b",
+          "text": "Reassure the parent that fever always causes this"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the next meal to encourage fluids"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the finding if the child is still playing"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake with fever can lead to dehydration, especially in children. **Why the others are wrong:** - B Fever can contribute, but assessment is still needed. - C Waiting can worsen fluid deficit. - D Playfulness does not rule out dehydration.",
+      "distractorRationales": {
+        "b": "This option overweights Reassure the parent that fever always causes this, despite the clinical warning in assessment is still needed. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved.",
+        "c": "This distractor pulls attention toward Wait until the next meal to encourage fluids, even though the higher-risk finding is - C Waiting can worsen fluid deficit. Treats an active warning sign as something safe to watch, so Assess for dehydration and monitor intake and output is safer because it addresses infection progression before routine care or reassurance.",
+        "d": "Ignore the finding if the child is still playing would not address the priority, and misses that - C Waiting can worsen fluid deficit. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Assess for dehydration and monitor intake and output targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "fever_and_intake",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus poor intake should prompt dehydration assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "opioid_safety",
+      "subcategory": "opioid_safety",
+      "difficulty": 3,
+      "stem": "After receiving an opioid, a patient is hard to arouse and has shallow respirations. What is the nurse's best action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess airway and breathing immediately and prepare to intervene"
+        },
+        {
+          "id": "b",
+          "text": "Document the response and recheck later"
+        },
+        {
+          "id": "c",
+          "text": "Give another dose because the patient is uncomfortable"
+        },
+        {
+          "id": "d",
+          "text": "Encourage the patient to walk to wake up"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sedation with shallow breathing after an opioid can indicate respiratory depression. The nurse must act quickly. **Why the others are wrong:** - B Delay is unsafe. - C More opioid could worsen the problem. - D Ambulation is not the immediate priority.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Document the response and recheck later is that it treats an active warning sign as something safe to watch, and misses that - C More opioid could worsen the problem. Assess airway and breathing immediately and prepare to intervene is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "This distractor pulls attention toward Give another dose because the patient is uncomfortable, and misses that Sedation with shallow breathing after an opioid can indicate respiratory depression. Anchors on the wrong explanation for the client's cues, so The correct path is Assess airway and breathing immediately and prepare to intervene, which matches the priority cues instead of a secondary concern.",
+        "d": "The reasoning trap in Encourage the patient to walk to wake up is that it moves to a lower-acuity action before the client is clinically stable, without accounting for - C More opioid could worsen the problem. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "opioid_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Opioid sedation plus shallow breathing is a breathing emergency.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygenation_and_mentation",
+      "subcategory": "oxygenation_and_mentation",
+      "difficulty": 3,
+      "stem": "A patient on oxygen becomes more confused and starts removing the nasal cannula. What is the nurse's best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be becoming hypoxic or acutely altered"
+        },
+        {
+          "id": "b",
+          "text": "The patient is improving because they are more active"
+        },
+        {
+          "id": "c",
+          "text": "Confusion is unrelated to oxygen needs"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should leave the patient alone to avoid agitation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Confusion with oxygen removal behavior can indicate hypoxia or another acute change in condition. **Why the others are wrong:** - B Agitation is not the same as improvement. - C Mental-status changes can reflect oxygenation problems. - D The patient needs reassessment, not abandonment.",
+      "distractorRationales": {
+        "b": "The patient is improving because they are more active is not the best answer, when the bedside priority is driven by - C Mental-status changes can reflect oxygenation problems. Anchors on the wrong explanation for the client's cues, so The patient may be becoming hypoxic or acutely altered better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "Confusion is unrelated to oxygen needs fits a lower-risk interpretation, rather than acting on Behavioral change can be a sign of worsening oxygenation. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This answer choice treats The nurse should leave the patient alone to avoid agitation as the key issue, despite the clinical warning in A patient on oxygen becomes more confused and starts removing the nasal cannula. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is The patient may be becoming hypoxic or acutely altered because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "oxygenation_and_mentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Behavioral change can be a sign of worsening oxygenation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygenation_and_mentation",
+        "caption": "Behavioral change can be a sign of worsening oxygenation.",
+        "conclusion": "Behavioral change can be a sign of worsening oxygenation."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pulse_and_pressure_change",
+      "subcategory": "pulse_and_pressure_change",
+      "difficulty": 3,
+      "stem": "An older adult becomes confused, cool, and has a weak pulse after a GI bleed. What is the best bedside interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be unstable from decreased circulating volume"
+        },
+        {
+          "id": "b",
+          "text": "Confusion means the blood loss is not serious"
+        },
+        {
+          "id": "c",
+          "text": "A weak pulse is expected after every bowel problem"
+        },
+        {
+          "id": "d",
+          "text": "The bleeding is probably resolved because the patient is still awake"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Blood loss can reduce circulating volume and cause poor perfusion, confusion, and weak pulses. **Why the others are wrong:** - B Confusion can be a sign of poor perfusion. - C Weak pulse is not a bowel-specific normal finding. - D Awake status does not rule out instability.",
+      "distractorRationales": {
+        "b": "The problem with Confusion means the blood loss is not serious is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to Blood loss can reduce circulating volume and cause poor perfusion, confusion. Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved.",
+        "c": "This distractor pulls attention toward A weak pulse is expected after every bowel problem, and misses that Bleeding plus confusion and weak pulse can mean unstable circulation. Normalizes a finding that should change the nurse's priority, so The patient may be unstable from decreased circulating volume better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Selecting The bleeding is probably resolved because the patient is still awake would be unsafe, while the decisive cue is Blood loss can reduce circulating volume and cause poor perfusion, confusion. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response."
+      },
+      "tags": [
+        "pulse_and_pressure_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Bleeding plus confusion and weak pulse can mean unstable circulation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "slowed_response",
+      "subcategory": "slowed_response",
+      "difficulty": 3,
+      "stem": "A patient becomes slower to respond and has trouble keeping their eyes open. What is the nurse's best action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for an acute cause right away"
+        },
+        {
+          "id": "b",
+          "text": "Assume the patient is bored"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the change to pass"
+        },
+        {
+          "id": "d",
+          "text": "Ignore it if the vitals are not extreme"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Slowed responsiveness can signal a neurologic or physiologic change that needs prompt assessment. **Why the others are wrong:** - B Boredom does not explain an acute change. - C Waiting can miss deterioration. - D Vital signs can look acceptable while the patient worsens.",
+      "distractorRationales": {
+        "b": "The problem with Assume the patient is bored is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by A patient becomes slower to respond and has trouble keeping their eyes open. Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "c": "This option overweights Wait for the change to pass, while the decisive cue is A patient becomes slower to respond and has trouble keeping their eyes open. Treats an active warning sign as something safe to watch, so Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "d": "This distractor pulls attention toward Ignore it if the vitals are not extreme, but the stem cue is Slowed responsiveness can signal a neurologic or physiologic change that needs prompt assessment. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Assess for an acute cause right away targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "slowed_response",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Any sudden change in responsiveness deserves attention.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sudden_speech_change",
+      "subcategory": "sudden_speech_change",
+      "difficulty": 3,
+      "stem": "A patient suddenly has trouble finding words and seems confused. What is the nurse's best action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for a possible acute neurologic problem immediately"
+        },
+        {
+          "id": "b",
+          "text": "Ask the family to wait and see whether it passes"
+        },
+        {
+          "id": "c",
+          "text": "Offer the patient a snack first"
+        },
+        {
+          "id": "d",
+          "text": "Document that the patient is anxious"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden language change and confusion can indicate stroke or another neurologic emergency. **Why the others are wrong:** - B Waiting is unsafe when a neurologic emergency is possible. - C Food does not replace a neuro assessment. - D Anxiety should not be assumed without assessment.",
+      "distractorRationales": {
+        "b": "Ask the family to wait and see whether it passes is not the best answer, even though the higher-risk finding is **Why the others are wrong:** - B Waiting is unsafe when a neurologic emergency is possible. Treats an active warning sign as something safe to watch, so The correct path is Assess for a possible acute neurologic problem immediately, which matches the priority cues instead of a secondary concern.",
+        "c": "This answer choice treats Offer the patient a snack first as the key issue, rather than acting on Sudden language trouble needs immediate neurologic assessment. Does not account for the clinical cue most likely to deteriorate first, so The priority is Assess for a possible acute neurologic problem immediately, not a step that delays stabilization of neurologic deterioration.",
+        "d": "This distractor pulls attention toward Document that the patient is anxious, but the stem cue is Sudden language change and confusion can indicate stroke or another neurologic emergency. Does not account for the clinical cue most likely to deteriorate first, so Assess for a possible acute neurologic problem immediately better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "sudden_speech_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden language trouble needs immediate neurologic assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "This is an expected effect of routine eye fatigue is not the best answer, without accounting for Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency. Treats an active warning sign as something safe to watch, so The client may have acute angle-closure glaucoma and needs urgent evaluation is safer because it addresses clinical safety risk before routine care or reassurance.",
+        "c": "This answer choice treats The client is likely having a migraine and can rest at home as the key issue, although the nurse should be guided by Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize The client may have acute angle-closure glaucoma and needs urgent evaluation; otherwise clinical safety risk remains the active threat.",
+        "d": "This answer choice treats These findings show that prescribed eye drops are working well as the key issue, instead of responding to Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "Restrict oral fluids and monitor weight is not the best answer, even though the higher-risk finding is The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Moves to a lower-acuity action before the client is clinically stable, so That choice could make the nurse miss the window for renal protection while renal injury progresses.",
+        "c": "This distractor pulls attention toward Hold corticosteroids until the morning cortisol level is drawn, when the bedside priority is driven by sodium 128 mEq/L. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Administer IV hydrocortisone and isotonic fluids targets the problem most likely to deteriorate first.",
+        "d": "Teach the client about low-sodium foods fits a lower-risk interpretation, rather than acting on A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg. Moves to teaching or reassurance before the immediate risk is stabilized, so Choosing it can delay renal protection and leave renal injury unresolved."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "This choice focuses on Obtain a full allergy history before intervening, while the decisive cue is A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "c": "Selecting Slow the infusion to reduce the reaction would be unsafe, instead of responding to A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This distractor pulls attention toward Document the event and continue monitoring, and misses that The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. Treats an active warning sign as something safe to watch, so Stop the infusion and prepare to administer epinephrine is safer because it addresses oxygenation or ventilation before routine care or reassurance."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "The clinical error in Lay the client flat and increase the room temperature is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by Delay increases the risk of stroke or seizure. Sit the client upright and assess for bladder distention is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "c": "Ask the client to rest quietly until the headache passes fits a lower-risk interpretation, instead of responding to The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Does not account for the clinical cue most likely to deteriorate first, so The priority is Sit the client upright and assess for bladder distention, not a step that delays stabilization of neurologic deterioration.",
+        "d": "The clinical error in Offer oral fluids and reassess in 30 minutes is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is Delay increases the risk of stroke or seizure. It is less defensible because Sit the client upright and assess for bladder distention targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "Slow the transfusion rate and reassess in 5 minutes is not the best answer, and misses that chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. Treats an active warning sign as something safe to watch, so Stop the transfusion and keep the IV line open with normal saline is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "c": "This answer choice treats Administer acetaminophen and continue the transfusion as the key issue, rather than acting on A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Does not account for the clinical cue most likely to deteriorate first, so The priority is Stop the transfusion and keep the IV line open with normal saline, not a step that delays stabilization of circulation or perfusion.",
+        "d": "Document the symptoms as an expected febrile response would not address the priority, and misses that Suspected transfusion reaction means stop the blood first and keep the line open with normal saline. Normalizes a finding that should change the nurse's priority, so Stop the transfusion and keep the IV line open with normal saline better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb895-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "This answer choice treats Use alcohol-based sanitizer alone because it is faster as the key issue, although the nurse should be guided by c diff spore precautions infection. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "c": "Place the client on droplet precautions only would not address the priority, when the bedside priority is driven by c diff spore precautions infection. Does not account for the clinical cue most likely to deteriorate first, so Use soap and water for hand hygiene after removing gloves better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This answer choice treats Share the blood pressure cuff after wiping it with a dry towel as the key issue, while the decisive cue is c diff spore precautions infection. Anchors on the wrong explanation for the client's cues, so The priority is Use soap and water for hand hygiene after removing gloves, not a step that delays stabilization of infection progression."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

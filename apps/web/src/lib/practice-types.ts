@@ -1,7 +1,14 @@
-import type { Exam } from "@/lib/types";
+import type { Exam, QuestionType } from "@/lib/types";
 
 export type PracticeMode = "standard" | "chart" | "case-study" | "ngn" | "practice-exam";
-export type PracticeQuestionKind = "mcq" | "multi-select" | "matrix" | "chart" | "case-study";
+export type PracticeQuestionKind =
+  | "mcq"
+  | "multi-select"
+  | "matrix"
+  | "chart"
+  | "case-study"
+  | "scenario-mcq"
+  | "decision-map-mcq";
 
 export interface PracticeOption {
   id: string;
@@ -40,6 +47,7 @@ export interface PracticeQuestion {
   difficulty: 1 | 2 | 3 | 4 | 5;
   mode: PracticeMode;
   kind: PracticeQuestionKind;
+  questionType?: QuestionType;
   stem: string;
   options?: PracticeOption[];
   correctAnswer: PracticeAnswer;

@@ -1,0 +1,449 @@
+{
+  "batchId": "mixed-batch-848",
+  "generatedAt": "2026-04-09T16:58:08-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb848-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_level_change",
+      "subcategory": "acute_level_change",
+      "difficulty": 3,
+      "stem": "A patient becomes much less responsive after previously answering clearly. What is the nurse's first priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess airway, breathing, circulation, and neurologic status"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the patient to wake up naturally"
+        },
+        {
+          "id": "c",
+          "text": "Document that the patient is probably just tired"
+        },
+        {
+          "id": "d",
+          "text": "Offer the patient food before assessing further"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration. **Why the others are wrong:** - B Delay may miss a serious change. - C Tiredness should not be assumed. - D Food does not replace an urgent assessment.",
+      "distractorRationales": {
+        "b": "This answer choice treats Wait for the patient to wake up naturally as the key issue, rather than acting on Sudden decreased responsiveness is an emergency until proven otherwise. Treats an active warning sign as something safe to watch, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "c": "This answer choice treats Document that the patient is probably just tired as the key issue, instead of responding to Sudden decreased responsiveness is an emergency until proven otherwise. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "The clinical error in Offer the patient food before assessing further is that it does not account for the clinical cue most likely to deteriorate first, and misses that Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "acute_level_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden decreased responsiveness is an emergency until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "breathing_effort_in_child",
+      "subcategory": "breathing_effort_in_child",
+      "difficulty": 3,
+      "stem": "A child with fever is breathing faster than usual and has nasal flaring. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess respiratory status and oxygenation immediately"
+        },
+        {
+          "id": "b",
+          "text": "Tell the parent the child is probably just warm"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the next temperature check"
+        },
+        {
+          "id": "d",
+          "text": "Focus only on giving antipyretics"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Nasal flaring and tachypnea suggest respiratory distress and require prompt assessment. **Why the others are wrong:** - B Fever does not explain away respiratory distress. - C Delay is unsafe. - D Lowering the fever does not replace breathing assessment.",
+      "distractorRationales": {
+        "b": "This choice focuses on Tell the parent the child is probably just warm, instead of responding to A child with fever is breathing faster than usual and has nasal flaring. Does not account for the clinical cue most likely to deteriorate first, so The priority is Reassess respiratory status and oxygenation immediately, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "The clinical error in Wait until the next temperature check is that it treats an active warning sign as something safe to watch, even though the higher-risk finding is **Why the others are wrong:** - B Fever does not explain away respiratory distress. Reassess respiratory status and oxygenation immediately better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This option makes Focus only on giving antipyretics the focus, without accounting for - D Lowering the fever does not replace breathing assessment. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "breathing_effort_in_child",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Nasal flaring is a pediatric respiratory warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_priority_which_patient_first",
+      "subcategory": "safety_priority_which_patient_first",
+      "difficulty": 3,
+      "stem": "The nurse is caring for four patients on a medical-surgical floor. Which patient should the nurse assess FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 74-year-old with COPD, SpO₂ 91% on 2L nasal cannula, baseline, requesting a warm blanket"
+        },
+        {
+          "id": "b",
+          "text": "A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site"
+        },
+        {
+          "id": "c",
+          "text": "A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old with DVT on heparin infusion, asking when they can ambulate today"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute confusion in a patient with heart failure is a red-flag symptom. Sudden onset confusion can signal decreased cerebral perfusion from worsening cardiac output, hyponatremia, medication toxicity (digoxin), or hypoxia — all potentially life-threatening. The patient's verbalization that 'something is wrong' (sense of impending doom) is a significant subjective cue. Using the ABCs and Maslow's hierarchy, altered mental status indicating possible hemodynamic compromise takes priority. The COPD patient (A) is at stable baseline. Post-op pain (B) is expected and not emergent. The heparin patient (D) has a non-urgent question.",
+      "distractorRationales": {
+        "a": "A 74-year-old with COPD, SpO₂ 91% on 2L nasal cannula, baseline, requesting a warm blanket would not address the priority, and misses that Post-op pain (B) is expected and not emergent. Anchors on the wrong explanation for the client's cues, so A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong' is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "b": "This choice focuses on A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site, although the nurse should be guided by Acute mental status change = priority assessment. Does not account for the clinical cue most likely to deteriorate first, so The priority is A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong', not a step that delays stabilization of bleeding or anticoagulation injury.",
+        "d": "This option overweights A 45-year-old with DVT on heparin infusion, asking when they can ambulate today, rather than acting on The heparin patient (D) has a non-urgent question. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong' because delaying bleeding-risk intervention can worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "safety_priority_which_patient_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute mental status change = priority assessment. In heart failure, sudden confusion may signal worsening CO, hyponatremia, or hypoxia. 'Feeling like something is wrong' is a significant clinical cue — always assess these patients first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_stable_vs_unstable_differentiation",
+      "subcategory": "safety_stable_vs_unstable_differentiation",
+      "difficulty": 3,
+      "stem": "A nurse receives report on four patients. Which patient is UNSTABLE and requires immediate reassessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Post-op appendectomy patient, day 1, HR 92, BP 118/74, mild incisional pain 4/10"
+        },
+        {
+          "id": "b",
+          "text": "Patient with pneumonia, T 38.4°C, HR 88, RR 20, SpO₂ 95% on 3L NC, improving on antibiotics"
+        },
+        {
+          "id": "c",
+          "text": "Patient with GI bleed admitted 6 hours ago: HR 118 (was 88 one hour ago), BP 96/58 (was 118/72), increased bright red rectal bleeding"
+        },
+        {
+          "id": "d",
+          "text": "Patient with COPD exacerbation, SpO₂ 91% on 2L NC (baseline 90–92%), pursed-lip breathing"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The GI bleed patient shows a deteriorating trend over one hour: HR increased 30 bpm (compensatory tachycardia from volume loss), BP dropped 22/14 mmHg (hypoperfusion), and bleeding is visibly worsening. This trajectory — not just the absolute values — defines instability. A patient is unstable when vital signs are trending in the wrong direction, indicating the body's compensatory mechanisms are being overwhelmed. The post-op patient (A) is stable and expected. The pneumonia patient (B) is improving on treatment. The COPD patient (D) is at their baseline SpO₂.",
+      "distractorRationales": {
+        "a": "This answer choice treats Post-op appendectomy patient, day 1, HR 92, BP 118/74, mild incisional pain 4/10 as the key issue, although the nurse should be guided by bleeding is visibly worsening. Normalizes a finding that should change the nurse's priority, so The safer answer is Patient with GI bleed admitted 6 hours ago: HR 118 (was 88 one hour ago), BP because delaying bleeding-risk intervention can worsen bleeding or anticoagulation injury.",
+        "b": "The problem with Patient with pneumonia, T 38.4°C, HR 88, RR 20, SpO₂ 95% on 3L NC, improving on is that it anchors on the wrong explanation for the client's cues, rather than acting on The COPD patient (D) is at their baseline SpO₂. The safer answer is Patient with GI bleed admitted 6 hours ago: HR 118 (was 88 one hour ago), BP because delaying bleeding-risk intervention can worsen bleeding or anticoagulation injury.",
+        "d": "Patient with COPD exacerbation, SpO₂ 91% on 2L NC (baseline 90–92%), pursed-lip breathing fits a lower-risk interpretation, instead of responding to The COPD patient (D) is at their baseline SpO₂. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize Patient with GI bleed admitted 6 hours ago: HR 118 (was 88 one hour ago), BP; otherwise bleeding or anticoagulation injury remains the active threat."
+      },
+      "tags": [
+        "safety_stable_vs_unstable_differentiation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Instability = trending in the wrong direction. HR rising + BP falling + worsening bleeding = active hemorrhagic shock. Always compare current vitals to the baseline/trend, not just absolute values.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "delegation",
+      "difficulty": 3,
+      "stem": "The registered nurse is planning assignments for a UAP (unlicensed assistive personnel) on the medical-surgical floor. Which task is APPROPRIATE to delegate to the UAP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform a focused cardiovascular assessment on a patient with new-onset chest pain"
+        },
+        {
+          "id": "b",
+          "text": "Teach a diabetic patient how to perform foot care and inspect for wounds"
+        },
+        {
+          "id": "c",
+          "text": "Obtain vital signs on a stable post-operative patient and document findings"
+        },
+        {
+          "id": "d",
+          "text": "Evaluate whether a patient's pain is adequately controlled after analgesic administration"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Obtaining and documenting vital signs on a stable patient is within the UAP scope of practice and is appropriate to delegate. The key factors are: the task is routine and non-complex, the patient is stable, and the findings are objective measurements. Assessment (A) requires RN judgment and cannot be delegated. Patient education (B) is an RN responsibility requiring clinical judgment and adaptation. Pain evaluation after medication (D) involves clinical judgment about medication effectiveness — always an RN function. The Five Rights of Delegation: right task, right circumstance, right person, right direction/communication, right supervision.",
+      "distractorRationales": {
+        "a": "Perform a focused cardiovascular assessment on a patient with new-onset chest pain is not the best answer, when the bedside priority is driven by Assessment (A) requires RN judgment and cannot be delegated. Anchors on the wrong explanation for the client's cues, so It is less defensible because Obtain vital signs on a stable post-operative patient and document findings targets the problem most likely to deteriorate first.",
+        "b": "Teach a diabetic patient how to perform foot care and inspect for wounds is not the best answer, without accounting for Assessment (A) requires RN judgment and cannot be delegated. Moves to teaching or reassurance before the immediate risk is stabilized, so It is less defensible because Obtain vital signs on a stable post-operative patient and document findings targets the problem most likely to deteriorate first.",
+        "d": "This answer choice treats Evaluate whether a patient's pain is adequately controlled after analgesic administration as the key issue, while the decisive cue is Pain evaluation after medication (D) involves clinical judgment about medication effectiveness — always an RN function. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Obtain vital signs on a stable post-operative patient and document findings; otherwise medication toxicity remains the active threat."
+      },
+      "tags": [
+        "delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can: obtain vital signs, record I&O, assist with ADLs, ambulate stable patients, collect specimens. RNs cannot delegate: assessment, teaching, care planning, medication administration evaluation, or tasks requiring clinical judgment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "wheezing_and_breathing_effort",
+      "subcategory": "wheezing_and_breathing_effort",
+      "difficulty": 3,
+      "stem": "A patient with asthma is wheezing loudly, using accessory muscles, and can only say a few words at a time. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient is having significant respiratory distress"
+        },
+        {
+          "id": "b",
+          "text": "The wheezing proves the airway is opening well"
+        },
+        {
+          "id": "c",
+          "text": "The patient should rest without reassessment"
+        },
+        {
+          "id": "d",
+          "text": "Talking less always means improvement"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Accessory muscle use and limited speech suggest increased work of breathing and a worsening respiratory pattern. **Why the others are wrong:** - B Loud wheezing does not mean the patient is stable. - C Rest does not replace reassessment. - D Short speech can indicate more, not less, distress.",
+      "distractorRationales": {
+        "b": "The reasoning trap in The wheezing proves the airway is opening well is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Accessory muscle use and limited speech suggest increased work of breathing and a worsening respiratory pattern. It is less defensible because The patient is having significant respiratory distress targets the problem most likely to deteriorate first.",
+        "c": "The reasoning trap in The patient should rest without reassessment is that it treats an active warning sign as something safe to watch, when the bedside priority is driven by A patient with asthma is wheezing loudly, using accessory muscles. The correct path is The patient is having significant respiratory distress, which matches the priority cues instead of a secondary concern.",
+        "d": "This option overweights Talking less always means improvement, despite the clinical warning in A patient with asthma is wheezing loudly, using accessory muscles. Does not account for the clinical cue most likely to deteriorate first, so The priority is The patient is having significant respiratory distress, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "wheezing_and_breathing_effort",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Speech limitation plus accessory muscle use is a respiratory warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "focal_weakness",
+      "subcategory": "focal_weakness",
+      "difficulty": 3,
+      "stem": "A patient suddenly has facial droop and one-sided arm weakness. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the stroke response process immediately"
+        },
+        {
+          "id": "b",
+          "text": "Recheck in an hour to see whether it improves"
+        },
+        {
+          "id": "c",
+          "text": "Ask the patient to rest and avoid talking"
+        },
+        {
+          "id": "d",
+          "text": "Give pain medication first"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden focal deficits can signal stroke, and rapid response matters because time-sensitive treatment may be available. **Why the others are wrong:** - B Waiting can cost treatment time. - C Rest does not address the emergency. - D Pain control is not the first priority here.",
+      "distractorRationales": {
+        "b": "This option makes Recheck in an hour to see whether it improves the focus, even though the higher-risk finding is - D Pain control is not the first priority here. Does not account for the clinical cue most likely to deteriorate first, so Activate the stroke response process immediately is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "c": "The problem with Ask the patient to rest and avoid talking is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by A patient suddenly has facial droop and one-sided arm weakness. The safer answer is Activate the stroke response process immediately because delaying neurologic safety assessment can worsen neurologic deterioration.",
+        "d": "Give pain medication first is not the best answer, and misses that Sudden focal deficits can signal stroke. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Activate the stroke response process immediately, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "focal_weakness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden one-sided weakness is a stroke emergency until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "which_patient_first",
+      "subcategory": "which_patient_first",
+      "difficulty": 3,
+      "stem": "The nurse has four patients. Which should be seen first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with shortness of breath and accessory muscle use"
+        },
+        {
+          "id": "b",
+          "text": "A patient requesting help to the bathroom"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking for a TV remote"
+        },
+        {
+          "id": "d",
+          "text": "A patient waiting for routine teaching"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Breathing difficulty with accessory muscle use is an immediate assessment priority. **Why the others are wrong:** - B Bathroom help is important but less urgent. - C The remote is nonurgent. - D Routine teaching can wait.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward A patient requesting help to the bathroom, without accounting for - D Routine teaching can wait. Does not account for the clinical cue most likely to deteriorate first, so A patient with shortness of breath and accessory muscle use better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "A patient asking for a TV remote is not the best answer, even though the higher-risk finding is - D Routine teaching can wait. Does not account for the clinical cue most likely to deteriorate first, so A patient with shortness of breath and accessory muscle use is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This answer choice treats A patient waiting for routine teaching as the key issue, instead of responding to - D Routine teaching can wait. Treats an active warning sign as something safe to watch, so The safer answer is A patient with shortness of breath and accessory muscle use because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "which_patient_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Breathing problems outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_safety",
+      "subcategory": "pharmacology_safety",
+      "difficulty": 3,
+      "stem": "A client receiving IV heparin has an aPTT of 143 seconds. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the heparin infusion rate."
+        },
+        {
+          "id": "b",
+          "text": "Stop the heparin infusion and notify the provider."
+        },
+        {
+          "id": "c",
+          "text": "Administer vitamin K immediately."
+        },
+        {
+          "id": "d",
+          "text": "Document the result as expected."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This aPTT is markedly supratherapeutic, so the infusion must be stopped before additional anticoagulant is delivered. Provider notification and protocol-based adjustment come next. The other options either worsen bleeding risk or use the wrong antidote.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Increase the heparin infusion rate, and misses that A client receiving IV heparin has an aPTT of 143 seconds. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Stop the heparin infusion and notify the provider targets the problem most likely to deteriorate first.",
+        "c": "Administer vitamin K immediately would not address the priority, but the stem cue is A client receiving IV heparin has an aPTT of 143 seconds. Does not account for the clinical cue most likely to deteriorate first, so Stop the heparin infusion and notify the provider better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This option overweights Document the result as expected, while the decisive cue is The other options either worsen bleeding risk or use the wrong antidote. Normalizes a finding that should change the nurse's priority, so The priority is Stop the heparin infusion and notify the provider, not a step that delays stabilization of bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "pharmacology_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unsafe heparin level -> stop the infusion first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb848-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "endocrine_metabolic",
+      "subcategory": "endocrine_metabolic",
+      "difficulty": 3,
+      "stem": "A client with diabetes has blood glucose 45 mg/dL, diaphoresis, and confusion and is unsafe for oral intake. What is the first action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Give orange juice by mouth."
+        },
+        {
+          "id": "b",
+          "text": "Administer glucagon IM or dextrose IV based on access."
+        },
+        {
+          "id": "c",
+          "text": "Wait for a repeat glucose check in 15 minutes."
+        },
+        {
+          "id": "d",
+          "text": "Give regular insulin to control rebound hyperglycemia."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This is symptomatic hypoglycemia and requires immediate parenteral rescue because oral intake is unsafe. Delaying treatment risks seizure and coma. Insulin would worsen the emergency.",
+      "distractorRationales": {
+        "a": "This choice focuses on Give orange juice by mouth, despite the clinical warning in Insulin would worsen the emergency. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "c": "This distractor pulls attention toward Wait for a repeat glucose check in 15 minutes, even though the higher-risk finding is Hypoglycemia without safe swallowing -> treat immediately with glucagon or IV dextrose. Treats an active warning sign as something safe to watch, so It is less defensible because Administer glucagon IM or dextrose IV based on access targets the problem most likely to deteriorate first.",
+        "d": "This option makes Give regular insulin to control rebound hyperglycemia the focus, but the stem cue is Hypoglycemia without safe swallowing -> treat immediately with glucagon or IV dextrose. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Administer glucagon IM or dextrose IV based on access targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "endocrine_metabolic",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypoglycemia without safe swallowing -> treat immediately with glucagon or IV dextrose.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

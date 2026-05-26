@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-754",
+  "generatedAt": "2026-04-08T16:33:08-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb754-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_hypoglycemia",
+      "subcategory": "Neonatal Hypoglycemia",
+      "difficulty": 3,
+      "stem": "A large-for-gestational-age (LGA) neonate born to a mother with gestational diabetes is 2 hours old. The bedside glucose is 38 mg/dL. The neonate is jittery with poor tone. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Administer IV dextrose 10% (D10W) 2 mL/kg IV push"
+        },
+        {
+          "id": "c",
+          "text": "Notify the neonatologist and transfer to the NICU for monitoring"
+        },
+        {
+          "id": "d",
+          "text": "Administer glucagon 0.3 mg/kg IM and recheck in 15 minutes"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires IV dextrose therapy. Symptomatic hypoglycemia is treated with IV D10W 2 mL/kg bolus, followed by a continuous D10W infusion. Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40–45), not for symptomatic hypoglycemia with jitteriness and poor tone. Glucagon (D) can be used in severe refractory hypoglycemia but IV glucose is first-line. NICU notification (C) may follow but IV glucose is the immediate intervention.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes is that it moves to a lower-acuity action before the client is clinically stable, but the stem cue is Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40–45), not for symptomatic hypoglycemia with jitteriness and poor. It is less defensible because Administer IV dextrose 10% (D10W) 2 mL/kg IV push targets the problem most likely to deteriorate first.",
+        "c": "This option makes Notify the neonatologist and transfer to the NICU for monitoring the focus, when the bedside priority is driven by Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires. Waits on escalation while the bedside priority remains unresolved, so That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses.",
+        "d": "This answer choice treats Administer glucagon 0.3 mg/kg IM and recheck in 15 minutes as the key issue, rather than acting on Glucagon (D) can be used in severe refractory hypoglycemia but IV glucose is first-line. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved."
+      },
+      "tags": [
+        "Neonatal Hypoglycemia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Symptomatic neonatal hypoglycemia (<45 mg/dL with symptoms): IV D10W 2 mL/kg bolus — breastfeeding alone is insufficient for symptomatic newborns.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with hyperthyroidism develops sudden-onset temperature 39.8°C, HR 148 with atrial fibrillation, tremor, and confusion after an emergency appendectomy. Which sequence of pharmacologic interventions is CORRECT for thyroid storm?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Iodine → propylthiouracil (PTU) → propranolol"
+        },
+        {
+          "id": "b",
+          "text": "Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU)"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol → iodine → PTU"
+        },
+        {
+          "id": "d",
+          "text": "Methimazole → iodine → esmolol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The correct sequence for thyroid storm is: (1) PTU first — blocks new thyroid hormone synthesis AND peripheral T4→T3 conversion; (2) propranolol — controls tachycardia and sympathetic symptoms; (3) iodine (Lugol's solution or SSKI) given at least 1 hour AFTER PTU. Iodine must be given after PTU because iodine provides substrate for thyroid hormone production — if given before a thionamide, it can worsen the storm (Jod-Basedow effect). Methimazole (D) does not block peripheral conversion.",
+      "distractorRationales": {
+        "a": "Iodine → propylthiouracil (PTU) → propranolol would not address the priority, and misses that (2) propranolol — controls tachycardia and sympathetic symptoms. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU) targets the problem most likely to deteriorate first.",
+        "c": "This option overweights Propranolol → iodine → PTU, while the decisive cue is Never give iodine first. Does not account for the clinical cue most likely to deteriorate first, so The priority is Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU), not a step that delays stabilization of neurologic deterioration.",
+        "d": "The problem with Methimazole → iodine → esmolol is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is Never give iodine first. That mismatch risks slower recognition of neurologic deterioration and postpones the needed nursing response."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm drug sequence: PTU → propranolol → iodine (1 hour after PTU). Never give iodine first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "de_escalation",
+      "subcategory": "De-escalation",
+      "difficulty": 3,
+      "stem": "A patient with schizophrenia becomes increasingly agitated in the day room, pacing, clenching fists, and stating loudly: 'Everyone is trying to poison me!' Which nurse action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approach the patient with two other staff members and prepare for physical restraint"
+        },
+        {
+          "id": "b",
+          "text": "Call security immediately and lock the day room"
+        },
+        {
+          "id": "c",
+          "text": "Calmly approach alone, make brief eye contact, use a low voice, and offer to move to a quieter space"
+        },
+        {
+          "id": "d",
+          "text": "Tell the patient loudly: 'You need to calm down or you will be restrained'"
+        }
+      ],
+      "answer": "c",
+      "rationale": "De-escalation techniques include: calm tone of voice, non-threatening body language, offering choice/control (moving to quiet space), reducing environmental stimulation, and validating feelings without agreeing with delusions. Approaching with multiple staff (A) can feel threatening and escalate the situation. Locking the unit (B) removes the patient's sense of freedom and escalates. Threatening restraint (D) is coercive and contraindicated in de-escalation. Physical restraint is the last resort after verbal de-escalation fails.",
+      "distractorRationales": {
+        "a": "This option makes Approach the patient with two other staff members and prepare for physical restraint the focus, but the stem cue is Physical restraint is the last resort after verbal de-escalation fails. Anchors on the wrong explanation for the client's cues, so The correct path is Calmly approach alone, make brief eye contact, use a low voice, and offer to move to, which matches the priority cues instead of a secondary concern.",
+        "b": "Call security immediately and lock the day room is not the best answer, and misses that De-escalation: calm voice, non-threatening approach, reduce stimulation, offer choices — physical restraint is last resort only. Waits on escalation while the bedside priority remains unresolved, so The correct path is Calmly approach alone, make brief eye contact, use a low voice, and offer to move to, which matches the priority cues instead of a secondary concern.",
+        "d": "This answer choice treats Tell the patient loudly: 'You need to calm down or you will be restrained' as the key issue, instead of responding to Threatening restraint (D) is coercive and contraindicated in de-escalation. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved."
+      },
+      "tags": [
+        "De-escalation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "De-escalation: calm voice, non-threatening approach, reduce stimulation, offer choices — physical restraint is last resort only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_management",
+      "subcategory": "Delegation / Management",
+      "difficulty": 3,
+      "stem": "A charge nurse on a busy medical unit receives four calls simultaneously. Which situation should the charge nurse address PERSONALLY and FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given"
+        },
+        {
+          "id": "b",
+          "text": "A CNA reporting that a patient pulled out their peripheral IV"
+        },
+        {
+          "id": "c",
+          "text": "A family member asking about the patient's discharge plan"
+        },
+        {
+          "id": "d",
+          "text": "A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88% and cannot be aroused"
+        }
+      ],
+      "answer": "d",
+      "rationale": "The patient who is unresponsive, diaphoretic, hypoxic, and has chest pain is in acute cardiovascular or respiratory distress — this is a potential cardiac arrest or shock scenario requiring immediate, high-level nursing assessment and intervention. The charge nurse must respond in person and likely activate a rapid response or code. Missed scheduled medications is an important safety issue but not immediately life-threatening and can be delegated to the LPN's supervising RN. A dislodged IV requires reinsertion — important but not immediately life-threatening. Family discharge questions can be deferred to the primary nurse or case manager.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given, when the bedside priority is driven by A dislodged IV requires reinsertion — important but not immediately life-threatening. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "b": "This option overweights A CNA reporting that a patient pulled out their peripheral IV, instead of responding to A dislodged IV requires reinsertion — important but not immediately life-threatening. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88% because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "Selecting A family member asking about the patient's discharge plan would be unsafe, although the nurse should be guided by Triage for charge nurse response: unresponsive patient with chest pain + hypoxia + diaphoresis = potential code =. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved."
+      },
+      "tags": [
+        "Delegation / Management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Triage for charge nurse response: unresponsive patient with chest pain + hypoxia + diaphoresis = potential code = charge nurse goes first and activates RRT/code response. All other issues can be triaged or delegated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days. The infant appears hungry after vomiting. Labs show: Na 138, K 3.0, Cl 88, HCO3 34, pH 7.56. What diagnosis and lab pattern does this represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Biliary atresia; direct hyperbilirubinemia with elevated GGT"
+        },
+        {
+          "id": "b",
+          "text": "Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis"
+        },
+        {
+          "id": "c",
+          "text": "Intussusception; normal electrolytes with currant jelly stools"
+        },
+        {
+          "id": "d",
+          "text": "Gastroenteritis; isotonic dehydration with normal bicarbonate"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pyloric stenosis presents in male infants 2–8 weeks old with projectile non-bilious vomiting (pyloric obstruction is proximal to bile entry), hungry behavior post-vomiting, and a palpable 'olive-shaped' mass in the epigastrium. Repeated vomiting of gastric contents (HCl) causes: loss of H+ → metabolic alkalosis (HCO3 34, pH 7.56), loss of Cl- → hypochloremia (Cl 88), and compensatory renal K+ wasting → hypokalemia (K 3.0). Diagnosis: ultrasound (pyloric wall thickness >3–4 mm, length >14–16 mm). Treatment: surgical pyloromyotomy (Ramstedt procedure) after electrolyte correction.",
+      "distractorRationales": {
+        "a": "The problem with Biliary atresia; direct hyperbilirubinemia with elevated GGT is that it anchors on the wrong explanation for the client's cues, instead of responding to A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days. That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "c": "Intussusception; normal electrolytes with currant jelly stools is not the best answer, without accounting for compensatory renal K+ wasting → hypokalemia (K 3. Normalizes a finding that should change the nurse's priority, so Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis is safer because it addresses renal injury before routine care or reassurance.",
+        "d": "Selecting Gastroenteritis; isotonic dehydration with normal bicarbonate would be unsafe, instead of responding to 0, Cl 88, HCO3 34, pH 7. Normalizes a finding that should change the nurse's priority, so The nurse should prioritize Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis; otherwise renal injury remains the active threat."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction.",
+        "conclusion": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 67-year-old patient is 2 days post right total hip replacement. The nurse finds the right calf swollen, warm, and tender. As the nurse is documenting, the patient develops sudden-onset dyspnea, SpO2 drops from 96% to 86%, and the patient reports right-sided chest pain. What is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Massage the right calf firmly to break up the clot and apply a warm compress"
+        },
+        {
+          "id": "b",
+          "text": "Maintain head-of-bed elevation, apply supplemental O2, notify the physician STAT, and anticipate anticoagulation and CT pulmonary angiography orders"
+        },
+        {
+          "id": "c",
+          "text": "Encourage immediate ambulation to prevent further clot propagation in the DVT"
+        },
+        {
+          "id": "d",
+          "text": "Apply bilateral compression stockings and continue the scheduled enoxaparin dose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This presentation is classic DVT (unilateral calf swelling, warmth, tenderness) progressing to pulmonary embolism (acute-onset dyspnea, plunging SpO2, pleuritic chest pain). PE is a post-operative emergency with high mortality if not promptly treated. Priority: (1) Supplemental O2 to target SpO2 >94%; position of comfort (usually HOB elevated); (2) NOTIFY physician STAT — do not delay; (3) Anticipate: CT pulmonary angiography (gold standard for PE diagnosis), systemic anticoagulation (IV heparin or LMWH), hemodynamic support if cardiovascular collapse occurs. NEVER massage a suspected DVT — dislodging the thrombus directly causes massive PE. NEVER ambulate with acute DVT until anticoagulation is established and imaging confirms. Compression stockings are preventive, not treatment for acute DVT/PE.",
+      "distractorRationales": {
+        "a": "Massage the right calf firmly to break up the clot and apply a warm compress is not the best answer, but the stem cue is (3) Anticipate: CT pulmonary angiography (gold standard for PE diagnosis), systemic anticoagulation (IV heparin or LMWH), hemodynamic support. Does not account for the clinical cue most likely to deteriorate first, so Maintain head-of-bed elevation, apply supplemental O2, notify the physician STAT, and anticipate anticoagulation and CT pulmonary better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "Selecting Encourage immediate ambulation to prevent further clot propagation in the DVT would be unsafe, instead of responding to Post-op DVT → PE: acute dyspnea + dropping SpO2 + pleuritic pain = EMERGENCY. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Maintain head-of-bed elevation, apply supplemental O2, notify the physician STAT, and anticipate anticoagulation and CT pulmonary because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "Apply bilateral compression stockings and continue the scheduled enoxaparin dose is not the best answer, but the stem cue is (3) Anticipate: CT pulmonary angiography (gold standard for PE diagnosis), systemic anticoagulation (IV heparin or LMWH), hemodynamic support. Treats an active warning sign as something safe to watch, so The correct path is Maintain head-of-bed elevation, apply supplemental O2, notify the physician STAT, and anticipate anticoagulation and CT pulmonary, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op DVT → PE: acute dyspnea + dropping SpO2 + pleuritic pain = EMERGENCY. O2 immediately + notify MD STAT + CT-PA + anticoagulation. NEVER massage DVT — causes PE. Never ambulate until treatment initiated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_fall_prevention",
+      "subcategory": "Safety and Infection Control / Fall Prevention",
+      "difficulty": 2,
+      "stem": "A nurse is admitting a 79-year-old patient with a history of orthostatic hypotension, recent fall, and current use of furosemide and lisinopril. Which intervention is HIGHEST priority for fall prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place a fall-risk bracelet on the patient and document in the chart"
+        },
+        {
+          "id": "b",
+          "text": "Educate the patient to call for help before getting out of bed and place the call light within reach"
+        },
+        {
+          "id": "c",
+          "text": "Request a physical therapy consult for gait evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Move the patient to a room closer to the nursing station"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest-impact, immediately actionable fall prevention measure is patient education combined with environmental setup: instructing the patient to call for assistance before ambulating and ensuring the call light is accessible. This directly addresses the behavioral mechanism of most falls (attempting to get up unassisted) and is executable immediately at the bedside. Applying a fall-risk bracelet without the behavioral intervention does not prevent falls. PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection.",
+      "distractorRationales": {
+        "a": "The problem with Place a fall-risk bracelet on the patient and document in the chart is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection. The priority is Educate the patient to call for help before getting out of bed and place the call, not a step that delays stabilization of infection progression.",
+        "c": "The problem with Request a physical therapy consult for gait evaluation is that it waits on escalation while the bedside priority remains unresolved, rather than acting on PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection. The priority is Educate the patient to call for help before getting out of bed and place the call, not a step that delays stabilization of infection progression.",
+        "d": "The clinical error in Move the patient to a room closer to the nursing station is that it does not account for the clinical cue most likely to deteriorate first, without accounting for Applying a fall-risk bracelet without the behavioral intervention does not prevent falls. It is less defensible because Educate the patient to call for help before getting out of bed and place the call targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Safety and Infection Control / Fall Prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Fall Prevention",
+        "caption": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+        "conclusion": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A home health nurse is assessing fall risk in a 78-year-old patient living independently. The patient completes the Timed Up and Go (TUG) test in 16 seconds. How should the nurse interpret this result and what intervention is indicated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "TUG <20 seconds is normal for age; no intervention needed"
+        },
+        {
+          "id": "b",
+          "text": "TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention program"
+        },
+        {
+          "id": "c",
+          "text": "TUG is only valid in a clinical setting; results cannot be applied to home fall risk"
+        },
+        {
+          "id": "d",
+          "text": "TUG >30 seconds indicates fall risk; 16 seconds is normal"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The Timed Up and Go (TUG) test measures functional mobility: the patient rises from a standard chair, walks 3 meters, turns, walks back, and sits down. Scoring: <10 seconds = freely mobile, low fall risk; 10–19 seconds = mostly independent but increased fall risk; 20–29 seconds = variable mobility, moderate fall risk; ≥30 seconds = impaired mobility, high fall risk and need for assistance. A TUG of 16 seconds places this patient in the moderate fall risk category, warranting physical therapy referral, home safety assessment (remove throw rugs, install grab bars), medication review (sedatives, antihypertensives), and fall prevention education.",
+      "distractorRationales": {
+        "a": "This answer choice treats TUG <20 seconds is normal for age; no intervention needed as the key issue, despite the clinical warning in ≥30 seconds = impaired mobility, high fall risk and need for assistance. Normalizes a finding that should change the nurse's priority, so The nurse should prioritize TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention; otherwise medication toxicity remains the active threat.",
+        "c": "TUG is only valid in a clinical setting; results cannot be applied to home fall risk would not address the priority, even though the higher-risk finding is Scoring: <10 seconds = freely mobile, low fall risk. Moves to a lower-acuity action before the client is clinically stable, so It is less defensible because TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention targets the problem most likely to deteriorate first.",
+        "d": "This distractor pulls attention toward TUG >30 seconds indicates fall risk; 16 seconds is normal, but the stem cue is Scoring: <10 seconds = freely mobile, low fall risk. Normalizes a finding that should change the nurse's priority, so It is less defensible because TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "TUG test: <10s = low risk; 10–19s = increased risk; ≥20s = moderate-high risk. TUG ≥12 seconds in elderly → fall risk; refer to PT, home safety assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "A nurse caring for a ventilated patient wants to implement the VAP prevention bundle. Which combination of interventions is CORRECT according to current evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HOB flat, scheduled oral care q8h with water, continuous sedation infusion"
+        },
+        {
+          "id": "b",
+          "text": "HOB 30–45°, oral care with 0.12% chlorhexidine q6h, daily sedation vacation with SBT"
+        },
+        {
+          "id": "c",
+          "text": "HOB 30–45°, oral care q12h with water, sedation vacation only when FiO2 <0.40"
+        },
+        {
+          "id": "d",
+          "text": "HOB 15°, chlorhexidine oral care q8h, continuous sedation to prevent self-extubation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The VAP prevention bundle includes: (1) HOB elevation 30–45° to reduce aspiration of gastric contents; (2) oral decontamination with 0.12% chlorhexidine gluconate every 6 hours to reduce oropharyngeal bacterial burden; (3) daily sedation interruption (sedation vacation) — allows neurological assessment and reduces days on ventilator; (4) daily spontaneous breathing trials (SBT) to assess readiness for extubation — the most effective strategy for reducing VAP is minimizing ventilator days.",
+      "distractorRationales": {
+        "a": "This option overweights HOB flat, scheduled oral care q8h with water, continuous sedation infusion, despite the clinical warning in (4) daily spontaneous breathing trials (SBT) to assess readiness for extubation — the most effective strategy for reducing. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "This distractor pulls attention toward HOB 30–45°, oral care q12h with water, sedation vacation only when FiO2 <0.40, but the stem cue is (3) daily sedation interruption (sedation vacation) — allows neurological assessment and reduces days on ventilator. Moves to a lower-acuity action before the client is clinically stable, so It is less defensible because HOB 30–45°, oral care with 0.12% chlorhexidine q6h, daily sedation vacation with SBT targets the problem most likely to deteriorate first.",
+        "d": "This answer choice treats HOB 15°, chlorhexidine oral care q8h, continuous sedation to prevent self-extubation as the key issue, rather than acting on VAP bundle: HOB 30–45°, chlorhexidine oral care, daily sedation vacation + SBT. Moves to a lower-acuity action before the client is clinically stable, so The priority is HOB 30–45°, oral care with 0.12% chlorhexidine q6h, daily sedation vacation with SBT, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "VAP bundle: HOB 30–45°, chlorhexidine oral care, daily sedation vacation + SBT. Each element is independently evidence-based.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb754-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "A 90-year-old patient with end-stage COPD and lung cancer is enrolled in hospice. Family members ask why the patient's morphine dose is being increased when 'it could stop his breathing.' What is the most therapeutically and ethically accurate nursing response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "You are right to be concerned — morphine in high doses will hasten death, and we will titrate as slowly as possible"
+        },
+        {
+          "id": "b",
+          "text": "Morphine relieves dyspnea and pain; when appropriately titrated to comfort, it does not hasten death, and the ethical principle of double effect supports its use to relieve suffering"
+        },
+        {
+          "id": "c",
+          "text": "We will switch to a non-opioid medication to avoid respiratory risk — comfort and safety can both be achieved without opioids"
+        },
+        {
+          "id": "d",
+          "text": "Medication decisions are the physician's responsibility — family concerns should be directed to the attending"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The ethical principle of double effect: an action with both a good effect (pain/dyspnea relief) and a foreseen but unintended harmful effect (potential respiratory depression) is ethically permissible when the good effect is intended, the benefit outweighs the harm, and the action is not inherently wrong. Critically, evidence consistently shows that appropriately titrated opioids in end-of-life care do NOT hasten death — and may improve survival by reducing the physiological stress of uncontrolled suffering. In hospice, comfort is the primary goal and opioids are first-line for dyspnea and pain in end-stage COPD/cancer. The nurse should explain this directly and compassionately, not deflect or abandon evidence-based comfort care. Avoiding this conversation abandons the patient and family.",
+      "distractorRationales": {
+        "a": "This option makes You are right to be concerned — morphine in high doses will hasten death, and we the focus, and misses that A 90-year-old patient with end-stage COPD and lung cancer is enrolled in hospice. Moves to a lower-acuity action before the client is clinically stable, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "We will switch to a non-opioid medication to avoid respiratory risk — comfort and safety can is not the best answer, when the bedside priority is driven by Family members ask why the patient's morphine dose is being increased when 'it could stop his breathing. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "Medication decisions are the physician's responsibility — family concerns should be directed to the attending is not the best answer, but the stem cue is In hospice, comfort is the primary goal and opioids are first-line for dyspnea and pain in end-stage COPD/cancer. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Morphine relieves dyspnea and pain; when appropriately titrated to comfort, it does not hasten death,, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Double effect: appropriately titrated opioids in hospice are ethically sound and do NOT hasten death — evidence supports this. Address family fears with honest education. Comfort is the primary goal in hospice.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

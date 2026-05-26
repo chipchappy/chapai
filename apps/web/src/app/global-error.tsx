@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import BrandMark from "@/components/brand/BrandMark";
 
 export default function GlobalAppError({
@@ -34,12 +35,12 @@ export default function GlobalAppError({
               <button type="button" onClick={() => reset()} className="btn-primary">
                 Retry app
               </button>
-              <a href="/" className="btn-secondary">
+              <Link href="/" className="btn-secondary">
                 Return home
-              </a>
-              <a href="/quiz" className="btn-secondary">
+              </Link>
+              <Link href="/quiz" className="btn-secondary">
                 Open practice center
-              </a>
+              </Link>
             </div>
           </section>
         </main>

@@ -1,0 +1,662 @@
+{
+  "batchId": "mixed-batch-935",
+  "generatedAt": "2026-04-10T14:35:30-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb935-n001",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "dka_fluid_priority",
+      "subcategory": "dka_fluid_priority",
+      "difficulty": 3,
+      "stem": "For each provider order, click to specify whether the nurse should anticipate it as an early DKA priority or not an early priority.",
+      "scenarioTitle": "DKA early priorities",
+      "scenario": "The client is lethargic, hypotensive, and profoundly dehydrated with glucose 612 mg/dL and serum bicarbonate 12 mEq/L.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Early DKA priority"
+        },
+        {
+          "id": "b",
+          "text": "Not an early priority"
+        }
+      ],
+      "answer": {
+        "Rapid isotonic fluid replacement": "Early DKA priority",
+        "Potassium review before continuous insulin progression": "Early DKA priority",
+        "Routine long-acting subcutaneous insulin": "Not an early priority",
+        "Delay treatment until ketones are redrawn": "Not an early priority"
+      },
+      "matrixColumns": [
+        "Early DKA priority",
+        "Not an early priority"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rapid isotonic fluid replacement",
+          "answer": "Early DKA priority"
+        },
+        {
+          "label": "Potassium review before continuous insulin progression",
+          "answer": "Early DKA priority"
+        },
+        {
+          "label": "Routine long-acting subcutaneous insulin",
+          "answer": "Not an early priority"
+        },
+        {
+          "label": "Delay treatment until ketones are redrawn",
+          "answer": "Not an early priority"
+        }
+      ],
+      "rationale": "DKA decisions become faster when the nurse anchors to perfusion first. Fluids and safe insulin progression with potassium awareness are early priorities; routine long-acting insulin and delays for extra labs do not solve the immediate shock/dehydration problem.",
+      "distractorRationales": {
+        "a": "This option makes Early DKA priority the focus, without accounting for Think perfusion first in DKA, then safe insulin progression with potassium awareness. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses.",
+        "b": "The problem with Not an early priority is that it does not account for the clinical cue most likely to deteriorate first, despite the clinical warning in For each provider order, click to specify whether the nurse should anticipate it as an early DKA priority. The priority is the row-specific answer pattern, not a step that delays stabilization of unstable glucose physiology."
+      },
+      "tags": [
+        "dka_fluid_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Think perfusion first in DKA, then safe insulin progression with potassium awareness.",
+      "speedCue": "If the stem shows hypotension, dehydration, and very high glucose, fluids belong in the early-priority column right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n002",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "newborn_hypoglycemia_jitteriness",
+      "subcategory": "newborn_hypoglycemia_jitteriness",
+      "difficulty": 3,
+      "stem": "For each newborn finding, click to specify whether the finding supports hypoglycemia concern or is less specific for hypoglycemia.",
+      "scenarioTitle": "Newborn clue sorting",
+      "scenario": "The newborn was delivered by a client with gestational diabetes and has not fed well since birth.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports hypoglycemia concern"
+        },
+        {
+          "id": "b",
+          "text": "Less specific for hypoglycemia"
+        }
+      ],
+      "answer": {
+        "Jitteriness": "Supports hypoglycemia concern",
+        "Weak feeding": "Supports hypoglycemia concern",
+        "A quiet period after crying": "Less specific for hypoglycemia",
+        "Mild sneezing": "Less specific for hypoglycemia"
+      },
+      "matrixColumns": [
+        "Supports hypoglycemia concern",
+        "Less specific for hypoglycemia"
+      ],
+      "matrixRows": [
+        {
+          "label": "Jitteriness",
+          "answer": "Supports hypoglycemia concern"
+        },
+        {
+          "label": "Weak feeding",
+          "answer": "Supports hypoglycemia concern"
+        },
+        {
+          "label": "A quiet period after crying",
+          "answer": "Less specific for hypoglycemia"
+        },
+        {
+          "label": "Mild sneezing",
+          "answer": "Less specific for hypoglycemia"
+        }
+      ],
+      "rationale": "This item trains quick clue sorting. Jitteriness and weak feeding in a high-risk newborn support hypoglycemia concern; the other findings are less specific and should not distract the nurse from checking and treating glucose promptly.",
+      "distractorRationales": {
+        "a": "Selecting Supports hypoglycemia concern would be unsafe, while the decisive cue is Newborn jitteriness paired with poor feeding is a check-glucose-now clue set. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved.",
+        "b": "The reasoning trap in Less specific for hypoglycemia is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is For each newborn finding, click to specify whether the finding supports hypoglycemia concern or is less specific for. the row-specific answer pattern is safer because it addresses unstable glucose physiology before routine care or reassurance."
+      },
+      "tags": [
+        "newborn_hypoglycemia_jitteriness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Newborn jitteriness paired with poor feeding is a check-glucose-now clue set.",
+      "speedCue": "In a newborn of a diabetic parent, jitteriness is not a soft clue; it should immediately raise glucose concern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "newborn_hypoglycemia_jitteriness",
+        "caption": "Newborn jitteriness paired with poor feeding is a check-glucose-now clue set.",
+        "conclusion": "Newborn jitteriness paired with poor feeding is a check-glucose-now clue set."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n003",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "placental_abruption_pain",
+      "subcategory": "placental_abruption_pain",
+      "difficulty": 3,
+      "stem": "For each maternal finding, click to specify whether the finding is more consistent with placental abruption or less consistent with placental abruption.",
+      "scenarioTitle": "Antepartum bleeding pattern sort",
+      "scenario": "The client is 35 weeks pregnant and arrives after reporting severe abdominal pain.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with placental abruption"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with placental abruption"
+        }
+      ],
+      "answer": {
+        "Painful dark bleeding": "More consistent with placental abruption",
+        "Rigid tender uterus": "More consistent with placental abruption",
+        "Painless bright-red bleeding": "Less consistent with placental abruption",
+        "Bleeding only after vaginal exam": "Less consistent with placental abruption"
+      },
+      "matrixColumns": [
+        "More consistent with placental abruption",
+        "Less consistent with placental abruption"
+      ],
+      "matrixRows": [
+        {
+          "label": "Painful dark bleeding",
+          "answer": "More consistent with placental abruption"
+        },
+        {
+          "label": "Rigid tender uterus",
+          "answer": "More consistent with placental abruption"
+        },
+        {
+          "label": "Painless bright-red bleeding",
+          "answer": "Less consistent with placental abruption"
+        },
+        {
+          "label": "Bleeding only after vaginal exam",
+          "answer": "Less consistent with placental abruption"
+        }
+      ],
+      "rationale": "Placental abruption becomes easier to answer when the learner locks onto pain, uterine tone, and fetal compromise clues. Painless bright-red bleeding points away from abruption and more toward placenta previa.",
+      "distractorRationales": {
+        "a": "The clinical error in More consistent with placental abruption is that it anchors on the wrong explanation for the client's cues, but the stem cue is Abruption is the painful, rigid, often dark-bleeding pattern. the row-specific answer pattern is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "b": "Less consistent with placental abruption fits a lower-risk interpretation, although the nurse should be guided by The client is 35 weeks pregnant and arrives after reporting severe abdominal pain. Anchors on the wrong explanation for the client's cues, so The priority is the row-specific answer pattern, not a step that delays stabilization of bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "placental_abruption_pain",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Abruption is the painful, rigid, often dark-bleeding pattern.",
+      "speedCue": "Pain and uterine rigidity should move abruption to the top of the differential before you even finish the stem.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n004",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "severe_hyponatremia_seizure",
+      "subcategory": "severe_hyponatremia_seizure",
+      "difficulty": 3,
+      "stem": "A client with sodium 118 mEq/L becomes confused and then has a seizure. Place the actions in the order the nurse should take them.",
+      "scenarioTitle": "Severe hyponatremia rescue",
+      "scenario": "Emergency supplies are available and the provider is on the way.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to administer hypertonic saline as prescribed"
+        },
+        {
+          "id": "b",
+          "text": "Protect the airway and initiate seizure precautions"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider or rapid response team with the acute change"
+        },
+        {
+          "id": "d",
+          "text": "Reassess neurologic status after initial stabilization"
+        }
+      ],
+      "answer": [
+        "b",
+        "c",
+        "a",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "In symptomatic hyponatremia, the nurse starts with seizure safety and airway protection, escalates immediately, prepares for controlled hypertonic saline correction, and then reassesses neurologic response. The reasoning is faster when the learner links low sodium with acute neurologic collapse.",
+      "distractorRationales": {},
+      "tags": [
+        "severe_hyponatremia_seizure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When low sodium causes seizure, think protect, escalate, correct, then reassess.",
+      "speedCue": "The key clue is not just a sodium number; it is low sodium plus acute neurologic change.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n005",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "status_epilepticus_benzo_first",
+      "subcategory": "status_epilepticus_benzo_first",
+      "difficulty": 3,
+      "stem": "A client has been actively seizing for more than 5 minutes. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "Status epilepticus sequence",
+      "scenario": "The client is on a medical unit bed with oxygen available and IV access present.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV lorazepam per protocol"
+        },
+        {
+          "id": "b",
+          "text": "Protect the airway and turn the client to the side"
+        },
+        {
+          "id": "c",
+          "text": "Prepare longer-acting antiepileptic therapy after first-line control"
+        },
+        {
+          "id": "d",
+          "text": "Call for rapid assistance and obtain bedside support"
+        }
+      ],
+      "answer": [
+        "b",
+        "d",
+        "a",
+        "c"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Status epilepticus is managed as an airway-plus-medication emergency. The nurse starts with immediate safety and airway support, activates help, gives a benzodiazepine quickly, and then prepares the next-line antiepileptic plan once the seizure is being controlled.",
+      "distractorRationales": {},
+      "tags": [
+        "status_epilepticus_benzo_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Past 5 minutes, seizure care becomes airway support plus benzo-first treatment in a clear sequence.",
+      "speedCue": "The time trigger is the clue: once the seizure keeps going, stop thinking watchful waiting and move to airway plus benzodiazepine.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pulmonary_embolism_post_op",
+      "subcategory": "pulmonary_embolism_post_op",
+      "difficulty": 3,
+      "stem": "A client 2 days after surgery suddenly becomes short of breath, anxious, and tachycardic, with oxygen saturation 84% on room air. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply oxygen and notify the provider about suspected pulmonary embolism."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to use the incentive spirometer and rest."
+        },
+        {
+          "id": "c",
+          "text": "Document postoperative anxiety and reassess later."
+        },
+        {
+          "id": "d",
+          "text": "Give oral fluids and wait for the next vital signs check."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Sudden dyspnea, hypoxemia, tachycardia, and anxiety after surgery suggest pulmonary embolism until proven otherwise. Immediate oxygenation support and escalation are the priorities. Reassurance alone would miss a time-sensitive life threat.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Encourage the client to use the incentive spirometer and rest is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by oxygen saturation 84% on room air. It is less defensible because Apply oxygen and notify the provider about suspected pulmonary embolism targets the problem most likely to deteriorate first.",
+        "c": "Selecting Document postoperative anxiety and reassess later would be unsafe, instead of responding to anxiety after surgery suggest pulmonary embolism until proven otherwise. Treats an active warning sign as something safe to watch, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "This option overweights Give oral fluids and wait for the next vital signs check, although the nurse should be guided by Immediate oxygenation support and escalation are the priorities. Treats an active warning sign as something safe to watch, so The priority is Apply oxygen and notify the provider about suspected pulmonary embolism, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "pulmonary_embolism_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden postoperative hypoxia and tachycardia should trigger pulmonary embolism thinking right away.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pyloric_stenosis_projectile_vomiting",
+      "subcategory": "pyloric_stenosis_projectile_vomiting",
+      "difficulty": 3,
+      "stem": "A 5-week-old infant has forceful projectile vomiting after feedings and remains hungry afterward. Which finding would the nurse expect?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "A palpable olive-shaped mass in the upper abdomen."
+        },
+        {
+          "id": "b",
+          "text": "Bilious green emesis with abdominal distention."
+        },
+        {
+          "id": "c",
+          "text": "Bloody diarrhea with lethargy."
+        },
+        {
+          "id": "d",
+          "text": "A wet cough that worsens while feeding."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Projectile nonbilious vomiting with persistent hunger is a classic clue pattern for pyloric stenosis. An olive-shaped mass may be palpable. The other findings point toward different gastrointestinal or feeding problems.",
+      "distractorRationales": {
+        "b": "This choice focuses on Bilious green emesis with abdominal distention, although the nurse should be guided by Projectile vomiting plus ongoing hunger should make pyloric stenosis one of the first patterns the student recognizes. Anchors on the wrong explanation for the client's cues, so Choosing it can delay bedside safety action and leave pediatric or newborn instability unresolved.",
+        "c": "The problem with Bloody diarrhea with lethargy is that it anchors on the wrong explanation for the client's cues, while the decisive cue is Projectile vomiting plus ongoing hunger should make pyloric stenosis one of the first patterns the student recognizes. The priority is A palpable olive-shaped mass in the upper abdomen, not a step that delays stabilization of pediatric or newborn instability.",
+        "d": "This choice focuses on A wet cough that worsens while feeding, despite the clinical warning in Projectile vomiting plus ongoing hunger should make pyloric stenosis one of the first patterns the student recognizes. Moves to a lower-acuity action before the client is clinically stable, so The priority is A palpable olive-shaped mass in the upper abdomen, not a step that delays stabilization of pediatric or newborn instability."
+      },
+      "tags": [
+        "pyloric_stenosis_projectile_vomiting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Projectile vomiting plus ongoing hunger should make pyloric stenosis one of the first patterns the student recognizes.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "serotonin_syndrome",
+      "subcategory": "serotonin_syndrome",
+      "difficulty": 3,
+      "stem": "A client taking sertraline started a new migraine medication and now has agitation, diarrhea, fever, and hyperreflexia. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold serotonergic medications and notify the provider about possible serotonin syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Give the next antidepressant dose to prevent withdrawal."
+        },
+        {
+          "id": "c",
+          "text": "Encourage caffeine to improve alertness."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as expected anxiety."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Agitation, hyperreflexia, fever, and diarrhea after interacting serotonergic drugs suggest serotonin syndrome. The nurse should stop further serotonergic exposure and escalate care immediately. Delayed recognition can lead to worsening instability.",
+      "distractorRationales": {
+        "b": "The problem with Give the next antidepressant dose to prevent withdrawal is that it anchors on the wrong explanation for the client's cues, rather than acting on Delayed recognition can lead to worsening instability. The priority is Hold serotonergic medications and notify the provider about possible serotonin syndrome, not a step that delays stabilization of infection progression.",
+        "c": "The problem with Encourage caffeine to improve alertness is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to Delayed recognition can lead to worsening instability. That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "d": "This distractor pulls attention toward Document the symptoms as expected anxiety, without accounting for Hyperreflexia and fever after serotonergic drug overlap is a clue pattern that should trigger serotonin syndrome thinking fast. Normalizes a finding that should change the nurse's priority, so Hold serotonergic medications and notify the provider about possible serotonin syndrome better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "serotonin_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hyperreflexia and fever after serotonergic drug overlap is a clue pattern that should trigger serotonin syndrome thinking fast.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_rejection_transplant",
+      "subcategory": "acute_rejection_transplant",
+      "difficulty": 3,
+      "stem": "A client 2 weeks after kidney transplant has a temperature of 100.8 F (38.2 C), tenderness over the graft site, and decreased urine output. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because these findings may indicate acute rejection."
+        },
+        {
+          "id": "b",
+          "text": "Reassure the client that mild fever is expected after transplant."
+        },
+        {
+          "id": "c",
+          "text": "Instruct the client to skip the next immunosuppressant dose."
+        },
+        {
+          "id": "d",
+          "text": "Delay action until the next routine clinic visit."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Fever, graft tenderness, and decreased urine output after kidney transplant are concerning for acute rejection. The nurse should escalate promptly for assessment and intervention. Missed or delayed response can threaten graft survival.",
+      "distractorRationales": {
+        "b": "Reassure the client that mild fever is expected after transplant would not address the priority, when the bedside priority is driven by decreased urine output after kidney transplant are concerning for acute rejection. Normalizes a finding that should change the nurse's priority, so The correct path is Notify the provider because these findings may indicate acute rejection, which matches the priority cues instead of a secondary concern.",
+        "c": "Selecting Instruct the client to skip the next immunosuppressant dose would be unsafe, rather than acting on A client 2 weeks after kidney transplant has a temperature of 100. Moves to teaching or reassurance before the immediate risk is stabilized, so The safer answer is Notify the provider because these findings may indicate acute rejection because delaying infection or sepsis escalation can worsen infection progression.",
+        "d": "This option makes Delay action until the next routine clinic visit the focus, without accounting for decreased urine output after kidney transplant are concerning for acute rejection. Treats an active warning sign as something safe to watch, so Notify the provider because these findings may indicate acute rejection better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "acute_rejection_transplant",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Graft tenderness with falling urine output after transplant is a report-now pattern.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "amniotic_fluid_embolism",
+      "subcategory": "amniotic_fluid_embolism",
+      "difficulty": 3,
+      "stem": "During labor a client suddenly becomes short of breath, cyanotic, and hypotensive. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Call for immediate emergency support and begin high-flow oxygen."
+        },
+        {
+          "id": "b",
+          "text": "Reposition the client and wait to see if the symptoms pass."
+        },
+        {
+          "id": "c",
+          "text": "Obtain a routine pain score before intervening."
+        },
+        {
+          "id": "d",
+          "text": "Document the event as an anxiety reaction."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency. The nurse should escalate immediately and support oxygenation and circulation. Delay can rapidly endanger both the client and fetus.",
+      "distractorRationales": {
+        "b": "This choice focuses on Reposition the client and wait to see if the symptoms pass, despite the clinical warning in The nurse should escalate immediately and support oxygenation and circulation. Treats an active warning sign as something safe to watch, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "Obtain a routine pain score before intervening fits a lower-risk interpretation, instead of responding to During labor a client suddenly becomes short of breath, cyanotic. Treats an active warning sign as something safe to watch, so The nurse should prioritize Call for immediate emergency support and begin high-flow oxygen; otherwise oxygenation or ventilation remains the active threat.",
+        "d": "The clinical error in Document the event as an anxiety reaction is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is Sudden maternal collapse in labor requires immediate emergency response and oxygenation support. Call for immediate emergency support and begin high-flow oxygen better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "amniotic_fluid_embolism",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden maternal collapse in labor requires immediate emergency response and oxygenation support.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "Obtain a full allergy history before intervening fits a lower-risk interpretation, although the nurse should be guided by A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Does not account for the clinical cue most likely to deteriorate first, so The priority is Stop the infusion and prepare to administer epinephrine, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "This option overweights Slow the infusion to reduce the reaction, instead of responding to A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Stop the infusion and prepare to administer epinephrine because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "Document the event and continue monitoring is not the best answer, without accounting for The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. Treats an active warning sign as something safe to watch, so Stop the infusion and prepare to administer epinephrine is safer because it addresses oxygenation or ventilation before routine care or reassurance."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb935-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "This choice focuses on Lay the client flat and increase the room temperature, although the nurse should be guided by A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure. Does not account for the clinical cue most likely to deteriorate first, so The priority is Sit the client upright and assess for bladder distention, not a step that delays stabilization of neurologic deterioration.",
+        "c": "Ask the client to rest quietly until the headache passes is not the best answer, even though the higher-risk finding is Delay increases the risk of stroke or seizure. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Sit the client upright and assess for bladder distention, which matches the priority cues instead of a secondary concern.",
+        "d": "The problem with Offer oral fluids and reassess in 30 minutes is that it treats an active warning sign as something safe to watch, while the decisive cue is The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. The priority is Sit the client upright and assess for bladder distention, not a step that delays stabilization of neurologic deterioration."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

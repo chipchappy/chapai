@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-801",
+  "generatedAt": "2026-04-09T05:48:51-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb801-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "The surgical team is about to make the first incision. Per the WHO Surgical Safety Checklist, which action must occur at this exact moment, and who must participate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The surgeon alone verbally confirms the surgical site using the patient's consent form"
+        },
+        {
+          "id": "b",
+          "text": "The circulating nurse confirms patient identity and procedure using the patient's wristband"
+        },
+        {
+          "id": "c",
+          "text": "The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure, positioning, antibiotic prophylaxis, and any anticipated critical concerns"
+        },
+        {
+          "id": "d",
+          "text": "The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The WHO Surgical Safety Checklist 'time-out' occurs IMMEDIATELY before skin incision and is a mandatory complete pause involving ALL team members: surgeon, anesthesia provider, scrub technician, and circulating nurse. Each member must actively participate — passive listening does not satisfy the requirement. Items confirmed during time-out: (1) Patient identity (name, DOB, MRN); (2) Surgical site and laterality (confirmed with visible site marking); (3) Planned procedure; (4) Correct patient positioning; (5) Antibiotic prophylaxis administered within the prior 60 minutes; (6) Relevant imaging displayed; (7) Anticipated critical steps, significant blood loss, or special equipment needs. The time-out is distinct from the 'sign-in' (before anesthesia induction) and 'sign-out' (before leaving the OR). Implementation has reduced wrong-site surgery, wrong-patient surgery, and serious complications by more than 50% globally.",
+      "distractorRationales": {
+        "a": "Selecting The surgeon alone verbally confirms the surgical site using the patient's consent form would be unsafe, despite the clinical warning in (7) Anticipated critical steps, significant blood loss, or special equipment needs. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response.",
+        "b": "The circulating nurse confirms patient identity and procedure using the patient's wristband is not the best answer, when the bedside priority is driven by Per the WHO Surgical Safety Checklist, which action must occur at this exact moment. Does not account for the clinical cue most likely to deteriorate first, so The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure, better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Selecting The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins would be unsafe, despite the clinical warning in (7) Anticipated critical steps, significant blood loss, or special equipment needs. Anchors on the wrong explanation for the client's cues, so The safer answer is The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure, because delaying bedside safety action can worsen clinical safety risk."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Time-out: ALL team members pause immediately before incision to verbally confirm patient ID, site/side, procedure, positioning, antibiotic timing, and critical concerns. Individual confirmation is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_hypoglycemia_treatment",
+      "subcategory": "Pharmacology / Hypoglycemia Treatment",
+      "difficulty": 2,
+      "stem": "A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL and symptoms of shakiness and diaphoresis. The patient is alert and able to swallow. Which is the CORRECT initial treatment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer glucagon 1 mg subcutaneously"
+        },
+        {
+          "id": "b",
+          "text": "Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck glucose in 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50 mL of 50% dextrose (D50) IV push"
+        },
+        {
+          "id": "d",
+          "text": "Give the patient a full meal immediately to restore blood glucose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The '15-15 rule' is the standard for treating conscious, alert patients with mild-to-moderate hypoglycemia who can swallow safely: give 15 grams of rapid-acting carbohydrate (4 oz orange juice, 4 oz regular soda, or 3-4 glucose tablets), wait 15 minutes, and recheck blood glucose. If still < 70 mg/dL, repeat the treatment. This is the safest, most physiologically appropriate approach. Glucagon is reserved for unconscious or unable-to-swallow patients. D50 IV push is reserved for unconscious patients or those without IV access who cannot take oral carbohydrates. A full meal is slower to absorb and can cause a prolonged correction — it is the follow-up after glucose normalizes, not the acute treatment.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Administer glucagon 1 mg subcutaneously, when the bedside priority is driven by Reserve glucagon for unconscious/unable-to-swallow. Does not account for the clinical cue most likely to deteriorate first, so Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "This answer choice treats Administer 50 mL of 50% dextrose (D50) IV push as the key issue, despite the clinical warning in Reserve D50 for severe hypoglycemia without oral access. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved.",
+        "d": "Give the patient a full meal immediately to restore blood glucose fits a lower-risk interpretation, despite the clinical warning in A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck; otherwise unstable glucose physiology remains the active threat."
+      },
+      "tags": [
+        "Pharmacology / Hypoglycemia Treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Conscious hypoglycemic patient who can swallow: 15g fast-acting carbs (15-15 rule) → recheck in 15 min → repeat if still low → then a snack with protein. Reserve glucagon for unconscious/unable-to-swallow. Reserve D50 for severe hypoglycemia without oral access.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse receives a SBAR hand-off report. The oncoming nurse should be MOST concerned about which patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline"
+        },
+        {
+          "id": "b",
+          "text": "A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours"
+        },
+        {
+          "id": "c",
+          "text": "A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Urine output of 15 mL/hr for 3 consecutive hours (total 45 mL in 3 hours, target minimum 30 mL/hr) in a patient with sepsis signals inadequate renal perfusion and worsening organ dysfunction. This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider notification and likely fluid resuscitation. The COPD patient's 91% sat is their established baseline; the hip replacement refusal is important but not acutely threatening; the pending aPTT should be followed but is not immediately dangerous.",
+      "distractorRationales": {
+        "a": "This choice focuses on A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their, while the decisive cue is In sepsis, urine output < 0. Anchors on the wrong explanation for the client's cues, so The priority is A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours, not a step that delays stabilization of bleeding or anticoagulation injury.",
+        "c": "This distractor pulls attention toward A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired', without accounting for This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider. Moves to a lower-acuity action before the client is clinically stable, so A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago is not the best answer, even though the higher-risk finding is The COPD patient's 91% sat is their established baseline. Anchors on the wrong explanation for the client's cues, so A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Prioritization",
+        "caption": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+        "conclusion": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A clinic nurse suspects a patient has active tuberculosis based on symptoms and a positive QuantiFERON test. The patient has not yet been confirmed by sputum culture. What is the nurse's legal obligation regarding reporting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for confirmed sputum culture before reporting to the health department"
+        },
+        {
+          "id": "b",
+          "text": "Report only if the patient is homeless or a healthcare worker"
+        },
+        {
+          "id": "c",
+          "text": "Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The physician is solely responsible for reporting; nurses have no legal duty to report"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing.",
+      "distractorRationales": {
+        "a": "Wait for confirmed sputum culture before reporting to the health department is not the best answer, even though the higher-risk finding is For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Treats an active warning sign as something safe to watch, so Report the suspected case to the local public health department — TB is reportable on suspicion, is safer because it addresses clinical safety risk before routine care or reassurance.",
+        "b": "The problem with Report only if the patient is homeless or a healthcare worker is that it moves to a lower-acuity action before the client is clinically stable, although the nurse should be guided by For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response.",
+        "d": "This option overweights The physician is solely responsible for reporting; nurses have no legal duty to report, despite the clinical warning in For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reportable diseases: report on suspicion (not confirmation); TB, STIs, meningitis, hepatitis — nurse has independent duty to report to public health; do not wait for lab confirmation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A patient with a legally designated healthcare proxy (durable power of attorney for healthcare) is brought to the ED unconscious after a large stroke. The healthcare proxy, who has legal authority, requests that all life-sustaining treatment be withdrawn. No written advance directive exists. What is the nurse's most appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy"
+        },
+        {
+          "id": "b",
+          "text": "Disregard the proxy's decision and provide full resuscitation until the patient can speak for themselves"
+        },
+        {
+          "id": "c",
+          "text": "Consult the ethics committee and continue full treatment until the committee renders a decision"
+        },
+        {
+          "id": "d",
+          "text": "Contact adult protective services, as a family member withdrawing treatment may constitute elder abuse"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A legally designated healthcare proxy (durable power of attorney for healthcare) has the legal authority to make medical decisions on behalf of an incapacitated patient. The proxy's role is substituted judgment — making the decision the patient would make if able. When a legally designated proxy with proper authority requests withdrawal of life-sustaining treatment, this request must be honored following institutional policies and applicable state law. The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative care team, and provide comfort measures. An ethics consultation may be helpful if there is team conflict, but it is not required to delay a legally sound decision. This is not elder abuse — it is the proper exercise of legally granted decision-making authority.",
+      "distractorRationales": {
+        "b": "The clinical error in Disregard the proxy's decision and provide full resuscitation until the patient can speak for themselves is that it does not account for the clinical cue most likely to deteriorate first, and misses that The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative. It is less defensible because Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy targets the problem most likely to deteriorate first. Nursing safety depends on matching the option to the client's active clinical risk.",
+        "c": "Consult the ethics committee and continue full treatment until the committee renders a decision fits a lower-risk interpretation, although the nurse should be guided by The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative. Moves to a lower-acuity action before the client is clinically stable, so The priority is Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy, not a step that delays stabilization of neurologic deterioration.",
+        "d": "This distractor pulls attention toward Contact adult protective services, as a family member withdrawing treatment may constitute elder abuse, even though the higher-risk finding is The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative. Moves to a lower-acuity action before the client is clinically stable, so Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy is safer because it addresses neurologic deterioration before routine care or reassurance."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Healthcare proxy with legal authority speaks for the incapacitated patient. Their decision must be respected and acted upon. No written advance directive is required when a valid proxy is designated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 4,
+      "stem": "An RN delegates to an LPN/LVN. Which task is within the LPN's scope of practice in most states?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the initial nursing admission assessment for a newly admitted patient"
+        },
+        {
+          "id": "b",
+          "text": "Administer oral, IM, and subcutaneous medications and monitor response"
+        },
+        {
+          "id": "c",
+          "text": "Develop and update the nursing care plan based on patient assessment findings"
+        },
+        {
+          "id": "d",
+          "text": "Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens, and monitoring and reporting patient status. Initial assessments (A) require RN-level nursing judgment and are an RN responsibility. Care plan development (C) is an RN function. Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. The key distinction is that LPNs implement care under RN supervision; RNs assess, plan, evaluate, and teach.",
+      "distractorRationales": {
+        "a": "The problem with Perform the initial nursing admission assessment for a newly admitted patient is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. Choosing it can delay infection or sepsis escalation and leave infection progression unresolved.",
+        "c": "This option overweights Develop and update the nursing care plan based on patient assessment findings, while the decisive cue is Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Administer oral, IM, and subcutaneous medications and monitor response; otherwise infection progression remains the active threat.",
+        "d": "This choice focuses on Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol, despite the clinical warning in teaching are RN responsibilities. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay infection or sepsis escalation and leave infection progression unresolved."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning, and teaching are RN responsibilities.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_asthma_exacerbation",
+      "subcategory": "Respiratory / Asthma Exacerbation",
+      "difficulty": 3,
+      "stem": "A patient with severe asthma is admitted with an acute exacerbation. The nurse notes the patient is no longer wheezing despite having difficulty breathing and accessory muscle use. Which interpretation is CORRECT?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient is improving — decreased wheezing indicates reduced bronchospasm"
+        },
+        {
+          "id": "b",
+          "text": "The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,' signaling impending respiratory failure"
+        },
+        {
+          "id": "c",
+          "text": "The patient requires a bronchodilator since the wheezing has resolved"
+        },
+        {
+          "id": "d",
+          "text": "The patient is having an allergic reaction rather than an asthma attack"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A 'silent chest' in an asthmatic patient with severe respiratory distress is an ominous sign — it does not indicate improvement. It indicates airways are so severely obstructed that no air movement is occurring, thus no wheeze can be generated. This is a pre-arrest condition requiring immediate escalation: notify provider, prepare for intubation, consider IV magnesium sulfate, IV epinephrine or terbutaline, and high-dose continuous bronchodilators. The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Wheezing returning with treatment is actually a sign of improvement.",
+      "distractorRationales": {
+        "a": "Selecting The patient is improving — decreased wheezing indicates reduced bronchospasm would be unsafe, despite the clinical warning in high-dose continuous bronchodilators. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "The problem with The patient requires a bronchodilator since the wheezing has resolved is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "This answer choice treats The patient is having an allergic reaction rather than an asthma attack as the key issue, despite the clinical warning in high-dose continuous bronchodilators. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,' because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Respiratory / Asthma Exacerbation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Asthma Exacerbation",
+        "caption": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+        "conclusion": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "Parents call the pediatric triage nurse stating their 2-year-old has been having a seizure for 1 minute. The child has a temperature of 39.2°C (102.6°F) and no prior seizure history. What is the most important teaching point the nurse should emphasize?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer rectal diazepam immediately regardless of seizure duration"
+        },
+        {
+          "id": "b",
+          "text": "Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than 5 minutes or the child stops breathing"
+        },
+        {
+          "id": "c",
+          "text": "Put fingers in the mouth to prevent tongue-swallowing during the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer acetaminophen immediately to stop the seizure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Simple febrile seizures are benign, typically last <5 minutes, and are self-limiting. Parent teaching: (1) Do not restrain the child; (2) Turn child on side to prevent aspiration; (3) Do not insert anything in the mouth — risk of injury, not tongue-swallowing; (4) Time the seizure; (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Rectal diazepam is not administered routinely unless prescribed for a child with known prolonged febrile seizures. Antipyretics do not abort an ongoing seizure.",
+      "distractorRationales": {
+        "a": "Administer rectal diazepam immediately regardless of seizure duration would not address the priority, even though the higher-risk finding is Febrile seizure parent teaching: most resolve in <5 min. Does not account for the clinical cue most likely to deteriorate first, so Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "The reasoning trap in Put fingers in the mouth to prevent tongue-swallowing during the seizure is that it does not account for the clinical cue most likely to deteriorate first, without accounting for 6°F) and no prior seizure history. Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This option makes Administer acetaminophen immediately to stop the seizure the focus, when the bedside priority is driven by Febrile seizure parent teaching: most resolve in <5 min. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+        "conclusion": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "Pharmacology / Corticosteroid Teaching",
+      "difficulty": 3,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "distractorRationales": {
+        "a": "'I should not stop this medication suddenly without talking to my doctor.' fits a lower-risk interpretation, instead of responding to Corticosteroid teaching: complete the full course, do not stop early or abruptly. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "c": "'I should monitor my blood sugar more closely while taking this medication.' fits a lower-risk interpretation, although the nurse should be guided by Corticosteroid teaching: complete the full course, do not stop early or abruptly. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is 'I can stop taking this medication early if I start feeling better.' because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology.",
+        "d": "The reasoning trap in 'I should take this medication in the morning with food.' is that it anchors on the wrong explanation for the client's cues, but the stem cue is Know signs of infection (immunosuppression). The correct path is 'I can stop taking this medication early if I start feeling better.', which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Pharmacology / Corticosteroid Teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb801-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_warfarin_safety",
+      "subcategory": "Pharmacology / Warfarin Safety",
+      "difficulty": 3,
+      "stem": "A patient on warfarin therapy for atrial fibrillation has an INR of 4.8 (therapeutic range 2.0-3.0). The patient has no active bleeding. What is the MOST appropriate nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer vitamin K 10 mg IV push immediately"
+        },
+        {
+          "id": "b",
+          "text": "Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs"
+        },
+        {
+          "id": "c",
+          "text": "Administer fresh frozen plasma to rapidly reverse anticoagulation"
+        },
+        {
+          "id": "d",
+          "text": "Continue warfarin at the same dose and recheck INR in 3 days"
+        }
+      ],
+      "answer": "b",
+      "rationale": "An INR of 4.8 represents supratherapeutic anticoagulation with elevated bleeding risk, but no active bleeding is present. Standard management for INR 4-10 without bleeding in a patient on warfarin for non-mechanical valve indication: hold warfarin, monitor for bleeding signs, and the INR will self-correct over 24-72 hours as the drug is metabolized. The provider should be notified to evaluate for dose adjustment. Vitamin K is indicated for INR > 10, or INR 4-10 with bleeding risk factors or active bleeding. High-dose IV vitamin K (10 mg) causes prolonged warfarin resistance and is reserved for emergencies. FFP is for life-threatening bleeding requiring immediate reversal. Continuing the same dose ignores the supratherapeutic level.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Administer vitamin K 10 mg IV push immediately, even though the higher-risk finding is Supratherapeutic INR (no bleeding): INR 4-10 → hold warfarin + notify provider + monitor. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "Administer fresh frozen plasma to rapidly reverse anticoagulation fits a lower-risk interpretation, despite the clinical warning in INR > 10 or any bleeding → vitamin K. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "d": "The clinical error in Continue warfarin at the same dose and recheck INR in 3 days is that it does not account for the clinical cue most likely to deteriorate first, without accounting for High-dose IV vitamin K (10 mg) causes prolonged warfarin resistance and is reserved for emergencies. It is less defensible because Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Pharmacology / Warfarin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Supratherapeutic INR (no bleeding): INR 4-10 → hold warfarin + notify provider + monitor. INR > 10 or any bleeding → vitamin K. Life-threatening bleeding → FFP or 4-factor PCC (prothrombin complex concentrate). Never continue the same dose if INR is out of range.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

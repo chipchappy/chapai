@@ -30,7 +30,7 @@ export const visualRationaleSchema = z.object({
 export const canonicalQuestionSchema = z.object({
   id: z.string(),
   exam: z.enum(["ccrn", "nclex"]),
-  type: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).default("mcq"),
+  type: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie", "scenario_mcq", "decision_map_mcq"]).default("mcq"),
   category: z.string(),
   subcategory: z.string().optional(),
   difficulty: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5)]),

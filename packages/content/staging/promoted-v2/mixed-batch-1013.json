@@ -1,0 +1,619 @@
+{
+  "batchId": "mixed-batch-1013",
+  "generatedAt": "2026-04-11T08:53:36-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb1013-n001",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "cord_prolapse_positioning",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's next move in this fetal emergency?",
+      "scenarioTitle": "Cord pressure relief map",
+      "scenario": "Immediately after spontaneous rupture of membranes, the fetal heart rate drops to 70/min and remains there.",
+      "additionalInfo": "The nurse palpates a pulsating loop of cord in the vagina while the client is still in bed.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation"
+        },
+        {
+          "id": "b",
+          "text": "Normal transient deceleration that only needs continued monitoring"
+        },
+        {
+          "id": "c",
+          "text": "Placenta previa with no positioning urgency"
+        },
+        {
+          "id": "d",
+          "text": "Benign fetal sleep cycle that should resolve without bedside action"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is rupture of membranes, sudden profound bradycardia, and a palpable cord. The nurse should answer from relieving cord compression first, not from interpreting this as a softer tracing issue.",
+      "distractorRationales": {
+        "b": "Normal transient deceleration that only needs continued monitoring is not the best answer, without accounting for The life-saving move is driven by pressure relief, not by waiting for better fetal data. Normalizes a finding that should change the nurse's priority, so Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "Placenta previa with no positioning urgency would not address the priority, but the stem cue is Immediately after spontaneous rupture of membranes, the fetal heart rate drops to 70/min and remains there. Anchors on the wrong explanation for the client's cues, so It is less defensible because Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation targets the problem most likely to deteriorate first.",
+        "d": "The problem with Benign fetal sleep cycle that should resolve without bedside action is that it normalizes a finding that should change the nurse's priority, rather than acting on The nurse palpates a pulsating loop of cord in the vagina while the client is still in bed. The safer answer is Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation because delaying circulation and perfusion support can worsen circulation or perfusion."
+      },
+      "tags": [
+        "cord_prolapse_positioning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The life-saving move is driven by pressure relief, not by waiting for better fetal data.",
+      "speedCue": "A visible or palpable cord plus fetal bradycardia should make the map immediate.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n002",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "organophosphate_poisoning",
+      "subcategory": "organophosphate_poisoning",
+      "difficulty": 3,
+      "stem": "Which decision map best fits this toxic-exposure presentation?",
+      "scenarioTitle": "Cholinergic toxicity map",
+      "scenario": "A farm worker arrives drenched in pesticide with wheezing, salivation, diarrhea, and pinpoint pupils.",
+      "additionalInfo": "The client is bradycardic, sweaty, and increasingly confused.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Opioid overdose because the pupils are constricted"
+        },
+        {
+          "id": "c",
+          "text": "Simple gastroenteritis with incidental wheezing"
+        },
+        {
+          "id": "d",
+          "text": "Expected heat exhaustion that only needs water and rest"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The speed clue is the wet cholinergic cluster: secretions, wheezing, diarrhea, bradycardia, and miosis after pesticide exposure. The nurse should choose the map that removes exposure risk and treats the toxidrome fast.",
+      "distractorRationales": {
+        "b": "The problem with Opioid overdose because the pupils are constricted is that it anchors on the wrong explanation for the client's cues, instead of responding to increasingly confused. That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "Simple gastroenteritis with incidental wheezing is not the best answer, and misses that The client is bradycardic, sweaty. Normalizes a finding that should change the nurse's priority, so Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This option makes Expected heat exhaustion that only needs water and rest the focus, but the stem cue is The client is bradycardic, sweaty. Normalizes a finding that should change the nurse's priority, so The correct path is Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "organophosphate_poisoning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When the stem looks wet in every direction, think cholinergic toxicity before you chase one isolated symptom.",
+      "speedCue": "Wet lungs, wet skin, wet gut, small pupils, pesticide.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n003",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "pulmonary_embolism_post_op",
+      "subcategory": "pulmonary_embolism_post_op",
+      "difficulty": 3,
+      "stem": "Which clinical map best explains this client's sudden change after surgery?",
+      "scenarioTitle": "Post-op PE decision map",
+      "scenario": "A client 2 days after abdominal surgery suddenly becomes short of breath with pleuritic chest pain while walking.",
+      "additionalInfo": "Oxygen saturation drops to 88%, heart rate is 132/min, and one calf is visibly more swollen than the other.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse"
+        },
+        {
+          "id": "b",
+          "text": "Routine postoperative fatigue from ambulation only"
+        },
+        {
+          "id": "c",
+          "text": "Panic symptoms without a clot-related emergency"
+        },
+        {
+          "id": "d",
+          "text": "Incisional pain causing harmless rapid breathing"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The decision map is sudden dyspnea plus pleuritic pain, hypoxemia, tachycardia, and a DVT clue. The nurse should treat this as PE until proven otherwise and escalate immediately.",
+      "distractorRationales": {
+        "b": "Routine postoperative fatigue from ambulation only fits a lower-risk interpretation, despite the clinical warning in a DVT clue. Treats an active warning sign as something safe to watch, so The nurse should prioritize Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse; otherwise oxygenation or ventilation remains the active threat.",
+        "c": "This choice focuses on Panic symptoms without a clot-related emergency, instead of responding to A client 2 days after abdominal surgery suddenly becomes short of breath with pleuritic chest pain while walking. Anchors on the wrong explanation for the client's cues, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "This option overweights Incisional pain causing harmless rapid breathing, while the decisive cue is a DVT clue. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "pulmonary_embolism_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When respiratory collapse travels with a clot clue, the answer should come from perfusion risk, not reassurance.",
+      "speedCue": "The fastest route is chest pain plus falling oxygen plus unilateral calf swelling after surgery.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n004",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "serotonin_syndrome",
+      "subcategory": "serotonin_syndrome",
+      "difficulty": 3,
+      "stem": "Which decision map most accurately fits this medication reaction?",
+      "scenarioTitle": "Serotonin toxicity decision map",
+      "scenario": "A client taking escitalopram started linezolid yesterday and now has fever, diarrhea, agitation, tremor, and inducible clonus.",
+      "additionalInfo": "The client is tachycardic and intensely restless during assessment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serotonin syndrome pattern requiring medication review and urgent escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected activation from antidepressant therapy only"
+        },
+        {
+          "id": "c",
+          "text": "Neuroleptic malignant syndrome because fever is present"
+        },
+        {
+          "id": "d",
+          "text": "Simple viral illness causing dehydration and anxiety"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The map comes from serotonergic overlap plus fever, GI symptoms, agitation, and clonus. The nurse should prioritize the neuromuscular clue and not drift toward slower rigid syndromes.",
+      "distractorRationales": {
+        "b": "This option makes Expected activation from antidepressant therapy only the focus, when the bedside priority is driven by Clonus is one of the fastest clues that pushes the pattern toward serotonin toxicity. Normalizes a finding that should change the nurse's priority, so It is less defensible because Serotonin syndrome pattern requiring medication review and urgent escalation targets the problem most likely to deteriorate first.",
+        "c": "The reasoning trap in Neuroleptic malignant syndrome because fever is present is that it anchors on the wrong explanation for the client's cues, and misses that The map comes from serotonergic overlap plus fever, GI symptoms, agitation. It is less defensible because Serotonin syndrome pattern requiring medication review and urgent escalation targets the problem most likely to deteriorate first.",
+        "d": "The clinical error in Simple viral illness causing dehydration and anxiety is that it does not account for the clinical cue most likely to deteriorate first, without accounting for The map comes from serotonergic overlap plus fever, GI symptoms, agitation. It is less defensible because Serotonin syndrome pattern requiring medication review and urgent escalation targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "serotonin_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Clonus is one of the fastest clues that pushes the pattern toward serotonin toxicity.",
+      "speedCue": "Fever alone is noisy; clonus plus serotonergic overlap is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n005",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "ectopic_pregnancy_rupture",
+      "subcategory": "ectopic_pregnancy_rupture",
+      "difficulty": 3,
+      "stem": "Which conclusion should guide the nurse's first move in this triage presentation?",
+      "scenarioTitle": "Early-pregnancy hemorrhage case",
+      "scenario": "A client with a positive home pregnancy test presents with severe right-sided pelvic pain, dizziness, and shoulder pain.",
+      "additionalInfo": "Blood pressure is 86/48 mm Hg, heart rate is 128/min, and a small amount of dark vaginal bleeding is present.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected implantation discomfort that can wait for clinic follow-up"
+        },
+        {
+          "id": "c",
+          "text": "Placenta previa because vaginal bleeding is present"
+        },
+        {
+          "id": "d",
+          "text": "Hyperemesis only because pregnancy symptoms are common early"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pregnancy plus unilateral pain, shoulder pain, hypotension, and bleeding create a hemorrhage map. The nurse should answer from shock risk, not from the small amount of visible bleeding.",
+      "distractorRationales": {
+        "b": "The problem with Expected implantation discomfort that can wait for clinic follow-up is that it treats an active warning sign as something safe to watch, despite the clinical warning in A client with a positive home pregnancy test presents with severe right-sided pelvic pain, dizziness. That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "c": "This option makes Placenta previa because vaginal bleeding is present the focus, without accounting for Shoulder pain can be the clue that makes internal bleeding feel obvious instead of subtle. Anchors on the wrong explanation for the client's cues, so Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "d": "Hyperemesis only because pregnancy symptoms are common early would not address the priority, even though the higher-risk finding is Shoulder pain can be the clue that makes internal bleeding feel obvious instead of subtle. Anchors on the wrong explanation for the client's cues, so It is less defensible because Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "ectopic_pregnancy_rupture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Shoulder pain can be the clue that makes internal bleeding feel obvious instead of subtle.",
+      "speedCue": "Positive pregnancy plus one-sided pain plus hypotension is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n006",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "neuroleptic_malignant_syndrome",
+      "subcategory": "neuroleptic_malignant_syndrome",
+      "difficulty": 3,
+      "stem": "Which conclusion should drive the nurse's next move in this medication reaction?",
+      "scenarioTitle": "Rigid fevered client after antipsychotic change",
+      "scenario": "A client who started fluphenazine 2 days ago is febrile, diaphoretic, rigid, and difficult to arouse.",
+      "additionalInfo": "Heart rate is 132/min, blood pressure is fluctuating, and the client has no diarrhea or inducible clonus.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected sedation that only needs extra rest"
+        },
+        {
+          "id": "c",
+          "text": "Serotonin syndrome because fever is present"
+        },
+        {
+          "id": "d",
+          "text": "A benign viral illness unrelated to the medication"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is rigidity, fever, autonomic instability, and recent antipsychotic exposure. The nurse should connect the rigid high-fever picture to neuroleptic malignant syndrome and escalate quickly instead of drifting toward softer explanations.",
+      "distractorRationales": {
+        "b": "Expected sedation that only needs extra rest would not address the priority, when the bedside priority is driven by Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity. Normalizes a finding that should change the nurse's priority, so The correct path is Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation, which matches the priority cues instead of a secondary concern.",
+        "c": "This choice focuses on Serotonin syndrome because fever is present, despite the clinical warning in The pattern is rigidity, fever, autonomic instability. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "d": "The reasoning trap in A benign viral illness unrelated to the medication is that it normalizes a finding that should change the nurse's priority, without accounting for Heart rate is 132/min, blood pressure is fluctuating. That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses."
+      },
+      "tags": [
+        "neuroleptic_malignant_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity.",
+      "speedCue": "High fever plus rigidity after a dopamine-blocking drug is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neuroleptic_malignant_syndrome",
+        "caption": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity.",
+        "conclusion": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n007",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "placental_abruption_pain",
+      "subcategory": "placental_abruption_pain",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's response to this bleeding pattern?",
+      "scenarioTitle": "Painful bleed with fetal change",
+      "scenario": "A client at 36 weeks' gestation has sudden abdominal pain after a minor vehicle collision.",
+      "additionalInfo": "Dark vaginal bleeding is present, the uterus feels rigid, and the fetal heart tracing now shows recurrent late decelerations.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Placental abruption requiring immediate maternal-fetal stabilization and provider escalation"
+        },
+        {
+          "id": "b",
+          "text": "Placenta previa because any third-trimester bleeding is usually painless"
+        },
+        {
+          "id": "c",
+          "text": "Normal post-trauma observation findings with no urgent fetal risk"
+        },
+        {
+          "id": "d",
+          "text": "False labor that only needs hydration and reassessment"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pain, dark bleeding, uterine rigidity, and fetal compromise form an abruption pattern. The safest answer is the one that treats this as a perfusion emergency for both parent and fetus.",
+      "distractorRationales": {
+        "b": "Placenta previa because any third-trimester bleeding is usually painless would not address the priority, when the bedside priority is driven by Pain, dark bleeding, uterine rigidity. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "Normal post-trauma observation findings with no urgent fetal risk is not the best answer, when the bedside priority is driven by Pain plus a firm uterus should pull you away from previa and toward abruption fast. Normalizes a finding that should change the nurse's priority, so Placental abruption requiring immediate maternal-fetal stabilization and provider escalation is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "d": "The problem with False labor that only needs hydration and reassessment is that it treats an active warning sign as something safe to watch, instead of responding to fetal compromise form an abruption pattern. The safer answer is Placental abruption requiring immediate maternal-fetal stabilization and provider escalation because delaying bleeding-risk intervention can worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "placental_abruption_pain",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pain plus a firm uterus should pull you away from previa and toward abruption fast.",
+      "speedCue": "Rigid uterus plus painful bleeding is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n008",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "tumor_lysis_syndrome",
+      "subcategory": "tumor_lysis_syndrome",
+      "difficulty": 3,
+      "stem": "Which conclusion should direct the nurse's next move after this chemotherapy change?",
+      "scenarioTitle": "Electrolyte crash after induction therapy",
+      "scenario": "A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea.",
+      "additionalInfo": "Telemetry now shows peaked T waves, urine output has fallen, potassium is 6.1 mEq/L, phosphate is elevated, and creatinine is rising.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected chemotherapy fatigue that only needs rest"
+        },
+        {
+          "id": "c",
+          "text": "Uncomplicated dehydration that can wait for the next shift"
+        },
+        {
+          "id": "d",
+          "text": "Simple nausea from treatment without true metabolic collapse"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The speed clue is post-chemotherapy electrolyte collapse with telemetry change and falling renal function. The nurse should answer from hyperkalemic and renal risk, not from a vague oncology side-effect frame.",
+      "distractorRationales": {
+        "b": "The problem with Expected chemotherapy fatigue that only needs rest is that it normalizes a finding that should change the nurse's priority, while the decisive cue is A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea. The safer answer is Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation because delaying renal protection can worsen renal injury.",
+        "c": "Uncomplicated dehydration that can wait for the next shift would not address the priority, and misses that Telemetry now shows peaked T waves, urine output has fallen, potassium is 6. Treats an active warning sign as something safe to watch, so That choice could make the nurse miss the window for renal protection while renal injury progresses.",
+        "d": "This option overweights Simple nausea from treatment without true metabolic collapse, despite the clinical warning in A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation because delaying renal protection can worsen renal injury."
+      },
+      "tags": [
+        "tumor_lysis_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In tumor lysis syndrome, the timeline after chemotherapy matters as much as the individual lab values.",
+      "speedCue": "Chemo plus peaked T waves plus worsening creatinine should feel immediate.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n009",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "intussusception_currant_jelly",
+      "subcategory": "intussusception_currant_jelly",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next step for this infant?",
+      "scenarioTitle": "Bowel telescoping decision map",
+      "scenario": "An infant has intermittent screaming episodes, draws the knees to the chest, and becomes lethargic between painful periods.",
+      "additionalInfo": "There has been one stool mixed with dark red mucus and repeated nonbilious vomiting today.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Intussusception pattern requiring urgent bowel-obstruction evaluation and perfusion protection"
+        },
+        {
+          "id": "b",
+          "text": "Normal teething discomfort that only needs soothing measures"
+        },
+        {
+          "id": "c",
+          "text": "Mild viral illness without obstruction concern"
+        },
+        {
+          "id": "d",
+          "text": "Transient feeding intolerance with no urgent abdomen risk"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The right map comes from episodic pain, knees-to-chest posture, vomiting, and currant-jelly stool. Those clues together point to bowel telescoping and perfusion risk, not simple GI upset.",
+      "distractorRationales": {
+        "b": "This option makes Normal teething discomfort that only needs soothing measures the focus, and misses that The right map comes from episodic pain, knees-to-chest posture, vomiting. Normalizes a finding that should change the nurse's priority, so It is less defensible because Intussusception pattern requiring urgent bowel-obstruction evaluation and perfusion protection targets the problem most likely to deteriorate first.",
+        "c": "The reasoning trap in Mild viral illness without obstruction concern is that it normalizes a finding that should change the nurse's priority, and misses that Those clues together point to bowel telescoping and perfusion risk, not simple GI upset. Intussusception pattern requiring urgent bowel-obstruction evaluation and perfusion protection is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "d": "Transient feeding intolerance with no urgent abdomen risk would not address the priority, but the stem cue is The right map comes from episodic pain, knees-to-chest posture, vomiting. Normalizes a finding that should change the nurse's priority, so The correct path is Intussusception pattern requiring urgent bowel-obstruction evaluation and perfusion protection, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "intussusception_currant_jelly",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Alternating severe pain and quiet periods with bloody mucus stool should trigger obstruction thinking fast.",
+      "speedCue": "Knees to chest plus currant-jelly stool is the quickest path to the diagnosis.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n010",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "placenta_previa_bleeding",
+      "subcategory": "placenta_previa_bleeding",
+      "difficulty": 3,
+      "stem": "Which clinical map should guide the nurse's response to this client's bleeding pattern?",
+      "scenarioTitle": "Third-trimester bleed decision map",
+      "scenario": "A client at 33 weeks' gestation presents with bright-red vaginal bleeding and no abdominal pain.",
+      "additionalInfo": "The uterus is soft, fetal movement is present, and the client asks whether a vaginal exam will show what is causing the bleeding.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Placenta previa pattern requiring maternal-fetal monitoring and avoidance of vaginal examination"
+        },
+        {
+          "id": "b",
+          "text": "Placental abruption pattern that should be treated as concealed painful bleeding"
+        },
+        {
+          "id": "c",
+          "text": "Benign spotting that can wait for outpatient follow-up"
+        },
+        {
+          "id": "d",
+          "text": "Normal cervical dilation expected in late pregnancy"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Painless bright-red bleeding with a soft uterus fits placenta previa. The nurse should connect the bleed pattern to the safety move of avoiding vaginal examination while monitoring maternal-fetal status.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Placental abruption pattern that should be treated as concealed painful bleeding is that it moves to a lower-acuity action before the client is clinically stable, when the bedside priority is driven by A client at 33 weeks' gestation presents with bright-red vaginal bleeding and no abdominal pain. Placenta previa pattern requiring maternal-fetal monitoring and avoidance of vaginal examination better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "The reasoning trap in Benign spotting that can wait for outpatient follow-up is that it treats an active warning sign as something safe to watch, but the stem cue is A client at 33 weeks' gestation presents with bright-red vaginal bleeding and no abdominal pain. Placenta previa pattern requiring maternal-fetal monitoring and avoidance of vaginal examination is safer because it addresses bleeding or anticoagulation injury before routine care or reassurance.",
+        "d": "The problem with Normal cervical dilation expected in late pregnancy is that it normalizes a finding that should change the nurse's priority, rather than acting on The nurse should connect the bleed pattern to the safety move of avoiding vaginal examination while monitoring maternal-fetal. Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved."
+      },
+      "tags": [
+        "placenta_previa_bleeding",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Painless bleeding points to previa; pain and uterine rigidity would push the map elsewhere.",
+      "speedCue": "Use what is absent as the shortcut: no pain and no rigid uterus.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n011",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "pyloric_stenosis_projectile_vomiting",
+      "subcategory": "pyloric_stenosis_projectile_vomiting",
+      "difficulty": 3,
+      "stem": "Which interpretation should shape the nurse's response to this infant's feeding problem?",
+      "scenarioTitle": "Projectile vomiting decision map",
+      "scenario": "A 5-week-old infant has forceful vomiting after most feeds, appears hungry immediately afterward, and has fewer wet diapers than yesterday.",
+      "additionalInfo": "Weight gain has slowed and the parent notices visible abdominal rippling before emesis.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pyloric stenosis pattern requiring obstruction-focused evaluation and dehydration protection"
+        },
+        {
+          "id": "b",
+          "text": "Typical reflux that only needs upright positioning after feeds"
+        },
+        {
+          "id": "c",
+          "text": "Simple gastroenteritis with expected self-limited vomiting"
+        },
+        {
+          "id": "d",
+          "text": "Food sensitivity without a true obstructive process"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Projectile vomiting, hunger after emesis, fewer wet diapers, and visible peristaltic waves create a pyloric stenosis map. The nurse should think obstruction and dehydration, not routine spit-up.",
+      "distractorRationales": {
+        "b": "This answer choice treats Typical reflux that only needs upright positioning after feeds as the key issue, instead of responding to The nurse should think obstruction and dehydration, not routine spit-up. Moves to a lower-acuity action before the client is clinically stable, so The priority is Pyloric stenosis pattern requiring obstruction-focused evaluation and dehydration protection, not a step that delays stabilization of pediatric or newborn instability.",
+        "c": "Simple gastroenteritis with expected self-limited vomiting would not address the priority, but the stem cue is A 5-week-old infant has forceful vomiting after most feeds, appears hungry immediately afterward. Normalizes a finding that should change the nurse's priority, so It is less defensible because Pyloric stenosis pattern requiring obstruction-focused evaluation and dehydration protection targets the problem most likely to deteriorate first.",
+        "d": "Food sensitivity without a true obstructive process fits a lower-risk interpretation, instead of responding to Projectile vomiting followed by persistent hunger is a stronger obstruction clue than simple reflux symptoms. Anchors on the wrong explanation for the client's cues, so The priority is Pyloric stenosis pattern requiring obstruction-focused evaluation and dehydration protection, not a step that delays stabilization of pediatric or newborn instability."
+      },
+      "tags": [
+        "pyloric_stenosis_projectile_vomiting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Projectile vomiting followed by persistent hunger is a stronger obstruction clue than simple reflux symptoms.",
+      "speedCue": "The fastest clue pair is forceful emesis plus wanting to feed again right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1013-n012",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "status_epilepticus_benzo_first",
+      "subcategory": "status_epilepticus_benzo_first",
+      "difficulty": 3,
+      "stem": "Which actions belong in the nurse's immediate response to status epilepticus? Select all that apply.",
+      "scenarioTitle": "Persistent seizure rescue set",
+      "scenario": "A client has continuous generalized tonic-clonic activity that has lasted longer than 5 minutes.",
+      "additionalInfo": "Oxygen is in place, the client is side-lying, and IV access is patent.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to give an IV benzodiazepine"
+        },
+        {
+          "id": "b",
+          "text": "Maintain airway protection and suction readiness"
+        },
+        {
+          "id": "c",
+          "text": "Continue timing the seizure and escalate the emergency response"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the seizure to self-resolve before giving medication"
+        },
+        {
+          "id": "e",
+          "text": "Place a tongue blade in the mouth to prevent biting"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Once the seizure has crossed the 5-minute threshold, the nurse should treat it as status epilepticus. The immediate bundle is airway protection, emergency escalation, and benzodiazepine-first treatment.",
+      "distractorRationales": {
+        "d": "This distractor pulls attention toward Wait for the seizure to self-resolve before giving medication, when the bedside priority is driven by benzodiazepine-first treatment. Treats an active warning sign as something safe to watch, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "e": "Place a tongue blade in the mouth to prevent biting would not address the priority, without accounting for benzodiazepine-first treatment. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "status_epilepticus_benzo_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The 5-minute mark changes the problem from observation to emergency treatment.",
+      "speedCue": "If the seizure keeps going, stop thinking wait-and-see.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

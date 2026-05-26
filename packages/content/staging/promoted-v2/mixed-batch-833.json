@@ -1,0 +1,411 @@
+{
+  "batchId": "mixed-batch-833",
+  "generatedAt": "2026-04-09T14:21:03-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 9
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb833-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A 16-year-old male with no prior anesthesia history is 45 minutes into general anesthesia for scoliosis repair using sevoflurane and succinylcholine for intubation. Temperature is now 41.8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg, and the patient is diffusely rigid. The team administers dantrolene 2.5 mg/kg IV. Which statement about dantrolene's mechanism AND the most critical additional intervention is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation"
+        },
+        {
+          "id": "b",
+          "text": "Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves"
+        },
+        {
+          "id": "c",
+          "text": "Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are sufficient once dantrolene is given"
+        },
+        {
+          "id": "d",
+          "text": "Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Dantrolene mechanism: selectively blocks the RYR1 (ryanodine receptor type 1) on the sarcoplasmic reticulum membrane, directly preventing the uncontrolled calcium efflux that drives the MH hypermetabolic crisis. Without continuous calcium release, muscle contraction ceases, and hyperthermia, rigidity, and acidosis begin to resolve. In this case, sevoflurane MUST be stopped immediately — if it was not stopped when masseter rigidity first occurred during succinylcholine administration (an early warning sign), this was a critical error that escalated the crisis. After first dantrolene bolus: (1) Repeat dantrolene 2.5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total); (2) Hyperventilate 100% O2 at high flow (flush volatile agent, treat hypercapnia); (3) Active cooling (ice packs to axillae, groin, neck); (4) Treat VT — avoid calcium channel blockers (interact fatally with dantrolene causing cardiovascular collapse); (5) Sodium bicarbonate for severe acidosis; (6) Treat hyperkalemia. Masseter spasm after succinylcholine should always trigger MH protocol and cessation of volatile agent.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation, but the stem cue is (5) Sodium bicarbonate for severe acidosis. Does not account for the clinical cue most likely to deteriorate first, so Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "The reasoning trap in Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are is that it moves to a lower-acuity action before the client is clinically stable, but the stem cue is 5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total). The correct path is Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL, which matches the priority cues instead of a secondary concern.",
+        "d": "This choice focuses on Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly, despite the clinical warning in 8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Dantrolene blocks RYR1 calcium release — the direct MH mechanism. Masseter spasm after succinylcholine = abort case immediately, activate MH protocol. Repeat dantrolene q5 min. Avoid calcium channel blockers (interact fatally with dantrolene).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after a negative test 6 months ago. Chest X-ray is negative. The patient has no symptoms. What is the recommended follow-up management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the PPD in 3 months to confirm conversion"
+        },
+        {
+          "id": "b",
+          "text": "No treatment needed — latent TB does not require intervention if the patient is asymptomatic"
+        },
+        {
+          "id": "c",
+          "text": "Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity"
+        },
+        {
+          "id": "d",
+          "text": "Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB"
+        }
+      ],
+      "answer": "c",
+      "rationale": "A recent PPD conversion (negative → positive within 2 years) with negative chest X-ray indicates latent TB infection (LTBI). Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard; (2) Rifapentine + INH weekly × 12 weeks (3HP) — shorter, increasingly preferred; (3) Rifampin daily × 4 months. INH monitoring: monthly clinical evaluation for hepatotoxicity symptoms (jaundice, nausea, fatigue, RUQ pain); baseline LFTs for high-risk patients; hold INH if AST >3× ULN with symptoms or >5× ULN asymptomatic. 4-drug RIPE is for active TB, not LTBI.",
+      "distractorRationales": {
+        "a": "This answer choice treats Repeat the PPD in 3 months to confirm conversion as the key issue, rather than acting on A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after. Moves to a lower-acuity action before the client is clinically stable, so The priority is Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity, not a step that delays stabilization of infection progression.",
+        "b": "This distractor pulls attention toward No treatment needed — latent TB does not require intervention if the patient is asymptomatic, but the stem cue is A recent PPD conversion (negative → positive within 2 years) with negative chest X-ray indicates latent TB infection. Moves to a lower-acuity action before the client is clinically stable, so That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "d": "Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB fits a lower-risk interpretation, while the decisive cue is Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity; otherwise infection progression remains the active threat."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Recent PPD conversion + negative CXR = LTBI → INH prophylaxis 9 months (or 3HP 12 weeks); monitor monthly for INH hepatotoxicity; 4-drug RIPE is for active TB only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A patient with Stage III pressure injury to the sacrum has a wound that is 4 cm × 6 cm × 2.5 cm deep with 30% yellow slough, 70% granulation tissue, minimal exudate, and intact surrounding skin. Which wound care plan is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pack wound tightly with dry gauze and change dressing twice daily"
+        },
+        {
+          "id": "b",
+          "text": "Apply silver sulfadiazine cream and cover with gauze"
+        },
+        {
+          "id": "c",
+          "text": "Debride slough with autolytic method using moisture-retentive dressing; avoid tight packing"
+        },
+        {
+          "id": "d",
+          "text": "Apply wet-to-dry dressing to debride the slough mechanically"
+        }
+      ],
+      "answer": "c",
+      "rationale": "For a wound with granulation tissue and slough: autolytic debridement using a moisture-retentive dressing (hydrocolloid or hydrogel) promotes selective removal of devitalized tissue while protecting new granulation. Tight packing (A) disrupts fragile granulation tissue and causes trauma on removal. Wet-to-dry dressings (D) are non-selective — they remove both slough AND healthy tissue. Silver sulfadiazine (B) is for burn wounds, not chronic pressure injuries. Principles: fill (don't pack) dead space, maintain moist wound environment, and protect periwound skin.",
+      "distractorRationales": {
+        "a": "This option overweights Pack wound tightly with dry gauze and change dressing twice daily, instead of responding to Principles: fill (don't pack) dead space, maintain moist wound environment. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "b": "This answer choice treats Apply silver sulfadiazine cream and cover with gauze as the key issue, although the nurse should be guided by 5 cm deep with 30% yellow slough, 70% granulation tissue, minimal exudate. Anchors on the wrong explanation for the client's cues, so The nurse should prioritize Debride slough with autolytic method using moisture-retentive dressing; avoid tight packing; otherwise infection progression remains the active threat.",
+        "d": "This answer choice treats Apply wet-to-dry dressing to debride the slough mechanically as the key issue, rather than acting on 5 cm deep with 30% yellow slough, 70% granulation tissue, minimal exudate. Waits on escalation while the bedside priority remains unresolved, so The nurse should prioritize Debride slough with autolytic method using moisture-retentive dressing; avoid tight packing; otherwise infection progression remains the active threat."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pressure injury with slough: autolytic debridement with moisture-retentive dressing. Never tight-pack wounds — fill dead space loosely.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "A 79-year-old patient on a medical unit is found to have a 5 cm × 4 cm sacral wound with full-thickness tissue loss, visible subcutaneous fat, and partial slough coverage of the wound base. No bone, tendon, or muscle is visible. What is the correct NPUAP/EPUAP pressure injury stage and priority nursing intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage 1; increase repositioning frequency and apply a transparent film dressing"
+        },
+        {
+          "id": "b",
+          "text": "Stage 3; apply a moisture-retentive dressing, reposition every 2 hours off the sacrum, consult wound care specialist, and address nutrition"
+        },
+        {
+          "id": "c",
+          "text": "Stage 4; immediate surgical debridement is required before any wound care intervention"
+        },
+        {
+          "id": "d",
+          "text": "Unstageable; cover with dry gauze until slough completely resolves before determining stage or treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "NPUAP/EPUAP Pressure Injury Stages: Stage 1 — non-blanchable erythema, intact skin; Stage 2 — partial thickness dermis loss, shallow open ulcer; Stage 3 — full-thickness skin loss with visible subcutaneous fat, may have slough, but no bone/tendon/muscle visible; Stage 4 — full-thickness with exposed bone, tendon, or muscle; Unstageable — base entirely obscured by non-removable slough or eschar. This wound is Stage 3 (full-thickness, subcutaneous fat visible, partial slough but bone/tendon not exposed). Management: moist wound healing (foam, hydrocolloid, or alginate dressings based on exudate level), reposition every 2 hours off the sacrum, pressure redistribution support surface, wound care specialist consultation, nutritional assessment (protein, zinc, vitamin C support wound healing). Dry gauze is contraindicated — desiccates wound bed and impairs healing. Slough does not make a wound automatically unstageable (unstageable requires the base to be completely obscured).",
+      "distractorRationales": {
+        "a": "The problem with Stage 1; increase repositioning frequency and apply a transparent film dressing is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is NPUAP/EPUAP Pressure Injury Stages: Stage 1 — non-blanchable erythema, intact skin. That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "c": "The reasoning trap in Stage 4; immediate surgical debridement is required before any wound care intervention is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is Stage 3 pressure injury: full-thickness, subcutaneous fat visible, no bone/tendon. Stage 3; apply a moisture-retentive dressing, reposition every 2 hours off the sacrum, consult wound care better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The clinical error in Unstageable; cover with dry gauze until slough completely resolves before determining stage or treatment is that it moves to a lower-acuity action before the client is clinically stable, without accounting for Stage 3 pressure injury: full-thickness, subcutaneous fat visible, no bone/tendon. Stage 3; apply a moisture-retentive dressing, reposition every 2 hours off the sacrum, consult wound care is safer because it addresses infection progression before routine care or reassurance."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stage 3 pressure injury: full-thickness, subcutaneous fat visible, no bone/tendon. Treat with moist wound dressings, 2-hour repositioning, pressure redistribution, nutrition support, and wound care consult. Dry gauze contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "After a patient falls while attempting to ambulate unassisted, the nurse completes an incident report. Which statement about incident reports is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The incident report should be referenced in the patient's medical record to ensure continuity of care"
+        },
+        {
+          "id": "b",
+          "text": "The incident report is an internal quality improvement tool; it is not referenced in the medical record and is not discoverable in litigation"
+        },
+        {
+          "id": "c",
+          "text": "Incident reports are part of the permanent medical record and must be provided to patients upon request"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should document 'incident report filed' in the nursing notes to alert other providers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Incident reports (occurrence reports) are internal quality improvement documents: they are NOT referenced in the patient's medical record. Referencing them in the chart (A, D) makes them discoverable in litigation, eliminating their protection as internal QI documents. The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without mentioning the incident report. In many states, incident reports prepared in anticipation of litigation may be protected from discovery, but only if not referenced in the chart. They are not part of the permanent medical record (C).",
+      "distractorRationales": {
+        "a": "The reasoning trap in The incident report should be referenced in the patient's medical record to ensure continuity of care is that it does not account for the clinical cue most likely to deteriorate first, without accounting for The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without. That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "c": "The reasoning trap in Incident reports are part of the permanent medical record and must be provided to patients upon is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without. That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "d": "This answer choice treats The nurse should document 'incident report filed' in the nursing notes to alert other providers as the key issue, while the decisive cue is The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without. Waits on escalation while the bedside priority remains unresolved, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Incident reports: do NOT reference in the medical record; document clinical facts of the event in the chart only — referencing the incident report makes it legally discoverable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hellp_syndrome",
+      "subcategory": "HELLP Syndrome",
+      "difficulty": 4,
+      "stem": "A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea, and malaise. Labs reveal: AST 280 U/L, LDH 950 U/L, platelets 74,000/mm3, hemoglobin 9.8 g/dL with schistocytes on smear, and normal creatinine. Which condition do these findings indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute fatty liver of pregnancy (AFLP)"
+        },
+        {
+          "id": "b",
+          "text": "HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)"
+        },
+        {
+          "id": "c",
+          "text": "Thrombotic thrombocytopenic purpura (TTP)"
+        },
+        {
+          "id": "d",
+          "text": "Viral hepatitis with thrombocytopenia"
+        }
+      ],
+      "answer": "b",
+      "rationale": "HELLP syndrome is a variant of severe preeclampsia: Hemolysis (schistocytes, elevated LDH, low Hgb), Elevated Liver enzymes (AST >70 U/L), Low Platelets (<100,000). RUQ/epigastric pain from hepatic capsule distension is classic. Definitive treatment is delivery. AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism. TTP (C) presents with the pentad including fever and renal failure. Viral hepatitis (D) would not present with schistocytes and would have different epidemiology.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Acute fatty liver of pregnancy (AFLP) is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism. That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "This option makes Thrombotic thrombocytopenic purpura (TTP) the focus, and misses that A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea. Does not account for the clinical cue most likely to deteriorate first, so HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets) better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Viral hepatitis with thrombocytopenia fits a lower-risk interpretation, while the decisive cue is RUQ/epigastric pain from hepatic capsule distension is classic. Anchors on the wrong explanation for the client's cues, so The nurse should prioritize HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets); otherwise bleeding or anticoagulation injury remains the active threat."
+      },
+      "tags": [
+        "HELLP Syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "HELLP = Hemolysis (schistocytes + elevated LDH) + Elevated Liver enzymes + Low Platelets; treatment is delivery regardless of gestational age.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient is admitted with acute pancreatitis, amylase 980 units/L, and lipase 1,240 units/L. They are NPO, receiving IV fluids, and reporting pain 7/10. On day 3, the patient is hemodynamically stable with improving pain. The provider considers nutrition. Which approach reflects current evidence-based guidelines?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Continue NPO until amylase and lipase normalize, then advance to clear liquids"
+        },
+        {
+          "id": "b",
+          "text": "Begin total parenteral nutrition (TPN) immediately via central line to rest the pancreas"
+        },
+        {
+          "id": "c",
+          "text": "Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission"
+        },
+        {
+          "id": "d",
+          "text": "Advance to oral clear liquids only if the patient reports no abdominal pain"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current guidelines (ACG, SCCM) recommend early enteral nutrition within 24–72 hours in acute pancreatitis, particularly in moderate-to-severe disease. Early EN maintains gut integrity, reduces bacterial translocation, and decreases infectious complications compared to TPN. Prolonged NPO (A) and waiting for enzyme normalization delay recovery. TPN (B) is associated with higher infection rates and should be used only when enteral access is not achievable. Waiting for complete pain resolution (D) unnecessarily delays nutrition.",
+      "distractorRationales": {
+        "a": "The problem with Continue NPO until amylase and lipase normalize, then advance to clear liquids is that it normalizes a finding that should change the nurse's priority, while the decisive cue is Acute pancreatitis: early enteral nutrition within 24–72 hours is preferred over TPN. The priority is Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission, not a step that delays stabilization of infection progression.",
+        "b": "Begin total parenteral nutrition (TPN) immediately via central line to rest the pancreas is not the best answer, without accounting for Waiting for complete pain resolution (D) unnecessarily delays nutrition. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission, which matches the priority cues instead of a secondary concern.",
+        "d": "This option overweights Advance to oral clear liquids only if the patient reports no abdominal pain, while the decisive cue is Acute pancreatitis: early enteral nutrition within 24–72 hours is preferred over TPN. Moves to a lower-acuity action before the client is clinically stable, so The priority is Initiate early enteral nutrition via nasojejunal tube within 24–72 hours of admission, not a step that delays stabilization of infection progression."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute pancreatitis: early enteral nutrition within 24–72 hours is preferred over TPN; NPO is no longer the standard of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "involuntary_commitment",
+      "subcategory": "Involuntary Commitment",
+      "difficulty": 3,
+      "stem": "A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. He has not slept in 5 days, believes he is receiving messages from aliens, and stated he plans to 'make his neighbor pay' for 'spying on him.' Which criterion most legally supports involuntary psychiatric commitment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Presence of a psychiatric diagnosis requiring treatment"
+        },
+        {
+          "id": "b",
+          "text": "Refusal of recommended medication"
+        },
+        {
+          "id": "c",
+          "text": "Danger to others based on specific expressed threat"
+        },
+        {
+          "id": "d",
+          "text": "Inability to care for personal hygiene and nutrition"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Involuntary psychiatric commitment (civil commitment) requires that the person poses a danger to self, danger to others, or is gravely disabled (unable to meet basic needs of food, clothing, shelter due to mental illness). This patient's specific threat to 'make his neighbor pay' combined with active psychosis meets the danger-to-others criterion. Having a psychiatric diagnosis alone (A) is not sufficient for commitment. Medication refusal (B) alone does not meet criteria. While grave disability (D) could apply, the most legally defensible criterion here is the specific threat to another person.",
+      "distractorRationales": {
+        "a": "This choice focuses on Presence of a psychiatric diagnosis requiring treatment, despite the clinical warning in A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "b": "This option makes Refusal of recommended medication the focus, even though the higher-risk finding is He has not slept in 5 days, believes he is receiving messages from aliens. Does not account for the clinical cue most likely to deteriorate first, so Danger to others based on specific expressed threat better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Inability to care for personal hygiene and nutrition fits a lower-risk interpretation, instead of responding to A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response."
+      },
+      "tags": [
+        "Involuntary Commitment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Involuntary commitment requires: danger to self, danger to others (specific threat + mental illness), or grave disability — psychiatric diagnosis alone is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb833-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A nurse needs to assess pain in a 2-year-old who is post-operative and cannot verbalize pain. Which pain assessment tool is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Numeric Rating Scale (0–10) — ask the child to point to a number"
+        },
+        {
+          "id": "b",
+          "text": "FLACC scale (Face, Legs, Activity, Cry, Consolability)"
+        },
+        {
+          "id": "c",
+          "text": "Wong-Baker FACES Pain Rating Scale"
+        },
+        {
+          "id": "d",
+          "text": "Visual Analog Scale (VAS)"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The FLACC scale is validated for infants and young children (<3–4 years) who cannot self-report pain. It assesses five behavioral indicators scored 0–2 each (total 0–10): Face (grimacing vs neutral), Legs (kicking vs relaxed), Activity (arching vs still), Cry (screaming vs quiet), Consolability (inconsolable vs content). Wong-Baker FACES is valid for children ≥3–4 years who can understand the cartoon faces and self-report. Numeric scales require cognitive development typically seen at ≥7 years. VAS requires fine motor pointing and is not validated for toddlers.",
+      "distractorRationales": {
+        "a": "Numeric Rating Scale (0–10) — ask the child to point to a number fits a lower-risk interpretation, despite the clinical warning in Numeric/VAS for age 7+ with cognitive ability. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is FLACC scale (Face, Legs, Activity, Cry, Consolability) because delaying bedside safety action can worsen pediatric or newborn instability.",
+        "c": "The reasoning trap in Wong-Baker FACES Pain Rating Scale is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is The FLACC scale is validated for infants and young children (<3–4 years) who cannot self-report pain. The correct path is FLACC scale (Face, Legs, Activity, Cry, Consolability), which matches the priority cues instead of a secondary concern.",
+        "d": "The clinical error in Visual Analog Scale (VAS) is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is The FLACC scale is validated for infants and young children (<3–4 years) who cannot self-report pain. FLACC scale (Face, Legs, Activity, Cry, Consolability) better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+        "conclusion": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

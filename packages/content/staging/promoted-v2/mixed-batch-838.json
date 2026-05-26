@@ -1,0 +1,469 @@
+{
+  "batchId": "mixed-batch-838",
+  "generatedAt": "2026-04-09T14:47:51-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb838-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "unstable_angina_concern",
+      "subcategory": "unstable_angina_concern",
+      "difficulty": 3,
+      "stem": "A patient reports chest pressure that started while resting, and the pain is not relieved by usual measures. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an acute coronary syndrome"
+        },
+        {
+          "id": "b",
+          "text": "Rest pain is always noncardiac"
+        },
+        {
+          "id": "c",
+          "text": "If the patient can speak, the condition is low priority"
+        },
+        {
+          "id": "d",
+          "text": "The pain is not concerning unless the skin is cold"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure at rest that persists is concerning for a cardiac emergency and needs prompt evaluation. **Why the others are wrong:** - B Rest pain can still be cardiac. - C Speaking does not make chest pain safe. - D Cold skin is not required for cardiac concern.",
+      "distractorRationales": {
+        "b": "This option overweights Rest pain is always noncardiac, despite the clinical warning in the pain is not relieved by usual measures. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved.",
+        "c": "This distractor pulls attention toward If the patient can speak, the condition is low priority, without accounting for Chest pain at rest can be a major cardiac warning sign. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because The patient may be having an acute coronary syndrome targets the problem most likely to deteriorate first.",
+        "d": "The clinical error in The pain is not concerning unless the skin is cold is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is - C Speaking does not make chest pain safe. The patient may be having an acute coronary syndrome better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "unstable_angina_concern",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest pain at rest can be a major cardiac warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygenation_trend",
+      "subcategory": "oxygenation_trend",
+      "difficulty": 3,
+      "stem": "A patient on oxygen has a falling saturation trend and is using more effort to breathe. What is the best nurse action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess respiratory status and escalate if needed"
+        },
+        {
+          "id": "b",
+          "text": "Ignore the trend because oxygen is already in place"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a second low reading before acting"
+        },
+        {
+          "id": "d",
+          "text": "Remove the oxygen to see what happens"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A downward oxygen trend with increased effort means the respiratory status may be worsening and needs prompt reassessment. **Why the others are wrong:** - B Oxygen does not guarantee stability. - C Trend changes should not be ignored. - D Removing oxygen is unsafe without a reasoned plan.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Ignore the trend because oxygen is already in place is that it anchors on the wrong explanation for the client's cues, and misses that - D Removing oxygen is unsafe without a reasoned plan. It is less defensible because Reassess respiratory status and escalate if needed targets the problem most likely to deteriorate first.",
+        "c": "The problem with Wait for a second low reading before acting is that it treats an active warning sign as something safe to watch, despite the clinical warning in **Why the others are wrong:** - B Oxygen does not guarantee stability. The safer answer is Reassess respiratory status and escalate if needed because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "The clinical error in Remove the oxygen to see what happens is that it does not account for the clinical cue most likely to deteriorate first, without accounting for - D Removing oxygen is unsafe without a reasoned plan. Reassess respiratory status and escalate if needed is safer because it addresses oxygenation or ventilation before routine care or reassurance."
+      },
+      "tags": [
+        "oxygenation_trend",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Worsening oxygen trends deserve immediate attention.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygenation_trend",
+        "caption": "Worsening oxygen trends deserve immediate attention.",
+        "conclusion": "Worsening oxygen trends deserve immediate attention."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "heart_failure_worsening",
+      "subcategory": "heart_failure_worsening",
+      "difficulty": 3,
+      "stem": "A patient with heart failure has increasing edema, worsening shortness of breath, and a rising heart rate. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be worsening and needs reassessment"
+        },
+        {
+          "id": "b",
+          "text": "Edema means the heart failure is improving"
+        },
+        {
+          "id": "c",
+          "text": "Shortness of breath is expected and not important"
+        },
+        {
+          "id": "d",
+          "text": "A rising heart rate proves the patient is stable"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fluid retention, dyspnea, and tachycardia can indicate worsening heart failure or poor compensation. **Why the others are wrong:** - B Edema usually suggests congestion, not improvement. - C Dyspnea is an important warning sign. - D Tachycardia can reflect stress and instability.",
+      "distractorRationales": {
+        "b": "This option makes Edema means the heart failure is improving the focus, and misses that Heart failure worsening often shows up in fluid and breathing changes. Does not account for the clinical cue most likely to deteriorate first, so The patient may be worsening and needs reassessment is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "The problem with Shortness of breath is expected and not important is that it normalizes a finding that should change the nurse's priority, instead of responding to tachycardia can indicate worsening heart failure or poor compensation. The safer answer is The patient may be worsening and needs reassessment because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This answer choice treats A rising heart rate proves the patient is stable as the key issue, despite the clinical warning in Fluid retention, dyspnea. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize The patient may be worsening and needs reassessment; otherwise oxygenation or ventilation remains the active threat."
+      },
+      "tags": [
+        "heart_failure_worsening",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Heart failure worsening often shows up in fluid and breathing changes.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "level_of_consciousness",
+      "subcategory": "level_of_consciousness",
+      "difficulty": 3,
+      "stem": "A patient who was talking normally 10 minutes ago now answers slowly and seems drowsy. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is a concerning neurologic change that needs prompt assessment"
+        },
+        {
+          "id": "b",
+          "text": "The patient is simply calming down"
+        },
+        {
+          "id": "c",
+          "text": "Slower answers always mean the patient is sleepy from boredom"
+        },
+        {
+          "id": "d",
+          "text": "There is no urgency if the patient still opens their eyes"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Any sudden change in responsiveness can be an early warning sign of neurologic or metabolic deterioration. **Why the others are wrong:** - B Sudden change should not be dismissed. - C Drowsiness can reflect a real clinical decline. - D Eye opening does not rule out a serious problem.",
+      "distractorRationales": {
+        "b": "The patient is simply calming down would not address the priority, even though the higher-risk finding is Any sudden change in responsiveness can be an early warning sign of neurologic or metabolic deterioration. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses.",
+        "c": "This answer choice treats Slower answers always mean the patient is sleepy from boredom as the key issue, rather than acting on A patient who was talking normally 10 minutes ago now answers slowly and seems drowsy. Normalizes a finding that should change the nurse's priority, so The safer answer is This is a concerning neurologic change that needs prompt assessment because delaying neurologic safety assessment can worsen neurologic deterioration.",
+        "d": "The problem with There is no urgency if the patient still opens their eyes is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to **Why the others are wrong:** - B Sudden change should not be dismissed. The safer answer is This is a concerning neurologic change that needs prompt assessment because delaying neurologic safety assessment can worsen neurologic deterioration."
+      },
+      "tags": [
+        "level_of_consciousness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New drowsiness or slower responses can be an urgent change.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_perfusion",
+      "subcategory": "fever_and_perfusion",
+      "difficulty": 3,
+      "stem": "A febrile child is lethargic, has dry lips, and has not urinated in several hours. What is the nurse's priority concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may have significant dehydration and needs prompt evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Fever means the child is probably just tired"
+        },
+        {
+          "id": "c",
+          "text": "Dry lips are not helpful in pediatrics"
+        },
+        {
+          "id": "d",
+          "text": "Urination patterns do not matter in children"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fever, lethargy, dry mucous membranes, and decreased urine output can signal clinically significant dehydration. **Why the others are wrong:** - B Lethargy with poor intake is not reassuring. - C Dry lips are one dehydration clue, especially with others. - D Urine output is highly relevant in children.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Fever means the child is probably just tired, without accounting for Pediatric fever with lethargy and low urine output is a dehydration warning pattern. Does not account for the clinical cue most likely to deteriorate first, so The child may have significant dehydration and needs prompt evaluation better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "This option makes Dry lips are not helpful in pediatrics the focus, but the stem cue is Pediatric fever with lethargy and low urine output is a dehydration warning pattern. Does not account for the clinical cue most likely to deteriorate first, so The correct path is The child may have significant dehydration and needs prompt evaluation, which matches the priority cues instead of a secondary concern.",
+        "d": "Urination patterns do not matter in children fits a lower-risk interpretation, rather than acting on decreased urine output can signal clinically significant dehydration. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response."
+      },
+      "tags": [
+        "fever_and_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric fever with lethargy and low urine output is a dehydration warning pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "fever_and_perfusion",
+        "caption": "Pediatric fever with lethargy and low urine output is a dehydration warning pattern.",
+        "conclusion": "Pediatric fever with lethargy and low urine output is a dehydration warning pattern."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "rising_work_of_breathing",
+      "subcategory": "rising_work_of_breathing",
+      "difficulty": 3,
+      "stem": "A patient with pneumonia is breathing faster, using accessory muscles, and says, \"I am getting tired.\" What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess breathing and oxygenation immediately"
+        },
+        {
+          "id": "b",
+          "text": "Encourage the patient to save energy and wait"
+        },
+        {
+          "id": "c",
+          "text": "Turn off the oxygen so the patient can rest"
+        },
+        {
+          "id": "d",
+          "text": "Document that fatigue is expected with infection"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fatigue with escalating work of breathing may signal respiratory failure. The nurse should reassess the patient right away. **Why the others are wrong:** - B Waiting can miss deterioration. - C Removing oxygen is unsafe without reassessment. - D Fatigue can be a warning sign, not just expected illness.",
+      "distractorRationales": {
+        "b": "Selecting Encourage the patient to save energy and wait would be unsafe, despite the clinical warning in A patient with pneumonia is breathing faster, using accessory muscles. Treats an active warning sign as something safe to watch, so The nurse should prioritize Reassess breathing and oxygenation immediately; otherwise oxygenation or ventilation remains the active threat.",
+        "c": "This distractor pulls attention toward Turn off the oxygen so the patient can rest, even though the higher-risk finding is Fatigue with escalating work of breathing may signal respiratory failure. Does not account for the clinical cue most likely to deteriorate first, so Reassess breathing and oxygenation immediately better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The reasoning trap in Document that fatigue is expected with infection is that it normalizes a finding that should change the nurse's priority, and misses that - C Removing oxygen is unsafe without reassessment. Reassess breathing and oxygenation immediately better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "rising_work_of_breathing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When a patient says they are tiring, treat that as a respiratory warning.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "shock_warning",
+      "subcategory": "shock_warning",
+      "difficulty": 3,
+      "stem": "A patient is pale, clammy, and has a weak pulse after a large amount of blood loss. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be in hypovolemic shock"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because they are still awake"
+        },
+        {
+          "id": "c",
+          "text": "The weak pulse is not important if the skin is pale"
+        },
+        {
+          "id": "d",
+          "text": "Blood loss does not affect circulation until blood pressure is zero"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Blood loss with pale, clammy skin and a weak pulse suggests poor circulating volume and possible shock. **Why the others are wrong:** - B Awake status does not equal stable circulation. - C The weak pulse is a key clue. - D Circulation can worsen well before pressure reaches zero.",
+      "distractorRationales": {
+        "b": "Selecting The patient is stable because they are still awake would be unsafe, instead of responding to Blood loss with pale, clammy skin and a weak pulse suggests poor circulating volume and possible shock. Anchors on the wrong explanation for the client's cues, so The safer answer is The patient may be in hypovolemic shock because delaying circulation and perfusion support can worsen circulation or perfusion.",
+        "c": "The weak pulse is not important if the skin is pale is not the best answer, when the bedside priority is driven by - D Circulation can worsen well before pressure reaches zero. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because The patient may be in hypovolemic shock targets the problem most likely to deteriorate first.",
+        "d": "This option overweights Blood loss does not affect circulation until blood pressure is zero, instead of responding to Blood loss with pale, clammy skin and a weak pulse suggests poor circulating volume and possible shock. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved."
+      },
+      "tags": [
+        "shock_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Blood loss plus cold, weak circulation suggests shock.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "shock_warning",
+        "caption": "Blood loss plus cold, weak circulation suggests shock.",
+        "conclusion": "Blood loss plus cold, weak circulation suggests shock."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sudden_speech_change",
+      "subcategory": "sudden_speech_change",
+      "difficulty": 3,
+      "stem": "A patient suddenly has trouble finding words and seems confused. What is the nurse's best action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for a possible acute neurologic problem immediately"
+        },
+        {
+          "id": "b",
+          "text": "Ask the family to wait and see whether it passes"
+        },
+        {
+          "id": "c",
+          "text": "Offer the patient a snack first"
+        },
+        {
+          "id": "d",
+          "text": "Document that the patient is anxious"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden language change and confusion can indicate stroke or another neurologic emergency. **Why the others are wrong:** - B Waiting is unsafe when a neurologic emergency is possible. - C Food does not replace a neuro assessment. - D Anxiety should not be assumed without assessment.",
+      "distractorRationales": {
+        "b": "Ask the family to wait and see whether it passes fits a lower-risk interpretation, while the decisive cue is A patient suddenly has trouble finding words and seems confused. Treats an active warning sign as something safe to watch, so Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "c": "The reasoning trap in Offer the patient a snack first is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is **Why the others are wrong:** - B Waiting is unsafe when a neurologic emergency is possible. It is less defensible because Assess for a possible acute neurologic problem immediately targets the problem most likely to deteriorate first.",
+        "d": "This answer choice treats Document that the patient is anxious as the key issue, while the decisive cue is Sudden language trouble needs immediate neurologic assessment. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Assess for a possible acute neurologic problem immediately; otherwise neurologic deterioration remains the active threat."
+      },
+      "tags": [
+        "sudden_speech_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden language trouble needs immediate neurologic assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_intake",
+      "subcategory": "fever_and_intake",
+      "difficulty": 3,
+      "stem": "A child with fever is refusing fluids and has a dry tongue. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for dehydration and monitor intake and output"
+        },
+        {
+          "id": "b",
+          "text": "Reassure the parent that fever always causes this"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the next meal to encourage fluids"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the finding if the child is still playing"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake with fever can lead to dehydration, especially in children. **Why the others are wrong:** - B Fever can contribute, but assessment is still needed. - C Waiting can worsen fluid deficit. - D Playfulness does not rule out dehydration.",
+      "distractorRationales": {
+        "b": "The clinical error in Reassure the parent that fever always causes this is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by Poor intake with fever can lead to dehydration, especially in children. Assess for dehydration and monitor intake and output better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "This option overweights Wait until the next meal to encourage fluids, rather than acting on assessment is still needed. Treats an active warning sign as something safe to watch, so The safer answer is Assess for dehydration and monitor intake and output because delaying infection or sepsis escalation can worsen infection progression.",
+        "d": "Ignore the finding if the child is still playing fits a lower-risk interpretation, rather than acting on assessment is still needed. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Assess for dehydration and monitor intake and output because delaying infection or sepsis escalation can worsen infection progression."
+      },
+      "tags": [
+        "fever_and_intake",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus poor intake should prompt dehydration assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb838-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygenation_and_mentation",
+      "subcategory": "oxygenation_and_mentation",
+      "difficulty": 3,
+      "stem": "A patient on oxygen becomes more confused and starts removing the nasal cannula. What is the nurse's best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be becoming hypoxic or acutely altered"
+        },
+        {
+          "id": "b",
+          "text": "The patient is improving because they are more active"
+        },
+        {
+          "id": "c",
+          "text": "Confusion is unrelated to oxygen needs"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should leave the patient alone to avoid agitation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Confusion with oxygen removal behavior can indicate hypoxia or another acute change in condition. **Why the others are wrong:** - B Agitation is not the same as improvement. - C Mental-status changes can reflect oxygenation problems. - D The patient needs reassessment, not abandonment.",
+      "distractorRationales": {
+        "b": "This choice focuses on The patient is improving because they are more active, instead of responding to A patient on oxygen becomes more confused and starts removing the nasal cannula. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "The clinical error in Confusion is unrelated to oxygen needs is that it does not account for the clinical cue most likely to deteriorate first, and misses that - C Mental-status changes can reflect oxygenation problems. It is less defensible because The patient may be becoming hypoxic or acutely altered targets the problem most likely to deteriorate first.",
+        "d": "The reasoning trap in The nurse should leave the patient alone to avoid agitation is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is - C Mental-status changes can reflect oxygenation problems. The patient may be becoming hypoxic or acutely altered is safer because it addresses oxygenation or ventilation before routine care or reassurance."
+      },
+      "tags": [
+        "oxygenation_and_mentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Behavioral change can be a sign of worsening oxygenation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygenation_and_mentation",
+        "caption": "Behavioral change can be a sign of worsening oxygenation.",
+        "conclusion": "Behavioral change can be a sign of worsening oxygenation."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

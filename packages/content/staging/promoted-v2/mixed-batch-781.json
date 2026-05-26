@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-781",
+  "generatedAt": "2026-04-08T23:41:02-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb781-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 4,
+      "stem": "A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward), and severe muscle rigidity within 3 days of starting the medication. Which type of extrapyramidal symptom (EPS) is this, and what is the antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tardive dyskinesia; no effective antidote, may require medication discontinuation"
+        },
+        {
+          "id": "b",
+          "text": "Akathisia; treat with propranolol or benzodiazepines"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; treat with IV/IM diphenhydramine or benztropine"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute dystonia presents within hours to days of starting a high-potency antipsychotic (like haloperidol) as sudden, painful muscle spasms — torticollis, oculogyric crisis, opisthotonus. Treatment is IV or IM diphenhydramine (Benadryl) or benztropine (Cogentin), which are anticholinergic agents. Tardive dyskinesia (A) develops after months-years of use as involuntary repetitive movements (lip smacking, tongue protrusion). Akathisia (B) is inner restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia.",
+      "distractorRationales": {
+        "a": "Selecting Tardive dyskinesia; no effective antidote, may require medication discontinuation would be unsafe, despite the clinical warning in A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward). Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay medication-safety intervention and leave medication toxicity unresolved.",
+        "b": "Selecting Akathisia; treat with propranolol or benzodiazepines would be unsafe, rather than acting on severe muscle rigidity within 3 days of starting the medication. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of medication toxicity and postpones the needed nursing response.",
+        "d": "Selecting Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose would be unsafe, instead of responding to A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward). Moves to a lower-acuity action before the client is clinically stable, so The priority is Acute dystonia; treat with IV/IM diphenhydramine or benztropine, not a step that delays stabilization of medication toxicity."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute dystonia (torticollis, oculogyric crisis) within days of antipsychotic = IV/IM diphenhydramine or benztropine (anticholinergics).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to ≥ 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "This answer choice treats The patient reports less anxiety and requests to watch television as the key issue, instead of responding to The SpO2 is 91%. Treats an active warning sign as something safe to watch, so The priority is Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "The clinical error in Adventitious breath sounds increase bilaterally after the nebulizer is that it treats an active warning sign as something safe to watch, without accounting for work of breathing (accessory muscle use, nasal flaring). It is less defensible because Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95% targets the problem most likely to deteriorate first.",
+        "d": "This option makes The patient's skin color remains unchanged and RR remains at 24/min the focus, even though the higher-risk finding is Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization. Does not account for the clinical cue most likely to deteriorate first, so Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95% is safer because it addresses oxygenation or ventilation before routine care or reassurance."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80–130 bpm, RR 22–37 breaths/min, BP approximately 90–100/55–65 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age — neonates have the highest HR and RR, lowest BP.",
+      "distractorRationales": {
+        "a": "HR 68, RR 14, BP 120/80 fits a lower-risk interpretation, despite the clinical warning in toddler HR 80–130, RR 22–37. Does not account for the clinical cue most likely to deteriorate first, so The priority is HR 100, RR 26, BP 92/56, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "This option overweights HR 145, RR 40, BP 80/48, rather than acting on toddler HR 80–130, RR 22–37. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize HR 100, RR 26, BP 92/56; otherwise oxygenation or ventilation remains the active threat.",
+        "d": "HR 55, RR 18, BP 110/72 would not address the priority, but the stem cue is Pediatric VS by age: newborn HR 120–160, RR 30–60. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight — no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply — laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO ≥8 hours. Light meals (toast, clear liquids): NPO ≥6 hours. Non-clear liquids including milk and formula: NPO ≥6 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid — stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "This option overweights Nothing by mouth after midnight — no exceptions for any type of food or liquid, instead of responding to ASA NPO: solids ≥6-8 hrs before. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology.",
+        "b": "Selecting Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery would be unsafe, instead of responding to The old rule increased patient discomfort, insulin resistance. Does not account for the clinical cue most likely to deteriorate first, so The priority is Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water,, not a step that delays stabilization of unstable glucose physiology.",
+        "d": "The problem with No restrictions apply — laparoscopic procedures do not carry aspiration risk is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to ASA NPO: solids ≥6-8 hrs before. That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids ≥6-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Drawing up each insulin in a separate syringe is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type. That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses.",
+        "c": "Injecting the aspart subcutaneously 15 minutes before the meal fits a lower-risk interpretation, while the decisive cue is It has its own pH and formulation. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved.",
+        "d": "The clinical error in Rotating injection sites between the abdomen and thigh is that it does not account for the clinical cue most likely to deteriorate first, without accounting for A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type. That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10 fits a lower-risk interpretation, despite the clinical warning in Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved.",
+        "c": "This option overweights A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights, instead of responding to Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "d": "This choice focuses on A 33-year-old with a UTI who asks when the next dose of antibiotics is due, while the decisive cue is The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening. Anchors on the wrong explanation for the client's cues, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse is conducting a windshield survey of a new community. Which activities are part of this community needs assessment method?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administering surveys to a random sample of 500 residents about health behaviors"
+        },
+        {
+          "id": "b",
+          "text": "Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, and visible health resources"
+        },
+        {
+          "id": "c",
+          "text": "Reviewing hospital admission records to identify the top 5 diagnoses in the zip code"
+        },
+        {
+          "id": "d",
+          "text": "Interviewing community leaders at the health department and city council"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A windshield survey is a direct observational assessment of a community conducted by driving or walking through it. Observations include: housing conditions (quality, density, vacancy), businesses and industries, transportation availability, green space and recreational facilities, visible health hazards (pollution, liquor stores, food deserts), people present (age groups, homelessness), religious institutions, schools, healthcare facilities, and safety indicators. This method provides rapid, first-hand community data before formal surveys or record reviews. It complements quantitative data (vital statistics, epidemiologic data) with qualitative environmental observations.",
+      "distractorRationales": {
+        "a": "Selecting Administering surveys to a random sample of 500 residents about health behaviors would be unsafe, rather than acting on Windshield survey = observational community assessment method. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, because delaying bedside safety action can worsen clinical safety risk.",
+        "c": "Reviewing hospital admission records to identify the top 5 diagnoses in the zip code is not the best answer, but the stem cue is A windshield survey is a direct observational assessment of a community conducted by driving or walking through it. Does not account for the clinical cue most likely to deteriorate first, so Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This option makes Interviewing community leaders at the health department and city council the focus, when the bedside priority is driven by safety indicators. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators,, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Windshield survey = observational community assessment method; nurse drives/walks through community to document housing, services, hazards, and health resources as a starting point for needs assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "A home health nurse visits a 77-year-old woman living with her adult son. The patient is visibly malnourished, has multiple bruises in different stages of healing on her upper arms and back, appears fearful, defers all answers to her son, and the son insists on remaining present. He controls her bank accounts and medications. What is the nurse's priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document the findings carefully and schedule a follow-up visit to gather more data before acting"
+        },
+        {
+          "id": "b",
+          "text": "Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to speak with the patient privately"
+        },
+        {
+          "id": "c",
+          "text": "Confront the son directly about the suspicious bruising during the current visit"
+        },
+        {
+          "id": "d",
+          "text": "Provide the patient with an elder abuse pamphlet and leave a hotline number for her to call independently"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Nurses are mandatory reporters of suspected elder abuse in all U.S. states and territories. Elder abuse types present here: physical (bruises in varied healing stages, suggesting repeated events), psychological (fearfulness, deferring all answers), financial (son controlling finances), and neglect (malnutrition). Mandatory reporting requires only reasonable suspicion — confirmation is not needed before reporting. Priority actions: (1) Report to APS; (2) Attempt to interview the patient ALONE — abusers typically prevent private access; observe if the patient speaks differently without the abuser present; (3) Document objectively and specifically (bruise size, location, color indicating healing stage). Confronting the abuser directly may escalate danger. Delaying for more data when indicators are already clear is inappropriate and potentially harmful. The nurse's legal obligation overrides deference to family dynamics.",
+      "distractorRationales": {
+        "a": "This option makes Document the findings carefully and schedule a follow-up visit to gather more data before acting the focus, and misses that Priority actions: (1) Report to APS. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to, which matches the priority cues instead of a secondary concern.",
+        "c": "The reasoning trap in Confront the son directly about the suspicious bruising during the current visit is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by (2) Attempt to interview the patient ALONE — abusers typically prevent private access. Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Selecting Provide the patient with an elder abuse pamphlet and leave a hotline number for her to would be unsafe, although the nurse should be guided by A home health nurse visits a 77-year-old woman living with her adult son. Waits on escalation while the bedside priority remains unresolved, so The nurse should prioritize Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to; otherwise medication toxicity remains the active threat."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Elder abuse: mandatory report to APS on reasonable suspicion — no confirmation required. Attempt private interview with patient. Document objectively. Confronting the abuser can escalate danger to the patient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "Mandatory Reporting",
+      "difficulty": 3,
+      "stem": "A nurse caring for a 7-year-old child notices multiple bruises in various stages of healing on the torso, bilateral arm bruises with patterned marks, and the child flinches when the nurse approaches. The mother explains the bruises are from 'falling off a bike.' Which nursing action is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document the mother's explanation in the chart and continue routine care"
+        },
+        {
+          "id": "b",
+          "text": "Confront the mother and ask her directly if she is abusing the child"
+        },
+        {
+          "id": "c",
+          "text": "Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is certain"
+        },
+        {
+          "id": "d",
+          "text": "Discuss concerns with the healthcare team and only report if the physician agrees the findings are suspicious"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Nurses are mandatory reporters in all 50 states. Mandatory reporting requires reporting SUSPICION of child abuse — absolute certainty is not required. A nurse who fails to report suspected child abuse can face criminal charges, license sanctions, and civil liability. The threshold is reasonable suspicion based on assessment findings. The report goes directly to the state's child protective services (CPS) — this is the nurse's independent legal obligation, not contingent on physician agreement (D). Confronting the caregiver (B) may endanger the child. Documentation alone (A) does not fulfill the mandatory report obligation.",
+      "distractorRationales": {
+        "a": "This answer choice treats Document the mother's explanation in the chart and continue routine care as the key issue, despite the clinical warning in The threshold is reasonable suspicion based on assessment findings. Treats an active warning sign as something safe to watch, so The safer answer is Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is because delaying bedside safety action can worsen pediatric or newborn instability.",
+        "b": "Confront the mother and ask her directly if she is abusing the child would not address the priority, but the stem cue is The threshold is reasonable suspicion based on assessment findings. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, which matches the priority cues instead of a secondary concern.",
+        "d": "Selecting Discuss concerns with the healthcare team and only report if the physician agrees the findings are would be unsafe, while the decisive cue is The threshold is reasonable suspicion based on assessment findings. Moves to teaching or reassurance before the immediate risk is stabilized, so The priority is Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, not a step that delays stabilization of pediatric or newborn instability."
+      },
+      "tags": [
+        "Mandatory Reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reporting: report SUSPICION of abuse — you do not need to be certain; report directly to CPS; this is the nurse's legal obligation regardless of physician agreement.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb781-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 3,
+      "stem": "A patient with severe preeclampsia at 34 weeks develops an eclamptic seizure. She is on magnesium sulfate. Which intervention takes priority during the active seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV diazepam 5 mg to stop the seizure"
+        },
+        {
+          "id": "b",
+          "text": "Insert a padded tongue blade to protect the airway"
+        },
+        {
+          "id": "c",
+          "text": "Position on her left side, protect from injury, administer oxygen, and note seizure duration"
+        },
+        {
+          "id": "d",
+          "text": "Give a magnesium sulfate bolus of 4 g IV immediately"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an eclamptic seizure: protect the patient from injury, position on left lateral decubitus (reduces aortocaval compression, improves uteroplacental blood flow), apply oxygen via face mask, and time the seizure. IV diazepam (A) is not first-line; magnesium is the drug of choice for eclampsia treatment and prevention of recurrent seizures. A padded tongue blade (B) should never be inserted during an active seizure — high risk of injury to teeth and nurse. A magnesium bolus (D) may be given post-seizure if patient is not already at therapeutic levels, but protecting the patient during the active seizure comes first.",
+      "distractorRationales": {
+        "a": "This choice focuses on Administer IV diazepam 5 mg to stop the seizure, rather than acting on A patient with severe preeclampsia at 34 weeks develops an eclamptic seizure. Does not account for the clinical cue most likely to deteriorate first, so The priority is Position on her left side, protect from injury, administer oxygen, and note seizure duration, not a step that delays stabilization of oxygenation or ventilation.",
+        "b": "The reasoning trap in Insert a padded tongue blade to protect the airway is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is magnesium is the drug of choice for eclampsia treatment and prevention of recurrent seizures. The correct path is Position on her left side, protect from injury, administer oxygen, and note seizure duration, which matches the priority cues instead of a secondary concern.",
+        "d": "Give a magnesium sulfate bolus of 4 g IV immediately is not the best answer, when the bedside priority is driven by magnesium is the drug of choice for eclampsia treatment and prevention of recurrent seizures. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Position on her left side, protect from injury, administer oxygen, and note seizure duration targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eclamptic seizure priority: protect from injury, left lateral position, O2, time seizure — never insert anything into the mouth during a seizure.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

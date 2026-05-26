@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-849",
+  "generatedAt": "2026-04-09T17:21:04-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb849-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "prioritization_delegation",
+      "subcategory": "prioritization_delegation",
+      "difficulty": 3,
+      "stem": "Which task is appropriate for the nurse to delegate to a UAP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess a new postoperative incision."
+        },
+        {
+          "id": "b",
+          "text": "Obtain routine vital signs on a stable client."
+        },
+        {
+          "id": "c",
+          "text": "Teach incentive spirometry."
+        },
+        {
+          "id": "d",
+          "text": "Interpret telemetry findings."
+        }
+      ],
+      "answer": "b",
+      "rationale": "Routine, predictable tasks for stable clients can be delegated. Assessment, teaching, and interpretation remain RN responsibilities. The correct option requires no clinical judgment.",
+      "distractorRationales": {
+        "a": "This option overweights Assess a new postoperative incision, despite the clinical warning in Delegate stable routine work, not assessment or teaching. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved.",
+        "c": "The problem with Teach incentive spirometry is that it moves to teaching or reassurance before the immediate risk is stabilized, instead of responding to Delegate stable routine work, not assessment or teaching. The nurse should prioritize Obtain routine vital signs on a stable client; otherwise clinical safety risk remains the active threat.",
+        "d": "The reasoning trap in Interpret telemetry findings is that it does not account for the clinical cue most likely to deteriorate first, and misses that Assessment, teaching. Obtain routine vital signs on a stable client better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "prioritization_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate stable routine work, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "respiratory_oxygenation",
+      "difficulty": 3,
+      "stem": "A client on oxygen has increasing work of breathing and ABGs of pH 7.28, PaCO2 57 mmHg, and PaO2 53 mmHg. What is the priority intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase low-flow oxygen only."
+        },
+        {
+          "id": "b",
+          "text": "Prepare for NIPPV/BiPAP."
+        },
+        {
+          "id": "c",
+          "text": "Delay treatment for a repeat ABG."
+        },
+        {
+          "id": "d",
+          "text": "Prioritize chest X-ray before support."
+        }
+      ],
+      "answer": "b",
+      "rationale": "This pattern shows acute hypercapnic respiratory failure with acidemia. NIPPV supports ventilation and oxygenation and can prevent further deterioration. More oxygen alone does not correct hypoventilation.",
+      "distractorRationales": {
+        "a": "The problem with Increase low-flow oxygen only is that it does not account for the clinical cue most likely to deteriorate first, despite the clinical warning in More oxygen alone does not correct hypoventilation. The priority is Prepare for NIPPV/BiPAP, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "This distractor pulls attention toward Delay treatment for a repeat ABG, when the bedside priority is driven by A client on oxygen has increasing work of breathing and ABGs of pH 7. Treats an active warning sign as something safe to watch, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "d": "Prioritize chest X-ray before support is not the best answer, but the stem cue is 28, PaCO2 57 mmHg. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Prepare for NIPPV/BiPAP, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "respiratory_oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypercapnic respiratory failure requires ventilatory support, not just more oxygen.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "respiratory_oxygenation",
+        "caption": "Hypercapnic respiratory failure requires ventilatory support, not just more oxygen.",
+        "conclusion": "Hypercapnic respiratory failure requires ventilatory support, not just more oxygen."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_infection_control",
+      "subcategory": "safety_infection_control",
+      "difficulty": 3,
+      "stem": "A client with suspected airborne infection is admitted to the unit. What PPE is required on room entry?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Surgical mask only."
+        },
+        {
+          "id": "b",
+          "text": "N95 respirator with appropriate barrier precautions."
+        },
+        {
+          "id": "c",
+          "text": "Gloves only."
+        },
+        {
+          "id": "d",
+          "text": "No PPE unless aerosol-generating procedures occur."
+        }
+      ],
+      "answer": "b",
+      "rationale": "Airborne pathogens require respiratory protection that filters small particles, which is why an N95 is required. The other options under-protect staff. Barrier additions depend on contact exposure risk, but respiratory protection is non-negotiable.",
+      "distractorRationales": {
+        "a": "This option overweights Surgical mask only, although the nurse should be guided by A client with suspected airborne infection is admitted to the unit. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "This answer choice treats Gloves only as the key issue, while the decisive cue is respiratory protection is non-negotiable. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "No PPE unless aerosol-generating procedures occur would not address the priority, and misses that respiratory protection is non-negotiable. Does not account for the clinical cue most likely to deteriorate first, so The correct path is N95 respirator with appropriate barrier precautions, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "safety_infection_control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Airborne disease -> N95 on entry.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "pediatric_nursing",
+      "difficulty": 3,
+      "stem": "A 4-year-old presents to the ED with acute-onset fever, drooling, severe sore throat, tripod positioning, and muffled voice. The parent reports the child refuses to move from the sitting forward-leaning position. Which action is the nurse's highest priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Obtain a throat swab for rapid strep testing"
+        },
+        {
+          "id": "b",
+          "text": "Lie the child flat to assess the oropharynx with a tongue depressor"
+        },
+        {
+          "id": "c",
+          "text": "Notify the physician immediately and keep the child calm in the position of comfort — do not examine the throat"
+        },
+        {
+          "id": "d",
+          "text": "Apply a continuous pulse oximetry probe and administer acetaminophen"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This presentation is classic epiglottitis: tripod positioning (leaning forward on hands), drooling, muffled 'hot potato' voice, high fever, severe dysphagia, and refusal to lie flat. Epiglottitis is a life-threatening airway emergency. CRITICAL: do not attempt throat examination or use a tongue depressor — stimulation can trigger laryngospasm and complete airway obstruction. Do not lay the child down. Keep the child calm in position of comfort, call physician and anesthesiology/ENT immediately, prepare for emergency airway management (intubation or tracheotomy) in OR. This contrasts with croup: 'seal bark' cough, steeple sign on X-ray, treated with racemic epinephrine and dexamethasone.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Obtain a throat swab for rapid strep testing is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is A 4-year-old presents to the ED with acute-onset fever, drooling, severe sore throat, tripod positioning. Notify the physician immediately and keep the child calm in the position of comfort — do better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "Lie the child flat to assess the oropharynx with a tongue depressor fits a lower-risk interpretation, although the nurse should be guided by Epiglottitis is a life-threatening airway emergency. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This distractor pulls attention toward Apply a continuous pulse oximetry probe and administer acetaminophen, but the stem cue is CRITICAL: do not attempt throat examination or use a tongue depressor — stimulation can trigger laryngospasm and complete. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Notify the physician immediately and keep the child calm in the position of comfort — do, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "pediatric_nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down → call physician, keep calm in comfort position, prepare for emergency airway.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pediatric_nursing",
+        "caption": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down → call physician, keep calm in comfort position, prepare for emergency airway.",
+        "conclusion": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down → call physician, keep calm in comfort position, prepare for emergency airway."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "perioperative_care",
+      "difficulty": 3,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight — no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply — laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO ≥8 hours. Light meals (toast, clear liquids): NPO ≥6 hours. Non-clear liquids including milk and formula: NPO ≥6 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid — stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "This option overweights Nothing by mouth after midnight — no exceptions for any type of food or liquid, despite the clinical warning in ASA NPO: solids ≥6-8 hrs before. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology.",
+        "b": "Selecting Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery would be unsafe, although the nurse should be guided by The old rule increased patient discomfort, insulin resistance. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water,; otherwise unstable glucose physiology remains the active threat.",
+        "d": "The problem with No restrictions apply — laparoscopic procedures do not carry aspiration risk is that it does not account for the clinical cue most likely to deteriorate first, despite the clinical warning in ASA NPO: solids ≥6-8 hrs before. The safer answer is Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology."
+      },
+      "tags": [
+        "perioperative_care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids ≥6-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "pharmacology_insulin_safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "Drawing up each insulin in a separate syringe would not address the priority, and misses that Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses.",
+        "c": "This choice focuses on Injecting the aspart subcutaneously 15 minutes before the meal, despite the clinical warning in The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "d": "This option makes Rotating injection sites between the abdomen and thigh the focus, without accounting for Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses."
+      },
+      "tags": [
+        "pharmacology_insulin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_levothyroxine_teaching",
+      "subcategory": "pharmacology_endocrine_levothyroxine_teaching",
+      "difficulty": 3,
+      "stem": "A nurse is providing discharge teaching to a patient newly prescribed levothyroxine (Synthroid) for hypothyroidism. Which instruction is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Take the medication with a full meal to improve absorption"
+        },
+        {
+          "id": "b",
+          "text": "Take the medication on an empty stomach 30-60 minutes before breakfast with water, and avoid taking it with calcium or iron supplements"
+        },
+        {
+          "id": "c",
+          "text": "Double the dose if a dose is missed to maintain thyroid hormone levels"
+        },
+        {
+          "id": "d",
+          "text": "Expect to see symptom improvement within 24-48 hours of starting therapy"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Levothyroxine absorption is significantly reduced by food, calcium, iron supplements, antacids containing calcium/magnesium, and several other medications. The medication should be taken on an empty stomach (30-60 minutes before breakfast) with a full glass of water. Calcium and iron supplements should be taken at least 4 hours apart from levothyroxine. Doubling a missed dose is incorrect and dangerous — skip the missed dose and continue at the regular schedule. Symptom improvement takes weeks to months (TSH normalization is checked at 4-6 weeks after dose adjustment), not 24-48 hours.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Take the medication with a full meal to improve absorption is that it anchors on the wrong explanation for the client's cues, even though the higher-risk finding is Separate from calcium, iron, antacids by 4h. Take the medication on an empty stomach 30-60 minutes before breakfast with water, and avoid taking is safer because it addresses medication toxicity before routine care or reassurance.",
+        "c": "Double the dose if a dose is missed to maintain thyroid hormone levels fits a lower-risk interpretation, although the nurse should be guided by Doubling a missed dose is incorrect and dangerous — skip the missed dose and continue at the regular. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of medication toxicity and postpones the needed nursing response.",
+        "d": "The clinical error in Expect to see symptom improvement within 24-48 hours of starting therapy is that it anchors on the wrong explanation for the client's cues, without accounting for Separate from calcium, iron, antacids by 4h. Take the medication on an empty stomach 30-60 minutes before breakfast with water, and avoid taking is safer because it addresses medication toxicity before routine care or reassurance."
+      },
+      "tags": [
+        "pharmacology_endocrine_levothyroxine_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Levothyroxine: empty stomach + water + 30-60 min before breakfast. Separate from calcium, iron, antacids by 4h. Never double dose. Onset of therapeutic effect: 4-6 weeks for TSH normalization. Compliance is key — once-daily dosing forever.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "pharmacology_metformin_safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "distractorRationales": {
+        "a": "This distractor pulls attention toward Administer metformin as scheduled since the procedure is elective, even though the higher-risk finding is Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for glucose rescue or metabolic stabilization while unstable glucose physiology progresses.",
+        "c": "The problem with Switch the patient to insulin therapy permanently before the procedure is that it does not account for the clinical cue most likely to deteriorate first, rather than acting on Permanent insulin switch is not necessary. The nurse should prioritize Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the; otherwise unstable glucose physiology remains the active threat.",
+        "d": "Administer metformin with the morning meal on the day of the procedure and hold only for fits a lower-risk interpretation, rather than acting on Permanent insulin switch is not necessary. Anchors on the wrong explanation for the client's cues, so The safer answer is Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology."
+      },
+      "tags": [
+        "pharmacology_metformin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_hypoglycemia_treatment",
+      "subcategory": "pharmacology_hypoglycemia_treatment",
+      "difficulty": 3,
+      "stem": "A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL and symptoms of shakiness and diaphoresis. The patient is alert and able to swallow. Which is the CORRECT initial treatment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer glucagon 1 mg subcutaneously"
+        },
+        {
+          "id": "b",
+          "text": "Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck glucose in 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50 mL of 50% dextrose (D50) IV push"
+        },
+        {
+          "id": "d",
+          "text": "Give the patient a full meal immediately to restore blood glucose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The '15-15 rule' is the standard for treating conscious, alert patients with mild-to-moderate hypoglycemia who can swallow safely: give 15 grams of rapid-acting carbohydrate (4 oz orange juice, 4 oz regular soda, or 3-4 glucose tablets), wait 15 minutes, and recheck blood glucose. If still < 70 mg/dL, repeat the treatment. This is the safest, most physiologically appropriate approach. Glucagon is reserved for unconscious or unable-to-swallow patients. D50 IV push is reserved for unconscious patients or those without IV access who cannot take oral carbohydrates. A full meal is slower to absorb and can cause a prolonged correction — it is the follow-up after glucose normalizes, not the acute treatment.",
+      "distractorRationales": {
+        "a": "This choice focuses on Administer glucagon 1 mg subcutaneously, despite the clinical warning in Reserve D50 for severe hypoglycemia without oral access. Does not account for the clinical cue most likely to deteriorate first, so The priority is Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck, not a step that delays stabilization of unstable glucose physiology.",
+        "c": "The clinical error in Administer 50 mL of 50% dextrose (D50) IV push is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by Glucagon is reserved for unconscious or unable-to-swallow patients. Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "Give the patient a full meal immediately to restore blood glucose is not the best answer, without accounting for Glucagon is reserved for unconscious or unable-to-swallow patients. Does not account for the clinical cue most likely to deteriorate first, so Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "pharmacology_hypoglycemia_treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Conscious hypoglycemic patient who can swallow: 15g fast-acting carbs (15-15 rule) → recheck in 15 min → repeat if still low → then a snack with protein. Reserve glucagon for unconscious/unable-to-swallow. Reserve D50 for severe hypoglycemia without oral access.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb849-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "pharmacology_corticosteroid_teaching",
+      "difficulty": 3,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "distractorRationales": {
+        "a": "Selecting 'I should not stop this medication suddenly without talking to my doctor.' would be unsafe, despite the clinical warning in Report mood changes, edema, GI symptoms. Anchors on the wrong explanation for the client's cues, so The safer answer is 'I can stop taking this medication early if I start feeling better.' because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology.",
+        "c": "This choice focuses on 'I should monitor my blood sugar more closely while taking this medication.', rather than acting on Report mood changes, edema, GI symptoms. Does not account for the clinical cue most likely to deteriorate first, so The priority is 'I can stop taking this medication early if I start feeling better.', not a step that delays stabilization of unstable glucose physiology.",
+        "d": "'I should take this medication in the morning with food.' would not address the priority, but the stem cue is A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Anchors on the wrong explanation for the client's cues, so The correct path is 'I can stop taking this medication early if I start feeling better.', which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "pharmacology_corticosteroid_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

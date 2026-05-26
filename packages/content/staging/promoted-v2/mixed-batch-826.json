@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-826",
+  "generatedAt": "2026-04-09T12:35:56-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb826-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A clinic nurse suspects a patient has active tuberculosis based on symptoms and a positive QuantiFERON test. The patient has not yet been confirmed by sputum culture. What is the nurse's legal obligation regarding reporting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for confirmed sputum culture before reporting to the health department"
+        },
+        {
+          "id": "b",
+          "text": "Report only if the patient is homeless or a healthcare worker"
+        },
+        {
+          "id": "c",
+          "text": "Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The physician is solely responsible for reporting; nurses have no legal duty to report"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing.",
+      "distractorRationales": {
+        "a": "Wait for confirmed sputum culture before reporting to the health department would not address the priority, when the bedside priority is driven by For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Treats an active warning sign as something safe to watch, so Report the suspected case to the local public health department — TB is reportable on suspicion, better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "This choice focuses on Report only if the patient is homeless or a healthcare worker, despite the clinical warning in For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved.",
+        "d": "This answer choice treats The physician is solely responsible for reporting; nurses have no legal duty to report as the key issue, despite the clinical warning in For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reportable diseases: report on suspicion (not confirmation); TB, STIs, meningitis, hepatitis — nurse has independent duty to report to public health; do not wait for lab confirmation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "The nurse assesses a patient following a traumatic brain injury. The patient opens eyes to voice, makes incomprehensible sounds, and withdraws from pain. What is this patient's Glasgow Coma Scale (GCS) score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GCS 7"
+        },
+        {
+          "id": "b",
+          "text": "GCS 8"
+        },
+        {
+          "id": "c",
+          "text": "GCS 9"
+        },
+        {
+          "id": "d",
+          "text": "GCS 10"
+        }
+      ],
+      "answer": "a",
+      "rationale": "GCS components: Eye opening (E): spontaneous=4, to voice=3, to pain=2, none=1. Verbal (V): oriented=5, confused=4, inappropriate words=3, incomprehensible=2, none=1. Motor (M): obeys commands=6, localizes=5, withdraws=4, abnormal flexion=3, extension=2, none=1. This patient: Eyes to voice (3) + Incomprehensible sounds (2) + Withdraws (4) = GCS 7. GCS ≤8 = severe brain injury; generally indicates need for airway protection.",
+      "distractorRationales": {
+        "b": "Selecting GCS 8 would be unsafe, rather than acting on GCS components: Eye opening (E): spontaneous=4, to voice=3, to pain=2, none=1. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "This option overweights GCS 9, instead of responding to Verbal (V): oriented=5, confused=4, inappropriate words=3, incomprehensible=2, none=1. Does not account for the clinical cue most likely to deteriorate first, so The priority is GCS 7, not a step that delays stabilization of oxygenation or ventilation.",
+        "d": "The clinical error in GCS 10 is that it does not account for the clinical cue most likely to deteriorate first, and misses that GCS ≤8 = severe brain injury. The correct path is GCS 7, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "GCS = E(1–4) + V(1–5) + M(1–6). Score ≤8 = severe TBI, consider intubation for airway protection.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A patient with a legally designated healthcare proxy (durable power of attorney for healthcare) is brought to the ED unconscious after a large stroke. The healthcare proxy, who has legal authority, requests that all life-sustaining treatment be withdrawn. No written advance directive exists. What is the nurse's most appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy"
+        },
+        {
+          "id": "b",
+          "text": "Disregard the proxy's decision and provide full resuscitation until the patient can speak for themselves"
+        },
+        {
+          "id": "c",
+          "text": "Consult the ethics committee and continue full treatment until the committee renders a decision"
+        },
+        {
+          "id": "d",
+          "text": "Contact adult protective services, as a family member withdrawing treatment may constitute elder abuse"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A legally designated healthcare proxy (durable power of attorney for healthcare) has the legal authority to make medical decisions on behalf of an incapacitated patient. The proxy's role is substituted judgment — making the decision the patient would make if able. When a legally designated proxy with proper authority requests withdrawal of life-sustaining treatment, this request must be honored following institutional policies and applicable state law. The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative care team, and provide comfort measures. An ethics consultation may be helpful if there is team conflict, but it is not required to delay a legally sound decision. This is not elder abuse — it is the proper exercise of legally granted decision-making authority.",
+      "distractorRationales": {
+        "b": "This option overweights Disregard the proxy's decision and provide full resuscitation until the patient can speak for themselves, instead of responding to The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay neurologic safety assessment and leave neurologic deterioration unresolved.",
+        "c": "Consult the ethics committee and continue full treatment until the committee renders a decision would not address the priority, and misses that The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative. Moves to a lower-acuity action before the client is clinically stable, so Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "d": "Selecting Contact adult protective services, as a family member withdrawing treatment may constitute elder abuse would be unsafe, while the decisive cue is The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative. Moves to a lower-acuity action before the client is clinically stable, so The priority is Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy, not a step that delays stabilization of neurologic deterioration."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Healthcare proxy with legal authority speaks for the incapacitated patient. Their decision must be respected and acted upon. No written advance directive is required when a valid proxy is designated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 4,
+      "stem": "An RN delegates to an LPN/LVN. Which task is within the LPN's scope of practice in most states?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the initial nursing admission assessment for a newly admitted patient"
+        },
+        {
+          "id": "b",
+          "text": "Administer oral, IM, and subcutaneous medications and monitor response"
+        },
+        {
+          "id": "c",
+          "text": "Develop and update the nursing care plan based on patient assessment findings"
+        },
+        {
+          "id": "d",
+          "text": "Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens, and monitoring and reporting patient status. Initial assessments (A) require RN-level nursing judgment and are an RN responsibility. Care plan development (C) is an RN function. Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. The key distinction is that LPNs implement care under RN supervision; RNs assess, plan, evaluate, and teach.",
+      "distractorRationales": {
+        "a": "Perform the initial nursing admission assessment for a newly admitted patient is not the best answer, but the stem cue is LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Administer oral, IM, and subcutaneous medications and monitor response, which matches the priority cues instead of a secondary concern.",
+        "c": "The clinical error in Develop and update the nursing care plan based on patient assessment findings is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens. It is less defensible because Administer oral, IM, and subcutaneous medications and monitor response targets the problem most likely to deteriorate first.",
+        "d": "The clinical error in Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol is that it does not account for the clinical cue most likely to deteriorate first, and misses that LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens. Administer oral, IM, and subcutaneous medications and monitor response better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning, and teaching are RN responsibilities.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion, and vomiting following a viral illness. Which initial interventions are CORRECT? (Select all that apply.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer hydrocortisone 100 mg IV bolus immediately"
+        },
+        {
+          "id": "b",
+          "text": "Initiate 0.9% normal saline 1 L IV bolus for hemodynamic support"
+        },
+        {
+          "id": "c",
+          "text": "Administer fludrocortisone 0.1 mg orally for mineralocorticoid replacement"
+        },
+        {
+          "id": "d",
+          "text": "Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority), and (2) aggressive NS fluid resuscitation for hypovolemia and hyponatremia (B). Fludrocortisone (C) is used for chronic mineralocorticoid replacement but is not the initial treatment in a crisis — hydrocortisone at high doses provides sufficient mineralocorticoid activity. Withholding steroids to do testing (D) is dangerous — diagnosis is clinical in a crisis. ACTH stimulation can be done later.",
+      "distractorRationales": {
+        "b": "Initiate 0.9% normal saline 1 L IV bolus for hemodynamic support fits a lower-risk interpretation, although the nurse should be guided by vomiting following a viral illness. Normalizes a finding that should change the nurse's priority, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "c": "Selecting Administer fludrocortisone 0.1 mg orally for mineralocorticoid replacement would be unsafe, despite the clinical warning in Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay renal protection and leave renal injury unresolved.",
+        "d": "This option overweights Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency, rather than acting on vomiting following a viral illness. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Administer hydrocortisone 100 mg IV bolus immediately because delaying renal protection can worsen renal injury."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Do not delay for confirmatory testing.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "suicide_risk_assessment",
+      "subcategory": "Suicide Risk Assessment",
+      "difficulty": 3,
+      "stem": "A nurse is assessing a client who says: 'I've been thinking about ending my life. I have my grandfather's gun at home and I plan to use it this weekend when my family is away.' Which suicide risk category applies, and what is the immediate nursing priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Low risk; schedule outpatient follow-up within 2 weeks"
+        },
+        {
+          "id": "b",
+          "text": "Moderate risk; increase therapy frequency and provide a safety plan"
+        },
+        {
+          "id": "c",
+          "text": "High risk; initiate involuntary hospitalization and remove access to means immediately"
+        },
+        {
+          "id": "d",
+          "text": "Moderate risk; contact family members to monitor the patient at home"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient has a specific plan (gun), access to lethal means (gun at home), a timeframe (this weekend), and intent (plans to use it). This constellation — ideation + plan + means + timeframe — represents HIGH lethality risk. Immediate action: do not leave the patient alone, initiate emergency psychiatric evaluation, and facilitate involuntary hospitalization if the patient refuses voluntary admission. Means restriction (removing or securing the firearm) is critical. Outpatient follow-up (A) and home monitoring (D) are wholly inadequate for this risk level.",
+      "distractorRationales": {
+        "a": "This answer choice treats Low risk; schedule outpatient follow-up within 2 weeks as the key issue, while the decisive cue is immediate hospitalization and means restriction are required. Anchors on the wrong explanation for the client's cues, so Choosing it can delay bedside safety action and leave clinical safety risk unresolved.",
+        "b": "This option overweights Moderate risk; increase therapy frequency and provide a safety plan, rather than acting on High suicide risk = specific plan + lethal means + timeframe + intent. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is High risk; initiate involuntary hospitalization and remove access to means immediately because delaying bedside safety action can worsen clinical safety risk.",
+        "d": "The clinical error in Moderate risk; contact family members to monitor the patient at home is that it moves to a lower-acuity action before the client is clinically stable, when the bedside priority is driven by Means restriction (removing or securing the firearm) is critical. High risk; initiate involuntary hospitalization and remove access to means immediately better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "Suicide Risk Assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "High suicide risk = specific plan + lethal means + timeframe + intent; immediate hospitalization and means restriction are required.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_dysrhythmias",
+      "subcategory": "Cardiovascular / Dysrhythmias",
+      "difficulty": 3,
+      "stem": "A nurse is monitoring a patient on telemetry when the rhythm suddenly changes to a wide-complex, regular tachycardia at 180 bpm. The patient is alert, with BP 102/60 mmHg and reports palpitations but no chest pain. Which intervention should the nurse anticipate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediate unsynchronized defibrillation at 200J"
+        },
+        {
+          "id": "b",
+          "text": "Prepare for synchronized cardioversion at 100J after sedation"
+        },
+        {
+          "id": "c",
+          "text": "Administer IV adenosine 6 mg rapid push to terminate the rhythm"
+        },
+        {
+          "id": "d",
+          "text": "Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring hemodynamics closely"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification before treatment. WCT is most commonly ventricular tachycardia (VT) but can also be supraventricular tachycardia with aberrant conduction (SVT-A). A 12-lead ECG helps differentiate. If VT is confirmed: amiodarone or procainamide IV is the antiarrhythmic of choice for stable VT. Synchronized cardioversion is reserved for hemodynamically unstable stable VT (BP < 90, ischemia, altered mental status). Unsynchronized defibrillation (defib) is for pulseless VT/VF. Adenosine is appropriate for narrow-complex SVT; it is not first-line for wide-complex tachycardia and can be harmful in VT.",
+      "distractorRationales": {
+        "a": "The reasoning trap in Immediate unsynchronized defibrillation at 200J is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is A nurse is monitoring a patient on telemetry when the rhythm suddenly changes to a wide-complex, regular tachycardia. The correct path is Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring, which matches the priority cues instead of a secondary concern.",
+        "b": "This option overweights Prepare for synchronized cardioversion at 100J after sedation, although the nurse should be guided by it is not first-line for wide-complex tachycardia and can be harmful in VT. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring because delaying circulation and perfusion support can worsen circulation or perfusion.",
+        "c": "The problem with Administer IV adenosine 6 mg rapid push to terminate the rhythm is that it does not account for the clinical cue most likely to deteriorate first, rather than acting on it is not first-line for wide-complex tachycardia and can be harmful in VT. The nurse should prioritize Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring; otherwise circulation or perfusion remains the active threat."
+      },
+      "tags": [
+        "Cardiovascular / Dysrhythmias",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stable wide-complex tachycardia: 12-lead first → provider → antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Dysrhythmias",
+        "caption": "Stable wide-complex tachycardia: 12-lead first → provider → antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+        "conclusion": "Stable wide-complex tachycardia: 12-lead first → provider → antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "Parents call the pediatric triage nurse stating their 2-year-old has been having a seizure for 1 minute. The child has a temperature of 39.2°C (102.6°F) and no prior seizure history. What is the most important teaching point the nurse should emphasize?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer rectal diazepam immediately regardless of seizure duration"
+        },
+        {
+          "id": "b",
+          "text": "Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than 5 minutes or the child stops breathing"
+        },
+        {
+          "id": "c",
+          "text": "Put fingers in the mouth to prevent tongue-swallowing during the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer acetaminophen immediately to stop the seizure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Simple febrile seizures are benign, typically last <5 minutes, and are self-limiting. Parent teaching: (1) Do not restrain the child; (2) Turn child on side to prevent aspiration; (3) Do not insert anything in the mouth — risk of injury, not tongue-swallowing; (4) Time the seizure; (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Rectal diazepam is not administered routinely unless prescribed for a child with known prolonged febrile seizures. Antipyretics do not abort an ongoing seizure.",
+      "distractorRationales": {
+        "a": "This choice focuses on Administer rectal diazepam immediately regardless of seizure duration, instead of responding to (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "This choice focuses on Put fingers in the mouth to prevent tongue-swallowing during the seizure, while the decisive cue is (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "Administer acetaminophen immediately to stop the seizure fits a lower-risk interpretation, despite the clinical warning in call 911 if >5 min or breathing stops. Does not account for the clinical cue most likely to deteriorate first, so The priority is Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+        "conclusion": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_hypoglycemia_treatment",
+      "subcategory": "Pharmacology / Hypoglycemia Treatment",
+      "difficulty": 2,
+      "stem": "A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL and symptoms of shakiness and diaphoresis. The patient is alert and able to swallow. Which is the CORRECT initial treatment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer glucagon 1 mg subcutaneously"
+        },
+        {
+          "id": "b",
+          "text": "Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck glucose in 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50 mL of 50% dextrose (D50) IV push"
+        },
+        {
+          "id": "d",
+          "text": "Give the patient a full meal immediately to restore blood glucose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The '15-15 rule' is the standard for treating conscious, alert patients with mild-to-moderate hypoglycemia who can swallow safely: give 15 grams of rapid-acting carbohydrate (4 oz orange juice, 4 oz regular soda, or 3-4 glucose tablets), wait 15 minutes, and recheck blood glucose. If still < 70 mg/dL, repeat the treatment. This is the safest, most physiologically appropriate approach. Glucagon is reserved for unconscious or unable-to-swallow patients. D50 IV push is reserved for unconscious patients or those without IV access who cannot take oral carbohydrates. A full meal is slower to absorb and can cause a prolonged correction — it is the follow-up after glucose normalizes, not the acute treatment.",
+      "distractorRationales": {
+        "a": "Administer glucagon 1 mg subcutaneously would not address the priority, without accounting for Reserve glucagon for unconscious/unable-to-swallow. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck, which matches the priority cues instead of a secondary concern.",
+        "c": "This choice focuses on Administer 50 mL of 50% dextrose (D50) IV push, rather than acting on Reserve D50 for severe hypoglycemia without oral access. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck because delaying glucose rescue or metabolic stabilization can worsen unstable glucose physiology.",
+        "d": "This option overweights Give the patient a full meal immediately to restore blood glucose, although the nurse should be guided by A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response."
+      },
+      "tags": [
+        "Pharmacology / Hypoglycemia Treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Conscious hypoglycemic patient who can swallow: 15g fast-acting carbs (15-15 rule) → recheck in 15 min → repeat if still low → then a snack with protein. Reserve glucagon for unconscious/unable-to-swallow. Reserve D50 for severe hypoglycemia without oral access.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb826-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse receives a SBAR hand-off report. The oncoming nurse should be MOST concerned about which patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline"
+        },
+        {
+          "id": "b",
+          "text": "A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours"
+        },
+        {
+          "id": "c",
+          "text": "A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Urine output of 15 mL/hr for 3 consecutive hours (total 45 mL in 3 hours, target minimum 30 mL/hr) in a patient with sepsis signals inadequate renal perfusion and worsening organ dysfunction. This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider notification and likely fluid resuscitation. The COPD patient's 91% sat is their established baseline; the hip replacement refusal is important but not acutely threatening; the pending aPTT should be followed but is not immediately dangerous.",
+      "distractorRationales": {
+        "a": "A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their is not the best answer, even though the higher-risk finding is The COPD patient's 91% sat is their established baseline. Anchors on the wrong explanation for the client's cues, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "This answer choice treats A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired' as the key issue, instead of responding to In sepsis, urine output < 0. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours because delaying bleeding-risk intervention can worsen bleeding or anticoagulation injury.",
+        "d": "The problem with A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago is that it anchors on the wrong explanation for the client's cues, rather than acting on the pending aPTT should be followed but is not immediately dangerous. Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Prioritization",
+        "caption": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+        "conclusion": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

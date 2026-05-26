@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import DailyQuestionSignup from "@/components/marketing/DailyQuestionSignup";
 import PremiumArtHero from "@/components/marketing/PremiumArtHero";
 import { marketingArtwork } from "@/components/marketing/marketingArtwork";
+import { getLiveBankStats } from "@/lib/live-bank-stats";
 import { getLiveContentSummary } from "@/lib/live-content-summary";
 
 export const dynamic = "force-dynamic";
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const summary = getLiveContentSummary();
+  const bankStats = getLiveBankStats();
   const homeSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -157,8 +159,8 @@ export default function HomePage() {
             <p className="mt-3 font-sans text-2xl font-semibold text-[#1E2328]">{summary.nclex.live} live NCLEX questions</p>
           </div>
           <div>
-            <span className="section-label">Study edge</span>
-            <p className="mt-3 font-sans text-2xl font-semibold text-[#1E2328]">Cleaner than generic qbanks</p>
+            <span className="section-label">Real NGN format</span>
+            <p className="mt-3 font-sans text-2xl font-semibold text-[#1E2328]">{bankStats.realNgnPercent}% of promoted bank</p>
           </div>
         </div>
 

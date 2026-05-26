@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-836",
+  "generatedAt": "2026-04-09T14:47:44-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb836-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stroke_vs_sedation",
+      "subcategory": "stroke_vs_sedation",
+      "difficulty": 3,
+      "stem": "A patient who was alert earlier is now slurring words and has unequal pupils after receiving pain medication. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess airway, breathing, and neuro status immediately"
+        },
+        {
+          "id": "b",
+          "text": "Assume the medication is the only cause"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the medication to wear off completely"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the pupil change if the patient is sleepy"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Medication can contribute to decreased responsiveness, but slurred speech and unequal pupils require immediate reassessment for neurologic compromise. **Why the others are wrong:** - B Medication effect does not rule out a neurologic emergency. - C Delay can miss stroke or increased intracranial pressure. - D Unequal pupils are not a normal sleepy finding to ignore.",
+      "distractorRationales": {
+        "b": "The clinical error in Assume the medication is the only cause is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is A patient who was alert earlier is now slurring words and has unequal pupils after receiving pain medication. That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "This distractor pulls attention toward Wait for the medication to wear off completely, when the bedside priority is driven by - C Delay can miss stroke or increased intracranial pressure. Treats an active warning sign as something safe to watch, so Assess airway, breathing, and neuro status immediately is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This distractor pulls attention toward Ignore the pupil change if the patient is sleepy, even though the higher-risk finding is - C Delay can miss stroke or increased intracranial pressure. Normalizes a finding that should change the nurse's priority, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses."
+      },
+      "tags": [
+        "stroke_vs_sedation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New neuro findings after a medication still demand urgent assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "Teaching a patient how to use an inhaler is not the best answer, when the bedside priority is driven by Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available. Moves to teaching or reassurance before the immediate risk is stabilized, so Transporting a stable patient to radiology better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "This distractor pulls attention toward Evaluating a new complaint of dizziness, and misses that - C Dizziness requires assessment first. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Transporting a stable patient to radiology, which matches the priority cues instead of a secondary concern.",
+        "d": "The problem with Deciding whether chest pain needs an ECG is that it does not account for the clinical cue most likely to deteriorate first, although the nurse should be guided by **Why the others are wrong:** - B Teaching requires nursing knowledge. Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "escalating_distress",
+      "subcategory": "escalating_distress",
+      "difficulty": 3,
+      "stem": "A patient with shortness of breath is now using accessory muscles and can only speak two or three words at a time. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess breathing, oxygenation, and work of breathing immediately"
+        },
+        {
+          "id": "b",
+          "text": "Ask the patient to rest before checking vital signs"
+        },
+        {
+          "id": "c",
+          "text": "Wait to see whether the shortness of breath improves on its own"
+        },
+        {
+          "id": "d",
+          "text": "Focus on the lung sounds later in the shift"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Accessory muscle use and short phrases suggest rising respiratory distress. The nurse should reassess the patient right away. **Why the others are wrong:** - B Rest does not replace urgent assessment. - C Delay can miss a worsening airway or breathing problem. - D Lung sounds are important, but not later in the shift.",
+      "distractorRationales": {
+        "b": "This option makes Ask the patient to rest before checking vital signs the focus, even though the higher-risk finding is Accessory muscle use and short phrases suggest rising respiratory distress. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for airway and breathing intervention while oxygenation or ventilation progresses.",
+        "c": "The problem with Wait to see whether the shortness of breath improves on its own is that it treats an active warning sign as something safe to watch, despite the clinical warning in Accessory muscle use and short phrases suggest rising respiratory distress. That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This choice focuses on Focus on the lung sounds later in the shift, rather than acting on - C Delay can miss a worsening airway or breathing problem. Treats an active warning sign as something safe to watch, so The priority is Reassess breathing, oxygenation, and work of breathing immediately, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "escalating_distress",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Speech limitation plus accessory muscle use is a respiratory warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "unstable_perfusion",
+      "subcategory": "unstable_perfusion",
+      "difficulty": 3,
+      "stem": "A patient becomes cool, pale, and diaphoretic with a weakening pulse and dropping urine output. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Circulation may be unstable and perfusion may be worsening"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because the skin is not blue"
+        },
+        {
+          "id": "c",
+          "text": "Urine output is unrelated to circulation"
+        },
+        {
+          "id": "d",
+          "text": "These findings are expected if the patient is anxious"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Cool skin, weak pulse, and falling urine output can reflect poor perfusion and a worsening cardiovascular problem. **Why the others are wrong:** - B Cyanosis is not required for instability. - C Urine output is a useful perfusion marker. - D Anxiety does not explain the full perfusion pattern.",
+      "distractorRationales": {
+        "b": "Selecting The patient is stable because the skin is not blue would be unsafe, despite the clinical warning in falling urine output can reflect poor perfusion and a worsening cardiovascular problem. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of renal injury and postpones the needed nursing response.",
+        "c": "The reasoning trap in Urine output is unrelated to circulation is that it does not account for the clinical cue most likely to deteriorate first, when the bedside priority is driven by - C Urine output is a useful perfusion marker. Circulation may be unstable and perfusion may be worsening better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "The reasoning trap in These findings are expected if the patient is anxious is that it normalizes a finding that should change the nurse's priority, but the stem cue is - C Urine output is a useful perfusion marker. That choice could make the nurse miss the window for renal protection while renal injury progresses."
+      },
+      "tags": [
+        "unstable_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cold skin and dropping urine output can signal poor circulation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "unstable_perfusion",
+        "caption": "Cold skin and dropping urine output can signal poor circulation.",
+        "conclusion": "Cold skin and dropping urine output can signal poor circulation."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_neurologic_warning_sign",
+      "subcategory": "acute_neurologic_warning_sign",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops slurred speech and one-sided facial droop. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the stroke response process immediately"
+        },
+        {
+          "id": "b",
+          "text": "Recheck the patient after the next medication pass"
+        },
+        {
+          "id": "c",
+          "text": "Ask the patient to rest and avoid talking"
+        },
+        {
+          "id": "d",
+          "text": "Document the change and continue routine care"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden focal neurologic changes can signal stroke. Rapid response matters because time-sensitive treatment may be available. **Why the others are wrong:** - B Delay can cost critical treatment time. - C Rest does not address the neurologic emergency. - D Routine care is not appropriate when stroke is possible.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Recheck the patient after the next medication pass, without accounting for Sudden focal neurologic changes can signal stroke. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for neurologic safety assessment while neurologic deterioration progresses.",
+        "c": "The reasoning trap in Ask the patient to rest and avoid talking is that it does not account for the clinical cue most likely to deteriorate first, without accounting for - C Rest does not address the neurologic emergency. It is less defensible because Activate the stroke response process immediately targets the problem most likely to deteriorate first.",
+        "d": "Document the change and continue routine care is not the best answer, even though the higher-risk finding is - C Rest does not address the neurologic emergency. Treats an active warning sign as something safe to watch, so Activate the stroke response process immediately better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "acute_neurologic_warning_sign",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden slurred speech and facial droop are stroke warning signs.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "acute_neurologic_warning_sign",
+        "caption": "Sudden slurred speech and facial droop are stroke warning signs.",
+        "conclusion": "Sudden slurred speech and facial droop are stroke warning signs."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_assessment",
+      "subcategory": "dehydration_assessment",
+      "difficulty": 3,
+      "stem": "A toddler has had vomiting and diarrhea for two days. Which finding should the nurse recognize as most concerning for dehydration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fewer wet diapers than usual"
+        },
+        {
+          "id": "b",
+          "text": "Asking for water"
+        },
+        {
+          "id": "c",
+          "text": "Mild irritability at nap time"
+        },
+        {
+          "id": "d",
+          "text": "A normal appetite earlier in the week"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Decreased urine output is a key dehydration clue in young children and should be taken seriously. **Why the others are wrong:** - B Asking for water is not the strongest warning sign. - C Mild irritability is nonspecific. - D A prior normal appetite does not answer the current question.",
+      "distractorRationales": {
+        "b": "The reasoning trap in Asking for water is that it moves to a lower-acuity action before the client is clinically stable, but the stem cue is Decreased urine output is a key dehydration clue in young children and should be taken seriously. The correct path is Fewer wet diapers than usual, which matches the priority cues instead of a secondary concern.",
+        "c": "Selecting Mild irritability at nap time would be unsafe, despite the clinical warning in In children, fewer wet diapers can be an important dehydration sign. Normalizes a finding that should change the nurse's priority, so The priority is Fewer wet diapers than usual, not a step that delays stabilization of renal injury.",
+        "d": "This option overweights A normal appetite earlier in the week, despite the clinical warning in In children, fewer wet diapers can be an important dehydration sign. Normalizes a finding that should change the nurse's priority, so The safer answer is Fewer wet diapers than usual because delaying renal protection can worsen renal injury."
+      },
+      "tags": [
+        "dehydration_assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In children, fewer wet diapers can be an important dehydration sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "airway_change_after_treatment",
+      "subcategory": "airway_change_after_treatment",
+      "difficulty": 3,
+      "stem": "A patient with asthma initially improves after treatment, but later becomes quieter, less able to speak, and more fatigued. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be tiring and failing to sustain respiratory effort"
+        },
+        {
+          "id": "b",
+          "text": "The quieter breathing proves the patient is improving"
+        },
+        {
+          "id": "c",
+          "text": "Fatigue is unrelated if the lungs were wheezing earlier"
+        },
+        {
+          "id": "d",
+          "text": "The nurse can wait until the next round to reassess"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A quieter patient who is more fatigued can actually be worsening. Less noise is not always better when work of breathing is falling off because the patient is tiring. **Why the others are wrong:** - B Less sound can mean less effort, not improvement. - C Earlier wheezing does not rule out later fatigue. - D This pattern needs prompt reassessment.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward The quieter breathing proves the patient is improving, but the stem cue is A patient with asthma initially improves after treatment. Moves to a lower-acuity action before the client is clinically stable, so The correct path is The patient may be tiring and failing to sustain respiratory effort, which matches the priority cues instead of a secondary concern.",
+        "c": "The problem with Fatigue is unrelated if the lungs were wheezing earlier is that it does not account for the clinical cue most likely to deteriorate first, despite the clinical warning in A quieter patient who is more fatigued can actually be worsening. Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "This option overweights The nurse can wait until the next round to reassess, while the decisive cue is A patient with asthma initially improves after treatment. Treats an active warning sign as something safe to watch, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved."
+      },
+      "tags": [
+        "airway_change_after_treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Less audible effort can be a bad sign if the patient is tiring.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_with_instability",
+      "subcategory": "chest_pain_with_instability",
+      "difficulty": 3,
+      "stem": "A patient reports chest pressure and becomes hypotensive and tachycardic. What is the most useful bedside interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an acute cardiovascular emergency"
+        },
+        {
+          "id": "b",
+          "text": "The pain is likely harmless because the patient is still awake"
+        },
+        {
+          "id": "c",
+          "text": "The heart rate change is the only issue"
+        },
+        {
+          "id": "d",
+          "text": "The blood pressure will likely fix itself without reassessment"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment. **Why the others are wrong:** - B Awake status does not make the chest pain safe. - C The whole pattern matters, not just the heart rate. - D Waiting for spontaneous correction is unsafe.",
+      "distractorRationales": {
+        "b": "The pain is likely harmless because the patient is still awake would not address the priority, without accounting for Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment. Anchors on the wrong explanation for the client's cues, so The patient may be having an acute cardiovascular emergency is safer because it addresses circulation or perfusion before routine care or reassurance.",
+        "c": "This answer choice treats The heart rate change is the only issue as the key issue, despite the clinical warning in Chest pain plus unstable vitals is a high-risk pattern. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "d": "The clinical error in The blood pressure will likely fix itself without reassessment is that it treats an active warning sign as something safe to watch, but the stem cue is **Why the others are wrong:** - B Awake status does not make the chest pain safe. The patient may be having an acute cardiovascular emergency better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "chest_pain_with_instability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest pain plus unstable vitals is a high-risk pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_weakness",
+      "subcategory": "new_weakness",
+      "difficulty": 3,
+      "stem": "Which finding should the nurse treat as the most urgent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "New unilateral arm weakness"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "Mild boredom during a long wait"
+        },
+        {
+          "id": "d",
+          "text": "A patient wanting the television volume adjusted"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New one-sided weakness can signal stroke and needs immediate attention. **Why the others are wrong:** - B This is nonurgent. - C Boredom is not a clinical change. - D Comfort adjustments are not the highest priority.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward A patient asking for a blanket, and misses that Sudden one-sided weakness should always be treated as urgent. Does not account for the clinical cue most likely to deteriorate first, so The correct path is New unilateral arm weakness, which matches the priority cues instead of a secondary concern.",
+        "c": "This distractor pulls attention toward Mild boredom during a long wait, but the stem cue is - D Comfort adjustments are not the highest priority. Treats an active warning sign as something safe to watch, so New unilateral arm weakness is safer because it addresses neurologic deterioration before routine care or reassurance.",
+        "d": "This choice focuses on A patient wanting the television volume adjusted, although the nurse should be guided by Sudden one-sided weakness should always be treated as urgent. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is New unilateral arm weakness because delaying neurologic safety assessment can worsen neurologic deterioration."
+      },
+      "tags": [
+        "new_weakness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden one-sided weakness should always be treated as urgent.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb836-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_hydration",
+      "subcategory": "fever_and_hydration",
+      "difficulty": 3,
+      "stem": "A child with fever is not drinking much and has a dry mouth. What should the nurse be most concerned about?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Fever always means the child is hydrated enough"
+        },
+        {
+          "id": "c",
+          "text": "Dry mouth is normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is expected and never matters"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake with fever can quickly lead to dehydration in children, so intake and output deserve close attention. **Why the others are wrong:** - B Fever does not protect against dehydration. - C Dry mouth is a useful warning sign. - D Low drinking can become dangerous in pediatrics.",
+      "distractorRationales": {
+        "b": "The clinical error in Fever always means the child is hydrated enough is that it does not account for the clinical cue most likely to deteriorate first, without accounting for - D Low drinking can become dangerous in pediatrics. The child may be becoming dehydrated is safer because it addresses infection progression before routine care or reassurance.",
+        "c": "Dry mouth is normal in every sick child fits a lower-risk interpretation, although the nurse should be guided by A child with fever is not drinking much and has a dry mouth. Normalizes a finding that should change the nurse's priority, so The priority is The child may be becoming dehydrated, not a step that delays stabilization of infection progression.",
+        "d": "This answer choice treats Drinking less is expected and never matters as the key issue, instead of responding to Poor intake with fever can quickly lead to dehydration in children, so intake and output deserve close attention. Normalizes a finding that should change the nurse's priority, so The nurse should prioritize The child may be becoming dehydrated; otherwise infection progression remains the active threat."
+      },
+      "tags": [
+        "fever_and_hydration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus poor intake can quickly become a fluid problem in children.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

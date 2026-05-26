@@ -63,25 +63,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <BrandMark />
             </Link>
             <div className="hidden flex-1 items-center justify-center gap-5 font-sans text-sm font-medium text-[#61676B] md:flex">
-              <a href="/">Home</a>
-              <a href="/nclex">NCLEX</a>
-              <a href="/ccrn">CCRN</a>
-              <a href="/quiz">Practice</a>
-              <a href="/upgrade">Plans</a>
+              <Link href="/">Home</Link>
+              <Link href="/nclex">NCLEX</Link>
+              <Link href="/ccrn">CCRN</Link>
+              <Link href="/quiz">Practice</Link>
+              <Link href="/upgrade">Plans</Link>
             </div>
             <div className="ml-auto flex items-center gap-3 md:gap-5">
-              <a
+              <Link
                 href="/demo-access"
                 className="hidden items-center justify-center rounded-full border border-[rgba(74,85,89,0.14)] bg-transparent px-4 py-2.5 font-sans text-sm font-semibold text-[#4A5559] transition hover:border-[rgba(74,85,89,0.3)] md:inline-flex"
               >
                 Enter Key
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/upgrade"
                 className="inline-flex items-center justify-center rounded-full bg-[#4A5559] px-5 py-3 font-sans text-sm font-semibold text-white transition hover:bg-[#3B4549]"
               >
                 Get Access
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
@@ -93,12 +93,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <p>Original nursing exam products with a calmer clinical surface.</p>
             </div>
             <div className="site-footer-links">
-              <a href="/ccrn">CCRN</a>
-              <a href="/nclex">NCLEX</a>
-              <a href="/upgrade">Plans</a>
-              <a href="/quiz">Practice</a>
-              <a href="/privacy">Privacy</a>
-              <a href="/terms">Terms</a>
+              <Link href="/ccrn">CCRN</Link>
+              <Link href="/nclex">NCLEX</Link>
+              <Link href="/upgrade">Plans</Link>
+              <Link href="/quiz">Practice</Link>
+              <Link href="/privacy">Privacy</Link>
+              <Link href="/terms">Terms</Link>
             </div>
           </div>
         </footer>

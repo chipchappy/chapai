@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-846",
+  "generatedAt": "2026-04-09T16:55:26-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb846-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygen_saturation_trend",
+      "subcategory": "oxygen_saturation_trend",
+      "difficulty": 3,
+      "stem": "A patient on oxygen has a falling oxygen saturation trend and is now more short of breath. What is the best nursing concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The respiratory status may be worsening"
+        },
+        {
+          "id": "b",
+          "text": "The patient is improving because oxygen is still on"
+        },
+        {
+          "id": "c",
+          "text": "A single normal reading later will cancel the trend"
+        },
+        {
+          "id": "d",
+          "text": "Breathing changes only matter if the patient is anxious"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A worsening trend matters even if oxygen is already being used. The nurse should reassess the patient and the support. **Why the others are wrong:** - B Oxygen use does not guarantee stability. - C A trend should not be ignored. - D Anxiety is not the only explanation for shortness of breath.",
+      "distractorRationales": {
+        "b": "The reasoning trap in The patient is improving because oxygen is still on is that it anchors on the wrong explanation for the client's cues, but the stem cue is A worsening trend matters even if oxygen is already being used. The respiratory status may be worsening is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "This choice focuses on A single normal reading later will cancel the trend, despite the clinical warning in **Why the others are wrong:** - B Oxygen use does not guarantee stability. Treats an active warning sign as something safe to watch, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "The clinical error in Breathing changes only matter if the patient is anxious is that it moves to a lower-acuity action before the client is clinically stable, without accounting for **Why the others are wrong:** - B Oxygen use does not guarantee stability. The respiratory status may be worsening better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "oxygen_saturation_trend",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Trends often matter more than one isolated number.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygen_saturation_trend",
+        "caption": "Trends often matter more than one isolated number.",
+        "conclusion": "Trends often matter more than one isolated number."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sedating_medication_follow_up",
+      "subcategory": "sedating_medication_follow_up",
+      "difficulty": 3,
+      "stem": "A patient receives a sedating medication and becomes less responsive than before. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess airway, breathing, and level of consciousness"
+        },
+        {
+          "id": "b",
+          "text": "Assume the sedation is expected and continue the routine"
+        },
+        {
+          "id": "c",
+          "text": "Leave the patient alone until the next scheduled round"
+        },
+        {
+          "id": "d",
+          "text": "Document the change only after the shift ends"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Any decrease in responsiveness after a sedating medication requires immediate reassessment for airway and breathing compromise. **Why the others are wrong:** - B Expected sedation still needs safety checks. - C Delay can miss deterioration. - D Documentation follows assessment, not the other way around.",
+      "distractorRationales": {
+        "b": "The clinical error in Assume the sedation is expected and continue the routine is that it treats an active warning sign as something safe to watch, without accounting for - D Documentation follows assessment, not the other way around. It is less defensible because Reassess airway, breathing, and level of consciousness targets the problem most likely to deteriorate first.",
+        "c": "Selecting Leave the patient alone until the next scheduled round would be unsafe, while the decisive cue is **Why the others are wrong:** - B Expected sedation still needs safety checks. Does not account for the clinical cue most likely to deteriorate first, so The priority is Reassess airway, breathing, and level of consciousness, not a step that delays stabilization of oxygenation or ventilation.",
+        "d": "Document the change only after the shift ends is not the best answer, and misses that - D Documentation follows assessment, not the other way around. Does not account for the clinical cue most likely to deteriorate first, so Reassess airway, breathing, and level of consciousness better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "sedating_medication_follow_up",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After sedating meds, responsiveness and breathing must be watched closely.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_shortness_of_breath",
+      "subcategory": "new_shortness_of_breath",
+      "difficulty": 3,
+      "stem": "A patient suddenly says, \"I can't catch my breath,\" and is leaning forward. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess airway, breathing, and oxygenation immediately"
+        },
+        {
+          "id": "b",
+          "text": "Tell the patient to lie flat and relax"
+        },
+        {
+          "id": "c",
+          "text": "Wait to see if the feeling passes"
+        },
+        {
+          "id": "d",
+          "text": "Focus on obtaining a full history first"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden dyspnea can signal acute respiratory distress. The nurse should assess breathing and oxygenation before anything less urgent. **Why the others are wrong:** - B Lying flat can worsen breathing for some patients. - C Delay can miss a serious problem. - D A focused assessment comes before a long history.",
+      "distractorRationales": {
+        "b": "Tell the patient to lie flat and relax would not address the priority, when the bedside priority is driven by The nurse should assess breathing and oxygenation before anything less urgent. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Assess airway, breathing, and oxygenation immediately, which matches the priority cues instead of a secondary concern.",
+        "c": "Selecting Wait to see if the feeling passes would be unsafe, while the decisive cue is Sudden dyspnea can signal acute respiratory distress. Treats an active warning sign as something safe to watch, so The safer answer is Assess airway, breathing, and oxygenation immediately because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This option makes Focus on obtaining a full history first the focus, without accounting for The nurse should assess breathing and oxygenation before anything less urgent. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Assess airway, breathing, and oxygenation immediately targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "new_shortness_of_breath",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden breathing changes require immediate reassessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "This choice focuses on A patient asking for a pillow, while the decisive cue is New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is A patient with new chest pressure and nausea because delaying circulation and perfusion support can worsen circulation or perfusion.",
+        "c": "A patient wanting discharge paperwork fits a lower-risk interpretation, instead of responding to - D Water is not urgent compared with possible cardiac symptoms. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize A patient with new chest pressure and nausea; otherwise circulation or perfusion remains the active threat.",
+        "d": "A patient asking for ice water fits a lower-risk interpretation, instead of responding to - D Water is not urgent compared with possible cardiac symptoms. Moves to a lower-acuity action before the client is clinically stable, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sudden_change_in_responsiveness",
+      "subcategory": "sudden_change_in_responsiveness",
+      "difficulty": 3,
+      "stem": "A patient suddenly becomes difficult to arouse and is not following commands. What is the nurse's best action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform a focused neurologic assessment and check for a reversible cause"
+        },
+        {
+          "id": "b",
+          "text": "Assume the patient is just tired"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the next round to reassess"
+        },
+        {
+          "id": "d",
+          "text": "Offer food and fluids first"
+        }
+      ],
+      "answer": "a",
+      "rationale": "An acute change in mental status may reflect stroke, hypoxia, glucose change, medication effect, or another urgent cause. **Why the others are wrong:** - B Sudden reduced responsiveness should not be dismissed. - C Delay can miss a serious decline. - D Food and fluids do not replace a neuro assessment.",
+      "distractorRationales": {
+        "b": "Selecting Assume the patient is just tired would be unsafe, while the decisive cue is New neurologic decline needs prompt assessment, not delay. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "c": "This choice focuses on Wait until the next round to reassess, although the nurse should be guided by New neurologic decline needs prompt assessment, not delay. Treats an active warning sign as something safe to watch, so The priority is Perform a focused neurologic assessment and check for a reversible cause, not a step that delays stabilization of unstable glucose physiology.",
+        "d": "This answer choice treats Offer food and fluids first as the key issue, instead of responding to New neurologic decline needs prompt assessment, not delay. Does not account for the clinical cue most likely to deteriorate first, so The priority is Perform a focused neurologic assessment and check for a reversible cause, not a step that delays stabilization of unstable glucose physiology."
+      },
+      "tags": [
+        "sudden_change_in_responsiveness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New neurologic decline needs prompt assessment, not delay.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "appropriate_task_assignment",
+      "subcategory": "appropriate_task_assignment",
+      "difficulty": 3,
+      "stem": "Which task is most appropriate for the nurse to delegate to an assistive personnel (AP)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Measuring and recording a stable patient's vital signs"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient about a new medication"
+        },
+        {
+          "id": "c",
+          "text": "Assessing chest pain"
+        },
+        {
+          "id": "d",
+          "text": "Evaluating a new wound drainage change"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Vital signs on a stable patient are a routine, predictable task that can be delegated when the nurse retains responsibility for follow-up. **Why the others are wrong:** - B Teaching requires nursing judgment. - C Assessment of chest pain must be done by the nurse. - D Wound changes need nursing assessment.",
+      "distractorRationales": {
+        "b": "Selecting Teaching a patient about a new medication would be unsafe, instead of responding to - D Wound changes need nursing assessment. Moves to teaching or reassurance before the immediate risk is stabilized, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "c": "Selecting Assessing chest pain would be unsafe, although the nurse should be guided by - D Wound changes need nursing assessment. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Measuring and recording a stable patient's vital signs; otherwise infection progression remains the active threat.",
+        "d": "Evaluating a new wound drainage change is not the best answer, without accounting for Delegate routine data collection, not assessment or teaching. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Measuring and recording a stable patient's vital signs targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "appropriate_task_assignment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine data collection, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "post_op_lung_concern",
+      "subcategory": "post_op_lung_concern",
+      "difficulty": 3,
+      "stem": "After surgery, a patient has shallow breathing, a low oxygen saturation, and is reluctant to cough because of pain. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be developing postoperative respiratory compromise"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because pain is the main issue"
+        },
+        {
+          "id": "c",
+          "text": "The oxygen saturation is not meaningful after surgery"
+        },
+        {
+          "id": "d",
+          "text": "Coughing should be avoided completely"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Pain can limit deep breathing and coughing, which increases the risk of atelectasis and respiratory decline. **Why the others are wrong:** - B Pain and breathing are linked here. - C Oxygen saturation remains important. - D Incentive breathing and cough are often part of recovery.",
+      "distractorRationales": {
+        "b": "The problem with The patient is stable because pain is the main issue is that it anchors on the wrong explanation for the client's cues, while the decisive cue is After surgery, a patient has shallow breathing, a low oxygen saturation. That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "c": "This answer choice treats The oxygen saturation is not meaningful after surgery as the key issue, rather than acting on Pain-related shallow breathing can become a respiratory problem. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is The patient may be developing postoperative respiratory compromise because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "d": "This option overweights Coughing should be avoided completely, although the nurse should be guided by After surgery, a patient has shallow breathing, a low oxygen saturation. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response."
+      },
+      "tags": [
+        "post_op_lung_concern",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pain-related shallow breathing can become a respiratory problem.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "low_perfusion_trend",
+      "subcategory": "low_perfusion_trend",
+      "difficulty": 3,
+      "stem": "A patient with heart failure has cool hands, weak pulses, and urine output that is dropping. What is the most useful interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perfusion may be decreasing despite ongoing treatment"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because the blood pressure is not zero"
+        },
+        {
+          "id": "c",
+          "text": "Weak pulses are not useful in heart failure"
+        },
+        {
+          "id": "d",
+          "text": "Urine output only matters in kidney disease"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Peripheral and renal clues can reveal poor perfusion even when a single pressure number looks acceptable. **Why the others are wrong:** - B Blood pressure alone does not prove adequate flow. - C Weak pulses are a useful bedside clue. - D Urine output matters in cardiac perfusion too.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward The patient is stable because the blood pressure is not zero, when the bedside priority is driven by - D Urine output matters in cardiac perfusion too. Anchors on the wrong explanation for the client's cues, so It is less defensible because Perfusion may be decreasing despite ongoing treatment targets the problem most likely to deteriorate first.",
+        "c": "Weak pulses are not useful in heart failure fits a lower-risk interpretation, while the decisive cue is Low-output heart failure often shows up in the hands and kidneys. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Perfusion may be decreasing despite ongoing treatment; otherwise renal injury remains the active threat.",
+        "d": "The problem with Urine output only matters in kidney disease is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to Low-output heart failure often shows up in the hands and kidneys. Choosing it can delay renal protection and leave renal injury unresolved."
+      },
+      "tags": [
+        "low_perfusion_trend",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low-output heart failure often shows up in the hands and kidneys.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "low_perfusion_trend",
+        "caption": "Low-output heart failure often shows up in the hands and kidneys.",
+        "conclusion": "Low-output heart failure often shows up in the hands and kidneys."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "wheezing_after_medication",
+      "subcategory": "wheezing_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a new medication, a patient develops wheezing and itching. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an allergic reaction"
+        },
+        {
+          "id": "b",
+          "text": "The medication is working as expected"
+        },
+        {
+          "id": "c",
+          "text": "Wheezing is only important if fever is present"
+        },
+        {
+          "id": "d",
+          "text": "The patient should be reassured and sent to bed"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action. **Why the others are wrong:** - B These are not expected therapeutic effects. - C Fever is not required for an allergic response. - D Reassurance without reassessment is unsafe.",
+      "distractorRationales": {
+        "b": "The clinical error in The medication is working as expected is that it normalizes a finding that should change the nurse's priority, even though the higher-risk finding is New wheeze after a medication can be an allergy clue. That choice could make the nurse miss the window for infection or sepsis escalation while infection progression progresses.",
+        "c": "This choice focuses on Wheezing is only important if fever is present, rather than acting on Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action. Does not account for the clinical cue most likely to deteriorate first, so The priority is The patient may be having an allergic reaction, not a step that delays stabilization of infection progression.",
+        "d": "The patient should be reassured and sent to bed is not the best answer, but the stem cue is - C Fever is not required for an allergic response. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because The patient may be having an allergic reaction targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "wheezing_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New wheeze after a medication can be an allergy clue.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb846-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "instability_after_medication",
+      "subcategory": "instability_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a blood pressure medication, a patient becomes dizzy and their blood pressure drops significantly. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess the patient and hold further medication until the situation is clarified"
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose because the medication is already scheduled"
+        },
+        {
+          "id": "c",
+          "text": "Tell the patient the dizziness is normal and temporary"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the blood pressure because the patient is awake"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Medication can cause hypotension. The nurse must reassess before giving more medication. **Why the others are wrong:** - B Scheduling does not override safety. - C Dizziness with a major BP drop needs action. - D Awake status does not make hypotension safe.",
+      "distractorRationales": {
+        "b": "This answer choice treats Give the next dose because the medication is already scheduled as the key issue, rather than acting on New hypotension after a medication needs immediate reassessment. Anchors on the wrong explanation for the client's cues, so The priority is Reassess the patient and hold further medication until the situation is clarified, not a step that delays stabilization of circulation or perfusion.",
+        "c": "This answer choice treats Tell the patient the dizziness is normal and temporary as the key issue, although the nurse should be guided by New hypotension after a medication needs immediate reassessment. Normalizes a finding that should change the nurse's priority, so The priority is Reassess the patient and hold further medication until the situation is clarified, not a step that delays stabilization of circulation or perfusion.",
+        "d": "The problem with Ignore the blood pressure because the patient is awake is that it anchors on the wrong explanation for the client's cues, while the decisive cue is - C Dizziness with a major BP drop needs action. Choosing it can delay circulation and perfusion support and leave circulation or perfusion unresolved."
+      },
+      "tags": [
+        "instability_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New hypotension after a medication needs immediate reassessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

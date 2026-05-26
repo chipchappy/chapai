@@ -1,0 +1,535 @@
+{
+  "batchId": "mixed-batch-900",
+  "generatedAt": "2026-04-10T06:04:27-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb900-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "pharmacology_corticosteroid_teaching",
+      "difficulty": 3,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "distractorRationales": {
+        "a": "'I should not stop this medication suddenly without talking to my doctor.' fits a lower-risk interpretation, while the decisive cue is Corticosteroid teaching: complete the full course, do not stop early or abruptly. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "c": "'I should monitor my blood sugar more closely while taking this medication.' fits a lower-risk interpretation, despite the clinical warning in Corticosteroid teaching: complete the full course, do not stop early or abruptly. Does not account for the clinical cue most likely to deteriorate first, so The priority is 'I can stop taking this medication early if I start feeling better.', not a step that delays stabilization of unstable glucose physiology.",
+        "d": "'I should take this medication in the morning with food.' is not the best answer, and misses that Know signs of infection (immunosuppression). Anchors on the wrong explanation for the client's cues, so It is less defensible because 'I can stop taking this medication early if I start feeling better.' targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "pharmacology_corticosteroid_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_sglt2_inhibitors",
+      "subcategory": "pharmacology_endocrine_sglt2_inhibitors",
+      "difficulty": 3,
+      "stem": "A patient with type 2 diabetes takes empagliflozin (Jardiance) and is scheduled for a laparoscopic cholecystectomy tomorrow. The anesthesiologist orders 'hold all diabetes medications the morning of surgery.' Which additional concern should the nurse identify and report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to risk of euglycemic diabetic ketoacidosis"
+        },
+        {
+          "id": "b",
+          "text": "Empagliflozin has no pre-surgical risks and can be given the morning of surgery safely"
+        },
+        {
+          "id": "c",
+          "text": "The patient should receive double the dose of empagliflozin pre-operatively to prevent hyperglycemia"
+        },
+        {
+          "id": "d",
+          "text": "SGLT2 inhibitors should be switched to metformin 24 hours before surgery"
+        }
+      ],
+      "answer": "a",
+      "rationale": "SGLT2 inhibitors (empagliflozin, canagliflozin, dapagliflozin) carry a risk of euglycemic DKA — a form of DKA where blood glucose can be near-normal or only mildly elevated, making it easy to miss. This risk is significantly increased perioperatively due to fasting, surgical stress, and altered carbohydrate metabolism. Current guidelines (ADA, FDA, ERAS protocols) recommend holding SGLT2 inhibitors 3-4 days before elective surgery. Holding only the morning of surgery is insufficient. The nurse should escalate this finding to the anesthesiologist and surgeon for clarification and an updated order to hold the medication earlier. This is an emerging but increasingly important perioperative safety issue.",
+      "distractorRationales": {
+        "b": "Empagliflozin has no pre-surgical risks and can be given the morning of surgery safely is not the best answer, without accounting for SGLT2 inhibitors (gliflozins) + surgery = euglycemic DKA risk. Does not account for the clinical cue most likely to deteriorate first, so The correct path is SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to, which matches the priority cues instead of a secondary concern.",
+        "c": "The patient should receive double the dose of empagliflozin pre-operatively to prevent hyperglycemia would not address the priority, but the stem cue is Key teaching: fasting + SGLT2 inhibitor = starvation ketosis + insulin deficiency = DKA without classic hyperglycemia. Does not account for the clinical cue most likely to deteriorate first, so SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to is safer because it addresses unstable glucose physiology before routine care or reassurance.",
+        "d": "This choice focuses on SGLT2 inhibitors should be switched to metformin 24 hours before surgery, instead of responding to Euglycemic DKA is dangerous because normal blood glucose masks the diagnosis. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to; otherwise unstable glucose physiology remains the active threat."
+      },
+      "tags": [
+        "pharmacology_endocrine_sglt2_inhibitors",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "SGLT2 inhibitors (gliflozins) + surgery = euglycemic DKA risk. Hold 3-4 days before elective procedures. Euglycemic DKA is dangerous because normal blood glucose masks the diagnosis. Key teaching: fasting + SGLT2 inhibitor = starvation ketosis + insulin deficiency = DKA without classic hyperglycemia.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_hypoglycemia_treatment",
+      "subcategory": "pharmacology_hypoglycemia_treatment",
+      "difficulty": 3,
+      "stem": "A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL and symptoms of shakiness and diaphoresis. The patient is alert and able to swallow. Which is the CORRECT initial treatment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer glucagon 1 mg subcutaneously"
+        },
+        {
+          "id": "b",
+          "text": "Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck glucose in 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50 mL of 50% dextrose (D50) IV push"
+        },
+        {
+          "id": "d",
+          "text": "Give the patient a full meal immediately to restore blood glucose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The '15-15 rule' is the standard for treating conscious, alert patients with mild-to-moderate hypoglycemia who can swallow safely: give 15 grams of rapid-acting carbohydrate (4 oz orange juice, 4 oz regular soda, or 3-4 glucose tablets), wait 15 minutes, and recheck blood glucose. If still < 70 mg/dL, repeat the treatment. This is the safest, most physiologically appropriate approach. Glucagon is reserved for unconscious or unable-to-swallow patients. D50 IV push is reserved for unconscious patients or those without IV access who cannot take oral carbohydrates. A full meal is slower to absorb and can cause a prolonged correction — it is the follow-up after glucose normalizes, not the acute treatment.",
+      "distractorRationales": {
+        "a": "This option overweights Administer glucagon 1 mg subcutaneously, instead of responding to A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay glucose rescue or metabolic stabilization and leave unstable glucose physiology unresolved.",
+        "c": "Administer 50 mL of 50% dextrose (D50) IV push would not address the priority, even though the higher-risk finding is Reserve glucagon for unconscious/unable-to-swallow. Does not account for the clinical cue most likely to deteriorate first, so Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck is safer because it addresses unstable glucose physiology before routine care or reassurance.",
+        "d": "Give the patient a full meal immediately to restore blood glucose would not address the priority, without accounting for Reserve glucagon for unconscious/unable-to-swallow. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "pharmacology_hypoglycemia_treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Conscious hypoglycemic patient who can swallow: 15g fast-acting carbs (15-15 rule) → recheck in 15 min → repeat if still low → then a snack with protein. Reserve glucagon for unconscious/unable-to-swallow. Reserve D50 for severe hypoglycemia without oral access.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "subcategory": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a newly diagnosed type 2 diabetes patient about glipizide (a sulfonylurea). Which statement is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This medication works best when taken with a large meal"
+        },
+        {
+          "id": "b",
+          "text": "This medication can cause low blood sugar — carry a fast-acting sugar source at all times"
+        },
+        {
+          "id": "c",
+          "text": "This medication does not cause weight gain"
+        },
+        {
+          "id": "d",
+          "text": "Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Sulfonylureas (glipizide, glyburide, glimepiride) work by stimulating pancreatic beta cells to release insulin, independent of blood glucose levels. This means they can cause hypoglycemia even when the patient is not eating — unlike some other diabetes medications. Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness, diaphoresis, confusion). Glipizide is taken 30 minutes before meals (not with a large meal) to time insulin release with carbohydrate absorption. Sulfonylureas often cause modest weight gain. Blood glucose monitoring remains important for safety and titration.",
+      "distractorRationales": {
+        "a": "This choice focuses on This medication works best when taken with a large meal, while the decisive cue is Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Anchors on the wrong explanation for the client's cues, so That mismatch risks slower recognition of unstable glucose physiology and postpones the needed nursing response.",
+        "c": "This medication does not cause weight gain fits a lower-risk interpretation, rather than acting on Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness,. Does not account for the clinical cue most likely to deteriorate first, so The priority is This medication can cause low blood sugar — carry a fast-acting sugar source at all times, not a step that delays stabilization of unstable glucose physiology.",
+        "d": "This option makes Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels the focus, when the bedside priority is driven by Blood glucose monitoring remains important for safety and titration. Waits on escalation while the bedside priority remains unresolved, so The correct path is This medication can cause low blood sugar — carry a fast-acting sugar source at all times, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "pharmacology_medication_teaching_oral_hypoglycemics",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Always carry fast-acting carbs. Glipizide: 30 min before meals. Monitor BG. Watch for weight gain. Avoid skipping meals while on this medication.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "pharmacology_metformin_safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "distractorRationales": {
+        "a": "The problem with Administer metformin as scheduled since the procedure is elective is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is Permanent insulin switch is not necessary. The priority is Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, not a step that delays stabilization of unstable glucose physiology.",
+        "c": "The clinical error in Switch the patient to insulin therapy permanently before the procedure is that it does not account for the clinical cue most likely to deteriorate first, but the stem cue is Check creatinine/eGFR before restarting. It is less defensible because Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the targets the problem most likely to deteriorate first.",
+        "d": "This distractor pulls attention toward Administer metformin with the morning meal on the day of the procedure and hold only for, without accounting for Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal. Anchors on the wrong explanation for the client's cues, so Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the is safer because it addresses unstable glucose physiology before routine care or reassurance."
+      },
+      "tags": [
+        "pharmacology_metformin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_warfarin_safety",
+      "subcategory": "pharmacology_warfarin_safety",
+      "difficulty": 3,
+      "stem": "A patient on warfarin therapy for atrial fibrillation has an INR of 4.8 (therapeutic range 2.0-3.0). The patient has no active bleeding. What is the MOST appropriate nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer vitamin K 10 mg IV push immediately"
+        },
+        {
+          "id": "b",
+          "text": "Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs"
+        },
+        {
+          "id": "c",
+          "text": "Administer fresh frozen plasma to rapidly reverse anticoagulation"
+        },
+        {
+          "id": "d",
+          "text": "Continue warfarin at the same dose and recheck INR in 3 days"
+        }
+      ],
+      "answer": "b",
+      "rationale": "An INR of 4.8 represents supratherapeutic anticoagulation with elevated bleeding risk, but no active bleeding is present. Standard management for INR 4-10 without bleeding in a patient on warfarin for non-mechanical valve indication: hold warfarin, monitor for bleeding signs, and the INR will self-correct over 24-72 hours as the drug is metabolized. The provider should be notified to evaluate for dose adjustment. Vitamin K is indicated for INR > 10, or INR 4-10 with bleeding risk factors or active bleeding. High-dose IV vitamin K (10 mg) causes prolonged warfarin resistance and is reserved for emergencies. FFP is for life-threatening bleeding requiring immediate reversal. Continuing the same dose ignores the supratherapeutic level.",
+      "distractorRationales": {
+        "a": "This option overweights Administer vitamin K 10 mg IV push immediately, despite the clinical warning in INR > 10 or any bleeding → vitamin K. Does not account for the clinical cue most likely to deteriorate first, so The priority is Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs, not a step that delays stabilization of bleeding or anticoagulation injury.",
+        "c": "Administer fresh frozen plasma to rapidly reverse anticoagulation is not the best answer, and misses that High-dose IV vitamin K (10 mg) causes prolonged warfarin resistance and is reserved for emergencies. Does not account for the clinical cue most likely to deteriorate first, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "d": "This answer choice treats Continue warfarin at the same dose and recheck INR in 3 days as the key issue, instead of responding to Standard management for INR 4-10 without bleeding in a patient on warfarin for non-mechanical valve indication: hold warfarin,. Does not account for the clinical cue most likely to deteriorate first, so The nurse should prioritize Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs; otherwise bleeding or anticoagulation injury remains the active threat."
+      },
+      "tags": [
+        "pharmacology_warfarin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Supratherapeutic INR (no bleeding): INR 4-10 → hold warfarin + notify provider + monitor. INR > 10 or any bleeding → vitamin K. Life-threatening bleeding → FFP or 4-factor PCC (prothrombin complex concentrate). Never continue the same dose if INR is out of range.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "This choice focuses on This is an expected effect of routine eye fatigue, instead of responding to Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency. Treats an active warning sign as something safe to watch, so That mismatch risks slower recognition of clinical safety risk and postpones the needed nursing response.",
+        "c": "The reasoning trap in The client is likely having a migraine and can rest at home is that it moves to a lower-acuity action before the client is clinically stable, and misses that Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency. The client may have acute angle-closure glaucoma and needs urgent evaluation is safer because it addresses clinical safety risk before routine care or reassurance.",
+        "d": "This distractor pulls attention toward These findings show that prescribed eye drops are working well, but the stem cue is Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency. Does not account for the clinical cue most likely to deteriorate first, so The correct path is The client may have acute angle-closure glaucoma and needs urgent evaluation, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "This choice focuses on Restrict oral fluids and monitor weight, rather than acting on Hypotension, hyponatremia, vomiting. Moves to a lower-acuity action before the client is clinically stable, so The nurse should prioritize Administer IV hydrocortisone and isotonic fluids; otherwise renal injury remains the active threat.",
+        "c": "This choice focuses on Hold corticosteroids until the morning cortisol level is drawn, although the nurse should be guided by Hypotension, hyponatremia, vomiting. Does not account for the clinical cue most likely to deteriorate first, so The safer answer is Administer IV hydrocortisone and isotonic fluids because delaying renal protection can worsen renal injury.",
+        "d": "This option makes Teach the client about low-sodium foods the focus, and misses that sodium 128 mEq/L. Moves to teaching or reassurance before the immediate risk is stabilized, so Administer IV hydrocortisone and isotonic fluids better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "The clinical error in Obtain a full allergy history before intervening is that it does not account for the clinical cue most likely to deteriorate first, without accounting for The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. It is less defensible because Stop the infusion and prepare to administer epinephrine targets the problem most likely to deteriorate first.",
+        "c": "Slow the infusion to reduce the reaction is not the best answer, but the stem cue is The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise. Does not account for the clinical cue most likely to deteriorate first, so Stop the infusion and prepare to administer epinephrine is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "d": "This option overweights Document the event and continue monitoring, despite the clinical warning in A client receiving IV antibiotics suddenly develops wheezing, widespread hives. Treats an active warning sign as something safe to watch, so The nurse should prioritize Stop the infusion and prepare to administer epinephrine; otherwise oxygenation or ventilation remains the active threat."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "Lay the client flat and increase the room temperature fits a lower-risk interpretation, while the decisive cue is The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Does not account for the clinical cue most likely to deteriorate first, so The priority is Sit the client upright and assess for bladder distention, not a step that delays stabilization of neurologic deterioration.",
+        "c": "This option makes Ask the client to rest quietly until the headache passes the focus, when the bedside priority is driven by Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered. Does not account for the clinical cue most likely to deteriorate first, so Sit the client upright and assess for bladder distention better matches the nursing priority, so this option would slow the needed intervention.",
+        "d": "This choice focuses on Offer oral fluids and reassess in 30 minutes, rather than acting on A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure. Treats an active warning sign as something safe to watch, so The nurse should prioritize Sit the client upright and assess for bladder distention; otherwise neurologic deterioration remains the active threat."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "Selecting Slow the transfusion rate and reassess in 5 minutes would be unsafe, instead of responding to A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Treats an active warning sign as something safe to watch, so The safer answer is Stop the transfusion and keep the IV line open with normal saline because delaying circulation and perfusion support can worsen circulation or perfusion.",
+        "c": "The clinical error in Administer acetaminophen and continue the transfusion is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The correct path is Stop the transfusion and keep the IV line open with normal saline, which matches the priority cues instead of a secondary concern.",
+        "d": "The problem with Document the symptoms as an expected febrile response is that it normalizes a finding that should change the nurse's priority, rather than acting on Chills, low back pain. The priority is Stop the transfusion and keep the IV line open with normal saline, not a step that delays stabilization of circulation or perfusion."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb900-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Use alcohol-based sanitizer alone because it is faster, and misses that c diff spore precautions infection. Anchors on the wrong explanation for the client's cues, so Use soap and water for hand hygiene after removing gloves is safer because it addresses infection progression before routine care or reassurance.",
+        "c": "Selecting Place the client on droplet precautions only would be unsafe, despite the clinical warning in c diff spore precautions infection. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of infection progression and postpones the needed nursing response.",
+        "d": "This distractor pulls attention toward Share the blood pressure cuff after wiping it with a dry towel, without accounting for c diff spore precautions infection. Anchors on the wrong explanation for the client's cues, so It is less defensible because Use soap and water for hand hygiene after removing gloves targets the problem most likely to deteriorate first."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

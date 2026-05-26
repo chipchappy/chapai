@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-852",
+  "generatedAt": "2026-04-09T18:15:32-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb852-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "postpartum_hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "The problem with IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider is that it waits on escalation while the bedside priority remains unresolved, although the nurse should be guided by (4) Notify provider if no response. Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved.",
+        "c": "The problem with Call the provider, obtain type and crossmatch, begin blood transfusion is that it waits on escalation while the bedside priority remains unresolved, despite the clinical warning in (4) Notify provider if no response. That mismatch risks slower recognition of bleeding or anticoagulation injury and postpones the needed nursing response.",
+        "d": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent would not address the priority, without accounting for Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. Waits on escalation while the bedside priority remains unresolved, so That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses."
+      },
+      "tags": [
+        "postpartum_hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "medical_surgical_advanced",
+      "difficulty": 3,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound — gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "distractorRationales": {
+        "a": "Elevate the leg and apply warm compresses is not the best answer, without accounting for Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate. Does not account for the clinical cue most likely to deteriorate first, so Notify the provider and anticipate orders for duplex ultrasound better matches the nursing priority, so this option would slow the needed intervention.",
+        "b": "Perform Homan's sign assessment and document the result fits a lower-risk interpretation, although the nurse should be guided by Unilateral calf pain, warmth. Does not account for the clinical cue most likely to deteriorate first, so That mismatch risks slower recognition of circulation or perfusion and postpones the needed nursing response.",
+        "d": "Selecting Administer the scheduled enoxaparin and continue monitoring would be unsafe, although the nurse should be guided by A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth. Treats an active warning sign as something safe to watch, so The nurse should prioritize Notify the provider and anticipate orders for duplex ultrasound; otherwise circulation or perfusion remains the active threat."
+      },
+      "tags": [
+        "medical_surgical_advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound — Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "antipsychotic_medication_safety",
+      "difficulty": 3,
+      "stem": "A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward), and severe muscle rigidity within 3 days of starting the medication. Which type of extrapyramidal symptom (EPS) is this, and what is the antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tardive dyskinesia; no effective antidote, may require medication discontinuation"
+        },
+        {
+          "id": "b",
+          "text": "Akathisia; treat with propranolol or benzodiazepines"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; treat with IV/IM diphenhydramine or benztropine"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute dystonia presents within hours to days of starting a high-potency antipsychotic (like haloperidol) as sudden, painful muscle spasms — torticollis, oculogyric crisis, opisthotonus. Treatment is IV or IM diphenhydramine (Benadryl) or benztropine (Cogentin), which are anticholinergic agents. Tardive dyskinesia (A) develops after months-years of use as involuntary repetitive movements (lip smacking, tongue protrusion). Akathisia (B) is inner restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia.",
+      "distractorRationales": {
+        "a": "Tardive dyskinesia; no effective antidote, may require medication discontinuation would not address the priority, even though the higher-risk finding is severe muscle rigidity within 3 days of starting the medication. Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Acute dystonia; treat with IV/IM diphenhydramine or benztropine targets the problem most likely to deteriorate first.",
+        "b": "The clinical error in Akathisia; treat with propranolol or benzodiazepines is that it moves to a lower-acuity action before the client is clinically stable, without accounting for A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward). That choice could make the nurse miss the window for medication-safety intervention while medication toxicity progresses.",
+        "d": "The clinical error in Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose is that it moves to a lower-acuity action before the client is clinically stable, without accounting for A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward). That choice could make the nurse miss the window for medication-safety intervention while medication toxicity progresses."
+      },
+      "tags": [
+        "antipsychotic_medication_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute dystonia (torticollis, oculogyric crisis) within days of antipsychotic = IV/IM diphenhydramine or benztropine (anticholinergics).",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "respiratory_oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to ≥ 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "The patient reports less anxiety and requests to watch television would not address the priority, but the stem cue is Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization. Treats an active warning sign as something safe to watch, so Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95% is safer because it addresses oxygenation or ventilation before routine care or reassurance.",
+        "c": "Adventitious breath sounds increase bilaterally after the nebulizer fits a lower-risk interpretation, while the decisive cue is Unchanged SpO2 and RR indicate no meaningful improvement from the interventions. Treats an active warning sign as something safe to watch, so That mismatch risks slower recognition of oxygenation or ventilation and postpones the needed nursing response.",
+        "d": "This answer choice treats The patient's skin color remains unchanged and RR remains at 24/min as the key issue, despite the clinical warning in The SpO2 is 91%. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved."
+      },
+      "tags": [
+        "respiratory_oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "respiratory_oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "pediatric_nursing",
+      "difficulty": 3,
+      "stem": "Parents call the pediatric triage nurse stating their 2-year-old has been having a seizure for 1 minute. The child has a temperature of 39.2°C (102.6°F) and no prior seizure history. What is the most important teaching point the nurse should emphasize?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer rectal diazepam immediately regardless of seizure duration"
+        },
+        {
+          "id": "b",
+          "text": "Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than 5 minutes or the child stops breathing"
+        },
+        {
+          "id": "c",
+          "text": "Put fingers in the mouth to prevent tongue-swallowing during the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer acetaminophen immediately to stop the seizure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Simple febrile seizures are benign, typically last <5 minutes, and are self-limiting. Parent teaching: (1) Do not restrain the child; (2) Turn child on side to prevent aspiration; (3) Do not insert anything in the mouth — risk of injury, not tongue-swallowing; (4) Time the seizure; (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Rectal diazepam is not administered routinely unless prescribed for a child with known prolonged febrile seizures. Antipyretics do not abort an ongoing seizure.",
+      "distractorRationales": {
+        "a": "The problem with Administer rectal diazepam immediately regardless of seizure duration is that it does not account for the clinical cue most likely to deteriorate first, instead of responding to call 911 if >5 min or breathing stops. The safer answer is Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than because delaying airway and breathing intervention can worsen oxygenation or ventilation.",
+        "c": "The problem with Put fingers in the mouth to prevent tongue-swallowing during the seizure is that it does not account for the clinical cue most likely to deteriorate first, while the decisive cue is call 911 if >5 min or breathing stops. The priority is Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than, not a step that delays stabilization of oxygenation or ventilation.",
+        "d": "Selecting Administer acetaminophen immediately to stop the seizure would be unsafe, instead of responding to (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Does not account for the clinical cue most likely to deteriorate first, so The priority is Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than, not a step that delays stabilization of oxygenation or ventilation."
+      },
+      "tags": [
+        "pediatric_nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pediatric_nursing",
+        "caption": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+        "conclusion": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "perioperative_care",
+      "difficulty": 3,
+      "stem": "A 19-year-old with no prior medical or anesthesia history is 30 minutes into general anesthesia for appendectomy. The PACU nurse is called to the OR: temperature 39.9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%, and ETCO2 82 mmHg. What is the priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response"
+        },
+        {
+          "id": "b",
+          "text": "Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart"
+        },
+        {
+          "id": "c",
+          "text": "Administer succinylcholine to relieve the masseter rigidity and improve ventilation"
+        },
+        {
+          "id": "d",
+          "text": "Treat the hyperkalemia first with calcium gluconate — MH-induced hyperkalemia is the immediate threat"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Malignant hyperthermia (MH) is a life-threatening pharmacogenetic disorder triggered in susceptible individuals (RYR1 gene mutation) by volatile anesthetic agents (sevoflurane, desflurane, halothane) and succinylcholine. Uncontrolled calcium release from the sarcoplasmic reticulum causes: sustained muscle contraction → hyperthermia (temperature rises 1°C every 5 minutes if untreated), diffuse rigidity, masseter spasm (early sign), respiratory and metabolic acidosis (CO2 soaring), rhabdomyolysis, hyperkalemia, and ventricular dysrhythmias. Untreated MH mortality exceeds 80%. Protocol: (1) Stop ALL triggering agents immediately; (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia); (3) Dantrolene 2.5 mg/kg IV bolus — repeat every 5 minutes until crisis resolves (max ~10 mg/kg); (4) Cooling measures; (5) Treat hyperkalemia, acidosis, and dysrhythmias as they arise. Succinylcholine IS a triggering agent — administering it would worsen MH.",
+      "distractorRationales": {
+        "a": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response would not address the priority, even though the higher-risk finding is 9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%. Does not account for the clinical cue most likely to deteriorate first, so Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene better matches the nursing priority, so this option would slow the needed intervention.",
+        "c": "Administer succinylcholine to relieve the masseter rigidity and improve ventilation is not the best answer, without accounting for (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia). Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene targets the problem most likely to deteriorate first.",
+        "d": "This choice focuses on Treat the hyperkalemia first with calcium gluconate — MH-induced hyperkalemia is the immediate threat, despite the clinical warning in MH: rising temp + masseter rigidity + high ETCO2 + tachycardia during general anesthesia. Moves to a lower-acuity action before the client is clinically stable, so The safer answer is Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene because delaying airway and breathing intervention can worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "perioperative_care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "MH: rising temp + masseter rigidity + high ETCO2 + tachycardia during general anesthesia. STOP triggering agents immediately. Dantrolene 2.5 mg/kg IV STAT (repeat q5 min). Succinylcholine triggers MH — never give.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_thyroid_storm",
+      "subcategory": "pharmacology_endocrine_thyroid_storm",
+      "difficulty": 3,
+      "stem": "A patient with untreated hyperthyroidism is admitted postoperatively with HR 148 bpm (AF), temperature 39.8°C, BP 158/92 mmHg, and extreme agitation. The nurse suspects thyroid storm. Which medication sequence reflects the CORRECT pharmacological management priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid"
+        },
+        {
+          "id": "b",
+          "text": "Methimazole first → then radioactive iodine → then atenolol"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol first → then PTU → then potassium iodide → then hydrocortisone"
+        },
+        {
+          "id": "d",
+          "text": "Potassium iodide first → then PTU → then propranolol"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Thyroid storm management follows a specific pharmacological sequence to block thyroid hormone synthesis and release: (1) PTU first — blocks new hormone synthesis AND peripheral T4-to-T3 conversion (this is why PTU is preferred over methimazole in storm). (2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect). Giving iodine before the antithyroid drug would paradoxically worsen hormone synthesis. (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). (4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency. Radioactive iodine is NOT used in thyroid storm — it is an elective outpatient treatment.",
+      "distractorRationales": {
+        "b": "This distractor pulls attention toward Methimazole first → then radioactive iodine → then atenolol, but the stem cue is (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid targets the problem most likely to deteriorate first.",
+        "c": "Propranolol first → then PTU → then potassium iodide → then hydrocortisone would not address the priority, even though the higher-risk finding is (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). Does not account for the clinical cue most likely to deteriorate first, so It is less defensible because Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid targets the problem most likely to deteriorate first.",
+        "d": "The clinical error in Potassium iodide first → then PTU → then propranolol is that it does not account for the clinical cue most likely to deteriorate first, even though the higher-risk finding is Thyroid storm Rx sequence: PTU → (wait 1h) → Potassium iodide → Propranolol → Hydrocortisone. Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "pharmacology_endocrine_thyroid_storm",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm Rx sequence: PTU → (wait 1h) → Potassium iodide → Propranolol → Hydrocortisone. KEY: PTU BEFORE iodine (blocking synthesis before blocking release). Never give iodine first — it can fuel more hormone synthesis if the gland isn't blocked.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "safety_and_infection_control_prioritization",
+      "difficulty": 3,
+      "stem": "A nurse receives a SBAR hand-off report. The oncoming nurse should be MOST concerned about which patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline"
+        },
+        {
+          "id": "b",
+          "text": "A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours"
+        },
+        {
+          "id": "c",
+          "text": "A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Urine output of 15 mL/hr for 3 consecutive hours (total 45 mL in 3 hours, target minimum 30 mL/hr) in a patient with sepsis signals inadequate renal perfusion and worsening organ dysfunction. This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider notification and likely fluid resuscitation. The COPD patient's 91% sat is their established baseline; the hip replacement refusal is important but not acutely threatening; the pending aPTT should be followed but is not immediately dangerous.",
+      "distractorRationales": {
+        "a": "The reasoning trap in A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their is that it anchors on the wrong explanation for the client's cues, when the bedside priority is driven by The COPD patient's 91% sat is their established baseline. That choice could make the nurse miss the window for bleeding-risk intervention while bleeding or anticoagulation injury progresses.",
+        "c": "This choice focuses on A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired', although the nurse should be guided by In sepsis, urine output < 0. Moves to a lower-acuity action before the client is clinically stable, so Choosing it can delay bleeding-risk intervention and leave bleeding or anticoagulation injury unresolved.",
+        "d": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago fits a lower-risk interpretation, rather than acting on the pending aPTT should be followed but is not immediately dangerous. Anchors on the wrong explanation for the client's cues, so The nurse should prioritize A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours; otherwise bleeding or anticoagulation injury remains the active threat."
+      },
+      "tags": [
+        "safety_and_infection_control_prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "community_health",
+      "difficulty": 3,
+      "stem": "A clinic nurse suspects a patient has active tuberculosis based on symptoms and a positive QuantiFERON test. The patient has not yet been confirmed by sputum culture. What is the nurse's legal obligation regarding reporting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for confirmed sputum culture before reporting to the health department"
+        },
+        {
+          "id": "b",
+          "text": "Report only if the patient is homeless or a healthcare worker"
+        },
+        {
+          "id": "c",
+          "text": "Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The physician is solely responsible for reporting; nurses have no legal duty to report"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing.",
+      "distractorRationales": {
+        "a": "The problem with Wait for confirmed sputum culture before reporting to the health department is that it treats an active warning sign as something safe to watch, although the nurse should be guided by For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Choosing it can delay bedside safety action and leave clinical safety risk unresolved.",
+        "b": "The reasoning trap in Report only if the patient is homeless or a healthcare worker is that it moves to a lower-acuity action before the client is clinically stable, but the stem cue is For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. That choice could make the nurse miss the window for bedside safety action while clinical safety risk progresses.",
+        "d": "This distractor pulls attention toward The physician is solely responsible for reporting; nurses have no legal duty to report, when the bedside priority is driven by For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Does not account for the clinical cue most likely to deteriorate first, so The correct path is Report the suspected case to the local public health department — TB is reportable on suspicion,, which matches the priority cues instead of a secondary concern."
+      },
+      "tags": [
+        "community_health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reportable diseases: report on suspicion (not confirmation); TB, STIs, meningitis, hepatitis — nurse has independent duty to report to public health; do not wait for lab confirmation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb852-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "critical_care_fundamentals",
+      "difficulty": 3,
+      "stem": "The nurse assesses a patient following a traumatic brain injury. The patient opens eyes to voice, makes incomprehensible sounds, and withdraws from pain. What is this patient's Glasgow Coma Scale (GCS) score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GCS 7"
+        },
+        {
+          "id": "b",
+          "text": "GCS 8"
+        },
+        {
+          "id": "c",
+          "text": "GCS 9"
+        },
+        {
+          "id": "d",
+          "text": "GCS 10"
+        }
+      ],
+      "answer": "a",
+      "rationale": "GCS components: Eye opening (E): spontaneous=4, to voice=3, to pain=2, none=1. Verbal (V): oriented=5, confused=4, inappropriate words=3, incomprehensible=2, none=1. Motor (M): obeys commands=6, localizes=5, withdraws=4, abnormal flexion=3, extension=2, none=1. This patient: Eyes to voice (3) + Incomprehensible sounds (2) + Withdraws (4) = GCS 7. GCS ≤8 = severe brain injury; generally indicates need for airway protection.",
+      "distractorRationales": {
+        "b": "This option overweights GCS 8, while the decisive cue is Verbal (V): oriented=5, confused=4, inappropriate words=3, incomprehensible=2, none=1. Does not account for the clinical cue most likely to deteriorate first, so The priority is GCS 7, not a step that delays stabilization of oxygenation or ventilation.",
+        "c": "This answer choice treats GCS 9 as the key issue, while the decisive cue is GCS components: Eye opening (E): spontaneous=4, to voice=3, to pain=2, none=1. Does not account for the clinical cue most likely to deteriorate first, so Choosing it can delay airway and breathing intervention and leave oxygenation or ventilation unresolved.",
+        "d": "This option makes GCS 10 the focus, when the bedside priority is driven by Score ≤8 = severe TBI, consider intubation for airway protection. Does not account for the clinical cue most likely to deteriorate first, so GCS 7 better matches the nursing priority, so this option would slow the needed intervention."
+      },
+      "tags": [
+        "critical_care_fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "GCS = E(1–4) + V(1–5) + M(1–6). Score ≤8 = severe TBI, consider intubation for airway protection.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

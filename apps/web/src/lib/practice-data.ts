@@ -3,6 +3,7 @@ import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam, type QuizQuestion } from 
 import type {
   PracticeCatalogCard,
   PracticeExamDefinition,
+  PracticeQuestionKind,
   PracticeMetric,
   PracticeQuestion,
 } from "@/lib/practice-types";
@@ -36,6 +37,25 @@ function mapMetric(metric: {
     unit: metric.unit,
     flag: normalizeFlag(metric.flag),
   };
+}
+
+function kindForQuestionType(type: QuizQuestion["type"]): PracticeQuestionKind {
+  if (type === "sata") {
+    return "multi-select";
+  }
+  if (type === "matrix") {
+    return "matrix";
+  }
+  if (type === "case_study") {
+    return "case-study";
+  }
+  if (type === "scenario_mcq") {
+    return "scenario-mcq";
+  }
+  if (type === "decision_map_mcq" || type === "bow_tie") {
+    return "decision-map-mcq";
+  }
+  return "mcq";
 }
 
 function baseQuestionFromDemo(question: DemoQuestion): Omit<PracticeQuestion, "correctAnswer"> {
@@ -130,7 +150,8 @@ function mapLiveQuestion(question: QuizQuestion, mode: "standard" | "practice-ex
     category: question.category,
     difficulty: question.difficulty,
     mode,
-    kind: question.type === "sata" ? "multi-select" : question.type === "matrix" ? "matrix" : "mcq",
+    kind: kindForQuestionType(question.type),
+    questionType: question.type,
     stem: question.stem,
     options: question.options.map((option) => ({ id: option.id, text: option.text })),
     correctAnswer,
@@ -138,6 +159,11 @@ function mapLiveQuestion(question: QuizQuestion, mode: "standard" | "practice-ex
     distractorRationales: question.distractorRationales,
     takeaway: question.takeaway,
     source: "live",
+    scenarioTitle: question.scenarioTitle,
+    scenario: question.scenario,
+    additionalInfo: question.additionalInfo,
+    matrixColumns: question.matrixColumns ?? undefined,
+    matrixRows: question.matrixRows ?? undefined,
     visualRationale: question.visualRationale,
   };
 }

@@ -54,7 +54,7 @@ export const questions = sqliteTable("questions", {
   id: text("id").primaryKey(), // e.g. "ccrn_cardio_001"
   exam: text("exam", { enum: ["nclex", "ccrn"] }).notNull(),
   type: text("type", {
-    enum: ["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"],
+    enum: ["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie", "scenario_mcq", "decision_map_mcq"],
   })
     .default("mcq")
     .notNull(),
