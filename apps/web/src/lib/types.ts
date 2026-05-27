@@ -74,6 +74,22 @@ export interface BowTieQuestion {
   rightMonitoring: BowTieCell[];
 }
 
+export interface StructuredRationaleCitation {
+  source: string;
+  chapter?: string;
+  page?: string;
+  href?: string;
+  note?: string;
+}
+
+export interface StructuredRationale {
+  overview: string;
+  mechanism: string;
+  whyCorrect: string;
+  whyWrong: Record<string, string>;
+  citations: StructuredRationaleCitation[];
+}
+
 export interface QuizQuestion {
   id: string;
   exam: Exam;
@@ -132,6 +148,7 @@ export interface QuizQuestion {
   }>;
   bowTie?: BowTieQuestion;
   rationale: string;
+  structuredRationale?: StructuredRationale;
   deepRationale?: string;
   distractorRationales?: Record<string, string>;
   tags?: string[];

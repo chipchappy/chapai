@@ -230,6 +230,7 @@ export async function POST(req: NextRequest) {
         correct: local.isCorrect,
         correctAnswer: local.question.answer,
         rationale: local.question.rationale,
+        structuredRationale: local.question.structuredRationale,
         deepRationale: local.question.deepRationale ?? local.question.rationale,
         distractorRationales: local.question.distractorRationales ?? null,
         takeaway: local.question.takeaway ?? null,
@@ -255,7 +256,12 @@ export async function POST(req: NextRequest) {
     // Keep the curated live bank as the teaching source of truth,
     // while the database continues to store session/answer history.
     const question = await db
-      .select({ answer: questions.answer, rationale: questions.rationale, distractorRationales: questions.distractorRationales })
+      .select({
+        answer: questions.answer,
+        rationale: questions.rationale,
+        structuredRationale: questions.structuredRationale,
+        distractorRationales: questions.distractorRationales,
+      })
       .from(questions)
       .where(eq(questions.id, questionId))
       .get();
@@ -269,6 +275,11 @@ export async function POST(req: NextRequest) {
     const demoCorrect = demoQuestion ? demoQuestion.correctAnswer : null;
     const correctAnswer = normalizeStoredAnswer(canonicalQuestion?.answer ?? demoCorrect ?? question?.answer ?? "");
     const rationale = canonicalQuestion?.rationale ?? demoQuestion?.rationale ?? question?.rationale ?? "";
+    const structuredRationale = canonicalQuestion?.structuredRationale ?? (
+      question?.structuredRationale
+        ? JSON.parse(question.structuredRationale)
+        : undefined
+    );
     const deepRationale = canonicalQuestion?.deepRationale ?? rationale;
     const distractorRationales = canonicalQuestion?.distractorRationales ?? demoQuestion?.distractorRationales ?? (
       question?.distractorRationales
@@ -320,6 +331,7 @@ export async function POST(req: NextRequest) {
       pointsPossible: bowTieScore?.pointsPossible,
       partialCredit: bowTieScore?.partialCredit,
       rationale,
+      structuredRationale,
       deepRationale,
       distractorRationales,
       takeaway: canonicalQuestion?.takeaway ?? demoQuestion?.takeaway ?? null,

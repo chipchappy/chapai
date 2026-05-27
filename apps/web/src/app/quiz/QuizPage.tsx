@@ -752,6 +752,7 @@ export default function QuizPage({
           pointsPossible: data.pointsPossible,
           partialCredit: data.partialCredit,
           rationale: data.rationale,
+          structuredRationale: data.structuredRationale ?? question.structuredRationale,
           deepRationale: data.deepRationale ?? question.deepRationale,
           takeaway: data.takeaway ?? question.takeaway,
           distractorRationales: data.distractorRationales ?? question.distractorRationales,

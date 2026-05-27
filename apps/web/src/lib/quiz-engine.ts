@@ -28,6 +28,7 @@ type QuestionRow = {
   options: string;
   answer: string;
   rationale: string;
+  structuredRationale: string | null;
   distractorRationales: string | null;
   tags: string | null;
   blueprintPct: number | null;
@@ -278,6 +279,7 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
   const storedChartReview = parseJsonValue<QuizQuestion["chartReview"] | undefined>(row.chartReview, undefined);
   const storedVisualRationale = parseJsonValue<QuizQuestion["visualRationale"] | undefined>(row.visualRationale, undefined);
   const storedReferences = parseJsonValue<QuizQuestion["references"] | undefined>(row.referencesJson, undefined);
+  const storedStructuredRationale = parseJsonValue<QuizQuestion["structuredRationale"] | undefined>(row.structuredRationale, undefined);
   const needsSyntheticContext = row.type === "case_study" || row.type === "bow_tie";
 
   return {
@@ -307,6 +309,7 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
     ...matrix,
     bowTie: storedBowTie,
     rationale: row.rationale,
+    structuredRationale: storedStructuredRationale,
     distractorRationales: parseJsonValue<Record<string, string> | undefined>(row.distractorRationales, undefined),
     tags,
     blueprintPct: row.blueprintPct ?? undefined,
@@ -360,6 +363,7 @@ export async function selectQuestions(
       options: questions.options,
       answer: questions.answer,
       rationale: questions.rationale,
+      structuredRationale: questions.structuredRationale,
       distractorRationales: questions.distractorRationales,
       tags: questions.tags,
       blueprintPct: questions.blueprintPct,

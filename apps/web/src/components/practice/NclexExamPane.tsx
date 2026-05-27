@@ -198,11 +198,15 @@ export default function NclexExamPane({
   const caseItemTotal = question.caseItemTotal ?? totalQuestions;
   const clozeBlankCount = question.clozeBlankCount ?? (question.kind === "ordering" ? Math.max(correct.length, 3) : 1);
   const rationale = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
-  const incorrectExplanations = getDisplayableDistractorRationales(
-    question,
-    answerRecord?.distractorRationales ?? question.distractorRationales,
-  );
+  const structuredRationale = answerRecord?.structuredRationale ?? question.structuredRationale;
+  const incorrectExplanations = Object.keys(structuredRationale?.whyWrong ?? {}).length
+    ? structuredRationale?.whyWrong ?? {}
+    : getDisplayableDistractorRationales(
+        question,
+        answerRecord?.distractorRationales ?? question.distractorRationales,
+      );
   const references = answerRecord?.references ?? question.references ?? [];
+  const structuredCitations = structuredRationale?.citations ?? [];
   const selectedTexts = activeIds
     .map((id) => question.options?.find((option) => option.id === id)?.text ?? id.toUpperCase())
     .filter(Boolean);
@@ -546,11 +550,22 @@ export default function NclexExamPane({
               </div>
               <h3 className="nclex-explanation-title">Explanation</h3>
               <p className="nclex-rationale-copy">{rationale}</p>
+              {structuredRationale ? (
+                <div className="nclex-incorrect-block">
+                  <strong>Structured rationale:</strong>
+                  <p><b>Overview</b> {structuredRationale.overview}</p>
+                  <p><b>Clinical mechanism</b> {structuredRationale.mechanism}</p>
+                  <p><b>Why correct</b> {structuredRationale.whyCorrect}</p>
+                </div>
+              ) : null}
               {Object.keys(incorrectExplanations).length ? (
                 <div className="nclex-incorrect-block">
-                  <strong>Incorrect:</strong>
+                  <strong>Why each wrong:</strong>
                   {Object.entries(incorrectExplanations).map(([label, text]) => (
-                    <p key={label}><b>{label.toUpperCase()}</b> {text}</p>
+                    <details key={label}>
+                      <summary><b>Option {label.toUpperCase()}</b></summary>
+                      <p>{text}</p>
+                    </details>
                   ))}
                 </div>
               ) : null}
@@ -564,6 +579,16 @@ export default function NclexExamPane({
                 </div>
               ) : null}
               <p className="nclex-version">Version 2026</p>
+              {structuredCitations.length ? (
+                <div className="nclex-incorrect-block">
+                  <strong>Citations:</strong>
+                  {structuredCitations.map((citation, index) => (
+                    <p key={`${citation.source}-${index}`}>
+                      <b>{citation.source}</b>{citation.chapter ? ` - ${citation.chapter}` : ""}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
               {references.length ? <button type="button" className="nclex-source-link">View Sources</button> : null}
               {canOpenTutor ? <button type="button" className="nclex-tutor-link" onClick={onOpenTutor}>Ask Clarity AI</button> : null}
             </section>

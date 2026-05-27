@@ -61,6 +61,22 @@ export const visualRationaleSchema = z.object({
   conclusion: z.string().optional(),
 });
 
+export const structuredRationaleCitationSchema = z.object({
+  source: z.string(),
+  chapter: z.string().optional(),
+  page: z.string().optional(),
+  href: z.string().optional(),
+  note: z.string().optional(),
+});
+
+export const structuredRationaleSchema = z.object({
+  overview: z.string(),
+  mechanism: z.string(),
+  whyCorrect: z.string(),
+  whyWrong: z.record(z.string(), z.string()).default({}),
+  citations: z.array(structuredRationaleCitationSchema).default([]),
+});
+
 export const canonicalQuestionSchema = z.object({
   id: z.string(),
   exam: z.enum(["ccrn", "nclex"]),
@@ -84,6 +100,7 @@ export const canonicalQuestionSchema = z.object({
   })).optional(),
   bowTie: bowTieSchema.optional(),
   rationale: z.string(),
+  structuredRationale: structuredRationaleSchema.optional(),
   distractorRationales: z.record(z.string(), z.string()).optional(),
   tags: z.array(z.string()).default([]),
   blueprintPct: z.number().optional(),

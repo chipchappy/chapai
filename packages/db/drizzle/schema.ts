@@ -68,6 +68,7 @@ export const questions = sqliteTable("questions", {
   // mcq: "B" | sata: '["A","C"]'
   answer: text("answer").notNull(),
   rationale: text("rationale").notNull(),
+  structuredRationale: text("structured_rationale"),
   // JSON: { "A": "why A is wrong", "C": "why C is wrong" }
   distractorRationales: text("distractor_rationales"),
   // JSON string array: ["MAP", "cardiogenic_shock"]
