@@ -81,12 +81,24 @@ export const questions = sqliteTable("questions", {
   revision: integer("revision"),
   publishState: text("publish_state", { enum: ["draft", "published", "unpublished"] }).default("published"),
   scenarioTitle: text("scenario_title"),
+  caseStudyId: text("case_study_id"),
+  cjmmStep: text("cjmm_step", {
+    enum: [
+      "recognize-cues",
+      "analyze-cues",
+      "prioritize-hypotheses",
+      "generate-solutions",
+      "take-actions",
+      "evaluate-outcomes",
+    ],
+  }),
   scenario: text("scenario"),
   additionalInfo: text("additional_info"),
   exhibits: text("exhibits"),
   chartReview: text("chart_review"),
   matrixColumns: text("matrix_columns"),
   matrixRows: text("matrix_rows"),
+  bowTie: text("bow_tie"),
   visualRationale: text("visual_rationale"),
   referencesJson: text("references_json"),
   createdAt: integer("created_at")
@@ -195,6 +207,9 @@ export const quizAnswers = sqliteTable("quiz_answers", {
   userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
   selectedAnswer: text("selected_answer").notNull(),
   isCorrect: integer("is_correct", { mode: "boolean" }).notNull(),
+  pointsEarned: real("points_earned"),
+  pointsPossible: real("points_possible"),
+  partialCredit: real("partial_credit"),
   timeSpentMs: integer("time_spent_ms"),
   answeredAt: integer("answered_at")
     .default(sql`(unixepoch())`)

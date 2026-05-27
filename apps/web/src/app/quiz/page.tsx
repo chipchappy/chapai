@@ -69,7 +69,7 @@ export default async function Page({
         .from(questions)
         .where(eq(questions.exam, "nclex"))
         .groupBy(questions.type);
-      const mcqLive = Number(nclexTypeRows.find((row) => row.type === "mcq")?.count ?? summary.nclex.mcqLive);
+      const mcqLive = Number(nclexTypeRows.find((row) => row.type === "mcq")?.count ?? 0);
       const ngnLive = Math.max(liveCounts.nclex - mcqLive, 0);
       nclexStats = {
         mcqLive,

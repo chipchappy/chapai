@@ -27114,6 +27114,59 @@ body:has(.nclex-exam-shell) nextjs-portal {
   text-decoration: line-through;
 }
 
+.nclex-bowtie {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.72fr) minmax(0, 1fr);
+  gap: 14px;
+  margin: 16px 0 22px;
+}
+
+.nclex-bowtie-zone {
+  border: 1px solid #000;
+  background: #fff;
+  min-width: 0;
+}
+
+.nclex-bowtie-zone.is-center {
+  align-self: center;
+}
+
+.nclex-bowtie-heading {
+  border-bottom: 1px solid #000;
+  background: #e7f1fb;
+  padding: 12px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.nclex-bowtie-cell {
+  display: block;
+  width: calc(100% - 16px);
+  min-height: 58px;
+  margin: 8px;
+  border: 1px solid rgba(0, 34, 59, 0.22);
+  background: #f8fbfd;
+  padding: 10px;
+  text-align: left;
+  color: #00223b;
+  font-size: 15px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.nclex-bowtie-cell.is-selected {
+  outline: 2px solid #0076a8;
+  background: #d2e8f8;
+}
+
+.nclex-bowtie-cell.is-correct {
+  background: #ecf8ed;
+}
+
+.nclex-bowtie-cell.is-wrong {
+  background: #fff1ef;
+}
+
 .nclex-cloze-sentence {
   margin: 0 0 16px;
   padding-left: 26px;
@@ -27385,6 +27438,10 @@ body:has(.nclex-exam-shell) nextjs-portal {
 
   .nclex-chart-tabs {
     overflow-x: auto;
+  }
+
+  .nclex-bowtie {
+    grid-template-columns: 1fr;
   }
 
   .nclex-bottombar {

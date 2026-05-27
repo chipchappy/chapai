@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { BowTieSelector } from "@/components/practice/BowTieSelector";
 import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
@@ -191,6 +192,8 @@ export default function NclexExamPane({
   const activeIds = selectedIds(activeAnswer);
   const correct = correctIds(question);
   const matrixAnswer = isRecordAnswer(activeAnswer) ? activeAnswer : {};
+  const pointsEarned = answerRecord?.pointsEarned ?? (answerRecord?.correct ? 1 : 0);
+  const pointsPossible = answerRecord?.pointsPossible ?? 1;
   const caseItemNumber = question.caseItemNumber ?? questionNumber;
   const caseItemTotal = question.caseItemTotal ?? totalQuestions;
   const clozeBlankCount = question.clozeBlankCount ?? (question.kind === "ordering" ? Math.max(correct.length, 3) : 1);
@@ -362,6 +365,19 @@ export default function NclexExamPane({
   };
 
   const renderAnswerArea = () => {
+    if (question.kind === "bow-tie" && question.bowTie) {
+      return (
+        <BowTieSelector
+          bowTie={question.bowTie}
+          value={activeAnswer}
+          correctAnswer={answerRecord?.correctAnswer ?? question.correctAnswer}
+          answered={answered}
+          disabled={locked}
+          onChange={onChange}
+        />
+      );
+    }
+
     if (question.kind === "multi-select" && question.highlightRows?.length) {
       return (
         <div className="nclex-highlight-wrap">
@@ -523,8 +539,8 @@ export default function NclexExamPane({
             <section className="nclex-rationale-panel">
               <h3>{answerRecord?.correct ? "Correct" : "Not Answered"}</h3>
               <div className="nclex-score-table">
-                <div><span>Credit</span><strong>{answerRecord?.correct ? "1 / 1" : "0 / 1"}</strong></div>
-                <div><span>Avg Points Scored</span><strong>{answerRecord?.correct ? "1 / 1" : "0.5 / 1"}</strong></div>
+                <div><span>Credit</span><strong>{pointsEarned} / {pointsPossible}</strong></div>
+                <div><span>Avg Points Scored</span><strong>{pointsEarned} / {pointsPossible}</strong></div>
                 <div><span>Scoring Rule</span><strong>{scoringRule(question)}</strong></div>
                 <div><span>Time Spent</span><strong>{formatClock(seconds)}</strong></div>
               </div>

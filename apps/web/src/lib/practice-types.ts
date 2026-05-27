@@ -1,4 +1,4 @@
-import type { CognitiveLevel, Exam, NclexClientNeed, QuestionType } from "@/lib/types";
+import type { BowTieQuestion, CjmmStep, CognitiveLevel, Exam, NclexClientNeed, QuestionType } from "@/lib/types";
 import type { StudyResource } from "@/lib/study-resources";
 
 export type PracticeMode = "standard" | "chart" | "case-study" | "ngn" | "practice-exam";
@@ -42,7 +42,7 @@ export interface PracticeMatrixRow {
   answer: string;
 }
 
-export type PracticeAnswer = string | string[] | Record<string, string>;
+export type PracticeAnswer = string | string[] | Record<string, string | string[]>;
 
 export interface PracticeChartReviewMetadata {
   patientTitle?: string;
@@ -114,6 +114,7 @@ export interface PracticeQuestion {
   caseStudyTitle?: string;
   caseItemNumber?: number;
   caseItemTotal?: number;
+  cjmmStep?: CjmmStep;
   clinicalJudgmentSkill?: string;
   nclexScenarioLead?: string;
   nclexInstruction?: string;
@@ -142,6 +143,7 @@ export interface PracticeQuestion {
   chartReview?: PracticeChartReviewMetadata;
   matrixColumns?: string[];
   matrixRows?: PracticeMatrixRow[];
+  bowTie?: BowTieQuestion;
   visualRationale?: {
     type: "trend" | "flow" | "pathway" | "signal" | "overview";
     accent?: string;
@@ -195,6 +197,9 @@ export interface PracticeAnswerRecord {
   selected: PracticeAnswer;
   correct: boolean;
   correctAnswer: PracticeAnswer;
+  pointsEarned?: number;
+  pointsPossible?: number;
+  partialCredit?: number;
   rationale: string;
   deepRationale?: string;
   takeaway?: string;
@@ -230,6 +235,9 @@ export interface PracticeSessionState {
 export interface PracticeEvaluation {
   correct: boolean;
   correctAnswer: PracticeAnswer;
+  pointsEarned?: number;
+  pointsPossible?: number;
+  partialCredit?: number;
   rationale: string;
   takeaway?: string;
 }

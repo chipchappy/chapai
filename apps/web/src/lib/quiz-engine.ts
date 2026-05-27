@@ -8,6 +8,15 @@ import { log } from "./logger";
 import { questions, quizSessions, quizAnswers } from "@chapai/db/schema";
 import { eq, and, inArray, sql } from "drizzle-orm";
 
+const CJMM_STEP_ORDER = [
+  "recognize-cues",
+  "analyze-cues",
+  "prioritize-hypotheses",
+  "generate-solutions",
+  "take-actions",
+  "evaluate-outcomes",
+] as const;
+
 type QuestionRow = {
   id: string;
   exam: "nclex" | "ccrn";
@@ -28,12 +37,15 @@ type QuestionRow = {
   revision: number | null;
   publishState: string | null;
   scenarioTitle?: string | null;
+  caseStudyId?: string | null;
+  cjmmStep?: string | null;
   scenario?: string | null;
   additionalInfo?: string | null;
   exhibits?: string | null;
   chartReview?: string | null;
   matrixColumns?: string | null;
   matrixRows?: string | null;
+  bowTie?: string | null;
   visualRationale?: string | null;
   referencesJson?: string | null;
   correctOrder?: string | null;
@@ -123,6 +135,44 @@ function applyQuestionBankAccessLimit<T extends { id: string }>(bank: T[], acces
   return [...bank]
     .sort((left, right) => hashString(left.id) - hashString(right.id))
     .slice(0, 1);
+}
+
+function selectCompleteCaseStudyGroups(bank: QuizQuestion[], count: number) {
+  const groups = new Map<string, QuizQuestion[]>();
+  for (const question of bank) {
+    if (question.type !== "case_study" || !question.caseStudyId) {
+      continue;
+    }
+    const group = groups.get(question.caseStudyId) ?? [];
+    group.push(question);
+    groups.set(question.caseStudyId, group);
+  }
+
+  const completeGroups = [...groups.values()]
+    .filter((group) => {
+      const steps = new Set(group.map((question) => question.cjmmStep));
+      return group.length === CJMM_STEP_ORDER.length
+        && CJMM_STEP_ORDER.every((step) => steps.has(step));
+    })
+    .map((group) => group.sort((left, right) => {
+      const leftIndex = CJMM_STEP_ORDER.indexOf(left.cjmmStep as (typeof CJMM_STEP_ORDER)[number]);
+      const rightIndex = CJMM_STEP_ORDER.indexOf(right.cjmmStep as (typeof CJMM_STEP_ORDER)[number]);
+      return leftIndex - rightIndex;
+    }))
+    .sort(() => Math.random() - 0.5);
+
+  const selected: QuizQuestion[] = [];
+  for (const group of completeGroups) {
+    if (selected.length > 0 && selected.length + group.length > count) {
+      break;
+    }
+    selected.push(...group);
+    if (selected.length >= count) {
+      break;
+    }
+  }
+
+  return selected.length > 0 ? selected : [];
 }
 
 function toQuestionOptions(raw: string): QuizQuestion["options"] {
@@ -215,6 +265,7 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
   const clinicalContext = buildSyntheticClinicalContext(row, tags, conceptNotes);
   const storedMatrixColumns = parseJsonValue<QuizQuestion["matrixColumns"] | undefined>(row.matrixColumns, undefined);
   const storedMatrixRows = parseJsonValue<QuizQuestion["matrixRows"] | undefined>(row.matrixRows, undefined);
+  const storedBowTie = parseJsonValue<QuizQuestion["bowTie"] | undefined>(row.bowTie, undefined);
   const fallbackMatrix = row.type === "matrix" ? buildMatrixFromAnswer(answer, options) : {};
   const matrix = row.type === "matrix"
     ? {
@@ -244,6 +295,8 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
     subcategory: row.subcategory ?? undefined,
     difficulty: (row.difficulty ?? 3) as QuizQuestion["difficulty"],
     stem: row.stem,
+    caseStudyId: row.caseStudyId ?? undefined,
+    cjmmStep: (row.cjmmStep as QuizQuestion["cjmmStep"]) ?? undefined,
     scenarioTitle: row.scenarioTitle ?? (needsSyntheticContext ? clinicalContext.scenarioTitle : undefined),
     scenario: row.scenario ?? (needsSyntheticContext ? clinicalContext.scenario : undefined),
     additionalInfo: row.additionalInfo ?? undefined,
@@ -252,6 +305,7 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
     options,
     answer,
     ...matrix,
+    bowTie: storedBowTie,
     rationale: row.rationale,
     distractorRationales: parseJsonValue<Record<string, string> | undefined>(row.distractorRationales, undefined),
     tags,
@@ -288,7 +342,9 @@ export async function selectQuestions(
   if (config.ngnOnly) {
     conditions.push(sql`${questions.type} <> 'mcq'`);
   }
-  const candidateLimit = config.category
+  const candidateLimit = questionType === "case_study"
+    ? 1200
+    : config.category
     ? 900
     : Math.min(Math.max(count * 12, 120), 300);
 
@@ -313,12 +369,15 @@ export async function selectQuestions(
       revision: questions.revision,
       publishState: questions.publishState,
       scenarioTitle: questions.scenarioTitle,
+      caseStudyId: questions.caseStudyId,
+      cjmmStep: questions.cjmmStep,
       scenario: questions.scenario,
       additionalInfo: questions.additionalInfo,
       exhibits: questions.exhibits,
       chartReview: questions.chartReview,
       matrixColumns: questions.matrixColumns,
       matrixRows: questions.matrixRows,
+      bowTie: questions.bowTie,
       visualRationale: questions.visualRationale,
       referencesJson: questions.referencesJson,
       correctOrder: questions.correctOrder,
@@ -347,6 +406,10 @@ export async function selectQuestions(
 
   if (bank.length === 0) {
     return [];
+  }
+
+  if (questionType === "case_study") {
+    return selectCompleteCaseStudyGroups(bank, count);
   }
 
   if (config.category || questionType || config.ngnOnly) {
@@ -425,6 +488,9 @@ export async function recordAnswer(
     userId?: string;
     selectedAnswer: string;
     isCorrect: boolean;
+    pointsEarned?: number;
+    pointsPossible?: number;
+    partialCredit?: number;
     timeSpentMs?: number;
   }
 ): Promise<void> {
@@ -434,6 +500,9 @@ export async function recordAnswer(
     userId: params.userId ?? null,
     selectedAnswer: params.selectedAnswer,
     isCorrect: params.isCorrect,
+    pointsEarned: params.pointsEarned ?? (params.isCorrect ? 1 : 0),
+    pointsPossible: params.pointsPossible ?? 1,
+    partialCredit: params.partialCredit ?? (params.isCorrect ? 1 : 0),
     timeSpentMs: params.timeSpentMs ?? null,
   });
 

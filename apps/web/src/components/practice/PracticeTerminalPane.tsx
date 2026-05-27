@@ -319,7 +319,10 @@ export default function PracticeTerminalPane({
   const answeredCount = questionStatuses.filter((item) => item.answered).length;
   const currentFlagged = questionStatuses.find((item) => item.id === question.id)?.flagged ?? false;
   const rationaleText = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
-  const distractorRationales = getDisplayableDistractorRationales(question, answerRecord?.distractorRationales);
+  const distractorRationales = getDisplayableDistractorRationales(
+    question,
+    answerRecord?.distractorRationales ?? question.distractorRationales,
+  );
   const promptSupport = [question.takeaway, question.speedCue].filter(Boolean) as string[];
   const coachingFrame = answerRecord?.coachingFrame ?? question.coachingFrame ?? [];
   const references = answerRecord?.references ?? question.references ?? [];

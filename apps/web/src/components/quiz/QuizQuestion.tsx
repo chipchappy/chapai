@@ -163,7 +163,10 @@ export default function QuizQuestion({
   const [submitting, setSubmitting] = useState(false);
   const [showRationale, setShowRationale] = useState(false);
   const startTime = useRef(Date.now());
-  const displayRationales = getDisplayableDistractorRationales(question, result?.distractorRationales);
+  const displayRationales = getDisplayableDistractorRationales(
+    question,
+    result?.distractorRationales,
+  );
 
   useEffect(() => {
     setSelected(null);

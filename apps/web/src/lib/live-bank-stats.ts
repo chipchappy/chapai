@@ -173,7 +173,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
 
     const ccrnLive = Number(examRows.find((row) => row.exam === "ccrn")?.count ?? fallback.ccrnLive);
     const nclexLive = Number(examRows.find((row) => row.exam === "nclex")?.count ?? fallback.nclexLive);
-    const nclexMcqLive = countType(nclexTypeRows, "mcq") || fallback.nclexMcqLive;
+    const nclexMcqLive = countType(nclexTypeRows, "mcq");
     const nclexNgnLive =
       countType(nclexTypeRows, "sata")
       + countType(nclexTypeRows, "matrix")
