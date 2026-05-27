@@ -28,7 +28,7 @@ export default function SignupPage() {
           </p>
         </div>
         <div>
-          <NewsletterOptIn nextPath="/quiz?welcome=1" />
+          <NewsletterOptIn nextPath="/study?welcome=1" />
         </div>
       </section>
     </main>

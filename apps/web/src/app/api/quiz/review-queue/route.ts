@@ -65,6 +65,7 @@ export async function GET(request: Request) {
         stem: questions.stem,
         exam: questions.exam,
         category: questions.category,
+        difficulty: questions.difficulty,
       })
       .from(reviewSchedule)
       .innerJoin(questions, eq(reviewSchedule.questionId, questions.id))
@@ -89,6 +90,7 @@ export async function GET(request: Request) {
         stem: rs.stem,
         exam: rs.exam,
         category: rs.category,
+        difficulty: rs.difficulty ?? 3,
       })),
       meta: {
         dueNow: due.length,

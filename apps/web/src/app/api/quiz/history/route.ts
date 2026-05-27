@@ -12,6 +12,8 @@ export const dynamic = "force-dynamic";
 function emptyHistory() {
   return {
     sessions: [],
+    streak: 0,
+    sevenDayAccuracy: 0,
     stats: {
       totalSessions: 0,
       totalQuestions: 0,
@@ -19,6 +21,28 @@ function emptyHistory() {
       overallAccuracy: 0,
     },
   };
+}
+
+function getCompletedTimestamp(session: { completedAt: number | null; startedAt: number }) {
+  return session.completedAt ?? session.startedAt;
+}
+
+function dayKeyFromUnix(timestamp: number) {
+  return new Date(timestamp * 1000).toISOString().slice(0, 10);
+}
+
+function calculateStreak(sessions: Array<{ completedAt: number | null; startedAt: number }>) {
+  const activeDays = new Set(sessions.map((session) => dayKeyFromUnix(getCompletedTimestamp(session))));
+  let cursor = new Date();
+  cursor.setUTCHours(0, 0, 0, 0);
+  let streak = 0;
+
+  while (activeDays.has(cursor.toISOString().slice(0, 10))) {
+    streak += 1;
+    cursor.setUTCDate(cursor.getUTCDate() - 1);
+  }
+
+  return streak;
 }
 
 export async function GET(request: Request) {
@@ -67,6 +91,10 @@ export async function GET(request: Request) {
 
     const totalQuestions = allSessions.reduce((sum, s) => sum + s.totalQuestions, 0);
     const totalCorrect = allSessions.reduce((sum, s) => sum + s.correctCount, 0);
+    const sevenDaysAgo = Math.floor(Date.now() / 1000) - (7 * 24 * 60 * 60);
+    const sevenDaySessions = allSessions.filter((session) => getCompletedTimestamp(session) >= sevenDaysAgo);
+    const sevenDayQuestions = sevenDaySessions.reduce((sum, s) => sum + s.totalQuestions, 0);
+    const sevenDayCorrect = sevenDaySessions.reduce((sum, s) => sum + s.correctCount, 0);
 
     return jsonSuccess({
       sessions: sessions.map((s) => ({
@@ -74,12 +102,20 @@ export async function GET(request: Request) {
         exam: s.exam,
         startedAt: s.startedAt,
         completedAt: s.completedAt,
+        createdAt: new Date(getCompletedTimestamp(s) * 1000).toISOString(),
         totalQuestions: s.totalQuestions,
         correctAnswers: s.correctCount,
+        score: s.totalQuestions > 0
+          ? Math.round((s.correctCount / s.totalQuestions) * 100)
+          : 0,
         scorePct: s.totalQuestions > 0
           ? Math.round((s.correctCount / s.totalQuestions) * 100)
           : 0,
       })),
+      streak: calculateStreak(allSessions),
+      sevenDayAccuracy: sevenDayQuestions > 0
+        ? Math.round((sevenDayCorrect / sevenDayQuestions) * 100)
+        : 0,
       stats: {
         totalSessions: allSessions.length,
         totalQuestions,

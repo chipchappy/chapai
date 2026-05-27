@@ -6,25 +6,68 @@ import Link from "next/link";
 interface SessionSummary {
   id: string;
   exam: string;
-  score: number;
+  score?: number;
+  scorePct?: number;
   totalQuestions: number;
   correctAnswers: number;
-  createdAt: string;
+  createdAt?: string;
+  startedAt?: number;
+  completedAt?: number | null;
 }
 
 interface ReviewItem {
   questionId: string;
   stem: string;
-  nextReviewAt: string;
+  nextReviewAt: string | null;
   difficulty: number;
+}
+
+interface WeakArea {
+  exam: string;
+  category: string;
+  label: string;
+  totalAnswered: number;
+  correctAnswered: number;
+  accuracy: number;
 }
 
 interface DashboardData {
   recentSessions: SessionSummary[];
   reviewQueue: ReviewItem[];
+  weakAreas: WeakArea[];
   streak: number;
+  sevenDayAccuracy: number;
   totalAnswered: number;
   totalCorrect: number;
+}
+
+type ApiEnvelope<T> = T | { success?: boolean; data?: T };
+
+function unwrapApiData<T>(payload: ApiEnvelope<T> | null | undefined, fallback: T): T {
+  if (!payload) {
+    return fallback;
+  }
+
+  if (typeof payload === "object" && "data" in payload && payload.data) {
+    return payload.data;
+  }
+
+  return payload as T;
+}
+
+function sessionScore(session: SessionSummary) {
+  return session.score ?? session.scorePct ?? (
+    session.totalQuestions > 0 ? Math.round((session.correctAnswers / session.totalQuestions) * 100) : 0
+  );
+}
+
+function sessionDate(session: SessionSummary) {
+  if (session.createdAt) {
+    return new Date(session.createdAt);
+  }
+
+  const timestamp = session.completedAt ?? session.startedAt;
+  return timestamp ? new Date(timestamp * 1000) : new Date();
 }
 
 function ScoreBadge({ score }: { score: number }) {
@@ -75,23 +118,40 @@ export default function StudyDashboard() {
   useEffect(() => {
     async function load() {
       try {
-        const [historyRes, reviewRes] = await Promise.all([fetch("/api/quiz/history"), fetch("/api/quiz/review-queue")]);
-        const history = historyRes.ok ? await historyRes.json() : { sessions: [] };
-        const review = reviewRes.ok ? await reviewRes.json() : { items: [] };
+        const [historyRes, reviewRes, weakAreasRes] = await Promise.all([
+          fetch("/api/quiz/history", { cache: "no-store" }),
+          fetch("/api/quiz/review-queue", { cache: "no-store" }),
+          fetch("/api/quiz/weak-areas", { cache: "no-store" }),
+        ]);
+        const historyPayload = historyRes.ok ? await historyRes.json() : null;
+        const reviewPayload = reviewRes.ok ? await reviewRes.json() : null;
+        const weakAreasPayload = weakAreasRes.ok ? await weakAreasRes.json() : null;
+        const history = unwrapApiData<{
+          sessions?: SessionSummary[];
+          streak?: number;
+          sevenDayAccuracy?: number;
+          stats?: { totalQuestions?: number; totalCorrect?: number; overallAccuracy?: number };
+        }>(historyPayload, { sessions: [] });
+        const review = unwrapApiData<{ items?: ReviewItem[]; meta?: { dueNow?: number } }>(reviewPayload, { items: [] });
+        const weakAreas = unwrapApiData<{ areas?: WeakArea[] }>(weakAreasPayload, { areas: [] });
         const sessions: SessionSummary[] = history.sessions || [];
 
         setData({
           recentSessions: sessions.slice(0, 10),
           reviewQueue: review.items || [],
           streak: history.streak || 0,
-          totalAnswered: sessions.reduce((sum, session) => sum + session.totalQuestions, 0),
-          totalCorrect: sessions.reduce((sum, session) => sum + session.correctAnswers, 0),
+          sevenDayAccuracy: history.sevenDayAccuracy || 0,
+          weakAreas: (weakAreas.areas || []).slice(0, 3),
+          totalAnswered: history.stats?.totalQuestions ?? sessions.reduce((sum, session) => sum + session.totalQuestions, 0),
+          totalCorrect: history.stats?.totalCorrect ?? sessions.reduce((sum, session) => sum + session.correctAnswers, 0),
         });
       } catch {
         setData({
           recentSessions: [],
           reviewQueue: [],
+          weakAreas: [],
           streak: 0,
+          sevenDayAccuracy: 0,
           totalAnswered: 0,
           totalCorrect: 0,
         });
@@ -102,8 +162,6 @@ export default function StudyDashboard() {
 
     void load();
   }, []);
-
-  const overallPct = data && data.totalAnswered > 0 ? Math.round((data.totalCorrect / data.totalAnswered) * 100) : null;
 
   const examStats = useMemo(() => {
     const map: Record<string, { correct: number; total: number }> = {};
@@ -121,9 +179,10 @@ export default function StudyDashboard() {
     }));
   }, [data?.recentSessions]);
 
-  const weakAreas = useMemo(() => examStats.filter((item) => item.accuracy < 70).slice(0, 3), [examStats]);
+  const weakAreas = data?.weakAreas ?? [];
   const strongestLane = useMemo(() => [...examStats].sort((a, b) => b.accuracy - a.accuracy)[0] ?? null, [examStats]);
   const weakestLane = weakAreas[0] ?? null;
+  const resumeHref = weakestLane ? `/quiz?category=${encodeURIComponent(weakestLane.category)}` : "/quiz?exam=nclex&mode=standard";
 
   const nextObjective = useMemo(() => {
     if (!data) {
@@ -144,10 +203,10 @@ export default function StudyDashboard() {
     if (weakestLane) {
       return {
         label: "Next objective",
-        title: `Rebuild ${weakestLane.exam}.`,
-        body: `${weakestLane.accuracy}% accuracy across ${weakestLane.total} saved questions. Open a fresh live-bank run and keep the rationale loop tight.`,
-        href: `/quiz?exam=${weakestLane.exam.toLowerCase()}&mode=standard`,
-        cta: `Open ${weakestLane.exam} bank`,
+        title: `Rebuild ${weakestLane.label}.`,
+        body: `${weakestLane.accuracy}% accuracy across ${weakestLane.totalAnswered} saved answers. Open a fresh live-bank run and keep the rationale loop tight.`,
+        href: resumeHref,
+        cta: "Resume practice \u2192",
         tone: "gold" as const,
       };
     }
@@ -159,10 +218,10 @@ export default function StudyDashboard() {
         ? "Your queue is clear. Use a fresh live-bank session to keep momentum while the pattern recognition is warm."
         : "Open a live bank, answer a first set, and this dashboard will start shaping the next best move automatically.",
       href: "/quiz?exam=nclex&mode=standard",
-      cta: "Open NCLEX live bank",
+      cta: data.recentSessions.length > 0 ? "Resume practice \u2192" : "Start your first session",
       tone: "blue" as const,
     };
-  }, [data, weakestLane]);
+  }, [data, weakestLane, resumeHref]);
 
   if (loading) {
     return (
@@ -190,7 +249,8 @@ export default function StudyDashboard() {
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="signal-pill signal-pill-sage">{data?.streak ?? 0} day streak</span>
               <span className="signal-pill signal-pill-blue">{data?.totalAnswered ?? 0} answered</span>
-              <span className="signal-pill signal-pill-gold">{overallPct !== null ? `${overallPct}% accuracy` : "No score yet"}</span>
+              <span className="signal-pill signal-pill-gold">{data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}% 7-day` : "No 7-day score yet"}</span>
+              <span className="signal-pill">{data?.reviewQueue.length ?? 0} due now</span>
               {strongestLane ? <span className="signal-pill">Best lane: {strongestLane.exam}</span> : null}
             </div>
           </div>
@@ -215,19 +275,23 @@ export default function StudyDashboard() {
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Streak" value={data?.streak ?? 0} sub="days in a row" tone="sage" />
-        <StatCard label="Answered" value={data?.totalAnswered ?? 0} sub="all recorded reps" tone="blue" />
-        <StatCard label="Accuracy" value={overallPct !== null ? `${overallPct}%` : "n/a"} sub="across saved sessions" tone="gold" />
-        <StatCard label="Due for review" value={data?.reviewQueue.length ?? 0} sub="spaced repetition queue" />
+        <StatCard label="7-day accuracy" value={data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}%` : "n/a"} sub="completed sessions" tone="blue" />
+        <StatCard label="Due now" value={data?.reviewQueue.length ?? 0} sub="spaced repetition queue" tone="gold" />
+        <StatCard
+          label="Weak categories"
+          value={weakAreas.length || "n/a"}
+          sub={weakAreas.length ? weakAreas.map((area) => area.label).join(", ") : "none identified yet"}
+        />
       </section>
 
       <section className="grid gap-4 lg:grid-cols-3">
         <article className="study-console-panel">
           <p className="terminal-label">Quick launch</p>
           <div className="mt-4 grid gap-3">
-            <Link href="/quiz?exam=nclex&mode=standard" className="dashboard-action-row">
+            <Link href={resumeHref} className="dashboard-action-row">
               <span>
-                <strong>NCLEX live bank</strong>
-                <small>Open a clean rep from the reviewed bank.</small>
+                <strong>Resume practice</strong>
+                <small>{weakestLane ? `Open ${weakestLane.label} from the reviewed bank.` : "Open a clean NCLEX rep from the reviewed bank."}</small>
               </span>
               <span className="signal-pill signal-pill-blue">Launch</span>
             </Link>
@@ -261,7 +325,7 @@ export default function StudyDashboard() {
             </div>
             <div className="dashboard-signal-row">
               <span>Weakest lane</span>
-              <strong>{weakestLane?.exam ?? "None yet"}</strong>
+              <strong>{weakestLane?.label ?? "None yet"}</strong>
             </div>
           </div>
         </article>
@@ -317,7 +381,7 @@ export default function StudyDashboard() {
                             {session.correctAnswers}/{session.totalQuestions} correct
                           </p>
                           <p className="mt-1 text-xs text-muted">
-                            {new Date(session.createdAt).toLocaleDateString(undefined, {
+                            {sessionDate(session).toLocaleDateString(undefined, {
                               month: "short",
                               day: "numeric",
                               hour: "2-digit",
@@ -325,7 +389,7 @@ export default function StudyDashboard() {
                             })}
                           </p>
                         </div>
-                        <ScoreBadge score={session.score} />
+                        <ScoreBadge score={sessionScore(session)} />
                       </div>
                     ))}
                   </div>
@@ -383,10 +447,10 @@ export default function StudyDashboard() {
                 {weakAreas.length ? (
                   <div className="mt-4 space-y-3">
                     {weakAreas.map((area) => (
-                      <div key={area.exam} className="rounded-[18px] border border-[rgba(196,121,86,0.18)] bg-[rgba(250,242,236,0.88)] px-4 py-3">
-                        <p className="text-sm font-semibold text-dark">{area.exam}</p>
+                      <div key={`${area.exam}-${area.category}`} className="rounded-[18px] border border-[rgba(196,121,86,0.18)] bg-[rgba(250,242,236,0.88)] px-4 py-3">
+                        <p className="text-sm font-semibold text-dark">{area.label}</p>
                         <p className="mt-1 text-sm leading-6 text-muted">
-                          {area.accuracy}% accuracy across {area.total} saved questions. Open a fresh set and keep the rationale loop tight.
+                          {area.accuracy}% accuracy across {area.totalAnswered} saved answers. Open a fresh set and keep the rationale loop tight.
                         </p>
                       </div>
                     ))}
@@ -412,7 +476,7 @@ export default function StudyDashboard() {
                       {session.correctAnswers}/{session.totalQuestions} correct
                     </p>
                     <p className="mt-1 text-xs text-muted">
-                      {new Date(session.createdAt).toLocaleDateString(undefined, {
+                      {sessionDate(session).toLocaleDateString(undefined, {
                         month: "short",
                         day: "numeric",
                         hour: "2-digit",
@@ -420,7 +484,7 @@ export default function StudyDashboard() {
                       })}
                     </p>
                   </div>
-                  <ScoreBadge score={session.score} />
+                  <ScoreBadge score={sessionScore(session)} />
                 </div>
               ))
             ) : (
@@ -448,7 +512,7 @@ export default function StudyDashboard() {
                       <div>
                         <p className="text-sm leading-6 text-dark">{item.stem}</p>
                         <p className="mt-2 text-xs uppercase tracking-[0.16em] text-muted">
-                          Due {new Date(item.nextReviewAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })} | difficulty {item.difficulty}/5
+                          Due {item.nextReviewAt ? new Date(item.nextReviewAt).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "now"} | difficulty {item.difficulty}/5
                         </p>
                       </div>
                       <span className="signal-pill signal-pill-sage">Due</span>
