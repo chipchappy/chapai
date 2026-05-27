@@ -54,6 +54,10 @@ function parseArgs(argv) {
     onlyP1: false,
     deletePrefixes: [],
     chunkSize: 40,
+    startRow: 1,
+    endRow: null,
+    startChunk: 1,
+    endChunk: null,
     dryRun: false,
   };
 
@@ -93,6 +97,22 @@ function parseArgs(argv) {
       options.chunkSize = Number(readValue());
     } else if (arg.startsWith("--chunk-size=")) {
       options.chunkSize = Number(arg.slice("--chunk-size=".length));
+    } else if (arg === "--start-row") {
+      options.startRow = Number(readValue());
+    } else if (arg.startsWith("--start-row=")) {
+      options.startRow = Number(arg.slice("--start-row=".length));
+    } else if (arg === "--end-row") {
+      options.endRow = Number(readValue());
+    } else if (arg.startsWith("--end-row=")) {
+      options.endRow = Number(arg.slice("--end-row=".length));
+    } else if (arg === "--start-chunk") {
+      options.startChunk = Number(readValue());
+    } else if (arg.startsWith("--start-chunk=")) {
+      options.startChunk = Number(arg.slice("--start-chunk=".length));
+    } else if (arg === "--end-chunk") {
+      options.endChunk = Number(readValue());
+    } else if (arg.startsWith("--end-chunk=")) {
+      options.endChunk = Number(arg.slice("--end-chunk=".length));
     } else if (arg === "--dry-run") {
       options.dryRun = true;
     } else {
@@ -108,6 +128,21 @@ function parseArgs(argv) {
   }
   if (!Number.isInteger(options.chunkSize) || options.chunkSize < 1) {
     throw new Error("--chunk-size must be a positive integer");
+  }
+  if (!Number.isInteger(options.startRow) || options.startRow < 1) {
+    throw new Error("--start-row must be a positive integer");
+  }
+  if (options.endRow != null && (!Number.isInteger(options.endRow) || options.endRow < options.startRow)) {
+    throw new Error("--end-row must be an integer greater than or equal to --start-row");
+  }
+  if (!Number.isInteger(options.startChunk) || options.startChunk < 1) {
+    throw new Error("--start-chunk must be a positive integer");
+  }
+  if (options.endChunk != null && (!Number.isInteger(options.endChunk) || options.endChunk < options.startChunk)) {
+    throw new Error("--end-chunk must be an integer greater than or equal to --start-chunk");
+  }
+  if ((options.resetQuestions || options.deletePrefixes.length > 0) && (options.startChunk > 1 || options.startRow > 1)) {
+    throw new Error("Refusing resumed sync with deletion enabled; rerun from chunk 1 for destructive syncs");
   }
   return options;
 }
@@ -285,7 +320,11 @@ function chunkRows(rows, chunkSize) {
 
 function main() {
   const options = parseArgs(process.argv.slice(2));
-  const rows = loadRows(options);
+  const sourceRows = loadRows(options);
+  const rows = sourceRows.slice(
+    options.startRow - 1,
+    options.endRow == null ? undefined : options.endRow,
+  );
   const chunks = chunkRows(rows, options.chunkSize);
   const deletion = deleteSql(options);
 
@@ -293,8 +332,13 @@ function main() {
     database: options.database,
     remote: options.remote,
     inputDir: options.inputDir,
+    sourceRows: sourceRows.length,
     rows: rows.length,
     chunks: chunks.length,
+    startRow: options.startRow,
+    endRow: options.endRow,
+    startChunk: options.startChunk,
+    endChunk: options.endChunk,
     resetQuestions: options.resetQuestions,
     deletePrefixes: options.deletePrefixes,
     dryRun: options.dryRun,
@@ -307,7 +351,9 @@ function main() {
 
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "chapai-d1-sync-"));
   try {
-    for (let index = 0; index < chunks.length; index += 1) {
+    const startIndex = options.startChunk - 1;
+    const endIndex = options.endChunk == null ? chunks.length - 1 : Math.min(options.endChunk - 1, chunks.length - 1);
+    for (let index = startIndex; index <= endIndex; index += 1) {
       const statements = [];
       if (index === 0 && deletion) {
         statements.push(deletion);

@@ -350,6 +350,9 @@ export async function selectQuestions(
     : config.category
     ? 900
     : Math.min(Math.max(count * 12, 120), 300);
+  const orderBy = exam === "nclex"
+    ? [sql`${questions.structuredRationale} IS NULL`, sql`random()`]
+    : [sql`random()`];
 
   const dbRows = await db
     .select({
@@ -388,7 +391,7 @@ export async function selectQuestions(
     })
     .from(questions)
     .where(and(...conditions))
-    .orderBy(sql`random()`)
+    .orderBy(...orderBy)
     .limit(candidateLimit);
   const dbBank = dbRows.map(mapQuestionRowToQuizQuestion);
   const filteredBank = dbBank.filter((question) => matchesQuizFilters(question, config));
