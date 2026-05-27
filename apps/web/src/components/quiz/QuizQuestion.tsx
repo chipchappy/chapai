@@ -163,6 +163,10 @@ export default function QuizQuestion({
   const [submitting, setSubmitting] = useState(false);
   const [showRationale, setShowRationale] = useState(false);
   const startTime = useRef(Date.now());
+  const displayRationales = getDisplayableDistractorRationales(
+    question,
+    result?.distractorRationales,
+  );
 
   useEffect(() => {
     setSelected(null);
@@ -201,10 +205,6 @@ export default function QuizQuestion({
   const answered = result !== null;
   const teachingTakeaway = result?.takeaway ?? question.takeaway;
   const teachingVisual = result?.visualRationale ?? question.visualRationale;
-  const displayableDistractorRationales = getDisplayableDistractorRationales(
-    question,
-    result?.distractorRationales,
-  );
   const visualTheme = teachingVisual ? visualAccentMap[teachingVisual.type] : null;
 
   return (
@@ -393,7 +393,7 @@ export default function QuizQuestion({
           )}
 
           {/* ── Distractor rationales ─────────────────────────── */}
-          {Object.keys(displayableDistractorRationales).length > 0 && (
+          {Object.keys(displayRationales).length > 0 && (
             <div className="mt-4 space-y-2">
               <p
                 className="font-mono text-[9px] font-bold uppercase tracking-[0.22em]"
@@ -404,7 +404,7 @@ export default function QuizQuestion({
               {question.options
                 .filter(opt => opt.id !== (question.correctOptionId ?? result.correctAnswer))
                 .map(opt => {
-                  const explanation = displayableDistractorRationales[opt.id];
+                  const explanation = displayRationales[opt.id];
                   if (!explanation) return null;
                   return (
                     <div

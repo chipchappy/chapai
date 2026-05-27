@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import PracticeTerminalPane from "@/components/practice/PracticeTerminalPane";
+import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
 interface PracticeQuestionPaneProps {
@@ -189,7 +190,10 @@ export default function PracticeQuestionPane({
   const teachingCoachingFrame = answerRecord?.coachingFrame ?? question.coachingFrame ?? [];
   const teachingVisual = answerRecord?.visualRationale ?? question.visualRationale;
   const teachingDiagram = answerRecord?.diagramBlueprint ?? question.diagramBlueprint;
-  const distractorRationales = answerRecord?.distractorRationales ?? question.distractorRationales;
+  const distractorRationales = getDisplayableDistractorRationales(
+    question,
+    answerRecord?.distractorRationales ?? question.distractorRationales,
+  );
   const evidenceCount = [
     question.chartRows?.length ? 1 : 0,
     question.vitals?.length ? 1 : 0,

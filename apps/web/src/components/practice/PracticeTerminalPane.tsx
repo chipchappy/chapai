@@ -319,7 +319,7 @@ export default function PracticeTerminalPane({
   const answeredCount = questionStatuses.filter((item) => item.answered).length;
   const currentFlagged = questionStatuses.find((item) => item.id === question.id)?.flagged ?? false;
   const rationaleText = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
-  const displayableDistractorRationales = getDisplayableDistractorRationales(
+  const distractorRationales = getDisplayableDistractorRationales(
     question,
     answerRecord?.distractorRationales ?? question.distractorRationales,
   );
@@ -1479,11 +1479,11 @@ export default function PracticeTerminalPane({
                   {/* Expanded section — distractor review, coaching, diagram */}
                   {rationaleExpanded ? (
                     <div className="quiz-rationale-expanded-body">
-                      {Object.keys(displayableDistractorRationales).length > 0 ? (
+                      {Object.keys(distractorRationales).length ? (
                         <div className="quiz-rail-card quiz-monitor-rationale-card">
                           <p className="quiz-terminal-kicker">distractor review</p>
                           <div className="mt-3 grid gap-2">
-                            {Object.entries(displayableDistractorRationales).map(([label, explanation]) => (
+                            {Object.entries(distractorRationales).map(([label, explanation]) => (
                               <div key={label} className="quiz-rail-row">
                                 <strong>{label.toUpperCase()}</strong>
                                 <span>{explanation}</span>
