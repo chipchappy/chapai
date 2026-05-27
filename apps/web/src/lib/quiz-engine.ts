@@ -488,6 +488,9 @@ export async function recordAnswer(
     userId?: string;
     selectedAnswer: string;
     isCorrect: boolean;
+    pointsEarned?: number;
+    pointsPossible?: number;
+    partialCredit?: number;
     timeSpentMs?: number;
   }
 ): Promise<void> {
@@ -497,6 +500,9 @@ export async function recordAnswer(
     userId: params.userId ?? null,
     selectedAnswer: params.selectedAnswer,
     isCorrect: params.isCorrect,
+    pointsEarned: params.pointsEarned ?? (params.isCorrect ? 1 : 0),
+    pointsPossible: params.pointsPossible ?? 1,
+    partialCredit: params.partialCredit ?? (params.isCorrect ? 1 : 0),
     timeSpentMs: params.timeSpentMs ?? null,
   });
 

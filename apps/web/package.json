@@ -12,6 +12,8 @@
     "seed:d1:questions": "node scripts/export-d1-question-seed.mjs",
     "d1:migrate:prod": "wrangler d1 execute chapai-prod --remote --file=../../packages/db/drizzle/migration-0001.sql",
     "d1:sync-questions:prod": "node ../../scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --reset-questions",
+    "d1:migrate:p1:prod": "node ../../scripts/apply-d1-p1-ngn-migration.mjs --database=chapai-prod --remote --config=wrangler.jsonc",
+    "d1:sync:p1:prod": "node ../../scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --config=wrangler.jsonc --only-p1",
     "lint": "next lint",
     "lint:boundaries": "node scripts/check-aesthetic-boundaries.mjs",
     "type-check": "tsc --noEmit -p tsconfig.typecheck.json",

@@ -207,6 +207,9 @@ export const quizAnswers = sqliteTable("quiz_answers", {
   userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
   selectedAnswer: text("selected_answer").notNull(),
   isCorrect: integer("is_correct", { mode: "boolean" }).notNull(),
+  pointsEarned: real("points_earned"),
+  pointsPossible: real("points_possible"),
+  partialCredit: real("partial_credit"),
   timeSpentMs: integer("time_spent_ms"),
   answeredAt: integer("answered_at")
     .default(sql`(unixepoch())`)

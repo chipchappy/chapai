@@ -306,6 +306,9 @@ export async function POST(req: NextRequest) {
         userId: hostedUser?.id,
         selectedAnswer: serializedSelectedAnswer,
         isCorrect,
+        pointsEarned: bowTieScore?.pointsEarned,
+        pointsPossible: bowTieScore?.pointsPossible,
+        partialCredit: bowTieScore?.partialCredit,
         timeSpentMs,
       });
     }

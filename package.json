@@ -11,6 +11,10 @@
     "type-check": "npm run type-check --workspace=@chapai/web",
     "rewrite:distractors": "node scripts/rewrite-distractor-rationales.mjs",
     "retag:question-types": "node scripts/retag-question-types.mjs",
+    "d1:migrate:p1:staging": "node scripts/apply-d1-p1-ngn-migration.mjs --database=chapai-staging --remote --config=wrangler.staging.jsonc",
+    "d1:migrate:p1:prod": "node scripts/apply-d1-p1-ngn-migration.mjs --database=chapai-prod --remote --config=wrangler.jsonc",
+    "d1:sync:p1:staging": "node scripts/sync-d1-question-bank.mjs --database=chapai-staging --remote --config=wrangler.staging.jsonc --only-p1",
+    "d1:sync:p1:prod": "node scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --config=wrangler.jsonc --only-p1",
     "deploy": "turbo deploy"
   },
   "devDependencies": {
