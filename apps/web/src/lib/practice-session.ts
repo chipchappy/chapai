@@ -253,6 +253,7 @@ export function buildQuestionRecord(question: PracticeQuestion, answer: Practice
     pointsPossible: evaluation.pointsPossible,
     partialCredit: evaluation.partialCredit,
     rationale: evaluation.rationale,
+    structuredRationale: question.structuredRationale,
     deepRationale: question.deepRationale,
     takeaway: evaluation.takeaway,
     distractorRationales: question.distractorRationales,

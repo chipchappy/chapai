@@ -103,11 +103,29 @@ function getCorrectIds(question) {
 }
 
 function scoreQuestion(question) {
-  const rationaleText = [question.rationale, question.deepRationale, question.takeaway].filter(Boolean).join("\n\n");
+  const structured = question.structuredRationale;
+  const structuredText = structured
+    ? [
+        structured.overview,
+        structured.mechanism,
+        structured.whyCorrect,
+        ...Object.values(structured.whyWrong ?? {}),
+      ].filter(Boolean).join("\n\n")
+    : "";
+  const rationaleText = [structuredText, question.rationale, question.deepRationale, question.takeaway].filter(Boolean).join("\n\n");
   const rationaleWords = words(rationaleText).length;
-  const paragraphs = countParagraphs(question.deepRationale ?? question.rationale ?? "");
+  const paragraphs = structured
+    ? [structured.overview, structured.mechanism, structured.whyCorrect].filter(Boolean).length
+    : countParagraphs(question.deepRationale ?? question.rationale ?? "");
   const clinicalHits = clinicalTerms.filter((term) => new RegExp(`\\b${term}\\b`, "i").test(rationaleText));
-  const resources = Array.isArray(question.references) && question.references.length
+  const resources = Array.isArray(structured?.citations) && structured.citations.length
+    ? structured.citations.map((citation) => ({
+        title: citation.source,
+        href: citation.href,
+        source: citation.chapter ?? citation.source,
+        sourceKind: "structured-citation",
+      }))
+    : Array.isArray(question.references) && question.references.length
     ? question.references.map((ref) => ({
         title: ref.title,
         href: ref.href,
@@ -124,7 +142,9 @@ function scoreQuestion(question) {
   const correctIds = getCorrectIds(question);
   const options = Array.isArray(question.options) ? question.options : [];
   const wrongOptionIds = options.filter((option) => !correctIds.has(option.id)).map((option) => option.id);
-  const distractorRationales = question.distractorRationales ?? {};
+  const distractorRationales = Object.keys(structured?.whyWrong ?? {}).length
+    ? structured?.whyWrong ?? {}
+    : question.distractorRationales ?? {};
   const wrongRationaleStatuses = wrongOptionIds.map((id) => {
     const text = String(distractorRationales[id] ?? "").trim();
     return {
@@ -143,6 +163,7 @@ function scoreQuestion(question) {
     invalidSingleAnswer ? "answer id not present in options" : null,
     boilerplatePattern.test(rationaleText) ? "boilerplate rationale text" : null,
     rationaleWords < 35 ? "thin rationale under 35 words" : null,
+    structured && paragraphs < 3 ? "structured rationale has fewer than 3 sections" : null,
     vagueTerms.test(rationaleText) && clinicalHits.length < 2 ? "vague rationale with weak clinical anchoring" : null,
     wrongRationaleStatuses.some((item) => item.present && item.hasBoilerplate) ? "boilerplate distractor rationale" : null,
     wrongRationaleStatuses.some((item) => !item.present) && wrongOptionIds.length ? "missing distractor rationale" : null,

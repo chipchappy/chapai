@@ -1,4 +1,4 @@
-import type { BowTieQuestion, CjmmStep, CognitiveLevel, Exam, NclexClientNeed, QuestionType } from "@/lib/types";
+import type { BowTieQuestion, CjmmStep, CognitiveLevel, Exam, NclexClientNeed, QuestionType, StructuredRationale } from "@/lib/types";
 import type { StudyResource } from "@/lib/study-resources";
 
 export type PracticeMode = "standard" | "chart" | "case-study" | "ngn" | "practice-exam";
@@ -94,6 +94,7 @@ export interface PracticeQuestion {
   options?: PracticeOption[];
   correctAnswer: PracticeAnswer;
   rationale: string;
+  structuredRationale?: StructuredRationale;
   deepRationale?: string;
   distractorRationales?: Record<string, string>;
   takeaway?: string;
@@ -201,6 +202,7 @@ export interface PracticeAnswerRecord {
   pointsPossible?: number;
   partialCredit?: number;
   rationale: string;
+  structuredRationale?: StructuredRationale;
   deepRationale?: string;
   takeaway?: string;
   distractorRationales?: Record<string, string>;

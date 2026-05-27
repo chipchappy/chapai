@@ -294,6 +294,7 @@ function mapLiveQuestion(question: QuizQuestion, mode: PracticeMode = "standard"
     options: question.options.map((option) => ({ id: option.id, text: option.text })),
     correctAnswer,
     rationale: question.rationale,
+    structuredRationale: question.structuredRationale,
     deepRationale: question.deepRationale,
     distractorRationales: question.distractorRationales,
     takeaway: question.takeaway,

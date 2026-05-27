@@ -1,0 +1,5108 @@
+{
+  "generatedAt": "2026-05-27T18:52:39.987Z",
+  "inputDir": "packages\\content\\staging\\rationale-pilot",
+  "sampleSize": 150,
+  "corpusQuestions": 150,
+  "seed": "p1.6-premium-rationale-benchmark",
+  "scoring": {
+    "specificity": 20,
+    "mechanism": 20,
+    "safetyPriority": 15,
+    "distractorTeaching": 25,
+    "citations": 15,
+    "ambiguity": 5
+  },
+  "summary": {
+    "averageScore": 85.7,
+    "medianScore": 89,
+    "readiness": {
+      "premium-ready": 104,
+      "official-style-pass": 22,
+      "needs-p1.6": 24
+    },
+    "gapCounts": {
+      "name mechanism more explicitly": 54,
+      "strengthen why-each-wrong teaching": 16
+    }
+  },
+  "results": [
+    {
+      "id": "p1-cjmm-37-magnesium-toxicity-03",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 214,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "magnesium"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Prioritize Hypotheses",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a601072.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-38-ruptured-ectopic-02",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 222,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "hemorrhage"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Analyze Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-41-epiglottitis-airway-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-19-bacterial-meningitis-05",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 298,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-24-delirium-uti-01",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 277,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "fever",
+        "dehydration"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Recognize Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-19-bacterial-meningitis-04",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 248,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Generate Solutions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-23-guillain-barre-ascending-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 57,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 270,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-35-cord-prolapse-05",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 325,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-43-sickle-cell-acute-chest-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "breathing"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-27-severe-hypoglycemia-01",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 267,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Recognize Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-bowtie-05-opioid-overdose-ed",
+      "type": "bow_tie",
+      "category": "pharmacological",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 260,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation",
+        "opioid",
+        "naloxone",
+        "sedation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pharmacological",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Naloxone",
+          "href": "https://medlineplus.gov/druginfo/meds/a612022.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-03-mi-ed",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 87,
+      "readiness": "premium-ready",
+      "rationaleWords": 252,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "ischemia"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-01-sepsis-stepdown",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 196,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "shock",
+        "sepsis",
+        "lactate"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-08-eclampsia-ed",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 90,
+      "readiness": "premium-ready",
+      "rationaleWords": 280,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "renal",
+        "seizure",
+        "fetal",
+        "magnesium"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a601072.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-04-stroke-ed",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 78,
+      "readiness": "official-style-pass",
+      "rationaleWords": 187,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "stroke"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1273-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 356,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1823-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 361,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1497-n022",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 284,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "potassium",
+        "renal",
+        "edema",
+        "falls"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Kidney Injury Rifle Staging",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1849-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 361,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb979-n007",
+      "type": "matrix",
+      "category": "placental_abruption_pain",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 278,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "uterine",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Placental Abruption Pain",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1635-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 334,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1710-n016",
+      "type": "sata",
+      "category": "meningococcal_sepsis_petechiae",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 265,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Meningococcal Sepsis Petechiae",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1172-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 354,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1604-n017",
+      "type": "sata",
+      "category": "severe_hyponatremia_seizure",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 255,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sodium",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Severe Hyponatremia Seizure",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1683-n016",
+      "type": "sata",
+      "category": "meningococcal_sepsis_petechiae",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 282,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Meningococcal Sepsis Petechiae",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1334-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1094-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1322-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1621-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb972-n002",
+      "type": "ordering",
+      "category": "postpartum_hemorrhage_boggy_fundus",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 78,
+      "readiness": "official-style-pass",
+      "rationaleWords": 210,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "hemorrhage",
+        "postpartum"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Postpartum Hemorrhage Boggy Fundus",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1513-n001",
+      "type": "scenario_mcq",
+      "category": "warfarin_inr_management_reversal",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 293,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "anticoagulant"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Warfarin Inr Management Reversal",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Warfarin",
+          "href": "https://medlineplus.gov/druginfo/meds/a682277.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1897-n004",
+      "type": "scenario_mcq",
+      "category": "right_ventricular_mi_nitrate_drop",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 275,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Right Ventricular Mi Nitrate Drop",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1556-n008",
+      "type": "scenario_mcq",
+      "category": "lumbar_puncture_positioning_complications",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 373,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Lumbar Puncture Positioning Complications",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1877-n002",
+      "type": "scenario_mcq",
+      "category": "myxedema_coma_hypothermia",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 270,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Myxedema Coma Hypothermia",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1811-n004",
+      "type": "scenario_mcq",
+      "category": "right_ventricular_mi_nitrate_drop",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 281,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Right Ventricular Mi Nitrate Drop",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1019-n009",
+      "type": "decision_map_mcq",
+      "category": "neonatal_sepsis_instability",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 281,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "sepsis"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Neonatal Sepsis Instability",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1697-n012",
+      "type": "decision_map_mcq",
+      "category": "palliative_care_symptom_management_dyspnea",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 284,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "sedation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Palliative Care Symptom Management Dyspnea",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1794-n009",
+      "type": "decision_map_mcq",
+      "category": "adolescent_depression_screening_phq",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 356,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Adolescent Depression Screening Phq",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1343-n010",
+      "type": "decision_map_mcq",
+      "category": "contrast_induced_nephropathy_prevention",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 334,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "renal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Contrast Induced Nephropathy Prevention",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1653-n010",
+      "type": "decision_map_mcq",
+      "category": "contrast_induced_nephropathy_prevention",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 353,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "renal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Contrast Induced Nephropathy Prevention",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb403-n001",
+      "type": "mcq",
+      "category": "pharmacology_safety",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 262,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "anticoagulant"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pharmacology Safety",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Heparin Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a682826.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb675-n001",
+      "type": "mcq",
+      "category": "pharmacology_safety",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 262,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "anticoagulant"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pharmacology Safety",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Heparin Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a682826.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb814-n004",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 343,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pediatric Nursing",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb887-n004",
+      "type": "mcq",
+      "category": "first_action_for_respiratory_distress",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 260,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "First Action For Respiratory Distress",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb830-n010",
+      "type": "mcq",
+      "category": "chain_of_command",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 507,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "scope"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Chain Of Command",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb241-n003",
+      "type": "mcq",
+      "category": "prioritization_delegation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Prioritization Delegation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1667-n024",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 275,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Spore Precautions",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1621-n024",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 288,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Spore Precautions",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb480-n003",
+      "type": "mcq",
+      "category": "prioritization_delegation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Prioritization Delegation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb628-n002",
+      "type": "mcq",
+      "category": "endocrine_metabolic",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 263,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose",
+        "insulin",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Endocrine Metabolic",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "href": "https://medlineplus.gov/insulin.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-09-anaphylaxis-stepdown",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 193,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "anaphylaxis",
+        "epinephrine"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a603002.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1579-n016",
+      "type": "sata",
+      "category": "meningococcal_sepsis_petechiae",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 270,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Meningococcal Sepsis Petechiae",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-05-opioid-overdose-urgent",
+      "type": "bow_tie",
+      "category": "pharmacological",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 260,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation",
+        "opioid",
+        "naloxone",
+        "sedation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pharmacological",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Naloxone",
+          "href": "https://medlineplus.gov/druginfo/meds/a612022.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1704-n016",
+      "type": "sata",
+      "category": "meningococcal_sepsis_petechiae",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 264,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Meningococcal Sepsis Petechiae",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-34-postpartum-hemorrhage-05",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 284,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-36-placental-abruption-02",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 234,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "hypoxia",
+        "hemorrhage",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Analyze Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-24-delirium-uti-05",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 229,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-17-acute-ischemic-stroke-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 249,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "aspiration"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1265-n010",
+      "type": "decision_map_mcq",
+      "category": "contrast_induced_nephropathy_prevention",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 354,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "renal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Contrast Induced Nephropathy Prevention",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1126-n009",
+      "type": "decision_map_mcq",
+      "category": "adolescent_depression_screening_phq",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 386,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Adolescent Depression Screening Phq",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-12-ards-ventilator-safety-03",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 284,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Prioritize Hypotheses",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-30-adrenal-crisis-04",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 274,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Generate Solutions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1882-n022",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 283,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "potassium",
+        "renal",
+        "edema",
+        "falls"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Kidney Injury Rifle Staging",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-32-diabetes-insipidus-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 228,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sodium"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-bowtie-10-neutropenic-fever-stepdown",
+      "type": "bow_tie",
+      "category": "safety_infection_control",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 88,
+      "readiness": "premium-ready",
+      "rationaleWords": 191,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Safety Infection Control",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1897-n024",
+      "type": "mcq",
+      "category": "neutropenic_precautions",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 295,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection",
+        "neutropenia",
+        "isolation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Neutropenic Precautions",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-13-opioid-respiratory-depression-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 280,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1555-n011",
+      "type": "decision_map_mcq",
+      "category": "incident_report_medication_error_chain",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 334,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose",
+        "insulin"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Incident Report Medication Error Chain",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "href": "https://medlineplus.gov/insulin.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1387-n024",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 259,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Spore Precautions",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-38-ruptured-ectopic-06",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 57,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 276,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1181-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 357,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-50-refeeding-syndrome-risk-02",
+      "type": "case_study",
+      "category": "psychosocial",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 243,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "insulin"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Psychosocial",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Analyze Cues",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "href": "https://medlineplus.gov/insulin.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1286-n022",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 296,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "potassium",
+        "renal",
+        "edema",
+        "falls"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Kidney Injury Rifle Staging",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1432-n002",
+      "type": "scenario_mcq",
+      "category": "acute_psychosis_deescalation_safety",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 385,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Psychosis Deescalation Safety",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-bowtie-06-pe-stepdown",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 87,
+      "readiness": "premium-ready",
+      "rationaleWords": 195,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1220-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1149-n022",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 296,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "potassium",
+        "renal",
+        "edema",
+        "falls"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Kidney Injury Rifle Staging",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1391-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 335,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1456-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 357,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1545-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1647-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-14-tension-pneumothorax-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 294,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-01-stemi-hypoperfusion-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 287,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-14-tension-pneumothorax-04",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 272,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Generate Solutions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-50-refeeding-syndrome-risk-06",
+      "type": "case_study",
+      "category": "psychosocial",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 207,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "potassium"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Psychosocial",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1540-n010",
+      "type": "decision_map_mcq",
+      "category": "contrast_induced_nephropathy_prevention",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 325,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "renal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Contrast Induced Nephropathy Prevention",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb873-n004",
+      "type": "mcq",
+      "category": "wheezing_and_breathing_effort",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 317,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Wheezing And Breathing Effort",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1595-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-10-copd-hypercapnia-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 83,
+      "readiness": "official-style-pass",
+      "rationaleWords": 280,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-23-guillain-barre-ascending-01",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 57,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 296,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Recognize Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [
+        "vague rationale with weak clinical anchoring"
+      ],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-02-acute-pulmonary-edema-03",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 224,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "fluid"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Prioritize Hypotheses",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1332-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1147-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 315,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb981-n002",
+      "type": "ordering",
+      "category": "severe_hyponatremia_seizure",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 78,
+      "readiness": "official-style-pass",
+      "rationaleWords": 223,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "sodium",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Severe Hyponatremia Seizure",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1215-n001",
+      "type": "scenario_mcq",
+      "category": "warfarin_inr_management_reversal",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 282,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "anticoagulant"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Warfarin Inr Management Reversal",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Warfarin",
+          "href": "https://medlineplus.gov/druginfo/meds/a682277.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1678-n018",
+      "type": "sata",
+      "category": "newborn_hypoglycemia_jitteriness",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Newborn Hypoglycemia Jitteriness",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb085-n004",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 223,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "breathing",
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Respiratory Oxygenation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1768-n007",
+      "type": "scenario_mcq",
+      "category": "acute_psychosis_deescalation_safety",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 408,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Psychosis Deescalation Safety",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-bowtie-10-neutropenic-fever-ed",
+      "type": "bow_tie",
+      "category": "safety_infection_control",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 88,
+      "readiness": "premium-ready",
+      "rationaleWords": 191,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Safety Infection Control",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1008-n007",
+      "type": "matrix",
+      "category": "placental_abruption_pain",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 267,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "uterine",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Placental Abruption Pain",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb992-n004",
+      "type": "matrix",
+      "category": "neuroleptic_malignant_syndrome",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 313,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Neuroleptic Malignant Syndrome",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1719-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 351,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1644-n001",
+      "type": "scenario_mcq",
+      "category": "warfarin_inr_management_reversal",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 291,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "anticoagulant"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Warfarin Inr Management Reversal",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Warfarin",
+          "href": "https://medlineplus.gov/druginfo/meds/a682277.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1501-n022",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 277,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "potassium",
+        "renal",
+        "edema",
+        "falls"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Kidney Injury Rifle Staging",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1386-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 302,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-02-dka-urgent",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 91,
+      "readiness": "premium-ready",
+      "rationaleWords": 220,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "potassium",
+        "sodium",
+        "glucose",
+        "insulin",
+        "ketones",
+        "fluid"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "href": "https://medlineplus.gov/insulin.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1646-n022",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 289,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "potassium",
+        "renal",
+        "edema",
+        "falls"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Kidney Injury Rifle Staging",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1758-n017",
+      "type": "sata",
+      "category": "ectopic_pregnancy_rupture",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 302,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "shock",
+        "bleeding"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Ectopic Pregnancy Rupture",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1275-n020",
+      "type": "ordering",
+      "category": "fire_safety_race_pass_oxygen",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 238,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Fire Safety Race Pass Oxygen",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-31-siadh-seizure-risk-04",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 235,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sodium",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Generate Solutions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-24-delirium-uti-02",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 281,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "dehydration"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Analyze Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb878-n004",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 421,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "delegation",
+        "isolation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Infection Control",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-08-massive-pulmonary-embolism-01",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 266,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "oxygenation",
+        "embolism"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Recognize Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1093-n018",
+      "type": "sata",
+      "category": "newborn_hypoglycemia_jitteriness",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 247,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Newborn Hypoglycemia Jitteriness",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1354-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-47-lithium-toxicity-05",
+      "type": "case_study",
+      "category": "psychosocial",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 294,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Psychosocial",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1206-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 356,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-08-eclampsia-urgent",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 90,
+      "readiness": "premium-ready",
+      "rationaleWords": 280,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "renal",
+        "seizure",
+        "fetal",
+        "magnesium"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a601072.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1123-n004",
+      "type": "scenario_mcq",
+      "category": "breastfeeding_latch_assessment_intervention",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 333,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "oxygenation",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Breastfeeding Latch Assessment Intervention",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-03-mi-urgent",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 87,
+      "readiness": "premium-ready",
+      "rationaleWords": 252,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "ischemia"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1240-n002",
+      "type": "scenario_mcq",
+      "category": "acute_psychosis_deescalation_safety",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 408,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Acute Psychosis Deescalation Safety",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb875-n001",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 485,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose",
+        "infection",
+        "edema"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pharmacology Corticosteroid Teaching",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-10-neutropenic-fever-urgent",
+      "type": "bow_tie",
+      "category": "safety_infection_control",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 88,
+      "readiness": "premium-ready",
+      "rationaleWords": 191,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "sepsis",
+        "infection",
+        "fever"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Safety Infection Control",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1374-n019",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 351,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1506-n017",
+      "type": "sata",
+      "category": "severe_hyponatremia_seizure",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 263,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "sodium",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Severe Hyponatremia Seizure",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-07-sickle-crisis-stepdown",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 78,
+      "readiness": "official-style-pass",
+      "rationaleWords": 249,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-05-cardiac-tamponade-post-procedure-03",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 217,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "shock",
+        "fluid"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Prioritize Hypotheses",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-01-sepsis-urgent",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 196,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "shock",
+        "sepsis",
+        "lactate"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1528-n009",
+      "type": "decision_map_mcq",
+      "category": "adolescent_depression_screening_phq",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 59,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 397,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Adolescent Depression Screening Phq",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 0,
+      "ambiguityFlags": [],
+      "gaps": [
+        "strengthen why-each-wrong teaching",
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-36-placental-abruption-05",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 264,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-bowtie-01-sepsis-ed",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 196,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "shock",
+        "sepsis",
+        "lactate"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-bowtie-05-opioid-overdose-stepdown",
+      "type": "bow_tie",
+      "category": "pharmacological",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 89,
+      "readiness": "premium-ready",
+      "rationaleWords": 260,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "oxygenation",
+        "opioid",
+        "naloxone",
+        "sedation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Pharmacological",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Naloxone",
+          "href": "https://medlineplus.gov/druginfo/meds/a612022.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 18,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1747-n008",
+      "type": "scenario_mcq",
+      "category": "advance_directive_conflict_family",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 329,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Advance Directive Conflict Family",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-06-hypertensive-emergency-neuro-02",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 237,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Analyze Cues",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1938-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 315,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb992-n008",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 349,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "circulation",
+        "perfusion",
+        "hypoxia",
+        "fetal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Cord Prolapse Positioning",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb217-n002",
+      "type": "mcq",
+      "category": "endocrine_metabolic",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 263,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose",
+        "insulin",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Endocrine Metabolic",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "href": "https://medlineplus.gov/insulin.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1906-n014",
+      "type": "decision_map_mcq",
+      "category": "incident_report_medication_error_chain",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 358,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "glucose",
+        "insulin"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Incident Report Medication Error Chain",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "href": "https://medlineplus.gov/insulin.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1201-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "p1-cjmm-33-severe-preeclampsia-05",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 94,
+      "readiness": "premium-ready",
+      "rationaleWords": 241,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "seizure",
+        "magnesium"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+          "href": "https://medlineplus.gov/druginfo/meds/a601072.html",
+          "source": "Medication safety",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1716-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 331,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1214-n017",
+      "type": "sata",
+      "category": "severe_hyponatremia_seizure",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 95,
+      "readiness": "premium-ready",
+      "rationaleWords": 258,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "electrolyte",
+        "sodium",
+        "seizure"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Severe Hyponatremia Seizure",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1200-n010",
+      "type": "decision_map_mcq",
+      "category": "contrast_induced_nephropathy_prevention",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 344,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "renal"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Contrast Induced Nephropathy Prevention",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1078-n021",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 77,
+      "readiness": "official-style-pass",
+      "rationaleWords": 232,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "infection",
+        "sterile"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Central Line Insertion Clabsi Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-06-hypertensive-emergency-neuro-04",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 285,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Generate Solutions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb838-n006",
+      "type": "mcq",
+      "category": "rising_work_of_breathing",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 307,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "infection"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Rising Work Of Breathing",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1686-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1069-n023",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 362,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "oxygenation",
+        "delegation"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Delegation Postop Floor Rn To Uap",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 2,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "mb1613-n020",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 67,
+      "readiness": "needs-p1.6",
+      "rationaleWords": 227,
+      "paragraphs": 3,
+      "clinicalHits": [],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "C Diff Transmission Prevention Bundle",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": [
+        "name mechanism more explicitly"
+      ]
+    },
+    {
+      "id": "mb1002-n001",
+      "type": "ordering",
+      "category": "postpartum_hemorrhage_boggy_fundus",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 78,
+      "readiness": "official-style-pass",
+      "rationaleWords": 210,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "bleeding",
+        "hemorrhage",
+        "postpartum"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Postpartum Hemorrhage Boggy Fundus",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Clinical judgment item format",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 0,
+      "distractorCoverage": 8,
+      "ambiguityFlags": [],
+      "gaps": []
+    }
+  ]
+}

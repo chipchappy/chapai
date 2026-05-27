@@ -319,19 +319,25 @@ export default function PracticeTerminalPane({
   const answeredCount = questionStatuses.filter((item) => item.answered).length;
   const currentFlagged = questionStatuses.find((item) => item.id === question.id)?.flagged ?? false;
   const rationaleText = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
+  const structuredRationale = answerRecord?.structuredRationale ?? question.structuredRationale;
   const distractorRationales = getDisplayableDistractorRationales(
     question,
     answerRecord?.distractorRationales ?? question.distractorRationales,
   );
+  const whyWrongRationales = Object.keys(structuredRationale?.whyWrong ?? {}).length
+    ? structuredRationale?.whyWrong ?? {}
+    : distractorRationales;
   const promptSupport = [question.takeaway, question.speedCue].filter(Boolean) as string[];
   const coachingFrame = answerRecord?.coachingFrame ?? question.coachingFrame ?? [];
   const references = answerRecord?.references ?? question.references ?? [];
+  const structuredCitations = structuredRationale?.citations ?? [];
   const studyResources = answerRecord?.studyResources ?? question.studyResources ?? getStudyResourcesForQuestion(question);
   const diagramBlueprint = answerRecord?.diagramBlueprint ?? question.diagramBlueprint;
   const visualRationale = answerRecord?.visualRationale ?? question.visualRationale;
   const sourceSignals = [
     diagramBlueprint ? "diagram ready" : null,
     references.length ? `${references.length} source${references.length === 1 ? "" : "s"}` : null,
+    structuredCitations.length ? `${structuredCitations.length} citation${structuredCitations.length === 1 ? "" : "s"}` : null,
     studyResources.length ? `${studyResources.length} study link${studyResources.length === 1 ? "" : "s"}` : null,
   ]
     .filter(Boolean)
@@ -352,6 +358,7 @@ export default function PracticeTerminalPane({
     question.chartReview?.labs?.length ? `${question.chartReview.labs.length} labs` : question.labs?.length ? `${question.labs.length} labs` : null,
     question.chartReview?.diagnostics?.length ? `${question.chartReview.diagnostics.length} diagnostics` : null,
     references.length ? `${references.length} references` : null,
+    structuredCitations.length ? `${structuredCitations.length} citations` : null,
     studyResources.length ? `${studyResources.length} free study links` : null,
     diagramBlueprint ? "diagram ready" : null,
   ]
@@ -1479,15 +1486,36 @@ export default function PracticeTerminalPane({
                   {/* Expanded section — distractor review, coaching, diagram */}
                   {rationaleExpanded ? (
                     <div className="quiz-rationale-expanded-body">
-                      {Object.keys(distractorRationales).length ? (
+                      {structuredRationale ? (
+                        <div className="quiz-rail-card">
+                          <p className="quiz-terminal-kicker">structured rationale</p>
+                          <div className="mt-3 grid gap-3">
+                            <div className="quiz-rail-row flex-col items-start gap-1">
+                              <strong>Overview</strong>
+                              <span>{structuredRationale.overview}</span>
+                            </div>
+                            <div className="quiz-rail-row flex-col items-start gap-1">
+                              <strong>Clinical mechanism</strong>
+                              <span>{structuredRationale.mechanism}</span>
+                            </div>
+                            <div className="quiz-rail-row flex-col items-start gap-1">
+                              <strong>Why the correct answer works</strong>
+                              <span>{structuredRationale.whyCorrect}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+                      {Object.keys(whyWrongRationales).length ? (
                         <div className="quiz-rail-card quiz-monitor-rationale-card">
-                          <p className="quiz-terminal-kicker">distractor review</p>
+                          <p className="quiz-terminal-kicker">why each wrong</p>
                           <div className="mt-3 grid gap-2">
-                            {Object.entries(distractorRationales).map(([label, explanation]) => (
-                              <div key={label} className="quiz-rail-row">
-                                <strong>{label.toUpperCase()}</strong>
+                            {Object.entries(whyWrongRationales).map(([label, explanation]) => (
+                              <details key={label} className="quiz-rail-row flex-col items-start gap-2">
+                                <summary className="cursor-pointer font-semibold text-[var(--quiz-ink-strong)]">
+                                  Option {label.toUpperCase()}
+                                </summary>
                                 <span>{explanation}</span>
-                              </div>
+                              </details>
                             ))}
                           </div>
                         </div>
@@ -1588,6 +1616,34 @@ export default function PracticeTerminalPane({
                       })}
                     </div>
                   ) : null}
+                  {structuredCitations.length ? (
+                    <div className="quiz-rationale-sources-bar">
+                      <span className="quiz-rationale-sources-bar-label">citations</span>
+                      {structuredCitations.slice(0, 4).map((citation, index) => {
+                        const label = [citation.source, citation.chapter].filter(Boolean).join(" - ");
+                        return citation.href ? (
+                          <a
+                            key={`${citation.source}-${index}`}
+                            className="quiz-rationale-source-chip"
+                            href={citation.href}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            title={citation.note ?? label}
+                          >
+                            {label}
+                          </a>
+                        ) : (
+                          <span
+                            key={`${citation.source}-${index}`}
+                            className="quiz-rationale-source-chip"
+                            title={citation.note ?? label}
+                          >
+                            {label}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  ) : null}
                 </>
               ) : (
                 <div className="quiz-rail-card quiz-monitor-source-card">
@@ -1652,6 +1708,25 @@ export default function PracticeTerminalPane({
                         {reference.href ? (
                           <a href={reference.href} target="_blank" rel="noreferrer" className="text-xs text-[rgba(90,127,136,0.9)] underline underline-offset-2">
                             open source ↗
+                          </a>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+              {structuredCitations.length ? (
+                <div className="quiz-rail-card">
+                  <p className="quiz-terminal-kicker">citations</p>
+                  <div className="mt-3 grid gap-3">
+                    {structuredCitations.map((citation, index) => (
+                      <div key={`${citation.source}-${index}`} className="quiz-rail-row flex-col items-start gap-1">
+                        <strong className="text-[var(--quiz-ink-strong)]">{citation.source}</strong>
+                        {citation.chapter ? <span className="text-xs text-[var(--quiz-muted)]">{citation.chapter}</span> : null}
+                        {citation.note ? <span className="text-xs leading-5 text-[var(--quiz-muted)]">{citation.note}</span> : null}
+                        {citation.href ? (
+                          <a href={citation.href} target="_blank" rel="noreferrer noopener" className="text-xs text-[rgba(90,127,136,0.9)] underline underline-offset-2">
+                            open citation
                           </a>
                         ) : null}
                       </div>
