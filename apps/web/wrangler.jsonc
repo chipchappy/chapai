@@ -23,14 +23,23 @@
     }
   ],
   "vars": {
-    "NEXTAUTH_URL": "https://chapaisolutions.com",
-    "NEXT_PUBLIC_APP_URL": "https://chapaisolutions.com",
+    "NEXTAUTH_URL": "https://claritynclex.com",
+    "NEXT_PUBLIC_APP_URL": "https://claritynclex.com",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://gciwxmfbradcebxnthos.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjaXd4bWZicmFkY2VieG50aG9zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1ODM0NTcsImV4cCI6MjA5MTE1OTQ1N30.EEZiJFxt-cG-xzU7ej0-q9kT0WfFk7iogGBvILD84EY",
     "APP_ENV": "production",
     "DEMO_MODE": "false",
-    "OPENROUTER_MODEL": "openrouter/auto"
+    "NEXT_PUBLIC_GA_MEASUREMENT_ID": "G-NT7C6FL4J1",
+    "OPENROUTER_MODEL": "openrouter/auto",
+    "STRIPE_PRICE_TRIAL_7DAY": "price_1TIWiWANUEeCGFKSm1MZaiSh",
+    "STRIPE_PRICE_PLUS_MONTHLY": "price_1TIWiXANUEeCGFKSshU1NHDz",
+    "STRIPE_PRICE_PRO_MONTHLY": "price_1TIWiYANUEeCGFKS8dudVUuj"
   },
   "routes": [
-    { "pattern": "chapaisolutions.com/*", "custom_domain": true },
-    { "pattern": "www.chapaisolutions.com/*", "custom_domain": true }
+    { "pattern": "claritynclex.com", "custom_domain": true },
+    { "pattern": "www.claritynclex.com", "custom_domain": true },
+    { "pattern": "clarityccrn.chapaisolutions.com", "custom_domain": true },
+    { "pattern": "clarityhome.chapaisolutions.com", "custom_domain": true },
+    { "pattern": "claritynclex.chapaisolutions.com", "custom_domain": true }
   ]
 }
