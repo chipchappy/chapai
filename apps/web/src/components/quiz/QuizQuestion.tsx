@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 
 function getCategoryReferences(category: string | undefined): string[] {
   const cat = (category ?? '').toLowerCase();
@@ -162,6 +163,7 @@ export default function QuizQuestion({
   const [submitting, setSubmitting] = useState(false);
   const [showRationale, setShowRationale] = useState(false);
   const startTime = useRef(Date.now());
+  const displayRationales = getDisplayableDistractorRationales(question, result?.distractorRationales);
 
   useEffect(() => {
     setSelected(null);
@@ -388,7 +390,7 @@ export default function QuizQuestion({
           )}
 
           {/* ── Distractor rationales ─────────────────────────── */}
-          {result.distractorRationales && Object.keys(result.distractorRationales).length > 0 && (
+          {Object.keys(displayRationales).length > 0 && (
             <div className="mt-4 space-y-2">
               <p
                 className="font-mono text-[9px] font-bold uppercase tracking-[0.22em]"
@@ -399,7 +401,7 @@ export default function QuizQuestion({
               {question.options
                 .filter(opt => opt.id !== (question.correctOptionId ?? result.correctAnswer))
                 .map(opt => {
-                  const explanation = (result.distractorRationales as Record<string, string>)[opt.id];
+                  const explanation = displayRationales[opt.id];
                   if (!explanation) return null;
                   return (
                     <div
