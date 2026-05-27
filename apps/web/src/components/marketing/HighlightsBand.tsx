@@ -18,17 +18,17 @@ interface HighlightsBandProps {
 }
 
 const SUBJECTS: Subject[] = [
-  { name: "Cardiac", hint: "ACS, HF, dysrhythmias" },
-  { name: "Respiratory", hint: "COPD, ARDS, PE" },
-  { name: "Endocrine", hint: "DKA, thyroid, adrenal" },
-  { name: "Neuro", hint: "Stroke, ICP, seizure" },
-  { name: "Maternity & OB", hint: "Prenatal, intrapartum, postpartum" },
-  { name: "Pediatrics", hint: "Growth, immunizations, emergencies" },
-  { name: "Mental health", hint: "Crisis, psychotropics, therapeutic comm." },
+  { name: "Cardiac", hint: "ACS · HF · dysrhythmias" },
+  { name: "Respiratory", hint: "COPD · ARDS · PE" },
+  { name: "Endocrine", hint: "DKA · thyroid · adrenal" },
+  { name: "Neuro", hint: "Stroke · ICP · seizure" },
+  { name: "Maternity & OB", hint: "Prenatal · intrapartum · postpartum" },
+  { name: "Pediatrics", hint: "Growth · immunizations · emergencies" },
+  { name: "Mental health", hint: "Crisis · psychotropics · communication" },
   { name: "Pharmacology", hint: "200+ drug cards with priority labs" },
-  { name: "Lab values", hint: "ABG, electrolytes, drug levels" },
-  { name: "Prioritization", hint: "ABC, Maslow, delegation" },
-  { name: "Safety", hint: "Infection control, restraints, falls" },
+  { name: "Lab values", hint: "ABG · electrolytes · drug levels" },
+  { name: "Prioritization", hint: "ABC · Maslow · delegation" },
+  { name: "Safety", hint: "Infection control · restraints · falls" },
   { name: "Management of care", hint: "Largest test category" },
 ];
 
@@ -40,12 +40,11 @@ export default function HighlightsBand({
   drugCards = 200,
 }: HighlightsBandProps) {
   const stats: Stat[] = [
-    { value: questionCount.toLocaleString(), label: "Refined NCLEX items", hint: "Each rewritten with unique distractor reasoning" },
+    { value: questionCount.toLocaleString(), label: "Refined NCLEX items", hint: "Unique distractor reasoning on every one" },
     { value: `${ngnRatio || 25}%`, label: "Real NGN mix", hint: "Case studies, bow-tie, matrix, SATA" },
     { value: `${caseStudies}+`, label: "Multi-step case studies", hint: "CJMM 6-step unfolding format" },
     { value: `${readinessExams}`, label: "Timed readiness exams", hint: "Simulate the live CAT" },
-    { value: `${drugCards}+`, label: "Pharmacology tables", hint: "Class, MOA, priority labs, antidotes" },
-    { value: "AI", label: "Tutor on every question", hint: "Plain-English explanation in seconds" },
+    { value: `${drugCards}+`, label: "Pharmacology tables", hint: "Class · MOA · priority labs · antidotes" },
   ];
 
   return (
