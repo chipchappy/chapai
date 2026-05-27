@@ -104,6 +104,13 @@ export const CLINICAL_NOUN_WHITELIST = Object.freeze([
   "neonate",
   "toxicity",
   "dose",
+  "medication",
+  "contraindication",
+  "corticosteroid",
+  "steroid",
+  "prednisone",
+  "adrenal",
+  "cortisol",
   "digoxin",
   "lithium",
   "opioid",
@@ -123,6 +130,7 @@ export const CLINICAL_NOUN_WHITELIST = Object.freeze([
   "nutrition",
   "delegation",
   "assessment",
+  "education",
   "teaching",
   "priority",
   "safety",
@@ -768,13 +776,13 @@ function inferRiskLabel(question) {
   if (/(airway|oxygen|spo2|dyspnea|respir|ventilat|breath)/.test(blob)) return "oxygenation or ventilation";
   if (/(bleed|heparin|warfarin|inr|aptt|platelet|hemorrhage)/.test(blob)) return "bleeding or anticoagulation injury";
   if (/(glucose|insulin|hypogly|hypergly|dka|diabet)/.test(blob)) return "unstable glucose physiology";
+  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium|serotonin|nms|neuroleptic malignant)/.test(blob)) return "medication toxicity";
   if (/(sepsis|infection|fever|neutropenic|wound|sterile|isolation)/.test(blob)) return "infection progression";
-  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) return "renal injury";
   if (/(stroke|seizure|neuro|icp|confusion|delirium)/.test(blob)) return "neurologic deterioration";
   if (/(cardiac|chest|\bmi\b|myocardial|infarct|arrhythm|dysrhythm|perfusion|shock|pressure|dvt|embol|thrombus|clot)/.test(blob)) return "circulation or perfusion";
+  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) return "renal injury";
   if (/(newborn|pediatric|child|infant)/.test(blob)) return "pediatric or newborn instability";
   if (/(preeclampsia|eclampsia|fetal|uterine|postpartum|pregnan)/.test(blob)) return "maternal-fetal safety";
-  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium)/.test(blob)) return "medication toxicity";
   return "clinical safety risk";
 }
 
@@ -907,15 +915,16 @@ function inferActionDomain(question) {
     getCorrectAnswerText(question),
   ].join(" "));
 
+  if (isTeachingStem(question)) return "patient teaching and medication-safety reinforcement";
   if (/(airway|oxygen|spo2|dyspnea|respir|ventilat|breath)/.test(blob)) return "airway and breathing intervention";
   if (/(bleed|heparin|warfarin|inr|aptt|platelet|hemorrhage)/.test(blob)) return "bleeding-risk intervention";
   if (/(glucose|insulin|hypogly|hypergly|dka|diabet)/.test(blob)) return "glucose rescue or metabolic stabilization";
+  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium|serotonin|nms|neuroleptic malignant)/.test(blob)) return "medication-safety intervention";
   if (/(sepsis|infection|fever|neutropenic|wound|sterile|isolation)/.test(blob)) return "infection or sepsis escalation";
-  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) return "renal protection";
   if (/(stroke|seizure|neuro|icp|confusion|delirium)/.test(blob)) return "neurologic safety assessment";
   if (/(cardiac|chest|\bmi\b|myocardial|infarct|arrhythm|dysrhythm|perfusion|shock|pressure|dvt|embol|thrombus|clot)/.test(blob)) return "circulation and perfusion support";
+  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) return "renal protection";
   if (/(preeclampsia|eclampsia|fetal|uterine|postpartum|pregnan)/.test(blob)) return "maternal-fetal stabilization";
-  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium)/.test(blob)) return "medication-safety intervention";
   return "bedside safety action";
 }
 
@@ -945,6 +954,9 @@ function inferDomainDetail(question) {
     getCorrectAnswerText(question),
   ].join(" "));
 
+  if (isTeachingStem(question)) {
+    return "Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.";
+  }
   if (/(airway|oxygen|spo2|dyspnea|respir|ventilat|breath)/.test(blob)) {
     return "Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.";
   }
@@ -954,11 +966,11 @@ function inferDomainDetail(question) {
   if (/(glucose|insulin|hypogly|hypergly|dka|diabet)/.test(blob)) {
     return "Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.";
   }
+  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium|metformin|contrast|serotonin|nms|neuroleptic malignant)/.test(blob)) {
+    return "Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.";
+  }
   if (/(sepsis|infection|fever|neutropenic|wound|sterile|isolation|mening)/.test(blob)) {
     return "Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.";
-  }
-  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) {
-    return "Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.";
   }
   if (/(stroke|seizure|neuro|icp|confusion|delirium|glasgow|pupil)/.test(blob)) {
     return "Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.";
@@ -966,16 +978,132 @@ function inferDomainDetail(question) {
   if (/(cardiac|chest|\bmi\b|myocardial|infarct|arrhythm|dysrhythm|perfusion|shock|pressure|dvt|embol|thrombus|clot)/.test(blob)) {
     return "Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.";
   }
+  if (/(renal|kidney|creatinine|contrast|dialysis|urine)/.test(blob)) {
+    return "Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.";
+  }
   if (/(preeclampsia|eclampsia|fetal|uterine|postpartum|pregnan|placenta|cord)/.test(blob)) {
     return "Maternal-fetal risk requires immediate safety measures because fetal oxygenation and maternal perfusion can deteriorate quickly.";
-  }
-  if (/(opioid|toxicity|dose|drug|medication|pharm|digoxin|lithium|metformin|contrast)/.test(blob)) {
-    return "Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.";
   }
   return "Nursing safety depends on matching the response to the active clinical risk before routine care.";
 }
 
-function buildLocalRationale(question, optionId) {
+function isTeachingStem(question) {
+  return /\b(teaching|teach|instruction|educat|statement|understand|discharge)\b/i.test(String(question.stem ?? ""));
+}
+
+function isTeachingDeficitStem(question) {
+  const stem = normalizeText(question.stem);
+  return (
+    /\b(additional|further|more|reinforce|clarify|correct)\b.*\b(teaching|instruction|education)\b/.test(stem)
+    || /\b(teaching|instruction|education)\b.*\b(needed|required|reinforced|clarified|corrected)\b/.test(stem)
+    || /\b(needs|requires|indicates)\b.*\b(teaching|instruction|education|correction)\b/.test(stem)
+    || /\b(lack|misunderstanding|does not understand|poor understanding|incorrect understanding)\b/.test(stem)
+  );
+}
+
+function isUnsafeSelectionStem(question) {
+  const stem = normalizeText(question.stem);
+  return (
+    /\b(question|clarify|hold|avoid|contraindicat|inappropriate|unsafe|incorrect|least appropriate|not appropriate|not recommended)\b/.test(stem)
+    || /\bshould the nurse intervene\b/.test(stem)
+  );
+}
+
+function isFollowUpSelectionStem(question) {
+  const stem = normalizeText(question.stem);
+  return /\b(require|requires|requiring|need|needs|needing|warrant|warrants)\b.*\b(follow up|follow-up|intervention|action|report|notify|concern|assessment)\b/.test(stem);
+}
+
+function getQuestionFrame(question) {
+  if (isTeachingDeficitStem(question)) return "teaching-deficit";
+  if (isUnsafeSelectionStem(question)) return "unsafe-selection";
+  if (isFollowUpSelectionStem(question)) return "follow-up-selection";
+  return "standard";
+}
+
+function splitEvidenceSentences(value) {
+  return String(value ?? "")
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.?!])\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function extractOptionEvidence(question, optionId) {
+  const letter = String(optionId ?? "").trim().toUpperCase();
+  if (!letter) return null;
+
+  const sentences = splitEvidenceSentences(question.rationale);
+  const optionPattern = new RegExp(`(?:\\b(?:statement|option|choice|answer)\\s+${letter}\\b|^${letter}[).:]\\s+)`, "i");
+  const statusPattern = /\b(correct|appropriate|accurate|right|incorrect|inappropriate|wrong|unsafe)\b/i;
+
+  for (let index = 0; index < sentences.length; index += 1) {
+    const sentence = sentences[index];
+    if (!optionPattern.test(sentence)) {
+      continue;
+    }
+
+    const statusMatch = sentence.match(statusPattern);
+    let detail = sentence
+      .replace(new RegExp(`\\b(?:statement|option|choice|answer)\\s+${letter}\\b`, "i"), "")
+      .replace(new RegExp(`^${letter}[).:]\\s*`, "i"), "")
+      .replace(/^\s*(?:is|are|was|were)?\s*(?:correct|appropriate|accurate|right|incorrect|inappropriate|wrong|unsafe)?\s*[-:–—]?\s*/i, "")
+      .replace(/[–—]/g, "-")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (detail.length < 16 && sentences[index + 1]) {
+      detail = `${detail} ${sentences[index + 1].replace(/[–—]/g, "-")}`.trim();
+    }
+
+    return {
+      status: statusMatch ? normalizeText(statusMatch[1]) : null,
+      detail,
+    };
+  }
+
+  return null;
+}
+
+function sentenceCase(value) {
+  const text = String(value ?? "").trim();
+  return text ? `${text.charAt(0).toUpperCase()}${text.slice(1)}` : text;
+}
+
+function finishSentence(value, fallback) {
+  const text = cleanFragment(value, fallback, 24);
+  return `${sentenceCase(text).replace(/[.?!]+$/g, "")}.`;
+}
+
+function buildTeachingDeficitRationale(question, optionId, context) {
+  const evidence = extractOptionEvidence(question, optionId);
+  const evidenceSentence = finishSentence(
+    evidence?.detail,
+    `${context.optionSummary} supports the teaching plan and medication safety`,
+  );
+
+  return `"${context.optionSummary}" is accurate teaching, so it would not show the misunderstanding asked for in the stem. ${evidenceSentence}`;
+}
+
+function buildUnsafeSelectionRationale(question, optionId, context) {
+  const evidence = extractOptionEvidence(question, optionId);
+  const evidenceSentence = evidence?.detail
+    ? finishSentence(evidence.detail, `${context.optionSummary} is consistent with the expected safety plan`)
+    : `The concern remains "${context.correctSummary}", which better fits the medication or safety problem in the stem.`;
+
+  return `"${context.optionSummary}" is a reasonable action or expected finding in this context, so it is not the option to question. ${evidenceSentence}`;
+}
+
+function buildFollowUpSelectionRationale(question, optionId, context) {
+  const evidence = extractOptionEvidence(question, optionId);
+  const evidenceSentence = evidence?.detail
+    ? finishSentence(evidence.detail, `${context.optionSummary} is lower acuity in this clinical context`)
+    : `The keyed answer better signals ${context.risk} and needs ${context.actionDomain}.`;
+
+  return `"${context.optionSummary}" is lower acuity or expected in this context, so it is not the finding requiring follow-up. ${evidenceSentence}`;
+}
+
+export function buildLocalRationale(question, optionId) {
   const optionText = getOptionText(question, optionId) ?? `option ${optionId}`;
   const correctText = getCorrectAnswerText(question);
   const seed = `${question.id}:${optionId}:${question.category}:${optionText}`;
@@ -986,13 +1114,31 @@ function buildLocalRationale(question, optionId) {
   const optionSummary = cleanFragment(optionText, `option ${optionId}`, 18);
   const correctSummary = cleanFragment(correctText, "the keyed nursing action", 16);
   const domainDetail = inferDomainDetail(question);
+  const context = {
+    cue,
+    risk,
+    actionDomain,
+    optionSummary,
+    correctSummary,
+  };
+
+  const frame = getQuestionFrame(question);
+  if (frame === "teaching-deficit") {
+    return buildTeachingDeficitRationale(question, optionId, context);
+  }
+  if (frame === "unsafe-selection") {
+    return buildUnsafeSelectionRationale(question, optionId, context);
+  }
+  if (frame === "follow-up-selection") {
+    return buildFollowUpSelectionRationale(question, optionId, context);
+  }
 
   return pickVariant(seed, [
     `"${optionSummary}" ${distractorError.clause}. The cue "${cue}" raises concern for ${risk}, so ${actionDomain} is needed before ${distractorError.secondary}.`,
     `This distractor shifts care toward ${distractorError.noun} instead of ${actionDomain}. The stem cue "${cue}" makes ${risk} the active safety concern.`,
-    `"${optionSummary}" misses the bedside risk because ${lowerFirst(cue)} points to ${risk}. ${domainDetail}`,
-    `The option can leave ${risk} untreated because it ${distractorError.clause}. "${correctSummary}" fits the safer response to ${lowerFirst(cue)}.`,
-    `Because ${lowerFirst(cue)} suggests ${risk}, "${optionSummary}" would not correct the active problem. ${domainDetail}`,
+    `"${optionSummary}" misses the bedside risk. The cue "${cue}" points to ${risk}. ${domainDetail}`,
+    `The option can leave ${risk} untreated because it ${distractorError.clause}. "${correctSummary}" fits the safer response to the cue "${cue}".`,
+    `The cue "${cue}" suggests ${risk}, so "${optionSummary}" would not correct the active problem. ${domainDetail}`,
     `The safer response addresses ${risk}; "${optionSummary}" moves care toward ${distractorError.secondary} before ${actionDomain}.`,
   ], "rationale");
 }
