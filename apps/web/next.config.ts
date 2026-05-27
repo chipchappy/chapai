@@ -38,7 +38,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path((?:api|account|auth|dashboard|demo-access|guild-access|heartbeats|ops|quiz|success).*)",
+        source: "/:path((?:api|account|auth|dashboard|demo-access|guild-access|heartbeats|ops|quiz|study|success).*)",
         headers: [
           {
             key: "Cache-Control",

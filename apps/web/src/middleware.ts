@@ -15,6 +15,11 @@ const LEGACY_HOSTS_TO_REDIRECT = new Set([
   "claritynclex.chapaisolutions.com",
 ]);
 
+function hasAuthCookie(request: NextRequest) {
+  return request.cookies.has("chapai_session")
+    || request.cookies.getAll().some((cookie) => /^sb-[a-z0-9]+-auth-token$/i.test(cookie.name));
+}
+
 function applySecurityHeaders(response: NextResponse) {
   response.headers.set("Strict-Transport-Security", "max-age=31536000");
   response.headers.set("X-Content-Type-Options", "nosniff");
@@ -65,6 +70,14 @@ export function middleware(request: NextRequest) {
   if (host === "clarityccrn.chapaisolutions.com" && request.nextUrl.pathname === "/") {
     const url = request.nextUrl.clone();
     url.pathname = "/ccrn";
+    return applySecurityHeaders(NextResponse.redirect(url));
+  }
+
+  if (request.nextUrl.pathname === "/study" && !hasAuthCookie(request)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/login";
+    url.search = "";
+    url.searchParams.set("next", "/study");
     return applySecurityHeaders(NextResponse.redirect(url));
   }
 
