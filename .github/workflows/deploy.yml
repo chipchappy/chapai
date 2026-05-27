@@ -20,7 +20,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Guard canonical brain writes
         working-directory: ${{ github.workspace }}
@@ -28,6 +28,26 @@ jobs:
 
       - name: Build
         run: npm run build:worker
+        env:
+          NEXT_PUBLIC_APP_URL: https://claritynclex.com
+          NEXT_PUBLIC_SUPABASE_URL: https://gciwxmfbradcebxnthos.supabase.co
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: G-NT7C6FL4J1
+          NEXTAUTH_URL: https://claritynclex.com
+          APP_ENV: production
+          NODE_OPTIONS: --max-old-space-size=6144
+
+      - name: Upload build logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-debug-${{ github.sha }}
+          path: |
+            apps/web/.next/trace
+            apps/web/.next/build-error.log
+            apps/web/npm-debug.log
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Set OPENROUTER_API_KEY → staging
         if: github.ref == 'refs/heads/dev'

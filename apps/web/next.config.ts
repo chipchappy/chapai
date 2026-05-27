@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path((?:home|nclex|ccrn|pricing|upgrade|compare/.*|privacy|terms|free/.*|tools/.*|nclex-glossary|nclex-lab-values|nclex-requirements/.*|faq).*)",
+        source: "/:path(home|nclex|ccrn|pricing|upgrade|privacy|terms|faq|nclex-glossary|nclex-lab-values)",
         headers: [
           {
             key: "Cache-Control",
@@ -38,7 +38,23 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path((?:api|account|auth|dashboard|demo-access|guild-access|heartbeats|ops|quiz|success).*)",
+        source: "/free/:slug*",
+        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=86400" }],
+      },
+      {
+        source: "/tools/:slug*",
+        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=86400" }],
+      },
+      {
+        source: "/nclex-requirements/:slug*",
+        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=86400" }],
+      },
+      {
+        source: "/compare/:slug*",
+        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=86400" }],
+      },
+      {
+        source: "/:path(api|account|auth|dashboard|demo-access|guild-access|heartbeats|ops|quiz|success)/:rest*",
         headers: [
           {
             key: "Cache-Control",
