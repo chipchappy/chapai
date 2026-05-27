@@ -18,6 +18,8 @@
     "d1:sync:p1:staging": "node scripts/sync-d1-question-bank.mjs --database=chapai-staging --remote --config=wrangler.staging.jsonc --only-p1",
     "d1:sync:p1:prod": "node scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --config=wrangler.jsonc --only-p1",
     "d1:sync:p1.6:staging": "node scripts/sync-d1-question-bank.mjs --database=chapai-staging --remote --config=wrangler.staging.jsonc --input-dir=packages/content/staging/rationale-pilot",
+    "d1:sync:p1.6:staging:full": "node scripts/sync-d1-question-bank.mjs --database=chapai-staging --remote --config=wrangler.staging.jsonc --input-dir=packages/content/staging/promoted-v3",
+    "d1:sync:p1.6:prod:full": "node scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --config=wrangler.jsonc --input-dir=packages/content/staging/promoted-v3",
     "benchmark:rationales": "node --import tsx scripts/benchmark-premium-rationales.mjs",
     "pilot:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs",
     "backfill:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs --mode=full --out=packages/content/staging/promoted-v3",
