@@ -1,0 +1,545 @@
+{
+  "batchId": "mixed-batch-902",
+  "generatedAt": "2026-04-10T06:41:51-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb902-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A nurse is titrating norepinephrine for a patient in septic shock. Current MAP is 58 mmHg on norepinephrine 0.18 mcg/kg/min. Lactate is 5.4 mmol/L. The provider orders vasopressin 0.03 units/min added as a second vasopressor. The nurse understands the rationale for vasopressin addition is PRIMARILY to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace endogenous vasopressin that is depleted in prolonged septic shock"
+        },
+        {
+          "id": "b",
+          "text": "Improve cardiac output by increasing stroke volume"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the oxygen demand of the myocardium by lowering heart rate"
+        },
+        {
+          "id": "d",
+          "text": "Decrease SVR to improve tissue perfusion in high-output septic shock"
+        }
+      ],
+      "answer": "a",
+      "rationale": "In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the shock state. Exogenous vasopressin (0.03–0.04 units/min) is added as a fixed-dose adjunct — not titrated — to replace depleted stores and allow reduction ('sparing') of norepinephrine dose (to reduce NE-related adverse effects). Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate (C). It does NOT reduce SVR (D).",
+      "distractorRationales": {
+        "b": "\"Improve cardiac output by increasing stroke volume\" misses the bedside risk. The cue \"Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Fixed dose, not titrated\" makes medication toxicity the active safety concern.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect). Fixed dose, not titrated.",
+      "sourceStage": "draft",
+      "sourcePath": "data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient develops respiratory distress 12 hours after total thyroidectomy, with stridor, dysphagia, and progressive anterior neck swelling. SpO2 is 88% on 6 L/min nasal cannula. Which action is the NURSE'S IMMEDIATE PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer calcium gluconate IV and draw ionized calcium level"
+        },
+        {
+          "id": "b",
+          "text": "Open the surgical wound at the bedside to relieve hematoma compression"
+        },
+        {
+          "id": "c",
+          "text": "Increase oxygen to 15 L/min via non-rebreather and call rapid response"
+        },
+        {
+          "id": "d",
+          "text": "Position the patient in high Fowler's and prepare for emergent intubation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Post-thyroidectomy respiratory distress with anterior neck swelling indicates expanding hematoma compressing the trachea. This is an airway emergency. Bedside wound opening to evacuate the hematoma is the immediate intervention — wound opening kits should be at the bedside on all post-thyroidectomy patients for this reason. While this is being done, the team prepares for emergent surgical re-exploration. Calcium gluconate (A) treats hypocalcemia from hypoparathyroidism (tetany, perioral numbness, Trousseau's sign) — not the presenting emergency. NRB mask (C) won't overcome a mechanical airway obstruction.",
+      "distractorRationales": {
+        "a": "The safer response addresses oxygenation or ventilation; \"Administer calcium gluconate IV and draw ionized calcium level\" moves care toward routine care before airway and breathing intervention.",
+        "c": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Open the surgical wound at the bedside to relieve hematoma compression\" fits the safer response to the cue \"SpO2 is 88% on 6 L/min nasal cannula\".",
+        "d": "The cue \"A patient develops respiratory distress 12 hours after total thyroidectomy\" suggests oxygenation or ventilation, so \"Position the patient in high Fowler's and prepare for emergent intubation\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-thyroidectomy neck swelling + stridor = hematoma compressing airway → open the surgical wound immediately. Keep wound kit at bedside.",
+      "sourceStage": "draft",
+      "sourcePath": "data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A patient in the PACU states she was awake during her surgery — she recalls the surgeons' conversation, felt pressure on her abdomen but no pain, and could not move or signal anyone. She is trembling, tearful, and says 'It was the most terrifying experience of my life.' Which nursing response and plan of care is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassure her that awareness under anesthesia is medically impossible with modern monitoring, and that she was likely dreaming"
+        },
+        {
+          "id": "b",
+          "text": "Validate her experience fully, document her report accurately, notify the anesthesia provider and risk management per policy, provide immediate emotional support, and initiate referral for trauma-focused psychological counseling for potential PTSD"
+        },
+        {
+          "id": "c",
+          "text": "Document 'patient reports dream during anesthesia' and notify only the charge nurse"
+        },
+        {
+          "id": "d",
+          "text": "Administer a PRN anxiolytic and reassess her emotional state in 2 hours before taking further action"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Intraoperative awareness with recall (accidental awareness during general anesthesia — AAGA) affects approximately 1-2 per 1,000 general anesthetics. Patients may recall sounds, conversation, touch, pressure, or in severe cases pain and complete paralysis (most traumatizing — the patient is conscious but paralyzed and unable to alert the team). PTSD develops in up to 70% of awareness cases if not addressed. Nursing priorities: (1) BELIEVE the patient — dismissing her account (gaslighting) causes profound additional psychological harm, violates patient dignity, and creates significant legal liability; (2) Validate her distress and provide immediate compassionate support; (3) Document her exact words accurately and objectively; (4) Notify the anesthesia provider — awareness should trigger review of anesthetic depth monitoring (BIS), neuromuscular blockade management, and volatile agent delivery; (5) Notify risk management per institutional policy; (6) Refer promptly for trauma-focused therapy (EMDR or CBT for PTSD). Administering sedatives to suppress the patient's report is not appropriate.",
+      "distractorRationales": {
+        "a": "\"Reassure her that awareness under anesthesia is medically impossible with modern monitoring, and that she was likely dreaming\" relies on notification without the bedside safety step. The cue \"(2) Validate her distress and provide immediate compassionate support\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before waiting for a callback.",
+        "c": "\"Document 'patient reports dream during anesthesia' and notify only the charge nurse\" misses the bedside risk. The cue \"(5) Notify risk management per institutional policy\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "d": "The safer response addresses neurologic deterioration; \"Administer a PRN anxiolytic and reassess her emotional state in 2 hours before taking further action\" moves care toward routine observation before neurologic safety assessment."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intraoperative awareness: BELIEVE and VALIDATE the patient. Document accurately. Notify anesthesia + risk management. Refer for trauma/PTSD counseling. Dismissing the experience causes psychological harm. Affects ~1-2/1,000 GAs.",
+      "sourceStage": "draft",
+      "sourcePath": "data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_thyroid_storm",
+      "subcategory": "pharmacology_endocrine_thyroid_storm",
+      "difficulty": 3,
+      "stem": "A patient with untreated hyperthyroidism is admitted postoperatively with HR 148 bpm (AF), temperature 39.8°C, BP 158/92 mmHg, and extreme agitation. The nurse suspects thyroid storm. Which medication sequence reflects the CORRECT pharmacological management priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid"
+        },
+        {
+          "id": "b",
+          "text": "Methimazole first → then radioactive iodine → then atenolol"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol first → then PTU → then potassium iodide → then hydrocortisone"
+        },
+        {
+          "id": "d",
+          "text": "Potassium iodide first → then PTU → then propranolol"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Thyroid storm management follows a specific pharmacological sequence to block thyroid hormone synthesis and release: (1) PTU first — blocks new hormone synthesis AND peripheral T4-to-T3 conversion (this is why PTU is preferred over methimazole in storm). (2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect). Giving iodine before the antithyroid drug would paradoxically worsen hormone synthesis. (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). (4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency. Radioactive iodine is NOT used in thyroid storm — it is an elective outpatient treatment.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid\" fits the safer response to the cue \"(2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect)\".",
+        "c": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid\" fits the safer response to the cue \"Thyroid storm Rx sequence: PTU → (wait 1h) → Potassium iodide → Propranolol → Hydrocortisone\".",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid\" fits the safer response to the cue \"(2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect)\"."
+      },
+      "tags": [
+        "pharmacology_endocrine_thyroid_storm",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm Rx sequence: PTU → (wait 1h) → Potassium iodide → Propranolol → Hydrocortisone. KEY: PTU BEFORE iodine (blocking synthesis before blocking release). Never give iodine first — it can fuel more hormone synthesis if the gland isn't blocked.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "respiratory_oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to ≥ 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of airway and breathing intervention. The stem cue \"The SpO2 is 91%\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The cue \"work of breathing (accessory muscle use, nasal flaring)\" suggests oxygenation or ventilation, so \"Adventitious breath sounds increase bilaterally after the nebulizer\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "\"The patient's skin color remains unchanged and RR remains at 24/min\" answers a lower-acuity part of the scenario. The cue \"Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care."
+      },
+      "tags": [
+        "respiratory_oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "respiratory_oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "antipsychotic_medication_safety",
+      "difficulty": 3,
+      "stem": "A patient on clozapine for treatment-resistant schizophrenia develops fever 39.8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status, and autonomic instability (fluctuating BP, tachycardia). Which condition is this, and what is the immediate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents"
+        },
+        {
+          "id": "b",
+          "text": "Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; administer IV diphenhydramine 50 mg"
+        },
+        {
+          "id": "d",
+          "text": "Anticholinergic toxicity from clozapine; administer physostigmine"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neuroleptic malignant syndrome (NMS) is a life-threatening idiosyncratic reaction to antipsychotics characterized by the tetrad: hyperthermia, severe muscle rigidity, altered mental status, and autonomic instability. It develops over days-weeks. Immediate management: stop the antipsychotic, aggressive cooling, IV fluids, dantrolene (muscle relaxant) and/or bromocriptine (dopamine agonist). Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. Acute dystonia (C) does not include fever or autonomic instability.",
+      "distractorRationales": {
+        "a": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine\" fits the safer response to the cue \"8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status\".",
+        "c": "\"Acute dystonia; administer IV diphenhydramine 50 mg\" answers a lower-acuity part of the scenario. The cue \"NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability — stop antipsychotic immediately\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "d": "This distractor shifts care toward premature attribution instead of medication-safety intervention. The stem cue \"8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "antipsychotic_medication_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability — stop antipsychotic immediately; treat with dantrolene and/or bromocriptine.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "postpartum_hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "The safer response addresses bleeding or anticoagulation injury; \"IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider\" moves care toward waiting for a callback before bleeding-risk intervention.",
+        "c": "The option can leave bleeding or anticoagulation injury untreated because it relies on notification without the bedside safety step. \"Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement\" fits the safer response to the cue \"(4) Notify provider if no response\".",
+        "d": "\"Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent\" misses the bedside risk. The cue \"Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "postpartum_hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "safety_and_infection_control_prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient receiving a blood transfusion who develops hives, pruritus, and a temperature of 38.5°C (101.3°F) 20 minutes into the transfusion. What is the FIRST nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Slow the transfusion rate and administer diphenhydramine as ordered"
+        },
+        {
+          "id": "b",
+          "text": "Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and blood bank"
+        },
+        {
+          "id": "c",
+          "text": "Complete the transfusion quickly since the reaction appears mild"
+        },
+        {
+          "id": "d",
+          "text": "Obtain a blood culture and administer acetaminophen for the fever"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Any signs of a transfusion reaction—including hives, pruritus, and fever—require immediate cessation of the transfusion. The key concern is that mild symptoms can rapidly progress to severe hemolytic or anaphylactic reactions. The tubing must be disconnected (not just slowed) and the IV kept patent with normal saline using new tubing to prevent infusion of remaining blood product. The provider and blood bank must be notified, and the blood bag and tubing are returned to the blood bank for analysis. Continuing or completing the transfusion risks life-threatening escalation.",
+      "distractorRationales": {
+        "a": "The safer response addresses infection progression; \"Slow the transfusion rate and administer diphenhydramine as ordered\" moves care toward routine care before infection or sepsis escalation.",
+        "c": "\"Complete the transfusion quickly since the reaction appears mild\" normalizes a finding that needs reassessment. The cue \"Any signs of a transfusion reaction—including hives, pruritus\" raises concern for infection progression, so infection or sepsis escalation is needed before reassurance.",
+        "d": "\"Obtain a blood culture and administer acetaminophen for the fever\" answers a lower-acuity part of the scenario. The cue \"Any signs of a transfusion reaction—including hives, pruritus\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care."
+      },
+      "tags": [
+        "safety_and_infection_control_prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Transfusion reaction protocol: STOP → Saline via new line → Notify provider + blood bank → Return blood bag + tubing → Document. Never slow the rate and continue if a reaction is suspected.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "community_health",
+      "difficulty": 3,
+      "stem": "A clinic nurse suspects a patient has active tuberculosis based on symptoms and a positive QuantiFERON test. The patient has not yet been confirmed by sputum culture. What is the nurse's legal obligation regarding reporting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for confirmed sputum culture before reporting to the health department"
+        },
+        {
+          "id": "b",
+          "text": "Report only if the patient is homeless or a healthcare worker"
+        },
+        {
+          "id": "c",
+          "text": "Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The physician is solely responsible for reporting; nurses have no legal duty to report"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward delayed assessment instead of bedside safety action. The stem cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" makes clinical safety risk the active safety concern.",
+        "b": "\"Report only if the patient is homeless or a healthcare worker\" misses the bedside risk. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" points to clinical safety risk. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "\"The physician is solely responsible for reporting; nurses have no legal duty to report\" answers a lower-acuity part of the scenario. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before routine care."
+      },
+      "tags": [
+        "community_health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reportable diseases: report on suspicion (not confirmation); TB, STIs, meningitis, hepatitis — nurse has independent duty to report to public health; do not wait for lab confirmation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "pediatric_nursing",
+      "difficulty": 3,
+      "stem": "A 6-month-old infant is admitted with RSV bronchiolitis. SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding. The physician orders albuterol. Which nursing action is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer albuterol as ordered; it is the standard of care for RSV bronchiolitis"
+        },
+        {
+          "id": "b",
+          "text": "Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning and supportive care"
+        },
+        {
+          "id": "c",
+          "text": "Hold the albuterol and administer corticosteroids instead"
+        },
+        {
+          "id": "d",
+          "text": "Administer albuterol only if SpO2 drops below 88%"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSV bronchiolitis is managed with supportive care only per AAP guidelines: nasal suctioning (most effective intervention for symptom relief), adequate hydration (NG feeds if needed), and supplemental O2 for SpO2 <90–92%. Bronchodilators (albuterol) and corticosteroids are NOT recommended because bronchiolitis involves viral-induced inflammation and mucus plugging — not bronchospasm — making bronchodilators ineffective. Multiple RCTs have shown no benefit. The nurse should question the order and clarify before administration. Contact precautions (RSV is spread via droplet/contact) are required.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"supplemental O2 for SpO2 <90–92%\" makes oxygenation or ventilation the active safety concern.",
+        "c": "\"Hold the albuterol and administer corticosteroids instead\" misses the bedside risk. The cue \"SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The safer response addresses oxygenation or ventilation; \"Administer albuterol only if SpO2 drops below 88%\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "pediatric_nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pediatric_nursing",
+        "caption": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+        "conclusion": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "\"This is an expected effect of routine eye fatigue\" misses the bedside risk. The cue \"Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "c": "This distractor shifts care toward premature activity instead of bedside safety action. The stem cue \"A client reports severe eye pain, blurred vision\" makes clinical safety risk the active safety concern.",
+        "d": "The safer response addresses clinical safety risk; \"These findings show that prescribed eye drops are working well\" moves care toward routine care before bedside safety action."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb902-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" suggests circulation or perfusion, so \"Restrict oral fluids and monitor weight\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "The cue \"Hypotension, hyponatremia, vomiting\" suggests circulation or perfusion, so \"Hold corticosteroids until the morning cortisol level is drawn\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The safer response addresses circulation or perfusion; \"Teach the client about low-sodium foods\" moves care toward teaching or reassurance before circulation and perfusion support."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

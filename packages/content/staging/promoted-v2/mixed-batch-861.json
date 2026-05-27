@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-861",
+  "generatedAt": "2026-04-09T18:58:40-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb861-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage_boggy_fundus",
+      "subcategory": "postpartum_hemorrhage_boggy_fundus",
+      "difficulty": 3,
+      "stem": "One hour after birth a client has a boggy fundus, saturates a perineal pad in 15 minutes, and has a pulse of 118/min. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Massage the fundus and call for assistance."
+        },
+        {
+          "id": "b",
+          "text": "Ask the client to breastfeed before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Prepare the client for discharge teaching."
+        },
+        {
+          "id": "d",
+          "text": "Recheck the lochia in 1 hour."
+        }
+      ],
+      "answer": "a",
+      "rationale": "A boggy fundus with heavy bleeding suggests uterine atony, the most common cause of postpartum hemorrhage. The nurse should massage the fundus immediately while summoning help and preparing further interventions. Waiting or delaying treatment increases the risk of rapid hemodynamic deterioration.",
+      "distractorRationales": {
+        "b": "The cue \"has a pulse of 118/min\" suggests bleeding or anticoagulation injury, so \"Ask the client to breastfeed before intervening\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "The safer response addresses bleeding or anticoagulation injury; \"Prepare the client for discharge teaching\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention.",
+        "d": "This distractor shifts care toward misprioritization instead of bleeding-risk intervention. The stem cue \"One hour after birth a client has a boggy fundus, saturates a perineal pad in 15 minutes\" makes bleeding or anticoagulation injury the active safety concern."
+      },
+      "tags": [
+        "postpartum_hemorrhage_boggy_fundus",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy fundus plus heavy lochia means treat uterine atony immediately with fundal massage and escalation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pressure_injury_prevention",
+      "subcategory": "pressure_injury_prevention",
+      "difficulty": 3,
+      "stem": "A client with limited mobility is admitted from home and has blanchable redness over the sacrum. Which action should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Turn and reposition the client on a regular schedule."
+        },
+        {
+          "id": "b",
+          "text": "Massage the reddened area to increase circulation."
+        },
+        {
+          "id": "c",
+          "text": "Place a heating pad under the sacrum."
+        },
+        {
+          "id": "d",
+          "text": "Keep the client flat to avoid friction."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Blanchable redness indicates pressure-related skin stress that may be reversed if offloading begins early. The first nursing intervention is to relieve pressure and reposition regularly. Massage and heat can worsen tissue injury, and keeping the client flat increases sustained pressure over the sacrum.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Blanchable redness indicates pressure-related skin stress that may be reversed if offloading begins early\" makes circulation or perfusion the active safety concern.",
+        "c": "The option can leave circulation or perfusion untreated because it moves to activity, intake, or discharge planning too early. \"Turn and reposition the client on a regular schedule\" fits the safer response to the cue \"The first nursing intervention is to relieve pressure and reposition regularly\".",
+        "d": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Blanchable redness indicates pressure-related skin stress that may be reversed if offloading begins early\" makes circulation or perfusion the active safety concern."
+      },
+      "tags": [
+        "pressure_injury_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Early pressure injury prevention starts with offloading and routine repositioning.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pressure_injury_prevention",
+        "caption": "Early pressure injury prevention starts with offloading and routine repositioning.",
+        "conclusion": "Early pressure injury prevention starts with offloading and routine repositioning."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "restraint_alternative_failure",
+      "subcategory": "restraint_alternative_failure",
+      "difficulty": 3,
+      "stem": "A confused hospitalized client repeatedly tries to pull out the IV line. Which nursing action should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a less restrictive alternative such as reorientation and closer observation."
+        },
+        {
+          "id": "b",
+          "text": "Apply wrist restraints immediately and obtain the order later."
+        },
+        {
+          "id": "c",
+          "text": "Sedate the client so the client will sleep through the shift."
+        },
+        {
+          "id": "d",
+          "text": "Ignore the behavior because the line can be restarted if needed."
+        }
+      ],
+      "answer": "a",
+      "rationale": "The least restrictive intervention should be tried first when a client is at risk for pulling at equipment. Reorientation, family presence, diversion, or closer observation may solve the problem without restraint-related harm. Restraints and sedatives carry risk and require clear indication, monitoring, and policy-based use.",
+      "distractorRationales": {
+        "b": "\"Apply wrist restraints immediately and obtain the order later\" treats active deterioration as something safe to watch. The cue \"Try the least restrictive safety intervention first before escalating to restraints\" raises concern for clinical safety risk, so bedside safety action is needed before routine observation.",
+        "c": "The safer response addresses clinical safety risk; \"Sedate the client so the client will sleep through the shift\" moves care toward reassurance before bedside safety action.",
+        "d": "The cue \"A confused hospitalized client repeatedly tries to pull out the IV line\" suggests clinical safety risk, so \"Ignore the behavior because the line can be restarted if needed\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "restraint_alternative_failure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Try the least restrictive safety intervention first before escalating to restraints.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sepsis_lactate_escalation",
+      "subcategory": "sepsis_lactate_escalation",
+      "difficulty": 3,
+      "stem": "A client treated for pneumonia becomes confused, has a temperature of 102.2 F (39 C), blood pressure 86/50 mmHg, heart rate 124/min, and lactate 4.2 mmol/L. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the sepsis response and begin rapid fluid resuscitation per protocol."
+        },
+        {
+          "id": "b",
+          "text": "Wait for the next chest x-ray before notifying anyone."
+        },
+        {
+          "id": "c",
+          "text": "Offer oral fluids and repeat the blood pressure in an hour."
+        },
+        {
+          "id": "d",
+          "text": "Document the vital signs as an expected fever response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, altered mental status, tachycardia, and elevated lactate are high-risk findings for sepsis with hypoperfusion. The nurse should escalate immediately and begin protocol-driven resuscitation. Waiting for imaging or repeating vitals without intervention delays treatment during a time-sensitive emergency.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of infection or sepsis escalation. The stem cue \"A client treated for pneumonia becomes confused, has a temperature of 102\" makes infection progression the active safety concern.",
+        "c": "This distractor shifts care toward premature activity instead of infection or sepsis escalation. The stem cue \"elevated lactate are high-risk findings for sepsis with hypoperfusion\" makes infection progression the active safety concern.",
+        "d": "The safer response addresses infection progression; \"Document the vital signs as an expected fever response\" moves care toward reassurance before infection or sepsis escalation."
+      },
+      "tags": [
+        "sepsis_lactate_escalation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sepsis clues plus hypotension and high lactate require immediate escalation and fluid resuscitation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sickle_cell_acute_chest",
+      "subcategory": "sickle_cell_acute_chest",
+      "difficulty": 3,
+      "stem": "A client with sickle cell disease reports chest pain and has a new cough, fever, and oxygen saturation of 88% on room air. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply oxygen and notify the provider of possible acute chest syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Encourage oral fluids and reassess in 1 hour."
+        },
+        {
+          "id": "c",
+          "text": "Give the scheduled iron supplement."
+        },
+        {
+          "id": "d",
+          "text": "Have the client walk to improve lung expansion."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain, fever, cough, and hypoxemia in sickle cell disease raise concern for acute chest syndrome, a life-threatening complication. The nurse should support oxygenation immediately and escalate care. Delaying oxygen and evaluation increases the risk of worsening hypoxia and pulmonary compromise.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of airway and breathing intervention. The stem cue \"Chest pain, fever, cough\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The cue \"Delaying oxygen and evaluation increases the risk of worsening hypoxia and pulmonary compromise\" suggests oxygenation or ventilation, so \"Give the scheduled iron supplement\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "\"Have the client walk to improve lung expansion\" moves to activity, intake, or discharge planning too early. The cue \"Delaying oxygen and evaluation increases the risk of worsening hypoxia and pulmonary compromise\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before ambulation, intake, or discharge teaching."
+      },
+      "tags": [
+        "sickle_cell_acute_chest",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sickle cell plus chest symptoms and hypoxemia should be treated as acute chest syndrome until ruled out.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stroke_swallow_screen",
+      "subcategory": "stroke_swallow_screen",
+      "difficulty": 3,
+      "stem": "A client admitted with an acute ischemic stroke asks for water because the mouth feels dry. Which action by the nurse is best?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the client NPO until a swallow screen is completed."
+        },
+        {
+          "id": "b",
+          "text": "Offer small sips of water while the nurse watches closely."
+        },
+        {
+          "id": "c",
+          "text": "Give water with a straw to make swallowing easier."
+        },
+        {
+          "id": "d",
+          "text": "Ask the family if the client has choked before."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Clients with acute stroke are at risk for dysphagia and silent aspiration. The nurse should keep the client NPO until swallowing is assessed according to protocol. Even small amounts of water can lead to aspiration pneumonia if swallowing is impaired.",
+      "distractorRationales": {
+        "b": "The safer response addresses neurologic deterioration; \"Offer small sips of water while the nurse watches closely\" moves care toward routine observation before neurologic safety assessment.",
+        "c": "\"Give water with a straw to make swallowing easier\" moves to activity, intake, or discharge planning too early. The cue \"After stroke, do not give oral intake until swallowing safety has been checked\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"Ask the family if the client has choked before\" answers a lower-acuity part of the scenario. The cue \"After stroke, do not give oral intake until swallowing safety has been checked\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care."
+      },
+      "tags": [
+        "stroke_swallow_screen",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After stroke, do not give oral intake until swallowing safety has been checked.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "suicide_precaution_belongings",
+      "subcategory": "suicide_precaution_belongings",
+      "difficulty": 3,
+      "stem": "A client admitted with suicidal ideation is placed on one-to-one observation. Which item should the nurse remove from the client's room first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A drawstring hoodie."
+        },
+        {
+          "id": "b",
+          "text": "A paperback book."
+        },
+        {
+          "id": "c",
+          "text": "Non-skid socks."
+        },
+        {
+          "id": "d",
+          "text": "A plastic water cup."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Items that can be used for self-harm, including cords and strings, should be removed immediately from the environment of a suicidal client. A paperback book or water cup may be permitted depending on policy if they do not create a ligature or sharp-object risk. One-to-one observation does not replace environmental safety.",
+      "distractorRationales": {
+        "b": "The option can leave clinical safety risk untreated because it answers a lower-acuity part of the scenario. \"A drawstring hoodie\" fits the safer response to the cue \"Items that can be used for self-harm, including cords and strings, should be removed immediately from the environment\".",
+        "c": "The safer response addresses clinical safety risk; \"Non-skid socks\" moves care toward routine care before bedside safety action.",
+        "d": "The cue \"For suicidal clients, remove ligature risks first even if observation is already in place\" suggests clinical safety risk, so \"A plastic water cup\" would not correct the active problem. Maternal-fetal risk requires immediate safety measures because fetal oxygenation and maternal perfusion can deteriorate quickly."
+      },
+      "tags": [
+        "suicide_precaution_belongings",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "For suicidal clients, remove ligature risks first even if observation is already in place.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "tb_medication_teaching",
+      "subcategory": "tb_medication_teaching",
+      "difficulty": 3,
+      "stem": "A client prescribed isoniazid for tuberculosis asks what to watch for at home. Which symptom should the nurse instruct the client to report immediately?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Numbness or tingling in the hands or feet."
+        },
+        {
+          "id": "b",
+          "text": "Orange discoloration of tears and urine."
+        },
+        {
+          "id": "c",
+          "text": "A mild metallic taste after the dose."
+        },
+        {
+          "id": "d",
+          "text": "An increased appetite in the evening."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Isoniazid can cause peripheral neuropathy, especially in clients with nutritional risk factors, so numbness or tingling should be reported. Orange body fluid discoloration is expected with rifampin rather than isoniazid. Good teaching helps the client distinguish expected effects from adverse findings that need intervention.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Numbness or tingling in the hands or feet\" fits the safer response to the cue \"Good teaching helps the client distinguish expected effects from adverse findings that need intervention\".",
+        "c": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"Numbness or tingling in the hands or feet\" fits the safer response to the cue \"Good teaching helps the client distinguish expected effects from adverse findings that need intervention\".",
+        "d": "The cue \"Orange body fluid discoloration is expected with rifampin rather than isoniazid\" suggests medication toxicity, so \"An increased appetite in the evening\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "tb_medication_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Teach clients taking isoniazid to report peripheral neuropathy symptoms early.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "tracheostomy_dislodgement",
+      "subcategory": "tracheostomy_dislodgement",
+      "difficulty": 3,
+      "stem": "A client with a fresh tracheostomy from 12 hours ago coughs and the tracheostomy tube becomes dislodged. The client is in respiratory distress. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Call for help and use a manual resuscitation bag with oxygen over the stoma and mouth as needed."
+        },
+        {
+          "id": "b",
+          "text": "Insert the obturator and force the tube back into place immediately."
+        },
+        {
+          "id": "c",
+          "text": "Cover the stoma with an occlusive dressing."
+        },
+        {
+          "id": "d",
+          "text": "Leave the client alone briefly to get a replacement tracheostomy kit."
+        }
+      ],
+      "answer": "a",
+      "rationale": "A fresh tracheostomy tract is not well established, so blind reinsertion can create a false passage and worsen the emergency. The priority is oxygenation and rapid help: call for assistance and support ventilation while emergency airway supplies and the provider are brought to the bedside. Occluding the stoma or leaving the client delays life-saving airway support.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"Fresh trach dislodgement is an airway emergency: oxygenate and call for help before attempting unsafe reinsertion\" makes oxygenation or ventilation the active safety concern.",
+        "c": "\"Cover the stoma with an occlusive dressing\" commits to a competing cause before checking the dangerous pattern. The cue \"Occluding the stoma or leaving the client delays life-saving airway support\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before diagnostic reassurance.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Call for help and use a manual resuscitation bag with oxygen over the stoma and mouth\" fits the safer response to the cue \"Fresh trach dislodgement is an airway emergency: oxygenate and call for help before attempting unsafe reinsertion\"."
+      },
+      "tags": [
+        "tracheostomy_dislodgement",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fresh trach dislodgement is an airway emergency: oxygenate and call for help before attempting unsafe reinsertion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "warfarin_bleeding_report",
+      "subcategory": "warfarin_bleeding_report",
+      "difficulty": 3,
+      "stem": "A client newly prescribed warfarin asks which finding should be reported to the provider immediately. Which response by the client shows correct understanding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "I should report black, tarry stools."
+        },
+        {
+          "id": "b",
+          "text": "I should expect my gums to bleed a little when brushing."
+        },
+        {
+          "id": "c",
+          "text": "I can skip INR checks if I feel well."
+        },
+        {
+          "id": "d",
+          "text": "I should double the next dose if I miss one."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Black, tarry stools can signal gastrointestinal bleeding, which is a major complication of warfarin therapy and requires prompt evaluation. Minor bleeding should not be normalized, INR monitoring remains essential, and missed doses should never be doubled without direction. Teaching should focus on early recognition of serious bleeding and safe anticoagulant use.",
+      "distractorRationales": {
+        "b": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"I should report black, tarry stools\" fits the safer response to the cue \"Black, tarry stools can signal gastrointestinal bleeding, which is a major complication of warfarin therapy and requires prompt\".",
+        "c": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"I should report black, tarry stools\" fits the safer response to the cue \"Teaching should focus on early recognition of serious bleeding and safe anticoagulant use\".",
+        "d": "The cue \"Minor bleeding should not be normalized, INR monitoring remains essential\" suggests bleeding or anticoagulation injury, so \"I should double the next dose if I miss one\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "warfarin_bleeding_report",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Warfarin teaching should emphasize immediate reporting of serious bleeding signs such as black, tarry stools.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anticoagulant_safety",
+      "subcategory": "anticoagulant_safety",
+      "difficulty": 3,
+      "stem": "A patient receiving anticoagulant therapy reports black tarry stools. What is the priority nursing interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Possible bleeding requires prompt follow-up"
+        },
+        {
+          "id": "b",
+          "text": "This is expected with all anticoagulants"
+        },
+        {
+          "id": "c",
+          "text": "Stools are unrelated to medication safety"
+        },
+        {
+          "id": "d",
+          "text": "Reassess next week if the patient is still concerned"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Black tarry stools can indicate GI bleeding, which is a serious safety concern in a patient on anticoagulants.",
+      "distractorRationales": {
+        "b": "The cue \"Bleeding clues matter immediately during anticoagulant therapy\" suggests bleeding or anticoagulation injury, so \"This is expected with all anticoagulants\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "This distractor shifts care toward misprioritization instead of bleeding-risk intervention. The stem cue \"A patient receiving anticoagulant therapy reports black tarry stools\" makes bleeding or anticoagulation injury the active safety concern.",
+        "d": "The cue \"A patient receiving anticoagulant therapy reports black tarry stools\" suggests bleeding or anticoagulation injury, so \"Reassess next week if the patient is still concerned\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "anticoagulant_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Bleeding clues matter immediately during anticoagulant therapy.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb861-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_clue",
+      "subcategory": "dehydration_clue",
+      "difficulty": 3,
+      "stem": "A patient has dry mucous membranes, poor skin turgor, tachycardia, and low urine output. Which interpretation is most useful?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be volume depleted"
+        },
+        {
+          "id": "b",
+          "text": "The patient is fluid overloaded"
+        },
+        {
+          "id": "c",
+          "text": "Low urine output is unrelated to hydration"
+        },
+        {
+          "id": "d",
+          "text": "Tachycardia is expected and not useful"
+        }
+      ],
+      "answer": "a",
+      "rationale": "These signs are consistent with dehydration and possible reduced circulating volume.",
+      "distractorRationales": {
+        "b": "\"The patient is fluid overloaded\" answers a lower-acuity part of the scenario. The cue \"Low urine output plus dry assessment findings suggests volume depletion\" raises concern for renal injury, so renal protection is needed before routine care.",
+        "c": "The option can leave renal injury untreated because it answers a lower-acuity part of the scenario. \"The patient may be volume depleted\" fits the safer response to the cue \"low urine output\".",
+        "d": "\"Tachycardia is expected and not useful\" misses the bedside risk. The cue \"Low urine output plus dry assessment findings suggests volume depletion\" points to renal injury. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk."
+      },
+      "tags": [
+        "dehydration_clue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low urine output plus dry assessment findings suggests volume depletion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

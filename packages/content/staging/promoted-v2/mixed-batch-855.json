@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-855",
+  "generatedAt": "2026-04-09T18:24:34-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb855-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "\"A patient asking for a pillow\" answers a lower-acuity part of the scenario. The cue \"- C Discharge teaching can wait\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "c": "\"A patient wanting discharge paperwork\" moves to activity, intake, or discharge planning too early. The cue \"Chest symptoms with nausea are high-priority until proven otherwise\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"A patient asking for ice water\" misses the bedside risk. The cue \"- C Discharge teaching can wait\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "infection_prevention",
+      "subcategory": "infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action best helps reduce transmission when caring for a patient with a contagious infection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform appropriate hand hygiene before and after care"
+        },
+        {
+          "id": "b",
+          "text": "Reuse gloves if they still look clean"
+        },
+        {
+          "id": "c",
+          "text": "Skip precautions if the patient feels better"
+        },
+        {
+          "id": "d",
+          "text": "Share equipment without cleaning it"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hand hygiene remains one of the most effective infection prevention measures.",
+      "distractorRationales": {
+        "b": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"Perform appropriate hand hygiene before and after care\" fits the safer response to the cue \"Hand hygiene remains one of the most effective infection prevention measures\".",
+        "c": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"Perform appropriate hand hygiene before and after care\" fits the safer response to the cue \"Hand hygiene remains one of the most effective infection prevention measures\".",
+        "d": "This distractor shifts care toward premature attribution instead of infection or sepsis escalation. The stem cue \"Hand hygiene remains one of the most effective infection prevention measures\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Simple infection-control steps still matter most.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "infection_prevention",
+        "caption": "Simple infection-control steps still matter most.",
+        "conclusion": "Simple infection-control steps still matter most."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_deterioration",
+      "subcategory": "new_deterioration",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse see first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient needing help setting up a meal tray"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking when rounds will begin"
+        },
+        {
+          "id": "d",
+          "text": "A patient who wants to know if family can visit later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. **Why the others are wrong:** - B Meal setup is not urgent. - C Rounds timing is nonurgent. - D Visiting questions can wait.",
+      "distractorRationales": {
+        "b": "The safer response addresses circulation or perfusion; \"A patient needing help setting up a meal tray\" moves care toward routine care before circulation and perfusion support.",
+        "c": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"A patient with new chest pressure and diaphoresis\" fits the safer response to the cue \"Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately\".",
+        "d": "\"A patient who wants to know if family can visit later\" misses the bedside risk. The cue \"Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "new_deterioration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute chest symptoms outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "The option can leave circulation or perfusion untreated because it uses teaching before the physiologic risk is controlled. \"Transporting a stable patient to radiology\" fits the safer response to the cue \"**Why the others are wrong:** - B Teaching requires nursing knowledge\".",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"**Why the others are wrong:** - B Teaching requires nursing knowledge\" makes circulation or perfusion the active safety concern.",
+        "d": "\"Deciding whether chest pain needs an ECG\" misses the bedside risk. The cue \"Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stable_vs_unstable",
+      "subcategory": "stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with chest pain and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "A patient waiting for discharge teaching tomorrow"
+        },
+        {
+          "id": "d",
+          "text": "A patient requesting help finding a charger"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent requests.",
+      "distractorRationales": {
+        "b": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"A patient with chest pain and diaphoresis\" fits the safer response to the cue \"Unstable symptoms always come before comfort tasks\".",
+        "c": "\"A patient waiting for discharge teaching tomorrow\" misses the bedside risk. The cue \"Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Unstable symptoms always come before comfort tasks\" makes circulation or perfusion the active safety concern."
+      },
+      "tags": [
+        "stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable symptoms always come before comfort tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chain_of_command",
+      "subcategory": "chain_of_command",
+      "difficulty": 3,
+      "stem": "An RN is concerned that a patient's deteriorating condition is not being addressed. She has called the resident twice and the attending once, but no orders have been given and the patient's condition is worsening. What is the next appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document that the physician was notified and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer"
+        },
+        {
+          "id": "c",
+          "text": "Call the patient's family to inform them of the situation and have them contact the physician"
+        },
+        {
+          "id": "d",
+          "text": "Administer PRN medications independently based on nursing judgment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "When a nurse cannot get a timely response from the physician and patient safety is at risk, the chain of command must be activated: charge nurse → nursing supervisor → department director → chief of staff/chief of medicine → risk management/patient safety officer. Many hospitals also have rapid response teams (RRT) that can be activated by nursing. Documentation alone (A) does not protect the patient. Contacting family (C) violates HIPAA and does not address the immediate clinical problem. Administering medications without orders (D) is outside RN scope of practice and illegal.",
+      "distractorRationales": {
+        "a": "The cue \"no orders have been given and the patient's condition is worsening\" suggests medication toxicity, so \"Document that the physician was notified and continue monitoring\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Call the patient's family to inform them of the situation and have them contact the physician\" misses the bedside risk. The cue \"no orders have been given and the patient's condition is worsening\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The cue \"no orders have been given and the patient's condition is worsening\" suggests medication toxicity, so \"Administer PRN medications independently based on nursing judgment\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "chain_of_command",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When physician is unresponsive to clinical concerns: activate chain of command (charge nurse → supervisor → administrator) and/or call rapid response — document all attempts.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_hypoglycemia",
+      "subcategory": "neonatal_hypoglycemia",
+      "difficulty": 3,
+      "stem": "A large-for-gestational-age (LGA) neonate born to a mother with gestational diabetes is 2 hours old. The bedside glucose is 38 mg/dL. The neonate is jittery with poor tone. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Administer IV dextrose 10% (D10W) 2 mL/kg IV push"
+        },
+        {
+          "id": "c",
+          "text": "Notify the neonatologist and transfer to the NICU for monitoring"
+        },
+        {
+          "id": "d",
+          "text": "Administer glucagon 0.3 mg/kg IM and recheck in 15 minutes"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires IV dextrose therapy. Symptomatic hypoglycemia is treated with IV D10W 2 mL/kg bolus, followed by a continuous D10W infusion. Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40–45), not for symptomatic hypoglycemia with jitteriness and poor tone. Glucagon (D) can be used in severe refractory hypoglycemia but IV glucose is first-line. NICU notification (C) may follow but IV glucose is the immediate intervention.",
+      "distractorRationales": {
+        "a": "\"Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes\" misses the bedside risk. The cue \"Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40–45), not for symptomatic hypoglycemia with jitteriness and poor\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "c": "The cue \"Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires\" suggests unstable glucose physiology, so \"Notify the neonatologist and transfer to the NICU for monitoring\" would not correct the active problem. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "d": "This distractor shifts care toward misprioritization instead of glucose rescue or metabolic stabilization. The stem cue \"Glucagon (D) can be used in severe refractory hypoglycemia but IV glucose is first-line\" makes unstable glucose physiology the active safety concern."
+      },
+      "tags": [
+        "neonatal_hypoglycemia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Symptomatic neonatal hypoglycemia (<45 mg/dL with symptoms): IV D10W 2 mL/kg bolus — breastfeeding alone is insufficient for symptomatic newborns.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_stroke",
+      "subcategory": "neurological_stroke",
+      "difficulty": 3,
+      "stem": "A patient arrives in the ED with sudden onset of right-sided facial droop, right arm weakness, and slurred speech that began 90 minutes ago. NIHSS score is 12. CT head is negative for hemorrhage. The patient's blood pressure is 178/96 mmHg. Which intervention is the highest priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Begin antihypertensive therapy immediately to bring BP below 140/90 mmHg"
+        },
+        {
+          "id": "b",
+          "text": "Prepare the patient for IV thrombolysis with alteplase (tPA) — notify the provider of eligibility and start the time-critical pre-tPA workup"
+        },
+        {
+          "id": "c",
+          "text": "Administer aspirin 325 mg orally for antiplatelet therapy"
+        },
+        {
+          "id": "d",
+          "text": "Obtain emergent MRI brain to confirm ischemic versus hemorrhagic stroke before any treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient presents within the 4.5-hour tPA window with an ischemic stroke (CT negative for hemorrhage) and a significant neurological deficit (NIHSS 12). IV alteplase is the priority intervention — every minute of delay worsens outcomes ('time is brain' — ~1.9 million neurons lost per minute). In ischemic stroke with tPA candidacy, blood pressure is treated only if > 185/110 mmHg; at 178/96, aggressive BP lowering is not indicated (it can worsen ischemia). Aspirin is not given within 24 hours of tPA. CT is already done — MRI is not required for tPA administration when CT excludes hemorrhage. The nurse should mobilize the stroke team and prepare for tPA.",
+      "distractorRationales": {
+        "a": "The cue \"5-hour tPA window with an ischemic stroke (CT negative for hemorrhage) and a significant neurological deficit (NIHSS 12)\" suggests bleeding or anticoagulation injury, so \"Begin antihypertensive therapy immediately to bring BP below 140/90 mmHg\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "The cue \"Ischemic stroke + within 4\" suggests bleeding or anticoagulation injury, so \"Administer aspirin 325 mg orally for antiplatelet therapy\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "This distractor shifts care toward premature activity instead of bleeding-risk intervention. The stem cue \"5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority\" makes bleeding or anticoagulation injury the active safety concern."
+      },
+      "tags": [
+        "neurological_stroke",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neurological_stroke",
+        "caption": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA.",
+        "conclusion": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_asthma_exacerbation",
+      "subcategory": "respiratory_asthma_exacerbation",
+      "difficulty": 3,
+      "stem": "A patient with severe asthma is admitted with an acute exacerbation. The nurse notes the patient is no longer wheezing despite having difficulty breathing and accessory muscle use. Which interpretation is CORRECT?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient is improving — decreased wheezing indicates reduced bronchospasm"
+        },
+        {
+          "id": "b",
+          "text": "The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,' signaling impending respiratory failure"
+        },
+        {
+          "id": "c",
+          "text": "The patient requires a bronchodilator since the wheezing has resolved"
+        },
+        {
+          "id": "d",
+          "text": "The patient is having an allergic reaction rather than an asthma attack"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A 'silent chest' in an asthmatic patient with severe respiratory distress is an ominous sign — it does not indicate improvement. It indicates airways are so severely obstructed that no air movement is occurring, thus no wheeze can be generated. This is a pre-arrest condition requiring immediate escalation: notify provider, prepare for intubation, consider IV magnesium sulfate, IV epinephrine or terbutaline, and high-dose continuous bronchodilators. The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Wheezing returning with treatment is actually a sign of improvement.",
+      "distractorRationales": {
+        "a": "\"The patient is improving — decreased wheezing indicates reduced bronchospasm\" misses the bedside risk. The cue \"A patient with severe asthma is admitted with an acute exacerbation\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The cue \"A patient with severe asthma is admitted with an acute exacerbation\" suggests oxygenation or ventilation, so \"The patient requires a bronchodilator since the wheezing has resolved\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "\"The patient is having an allergic reaction rather than an asthma attack\" answers a lower-acuity part of the scenario. The cue \"Silent chest in asthma = no airflow = impending respiratory arrest\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care."
+      },
+      "tags": [
+        "respiratory_asthma_exacerbation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "respiratory_asthma_exacerbation",
+        "caption": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+        "conclusion": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb855-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_delegation",
+      "subcategory": "safety_and_infection_control_delegation",
+      "difficulty": 3,
+      "stem": "A registered nurse is delegating morning care tasks to a nursing assistant (CNA). Which task is MOST appropriate to delegate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess a new patient's skin for pressure injuries during the bed bath"
+        },
+        {
+          "id": "b",
+          "text": "Provide oral care to an unconscious patient on a ventilator"
+        },
+        {
+          "id": "c",
+          "text": "Instruct a patient with newly diagnosed diabetes about foot care"
+        },
+        {
+          "id": "d",
+          "text": "Measure and record vital signs for a stable post-operative patient on day 3"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Measuring and recording vital signs for a stable patient is a routine task within the CNA's scope of practice and does not require nursing judgment for data collection (though the RN interprets the results). Skin assessment requires RN-level assessment skills. Oral care for an unconscious, ventilated patient involves airway risk management and should be performed by licensed nursing staff. Patient education—such as foot care for a diabetic—is an RN responsibility that cannot be delegated.",
+      "distractorRationales": {
+        "a": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Measure and record vital signs for a stable post-operative patient on day 3\" fits the safer response to the cue \"Assessment, education\".",
+        "b": "The cue \"Skin assessment requires RN-level assessment skills\" suggests oxygenation or ventilation, so \"Provide oral care to an unconscious patient on a ventilator\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "This distractor shifts care toward premature teaching instead of airway and breathing intervention. The stem cue \"Oral care for an unconscious, ventilated patient involves airway risk management and should be performed by licensed nursing\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "safety_and_infection_control_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate tasks that are routine, do not require nursing judgment, and involve stable patients. Assessment, education, and care requiring clinical judgment remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

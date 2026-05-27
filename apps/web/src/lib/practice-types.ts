@@ -1,8 +1,17 @@
-import type { CognitiveLevel, Exam, NclexClientNeed } from "@/lib/types";
+import type { CognitiveLevel, Exam, NclexClientNeed, QuestionType } from "@/lib/types";
 import type { StudyResource } from "@/lib/study-resources";
 
 export type PracticeMode = "standard" | "chart" | "case-study" | "ngn" | "practice-exam";
-export type PracticeQuestionKind = "mcq" | "multi-select" | "matrix" | "chart" | "case-study" | "bow-tie" | "ordering";
+export type PracticeQuestionKind =
+  | "mcq"
+  | "multi-select"
+  | "matrix"
+  | "chart"
+  | "case-study"
+  | "bow-tie"
+  | "ordering"
+  | "scenario-mcq"
+  | "decision-map-mcq";
 
 export interface PracticeOption {
   id: string;
@@ -80,6 +89,7 @@ export interface PracticeQuestion {
   difficulty: 1 | 2 | 3 | 4 | 5;
   mode: PracticeMode;
   kind: PracticeQuestionKind;
+  questionType?: QuestionType;
   stem: string;
   options?: PracticeOption[];
   correctAnswer: PracticeAnswer;

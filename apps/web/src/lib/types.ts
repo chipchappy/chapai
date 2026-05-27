@@ -2,7 +2,15 @@
 
 export type Exam = "nclex" | "ccrn";
 export type Tier = "free" | "plus" | "pro";
-export type QuestionType = "mcq" | "sata" | "ordering" | "matrix" | "case_study" | "bow_tie";
+export type QuestionType =
+  | "mcq"
+  | "sata"
+  | "ordering"
+  | "matrix"
+  | "case_study"
+  | "bow_tie"
+  | "scenario_mcq"
+  | "decision_map_mcq";
 export type QuestionAnswer = string | string[] | Record<string, string>;
 export type CognitiveLevel = "apply" | "analyze" | "synthesize" | "evaluate";
 export type NclexClientNeed =

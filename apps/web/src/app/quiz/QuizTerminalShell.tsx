@@ -17,6 +17,8 @@ const QUESTION_TYPE_DETAILS: Record<QuestionType, string> = {
   matrix: "row-by-row clinical judgment",
   case_study: "scenario, exhibits, labs, and rationale",
   bow_tie: "condition, actions, and monitoring",
+  scenario_mcq: "scenario-based single best answer",
+  decision_map_mcq: "clinical decision map single best answer",
 };
 
 function getExamTitle(exam: Exam) {

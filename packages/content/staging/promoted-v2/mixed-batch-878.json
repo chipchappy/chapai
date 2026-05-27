@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-878",
+  "generatedAt": "2026-04-09T23:23:23-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb878-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_dysrhythmias",
+      "subcategory": "cardiovascular_dysrhythmias",
+      "difficulty": 3,
+      "stem": "A nurse is monitoring a patient on telemetry when the rhythm suddenly changes to a wide-complex, regular tachycardia at 180 bpm. The patient is alert, with BP 102/60 mmHg and reports palpitations but no chest pain. Which intervention should the nurse anticipate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediate unsynchronized defibrillation at 200J"
+        },
+        {
+          "id": "b",
+          "text": "Prepare for synchronized cardioversion at 100J after sedation"
+        },
+        {
+          "id": "c",
+          "text": "Administer IV adenosine 6 mg rapid push to terminate the rhythm"
+        },
+        {
+          "id": "d",
+          "text": "Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring hemodynamics closely"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification before treatment. WCT is most commonly ventricular tachycardia (VT) but can also be supraventricular tachycardia with aberrant conduction (SVT-A). A 12-lead ECG helps differentiate. If VT is confirmed: amiodarone or procainamide IV is the antiarrhythmic of choice for stable VT. Synchronized cardioversion is reserved for hemodynamically unstable stable VT (BP < 90, ischemia, altered mental status). Unsynchronized defibrillation (defib) is for pulseless VT/VF. Adenosine is appropriate for narrow-complex SVT; it is not first-line for wide-complex tachycardia and can be harmful in VT.",
+      "distractorRationales": {
+        "a": "The safer response addresses circulation or perfusion; \"Immediate unsynchronized defibrillation at 200J\" moves care toward routine care before circulation and perfusion support.",
+        "b": "The cue \"Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification\" suggests circulation or perfusion, so \"Prepare for synchronized cardioversion at 100J after sedation\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Administer IV adenosine 6 mg rapid push to terminate the rhythm\" answers a lower-acuity part of the scenario. The cue \"Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care."
+      },
+      "tags": [
+        "cardiovascular_dysrhythmias",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stable wide-complex tachycardia: 12-lead first → provider → antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_heart_failure",
+      "subcategory": "cardiovascular_heart_failure",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with acute decompensated heart failure who has a new order for furosemide 40 mg IV push. Which assessment finding is MOST important to report to the provider before administering this medication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient's weight is 4 lbs above their dry weight"
+        },
+        {
+          "id": "b",
+          "text": "The patient's serum potassium is 3.0 mEq/L"
+        },
+        {
+          "id": "c",
+          "text": "The patient has bilateral 2+ pitting edema of the lower extremities"
+        },
+        {
+          "id": "d",
+          "text": "The patient reports urinary urgency"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Furosemide is a loop diuretic that causes potassium wasting. A pre-dose potassium of 3.0 mEq/L (hypokalemia) is a critical safety concern — administering furosemide will further lower potassium, increasing the risk of life-threatening cardiac arrhythmias (torsades de pointes, ventricular fibrillation), especially in heart failure patients who may be on digoxin. Potassium replacement should be confirmed or ordered before or concurrent with diuresis. Weight gain above dry weight and bilateral edema are the indications FOR furosemide, not contraindications. Urinary urgency is an expected diuretic side effect.",
+      "distractorRationales": {
+        "a": "\"The patient's weight is 4 lbs above their dry weight\" answers a lower-acuity part of the scenario. The cue \"5 mEq/L, notify provider and hold or replace K+ first\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "c": "This distractor shifts care toward delayed assessment instead of medication-safety intervention. The stem cue \"Diuretics + hypokalemia = arrhythmia risk\" makes medication toxicity the active safety concern.",
+        "d": "\"The patient reports urinary urgency\" misses the bedside risk. The cue \"5 mEq/L, notify provider and hold or replace K+ first\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "cardiovascular_heart_failure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_hypertensive_emergency",
+      "subcategory": "cardiovascular_hypertensive_emergency",
+      "difficulty": 3,
+      "stem": "A patient presents with BP 218/130 mmHg, severe headache, blurred vision, and confusion. Fundoscopic exam shows papilledema. Urinalysis shows proteinuria and hematuria. Which condition is present and what is the correct blood pressure management approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypertensive urgency — oral labetalol and discharge home with follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further end-organ damage"
+        },
+        {
+          "id": "d",
+          "text": "Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient has hypertensive emergency (malignant hypertension) — severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments — a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage — treated with oral agents over hours to days.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature activity instead of neurologic safety assessment. The stem cue \"The critical teaching point: do NOT lower BP too rapidly\" makes neurologic deterioration the active safety concern.",
+        "c": "This distractor shifts care toward premature attribution instead of neurologic safety assessment. The stem cue \"The critical teaching point: do NOT lower BP too rapidly\" makes neurologic deterioration the active safety concern.",
+        "d": "This distractor shifts care toward delayed assessment instead of neurologic safety assessment. The stem cue \"The critical teaching point: do NOT lower BP too rapidly\" makes neurologic deterioration the active safety concern."
+      },
+      "tags": [
+        "cardiovascular_hypertensive_emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "subcategory": "delegation_infection_control",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with C. difficile (CDI) colitis. Which instruction is MOST important to give the nursing assistant assigned to this patient's room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread"
+        },
+        {
+          "id": "b",
+          "text": "Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room"
+        },
+        {
+          "id": "c",
+          "text": "Wear only gloves since C. diff is transmitted via droplets"
+        },
+        {
+          "id": "d",
+          "text": "Apply an N95 respirator before entering the room due to airborne risk"
+        }
+      ],
+      "answer": "b",
+      "rationale": "C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers — soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"diff is not airborne or droplet-transmitted, so N95s are not required\" makes infection progression the active safety concern.",
+        "c": "The safer response addresses infection progression; \"Wear only gloves since C. diff is transmitted via droplets\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "d": "\"Apply an N95 respirator before entering the room due to airborne risk\" misses the bedside risk. The cue \"Key isolation requirements: contact precautions (gloves AND gown for all room entry)\" points to infection progression. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "delegation_infection_control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. diff = contact precautions (gloves + gown) + soap and water handwashing. Alcohol hand sanitizer does NOT kill C. diff spores. This is one of the few situations where soap/water is explicitly superior to ABHR.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_safe_staffing",
+      "subcategory": "delegation_safe_staffing",
+      "difficulty": 3,
+      "stem": "A registered nurse receives a new patient assignment at shift start. The RN reviews the five patients and determines that patient care tasks need to be distributed. Which of the following tasks can be appropriately delegated to a licensed practical nurse (LPN)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the admission assessment for a new patient with unstable angina"
+        },
+        {
+          "id": "b",
+          "text": "Develop the care plan for a patient with newly diagnosed type 1 diabetes"
+        },
+        {
+          "id": "c",
+          "text": "Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm"
+        },
+        {
+          "id": "d",
+          "text": "Educate the patient and family about a new diagnosis of atrial fibrillation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate — appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation — this is an RN function.",
+      "distractorRationales": {
+        "a": "The cue \"Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching\" suggests medication toxicity, so \"Perform the admission assessment for a new patient with unstable angina\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "The safer response addresses medication toxicity; \"Develop the care plan for a patient with newly diagnosed type 1 diabetes\" moves care toward diagnostic reassurance before medication-safety intervention.",
+        "d": "The option can leave medication toxicity untreated because it uses teaching before the physiologic risk is controlled. \"Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a\" fits the safer response to the cue \"RNs cannot delegate assessment, teaching, or care planning\"."
+      },
+      "tags": [
+        "delegation_safe_staffing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications to stable patients, perform routine procedures, collect data for stable conditions. RN scope: initial assessment, care planning, teaching, evaluating unstable patients, and tasks requiring clinical judgment. RNs cannot delegate assessment, teaching, or care planning.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "The cue \"Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency\" suggests clinical safety risk, so \"This is an expected effect of routine eye fatigue\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "c": "The option can leave clinical safety risk untreated because it moves to activity, intake, or discharge planning too early. \"The client may have acute angle-closure glaucoma and needs urgent evaluation\" fits the safer response to the cue \"A client reports severe eye pain, blurred vision\".",
+        "d": "The option can leave clinical safety risk untreated because it answers a lower-acuity part of the scenario. \"The client may have acute angle-closure glaucoma and needs urgent evaluation\" fits the safer response to the cue \"Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency\"."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" suggests circulation or perfusion, so \"Restrict oral fluids and monitor weight\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "The cue \"Hypotension, hyponatremia, vomiting\" suggests circulation or perfusion, so \"Hold corticosteroids until the morning cortisol level is drawn\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The option can leave circulation or perfusion untreated because it uses teaching before the physiologic risk is controlled. \"Administer IV hydrocortisone and isotonic fluids\" fits the safer response to the cue \"sodium 128 mEq/L\"."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "The safer response addresses oxygenation or ventilation; \"Obtain a full allergy history before intervening\" moves care toward routine care before airway and breathing intervention.",
+        "c": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Stop the infusion and prepare to administer epinephrine\" fits the safer response to the cue \"A client receiving IV antibiotics suddenly develops wheezing, widespread hives\".",
+        "d": "\"Document the event and continue monitoring\" treats active deterioration as something safe to watch. The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure\" makes neurologic deterioration the active safety concern.",
+        "c": "\"Ask the client to rest quietly until the headache passes\" misses the bedside risk. The cue \"Delay increases the risk of stroke or seizure\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "d": "The option can leave neurologic deterioration untreated because it treats active deterioration as something safe to watch. \"Sit the client upright and assess for bladder distention\" fits the safer response to the cue \"The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away\"."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "\"Slow the transfusion rate and reassess in 5 minutes\" treats active deterioration as something safe to watch. The cue \"chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine observation.",
+        "c": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Stop the transfusion and keep the IV line open with normal saline\" fits the safer response to the cue \"A nurse begins a packed red blood cell transfusion for a client with postoperative anemia\".",
+        "d": "The cue \"Suspected transfusion reaction means stop the blood first and keep the line open with normal saline\" suggests circulation or perfusion, so \"Document the symptoms as an expected febrile response\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "The option can leave infection progression untreated because it commits to a competing cause before checking the dangerous pattern. \"Use soap and water for hand hygiene after removing gloves\" fits the safer response to the cue \"c diff spore precautions infection\".",
+        "c": "The cue \"c diff spore precautions infection\" suggests infection progression, so \"Place the client on droplet precautions only\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "This distractor shifts care toward premature attribution instead of infection or sepsis escalation. The stem cue \"c diff spore precautions infection\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb878-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "central_line_infection_prevention",
+      "subcategory": "central_line_infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action by the nurse best helps prevent a central line-associated bloodstream infection in a hospitalized client?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Scrub the hub before each access and maintain a sterile dressing."
+        },
+        {
+          "id": "b",
+          "text": "Change the dressing only when the client reports discomfort."
+        },
+        {
+          "id": "c",
+          "text": "Use the line for routine blood draws to avoid extra venipunctures."
+        },
+        {
+          "id": "d",
+          "text": "Leave one port uncapped between intermittent infusions."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Consistent hub disinfection and sterile dressing care are core nursing actions for preventing central line infections. Using the line casually or leaving it uncapped increases contamination risk. Dressing changes should follow evidence-based timing and contamination rules, not patient comfort alone.",
+      "distractorRationales": {
+        "b": "The cue \"Dressing changes should follow evidence-based timing and contamination rules, not patient comfort alone\" suggests infection progression, so \"Change the dressing only when the client reports discomfort\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The safer response addresses infection progression; \"Use the line for routine blood draws to avoid extra venipunctures\" moves care toward routine observation before infection or sepsis escalation.",
+        "d": "\"Leave one port uncapped between intermittent infusions\" misses the bedside risk. The cue \"Preventing CLABSI depends on aseptic access and sterile site care every time\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "central_line_infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "central_line_infection_prevention",
+        "caption": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+        "conclusion": "Preventing CLABSI depends on aseptic access and sterile site care every time."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

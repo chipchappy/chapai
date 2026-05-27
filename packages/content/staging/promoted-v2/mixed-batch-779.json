@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-779",
+  "generatedAt": "2026-04-08T23:01:02-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb779-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_management",
+      "subcategory": "Delegation / Management",
+      "difficulty": 3,
+      "stem": "A charge nurse on a busy medical unit receives four calls simultaneously. Which situation should the charge nurse address PERSONALLY and FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given"
+        },
+        {
+          "id": "b",
+          "text": "A CNA reporting that a patient pulled out their peripheral IV"
+        },
+        {
+          "id": "c",
+          "text": "A family member asking about the patient's discharge plan"
+        },
+        {
+          "id": "d",
+          "text": "A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88% and cannot be aroused"
+        }
+      ],
+      "answer": "d",
+      "rationale": "The patient who is unresponsive, diaphoretic, hypoxic, and has chest pain is in acute cardiovascular or respiratory distress — this is a potential cardiac arrest or shock scenario requiring immediate, high-level nursing assessment and intervention. The charge nurse must respond in person and likely activate a rapid response or code. Missed scheduled medications is an important safety issue but not immediately life-threatening and can be delegated to the LPN's supervising RN. A dislodged IV requires reinsertion — important but not immediately life-threatening. Family discharge questions can be deferred to the primary nurse or case manager.",
+      "distractorRationales": {
+        "a": "The cue \"Missed scheduled medications is an important safety issue but not immediately life-threatening and can be delegated to the\" suggests oxygenation or ventilation, so \"A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "b": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"A dislodged IV requires reinsertion — important but not immediately life-threatening\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88%\" fits the safer response to the cue \"A dislodged IV requires reinsertion — important but not immediately life-threatening\"."
+      },
+      "tags": [
+        "Delegation / Management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Triage for charge nurse response: unresponsive patient with chest pain + hypoxia + diaphoresis = potential code = charge nurse goes first and activates RRT/code response. All other issues can be triaged or delegated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days. The infant appears hungry after vomiting. Labs show: Na 138, K 3.0, Cl 88, HCO3 34, pH 7.56. What diagnosis and lab pattern does this represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Biliary atresia; direct hyperbilirubinemia with elevated GGT"
+        },
+        {
+          "id": "b",
+          "text": "Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis"
+        },
+        {
+          "id": "c",
+          "text": "Intussusception; normal electrolytes with currant jelly stools"
+        },
+        {
+          "id": "d",
+          "text": "Gastroenteritis; isotonic dehydration with normal bicarbonate"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pyloric stenosis presents in male infants 2–8 weeks old with projectile non-bilious vomiting (pyloric obstruction is proximal to bile entry), hungry behavior post-vomiting, and a palpable 'olive-shaped' mass in the epigastrium. Repeated vomiting of gastric contents (HCl) causes: loss of H+ → metabolic alkalosis (HCO3 34, pH 7.56), loss of Cl- → hypochloremia (Cl 88), and compensatory renal K+ wasting → hypokalemia (K 3.0). Diagnosis: ultrasound (pyloric wall thickness >3–4 mm, length >14–16 mm). Treatment: surgical pyloromyotomy (Ramstedt procedure) after electrolyte correction.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature attribution instead of renal protection. The stem cue \"0, Cl 88, HCO3 34, pH 7\" makes renal injury the active safety concern.",
+        "c": "The cue \"Repeated vomiting of gastric contents (HCl) causes: loss of H+ → metabolic alkalosis (HCO3 34, pH 7\" suggests renal injury, so \"Intussusception; normal electrolytes with currant jelly stools\" would not correct the active problem. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.",
+        "d": "This distractor shifts care toward false reassurance instead of renal protection. The stem cue \"A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days\" makes renal injury the active safety concern."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction.",
+        "conclusion": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 67-year-old patient is 2 days post right total hip replacement. The nurse finds the right calf swollen, warm, and tender. As the nurse is documenting, the patient develops sudden-onset dyspnea, SpO2 drops from 96% to 86%, and the patient reports right-sided chest pain. What is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Massage the right calf firmly to break up the clot and apply a warm compress"
+        },
+        {
+          "id": "b",
+          "text": "Maintain head-of-bed elevation, apply supplemental O2, notify the physician STAT, and anticipate anticoagulation and CT pulmonary angiography orders"
+        },
+        {
+          "id": "c",
+          "text": "Encourage immediate ambulation to prevent further clot propagation in the DVT"
+        },
+        {
+          "id": "d",
+          "text": "Apply bilateral compression stockings and continue the scheduled enoxaparin dose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This presentation is classic DVT (unilateral calf swelling, warmth, tenderness) progressing to pulmonary embolism (acute-onset dyspnea, plunging SpO2, pleuritic chest pain). PE is a post-operative emergency with high mortality if not promptly treated. Priority: (1) Supplemental O2 to target SpO2 >94%; position of comfort (usually HOB elevated); (2) NOTIFY physician STAT — do not delay; (3) Anticipate: CT pulmonary angiography (gold standard for PE diagnosis), systemic anticoagulation (IV heparin or LMWH), hemodynamic support if cardiovascular collapse occurs. NEVER massage a suspected DVT — dislodging the thrombus directly causes massive PE. NEVER ambulate with acute DVT until anticoagulation is established and imaging confirms. Compression stockings are preventive, not treatment for acute DVT/PE.",
+      "distractorRationales": {
+        "a": "\"Massage the right calf firmly to break up the clot and apply a warm compress\" misses the bedside risk. The cue \"(3) Anticipate: CT pulmonary angiography (gold standard for PE diagnosis), systemic anticoagulation (IV heparin or LMWH), hemodynamic support\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"Post-op DVT → PE: acute dyspnea + dropping SpO2 + pleuritic pain = EMERGENCY\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The cue \"(3) Anticipate: CT pulmonary angiography (gold standard for PE diagnosis), systemic anticoagulation (IV heparin or LMWH), hemodynamic support\" suggests oxygenation or ventilation, so \"Apply bilateral compression stockings and continue the scheduled enoxaparin dose\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op DVT → PE: acute dyspnea + dropping SpO2 + pleuritic pain = EMERGENCY. O2 immediately + notify MD STAT + CT-PA + anticoagulation. NEVER massage DVT — causes PE. Never ambulate until treatment initiated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_safety_five_rights",
+      "subcategory": "Pharmacology / Medication Safety / Five Rights",
+      "difficulty": 2,
+      "stem": "A nurse picks up a syringe that a previous nurse prepared and left in the medication room labeled 'Patient Jones — morphine 4 mg.' The nurse's patient is Jones and the morphine dose is ordered. Which action should the nurse take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the pre-drawn syringe since it is labeled with the correct patient name and drug"
+        },
+        {
+          "id": "b",
+          "text": "Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system"
+        },
+        {
+          "id": "c",
+          "text": "Ask the previous nurse to verify the dose by phone before administering"
+        },
+        {
+          "id": "d",
+          "text": "Document the medication as given and monitor the patient closely for response"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pre-drawn, unlabeled (or hand-labeled) syringes prepared by another nurse and left in a medication room present serious patient safety risks: the medication, dose, or preparation process cannot be independently verified by the administering nurse. Per safety standards (Joint Commission, ISMP), nurses should never administer a medication that they did not personally prepare and verify from a labeled, system-dispensed source. The pre-drawn syringe should be discarded and a fresh dose prepared directly from the medication dispensing cabinet, allowing the nurse to independently verify the drug, dose, concentration, expiration, and route. Phone verification by the previous nurse is insufficient — the administering nurse bears full accountability.",
+      "distractorRationales": {
+        "a": "\"Administer the pre-drawn syringe since it is labeled with the correct patient name and drug\" misses the bedside risk. The cue \"Never administer a medication drawn up by another nurse\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "The cue \"Per safety standards (Joint Commission, ISMP), nurses should never administer a medication that they did not personally prepare\" suggests medication toxicity, so \"Ask the previous nurse to verify the dose by phone before administering\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system\" fits the safer response to the cue \"' The nurse's patient is Jones and the morphine dose is ordered\"."
+      },
+      "tags": [
+        "Pharmacology / Medication Safety / Five Rights",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Never administer a medication drawn up by another nurse. You cannot verify what is in that syringe. Discard and prepare your own dose. This applies in all settings. The 'rights' of medication administration include right verification — and that starts with you preparing the medication yourself.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_fall_prevention",
+      "subcategory": "Safety and Infection Control / Fall Prevention",
+      "difficulty": 2,
+      "stem": "A nurse is admitting a 79-year-old patient with a history of orthostatic hypotension, recent fall, and current use of furosemide and lisinopril. Which intervention is HIGHEST priority for fall prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place a fall-risk bracelet on the patient and document in the chart"
+        },
+        {
+          "id": "b",
+          "text": "Educate the patient to call for help before getting out of bed and place the call light within reach"
+        },
+        {
+          "id": "c",
+          "text": "Request a physical therapy consult for gait evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Move the patient to a room closer to the nursing station"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest-impact, immediately actionable fall prevention measure is patient education combined with environmental setup: instructing the patient to call for assistance before ambulating and ensuring the call light is accessible. This directly addresses the behavioral mechanism of most falls (attempting to get up unassisted) and is executable immediately at the bedside. Applying a fall-risk bracelet without the behavioral intervention does not prevent falls. PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection.",
+      "distractorRationales": {
+        "a": "The cue \"Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone\" suggests infection progression, so \"Place a fall-risk bracelet on the patient and document in the chart\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "\"Request a physical therapy consult for gait evaluation\" relies on notification without the bedside safety step. The cue \"Applying a fall-risk bracelet without the behavioral intervention does not prevent falls\" raises concern for infection progression, so infection or sepsis escalation is needed before waiting for a callback.",
+        "d": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "Safety and Infection Control / Fall Prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Fall Prevention",
+        "caption": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+        "conclusion": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "A nurse caring for a ventilated patient wants to implement the VAP prevention bundle. Which combination of interventions is CORRECT according to current evidence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HOB flat, scheduled oral care q8h with water, continuous sedation infusion"
+        },
+        {
+          "id": "b",
+          "text": "HOB 30–45°, oral care with 0.12% chlorhexidine q6h, daily sedation vacation with SBT"
+        },
+        {
+          "id": "c",
+          "text": "HOB 30–45°, oral care q12h with water, sedation vacation only when FiO2 <0.40"
+        },
+        {
+          "id": "d",
+          "text": "HOB 15°, chlorhexidine oral care q8h, continuous sedation to prevent self-extubation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The VAP prevention bundle includes: (1) HOB elevation 30–45° to reduce aspiration of gastric contents; (2) oral decontamination with 0.12% chlorhexidine gluconate every 6 hours to reduce oropharyngeal bacterial burden; (3) daily sedation interruption (sedation vacation) — allows neurological assessment and reduces days on ventilator; (4) daily spontaneous breathing trials (SBT) to assess readiness for extubation — the most effective strategy for reducing VAP is minimizing ventilator days.",
+      "distractorRationales": {
+        "a": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"HOB 30–45°, oral care with 0.12% chlorhexidine q6h, daily sedation vacation with SBT\" fits the safer response to the cue \"VAP bundle: HOB 30–45°, chlorhexidine oral care, daily sedation vacation + SBT\".",
+        "c": "\"HOB 30–45°, oral care q12h with water, sedation vacation only when FiO2 <0.40\" moves to activity, intake, or discharge planning too early. The cue \"The VAP prevention bundle includes: (1) HOB elevation 30–45° to reduce aspiration of gastric contents\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before ambulation, intake, or discharge teaching.",
+        "d": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"HOB 30–45°, oral care with 0.12% chlorhexidine q6h, daily sedation vacation with SBT\" fits the safer response to the cue \"(4) daily spontaneous breathing trials (SBT) to assess readiness for extubation — the most effective strategy for reducing\"."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "VAP bundle: HOB 30–45°, chlorhexidine oral care, daily sedation vacation + SBT. Each element is independently evidence-based.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "A 90-year-old patient with end-stage COPD and lung cancer is enrolled in hospice. Family members ask why the patient's morphine dose is being increased when 'it could stop his breathing.' What is the most therapeutically and ethically accurate nursing response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "You are right to be concerned — morphine in high doses will hasten death, and we will titrate as slowly as possible"
+        },
+        {
+          "id": "b",
+          "text": "Morphine relieves dyspnea and pain; when appropriately titrated to comfort, it does not hasten death, and the ethical principle of double effect supports its use to relieve suffering"
+        },
+        {
+          "id": "c",
+          "text": "We will switch to a non-opioid medication to avoid respiratory risk — comfort and safety can both be achieved without opioids"
+        },
+        {
+          "id": "d",
+          "text": "Medication decisions are the physician's responsibility — family concerns should be directed to the attending"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The ethical principle of double effect: an action with both a good effect (pain/dyspnea relief) and a foreseen but unintended harmful effect (potential respiratory depression) is ethically permissible when the good effect is intended, the benefit outweighs the harm, and the action is not inherently wrong. Critically, evidence consistently shows that appropriately titrated opioids in end-of-life care do NOT hasten death — and may improve survival by reducing the physiological stress of uncontrolled suffering. In hospice, comfort is the primary goal and opioids are first-line for dyspnea and pain in end-stage COPD/cancer. The nurse should explain this directly and compassionately, not deflect or abandon evidence-based comfort care. Avoiding this conversation abandons the patient and family.",
+      "distractorRationales": {
+        "a": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Morphine relieves dyspnea and pain; when appropriately titrated to comfort, it does not hasten death\" fits the safer response to the cue \"In hospice, comfort is the primary goal and opioids are first-line for dyspnea and pain in end-stage COPD/cancer\".",
+        "c": "The safer response addresses oxygenation or ventilation; \"We will switch to a non-opioid medication to avoid respiratory risk — comfort and safety can both be\" moves care toward diagnostic reassurance before airway and breathing intervention.",
+        "d": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"In hospice, comfort is the primary goal and opioids are first-line for dyspnea and pain in end-stage COPD/cancer\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Double effect: appropriately titrated opioids in hospice are ethically sound and do NOT hasten death — evidence supports this. Address family fears with honest education. Comfort is the primary goal in hospice.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_hypoglycemia",
+      "subcategory": "Neonatal Hypoglycemia",
+      "difficulty": 3,
+      "stem": "A large-for-gestational-age (LGA) neonate born to a mother with gestational diabetes is 2 hours old. The bedside glucose is 38 mg/dL. The neonate is jittery with poor tone. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Administer IV dextrose 10% (D10W) 2 mL/kg IV push"
+        },
+        {
+          "id": "c",
+          "text": "Notify the neonatologist and transfer to the NICU for monitoring"
+        },
+        {
+          "id": "d",
+          "text": "Administer glucagon 0.3 mg/kg IM and recheck in 15 minutes"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires IV dextrose therapy. Symptomatic hypoglycemia is treated with IV D10W 2 mL/kg bolus, followed by a continuous D10W infusion. Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40–45), not for symptomatic hypoglycemia with jitteriness and poor tone. Glucagon (D) can be used in severe refractory hypoglycemia but IV glucose is first-line. NICU notification (C) may follow but IV glucose is the immediate intervention.",
+      "distractorRationales": {
+        "a": "\"Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes\" misses the bedside risk. The cue \"Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40–45), not for symptomatic hypoglycemia with jitteriness and poor\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "c": "\"Notify the neonatologist and transfer to the NICU for monitoring\" relies on notification without the bedside safety step. The cue \"Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires\" raises concern for unstable glucose physiology, so glucose rescue or metabolic stabilization is needed before waiting for a callback.",
+        "d": "The safer response addresses unstable glucose physiology; \"Administer glucagon 0.3 mg/kg IM and recheck in 15 minutes\" moves care toward routine care before glucose rescue or metabolic stabilization."
+      },
+      "tags": [
+        "Neonatal Hypoglycemia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Symptomatic neonatal hypoglycemia (<45 mg/dL with symptoms): IV D10W 2 mL/kg bolus — breastfeeding alone is insufficient for symptomatic newborns.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with hyperthyroidism develops sudden-onset temperature 39.8°C, HR 148 with atrial fibrillation, tremor, and confusion after an emergency appendectomy. Which sequence of pharmacologic interventions is CORRECT for thyroid storm?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Iodine → propylthiouracil (PTU) → propranolol"
+        },
+        {
+          "id": "b",
+          "text": "Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU)"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol → iodine → PTU"
+        },
+        {
+          "id": "d",
+          "text": "Methimazole → iodine → esmolol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The correct sequence for thyroid storm is: (1) PTU first — blocks new thyroid hormone synthesis AND peripheral T4→T3 conversion; (2) propranolol — controls tachycardia and sympathetic symptoms; (3) iodine (Lugol's solution or SSKI) given at least 1 hour AFTER PTU. Iodine must be given after PTU because iodine provides substrate for thyroid hormone production — if given before a thionamide, it can worsen the storm (Jod-Basedow effect). Methimazole (D) does not block peripheral conversion.",
+      "distractorRationales": {
+        "a": "The cue \"The correct sequence for thyroid storm is: (1) PTU first — blocks new thyroid hormone synthesis AND peripheral\" suggests medication toxicity, so \"Iodine → propylthiouracil (PTU) → propranolol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A patient with hyperthyroidism develops sudden-onset temperature 39\" makes medication toxicity the active safety concern.",
+        "d": "The safer response addresses medication toxicity; \"Methimazole → iodine → esmolol\" moves care toward routine care before medication-safety intervention."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm drug sequence: PTU → propranolol → iodine (1 hour after PTU). Never give iodine first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb779-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "de_escalation",
+      "subcategory": "De-escalation",
+      "difficulty": 3,
+      "stem": "A patient with schizophrenia becomes increasingly agitated in the day room, pacing, clenching fists, and stating loudly: 'Everyone is trying to poison me!' Which nurse action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approach the patient with two other staff members and prepare for physical restraint"
+        },
+        {
+          "id": "b",
+          "text": "Call security immediately and lock the day room"
+        },
+        {
+          "id": "c",
+          "text": "Calmly approach alone, make brief eye contact, use a low voice, and offer to move to a quieter space"
+        },
+        {
+          "id": "d",
+          "text": "Tell the patient loudly: 'You need to calm down or you will be restrained'"
+        }
+      ],
+      "answer": "c",
+      "rationale": "De-escalation techniques include: calm tone of voice, non-threatening body language, offering choice/control (moving to quiet space), reducing environmental stimulation, and validating feelings without agreeing with delusions. Approaching with multiple staff (A) can feel threatening and escalate the situation. Locking the unit (B) removes the patient's sense of freedom and escalates. Threatening restraint (D) is coercive and contraindicated in de-escalation. Physical restraint is the last resort after verbal de-escalation fails.",
+      "distractorRationales": {
+        "a": "The option can leave clinical safety risk untreated because it commits to a competing cause before checking the dangerous pattern. \"Calmly approach alone, make brief eye contact, use a low voice, and offer to move to\" fits the safer response to the cue \"Threatening restraint (D) is coercive and contraindicated in de-escalation\".",
+        "b": "This distractor shifts care toward incomplete escalation instead of bedside safety action. The stem cue \"Threatening restraint (D) is coercive and contraindicated in de-escalation\" makes clinical safety risk the active safety concern.",
+        "d": "\"Tell the patient loudly: 'You need to calm down or you will be restrained'\" misses the bedside risk. The cue \"Physical restraint is the last resort after verbal de-escalation fails\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "De-escalation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "De-escalation: calm voice, non-threatening approach, reduce stimulation, offer choices — physical restraint is last resort only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

@@ -1,0 +1,535 @@
+{
+  "batchId": "mixed-batch-863",
+  "generatedAt": "2026-04-09T19:02:24-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb863-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "The option can leave clinical safety risk untreated because it treats active deterioration as something safe to watch. \"The client may have acute angle-closure glaucoma and needs urgent evaluation\" fits the safer response to the cue \"Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency\".",
+        "c": "\"The client is likely having a migraine and can rest at home\" moves to activity, intake, or discharge planning too early. The cue \"A client reports severe eye pain, blurred vision\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"These findings show that prescribed eye drops are working well\" answers a lower-acuity part of the scenario. The cue \"Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma\" raises concern for clinical safety risk, so bedside safety action is needed before routine care."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"A client receiving IV antibiotics suddenly develops wheezing, widespread hives\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The safer response addresses oxygenation or ventilation; \"Slow the infusion to reduce the reaction\" moves care toward routine care before airway and breathing intervention.",
+        "d": "\"Document the event and continue monitoring\" treats active deterioration as something safe to watch. The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "\"Use alcohol-based sanitizer alone because it is faster\" misses the bedside risk. The cue \"c diff spore precautions infection\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The safer response addresses infection progression; \"Place the client on droplet precautions only\" moves care toward routine care before infection or sepsis escalation.",
+        "d": "\"Share the blood pressure cuff after wiping it with a dry towel\" commits to a competing cause before checking the dangerous pattern. The cue \"c diff spore precautions infection\" raises concern for infection progression, so infection or sepsis escalation is needed before diagnostic reassurance."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dka_fluid_priority",
+      "subcategory": "dka_fluid_priority",
+      "difficulty": 3,
+      "stem": "A client with diabetic ketoacidosis is lethargic, has dry mucous membranes, blood pressure 88/54 mmHg, and blood glucose 620 mg/dL. Which intervention should the nurse anticipate first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rapid isotonic fluid replacement."
+        },
+        {
+          "id": "b",
+          "text": "Long-acting insulin by subcutaneous injection."
+        },
+        {
+          "id": "c",
+          "text": "A potassium-restricted diet."
+        },
+        {
+          "id": "d",
+          "text": "Sodium bicarbonate for all clients with DKA."
+        }
+      ],
+      "answer": "a",
+      "rationale": "The immediate threat in DKA is severe volume depletion and impaired perfusion. Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status and response. Subcutaneous long-acting insulin and routine bicarbonate do not address the acute circulatory problem first.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of glucose rescue or metabolic stabilization. The stem cue \"In DKA with hypotension and dehydration, restore circulating volume first\" makes unstable glucose physiology the active safety concern.",
+        "c": "\"A potassium-restricted diet\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "d": "\"Sodium bicarbonate for all clients with DKA\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up."
+      },
+      "tags": [
+        "dka_fluid_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In DKA with hypotension and dehydration, restore circulating volume first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "opioid_patch_fever_risk",
+      "subcategory": "opioid_patch_fever_risk",
+      "difficulty": 3,
+      "stem": "A client using a fentanyl patch develops a fever of 102 F (38.9 C). Which instruction should the nurse provide?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Report the fever promptly because heat can increase fentanyl absorption."
+        },
+        {
+          "id": "b",
+          "text": "Place a heating pad over the patch to improve comfort."
+        },
+        {
+          "id": "c",
+          "text": "Cut the patch in half if the client feels too sleepy."
+        },
+        {
+          "id": "d",
+          "text": "Apply an extra patch if the pain feels worse."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Heat and fever can increase fentanyl absorption from a transdermal patch and raise the risk of oversedation or respiratory depression. The client should report this promptly and avoid external heat sources. Cutting or doubling patches is unsafe.",
+      "distractorRationales": {
+        "b": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Report the fever promptly because heat can increase fentanyl absorption\" fits the safer response to the cue \"Transdermal fentanyl becomes riskier with fever or heat exposure because absorption can increase\".",
+        "c": "The cue \"A client using a fentanyl patch develops a fever of 102 F (38\" suggests oxygenation or ventilation, so \"Cut the patch in half if the client feels too sleepy\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.",
+        "d": "The cue \"A client using a fentanyl patch develops a fever of 102 F (38\" suggests oxygenation or ventilation, so \"Apply an extra patch if the pain feels worse\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "opioid_patch_fever_risk",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Transdermal fentanyl becomes riskier with fever or heat exposure because absorption can increase.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pancreatitis_hypocalcemia_tetany",
+      "subcategory": "pancreatitis_hypocalcemia_tetany",
+      "difficulty": 3,
+      "stem": "A client hospitalized with acute pancreatitis develops numbness around the mouth and carpal spasms. Which laboratory value does the nurse anticipate is most likely abnormal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Low serum calcium."
+        },
+        {
+          "id": "b",
+          "text": "High serum sodium."
+        },
+        {
+          "id": "c",
+          "text": "Low hematocrit."
+        },
+        {
+          "id": "d",
+          "text": "Low chloride."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Perioral numbness and carpal spasm suggest neuromuscular irritability from hypocalcemia. Acute pancreatitis can lower serum calcium as part of the disease process. Recognizing the pattern helps the nurse connect clinical signs with the expected electrolyte disturbance.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"Recognizing the pattern helps the nurse connect clinical signs with the expected electrolyte disturbance\" makes neurologic deterioration the active safety concern.",
+        "c": "The safer response addresses neurologic deterioration; \"Low hematocrit\" moves care toward routine care before neurologic safety assessment.",
+        "d": "\"Low chloride\" answers a lower-acuity part of the scenario. The cue \"Acute pancreatitis can lower serum calcium as part of the disease process\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care."
+      },
+      "tags": [
+        "pancreatitis_hypocalcemia_tetany",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Tetany-type symptoms in pancreatitis point toward hypocalcemia.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "peritoneal_dialysis_peritonitis",
+      "subcategory": "peritoneal_dialysis_peritonitis",
+      "difficulty": 3,
+      "stem": "A client performing peritoneal dialysis reports cloudy outflow and abdominal pain. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because the findings suggest peritonitis."
+        },
+        {
+          "id": "b",
+          "text": "Tell the client cloudy drainage is expected after dialysis."
+        },
+        {
+          "id": "c",
+          "text": "Instruct the client to skip the next exchange."
+        },
+        {
+          "id": "d",
+          "text": "Have the client drink extra water and wait until tomorrow."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Cloudy dialysate and abdominal pain are classic findings of peritoneal dialysis-associated peritonitis. The nurse should escalate promptly for assessment and treatment. Reassurance or delay can worsen infection and threaten the dialysis access pathway.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward false reassurance instead of infection or sepsis escalation. The stem cue \"Cloudy dialysate and abdominal pain are classic findings of peritoneal dialysis-associated peritonitis\" makes infection progression the active safety concern.",
+        "c": "This distractor shifts care toward premature teaching instead of infection or sepsis escalation. The stem cue \"Cloudy dialysate and abdominal pain are classic findings of peritoneal dialysis-associated peritonitis\" makes infection progression the active safety concern.",
+        "d": "The option can leave infection progression untreated because it treats active deterioration as something safe to watch. \"Notify the provider because the findings suggest peritonitis\" fits the safer response to the cue \"A client performing peritoneal dialysis reports cloudy outflow and abdominal pain\"."
+      },
+      "tags": [
+        "peritoneal_dialysis_peritonitis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cloudy peritoneal dialysis outflow should be treated as peritonitis until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "placenta_previa_bleeding",
+      "subcategory": "placenta_previa_bleeding",
+      "difficulty": 3,
+      "stem": "A pregnant client at 32 weeks reports painless bright red vaginal bleeding. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply an external fetal monitor and avoid a vaginal examination."
+        },
+        {
+          "id": "b",
+          "text": "Perform a sterile vaginal exam to assess dilation."
+        },
+        {
+          "id": "c",
+          "text": "Instruct the client to walk in the hallway to check if the bleeding slows."
+        },
+        {
+          "id": "d",
+          "text": "Prepare the client for a routine discharge if contractions are absent."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Painless bright red bleeding in the third trimester suggests placenta previa. The nurse should assess maternal-fetal status while avoiding vaginal examination because digital exams can worsen hemorrhage when the placenta overlies the cervical os. Early recognition and protection from avoidable bleeding are the priority.",
+      "distractorRationales": {
+        "b": "The cue \"Early recognition and protection from avoidable bleeding are the priority\" suggests bleeding or anticoagulation injury, so \"Perform a sterile vaginal exam to assess dilation\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "\"Instruct the client to walk in the hallway to check if the bleeding slows\" misses the bedside risk. The cue \"Early recognition and protection from avoidable bleeding are the priority\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "\"Prepare the client for a routine discharge if contractions are absent\" treats active deterioration as something safe to watch. The cue \"The nurse should assess maternal-fetal status while avoiding vaginal examination because digital exams can worsen hemorrhage when the\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before routine observation."
+      },
+      "tags": [
+        "placenta_previa_bleeding",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected placenta previa means monitor and protect; do not perform a vaginal exam.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_preeclampsia_headache",
+      "subcategory": "postpartum_preeclampsia_headache",
+      "difficulty": 3,
+      "stem": "A client 3 days after delivery calls the postpartum unit reporting a severe headache, visual spots, and swelling of the hands. Which instruction should the nurse give first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Return to the hospital for immediate evaluation."
+        },
+        {
+          "id": "b",
+          "text": "Take an over-the-counter pain reliever and rest in a dark room."
+        },
+        {
+          "id": "c",
+          "text": "Limit fluids for the rest of the day."
+        },
+        {
+          "id": "d",
+          "text": "Wait until the routine postpartum visit next week."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe headache, visual changes, and edema after delivery raise concern for postpartum preeclampsia, which can progress to seizure or stroke. The client needs urgent evaluation rather than home symptom management. Delayed care can miss a serious hypertensive emergency.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"Severe headache, visual changes\" makes neurologic deterioration the active safety concern.",
+        "c": "The safer response addresses neurologic deterioration; \"Limit fluids for the rest of the day\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "d": "This distractor shifts care toward delayed assessment instead of patient teaching and medication-safety reinforcement. The stem cue \"Severe headache and visual changes after delivery should be treated as postpartum preeclampsia until proven otherwise\" makes neurologic deterioration the active safety concern."
+      },
+      "tags": [
+        "postpartum_preeclampsia_headache",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Severe headache and visual changes after delivery should be treated as postpartum preeclampsia until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "thyroidectomy_stridor",
+      "subcategory": "thyroidectomy_stridor",
+      "difficulty": 3,
+      "stem": "A client is 4 hours postoperative after a thyroidectomy and develops inspiratory stridor. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare for emergency airway support and notify the provider immediately."
+        },
+        {
+          "id": "b",
+          "text": "Offer ice chips to soothe the throat."
+        },
+        {
+          "id": "c",
+          "text": "Document the finding as expected postoperative hoarseness."
+        },
+        {
+          "id": "d",
+          "text": "Ask the client to speak loudly so the nurse can assess voice quality."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Stridor after thyroid surgery may indicate airway obstruction from swelling, hematoma, or laryngeal nerve complications and requires immediate action. The nurse should treat it as an airway emergency rather than a routine sore-throat complaint. Delaying airway support can quickly become life-threatening.",
+      "distractorRationales": {
+        "b": "The cue \"Stridor after thyroid surgery may indicate airway obstruction from swelling, hematoma, or laryngeal nerve complications and requires immediate\" suggests oxygenation or ventilation, so \"Offer ice chips to soothe the throat\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Document the finding as expected postoperative hoarseness\" normalizes a finding that needs reassessment. The cue \"Post-thyroidectomy stridor is an airway emergency, not routine hoarseness\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before reassurance.",
+        "d": "\"Ask the client to speak loudly so the nurse can assess voice quality\" misses the bedside risk. The cue \"Stridor after thyroid surgery may indicate airway obstruction from swelling, hematoma, or laryngeal nerve complications and requires immediate\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "thyroidectomy_stridor",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-thyroidectomy stridor is an airway emergency, not routine hoarseness.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "warfarin_teaching",
+      "subcategory": "warfarin_teaching",
+      "difficulty": 3,
+      "stem": "Which statement by a patient taking warfarin shows correct understanding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "\"I will report unusual bleeding or bruising right away.\""
+        },
+        {
+          "id": "b",
+          "text": "\"I can double the dose if I miss one dose.\""
+        },
+        {
+          "id": "c",
+          "text": "\"I should stop the medication once I feel better.\""
+        },
+        {
+          "id": "d",
+          "text": "\"A green salad every day is unsafe no matter what.\""
+        }
+      ],
+      "answer": "a",
+      "rationale": "Warfarin can increase bleeding risk, so the patient should know to watch for and report bleeding signs. **Why the others are wrong:** - B Doubling a missed dose can be dangerous. - C Anticoagulants are not stopped casually. - D Vitamin K intake should be consistent, not completely avoided without guidance.",
+      "distractorRationales": {
+        "b": "\"\"I can double the dose if I miss one dose.\"\" answers a lower-acuity part of the scenario. The cue \"Anticoagulant teaching should focus on bleeding safety and consistency\" raises concern for bleeding or anticoagulation injury, so patient teaching and medication-safety reinforcement is needed before routine care.",
+        "c": "\"\"I should stop the medication once I feel better.\"\" misses the bedside risk. The cue \"Warfarin can increase bleeding risk, so the patient should know to watch for and report bleeding signs\" points to bleeding or anticoagulation injury. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.",
+        "d": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"\"I will report unusual bleeding or bruising right away.\"\" fits the safer response to the cue \"Anticoagulant teaching should focus on bleeding safety and consistency\"."
+      },
+      "tags": [
+        "warfarin_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Anticoagulant teaching should focus on bleeding safety and consistency.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb863-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "documentation",
+      "difficulty": 3,
+      "stem": "After a patient falls while attempting to ambulate unassisted, the nurse completes an incident report. Which statement about incident reports is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The incident report should be referenced in the patient's medical record to ensure continuity of care"
+        },
+        {
+          "id": "b",
+          "text": "The incident report is an internal quality improvement tool; it is not referenced in the medical record and is not discoverable in litigation"
+        },
+        {
+          "id": "c",
+          "text": "Incident reports are part of the permanent medical record and must be provided to patients upon request"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should document 'incident report filed' in the nursing notes to alert other providers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Incident reports (occurrence reports) are internal quality improvement documents: they are NOT referenced in the patient's medical record. Referencing them in the chart (A, D) makes them discoverable in litigation, eliminating their protection as internal QI documents. The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without mentioning the incident report. In many states, incident reports prepared in anticipation of litigation may be protected from discovery, but only if not referenced in the chart. They are not part of the permanent medical record (C).",
+      "distractorRationales": {
+        "a": "The option can leave clinical safety risk untreated because it answers a lower-acuity part of the scenario. \"The incident report is an internal quality improvement tool; it is not referenced in the medical\" fits the safer response to the cue \"The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without\".",
+        "c": "The option can leave clinical safety risk untreated because it answers a lower-acuity part of the scenario. \"The incident report is an internal quality improvement tool; it is not referenced in the medical\" fits the safer response to the cue \"The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without\".",
+        "d": "\"The nurse should document 'incident report filed' in the nursing notes to alert other providers\" misses the bedside risk. The cue \"The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without\" points to clinical safety risk. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Incident reports: do NOT reference in the medical record; document clinical facts of the event in the chart only — referencing the incident report makes it legally discoverable.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

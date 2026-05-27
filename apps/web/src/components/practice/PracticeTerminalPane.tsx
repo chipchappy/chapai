@@ -97,6 +97,8 @@ function getScoringRuleLabel(question: PracticeQuestion) {
   if (question.kind === "multi-select") return "select all that apply";
   if (question.kind === "bow-tie") return "clinical judgment set";
   if (question.kind === "case-study") return "case item";
+  if (question.kind === "scenario-mcq") return "scenario question";
+  if (question.kind === "decision-map-mcq") return "decision-map question";
   return "single best answer";
 }
 
@@ -174,6 +176,10 @@ function buildPreAnswerChecklist(question: PracticeQuestion, hasOrders: boolean,
 
   if (question.kind === "bow-tie" || question.kind === "case-study") {
     checklist.push("link clue, action, and outcome before selecting any single field");
+  }
+
+  if (question.kind === "scenario-mcq" || question.kind === "decision-map-mcq") {
+    checklist.push("use the scenario cues to choose the single best response");
   }
 
   if (question.kind === "matrix") {

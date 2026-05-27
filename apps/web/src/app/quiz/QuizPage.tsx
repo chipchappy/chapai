@@ -38,6 +38,8 @@ const QUESTION_TYPE_OPTIONS: Array<{ value: QuestionType; label: string }> = [
   { value: "matrix", label: "Matrix" },
   { value: "case_study", label: "Case study" },
   { value: "bow_tie", label: "Bow tie" },
+  { value: "scenario_mcq", label: "Scenario MCQ" },
+  { value: "decision_map_mcq", label: "Decision map MCQ" },
 ];
 
 function loadPracticeSnapshot() {

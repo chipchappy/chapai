@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-857",
+  "generatedAt": "2026-04-09T18:24:58-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb857-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "\"A patient asking for a pillow\" answers a lower-acuity part of the scenario. The cue \"Chest symptoms with nausea are high-priority until proven otherwise\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "c": "The cue \"- C Discharge teaching can wait\" suggests circulation or perfusion, so \"A patient wanting discharge paperwork\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The cue \"Chest symptoms with nausea are high-priority until proven otherwise\" suggests circulation or perfusion, so \"A patient asking for ice water\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "infection_prevention",
+      "subcategory": "infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action best helps reduce transmission when caring for a patient with a contagious infection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform appropriate hand hygiene before and after care"
+        },
+        {
+          "id": "b",
+          "text": "Reuse gloves if they still look clean"
+        },
+        {
+          "id": "c",
+          "text": "Skip precautions if the patient feels better"
+        },
+        {
+          "id": "d",
+          "text": "Share equipment without cleaning it"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hand hygiene remains one of the most effective infection prevention measures.",
+      "distractorRationales": {
+        "b": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"Perform appropriate hand hygiene before and after care\" fits the safer response to the cue \"Hand hygiene remains one of the most effective infection prevention measures\".",
+        "c": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Hand hygiene remains one of the most effective infection prevention measures\" makes infection progression the active safety concern.",
+        "d": "The option can leave infection progression untreated because it commits to a competing cause before checking the dangerous pattern. \"Perform appropriate hand hygiene before and after care\" fits the safer response to the cue \"Hand hygiene remains one of the most effective infection prevention measures\"."
+      },
+      "tags": [
+        "infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Simple infection-control steps still matter most.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "infection_prevention",
+        "caption": "Simple infection-control steps still matter most.",
+        "conclusion": "Simple infection-control steps still matter most."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_deterioration",
+      "subcategory": "new_deterioration",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse see first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient needing help setting up a meal tray"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking when rounds will begin"
+        },
+        {
+          "id": "d",
+          "text": "A patient who wants to know if family can visit later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. **Why the others are wrong:** - B Meal setup is not urgent. - C Rounds timing is nonurgent. - D Visiting questions can wait.",
+      "distractorRationales": {
+        "b": "The safer response addresses circulation or perfusion; \"A patient needing help setting up a meal tray\" moves care toward routine care before circulation and perfusion support.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately\" makes circulation or perfusion the active safety concern.",
+        "d": "The cue \"Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately\" suggests circulation or perfusion, so \"A patient who wants to know if family can visit later\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "new_deterioration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute chest symptoms outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward premature teaching instead of circulation and perfusion support. The stem cue \"- D Chest pain decisions require nursing judgment and escalation\" makes circulation or perfusion the active safety concern.",
+        "c": "The safer response addresses circulation or perfusion; \"Evaluating a new complaint of dizziness\" moves care toward routine care before circulation and perfusion support.",
+        "d": "\"Deciding whether chest pain needs an ECG\" misses the bedside risk. The cue \"- C Dizziness requires assessment first\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stable_vs_unstable",
+      "subcategory": "stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with chest pain and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "A patient waiting for discharge teaching tomorrow"
+        },
+        {
+          "id": "d",
+          "text": "A patient requesting help finding a charger"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent requests.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Unstable symptoms always come before comfort tasks\" makes circulation or perfusion the active safety concern.",
+        "c": "\"A patient waiting for discharge teaching tomorrow\" treats active deterioration as something safe to watch. The cue \"Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine observation.",
+        "d": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"A patient with chest pain and diaphoresis\" fits the safer response to the cue \"Unstable symptoms always come before comfort tasks\"."
+      },
+      "tags": [
+        "stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable symptoms always come before comfort tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_confusion",
+      "subcategory": "acute_confusion",
+      "difficulty": 3,
+      "stem": "A patient suddenly becomes confused and pulls at lines. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the patient for a possible acute cause and protect safety"
+        },
+        {
+          "id": "b",
+          "text": "Assume the confusion is normal in the evening"
+        },
+        {
+          "id": "c",
+          "text": "Leave the patient alone to avoid upsetting them"
+        },
+        {
+          "id": "d",
+          "text": "Focus only on the charting"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden confusion can signal an acute change. The nurse should protect the patient and look for the cause. **Why the others are wrong:** - B Sudden confusion should not be dismissed. - C Leaving the patient alone can increase harm. - D Charting does not come before assessment and safety.",
+      "distractorRationales": {
+        "b": "The safer response addresses neurologic deterioration; \"Assume the confusion is normal in the evening\" moves care toward reassurance before neurologic safety assessment.",
+        "c": "The option can leave neurologic deterioration untreated because it answers a lower-acuity part of the scenario. \"Assess the patient for a possible acute cause and protect safety\" fits the safer response to the cue \"Sudden confusion can signal an acute change\".",
+        "d": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"Sudden confusion can signal an acute change\" makes neurologic deterioration the active safety concern."
+      },
+      "tags": [
+        "acute_confusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New confusion should be treated as a change in condition, not routine behavior.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_level_change",
+      "subcategory": "acute_level_change",
+      "difficulty": 3,
+      "stem": "A patient becomes much less responsive after previously answering clearly. What is the nurse's first priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess airway, breathing, circulation, and neurologic status"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the patient to wake up naturally"
+        },
+        {
+          "id": "c",
+          "text": "Document that the patient is probably just tired"
+        },
+        {
+          "id": "d",
+          "text": "Offer the patient food before assessing further"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration. **Why the others are wrong:** - B Delay may miss a serious change. - C Tiredness should not be assumed. - D Food does not replace an urgent assessment.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of airway and breathing intervention. The stem cue \"Sudden decreased responsiveness is an emergency until proven otherwise\" makes oxygenation or ventilation the active safety concern.",
+        "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"Sudden decreased responsiveness is an emergency until proven otherwise\" makes oxygenation or ventilation the active safety concern.",
+        "d": "\"Offer the patient food before assessing further\" misses the bedside risk. The cue \"Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "acute_level_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden decreased responsiveness is an emergency until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_neurologic_warning_sign",
+      "subcategory": "acute_neurologic_warning_sign",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops slurred speech and one-sided facial droop. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the stroke response process immediately"
+        },
+        {
+          "id": "b",
+          "text": "Recheck the patient after the next medication pass"
+        },
+        {
+          "id": "c",
+          "text": "Ask the patient to rest and avoid talking"
+        },
+        {
+          "id": "d",
+          "text": "Document the change and continue routine care"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden focal neurologic changes can signal stroke. Rapid response matters because time-sensitive treatment may be available. **Why the others are wrong:** - B Delay can cost critical treatment time. - C Rest does not address the neurologic emergency. - D Routine care is not appropriate when stroke is possible.",
+      "distractorRationales": {
+        "b": "\"Recheck the patient after the next medication pass\" misses the bedside risk. The cue \"Sudden focal neurologic changes can signal stroke\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "c": "\"Ask the patient to rest and avoid talking\" misses the bedside risk. The cue \"- C Rest does not address the neurologic emergency\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "d": "The cue \"- C Rest does not address the neurologic emergency\" suggests neurologic deterioration, so \"Document the change and continue routine care\" would not correct the active problem. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment."
+      },
+      "tags": [
+        "acute_neurologic_warning_sign",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden slurred speech and facial droop are stroke warning signs.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "acute_neurologic_warning_sign",
+        "caption": "Sudden slurred speech and facial droop are stroke warning signs.",
+        "conclusion": "Sudden slurred speech and facial droop are stroke warning signs."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_stroke_warning",
+      "subcategory": "acute_stroke_warning",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops facial droop and slurred speech. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate urgent stroke-focused assessment and response"
+        },
+        {
+          "id": "b",
+          "text": "Reassess in one hour"
+        },
+        {
+          "id": "c",
+          "text": "Ask the patient to walk to the bathroom first"
+        },
+        {
+          "id": "d",
+          "text": "Offer water and observe"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Acute focal neurologic deficits suggest possible stroke and require immediate assessment and escalation.",
+      "distractorRationales": {
+        "b": "The safer response addresses neurologic deterioration; \"Reassess in one hour\" moves care toward routine observation before neurologic safety assessment.",
+        "c": "The option can leave neurologic deterioration untreated because it moves to activity, intake, or discharge planning too early. \"Activate urgent stroke-focused assessment and response\" fits the safer response to the cue \"New focal neurologic change is time-sensitive\".",
+        "d": "The safer response addresses neurologic deterioration; \"Offer water and observe\" moves care toward routine observation before neurologic safety assessment."
+      },
+      "tags": [
+        "acute_stroke_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New focal neurologic change is time-sensitive.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb857-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "airway_change_after_treatment",
+      "subcategory": "airway_change_after_treatment",
+      "difficulty": 3,
+      "stem": "A patient with asthma initially improves after treatment, but later becomes quieter, less able to speak, and more fatigued. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be tiring and failing to sustain respiratory effort"
+        },
+        {
+          "id": "b",
+          "text": "The quieter breathing proves the patient is improving"
+        },
+        {
+          "id": "c",
+          "text": "Fatigue is unrelated if the lungs were wheezing earlier"
+        },
+        {
+          "id": "d",
+          "text": "The nurse can wait until the next round to reassess"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A quieter patient who is more fatigued can actually be worsening. Less noise is not always better when work of breathing is falling off because the patient is tiring. **Why the others are wrong:** - B Less sound can mean less effort, not improvement. - C Earlier wheezing does not rule out later fatigue. - D This pattern needs prompt reassessment.",
+      "distractorRationales": {
+        "b": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"The patient may be tiring and failing to sustain respiratory effort\" fits the safer response to the cue \"A quieter patient who is more fatigued can actually be worsening\".",
+        "c": "\"Fatigue is unrelated if the lungs were wheezing earlier\" misses the bedside risk. The cue \"A quieter patient who is more fatigued can actually be worsening\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "\"The nurse can wait until the next round to reassess\" treats active deterioration as something safe to watch. The cue \"Less noise is not always better when work of breathing is falling off because the patient is tiring\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation."
+      },
+      "tags": [
+        "airway_change_after_treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Less audible effort can be a bad sign if the patient is tiring.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

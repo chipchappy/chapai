@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-831",
+  "generatedAt": "2026-04-09T13:39:15-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb831-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "The nurse is caring for a patient 4 days after bowel surgery. The patient has not passed flatus, bowel sounds are hypoactive in all quadrants, and the abdomen is mildly distended. Vital signs are stable. The nurse CORRECTLY identifies this presentation as:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Paralytic ileus — expected post-operative finding"
+        },
+        {
+          "id": "b",
+          "text": "Small bowel obstruction requiring immediate NG tube decompression"
+        },
+        {
+          "id": "c",
+          "text": "Peritonitis requiring emergent surgical consultation"
+        },
+        {
+          "id": "d",
+          "text": "Large bowel obstruction requiring CT scan and surgical consult"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Paralytic ileus (adynamic ileus) is an expected complication in the first 3–5 days after abdominal or bowel surgery, caused by handling of the bowel and anesthetic effects. It presents with absent or hypoactive bowel sounds, lack of flatus, and mild distension without severe pain, fever, or hemodynamic instability. Mechanical obstruction (B, D) presents with high-pitched borborygmi, crampy pain, and vomiting — not simply hypoactive sounds. Peritonitis (C) would have fever, rigid abdomen, and rebound tenderness.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"mild distension without severe pain, fever, or hemodynamic instability\" makes infection progression the active safety concern.",
+        "c": "The safer response addresses infection progression; \"Peritonitis requiring emergent surgical consultation\" moves care toward waiting for a callback before infection or sepsis escalation.",
+        "d": "The option can leave infection progression untreated because it relies on notification without the bedside safety step. \"Paralytic ileus — expected post-operative finding\" fits the safer response to the cue \"mild distension without severe pain, fever, or hemodynamic instability\"."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Ileus vs obstruction: ileus = absent/hypoactive sounds, mild distension, expected post-op; obstruction = high-pitched sounds, crampy pain, vomiting.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "Therapeutic Communication",
+      "difficulty": 2,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation — 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "The cue \"therapeutic communication safety\" suggests clinical safety risk, so \"'I understand. Sometimes things feel hopeless, but you have so much to live for.'\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "c": "\"'Everyone feels that way sometimes. It will get better soon.'\" answers a lower-acuity part of the scenario. The cue \"therapeutic communication safety\" raises concern for clinical safety risk, so bedside safety action is needed before routine care.",
+        "d": "The safer response addresses clinical safety risk; \"'You shouldn't think like that. Let's focus on the positive things in your life.'\" moves care toward routine care before bedside safety action."
+      },
+      "tags": [
+        "Therapeutic Communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to ≥ 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "\"The patient reports less anxiety and requests to watch television\" misses the bedside risk. The cue \"Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The safer response addresses oxygenation or ventilation; \"Adventitious breath sounds increase bilaterally after the nebulizer\" moves care toward routine observation before airway and breathing intervention.",
+        "d": "The safer response addresses oxygenation or ventilation; \"The patient's skin color remains unchanged and RR remains at 24/min\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80–130 bpm, RR 22–37 breaths/min, BP approximately 90–100/55–65 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age — neonates have the highest HR and RR, lowest BP.",
+      "distractorRationales": {
+        "a": "\"HR 68, RR 14, BP 120/80\" misses the bedside risk. The cue \"Pediatric VS by age: newborn HR 120–160, RR 30–60\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The cue \"Pediatric VS by age: newborn HR 120–160, RR 30–60\" suggests oxygenation or ventilation, so \"HR 145, RR 40, BP 80/48\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"toddler HR 80–130, RR 22–37\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight — no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply — laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO ≥8 hours. Light meals (toast, clear liquids): NPO ≥6 hours. Non-clear liquids including milk and formula: NPO ≥6 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid — stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "\"Nothing by mouth after midnight — no exceptions for any type of food or liquid\" answers a lower-acuity part of the scenario. The cue \"perioperative complications without reducing aspiration risk for clear fluids\" raises concern for unstable glucose physiology, so glucose rescue or metabolic stabilization is needed before routine care.",
+        "b": "\"Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery\" misses the bedside risk. The cue \"perioperative complications without reducing aspiration risk for clear fluids\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "d": "\"No restrictions apply — laparoscopic procedures do not carry aspiration risk\" misses the bedside risk. The cue \"perioperative complications without reducing aspiration risk for clear fluids\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids ≥6-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "\"Drawing up each insulin in a separate syringe\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Drawing up each insulin in a separate syringe supports the teaching plan and medication safety.",
+        "c": "\"Injecting the aspart subcutaneously 15 minutes before the meal\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Injecting the aspart subcutaneously 15 minutes before the meal supports the teaching plan and medication safety.",
+        "d": "\"Rotating injection sites between the abdomen and thigh\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Rotating injection sites between the abdomen and thigh supports the teaching plan and medication safety."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "The cue \"Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine\" suggests unstable glucose physiology, so \"A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10\" would not correct the active problem. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "c": "The cue \"Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine\" suggests unstable glucose physiology, so \"A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights\" would not correct the active problem. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "d": "\"A 33-year-old with a UTI who asks when the next dose of antibiotics is due\" misses the bedside risk. The cue \"Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 3,
+      "stem": "A patient with severe preeclampsia at 34 weeks develops an eclamptic seizure. She is on magnesium sulfate. Which intervention takes priority during the active seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV diazepam 5 mg to stop the seizure"
+        },
+        {
+          "id": "b",
+          "text": "Insert a padded tongue blade to protect the airway"
+        },
+        {
+          "id": "c",
+          "text": "Position on her left side, protect from injury, administer oxygen, and note seizure duration"
+        },
+        {
+          "id": "d",
+          "text": "Give a magnesium sulfate bolus of 4 g IV immediately"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an eclamptic seizure: protect the patient from injury, position on left lateral decubitus (reduces aortocaval compression, improves uteroplacental blood flow), apply oxygen via face mask, and time the seizure. IV diazepam (A) is not first-line; magnesium is the drug of choice for eclampsia treatment and prevention of recurrent seizures. A padded tongue blade (B) should never be inserted during an active seizure — high risk of injury to teeth and nurse. A magnesium bolus (D) may be given post-seizure if patient is not already at therapeutic levels, but protecting the patient during the active seizure comes first.",
+      "distractorRationales": {
+        "a": "The cue \"magnesium is the drug of choice for eclampsia treatment and prevention of recurrent seizures\" suggests oxygenation or ventilation, so \"Administer IV diazepam 5 mg to stop the seizure\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "b": "The safer response addresses oxygenation or ventilation; \"Insert a padded tongue blade to protect the airway\" moves care toward routine care before airway and breathing intervention.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Position on her left side, protect from injury, administer oxygen, and note seizure duration\" fits the safer response to the cue \"A magnesium bolus (D) may be given post-seizure if patient is not already at therapeutic levels\"."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eclamptic seizure priority: protect from injury, left lateral position, O2, time seizure — never insert anything into the mouth during a seizure.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) — mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease\" makes circulation or perfusion the active safety concern.",
+        "c": "The option can leave circulation or perfusion untreated because it commits to a competing cause before checking the dangerous pattern. \"Administering the influenza vaccine to a healthy adult before flu season\" fits the safer response to the cue \"Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease\".",
+        "d": "\"Conducting a colonoscopy to identify and remove pre-cancerous polyps\" misses the bedside risk. The cue \"Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use\" points to circulation or perfusion. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb831-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "\"A patient who is anxious about an upcoming procedure\" misses the bedside risk. The cue \"A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"A patient who needs discharge teaching before going home\" moves to activity, intake, or discharge planning too early. The cue \"A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"A patient asking for pain medication rated 4/10\" misses the bedside risk. The cue \"Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

@@ -1,0 +1,612 @@
+{
+  "batchId": "mixed-batch-917",
+  "generatedAt": "2026-04-10T09:36:50-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb917-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_rejection_transplant",
+      "subcategory": "acute_rejection_transplant",
+      "difficulty": 3,
+      "stem": "A client 2 weeks after kidney transplant has a temperature of 100.8 F (38.2 C), tenderness over the graft site, and decreased urine output. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because these findings may indicate acute rejection."
+        },
+        {
+          "id": "b",
+          "text": "Reassure the client that mild fever is expected after transplant."
+        },
+        {
+          "id": "c",
+          "text": "Instruct the client to skip the next immunosuppressant dose."
+        },
+        {
+          "id": "d",
+          "text": "Delay action until the next routine clinic visit."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Fever, graft tenderness, and decreased urine output after kidney transplant are concerning for acute rejection. The nurse should escalate promptly for assessment and intervention. Missed or delayed response can threaten graft survival.",
+      "distractorRationales": {
+        "b": "The cue \"decreased urine output after kidney transplant are concerning for acute rejection\" suggests infection progression, so \"Reassure the client that mild fever is expected after transplant\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The option can leave infection progression untreated because it uses teaching before the physiologic risk is controlled. \"Notify the provider because these findings may indicate acute rejection\" fits the safer response to the cue \"A client 2 weeks after kidney transplant has a temperature of 100\".",
+        "d": "\"Delay action until the next routine clinic visit\" treats active deterioration as something safe to watch. The cue \"decreased urine output after kidney transplant are concerning for acute rejection\" raises concern for infection progression, so infection or sepsis escalation is needed before routine observation."
+      },
+      "tags": [
+        "acute_rejection_transplant",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Graft tenderness with falling urine output after transplant is a report-now pattern.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "amniotic_fluid_embolism",
+      "subcategory": "amniotic_fluid_embolism",
+      "difficulty": 3,
+      "stem": "During labor a client suddenly becomes short of breath, cyanotic, and hypotensive. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Call for immediate emergency support and begin high-flow oxygen."
+        },
+        {
+          "id": "b",
+          "text": "Reposition the client and wait to see if the symptoms pass."
+        },
+        {
+          "id": "c",
+          "text": "Obtain a routine pain score before intervening."
+        },
+        {
+          "id": "d",
+          "text": "Document the event as an anxiety reaction."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency. The nurse should escalate immediately and support oxygenation and circulation. Delay can rapidly endanger both the client and fetus.",
+      "distractorRationales": {
+        "b": "The cue \"Sudden maternal collapse in labor requires immediate emergency response and oxygenation support\" suggests oxygenation or ventilation, so \"Reposition the client and wait to see if the symptoms pass\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Obtain a routine pain score before intervening\" misses the bedside risk. The cue \"Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Call for immediate emergency support and begin high-flow oxygen\" fits the safer response to the cue \"During labor a client suddenly becomes short of breath, cyanotic\"."
+      },
+      "tags": [
+        "amniotic_fluid_embolism",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden maternal collapse in labor requires immediate emergency response and oxygenation support.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" suggests oxygenation or ventilation, so \"Obtain a full allergy history before intervening\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Slow the infusion to reduce the reaction\" answers a lower-acuity part of the scenario. The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "The option can leave oxygenation or ventilation untreated because it treats active deterioration as something safe to watch. \"Stop the infusion and prepare to administer epinephrine\" fits the safer response to the cue \"A client receiving IV antibiotics suddenly develops wheezing, widespread hives\"."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "\"Lay the client flat and increase the room temperature\" misses the bedside risk. The cue \"Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "c": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure\" makes neurologic deterioration the active safety concern.",
+        "d": "The cue \"Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered\" suggests neurologic deterioration, so \"Offer oral fluids and reassess in 30 minutes\" would not correct the active problem. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "burn_inhalation_stridor",
+      "subcategory": "burn_inhalation_stridor",
+      "difficulty": 3,
+      "stem": "A client rescued from a house fire has singed nasal hair, soot around the mouth, and new hoarseness. Which action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare for early airway support because edema can rapidly worsen."
+        },
+        {
+          "id": "b",
+          "text": "Apply topical burn cream to the face before any other action."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the client to drink water to soothe the throat."
+        },
+        {
+          "id": "d",
+          "text": "Document the findings and reassess at the end of the shift."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Hoarseness, soot exposure, and singed nasal hair suggest inhalation injury with potential airway edema. The nurse should prioritize airway protection early rather than waiting for visible obstruction. Delayed action can make intubation much more difficult once swelling progresses.",
+      "distractorRationales": {
+        "b": "\"Apply topical burn cream to the face before any other action\" answers a lower-acuity part of the scenario. The cue \"singed nasal hair suggest inhalation injury with potential airway edema\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "c": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Prepare for early airway support because edema can rapidly worsen\" fits the safer response to the cue \"The nurse should prioritize airway protection early rather than waiting for visible obstruction\".",
+        "d": "\"Document the findings and reassess at the end of the shift\" misses the bedside risk. The cue \"singed nasal hair suggest inhalation injury with potential airway edema\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "burn_inhalation_stridor",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Smoke inhalation clues plus hoarseness mean protect the airway early.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "cord_prolapse_positioning",
+      "difficulty": 3,
+      "stem": "After rupture of membranes, the fetal heart rate suddenly drops to 70/min and the nurse sees a loop of umbilical cord at the vaginal opening. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a gloved hand to lift the presenting part and position the client to relieve cord compression."
+        },
+        {
+          "id": "b",
+          "text": "Push the cord back into the vagina."
+        },
+        {
+          "id": "c",
+          "text": "Apply internal fetal scalp monitoring."
+        },
+        {
+          "id": "d",
+          "text": "Delay action until the provider arrives."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Visible cord with acute fetal bradycardia indicates umbilical cord prolapse, an obstetric emergency. The nurse should immediately relieve pressure on the cord by lifting the presenting part and repositioning the client while calling for help. Handling the cord unnecessarily or waiting increases fetal hypoxia risk.",
+      "distractorRationales": {
+        "b": "The safer response addresses circulation or perfusion; \"Push the cord back into the vagina\" moves care toward routine care before circulation and perfusion support.",
+        "c": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Use a gloved hand to lift the presenting part and position the client to relieve cord\" fits the safer response to the cue \"The nurse should immediately relieve pressure on the cord by lifting the presenting part and repositioning the client\".",
+        "d": "The safer response addresses circulation or perfusion; \"Delay action until the provider arrives\" moves care toward routine observation before circulation and perfusion support."
+      },
+      "tags": [
+        "cord_prolapse_positioning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cord prolapse is a relieve-the-compression-now emergency.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dka_fluid_priority",
+      "subcategory": "dka_fluid_priority",
+      "difficulty": 3,
+      "stem": "A client with diabetic ketoacidosis is lethargic, has dry mucous membranes, blood pressure 88/54 mmHg, and blood glucose 620 mg/dL. Which intervention should the nurse anticipate first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Rapid isotonic fluid replacement."
+        },
+        {
+          "id": "b",
+          "text": "Long-acting insulin by subcutaneous injection."
+        },
+        {
+          "id": "c",
+          "text": "A potassium-restricted diet."
+        },
+        {
+          "id": "d",
+          "text": "Sodium bicarbonate for all clients with DKA."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The immediate threat in DKA is severe volume depletion and impaired perfusion. Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status and response. Subcutaneous long-acting insulin and routine bicarbonate do not address the acute circulatory problem first.",
+      "distractorRationales": {
+        "b": "\"Long-acting insulin by subcutaneous injection\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "c": "The option can leave unstable glucose physiology untreated because it answers a lower-acuity part of the scenario. \"Rapid isotonic fluid replacement\" fits the safer response to the cue \"In DKA with hypotension and dehydration, restore circulating volume first\".",
+        "d": "The safer response addresses unstable glucose physiology; \"Sodium bicarbonate for all clients with DKA\" moves care toward diagnostic reassurance before glucose rescue or metabolic stabilization."
+      },
+      "tags": [
+        "dka_fluid_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In DKA with hypotension and dehydration, restore circulating volume first.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "ectopic_pregnancy_rupture",
+      "subcategory": "ectopic_pregnancy_rupture",
+      "difficulty": 3,
+      "stem": "A client with a positive pregnancy test reports sudden severe unilateral pelvic pain, dizziness, and shoulder pain. Blood pressure is 84/46 mmHg. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider and prepare for emergency management of a ruptured ectopic pregnancy."
+        },
+        {
+          "id": "b",
+          "text": "Place the client on strict bed rest and reassess in 30 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Prepare the client for a routine pelvic examination."
+        },
+        {
+          "id": "d",
+          "text": "Tell the client the discomfort is expected in early pregnancy."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Severe unilateral pain, hypotension, dizziness, and referred shoulder pain suggest rupture with internal bleeding from an ectopic pregnancy. The nurse should treat this as a hemorrhagic emergency and escalate immediately. Delay increases the risk of shock and maternal collapse.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of bleeding-risk intervention. The stem cue \"referred shoulder pain suggest rupture with internal bleeding from an ectopic pregnancy\" makes bleeding or anticoagulation injury the active safety concern.",
+        "c": "\"Prepare the client for a routine pelvic examination\" misses the bedside risk. The cue \"Severe unilateral pain, hypotension, dizziness\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "The option can leave bleeding or anticoagulation injury untreated because it normalizes a finding that needs reassessment. \"Notify the provider and prepare for emergency management of a ruptured ectopic pregnancy\" fits the safer response to the cue \"referred shoulder pain suggest rupture with internal bleeding from an ectopic pregnancy\"."
+      },
+      "tags": [
+        "ectopic_pregnancy_rupture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable pain and bleeding clues in early pregnancy should trigger immediate concern for ruptured ectopic pregnancy.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "heparin_induced_thrombocytopenia",
+      "subcategory": "heparin_induced_thrombocytopenia",
+      "difficulty": 3,
+      "stem": "A client receiving a heparin infusion for a deep vein thrombosis has a platelet count that fell from 220,000/mm3 to 88,000/mm3 over 4 days. The client now reports new leg pain. Which action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the heparin infusion and notify the provider about possible HIT."
+        },
+        {
+          "id": "b",
+          "text": "Increase the heparin rate because the client may be under-anticoagulated."
+        },
+        {
+          "id": "c",
+          "text": "Give aspirin with the next medication pass and continue heparin."
+        },
+        {
+          "id": "d",
+          "text": "Document the platelet drop as expected and recheck tomorrow."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A substantial platelet fall with new thrombosis symptoms during heparin therapy suggests heparin-induced thrombocytopenia. The nurse should stop heparin and escalate immediately because continued exposure can worsen thrombosis risk. This is different from generic supratherapeutic aPTT toxicity.",
+      "distractorRationales": {
+        "b": "\"Increase the heparin rate because the client may be under-anticoagulated\" misses the bedside risk. The cue \"Platelet fall plus new thrombosis clues on heparin should trigger concern for HIT, not more heparin\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"The nurse should stop heparin and escalate immediately because continued exposure can worsen thrombosis risk\" makes bleeding or anticoagulation injury the active safety concern.",
+        "d": "The option can leave bleeding or anticoagulation injury untreated because it normalizes a finding that needs reassessment. \"Stop the heparin infusion and notify the provider about possible HIT\" fits the safer response to the cue \"A substantial platelet fall with new thrombosis symptoms during heparin therapy suggests heparin-induced thrombocytopenia\"."
+      },
+      "tags": [
+        "heparin_induced_thrombocytopenia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Platelet fall plus new thrombosis clues on heparin should trigger concern for HIT, not more heparin.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "intussusception_currant_jelly",
+      "subcategory": "intussusception_currant_jelly",
+      "difficulty": 3,
+      "stem": "An infant has sudden episodes of crying with knees drawn to the chest and passes a stool that looks like currant jelly. Which action should the nurse anticipate first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare the child for urgent evaluation and possible air enema reduction."
+        },
+        {
+          "id": "b",
+          "text": "Give an antidiarrheal and observe for improvement."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the parent to offer more formula at home."
+        },
+        {
+          "id": "d",
+          "text": "Document the stool as a common viral finding."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Colicky pain with knees drawn up and currant jelly stool strongly suggests intussusception. Prompt evaluation is needed because bowel ischemia can develop if the obstruction is not reduced. Supportive home measures do not address the underlying emergency.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of circulation and perfusion support. The stem cue \"Colicky pain with knees drawn up and currant jelly stool strongly suggests intussusception\" makes circulation or perfusion the active safety concern.",
+        "c": "The cue \"Colicky pain with knees drawn up and currant jelly stool strongly suggests intussusception\" suggests circulation or perfusion, so \"Encourage the parent to offer more formula at home\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The safer response addresses circulation or perfusion; \"Document the stool as a common viral finding\" moves care toward routine care before circulation and perfusion support."
+      },
+      "tags": [
+        "intussusception_currant_jelly",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Currant jelly stool plus episodic pain is a pattern clue for intussusception, not simple gastroenteritis.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_sepsis_instability",
+      "subcategory": "neonatal_sepsis_instability",
+      "difficulty": 3,
+      "stem": "A 12-hour-old newborn is lethargic, feeds poorly, and has a temperature of 97.1 F (36.2 C). Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because these findings suggest neonatal sepsis."
+        },
+        {
+          "id": "b",
+          "text": "Reassure the parent that the newborn is just sleepy."
+        },
+        {
+          "id": "c",
+          "text": "Delay evaluation until the next routine feeding."
+        },
+        {
+          "id": "d",
+          "text": "Place the newborn prone for a deeper sleep."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Poor feeding, lethargy, and temperature instability in a newborn are concerning for sepsis and require prompt evaluation. Neonates often show subtle signs rather than high fever. Waiting can delay lifesaving treatment in a high-risk age group.",
+      "distractorRationales": {
+        "b": "\"Reassure the parent that the newborn is just sleepy\" normalizes a finding that needs reassessment. The cue \"Subtle instability in a newborn should be taken seriously because sepsis can present quietly\" raises concern for infection progression, so infection or sepsis escalation is needed before reassurance.",
+        "c": "\"Delay evaluation until the next routine feeding\" treats active deterioration as something safe to watch. The cue \"A 12-hour-old newborn is lethargic, feeds poorly\" raises concern for infection progression, so infection or sepsis escalation is needed before routine observation.",
+        "d": "This distractor shifts care toward false reassurance instead of infection or sepsis escalation. The stem cue \"temperature instability in a newborn are concerning for sepsis and require prompt evaluation\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "neonatal_sepsis_instability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Subtle instability in a newborn should be taken seriously because sepsis can present quietly.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb917-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neuroleptic_malignant_syndrome",
+      "subcategory": "neuroleptic_malignant_syndrome",
+      "difficulty": 3,
+      "stem": "A client who recently started haloperidol develops severe muscle rigidity, a temperature of 104 F (40 C), and fluctuating blood pressure. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the antipsychotic and notify the provider about possible neuroleptic malignant syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose early to stabilize behavior."
+        },
+        {
+          "id": "c",
+          "text": "Apply extra blankets to reduce shivering."
+        },
+        {
+          "id": "d",
+          "text": "Wait to see if the symptoms improve after sleep."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Hyperthermia, rigidity, and autonomic instability after antipsychotic therapy are classic clues for neuroleptic malignant syndrome. The triggering drug should be stopped and emergency evaluation begun immediately. Delayed recognition can lead to rhabdomyolysis, renal injury, and death.",
+      "distractorRationales": {
+        "b": "The safer response addresses medication toxicity; \"Give the next dose early to stabilize behavior\" moves care toward routine care before medication-safety intervention.",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Delayed recognition can lead to rhabdomyolysis, renal injury\" makes medication toxicity the active safety concern.",
+        "d": "The cue \"A client who recently started haloperidol develops severe muscle rigidity, a temperature of 104 F (40 C)\" suggests medication toxicity, so \"Wait to see if the symptoms improve after sleep\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "neuroleptic_malignant_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rigidity plus high fever after an antipsychotic is a stop-the-drug emergency pattern.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neuroleptic_malignant_syndrome",
+        "caption": "Rigidity plus high fever after an antipsychotic is a stop-the-drug emergency pattern.",
+        "conclusion": "Rigidity plus high fever after an antipsychotic is a stop-the-drug emergency pattern."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

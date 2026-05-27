@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-843",
+  "generatedAt": "2026-04-09T15:50:21-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb843-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_hydration",
+      "subcategory": "fever_and_hydration",
+      "difficulty": 3,
+      "stem": "A child with fever is not drinking much and has a dry mouth. What should the nurse be most concerned about?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Fever always means the child is hydrated enough"
+        },
+        {
+          "id": "c",
+          "text": "Dry mouth is normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is expected and never matters"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake with fever can quickly lead to dehydration in children, so intake and output deserve close attention. **Why the others are wrong:** - B Fever does not protect against dehydration. - C Dry mouth is a useful warning sign. - D Low drinking can become dangerous in pediatrics.",
+      "distractorRationales": {
+        "b": "\"Fever always means the child is hydrated enough\" answers a lower-acuity part of the scenario. The cue \"Fever plus poor intake can quickly become a fluid problem in children\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care.",
+        "c": "This distractor shifts care toward false reassurance instead of infection or sepsis escalation. The stem cue \"Poor intake with fever can quickly lead to dehydration in children, so intake and output deserve close attention\" makes infection progression the active safety concern.",
+        "d": "This distractor shifts care toward false reassurance instead of infection or sepsis escalation. The stem cue \"A child with fever is not drinking much and has a dry mouth\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "fever_and_hydration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus poor intake can quickly become a fluid problem in children.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_irritability",
+      "subcategory": "fever_and_irritability",
+      "difficulty": 3,
+      "stem": "A toddler with fever is irritable, has fewer tears when crying, and is not drinking well. What is the nurse's biggest concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Irritability always means the fever is harmless"
+        },
+        {
+          "id": "c",
+          "text": "Fewer tears are normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is only a concern in adults"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Irritability, fewer tears, and poor intake can all point to dehydration in young children. **Why the others are wrong:** - B Irritability does not make fever safe. - C Fewer tears can be a dehydration sign. - D Children are often more vulnerable to fluid loss.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Pediatric dehydration can show up as crying changes and poor intake\" makes infection progression the active safety concern.",
+        "c": "The cue \"poor intake can all point to dehydration in young children\" suggests infection progression, so \"Fewer tears are normal in every sick child\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "The cue \"poor intake can all point to dehydration in young children\" suggests infection progression, so \"Drinking less is only a concern in adults\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "fever_and_irritability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as crying changes and poor intake.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "secretions_and_fatigue",
+      "subcategory": "secretions_and_fatigue",
+      "difficulty": 3,
+      "stem": "A patient with pneumonia is less able to clear thick secretions and is getting more tired. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Airway clearance may be failing and respiratory fatigue may be developing"
+        },
+        {
+          "id": "b",
+          "text": "Thick secretions are reassuring because they mean the patient is coughing"
+        },
+        {
+          "id": "c",
+          "text": "Fatigue is not important if the patient can still speak"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should wait until the next round to reassess"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Inability to clear secretions with increasing fatigue can signal worsening respiratory status and rising risk of airway compromise. **Why the others are wrong:** - B Thick secretions can block the airway. - C Fatigue can be an early warning sign. - D Delay can miss deterioration.",
+      "distractorRationales": {
+        "b": "The option can leave oxygenation or ventilation untreated because it commits to a competing cause before checking the dangerous pattern. \"Airway clearance may be failing and respiratory fatigue may be developing\" fits the safer response to the cue \"Inability to clear secretions with increasing fatigue can signal worsening respiratory status and rising risk of airway compromise\".",
+        "c": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Airway clearance may be failing and respiratory fatigue may be developing\" fits the safer response to the cue \"A patient with pneumonia is less able to clear thick secretions and is getting more tired\".",
+        "d": "The option can leave oxygenation or ventilation untreated because it treats active deterioration as something safe to watch. \"Airway clearance may be failing and respiratory fatigue may be developing\" fits the safer response to the cue \"Poor secretion clearance plus fatigue is a respiratory red flag\"."
+      },
+      "tags": [
+        "secretions_and_fatigue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Poor secretion clearance plus fatigue is a respiratory red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "orthostatic_change",
+      "subcategory": "orthostatic_change",
+      "difficulty": 3,
+      "stem": "An older adult becomes dizzy, tachycardic, and pale when standing. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be volume depleted or not tolerating position change"
+        },
+        {
+          "id": "b",
+          "text": "Dizziness on standing is always normal in older adults"
+        },
+        {
+          "id": "c",
+          "text": "Tachycardia proves the patient is stable"
+        },
+        {
+          "id": "d",
+          "text": "Pale skin has no relation to circulation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Standing-related symptoms with tachycardia and pallor can indicate poor volume status or inadequate cardiovascular response. **Why the others are wrong:** - B Orthostatic symptoms should not be dismissed. - C Tachycardia can reflect compensation, not stability. - D Pallor can reflect decreased perfusion.",
+      "distractorRationales": {
+        "b": "\"Dizziness on standing is always normal in older adults\" misses the bedside risk. The cue \"Position-related dizziness can reveal poor circulation or volume loss\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "The cue \"Position-related dizziness can reveal poor circulation or volume loss\" suggests circulation or perfusion, so \"Tachycardia proves the patient is stable\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "\"Pale skin has no relation to circulation\" misses the bedside risk. The cue \"Position-related dizziness can reveal poor circulation or volume loss\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "orthostatic_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Position-related dizziness can reveal poor circulation or volume loss.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sudden_headache_and_change",
+      "subcategory": "sudden_headache_and_change",
+      "difficulty": 3,
+      "stem": "A patient reports a sudden severe headache and is harder to arouse than before. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform an urgent neurologic assessment and notify the provider"
+        },
+        {
+          "id": "b",
+          "text": "Ask the patient to rest in a dark room and wait"
+        },
+        {
+          "id": "c",
+          "text": "Treat it as a routine headache"
+        },
+        {
+          "id": "d",
+          "text": "Offer fluids first and reassess later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden severe headache with altered responsiveness can signal a neurologic emergency and needs immediate assessment. **Why the others are wrong:** - B Waiting can be dangerous. - C This is not routine. - D Fluids do not replace urgent assessment.",
+      "distractorRationales": {
+        "b": "The safer response addresses neurologic deterioration; \"Ask the patient to rest in a dark room and wait\" moves care toward routine observation before neurologic safety assessment.",
+        "c": "\"Treat it as a routine headache\" treats active deterioration as something safe to watch. The cue \"A patient reports a sudden severe headache and is harder to arouse than before\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine observation.",
+        "d": "This distractor shifts care toward delayed assessment instead of neurologic safety assessment. The stem cue \"Sudden severe headache with altered responsiveness can signal a neurologic emergency and needs immediate assessment\" makes neurologic deterioration the active safety concern."
+      },
+      "tags": [
+        "sudden_headache_and_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden severe headache plus decreased arousal is a warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygen_and_fatigue",
+      "subcategory": "oxygen_and_fatigue",
+      "difficulty": 3,
+      "stem": "A patient with COPD is increasingly fatigued and has a rising carbon dioxide trend. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ventilation may be failing and the patient needs prompt reassessment"
+        },
+        {
+          "id": "b",
+          "text": "Fatigue is expected and does not matter"
+        },
+        {
+          "id": "c",
+          "text": "A rising carbon dioxide trend is only important if fever is present"
+        },
+        {
+          "id": "d",
+          "text": "The patient is improving because oxygen is still being used"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Rising carbon dioxide with fatigue suggests ventilatory failure and the need for close reassessment. **Why the others are wrong:** - B Fatigue can signal a serious change. - C Fever is not required for CO2 retention. - D Oxygen use does not guarantee adequate ventilation.",
+      "distractorRationales": {
+        "b": "\"Fatigue is expected and does not matter\" normalizes a finding that needs reassessment. The cue \"- C Fever is not required for CO2 retention\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before reassurance.",
+        "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"- D Oxygen use does not guarantee adequate ventilation\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The cue \"A patient with COPD is increasingly fatigued and has a rising carbon dioxide trend\" suggests oxygenation or ventilation, so \"The patient is improving because oxygen is still being used\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "oxygen_and_fatigue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rising carbon dioxide can mean the patient is tiring out.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygen_and_fatigue",
+        "caption": "Rising carbon dioxide can mean the patient is tiring out.",
+        "conclusion": "Rising carbon dioxide can mean the patient is tiring out."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_perfusion",
+      "subcategory": "fever_and_perfusion",
+      "difficulty": 3,
+      "stem": "A child with fever is sleepy, has dry mucous membranes, and has not had a wet diaper since morning. What is the nurse's best concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may have significant dehydration and needs prompt evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Sleepiness means the fever is improving"
+        },
+        {
+          "id": "c",
+          "text": "Dry mucous membranes are not meaningful in children"
+        },
+        {
+          "id": "d",
+          "text": "A wet diaper is irrelevant if the child ate breakfast"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sleepiness, dry mucous membranes, and reduced urine output together suggest a significant fluid deficit. **Why the others are wrong:** - B Sleepiness can be a danger sign. - C Mucous membranes are a useful clue. - D Intake and urine output matter more than breakfast alone.",
+      "distractorRationales": {
+        "b": "The option can leave infection progression untreated because it normalizes a finding that needs reassessment. \"The child may have significant dehydration and needs prompt evaluation\" fits the safer response to the cue \"Fever plus low urine output and sleepiness can mean dehydration\".",
+        "c": "The safer response addresses infection progression; \"Dry mucous membranes are not meaningful in children\" moves care toward routine care before infection or sepsis escalation.",
+        "d": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"The child may have significant dehydration and needs prompt evaluation\" fits the safer response to the cue \"A child with fever is sleepy, has dry mucous membranes\"."
+      },
+      "tags": [
+        "fever_and_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus low urine output and sleepiness can mean dehydration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "fever_and_perfusion",
+        "caption": "Fever plus low urine output and sleepiness can mean dehydration.",
+        "conclusion": "Fever plus low urine output and sleepiness can mean dehydration."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "unstable_angina_concern",
+      "subcategory": "unstable_angina_concern",
+      "difficulty": 3,
+      "stem": "A patient reports chest pressure that started while resting, and the pain is not relieved by usual measures. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an acute coronary syndrome"
+        },
+        {
+          "id": "b",
+          "text": "Rest pain is always noncardiac"
+        },
+        {
+          "id": "c",
+          "text": "If the patient can speak, the condition is low priority"
+        },
+        {
+          "id": "d",
+          "text": "The pain is not concerning unless the skin is cold"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure at rest that persists is concerning for a cardiac emergency and needs prompt evaluation. **Why the others are wrong:** - B Rest pain can still be cardiac. - C Speaking does not make chest pain safe. - D Cold skin is not required for cardiac concern.",
+      "distractorRationales": {
+        "b": "\"Rest pain is always noncardiac\" answers a lower-acuity part of the scenario. The cue \"Chest pain at rest can be a major cardiac warning sign\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"- D Cold skin is not required for cardiac concern\" makes circulation or perfusion the active safety concern.",
+        "d": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"- D Cold skin is not required for cardiac concern\" makes circulation or perfusion the active safety concern."
+      },
+      "tags": [
+        "unstable_angina_concern",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest pain at rest can be a major cardiac warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygenation_trend",
+      "subcategory": "oxygenation_trend",
+      "difficulty": 3,
+      "stem": "A patient on oxygen has a falling saturation trend and is using more effort to breathe. What is the best nurse action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess respiratory status and escalate if needed"
+        },
+        {
+          "id": "b",
+          "text": "Ignore the trend because oxygen is already in place"
+        },
+        {
+          "id": "c",
+          "text": "Wait for a second low reading before acting"
+        },
+        {
+          "id": "d",
+          "text": "Remove the oxygen to see what happens"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A downward oxygen trend with increased effort means the respiratory status may be worsening and needs prompt reassessment. **Why the others are wrong:** - B Oxygen does not guarantee stability. - C Trend changes should not be ignored. - D Removing oxygen is unsafe without a reasoned plan.",
+      "distractorRationales": {
+        "b": "The safer response addresses oxygenation or ventilation; \"Ignore the trend because oxygen is already in place\" moves care toward diagnostic reassurance before airway and breathing intervention.",
+        "c": "\"Wait for a second low reading before acting\" misses the bedside risk. The cue \"A downward oxygen trend with increased effort means the respiratory status may be worsening and needs prompt reassessment\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"Worsening oxygen trends deserve immediate attention\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "oxygenation_trend",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Worsening oxygen trends deserve immediate attention.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygenation_trend",
+        "caption": "Worsening oxygen trends deserve immediate attention.",
+        "conclusion": "Worsening oxygen trends deserve immediate attention."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb843-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "heart_failure_worsening",
+      "subcategory": "heart_failure_worsening",
+      "difficulty": 3,
+      "stem": "A patient with heart failure has increasing edema, worsening shortness of breath, and a rising heart rate. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be worsening and needs reassessment"
+        },
+        {
+          "id": "b",
+          "text": "Edema means the heart failure is improving"
+        },
+        {
+          "id": "c",
+          "text": "Shortness of breath is expected and not important"
+        },
+        {
+          "id": "d",
+          "text": "A rising heart rate proves the patient is stable"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fluid retention, dyspnea, and tachycardia can indicate worsening heart failure or poor compensation. **Why the others are wrong:** - B Edema usually suggests congestion, not improvement. - C Dyspnea is an important warning sign. - D Tachycardia can reflect stress and instability.",
+      "distractorRationales": {
+        "b": "The cue \"- D Tachycardia can reflect stress and instability\" suggests oxygenation or ventilation, so \"Edema means the heart failure is improving\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "This distractor shifts care toward false reassurance instead of airway and breathing intervention. The stem cue \"Fluid retention, dyspnea\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The safer response addresses oxygenation or ventilation; \"A rising heart rate proves the patient is stable\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "heart_failure_worsening",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Heart failure worsening often shows up in fluid and breathing changes.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

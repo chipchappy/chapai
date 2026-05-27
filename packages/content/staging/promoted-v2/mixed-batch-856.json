@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-856",
+  "generatedAt": "2026-04-09T18:24:46-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb856-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately\" makes circulation or perfusion the active safety concern.",
+        "c": "The option can leave circulation or perfusion untreated because it moves to activity, intake, or discharge planning too early. \"A patient with new chest pressure and nausea\" fits the safer response to the cue \"- D Water is not urgent compared with possible cardiac symptoms\".",
+        "d": "The safer response addresses circulation or perfusion; \"A patient asking for ice water\" moves care toward ambulation, intake, or discharge teaching before circulation and perfusion support."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "infection_prevention",
+      "subcategory": "infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action best helps reduce transmission when caring for a patient with a contagious infection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform appropriate hand hygiene before and after care"
+        },
+        {
+          "id": "b",
+          "text": "Reuse gloves if they still look clean"
+        },
+        {
+          "id": "c",
+          "text": "Skip precautions if the patient feels better"
+        },
+        {
+          "id": "d",
+          "text": "Share equipment without cleaning it"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hand hygiene remains one of the most effective infection prevention measures.",
+      "distractorRationales": {
+        "b": "\"Reuse gloves if they still look clean\" misses the bedside risk. The cue \"Simple infection-control steps still matter most\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "\"Skip precautions if the patient feels better\" answers a lower-acuity part of the scenario. The cue \"Simple infection-control steps still matter most\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care.",
+        "d": "The cue \"Simple infection-control steps still matter most\" suggests infection progression, so \"Share equipment without cleaning it\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Simple infection-control steps still matter most.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "infection_prevention",
+        "caption": "Simple infection-control steps still matter most.",
+        "conclusion": "Simple infection-control steps still matter most."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_deterioration",
+      "subcategory": "new_deterioration",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse see first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient needing help setting up a meal tray"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking when rounds will begin"
+        },
+        {
+          "id": "d",
+          "text": "A patient who wants to know if family can visit later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. **Why the others are wrong:** - B Meal setup is not urgent. - C Rounds timing is nonurgent. - D Visiting questions can wait.",
+      "distractorRationales": {
+        "b": "\"A patient needing help setting up a meal tray\" misses the bedside risk. The cue \"Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"A patient asking when rounds will begin\" answers a lower-acuity part of the scenario. The cue \"Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "The safer response addresses circulation or perfusion; \"A patient who wants to know if family can visit later\" moves care toward routine observation before circulation and perfusion support."
+      },
+      "tags": [
+        "new_deterioration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute chest symptoms outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "The cue \"Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available\" suggests circulation or perfusion, so \"Teaching a patient how to use an inhaler\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Evaluating a new complaint of dizziness\" answers a lower-acuity part of the scenario. The cue \"- C Dizziness requires assessment first\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"**Why the others are wrong:** - B Teaching requires nursing knowledge\" makes circulation or perfusion the active safety concern."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stable_vs_unstable",
+      "subcategory": "stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with chest pain and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "A patient waiting for discharge teaching tomorrow"
+        },
+        {
+          "id": "d",
+          "text": "A patient requesting help finding a charger"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent requests.",
+      "distractorRationales": {
+        "b": "\"A patient asking for a blanket\" misses the bedside risk. The cue \"Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "The safer response addresses circulation or perfusion; \"A patient waiting for discharge teaching tomorrow\" moves care toward routine observation before circulation and perfusion support.",
+        "d": "\"A patient requesting help finding a charger\" misses the bedside risk. The cue \"Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable symptoms always come before comfort tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_fall_prevention",
+      "subcategory": "safety_and_infection_control_fall_prevention",
+      "difficulty": 3,
+      "stem": "A nurse is admitting a 79-year-old patient with a history of orthostatic hypotension, recent fall, and current use of furosemide and lisinopril. Which intervention is HIGHEST priority for fall prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place a fall-risk bracelet on the patient and document in the chart"
+        },
+        {
+          "id": "b",
+          "text": "Educate the patient to call for help before getting out of bed and place the call light within reach"
+        },
+        {
+          "id": "c",
+          "text": "Request a physical therapy consult for gait evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Move the patient to a room closer to the nursing station"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest-impact, immediately actionable fall prevention measure is patient education combined with environmental setup: instructing the patient to call for assistance before ambulating and ensuring the call light is accessible. This directly addresses the behavioral mechanism of most falls (attempting to get up unassisted) and is executable immediately at the bedside. Applying a fall-risk bracelet without the behavioral intervention does not prevent falls. PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection.",
+      "distractorRationales": {
+        "a": "The safer response addresses infection progression; \"Place a fall-risk bracelet on the patient and document in the chart\" moves care toward routine care before infection or sepsis escalation.",
+        "c": "The option can leave infection progression untreated because it relies on notification without the bedside safety step. \"Educate the patient to call for help before getting out of bed and place the call\" fits the safer response to the cue \"A nurse is admitting a 79-year-old patient with a history of orthostatic hypotension, recent fall\".",
+        "d": "\"Move the patient to a room closer to the nursing station\" misses the bedside risk. The cue \"Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "safety_and_infection_control_fall_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "safety_and_infection_control_fall_prevention",
+        "caption": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+        "conclusion": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_medication_safety",
+      "subcategory": "safety_and_infection_control_medication_safety",
+      "difficulty": 3,
+      "stem": "A nurse is about to administer a scheduled dose of digoxin 0.25 mg IV to a patient with heart failure. The patient's apical heart rate is 54 bpm. What should the nurse do FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the dose as scheduled since the order is valid"
+        },
+        {
+          "id": "b",
+          "text": "Hold the dose and notify the provider of the patient's heart rate"
+        },
+        {
+          "id": "c",
+          "text": "Administer half the dose and recheck the heart rate in 30 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Check the patient's most recent serum digoxin level before acting"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The standard safety parameter for digoxin is to hold the dose and notify the provider if the apical pulse is < 60 bpm in adults. Digoxin slows AV conduction; administering it to a patient with a heart rate of 54 bpm risks further bradycardia, heart block, and cardiovascular compromise. Administering the full dose ignores a critical safety parameter. Administering half the dose is not within standard nursing scope without a specific provider order. While checking the digoxin level is part of toxicity monitoring, the immediate safety action is to hold and notify.",
+      "distractorRationales": {
+        "a": "\"Administer the dose as scheduled since the order is valid\" answers a lower-acuity part of the scenario. The cue \"While checking the digoxin level is part of toxicity monitoring, the immediate safety action is to hold\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"The standard safety parameter for digoxin is to hold the dose and notify the provider if the apical\" makes medication toxicity the active safety concern.",
+        "d": "\"Check the patient's most recent serum digoxin level before acting\" misses the bedside risk. The cue \"A nurse is about to administer a scheduled dose of digoxin 0\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "safety_and_infection_control_medication_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Digoxin safety rule: Hold and notify if apical HR < 60 bpm (adults). This applies regardless of whether the serum level is available. Safety parameters come before scheduled administration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "shoulder_dystocia",
+      "subcategory": "shoulder_dystocia",
+      "difficulty": 3,
+      "stem": "During delivery, after the baby's head delivers, the anterior shoulder fails to deliver. The turtle sign is present (head retracts against the perineum). Which intervention is attempted FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply fundal pressure to push the baby down"
+        },
+        {
+          "id": "b",
+          "text": "McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure"
+        },
+        {
+          "id": "c",
+          "text": "Zavanelli maneuver: cephalic replacement followed by emergency cesarean"
+        },
+        {
+          "id": "d",
+          "text": "Perform an episiotomy to enlarge the vaginal opening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Shoulder dystocia is an obstetric emergency. The McRoberts maneuver (sharply flexing maternal thighs onto the abdomen) flattens the lumbar lordosis and rotates the pubic symphysis superiorly, increasing the functional AP diameter of the pelvis. Combined with suprapubic pressure (pushing the anterior shoulder downward and laterally), this resolves approximately 90% of cases. Fundal pressure (A) is absolutely contraindicated — it worsens impaction of the shoulder. Zavanelli maneuver (C) is a last resort when all other maneuvers fail. Episiotomy (D) alone does not help shoulder dystocia as the obstruction is bony, not soft tissue.",
+      "distractorRationales": {
+        "a": "\"Apply fundal pressure to push the baby down\" misses the bedside risk. The cue \"Fundal pressure (A) is absolutely contraindicated — it worsens impaction of the shoulder\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Combined with suprapubic pressure (pushing the anterior shoulder downward and laterally), this resolves approximately 90% of cases\" makes circulation or perfusion the active safety concern.",
+        "d": "\"Perform an episiotomy to enlarge the vaginal opening\" misses the bedside risk. The cue \"Shoulder dystocia: McRoberts + suprapubic pressure first\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "shoulder_dystocia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Shoulder dystocia: McRoberts + suprapubic pressure first; fundal pressure is absolutely contraindicated — it worsens the impaction.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "suicide_risk_assessment",
+      "subcategory": "suicide_risk_assessment",
+      "difficulty": 3,
+      "stem": "A nurse is assessing a client who says: 'I've been thinking about ending my life. I have my grandfather's gun at home and I plan to use it this weekend when my family is away.' Which suicide risk category applies, and what is the immediate nursing priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Low risk; schedule outpatient follow-up within 2 weeks"
+        },
+        {
+          "id": "b",
+          "text": "Moderate risk; increase therapy frequency and provide a safety plan"
+        },
+        {
+          "id": "c",
+          "text": "High risk; initiate involuntary hospitalization and remove access to means immediately"
+        },
+        {
+          "id": "d",
+          "text": "Moderate risk; contact family members to monitor the patient at home"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient has a specific plan (gun), access to lethal means (gun at home), a timeframe (this weekend), and intent (plans to use it). This constellation — ideation + plan + means + timeframe — represents HIGH lethality risk. Immediate action: do not leave the patient alone, initiate emergency psychiatric evaluation, and facilitate involuntary hospitalization if the patient refuses voluntary admission. Means restriction (removing or securing the firearm) is critical. Outpatient follow-up (A) and home monitoring (D) are wholly inadequate for this risk level.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature attribution instead of bedside safety action. The stem cue \"immediate hospitalization and means restriction are required\" makes clinical safety risk the active safety concern.",
+        "b": "The option can leave clinical safety risk untreated because it answers a lower-acuity part of the scenario. \"High risk; initiate involuntary hospitalization and remove access to means immediately\" fits the safer response to the cue \"High suicide risk = specific plan + lethal means + timeframe + intent\".",
+        "d": "\"Moderate risk; contact family members to monitor the patient at home\" moves to activity, intake, or discharge planning too early. The cue \"Means restriction (removing or securing the firearm) is critical\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching."
+      },
+      "tags": [
+        "suicide_risk_assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "High suicide risk = specific plan + lethal means + timeframe + intent; immediate hospitalization and means restriction are required.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb856-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_priority_which_patient_first",
+      "subcategory": "safety_priority_which_patient_first",
+      "difficulty": 3,
+      "stem": "The charge nurse on a medical unit receives three simultaneous calls. Which situation should be addressed FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A nurse reports that a patient's blood glucose is 52 mg/dL and the patient is awake, oriented, and able to swallow"
+        },
+        {
+          "id": "b",
+          "text": "A nurse reports that a patient post-CVA is refusing to eat lunch and is becoming tearful"
+        },
+        {
+          "id": "c",
+          "text": "A nurse reports that a patient on IV heparin has a new complaint of severe headache rated 10/10 and sudden right-sided weakness"
+        },
+        {
+          "id": "d",
+          "text": "A family member at the desk is upset because their loved one has not had a bath yet today"
+        }
+      ],
+      "answer": "c",
+      "rationale": "A patient on heparin who develops sudden severe headache (10/10, 'worst of my life' quality) and new focal neurological deficit (right-sided weakness) has clinical signs of intracranial hemorrhage (ICH) until proven otherwise. This is a medical emergency: heparin must be stopped immediately, a STAT CT head ordered, and reversal (protamine sulfate) considered. Heparin-induced ICH carries high mortality if not acted upon within minutes. Hypoglycemia (A) requires treatment but the patient is conscious and can take oral glucose — not immediately life-threatening. The CVA patient (B) needs emotional support but is stable. The family complaint (D) is non-urgent.",
+      "distractorRationales": {
+        "a": "The cue \"This is a higher priority than hypoglycemia in an alert patient who can self-treat orally\" suggests bleeding or anticoagulation injury, so \"A nurse reports that a patient's blood glucose is 52 mg/dL and the patient is awake, oriented\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "b": "The safer response addresses bleeding or anticoagulation injury; \"A nurse reports that a patient post-CVA is refusing to eat lunch and is becoming tearful\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention.",
+        "d": "\"A family member at the desk is upset because their loved one has not had a bath yet\" commits to a competing cause before checking the dangerous pattern. The cue \"Heparin-induced ICH carries high mortality if not acted upon within minutes\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before diagnostic reassurance."
+      },
+      "tags": [
+        "safety_priority_which_patient_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Anticoagulated patient + sudden severe headache + new focal neuro deficit = suspected ICH. Stop anticoagulation, get CT STAT. This is a higher priority than hypoglycemia in an alert patient who can self-treat orally.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

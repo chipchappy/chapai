@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-827",
+  "generatedAt": "2026-04-09T12:38:15-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb827-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_heart_failure",
+      "subcategory": "Cardiovascular / Heart Failure",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with acute decompensated heart failure who has a new order for furosemide 40 mg IV push. Which assessment finding is MOST important to report to the provider before administering this medication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient's weight is 4 lbs above their dry weight"
+        },
+        {
+          "id": "b",
+          "text": "The patient's serum potassium is 3.0 mEq/L"
+        },
+        {
+          "id": "c",
+          "text": "The patient has bilateral 2+ pitting edema of the lower extremities"
+        },
+        {
+          "id": "d",
+          "text": "The patient reports urinary urgency"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Furosemide is a loop diuretic that causes potassium wasting. A pre-dose potassium of 3.0 mEq/L (hypokalemia) is a critical safety concern — administering furosemide will further lower potassium, increasing the risk of life-threatening cardiac arrhythmias (torsades de pointes, ventricular fibrillation), especially in heart failure patients who may be on digoxin. Potassium replacement should be confirmed or ordered before or concurrent with diuresis. Weight gain above dry weight and bilateral edema are the indications FOR furosemide, not contraindications. Urinary urgency is an expected diuretic side effect.",
+      "distractorRationales": {
+        "a": "The safer response addresses medication toxicity; \"The patient's weight is 4 lbs above their dry weight\" moves care toward routine care before medication-safety intervention.",
+        "c": "The cue \"A pre-dose potassium of 3\" suggests medication toxicity, so \"The patient has bilateral 2+ pitting edema of the lower extremities\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"This is especially critical in patients on digoxin or with baseline dysrhythmias\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "Cardiovascular / Heart Failure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Heart Failure",
+        "caption": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias.",
+        "conclusion": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 6-month-old infant is admitted with RSV bronchiolitis. SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding. The physician orders albuterol. Which nursing action is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer albuterol as ordered; it is the standard of care for RSV bronchiolitis"
+        },
+        {
+          "id": "b",
+          "text": "Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning and supportive care"
+        },
+        {
+          "id": "c",
+          "text": "Hold the albuterol and administer corticosteroids instead"
+        },
+        {
+          "id": "d",
+          "text": "Administer albuterol only if SpO2 drops below 88%"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSV bronchiolitis is managed with supportive care only per AAP guidelines: nasal suctioning (most effective intervention for symptom relief), adequate hydration (NG feeds if needed), and supplemental O2 for SpO2 <90–92%. Bronchodilators (albuterol) and corticosteroids are NOT recommended because bronchiolitis involves viral-induced inflammation and mucus plugging — not bronchospasm — making bronchodilators ineffective. Multiple RCTs have shown no benefit. The nurse should question the order and clarify before administration. Contact precautions (RSV is spread via droplet/contact) are required.",
+      "distractorRationales": {
+        "a": "The cue \"O2 if SpO2 <90–92%\" suggests oxygenation or ventilation, so \"Administer albuterol as ordered; it is the standard of care for RSV bronchiolitis\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"A 6-month-old infant is admitted with RSV bronchiolitis\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The cue \"O2 if SpO2 <90–92%\" suggests oxygenation or ventilation, so \"Administer albuterol only if SpO2 drops below 88%\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+        "conclusion": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A patient arrives in the PACU after 2.5-hour general anesthesia for abdominal surgery. SpO2 is 88%, respiratory rate is 5 breaths/min and shallow, the patient is unresponsive to voice, and ETCO2 is 72 mmHg. What is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verbally and physically stimulate the patient repeatedly and wait 5 minutes for residual anesthesia to clear"
+        },
+        {
+          "id": "b",
+          "text": "Elevate HOB to 30° and apply supplemental oxygen via nasal cannula at 4 L/min"
+        },
+        {
+          "id": "c",
+          "text": "Open the airway with a jaw thrust, assist ventilation with 100% O2 via bag-valve-mask, prepare reversal agents (naloxone or sugammadex as appropriate), and prepare for reintubation if no improvement"
+        },
+        {
+          "id": "d",
+          "text": "Notify the surgeon and anesthesiologist and await orders before intervening"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Post-anesthesia respiratory depression is a PACU emergency. SpO2 88% + RR 5 + unresponsive + ETCO2 72 mmHg = severe hypoventilation with CO2 retention — caused by residual opioids, residual neuromuscular blockade, or residual volatile agents. This requires IMMEDIATE active intervention: (1) Airway — jaw thrust to relieve obstruction in the obtunded patient; (2) Breathing — 100% O2 via bag-valve-mask with assisted ventilation (nasal cannula at 4 L/min provides approximately 36% FiO2 and no ventilatory support — completely inadequate); (3) Reversal agents — naloxone 0.04-0.4 mg IV for opioid-induced respiratory depression (titrate slowly to avoid acute agitation and pain); sugammadex 200 mg (or 16 mg/kg) for rocuronium/vecuronium reversal; flumazenil for benzodiazepines; (4) Prepare for reintubation if no response. The PACU nurse must act — immediate physician notification is also required, but waiting for orders before airway management is inappropriate.",
+      "distractorRationales": {
+        "a": "The cue \"4 mg IV for opioid-induced respiratory depression (titrate slowly to avoid acute agitation and pain)\" suggests oxygenation or ventilation, so \"Verbally and physically stimulate the patient repeatedly and wait 5 minutes for residual anesthesia to clear\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "b": "\"Elevate HOB to 30° and apply supplemental oxygen via nasal cannula at 4 L/min\" answers a lower-acuity part of the scenario. The cue \"PACU respiratory emergency: SpO2 low + RR <8 + unresponsive + high ETCO2 = hypoventilation\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "\"Notify the surgeon and anesthesiologist and await orders before intervening\" misses the bedside risk. The cue \"PACU respiratory emergency: SpO2 low + RR <8 + unresponsive + high ETCO2 = hypoventilation\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "PACU respiratory emergency: SpO2 low + RR <8 + unresponsive + high ETCO2 = hypoventilation. Jaw thrust + BVM + 100% O2 immediately. Consider reversal agents (naloxone, sugammadex). Prepare to reintubate.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_levothyroxine_teaching",
+      "subcategory": "Pharmacology / Endocrine / Levothyroxine Teaching",
+      "difficulty": 2,
+      "stem": "A nurse is providing discharge teaching to a patient newly prescribed levothyroxine (Synthroid) for hypothyroidism. Which instruction is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Take the medication with a full meal to improve absorption"
+        },
+        {
+          "id": "b",
+          "text": "Take the medication on an empty stomach 30-60 minutes before breakfast with water, and avoid taking it with calcium or iron supplements"
+        },
+        {
+          "id": "c",
+          "text": "Double the dose if a dose is missed to maintain thyroid hormone levels"
+        },
+        {
+          "id": "d",
+          "text": "Expect to see symptom improvement within 24-48 hours of starting therapy"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Levothyroxine absorption is significantly reduced by food, calcium, iron supplements, antacids containing calcium/magnesium, and several other medications. The medication should be taken on an empty stomach (30-60 minutes before breakfast) with a full glass of water. Calcium and iron supplements should be taken at least 4 hours apart from levothyroxine. Doubling a missed dose is incorrect and dangerous — skip the missed dose and continue at the regular schedule. Symptom improvement takes weeks to months (TSH normalization is checked at 4-6 weeks after dose adjustment), not 24-48 hours.",
+      "distractorRationales": {
+        "a": "The safer response addresses medication toxicity; \"Take the medication with a full meal to improve absorption\" moves care toward diagnostic reassurance before patient teaching and medication-safety reinforcement.",
+        "c": "The cue \"Calcium and iron supplements should be taken at least 4 hours apart from levothyroxine\" suggests medication toxicity, so \"Double the dose if a dose is missed to maintain thyroid hormone levels\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.",
+        "d": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"Take the medication on an empty stomach 30-60 minutes before breakfast with water, and avoid taking\" fits the safer response to the cue \"The medication should be taken on an empty stomach (30-60 minutes before breakfast) with a full glass of\"."
+      },
+      "tags": [
+        "Pharmacology / Endocrine / Levothyroxine Teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Levothyroxine: empty stomach + water + 30-60 min before breakfast. Separate from calcium, iron, antacids by 4h. Never double dose. Onset of therapeutic effect: 4-6 weeks for TSH normalization. Compliance is key — once-daily dosing forever.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_delegation",
+      "subcategory": "Safety and Infection Control / Delegation",
+      "difficulty": 2,
+      "stem": "A registered nurse is delegating morning care tasks to a nursing assistant (CNA). Which task is MOST appropriate to delegate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess a new patient's skin for pressure injuries during the bed bath"
+        },
+        {
+          "id": "b",
+          "text": "Provide oral care to an unconscious patient on a ventilator"
+        },
+        {
+          "id": "c",
+          "text": "Instruct a patient with newly diagnosed diabetes about foot care"
+        },
+        {
+          "id": "d",
+          "text": "Measure and record vital signs for a stable post-operative patient on day 3"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Measuring and recording vital signs for a stable patient is a routine task within the CNA's scope of practice and does not require nursing judgment for data collection (though the RN interprets the results). Skin assessment requires RN-level assessment skills. Oral care for an unconscious, ventilated patient involves airway risk management and should be performed by licensed nursing staff. Patient education—such as foot care for a diabetic—is an RN responsibility that cannot be delegated.",
+      "distractorRationales": {
+        "a": "The cue \"Skin assessment requires RN-level assessment skills\" suggests oxygenation or ventilation, so \"Assess a new patient's skin for pressure injuries during the bed bath\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "b": "The safer response addresses oxygenation or ventilation; \"Provide oral care to an unconscious patient on a ventilator\" moves care toward ambulation, intake, or discharge teaching before airway and breathing intervention.",
+        "c": "\"Instruct a patient with newly diagnosed diabetes about foot care\" uses teaching before the physiologic risk is controlled. The cue \"Skin assessment requires RN-level assessment skills\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before teaching or reassurance."
+      },
+      "tags": [
+        "Safety and Infection Control / Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate tasks that are routine, do not require nursing judgment, and involve stable patients. Assessment, education, and care requiring clinical judgment remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "A patient's pulmonary artery catheter readings show: PA pressure 42/22 mmHg, PCWP 24 mmHg, CVP 14 mmHg, and cardiac output 3.2 L/min. The nurse correctly interprets these findings as indicative of:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Right ventricular failure with fluid overload"
+        },
+        {
+          "id": "b",
+          "text": "Left ventricular failure with elevated filling pressures"
+        },
+        {
+          "id": "c",
+          "text": "Hypovolemia with compensatory tachycardia"
+        },
+        {
+          "id": "d",
+          "text": "Normal hemodynamic values within reference ranges"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal PCWP is 6–12 mmHg. A wedge pressure of 24 mmHg (>18 mmHg) indicates elevated left ventricular end-diastolic pressure, consistent with left ventricular failure or cardiogenic pulmonary edema. The elevated PA pressures reflect backward transmission of elevated LV pressures. Low cardiac output (normal 4–8 L/min) further confirms reduced LV performance. CVP of 14 mmHg (normal 2–8 mmHg) reflects right heart congestion secondary to LV failure.",
+      "distractorRationales": {
+        "a": "The option can leave circulation or perfusion untreated because it commits to a competing cause before checking the dangerous pattern. \"Left ventricular failure with elevated filling pressures\" fits the safer response to the cue \"Low cardiac output (normal 4–8 L/min) further confirms reduced LV performance\".",
+        "c": "The cue \"A patient's pulmonary artery catheter readings show: PA pressure 42/22 mmHg, PCWP 24 mmHg, CVP 14 mmHg\" suggests circulation or perfusion, so \"Hypovolemia with compensatory tachycardia\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "\"Normal hemodynamic values within reference ranges\" normalizes a finding that needs reassessment. The cue \"A patient's pulmonary artery catheter readings show: PA pressure 42/22 mmHg, PCWP 24 mmHg, CVP 14 mmHg\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "PCWP >18 mmHg = LV failure / cardiogenic pulmonary edema. PCWP <6 mmHg = hypovolemia.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "Patient A (83 yo) has sudden-onset inattention, waxing-and-waning confusion, and visual hallucinations appearing 2 days after starting opioids post-hip surgery. Patient B (79 yo) has 4 years of progressive memory loss, gets lost in familiar environments, and repeatedly asks the same questions. Which statement correctly classifies these presentations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both have dementia; Patient A has early-onset and Patient B has late-stage Alzheimer's disease"
+        },
+        {
+          "id": "b",
+          "text": "Patient A has delirium (acute, fluctuating, reversible, identifiable cause); Patient B has dementia (insidious, progressive, irreversible)"
+        },
+        {
+          "id": "c",
+          "text": "Patient A has depression (pseudodementia) from opioid use; Patient B has Lewy body dementia"
+        },
+        {
+          "id": "d",
+          "text": "Both require CT head imaging to differentiate — clinical assessment alone is insufficient"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Delirium vs Dementia: Delirium — ACUTE onset (hours to days), FLUCTUATING course, typically reversible with treatment of precipitant (opioids, infection, metabolic derangement, post-op state), hallucinations (especially visual) common, INATTENTION is the cardinal distinguishing feature. Dementia — INSIDIOUS onset (months to years), PROGRESSIVE course, irreversible underlying pathology, recent memory loss predominates, attention relatively preserved until late stages. Patient A has delirium (acute, precipitant-identified — opioids) and Patient B has dementia (gradual progression). Treatment of delirium: remove or reduce offending drug, provide reorientation, preserve sleep-wake cycle, family presence, early mobility; low-dose haloperidol for severe agitation. Delirium in hospitalized elderly is associated with significantly increased mortality and prolonged hospitalization. Use CAM (Confusion Assessment Method) to screen.",
+      "distractorRationales": {
+        "a": "\"Both have dementia; Patient A has early-onset and Patient B has late-stage Alzheimer's disease\" answers a lower-acuity part of the scenario. The cue \"Patient A (83 yo) has sudden-onset inattention, waxing-and-waning confusion\" raises concern for medication toxicity, so patient teaching and medication-safety reinforcement is needed before routine care.",
+        "c": "This distractor shifts care toward premature attribution instead of patient teaching and medication-safety reinforcement. The stem cue \"Use CAM (Confusion Assessment Method) to screen\" makes medication toxicity the active safety concern.",
+        "d": "The cue \"low-dose haloperidol for severe agitation\" suggests medication toxicity, so \"Both require CT head imaging to differentiate — clinical assessment alone is insufficient\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delirium: acute onset, fluctuating, reversible, identifiable cause, inattention is cardinal. Dementia: insidious, progressive, irreversible. Delirium and dementia can coexist — dementia is the #1 risk factor for delirium.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 3,
+      "stem": "A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements, and facial grimacing that persist even when the medication is held. Which condition does this describe?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute dystonia"
+        },
+        {
+          "id": "b",
+          "text": "Tardive dyskinesia"
+        },
+        {
+          "id": "c",
+          "text": "Akathisia"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Tardive dyskinesia (TD) develops after months to years of antipsychotic use. It is characterized by involuntary, repetitive, purposeless movements of the face, tongue, and extremities (lip smacking, tongue protrusion, choreiform movements). Key feature: movements PERSIST or worsen when the antipsychotic is reduced/stopped initially. It may be irreversible. VMAT2 inhibitors (valbenazine, deutetrabenazine) are FDA-approved treatments. Acute dystonia (A) is sudden onset within days and responds to anticholinergics. Akathisia (C) is restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease.",
+      "distractorRationales": {
+        "a": "The cue \"facial grimacing that persist even when the medication is held\" suggests medication toxicity, so \"Acute dystonia\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "The cue \"facial grimacing that persist even when the medication is held\" suggests medication toxicity, so \"Akathisia\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The cue \"facial grimacing that persist even when the medication is held\" suggests medication toxicity, so \"Pseudoparkinsonism\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Tardive dyskinesia: involuntary repetitive orofacial movements after years of antipsychotic use — may be irreversible; treat with VMAT2 inhibitors.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_asthma_exacerbation",
+      "subcategory": "Respiratory / Asthma Exacerbation",
+      "difficulty": 3,
+      "stem": "A patient with severe asthma is admitted with an acute exacerbation. The nurse notes the patient is no longer wheezing despite having difficulty breathing and accessory muscle use. Which interpretation is CORRECT?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient is improving — decreased wheezing indicates reduced bronchospasm"
+        },
+        {
+          "id": "b",
+          "text": "The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,' signaling impending respiratory failure"
+        },
+        {
+          "id": "c",
+          "text": "The patient requires a bronchodilator since the wheezing has resolved"
+        },
+        {
+          "id": "d",
+          "text": "The patient is having an allergic reaction rather than an asthma attack"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A 'silent chest' in an asthmatic patient with severe respiratory distress is an ominous sign — it does not indicate improvement. It indicates airways are so severely obstructed that no air movement is occurring, thus no wheeze can be generated. This is a pre-arrest condition requiring immediate escalation: notify provider, prepare for intubation, consider IV magnesium sulfate, IV epinephrine or terbutaline, and high-dose continuous bronchodilators. The paradox of asthma: the sicker the patient, the less they wheeze because they lack airflow. Wheezing returning with treatment is actually a sign of improvement.",
+      "distractorRationales": {
+        "a": "The safer response addresses oxygenation or ventilation; \"The patient is improving — decreased wheezing indicates reduced bronchospasm\" moves care toward routine care before airway and breathing intervention.",
+        "c": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"The patient is deteriorating — absence of wheezing with severe work of breathing indicates 'silent chest,'\" fits the safer response to the cue \"high-dose continuous bronchodilators\".",
+        "d": "The safer response addresses oxygenation or ventilation; \"The patient is having an allergic reaction rather than an asthma attack\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "Respiratory / Asthma Exacerbation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Asthma Exacerbation",
+        "caption": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement.",
+        "conclusion": "Silent chest in asthma = no airflow = impending respiratory arrest. This is a critical sign, NOT improvement. Escalate immediately. Wheezing on treatment = airways opening = improvement."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb827-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "Pharmacology / Corticosteroid Teaching",
+      "difficulty": 3,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "distractorRationales": {
+        "a": "\"'I should not stop this medication suddenly without talking to my doctor.'\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Do not stop without medical advice.",
+        "c": "\"'I should monitor my blood sugar more closely while taking this medication.'\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Steroids cause hyperglycemia.",
+        "d": "\"'I should take this medication in the morning with food.'\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset."
+      },
+      "tags": [
+        "Pharmacology / Corticosteroid Teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

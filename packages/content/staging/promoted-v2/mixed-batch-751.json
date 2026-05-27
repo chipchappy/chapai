@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-751",
+  "generatedAt": "2026-04-08T16:33:04-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb751-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 4,
+      "stem": "A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward), and severe muscle rigidity within 3 days of starting the medication. Which type of extrapyramidal symptom (EPS) is this, and what is the antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tardive dyskinesia; no effective antidote, may require medication discontinuation"
+        },
+        {
+          "id": "b",
+          "text": "Akathisia; treat with propranolol or benzodiazepines"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; treat with IV/IM diphenhydramine or benztropine"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute dystonia presents within hours to days of starting a high-potency antipsychotic (like haloperidol) as sudden, painful muscle spasms — torticollis, oculogyric crisis, opisthotonus. Treatment is IV or IM diphenhydramine (Benadryl) or benztropine (Cogentin), which are anticholinergic agents. Tardive dyskinesia (A) develops after months-years of use as involuntary repetitive movements (lip smacking, tongue protrusion). Akathisia (B) is inner restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia.",
+      "distractorRationales": {
+        "a": "The cue \"Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia\" suggests medication toxicity, so \"Tardive dyskinesia; no effective antidote, may require medication discontinuation\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "\"Akathisia; treat with propranolol or benzodiazepines\" moves to activity, intake, or discharge planning too early. The cue \"A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward)\" raises concern for medication toxicity, so medication-safety intervention is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose\" misses the bedside risk. The cue \"A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute dystonia (torticollis, oculogyric crisis) within days of antipsychotic = IV/IM diphenhydramine or benztropine (anticholinergics).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to ≥ 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "\"The patient reports less anxiety and requests to watch television\" misses the bedside risk. The cue \"work of breathing (accessory muscle use, nasal flaring)\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The option can leave oxygenation or ventilation untreated because it treats active deterioration as something safe to watch. \"Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%\" fits the safer response to the cue \"The SpO2 is 91%\".",
+        "d": "The safer response addresses oxygenation or ventilation; \"The patient's skin color remains unchanged and RR remains at 24/min\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "Parents call the pediatric triage nurse stating their 2-year-old has been having a seizure for 1 minute. The child has a temperature of 39.2°C (102.6°F) and no prior seizure history. What is the most important teaching point the nurse should emphasize?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer rectal diazepam immediately regardless of seizure duration"
+        },
+        {
+          "id": "b",
+          "text": "Most simple febrile seizures resolve within 5 minutes; call 911 if the seizure lasts more than 5 minutes or the child stops breathing"
+        },
+        {
+          "id": "c",
+          "text": "Put fingers in the mouth to prevent tongue-swallowing during the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer acetaminophen immediately to stop the seizure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Simple febrile seizures are benign, typically last <5 minutes, and are self-limiting. Parent teaching: (1) Do not restrain the child; (2) Turn child on side to prevent aspiration; (3) Do not insert anything in the mouth — risk of injury, not tongue-swallowing; (4) Time the seizure; (5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs. Rectal diazepam is not administered routinely unless prescribed for a child with known prolonged febrile seizures. Antipyretics do not abort an ongoing seizure.",
+      "distractorRationales": {
+        "a": "The safer response addresses oxygenation or ventilation; \"Administer rectal diazepam immediately regardless of seizure duration\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "c": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"(5) Call 911 if seizure >5 minutes (status epilepticus risk), child stops breathing, or a second seizure occurs\" makes oxygenation or ventilation the active safety concern.",
+        "d": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"call 911 if >5 min or breathing stops\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops.",
+        "conclusion": "Febrile seizure parent teaching: most resolve in <5 min; position on side, do not restrain, do not put anything in mouth; call 911 if >5 min or breathing stops."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 19-year-old with no prior medical or anesthesia history is 30 minutes into general anesthesia for appendectomy. The PACU nurse is called to the OR: temperature 39.9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%, and ETCO2 82 mmHg. What is the priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response"
+        },
+        {
+          "id": "b",
+          "text": "Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart"
+        },
+        {
+          "id": "c",
+          "text": "Administer succinylcholine to relieve the masseter rigidity and improve ventilation"
+        },
+        {
+          "id": "d",
+          "text": "Treat the hyperkalemia first with calcium gluconate — MH-induced hyperkalemia is the immediate threat"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Malignant hyperthermia (MH) is a life-threatening pharmacogenetic disorder triggered in susceptible individuals (RYR1 gene mutation) by volatile anesthetic agents (sevoflurane, desflurane, halothane) and succinylcholine. Uncontrolled calcium release from the sarcoplasmic reticulum causes: sustained muscle contraction → hyperthermia (temperature rises 1°C every 5 minutes if untreated), diffuse rigidity, masseter spasm (early sign), respiratory and metabolic acidosis (CO2 soaring), rhabdomyolysis, hyperkalemia, and ventricular dysrhythmias. Untreated MH mortality exceeds 80%. Protocol: (1) Stop ALL triggering agents immediately; (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia); (3) Dantrolene 2.5 mg/kg IV bolus — repeat every 5 minutes until crisis resolves (max ~10 mg/kg); (4) Cooling measures; (5) Treat hyperkalemia, acidosis, and dysrhythmias as they arise. Succinylcholine IS a triggering agent — administering it would worsen MH.",
+      "distractorRationales": {
+        "a": "\"Administer acetaminophen IV and cooling blankets for a likely febrile surgical response\" answers a lower-acuity part of the scenario. The cue \"(2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia)\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "c": "\"Administer succinylcholine to relieve the masseter rigidity and improve ventilation\" answers a lower-acuity part of the scenario. The cue \"9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene\" fits the safer response to the cue \"Protocol: (1) Stop ALL triggering agents immediately\"."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "MH: rising temp + masseter rigidity + high ETCO2 + tachycardia during general anesthesia. STOP triggering agents immediately. Dantrolene 2.5 mg/kg IV STAT (repeat q5 min). Succinylcholine triggers MH — never give.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_thyroid_storm",
+      "subcategory": "Pharmacology / Endocrine / Thyroid Storm",
+      "difficulty": 4,
+      "stem": "A patient with untreated hyperthyroidism is admitted postoperatively with HR 148 bpm (AF), temperature 39.8°C, BP 158/92 mmHg, and extreme agitation. The nurse suspects thyroid storm. Which medication sequence reflects the CORRECT pharmacological management priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid"
+        },
+        {
+          "id": "b",
+          "text": "Methimazole first → then radioactive iodine → then atenolol"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol first → then PTU → then potassium iodide → then hydrocortisone"
+        },
+        {
+          "id": "d",
+          "text": "Potassium iodide first → then PTU → then propranolol"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Thyroid storm management follows a specific pharmacological sequence to block thyroid hormone synthesis and release: (1) PTU first — blocks new hormone synthesis AND peripheral T4-to-T3 conversion (this is why PTU is preferred over methimazole in storm). (2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect). Giving iodine before the antithyroid drug would paradoxically worsen hormone synthesis. (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). (4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency. Radioactive iodine is NOT used in thyroid storm — it is an elective outpatient treatment.",
+      "distractorRationales": {
+        "b": "The cue \"(4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency\" suggests medication toxicity, so \"Methimazole first → then radioactive iodine → then atenolol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Propranolol first → then PTU → then potassium iodide → then hydrocortisone\" misses the bedside risk. The cue \"(4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Potassium iodide first → then PTU → then propranolol\" misses the bedside risk. The cue \"(3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Pharmacology / Endocrine / Thyroid Storm",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm Rx sequence: PTU → (wait 1h) → Potassium iodide → Propranolol → Hydrocortisone. KEY: PTU BEFORE iodine (blocking synthesis before blocking release). Never give iodine first — it can fuel more hormone synthesis if the gland isn't blocked.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse receives a SBAR hand-off report. The oncoming nurse should be MOST concerned about which patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline"
+        },
+        {
+          "id": "b",
+          "text": "A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours"
+        },
+        {
+          "id": "c",
+          "text": "A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Urine output of 15 mL/hr for 3 consecutive hours (total 45 mL in 3 hours, target minimum 30 mL/hr) in a patient with sepsis signals inadequate renal perfusion and worsening organ dysfunction. This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider notification and likely fluid resuscitation. The COPD patient's 91% sat is their established baseline; the hip replacement refusal is important but not acutely threatening; the pending aPTT should be followed but is not immediately dangerous.",
+      "distractorRationales": {
+        "a": "\"A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline\" misses the bedside risk. The cue \"This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "The option can leave bleeding or anticoagulation injury untreated because it moves to activity, intake, or discharge planning too early. \"A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours\" fits the safer response to the cue \"the pending aPTT should be followed but is not immediately dangerous\".",
+        "d": "The safer response addresses bleeding or anticoagulation injury; \"A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago\" moves care toward diagnostic reassurance before bleeding-risk intervention."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Prioritization",
+        "caption": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+        "conclusion": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A clinic nurse suspects a patient has active tuberculosis based on symptoms and a positive QuantiFERON test. The patient has not yet been confirmed by sputum culture. What is the nurse's legal obligation regarding reporting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for confirmed sputum culture before reporting to the health department"
+        },
+        {
+          "id": "b",
+          "text": "Report only if the patient is homeless or a healthcare worker"
+        },
+        {
+          "id": "c",
+          "text": "Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The physician is solely responsible for reporting; nurses have no legal duty to report"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing.",
+      "distractorRationales": {
+        "a": "The safer response addresses clinical safety risk; \"Wait for confirmed sputum culture before reporting to the health department\" moves care toward routine observation before bedside safety action.",
+        "b": "\"Report only if the patient is homeless or a healthcare worker\" moves to activity, intake, or discharge planning too early. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"The physician is solely responsible for reporting; nurses have no legal duty to report\" answers a lower-acuity part of the scenario. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before routine care."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reportable diseases: report on suspicion (not confirmation); TB, STIs, meningitis, hepatitis — nurse has independent duty to report to public health; do not wait for lab confirmation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "The nurse assesses a patient following a traumatic brain injury. The patient opens eyes to voice, makes incomprehensible sounds, and withdraws from pain. What is this patient's Glasgow Coma Scale (GCS) score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GCS 7"
+        },
+        {
+          "id": "b",
+          "text": "GCS 8"
+        },
+        {
+          "id": "c",
+          "text": "GCS 9"
+        },
+        {
+          "id": "d",
+          "text": "GCS 10"
+        }
+      ],
+      "answer": "a",
+      "rationale": "GCS components: Eye opening (E): spontaneous=4, to voice=3, to pain=2, none=1. Verbal (V): oriented=5, confused=4, inappropriate words=3, incomprehensible=2, none=1. Motor (M): obeys commands=6, localizes=5, withdraws=4, abnormal flexion=3, extension=2, none=1. This patient: Eyes to voice (3) + Incomprehensible sounds (2) + Withdraws (4) = GCS 7. GCS ≤8 = severe brain injury; generally indicates need for airway protection.",
+      "distractorRationales": {
+        "b": "\"GCS 8\" misses the bedside risk. The cue \"Score ≤8 = severe TBI, consider intubation for airway protection\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The cue \"GCS ≤8 = severe brain injury\" suggests oxygenation or ventilation, so \"GCS 9\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"GCS 7\" fits the safer response to the cue \"GCS components: Eye opening (E): spontaneous=4, to voice=3, to pain=2, none=1\"."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "GCS = E(1–4) + V(1–5) + M(1–6). Score ≤8 = severe TBI, consider intubation for airway protection.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A patient with a legally designated healthcare proxy (durable power of attorney for healthcare) is brought to the ED unconscious after a large stroke. The healthcare proxy, who has legal authority, requests that all life-sustaining treatment be withdrawn. No written advance directive exists. What is the nurse's most appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Proceed with withdrawal of life-sustaining treatment as legally directed by the healthcare proxy"
+        },
+        {
+          "id": "b",
+          "text": "Disregard the proxy's decision and provide full resuscitation until the patient can speak for themselves"
+        },
+        {
+          "id": "c",
+          "text": "Consult the ethics committee and continue full treatment until the committee renders a decision"
+        },
+        {
+          "id": "d",
+          "text": "Contact adult protective services, as a family member withdrawing treatment may constitute elder abuse"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A legally designated healthcare proxy (durable power of attorney for healthcare) has the legal authority to make medical decisions on behalf of an incapacitated patient. The proxy's role is substituted judgment — making the decision the patient would make if able. When a legally designated proxy with proper authority requests withdrawal of life-sustaining treatment, this request must be honored following institutional policies and applicable state law. The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative care team, and provide comfort measures. An ethics consultation may be helpful if there is team conflict, but it is not required to delay a legally sound decision. This is not elder abuse — it is the proper exercise of legally granted decision-making authority.",
+      "distractorRationales": {
+        "b": "\"Disregard the proxy's decision and provide full resuscitation until the patient can speak for themselves\" answers a lower-acuity part of the scenario. The cue \"The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care.",
+        "c": "The safer response addresses neurologic deterioration; \"Consult the ethics committee and continue full treatment until the committee renders a decision\" moves care toward ambulation, intake, or discharge teaching before neurologic safety assessment.",
+        "d": "\"Contact adult protective services, as a family member withdrawing treatment may constitute elder abuse\" misses the bedside risk. The cue \"The nurse should: verify the proxy's legal authority, document the decision, notify the physician immediately, involve the palliative\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Healthcare proxy with legal authority speaks for the incapacitated patient. Their decision must be respected and acted upon. No written advance directive is required when a valid proxy is designated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb751-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 4,
+      "stem": "An RN delegates to an LPN/LVN. Which task is within the LPN's scope of practice in most states?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the initial nursing admission assessment for a newly admitted patient"
+        },
+        {
+          "id": "b",
+          "text": "Administer oral, IM, and subcutaneous medications and monitor response"
+        },
+        {
+          "id": "c",
+          "text": "Develop and update the nursing care plan based on patient assessment findings"
+        },
+        {
+          "id": "d",
+          "text": "Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens, and monitoring and reporting patient status. Initial assessments (A) require RN-level nursing judgment and are an RN responsibility. Care plan development (C) is an RN function. Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. The key distinction is that LPNs implement care under RN supervision; RNs assess, plan, evaluate, and teach.",
+      "distractorRationales": {
+        "a": "The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" suggests medication toxicity, so \"Perform the initial nursing admission assessment for a newly admitted patient\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Develop and update the nursing care plan based on patient assessment findings\" answers a lower-acuity part of the scenario. The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "d": "The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" suggests medication toxicity, so \"Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning, and teaching are RN responsibilities.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

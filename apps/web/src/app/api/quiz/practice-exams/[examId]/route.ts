@@ -62,7 +62,11 @@ function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
             ? "bow-tie"
             : question.type === "case_study"
               ? "case-study"
-            : "mcq";
+              : question.type === "scenario_mcq"
+                ? "scenario-mcq"
+                : question.type === "decision_map_mcq"
+                  ? "decision-map-mcq"
+                  : "mcq";
 
   return {
     id: question.id,
@@ -71,6 +75,7 @@ function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
     difficulty: question.difficulty,
     mode: "practice-exam",
     kind,
+    questionType: question.type,
     stem: question.stem,
     scenarioTitle: question.scenarioTitle,
     scenario: question.scenario,

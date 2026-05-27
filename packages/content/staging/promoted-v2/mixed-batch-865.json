@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-865",
+  "generatedAt": "2026-04-09T19:40:30-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb865-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "The option can leave clinical safety risk untreated because it treats active deterioration as something safe to watch. \"The client may have acute angle-closure glaucoma and needs urgent evaluation\" fits the safer response to the cue \"A client reports severe eye pain, blurred vision\".",
+        "c": "The cue \"A client reports severe eye pain, blurred vision\" suggests clinical safety risk, so \"The client is likely having a migraine and can rest at home\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "d": "The cue \"Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency\" suggests clinical safety risk, so \"These findings show that prescribed eye drops are working well\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "The option can leave circulation or perfusion untreated because it moves to activity, intake, or discharge planning too early. \"Administer IV hydrocortisone and isotonic fluids\" fits the safer response to the cue \"sodium 128 mEq/L\".",
+        "c": "The safer response addresses circulation or perfusion; \"Hold corticosteroids until the morning cortisol level is drawn\" moves care toward routine care before circulation and perfusion support.",
+        "d": "\"Teach the client about low-sodium foods\" uses teaching before the physiologic risk is controlled. The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before teaching or reassurance."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" suggests oxygenation or ventilation, so \"Obtain a full allergy history before intervening\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Slow the infusion to reduce the reaction\" answers a lower-acuity part of the scenario. The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "The option can leave oxygenation or ventilation untreated because it treats active deterioration as something safe to watch. \"Stop the infusion and prepare to administer epinephrine\" fits the safer response to the cue \"A client receiving IV antibiotics suddenly develops wheezing, widespread hives\"."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "\"Lay the client flat and increase the room temperature\" answers a lower-acuity part of the scenario. The cue \"Delay increases the risk of stroke or seizure\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care.",
+        "c": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away\" makes neurologic deterioration the active safety concern.",
+        "d": "\"Offer oral fluids and reassess in 30 minutes\" misses the bedside risk. The cue \"Delay increases the risk of stroke or seizure\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "\"Slow the transfusion rate and reassess in 5 minutes\" misses the bedside risk. The cue \"chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"A nurse begins a packed red blood cell transfusion for a client with postoperative anemia\" makes circulation or perfusion the active safety concern.",
+        "d": "\"Document the symptoms as an expected febrile response\" misses the bedside risk. The cue \"Suspected transfusion reaction means stop the blood first and keep the line open with normal saline\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward premature attribution instead of infection or sepsis escalation. The stem cue \"c diff spore precautions infection\" makes infection progression the active safety concern.",
+        "c": "The cue \"c diff spore precautions infection\" suggests infection progression, so \"Place the client on droplet precautions only\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "The safer response addresses infection progression; \"Share the blood pressure cuff after wiping it with a dry towel\" moves care toward diagnostic reassurance before infection or sepsis escalation."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "central_line_infection_prevention",
+      "subcategory": "central_line_infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action by the nurse best helps prevent a central line-associated bloodstream infection in a hospitalized client?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Scrub the hub before each access and maintain a sterile dressing."
+        },
+        {
+          "id": "b",
+          "text": "Change the dressing only when the client reports discomfort."
+        },
+        {
+          "id": "c",
+          "text": "Use the line for routine blood draws to avoid extra venipunctures."
+        },
+        {
+          "id": "d",
+          "text": "Leave one port uncapped between intermittent infusions."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Consistent hub disinfection and sterile dressing care are core nursing actions for preventing central line infections. Using the line casually or leaving it uncapped increases contamination risk. Dressing changes should follow evidence-based timing and contamination rules, not patient comfort alone.",
+      "distractorRationales": {
+        "b": "The cue \"Preventing CLABSI depends on aseptic access and sterile site care every time\" suggests infection progression, so \"Change the dressing only when the client reports discomfort\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "This distractor shifts care toward delayed assessment instead of infection or sepsis escalation. The stem cue \"Preventing CLABSI depends on aseptic access and sterile site care every time\" makes infection progression the active safety concern.",
+        "d": "\"Leave one port uncapped between intermittent infusions\" answers a lower-acuity part of the scenario. The cue \"Consistent hub disinfection and sterile dressing care are core nursing actions for preventing central line infections\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care."
+      },
+      "tags": [
+        "central_line_infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "central_line_infection_prevention",
+        "caption": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+        "conclusion": "Preventing CLABSI depends on aseptic access and sterile site care every time."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_tube_air_leak",
+      "subcategory": "chest_tube_air_leak",
+      "difficulty": 3,
+      "stem": "A nurse caring for a client with a chest tube notes continuous bubbling in the water-seal chamber. What is the nurse's priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check the tubing and drainage system connections for an air leak."
+        },
+        {
+          "id": "b",
+          "text": "Clamp the chest tube near the client's chest for 30 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Add more sterile water to the suction-control chamber."
+        },
+        {
+          "id": "d",
+          "text": "Strip the tubing toward the drainage system."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Continuous bubbling in the water-seal chamber suggests an air leak somewhere in the system. The nurse should first assess connections and tubing to locate the leak while keeping the system functional. Prolonged clamping can cause a tension pneumothorax, and stripping the tubing is not recommended because it can increase intrathoracic pressure.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"The nurse should first assess connections and tubing to locate the leak while keeping the system functional\" makes circulation or perfusion the active safety concern.",
+        "c": "This distractor shifts care toward premature activity instead of circulation and perfusion support. The stem cue \"The nurse should first assess connections and tubing to locate the leak while keeping the system functional\" makes circulation or perfusion the active safety concern.",
+        "d": "The cue \"The nurse should first assess connections and tubing to locate the leak while keeping the system functional\" suggests circulation or perfusion, so \"Strip the tubing toward the drainage system\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "chest_tube_air_leak",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Continuous water-seal bubbling means assess the system for an air leak before doing anything that could trap air in the chest.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "compartment_syndrome_warning",
+      "subcategory": "compartment_syndrome_warning",
+      "difficulty": 3,
+      "stem": "A client with a short leg cast reports increasing pain that is not relieved by opioids. The toes are pale and the client reports numbness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider immediately about possible compartment syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Apply ice over the cast and reassess after the next pain dose."
+        },
+        {
+          "id": "c",
+          "text": "Elevate the leg above the level of the heart."
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast with scissors at the bedside."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Pain out of proportion, pallor, and numbness suggest compartment syndrome, which can threaten tissue viability and limb function. Immediate provider notification and urgent evaluation are needed. Comfort-only measures or excessive elevation can worsen ischemia or delay definitive treatment.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"Notify the provider immediately about possible compartment syndrome\" fits the safer response to the cue \"numbness suggest compartment syndrome, which can threaten tissue viability and limb function\".",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Pain out of proportion, pallor\" makes medication toxicity the active safety concern.",
+        "d": "The cue \"A client with a short leg cast reports increasing pain that is not relieved by opioids\" suggests medication toxicity, so \"Loosen the cast with scissors at the bedside\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "compartment_syndrome_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pain that outpaces the injury plus pallor or numbness under a cast should trigger concern for compartment syndrome.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "croup_stridor_priority",
+      "subcategory": "croup_stridor_priority",
+      "difficulty": 3,
+      "stem": "A toddler with croup has a barky cough and now has inspiratory stridor at rest. Which finding most concerns the nurse?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stridor at rest with increasing work of breathing."
+        },
+        {
+          "id": "b",
+          "text": "Hoarse cry that improves when the child rests."
+        },
+        {
+          "id": "c",
+          "text": "A barking cough that occurs mainly at night."
+        },
+        {
+          "id": "d",
+          "text": "Mild fever of 100.4 F (38 C)."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Stridor at rest signals worsening upper-airway obstruction and is more serious than a nighttime barky cough or hoarseness alone. The nurse should recognize this as a potential respiratory emergency because increasing work of breathing can quickly progress to fatigue and failure. Mild fever is common and not the most urgent finding here.",
+      "distractorRationales": {
+        "b": "The cue \"The nurse should recognize this as a potential respiratory emergency because increasing work of breathing can quickly progress\" suggests oxygenation or ventilation, so \"Hoarse cry that improves when the child rests\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The safer response addresses oxygenation or ventilation; \"A barking cough that occurs mainly at night\" moves care toward routine care before airway and breathing intervention.",
+        "d": "The safer response addresses oxygenation or ventilation; \"Mild fever of 100.4 F (38 C)\" moves care toward reassurance before airway and breathing intervention."
+      },
+      "tags": [
+        "croup_stridor_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In croup, stridor at rest is the red-flag sign of worsening airway obstruction.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delirium_vs_dementia_acute",
+      "subcategory": "delirium_vs_dementia_acute",
+      "difficulty": 3,
+      "stem": "An older adult who was oriented this morning is now disorganized, trying to climb out of bed, and seeing insects on the wall. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client is showing acute delirium that needs immediate assessment."
+        },
+        {
+          "id": "b",
+          "text": "This is expected sundowning and can wait until morning."
+        },
+        {
+          "id": "c",
+          "text": "The client is demonstrating stable chronic dementia."
+        },
+        {
+          "id": "d",
+          "text": "This behavior is best managed by limiting all stimulation and delaying assessment."
+        }
+      ],
+      "answer": "a",
+      "rationale": "A rapid change in mental status with agitation and visual hallucinations is more consistent with delirium than chronic dementia. Delirium can be triggered by infection, hypoxia, medications, or metabolic problems and requires prompt assessment for reversible causes. Delaying evaluation increases the risk that a treatable medical problem will be missed.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"The client is showing acute delirium that needs immediate assessment\" fits the safer response to the cue \"Delirium can be triggered by infection, hypoxia, medications, or metabolic problems and requires prompt assessment for reversible causes\".",
+        "c": "The safer response addresses medication toxicity; \"The client is demonstrating stable chronic dementia\" moves care toward routine care before medication-safety intervention.",
+        "d": "\"This behavior is best managed by limiting all stimulation and delaying assessment\" treats active deterioration as something safe to watch. The cue \"Delirium can be triggered by infection, hypoxia, medications, or metabolic problems and requires prompt assessment for reversible causes\" raises concern for medication toxicity, so medication-safety intervention is needed before routine observation."
+      },
+      "tags": [
+        "delirium_vs_dementia_acute",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden confusion and hallucinations in an older adult point to delirium until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb865-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "digoxin_toxicity",
+      "subcategory": "digoxin_toxicity",
+      "difficulty": 3,
+      "stem": "A client taking digoxin reports nausea, poor appetite, and seeing yellow halos around lights. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the digoxin and assess the apical pulse."
+        },
+        {
+          "id": "b",
+          "text": "Give the dose with food to reduce gastric upset."
+        },
+        {
+          "id": "c",
+          "text": "Teach the client that visual changes are expected."
+        },
+        {
+          "id": "d",
+          "text": "Administer an antacid and reassess in 1 hour."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Nausea and yellow visual halos are classic early signs of digoxin toxicity. The nurse should withhold the medication and assess the apical pulse before giving any additional doses. Telling the client the findings are expected or simply treating stomach upset misses a potentially dangerous cardiac medication problem.",
+      "distractorRationales": {
+        "b": "The cue \"Nausea and yellow visual halos are classic early signs of digoxin toxicity\" suggests medication toxicity, so \"Give the dose with food to reduce gastric upset\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Teach the client that visual changes are expected\" normalizes a finding that needs reassessment. The cue \"Nausea and yellow visual halos are classic early signs of digoxin toxicity\" raises concern for medication toxicity, so medication-safety intervention is needed before reassurance.",
+        "d": "The safer response addresses medication toxicity; \"Administer an antacid and reassess in 1 hour\" moves care toward routine observation before medication-safety intervention."
+      },
+      "tags": [
+        "digoxin_toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected digoxin toxicity means hold the dose first and assess before giving more.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

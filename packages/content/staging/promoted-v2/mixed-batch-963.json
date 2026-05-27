@@ -1,0 +1,728 @@
+{
+  "batchId": "mixed-batch-963",
+  "generatedAt": "2026-04-10T20:50:59-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb963-n001",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "intussusception_currant_jelly",
+      "subcategory": "intussusception_currant_jelly",
+      "difficulty": 3,
+      "stem": "For each pediatric finding, click to specify whether the finding is more consistent with intussusception or less consistent with intussusception.",
+      "scenarioTitle": "Intussusception clue sorting",
+      "scenario": "The infant has episodes of severe crying separated by quiet periods.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with intussusception"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with intussusception"
+        }
+      ],
+      "answer": {
+        "Currant jelly stool": "More consistent with intussusception",
+        "Drawing knees up during pain episodes": "More consistent with intussusception",
+        "Gradual daily weight loss without abdominal symptoms": "Less consistent with intussusception",
+        "Diffuse itchy rash after a new food": "Less consistent with intussusception"
+      },
+      "matrixColumns": [
+        "More consistent with intussusception",
+        "Less consistent with intussusception"
+      ],
+      "matrixRows": [
+        {
+          "label": "Currant jelly stool",
+          "answer": "More consistent with intussusception"
+        },
+        {
+          "label": "Drawing knees up during pain episodes",
+          "answer": "More consistent with intussusception"
+        },
+        {
+          "label": "Gradual daily weight loss without abdominal symptoms",
+          "answer": "Less consistent with intussusception"
+        },
+        {
+          "label": "Diffuse itchy rash after a new food",
+          "answer": "Less consistent with intussusception"
+        }
+      ],
+      "rationale": "Intussusception becomes easier to recognize when the nurse groups intermittent severe abdominal pain with knee flexion and currant jelly stool. The question is solved faster by matching the pain pattern and stool clue together.",
+      "distractorRationales": {
+        "a": "\"More consistent with intussusception\" misses the bedside risk. The cue \"The question is solved faster by matching the pain pattern and stool clue together\" points to pediatric or newborn instability. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "b": "The option can leave pediatric or newborn instability untreated because it commits to a competing cause before checking the dangerous pattern. \"the row-specific answer pattern\" fits the safer response to the cue \"The infant has episodes of severe crying separated by quiet periods\"."
+      },
+      "tags": [
+        "intussusception_currant_jelly",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intermittent severe pain plus currant jelly stool is a classic intussusception pattern.",
+      "speedCue": "The exam shortcut is episodic pain with knee flexion, not just one isolated GI symptom.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n002",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "pheochromocytoma_crisis",
+      "subcategory": "pheochromocytoma_crisis",
+      "difficulty": 3,
+      "stem": "For each finding, click to specify whether the finding is more consistent with pheochromocytoma crisis or less consistent with pheochromocytoma crisis.",
+      "scenarioTitle": "Catecholamine surge pattern",
+      "scenario": "The client reports recurrent episodes of severe headache and pounding palpitations.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with pheochromocytoma crisis"
+        }
+      ],
+      "answer": {
+        "Diaphoresis with severe hypertension": "More consistent with pheochromocytoma crisis",
+        "Sudden pounding headache": "More consistent with pheochromocytoma crisis",
+        "Slow progressive ankle edema only": "Less consistent with pheochromocytoma crisis",
+        "Chronic productive cough": "Less consistent with pheochromocytoma crisis"
+      },
+      "matrixColumns": [
+        "More consistent with pheochromocytoma crisis",
+        "Less consistent with pheochromocytoma crisis"
+      ],
+      "matrixRows": [
+        {
+          "label": "Diaphoresis with severe hypertension",
+          "answer": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Sudden pounding headache",
+          "answer": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Slow progressive ankle edema only",
+          "answer": "Less consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Chronic productive cough",
+          "answer": "Less consistent with pheochromocytoma crisis"
+        }
+      ],
+      "rationale": "Pheochromocytoma crisis is solved faster when the learner bundles headache, diaphoresis, palpitations, and severe hypertension as a catecholamine surge pattern. Chronic, non-episodic findings push the answer away from this diagnosis.",
+      "distractorRationales": {
+        "a": "The safer response addresses clinical safety risk; \"More consistent with pheochromocytoma crisis\" moves care toward diagnostic reassurance before bedside safety action.",
+        "b": "The cue \"severe hypertension as a catecholamine surge pattern\" suggests clinical safety risk, so \"Less consistent with pheochromocytoma crisis\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "pheochromocytoma_crisis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Headache, diaphoresis, palpitations, and severe episodic hypertension belong together as a pheochromocytoma pattern.",
+      "speedCue": "The speed clue is episodic sympathetic surge, not slow chronic symptom drift.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n003",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "placenta_previa_bleeding",
+      "subcategory": "placenta_previa_bleeding",
+      "difficulty": 3,
+      "stem": "For each antepartum finding, click to specify whether the finding is more consistent with placenta previa or less consistent with placenta previa.",
+      "scenarioTitle": "Placenta previa clue sorting",
+      "scenario": "The client is 34 weeks pregnant and comes in after noticing vaginal bleeding.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with placenta previa"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with placenta previa"
+        }
+      ],
+      "answer": {
+        "Painless bright-red bleeding": "More consistent with placenta previa",
+        "Soft nontender uterus": "More consistent with placenta previa",
+        "Rigid painful abdomen": "Less consistent with placenta previa",
+        "Dark bleeding after abdominal trauma": "Less consistent with placenta previa"
+      },
+      "matrixColumns": [
+        "More consistent with placenta previa",
+        "Less consistent with placenta previa"
+      ],
+      "matrixRows": [
+        {
+          "label": "Painless bright-red bleeding",
+          "answer": "More consistent with placenta previa"
+        },
+        {
+          "label": "Soft nontender uterus",
+          "answer": "More consistent with placenta previa"
+        },
+        {
+          "label": "Rigid painful abdomen",
+          "answer": "Less consistent with placenta previa"
+        },
+        {
+          "label": "Dark bleeding after abdominal trauma",
+          "answer": "Less consistent with placenta previa"
+        }
+      ],
+      "rationale": "Placenta previa is answered faster when the nurse links painless bright-red bleeding to a softer, less painful uterine presentation. Pain and rigidity point more toward abruption.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"Pain and rigidity point more toward abruption\" makes bleeding or anticoagulation injury the active safety concern.",
+        "b": "The cue \"Placenta previa is answered faster when the nurse links painless bright-red bleeding to a softer, less painful uterine\" suggests bleeding or anticoagulation injury, so \"Less consistent with placenta previa\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "placenta_previa_bleeding",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Placenta previa is the painless bright-red bleeding pattern.",
+      "speedCue": "Pain is the clue that should push you away from previa and toward abruption.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n004",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "pyloric_stenosis_projectile_vomiting",
+      "subcategory": "pyloric_stenosis_projectile_vomiting",
+      "difficulty": 3,
+      "stem": "For each infant finding, click to specify whether the finding is more consistent with pyloric stenosis or less consistent with pyloric stenosis.",
+      "scenarioTitle": "Infant vomiting pattern sort",
+      "scenario": "The infant is hungry right after vomiting and the parent says the vomiting seems forceful.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with pyloric stenosis"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with pyloric stenosis"
+        }
+      ],
+      "answer": {
+        "Projectile vomiting after feeds": "More consistent with pyloric stenosis",
+        "Hungry again immediately after vomiting": "More consistent with pyloric stenosis",
+        "Bilious green emesis": "Less consistent with pyloric stenosis",
+        "Bloody diarrhea": "Less consistent with pyloric stenosis"
+      },
+      "matrixColumns": [
+        "More consistent with pyloric stenosis",
+        "Less consistent with pyloric stenosis"
+      ],
+      "matrixRows": [
+        {
+          "label": "Projectile vomiting after feeds",
+          "answer": "More consistent with pyloric stenosis"
+        },
+        {
+          "label": "Hungry again immediately after vomiting",
+          "answer": "More consistent with pyloric stenosis"
+        },
+        {
+          "label": "Bilious green emesis",
+          "answer": "Less consistent with pyloric stenosis"
+        },
+        {
+          "label": "Bloody diarrhea",
+          "answer": "Less consistent with pyloric stenosis"
+        }
+      ],
+      "rationale": "Pyloric stenosis becomes easier to recognize when the nurse connects projectile nonbilious vomiting with ongoing hunger. Bilious vomiting should redirect the differential quickly because it suggests a different obstruction pattern.",
+      "distractorRationales": {
+        "a": "The safer response addresses pediatric or newborn instability; \"More consistent with pyloric stenosis\" moves care toward diagnostic reassurance before bedside safety action.",
+        "b": "\"Less consistent with pyloric stenosis\" misses the bedside risk. The cue \"pyloric stenosis projectile vomiting safety\" points to pediatric or newborn instability. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "pyloric_stenosis_projectile_vomiting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Projectile nonbilious vomiting with continued hunger fits pyloric stenosis.",
+      "speedCue": "The quick clue is hungry-after-vomiting plus forceful emesis, not generalized GI upset.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n005",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "amniotic_fluid_embolism",
+      "subcategory": "amniotic_fluid_embolism",
+      "difficulty": 3,
+      "stem": "A laboring client suddenly becomes hypoxic, hypotensive, and unresponsive. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "AFE collapse sequence",
+      "scenario": "The fetal monitor shows abrupt deterioration while the client becomes cyanotic.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Call the obstetric emergency response and bring resuscitation support to the bedside"
+        },
+        {
+          "id": "b",
+          "text": "Support airway and oxygenation immediately"
+        },
+        {
+          "id": "c",
+          "text": "Begin rapid hemodynamic support and prepare for perimortem interventions if directed"
+        },
+        {
+          "id": "d",
+          "text": "Continue close maternal-fetal reassessment while the team stabilizes the client"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Amniotic fluid embolism is answered fastest when the nurse recognizes the catastrophic oxygenation-perfusion pattern and moves into emergency response. Help and airway support come first, followed by aggressive hemodynamic stabilization and continued reassessment.",
+      "distractorRationales": {},
+      "tags": [
+        "amniotic_fluid_embolism",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "AFE is a sudden collapse pattern that should trigger emergency response, airway support, and rapid maternal stabilization.",
+      "speedCue": "The clue cluster is abrupt hypoxia plus hypotension during labor or right after birth, not a slow deterioration pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n006",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "tumor_lysis_syndrome",
+      "subcategory": "tumor_lysis_syndrome",
+      "difficulty": 3,
+      "stem": "A client with acute leukemia is 24 hours after chemotherapy and now has weakness, nausea, peaked T waves, and decreasing urine output. Place the actions in the order the nurse should anticipate.",
+      "scenarioTitle": "Tumor lysis escalation sequence",
+      "scenario": "Laboratory results are pending repeat confirmation while the client remains on telemetry.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider and treat this as an oncologic emergency"
+        },
+        {
+          "id": "b",
+          "text": "Prepare for rapid management of life-threatening electrolyte instability"
+        },
+        {
+          "id": "c",
+          "text": "Support aggressive hydration and renal protection as ordered"
+        },
+        {
+          "id": "d",
+          "text": "Continue close rhythm and urine-output reassessment"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Tumor lysis syndrome should be answered as an electrolyte-and-kidney emergency after chemotherapy. Rapid recognition, urgent treatment of unstable electrolytes, hydration support, and ongoing reassessment are the core sequence.",
+      "distractorRationales": {},
+      "tags": [
+        "tumor_lysis_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After chemotherapy, weakness plus peaked T waves plus falling urine output is a tumor lysis emergency pattern.",
+      "speedCue": "The speed clue is post-chemo electrolyte collapse with telemetry danger, not routine nausea.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n007",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "dka_fluid_priority",
+      "subcategory": "dka_fluid_priority",
+      "difficulty": 3,
+      "stem": "For each provider order, click to specify whether the nurse should anticipate it as an early DKA priority or not an early priority.",
+      "scenarioTitle": "DKA early priorities",
+      "scenario": "The client is lethargic, hypotensive, and profoundly dehydrated with glucose 612 mg/dL and serum bicarbonate 12 mEq/L.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Early DKA priority"
+        },
+        {
+          "id": "b",
+          "text": "Not an early priority"
+        }
+      ],
+      "answer": {
+        "Rapid isotonic fluid replacement": "Early DKA priority",
+        "Potassium review before continuous insulin progression": "Early DKA priority",
+        "Routine long-acting subcutaneous insulin": "Not an early priority",
+        "Delay treatment until ketones are redrawn": "Not an early priority"
+      },
+      "matrixColumns": [
+        "Early DKA priority",
+        "Not an early priority"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rapid isotonic fluid replacement",
+          "answer": "Early DKA priority"
+        },
+        {
+          "label": "Potassium review before continuous insulin progression",
+          "answer": "Early DKA priority"
+        },
+        {
+          "label": "Routine long-acting subcutaneous insulin",
+          "answer": "Not an early priority"
+        },
+        {
+          "label": "Delay treatment until ketones are redrawn",
+          "answer": "Not an early priority"
+        }
+      ],
+      "rationale": "DKA decisions become faster when the nurse anchors to perfusion first. Fluids and safe insulin progression with potassium awareness are early priorities; routine long-acting insulin and delays for extra labs do not solve the immediate shock/dehydration problem.",
+      "distractorRationales": {
+        "a": "The safer response addresses unstable glucose physiology; \"Early DKA priority\" moves care toward routine care before glucose rescue or metabolic stabilization.",
+        "b": "\"Not an early priority\" misses the bedside risk. The cue \"DKA decisions become faster when the nurse anchors to perfusion first\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up."
+      },
+      "tags": [
+        "dka_fluid_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Think perfusion first in DKA, then safe insulin progression with potassium awareness.",
+      "speedCue": "If the stem shows hypotension, dehydration, and very high glucose, fluids belong in the early-priority column right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n008",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "newborn_hypoglycemia_jitteriness",
+      "subcategory": "newborn_hypoglycemia_jitteriness",
+      "difficulty": 3,
+      "stem": "For each newborn finding, click to specify whether the finding supports hypoglycemia concern or is less specific for hypoglycemia.",
+      "scenarioTitle": "Newborn clue sorting",
+      "scenario": "The newborn was delivered by a client with gestational diabetes and has not fed well since birth.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports hypoglycemia concern"
+        },
+        {
+          "id": "b",
+          "text": "Less specific for hypoglycemia"
+        }
+      ],
+      "answer": {
+        "Jitteriness": "Supports hypoglycemia concern",
+        "Weak feeding": "Supports hypoglycemia concern",
+        "A quiet period after crying": "Less specific for hypoglycemia",
+        "Mild sneezing": "Less specific for hypoglycemia"
+      },
+      "matrixColumns": [
+        "Supports hypoglycemia concern",
+        "Less specific for hypoglycemia"
+      ],
+      "matrixRows": [
+        {
+          "label": "Jitteriness",
+          "answer": "Supports hypoglycemia concern"
+        },
+        {
+          "label": "Weak feeding",
+          "answer": "Supports hypoglycemia concern"
+        },
+        {
+          "label": "A quiet period after crying",
+          "answer": "Less specific for hypoglycemia"
+        },
+        {
+          "label": "Mild sneezing",
+          "answer": "Less specific for hypoglycemia"
+        }
+      ],
+      "rationale": "This item trains quick clue sorting. Jitteriness and weak feeding in a high-risk newborn support hypoglycemia concern; the other findings are less specific and should not distract the nurse from checking and treating glucose promptly.",
+      "distractorRationales": {
+        "a": "The cue \"Jitteriness and weak feeding in a high-risk newborn support hypoglycemia concern\" suggests unstable glucose physiology, so \"Supports hypoglycemia concern\" would not correct the active problem. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "b": "This distractor shifts care toward misprioritization instead of glucose rescue or metabolic stabilization. The stem cue \"Newborn jitteriness paired with poor feeding is a check-glucose-now clue set\" makes unstable glucose physiology the active safety concern."
+      },
+      "tags": [
+        "newborn_hypoglycemia_jitteriness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Newborn jitteriness paired with poor feeding is a check-glucose-now clue set.",
+      "speedCue": "In a newborn of a diabetic parent, jitteriness is not a soft clue; it should immediately raise glucose concern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "newborn_hypoglycemia_jitteriness",
+        "caption": "Newborn jitteriness paired with poor feeding is a check-glucose-now clue set.",
+        "conclusion": "Newborn jitteriness paired with poor feeding is a check-glucose-now clue set."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n009",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "placental_abruption_pain",
+      "subcategory": "placental_abruption_pain",
+      "difficulty": 3,
+      "stem": "For each maternal finding, click to specify whether the finding is more consistent with placental abruption or less consistent with placental abruption.",
+      "scenarioTitle": "Antepartum bleeding pattern sort",
+      "scenario": "The client is 35 weeks pregnant and arrives after reporting severe abdominal pain.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with placental abruption"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with placental abruption"
+        }
+      ],
+      "answer": {
+        "Painful dark bleeding": "More consistent with placental abruption",
+        "Rigid tender uterus": "More consistent with placental abruption",
+        "Painless bright-red bleeding": "Less consistent with placental abruption",
+        "Bleeding only after vaginal exam": "Less consistent with placental abruption"
+      },
+      "matrixColumns": [
+        "More consistent with placental abruption",
+        "Less consistent with placental abruption"
+      ],
+      "matrixRows": [
+        {
+          "label": "Painful dark bleeding",
+          "answer": "More consistent with placental abruption"
+        },
+        {
+          "label": "Rigid tender uterus",
+          "answer": "More consistent with placental abruption"
+        },
+        {
+          "label": "Painless bright-red bleeding",
+          "answer": "Less consistent with placental abruption"
+        },
+        {
+          "label": "Bleeding only after vaginal exam",
+          "answer": "Less consistent with placental abruption"
+        }
+      ],
+      "rationale": "Placental abruption becomes easier to answer when the learner locks onto pain, uterine tone, and fetal compromise clues. Painless bright-red bleeding points away from abruption and more toward placenta previa.",
+      "distractorRationales": {
+        "a": "The safer response addresses bleeding or anticoagulation injury; \"More consistent with placental abruption\" moves care toward diagnostic reassurance before bleeding-risk intervention.",
+        "b": "The cue \"Painless bright-red bleeding points away from abruption and more toward placenta previa\" suggests bleeding or anticoagulation injury, so \"Less consistent with placental abruption\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "placental_abruption_pain",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Abruption is the painful, rigid, often dark-bleeding pattern.",
+      "speedCue": "Pain and uterine rigidity should move abruption to the top of the differential before you even finish the stem.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n010",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "severe_hyponatremia_seizure",
+      "subcategory": "severe_hyponatremia_seizure",
+      "difficulty": 3,
+      "stem": "A client with sodium 118 mEq/L becomes confused and then has a seizure. Place the actions in the order the nurse should take them.",
+      "scenarioTitle": "Severe hyponatremia rescue",
+      "scenario": "Emergency supplies are available and the provider is on the way.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to administer hypertonic saline as prescribed"
+        },
+        {
+          "id": "b",
+          "text": "Protect the airway and initiate seizure precautions"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider or rapid response team with the acute change"
+        },
+        {
+          "id": "d",
+          "text": "Reassess neurologic status after initial stabilization"
+        }
+      ],
+      "answer": [
+        "b",
+        "c",
+        "a",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "In symptomatic hyponatremia, the nurse starts with seizure safety and airway protection, escalates immediately, prepares for controlled hypertonic saline correction, and then reassesses neurologic response. The reasoning is faster when the learner links low sodium with acute neurologic collapse.",
+      "distractorRationales": {},
+      "tags": [
+        "severe_hyponatremia_seizure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When low sodium causes seizure, think protect, escalate, correct, then reassess.",
+      "speedCue": "The key clue is not just a sodium number; it is low sodium plus acute neurologic change.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n011",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "status_epilepticus_benzo_first",
+      "subcategory": "status_epilepticus_benzo_first",
+      "difficulty": 3,
+      "stem": "A client has been actively seizing for more than 5 minutes. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "Status epilepticus sequence",
+      "scenario": "The client is on a medical unit bed with oxygen available and IV access present.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV lorazepam per protocol"
+        },
+        {
+          "id": "b",
+          "text": "Protect the airway and turn the client to the side"
+        },
+        {
+          "id": "c",
+          "text": "Prepare longer-acting antiepileptic therapy after first-line control"
+        },
+        {
+          "id": "d",
+          "text": "Call for rapid assistance and obtain bedside support"
+        }
+      ],
+      "answer": [
+        "b",
+        "d",
+        "a",
+        "c"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Status epilepticus is managed as an airway-plus-medication emergency. The nurse starts with immediate safety and airway support, activates help, gives a benzodiazepine quickly, and then prepares the next-line antiepileptic plan once the seizure is being controlled.",
+      "distractorRationales": {},
+      "tags": [
+        "status_epilepticus_benzo_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Past 5 minutes, seizure care becomes airway support plus benzo-first treatment in a clear sequence.",
+      "speedCue": "The time trigger is the clue: once the seizure keeps going, stop thinking watchful waiting and move to airway plus benzodiazepine.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb963-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "The cue \"Chest symptoms with nausea are high-priority until proven otherwise\" suggests circulation or perfusion, so \"A patient asking for a pillow\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"A patient wanting discharge paperwork\" misses the bedside risk. The cue \"- C Discharge teaching can wait\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The cue \"Chest symptoms with nausea are high-priority until proven otherwise\" suggests circulation or perfusion, so \"A patient asking for ice water\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

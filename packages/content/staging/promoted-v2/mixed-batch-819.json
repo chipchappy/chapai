@@ -1,0 +1,449 @@
+{
+  "batchId": "mixed-batch-819",
+  "generatedAt": "2026-04-09T10:51:46-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb819-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "The surgical team is about to make the first incision. Per the WHO Surgical Safety Checklist, which action must occur at this exact moment, and who must participate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The surgeon alone verbally confirms the surgical site using the patient's consent form"
+        },
+        {
+          "id": "b",
+          "text": "The circulating nurse confirms patient identity and procedure using the patient's wristband"
+        },
+        {
+          "id": "c",
+          "text": "The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure, positioning, antibiotic prophylaxis, and any anticipated critical concerns"
+        },
+        {
+          "id": "d",
+          "text": "The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The WHO Surgical Safety Checklist 'time-out' occurs IMMEDIATELY before skin incision and is a mandatory complete pause involving ALL team members: surgeon, anesthesia provider, scrub technician, and circulating nurse. Each member must actively participate — passive listening does not satisfy the requirement. Items confirmed during time-out: (1) Patient identity (name, DOB, MRN); (2) Surgical site and laterality (confirmed with visible site marking); (3) Planned procedure; (4) Correct patient positioning; (5) Antibiotic prophylaxis administered within the prior 60 minutes; (6) Relevant imaging displayed; (7) Anticipated critical steps, significant blood loss, or special equipment needs. The time-out is distinct from the 'sign-in' (before anesthesia induction) and 'sign-out' (before leaving the OR). Implementation has reduced wrong-site surgery, wrong-patient surgery, and serious complications by more than 50% globally.",
+      "distractorRationales": {
+        "a": "\"The surgeon alone verbally confirms the surgical site using the patient's consent form\" misses the bedside risk. The cue \"Per the WHO Surgical Safety Checklist, which action must occur at this exact moment\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "b": "This distractor shifts care toward misprioritization instead of bedside safety action. The stem cue \"(3) Planned procedure\" makes clinical safety risk the active safety concern.",
+        "d": "\"The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins\" misses the bedside risk. The cue \"Per the WHO Surgical Safety Checklist, which action must occur at this exact moment\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Time-out: ALL team members pause immediately before incision to verbally confirm patient ID, site/side, procedure, positioning, antibiotic timing, and critical concerns. Individual confirmation is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "\"Drawing up each insulin in a separate syringe\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Drawing up each insulin in a separate syringe supports the teaching plan and medication safety.",
+        "c": "\"Injecting the aspart subcutaneously 15 minutes before the meal\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Injecting the aspart subcutaneously 15 minutes before the meal supports the teaching plan and medication safety.",
+        "d": "\"Rotating injection sites between the abdomen and thigh\" is accurate teaching, so it would not show the misunderstanding asked for in the stem. Rotating injection sites between the abdomen and thigh supports the teaching plan and medication safety."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "The cue \"Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine\" suggests unstable glucose physiology, so \"A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10\" would not correct the active problem. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "c": "\"A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights\" misses the bedside risk. The cue \"Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "d": "\"A 33-year-old with a UTI who asks when the next dose of antibiotics is due\" misses the bedside risk. The cue \"Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN uses the Five Rights of Delegation before assigning a task to a UAP. Which element represents the 'Right Supervision' component?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirming the UAP is trained and competent to perform the specific task"
+        },
+        {
+          "id": "b",
+          "text": "Verifying that the task is appropriate for the patient's acuity and condition"
+        },
+        {
+          "id": "c",
+          "text": "Ensuring the RN provides ongoing oversight, evaluation of the outcome, and is available for questions"
+        },
+        {
+          "id": "d",
+          "text": "Confirming the task is clearly communicated with specific instructions and expected outcomes"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The Five Rights of Delegation: Right Task (task appropriate to delegate), Right Circumstances (appropriate patient condition and setting), Right Person (delegatee competent for the task), Right Direction/Communication (clear, specific instructions), Right Supervision (RN monitors, evaluates outcomes, is accessible and follows up). Right Person (A) = competency verification. Right Circumstances (B) = patient condition appropriateness. Right Direction (D) = clear communication. Right Supervision (C) = the RN remains accountable, follows up, and is available — delegation does not eliminate RN accountability.",
+      "distractorRationales": {
+        "a": "The safer response addresses clinical safety risk; \"Confirming the UAP is trained and competent to perform the specific task\" moves care toward routine care before bedside safety action.",
+        "b": "The safer response addresses clinical safety risk; \"Verifying that the task is appropriate for the patient's acuity and condition\" moves care toward routine care before bedside safety action.",
+        "d": "\"Confirming the task is clearly communicated with specific instructions and expected outcomes\" normalizes a finding that needs reassessment. The cue \"remains accountable — delegation transfers responsibility for the task, not the RN's accountability\" raises concern for clinical safety risk, so bedside safety action is needed before reassurance."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Right Supervision = RN maintains oversight, evaluates outcome, and remains accountable — delegation transfers responsibility for the task, not the RN's accountability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) — mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"A community health nurse is teaching a group of nursing students about levels of prevention\" makes circulation or perfusion the active safety concern.",
+        "c": "The safer response addresses circulation or perfusion; \"Prescribing physical therapy for a patient recovering from a hip fracture\" moves care toward diagnostic reassurance before patient teaching and medication-safety reinforcement.",
+        "d": "\"Conducting a colonoscopy to identify and remove pre-cancerous polyps\" misses the bedside risk. The cue \"Physical therapy post-fracture is tertiary prevention\" points to circulation or perfusion. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "The safer response addresses oxygenation or ventilation; \"A patient who is anxious about an upcoming procedure\" moves care toward routine care before airway and breathing intervention.",
+        "c": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%\" fits the safer response to the cue \"Oxygenation is the highest physiological priority\".",
+        "d": "The safer response addresses oxygenation or ventilation; \"A patient asking for pain medication rated 4/10\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives — alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension — directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension\" makes medication toxicity the active safety concern.",
+        "c": "The safer response addresses medication toxicity; \"Mild bilateral hearing loss and BMI of 29\" moves care toward routine observation before medication-safety intervention.",
+        "d": "The safer response addresses medication toxicity; \"Mild arthritis in both knees and occasional evening confusion\" moves care toward reassurance before medication-safety intervention."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 4,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "The option can leave bleeding or anticoagulation injury untreated because it relies on notification without the bedside safety step. \"Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement\" fits the safer response to the cue \"(4) Notify provider if no response\".",
+        "c": "The safer response addresses bleeding or anticoagulation injury; \"Call the provider, obtain type and crossmatch, begin blood transfusion\" moves care toward waiting for a callback before bleeding-risk intervention.",
+        "d": "\"Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent\" relies on notification without the bedside safety step. The cue \"Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before waiting for a callback."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound — gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "distractorRationales": {
+        "a": "\"Elevate the leg and apply warm compresses\" answers a lower-acuity part of the scenario. The cue \"The nurse's priority is to notify the provider so imaging (duplex ultrasound — gold standard for DVT) can\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "b": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth\" makes medication toxicity the active safety concern.",
+        "d": "The safer response addresses medication toxicity; \"Administer the scheduled enoxaparin and continue monitoring\" moves care toward routine observation before medication-safety intervention."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound — Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb819-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "Therapeutic Communication",
+      "difficulty": 2,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation — 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of bedside safety action. The stem cue \"therapeutic communication safety\" makes clinical safety risk the active safety concern.",
+        "c": "This distractor shifts care toward misprioritization instead of bedside safety action. The stem cue \"therapeutic communication safety\" makes clinical safety risk the active safety concern.",
+        "d": "The cue \"therapeutic communication safety\" suggests clinical safety risk, so \"'You shouldn't think like that. Let's focus on the positive things in your life.'\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "Therapeutic Communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

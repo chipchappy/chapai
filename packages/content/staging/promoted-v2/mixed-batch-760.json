@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-760",
+  "generatedAt": "2026-04-08T16:39:58-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb760-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A nurse at a community health center is providing care for a homeless patient with chronic schizophrenia who has been non-adherent to antipsychotics and presents with decompensated psychosis. The patient refuses hospitalization. Which nursing approach reflects the ethical principle of justice and the public health model for vulnerable populations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediately call law enforcement for involuntary commitment since the patient is homeless"
+        },
+        {
+          "id": "b",
+          "text": "Discharge the patient with a 30-day prescription and advise them to follow up in one month"
+        },
+        {
+          "id": "c",
+          "text": "Apply harm reduction principles: assess immediate safety, engage assertive community treatment (ACT), coordinate long-acting injectable antipsychotic if appropriate, and connect to housing and social services"
+        },
+        {
+          "id": "d",
+          "text": "Refuse care until the patient agrees to hospitalization to protect the healthcare team"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Justice in community health requires equitable care for vulnerable populations, who face structural barriers (housing instability, stigma, limited healthcare access) that increase health disparities. Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to engagement. Assertive Community Treatment (ACT): multidisciplinary team providing intensive outreach, case management, and mental health services to individuals with severe mental illness who are not engaging with traditional services — evidence-based, reduces hospitalization and homelessness. Long-acting injectable antipsychotics address non-adherence barriers. Involuntary commitment requires imminent danger to self/others, not simply homelessness or non-adherence.",
+      "distractorRationales": {
+        "a": "The cue \"Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to\" suggests clinical safety risk, so \"Immediately call law enforcement for involuntary commitment since the patient is homeless\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "b": "\"Discharge the patient with a 30-day prescription and advise them to follow up in one month\" misses the bedside risk. The cue \"Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "d": "The cue \"Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to\" suggests clinical safety risk, so \"Refuse care until the patient agrees to hospitalization to protect the healthcare team\" would not correct the active problem. Nursing safety depends on matching the response to the active clinical risk before routine care."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Homeless, mentally ill, non-adherent patient: apply harm reduction + Assertive Community Treatment (ACT); involuntary commitment requires imminent danger (not just homelessness); address social determinants of health.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 4,
+      "stem": "An RN delegates vital signs assessment to a UAP for four patients. Which patient's vital signs should the RN personally reassess rather than relying solely on the UAP's report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A postoperative day 2 cholecystectomy patient with stable vitals"
+        },
+        {
+          "id": "b",
+          "text": "A patient with hypertension whose BP has been consistently 140-150/88-92 throughout the shift"
+        },
+        {
+          "id": "c",
+          "text": "A patient who recently returned from cardiac catheterization and now has a UAP-reported BP of 80/50 and HR of 118"
+        },
+        {
+          "id": "d",
+          "text": "A patient admitted for cellulitis with temperature reported as 37.8°C (100°F)"
+        }
+      ],
+      "answer": "c",
+      "rationale": "When a UAP reports an abnormal or unexpected finding, the RN must personally assess and verify. A patient returning from cardiac catheterization with BP 80/50 and HR 118 requires immediate RN assessment — this could indicate arterial bleeding at the access site, cardiac tamponade, contrast reaction, or other life-threatening complication. The RN cannot manage this situation based solely on a UAP report; personal assessment, clinical judgment, and immediate intervention may be required. The other patients have findings within expected parameters for their diagnoses. The RN remains accountable for all delegated tasks and must respond to concerning reports.",
+      "distractorRationales": {
+        "a": "The cue \"An RN delegates vital signs assessment to a UAP for four patients\" suggests bleeding or anticoagulation injury, so \"A postoperative day 2 cholecystectomy patient with stable vitals\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "b": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"An RN delegates vital signs assessment to a UAP for four patients\" makes bleeding or anticoagulation injury the active safety concern.",
+        "d": "The cue \"personal assessment, clinical judgment\" suggests bleeding or anticoagulation injury, so \"A patient admitted for cellulitis with temperature reported as 37.8°C (100°F)\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When UAP reports an unexpected or critical finding, the RN must personally assess — do not manage clinical deterioration based solely on UAP-reported data.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "shoulder_dystocia",
+      "subcategory": "Shoulder Dystocia",
+      "difficulty": 4,
+      "stem": "During delivery, after the baby's head delivers, the anterior shoulder fails to deliver. The turtle sign is present (head retracts against the perineum). Which intervention is attempted FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply fundal pressure to push the baby down"
+        },
+        {
+          "id": "b",
+          "text": "McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure"
+        },
+        {
+          "id": "c",
+          "text": "Zavanelli maneuver: cephalic replacement followed by emergency cesarean"
+        },
+        {
+          "id": "d",
+          "text": "Perform an episiotomy to enlarge the vaginal opening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Shoulder dystocia is an obstetric emergency. The McRoberts maneuver (sharply flexing maternal thighs onto the abdomen) flattens the lumbar lordosis and rotates the pubic symphysis superiorly, increasing the functional AP diameter of the pelvis. Combined with suprapubic pressure (pushing the anterior shoulder downward and laterally), this resolves approximately 90% of cases. Fundal pressure (A) is absolutely contraindicated — it worsens impaction of the shoulder. Zavanelli maneuver (C) is a last resort when all other maneuvers fail. Episiotomy (D) alone does not help shoulder dystocia as the obstruction is bony, not soft tissue.",
+      "distractorRationales": {
+        "a": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure\" fits the safer response to the cue \"Combined with suprapubic pressure (pushing the anterior shoulder downward and laterally), this resolves approximately 90% of cases\".",
+        "c": "\"Zavanelli maneuver: cephalic replacement followed by emergency cesarean\" misses the bedside risk. The cue \"Fundal pressure (A) is absolutely contraindicated — it worsens impaction of the shoulder\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The safer response addresses circulation or perfusion; \"Perform an episiotomy to enlarge the vaginal opening\" moves care toward routine care before circulation and perfusion support."
+      },
+      "tags": [
+        "Shoulder Dystocia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Shoulder dystocia: McRoberts + suprapubic pressure first; fundal pressure is absolutely contraindicated — it worsens the impaction.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion, and vomiting following a viral illness. Which initial interventions are CORRECT? (Select all that apply.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer hydrocortisone 100 mg IV bolus immediately"
+        },
+        {
+          "id": "b",
+          "text": "Initiate 0.9% normal saline 1 L IV bolus for hemodynamic support"
+        },
+        {
+          "id": "c",
+          "text": "Administer fludrocortisone 0.1 mg orally for mineralocorticoid replacement"
+        },
+        {
+          "id": "d",
+          "text": "Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority), and (2) aggressive NS fluid resuscitation for hypovolemia and hyponatremia (B). Fludrocortisone (C) is used for chronic mineralocorticoid replacement but is not the initial treatment in a crisis — hydrocortisone at high doses provides sufficient mineralocorticoid activity. Withholding steroids to do testing (D) is dangerous — diagnosis is clinical in a crisis. ACTH stimulation can be done later.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"Administer hydrocortisone 100 mg IV bolus immediately\" fits the safer response to the cue \"A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion\".",
+        "c": "This distractor shifts care toward premature activity instead of medication-safety intervention. The stem cue \"Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority)\" makes medication toxicity the active safety concern.",
+        "d": "The safer response addresses medication toxicity; \"Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency\" moves care toward routine care before medication-safety intervention."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Do not delay for confirmatory testing.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 3,
+      "stem": "A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements, and facial grimacing that persist even when the medication is held. Which condition does this describe?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute dystonia"
+        },
+        {
+          "id": "b",
+          "text": "Tardive dyskinesia"
+        },
+        {
+          "id": "c",
+          "text": "Akathisia"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Tardive dyskinesia (TD) develops after months to years of antipsychotic use. It is characterized by involuntary, repetitive, purposeless movements of the face, tongue, and extremities (lip smacking, tongue protrusion, choreiform movements). Key feature: movements PERSIST or worsen when the antipsychotic is reduced/stopped initially. It may be irreversible. VMAT2 inhibitors (valbenazine, deutetrabenazine) are FDA-approved treatments. Acute dystonia (A) is sudden onset within days and responds to anticholinergics. Akathisia (C) is restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease.",
+      "distractorRationales": {
+        "a": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Tardive dyskinesia\" fits the safer response to the cue \"Acute dystonia (A) is sudden onset within days and responds to anticholinergics\".",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements\" makes medication toxicity the active safety concern.",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Tardive dyskinesia\" fits the safer response to the cue \"Acute dystonia (A) is sudden onset within days and responds to anticholinergics\"."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Tardive dyskinesia: involuntary repetitive orofacial movements after years of antipsychotic use — may be irreversible; treat with VMAT2 inhibitors.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "subcategory": "Delegation / Infection Control",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with C. difficile (CDI) colitis. Which instruction is MOST important to give the nursing assistant assigned to this patient's room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread"
+        },
+        {
+          "id": "b",
+          "text": "Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room"
+        },
+        {
+          "id": "c",
+          "text": "Wear only gloves since C. diff is transmitted via droplets"
+        },
+        {
+          "id": "d",
+          "text": "Apply an N95 respirator before entering the room due to airborne risk"
+        }
+      ],
+      "answer": "b",
+      "rationale": "C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers — soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions.",
+      "distractorRationales": {
+        "a": "The safer response addresses infection progression; \"Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "c": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"diff is not airborne or droplet-transmitted, so N95s are not required\" makes infection progression the active safety concern.",
+        "d": "The cue \"Key isolation requirements: contact precautions (gloves AND gown for all room entry)\" suggests infection progression, so \"Apply an N95 respirator before entering the room due to airborne risk\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Delegation / Infection Control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. diff = contact precautions (gloves + gown) + soap and water handwashing. Alcohol hand sanitizer does NOT kill C. diff spores. This is one of the few situations where soap/water is explicitly superior to ABHR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 3,
+      "stem": "A nurse caring for a patient with severe preeclampsia on magnesium sulfate should assess for which finding FIRST in each nursing assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blood pressure and fetal heart rate"
+        },
+        {
+          "id": "b",
+          "text": "Deep tendon reflexes and respiratory rate"
+        },
+        {
+          "id": "c",
+          "text": "Urine output and temperature"
+        },
+        {
+          "id": "d",
+          "text": "Level of consciousness and oxygen saturation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. DTRs serve as an early warning before respiratory arrest occurs — absent DTRs (loss of patellar reflex) signal dangerously high magnesium levels and the need to stop the infusion. This assessment should occur every 1 hour during magnesium infusion. BP and FHR (A) are important but reflect preeclampsia status, not magnesium toxicity. Urine output (C) is also important (magnesium is renally excreted; oliguria leads to accumulation), but the respiratory/reflex check is the most time-critical toxicity indicator.",
+      "distractorRationales": {
+        "a": "\"Blood pressure and fetal heart rate\" answers a lower-acuity part of the scenario. The cue \"This assessment should occur every 1 hour during magnesium infusion\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"the respiratory/reflex check is the most time-critical toxicity indicator\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The cue \"Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory\" suggests oxygenation or ventilation, so \"Level of consciousness and oxygen saturation\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory arrest.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure. The nurse inspects the perineum and notes a 4 cm tense, purple, fluctuant mass on the right labia. What does this indicate, and what is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Normal postpartum edema; apply ice pack and reassure the patient"
+        },
+        {
+          "id": "b",
+          "text": "Vulvar hematoma; notify the provider immediately and monitor vital signs"
+        },
+        {
+          "id": "c",
+          "text": "Episiotomy dehiscence; apply sterile dressing and call the surgeon"
+        },
+        {
+          "id": "d",
+          "text": "Bartholin's cyst; apply warm compresses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A tense, purple, fluctuant (fluid-filled), rapidly expanding perineal mass with severe pain is a vulvar hematoma — accumulation of blood in soft tissue from injured blood vessels, often after vaginal delivery or episiotomy. Small hematomas (<3–4 cm) may be managed conservatively with ice and observation; larger or expanding hematomas require surgical incision and evacuation. The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise, and apply an ice pack for comfort. Normal edema (A) is soft, not fluctuant or purple. Episiotomy dehiscence (C) would show wound separation. A Bartholin's cyst (D) is not a postpartum complication.",
+      "distractorRationales": {
+        "a": "\"Normal postpartum edema; apply ice pack and reassure the patient\" misses the bedside risk. The cue \"A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "\"Episiotomy dehiscence; apply sterile dressing and call the surgeon\" relies on notification without the bedside safety step. The cue \"A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before waiting for a callback.",
+        "d": "The safer response addresses bleeding or anticoagulation injury; \"Bartholin's cyst; apply warm compresses\" moves care toward routine care before bleeding-risk intervention."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Perineal hematoma: tense, fluctuant, purple mass with severe pain post-delivery — notify provider immediately; monitor for expansion and hemodynamic instability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_hypertensive_emergency",
+      "subcategory": "Cardiovascular / Hypertensive Emergency",
+      "difficulty": 4,
+      "stem": "A patient presents with BP 218/130 mmHg, severe headache, blurred vision, and confusion. Fundoscopic exam shows papilledema. Urinalysis shows proteinuria and hematuria. Which condition is present and what is the correct blood pressure management approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypertensive urgency — oral labetalol and discharge home with follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further end-organ damage"
+        },
+        {
+          "id": "d",
+          "text": "Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient has hypertensive emergency (malignant hypertension) — severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments — a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage — treated with oral agents over hours to days.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature activity instead of neurologic safety assessment. The stem cue \"A patient presents with BP 218/130 mmHg, severe headache, blurred vision\" makes neurologic deterioration the active safety concern.",
+        "c": "This distractor shifts care toward premature attribution instead of neurologic safety assessment. The stem cue \"A patient presents with BP 218/130 mmHg, severe headache, blurred vision\" makes neurologic deterioration the active safety concern.",
+        "d": "The safer response addresses neurologic deterioration; \"Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening\" moves care toward routine observation before neurologic safety assessment."
+      },
+      "tags": [
+        "Cardiovascular / Hypertensive Emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Hypertensive Emergency",
+        "caption": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+        "conclusion": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb760-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_safe_staffing",
+      "subcategory": "Delegation / Safe Staffing",
+      "difficulty": 3,
+      "stem": "A registered nurse receives a new patient assignment at shift start. The RN reviews the five patients and determines that patient care tasks need to be distributed. Which of the following tasks can be appropriately delegated to a licensed practical nurse (LPN)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the admission assessment for a new patient with unstable angina"
+        },
+        {
+          "id": "b",
+          "text": "Develop the care plan for a patient with newly diagnosed type 1 diabetes"
+        },
+        {
+          "id": "c",
+          "text": "Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm"
+        },
+        {
+          "id": "d",
+          "text": "Educate the patient and family about a new diagnosis of atrial fibrillation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate — appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation — this is an RN function.",
+      "distractorRationales": {
+        "a": "The cue \"RN scope: initial assessment, care planning, teaching, evaluating unstable patients\" suggests medication toxicity, so \"Perform the admission assessment for a new patient with unstable angina\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "This distractor shifts care toward premature attribution instead of medication-safety intervention. The stem cue \"RNs cannot delegate assessment, teaching, or care planning\" makes medication toxicity the active safety concern.",
+        "d": "The option can leave medication toxicity untreated because it uses teaching before the physiologic risk is controlled. \"Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a\" fits the safer response to the cue \"LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five\"."
+      },
+      "tags": [
+        "Delegation / Safe Staffing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications to stable patients, perform routine procedures, collect data for stable conditions. RN scope: initial assessment, care planning, teaching, evaluating unstable patients, and tasks requiring clinical judgment. RNs cannot delegate assessment, teaching, or care planning.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

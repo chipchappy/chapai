@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-876",
+  "generatedAt": "2026-04-09T22:46:59-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb876-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "A 79-year-old patient on a medical unit is found to have a 5 cm × 4 cm sacral wound with full-thickness tissue loss, visible subcutaneous fat, and partial slough coverage of the wound base. No bone, tendon, or muscle is visible. What is the correct NPUAP/EPUAP pressure injury stage and priority nursing intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage 1; increase repositioning frequency and apply a transparent film dressing"
+        },
+        {
+          "id": "b",
+          "text": "Stage 3; apply a moisture-retentive dressing, reposition every 2 hours off the sacrum, consult wound care specialist, and address nutrition"
+        },
+        {
+          "id": "c",
+          "text": "Stage 4; immediate surgical debridement is required before any wound care intervention"
+        },
+        {
+          "id": "d",
+          "text": "Unstageable; cover with dry gauze until slough completely resolves before determining stage or treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "NPUAP/EPUAP Pressure Injury Stages: Stage 1 — non-blanchable erythema, intact skin; Stage 2 — partial thickness dermis loss, shallow open ulcer; Stage 3 — full-thickness skin loss with visible subcutaneous fat, may have slough, but no bone/tendon/muscle visible; Stage 4 — full-thickness with exposed bone, tendon, or muscle; Unstageable — base entirely obscured by non-removable slough or eschar. This wound is Stage 3 (full-thickness, subcutaneous fat visible, partial slough but bone/tendon not exposed). Management: moist wound healing (foam, hydrocolloid, or alginate dressings based on exudate level), reposition every 2 hours off the sacrum, pressure redistribution support surface, wound care specialist consultation, nutritional assessment (protein, zinc, vitamin C support wound healing). Dry gauze is contraindicated — desiccates wound bed and impairs healing. Slough does not make a wound automatically unstageable (unstageable requires the base to be completely obscured).",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Stage 3 — full-thickness skin loss with visible subcutaneous fat, may have slough\" makes infection progression the active safety concern.",
+        "c": "\"Stage 4; immediate surgical debridement is required before any wound care intervention\" misses the bedside risk. The cue \"Treat with moist wound dressings, 2-hour repositioning, pressure redistribution, nutrition support\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "The cue \"Treat with moist wound dressings, 2-hour repositioning, pressure redistribution, nutrition support\" suggests infection progression, so \"Unstageable; cover with dry gauze until slough completely resolves before determining stage or treatment\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stage 3 pressure injury: full-thickness, subcutaneous fat visible, no bone/tendon. Treat with moist wound dressings, 2-hour repositioning, pressure redistribution, nutrition support, and wound care consult. Dry gauze contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_safety_five_rights",
+      "subcategory": "pharmacology_medication_safety_five_rights",
+      "difficulty": 3,
+      "stem": "A nurse picks up a syringe that a previous nurse prepared and left in the medication room labeled 'Patient Jones — morphine 4 mg.' The nurse's patient is Jones and the morphine dose is ordered. Which action should the nurse take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the pre-drawn syringe since it is labeled with the correct patient name and drug"
+        },
+        {
+          "id": "b",
+          "text": "Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system"
+        },
+        {
+          "id": "c",
+          "text": "Ask the previous nurse to verify the dose by phone before administering"
+        },
+        {
+          "id": "d",
+          "text": "Document the medication as given and monitor the patient closely for response"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pre-drawn, unlabeled (or hand-labeled) syringes prepared by another nurse and left in a medication room present serious patient safety risks: the medication, dose, or preparation process cannot be independently verified by the administering nurse. Per safety standards (Joint Commission, ISMP), nurses should never administer a medication that they did not personally prepare and verify from a labeled, system-dispensed source. The pre-drawn syringe should be discarded and a fresh dose prepared directly from the medication dispensing cabinet, allowing the nurse to independently verify the drug, dose, concentration, expiration, and route. Phone verification by the previous nurse is insufficient — the administering nurse bears full accountability.",
+      "distractorRationales": {
+        "a": "The cue \"Per safety standards (Joint Commission, ISMP), nurses should never administer a medication that they did not personally prepare\" suggests medication toxicity, so \"Administer the pre-drawn syringe since it is labeled with the correct patient name and drug\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "The cue \"Never administer a medication drawn up by another nurse\" suggests medication toxicity, so \"Ask the previous nurse to verify the dose by phone before administering\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The safer response addresses medication toxicity; \"Document the medication as given and monitor the patient closely for response\" moves care toward routine care before medication-safety intervention."
+      },
+      "tags": [
+        "pharmacology_medication_safety_five_rights",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Never administer a medication drawn up by another nurse. You cannot verify what is in that syringe. Discard and prepare your own dose. This applies in all settings. The 'rights' of medication administration include right verification — and that starts with you preparing the medication yourself.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "delegation",
+      "difficulty": 3,
+      "stem": "An RN delegates to an LPN/LVN. Which task is within the LPN's scope of practice in most states?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the initial nursing admission assessment for a newly admitted patient"
+        },
+        {
+          "id": "b",
+          "text": "Administer oral, IM, and subcutaneous medications and monitor response"
+        },
+        {
+          "id": "c",
+          "text": "Develop and update the nursing care plan based on patient assessment findings"
+        },
+        {
+          "id": "d",
+          "text": "Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens, and monitoring and reporting patient status. Initial assessments (A) require RN-level nursing judgment and are an RN responsibility. Care plan development (C) is an RN function. Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. The key distinction is that LPNs implement care under RN supervision; RNs assess, plan, evaluate, and teach.",
+      "distractorRationales": {
+        "a": "\"Perform the initial nursing admission assessment for a newly admitted patient\" misses the bedside risk. The cue \"LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Develop and update the nursing care plan based on patient assessment findings\" misses the bedside risk. The cue \"LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol\" misses the bedside risk. The cue \"LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning, and teaching are RN responsibilities.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "\"This is an expected effect of routine eye fatigue\" misses the bedside risk. The cue \"A client reports severe eye pain, blurred vision\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "c": "The option can leave clinical safety risk untreated because it moves to activity, intake, or discharge planning too early. \"The client may have acute angle-closure glaucoma and needs urgent evaluation\" fits the safer response to the cue \"Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma\".",
+        "d": "The safer response addresses clinical safety risk; \"These findings show that prescribed eye drops are working well\" moves care toward routine care before bedside safety action."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" suggests circulation or perfusion, so \"Restrict oral fluids and monitor weight\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Hold corticosteroids until the morning cortisol level is drawn\" answers a lower-acuity part of the scenario. The cue \"Hypotension, hyponatremia, vomiting\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "The safer response addresses circulation or perfusion; \"Teach the client about low-sodium foods\" moves care toward teaching or reassurance before circulation and perfusion support."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"A client receiving IV antibiotics suddenly develops wheezing, widespread hives\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Stop the infusion and prepare to administer epinephrine\" fits the safer response to the cue \"A client receiving IV antibiotics suddenly develops wheezing, widespread hives\".",
+        "d": "The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" suggests oxygenation or ventilation, so \"Document the event and continue monitoring\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "The safer response addresses neurologic deterioration; \"Lay the client flat and increase the room temperature\" moves care toward routine care before neurologic safety assessment.",
+        "c": "\"Ask the client to rest quietly until the headache passes\" answers a lower-acuity part of the scenario. The cue \"Delay increases the risk of stroke or seizure\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care.",
+        "d": "The option can leave neurologic deterioration untreated because it treats active deterioration as something safe to watch. \"Sit the client upright and assess for bladder distention\" fits the safer response to the cue \"The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away\"."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of circulation and perfusion support. The stem cue \"A nurse begins a packed red blood cell transfusion for a client with postoperative anemia\" makes circulation or perfusion the active safety concern.",
+        "c": "The cue \"chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction\" suggests circulation or perfusion, so \"Administer acetaminophen and continue the transfusion\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The safer response addresses circulation or perfusion; \"Document the symptoms as an expected febrile response\" moves care toward reassurance before circulation and perfusion support."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "\"Use alcohol-based sanitizer alone because it is faster\" misses the bedside risk. The cue \"c diff spore precautions infection\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"Use soap and water for hand hygiene after removing gloves\" fits the safer response to the cue \"c diff spore precautions infection\".",
+        "d": "\"Share the blood pressure cuff after wiping it with a dry towel\" commits to a competing cause before checking the dangerous pattern. The cue \"c diff spore precautions infection\" raises concern for infection progression, so infection or sepsis escalation is needed before diagnostic reassurance."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "central_line_infection_prevention",
+      "subcategory": "central_line_infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action by the nurse best helps prevent a central line-associated bloodstream infection in a hospitalized client?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Scrub the hub before each access and maintain a sterile dressing."
+        },
+        {
+          "id": "b",
+          "text": "Change the dressing only when the client reports discomfort."
+        },
+        {
+          "id": "c",
+          "text": "Use the line for routine blood draws to avoid extra venipunctures."
+        },
+        {
+          "id": "d",
+          "text": "Leave one port uncapped between intermittent infusions."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Consistent hub disinfection and sterile dressing care are core nursing actions for preventing central line infections. Using the line casually or leaving it uncapped increases contamination risk. Dressing changes should follow evidence-based timing and contamination rules, not patient comfort alone.",
+      "distractorRationales": {
+        "b": "The cue \"Preventing CLABSI depends on aseptic access and sterile site care every time\" suggests infection progression, so \"Change the dressing only when the client reports discomfort\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "This distractor shifts care toward delayed assessment instead of infection or sepsis escalation. The stem cue \"Consistent hub disinfection and sterile dressing care are core nursing actions for preventing central line infections\" makes infection progression the active safety concern.",
+        "d": "\"Leave one port uncapped between intermittent infusions\" answers a lower-acuity part of the scenario. The cue \"Preventing CLABSI depends on aseptic access and sterile site care every time\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care."
+      },
+      "tags": [
+        "central_line_infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "central_line_infection_prevention",
+        "caption": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+        "conclusion": "Preventing CLABSI depends on aseptic access and sterile site care every time."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_tube_air_leak",
+      "subcategory": "chest_tube_air_leak",
+      "difficulty": 3,
+      "stem": "A nurse caring for a client with a chest tube notes continuous bubbling in the water-seal chamber. What is the nurse's priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check the tubing and drainage system connections for an air leak."
+        },
+        {
+          "id": "b",
+          "text": "Clamp the chest tube near the client's chest for 30 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Add more sterile water to the suction-control chamber."
+        },
+        {
+          "id": "d",
+          "text": "Strip the tubing toward the drainage system."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Continuous bubbling in the water-seal chamber suggests an air leak somewhere in the system. The nurse should first assess connections and tubing to locate the leak while keeping the system functional. Prolonged clamping can cause a tension pneumothorax, and stripping the tubing is not recommended because it can increase intrathoracic pressure.",
+      "distractorRationales": {
+        "b": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Check the tubing and drainage system connections for an air leak\" fits the safer response to the cue \"The nurse should first assess connections and tubing to locate the leak while keeping the system functional\".",
+        "c": "The option can leave circulation or perfusion untreated because it moves to activity, intake, or discharge planning too early. \"Check the tubing and drainage system connections for an air leak\" fits the safer response to the cue \"The nurse should first assess connections and tubing to locate the leak while keeping the system functional\".",
+        "d": "The cue \"The nurse should first assess connections and tubing to locate the leak while keeping the system functional\" suggests circulation or perfusion, so \"Strip the tubing toward the drainage system\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "chest_tube_air_leak",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Continuous water-seal bubbling means assess the system for an air leak before doing anything that could trap air in the chest.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb876-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "compartment_syndrome_warning",
+      "subcategory": "compartment_syndrome_warning",
+      "difficulty": 3,
+      "stem": "A client with a short leg cast reports increasing pain that is not relieved by opioids. The toes are pale and the client reports numbness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider immediately about possible compartment syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Apply ice over the cast and reassess after the next pain dose."
+        },
+        {
+          "id": "c",
+          "text": "Elevate the leg above the level of the heart."
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast with scissors at the bedside."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Pain out of proportion, pallor, and numbness suggest compartment syndrome, which can threaten tissue viability and limb function. Immediate provider notification and urgent evaluation are needed. Comfort-only measures or excessive elevation can worsen ischemia or delay definitive treatment.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"Notify the provider immediately about possible compartment syndrome\" fits the safer response to the cue \"numbness suggest compartment syndrome, which can threaten tissue viability and limb function\".",
+        "c": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Notify the provider immediately about possible compartment syndrome\" fits the safer response to the cue \"Pain out of proportion, pallor\".",
+        "d": "\"Loosen the cast with scissors at the bedside\" misses the bedside risk. The cue \"A client with a short leg cast reports increasing pain that is not relieved by opioids\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "compartment_syndrome_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pain that outpaces the injury plus pallor or numbness under a cast should trigger concern for compartment syndrome.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

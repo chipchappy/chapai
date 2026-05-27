@@ -1,0 +1,612 @@
+{
+  "batchId": "mixed-batch-966",
+  "generatedAt": "2026-04-10T21:26:07-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb966-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity_dehydration",
+      "subcategory": "lithium_toxicity_dehydration",
+      "difficulty": 3,
+      "stem": "A client taking lithium for bipolar disorder has vomiting, coarse hand tremors, and increasing confusion after several days of diarrhea. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the lithium and notify the provider."
+        },
+        {
+          "id": "b",
+          "text": "Give the lithium with crackers to reduce stomach upset."
+        },
+        {
+          "id": "c",
+          "text": "Teach the client to double the next dose."
+        },
+        {
+          "id": "d",
+          "text": "Encourage the client to restrict sodium intake further."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Vomiting, worsening tremor, and confusion after fluid loss suggest lithium toxicity. The nurse should stop further doses and notify the provider for prompt evaluation. Dehydration and sodium loss can raise lithium levels, so more restriction or additional dosing would be unsafe.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"Hold the lithium and notify the provider\" fits the safer response to the cue \"confusion after fluid loss suggest lithium toxicity\".",
+        "c": "The safer response addresses medication toxicity; \"Teach the client to double the next dose\" moves care toward teaching or reassurance before medication-safety intervention.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"confusion after fluid loss suggest lithium toxicity\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "lithium_toxicity_dehydration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "GI loss plus confusion and coarse tremor on lithium should be treated as toxicity until proven otherwise.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lpn_scope_post_op",
+      "subcategory": "lpn_scope_post_op",
+      "difficulty": 3,
+      "stem": "The RN is assigning care for a group of postoperative clients. Which task is appropriate to delegate to an experienced LPN/LVN?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Reinforce teaching already provided about incentive spirometry."
+        },
+        {
+          "id": "b",
+          "text": "Perform the initial assessment of a client returning from PACU."
+        },
+        {
+          "id": "c",
+          "text": "Develop the nursing care plan for a new admission."
+        },
+        {
+          "id": "d",
+          "text": "Interpret a change in the client's telemetry rhythm."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "An experienced LPN or LVN may reinforce established teaching and perform focused care for stable clients, depending on policy. The initial postoperative assessment, care planning, and rhythm interpretation require RN-level assessment and clinical judgment. Safe delegation depends on stability, predictability, and the need for judgment.",
+      "distractorRationales": {
+        "b": "The safer response addresses clinical safety risk; \"Perform the initial assessment of a client returning from PACU\" moves care toward diagnostic reassurance before bedside safety action.",
+        "c": "This distractor shifts care toward misprioritization instead of bedside safety action. The stem cue \"Safe delegation depends on stability, predictability\" makes clinical safety risk the active safety concern.",
+        "d": "The safer response addresses clinical safety risk; \"Interpret a change in the client's telemetry rhythm\" moves care toward routine care before bedside safety action."
+      },
+      "tags": [
+        "lpn_scope_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate stable, predictable care and reinforcement to the LPN or LVN, not initial assessment or interpretation.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "magnesium_sulfate_toxicity",
+      "subcategory": "magnesium_sulfate_toxicity",
+      "difficulty": 3,
+      "stem": "A postpartum client receiving magnesium sulfate for preeclampsia has respirations of 10/min, absent patellar reflexes, and urine output of 20 mL/hr. Which action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the magnesium sulfate infusion and notify the provider."
+        },
+        {
+          "id": "b",
+          "text": "Administer the next scheduled antihypertensive dose."
+        },
+        {
+          "id": "c",
+          "text": "Place the client flat and encourage rest."
+        },
+        {
+          "id": "d",
+          "text": "Reassess reflexes after the client has been sleeping for 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Respiratory depression, absent reflexes, and oliguria are classic toxicity findings with magnesium sulfate. The drug should be stopped immediately and the provider notified so antidote and further management can be started. Waiting or focusing on less urgent medications allows magnesium levels to continue rising and increases the risk of arrest.",
+      "distractorRationales": {
+        "b": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Stop the magnesium sulfate infusion and notify the provider\" fits the safer response to the cue \"A postpartum client receiving magnesium sulfate for preeclampsia has respirations of 10/min, absent patellar reflexes\".",
+        "c": "\"Place the client flat and encourage rest\" misses the bedside risk. The cue \"low urine output on magnesium sulfate point to toxicity and require the infusion to be stopped first\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "\"Reassess reflexes after the client has been sleeping for 30 minutes\" treats active deterioration as something safe to watch. The cue \"low urine output on magnesium sulfate point to toxicity and require the infusion to be stopped first\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation."
+      },
+      "tags": [
+        "magnesium_sulfate_toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low respirations, absent reflexes, and low urine output on magnesium sulfate point to toxicity and require the infusion to be stopped first.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "malignant_hyperthermia_initial",
+      "subcategory": "malignant_hyperthermia_initial",
+      "difficulty": 3,
+      "stem": "In the postanesthesia care unit, a client develops rising end-tidal CO2, muscle rigidity, and a rapidly increasing temperature. Which action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to administer dantrolene and call the rapid response team."
+        },
+        {
+          "id": "b",
+          "text": "Cover the client with warm blankets to prevent shivering."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the client to cough and deep-breathe."
+        },
+        {
+          "id": "d",
+          "text": "Delay action until laboratory confirmation is available."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Rising end-tidal CO2, rigidity, and hyperthermia after anesthesia suggest malignant hyperthermia, a life-threatening emergency. Dantrolene and immediate escalation are critical. Waiting for lab confirmation or focusing on comfort measures delays definitive treatment.",
+      "distractorRationales": {
+        "b": "\"Cover the client with warm blankets to prevent shivering\" commits to a competing cause before checking the dangerous pattern. The cue \"Rising end-tidal CO2, rigidity\" raises concern for clinical safety risk, so bedside safety action is needed before diagnostic reassurance.",
+        "c": "\"Encourage the client to cough and deep-breathe\" moves to activity, intake, or discharge planning too early. The cue \"Suspected malignant hyperthermia demands immediate dantrolene and emergency escalation\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"Delay action until laboratory confirmation is available\" treats active deterioration as something safe to watch. The cue \"Rising end-tidal CO2, rigidity\" raises concern for clinical safety risk, so bedside safety action is needed before routine observation."
+      },
+      "tags": [
+        "malignant_hyperthermia_initial",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected malignant hyperthermia demands immediate dantrolene and emergency escalation.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "meningitis_isolation",
+      "subcategory": "meningitis_isolation",
+      "difficulty": 3,
+      "stem": "A client is admitted with suspected bacterial meningitis. Which infection-control measure should the nurse implement first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Initiate droplet precautions."
+        },
+        {
+          "id": "b",
+          "text": "Place the client in airborne isolation."
+        },
+        {
+          "id": "c",
+          "text": "Use reverse isolation to protect the client."
+        },
+        {
+          "id": "d",
+          "text": "Delay precautions until a lumbar puncture confirms the diagnosis."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Suspected bacterial meningitis requires prompt droplet precautions to reduce transmission risk. The nurse should not wait for confirmation before initiating appropriate isolation. Airborne or reverse isolation do not match the primary transmission risk for typical bacterial meningitis.",
+      "distractorRationales": {
+        "b": "\"Place the client in airborne isolation\" answers a lower-acuity part of the scenario. The cue \"Start droplet precautions right away when bacterial meningitis is suspected\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care.",
+        "c": "\"Use reverse isolation to protect the client\" misses the bedside risk. The cue \"Airborne or reverse isolation do not match the primary transmission risk for typical bacterial meningitis\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "The option can leave infection progression untreated because it treats active deterioration as something safe to watch. \"Initiate droplet precautions\" fits the safer response to the cue \"Suspected bacterial meningitis requires prompt droplet precautions to reduce transmission risk\"."
+      },
+      "tags": [
+        "meningitis_isolation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Start droplet precautions right away when bacterial meningitis is suspected.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neutropenic_precautions",
+      "subcategory": "neutropenic_precautions",
+      "difficulty": 3,
+      "stem": "A client receiving chemotherapy has an absolute neutrophil count of 400/mm3. Which nursing action is most appropriate?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Avoid fresh flowers and raw fruits brought from outside."
+        },
+        {
+          "id": "b",
+          "text": "Take a rectal temperature every 4 hours."
+        },
+        {
+          "id": "c",
+          "text": "Limit oral care to once each shift to avoid bleeding."
+        },
+        {
+          "id": "d",
+          "text": "Encourage the client to visit the crowded day room to reduce isolation."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "An absolute neutrophil count of 400/mm3 indicates severe neutropenia and a high risk for infection. Reducing exposure to environmental organisms, including flowers and unwashed fresh produce, is appropriate. Rectal temperatures and unnecessary crowd exposure increase infection risk rather than protecting the client.",
+      "distractorRationales": {
+        "b": "The cue \"Rectal temperatures and unnecessary crowd exposure increase infection risk rather than protecting the client\" suggests infection progression, so \"Take a rectal temperature every 4 hours\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The option can leave infection progression untreated because it moves to activity, intake, or discharge planning too early. \"Avoid fresh flowers and raw fruits brought from outside\" fits the safer response to the cue \"An absolute neutrophil count of 400/mm3 indicates severe neutropenia and a high risk for infection\".",
+        "d": "The safer response addresses infection progression; \"Encourage the client to visit the crowded day room to reduce isolation\" moves care toward routine care before infection or sepsis escalation."
+      },
+      "tags": [
+        "neutropenic_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "With severe neutropenia, the nurse should lower exposure to infection sources rather than increase invasive or crowd contact.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "newborn_bilirubin_warning",
+      "subcategory": "newborn_bilirubin_warning",
+      "difficulty": 3,
+      "stem": "A newborn is 18 hours old and is noted to have yellow discoloration of the sclera and chest. Which response by the nurse is best?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Report the early jaundice because jaundice in the first 24 hours is concerning."
+        },
+        {
+          "id": "b",
+          "text": "Reassure the parent that all newborn jaundice is expected."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the parent to place the newborn in direct sunlight."
+        },
+        {
+          "id": "d",
+          "text": "Wait until the newborn is 48 hours old before documenting the finding."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Jaundice appearing in the first 24 hours of life is not considered normal transitional jaundice and should be reported for prompt evaluation. Early jaundice can signal hemolysis or other pathologic causes. Reassurance or delay risks missing rising bilirubin levels that may need treatment.",
+      "distractorRationales": {
+        "b": "\"Reassure the parent that all newborn jaundice is expected\" normalizes a finding that needs reassessment. The cue \"Jaundice appearing in the first 24 hours of life is not considered normal transitional jaundice and should be\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance.",
+        "c": "\"Encourage the parent to place the newborn in direct sunlight\" misses the bedside risk. The cue \"Jaundice appearing in the first 24 hours of life is not considered normal transitional jaundice and should be\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "\"Wait until the newborn is 48 hours old before documenting the finding\" misses the bedside risk. The cue \"A newborn is 18 hours old and is noted to have yellow discoloration of the sclera and chest\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "newborn_bilirubin_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Jaundice in the first 24 hours is a report-now finding in the newborn.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "newborn_bilirubin_warning",
+        "caption": "Jaundice in the first 24 hours is a report-now finding in the newborn.",
+        "conclusion": "Jaundice in the first 24 hours is a report-now finding in the newborn."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "opioid_oversedation",
+      "subcategory": "opioid_oversedation",
+      "difficulty": 3,
+      "stem": "A postoperative client received IV morphine 20 minutes ago. The nurse finds the client difficult to arouse with respirations of 8/min. Which action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop further opioid dosing and stimulate the client while preparing naloxone."
+        },
+        {
+          "id": "b",
+          "text": "Document that the client is sleeping after pain relief."
+        },
+        {
+          "id": "c",
+          "text": "Place a warm blanket on the client and reassess in 30 minutes."
+        },
+        {
+          "id": "d",
+          "text": "Ask the client to rate pain before intervening."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Respiratory depression after opioid administration is a priority safety emergency. The nurse should stop additional opioid exposure, stimulate the client, support breathing, and prepare naloxone per protocol. Comfort-focused reassessment without addressing respirations delays treatment of an unstable airway and ventilation problem.",
+      "distractorRationales": {
+        "b": "The option can leave oxygenation or ventilation untreated because it normalizes a finding that needs reassessment. \"Stop further opioid dosing and stimulate the client while preparing naloxone\" fits the safer response to the cue \"The nurse should stop additional opioid exposure, stimulate the client, support breathing\".",
+        "c": "The cue \"prepare naloxone per protocol\" suggests oxygenation or ventilation, so \"Place a warm blanket on the client and reassess in 30 minutes\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Stop further opioid dosing and stimulate the client while preparing naloxone\" fits the safer response to the cue \"Comfort-focused reassessment without addressing respirations delays treatment of an unstable airway and ventilation problem\"."
+      },
+      "tags": [
+        "opioid_oversedation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Difficulty arousing plus slow respirations after opioids means act for oversedation before anything else.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "opioid_patch_fever_risk",
+      "subcategory": "opioid_patch_fever_risk",
+      "difficulty": 3,
+      "stem": "A client using a fentanyl patch develops a fever of 102 F (38.9 C). Which instruction should the nurse provide?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Report the fever promptly because heat can increase fentanyl absorption."
+        },
+        {
+          "id": "b",
+          "text": "Place a heating pad over the patch to improve comfort."
+        },
+        {
+          "id": "c",
+          "text": "Cut the patch in half if the client feels too sleepy."
+        },
+        {
+          "id": "d",
+          "text": "Apply an extra patch if the pain feels worse."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Heat and fever can increase fentanyl absorption from a transdermal patch and raise the risk of oversedation or respiratory depression. The client should report this promptly and avoid external heat sources. Cutting or doubling patches is unsafe.",
+      "distractorRationales": {
+        "b": "The safer response addresses oxygenation or ventilation; \"Place a heating pad over the patch to improve comfort\" moves care toward ambulation, intake, or discharge teaching before patient teaching and medication-safety reinforcement.",
+        "c": "\"Cut the patch in half if the client feels too sleepy\" normalizes a finding that needs reassessment. The cue \"Transdermal fentanyl becomes riskier with fever or heat exposure because absorption can increase\" raises concern for oxygenation or ventilation, so patient teaching and medication-safety reinforcement is needed before reassurance.",
+        "d": "\"Apply an extra patch if the pain feels worse\" misses the bedside risk. The cue \"Transdermal fentanyl becomes riskier with fever or heat exposure because absorption can increase\" points to oxygenation or ventilation. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "opioid_patch_fever_risk",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Transdermal fentanyl becomes riskier with fever or heat exposure because absorption can increase.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pancreatitis_hypocalcemia_tetany",
+      "subcategory": "pancreatitis_hypocalcemia_tetany",
+      "difficulty": 3,
+      "stem": "A client hospitalized with acute pancreatitis develops numbness around the mouth and carpal spasms. Which laboratory value does the nurse anticipate is most likely abnormal?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Low serum calcium."
+        },
+        {
+          "id": "b",
+          "text": "High serum sodium."
+        },
+        {
+          "id": "c",
+          "text": "Low hematocrit."
+        },
+        {
+          "id": "d",
+          "text": "Low chloride."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Perioral numbness and carpal spasm suggest neuromuscular irritability from hypocalcemia. Acute pancreatitis can lower serum calcium as part of the disease process. Recognizing the pattern helps the nurse connect clinical signs with the expected electrolyte disturbance.",
+      "distractorRationales": {
+        "b": "The cue \"Acute pancreatitis can lower serum calcium as part of the disease process\" suggests neurologic deterioration, so \"High serum sodium\" would not correct the active problem. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "c": "\"Low hematocrit\" answers a lower-acuity part of the scenario. The cue \"Acute pancreatitis can lower serum calcium as part of the disease process\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care.",
+        "d": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"Recognizing the pattern helps the nurse connect clinical signs with the expected electrolyte disturbance\" makes neurologic deterioration the active safety concern."
+      },
+      "tags": [
+        "pancreatitis_hypocalcemia_tetany",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Tetany-type symptoms in pancreatitis point toward hypocalcemia.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "peritoneal_dialysis_peritonitis",
+      "subcategory": "peritoneal_dialysis_peritonitis",
+      "difficulty": 3,
+      "stem": "A client performing peritoneal dialysis reports cloudy outflow and abdominal pain. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because the findings suggest peritonitis."
+        },
+        {
+          "id": "b",
+          "text": "Tell the client cloudy drainage is expected after dialysis."
+        },
+        {
+          "id": "c",
+          "text": "Instruct the client to skip the next exchange."
+        },
+        {
+          "id": "d",
+          "text": "Have the client drink extra water and wait until tomorrow."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Cloudy dialysate and abdominal pain are classic findings of peritoneal dialysis-associated peritonitis. The nurse should escalate promptly for assessment and treatment. Reassurance or delay can worsen infection and threaten the dialysis access pathway.",
+      "distractorRationales": {
+        "b": "The cue \"The nurse should escalate promptly for assessment and treatment\" suggests infection progression, so \"Tell the client cloudy drainage is expected after dialysis\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The cue \"Reassurance or delay can worsen infection and threaten the dialysis access pathway\" suggests infection progression, so \"Instruct the client to skip the next exchange\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "The cue \"The nurse should escalate promptly for assessment and treatment\" suggests infection progression, so \"Have the client drink extra water and wait until tomorrow\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "peritoneal_dialysis_peritonitis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cloudy peritoneal dialysis outflow should be treated as peritonitis until proven otherwise.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb966-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_endometritis",
+      "subcategory": "postpartum_endometritis",
+      "difficulty": 3,
+      "stem": "Two days after a cesarean birth, a client has uterine tenderness, foul-smelling lochia, and a temperature of 101.8 F (38.8 C). Which complication should the nurse suspect?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Endometritis."
+        },
+        {
+          "id": "b",
+          "text": "Uterine inversion."
+        },
+        {
+          "id": "c",
+          "text": "Postpartum blues."
+        },
+        {
+          "id": "d",
+          "text": "Expected afterpains."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Fever, uterine tenderness, and foul-smelling lochia after birth are classic findings of endometritis. The cesarean birth increases infection risk, making this complication especially important to recognize quickly. Uterine inversion is an acute obstetric emergency with a very different presentation, and postpartum blues do not cause fever or uterine pain.",
+      "distractorRationales": {
+        "b": "The cue \"postpartum blues do not cause fever or uterine pain\" suggests infection progression, so \"Uterine inversion\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "\"Postpartum blues\" answers a lower-acuity part of the scenario. The cue \"postpartum blues do not cause fever or uterine pain\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care.",
+        "d": "\"Expected afterpains\" normalizes a finding that needs reassessment. The cue \"postpartum blues do not cause fever or uterine pain\" raises concern for infection progression, so infection or sepsis escalation is needed before reassurance."
+      },
+      "tags": [
+        "postpartum_endometritis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Postpartum fever with uterine tenderness and foul lochia points to endometritis, not routine recovery discomfort.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

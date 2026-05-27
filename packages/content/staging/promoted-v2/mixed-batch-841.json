@@ -1,0 +1,449 @@
+{
+  "batchId": "mixed-batch-841",
+  "generatedAt": "2026-04-09T15:20:17-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb841-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "wheezing_after_medication",
+      "subcategory": "wheezing_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a new medication, a patient develops wheezing and itching. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an allergic reaction"
+        },
+        {
+          "id": "b",
+          "text": "The medication is working as expected"
+        },
+        {
+          "id": "c",
+          "text": "Wheezing is only important if fever is present"
+        },
+        {
+          "id": "d",
+          "text": "The patient should be reassured and sent to bed"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action. **Why the others are wrong:** - B These are not expected therapeutic effects. - C Fever is not required for an allergic response. - D Reassurance without reassessment is unsafe.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"The patient may be having an allergic reaction\" fits the safer response to the cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\".",
+        "c": "\"Wheezing is only important if fever is present\" misses the bedside risk. The cue \"New wheeze after a medication can be an allergy clue\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"The patient may be having an allergic reaction\" fits the safer response to the cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\"."
+      },
+      "tags": [
+        "wheezing_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New wheeze after a medication can be an allergy clue.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "instability_after_medication",
+      "subcategory": "instability_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a blood pressure medication, a patient becomes dizzy and their blood pressure drops significantly. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess the patient and hold further medication until the situation is clarified"
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose because the medication is already scheduled"
+        },
+        {
+          "id": "c",
+          "text": "Tell the patient the dizziness is normal and temporary"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the blood pressure because the patient is awake"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Medication can cause hypotension. The nurse must reassess before giving more medication. **Why the others are wrong:** - B Scheduling does not override safety. - C Dizziness with a major BP drop needs action. - D Awake status does not make hypotension safe.",
+      "distractorRationales": {
+        "b": "The safer response addresses medication toxicity; \"Give the next dose because the medication is already scheduled\" moves care toward diagnostic reassurance before medication-safety intervention.",
+        "c": "This distractor shifts care toward false reassurance instead of medication-safety intervention. The stem cue \"Medication can cause hypotension\" makes medication toxicity the active safety concern.",
+        "d": "The safer response addresses medication toxicity; \"Ignore the blood pressure because the patient is awake\" moves care toward diagnostic reassurance before medication-safety intervention."
+      },
+      "tags": [
+        "instability_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New hypotension after a medication needs immediate reassessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "seizure_warning_sign",
+      "subcategory": "seizure_warning_sign",
+      "difficulty": 3,
+      "stem": "A patient with a head injury suddenly has a blank stare, lip smacking, and does not respond appropriately. What is the nurse's best concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having a seizure"
+        },
+        {
+          "id": "b",
+          "text": "The patient is simply daydreaming"
+        },
+        {
+          "id": "c",
+          "text": "The head injury is no longer relevant"
+        },
+        {
+          "id": "d",
+          "text": "The behavior is only a normal response to pain"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Subtle behaviors like staring and lip smacking can indicate seizure activity, especially after a neurologic injury. **Why the others are wrong:** - B This pattern is not safe to dismiss. - C Head injury remains highly relevant. - D Pain does not explain the full behavior pattern.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"A patient with a head injury suddenly has a blank stare, lip smacking\" makes neurologic deterioration the active safety concern.",
+        "c": "\"The head injury is no longer relevant\" answers a lower-acuity part of the scenario. The cue \"- C Head injury remains highly relevant\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care.",
+        "d": "The option can leave neurologic deterioration untreated because it normalizes a finding that needs reassessment. \"The patient may be having a seizure\" fits the safer response to the cue \"A patient with a head injury suddenly has a blank stare, lip smacking\"."
+      },
+      "tags": [
+        "seizure_warning_sign",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Not all seizures are dramatic; subtle signs still matter.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_severity",
+      "subcategory": "dehydration_severity",
+      "difficulty": 3,
+      "stem": "Which finding in a child with vomiting is most concerning for dehydration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No urine output for several hours"
+        },
+        {
+          "id": "b",
+          "text": "Asking for a favorite toy"
+        },
+        {
+          "id": "c",
+          "text": "Mild boredom in the ED"
+        },
+        {
+          "id": "d",
+          "text": "Sleeping at a usual nap time"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Decreased urine output is a strong dehydration clue in children and may signal a more serious fluid deficit. **Why the others are wrong:** - B That does not indicate fluid loss. - C Boredom is not a dehydration sign. - D A normal nap does not explain fluid status.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of renal protection. The stem cue \"- C Boredom is not a dehydration sign\" makes renal injury the active safety concern.",
+        "c": "\"Mild boredom in the ED\" normalizes a finding that needs reassessment. The cue \"Decreased urine output is a strong dehydration clue in children and may signal a more serious fluid deficit\" raises concern for renal injury, so renal protection is needed before reassurance.",
+        "d": "The safer response addresses renal injury; \"Sleeping at a usual nap time\" moves care toward reassurance before renal protection."
+      },
+      "tags": [
+        "dehydration_severity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Urine output is one of the best quick clues for pediatric dehydration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "crackles_and_distress",
+      "subcategory": "crackles_and_distress",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops crackles, increasing shortness of breath, and needs more oxygen. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory status may be worsening and fluid or pulmonary congestion should be considered"
+        },
+        {
+          "id": "b",
+          "text": "Crackles always mean the lungs are improving"
+        },
+        {
+          "id": "c",
+          "text": "The extra oxygen proves the patient is stable"
+        },
+        {
+          "id": "d",
+          "text": "The patient should be encouraged to talk more instead of reassessed"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New crackles with worsening dyspnea and rising oxygen needs suggest worsening respiratory status and possible fluid-related lung involvement. **Why the others are wrong:** - B Crackles are not inherently reassuring. - C More oxygen does not prove stability. - D The patient needs assessment, not distraction.",
+      "distractorRationales": {
+        "b": "The safer response addresses oxygenation or ventilation; \"Crackles always mean the lungs are improving\" moves care toward routine care before airway and breathing intervention.",
+        "c": "\"The extra oxygen proves the patient is stable\" answers a lower-acuity part of the scenario. The cue \"- C More oxygen does not prove stability\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "\"The patient should be encouraged to talk more instead of reassessed\" misses the bedside risk. The cue \"- C More oxygen does not prove stability\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "crackles_and_distress",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New crackles plus more oxygen need is a respiratory red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "weak_pulse_and_delayed_refill",
+      "subcategory": "weak_pulse_and_delayed_refill",
+      "difficulty": 3,
+      "stem": "A child is pale, has a weak pulse, and delayed capillary refill after a day of poor intake. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Circulation may be compromised and dehydration may be present"
+        },
+        {
+          "id": "b",
+          "text": "The child is likely just sleepy"
+        },
+        {
+          "id": "c",
+          "text": "Capillary refill is not useful in children"
+        },
+        {
+          "id": "d",
+          "text": "Poor intake cannot affect circulation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake can affect circulation in children, and weak perfusion signs should prompt reassessment. **Why the others are wrong:** - B Sleepiness does not explain the perfusion findings. - C Capillary refill is very useful in pediatrics. - D Intake and circulation are closely linked.",
+      "distractorRationales": {
+        "b": "\"The child is likely just sleepy\" misses the bedside risk. The cue \"weak perfusion signs should prompt reassessment\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Capillary refill is not useful in children\" answers a lower-acuity part of the scenario. The cue \"- D Intake and circulation are closely linked\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "The cue \"weak perfusion signs should prompt reassessment\" suggests circulation or perfusion, so \"Poor intake cannot affect circulation\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "weak_pulse_and_delayed_refill",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as weak perfusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_level_change",
+      "subcategory": "acute_level_change",
+      "difficulty": 3,
+      "stem": "A patient becomes much less responsive after previously answering clearly. What is the nurse's first priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess airway, breathing, circulation, and neurologic status"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the patient to wake up naturally"
+        },
+        {
+          "id": "c",
+          "text": "Document that the patient is probably just tired"
+        },
+        {
+          "id": "d",
+          "text": "Offer the patient food before assessing further"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration. **Why the others are wrong:** - B Delay may miss a serious change. - C Tiredness should not be assumed. - D Food does not replace an urgent assessment.",
+      "distractorRationales": {
+        "b": "The cue \"Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration\" suggests oxygenation or ventilation, so \"Wait for the patient to wake up naturally\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Document that the patient is probably just tired\" misses the bedside risk. The cue \"Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The safer response addresses oxygenation or ventilation; \"Offer the patient food before assessing further\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "acute_level_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden decreased responsiveness is an emergency until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "breathing_effort_in_child",
+      "subcategory": "breathing_effort_in_child",
+      "difficulty": 3,
+      "stem": "A child with fever is breathing faster than usual and has nasal flaring. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess respiratory status and oxygenation immediately"
+        },
+        {
+          "id": "b",
+          "text": "Tell the parent the child is probably just warm"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the next temperature check"
+        },
+        {
+          "id": "d",
+          "text": "Focus only on giving antipyretics"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Nasal flaring and tachypnea suggest respiratory distress and require prompt assessment. **Why the others are wrong:** - B Fever does not explain away respiratory distress. - C Delay is unsafe. - D Lowering the fever does not replace breathing assessment.",
+      "distractorRationales": {
+        "b": "The cue \"**Why the others are wrong:** - B Fever does not explain away respiratory distress\" suggests oxygenation or ventilation, so \"Tell the parent the child is probably just warm\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "The safer response addresses oxygenation or ventilation; \"Wait until the next temperature check\" moves care toward routine observation before airway and breathing intervention.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Reassess respiratory status and oxygenation immediately\" fits the safer response to the cue \"Nasal flaring and tachypnea suggest respiratory distress and require prompt assessment\"."
+      },
+      "tags": [
+        "breathing_effort_in_child",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Nasal flaring is a pediatric respiratory warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_priority_which_patient_first",
+      "subcategory": "safety_priority_which_patient_first",
+      "difficulty": 3,
+      "stem": "The nurse is caring for four patients on a medical-surgical floor. Which patient should the nurse assess FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 74-year-old with COPD, SpO₂ 91% on 2L nasal cannula, baseline, requesting a warm blanket"
+        },
+        {
+          "id": "b",
+          "text": "A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site"
+        },
+        {
+          "id": "c",
+          "text": "A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old with DVT on heparin infusion, asking when they can ambulate today"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute confusion in a patient with heart failure is a red-flag symptom. Sudden onset confusion can signal decreased cerebral perfusion from worsening cardiac output, hyponatremia, medication toxicity (digoxin), or hypoxia — all potentially life-threatening. The patient's verbalization that 'something is wrong' (sense of impending doom) is a significant subjective cue. Using the ABCs and Maslow's hierarchy, altered mental status indicating possible hemodynamic compromise takes priority. The COPD patient (A) is at stable baseline. Post-op pain (B) is expected and not emergent. The heparin patient (D) has a non-urgent question.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"Acute mental status change = priority assessment\" makes bleeding or anticoagulation injury the active safety concern.",
+        "b": "\"A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site\" answers a lower-acuity part of the scenario. The cue \"The COPD patient (A) is at stable baseline\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before routine care.",
+        "d": "\"A 45-year-old with DVT on heparin infusion, asking when they can ambulate today\" moves to activity, intake, or discharge planning too early. The cue \"Post-op pain (B) is expected and not emergent\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before ambulation, intake, or discharge teaching."
+      },
+      "tags": [
+        "safety_priority_which_patient_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute mental status change = priority assessment. In heart failure, sudden confusion may signal worsening CO, hyponatremia, or hypoxia. 'Feeling like something is wrong' is a significant clinical cue — always assess these patients first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb841-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_stable_vs_unstable_differentiation",
+      "subcategory": "safety_stable_vs_unstable_differentiation",
+      "difficulty": 3,
+      "stem": "A nurse receives report on four patients. Which patient is UNSTABLE and requires immediate reassessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Post-op appendectomy patient, day 1, HR 92, BP 118/74, mild incisional pain 4/10"
+        },
+        {
+          "id": "b",
+          "text": "Patient with pneumonia, T 38.4°C, HR 88, RR 20, SpO₂ 95% on 3L NC, improving on antibiotics"
+        },
+        {
+          "id": "c",
+          "text": "Patient with GI bleed admitted 6 hours ago: HR 118 (was 88 one hour ago), BP 96/58 (was 118/72), increased bright red rectal bleeding"
+        },
+        {
+          "id": "d",
+          "text": "Patient with COPD exacerbation, SpO₂ 91% on 2L NC (baseline 90–92%), pursed-lip breathing"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The GI bleed patient shows a deteriorating trend over one hour: HR increased 30 bpm (compensatory tachycardia from volume loss), BP dropped 22/14 mmHg (hypoperfusion), and bleeding is visibly worsening. This trajectory — not just the absolute values — defines instability. A patient is unstable when vital signs are trending in the wrong direction, indicating the body's compensatory mechanisms are being overwhelmed. The post-op patient (A) is stable and expected. The pneumonia patient (B) is improving on treatment. The COPD patient (D) is at their baseline SpO₂.",
+      "distractorRationales": {
+        "a": "The option can leave bleeding or anticoagulation injury untreated because it normalizes a finding that needs reassessment. \"Patient with GI bleed admitted 6 hours ago: HR 118 (was 88 one hour ago), BP\" fits the safer response to the cue \"bleeding is visibly worsening\".",
+        "b": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"The COPD patient (D) is at their baseline SpO₂\" makes bleeding or anticoagulation injury the active safety concern.",
+        "d": "The safer response addresses bleeding or anticoagulation injury; \"Patient with COPD exacerbation, SpO₂ 91% on 2L NC (baseline 90–92%), pursed-lip breathing\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention."
+      },
+      "tags": [
+        "safety_stable_vs_unstable_differentiation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Instability = trending in the wrong direction. HR rising + BP falling + worsening bleeding = active hemorrhagic shock. Always compare current vitals to the baseline/trend, not just absolute values.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

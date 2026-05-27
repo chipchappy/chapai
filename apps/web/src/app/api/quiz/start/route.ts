@@ -79,8 +79,8 @@ function demoFallback(exam: "nclex" | "ccrn", count: number, config?: Partial<Qu
 const schema = z.object({
   exam:     z.enum(["nclex", "ccrn"]),
   category: z.string().optional(),
-  questionType: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).optional(),
-  type: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).optional(),
+  questionType: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie", "scenario_mcq", "decision_map_mcq"]).optional(),
+  type: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie", "scenario_mcq", "decision_map_mcq"]).optional(),
   ngnOnly: z.boolean().optional(),
   count:    z.union([
     z.literal(5), z.literal(10), z.literal(20), z.literal(25), z.literal(50), z.literal(75), z.literal(100)

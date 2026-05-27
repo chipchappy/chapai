@@ -6,16 +6,24 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
+    "test": "node --test --import tsx scripts/__tests__/*.test.ts",
+    "typecheck": "npm run type-check",
     "type-check": "npm run type-check --workspace=@chapai/web",
+    "rewrite:distractors": "node scripts/rewrite-distractor-rationales.mjs",
+    "retag:question-types": "node scripts/retag-question-types.mjs",
     "deploy": "turbo deploy"
   },
   "devDependencies": {
     "turbo": "^2.0.0",
     "typescript": "^5.4.0",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "tsx": "^4.22.3"
   },
   "packageManager": "npm@10.9.2",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.29.2"
   }
 }

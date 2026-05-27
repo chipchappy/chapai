@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-872",
+  "generatedAt": "2026-04-09T21:39:34-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb872-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "crackles_and_distress",
+      "subcategory": "crackles_and_distress",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops crackles, increasing shortness of breath, and needs more oxygen. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory status may be worsening and fluid or pulmonary congestion should be considered"
+        },
+        {
+          "id": "b",
+          "text": "Crackles always mean the lungs are improving"
+        },
+        {
+          "id": "c",
+          "text": "The extra oxygen proves the patient is stable"
+        },
+        {
+          "id": "d",
+          "text": "The patient should be encouraged to talk more instead of reassessed"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New crackles with worsening dyspnea and rising oxygen needs suggest worsening respiratory status and possible fluid-related lung involvement. **Why the others are wrong:** - B Crackles are not inherently reassuring. - C More oxygen does not prove stability. - D The patient needs assessment, not distraction.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"New crackles plus more oxygen need is a respiratory red flag\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The cue \"New crackles with worsening dyspnea and rising oxygen needs suggest worsening respiratory status and possible fluid-related lung involvement\" suggests oxygenation or ventilation, so \"The extra oxygen proves the patient is stable\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "\"The patient should be encouraged to talk more instead of reassessed\" treats active deterioration as something safe to watch. The cue \"New crackles with worsening dyspnea and rising oxygen needs suggest worsening respiratory status and possible fluid-related lung involvement\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation."
+      },
+      "tags": [
+        "crackles_and_distress",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New crackles plus more oxygen need is a respiratory red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_severity",
+      "subcategory": "dehydration_severity",
+      "difficulty": 3,
+      "stem": "Which finding in a child with vomiting is most concerning for dehydration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No urine output for several hours"
+        },
+        {
+          "id": "b",
+          "text": "Asking for a favorite toy"
+        },
+        {
+          "id": "c",
+          "text": "Mild boredom in the ED"
+        },
+        {
+          "id": "d",
+          "text": "Sleeping at a usual nap time"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Decreased urine output is a strong dehydration clue in children and may signal a more serious fluid deficit. **Why the others are wrong:** - B That does not indicate fluid loss. - C Boredom is not a dehydration sign. - D A normal nap does not explain fluid status.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of renal protection. The stem cue \"- C Boredom is not a dehydration sign\" makes renal injury the active safety concern.",
+        "c": "The cue \"Decreased urine output is a strong dehydration clue in children and may signal a more serious fluid deficit\" suggests renal injury, so \"Mild boredom in the ED\" would not correct the active problem. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.",
+        "d": "The safer response addresses renal injury; \"Sleeping at a usual nap time\" moves care toward reassurance before renal protection."
+      },
+      "tags": [
+        "dehydration_severity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Urine output is one of the best quick clues for pediatric dehydration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "instability_after_medication",
+      "subcategory": "instability_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a blood pressure medication, a patient becomes dizzy and their blood pressure drops significantly. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess the patient and hold further medication until the situation is clarified"
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose because the medication is already scheduled"
+        },
+        {
+          "id": "c",
+          "text": "Tell the patient the dizziness is normal and temporary"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the blood pressure because the patient is awake"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Medication can cause hypotension. The nurse must reassess before giving more medication. **Why the others are wrong:** - B Scheduling does not override safety. - C Dizziness with a major BP drop needs action. - D Awake status does not make hypotension safe.",
+      "distractorRationales": {
+        "b": "\"Give the next dose because the medication is already scheduled\" misses the bedside risk. The cue \"New hypotension after a medication needs immediate reassessment\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Tell the patient the dizziness is normal and temporary\" normalizes a finding that needs reassessment. The cue \"New hypotension after a medication needs immediate reassessment\" raises concern for medication toxicity, so medication-safety intervention is needed before reassurance.",
+        "d": "\"Ignore the blood pressure because the patient is awake\" misses the bedside risk. The cue \"- D Awake status does not make hypotension safe\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "instability_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New hypotension after a medication needs immediate reassessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "low_perfusion_trend",
+      "subcategory": "low_perfusion_trend",
+      "difficulty": 3,
+      "stem": "A patient with heart failure has cool hands, weak pulses, and urine output that is dropping. What is the most useful interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perfusion may be decreasing despite ongoing treatment"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because the blood pressure is not zero"
+        },
+        {
+          "id": "c",
+          "text": "Weak pulses are not useful in heart failure"
+        },
+        {
+          "id": "d",
+          "text": "Urine output only matters in kidney disease"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Peripheral and renal clues can reveal poor perfusion even when a single pressure number looks acceptable. **Why the others are wrong:** - B Blood pressure alone does not prove adequate flow. - C Weak pulses are a useful bedside clue. - D Urine output matters in cardiac perfusion too.",
+      "distractorRationales": {
+        "b": "The safer response addresses circulation or perfusion; \"The patient is stable because the blood pressure is not zero\" moves care toward diagnostic reassurance before circulation and perfusion support.",
+        "c": "\"Weak pulses are not useful in heart failure\" misses the bedside risk. The cue \"urine output that is dropping\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "\"Urine output only matters in kidney disease\" misses the bedside risk. The cue \"urine output that is dropping\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "low_perfusion_trend",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low-output heart failure often shows up in the hands and kidneys.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "low_perfusion_trend",
+        "caption": "Low-output heart failure often shows up in the hands and kidneys.",
+        "conclusion": "Low-output heart failure often shows up in the hands and kidneys."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "seizure_warning_sign",
+      "subcategory": "seizure_warning_sign",
+      "difficulty": 3,
+      "stem": "A patient with a head injury suddenly has a blank stare, lip smacking, and does not respond appropriately. What is the nurse's best concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having a seizure"
+        },
+        {
+          "id": "b",
+          "text": "The patient is simply daydreaming"
+        },
+        {
+          "id": "c",
+          "text": "The head injury is no longer relevant"
+        },
+        {
+          "id": "d",
+          "text": "The behavior is only a normal response to pain"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Subtle behaviors like staring and lip smacking can indicate seizure activity, especially after a neurologic injury. **Why the others are wrong:** - B This pattern is not safe to dismiss. - C Head injury remains highly relevant. - D Pain does not explain the full behavior pattern.",
+      "distractorRationales": {
+        "b": "The option can leave neurologic deterioration untreated because it answers a lower-acuity part of the scenario. \"The patient may be having a seizure\" fits the safer response to the cue \"A patient with a head injury suddenly has a blank stare, lip smacking\".",
+        "c": "The cue \"- C Head injury remains highly relevant\" suggests neurologic deterioration, so \"The head injury is no longer relevant\" would not correct the active problem. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment.",
+        "d": "This distractor shifts care toward false reassurance instead of neurologic safety assessment. The stem cue \"A patient with a head injury suddenly has a blank stare, lip smacking\" makes neurologic deterioration the active safety concern."
+      },
+      "tags": [
+        "seizure_warning_sign",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Not all seizures are dramatic; subtle signs still matter.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "weak_pulse_and_delayed_refill",
+      "subcategory": "weak_pulse_and_delayed_refill",
+      "difficulty": 3,
+      "stem": "A child is pale, has a weak pulse, and delayed capillary refill after a day of poor intake. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Circulation may be compromised and dehydration may be present"
+        },
+        {
+          "id": "b",
+          "text": "The child is likely just sleepy"
+        },
+        {
+          "id": "c",
+          "text": "Capillary refill is not useful in children"
+        },
+        {
+          "id": "d",
+          "text": "Poor intake cannot affect circulation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake can affect circulation in children, and weak perfusion signs should prompt reassessment. **Why the others are wrong:** - B Sleepiness does not explain the perfusion findings. - C Capillary refill is very useful in pediatrics. - D Intake and circulation are closely linked.",
+      "distractorRationales": {
+        "b": "The cue \"- D Intake and circulation are closely linked\" suggests circulation or perfusion, so \"The child is likely just sleepy\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Capillary refill is not useful in children\" answers a lower-acuity part of the scenario. The cue \"weak perfusion signs should prompt reassessment\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "\"Poor intake cannot affect circulation\" answers a lower-acuity part of the scenario. The cue \"- D Intake and circulation are closely linked\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care."
+      },
+      "tags": [
+        "weak_pulse_and_delayed_refill",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as weak perfusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "wheezing_after_medication",
+      "subcategory": "wheezing_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a new medication, a patient develops wheezing and itching. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an allergic reaction"
+        },
+        {
+          "id": "b",
+          "text": "The medication is working as expected"
+        },
+        {
+          "id": "c",
+          "text": "Wheezing is only important if fever is present"
+        },
+        {
+          "id": "d",
+          "text": "The patient should be reassured and sent to bed"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action. **Why the others are wrong:** - B These are not expected therapeutic effects. - C Fever is not required for an allergic response. - D Reassurance without reassessment is unsafe.",
+      "distractorRationales": {
+        "b": "The safer response addresses medication toxicity; \"The medication is working as expected\" moves care toward reassurance before medication-safety intervention.",
+        "c": "\"Wheezing is only important if fever is present\" misses the bedside risk. The cue \"New wheeze after a medication can be an allergy clue\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "wheezing_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New wheeze after a medication can be an allergy clue.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "\"This is an expected effect of routine eye fatigue\" misses the bedside risk. The cue \"A client reports severe eye pain, blurred vision\" points to clinical safety risk. Nursing safety depends on matching the response to the active clinical risk before routine care.",
+        "c": "The safer response addresses clinical safety risk; \"The client is likely having a migraine and can rest at home\" moves care toward ambulation, intake, or discharge teaching before bedside safety action.",
+        "d": "The safer response addresses clinical safety risk; \"These findings show that prescribed eye drops are working well\" moves care toward routine care before bedside safety action."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "\"Restrict oral fluids and monitor weight\" moves to activity, intake, or discharge planning too early. The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before ambulation, intake, or discharge teaching.",
+        "c": "The cue \"Hypotension, hyponatremia, vomiting\" suggests circulation or perfusion, so \"Hold corticosteroids until the morning cortisol level is drawn\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "This distractor shifts care toward premature teaching instead of circulation and perfusion support. The stem cue \"sodium 128 mEq/L\" makes circulation or perfusion the active safety concern."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" suggests oxygenation or ventilation, so \"Obtain a full allergy history before intervening\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Slow the infusion to reduce the reaction\" answers a lower-acuity part of the scenario. The cue \"The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "The safer response addresses oxygenation or ventilation; \"Document the event and continue monitoring\" moves care toward routine observation before airway and breathing intervention."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "\"Lay the client flat and increase the room temperature\" answers a lower-acuity part of the scenario. The cue \"Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered\" raises concern for neurologic deterioration, so neurologic safety assessment is needed before routine care.",
+        "c": "This distractor shifts care toward misprioritization instead of neurologic safety assessment. The stem cue \"A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure\" makes neurologic deterioration the active safety concern.",
+        "d": "\"Offer oral fluids and reassess in 30 minutes\" misses the bedside risk. The cue \"Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered\" points to neurologic deterioration. Neurologic change needs prompt assessment and safety measures before reassurance, discharge, or routine reassessment."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb872-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "The cue \"chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction\" suggests circulation or perfusion, so \"Slow the transfusion rate and reassess in 5 minutes\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "The safer response addresses circulation or perfusion; \"Administer acetaminophen and continue the transfusion\" moves care toward routine care before circulation and perfusion support.",
+        "d": "\"Document the symptoms as an expected febrile response\" normalizes a finding that needs reassessment. The cue \"Suspected transfusion reaction means stop the blood first and keep the line open with normal saline\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}
