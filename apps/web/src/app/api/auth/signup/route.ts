@@ -16,7 +16,7 @@ const schema = z.object({
   newsletterOptIn: z.boolean().default(false),
   acceptedTerms: z.literal(true),
   acceptedPrivacy: z.literal(true),
-  nextPath: z.string().startsWith("/").default("/quiz?welcome=1"),
+  nextPath: z.string().startsWith("/").default("/study?welcome=1"),
 });
 
 function getSupabaseAuthCookieName(supabaseUrl: string) {
