@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
 type NclexChartTab = "notes" | "history" | "vitals" | "labs" | "orders";
@@ -194,7 +195,10 @@ export default function NclexExamPane({
   const caseItemTotal = question.caseItemTotal ?? totalQuestions;
   const clozeBlankCount = question.clozeBlankCount ?? (question.kind === "ordering" ? Math.max(correct.length, 3) : 1);
   const rationale = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
-  const incorrectExplanations = answerRecord?.distractorRationales ?? question.distractorRationales ?? {};
+  const incorrectExplanations = getDisplayableDistractorRationales(
+    question,
+    answerRecord?.distractorRationales ?? question.distractorRationales,
+  );
   const references = answerRecord?.references ?? question.references ?? [];
   const selectedTexts = activeIds
     .map((id) => question.options?.find((option) => option.id === id)?.text ?? id.toUpperCase())
