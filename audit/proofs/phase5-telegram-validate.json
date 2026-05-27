@@ -1,0 +1,125 @@
+{
+  "ok": true,
+  "runId": "phase5-2026-05-07T18-10-20-526Z",
+  "validation": {
+    "ok": true,
+    "files": 4,
+    "events": 18,
+    "failures": []
+  },
+  "summary": {
+    "generatedAt": "2026-05-07T18:10:20.528Z",
+    "source": "telegram",
+    "files": 4,
+    "events": 18,
+    "commands": 5,
+    "acceptedCommands": 5,
+    "rejectedCommands": 0,
+    "outboundQueued": 5,
+    "controlIntents": 3,
+    "pendingApproval": 1,
+    "confirmationRequired": 1,
+    "supportedCommands": [
+      "/goal",
+      "/goals",
+      "/pause",
+      "/resume",
+      "/approve",
+      "/reject",
+      "/deny",
+      "/reply",
+      "/brain",
+      "/kill",
+      "/status"
+    ],
+    "byCommand": {
+      "/status": 1,
+      "/pause": 1,
+      "/brain": 1,
+      "/approve": 1,
+      "/kill": 1
+    },
+    "latest": [
+      {
+        "eventId": "8f0ef862b5cbebd7f6f1609cb1ca02c2224f7a9f8c624a0c6538bae34e986d21",
+        "type": "control_intent",
+        "at": "2026-05-07T18:09:27.832Z",
+        "command": "/kill",
+        "action": "kill-agent",
+        "status": "confirmation_required"
+      },
+      {
+        "eventId": "adcf3dee04a97146f88da1299d65c066d08e5e2afd313d9776eb023a041b2262",
+        "type": "command_received",
+        "at": "2026-05-07T18:09:27.831Z",
+        "command": "/kill",
+        "action": "kill-agent",
+        "status": null
+      },
+      {
+        "eventId": "1a47dbc81aa0689fb57826033f5956c589a43d0a359652e6520593fa00c636eb",
+        "type": "control_intent",
+        "at": "2026-05-07T18:09:27.831Z",
+        "command": "/approve",
+        "action": "approve-outbound",
+        "status": "queued"
+      },
+      {
+        "eventId": "0bb2403e2c013fb327b46d2d13e6eecd1efd1b37a9efef4a67307826ae304800",
+        "type": "message_received",
+        "at": "2026-05-07T18:09:27.831Z",
+        "command": null,
+        "action": null,
+        "status": null
+      },
+      {
+        "eventId": "11f2b606d4274380756b7ffc6b03276fdd4792130a9c928088beb4cd048b7290",
+        "type": "outbound_queued",
+        "at": "2026-05-07T18:09:27.831Z",
+        "command": null,
+        "action": null,
+        "status": "queued_only"
+      },
+      {
+        "eventId": "ae1db711dc0abcb65cb2bba551a8f6769cb0763cb02176333a6088a0abeb5ad6",
+        "type": "command_received",
+        "at": "2026-05-07T18:09:27.830Z",
+        "command": "/approve",
+        "action": "approve-outbound",
+        "status": null
+      },
+      {
+        "eventId": "0eaa4190bf31c7f4f4661055744efeca87baf50c55dabd20473d29c0885540df",
+        "type": "message_received",
+        "at": "2026-05-07T18:09:27.830Z",
+        "command": null,
+        "action": null,
+        "status": null
+      },
+      {
+        "eventId": "312e8772b17f16ead3b5d576a8d6576d81b666d7ab9879476963267488a7c4e7",
+        "type": "outbound_queued",
+        "at": "2026-05-07T18:09:27.830Z",
+        "command": null,
+        "action": null,
+        "status": "queued_only"
+      },
+      {
+        "eventId": "3a75ecd008a22411de672dfd32f59c0078ff49e8c7da475432e7153bddb18d42",
+        "type": "command_received",
+        "at": "2026-05-07T18:09:27.829Z",
+        "command": "/brain",
+        "action": "brain-dump",
+        "status": null
+      },
+      {
+        "eventId": "be4f595b6e004d2f1e2d43f08558025e09b240b970e95771470139110863f9b7",
+        "type": "control_intent",
+        "at": "2026-05-07T18:09:27.829Z",
+        "command": "/pause",
+        "action": "pause-lane",
+        "status": "queued"
+      }
+    ]
+  }
+}

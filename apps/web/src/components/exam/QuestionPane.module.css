@@ -1,0 +1,67 @@
+.pane {
+  min-width: 0;
+  overflow-y: auto;
+  border-right: 1px solid var(--exam-border);
+  background: #fff;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.info {
+  width: min(58rem, 100%);
+  margin: 0 0 1.25rem;
+  background: #efefef;
+  color: #000;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 0.65rem 0.8rem;
+}
+
+.meta {
+  margin: 0;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.stem {
+  margin: 0.2rem 0 0;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.prompt {
+  position: relative;
+  margin: 1.6rem 0 0;
+  padding-left: 1.6rem;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.prompt::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--exam-blue-700);
+  content: "\25b8";
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.submit {
+  min-width: 6.4rem;
+  min-height: 2.35rem;
+  border: 0;
+  background: var(--exam-blue-700);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  margin-top: 1.25rem;
+  padding: 0.45rem 1rem;
+}
+
+.submit:disabled {
+  cursor: default;
+  opacity: 0.62;
+}

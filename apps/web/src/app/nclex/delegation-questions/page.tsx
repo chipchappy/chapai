@@ -5,11 +5,22 @@ import { getLiveContentSummary } from "@/lib/live-content-summary";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "NCLEX delegation questions",
+  title: "NCLEX Delegation Questions — Free RN, LPN, UAP Practice with Rationales",
   description:
-    "Practice NCLEX delegation questions with clearer safety rationales, prioritization coaching, and a calmer package-first study flow.",
-  alternates: {
-    canonical: "/nclex/delegation-questions",
+    "Free NCLEX delegation practice questions using the NCSBN 5-rights framework. RN vs LPN vs UAP scenarios with full rationales. Updated for the 2026 NCSBN test plan.",
+  alternates: { canonical: "/nclex/delegation-questions" },
+  keywords: [
+    "NCLEX delegation questions",
+    "free NCLEX delegation questions",
+    "NCLEX RN LPN UAP delegation",
+    "NCSBN 5 rights of delegation",
+    "NCLEX delegation practice",
+  ],
+  openGraph: {
+    title: "NCLEX Delegation Questions — Free RN, LPN, UAP Practice",
+    description: "Free NCLEX delegation practice with NCSBN 5-rights framework. Updated for 2026.",
+    url: "https://claritynclex.com/nclex/delegation-questions",
+    type: "article",
   },
 };
 

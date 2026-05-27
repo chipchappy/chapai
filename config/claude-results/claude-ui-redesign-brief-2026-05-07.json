@@ -1,0 +1,44 @@
+{
+  "id": "claude-ui-redesign-brief-2026-05-07",
+  "status": "completed",
+  "createdAt": "2026-05-07T19:51:22.7248497Z",
+  "completedAt": "2026-05-07T19:51:22.7248497Z",
+  "readOnly": true,
+  "agent": {
+    "name": "Sartre",
+    "agentId": "019e03f7-f664-79e2-99d6-114f42b6436e",
+    "lane": "claude-code",
+    "runtime": "Claude UI Design Agent lane"
+  },
+  "directive": "Prove the agentic swarm is directable by assigning the Claude lane to redesign the chart review section and the agentic control dashboard.",
+  "summary": "The Claude-lane worker completed a read-only UI brief for ClinicalReviewStation and /ops. It recommended an EHR-style chart workstation, dense Palantir/Linear operator grid, critical status strip, retained answer-blind behavior, and durable proof artifacts.",
+  "acceptedRecommendations": [
+    "Keep /ops as the truthful single operator control surface.",
+    "Put critical swarm status before deep dashboard panels: blocked goals, heartbeat restarts, stale agents, queued overrides.",
+    "Redesign ClinicalReviewStation as an EHR-style workstation with patient banner, chart tabs, cue rail, active panel, rationale, sources, and tutor dock.",
+    "Preserve pre-submit answer blindness and expose rationale/tutor only as locked states until answer submission.",
+    "Use flat dark ops colors and off-white chart-paper colors; avoid purple, glass, decorative gradients, and ornamental motion."
+  ],
+  "targetFiles": [
+    "apps/web/src/components/practice/ClinicalReviewStation.tsx",
+    "apps/web/src/components/practice/ClinicalReviewStation.module.css",
+    "apps/web/src/components/dashboard/OpsDashboard.tsx",
+    "config/claude-employee-queue.json",
+    "config/claude-results/claude-ui-redesign-brief-2026-05-07.json",
+    "audit/proofs/claude-ui-redesign-brief-2026-05-07.run.json"
+  ],
+  "guardrails": [
+    "Read-only Claude design lane did not mutate files directly.",
+    "No outbound messages or external account actions were taken.",
+    "Correct answer, rationale target, and tutor explanation stay locked before submit.",
+    "Dashboard shows missing meters honestly instead of inventing live data."
+  ],
+  "acceptanceChecks": [
+    "cmd /c npm run type-check --workspace=@chapai/web",
+    "cmd /c npm run build --workspace=@chapai/web",
+    "Browser check /ops for directive strip and operator panels.",
+    "Browser check chart review for data-claude-redesign marker and clinical decision workspace copy."
+  ],
+  "inputHash": "eec729ca7a688f43d0ac524d19d209e9f8f3557931187620bf15f70c9c54ada4",
+  "outputHash": "a8ddd9c0bf80156c9d84c8d166c98d7944f8b38cb6ae02839140785fa68d4423"
+}

@@ -1,11 +1,9 @@
-import Image from "next/image";
-import { cookies } from "next/headers";
-import { ACCESS_KEY_COOKIE } from "@/lib/access-keys";
-import { PAID_ACCESS_COOKIE, resolvePremiumAccess } from "@/lib/premium-access";
+import BrandMark from "@/components/brand/BrandMark";
+import { getServerAccessContext } from "@/lib/server-access";
 
 export const metadata = {
   title: "Demo Access | Clarity",
-  description: "Redeem a founder, creator, tester, or reviewer key to unlock the upgraded Clarity preview.",
+  description: "Redeem an approved access key to unlock the upgraded Clarity preview.",
   robots: {
     index: false,
     follow: false,
@@ -58,45 +56,41 @@ export default async function DemoAccessPage({
   const params = (await searchParams) ?? {};
   const nextPath = params.next && params.next.startsWith("/") ? params.next : "/demo";
   const errorCopy = getErrorCopy(params.error);
-  const cookieStore = await cookies();
-  const access = resolvePremiumAccess({
-    accessKeyCode: cookieStore.get(ACCESS_KEY_COOKIE)?.value,
-    paidAccessToken: cookieStore.get(PAID_ACCESS_COOKIE)?.value,
-  });
+  const { access } = await getServerAccessContext();
   const founderAccess = access.source === "founder-key";
-  const paidAccess = access.source === "paid-cookie";
+  const paidAccess = access.source === "server-entitlement";
   const unlocked = access.tier !== "free";
+  const canOpenBoardroom =
+    access.accessType === "founder-pass"
+    || access.accessType === "tester-pass"
+    || access.accessType === "creator-pass"
+    || access.accessType === "reviewer-pass";
 
   return (
     <main className="page-shell">
       <section className="overflow-hidden rounded-[34px] border border-border bg-[linear-gradient(135deg,rgba(247,242,233,0.98),rgba(244,248,243,0.94))] shadow-card">
         <div className="grid gap-8 px-6 py-6 md:px-8 md:py-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
           <div className="max-w-2xl">
-            <span className="section-label">Founder, creator, and tester access</span>
+            <span className="section-label">Approved preview access</span>
             <h1 className="mt-4 font-serif text-[clamp(2.9rem,6vw,4.9rem)] leading-[0.92] text-dark">
               Redeem a Clarity preview key.
             </h1>
             <p className="mt-4 max-w-xl text-base leading-7 text-muted">
-              Use a founder, creator, tester, or reviewer key to unlock the upgraded practice center, premium study
-              modes, and AI tutor flow without relying on a fake demo shell.
+              Use an approved founder, creator, tester, or reviewer key to unlock the upgraded practice center,
+              premium study modes, and AI tutor flow without relying on a fake demo shell.
             </p>
             {unlocked ? (
               <div className="mt-6 rounded-[22px] border border-[rgba(90,127,136,0.18)] bg-[rgba(255,252,247,0.82)] p-4">
                 <p className="text-sm font-semibold text-dark">
                   {paidAccess
-                    ? "Paid premium access is already active in this browser."
+                    ? "Paid premium access is already active on this account."
                     : founderAccess
-                      ? "Founder full access is already active in this browser."
-                      : "Preview premium access is already active in this browser."}
+                      ? "Founder full access is already active for this session."
+                      : "Preview premium access is already active for this session."}
                 </p>
                 {access.displayLabel ? <p className="mt-2 text-sm leading-6 text-muted">{access.displayLabel}</p> : null}
               </div>
             ) : null}
-
-            <div className="mt-6 rounded-[20px] border border-[rgba(194,154,86,0.28)] bg-[rgba(254,249,237,0.82)] px-5 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">Founder key (full pro access)</p>
-              <p className="mt-2 font-mono text-base font-semibold tracking-wide text-dark select-all">FOUNDER-CLARITY-FULL-2026</p>
-            </div>
 
             <form action="/api/access-keys/redeem" method="post" className="mt-6 max-w-xl space-y-4">
               <input type="hidden" name="next" value={nextPath} />
@@ -107,7 +101,7 @@ export default async function DemoAccessPage({
                 <input
                   type="text"
                   name="code"
-                  placeholder="FOUNDER-CLARITY-FULL-2026"
+                  placeholder="Enter your approved access key"
                   className="w-full rounded-[18px] border border-border bg-[rgba(255,255,255,0.9)] px-4 py-3 text-base text-dark outline-none transition focus:border-[rgba(90,127,136,0.4)]"
                   autoComplete="off"
                 />
@@ -125,16 +119,8 @@ export default async function DemoAccessPage({
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <div className="overflow-hidden rounded-[32px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.88)] p-5 shadow-[0_24px_60px_rgba(52,48,41,0.08)]">
-              <Image
-                src="/brand/clarity-c-logo.jpg"
-                alt="Clarity C logo"
-                width={480}
-                height={480}
-                priority
-                sizes="(min-width: 1024px) 26vw, 72vw"
-                className="h-auto w-full max-w-[16rem] rounded-[24px] object-contain"
-              />
+            <div className="rounded-[28px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.88)] px-6 py-7 shadow-[0_18px_44px_rgba(52,48,41,0.05)]">
+              <BrandMark className="scale-[1.12] origin-center" />
             </div>
           </div>
         </div>
@@ -166,6 +152,17 @@ export default async function DemoAccessPage({
                 <span className="mt-2 block text-sm leading-6 text-muted">{item.note}</span>
               </a>
             ))}
+            {canOpenBoardroom ? (
+              <a
+                href="/dashboard/boardroom"
+                className="rounded-[24px] border border-border bg-[rgba(251,249,243,0.96)] p-5 shadow-card transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <strong className="block text-base text-dark">Open the private boardroom</strong>
+                <span className="mt-2 block text-sm leading-6 text-muted">
+                  Review live agent progress, active board meetings, and summon controls from the private operator surface.
+                </span>
+              </a>
+            ) : null}
           </div>
         </section>
       ) : null}

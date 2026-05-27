@@ -39,6 +39,23 @@ export default async function DesignReviewPage() {
   const headerFiles = getSortedVariantFiles(path.join(reviewRoot, "design-review"), "social-header-").slice(-10);
   const logoFiles = getSortedVariantFiles(path.join(reviewRoot, "brand/options"), "chapai-option-").slice(-50);
   const manifest = getReviewManifest();
+  const liveHeroOptions = [
+    {
+      key: "vascular",
+      title: "option 1: vascular field",
+      note: "Branch-led anatomy field with arterial sweep lines and a softer premium systems feel.",
+    },
+    {
+      key: "atlas",
+      title: "option 2: thoracic atlas",
+      note: "Balanced central thoracic plate with a more literal lungs-and-heart reading.",
+    },
+    {
+      key: "scan",
+      title: "option 3: diagnostic scan",
+      note: "Multi-panel medical scan composition with slice cards and a clinical interface feel.",
+    },
+  ] as const;
 
   return (
     <main className="page-shell">
@@ -49,6 +66,35 @@ export default async function DesignReviewPage() {
           Use this page to approve one premium medical hero family, one logo system, and one social-banner direction
           before creator outreach begins.
         </p>
+      </section>
+
+      <section className="mt-8 rounded-[32px] border border-border bg-[rgba(255,252,247,0.88)] p-6 shadow-card md:p-8">
+        <div className="section-label">Live front-page hero compare</div>
+        <div className="mt-4 grid gap-6 xl:grid-cols-3">
+          {liveHeroOptions.map((option) => (
+            <article key={option.key} className="rounded-[24px] border border-border bg-[rgba(251,249,243,0.96)] p-4 shadow-card">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <h2 className="font-serif text-[1.6rem] leading-[1.02] text-dark">{option.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-muted">{option.note}</p>
+                </div>
+                <a
+                  href={`/nclex?hero=${option.key}`}
+                  className="inline-flex shrink-0 items-center justify-center rounded-full border border-border bg-white/80 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dark"
+                >
+                  open
+                </a>
+              </div>
+              <div className="mt-4 overflow-hidden rounded-[20px] border border-border bg-[linear-gradient(180deg,rgba(251,250,246,0.96),rgba(241,236,228,0.9))]">
+                <iframe
+                  title={`NCLEX hero option ${option.key}`}
+                  src={`/nclex?hero=${option.key}`}
+                  className="h-[720px] w-full bg-transparent"
+                />
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="mt-8 rounded-[32px] border border-border bg-[rgba(255,252,247,0.88)] p-6 shadow-card md:p-8">

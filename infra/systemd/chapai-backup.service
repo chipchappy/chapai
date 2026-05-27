@@ -1,0 +1,13 @@
+[Unit]
+Description=ChapAI nightly memory, brain, and state backup
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/chapai
+EnvironmentFile=-/etc/chapai/chapai.env
+ExecStart=/usr/bin/node /opt/chapai/scripts/ops/chapai-backup.mjs --retention-days=14
+User=chapai
+Group=chapai
+NoNewPrivileges=true

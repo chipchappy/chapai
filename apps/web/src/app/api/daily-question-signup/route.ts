@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "Enter a valid email." }, { status: 400 });
   }
 
-  const result = addDailyQuestionLead({
+  const result = await addDailyQuestionLead({
     email,
     exam,
     role,
@@ -38,6 +38,6 @@ export async function POST(request: Request) {
     ok: true,
     email: result.email,
     total: result.total,
-    summary: getDailyQuestionLeadSummary(),
+    summary: await getDailyQuestionLeadSummary(),
   });
 }

@@ -1,6 +1,5 @@
 import DailyQuestionSignup from "./DailyQuestionSignup";
 import SplitImageHero from "./SplitImageHero";
-import { getArtworkForExam } from "./marketingArtwork";
 
 interface ExamLandingProps {
   exam: "ccrn" | "nclex";
@@ -39,8 +38,6 @@ export default function ExamLanding({
   urgencyTitle,
   urgencyBody,
 }: ExamLandingProps) {
-  const artwork = getArtworkForExam(exam);
-
   return (
     <main className="page-shell">
       <SplitImageHero
@@ -53,7 +50,7 @@ export default function ExamLanding({
         secondaryHref="/quiz"
         secondaryLabel="Preview questions"
         supportLine="AI review, original questions, and a cleaner study flow."
-        artwork={artwork}
+        tone={exam === "ccrn" ? "sage" : "cool"}
       />
 
       <section className="mt-8 grid gap-4 rounded-[28px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.84)] p-6 shadow-card md:grid-cols-3">

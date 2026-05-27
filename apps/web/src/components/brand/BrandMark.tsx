@@ -8,15 +8,16 @@ interface BrandMarkProps {
 export default function BrandMark({ compact = false, className = "" }: BrandMarkProps) {
   const mark = (
     <span
-      className="site-mark-icon flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden"
-      style={{ background: "transparent", border: "0", boxShadow: "none", borderRadius: "18px" }}
+      className="site-mark-icon flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden"
+      style={{ background: "transparent", border: "0", boxShadow: "none", borderRadius: "16px" }}
     >
       <Image
         src="/brand/clarity-c-logo.jpg"
         alt="Clarity C logo"
-        width={88}
-        height={88}
-        className="h-full w-full rounded-[18px] object-contain"
+        width={112}
+        height={112}
+        priority
+        className="h-full w-full rounded-[16px] object-contain"
       />
     </span>
   );

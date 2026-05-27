@@ -1,0 +1,16 @@
+export const brandTokens = {
+  bg: "#F7F1E6",
+  bgElevated: "#FBF7EE",
+  bgTinted: "#F0E9DB",
+  text: "#1E2A24",
+  textMuted: "#4E5A53",
+  textHint: "#7A857E",
+  sage: "#6B8A6E",
+  sageDeep: "#3E5B45",
+  sageDeepHover: "#2E4734",
+  ocean: "#6FA1A3",
+  oceanDeep: "#3F6F75",
+  adobe: "#B85C3D",
+  adobeSoft: "#D9876B",
+  gold: "#B0935A",
+} as const;

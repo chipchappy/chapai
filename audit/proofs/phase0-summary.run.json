@@ -1,0 +1,110 @@
+{
+  "generatedAt": "2026-05-06T23:02:46.003Z",
+  "repoRoot": "C:/Users/Chapman/Desktop/ai/chapai",
+  "agents": 15,
+  "deadAgents": [],
+  "classifications": {
+    "BROKEN": [
+      "explorer"
+    ],
+    "INEFFICIENT": [
+      "orchestrator",
+      "frontend",
+      "backend",
+      "content",
+      "manager",
+      "nemoclaw",
+      "claude-code",
+      "social-studio",
+      "scout",
+      "explorer",
+      "gemini-audit",
+      "antigravity",
+      "outreach-email",
+      "growth-orchestrator",
+      "mobile-product"
+    ],
+    "MISCONFIGURED": [
+      "orchestrator",
+      "frontend",
+      "backend",
+      "content",
+      "manager",
+      "nemoclaw",
+      "social-studio",
+      "scout",
+      "explorer",
+      "outreach-email",
+      "growth-orchestrator",
+      "mobile-product"
+    ],
+    "ORPHANED": [
+      "explorer"
+    ],
+    "REDUNDANT": [],
+    "MISSING": [
+      "orchestrator",
+      "frontend",
+      "backend",
+      "content",
+      "manager",
+      "nemoclaw",
+      "claude-code",
+      "social-studio",
+      "scout",
+      "explorer",
+      "gemini-audit",
+      "antigravity",
+      "outreach-email",
+      "growth-orchestrator",
+      "mobile-product"
+    ]
+  },
+  "environmentGates": [
+    {
+      "path": "C:/Users/Chapman/AppData/Local/ChappiAi/gaming-mode.enabled",
+      "exists": true,
+      "effect": "NCLEX live curation and rebuild scripts return immediately unless LOCALAPPDATA is clean."
+    }
+  ],
+  "auditDry": {
+    "exitCode": 0,
+    "proof": "agent-audit-dry.run.json",
+    "outputHash": "6a48a56e834fb187be52dd47779d509eb540f77daedd1f1a2b95cbf4068043ce"
+  },
+  "refinementUnit": {
+    "exitCode": 0,
+    "proof": "nclex-refinement-unit.run.json",
+    "outputHash": "2d6cb1750e0bc5a12f2a9477747e8df020d892eea3bc37425bfb4e61e357becf"
+  },
+  "nclexPipeline": {
+    "exitCode": 0,
+    "proof": "nclex-pipeline-e2e-5-question.run.json",
+    "outputHash": "d7aed0633ee54ad2a5d398ddbb4b2da229a4f092c57a662a1de74d36bc2d5966",
+    "result": {
+      "seededQuestions": 5,
+      "liveQuestions": 5,
+      "reviewDecision": "eligible_for_curated_promotion",
+      "strictPromotionReady": 5,
+      "curationPromotedCount": 5,
+      "secondPassSummary": {
+        "sourceCount": 5,
+        "uniqueIds": 5,
+        "approvedRefinedUsableUnique": 5,
+        "needsReview": 0,
+        "approved": 5,
+        "refined": 0,
+        "rejected": 0,
+        "topUpNeeded": false,
+        "remainingTo5000": 0
+      }
+    }
+  },
+  "sourceFiles": {
+    "registry": "config/employee-registry.json",
+    "capabilityAudit": "config/agent-capability-audit.json",
+    "unifiedGuild": "config/unified-agent-guild-state.json",
+    "heartbeats": "config/agent-heartbeats.json",
+    "guildLoop": "config/guild-loop-state.json"
+  }
+}

@@ -1,107 +1,187 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
-import Link from "next/link";
+import { IBM_Plex_Mono, Inter, Newsreader } from "next/font/google";
 import "@/styles/globals.css";
-import BrandMark from "@/components/brand/BrandMark";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import BrandHeader from "@/components/marketing/BrandHeader";
+import FooterMinimal from "@/components/marketing/FooterMinimal";
+import { getServerEnv } from "@/lib/env";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const playfair = Playfair_Display({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["600", "700", "800"],
+  variable: "--font-newsreader",
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const SITE_URL = "https://claritynclex.com";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clarityccrn.chapaisolutions.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? SITE_URL),
   title: {
-    default: "Clarity Clinical Prep | Premium NCLEX and CCRN prep",
+    default: "Clarity Clinical Prep | Free NCLEX Practice Test & NGN Question Bank",
     template: "%s | Clarity Clinical Prep",
   },
   description:
-    "Premium NCLEX and CCRN preparation with original clinical scenarios, AI rationale, cleaner design, and a calmer medical-tech study flow.",
+    "Free NCLEX practice test with real NGN case studies, SATA, bow-tie, and matrix questions. Premium bank starts at $9.99/mo — undercuts UWorld, Kaplan, and Bootcamp.",
   keywords: [
+    "free NCLEX practice test",
+    "free NCLEX practice questions",
+    "free NCLEX prep",
+    "free NCLEX NGN questions",
+    "free NCLEX case studies",
+    "NCLEX-RN practice exam",
+    "NGN case studies",
+    "NCLEX SATA questions",
+    "NCLEX bow tie questions",
+    "NCLEX matrix questions",
+    "NCLEX prioritization questions",
+    "NCLEX delegation questions",
+    "NCLEX pharmacology questions",
+    "NCLEX practice questions free",
+    "free nursing exam prep",
     "CCRN practice questions",
-    "NCLEX practice questions",
-    "CCRN study tool",
-    "NCLEX study tool",
-    "AI tutor nursing",
-    "critical care exam prep",
-    "nursing exam prep",
+    "AI nursing tutor",
+    "Next Generation NCLEX practice",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
+  icons: {
+    icon: [
+      { url: "/icon.jpg", type: "image/jpeg" },
+      { url: "/logo.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/icon.jpg",
+    apple: [{ url: "/apple-icon.jpg", sizes: "180x180" }],
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "Clarity Clinical Prep | Premium NCLEX and CCRN prep",
-    description: "Original questions, AI tutor, and a cleaner clinical study system for ICU nurses and NCLEX test-takers.",
+    title: "Clarity Clinical Prep | Free NCLEX Practice Test & NGN Bank",
+    description:
+      "Free NCLEX practice test, premium NGN question bank, AI tutor, and 5 readiness exams — for NCLEX-RN test-takers. From $9.99/mo.",
     type: "website",
-    url: "/",
+    url: SITE_URL,
     siteName: "Clarity Clinical Prep",
+    locale: "en_US",
+    images: [
+      { url: "/logo.png", width: 512, height: 512, alt: "Clarity Clinical Prep" },
+      { url: "/brand/clarity-c-logo.jpg", width: 251, height: 242, alt: "Clarity C logo" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clarity Clinical Prep | Premium NCLEX and CCRN prep",
-    description: "Original questions, AI tutor, and a cleaner clinical study system.",
+    title: "Clarity Clinical Prep | Free NCLEX Practice Test & NGN Bank",
+    description: "Free NCLEX practice test, premium NGN bank, AI tutor, and 5 readiness exams.",
+    images: ["/logo.png"],
   },
+  category: "education",
+  applicationName: "Clarity Clinical Prep",
+  creator: "Chapai Solutions LLC",
+  publisher: "Chapai Solutions LLC",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const globalSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#org`,
+      name: "Clarity Clinical Prep",
+      alternateName: ["Clarity NCLEX", "ChapAI", "Chapai Solutions"],
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+      sameAs: [
+        "https://www.tiktok.com/@claritynclex",
+        "https://www.instagram.com/claritynclex",
+        "https://www.youtube.com/@claritynclex",
+        "https://x.com/claritynclex",
+        "https://www.linkedin.com/company/chapai-solutions",
+      ],
+      parentOrganization: {
+        "@type": "Organization",
+        name: "Chapai Solutions LLC",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "support@chapaisolutions.com",
+        availableLanguage: ["English"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Clarity Clinical Prep",
+      description:
+        "Free NCLEX practice test, premium NGN question bank, AI tutor, and 5 readiness exams.",
+      publisher: { "@id": `${SITE_URL}/#org` },
+      inLanguage: "en-US",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE_URL}/quiz?category={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "EducationalOrganization",
+      "@id": `${SITE_URL}/#edu`,
+      name: "Clarity Clinical Prep",
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      description:
+        "Online nursing exam preparation platform for NCLEX-RN and CCRN candidates.",
+    },
+  ],
+};
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const env = getServerEnv();
+
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="bg-bg font-sans text-dark antialiased">
-        <nav className="site-nav-wrap">
-          <div className="mx-auto flex h-20 max-w-7xl items-center gap-5 rounded-full border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.9)] px-5 shadow-[0_14px_40px_rgba(52,48,41,0.06)] backdrop-blur md:px-7">
-            <Link href="/" className="shrink-0">
-              <BrandMark />
-            </Link>
-            <div className="hidden flex-1 items-center justify-center gap-5 font-sans text-sm font-medium text-[#61676B] md:flex">
-              <Link href="/">Home</Link>
-              <Link href="/nclex">NCLEX</Link>
-              <Link href="/ccrn">CCRN</Link>
-              <Link href="/quiz">Practice</Link>
-              <Link href="/upgrade">Plans</Link>
-            </div>
-            <div className="ml-auto flex items-center gap-3 md:gap-5">
-              <Link
-                href="/demo-access"
-                className="hidden items-center justify-center rounded-full border border-[rgba(74,85,89,0.14)] bg-transparent px-4 py-2.5 font-sans text-sm font-semibold text-[#4A5559] transition hover:border-[rgba(74,85,89,0.3)] md:inline-flex"
-              >
-                Enter Key
-              </Link>
-              <Link
-                href="/upgrade"
-                className="inline-flex items-center justify-center rounded-full bg-[#4A5559] px-5 py-3 font-sans text-sm font-semibold text-white transition hover:bg-[#3B4549]"
-              >
-                Get Access
-              </Link>
-            </div>
-          </div>
-        </nav>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
+      </head>
+      <body className="font-sans text-[var(--c-text)] antialiased">
+        <GoogleAnalytics measurementId={env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <BrandHeader />
         {children}
-        <footer className="site-footer">
-          <div className="site-footer-inner">
-            <div className="site-footer-brand">
-              <BrandMark />
-              <p>Original nursing exam products with a calmer clinical surface.</p>
-            </div>
-            <div className="site-footer-links">
-              <Link href="/ccrn">CCRN</Link>
-              <Link href="/nclex">NCLEX</Link>
-              <Link href="/upgrade">Plans</Link>
-              <Link href="/quiz">Practice</Link>
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/terms">Terms</Link>
-            </div>
-          </div>
-        </footer>
+        <FooterMinimal />
       </body>
     </html>
   );

@@ -1,8 +1,6 @@
-import Image from "next/image";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { ACCESS_KEY_COOKIE } from "@/lib/access-keys";
-import { PAID_ACCESS_COOKIE, resolvePremiumAccess } from "@/lib/premium-access";
+import { FrontpageSignalRings } from "@/components/marketing/frontpage";
+import { getServerAccessContext } from "@/lib/server-access";
 
 export const dynamic = "force-dynamic";
 
@@ -49,18 +47,14 @@ const practiceLinks = [
 ] as const;
 
 export default async function DemoPage() {
-  const cookieStore = await cookies();
-  const access = resolvePremiumAccess({
-    accessKeyCode: cookieStore.get(ACCESS_KEY_COOKIE)?.value,
-    paidAccessToken: cookieStore.get(PAID_ACCESS_COOKIE)?.value,
-  });
+  const { access } = await getServerAccessContext();
 
   if (access.tier === "free") {
     redirect("/demo-access?next=%2Fdemo");
   }
 
   const founderAccess = access.source === "founder-key";
-  const paidAccess = access.source === "paid-cookie";
+  const paidAccess = access.source === "server-entitlement";
 
   return (
     <main className="page-shell">
@@ -84,26 +78,15 @@ export default async function DemoPage() {
                 {founderAccess
                   ? "Founder full access is active for every premium mode, simulation, and tutor surface."
                   : paidAccess
-                    ? "Paid premium access is active in this browser. Launch the richer study flows below to validate the live product surface."
+                    ? "Paid premium access is active on this account. Launch the richer study flows below to validate the live product surface."
                     : "Preview access is active. Launch the richer study flows below to validate the product surface."}
               </p>
               {access.displayLabel ? <p className="mt-2 text-sm leading-6 text-muted">{access.displayLabel}</p> : null}
             </div>
           </div>
 
-          <div className="relative">
-            <div className="absolute inset-[8%_12%_10%_12%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.7),transparent_65%)]" />
-            <div className="relative overflow-hidden rounded-[30px] border border-[rgba(74,85,89,0.08)] bg-[rgba(255,251,245,0.78)] p-4 shadow-[0_24px_60px_rgba(52,48,41,0.08)]">
-              <Image
-                src="/assets/brain-poster-clean.png"
-                alt="Clarity preview support artwork"
-                width={608}
-                height={712}
-                priority
-                sizes="(min-width: 1024px) 32vw, 90vw"
-                className="h-auto w-full object-contain"
-              />
-            </div>
+          <div className="flex min-h-[18rem] items-center justify-center lg:min-h-[26rem] lg:justify-end">
+            <FrontpageSignalRings tone="cool" className="max-w-[22rem] opacity-90 md:max-w-[28rem]" />
           </div>
         </div>
       </section>

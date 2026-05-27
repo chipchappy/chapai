@@ -1,0 +1,19 @@
+[Unit]
+Description=ChapAI Next.js operator dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/chapai
+EnvironmentFile=-/etc/chapai/chapai.env
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/npm run start --workspace=@chapai/web
+Restart=on-failure
+RestartSec=10
+User=chapai
+Group=chapai
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

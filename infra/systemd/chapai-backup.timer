@@ -1,0 +1,10 @@
+[Unit]
+Description=Run ChapAI backup nightly
+
+[Timer]
+OnCalendar=*-*-* 03:30:00
+Persistent=true
+Unit=chapai-backup.service
+
+[Install]
+WantedBy=timers.target

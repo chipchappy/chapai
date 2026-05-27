@@ -4,14 +4,21 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:worker": "opennextjs-cloudflare build",
+    "start": "next start",
+    "build": "node scripts/clean-next-build.cjs && next build && node scripts/ensure-required-server-files.cjs",
+    "build:worker": "next build && opennextjs-cloudflare build",
     "deploy": "opennextjs-cloudflare deploy",
     "preview": "opennextjs-cloudflare preview",
+    "seed:d1:questions": "node scripts/export-d1-question-seed.mjs",
+    "d1:migrate:prod": "wrangler d1 execute chapai-prod --remote --file=../../packages/db/drizzle/migration-0001.sql",
+    "d1:sync-questions:prod": "node ../../scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --reset-questions",
     "lint": "next lint",
-    "type-check": "tsc --noEmit -p tsconfig.typecheck.json"
+    "lint:boundaries": "node scripts/check-aesthetic-boundaries.mjs",
+    "type-check": "tsc --noEmit -p tsconfig.typecheck.json",
+    "smoke:test": "playwright test"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.29.2",
     "@auth/core": "^0.34.0",
     "@chapai/brains": "file:../../packages/brains",
     "@chapai/content": "file:../../packages/content",
@@ -19,6 +26,10 @@
     "@cloudflare/workers-types": "^4.20241106.0",
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
+    "@playwright/test": "^1.59.1",
+    "@sentry/nextjs": "^10.47.0",
+    "@supabase/ssr": "^0.10.0",
+    "@supabase/supabase-js": "^2.101.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "drizzle-orm": "^0.36.0",
@@ -26,6 +37,8 @@
     "lucide-react": "^0.400.0",
     "next": "^15.0.0",
     "next-auth": "^5.0.0-beta.22",
+    "posthog-js": "^1.364.7",
+    "posthog-node": "^5.21.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recharts": "^2.12.0",
@@ -44,6 +57,6 @@
     "postcss": "^8.4.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.4.0",
-    "wrangler": "^3.65.0"
+    "wrangler": "^4.82.1"
   }
 }

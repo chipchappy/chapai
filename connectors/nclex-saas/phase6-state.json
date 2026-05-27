@@ -1,0 +1,222 @@
+{
+  "generatedAt": "2026-05-07T18:46:03.569Z",
+  "phase": "Phase 6",
+  "project": "NCLEX SaaS",
+  "domain": "claritynclex.chapaisolutions.com",
+  "sourceFreshness": {
+    "bankHealth": "2026-05-04T17:15:48.861Z",
+    "refinement": "2026-05-05T21:15:10.240Z",
+    "topUp": "2026-05-05T21:15:10.240Z",
+    "promotion": "2026-05-04T03:41:58.965Z",
+    "growthQueue": "2026-05-06T15:57:53.1241904-07:00",
+    "emailDispatch": "2026-05-04T19:32:48.0483499-07:00",
+    "opportunityRadar": "2026-05-06T15:57:44.5383926-07:00"
+  },
+  "kpis": {
+    "liveQuestions": 389,
+    "targetQuestions": 2000,
+    "remainingToTarget": 1611,
+    "progressPct": 19,
+    "usableTarget": 5000,
+    "progressToUsableTargetPct": 8,
+    "ngnLive": 132,
+    "ngnRatio": 34,
+    "ngnTarget": 60,
+    "approvedRefinedUsable": 388,
+    "needsReview": 1,
+    "remainingTo5000": 4612,
+    "duplicateFamiliesCollapsed": 20537,
+    "duplicateFingerprintsCollapsed": 20502
+  },
+  "truth": {
+    "deploymentParity": "matched",
+    "syncParity": "matched",
+    "topItemDeficits": [
+      {
+        "key": "mcq",
+        "target": 1500,
+        "live": 256,
+        "deficit": 1244
+      },
+      {
+        "key": "case_study",
+        "target": 875,
+        "live": 39,
+        "deficit": 836
+      },
+      {
+        "key": "bow_tie",
+        "target": 875,
+        "live": 39,
+        "deficit": 836
+      },
+      {
+        "key": "sata",
+        "target": 750,
+        "live": 25,
+        "deficit": 725
+      },
+      {
+        "key": "matrix",
+        "target": 500,
+        "live": 14,
+        "deficit": 486
+      }
+    ],
+    "topClientNeedDeficits": [
+      {
+        "key": "management_of_care",
+        "target": 900,
+        "live": 21,
+        "deficit": 879
+      },
+      {
+        "key": "pharmacological",
+        "target": 800,
+        "live": 28,
+        "deficit": 772
+      },
+      {
+        "key": "safety_infection_control",
+        "target": 650,
+        "live": 20,
+        "deficit": 630
+      },
+      {
+        "key": "risk_reduction",
+        "target": 600,
+        "live": 10,
+        "deficit": 590
+      },
+      {
+        "key": "health_promotion",
+        "target": 450,
+        "live": 5,
+        "deficit": 445
+      }
+    ],
+    "promotion": {
+      "batchId": "mixed-batch-1703",
+      "promotableCount": 24,
+      "duplicateFingerprintCount": 0,
+      "liveCollisionCount": 0
+    },
+    "nextAction": "Do not run blind bulk batching. Use these deficits to allocate reviewed, non-overlapping refinement/generation slices only after the flagged existing bank is reviewed."
+  },
+  "lanes": [
+    {
+      "lane": "Product-Ops",
+      "ownerAgent": "content",
+      "goal": "Continue reviewed NCLEX loop toward 2,000 live questions and at least 60% NGN distribution.",
+      "status": "active_gap",
+      "progress": 19,
+      "blocked": true,
+      "metrics": {
+        "liveQuestions": 389,
+        "targetQuestions": 2000,
+        "remainingToTarget": 1611,
+        "usableTarget": 5000,
+        "ngnLive": 132,
+        "ngnRatio": 34,
+        "ngnTarget": 60,
+        "approvedRefinedUsable": 388,
+        "needsReview": 1,
+        "remainingTo5000": 4612,
+        "duplicateFamiliesCollapsed": 20537,
+        "deploymentParity": "matched",
+        "syncParity": "matched",
+        "promotableCandidates": 24
+      },
+      "nextActions": [
+        "Do not run blind bulk batching. Use these deficits to allocate reviewed, non-overlapping refinement/generation slices only after the flagged existing bank is reviewed.",
+        "Allocate new reviewed items to thin families and underrepresented client-needs only.",
+        "Prefer NGN shapes for the next wave until the 60% target is met."
+      ]
+    },
+    {
+      "lane": "Growth",
+      "ownerAgent": "growth-orchestrator",
+      "goal": "Instrument funnel, run weekly content experiments, and keep growth approvals visible.",
+      "status": "blocked",
+      "progress": 60,
+      "blocked": true,
+      "metrics": {
+        "approvalItems": 2,
+        "dispatchApproved": 0,
+        "sent": 0,
+        "blocker": "Email approval outbox is missing."
+      },
+      "nextActions": [
+        "Approve one founder-safe reply wave so Mercury can begin compounding social signals.",
+        "Configure the email provider vars so Beacon can move from packaging to delivery.",
+        "Use the daily-question email as the cheapest recurring touchpoint for prospective buyers."
+      ]
+    },
+    {
+      "lane": "Bizdev",
+      "ownerAgent": "scout",
+      "goal": "Scan nursing forums and creator channels for unmet needs; produce weekly opportunity briefs.",
+      "status": "missing_public_source_ingest",
+      "progress": 10,
+      "blocked": true,
+      "metrics": {
+        "liveOpportunities": 0,
+        "manualQueue": 0,
+        "searchAccess": "attempting"
+      },
+      "nextActions": [
+        "Reply to live CCRN, CRNA-school, and ICU-study posts with helpful bedside takes and a soft CTA.",
+        "Test founder-offer outreach with 5 CCRN creators and 5 NCLEX creators in the nano/micro range.",
+        "Keep one post queue and one reply queue ready so marketing can move the moment credentials or manual time are available."
+      ]
+    },
+    {
+      "lane": "Intel",
+      "ownerAgent": "explorer",
+      "goal": "Monitor UWorld, Archer, Bootcamp, and NCLEX market movement without private scraping.",
+      "status": "watchlist_seeded",
+      "progress": 35,
+      "blocked": true,
+      "metrics": {
+        "watchlistItems": 4,
+        "competitorLedger": "missing",
+        "tosBoundary": "public and official sources only"
+      },
+      "nextActions": [
+        "Create credential-gated public-source connector entries before automated competitor monitoring.",
+        "Keep findings candidate-only until operator approves memory promotion."
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "lane": "Product-Ops",
+      "status": "active_gap",
+      "reason": "active_gap"
+    },
+    {
+      "lane": "Growth",
+      "status": "blocked",
+      "reason": "Email approval outbox is missing."
+    },
+    {
+      "lane": "Bizdev",
+      "status": "missing_public_source_ingest",
+      "reason": "missing_public_source_ingest"
+    },
+    {
+      "lane": "Intel",
+      "status": "watchlist_seeded",
+      "reason": "watchlist_seeded"
+    }
+  ],
+  "sourceFiles": [
+    "config/nclex-bank-health-latest.json",
+    "packages/content/questions/nclex/review/nclex-second-pass-refinement-latest.json",
+    "packages/content/questions/nclex/review/nclex-top-up-needed.latest.json",
+    "config/nclex-wave-promotion-latest.json",
+    "config/growth-approval-queue.json",
+    "config/email-outbox/dispatch-state.json",
+    "config/social-outbox/opportunity-radar-latest.json"
+  ]
+}

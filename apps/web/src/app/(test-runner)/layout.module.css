@@ -1,0 +1,23 @@
+.examScope {
+  --exam-blue-700: #2C5D9B;
+  --exam-blue-600: #3776B5;
+  --exam-blue-100: #E8F0F8;
+  --exam-text-strong: #1A2533;
+  --exam-text-body: #2E3B47;
+  --exam-text-muted: #5C6A78;
+  --exam-border: #D6DCE3;
+  --exam-row-stripe: #F7F9FB;
+  --exam-highlight-yellow: #FFF6CC;
+  --exam-check-green: #2D8F4E;
+  --exam-x-red: #C8453A;
+  --exam-status-learning: #C8453A;
+  --exam-status-reviewing: #D6A93E;
+  --exam-status-mastered: #2D8F4E;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background: #fff;
+  color: var(--exam-text-strong);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}

@@ -1,4 +1,4 @@
-import { ACCESS_KEY_COOKIE, redeemAccessKey } from "@/lib/access-keys";
+import { ACCESS_KEY_COOKIE, redeemAccessKeyRuntime } from "@/lib/access-keys";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
@@ -36,7 +36,7 @@ function resolveOrigin(request: Request) {
 export async function POST(request: Request) {
   const { code, nextPath } = await readPayload(request);
   const safeNext = nextPath.startsWith("/") ? nextPath : "/demo-access?unlocked=1";
-  const redeemed = redeemAccessKey(code);
+  const redeemed = await redeemAccessKeyRuntime(code);
   const origin = resolveOrigin(request);
 
   if (!redeemed.ok) {

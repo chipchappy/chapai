@@ -1,102 +1,130 @@
-import Image from "next/image";
-import type { ReactNode } from "react";
-import type { MarketingArtworkSpec } from "./marketingArtwork";
+import Link from "next/link";
+import { CcrnAnatomyArt, HomeAnatomyArt, NclexAnatomyArt } from "./heroAnatomy";
+import type { MarketingRouteTheme } from "./marketingArtwork";
 
-type PremiumArtHeroProps = {
-  backgroundColor: string;
-  eyebrow?: string;
-  title: string;
-  body: string;
-  ctaHref: string;
-  ctaLabel: string;
-  artwork?: MarketingArtworkSpec;
-  illustration?: ReactNode;
-  imageSrc?: string;
-  imageAlt?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  imageClassName?: string;
-  imageFrameClassName?: string;
-  backdropClassName?: string;
+type HeroStat = {
+  label: string;
+  value: string;
+  detail: string;
 };
 
-export default function PremiumArtHero({
-  backgroundColor,
-  eyebrow = "Clarity Clinical Prep",
-  title,
-  body,
-  ctaHref,
-  ctaLabel,
-  artwork,
-  illustration,
-  imageSrc,
-  imageAlt = "",
-  imageWidth = 640,
-  imageHeight = 560,
-  imageClassName = "",
-  imageFrameClassName = "",
-  backdropClassName,
-}: PremiumArtHeroProps) {
+type PremiumArtHeroProps = {
+  theme: MarketingRouteTheme;
+  statItems?: HeroStat[];
+};
+
+function renderAction(action: MarketingRouteTheme["primaryAction"], isPrimary: boolean) {
+  const baseClassName =
+    "inline-flex items-center justify-center rounded-[18px] px-5 py-3 font-sans text-sm font-semibold tracking-[0.01em] transition duration-200 md:px-6";
+
+  if (isPrimary) {
+    return (
+      <Link
+        href={action.href}
+        className={`${baseClassName} bg-[#1f2629] text-white shadow-[0_20px_36px_rgba(31,38,41,0.12)] hover:bg-[#2f393d]`.trim()}
+      >
+        {action.label}
+      </Link>
+    );
+  }
+
+  return (
+    <Link
+      href={action.href}
+      className={`${baseClassName} border border-[rgba(24,34,36,0.12)] bg-[rgba(255,255,255,0.76)] text-[var(--color-dark)] hover:border-[rgba(24,34,36,0.22)] hover:bg-white`.trim()}
+    >
+      {action.label}
+    </Link>
+  );
+}
+
+function renderHeroArt(heroArt: MarketingRouteTheme["heroArt"]) {
+  const className = "premium-hero-anatomy-svg";
+
+  if (heroArt === "nclex") {
+    return <NclexAnatomyArt className={className} />;
+  }
+
+  if (heroArt === "ccrn") {
+    return <CcrnAnatomyArt className={className} />;
+  }
+
+  return <HomeAnatomyArt className={className} />;
+}
+
+export default function PremiumArtHero({ theme, statItems = [] }: PremiumArtHeroProps) {
   return (
     <section
-      className="overflow-hidden rounded-[36px] border border-[rgba(74,85,89,0.08)] shadow-[0_28px_80px_rgba(52,48,41,0.08)]"
-      style={{ backgroundColor }}
+      className="premium-hero-shell relative overflow-hidden border-b border-[rgba(74,85,89,0.08)] px-4 py-8 md:px-6 md:py-10 lg:px-8 lg:py-14"
+      data-route={theme.key}
+      style={
+        theme.key === "nclex"
+          ? {
+              backgroundImage:
+                "linear-gradient(90deg, rgba(15, 23, 25, 0.98) 0%, rgba(15, 23, 25, 0.92) 42%, rgba(15, 23, 25, 0.68) 66%, rgba(15, 23, 25, 0.78) 100%), url('/assets/adobe-nclex-hero.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center right",
+            }
+          : {
+              background: `linear-gradient(180deg, ${theme.background.base}, ${theme.background.section})`,
+            }
+      }
     >
-      <div className="mx-auto grid min-h-[34rem] max-w-7xl items-center gap-10 px-6 py-10 md:px-10 lg:min-h-[38rem] lg:grid-cols-[1.02fr_0.98fr] lg:px-14 lg:py-14">
-        <div className="max-w-[35rem]">
-          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-[#70777B]">
-            {eyebrow}
-          </span>
-          <h1 className="mt-4 max-w-[13ch] font-serif text-[clamp(3.9rem,7.2vw,7rem)] leading-[0.9] tracking-tight text-[#1E2328]">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-[30rem] font-sans text-[1.04rem] leading-8 text-[#5A5F63]">{body}</p>
+      <div className="premium-hero-atmosphere">
+        <div className="premium-hero-atmosphere-grid" />
+        <div className="premium-hero-atmosphere-wash premium-hero-atmosphere-wash-a" />
+        <div className="premium-hero-atmosphere-wash premium-hero-atmosphere-wash-b" />
+      </div>
 
-          <div className="mt-8">
-            <a
-              href={ctaHref}
-              className="inline-flex items-center justify-center rounded-full bg-[#4A5559] px-7 py-3.5 font-sans text-sm font-semibold text-white transition hover:bg-[#3B4549]"
-            >
-              {ctaLabel}
-            </a>
-          </div>
-        </div>
+      <div className="relative mx-auto max-w-[1180px]">
+        <div className="premium-hero-layout">
+          <div className="premium-hero-copy-panel">
+            <div className="premium-hero-meta-row">
+              <span className="premium-hero-dot" />
+              <span className="premium-hero-brand">{theme.heroLabel}</span>
+              <span className="premium-hero-divider" />
+              <span className="premium-hero-note">{theme.heroNote}</span>
+            </div>
 
-        <div className="relative flex min-h-[22rem] items-center justify-center lg:min-h-[36rem] lg:justify-end">
-          {artwork ? (
-            <figure
-              className={`relative w-full overflow-hidden rounded-[28px] border border-[rgba(74,85,89,0.07)] shadow-[0_32px_72px_rgba(63,55,47,0.11)] ${artwork.panelClassName}`.trim()}
-              style={{ backgroundColor: artwork.panelTone ?? backgroundColor }}
-            >
-              <Image
-                src={artwork.src}
-                alt={artwork.alt}
-                fill
-                priority
-                unoptimized
-                sizes="(min-width: 1024px) 44vw, 100vw"
-                className={`object-cover ${artwork.imageClassName}`.trim()}
-              />
-            </figure>
-          ) : illustration ? (
-            <div className="relative z-10 flex w-full items-center justify-center">{illustration}</div>
-          ) : imageSrc ? (
-            <>
-              {backdropClassName ? <div className={`absolute ${backdropClassName}`.trim()} /> : null}
-              <div className={`relative z-10 flex w-full items-center justify-center ${imageFrameClassName}`.trim()}>
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  width={imageWidth}
-                  height={imageHeight}
-                  priority
-                  unoptimized
-                  sizes="(min-width: 1024px) 42vw, 90vw"
-                  className={`h-auto w-full object-contain mix-blend-multiply contrast-[1.02] ${imageClassName}`.trim()}
-                />
+            <p className="premium-hero-eyebrow">
+              {theme.key === "home"
+                ? "premium nclex and ccrn prep"
+                : theme.key === "nclex"
+                  ? "reviewed nclex qbank with tutor-ready follow-up"
+                  : "critical-care review for bedside nurses"}
+            </p>
+
+            <h1 className="premium-hero-title">{theme.title}</h1>
+            <p className="premium-hero-body">{theme.body}</p>
+
+            {/* ── Stat chips ABOVE the CTAs so they land in the first viewport ── */}
+            {statItems.length ? (
+              <div className="premium-hero-chip-strip">
+                {statItems.map((item) => (
+                  <div key={item.label} className="premium-hero-chip-card">
+                    <span className="premium-hero-chip-label">{item.label}</span>
+                    <strong className="premium-hero-chip-value">{item.value}</strong>
+                    <p className="premium-hero-chip-detail">{item.detail}</p>
+                  </div>
+                ))}
               </div>
-            </>
-          ) : null}
+            ) : null}
+
+            <div className="premium-hero-actions">
+              {renderAction(theme.primaryAction, true)}
+              {renderAction(theme.secondaryAction, false)}
+            </div>
+
+            {theme.key === "nclex" ? (
+              <div className="premium-hero-nclex-proof">
+                <span>2026 test plan</span>
+                <strong>Six-item NGN case studies, test-day pacing, and rationale review in the product.</strong>
+              </div>
+            ) : null}
+          </div>
+          <div className="premium-hero-art-panel" aria-hidden="true">
+            <div className="premium-hero-art-figure">{renderHeroArt(theme.heroArt)}</div>
+          </div>
         </div>
       </div>
     </section>

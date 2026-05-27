@@ -1,0 +1,34 @@
+{
+  "id": "agent-outreach-email-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "b5c1ad61ccff8c55f3dd649c910efbd34fd7f5f82b791ab314b8c26b047cb795",
+  "outputHash": "4875659e48218eda950fd3ff9456801c99fb9c766a1b941d7aab97fea7119bde",
+  "exitCode": 0,
+  "output": {
+    "agentId": "outreach-email",
+    "displayName": "Beacon",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-outreach-email-lane.ps1 + scripts/run-email-dispatch.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 2,
+    "memoryEventCount": 1,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

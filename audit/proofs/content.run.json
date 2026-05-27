@@ -1,0 +1,34 @@
+{
+  "id": "agent-content-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "a8fc67dd9b3cbabc39eab8fe6ca6553c1e573227758fe28943c01d18af8ec946",
+  "outputHash": "221c1961dd6bce90e3602142f0234b9e34337c661a2596abdd0e8cd1528ceac5",
+  "exitCode": 0,
+  "output": {
+    "agentId": "content",
+    "displayName": "Hume",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-content-review.ps1 + scripts/run-reviewed-live-curation.ps1 + scripts/run-core-codex-lane.ps1 -EmployeeId content",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 3,
+    "memoryEventCount": 18,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

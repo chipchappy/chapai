@@ -1,0 +1,65 @@
+.wrap {
+  width: min(58rem, 100%);
+  margin-top: 1.25rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--exam-border);
+  padding: 0.55rem 0.65rem;
+  vertical-align: top;
+}
+
+.table th {
+  background: var(--exam-blue-100);
+  text-align: left;
+}
+
+.table tr:nth-child(even) td {
+  background: var(--exam-row-stripe);
+}
+
+.system {
+  width: 10rem;
+  font-weight: 700;
+}
+
+.segment {
+  display: inline;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.55;
+  padding: 0.05rem 0.15rem;
+  text-align: left;
+}
+
+.segment[data-selected="true"],
+.segment[data-correct="true"] {
+  background: var(--exam-highlight-yellow);
+}
+
+.segment:disabled {
+  cursor: default;
+}
+
+.marker {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-right: 0.2rem;
+}
+
+.marker[data-kind="correct"] {
+  color: var(--exam-check-green);
+}
+
+.marker[data-kind="wrong"] {
+  color: var(--exam-x-red);
+}

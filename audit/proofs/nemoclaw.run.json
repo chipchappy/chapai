@@ -1,0 +1,34 @@
+{
+  "id": "agent-nemoclaw-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "35eae14c4c5c3067fe12c8d4791337efaef6a664e850b93e3d16ee54315d7e30",
+  "outputHash": "f2018af8f191d46ddcc8aa3c87a69c045c637c23a87262a7f30b9cdffb6b8550",
+  "exitCode": 0,
+  "output": {
+    "agentId": "nemoclaw",
+    "displayName": "Nemoclaw",
+    "runtime": "nemotron",
+    "entrypoint": "../ccrn-agent/remote-control/scripts/exec_route.py worker-cycle",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 3,
+    "memoryEventCount": 3,
+    "skillCount": 9,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

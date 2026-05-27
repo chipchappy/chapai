@@ -1,0 +1,59 @@
+{
+  "id": "claude-ui-redesign-brief-2026-05-07",
+  "timestamp": "2026-05-07T19:51:22.7248497Z",
+  "phase": "swarm-directability-proof",
+  "agent": {
+    "name": "Sartre",
+    "agentId": "019e03f7-f664-79e2-99d6-114f42b6436e",
+    "lane": "claude-code",
+    "runtime": "Claude UI Design Agent lane"
+  },
+  "directive": "Redesign chart review and /ops dashboard for agentic control and viewing goals.",
+  "inputHash": "eec729ca7a688f43d0ac524d19d209e9f8f3557931187620bf15f70c9c54ada4",
+  "outputHash": "a8ddd9c0bf80156c9d84c8d166c98d7944f8b38cb6ae02839140785fa68d4423",
+  "exitCode": 0,
+  "executedMutatingEntrypoint": false,
+  "readOnly": true,
+  "inspectedFiles": [
+    "apps/web/src/app/ops/page.tsx",
+    "apps/web/src/components/dashboard/OpsDashboard.tsx",
+    "apps/web/src/components/dashboard/OpsOverridePanel.tsx",
+    "apps/web/src/components/practice/ClinicalReviewStation.tsx",
+    "apps/web/src/components/practice/PracticeTerminalPane.tsx",
+    "apps/web/src/components/marketing/frontpage/FrontpageNgDemo.tsx",
+    "apps/web/src/lib/chart-review-model.ts",
+    "apps/web/src/styles/globals.css"
+  ],
+  "resultPath": "config/claude-results/claude-ui-redesign-brief-2026-05-07.json",
+  "implementationMarkers": [
+    "apps/web/src/components/practice/ClinicalReviewStation.tsx:data-agent-directive=claude-ui-redesign-2026-05-07",
+    "apps/web/src/components/dashboard/OpsDashboard.tsx:#directive"
+  ],
+  "validation": {
+    "jsonParse": "passed",
+    "cssConstraintScan": "passed: no purple, violet, orb, glass, backdrop-blur, or radial-gradient in touched UI files",
+    "phase6NclexOrchestration": "passed",
+    "chapAiDataLayer": "passed",
+    "telegramControl": "passed",
+    "webTypeCheck": "passed",
+    "webBuild": "passed",
+    "browserProof": {
+      "server": "http://127.0.0.1:3117",
+      "auth": "founder-pass preview cookie",
+      "ops": {
+        "directive": 1,
+        "claudeTitle": 1,
+        "phase2": 1,
+        "overrideBus": 1
+      },
+      "chart": {
+        "claudeRedesignMarker": 1,
+        "clinicalDecisionWorkspace": 1,
+        "answerBlindCopy": 1,
+        "rationaleLockedCopy": 1
+      },
+      "pageErrors": 0
+    }
+  },
+  "guardrailResult": "No external sends, no answer reveal before submit, no invented dashboard data."
+}

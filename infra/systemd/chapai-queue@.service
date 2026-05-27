@@ -1,0 +1,18 @@
+[Unit]
+Description=ChapAI Redis lane queue consumer for %i
+After=network-online.target redis-server.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/chapai
+EnvironmentFile=-/etc/chapai/chapai.env
+ExecStart=/usr/bin/node /opt/chapai/scripts/ops/chapai-queue.mjs --consume --lane=%i
+Restart=always
+RestartSec=10
+User=chapai
+Group=chapai
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

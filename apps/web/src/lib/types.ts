@@ -11,6 +11,17 @@ export type QuestionType =
   | "bow_tie"
   | "scenario_mcq"
   | "decision_map_mcq";
+export type QuestionAnswer = string | string[] | Record<string, string>;
+export type CognitiveLevel = "apply" | "analyze" | "synthesize" | "evaluate";
+export type NclexClientNeed =
+  | "management_of_care"
+  | "safety_infection_control"
+  | "health_promotion"
+  | "psychosocial"
+  | "basic_care_comfort"
+  | "pharmacological"
+  | "risk_reduction"
+  | "physiological_adaptation";
 
 // CCRN Blueprint categories (% of exam)
 export const CCRN_CATEGORIES = {
@@ -48,22 +59,73 @@ export interface QuizQuestion {
   id: string;
   exam: Exam;
   type: QuestionType;
+  nclexClientNeed?: NclexClientNeed;
+  cognitiveLevel?: CognitiveLevel;
   category: string;
   subcategory?: string;
   difficulty: 1 | 2 | 3 | 4 | 5;
   stem: string;
-  options: QuestionOption[];
-  answer: string;           // "b" for MCQ, ["a","c"] serialized for SATA
-  rationale: string;
-  distractorRationales?: Record<string, string>;
   scenarioTitle?: string;
   scenario?: string;
   additionalInfo?: string;
-  matrixColumns?: string[] | null;
-  matrixRows?: Array<{ label: string; answer: string }> | null;
+  exhibits?: Array<{
+    type: "note" | "timeline" | "labs" | "vitals" | "orders" | "assessment";
+    title: string;
+    body?: string;
+    items?: string[];
+  }>;
+  chartReview?: {
+    patientTitle?: string;
+    patientCaption?: string;
+    hpi?: string[];
+    timeline?: string[];
+    labs?: Array<{
+      label: string;
+      value: string;
+      unit?: string;
+      flag?: "low" | "normal" | "high" | "critical";
+      detail?: string;
+    }>;
+    orders?: string[];
+    diagnostics?: Array<{
+      label: string;
+      value: string;
+      unit?: string;
+      flag?: "low" | "normal" | "high" | "critical";
+      detail?: string;
+    }>;
+    notes?: string[];
+    priorityCues?: string[];
+    diagram?: {
+      title?: string;
+      nodes?: Array<{ label: string; value: string }>;
+    };
+    tutorPrompts?: Array<{ label?: string; value: string }>;
+  };
+  options: QuestionOption[];
+  answer: QuestionAnswer;
+  matrixColumns?: string[];
+  matrixRows?: Array<{
+    label: string;
+    answer: string;
+  }>;
+  rationale: string;
+  deepRationale?: string;
+  distractorRationales?: Record<string, string>;
   tags?: string[];
   blueprintPct?: number;
   takeaway?: string;
+  speedCue?: string;
+  conceptNotes?: string[];
+  references?: Array<{
+    title: string;
+    citation?: string;
+    href?: string;
+  }>;
+  provenance?: string;
+  reviewStatus?: "draft" | "review" | "approved" | "flagged" | "final-curated-live";
+  revision?: number;
+  publishState?: "draft" | "published" | "unpublished";
   visualRationale?: {
     type: "trend" | "flow" | "pathway" | "signal" | "overview";
     accent?: string;
@@ -95,12 +157,12 @@ export interface QuizQuestion {
 
 export interface SATAQuestion extends QuizQuestion {
   type: "sata";
-  answer: string; // JSON: ["a","c"]
+  answer: string[];
 }
 
 export interface OrderingQuestion extends QuizQuestion {
   type: "ordering";
-  correctOrder: string[]; // ["c","a","d","b"]
+  answer: string[];
 }
 
 // ─── Quiz Session Types ───────────────────────────────────────────────────────
@@ -109,7 +171,9 @@ export interface QuizSessionConfig {
   exam: Exam;
   category?: string;    // undefined = all categories (weighted by blueprint)
   count: 5 | 10 | 20 | 25 | 50 | 75 | 100;
-  type?: QuestionType;  // undefined = mixed
+  type?: QuestionType;  // legacy alias for questionType
+  questionType?: QuestionType;
+  ngnOnly?: boolean;
 }
 
 export interface QuizSessionState {
@@ -117,7 +181,7 @@ export interface QuizSessionState {
   questions: QuizQuestion[];
   currentIndex: number;
   answers: Record<string, {
-    selectedAnswer: string;
+    selectedAnswer: QuestionAnswer;
     isCorrect: boolean;
     timeSpentMs?: number;
   }>;
@@ -135,12 +199,379 @@ export interface QuizResults {
   weakCategories: string[];  // categories below 60%
 }
 
+export type BoardroomAccessRole = "none" | "viewer" | "operator";
+export type BoardroomMeetingLifecycle =
+  | "idle"
+  | "checkpointing"
+  | "ready"
+  | "in-meeting"
+  | "synthesizing"
+  | "resuming"
+  | "completed";
+
+export type BoardroomCheckpointStatus =
+  | "meeting-hold"
+  | "ready"
+  | "blocked"
+  | "unreachable"
+  | "resuming";
+
+export interface EmployeePresentationProfile {
+  presentationTitle: string;
+  whatTheyDo: string;
+  howTheyHelpTheBusinessGrow: string;
+  howTheyGrowThemselves: string;
+  offHours: string;
+  presentationVoice: string;
+}
+
+export interface BoardroomLifecycleEvent {
+  status: BoardroomMeetingLifecycle;
+  at: string;
+  note: string;
+}
+
+export interface BoardroomCheckpointBundle {
+  agentId: string;
+  nickname: string;
+  runtime: string;
+  status: BoardroomCheckpointStatus;
+  currentTask: string;
+  blocker: string;
+  latestFinding: string;
+  usefulShareouts: string[];
+  candidateDurableMemories: string[];
+  candidateSkillUpdates: string[];
+  lastCheckpointAt: string | null;
+  telemetrySource: "live telemetry" | "derived dashboard state" | "presentation metadata" | "stale telemetry" | "unwired lane";
+}
+
+export interface BoardroomMeetingSnapshot {
+  meetingId: string;
+  status: BoardroomMeetingLifecycle;
+  requestedAt: string;
+  requestedBy: string;
+  reason: string;
+  autoResume: boolean;
+  quorumTarget: number;
+  totalAgents: number;
+  arrivedCount: number;
+  currentPresenterId: string | null;
+  summary: string;
+  lifecycle: BoardroomLifecycleEvent[];
+  checkpoints: BoardroomCheckpointBundle[];
+  knowledgePipeline: {
+    rawMeetingNotes: string[];
+    candidateMemoryPromotions: string[];
+    candidateSkillPromotions: string[];
+    approvedDurableUpdates: string[];
+  };
+}
+
+export interface BoardroomStateSnapshot {
+  accessMode: "preview-key-unified";
+  cadence: "daily-standup";
+  updatedAt: string | null;
+  digest: string[];
+  activeMeeting: BoardroomMeetingSnapshot | null;
+  latestCompletedMeeting: BoardroomMeetingSnapshot | null;
+}
+
+export type AgentAdapterStatus =
+  | "live"
+  | "installed-idle"
+  | "configured-missing-state"
+  | "legacy-only"
+  | "unwired"
+  | "blocked"
+  | "unknown";
+
+export interface AgentCapabilityContract {
+  providerId: string;
+  runtime: string;
+  adapterStatus: AgentAdapterStatus;
+  authStatus: string;
+  safeModes: string[];
+  blockedCapabilities: string[];
+  approvalRequiredFor: string[];
+  lastProbeAt: string | null;
+  probeEvidence: string[];
+  dashboardTruthLevel: string;
+}
+
+export interface AgentLearningRecord {
+  agentId: string;
+  source: string;
+  sourceType: string;
+  summary: string;
+  citations: string[];
+  candidateMemory: string | null;
+  candidateSkill: string | null;
+  confidence: string;
+  risk: string;
+  allowedUse: string;
+  approvalTicketId: string | null;
+  promotionStatus: "raw_observation" | "candidate" | "reviewed" | "approved" | "rejected" | string;
+}
+
+export interface ApprovalTicket {
+  id: string;
+  lifecycle: "drafted" | "sent_to_telegram" | "approved" | "rejected" | "expired" | "executed" | "failed" | string;
+  title: string;
+  agentId: string;
+  requestedAction: string;
+  risk: string;
+  source: string;
+  createdAt: string;
+  telegramRequired: boolean;
+}
+
+export interface UnifiedAgentGuildState {
+  generatedAt: string | null;
+  version: number;
+  title: string;
+  sourceRoots: {
+    chapai: string;
+    chappyVault: string;
+    legacyCcrnAgent: string;
+  };
+  sourceHealth: {
+    chapaiBrains: number;
+    obsidianGuildNotes: number;
+    legacyMemoryLinked: boolean;
+    publicLedgerRecords: number;
+    approvalQueuePending: number;
+    boardroomLinked: boolean;
+    guildLoopUpdatedAt: string | null;
+  };
+  stats: {
+    totalAgents: number;
+    live: number;
+    sleeping: number;
+    blocked: number;
+    stale: number;
+    totalSkills: number;
+    totalDurableMemories: number;
+    totalExperiments: number;
+    totalTrialErrors: number;
+  };
+  memorySystem: {
+    mode: string;
+    rawNotes: string[];
+    candidatePromotions: string[];
+    approvedDurableUpdates: string[];
+    hygieneRules: string[];
+  };
+  sharedContext: {
+    legacyDurableFacts: string[];
+    legacyAgentNotes: string[];
+    legacyFindings: string[];
+    publicResearchFindings: string[];
+    approvalExperiments: string[];
+  };
+  providerReadiness: {
+    totalProviders: number;
+    live: number;
+    installedIdle: number;
+    configuredMissingState: number;
+    legacyOnly: number;
+    unwired: number;
+    blocked: number;
+    unknown: number;
+  };
+  capabilityMatrix: AgentCapabilityContract[];
+  memoryHygiene: {
+    mode: string;
+    rawObservationCount: number;
+    candidateMemoryCount: number;
+    reviewedMemoryCount: number;
+    approvedDurableCount: number;
+    lowSignalCount: number;
+    rules: string[];
+  };
+  learningLedger: AgentLearningRecord[];
+  approvalQueue: ApprovalTicket[];
+  agents: Array<{
+    id: string;
+    displayName: string;
+    nickname: string;
+    role: string;
+    runtime: string;
+    state: string;
+    truthLevel: string;
+    currentTask: string;
+    latest: string;
+    blocker: string;
+    plan: string;
+    currentWorkingGoal?: string;
+    predictions?: string[];
+    experimentResults?: string[];
+    significantCommunications?: string[];
+    significantEvents?: string[];
+    humanRequiredBlocks?: string[];
+    theories: string[];
+    experiments: string[];
+    trialsAndErrors: string[];
+    stats: {
+      level: number;
+      xp: number;
+      skills: number;
+      durableMemories: number;
+      memoryEvents: number;
+      activeContexts: number;
+      pendingExperiments: number;
+      completedTasks: number;
+      blockedTasks: number;
+      sourceCount: number;
+    };
+    brain: {
+      health: string;
+      lastCuratedAt: string | null;
+      nextSkillTarget: string | null;
+      activeContext: string[];
+      durableMemory: string[];
+      skills: string[];
+      recentEvents: string[];
+    };
+    sources: Array<{
+      label: string;
+      kind: string;
+      path: string;
+      updatedAt: string;
+    }>;
+  }>;
+}
+
+export interface GoalDirective {
+  schemaVersion: string;
+  id: string;
+  createdAt: string;
+  updatedAt?: string;
+  source: string;
+  sourcePath?: string;
+  text: string;
+  owner: string;
+  status: "active" | "paused" | "completed" | "superseded";
+  linkedLanes: string[];
+  successSignals: string[];
+  approvalBoundary: string;
+  proofPaths: string[];
+  progress: {
+    state: string;
+    percent: number;
+    detail: string;
+  };
+}
+
+export interface AgentInvocationRecord {
+  schemaVersion: string;
+  id: string;
+  agentId: string;
+  runId: string;
+  recordedAt: string;
+  trigger: string;
+  inputSummary: string;
+  toolsRequested: string[];
+  toolsUsed: string[];
+  outputArtifacts: string[];
+  proofPaths: string[];
+  memoryCandidates: string[];
+  skillCandidates: string[];
+  approvalsNeeded: string[];
+  failures: string[];
+  status: "planned" | "dry-run" | "blocked" | "completed";
+}
+
+export interface MemoryPromotionRecord {
+  schemaVersion: string;
+  id: string;
+  createdAt: string;
+  ownerLane: string;
+  source: string;
+  sourceTaint: string;
+  candidateMemory: string;
+  promotionStatus: "candidate" | "reviewed" | "approved-durable" | "rejected";
+  dedupeState: "pending" | "unique" | "duplicate" | "confounded";
+  expectedFutureUse: string;
+  proofPaths: string[];
+}
+
+export interface SkillGrowthRecord {
+  schemaVersion: string;
+  id: string;
+  skillName: string;
+  ownerLane: string;
+  firstSeenAt: string;
+  lastUsedAt: string;
+  proofPath: string;
+  successfulApplications: number;
+  failedApplications: number;
+  confoundedApplications: number;
+  status: "candidate" | "active" | "retired";
+}
+
+export interface ProfitPatternCandidate {
+  schemaVersion: string;
+  id: string;
+  createdAt: string;
+  ownerLane: string;
+  source: string;
+  sourceProof: string;
+  sourceTaint: string;
+  pattern: string;
+  targetCustomer: string;
+  offerMapping: string;
+  estimatedBudgetUsd: number;
+  expectedUpside: string;
+  confidence: number;
+  risk: string;
+  approvalNeeded: string;
+  nextTest: string;
+  status: "candidate" | "staged" | "approved" | "rejected";
+}
+
+export interface ToolPermissionContract {
+  agentId: string;
+  mode: "read-only" | "draft-only" | "approval-required" | "blocked";
+  allowedTools: string[];
+  approvalRequiredFor: string[];
+  blockedActions: string[];
+  sourceTaintDefault: string;
+}
+
+export interface AgentLiveTelemetry {
+  agentId: string;
+  displayName: string;
+  role: string;
+  runtime: string;
+  laneStatus: string;
+  truthLevel: string;
+  currentAction: string;
+  nextPlan: string;
+  blocker: string;
+  learningMoment: string;
+  proofPath: string;
+  queuePending: number;
+  approvalState: string;
+  sourceTaint: string;
+  heartbeatFreshness: string;
+  confidence: number;
+  toolMode: ToolPermissionContract["mode"];
+}
+
 export interface MissionControlSnapshot {
   product: {
     ccrnLiveQuestions: number;
     ccrnDraftQuestions: number;
     nclexLiveQuestions: number;
     nclexDraftQuestions: number;
+    nclexMcqLiveQuestions: number;
+    nclexNgnLiveQuestions: number;
+    nclexNgnRatio: number;
+    nclexApprovedRefinedUsable: number;
+    nclexTopUpNeeded: boolean;
+    nclexRemainingTo5000: number;
+    nclexRefinementGeneratedAt: string | null;
   };
   retrospective: {
     generatedAt: string | null;
@@ -203,6 +634,7 @@ export interface MissionControlSnapshot {
     skills: string[];
     lastCuratedAt: string;
   }>;
+  unifiedGuild: UnifiedAgentGuildState;
   employeeRegistry?: Array<{
     agentId: string;
     displayName: string;
@@ -219,6 +651,7 @@ export interface MissionControlSnapshot {
     queuePath?: string;
     statePath?: string;
     heartbeatId?: string;
+    presentation?: EmployeePresentationProfile;
   }>;
   agents: Array<{
     id: string;
@@ -238,13 +671,14 @@ export interface MissionControlSnapshot {
     blocker: string;
     freshness: string;
     provenance: string;
-    brainStatus: "linked" | "missing";
-    truthLevel: "live-probe" | "runtime-file" | "stale-telemetry" | "brain-only";
+    brainStatus: "linked" | "missing" | "corrupt";
+    truthLevel: "live-probe" | "runtime-file" | "stale-telemetry" | "brain-only" | "presentation-only" | "unwired";
     lastRuntimeUpdateAt: string | null;
     lastBrainUpdateAt: string | null;
     blockerSeverity: "critical" | "warning" | "info";
     outputToday: number;
     workflowSuggestion: string;
+    presentation?: EmployeePresentationProfile;
     employeeHealth: {
       freshness: "fresh" | "aging" | "stale";
       taskFit: "tight" | "mixed" | "drifting";
@@ -286,6 +720,7 @@ export interface MissionControlSnapshot {
       bestUse: string[];
     }>;
   };
+  boardroom: BoardroomStateSnapshot;
 }
 
 // ─── Spaced Repetition ────────────────────────────────────────────────────────

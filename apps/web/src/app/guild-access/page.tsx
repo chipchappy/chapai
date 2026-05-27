@@ -28,10 +28,10 @@ export default async function GuildAccessPage({
           Guild dashboard access is private.
         </h1>
         <p className="mt-4 text-base text-muted">
-          Enter the local guild access key to unlock the private dashboard for this browser. The public product site no longer links to internal operator progress.
+          Enter a founder, tester, creator, or reviewer preview key to unlock the private dashboard for this browser. The legacy local guild key still works during transition.
         </p>
         <p className="mt-3 text-sm text-muted">
-          Once unlocked, bookmark <code className="rounded bg-[rgba(255,252,247,0.92)] px-2 py-1 text-[0.92em] text-dark">/dashboard</code> on your phone. The session now stays warm longer so you can keep the guild room open.
+          Once unlocked, bookmark <code className="rounded bg-[rgba(255,252,247,0.92)] px-2 py-1 text-[0.92em] text-dark">/dashboard</code> and <code className="rounded bg-[rgba(255,252,247,0.92)] px-2 py-1 text-[0.92em] text-dark">/dashboard/boardroom</code>. The session now stays warm longer so you can keep the guild room open.
         </p>
         <p className="mt-3 text-sm text-muted">
           There is also a private design board at <code className="rounded bg-[rgba(255,252,247,0.92)] px-2 py-1 text-[0.92em] text-dark">/design-review</code> once this browser is unlocked.
@@ -46,13 +46,13 @@ export default async function GuildAccessPage({
               type="password"
               autoComplete="current-password"
               className="w-full rounded-[18px] border border-border bg-[rgba(255,252,247,0.92)] px-4 py-3 text-base text-dark outline-none transition focus:border-[#8ba0a8] focus:ring-2 focus:ring-[rgba(139,160,168,0.18)]"
-              placeholder="Enter private key"
+              placeholder="Enter preview or legacy key"
               required
             />
           </label>
           {resolved.error ? (
             <p className="rounded-[16px] border border-[#e4d4cc] bg-[rgba(249,239,234,0.86)] px-4 py-3 text-sm text-[#7a5a4d]">
-              The key did not match. Use the local dashboard key file on this machine and try again.
+              The key did not match. Use an approved preview key or the legacy local dashboard key and try again.
             </p>
           ) : null}
           <div className="flex flex-wrap gap-3">

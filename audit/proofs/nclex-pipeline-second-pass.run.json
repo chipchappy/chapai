@@ -1,0 +1,16 @@
+{
+  "id": "nclex-pipeline-second-pass",
+  "timestamp": "2026-05-06T23:01:27.299Z",
+  "completedAt": "2026-05-06T23:01:27.363Z",
+  "durationMs": 64,
+  "cwd": "C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U",
+  "command": "node packages/content/scripts/run-nclex-second-pass-refinement.mjs --source=C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U\\packages\\content\\questions\\nclex\\live\\reviewed-curated-live.unique.json --report=C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U\\config\\audit-second-pass-report.json --manifest=C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U\\config\\audit-second-pass-manifest.json --top-up=C:\\Users\\Chapman\\AppData\\Local\\Temp\\chapai-phase0-pipeline-klAf7U\\config\\audit-second-pass-top-up.json --target=5",
+  "inputHash": null,
+  "outputHash": "9d756c4da6d9b51579ad2cfab325f9e4ccee2727cd205ed7d852757ba54ce3db",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "error": null,
+  "stdout": "{\n  \"source\": \"packages/content/questions/nclex/live/reviewed-curated-live.unique.json\",\n  \"report\": \"config/audit-second-pass-report.json\",\n  \"manifest\": \"config/audit-second-pass-manifest.json\",\n  \"topUp\": \"config/audit-second-pass-top-up.json\",\n  \"summary\": {\n    \"sourceCount\": 5,\n    \"uniqueIds\": 5,\n    \"approvedRefinedUsableUnique\": 5,\n    \"needsReview\": 0,\n    \"approved\": 5,\n    \"refined\": 0,\n    \"rejected\": 0,\n    \"topUpNeeded\": false,\n    \"remainingTo5000\": 0\n  }\n}\n",
+  "stderr": ""
+}

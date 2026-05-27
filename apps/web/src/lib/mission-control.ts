@@ -1,6 +1,9 @@
 import type { AgentAvatar, AgentBrain } from "@chapai/brains";
+import { getBoardroomState } from "@/lib/boardroom-control";
+import { hasDatabase, resolveEnv, type Env } from "@/lib/db";
 import { getLiveContentSummary } from "@/lib/live-content-summary";
-import type { MissionControlSnapshot } from "@/lib/types";
+import type { EmployeePresentationProfile, MissionControlSnapshot } from "@/lib/types";
+import { UNIFIED_GUILD_STATE_SNAPSHOT } from "@/lib/unified-guild-state-snapshot";
 import { execFileSync } from "node:child_process";
 import * as fs from "node:fs";
 import * as os from "node:os";
@@ -20,6 +23,19 @@ type LegacyTelemetryAgent = {
 
 type LegacyTelemetry = {
   agents?: LegacyTelemetryAgent[];
+};
+
+type TelemetryStatement = {
+  first: <T = Record<string, unknown>>() => Promise<T | null>;
+};
+
+type TelemetryBinding = {
+  prepare: (sql: string) => TelemetryStatement;
+};
+
+type GuildTelemetryRow = {
+  payload: string | null;
+  created_at: number | null;
 };
 
 type RevenueState = {
@@ -50,6 +66,13 @@ type OperatorInbox = {
     status?: string;
     text?: string;
   }>;
+};
+
+type NclexRefinementTopUpState = {
+  generatedAt?: string;
+  topUpNeeded?: boolean;
+  approvedRefinedUsableUnique?: number;
+  remainingTo5000?: number;
 };
 
 type ClaudeBridgeState = {
@@ -89,9 +112,12 @@ type GuildRetrospectiveState = {
 
 type ClaudeEmployeeState = {
   status?: string;
+  semanticStatus?: string;
   blocker?: string;
   lastRunAt?: string | null;
   lastSuccessAt?: string | null;
+  lastHeartbeatAt?: string | null;
+  staleAfterMinutes?: number;
   blockedUntil?: string | null;
   nextEligibleRunAt?: string | null;
   currentTask?: {
@@ -120,9 +146,12 @@ type ClaudeEmployeeState = {
 
 type SocialStudioState = {
   status?: string;
+  semanticStatus?: string;
   blocker?: string;
   lastRunAt?: string | null;
   lastSuccessAt?: string | null;
+  lastHeartbeatAt?: string | null;
+  staleAfterMinutes?: number;
   currentTask?: {
     id?: string;
     title?: string;
@@ -145,9 +174,12 @@ type SocialStudioState = {
 
 type ManagerLaneState = {
   status?: string;
+  semanticStatus?: string;
   blocker?: string;
   lastRunAt?: string | null;
   lastSuccessAt?: string | null;
+  lastHeartbeatAt?: string | null;
+  staleAfterMinutes?: number;
   currentTask?: {
     id?: string;
     title?: string;
@@ -162,9 +194,12 @@ type ManagerLaneState = {
 
 type ScoutLaneState = {
   status?: string;
+  semanticStatus?: string;
   blocker?: string;
   lastRunAt?: string | null;
   lastSuccessAt?: string | null;
+  lastHeartbeatAt?: string | null;
+  staleAfterMinutes?: number;
   currentTask?: {
     id?: string;
     title?: string;
@@ -202,6 +237,7 @@ type AgentHeartbeatFile = {
     latest?: string;
     lastSeenAt?: string;
     source?: string;
+    staleAfterMinutes?: number;
   }>;
 };
 
@@ -233,6 +269,7 @@ type AgentRegistryEntry = {
   queuePath?: string;
   statePath?: string;
   heartbeatId?: string;
+  presentation?: EmployeePresentationProfile;
 };
 
 type EmployeeRegistryFile = {
@@ -313,9 +350,57 @@ function inferAvatar(agentId: string): AgentAvatar {
   };
 }
 
+function inferPresentationProfile(entry: Pick<AgentRegistryEntry, "id" | "nickname" | "role" | "runtime">): EmployeePresentationProfile {
+  const lowerRole = entry.role.toLowerCase();
+  const runtimeLabel =
+    entry.runtime === "nemotron"
+      ? "cheap-batch lane"
+      : entry.runtime === "claude"
+        ? "premium critique lane"
+        : entry.runtime === "gemini"
+          ? "external audit lane"
+          : "core build lane";
+
+  const presentationTitle =
+    entry.id === "manager"
+      ? "chief of staff"
+      : entry.id === "nemoclaw"
+        ? "net-new batch pilot"
+        : entry.id === "claude-code"
+          ? "premium review partner"
+          : lowerRole.includes("growth")
+            ? "growth operator"
+            : lowerRole.includes("product")
+              ? "product builder"
+              : "systems operator";
+
+  return {
+    presentationTitle,
+    whatTheyDo: `${entry.nickname} owns ${entry.role.toLowerCase()} work and keeps the ${runtimeLabel} bounded.`,
+    howTheyHelpTheBusinessGrow: `${entry.nickname} converts high-signal work into cleaner shipping velocity, better study surfaces, and fewer blocked lanes.`,
+    howTheyGrowThemselves: `${entry.nickname} grows by promoting reusable heuristics, pruning noisy context, and staying scoped to one useful lane at a time.`,
+    offHours:
+      entry.id === "nemoclaw"
+        ? "curates low-token batch heuristics and compares duplicate fingerprints"
+        : entry.id === "claude-code"
+          ? "collects premium UI critiques and tighter language patterns"
+          : entry.id === "manager"
+            ? "compresses status, trims blockers, and rewrites messy plans into clean queues"
+            : "archives patterns, sharpens prompts, and tidies the lane for the next shift",
+    presentationVoice:
+      entry.runtime === "claude"
+        ? "measured and editorial"
+        : entry.runtime === "gemini"
+          ? "strategic and audit-minded"
+          : entry.runtime === "nemotron"
+            ? "fast and practical"
+            : "steady and builder-focused",
+  };
+}
+
 function loadEmployeeRegistry(
   workspaceRoot: string,
-  brains: ReturnType<typeof loadBrains>,
+  brains: ReturnType<typeof loadBrains>["brains"],
 ) {
   const registryPath = path.join(workspaceRoot, "config", "employee-registry.json");
   const registryFile = safeReadJson<EmployeeRegistryFile>(registryPath, {});
@@ -341,6 +426,15 @@ function loadEmployeeRegistry(
       }),
       ...entry,
       avatar: entry.avatar ?? existing?.avatar ?? inferAvatar(entry.id),
+      presentation:
+        entry.presentation
+        ?? existing?.presentation
+        ?? inferPresentationProfile({
+          id: entry.id,
+          nickname: entry.nickname ?? existing?.nickname ?? entry.id,
+          role: entry.role ?? existing?.role ?? "Employee",
+          runtime: entry.runtime ?? existing?.runtime ?? "codex",
+        }),
     });
   }
 
@@ -361,6 +455,12 @@ function loadEmployeeRegistry(
       queuePath: path.join(workspaceRoot, "config", `${brain.agentId}-queue.json`),
       statePath: path.join(workspaceRoot, "config", `${brain.agentId}-state.json`),
       heartbeatId: brain.agentId,
+      presentation: inferPresentationProfile({
+        id: brain.agentId,
+        nickname: brain.displayName,
+        role: brain.role,
+        runtime: brain.runtime,
+      }),
     });
   }
 
@@ -424,6 +524,22 @@ function formatAge(minutes: number | null) {
   return `${hours}h ago`;
 }
 
+function isRuntimeFileStale(args: {
+  freshnessMinutes?: number | null;
+  staleAfterMinutes?: number | null;
+  rawState?: string | null;
+}) {
+  const rawState = normalizeStatusText(args.rawState).toLowerCase();
+  const staleAfterMinutes = args.staleAfterMinutes ?? 45;
+  if (rawState.includes("stale")) {
+    return true;
+  }
+  if (args.freshnessMinutes === null || args.freshnessMinutes === undefined) {
+    return rawState.includes("live") || rawState.includes("run") || rawState.includes("work");
+  }
+  return args.freshnessMinutes > staleAfterMinutes;
+}
+
 function normalizeStatusText(value?: string | null) {
   if (!value) {
     return "none";
@@ -451,13 +567,22 @@ function deriveOperatingState(args: {
   blocker?: string | null;
   truthLevel: MissionControlSnapshot["agents"][number]["truthLevel"];
   freshnessMinutes?: number | null;
+  staleAfterMinutes?: number | null;
   current?: string | null;
 }) {
   const rawState = normalizeStatusText(args.rawState).toLowerCase();
   const blocker = normalizeStatusText(args.blocker).toLowerCase();
   const current = normalizeStatusText(args.current).toLowerCase();
 
-  if (args.truthLevel === "stale-telemetry" || rawState.includes("stale")) {
+  if (args.truthLevel === "stale-telemetry" || args.truthLevel === "presentation-only" || args.truthLevel === "unwired" || rawState.includes("stale")) {
+    return "stale" as const;
+  }
+
+  if (isRuntimeFileStale({
+    freshnessMinutes: args.freshnessMinutes,
+    staleAfterMinutes: args.staleAfterMinutes,
+    rawState: args.rawState,
+  })) {
     return "stale" as const;
   }
 
@@ -694,7 +819,7 @@ function normalizeBrain(
       confidence: event.provenance.confidence,
     })),
     nextSkillTarget: raw.nextSkillTarget,
-    capabilityFocus: raw.capabilityFocus ?? [],
+    capabilityFocus: safeList(raw.capabilityFocus, 8),
     brainHygiene: raw.brainHygiene ?? "clean",
     activeContext: raw.activeContext,
     durableMemory: raw.durableMemory,
@@ -707,32 +832,450 @@ function normalizeBrain(
 function loadBrains(workspaceRoot: string) {
   const brainsDir = path.join(workspaceRoot, "brains", "agents");
   if (!fs.existsSync(brainsDir)) {
-    return [];
+    return {
+      brains: [] as ReturnType<typeof normalizeBrain>[],
+      statusByAgent: new Map<string, MissionControlSnapshot["agents"][number]["brainStatus"]>(),
+    };
   }
 
-  return fs
+  const statusByAgent = new Map<string, MissionControlSnapshot["agents"][number]["brainStatus"]>();
+  const brains = fs
     .readdirSync(brainsDir)
     .filter((file) => file.endsWith(".json"))
-    .map((file) => {
-      const brain = safeReadJson<AgentBrain>(path.join(brainsDir, file), {
-        agentId: path.basename(file, ".json"),
-        role: "unknown",
-        mission: "",
-        skills: [],
-        durableMemory: [],
-        activeContext: [],
-        memoryEvents: [],
-        lastCuratedAt: new Date(0).toISOString(),
-      });
-      return normalizeBrain(path.basename(file, ".json"), brain);
+    .flatMap((file) => {
+      const agentId = path.basename(file, ".json");
+      const filePath = path.join(brainsDir, file);
+      try {
+        const raw = fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, "").trim();
+        if (!raw) {
+          statusByAgent.set(agentId, "corrupt");
+          return [];
+        }
+        const brain = JSON.parse(raw) as AgentBrain;
+        if (
+          !brain
+          || brain.agentId !== agentId
+          || !Array.isArray(brain.skills)
+          || !Array.isArray(brain.durableMemory)
+          || !Array.isArray(brain.activeContext)
+          || !Array.isArray(brain.memoryEvents)
+        ) {
+          statusByAgent.set(agentId, "corrupt");
+          return [];
+        }
+        statusByAgent.set(agentId, "linked");
+        return [normalizeBrain(agentId, brain)];
+      } catch {
+        statusByAgent.set(agentId, "corrupt");
+        return [];
+      }
     })
     .sort((left, right) => left.nickname.localeCompare(right.nickname));
+
+  return { brains, statusByAgent };
+}
+
+function safeList(value: unknown, limit = 8): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .map((item) => String(item ?? "").replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .filter((item, index, array) => array.indexOf(item) === index)
+    .slice(0, limit);
+}
+
+function mergeSignalLists(limit: number, ...lists: unknown[]): string[] {
+  return lists.flatMap((list) => safeList(list, limit * 2)).filter((item, index, array) => array.indexOf(item) === index).slice(0, limit);
+}
+
+function deriveGuildPrediction(args: {
+  nickname: string;
+  blocker: string;
+  state: string;
+  goal: string;
+  skills: string[];
+  memories: string[];
+}) {
+  const blocker = normalizeStatusText(args.blocker);
+  if (blocker !== "none") {
+    return `${args.nickname} is most likely to unblock after the human-required item is cleared: ${blocker}`;
+  }
+  if (args.state === "live") {
+    return `${args.nickname} should produce the next useful artifact by staying focused on: ${args.goal}`;
+  }
+  if (args.skills.length > args.memories.length + 3) {
+    return `${args.nickname} has more skills than durable memories, so the next growth win is promoting one reusable lesson after the next run.`;
+  }
+  return `${args.nickname} is best used for one bounded task that advances: ${args.goal}`;
+}
+
+type CapabilityAuditSlice = Pick<
+  MissionControlSnapshot["unifiedGuild"],
+  "providerReadiness" | "capabilityMatrix" | "memoryHygiene" | "learningLedger" | "approvalQueue"
+>;
+
+function emptyCapabilityAudit(): CapabilityAuditSlice {
+  return {
+    providerReadiness: {
+      totalProviders: 0,
+      live: 0,
+      installedIdle: 0,
+      configuredMissingState: 0,
+      legacyOnly: 0,
+      unwired: 0,
+      blocked: 0,
+      unknown: 0,
+    },
+    capabilityMatrix: [],
+    memoryHygiene: {
+      mode: "chapai-primary-candidate-first",
+      rawObservationCount: 0,
+      candidateMemoryCount: 0,
+      reviewedMemoryCount: 0,
+      approvedDurableCount: 0,
+      lowSignalCount: 0,
+      rules: [
+        "Do not promote raw transcripts or raw web text directly into durable memory.",
+        "Keep product facts, hypotheses, experiments, skills, and persona flavor separate.",
+        "Public actions require Telegram approval before execution.",
+      ],
+    },
+    learningLedger: [],
+    approvalQueue: [],
+  };
+}
+
+function loadAgentCapabilityAudit(workspaceRoot: string): CapabilityAuditSlice {
+  const raw = safeReadJson<Partial<CapabilityAuditSlice>>(path.join(workspaceRoot, "config", "agent-capability-audit.json"), {});
+  const fallback = emptyCapabilityAudit();
+  const capabilityMatrix = raw.capabilityMatrix ?? fallback.capabilityMatrix;
+  const providerReadiness = {
+    ...fallback.providerReadiness,
+    ...raw.providerReadiness,
+  };
+  providerReadiness.totalProviders = raw.providerReadiness?.totalProviders ?? capabilityMatrix.length;
+
+  return {
+    providerReadiness,
+    capabilityMatrix,
+    memoryHygiene: {
+      ...fallback.memoryHygiene,
+      ...raw.memoryHygiene,
+      rules: mergeSignalLists(8, raw.memoryHygiene?.rules, fallback.memoryHygiene.rules),
+    },
+    learningLedger: raw.learningLedger ?? fallback.learningLedger,
+    approvalQueue: raw.approvalQueue ?? fallback.approvalQueue,
+  };
+}
+
+function loadUnifiedGuildState(
+  workspaceRoot: string,
+  agents: MissionControlSnapshot["agents"],
+  brains: MissionControlSnapshot["brains"],
+): MissionControlSnapshot["unifiedGuild"] {
+  const filePath = path.join(workspaceRoot, "config", "unified-agent-guild-state.json");
+  const fileRaw = safeReadJson<Partial<MissionControlSnapshot["unifiedGuild"]>>(filePath, {});
+  const raw = Array.isArray(fileRaw.agents) && fileRaw.agents.length > 0 ? fileRaw : UNIFIED_GUILD_STATE_SNAPSHOT;
+  const capabilityAudit = loadAgentCapabilityAudit(workspaceRoot);
+  const brainMap = new Map(brains.map((brain) => [brain.agentId, brain]));
+  const rawAgentMap = new Map((raw.agents ?? []).flatMap((agent) => (agent.id ? [[agent.id, agent]] : [])));
+  const fallbackAgents: MissionControlSnapshot["unifiedGuild"]["agents"] = agents.map((agent) => {
+    const brain = brainMap.get(agent.id);
+    const skills = brain?.skills ?? [];
+    const durableMemory = brain?.durableMemory ?? [];
+    const recentEvents = brain?.recentEvents?.map((event) => event.summary) ?? [];
+    const xp = skills.length * 12 + durableMemory.length * 9 + recentEvents.length * 5 + agent.outputToday * 7;
+    const currentWorkingGoal = brain?.nextSkillTarget ?? brain?.activeContext?.[0] ?? agent.current;
+    const humanRequiredBlocks = mergeSignalLists(
+      5,
+      agent.blocker !== "none" ? [agent.blocker] : [],
+      agent.blockerSeverity !== "info" ? [agent.workflowSuggestion] : [],
+    );
+    const experimentResults = mergeSignalLists(
+      6,
+      recentEvents,
+      agent.outputToday > 0 ? [`${agent.outputToday} visible outputs recorded in the current dashboard window.`] : [],
+    );
+    const significantCommunications = mergeSignalLists(
+      6,
+      recentEvents,
+      agent.blocker !== "none" ? [`Human required: ${agent.blocker}`] : [],
+    );
+    const significantEvents = mergeSignalLists(
+      6,
+      recentEvents,
+      [agent.latest],
+    );
+
+    return {
+      id: agent.id,
+      displayName: brain?.displayName ?? agent.nickname,
+      nickname: agent.nickname,
+      role: agent.role,
+      runtime: agent.runtime,
+      state: agent.state,
+      truthLevel: agent.truthLevel,
+      currentTask: agent.current,
+      latest: agent.latest,
+      blocker: agent.blocker,
+      plan: agent.workflowSuggestion,
+      currentWorkingGoal,
+      predictions: mergeSignalLists(4, [
+        deriveGuildPrediction({
+          nickname: agent.nickname,
+          blocker: agent.blocker,
+          state: agent.state,
+          goal: currentWorkingGoal,
+          skills,
+          memories: durableMemory,
+        }),
+      ]),
+      experimentResults,
+      significantCommunications,
+      significantEvents,
+      humanRequiredBlocks,
+      theories: safeList([brain?.nextSkillTarget, ...(brain?.capabilityFocus ?? []), ...(durableMemory.slice(0, 2) ?? [])], 5),
+      experiments: safeList([agent.current, ...(brain?.activeContext ?? [])], 6),
+      trialsAndErrors: agent.blocker === "none" ? [] : [agent.blocker],
+      stats: {
+        level: Math.max(1, Math.ceil(xp / 45)),
+        xp,
+        skills: skills.length,
+        durableMemories: durableMemory.length,
+        memoryEvents: brain?.memoryEventCount ?? 0,
+        activeContexts: brain?.activeContext?.length ?? 0,
+        pendingExperiments: 0,
+        completedTasks: agent.outputToday,
+        blockedTasks: agent.blocker === "none" ? 0 : 1,
+        sourceCount: [agent.provenance, brain ? "brain" : ""].filter(Boolean).length,
+      },
+      brain: {
+        health: brain?.brainHygiene ?? "clean",
+        lastCuratedAt: brain?.lastCuratedAt ?? agent.lastBrainUpdateAt,
+        nextSkillTarget: brain?.nextSkillTarget ?? null,
+        activeContext: brain?.activeContext ?? [],
+        durableMemory,
+        skills,
+        recentEvents,
+      },
+      sources: [
+        {
+          label: "Mission control snapshot",
+          kind: "derived-dashboard-state",
+          path: "apps/web/src/lib/mission-control.ts",
+          updatedAt: agent.lastRuntimeUpdateAt ?? agent.lastBrainUpdateAt ?? new Date().toISOString(),
+        },
+      ],
+    };
+  });
+
+  const unifiedAgents = fallbackAgents.map((fallback) => {
+    const rawAgent = rawAgentMap.get(fallback.id);
+    if (!rawAgent) {
+      return fallback;
+    }
+
+    const brain = {
+      health: fallback.brain.health ?? rawAgent.brain?.health ?? "clean",
+      lastCuratedAt: fallback.brain.lastCuratedAt ?? rawAgent.brain?.lastCuratedAt ?? null,
+      nextSkillTarget: fallback.brain.nextSkillTarget ?? rawAgent.brain?.nextSkillTarget ?? null,
+      activeContext: mergeSignalLists(8, fallback.brain.activeContext, rawAgent.brain?.activeContext),
+      durableMemory: mergeSignalLists(8, fallback.brain.durableMemory, rawAgent.brain?.durableMemory),
+      skills: mergeSignalLists(12, fallback.brain.skills, rawAgent.brain?.skills),
+      recentEvents: mergeSignalLists(8, fallback.brain.recentEvents, rawAgent.brain?.recentEvents),
+    };
+
+    const currentWorkingGoal = fallback.currentWorkingGoal ?? rawAgent.currentWorkingGoal ?? brain.nextSkillTarget ?? fallback.currentTask;
+    const predictions = mergeSignalLists(
+      5,
+      rawAgent.predictions,
+      fallback.predictions,
+      rawAgent.theories,
+    );
+
+    return {
+      ...rawAgent,
+      ...fallback,
+      displayName: rawAgent.displayName ?? fallback.displayName,
+      role: rawAgent.role ?? fallback.role,
+      currentWorkingGoal,
+      predictions: predictions.length > 0 ? predictions : fallback.predictions,
+      experimentResults: mergeSignalLists(8, rawAgent.experimentResults, fallback.experimentResults, rawAgent.brain?.recentEvents),
+      significantCommunications: mergeSignalLists(8, rawAgent.significantCommunications, fallback.significantCommunications, rawAgent.brain?.recentEvents),
+      significantEvents: mergeSignalLists(8, rawAgent.significantEvents, fallback.significantEvents, rawAgent.latest ? [rawAgent.latest] : []),
+      humanRequiredBlocks: mergeSignalLists(8, rawAgent.humanRequiredBlocks, fallback.humanRequiredBlocks),
+      theories: mergeSignalLists(7, fallback.theories, rawAgent.theories),
+      experiments: mergeSignalLists(8, fallback.experiments, rawAgent.experiments),
+      trialsAndErrors: mergeSignalLists(8, fallback.trialsAndErrors, rawAgent.trialsAndErrors),
+      stats: {
+        ...rawAgent.stats,
+        ...fallback.stats,
+        level: Math.max(rawAgent.stats?.level ?? 1, fallback.stats.level),
+        xp: Math.max(rawAgent.stats?.xp ?? 0, fallback.stats.xp),
+        skills: Math.max(rawAgent.stats?.skills ?? 0, fallback.stats.skills),
+        durableMemories: Math.max(rawAgent.stats?.durableMemories ?? 0, fallback.stats.durableMemories),
+        memoryEvents: Math.max(rawAgent.stats?.memoryEvents ?? 0, fallback.stats.memoryEvents),
+        sourceCount: Math.max(rawAgent.stats?.sourceCount ?? 0, fallback.stats.sourceCount),
+      },
+      brain,
+      sources: [
+        ...(rawAgent.sources ?? []),
+        ...fallback.sources,
+      ].filter((source, index, array) => array.findIndex((candidate) => `${candidate.kind}:${candidate.path}` === `${source.kind}:${source.path}`) === index).slice(0, 8),
+    };
+  });
+  const stats = raw.stats ?? {
+    totalAgents: unifiedAgents.length,
+    live: agents.filter((agent) => agent.state === "live").length,
+    sleeping: agents.filter((agent) => agent.state === "sleeping").length,
+    blocked: agents.filter((agent) => agent.state === "blocked").length,
+    stale: agents.filter((agent) => agent.state === "stale").length,
+    totalSkills: brains.reduce((sum, brain) => sum + brain.skillCount, 0),
+    totalDurableMemories: brains.reduce((sum, brain) => sum + brain.durableCount, 0),
+    totalExperiments: unifiedAgents.reduce((sum, agent) => sum + agent.experiments.length, 0),
+    totalTrialErrors: unifiedAgents.reduce((sum, agent) => sum + agent.trialsAndErrors.length, 0),
+  };
+
+  return {
+    generatedAt: raw.generatedAt ?? null,
+    version: raw.version ?? 1,
+    title: raw.title ?? "Unified ChappyAI + ChapAI Agent Guild State",
+    sourceRoots: {
+      chapai: raw.sourceRoots?.chapai ?? workspaceRoot,
+      chappyVault: raw.sourceRoots?.chappyVault ?? path.join(os.homedir(), "Desktop", "ChapAi"),
+      legacyCcrnAgent: raw.sourceRoots?.legacyCcrnAgent ?? path.join(path.dirname(workspaceRoot), "ccrn-agent"),
+    },
+    sourceHealth: {
+      chapaiBrains: raw.sourceHealth?.chapaiBrains ?? brains.length,
+      obsidianGuildNotes: raw.sourceHealth?.obsidianGuildNotes ?? 0,
+      legacyMemoryLinked: raw.sourceHealth?.legacyMemoryLinked ?? false,
+      publicLedgerRecords: raw.sourceHealth?.publicLedgerRecords ?? 0,
+      approvalQueuePending: raw.sourceHealth?.approvalQueuePending ?? 0,
+      boardroomLinked: raw.sourceHealth?.boardroomLinked ?? false,
+      guildLoopUpdatedAt: raw.sourceHealth?.guildLoopUpdatedAt ?? null,
+    },
+    stats,
+    memorySystem: {
+      mode: raw.memorySystem?.mode ?? "candidate-first",
+      rawNotes: raw.memorySystem?.rawNotes ?? [],
+      candidatePromotions: raw.memorySystem?.candidatePromotions ?? [],
+      approvedDurableUpdates: raw.memorySystem?.approvedDurableUpdates ?? [],
+      hygieneRules: raw.memorySystem?.hygieneRules ?? [
+        "Do not dump raw transcripts into durable memory.",
+        "Separate product truth from persona flavor.",
+        "Keep one reusable insight per concept.",
+      ],
+    },
+    sharedContext: {
+      legacyDurableFacts: raw.sharedContext?.legacyDurableFacts ?? [],
+      legacyAgentNotes: raw.sharedContext?.legacyAgentNotes ?? [],
+      legacyFindings: raw.sharedContext?.legacyFindings ?? [],
+      publicResearchFindings: raw.sharedContext?.publicResearchFindings ?? [],
+      approvalExperiments: raw.sharedContext?.approvalExperiments ?? [],
+    },
+    providerReadiness: capabilityAudit.providerReadiness,
+    capabilityMatrix: capabilityAudit.capabilityMatrix,
+    memoryHygiene: capabilityAudit.memoryHygiene,
+    learningLedger: capabilityAudit.learningLedger,
+    approvalQueue: capabilityAudit.approvalQueue,
+    agents: unifiedAgents,
+  };
+}
+
+function mergeUnifiedGuildStates(
+  localState: MissionControlSnapshot["unifiedGuild"],
+  cloudState: MissionControlSnapshot["unifiedGuild"] | null,
+): MissionControlSnapshot["unifiedGuild"] {
+  if (!cloudState) {
+    return localState;
+  }
+
+  const cloudAgentMap = new Map(cloudState.agents.map((agent) => [agent.id, agent]));
+  const mergedAgents = localState.agents.map((localAgent) => {
+    const cloudAgent = cloudAgentMap.get(localAgent.id);
+    if (!cloudAgent) {
+      return localAgent;
+    }
+
+    return {
+      ...cloudAgent,
+      ...localAgent,
+      currentWorkingGoal: localAgent.currentWorkingGoal ?? cloudAgent.currentWorkingGoal,
+      predictions: mergeSignalLists(6, localAgent.predictions, cloudAgent.predictions),
+      experimentResults: mergeSignalLists(8, localAgent.experimentResults, cloudAgent.experimentResults),
+      significantCommunications: mergeSignalLists(8, localAgent.significantCommunications, cloudAgent.significantCommunications),
+      significantEvents: mergeSignalLists(8, localAgent.significantEvents, cloudAgent.significantEvents),
+      humanRequiredBlocks: mergeSignalLists(8, localAgent.humanRequiredBlocks, cloudAgent.humanRequiredBlocks),
+      theories: mergeSignalLists(8, localAgent.theories, cloudAgent.theories),
+      experiments: mergeSignalLists(8, localAgent.experiments, cloudAgent.experiments),
+      trialsAndErrors: mergeSignalLists(8, localAgent.trialsAndErrors, cloudAgent.trialsAndErrors),
+      stats: {
+        ...cloudAgent.stats,
+        ...localAgent.stats,
+        level: Math.max(localAgent.stats.level, cloudAgent.stats.level),
+        xp: Math.max(localAgent.stats.xp, cloudAgent.stats.xp),
+        sourceCount: Math.max(localAgent.stats.sourceCount, cloudAgent.stats.sourceCount),
+      },
+      brain: {
+        ...cloudAgent.brain,
+        ...localAgent.brain,
+        activeContext: mergeSignalLists(8, localAgent.brain.activeContext, cloudAgent.brain.activeContext),
+        durableMemory: mergeSignalLists(8, localAgent.brain.durableMemory, cloudAgent.brain.durableMemory),
+        skills: mergeSignalLists(12, localAgent.brain.skills, cloudAgent.brain.skills),
+        recentEvents: mergeSignalLists(8, localAgent.brain.recentEvents, cloudAgent.brain.recentEvents),
+      },
+      sources: [
+        ...localAgent.sources,
+        ...cloudAgent.sources,
+      ].filter((source, index, array) => array.findIndex((candidate) => `${candidate.kind}:${candidate.path}` === `${source.kind}:${source.path}`) === index).slice(0, 10),
+    };
+  });
+
+  return {
+    ...localState,
+    generatedAt: cloudState.generatedAt ?? localState.generatedAt,
+    sourceHealth: {
+      ...localState.sourceHealth,
+      ...cloudState.sourceHealth,
+      boardroomLinked: true,
+    },
+    memorySystem: {
+      ...localState.memorySystem,
+      candidatePromotions: mergeSignalLists(16, localState.memorySystem.candidatePromotions, cloudState.memorySystem.candidatePromotions),
+      approvedDurableUpdates: mergeSignalLists(16, localState.memorySystem.approvedDurableUpdates, cloudState.memorySystem.approvedDurableUpdates),
+      hygieneRules: mergeSignalLists(8, localState.memorySystem.hygieneRules, cloudState.memorySystem.hygieneRules),
+    },
+    sharedContext: {
+      ...localState.sharedContext,
+      publicResearchFindings: mergeSignalLists(12, localState.sharedContext.publicResearchFindings, cloudState.sharedContext.publicResearchFindings),
+      approvalExperiments: mergeSignalLists(12, localState.sharedContext.approvalExperiments, cloudState.sharedContext.approvalExperiments),
+    },
+    providerReadiness: localState.providerReadiness,
+    capabilityMatrix: localState.capabilityMatrix.length > 0 ? localState.capabilityMatrix : cloudState.capabilityMatrix ?? [],
+    memoryHygiene: {
+      ...(cloudState.memoryHygiene ?? {}),
+      ...localState.memoryHygiene,
+      rules: mergeSignalLists(8, localState.memoryHygiene.rules, cloudState.memoryHygiene?.rules),
+    },
+    learningLedger: [
+      ...localState.learningLedger,
+      ...(cloudState.learningLedger ?? []),
+    ].filter((record, index, array) => array.findIndex((candidate) => `${candidate.source}:${candidate.summary}` === `${record.source}:${record.summary}`) === index).slice(0, 120),
+    approvalQueue: [
+      ...localState.approvalQueue,
+      ...(cloudState.approvalQueue ?? []),
+    ].filter((ticket, index, array) => array.findIndex((candidate) => candidate.id === ticket.id) === index).slice(0, 40),
+    agents: mergedAgents,
+  };
 }
 
 function loadLegacyAgentState(
   workspaceRoot: string,
   legacyRoot: string,
-  brains: ReturnType<typeof loadBrains>,
+  brains: ReturnType<typeof loadBrains>["brains"],
+  brainStatusByAgent: ReturnType<typeof loadBrains>["statusByAgent"],
   heartbeats: AgentHeartbeatFile,
   registry: AgentRegistryEntry[],
 ) {
@@ -765,6 +1308,7 @@ function loadLegacyAgentState(
     const laneState = statePath ? safeReadJson<Record<string, unknown>>(statePath, {}) : {};
     const telemetryAgent = telemetryMap.get(entry.nickname.toLowerCase());
     const brain = brainMap.get(entry.id);
+    const brainFileStatus = brainStatusByAgent.get(entry.id) ?? (brain ? "linked" : "missing");
     const heartbeat = heartbeatMap.get(entry.id);
     const runtimeState =
       heartbeat && heartbeat.source !== "brain-only"
@@ -799,32 +1343,44 @@ function loadLegacyAgentState(
                     ? laneState.lastRunAt
                     : undefined,
               source: "employee-state",
+              staleAfterMinutes: typeof laneState.staleAfterMinutes === "number" ? laneState.staleAfterMinutes : undefined,
             }
           : heartbeat;
     const lastCuratedAge = formatAge(parseIsoAge(brain?.lastCuratedAt));
     const heartbeatMinutes = parseIsoAge(runtimeState?.lastSeenAt ?? null);
     const heartbeatAge = formatAge(heartbeatMinutes);
     const telemetryStale = Boolean(telemetryAgent && telemetryAge !== null && telemetryAge > 20);
+    const runtimeRawState = runtimeState?.state ?? (telemetryStale ? "stale" : telemetryAgent?.state ?? (brain ? "brain-linked" : "unknown"));
+    const runtimeStale = Boolean(runtimeState) && isRuntimeFileStale({
+      freshnessMinutes: heartbeatMinutes,
+      staleAfterMinutes: runtimeState?.staleAfterMinutes,
+      rawState: runtimeRawState,
+    });
     const truthLevel =
       runtimeState
-        ? ("runtime-file" as const)
+        ? runtimeStale
+          ? ("stale-telemetry" as const)
+          : ("runtime-file" as const)
         : telemetryAgent && telemetryAge !== null && telemetryAge > 20
           ? ("stale-telemetry" as const)
           : telemetryAgent
             ? ("runtime-file" as const)
             : brain
               ? ("brain-only" as const)
-              : ("brain-only" as const);
+              : entry.runtime === "gemini" || entry.runtime === "nemotron"
+                ? ("unwired" as const)
+                : ("presentation-only" as const);
     const blocker = runtimeState?.blocker ?? telemetryAgent?.blocker ?? "none";
     const confidence = brain?.confidence ?? 0.72;
     const skillCount = brain?.skillCount ?? 0;
     const activeContext = brain?.activeContext ?? [];
     const outputToday = countEventsToday((brain?.recentEvents ?? []).map((event) => event.timestamp));
     const state = deriveOperatingState({
-      rawState: runtimeState?.state ?? (telemetryStale ? "stale" : telemetryAgent?.state ?? (brain ? "brain-linked" : "unknown")),
+      rawState: runtimeRawState,
       blocker,
       truthLevel,
       freshnessMinutes: heartbeatMinutes,
+      staleAfterMinutes: runtimeState?.staleAfterMinutes,
       current: runtimeState?.current ?? telemetryAgent?.current ?? activeContext[0] ?? "Awaiting bounded work.",
     });
     const swarmReadiness = brain?.swarmReadiness ?? "seedling";
@@ -850,7 +1406,7 @@ function loadLegacyAgentState(
             : telemetryAgent
               ? "legacy telemetry + brain bundle"
               : "brain bundle only",
-      brainStatus: brain ? ("linked" as const) : ("missing" as const),
+      brainStatus: brainFileStatus,
       truthLevel,
       lastRuntimeUpdateAt: runtimeState?.lastSeenAt ?? telemetryUpdatedAt,
       lastBrainUpdateAt: brain?.lastCuratedAt ?? null,
@@ -863,6 +1419,14 @@ function loadLegacyAgentState(
         skillCount,
         activeContext,
       }),
+      presentation:
+        entry.presentation
+        ?? inferPresentationProfile({
+          id: entry.id,
+          nickname: entry.nickname,
+          role: telemetryAgent?.role ?? entry.role,
+          runtime: brain?.runtime ?? entry.runtime,
+        }),
       employeeHealth: deriveEmployeeHealth({
         freshnessMinutes: heartbeatMinutes,
         blocker,
@@ -916,6 +1480,13 @@ function loadBatchState(workspaceRoot: string) {
   };
 }
 
+function loadNclexRefinementTopUpState(workspaceRoot: string): NclexRefinementTopUpState {
+  return safeReadJson<NclexRefinementTopUpState>(
+    path.join(workspaceRoot, "packages", "content", "questions", "nclex", "review", "nclex-top-up-needed.latest.json"),
+    {},
+  );
+}
+
 function loadGuildLoopState(workspaceRoot: string) {
   return safeReadJson<GuildLoopState>(path.join(workspaceRoot, "config", "guild-loop-state.json"), {});
 }
@@ -928,8 +1499,128 @@ function loadAgentHeartbeats(workspaceRoot: string) {
   return safeReadJson<AgentHeartbeatFile>(path.join(workspaceRoot, "config", "agent-heartbeats.json"), {});
 }
 
+function asTelemetryBinding(env: Partial<Env>): TelemetryBinding | null {
+  if (!hasDatabase(env) || !env.DB) {
+    return null;
+  }
+  return env.DB as TelemetryBinding;
+}
+
+async function loadCloudAgentHeartbeats(): Promise<AgentHeartbeatFile> {
+  const binding = asTelemetryBinding(resolveEnv());
+  if (!binding) {
+    return {};
+  }
+
+  try {
+    const row = await binding.prepare(`
+      SELECT payload, created_at
+      FROM guild_telemetry_events
+      WHERE kind = 'heartbeat' AND verified = 1
+      ORDER BY created_at DESC
+      LIMIT 1
+    `).first<GuildTelemetryRow>();
+
+    if (!row?.payload) {
+      return {};
+    }
+
+    const event = JSON.parse(row.payload) as { payload?: AgentHeartbeatFile; receivedAt?: string };
+    const heartbeatPayload = event.payload;
+    if (!heartbeatPayload || !Array.isArray(heartbeatPayload.agents)) {
+      return {};
+    }
+
+    return {
+      ...heartbeatPayload,
+      generatedAt: heartbeatPayload.generatedAt
+        ?? event.receivedAt
+        ?? (row.created_at ? new Date(row.created_at * 1000).toISOString() : undefined),
+    };
+  } catch {
+    return {};
+  }
+}
+
+async function loadCloudUnifiedGuildState(): Promise<MissionControlSnapshot["unifiedGuild"] | null> {
+  const binding = asTelemetryBinding(resolveEnv());
+  if (!binding) {
+    return null;
+  }
+
+  try {
+    const row = await binding.prepare(`
+      SELECT payload, created_at
+      FROM guild_telemetry_events
+      WHERE kind = 'unified_guild_state' AND verified = 1
+      ORDER BY created_at DESC
+      LIMIT 1
+    `).first<GuildTelemetryRow>();
+
+    if (!row?.payload) {
+      return null;
+    }
+
+    const event = JSON.parse(row.payload) as {
+      payload?: MissionControlSnapshot["unifiedGuild"];
+      receivedAt?: string;
+    };
+    const payload = event.payload;
+    if (!payload || !Array.isArray(payload.agents) || payload.agents.length === 0) {
+      return null;
+    }
+
+    return {
+      ...payload,
+      generatedAt: payload.generatedAt ?? event.receivedAt ?? null,
+      sourceHealth: {
+        ...payload.sourceHealth,
+        boardroomLinked: true,
+      },
+    };
+  } catch {
+    return null;
+  }
+}
+
+function mergeHeartbeatSources(localHeartbeats: AgentHeartbeatFile, cloudHeartbeats: AgentHeartbeatFile): AgentHeartbeatFile {
+  if (!cloudHeartbeats.agents?.length) {
+    return localHeartbeats;
+  }
+
+  if (!localHeartbeats.agents?.length) {
+    return cloudHeartbeats;
+  }
+
+  const merged = new Map<string, NonNullable<AgentHeartbeatFile["agents"]>[number]>();
+  for (const agent of localHeartbeats.agents) {
+    if (agent.id) {
+      merged.set(agent.id, agent);
+    }
+  }
+  for (const agent of cloudHeartbeats.agents) {
+    if (agent.id) {
+      merged.set(agent.id, { ...agent, source: agent.source ?? "signed-cloud-telemetry" });
+    }
+  }
+
+  return {
+    generatedAt: cloudHeartbeats.generatedAt ?? localHeartbeats.generatedAt,
+    agents: Array.from(merged.values()),
+  };
+}
+
 function loadClaudeEmployeeState(workspaceRoot: string) {
-  return safeReadJson<ClaudeEmployeeState>(path.join(workspaceRoot, "config", "claude-employee-state.json"), {});
+  const legacy = safeReadJson<ClaudeEmployeeState>(path.join(workspaceRoot, "config", "claude-employee-state.json"), {});
+  const normalized = safeReadJson<ClaudeEmployeeState>(path.join(workspaceRoot, "config", "claude-code-state.json"), {});
+  return {
+    ...legacy,
+    ...normalized,
+    currentTask: normalized.currentTask ?? legacy.currentTask,
+    queue: normalized.queue ?? legacy.queue,
+    auth: normalized.auth ?? legacy.auth,
+    latestResult: normalized.latestResult ?? legacy.latestResult,
+  };
 }
 
 function loadSocialStudioState(workspaceRoot: string) {
@@ -1318,14 +2009,16 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
   const workspaceRoot = resolveWorkspaceRoot();
   const legacyRoot = resolveLegacyRoot(workspaceRoot);
   const summary = getLiveContentSummary();
-  const brains = loadBrains(workspaceRoot);
+  const brainBundle = loadBrains(workspaceRoot);
+  const brains = brainBundle.brains;
   const revenue = safeReadJson<RevenueState>(path.join(legacyRoot, "remote-control", "config", "revenue-state.json"), {});
   const runtime = safeReadJson<RuntimeState>(path.join(legacyRoot, "remote-control", "config", "runtime-state.json"), {});
   const inbox = safeReadJson<OperatorInbox>(path.join(legacyRoot, "remote-control", "config", "operator-inbox.json"), {});
   const batches = loadBatchState(workspaceRoot);
+  const nclexRefinement = loadNclexRefinementTopUpState(workspaceRoot);
   const guildLoop = loadGuildLoopState(workspaceRoot);
   const retrospective = loadGuildRetrospectiveState(workspaceRoot);
-  const heartbeats = loadAgentHeartbeats(workspaceRoot);
+  const heartbeats = mergeHeartbeatSources(loadAgentHeartbeats(workspaceRoot), await loadCloudAgentHeartbeats());
   const claudeEmployee = loadClaudeEmployeeState(workspaceRoot);
   const socialStudio = loadSocialStudioState(workspaceRoot);
   const scoutLane = loadScoutLaneState(workspaceRoot);
@@ -1344,7 +2037,7 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
   const claudeDesktop = probeClaudeDesktop();
   const employeeRegistry = loadEmployeeRegistry(workspaceRoot, brains);
   const liveServices = await loadLiveServices(runtime, revenue, claudeDesktop, guildLoop, claudeEmployee, socialStudio, contentEngine);
-  const agents = loadLegacyAgentState(workspaceRoot, legacyRoot, brains, heartbeats, employeeRegistry).map((agent) => {
+  const agents = loadLegacyAgentState(workspaceRoot, legacyRoot, brains, brainBundle.statusByAgent, heartbeats, employeeRegistry).map((agent) => {
     if (agent.id !== "claude-code") {
       return agent;
     }
@@ -1419,13 +2112,21 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
 
     const blocker = normalizeStatusText(socialStudio.blocker);
     const pending = socialStudio.queue?.pending ?? 0;
-    const freshnessMinutes = parseIsoAge(socialStudio.lastRunAt ?? null);
+    const freshnessMinutes = parseIsoAge(socialStudio.lastHeartbeatAt ?? socialStudio.lastRunAt ?? null);
+    const truthLevel: MissionControlSnapshot["agents"][number]["truthLevel"] = isRuntimeFileStale({
+      freshnessMinutes,
+      staleAfterMinutes: socialStudio.staleAfterMinutes,
+      rawState: socialStudio.semanticStatus ?? socialStudio.status ?? "ready",
+    })
+      ? "stale-telemetry"
+      : "runtime-file";
     const outputToday = Math.max(agent.outputToday, socialStudio.queue?.completed ?? 0);
     const state = deriveOperatingState({
-      rawState: socialStudio.status ?? "ready",
+      rawState: socialStudio.semanticStatus ?? socialStudio.status ?? "ready",
       blocker,
-      truthLevel: "runtime-file",
+      truthLevel,
       freshnessMinutes,
+      staleAfterMinutes: socialStudio.staleAfterMinutes,
       current: socialStudio.currentTask?.title ?? agent.current,
     });
 
@@ -1438,10 +2139,10 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
           : "Preparing the next outreach and creator-distribution wave.",
       latest: socialStudio.latestResult?.summary ?? agent.latest,
       blocker,
-      freshness: socialStudio.lastRunAt ? formatAge(freshnessMinutes) : agent.freshness,
+      freshness: socialStudio.lastHeartbeatAt ?? socialStudio.lastRunAt ? formatAge(freshnessMinutes) : agent.freshness,
       provenance: "brain bundle + social studio state",
-      truthLevel: "runtime-file" as const,
-      lastRuntimeUpdateAt: socialStudio.lastRunAt ?? null,
+      truthLevel,
+      lastRuntimeUpdateAt: socialStudio.lastHeartbeatAt ?? socialStudio.lastRunAt ?? null,
       blockerSeverity: deriveBlockerSeverity(blocker),
       outputToday,
       workflowSuggestion:
@@ -1466,12 +2167,20 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
     }
 
     const blocker = normalizeStatusText(managerLane.blocker);
-    const freshnessMinutes = parseIsoAge(managerLane.lastRunAt ?? null);
-    const state = deriveOperatingState({
-      rawState: managerLane.status ?? "running",
-      blocker,
-      truthLevel: "runtime-file",
+    const freshnessMinutes = parseIsoAge(managerLane.lastHeartbeatAt ?? managerLane.lastRunAt ?? null);
+    const truthLevel: MissionControlSnapshot["agents"][number]["truthLevel"] = isRuntimeFileStale({
       freshnessMinutes,
+      staleAfterMinutes: managerLane.staleAfterMinutes,
+      rawState: managerLane.semanticStatus ?? managerLane.status ?? "running",
+    })
+      ? "stale-telemetry"
+      : "runtime-file";
+    const state = deriveOperatingState({
+      rawState: managerLane.semanticStatus ?? managerLane.status ?? "running",
+      blocker,
+      truthLevel,
+      freshnessMinutes,
+      staleAfterMinutes: managerLane.staleAfterMinutes,
       current: managerLane.currentTask?.title ?? "Keep all lanes moving",
     });
 
@@ -1481,10 +2190,10 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
       current: managerLane.currentTask?.title ?? "Keep all lanes moving",
       latest: managerLane.latestResult?.summary ?? agent.latest,
       blocker,
-      freshness: managerLane.lastRunAt ? formatAge(freshnessMinutes) : agent.freshness,
+      freshness: managerLane.lastHeartbeatAt ?? managerLane.lastRunAt ? formatAge(freshnessMinutes) : agent.freshness,
       provenance: "brain bundle + manager lane state",
-      truthLevel: "runtime-file" as const,
-      lastRuntimeUpdateAt: managerLane.lastRunAt ?? null,
+      truthLevel,
+      lastRuntimeUpdateAt: managerLane.lastHeartbeatAt ?? managerLane.lastRunAt ?? null,
       blockerSeverity: deriveBlockerSeverity(blocker),
       workflowSuggestion:
         blocker !== "none"
@@ -1506,12 +2215,20 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
     }
 
     const blocker = normalizeStatusText(scoutLane.blocker);
-    const freshnessMinutes = parseIsoAge(scoutLane.lastRunAt ?? null);
-    const state = deriveOperatingState({
-      rawState: scoutLane.status ?? "ready",
-      blocker,
-      truthLevel: "runtime-file",
+    const freshnessMinutes = parseIsoAge(scoutLane.lastHeartbeatAt ?? scoutLane.lastRunAt ?? null);
+    const truthLevel: MissionControlSnapshot["agents"][number]["truthLevel"] = isRuntimeFileStale({
       freshnessMinutes,
+      staleAfterMinutes: scoutLane.staleAfterMinutes,
+      rawState: scoutLane.semanticStatus ?? scoutLane.status ?? "ready",
+    })
+      ? "stale-telemetry"
+      : "runtime-file";
+    const state = deriveOperatingState({
+      rawState: scoutLane.semanticStatus ?? scoutLane.status ?? "ready",
+      blocker,
+      truthLevel,
+      freshnessMinutes,
+      staleAfterMinutes: scoutLane.staleAfterMinutes,
       current: scoutLane.currentTask?.title ?? "Maintain the next-product recommendation",
     });
 
@@ -1521,10 +2238,10 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
       current: scoutLane.currentTask?.title ?? "Maintain the next-product recommendation",
       latest: scoutLane.latestResult?.summary ?? agent.latest,
       blocker,
-      freshness: scoutLane.lastRunAt ? formatAge(freshnessMinutes) : agent.freshness,
+      freshness: scoutLane.lastHeartbeatAt ?? scoutLane.lastRunAt ? formatAge(freshnessMinutes) : agent.freshness,
       provenance: "brain bundle + scout state",
-      truthLevel: "runtime-file" as const,
-      lastRuntimeUpdateAt: scoutLane.lastRunAt ?? null,
+      truthLevel,
+      lastRuntimeUpdateAt: scoutLane.lastHeartbeatAt ?? scoutLane.lastRunAt ?? null,
       blockerSeverity: deriveBlockerSeverity(blocker),
       workflowSuggestion:
         blocker !== "none"
@@ -1541,6 +2258,8 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
       }),
     };
   });
+  const localUnifiedGuild = loadUnifiedGuildState(workspaceRoot, agents, brains);
+  const unifiedGuild = mergeUnifiedGuildStates(localUnifiedGuild, await loadCloudUnifiedGuildState());
   const urgentFixes = buildUrgentFixes(
     liveServices,
     runtime,
@@ -1554,12 +2273,19 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
     antigravity,
   );
 
-  return {
+  const snapshotBase = {
     product: {
       ccrnLiveQuestions: summary.ccrn.live,
       ccrnDraftQuestions: summary.ccrn.draft,
       nclexLiveQuestions: summary.nclex.live,
       nclexDraftQuestions: summary.nclex.draft,
+      nclexMcqLiveQuestions: summary.nclex.mcqLive,
+      nclexNgnLiveQuestions: summary.nclex.ngnLive,
+      nclexNgnRatio: summary.nclex.ngnRatio,
+      nclexApprovedRefinedUsable: nclexRefinement.approvedRefinedUsableUnique ?? summary.nclex.live,
+      nclexTopUpNeeded: nclexRefinement.topUpNeeded ?? summary.nclex.live < 5000,
+      nclexRemainingTo5000: nclexRefinement.remainingTo5000 ?? Math.max(0, 5000 - summary.nclex.live),
+      nclexRefinementGeneratedAt: nclexRefinement.generatedAt ?? null,
     },
     retrospective: {
       generatedAt: retrospective.generatedAt ?? null,
@@ -1571,6 +2297,7 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
     urgentFixes,
     liveServices,
     brains,
+    unifiedGuild,
     employeeRegistry: employeeRegistry.map((entry) => ({
       agentId: entry.id,
       displayName: entry.nickname,
@@ -1583,6 +2310,7 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
       queuePath: entry.queuePath,
       statePath: entry.statePath,
       heartbeatId: entry.heartbeatId ?? entry.id,
+      presentation: entry.presentation ?? inferPresentationProfile(entry),
     })),
     agents,
     batches,
@@ -1611,5 +2339,11 @@ export async function getMissionControlSnapshot(): Promise<MissionControlSnapsho
         bestUse: system.bestUse ?? [],
       })),
     },
-  };
+  } satisfies Omit<MissionControlSnapshot, "boardroom">;
+  const boardroom = await getBoardroomState(snapshotBase as MissionControlSnapshot);
+
+  return {
+    ...snapshotBase,
+    boardroom,
+  } satisfies MissionControlSnapshot;
 }

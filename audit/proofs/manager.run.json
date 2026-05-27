@@ -1,0 +1,34 @@
+{
+  "id": "agent-manager-bootstrap",
+  "timestamp": "2026-05-06T22:57:38.224Z",
+  "inputHash": "ebdd85469d31edca651ac1f79dba2393e774c1e5a04b9f80512dada75d980ae8",
+  "outputHash": "cf0c039718b61da9ac62bcc489185b883533442059b1885ba5cceacfafa49ee8",
+  "exitCode": 0,
+  "output": {
+    "agentId": "manager",
+    "displayName": "Kuhn",
+    "runtime": "codex",
+    "entrypoint": "scripts/run-manager-lane.ps1",
+    "entrypointExists": true,
+    "brainLoaded": true,
+    "stateLoaded": true,
+    "queueLoaded": true,
+    "canonicalMemoryCount": 6,
+    "memoryEventCount": 2,
+    "skillCount": 6,
+    "stateStatus": "configured",
+    "currentTask": null,
+    "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+    "queueStats": {
+      "tasks": 0,
+      "pending": 0,
+      "completed": 0,
+      "failed": 0,
+      "blocked": 0
+    },
+    "dryRunSupported": false,
+    "executedMutatingEntrypoint": false,
+    "limitation": "Phase 0 forbids state mutations; this proof validates non-mutating bootstrap only.",
+    "smokeStatus": "bootstrap-pass"
+  }
+}

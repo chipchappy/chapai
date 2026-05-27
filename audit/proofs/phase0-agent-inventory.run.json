@@ -1,0 +1,1368 @@
+{
+  "generatedAt": "2026-05-06T22:57:38.224Z",
+  "agents": [
+    {
+      "id": "orchestrator",
+      "name": "Atlas",
+      "lane": "Architecture",
+      "model": "codex",
+      "trigger": "guild-ops-loop core lane or active duty roster",
+      "entrypoint": "scripts/run-core-codex-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "harness architecture",
+          "handoff design",
+          "restart-safe continuity"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/orchestrator.json",
+        "statePath": "config/orchestrator-state.json",
+        "queuePath": "config/orchestrator-queue.json"
+      },
+      "proofFile": "audit/proofs/orchestrator.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "frontend",
+      "name": "Turing",
+      "lane": "Product Build",
+      "model": "codex",
+      "trigger": "guild-ops-loop core lane or active duty roster",
+      "entrypoint": "scripts/run-core-codex-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 2,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 4,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 8,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "premium ui refinement",
+          "hero simplification",
+          "conversion surface polish",
+          "opportunity scouting",
+          "validation memo writing"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/frontend.json",
+        "statePath": "config/frontend-state.json",
+        "queuePath": "config/frontend-queue.json"
+      },
+      "proofFile": "audit/proofs/frontend.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "backend",
+      "name": "Kepler",
+      "lane": "Backend",
+      "model": "codex",
+      "trigger": "guild-ops-loop core lane or active duty roster",
+      "entrypoint": "scripts/run-core-codex-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 2,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 4,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "checkout verification",
+          "tutor fallback resilience",
+          "live route health"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/backend.json",
+        "statePath": "config/backend-state.json",
+        "queuePath": "config/backend-queue.json"
+      },
+      "proofFile": "audit/proofs/backend.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "content",
+      "name": "Hume",
+      "lane": "Question System",
+      "model": "codex",
+      "trigger": "guild-ops-loop content review and live curation lane",
+      "entrypoint": "scripts/run-content-review.ps1 + scripts/run-reviewed-live-curation.ps1 + scripts/run-core-codex-lane.ps1 -EmployeeId content",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 20,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 21,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "batch validation",
+          "rationale refinement",
+          "diagram coverage"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": [
+          "packages/content pipeline scripts",
+          "content review",
+          "live curation"
+        ]
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/content.json",
+        "statePath": "config/content-state.json",
+        "queuePath": "config/content-queue.json"
+      },
+      "proofFile": "audit/proofs/content.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "manager",
+      "name": "Kuhn",
+      "lane": "Manager",
+      "model": "codex",
+      "trigger": "guild-ops-loop manager sweep",
+      "entrypoint": "scripts/run-manager-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 4,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 8,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "lane triage",
+          "blocker compression",
+          "status compression"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": [
+          "config/*-state.json",
+          "config/active-duty-roster.json"
+        ]
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\manager-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\manager-state.json",
+          "text": "\"resumeFrom\":  \"Start with laneAssignments, then inspect the top blocked or drifting lane.\","
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/manager.json",
+        "statePath": "config/manager-state.json",
+        "queuePath": "config/manager-queue.json"
+      },
+      "proofFile": "audit/proofs/manager.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "nemoclaw",
+      "name": "Nemoclaw",
+      "lane": "Local Batch Worker",
+      "model": "nemotron",
+      "trigger": "guild-ops-loop batch-status/worker-cycle route",
+      "entrypoint": "../ccrn-agent/remote-control/scripts/exec_route.py worker-cycle",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 5,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 6,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 9,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "incremental batch promotion",
+          "mixed batch generation",
+          "low-token content expansion",
+          "diagram coverage",
+          "rationale refinement",
+          "batch validation"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": [
+          "../ccrn-agent remote exec route",
+          "packages/content/staging/promoted"
+        ]
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/nemoclaw.json",
+        "statePath": "config/nemoclaw-state.json",
+        "queuePath": "config/nemoclaw-queue.json"
+      },
+      "proofFile": "audit/proofs/nemoclaw.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "lane": "Design Review",
+      "model": "claude",
+      "trigger": "guild-ops-loop Claude queue eligibility",
+      "entrypoint": "scripts/run-claude-employee.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 30,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": 0.429,
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 19,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 18,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "premium review",
+          "design critique",
+          "conversion diagnosis",
+          "external audit synthesis",
+          "creator economics",
+          "EHR-inspired UI patterns for NGN clinical review",
+          "Answer-blind pre-submit / reveal post-submit React pattern",
+          "CSS component layer token architecture for design system parity",
+          "design-token-audit: identify all inline color/shadow values and map to semantic token names before touching components",
+          "agent-state-visual-grammar: encode live/blocked/stale/idle as left-edge bar color + truth-level pill — not prose",
+          "a11y-tab-pattern: role=tab requires aria-controls + aria-selected boolean + role=tabpanel on target",
+          "CSS grid fixed-height cockpit layout for EHR-style UI",
+          "pill tab bar with live data badges",
+          "details/summary expander card pattern for zero-scroll panel content",
+          "warm ink-on-sand color token application for clinical UI"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No code editor access from this agent — design spec is complete but implementation requires a human or Code agent with write access to apply CSS and TSX changes."
+        },
+        {
+          "source": "queue.tasks",
+          "text": "{\"id\":\"claude-case-study-ux\",\"title\":\"Audit case-study and bow-tie learner surfaces\",\"goal\":\"Tighten hierarchy, context framing, and answer-state clarity for richer NCLEX study modes without redesign drift.\",\"prompt\":\"Review the learner-facing case-study and richer NGN question shell. Focus on the smallest improvements that make context, clues, and answer confidence easier to scan under time pressure.\",\"kind\":\"ux-review\",\"status\":\"failed\",\"priority\":1,\"maxBudgetUsd\":1.2,\"contextFiles\":[\"apps/web/src/components/practice/PracticeQuestionPane.tsx\",\"apps/web/src/components/practice/PracticeTutorDrawer.tsx\",\"apps/web/src/app/quiz/QuizPage.tsx\",\"packages/content/questions/nclex/live/reviewed-curated-live.unique.json\"],\"createdAt\":\"2026-04-11T00:00:00Z\",\"startedAt\":\"2026-04-10T22:05:38.8754294-07:00\",\"outputSummary\":\"\",\"lastError\":\"\",\"error\":\"Claude returned a non-JSON envelope. At C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\scripts\\\\run-claude-employee.ps1:248 char:3 + throw \\\"Claude returned a"
+        },
+        {
+          "source": "queue.tasks",
+          "text": "{\"id\":\"claude-dashboard-clarity\",\"title\":\"Audit the private launch dashboard for clarity\",\"goal\":\"Make the swarm dashboard readable, truthful, and launch-useful on desktop and mobile.\",\"prompt\":\"Review the private dashboard and focus on hierarchy, state legibility, blocker visibility, and mobile readability. Ignore speculative redesign ideas.\",\"kind\":\"ux-review\",\"status\":\"failed\",\"priority\":3,\"maxBudgetUsd\":1,\"contextFiles\":[\"apps/web/src/components/dashboard/MissionControlDashboard.tsx\",\"config/guild-snapshot.json\",\"config/active-duty-roster.json\",\"config/capability-inventory.json\"],\"createdAt\":\"2026-04-09T22:00:00Z\",\"outputSummary\":\"\",\"lastError\":\"\",\"error\":\"Claude returned a non-JSON envelope. At C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\scripts\\\\run-claude-employee.ps1:248 char:3 + throw \\\"Claude returned a non-JSON envelope.\\\" + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ + CategoryInfo : OperationStopped: (Claude returned a non-JSON envelope.:String) [], RuntimeException + FullyQ"
+        },
+        {
+          "source": "queue.tasks",
+          "text": "{\"id\":\"claude-tutor-ux\",\"title\":\"Audit the tutor and rationale experience\",\"goal\":\"Make the AI tutor and rationale surfaces feel integrated, premium, and easy to scan.\",\"prompt\":\"Review the learner-facing rationale and tutor surfaces and return only bounded recommendations that improve clarity, citations, hierarchy, and trust without broad redesign.\",\"kind\":\"ux-review\",\"status\":\"failed\",\"priority\":2,\"maxBudgetUsd\":1.2,\"contextFiles\":[\"apps/web/src/components/practice/PracticeQuestionPane.tsx\",\"apps/web/src/components/tutor/AiTutorPanel.tsx\",\"apps/web/src/components/practice/PracticeTutorDrawer.tsx\",\"apps/web/src/components/quiz/QuizResults.tsx\"],\"createdAt\":\"2026-04-09T22:00:00Z\",\"outputSummary\":\"\",\"lastError\":\"\",\"error\":\"Claude returned a non-JSON envelope. At C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\scripts\\\\run-claude-employee.ps1:248 char:3 + throw \\\"Claude returned a non-JSON envelope.\\\" + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ + CategoryInfo : OperationStopped: (Claude retu"
+        },
+        {
+          "source": "queue.tasks",
+          "text": "{\"id\":\"claude-checkout-ux\",\"title\":\"Audit the live auth and checkout experience\",\"goal\":\"Find the smallest UI improvements that reduce confusion across login, upgrade, success, and billing.\",\"prompt\":\"Review the current live purchase path and call out only the highest-signal UX issues affecting sign-in, checkout trust, success clarity, and billing confidence.\",\"kind\":\"ux-review\",\"status\":\"failed\",\"priority\":1,\"maxBudgetUsd\":1.2,\"contextFiles\":[\"apps/web/src/app/auth/login/page.tsx\",\"apps/web/src/app/upgrade/page.tsx\",\"apps/web/src/app/success/page.tsx\",\"apps/web/src/app/account/billing/page.tsx\",\"apps/web/src/components/auth/AuthMagicLinkForm.tsx\",\"apps/web/src/components/billing/CheckoutButton.tsx\"],\"createdAt\":\"2026-04-09T22:00:00Z\",\"startedAt\":\"2026-04-09T14:55:15.8019594-07:00\",\"outputSummary\":\"\",\"lastError\":\"\",\"error\":\"Claude returned a non-JSON envelope. At C:\\\\Users\\\\Chapman\\\\Desktop\\\\ai\\\\chapai\\\\scripts\\\\run-claude-employee.ps1:248 char:3 + throw \\\"Claude returned a non-JSON en"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/claude-code.json",
+        "statePath": "config/claude-employee-state.json",
+        "queuePath": "config/claude-employee-queue.json"
+      },
+      "proofFile": "audit/proofs/claude-code.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "ready",
+        "lastRunAt": "2026-05-06T11:20:22.0744024-07:00",
+        "lastHeartbeatAt": "2026-05-06T11:20:22.0774171-07:00",
+        "lastSeenAgeMinutes": 277,
+        "blocker": "No code editor access from this agent — design spec is complete but implementation requires a human or Code agent with write access to apply CSS and TSX changes.",
+        "queue": {
+          "tasks": 7,
+          "pending": 0,
+          "completed": 3,
+          "failed": 4,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "social-studio",
+      "name": "Mercury",
+      "lane": "Growth Studio",
+      "model": "codex",
+      "trigger": "guild-ops-loop social lane eligibility",
+      "entrypoint": "scripts/run-social-studio.ps1 + scripts/run-social-dispatch.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "creator outreach copy",
+          "conversion messaging",
+          "search-intent growth"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": [
+          "drafts/social-*",
+          "config/social-outbox/dispatch-state.json"
+        ]
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\social-studio-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\social-studio-state.json",
+          "text": "\"missingKeys\":  ["
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/social-studio.json",
+        "statePath": "config/social-studio-state.json",
+        "queuePath": "config/social-studio-queue.json"
+      },
+      "proofFile": "audit/proofs/social-studio.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "scout",
+      "name": "Aster",
+      "lane": "Venture Scout",
+      "model": "codex",
+      "trigger": "guild-ops-loop scout eligibility or active duty roster",
+      "entrypoint": "scripts/run-scout-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 12,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "opportunity scouting",
+          "validation memo writing",
+          "profit-first prioritization"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\scout-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/scout.json",
+        "statePath": "config/scout-state.json",
+        "queuePath": "config/scout-queue.json"
+      },
+      "proofFile": "audit/proofs/scout.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "explorer",
+      "name": "Euler",
+      "lane": "Market Explorer",
+      "model": "codex",
+      "trigger": "registered brain/state only; no runner found in guild-ops-loop",
+      "entrypoint": null,
+      "entrypointExists": false,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "opportunity scouting",
+          "validation memo writing",
+          "profit-first prioritization"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/explorer.json",
+        "statePath": "config/explorer-state.json",
+        "queuePath": "config/explorer-queue.json"
+      },
+      "proofFile": "audit/proofs/explorer.run.json",
+      "classifications": [
+        "BROKEN",
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING",
+        "ORPHANED"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "gemini-audit",
+      "name": "Gemini",
+      "lane": "External Audit Advisor",
+      "model": "gemini",
+      "trigger": "guild-ops-loop Gemini audit eligibility",
+      "entrypoint": "scripts/run-gemini-audit-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 9,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 5,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 7,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "external audit synthesis",
+          "pricing clarity review",
+          "bounded recommendation handoff",
+          "creator economics"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\gemini-audit-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\gemini-audit-queue.json",
+          "text": "\"blocked\":  ["
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/gemini-audit.json",
+        "statePath": "config/gemini-audit-state.json",
+        "queuePath": "config/gemini-audit-queue.json"
+      },
+      "proofFile": "audit/proofs/gemini-audit.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "running",
+        "lastRunAt": "2026-05-04T19:25:50.6627660-07:00",
+        "lastHeartbeatAt": "2026-05-04T19:25:50.6627660-07:00",
+        "lastSeenAgeMinutes": 2672,
+        "blocker": "none",
+        "queue": {
+          "tasks": 0,
+          "pending": 4,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "antigravity",
+      "name": "Antigravity",
+      "lane": "Gemini Sub-Swarm",
+      "model": "gemini",
+      "trigger": "guild-ops-loop Antigravity eligibility",
+      "entrypoint": "scripts/run-antigravity-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 9,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 5,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 12,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "external audit synthesis",
+          "pricing clarity review",
+          "bounded recommendation handoff",
+          "creator outreach copy",
+          "conversion messaging",
+          "search-intent growth",
+          "harness architecture",
+          "handoff design",
+          "creator economics"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\antigravity-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\antigravity-queue.json",
+          "text": "\"blocked\":  ["
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/antigravity.json",
+        "statePath": "config/antigravity-state.json",
+        "queuePath": "config/antigravity-queue.json"
+      },
+      "proofFile": "audit/proofs/antigravity.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "running",
+        "lastRunAt": "2026-05-04T19:25:50.9711035-07:00",
+        "lastHeartbeatAt": "2026-05-04T19:25:50.9711035-07:00",
+        "lastSeenAgeMinutes": 2672,
+        "blocker": "none",
+        "queue": {
+          "tasks": 0,
+          "pending": 4,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "outreach-email",
+      "name": "Beacon",
+      "lane": "Email Growth",
+      "model": "codex",
+      "trigger": "guild-ops-loop email lane eligibility",
+      "entrypoint": "scripts/run-outreach-email-lane.ps1 + scripts/run-email-dispatch.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "daily question delivery",
+          "educator outreach sequencing",
+          "deliverability readiness"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": [
+          "drafts/daily-question-*",
+          "config/email-outbox/dispatch-state.json"
+        ]
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\outreach-email-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\outreach-email-state.json",
+          "text": "\"blocked\":  0"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\outreach-email-state.json",
+          "text": "\"blocker\":  \"Email provider path is configured, but the Resend API key is still missing.\","
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/outreach-email.json",
+        "statePath": "config/outreach-email-state.json",
+        "queuePath": "config/outreach-email-queue.json"
+      },
+      "proofFile": "audit/proofs/outreach-email.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "growth-orchestrator",
+      "name": "Helios",
+      "lane": "Growth Control",
+      "model": "codex",
+      "trigger": "guild-ops-loop growth orchestration eligibility",
+      "entrypoint": "scripts/run-growth-orchestrator.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 6,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "harness architecture",
+          "handoff design",
+          "restart-safe continuity"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": [
+          "social/email/scout states",
+          "public-data approval queue"
+        ]
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\config\\growth-orchestrator-state.json",
+          "text": "\"blockedUntil\":  null,"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/growth-orchestrator.json",
+        "statePath": "config/growth-orchestrator-state.json",
+        "queuePath": "config/growth-orchestrator-queue.json"
+      },
+      "proofFile": "audit/proofs/growth-orchestrator.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    },
+    {
+      "id": "mobile-product",
+      "name": "Nova",
+      "lane": "Mobile Product",
+      "model": "codex",
+      "trigger": "guild-ops-loop mobile product eligibility",
+      "entrypoint": "scripts/run-mobile-product-lane.ps1",
+      "entrypointExists": true,
+      "dryRunSupported": false,
+      "last30d": {
+        "invocationsMeasured": 3,
+        "invocationSource": "state/queue timestamps and memory event provenance only",
+        "successRate": "NO_MEASURED_SOURCE",
+        "p50LatencyMs": "NO_MEASURED_SOURCE",
+        "p95LatencyMs": "NO_MEASURED_SOURCE",
+        "tokenSpend": "NO_MEASURED_SOURCE"
+      },
+      "memoryWrites": {
+        "canonical": 3,
+        "staging": 0,
+        "rejected": "NO_MEASURED_SOURCE"
+      },
+      "skillWrites": {
+        "count": 8,
+        "lastUsedTimestamp": "NO_MEASURED_SOURCE",
+        "skills": [
+          "truthful status reporting",
+          "bounded task execution",
+          "checkpoint handoff",
+          "expo architecture",
+          "mobile onboarding flow",
+          "offline study path",
+          "opportunity scouting",
+          "validation memo writing"
+        ]
+      },
+      "dependencyGraph": {
+        "calledBy": [
+          "scripts/guild-ops-loop.ps1",
+          "scripts/start-guild-stack.ps1 (indirect)"
+        ],
+        "callsIt": []
+      },
+      "failureModes": [
+        {
+          "source": "state.blocker",
+          "text": "No runtime heartbeat yet; initialized as an empty state template."
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/login              399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /api/dashboard-auth/logout             399 B         180 kB"
+        },
+        {
+          "source": "C:\\Users\\Chapman\\Desktop\\ai\\chapai\\logs\\launch-3103.out.log",
+          "text": "├ ƒ /auth/callback                         399 B         180 kB"
+        }
+      ],
+      "deadCode30d": false,
+      "files": {
+        "brainPath": "brains/agents/mobile-product.json",
+        "statePath": "config/mobile-product-state.json",
+        "queuePath": "config/mobile-product-queue.json"
+      },
+      "proofFile": "audit/proofs/mobile-product.run.json",
+      "classifications": [
+        "INEFFICIENT",
+        "MISCONFIGURED",
+        "MISSING"
+      ],
+      "stateSummary": {
+        "status": "configured",
+        "lastRunAt": null,
+        "lastHeartbeatAt": null,
+        "lastSeenAgeMinutes": null,
+        "blocker": "No runtime heartbeat yet; initialized as an empty state template.",
+        "queue": {
+          "tasks": 0,
+          "pending": 0,
+          "completed": 0,
+          "failed": 0,
+          "blocked": 0
+        }
+      }
+    }
+  ]
+}

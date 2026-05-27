@@ -1,0 +1,137 @@
+.pane {
+  min-width: 0;
+  overflow-y: auto;
+  background: #fff;
+  padding: 1.5rem 2rem 5rem;
+}
+
+.prompt {
+  position: relative;
+  margin: 0 0 1.2rem;
+  padding-left: 1.6rem;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.prompt::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--exam-blue-700);
+  content: "\25b8";
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.submit {
+  min-width: 6.4rem;
+  min-height: 2.35rem;
+  border: 0;
+  background: var(--exam-blue-700);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  margin-top: 1.25rem;
+  padding: 0.45rem 1rem;
+}
+
+.submit:disabled {
+  cursor: default;
+  opacity: 0.62;
+}
+
+.empty {
+  color: var(--exam-text-muted);
+  font-size: 0.95rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 1.6rem 0 0.85rem;
+  color: var(--exam-text-strong);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.copy {
+  max-width: 58rem;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.sections {
+  display: grid;
+  gap: 1.4rem;
+  margin-top: 1.4rem;
+}
+
+.sections h3 {
+  margin: 0 0 0.65rem;
+  color: #000;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.sections ul {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.3rem;
+  color: #000;
+  line-height: 1.6;
+}
+
+.sections strong {
+  font-weight: 800;
+}
+
+.takeaway {
+  border-left: 3px solid var(--exam-blue-700);
+  background: var(--exam-row-stripe);
+  padding: 0.85rem 1rem;
+}
+
+.takeaway h3 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.diagram {
+  margin-top: 1.3rem;
+  border: 1px solid var(--exam-border);
+  padding: 0.8rem;
+}
+
+.diagram figure {
+  margin: 0;
+}
+
+.diagram svg {
+  display: block;
+  width: min(30rem, 100%);
+  height: auto;
+}
+
+.diagram table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.8rem;
+}
+
+.diagram th,
+.diagram td {
+  border: 1px solid var(--exam-border);
+  padding: 0.45rem 0.55rem;
+  text-align: left;
+}
+
+.diagram th {
+  background: var(--exam-blue-100);
+}

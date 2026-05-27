@@ -1,0 +1,20 @@
+{
+  "agentId": "nemoclaw",
+  "displayName": "Nemoclaw",
+  "role": "Local Batch Worker",
+  "runtime": "nemotron",
+  "vaultVersion": 1,
+  "generatedAt": "2026-05-07T16:20:00.506Z",
+  "sourceRunId": "stage3-2026-05-07T16-20-00-405Z",
+  "qdrantCollection": "chapai_nemoclaw_brain",
+  "canonicalSeedEntries": [
+    "fact-nemoclaw-identity-seed",
+    "skill-nemoclaw-truthful-status-reporting"
+  ],
+  "pathways": {
+    "shortTermContext": "short_term_context.md",
+    "workingScratchpad": "working_scratchpad.md",
+    "longTermMemory": "facts/",
+    "crystallizedSkills": "skills/"
+  }
+}
