@@ -1,0 +1,3883 @@
+{
+  "batchId": "p1-bow-ties",
+  "generatedAt": "2026-05-27T17:42:40.438Z",
+  "generatedBy": {
+    "agentId": "codex-local",
+    "runtime": "zero-api-cost-template-generator",
+    "promptSource": "P1.5 high-yield NCLEX bow-tie scaffolding"
+  },
+  "examMix": {
+    "nclex": 30,
+    "ccrn": 0
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "distribution": {
+    "sepsis": 3,
+    "dka": 3,
+    "mi": 3,
+    "stroke": 3,
+    "opioid-overdose": 3,
+    "pe": 3,
+    "sickle-crisis": 3,
+    "eclampsia": 3,
+    "anaphylaxis": 3,
+    "neutropenic-fever": 3
+  },
+  "questions": [
+    {
+      "id": "p1-bowtie-01-sepsis-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Sepsis / Perfusion",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Sepsis With Hypoperfusion",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client has fever, suspected infection, cool extremities, and a falling blood pressure despite increasing tachycardia.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has fever, suspected infection, cool extremities, and a falling blood pressure despite increasing tachycardia."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "T 39.1 C",
+            "HR 126/min",
+            "BP 82/48 mm Hg",
+            "SpO2 93%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Lactate 4.1 mmol/L",
+            "WBC 18,600/mm3",
+            "Creatinine increased from baseline"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Septic shock from suspected infection"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "sepsis-condition",
+          "text": "Septic shock from suspected infection",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "sepsis-cultures-antibiotics",
+            "text": "Obtain cultures and start broad-spectrum antibiotics",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-crystalloid-bolus",
+            "text": "Administer isotonic crystalloid bolus as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-oral-fluids",
+            "text": "Encourage oral fluids and reassess in 2 hours",
+            "isCorrect": false
+          },
+          {
+            "id": "sepsis-antipyretic-only",
+            "text": "Give acetaminophen as the primary intervention",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "sepsis-lactate-map",
+            "text": "Lactate trend and mean arterial pressure",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-urine-output",
+            "text": "Hourly urine output",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-daily-weight",
+            "text": "Daily weight after stabilization",
+            "isCorrect": false
+          },
+          {
+            "id": "sepsis-skin-turgor",
+            "text": "Skin turgor alone",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "sepsis-condition",
+        "leftActions": [
+          "sepsis-cultures-antibiotics",
+          "sepsis-crystalloid-bolus"
+        ],
+        "rightMonitoring": [
+          "sepsis-lactate-map",
+          "sepsis-urine-output"
+        ]
+      },
+      "rationale": "The pattern is septic shock with impaired perfusion. Early antibiotics, cultures, fluids, lactate, MAP, and urine output address the time-sensitive threats.",
+      "distractorRationales": {
+        "sepsis-oral-fluids": "Encourage oral fluids and reassess in 2 hours does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-antipyretic-only": "Give acetaminophen as the primary intervention does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-daily-weight": "Daily weight after stabilization does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-skin-turgor": "Skin turgor alone does not address the immediate sepsis / perfusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "sepsis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Septic shock from suspected infection",
+        "Sepsis / Perfusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-01-sepsis-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Sepsis / Perfusion",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Sepsis With Hypoperfusion",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client has fever, suspected infection, cool extremities, and a falling blood pressure despite increasing tachycardia.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has fever, suspected infection, cool extremities, and a falling blood pressure despite increasing tachycardia."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "T 39.1 C",
+            "HR 126/min",
+            "BP 82/48 mm Hg",
+            "SpO2 93%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Lactate 4.1 mmol/L",
+            "WBC 18,600/mm3",
+            "Creatinine increased from baseline"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Septic shock from suspected infection"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "sepsis-condition",
+          "text": "Septic shock from suspected infection",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "sepsis-cultures-antibiotics",
+            "text": "Obtain cultures and start broad-spectrum antibiotics",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-crystalloid-bolus",
+            "text": "Administer isotonic crystalloid bolus as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-oral-fluids",
+            "text": "Encourage oral fluids and reassess in 2 hours",
+            "isCorrect": false
+          },
+          {
+            "id": "sepsis-antipyretic-only",
+            "text": "Give acetaminophen as the primary intervention",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "sepsis-lactate-map",
+            "text": "Lactate trend and mean arterial pressure",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-urine-output",
+            "text": "Hourly urine output",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-daily-weight",
+            "text": "Daily weight after stabilization",
+            "isCorrect": false
+          },
+          {
+            "id": "sepsis-skin-turgor",
+            "text": "Skin turgor alone",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "sepsis-condition",
+        "leftActions": [
+          "sepsis-cultures-antibiotics",
+          "sepsis-crystalloid-bolus"
+        ],
+        "rightMonitoring": [
+          "sepsis-lactate-map",
+          "sepsis-urine-output"
+        ]
+      },
+      "rationale": "The pattern is septic shock with impaired perfusion. Early antibiotics, cultures, fluids, lactate, MAP, and urine output address the time-sensitive threats.",
+      "distractorRationales": {
+        "sepsis-oral-fluids": "Encourage oral fluids and reassess in 2 hours does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-antipyretic-only": "Give acetaminophen as the primary intervention does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-daily-weight": "Daily weight after stabilization does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-skin-turgor": "Skin turgor alone does not address the immediate sepsis / perfusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "sepsis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Septic shock from suspected infection",
+        "Sepsis / Perfusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-01-sepsis-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Sepsis / Perfusion",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Sepsis With Hypoperfusion",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client has fever, suspected infection, cool extremities, and a falling blood pressure despite increasing tachycardia.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has fever, suspected infection, cool extremities, and a falling blood pressure despite increasing tachycardia."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "T 39.1 C",
+            "HR 126/min",
+            "BP 82/48 mm Hg",
+            "SpO2 93%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Lactate 4.1 mmol/L",
+            "WBC 18,600/mm3",
+            "Creatinine increased from baseline"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Septic shock from suspected infection"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "sepsis-condition",
+          "text": "Septic shock from suspected infection",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "sepsis-cultures-antibiotics",
+            "text": "Obtain cultures and start broad-spectrum antibiotics",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-crystalloid-bolus",
+            "text": "Administer isotonic crystalloid bolus as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-oral-fluids",
+            "text": "Encourage oral fluids and reassess in 2 hours",
+            "isCorrect": false
+          },
+          {
+            "id": "sepsis-antipyretic-only",
+            "text": "Give acetaminophen as the primary intervention",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "sepsis-lactate-map",
+            "text": "Lactate trend and mean arterial pressure",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-urine-output",
+            "text": "Hourly urine output",
+            "isCorrect": true
+          },
+          {
+            "id": "sepsis-daily-weight",
+            "text": "Daily weight after stabilization",
+            "isCorrect": false
+          },
+          {
+            "id": "sepsis-skin-turgor",
+            "text": "Skin turgor alone",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "sepsis-condition",
+        "leftActions": [
+          "sepsis-cultures-antibiotics",
+          "sepsis-crystalloid-bolus"
+        ],
+        "rightMonitoring": [
+          "sepsis-lactate-map",
+          "sepsis-urine-output"
+        ]
+      },
+      "rationale": "The pattern is septic shock with impaired perfusion. Early antibiotics, cultures, fluids, lactate, MAP, and urine output address the time-sensitive threats.",
+      "distractorRationales": {
+        "sepsis-oral-fluids": "Encourage oral fluids and reassess in 2 hours does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-antipyretic-only": "Give acetaminophen as the primary intervention does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-daily-weight": "Daily weight after stabilization does not address the immediate sepsis / perfusion priority and could delay stabilization.",
+        "sepsis-skin-turgor": "Skin turgor alone does not address the immediate sepsis / perfusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "sepsis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Septic shock from suspected infection",
+        "Sepsis / Perfusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-02-dka-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Endocrine / DKA",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Diabetic Ketoacidosis",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client has polyuria, abdominal pain, Kussmaul respirations, dry mucous membranes, and a fruity breath odor.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has polyuria, abdominal pain, Kussmaul respirations, dry mucous membranes, and a fruity breath odor."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 118/min",
+            "BP 94/56 mm Hg",
+            "RR 28/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Glucose 496 mg/dL",
+            "Anion gap 24",
+            "Potassium 3.4 mEq/L",
+            "Positive serum ketones"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "DKA with dehydration and metabolic acidosis"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "dka-condition",
+          "text": "DKA with dehydration and metabolic acidosis",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "dka-isotonic-fluid",
+            "text": "Start isotonic IV fluid replacement",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-potassium-insulin",
+            "text": "Verify potassium plan before IV insulin infusion",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-bicarbonate-routine",
+            "text": "Give sodium bicarbonate routinely for all DKA",
+            "isCorrect": false
+          },
+          {
+            "id": "dka-hold-fluids",
+            "text": "Restrict fluids until glucose normalizes",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "dka-potassium",
+            "text": "Serum potassium and cardiac rhythm",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-anion-gap",
+            "text": "Anion gap and glucose trend",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-hba1c",
+            "text": "Hemoglobin A1c only",
+            "isCorrect": false
+          },
+          {
+            "id": "dka-ketone-urine-only",
+            "text": "Urine ketones once per shift only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "dka-condition",
+        "leftActions": [
+          "dka-isotonic-fluid",
+          "dka-potassium-insulin"
+        ],
+        "rightMonitoring": [
+          "dka-potassium",
+          "dka-anion-gap"
+        ]
+      },
+      "rationale": "DKA care prioritizes volume restoration and safe insulin therapy. Potassium can fall quickly after insulin, so electrolytes and anion-gap closure must be trended.",
+      "distractorRationales": {
+        "dka-bicarbonate-routine": "Give sodium bicarbonate routinely for all DKA does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-hold-fluids": "Restrict fluids until glucose normalizes does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-hba1c": "Hemoglobin A1c only does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-ketone-urine-only": "Urine ketones once per shift only does not address the immediate endocrine / dka priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "dka",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "DKA with dehydration and metabolic acidosis",
+        "Endocrine / DKA"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-02-dka-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Endocrine / DKA",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Diabetic Ketoacidosis",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client has polyuria, abdominal pain, Kussmaul respirations, dry mucous membranes, and a fruity breath odor.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has polyuria, abdominal pain, Kussmaul respirations, dry mucous membranes, and a fruity breath odor."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 118/min",
+            "BP 94/56 mm Hg",
+            "RR 28/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Glucose 496 mg/dL",
+            "Anion gap 24",
+            "Potassium 3.4 mEq/L",
+            "Positive serum ketones"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "DKA with dehydration and metabolic acidosis"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "dka-condition",
+          "text": "DKA with dehydration and metabolic acidosis",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "dka-isotonic-fluid",
+            "text": "Start isotonic IV fluid replacement",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-potassium-insulin",
+            "text": "Verify potassium plan before IV insulin infusion",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-bicarbonate-routine",
+            "text": "Give sodium bicarbonate routinely for all DKA",
+            "isCorrect": false
+          },
+          {
+            "id": "dka-hold-fluids",
+            "text": "Restrict fluids until glucose normalizes",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "dka-potassium",
+            "text": "Serum potassium and cardiac rhythm",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-anion-gap",
+            "text": "Anion gap and glucose trend",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-hba1c",
+            "text": "Hemoglobin A1c only",
+            "isCorrect": false
+          },
+          {
+            "id": "dka-ketone-urine-only",
+            "text": "Urine ketones once per shift only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "dka-condition",
+        "leftActions": [
+          "dka-isotonic-fluid",
+          "dka-potassium-insulin"
+        ],
+        "rightMonitoring": [
+          "dka-potassium",
+          "dka-anion-gap"
+        ]
+      },
+      "rationale": "DKA care prioritizes volume restoration and safe insulin therapy. Potassium can fall quickly after insulin, so electrolytes and anion-gap closure must be trended.",
+      "distractorRationales": {
+        "dka-bicarbonate-routine": "Give sodium bicarbonate routinely for all DKA does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-hold-fluids": "Restrict fluids until glucose normalizes does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-hba1c": "Hemoglobin A1c only does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-ketone-urine-only": "Urine ketones once per shift only does not address the immediate endocrine / dka priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "dka",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "DKA with dehydration and metabolic acidosis",
+        "Endocrine / DKA"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-02-dka-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Endocrine / DKA",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Diabetic Ketoacidosis",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client has polyuria, abdominal pain, Kussmaul respirations, dry mucous membranes, and a fruity breath odor.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has polyuria, abdominal pain, Kussmaul respirations, dry mucous membranes, and a fruity breath odor."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 118/min",
+            "BP 94/56 mm Hg",
+            "RR 28/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Glucose 496 mg/dL",
+            "Anion gap 24",
+            "Potassium 3.4 mEq/L",
+            "Positive serum ketones"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "DKA with dehydration and metabolic acidosis"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "dka-condition",
+          "text": "DKA with dehydration and metabolic acidosis",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "dka-isotonic-fluid",
+            "text": "Start isotonic IV fluid replacement",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-potassium-insulin",
+            "text": "Verify potassium plan before IV insulin infusion",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-bicarbonate-routine",
+            "text": "Give sodium bicarbonate routinely for all DKA",
+            "isCorrect": false
+          },
+          {
+            "id": "dka-hold-fluids",
+            "text": "Restrict fluids until glucose normalizes",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "dka-potassium",
+            "text": "Serum potassium and cardiac rhythm",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-anion-gap",
+            "text": "Anion gap and glucose trend",
+            "isCorrect": true
+          },
+          {
+            "id": "dka-hba1c",
+            "text": "Hemoglobin A1c only",
+            "isCorrect": false
+          },
+          {
+            "id": "dka-ketone-urine-only",
+            "text": "Urine ketones once per shift only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "dka-condition",
+        "leftActions": [
+          "dka-isotonic-fluid",
+          "dka-potassium-insulin"
+        ],
+        "rightMonitoring": [
+          "dka-potassium",
+          "dka-anion-gap"
+        ]
+      },
+      "rationale": "DKA care prioritizes volume restoration and safe insulin therapy. Potassium can fall quickly after insulin, so electrolytes and anion-gap closure must be trended.",
+      "distractorRationales": {
+        "dka-bicarbonate-routine": "Give sodium bicarbonate routinely for all DKA does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-hold-fluids": "Restrict fluids until glucose normalizes does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-hba1c": "Hemoglobin A1c only does not address the immediate endocrine / dka priority and could delay stabilization.",
+        "dka-ketone-urine-only": "Urine ketones once per shift only does not address the immediate endocrine / dka priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "dka",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "DKA with dehydration and metabolic acidosis",
+        "Endocrine / DKA"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-03-mi-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Cardiac / ACS",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Acute Myocardial Infarction",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client reports crushing chest pressure radiating to the jaw with diaphoresis and nausea.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client reports crushing chest pressure radiating to the jaw with diaphoresis and nausea."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 104/min",
+            "BP 148/86 mm Hg",
+            "SpO2 95%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Troponin pending",
+            "ECG shows ST elevation in contiguous leads"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Acute coronary syndrome with evolving infarction"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "mi-condition",
+          "text": "Acute coronary syndrome with evolving infarction",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "mi-aspirin",
+            "text": "Administer chewable aspirin if not contraindicated",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-activate-reperfusion",
+            "text": "Activate reperfusion pathway and notify the provider",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-ambulate",
+            "text": "Ambulate to assess exertional tolerance",
+            "isCorrect": false
+          },
+          {
+            "id": "mi-delay-ecg",
+            "text": "Delay ECG review until pain medication works",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "mi-st-rhythm",
+            "text": "ST-segment and rhythm changes",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-pain-bp",
+            "text": "Chest pain, blood pressure, and perfusion",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-oral-intake",
+            "text": "Oral intake percentage",
+            "isCorrect": false
+          },
+          {
+            "id": "mi-bowel-pattern",
+            "text": "Bowel pattern",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "mi-condition",
+        "leftActions": [
+          "mi-aspirin",
+          "mi-activate-reperfusion"
+        ],
+        "rightMonitoring": [
+          "mi-st-rhythm",
+          "mi-pain-bp"
+        ]
+      },
+      "rationale": "STEMI care requires rapid antiplatelet therapy and reperfusion coordination. Rhythm, ST changes, pain, and perfusion show whether ischemia is progressing.",
+      "distractorRationales": {
+        "mi-ambulate": "Ambulate to assess exertional tolerance does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-delay-ecg": "Delay ECG review until pain medication works does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-oral-intake": "Oral intake percentage does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-bowel-pattern": "Bowel pattern does not address the immediate cardiac / acs priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "mi",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Acute coronary syndrome with evolving infarction",
+        "Cardiac / ACS"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-03-mi-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Cardiac / ACS",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Acute Myocardial Infarction",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client reports crushing chest pressure radiating to the jaw with diaphoresis and nausea.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client reports crushing chest pressure radiating to the jaw with diaphoresis and nausea."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 104/min",
+            "BP 148/86 mm Hg",
+            "SpO2 95%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Troponin pending",
+            "ECG shows ST elevation in contiguous leads"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Acute coronary syndrome with evolving infarction"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "mi-condition",
+          "text": "Acute coronary syndrome with evolving infarction",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "mi-aspirin",
+            "text": "Administer chewable aspirin if not contraindicated",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-activate-reperfusion",
+            "text": "Activate reperfusion pathway and notify the provider",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-ambulate",
+            "text": "Ambulate to assess exertional tolerance",
+            "isCorrect": false
+          },
+          {
+            "id": "mi-delay-ecg",
+            "text": "Delay ECG review until pain medication works",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "mi-st-rhythm",
+            "text": "ST-segment and rhythm changes",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-pain-bp",
+            "text": "Chest pain, blood pressure, and perfusion",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-oral-intake",
+            "text": "Oral intake percentage",
+            "isCorrect": false
+          },
+          {
+            "id": "mi-bowel-pattern",
+            "text": "Bowel pattern",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "mi-condition",
+        "leftActions": [
+          "mi-aspirin",
+          "mi-activate-reperfusion"
+        ],
+        "rightMonitoring": [
+          "mi-st-rhythm",
+          "mi-pain-bp"
+        ]
+      },
+      "rationale": "STEMI care requires rapid antiplatelet therapy and reperfusion coordination. Rhythm, ST changes, pain, and perfusion show whether ischemia is progressing.",
+      "distractorRationales": {
+        "mi-ambulate": "Ambulate to assess exertional tolerance does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-delay-ecg": "Delay ECG review until pain medication works does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-oral-intake": "Oral intake percentage does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-bowel-pattern": "Bowel pattern does not address the immediate cardiac / acs priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "mi",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Acute coronary syndrome with evolving infarction",
+        "Cardiac / ACS"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-03-mi-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Cardiac / ACS",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Acute Myocardial Infarction",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client reports crushing chest pressure radiating to the jaw with diaphoresis and nausea.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client reports crushing chest pressure radiating to the jaw with diaphoresis and nausea."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 104/min",
+            "BP 148/86 mm Hg",
+            "SpO2 95%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Troponin pending",
+            "ECG shows ST elevation in contiguous leads"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Acute coronary syndrome with evolving infarction"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "mi-condition",
+          "text": "Acute coronary syndrome with evolving infarction",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "mi-aspirin",
+            "text": "Administer chewable aspirin if not contraindicated",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-activate-reperfusion",
+            "text": "Activate reperfusion pathway and notify the provider",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-ambulate",
+            "text": "Ambulate to assess exertional tolerance",
+            "isCorrect": false
+          },
+          {
+            "id": "mi-delay-ecg",
+            "text": "Delay ECG review until pain medication works",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "mi-st-rhythm",
+            "text": "ST-segment and rhythm changes",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-pain-bp",
+            "text": "Chest pain, blood pressure, and perfusion",
+            "isCorrect": true
+          },
+          {
+            "id": "mi-oral-intake",
+            "text": "Oral intake percentage",
+            "isCorrect": false
+          },
+          {
+            "id": "mi-bowel-pattern",
+            "text": "Bowel pattern",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "mi-condition",
+        "leftActions": [
+          "mi-aspirin",
+          "mi-activate-reperfusion"
+        ],
+        "rightMonitoring": [
+          "mi-st-rhythm",
+          "mi-pain-bp"
+        ]
+      },
+      "rationale": "STEMI care requires rapid antiplatelet therapy and reperfusion coordination. Rhythm, ST changes, pain, and perfusion show whether ischemia is progressing.",
+      "distractorRationales": {
+        "mi-ambulate": "Ambulate to assess exertional tolerance does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-delay-ecg": "Delay ECG review until pain medication works does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-oral-intake": "Oral intake percentage does not address the immediate cardiac / acs priority and could delay stabilization.",
+        "mi-bowel-pattern": "Bowel pattern does not address the immediate cardiac / acs priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "mi",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Acute coronary syndrome with evolving infarction",
+        "Cardiac / ACS"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-04-stroke-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Neuro / Stroke",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Acute Ischemic Stroke",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client has sudden unilateral weakness, facial droop, slurred speech, and a known last-well time under 2 hours.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has sudden unilateral weakness, facial droop, slurred speech, and a known last-well time under 2 hours."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 184/102 mm Hg",
+            "HR 88/min",
+            "SpO2 96%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Point-of-care glucose 108 mg/dL",
+            "INR pending"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Acute ischemic stroke within treatment window"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "stroke-condition",
+          "text": "Acute ischemic stroke within treatment window",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "stroke-stroke-activation",
+            "text": "Activate stroke protocol and document last-known-well time",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-ct-screen",
+            "text": "Prepare for noncontrast CT and thrombolytic screening",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-oral-meds",
+            "text": "Give oral antihypertensive medication immediately",
+            "isCorrect": false
+          },
+          {
+            "id": "stroke-food-swallow",
+            "text": "Offer food to assess swallowing",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "stroke-neuro-checks",
+            "text": "Focused neuro checks and NIHSS trend",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-bp-window",
+            "text": "Blood pressure within stroke-treatment parameters",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-daily-lipids",
+            "text": "Daily lipid panel",
+            "isCorrect": false
+          },
+          {
+            "id": "stroke-routine-weight",
+            "text": "Routine weight",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "stroke-condition",
+        "leftActions": [
+          "stroke-stroke-activation",
+          "stroke-ct-screen"
+        ],
+        "rightMonitoring": [
+          "stroke-neuro-checks",
+          "stroke-bp-window"
+        ]
+      },
+      "rationale": "The priority is rapid stroke pathway activation without delaying imaging or eligibility screening. Neuro status and blood pressure guide treatment safety.",
+      "distractorRationales": {
+        "stroke-oral-meds": "Give oral antihypertensive medication immediately does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-food-swallow": "Offer food to assess swallowing does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-daily-lipids": "Daily lipid panel does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-routine-weight": "Routine weight does not address the immediate neuro / stroke priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "stroke",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Acute ischemic stroke within treatment window",
+        "Neuro / Stroke"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-04-stroke-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Neuro / Stroke",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Acute Ischemic Stroke",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client has sudden unilateral weakness, facial droop, slurred speech, and a known last-well time under 2 hours.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has sudden unilateral weakness, facial droop, slurred speech, and a known last-well time under 2 hours."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 184/102 mm Hg",
+            "HR 88/min",
+            "SpO2 96%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Point-of-care glucose 108 mg/dL",
+            "INR pending"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Acute ischemic stroke within treatment window"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "stroke-condition",
+          "text": "Acute ischemic stroke within treatment window",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "stroke-stroke-activation",
+            "text": "Activate stroke protocol and document last-known-well time",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-ct-screen",
+            "text": "Prepare for noncontrast CT and thrombolytic screening",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-oral-meds",
+            "text": "Give oral antihypertensive medication immediately",
+            "isCorrect": false
+          },
+          {
+            "id": "stroke-food-swallow",
+            "text": "Offer food to assess swallowing",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "stroke-neuro-checks",
+            "text": "Focused neuro checks and NIHSS trend",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-bp-window",
+            "text": "Blood pressure within stroke-treatment parameters",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-daily-lipids",
+            "text": "Daily lipid panel",
+            "isCorrect": false
+          },
+          {
+            "id": "stroke-routine-weight",
+            "text": "Routine weight",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "stroke-condition",
+        "leftActions": [
+          "stroke-stroke-activation",
+          "stroke-ct-screen"
+        ],
+        "rightMonitoring": [
+          "stroke-neuro-checks",
+          "stroke-bp-window"
+        ]
+      },
+      "rationale": "The priority is rapid stroke pathway activation without delaying imaging or eligibility screening. Neuro status and blood pressure guide treatment safety.",
+      "distractorRationales": {
+        "stroke-oral-meds": "Give oral antihypertensive medication immediately does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-food-swallow": "Offer food to assess swallowing does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-daily-lipids": "Daily lipid panel does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-routine-weight": "Routine weight does not address the immediate neuro / stroke priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "stroke",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Acute ischemic stroke within treatment window",
+        "Neuro / Stroke"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-04-stroke-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Neuro / Stroke",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Acute Ischemic Stroke",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client has sudden unilateral weakness, facial droop, slurred speech, and a known last-well time under 2 hours.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client has sudden unilateral weakness, facial droop, slurred speech, and a known last-well time under 2 hours."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 184/102 mm Hg",
+            "HR 88/min",
+            "SpO2 96%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Point-of-care glucose 108 mg/dL",
+            "INR pending"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Acute ischemic stroke within treatment window"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "stroke-condition",
+          "text": "Acute ischemic stroke within treatment window",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "stroke-stroke-activation",
+            "text": "Activate stroke protocol and document last-known-well time",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-ct-screen",
+            "text": "Prepare for noncontrast CT and thrombolytic screening",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-oral-meds",
+            "text": "Give oral antihypertensive medication immediately",
+            "isCorrect": false
+          },
+          {
+            "id": "stroke-food-swallow",
+            "text": "Offer food to assess swallowing",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "stroke-neuro-checks",
+            "text": "Focused neuro checks and NIHSS trend",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-bp-window",
+            "text": "Blood pressure within stroke-treatment parameters",
+            "isCorrect": true
+          },
+          {
+            "id": "stroke-daily-lipids",
+            "text": "Daily lipid panel",
+            "isCorrect": false
+          },
+          {
+            "id": "stroke-routine-weight",
+            "text": "Routine weight",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "stroke-condition",
+        "leftActions": [
+          "stroke-stroke-activation",
+          "stroke-ct-screen"
+        ],
+        "rightMonitoring": [
+          "stroke-neuro-checks",
+          "stroke-bp-window"
+        ]
+      },
+      "rationale": "The priority is rapid stroke pathway activation without delaying imaging or eligibility screening. Neuro status and blood pressure guide treatment safety.",
+      "distractorRationales": {
+        "stroke-oral-meds": "Give oral antihypertensive medication immediately does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-food-swallow": "Offer food to assess swallowing does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-daily-lipids": "Daily lipid panel does not address the immediate neuro / stroke priority and could delay stabilization.",
+        "stroke-routine-weight": "Routine weight does not address the immediate neuro / stroke priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "stroke",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Acute ischemic stroke within treatment window",
+        "Neuro / Stroke"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-05-opioid-overdose-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "pharmacological",
+      "subcategory": "Toxicology / Respiratory depression",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Opioid Overdose",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client is difficult to arouse with pinpoint pupils and slow shallow respirations after receiving opioid medication.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client is difficult to arouse with pinpoint pupils and slow shallow respirations after receiving opioid medication."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "RR 7/min",
+            "SpO2 86%",
+            "HR 58/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "ABG: PaCO2 elevated",
+            "Medication record shows recent opioid dose"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Opioid-induced respiratory depression"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "opioid-overdose-condition",
+          "text": "Opioid-induced respiratory depression",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "opioid-overdose-ventilation",
+            "text": "Support airway and ventilation with oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-naloxone",
+            "text": "Administer naloxone as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-let-sleep",
+            "text": "Allow the client to sleep and reassess later",
+            "isCorrect": false
+          },
+          {
+            "id": "opioid-overdose-more-opioid",
+            "text": "Give another opioid dose for comfort",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "opioid-overdose-rr-spo2",
+            "text": "Respiratory rate and oxygen saturation",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-sedation-rebound",
+            "text": "Sedation level and recurrent respiratory depression",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-appetite",
+            "text": "Appetite after awakening",
+            "isCorrect": false
+          },
+          {
+            "id": "opioid-overdose-skin-temp",
+            "text": "Skin temperature only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "opioid-overdose-condition",
+        "leftActions": [
+          "opioid-overdose-ventilation",
+          "opioid-overdose-naloxone"
+        ],
+        "rightMonitoring": [
+          "opioid-overdose-rr-spo2",
+          "opioid-overdose-sedation-rebound"
+        ]
+      },
+      "rationale": "Ventilation comes first because opioid toxicity suppresses respiratory drive. Naloxone can wear off before the opioid, so recurrent sedation and oxygenation require close monitoring.",
+      "distractorRationales": {
+        "opioid-overdose-let-sleep": "Allow the client to sleep and reassess later does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-more-opioid": "Give another opioid dose for comfort does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-appetite": "Appetite after awakening does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-skin-temp": "Skin temperature only does not address the immediate toxicology / respiratory depression priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "opioid-overdose",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Opioid-induced respiratory depression",
+        "Toxicology / Respiratory depression"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-05-opioid-overdose-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "pharmacological",
+      "subcategory": "Toxicology / Respiratory depression",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Opioid Overdose",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client is difficult to arouse with pinpoint pupils and slow shallow respirations after receiving opioid medication.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client is difficult to arouse with pinpoint pupils and slow shallow respirations after receiving opioid medication."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "RR 7/min",
+            "SpO2 86%",
+            "HR 58/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "ABG: PaCO2 elevated",
+            "Medication record shows recent opioid dose"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Opioid-induced respiratory depression"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "opioid-overdose-condition",
+          "text": "Opioid-induced respiratory depression",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "opioid-overdose-ventilation",
+            "text": "Support airway and ventilation with oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-naloxone",
+            "text": "Administer naloxone as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-let-sleep",
+            "text": "Allow the client to sleep and reassess later",
+            "isCorrect": false
+          },
+          {
+            "id": "opioid-overdose-more-opioid",
+            "text": "Give another opioid dose for comfort",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "opioid-overdose-rr-spo2",
+            "text": "Respiratory rate and oxygen saturation",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-sedation-rebound",
+            "text": "Sedation level and recurrent respiratory depression",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-appetite",
+            "text": "Appetite after awakening",
+            "isCorrect": false
+          },
+          {
+            "id": "opioid-overdose-skin-temp",
+            "text": "Skin temperature only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "opioid-overdose-condition",
+        "leftActions": [
+          "opioid-overdose-ventilation",
+          "opioid-overdose-naloxone"
+        ],
+        "rightMonitoring": [
+          "opioid-overdose-rr-spo2",
+          "opioid-overdose-sedation-rebound"
+        ]
+      },
+      "rationale": "Ventilation comes first because opioid toxicity suppresses respiratory drive. Naloxone can wear off before the opioid, so recurrent sedation and oxygenation require close monitoring.",
+      "distractorRationales": {
+        "opioid-overdose-let-sleep": "Allow the client to sleep and reassess later does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-more-opioid": "Give another opioid dose for comfort does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-appetite": "Appetite after awakening does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-skin-temp": "Skin temperature only does not address the immediate toxicology / respiratory depression priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "opioid-overdose",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Opioid-induced respiratory depression",
+        "Toxicology / Respiratory depression"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-05-opioid-overdose-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "pharmacological",
+      "subcategory": "Toxicology / Respiratory depression",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Opioid Overdose",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client is difficult to arouse with pinpoint pupils and slow shallow respirations after receiving opioid medication.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client is difficult to arouse with pinpoint pupils and slow shallow respirations after receiving opioid medication."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "RR 7/min",
+            "SpO2 86%",
+            "HR 58/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "ABG: PaCO2 elevated",
+            "Medication record shows recent opioid dose"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Opioid-induced respiratory depression"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "opioid-overdose-condition",
+          "text": "Opioid-induced respiratory depression",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "opioid-overdose-ventilation",
+            "text": "Support airway and ventilation with oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-naloxone",
+            "text": "Administer naloxone as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-let-sleep",
+            "text": "Allow the client to sleep and reassess later",
+            "isCorrect": false
+          },
+          {
+            "id": "opioid-overdose-more-opioid",
+            "text": "Give another opioid dose for comfort",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "opioid-overdose-rr-spo2",
+            "text": "Respiratory rate and oxygen saturation",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-sedation-rebound",
+            "text": "Sedation level and recurrent respiratory depression",
+            "isCorrect": true
+          },
+          {
+            "id": "opioid-overdose-appetite",
+            "text": "Appetite after awakening",
+            "isCorrect": false
+          },
+          {
+            "id": "opioid-overdose-skin-temp",
+            "text": "Skin temperature only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "opioid-overdose-condition",
+        "leftActions": [
+          "opioid-overdose-ventilation",
+          "opioid-overdose-naloxone"
+        ],
+        "rightMonitoring": [
+          "opioid-overdose-rr-spo2",
+          "opioid-overdose-sedation-rebound"
+        ]
+      },
+      "rationale": "Ventilation comes first because opioid toxicity suppresses respiratory drive. Naloxone can wear off before the opioid, so recurrent sedation and oxygenation require close monitoring.",
+      "distractorRationales": {
+        "opioid-overdose-let-sleep": "Allow the client to sleep and reassess later does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-more-opioid": "Give another opioid dose for comfort does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-appetite": "Appetite after awakening does not address the immediate toxicology / respiratory depression priority and could delay stabilization.",
+        "opioid-overdose-skin-temp": "Skin temperature only does not address the immediate toxicology / respiratory depression priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "opioid-overdose",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Opioid-induced respiratory depression",
+        "Toxicology / Respiratory depression"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-06-pe-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Respiratory / Perfusion",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Pulmonary Embolism",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The postoperative client develops sudden dyspnea, pleuritic chest pain, tachycardia, and anxiety.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The postoperative client develops sudden dyspnea, pleuritic chest pain, tachycardia, and anxiety."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 124/min",
+            "RR 30/min",
+            "SpO2 88%",
+            "BP 96/60 mm Hg"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "D-dimer elevated",
+            "ABG shows respiratory alkalosis"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Pulmonary embolism with impaired oxygenation"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "pe-condition",
+          "text": "Pulmonary embolism with impaired oxygenation",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "pe-oxygen-hob",
+            "text": "Apply oxygen and position with head of bed elevated",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-rapid-escalation",
+            "text": "Notify provider or rapid response for anticoagulation workup",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-leg-massage",
+            "text": "Massage the painful calf",
+            "isCorrect": false
+          },
+          {
+            "id": "pe-walk-client",
+            "text": "Ambulate the client to relieve anxiety",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "pe-spo2-work",
+            "text": "Oxygen saturation and work of breathing",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-bp-hr",
+            "text": "Blood pressure and heart rate trend",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-calf-size-daily",
+            "text": "Daily calf circumference only",
+            "isCorrect": false
+          },
+          {
+            "id": "pe-diet-tolerance",
+            "text": "Diet tolerance",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "pe-condition",
+        "leftActions": [
+          "pe-oxygen-hob",
+          "pe-rapid-escalation"
+        ],
+        "rightMonitoring": [
+          "pe-spo2-work",
+          "pe-bp-hr"
+        ]
+      },
+      "rationale": "PE can rapidly impair gas exchange and right-heart output. Oxygenation, hemodynamics, and urgent anticoagulation evaluation are higher priority than mobility or local leg care.",
+      "distractorRationales": {
+        "pe-leg-massage": "Massage the painful calf does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-walk-client": "Ambulate the client to relieve anxiety does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-calf-size-daily": "Daily calf circumference only does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-diet-tolerance": "Diet tolerance does not address the immediate respiratory / perfusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "pe",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Pulmonary embolism with impaired oxygenation",
+        "Respiratory / Perfusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-06-pe-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Respiratory / Perfusion",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Pulmonary Embolism",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The postoperative client develops sudden dyspnea, pleuritic chest pain, tachycardia, and anxiety.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The postoperative client develops sudden dyspnea, pleuritic chest pain, tachycardia, and anxiety."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 124/min",
+            "RR 30/min",
+            "SpO2 88%",
+            "BP 96/60 mm Hg"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "D-dimer elevated",
+            "ABG shows respiratory alkalosis"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Pulmonary embolism with impaired oxygenation"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "pe-condition",
+          "text": "Pulmonary embolism with impaired oxygenation",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "pe-oxygen-hob",
+            "text": "Apply oxygen and position with head of bed elevated",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-rapid-escalation",
+            "text": "Notify provider or rapid response for anticoagulation workup",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-leg-massage",
+            "text": "Massage the painful calf",
+            "isCorrect": false
+          },
+          {
+            "id": "pe-walk-client",
+            "text": "Ambulate the client to relieve anxiety",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "pe-spo2-work",
+            "text": "Oxygen saturation and work of breathing",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-bp-hr",
+            "text": "Blood pressure and heart rate trend",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-calf-size-daily",
+            "text": "Daily calf circumference only",
+            "isCorrect": false
+          },
+          {
+            "id": "pe-diet-tolerance",
+            "text": "Diet tolerance",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "pe-condition",
+        "leftActions": [
+          "pe-oxygen-hob",
+          "pe-rapid-escalation"
+        ],
+        "rightMonitoring": [
+          "pe-spo2-work",
+          "pe-bp-hr"
+        ]
+      },
+      "rationale": "PE can rapidly impair gas exchange and right-heart output. Oxygenation, hemodynamics, and urgent anticoagulation evaluation are higher priority than mobility or local leg care.",
+      "distractorRationales": {
+        "pe-leg-massage": "Massage the painful calf does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-walk-client": "Ambulate the client to relieve anxiety does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-calf-size-daily": "Daily calf circumference only does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-diet-tolerance": "Diet tolerance does not address the immediate respiratory / perfusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "pe",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Pulmonary embolism with impaired oxygenation",
+        "Respiratory / Perfusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-06-pe-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Respiratory / Perfusion",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Pulmonary Embolism",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The postoperative client develops sudden dyspnea, pleuritic chest pain, tachycardia, and anxiety.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The postoperative client develops sudden dyspnea, pleuritic chest pain, tachycardia, and anxiety."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 124/min",
+            "RR 30/min",
+            "SpO2 88%",
+            "BP 96/60 mm Hg"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "D-dimer elevated",
+            "ABG shows respiratory alkalosis"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Pulmonary embolism with impaired oxygenation"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "pe-condition",
+          "text": "Pulmonary embolism with impaired oxygenation",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "pe-oxygen-hob",
+            "text": "Apply oxygen and position with head of bed elevated",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-rapid-escalation",
+            "text": "Notify provider or rapid response for anticoagulation workup",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-leg-massage",
+            "text": "Massage the painful calf",
+            "isCorrect": false
+          },
+          {
+            "id": "pe-walk-client",
+            "text": "Ambulate the client to relieve anxiety",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "pe-spo2-work",
+            "text": "Oxygen saturation and work of breathing",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-bp-hr",
+            "text": "Blood pressure and heart rate trend",
+            "isCorrect": true
+          },
+          {
+            "id": "pe-calf-size-daily",
+            "text": "Daily calf circumference only",
+            "isCorrect": false
+          },
+          {
+            "id": "pe-diet-tolerance",
+            "text": "Diet tolerance",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "pe-condition",
+        "leftActions": [
+          "pe-oxygen-hob",
+          "pe-rapid-escalation"
+        ],
+        "rightMonitoring": [
+          "pe-spo2-work",
+          "pe-bp-hr"
+        ]
+      },
+      "rationale": "PE can rapidly impair gas exchange and right-heart output. Oxygenation, hemodynamics, and urgent anticoagulation evaluation are higher priority than mobility or local leg care.",
+      "distractorRationales": {
+        "pe-leg-massage": "Massage the painful calf does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-walk-client": "Ambulate the client to relieve anxiety does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-calf-size-daily": "Daily calf circumference only does not address the immediate respiratory / perfusion priority and could delay stabilization.",
+        "pe-diet-tolerance": "Diet tolerance does not address the immediate respiratory / perfusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "pe",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Pulmonary embolism with impaired oxygenation",
+        "Respiratory / Perfusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-07-sickle-crisis-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Hematology / Vaso-occlusion",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Sickle Cell Crisis",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client reports severe limb and chest pain after dehydration with increasing fatigue.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client reports severe limb and chest pain after dehydration with increasing fatigue."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 112/min",
+            "SpO2 91%",
+            "T 37.9 C"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Hemoglobin 7.8 g/dL",
+            "Reticulocyte count elevated"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Vaso-occlusive sickle-cell crisis"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "sickle-crisis-condition",
+          "text": "Vaso-occlusive sickle-cell crisis",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "sickle-crisis-analgesia",
+            "text": "Administer prescribed opioid analgesia promptly",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-hydration-oxygen",
+            "text": "Start IV hydration and oxygen if hypoxemic",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-ice-packs",
+            "text": "Apply ice packs to painful joints",
+            "isCorrect": false
+          },
+          {
+            "id": "sickle-crisis-delay-pain-meds",
+            "text": "Delay analgesia until imaging confirms crisis",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "sickle-crisis-pain-resp",
+            "text": "Pain score and respiratory status",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-cbc-retic",
+            "text": "CBC, reticulocyte count, and oxygenation",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-calorie-count",
+            "text": "Calorie count only",
+            "isCorrect": false
+          },
+          {
+            "id": "sickle-crisis-visual-acuity",
+            "text": "Visual acuity only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "sickle-crisis-condition",
+        "leftActions": [
+          "sickle-crisis-analgesia",
+          "sickle-crisis-hydration-oxygen"
+        ],
+        "rightMonitoring": [
+          "sickle-crisis-pain-resp",
+          "sickle-crisis-cbc-retic"
+        ]
+      },
+      "rationale": "Vaso-occlusion requires rapid pain control, hydration, and oxygenation support. Cold exposure and delayed analgesia can worsen sickling and physiologic stress.",
+      "distractorRationales": {
+        "sickle-crisis-ice-packs": "Apply ice packs to painful joints does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-delay-pain-meds": "Delay analgesia until imaging confirms crisis does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-calorie-count": "Calorie count only does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-visual-acuity": "Visual acuity only does not address the immediate hematology / vaso-occlusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "sickle-crisis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Vaso-occlusive sickle-cell crisis",
+        "Hematology / Vaso-occlusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-07-sickle-crisis-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Hematology / Vaso-occlusion",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Sickle Cell Crisis",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client reports severe limb and chest pain after dehydration with increasing fatigue.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client reports severe limb and chest pain after dehydration with increasing fatigue."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 112/min",
+            "SpO2 91%",
+            "T 37.9 C"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Hemoglobin 7.8 g/dL",
+            "Reticulocyte count elevated"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Vaso-occlusive sickle-cell crisis"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "sickle-crisis-condition",
+          "text": "Vaso-occlusive sickle-cell crisis",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "sickle-crisis-analgesia",
+            "text": "Administer prescribed opioid analgesia promptly",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-hydration-oxygen",
+            "text": "Start IV hydration and oxygen if hypoxemic",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-ice-packs",
+            "text": "Apply ice packs to painful joints",
+            "isCorrect": false
+          },
+          {
+            "id": "sickle-crisis-delay-pain-meds",
+            "text": "Delay analgesia until imaging confirms crisis",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "sickle-crisis-pain-resp",
+            "text": "Pain score and respiratory status",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-cbc-retic",
+            "text": "CBC, reticulocyte count, and oxygenation",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-calorie-count",
+            "text": "Calorie count only",
+            "isCorrect": false
+          },
+          {
+            "id": "sickle-crisis-visual-acuity",
+            "text": "Visual acuity only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "sickle-crisis-condition",
+        "leftActions": [
+          "sickle-crisis-analgesia",
+          "sickle-crisis-hydration-oxygen"
+        ],
+        "rightMonitoring": [
+          "sickle-crisis-pain-resp",
+          "sickle-crisis-cbc-retic"
+        ]
+      },
+      "rationale": "Vaso-occlusion requires rapid pain control, hydration, and oxygenation support. Cold exposure and delayed analgesia can worsen sickling and physiologic stress.",
+      "distractorRationales": {
+        "sickle-crisis-ice-packs": "Apply ice packs to painful joints does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-delay-pain-meds": "Delay analgesia until imaging confirms crisis does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-calorie-count": "Calorie count only does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-visual-acuity": "Visual acuity only does not address the immediate hematology / vaso-occlusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "sickle-crisis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Vaso-occlusive sickle-cell crisis",
+        "Hematology / Vaso-occlusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-07-sickle-crisis-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Hematology / Vaso-occlusion",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Sickle Cell Crisis",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client reports severe limb and chest pain after dehydration with increasing fatigue.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client reports severe limb and chest pain after dehydration with increasing fatigue."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "HR 112/min",
+            "SpO2 91%",
+            "T 37.9 C"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Hemoglobin 7.8 g/dL",
+            "Reticulocyte count elevated"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Vaso-occlusive sickle-cell crisis"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "sickle-crisis-condition",
+          "text": "Vaso-occlusive sickle-cell crisis",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "sickle-crisis-analgesia",
+            "text": "Administer prescribed opioid analgesia promptly",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-hydration-oxygen",
+            "text": "Start IV hydration and oxygen if hypoxemic",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-ice-packs",
+            "text": "Apply ice packs to painful joints",
+            "isCorrect": false
+          },
+          {
+            "id": "sickle-crisis-delay-pain-meds",
+            "text": "Delay analgesia until imaging confirms crisis",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "sickle-crisis-pain-resp",
+            "text": "Pain score and respiratory status",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-cbc-retic",
+            "text": "CBC, reticulocyte count, and oxygenation",
+            "isCorrect": true
+          },
+          {
+            "id": "sickle-crisis-calorie-count",
+            "text": "Calorie count only",
+            "isCorrect": false
+          },
+          {
+            "id": "sickle-crisis-visual-acuity",
+            "text": "Visual acuity only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "sickle-crisis-condition",
+        "leftActions": [
+          "sickle-crisis-analgesia",
+          "sickle-crisis-hydration-oxygen"
+        ],
+        "rightMonitoring": [
+          "sickle-crisis-pain-resp",
+          "sickle-crisis-cbc-retic"
+        ]
+      },
+      "rationale": "Vaso-occlusion requires rapid pain control, hydration, and oxygenation support. Cold exposure and delayed analgesia can worsen sickling and physiologic stress.",
+      "distractorRationales": {
+        "sickle-crisis-ice-packs": "Apply ice packs to painful joints does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-delay-pain-meds": "Delay analgesia until imaging confirms crisis does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-calorie-count": "Calorie count only does not address the immediate hematology / vaso-occlusion priority and could delay stabilization.",
+        "sickle-crisis-visual-acuity": "Visual acuity only does not address the immediate hematology / vaso-occlusion priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "sickle-crisis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Vaso-occlusive sickle-cell crisis",
+        "Hematology / Vaso-occlusion"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-08-eclampsia-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "OB / Hypertensive emergency",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Eclampsia",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The pregnant client has severe headache, visual changes, hyperreflexia, and severe-range blood pressure.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The pregnant client has severe headache, visual changes, hyperreflexia, and severe-range blood pressure."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 168/112 mm Hg",
+            "HR 102/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Platelets 92,000/mm3",
+            "Proteinuria present",
+            "AST elevated"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Eclampsia or severe preeclampsia with seizure risk"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "eclampsia-condition",
+          "text": "Eclampsia or severe preeclampsia with seizure risk",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "eclampsia-magnesium",
+            "text": "Administer magnesium sulfate as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-seizure-left",
+            "text": "Maintain seizure precautions and left-lateral positioning",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-dark-room-only",
+            "text": "Place in a dark room as the only intervention",
+            "isCorrect": false
+          },
+          {
+            "id": "eclampsia-encourage-walking",
+            "text": "Encourage walking to reduce anxiety",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "eclampsia-rr-dtr",
+            "text": "Respirations, deep tendon reflexes, and level of consciousness",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-bp-urine",
+            "text": "Blood pressure and urine output",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-fetal-kicks-only",
+            "text": "Kick counts only",
+            "isCorrect": false
+          },
+          {
+            "id": "eclampsia-appetite",
+            "text": "Appetite and meal completion",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "eclampsia-condition",
+        "leftActions": [
+          "eclampsia-magnesium",
+          "eclampsia-seizure-left"
+        ],
+        "rightMonitoring": [
+          "eclampsia-rr-dtr",
+          "eclampsia-bp-urine"
+        ]
+      },
+      "rationale": "Magnesium reduces seizure risk, but toxicity can suppress respirations and reflexes. Blood pressure and urine output reflect maternal perfusion and renal involvement.",
+      "distractorRationales": {
+        "eclampsia-dark-room-only": "Place in a dark room as the only intervention does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-encourage-walking": "Encourage walking to reduce anxiety does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-fetal-kicks-only": "Kick counts only does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-appetite": "Appetite and meal completion does not address the immediate ob / hypertensive emergency priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "eclampsia",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Eclampsia or severe preeclampsia with seizure risk",
+        "OB / Hypertensive emergency"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-08-eclampsia-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "OB / Hypertensive emergency",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Eclampsia",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The pregnant client has severe headache, visual changes, hyperreflexia, and severe-range blood pressure.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The pregnant client has severe headache, visual changes, hyperreflexia, and severe-range blood pressure."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 168/112 mm Hg",
+            "HR 102/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Platelets 92,000/mm3",
+            "Proteinuria present",
+            "AST elevated"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Eclampsia or severe preeclampsia with seizure risk"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "eclampsia-condition",
+          "text": "Eclampsia or severe preeclampsia with seizure risk",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "eclampsia-magnesium",
+            "text": "Administer magnesium sulfate as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-seizure-left",
+            "text": "Maintain seizure precautions and left-lateral positioning",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-dark-room-only",
+            "text": "Place in a dark room as the only intervention",
+            "isCorrect": false
+          },
+          {
+            "id": "eclampsia-encourage-walking",
+            "text": "Encourage walking to reduce anxiety",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "eclampsia-rr-dtr",
+            "text": "Respirations, deep tendon reflexes, and level of consciousness",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-bp-urine",
+            "text": "Blood pressure and urine output",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-fetal-kicks-only",
+            "text": "Kick counts only",
+            "isCorrect": false
+          },
+          {
+            "id": "eclampsia-appetite",
+            "text": "Appetite and meal completion",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "eclampsia-condition",
+        "leftActions": [
+          "eclampsia-magnesium",
+          "eclampsia-seizure-left"
+        ],
+        "rightMonitoring": [
+          "eclampsia-rr-dtr",
+          "eclampsia-bp-urine"
+        ]
+      },
+      "rationale": "Magnesium reduces seizure risk, but toxicity can suppress respirations and reflexes. Blood pressure and urine output reflect maternal perfusion and renal involvement.",
+      "distractorRationales": {
+        "eclampsia-dark-room-only": "Place in a dark room as the only intervention does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-encourage-walking": "Encourage walking to reduce anxiety does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-fetal-kicks-only": "Kick counts only does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-appetite": "Appetite and meal completion does not address the immediate ob / hypertensive emergency priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "eclampsia",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Eclampsia or severe preeclampsia with seizure risk",
+        "OB / Hypertensive emergency"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-08-eclampsia-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "OB / Hypertensive emergency",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Eclampsia",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The pregnant client has severe headache, visual changes, hyperreflexia, and severe-range blood pressure.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The pregnant client has severe headache, visual changes, hyperreflexia, and severe-range blood pressure."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 168/112 mm Hg",
+            "HR 102/min"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Platelets 92,000/mm3",
+            "Proteinuria present",
+            "AST elevated"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Eclampsia or severe preeclampsia with seizure risk"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "eclampsia-condition",
+          "text": "Eclampsia or severe preeclampsia with seizure risk",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "eclampsia-magnesium",
+            "text": "Administer magnesium sulfate as prescribed",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-seizure-left",
+            "text": "Maintain seizure precautions and left-lateral positioning",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-dark-room-only",
+            "text": "Place in a dark room as the only intervention",
+            "isCorrect": false
+          },
+          {
+            "id": "eclampsia-encourage-walking",
+            "text": "Encourage walking to reduce anxiety",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "eclampsia-rr-dtr",
+            "text": "Respirations, deep tendon reflexes, and level of consciousness",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-bp-urine",
+            "text": "Blood pressure and urine output",
+            "isCorrect": true
+          },
+          {
+            "id": "eclampsia-fetal-kicks-only",
+            "text": "Kick counts only",
+            "isCorrect": false
+          },
+          {
+            "id": "eclampsia-appetite",
+            "text": "Appetite and meal completion",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "eclampsia-condition",
+        "leftActions": [
+          "eclampsia-magnesium",
+          "eclampsia-seizure-left"
+        ],
+        "rightMonitoring": [
+          "eclampsia-rr-dtr",
+          "eclampsia-bp-urine"
+        ]
+      },
+      "rationale": "Magnesium reduces seizure risk, but toxicity can suppress respirations and reflexes. Blood pressure and urine output reflect maternal perfusion and renal involvement.",
+      "distractorRationales": {
+        "eclampsia-dark-room-only": "Place in a dark room as the only intervention does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-encourage-walking": "Encourage walking to reduce anxiety does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-fetal-kicks-only": "Kick counts only does not address the immediate ob / hypertensive emergency priority and could delay stabilization.",
+        "eclampsia-appetite": "Appetite and meal completion does not address the immediate ob / hypertensive emergency priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "eclampsia",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Eclampsia or severe preeclampsia with seizure risk",
+        "OB / Hypertensive emergency"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-09-anaphylaxis-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Immune / Airway",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Anaphylaxis",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client develops throat tightness, wheezing, urticaria, and hypotension shortly after a new medication.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client develops throat tightness, wheezing, urticaria, and hypotension shortly after a new medication."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 78/42 mm Hg",
+            "HR 132/min",
+            "SpO2 89%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Medication administration record shows new antibiotic"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Anaphylaxis with airway and perfusion threat"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "anaphylaxis-condition",
+          "text": "Anaphylaxis with airway and perfusion threat",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "anaphylaxis-epinephrine",
+            "text": "Administer intramuscular epinephrine immediately",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-airway-oxygen",
+            "text": "Support airway and give high-flow oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-oral-antihistamine",
+            "text": "Give oral antihistamine and wait for effect",
+            "isCorrect": false
+          },
+          {
+            "id": "anaphylaxis-finish-infusion",
+            "text": "Finish the medication infusion slowly",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "anaphylaxis-airway-breathing",
+            "text": "Airway swelling, breath sounds, and oxygenation",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-bp-rebound",
+            "text": "Blood pressure and recurrent symptoms",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-rash-only",
+            "text": "Rash color only",
+            "isCorrect": false
+          },
+          {
+            "id": "anaphylaxis-temperature",
+            "text": "Temperature every 4 hours",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "anaphylaxis-condition",
+        "leftActions": [
+          "anaphylaxis-epinephrine",
+          "anaphylaxis-airway-oxygen"
+        ],
+        "rightMonitoring": [
+          "anaphylaxis-airway-breathing",
+          "anaphylaxis-bp-rebound"
+        ]
+      },
+      "rationale": "Anaphylaxis is an immediate airway and circulatory emergency. Epinephrine and airway support are first-line while monitoring for recurrent bronchospasm or hypotension.",
+      "distractorRationales": {
+        "anaphylaxis-oral-antihistamine": "Give oral antihistamine and wait for effect does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-finish-infusion": "Finish the medication infusion slowly does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-rash-only": "Rash color only does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-temperature": "Temperature every 4 hours does not address the immediate immune / airway priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "anaphylaxis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Anaphylaxis with airway and perfusion threat",
+        "Immune / Airway"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-09-anaphylaxis-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Immune / Airway",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Anaphylaxis",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client develops throat tightness, wheezing, urticaria, and hypotension shortly after a new medication.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client develops throat tightness, wheezing, urticaria, and hypotension shortly after a new medication."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 78/42 mm Hg",
+            "HR 132/min",
+            "SpO2 89%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Medication administration record shows new antibiotic"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Anaphylaxis with airway and perfusion threat"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "anaphylaxis-condition",
+          "text": "Anaphylaxis with airway and perfusion threat",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "anaphylaxis-epinephrine",
+            "text": "Administer intramuscular epinephrine immediately",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-airway-oxygen",
+            "text": "Support airway and give high-flow oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-oral-antihistamine",
+            "text": "Give oral antihistamine and wait for effect",
+            "isCorrect": false
+          },
+          {
+            "id": "anaphylaxis-finish-infusion",
+            "text": "Finish the medication infusion slowly",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "anaphylaxis-airway-breathing",
+            "text": "Airway swelling, breath sounds, and oxygenation",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-bp-rebound",
+            "text": "Blood pressure and recurrent symptoms",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-rash-only",
+            "text": "Rash color only",
+            "isCorrect": false
+          },
+          {
+            "id": "anaphylaxis-temperature",
+            "text": "Temperature every 4 hours",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "anaphylaxis-condition",
+        "leftActions": [
+          "anaphylaxis-epinephrine",
+          "anaphylaxis-airway-oxygen"
+        ],
+        "rightMonitoring": [
+          "anaphylaxis-airway-breathing",
+          "anaphylaxis-bp-rebound"
+        ]
+      },
+      "rationale": "Anaphylaxis is an immediate airway and circulatory emergency. Epinephrine and airway support are first-line while monitoring for recurrent bronchospasm or hypotension.",
+      "distractorRationales": {
+        "anaphylaxis-oral-antihistamine": "Give oral antihistamine and wait for effect does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-finish-infusion": "Finish the medication infusion slowly does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-rash-only": "Rash color only does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-temperature": "Temperature every 4 hours does not address the immediate immune / airway priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "anaphylaxis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Anaphylaxis with airway and perfusion threat",
+        "Immune / Airway"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-09-anaphylaxis-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "physiological_adaptation",
+      "subcategory": "Immune / Airway",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Anaphylaxis",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client develops throat tightness, wheezing, urticaria, and hypotension shortly after a new medication.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client develops throat tightness, wheezing, urticaria, and hypotension shortly after a new medication."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "BP 78/42 mm Hg",
+            "HR 132/min",
+            "SpO2 89%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "Medication administration record shows new antibiotic"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Anaphylaxis with airway and perfusion threat"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "anaphylaxis-condition",
+          "text": "Anaphylaxis with airway and perfusion threat",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "anaphylaxis-epinephrine",
+            "text": "Administer intramuscular epinephrine immediately",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-airway-oxygen",
+            "text": "Support airway and give high-flow oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-oral-antihistamine",
+            "text": "Give oral antihistamine and wait for effect",
+            "isCorrect": false
+          },
+          {
+            "id": "anaphylaxis-finish-infusion",
+            "text": "Finish the medication infusion slowly",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "anaphylaxis-airway-breathing",
+            "text": "Airway swelling, breath sounds, and oxygenation",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-bp-rebound",
+            "text": "Blood pressure and recurrent symptoms",
+            "isCorrect": true
+          },
+          {
+            "id": "anaphylaxis-rash-only",
+            "text": "Rash color only",
+            "isCorrect": false
+          },
+          {
+            "id": "anaphylaxis-temperature",
+            "text": "Temperature every 4 hours",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "anaphylaxis-condition",
+        "leftActions": [
+          "anaphylaxis-epinephrine",
+          "anaphylaxis-airway-oxygen"
+        ],
+        "rightMonitoring": [
+          "anaphylaxis-airway-breathing",
+          "anaphylaxis-bp-rebound"
+        ]
+      },
+      "rationale": "Anaphylaxis is an immediate airway and circulatory emergency. Epinephrine and airway support are first-line while monitoring for recurrent bronchospasm or hypotension.",
+      "distractorRationales": {
+        "anaphylaxis-oral-antihistamine": "Give oral antihistamine and wait for effect does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-finish-infusion": "Finish the medication infusion slowly does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-rash-only": "Rash color only does not address the immediate immune / airway priority and could delay stabilization.",
+        "anaphylaxis-temperature": "Temperature every 4 hours does not address the immediate immune / airway priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "anaphylaxis",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Anaphylaxis with airway and perfusion threat",
+        "Immune / Airway"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-10-neutropenic-fever-ed",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "safety_infection_control",
+      "subcategory": "Oncology / Infection",
+      "difficulty": 3,
+      "stem": "Complete the bow-tie for the client in the emergency department.",
+      "scenarioTitle": "Neutropenic Fever",
+      "scenario": "A 64-year-old client in the emergency department has new confusion and worsening vital-sign instability. The client receiving chemotherapy reports chills and malaise with a new fever.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client receiving chemotherapy reports chills and malaise with a new fever."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "T 38.6 C",
+            "HR 116/min",
+            "BP 100/58 mm Hg"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "ANC 420/mm3",
+            "WBC 900/mm3"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "new confusion and worsening vital-sign instability",
+            "Neutropenic fever with sepsis risk"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "neutropenic-fever-condition",
+          "text": "Neutropenic fever with sepsis risk",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "neutropenic-fever-cultures-antibiotics",
+            "text": "Obtain cultures and start empiric IV antibiotics promptly",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-protective-precautions",
+            "text": "Initiate protective neutropenic precautions",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-rectal-temp",
+            "text": "Check rectal temperature for accuracy",
+            "isCorrect": false
+          },
+          {
+            "id": "neutropenic-fever-fresh-flowers",
+            "text": "Bring fresh flowers to improve mood",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "neutropenic-fever-temp-hemodynamics",
+            "text": "Temperature and hemodynamic trend",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-anc-cultures",
+            "text": "ANC trend and culture results",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-mouthwash-choice",
+            "text": "Preferred mouthwash flavor",
+            "isCorrect": false
+          },
+          {
+            "id": "neutropenic-fever-daily-weight-only",
+            "text": "Daily weight only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "neutropenic-fever-condition",
+        "leftActions": [
+          "neutropenic-fever-cultures-antibiotics",
+          "neutropenic-fever-protective-precautions"
+        ],
+        "rightMonitoring": [
+          "neutropenic-fever-temp-hemodynamics",
+          "neutropenic-fever-anc-cultures"
+        ]
+      },
+      "rationale": "Neutropenic fever can progress quickly to sepsis. Cultures, empiric antibiotics, protective precautions, temperature, ANC, and cultures target the immediate infection risk.",
+      "distractorRationales": {
+        "neutropenic-fever-rectal-temp": "Check rectal temperature for accuracy does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-fresh-flowers": "Bring fresh flowers to improve mood does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-mouthwash-choice": "Preferred mouthwash flavor does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-daily-weight-only": "Daily weight only does not address the immediate oncology / infection priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "neutropenic-fever",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Neutropenic fever with sepsis risk",
+        "Oncology / Infection"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-10-neutropenic-fever-stepdown",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "safety_infection_control",
+      "subcategory": "Oncology / Infection",
+      "difficulty": 4,
+      "stem": "Complete the bow-tie for the client in the step-down unit.",
+      "scenarioTitle": "Neutropenic Fever",
+      "scenario": "A 52-year-old client in the step-down unit has rapid deterioration after two hours of observation. The client receiving chemotherapy reports chills and malaise with a new fever.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client receiving chemotherapy reports chills and malaise with a new fever."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "T 38.6 C",
+            "HR 116/min",
+            "BP 100/58 mm Hg"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "ANC 420/mm3",
+            "WBC 900/mm3"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "rapid deterioration after two hours of observation",
+            "Neutropenic fever with sepsis risk"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "neutropenic-fever-condition",
+          "text": "Neutropenic fever with sepsis risk",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "neutropenic-fever-cultures-antibiotics",
+            "text": "Obtain cultures and start empiric IV antibiotics promptly",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-protective-precautions",
+            "text": "Initiate protective neutropenic precautions",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-rectal-temp",
+            "text": "Check rectal temperature for accuracy",
+            "isCorrect": false
+          },
+          {
+            "id": "neutropenic-fever-fresh-flowers",
+            "text": "Bring fresh flowers to improve mood",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "neutropenic-fever-temp-hemodynamics",
+            "text": "Temperature and hemodynamic trend",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-anc-cultures",
+            "text": "ANC trend and culture results",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-mouthwash-choice",
+            "text": "Preferred mouthwash flavor",
+            "isCorrect": false
+          },
+          {
+            "id": "neutropenic-fever-daily-weight-only",
+            "text": "Daily weight only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "neutropenic-fever-condition",
+        "leftActions": [
+          "neutropenic-fever-cultures-antibiotics",
+          "neutropenic-fever-protective-precautions"
+        ],
+        "rightMonitoring": [
+          "neutropenic-fever-temp-hemodynamics",
+          "neutropenic-fever-anc-cultures"
+        ]
+      },
+      "rationale": "Neutropenic fever can progress quickly to sepsis. Cultures, empiric antibiotics, protective precautions, temperature, ANC, and cultures target the immediate infection risk.",
+      "distractorRationales": {
+        "neutropenic-fever-rectal-temp": "Check rectal temperature for accuracy does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-fresh-flowers": "Bring fresh flowers to improve mood does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-mouthwash-choice": "Preferred mouthwash flavor does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-daily-weight-only": "Daily weight only does not address the immediate oncology / infection priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "neutropenic-fever",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Neutropenic fever with sepsis risk",
+        "Oncology / Infection"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    },
+    {
+      "id": "p1-bowtie-10-neutropenic-fever-urgent",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "safety_infection_control",
+      "subcategory": "Oncology / Infection",
+      "difficulty": 5,
+      "stem": "Complete the bow-tie for the client in the urgent transfer report.",
+      "scenarioTitle": "Neutropenic Fever",
+      "scenario": "A 38-year-old client in the urgent transfer report has high-risk findings that require immediate escalation. The client receiving chemotherapy reports chills and malaise with a new fever.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' Note",
+          "body": "The client receiving chemotherapy reports chills and malaise with a new fever."
+        },
+        {
+          "type": "vitals",
+          "title": "Vital Signs",
+          "items": [
+            "T 38.6 C",
+            "HR 116/min",
+            "BP 100/58 mm Hg"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostic Data",
+          "items": [
+            "ANC 420/mm3",
+            "WBC 900/mm3"
+          ]
+        },
+        {
+          "type": "assessment",
+          "title": "Focused Assessment",
+          "items": [
+            "high-risk findings that require immediate escalation",
+            "Neutropenic fever with sepsis risk"
+          ]
+        }
+      ],
+      "options": [],
+      "bowTie": {
+        "center": {
+          "id": "neutropenic-fever-condition",
+          "text": "Neutropenic fever with sepsis risk",
+          "isCorrect": true
+        },
+        "leftActions": [
+          {
+            "id": "neutropenic-fever-cultures-antibiotics",
+            "text": "Obtain cultures and start empiric IV antibiotics promptly",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-protective-precautions",
+            "text": "Initiate protective neutropenic precautions",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-rectal-temp",
+            "text": "Check rectal temperature for accuracy",
+            "isCorrect": false
+          },
+          {
+            "id": "neutropenic-fever-fresh-flowers",
+            "text": "Bring fresh flowers to improve mood",
+            "isCorrect": false
+          }
+        ],
+        "rightMonitoring": [
+          {
+            "id": "neutropenic-fever-temp-hemodynamics",
+            "text": "Temperature and hemodynamic trend",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-anc-cultures",
+            "text": "ANC trend and culture results",
+            "isCorrect": true
+          },
+          {
+            "id": "neutropenic-fever-mouthwash-choice",
+            "text": "Preferred mouthwash flavor",
+            "isCorrect": false
+          },
+          {
+            "id": "neutropenic-fever-daily-weight-only",
+            "text": "Daily weight only",
+            "isCorrect": false
+          }
+        ]
+      },
+      "answer": {
+        "center": "neutropenic-fever-condition",
+        "leftActions": [
+          "neutropenic-fever-cultures-antibiotics",
+          "neutropenic-fever-protective-precautions"
+        ],
+        "rightMonitoring": [
+          "neutropenic-fever-temp-hemodynamics",
+          "neutropenic-fever-anc-cultures"
+        ]
+      },
+      "rationale": "Neutropenic fever can progress quickly to sepsis. Cultures, empiric antibiotics, protective precautions, temperature, ANC, and cultures target the immediate infection risk.",
+      "distractorRationales": {
+        "neutropenic-fever-rectal-temp": "Check rectal temperature for accuracy does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-fresh-flowers": "Bring fresh flowers to improve mood does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-mouthwash-choice": "Preferred mouthwash flavor does not address the immediate oncology / infection priority and could delay stabilization.",
+        "neutropenic-fever-daily-weight-only": "Daily weight only does not address the immediate oncology / infection priority and could delay stabilization."
+      },
+      "tags": [
+        "p1",
+        "bow_tie",
+        "neutropenic-fever",
+        "ngn"
+      ],
+      "blueprintPct": 1,
+      "conceptNotes": [
+        "Neutropenic fever with sepsis risk",
+        "Oncology / Infection"
+      ],
+      "provenance": "scripts/generate-p1-bow-ties.mjs",
+      "reviewStatus": "approved",
+      "revision": 1,
+      "publishState": "published"
+    }
+  ]
+}

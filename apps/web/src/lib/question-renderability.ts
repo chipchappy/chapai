@@ -25,6 +25,7 @@ type QuestionLike = {
   }> | null;
   matrixColumns?: string[] | null;
   matrixRows?: Array<{ label: string; answer: string }> | null;
+  bowTie?: unknown;
 };
 
 export type QuestionIntelTab = "prompt" | "chart" | "labs" | "orders" | "notes" | "rationale" | "sources";
@@ -78,7 +79,7 @@ export function getQuestionIntegrityIssues(question: QuestionLike) {
     issues.push("missing-stem");
   }
 
-  if ((kind === "mcq" || kind === "multi-select" || kind === "case-study" || kind === "bow-tie")
+  if ((kind === "mcq" || kind === "multi-select" || kind === "case-study")
     && (question.options?.length ?? 0) < 2) {
     issues.push("missing-options");
   }
@@ -111,6 +112,9 @@ export function getQuestionIntegrityIssues(question: QuestionLike) {
 
   if (kind === "bow-tie" && !hasCaseIntel(question) && (question.options?.length ?? 0) < 3) {
     issues.push("missing-bow-tie-context");
+  }
+  if (kind === "bow-tie" && !question.bowTie) {
+    issues.push("missing-bow-tie-structure");
   }
 
   return issues;

@@ -197,6 +197,9 @@ export interface PracticeAnswerRecord {
   selected: PracticeAnswer;
   correct: boolean;
   correctAnswer: PracticeAnswer;
+  pointsEarned?: number;
+  pointsPossible?: number;
+  partialCredit?: number;
   rationale: string;
   deepRationale?: string;
   takeaway?: string;
@@ -232,6 +235,9 @@ export interface PracticeSessionState {
 export interface PracticeEvaluation {
   correct: boolean;
   correctAnswer: PracticeAnswer;
+  pointsEarned?: number;
+  pointsPossible?: number;
+  partialCredit?: number;
   rationale: string;
   takeaway?: string;
 }

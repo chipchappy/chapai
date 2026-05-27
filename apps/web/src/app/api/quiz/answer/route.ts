@@ -76,7 +76,12 @@ function parseComparableAnswer(input: unknown) {
 
   if (input && typeof input === "object") {
     return Object.entries(input as Record<string, unknown>)
-      .map(([key, value]) => `${String(key).trim().toLowerCase()}:${String(value).trim().toLowerCase()}`)
+      .map(([key, value]) => {
+        const normalizedValue = Array.isArray(value)
+          ? value.map((item) => String(item).trim().toLowerCase()).sort().join("|")
+          : String(value).trim().toLowerCase();
+        return `${String(key).trim().toLowerCase()}:${normalizedValue}`;
+      })
       .sort();
   }
 
@@ -94,7 +99,12 @@ function parseComparableAnswer(input: unknown) {
     }
     if (parsed && typeof parsed === "object") {
       return Object.entries(parsed as Record<string, unknown>)
-        .map(([key, value]) => `${String(key).trim().toLowerCase()}:${String(value).trim().toLowerCase()}`)
+        .map(([key, value]) => {
+          const normalizedValue = Array.isArray(value)
+            ? value.map((item) => String(item).trim().toLowerCase()).sort().join("|")
+            : String(value).trim().toLowerCase();
+          return `${String(key).trim().toLowerCase()}:${normalizedValue}`;
+        })
         .sort();
     }
   } catch {
@@ -110,6 +120,55 @@ function parseComparableAnswer(input: unknown) {
   }
 
   return raw.toLowerCase();
+}
+
+function parseAnswerRecord(input: unknown) {
+  if (input && typeof input === "object" && !Array.isArray(input)) {
+    return input as Record<string, unknown>;
+  }
+
+  if (typeof input === "string" && input.trim().startsWith("{")) {
+    try {
+      const parsed = JSON.parse(input);
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        return parsed as Record<string, unknown>;
+      }
+    } catch {
+      return null;
+    }
+  }
+
+  return null;
+}
+
+function asIdList(value: unknown) {
+  return Array.isArray(value)
+    ? value.map((item) => String(item).trim().toLowerCase()).filter(Boolean)
+    : [];
+}
+
+function scoreBowTieAnswer(selected: unknown, correct: unknown) {
+  const selectedRecord = parseAnswerRecord(selected);
+  const correctRecord = parseAnswerRecord(correct);
+  if (!selectedRecord || !correctRecord || !("leftActions" in correctRecord) || !("rightMonitoring" in correctRecord)) {
+    return null;
+  }
+
+  let pointsEarned = 0;
+  if (String(selectedRecord.center ?? "").trim().toLowerCase() === String(correctRecord.center ?? "").trim().toLowerCase()) {
+    pointsEarned += 1;
+  }
+
+  const selectedLeft = new Set(asIdList(selectedRecord.leftActions));
+  const selectedRight = new Set(asIdList(selectedRecord.rightMonitoring));
+  pointsEarned += asIdList(correctRecord.leftActions).filter((id) => selectedLeft.has(id)).length;
+  pointsEarned += asIdList(correctRecord.rightMonitoring).filter((id) => selectedRight.has(id)).length;
+
+  return {
+    pointsEarned,
+    pointsPossible: 5,
+    partialCredit: pointsEarned / 5,
+  };
 }
 
 function answersMatch(left: unknown, right: unknown) {
@@ -216,7 +275,10 @@ export async function POST(req: NextRequest) {
         ? JSON.parse(question.distractorRationales)
         : null
     );
-    const isCorrect = answersMatch(selectedAnswer, correctAnswer);
+    const bowTieScore = scoreBowTieAnswer(selectedAnswer, correctAnswer);
+    const isCorrect = bowTieScore
+      ? bowTieScore.pointsEarned === bowTieScore.pointsPossible
+      : answersMatch(selectedAnswer, correctAnswer);
 
     // Skip DB write for demo sessions (they use non-UUID IDs and aren't in D1)
     if (!sessionId.startsWith("demo-")) {
@@ -251,6 +313,9 @@ export async function POST(req: NextRequest) {
     return jsonSuccess({
       correct: isCorrect,
       correctAnswer,
+      pointsEarned: bowTieScore?.pointsEarned,
+      pointsPossible: bowTieScore?.pointsPossible,
+      partialCredit: bowTieScore?.partialCredit,
       rationale,
       deepRationale,
       distractorRationales,

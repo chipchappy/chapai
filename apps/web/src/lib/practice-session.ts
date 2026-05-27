@@ -117,7 +117,53 @@ function recordsMatch(left: Record<string, string | string[]>, right: Record<str
   return rightEntries.every(([key, value]) => normalizeRecordValue(left[key]) === normalizeRecordValue(value));
 }
 
+function bowTieAnswer(question: PracticeQuestion) {
+  if (!question.bowTie) {
+    return null;
+  }
+
+  return {
+    center: question.bowTie.center.id,
+    leftActions: question.bowTie.leftActions.filter((cell) => cell.isCorrect).map((cell) => cell.id),
+    rightMonitoring: question.bowTie.rightMonitoring.filter((cell) => cell.isCorrect).map((cell) => cell.id),
+  };
+}
+
+function bowTiePoints(selected: Record<string, string | string[]>, correctAnswer: Record<string, string | string[]>) {
+  let earned = 0;
+  if (normalizeRecordValue(selected.center) === normalizeRecordValue(correctAnswer.center)) {
+    earned += 1;
+  }
+
+  const selectedLeft = new Set(Array.isArray(selected.leftActions) ? selected.leftActions.map(normalizeRecordValue) : []);
+  const selectedRight = new Set(Array.isArray(selected.rightMonitoring) ? selected.rightMonitoring.map(normalizeRecordValue) : []);
+  const correctLeft = Array.isArray(correctAnswer.leftActions) ? correctAnswer.leftActions.map(normalizeRecordValue) : [];
+  const correctRight = Array.isArray(correctAnswer.rightMonitoring) ? correctAnswer.rightMonitoring.map(normalizeRecordValue) : [];
+  earned += correctLeft.filter((id) => selectedLeft.has(id)).length;
+  earned += correctRight.filter((id) => selectedRight.has(id)).length;
+
+  return earned;
+}
+
 export function evaluateQuestion(question: PracticeQuestion, answer: PracticeAnswer): PracticeEvaluation {
+  if (question.kind === "bow-tie" && question.bowTie) {
+    const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string | string[]>;
+    const correctAnswer = bowTieAnswer(question);
+    if (correctAnswer) {
+      const pointsEarned = bowTiePoints(selected, correctAnswer);
+      const pointsPossible = 5;
+      return {
+        correct: pointsEarned === pointsPossible,
+        correctAnswer,
+        pointsEarned,
+        pointsPossible,
+        partialCredit: pointsEarned / pointsPossible,
+        rationale: question.rationale,
+        takeaway: question.takeaway,
+      };
+    }
+  }
+
   if (question.kind === "matrix") {
     const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string | string[]>;
     const rows = question.matrixRows ?? [];
@@ -203,6 +249,9 @@ export function buildQuestionRecord(question: PracticeQuestion, answer: Practice
     selected: answer,
     correct: evaluation.correct,
     correctAnswer: evaluation.correctAnswer,
+    pointsEarned: evaluation.pointsEarned,
+    pointsPossible: evaluation.pointsPossible,
+    partialCredit: evaluation.partialCredit,
     rationale: evaluation.rationale,
     deepRationale: question.deepRationale,
     takeaway: evaluation.takeaway,
@@ -218,8 +267,10 @@ export function buildQuestionRecord(question: PracticeQuestion, answer: Practice
 
 export function computeSessionScore(session: PracticeSessionState) {
   const totalQuestions = session.questions.length;
-  const correctAnswers = Object.values(session.answers).filter((entry) => entry.correct).length;
-  const score = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+  const earnedPoints = Object.values(session.answers).reduce((sum, entry) => sum + (entry.pointsEarned ?? (entry.correct ? 1 : 0)), 0);
+  const possiblePoints = Object.values(session.answers).reduce((sum, entry) => sum + (entry.pointsPossible ?? 1), 0);
+  const correctAnswers = earnedPoints;
+  const score = possiblePoints > 0 ? Math.round((earnedPoints / possiblePoints) * 100) : 0;
 
   const categoryBreakdown: Record<string, { correct: number; total: number }> = {};
 
