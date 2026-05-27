@@ -192,7 +192,7 @@ export interface OrderingQuestion extends QuizQuestion {
 export interface QuizSessionConfig {
   exam: Exam;
   category?: string;    // undefined = all categories (weighted by blueprint)
-  count: 5 | 10 | 20 | 25 | 50 | 75 | 100;
+  count: 5 | 6 | 10 | 20 | 25 | 50 | 75 | 100;
   type?: QuestionType;  // legacy alias for questionType
   questionType?: QuestionType;
   ngnOnly?: boolean;
