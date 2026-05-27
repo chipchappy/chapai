@@ -28,6 +28,11 @@ const clinicalTerms = [
   "infection", "neutropenia", "fever", "renal", "fluid", "dehydration", "edema", "seizure", "intracranial",
   "uterine", "fetal", "postpartum", "preeclampsia", "magnesium", "anaphylaxis", "epinephrine", "opioid",
   "naloxone", "sedation", "aspiration", "falls", "delegation", "scope", "sterile", "isolation",
+  "antibiotic", "antibiotics", "meningitis", "droplet", "culture", "cultures", "lumbar", "puncture",
+  "ventilation", "ventilatory", "respiratory", "vital capacity", "neuromuscular", "weakness", "bradycardia",
+  "cord", "umbilical", "compression", "oxytocin", "fundus", "atony", "placenta", "ectopic", "surgical",
+  "cortisol", "adrenal", "steroid", "lithium", "toxicity", "diarrhea", "spores", "sporicidal", "contact",
+  "transmission", "headache", "post-dural", "fetal heart", "placental", "IVIG", "plasmapheresis",
 ];
 const causalTerms = /\b(because|causes|leads to|results in|indicates|reflects|suggests|worsens|prevents|reduces|increases|decreases|impairs|supports|requires)\b/i;
 const safetyTerms = /\b(priority|first|immediate|airway|breathing|circulation|unstable|deteriorat|shock|sepsis|bleeding|hemorrhage|hypoxia|safety|risk|escalat|rapid response)\b/i;
@@ -117,7 +122,7 @@ function scoreQuestion(question) {
   const paragraphs = structured
     ? [structured.overview, structured.mechanism, structured.whyCorrect].filter(Boolean).length
     : countParagraphs(question.deepRationale ?? question.rationale ?? "");
-  const clinicalHits = clinicalTerms.filter((term) => new RegExp(`\\b${term}\\b`, "i").test(rationaleText));
+  const clinicalHits = clinicalTerms.filter((term) => new RegExp(`\\b${term.replace(/\s+/g, "\\s+")}\\b`, "i").test(rationaleText));
   const resources = Array.isArray(structured?.citations) && structured.citations.length
     ? structured.citations.map((citation) => ({
         title: citation.source,
@@ -151,7 +156,7 @@ function scoreQuestion(question) {
       id,
       words: words(text).length,
       hasBoilerplate: boilerplatePattern.test(text),
-      hasClinicalTerm: clinicalTerms.some((term) => new RegExp(`\\b${term}\\b`, "i").test(text)),
+      hasClinicalTerm: clinicalTerms.some((term) => new RegExp(`\\b${term.replace(/\s+/g, "\\s+")}\\b`, "i").test(text)),
       present: Boolean(text),
     };
   });

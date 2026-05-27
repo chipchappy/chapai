@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-27T18:52:39.987Z",
+  "generatedAt": "2026-05-27T22:36:13.969Z",
   "inputDir": "packages\\content\\staging\\rationale-pilot",
   "sampleSize": 150,
   "corpusQuestions": 150,
@@ -13,17 +13,13 @@
     "ambiguity": 5
   },
   "summary": {
-    "averageScore": 85.7,
-    "medianScore": 89,
+    "averageScore": 95.9,
+    "medianScore": 99,
     "readiness": {
-      "premium-ready": 104,
-      "official-style-pass": 22,
-      "needs-p1.6": 24
+      "premium-ready": 132,
+      "official-style-pass": 18
     },
-    "gapCounts": {
-      "name mechanism more explicitly": 54,
-      "strengthen why-each-wrong teaching": 16
-    }
+    "gapCounts": {}
   },
   "results": [
     {
@@ -31,12 +27,18 @@
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 214,
+      "rationaleWords": 330,
       "paragraphs": 3,
       "clinicalHits": [
-        "magnesium"
+        "renal",
+        "fluid",
+        "dehydration",
+        "magnesium",
+        "ventilation",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -61,22 +63,23 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-38-ruptured-ectopic-02",
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 222,
+      "rationaleWords": 326,
       "paragraphs": 3,
       "clinicalHits": [
+        "perfusion",
         "bleeding",
-        "hemorrhage"
+        "hemorrhage",
+        "ectopic",
+        "surgical"
       ],
       "resources": [
         {
@@ -102,12 +105,17 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 227,
+      "score": 98,
+      "readiness": "premium-ready",
+      "rationaleWords": 379,
       "paragraphs": 3,
       "clinicalHits": [
-        "airway"
+        "airway",
+        "breathing",
+        "circulation",
+        "infection",
+        "fever",
+        "culture"
       ],
       "resources": [
         {
@@ -125,23 +133,28 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-cjmm-19-bacterial-meningitis-05",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 298,
+      "score": 100,
+      "readiness": "premium-ready",
+      "rationaleWords": 370,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "shock",
+        "sepsis",
+        "infection",
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet",
+        "cultures"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -157,26 +170,27 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-24-delirium-uti-01",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 277,
+      "rationaleWords": 391,
       "paragraphs": 3,
       "clinicalHits": [
         "infection",
         "fever",
-        "dehydration"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -202,12 +216,19 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 248,
+      "rationaleWords": 339,
       "paragraphs": 3,
       "clinicalHits": [
-        "sepsis"
+        "shock",
+        "sepsis",
+        "infection",
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet",
+        "transmission"
       ],
       "resources": [
         {
@@ -226,87 +247,25 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-23-guillain-barre-ascending-06",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 57,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 270,
-      "paragraphs": 3,
-      "clinicalHits": [],
-      "resources": [
-        {
-          "title": "NCSBN Test Plan 2026",
-          "href": "https://www.nclex.com/test-plans",
-          "source": "Physiological Adaptation",
-          "sourceKind": "structured-citation"
-        },
-        {
-          "title": "NCSBN NGN sample questions and exam preview",
-          "href": "https://www.nclex.com/prepare",
-          "source": "Evaluate Outcomes",
-          "sourceKind": "structured-citation"
-        }
-      ],
-      "wrongOptionCount": 3,
-      "distractorCoverage": 0,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
-    },
-    {
-      "id": "p1-cjmm-35-cord-prolapse-05",
-      "type": "case_study",
-      "category": "health_promotion",
-      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 325,
-      "paragraphs": 3,
-      "clinicalHits": [],
-      "resources": [
-        {
-          "title": "NCSBN Test Plan 2026",
-          "href": "https://www.nclex.com/test-plans",
-          "source": "Health Promotion",
-          "sourceKind": "structured-citation"
-        },
-        {
-          "title": "NCSBN NGN sample questions and exam preview",
-          "href": "https://www.nclex.com/prepare",
-          "source": "Take Actions",
-          "sourceKind": "structured-citation"
-        }
-      ],
-      "wrongOptionCount": 3,
-      "distractorCoverage": 0,
-      "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
-    },
-    {
-      "id": "p1-cjmm-43-sickle-cell-acute-chest-06",
-      "type": "case_study",
-      "category": "physiological_adaptation",
-      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 227,
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 338,
       "paragraphs": 3,
       "clinicalHits": [
-        "breathing"
+        "airway",
+        "breathing",
+        "ventilation",
+        "respiratory",
+        "vital capacity",
+        "neuromuscular",
+        "weakness"
       ],
       "resources": [
         {
@@ -324,24 +283,99 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-35-cord-prolapse-05",
+      "type": "case_study",
+      "category": "health_promotion",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 395,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "perfusion",
+        "oxygenation",
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical",
+        "compression"
       ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Health Promotion",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Take Actions",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
+    },
+    {
+      "id": "p1-cjmm-43-sickle-cell-acute-chest-06",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
+      "score": 98,
+      "readiness": "premium-ready",
+      "rationaleWords": 401,
+      "paragraphs": 3,
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "infection",
+        "fever",
+        "antibiotics"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "Physiological Adaptation",
+          "sourceKind": "structured-citation"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "Evaluate Outcomes",
+          "sourceKind": "structured-citation"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-cjmm-27-severe-hypoglycemia-01",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 267,
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 408,
       "paragraphs": 3,
       "clinicalHits": [
-        "glucose"
+        "airway",
+        "breathing",
+        "circulation",
+        "potassium",
+        "glucose",
+        "insulin",
+        "infection"
       ],
       "resources": [
         {
@@ -359,27 +393,27 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-bowtie-05-opioid-overdose-ed",
       "type": "bow_tie",
       "category": "pharmacological",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 260,
+      "rationaleWords": 341,
       "paragraphs": 3,
       "clinicalHits": [
         "oxygenation",
+        "renal",
+        "fluid",
+        "dehydration",
         "opioid",
         "naloxone",
-        "sedation"
+        "sedation",
+        "ventilation"
       ],
       "resources": [
         {
@@ -411,13 +445,18 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 87,
+      "score": 92,
       "readiness": "premium-ready",
-      "rationaleWords": 252,
+      "rationaleWords": 369,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
-        "ischemia"
+        "ischemia",
+        "myocardial",
+        "infection"
       ],
       "resources": [
         {
@@ -443,15 +482,19 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 196,
+      "rationaleWords": 377,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
         "shock",
         "sepsis",
-        "lactate"
+        "lactate",
+        "infection"
       ],
       "resources": [
         {
@@ -477,16 +520,19 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 90,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 280,
+      "rationaleWords": 338,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
         "renal",
+        "fluid",
+        "dehydration",
         "seizure",
-        "fetal",
-        "magnesium"
+        "magnesium",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -518,12 +564,18 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 78,
-      "readiness": "official-style-pass",
-      "rationaleWords": 187,
+      "score": 92,
+      "readiness": "premium-ready",
+      "rationaleWords": 369,
       "paragraphs": 3,
       "clinicalHits": [
-        "stroke"
+        "airway",
+        "breathing",
+        "circulation",
+        "stroke",
+        "glucose",
+        "infection",
+        "weakness"
       ],
       "resources": [
         {
@@ -542,24 +594,26 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 18,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1273-n023",
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 356,
+      "rationaleWords": 495,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -585,15 +639,19 @@
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 361,
+      "rationaleWords": 501,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -619,16 +677,19 @@
       "type": "matrix",
       "category": "acute_kidney_injury_rifle_staging",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 97,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 284,
+      "rationaleWords": 376,
       "paragraphs": 3,
       "clinicalHits": [
         "electrolyte",
         "potassium",
         "renal",
+        "fluid",
+        "dehydration",
         "edema",
-        "falls"
+        "falls",
+        "lithium"
       ],
       "resources": [
         {
@@ -654,15 +715,19 @@
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 361,
+      "rationaleWords": 501,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -688,14 +753,19 @@
       "type": "matrix",
       "category": "placental_abruption_pain",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 278,
+      "rationaleWords": 409,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
+        "infection",
         "uterine",
-        "fetal"
+        "fetal",
+        "placenta"
       ],
       "resources": [
         {
@@ -721,15 +791,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 334,
+      "rationaleWords": 450,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -755,15 +829,19 @@
       "type": "sata",
       "category": "meningococcal_sepsis_petechiae",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 265,
+      "rationaleWords": 360,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
+        "shock",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "isolation",
+        "antibiotics",
+        "meningitis"
       ],
       "resources": [
         {
@@ -789,15 +867,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 354,
+      "rationaleWords": 470,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -823,13 +905,18 @@
       "type": "sata",
       "category": "severe_hyponatremia_seizure",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 255,
+      "rationaleWords": 385,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "sodium",
-        "seizure"
+        "infection",
+        "seizure",
+        "headache"
       ],
       "resources": [
         {
@@ -855,15 +942,19 @@
       "type": "sata",
       "category": "meningococcal_sepsis_petechiae",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 282,
+      "rationaleWords": 377,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
+        "shock",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "isolation",
+        "antibiotics",
+        "meningitis"
       ],
       "resources": [
         {
@@ -889,11 +980,14 @@
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -921,11 +1015,14 @@
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -953,11 +1050,14 @@
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -985,11 +1085,17 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -1007,23 +1113,25 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb972-n002",
       "type": "ordering",
       "category": "postpartum_hemorrhage_boggy_fundus",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 78,
+      "score": 82,
       "readiness": "official-style-pass",
-      "rationaleWords": 210,
+      "rationaleWords": 252,
       "paragraphs": 3,
       "clinicalHits": [
+        "circulation",
         "bleeding",
         "hemorrhage",
-        "postpartum"
+        "uterine",
+        "postpartum",
+        "fundus",
+        "atony"
       ],
       "resources": [
         {
@@ -1049,13 +1157,17 @@
       "type": "scenario_mcq",
       "category": "warfarin_inr_management_reversal",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 293,
+      "rationaleWords": 442,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
-        "anticoagulant"
+        "anticoagulant",
+        "infection"
       ],
       "resources": [
         {
@@ -1087,13 +1199,17 @@
       "type": "scenario_mcq",
       "category": "right_ventricular_mi_nitrate_drop",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 275,
+      "rationaleWords": 395,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
-        "perfusion"
+        "perfusion",
+        "shock",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -1119,11 +1235,20 @@
       "type": "scenario_mcq",
       "category": "lumbar_puncture_positioning_complications",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 373,
+      "score": 100,
+      "readiness": "premium-ready",
+      "rationaleWords": 437,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "shock",
+        "sepsis",
+        "infection",
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet",
+        "lumbar"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -1139,26 +1264,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1877-n002",
       "type": "scenario_mcq",
       "category": "myxedema_coma_hypothermia",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 270,
+      "rationaleWords": 433,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
-        "oxygenation"
+        "circulation",
+        "oxygenation",
+        "infection",
+        "ventilation",
+        "weakness",
+        "bradycardia"
       ],
       "resources": [
         {
@@ -1184,13 +1311,17 @@
       "type": "scenario_mcq",
       "category": "right_ventricular_mi_nitrate_drop",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 281,
+      "rationaleWords": 401,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
-        "perfusion"
+        "perfusion",
+        "shock",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -1216,15 +1347,18 @@
       "type": "decision_map_mcq",
       "category": "neonatal_sepsis_instability",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 281,
+      "rationaleWords": 443,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "sepsis"
+        "sepsis",
+        "infection",
+        "ventilation"
       ],
       "resources": [
         {
@@ -1250,15 +1384,18 @@
       "type": "decision_map_mcq",
       "category": "palliative_care_symptom_management_dyspnea",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 284,
+      "rationaleWords": 446,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "sedation"
+        "infection",
+        "sedation",
+        "ventilation"
       ],
       "resources": [
         {
@@ -1284,11 +1421,17 @@
       "type": "decision_map_mcq",
       "category": "adolescent_depression_screening_phq",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 356,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 475,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -1304,24 +1447,25 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1343-n010",
       "type": "decision_map_mcq",
       "category": "contrast_induced_nephropathy_prevention",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 334,
+      "rationaleWords": 435,
       "paragraphs": 3,
       "clinicalHits": [
-        "renal"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -1340,21 +1484,23 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1653-n010",
       "type": "decision_map_mcq",
       "category": "contrast_induced_nephropathy_prevention",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 353,
+      "rationaleWords": 439,
       "paragraphs": 3,
       "clinicalHits": [
-        "renal"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -1373,22 +1519,24 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb403-n001",
       "type": "mcq",
       "category": "pharmacology_safety",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 262,
+      "rationaleWords": 355,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
-        "anticoagulant"
+        "anticoagulant",
+        "infection"
       ],
       "resources": [
         {
@@ -1420,13 +1568,17 @@
       "type": "mcq",
       "category": "pharmacology_safety",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 262,
+      "rationaleWords": 355,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
-        "anticoagulant"
+        "anticoagulant",
+        "infection"
       ],
       "resources": [
         {
@@ -1458,14 +1610,18 @@
       "type": "mcq",
       "category": "pediatric_nursing",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 343,
+      "rationaleWords": 484,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
-        "oxygenation"
+        "circulation",
+        "oxygenation",
+        "infection",
+        "ventilation",
+        "bradycardia"
       ],
       "resources": [
         {
@@ -1491,14 +1647,18 @@
       "type": "mcq",
       "category": "first_action_for_respiratory_distress",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 260,
+      "rationaleWords": 434,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
-        "oxygenation"
+        "circulation",
+        "oxygenation",
+        "infection",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -1524,12 +1684,18 @@
       "type": "mcq",
       "category": "chain_of_command",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 507,
+      "rationaleWords": 578,
       "paragraphs": 3,
       "clinicalHits": [
-        "scope"
+        "renal",
+        "fluid",
+        "dehydration",
+        "scope",
+        "lithium",
+        "toxicity",
+        "contact"
       ],
       "resources": [
         {
@@ -1548,20 +1714,22 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb241-n003",
       "type": "mcq",
       "category": "prioritization_delegation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 232,
+      "rationaleWords": 335,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "infection",
         "delegation"
       ],
       "resources": [
@@ -1581,22 +1749,26 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1667-n024",
       "type": "mcq",
       "category": "c_diff_spore_precautions",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 275,
+      "rationaleWords": 395,
       "paragraphs": 3,
       "clinicalHits": [
+        "shock",
         "sepsis",
-        "infection"
+        "infection",
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet",
+        "spores"
       ],
       "resources": [
         {
@@ -1622,13 +1794,19 @@
       "type": "mcq",
       "category": "c_diff_spore_precautions",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 288,
+      "rationaleWords": 408,
       "paragraphs": 3,
       "clinicalHits": [
+        "shock",
         "sepsis",
-        "infection"
+        "infection",
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet",
+        "spores"
       ],
       "resources": [
         {
@@ -1654,11 +1832,15 @@
       "type": "mcq",
       "category": "prioritization_delegation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 232,
+      "rationaleWords": 335,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "infection",
         "delegation"
       ],
       "resources": [
@@ -1678,22 +1860,24 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb628-n002",
       "type": "mcq",
       "category": "endocrine_metabolic",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 263,
+      "rationaleWords": 365,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "glucose",
         "insulin",
+        "infection",
         "seizure"
       ],
       "resources": [
@@ -1726,15 +1910,19 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 193,
+      "rationaleWords": 335,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "shock",
         "anaphylaxis",
-        "epinephrine"
+        "epinephrine",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -1766,15 +1954,19 @@
       "type": "sata",
       "category": "meningococcal_sepsis_petechiae",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 270,
+      "rationaleWords": 365,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
+        "shock",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "isolation",
+        "antibiotics",
+        "meningitis"
       ],
       "resources": [
         {
@@ -1800,15 +1992,19 @@
       "type": "bow_tie",
       "category": "pharmacological",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 260,
+      "rationaleWords": 341,
       "paragraphs": 3,
       "clinicalHits": [
         "oxygenation",
+        "renal",
+        "fluid",
+        "dehydration",
         "opioid",
         "naloxone",
-        "sedation"
+        "sedation",
+        "ventilation"
       ],
       "resources": [
         {
@@ -1840,15 +2036,19 @@
       "type": "sata",
       "category": "meningococcal_sepsis_petechiae",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 264,
+      "rationaleWords": 359,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
+        "shock",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "isolation",
+        "antibiotics",
+        "meningitis"
       ],
       "resources": [
         {
@@ -1874,11 +2074,20 @@
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 284,
+      "score": 100,
+      "readiness": "premium-ready",
+      "rationaleWords": 339,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "circulation",
+        "bleeding",
+        "hemorrhage",
+        "uterine",
+        "postpartum",
+        "oxytocin",
+        "fundus",
+        "atony"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -1894,27 +2103,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-36-placental-abruption-02",
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 234,
+      "rationaleWords": 374,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
         "hypoxia",
+        "bleeding",
         "hemorrhage",
-        "fetal"
+        "infection"
       ],
       "resources": [
         {
@@ -1940,12 +2150,18 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 229,
+      "rationaleWords": 383,
       "paragraphs": 3,
       "clinicalHits": [
-        "infection"
+        "airway",
+        "breathing",
+        "circulation",
+        "infection",
+        "fever",
+        "antibiotics",
+        "culture"
       ],
       "resources": [
         {
@@ -1964,20 +2180,25 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-17-acute-ischemic-stroke-06",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 249,
+      "score": 100,
+      "readiness": "premium-ready",
+      "rationaleWords": 414,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "anticoagulant",
+        "stroke",
+        "glucose",
+        "infection",
         "aspiration"
       ],
       "resources": [
@@ -1996,24 +2217,24 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "mb1265-n010",
       "type": "decision_map_mcq",
       "category": "contrast_induced_nephropathy_prevention",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 354,
+      "rationaleWords": 455,
       "paragraphs": 3,
       "clinicalHits": [
-        "renal"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -2032,20 +2253,24 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1126-n009",
       "type": "decision_map_mcq",
       "category": "adolescent_depression_screening_phq",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 386,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 505,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -2061,24 +2286,27 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-12-ards-ventilator-safety-03",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 284,
+      "rationaleWords": 393,
       "paragraphs": 3,
       "clinicalHits": [
-        "oxygenation"
+        "airway",
+        "breathing",
+        "circulation",
+        "oxygenation",
+        "sepsis",
+        "infection",
+        "respiratory"
       ],
       "resources": [
         {
@@ -2097,20 +2325,23 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-30-adrenal-crisis-04",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 274,
+      "score": 96,
+      "readiness": "premium-ready",
+      "rationaleWords": 346,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "shock",
+        "cortisol",
+        "adrenal",
+        "steroid"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -2126,28 +2357,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1882-n022",
       "type": "matrix",
       "category": "acute_kidney_injury_rifle_staging",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 97,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 283,
+      "rationaleWords": 375,
       "paragraphs": 3,
       "clinicalHits": [
         "electrolyte",
         "potassium",
         "renal",
+        "fluid",
+        "dehydration",
         "edema",
-        "falls"
+        "falls",
+        "lithium"
       ],
       "resources": [
         {
@@ -2173,12 +2404,16 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 228,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 398,
       "paragraphs": 3,
       "clinicalHits": [
-        "sodium"
+        "airway",
+        "breathing",
+        "circulation",
+        "sodium",
+        "infection"
       ],
       "resources": [
         {
@@ -2196,26 +2431,27 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-bowtie-10-neutropenic-fever-stepdown",
       "type": "bow_tie",
       "category": "safety_infection_control",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 88,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 191,
+      "rationaleWords": 360,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "antibiotics",
+        "cultures"
       ],
       "resources": [
         {
@@ -2241,12 +2477,16 @@
       "type": "mcq",
       "category": "neutropenic_precautions",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 295,
+      "rationaleWords": 435,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "sepsis",
+        "bleeding",
         "infection",
         "neutropenia",
         "isolation"
@@ -2275,12 +2515,19 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 280,
+      "score": 100,
+      "readiness": "premium-ready",
+      "rationaleWords": 400,
       "paragraphs": 3,
       "clinicalHits": [
-        "oxygenation"
+        "airway",
+        "breathing",
+        "circulation",
+        "oxygenation",
+        "glucose",
+        "infection",
+        "opioid",
+        "naloxone"
       ],
       "resources": [
         {
@@ -2298,25 +2545,25 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "mb1555-n011",
       "type": "decision_map_mcq",
       "category": "incident_report_medication_error_chain",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 334,
+      "rationaleWords": 494,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "glucose",
-        "insulin"
+        "insulin",
+        "infection"
       ],
       "resources": [
         {
@@ -2348,13 +2595,19 @@
       "type": "mcq",
       "category": "c_diff_spore_precautions",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 259,
+      "rationaleWords": 379,
       "paragraphs": 3,
       "clinicalHits": [
+        "shock",
         "sepsis",
-        "infection"
+        "infection",
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet",
+        "spores"
       ],
       "resources": [
         {
@@ -2380,11 +2633,17 @@
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 57,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 276,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 332,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "perfusion",
+        "bleeding",
+        "hemorrhage",
+        "ectopic",
+        "surgical"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -2400,29 +2659,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "mb1181-n019",
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 357,
+      "rationaleWords": 473,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -2448,13 +2706,19 @@
       "type": "case_study",
       "category": "psychosocial",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 243,
+      "rationaleWords": 407,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "electrolyte",
-        "insulin"
+        "potassium",
+        "insulin",
+        "infection",
+        "magnesium"
       ],
       "resources": [
         {
@@ -2486,16 +2750,19 @@
       "type": "matrix",
       "category": "acute_kidney_injury_rifle_staging",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 97,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 296,
+      "rationaleWords": 388,
       "paragraphs": 3,
       "clinicalHits": [
         "electrolyte",
         "potassium",
         "renal",
+        "fluid",
+        "dehydration",
         "edema",
-        "falls"
+        "falls",
+        "lithium"
       ],
       "resources": [
         {
@@ -2521,11 +2788,17 @@
       "type": "scenario_mcq",
       "category": "acute_psychosis_deescalation_safety",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 385,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 480,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -2541,25 +2814,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-bowtie-06-pe-stepdown",
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 87,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 195,
+      "rationaleWords": 365,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
-        "oxygenation"
+        "oxygenation",
+        "embolism",
+        "infection",
+        "respiratory"
       ],
       "resources": [
         {
@@ -2585,11 +2861,14 @@
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -2617,16 +2896,19 @@
       "type": "matrix",
       "category": "acute_kidney_injury_rifle_staging",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 97,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 296,
+      "rationaleWords": 388,
       "paragraphs": 3,
       "clinicalHits": [
         "electrolyte",
         "potassium",
         "renal",
+        "fluid",
+        "dehydration",
         "edema",
-        "falls"
+        "falls",
+        "lithium"
       ],
       "resources": [
         {
@@ -2652,15 +2934,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 335,
+      "rationaleWords": 451,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -2686,15 +2972,19 @@
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 357,
+      "rationaleWords": 497,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -2720,11 +3010,17 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -2742,20 +3038,24 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1647-n020",
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -2773,21 +3073,24 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-14-tension-pneumothorax-06",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 294,
+      "score": 98,
+      "readiness": "premium-ready",
+      "rationaleWords": 370,
       "paragraphs": 3,
       "clinicalHits": [
-        "oxygenation"
+        "oxygenation",
+        "shock",
+        "respiratory",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -2805,24 +3108,24 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-cjmm-01-stemi-hypoperfusion-06",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 287,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 363,
       "paragraphs": 3,
       "clinicalHits": [
-        "perfusion"
+        "perfusion",
+        "shock",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -2840,24 +3143,26 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-cjmm-14-tension-pneumothorax-04",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 272,
+      "rationaleWords": 348,
       "paragraphs": 3,
       "clinicalHits": [
-        "oxygenation"
+        "oxygenation",
+        "shock",
+        "ventilation",
+        "respiratory",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -2876,21 +3181,25 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-50-refeeding-syndrome-risk-06",
       "type": "case_study",
       "category": "psychosocial",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 207,
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 370,
       "paragraphs": 3,
       "clinicalHits": [
-        "potassium"
+        "airway",
+        "breathing",
+        "circulation",
+        "potassium",
+        "infection",
+        "magnesium",
+        "weakness"
       ],
       "resources": [
         {
@@ -2908,24 +3217,24 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "mb1540-n010",
       "type": "decision_map_mcq",
       "category": "contrast_induced_nephropathy_prevention",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 325,
+      "rationaleWords": 396,
       "paragraphs": 3,
       "clinicalHits": [
-        "renal"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -2944,23 +3253,25 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb873-n004",
       "type": "mcq",
       "category": "wheezing_and_breathing_effort",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 317,
+      "rationaleWords": 480,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
-        "oxygenation"
+        "circulation",
+        "oxygenation",
+        "infection",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -2986,11 +3297,14 @@
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -3018,12 +3332,18 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 83,
-      "readiness": "official-style-pass",
-      "rationaleWords": 280,
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 398,
       "paragraphs": 3,
       "clinicalHits": [
-        "oxygenation"
+        "airway",
+        "breathing",
+        "circulation",
+        "oxygenation",
+        "infection",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -3041,23 +3361,27 @@
       ],
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-cjmm-23-guillain-barre-ascending-01",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 57,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 296,
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 364,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "ventilation",
+        "respiratory",
+        "vital capacity",
+        "neuromuscular",
+        "weakness"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -3073,27 +3397,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
-      "ambiguityFlags": [
-        "vague rationale with weak clinical anchoring"
-      ],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": []
     },
     {
       "id": "p1-cjmm-02-acute-pulmonary-edema-03",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 224,
+      "rationaleWords": 399,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
-        "fluid"
+        "potassium",
+        "infection",
+        "fluid",
+        "edema"
       ],
       "resources": [
         {
@@ -3119,11 +3444,14 @@
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -3151,15 +3479,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 315,
+      "rationaleWords": 431,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -3185,13 +3517,16 @@
       "type": "ordering",
       "category": "severe_hyponatremia_seizure",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 78,
+      "score": 81,
       "readiness": "official-style-pass",
-      "rationaleWords": 223,
+      "rationaleWords": 283,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
+        "breathing",
+        "circulation",
         "sodium",
+        "infection",
         "seizure"
       ],
       "resources": [
@@ -3218,13 +3553,17 @@
       "type": "scenario_mcq",
       "category": "warfarin_inr_management_reversal",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 282,
+      "rationaleWords": 431,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
-        "anticoagulant"
+        "anticoagulant",
+        "infection"
       ],
       "resources": [
         {
@@ -3256,12 +3595,16 @@
       "type": "sata",
       "category": "newborn_hypoglycemia_jitteriness",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 232,
+      "rationaleWords": 359,
       "paragraphs": 3,
       "clinicalHits": [
-        "glucose"
+        "airway",
+        "breathing",
+        "circulation",
+        "glucose",
+        "infection"
       ],
       "resources": [
         {
@@ -3280,22 +3623,26 @@
       "wrongOptionCount": 2,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb085-n004",
       "type": "mcq",
       "category": "respiratory_oxygenation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 223,
+      "rationaleWords": 349,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
         "breathing",
-        "oxygenation"
+        "circulation",
+        "oxygenation",
+        "infection",
+        "ventilation",
+        "ventilatory",
+        "respiratory"
       ],
       "resources": [
         {
@@ -3321,11 +3668,17 @@
       "type": "scenario_mcq",
       "category": "acute_psychosis_deescalation_safety",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 408,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 503,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -3341,26 +3694,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-bowtie-10-neutropenic-fever-ed",
       "type": "bow_tie",
       "category": "safety_infection_control",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 88,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 191,
+      "rationaleWords": 360,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "antibiotics",
+        "cultures"
       ],
       "resources": [
         {
@@ -3386,14 +3741,19 @@
       "type": "matrix",
       "category": "placental_abruption_pain",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 267,
+      "rationaleWords": 398,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
+        "infection",
         "uterine",
-        "fetal"
+        "fetal",
+        "placenta"
       ],
       "resources": [
         {
@@ -3419,11 +3779,19 @@
       "type": "matrix",
       "category": "neuroleptic_malignant_syndrome",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 313,
+      "score": 99,
+      "readiness": "premium-ready",
+      "rationaleWords": 371,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "renal",
+        "fluid",
+        "dehydration",
+        "antibiotic",
+        "lithium",
+        "toxicity",
+        "diarrhea"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -3439,27 +3807,28 @@
         }
       ],
       "wrongOptionCount": 2,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1719-n023",
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 351,
+      "rationaleWords": 490,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -3485,13 +3854,17 @@
       "type": "scenario_mcq",
       "category": "warfarin_inr_management_reversal",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 291,
+      "rationaleWords": 440,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "bleeding",
-        "anticoagulant"
+        "anticoagulant",
+        "infection"
       ],
       "resources": [
         {
@@ -3523,16 +3896,19 @@
       "type": "matrix",
       "category": "acute_kidney_injury_rifle_staging",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 97,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 277,
+      "rationaleWords": 369,
       "paragraphs": 3,
       "clinicalHits": [
         "electrolyte",
         "potassium",
         "renal",
+        "fluid",
+        "dehydration",
         "edema",
-        "falls"
+        "falls",
+        "lithium"
       ],
       "resources": [
         {
@@ -3558,15 +3934,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 302,
+      "rationaleWords": 418,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -3592,9 +3972,9 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 91,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 220,
+      "rationaleWords": 335,
       "paragraphs": 3,
       "clinicalHits": [
         "potassium",
@@ -3602,7 +3982,9 @@
         "glucose",
         "insulin",
         "ketones",
-        "fluid"
+        "renal",
+        "fluid",
+        "dehydration"
       ],
       "resources": [
         {
@@ -3634,16 +4016,19 @@
       "type": "matrix",
       "category": "acute_kidney_injury_rifle_staging",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 97,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 289,
+      "rationaleWords": 381,
       "paragraphs": 3,
       "clinicalHits": [
         "electrolyte",
         "potassium",
         "renal",
+        "fluid",
+        "dehydration",
         "edema",
-        "falls"
+        "falls",
+        "lithium"
       ],
       "resources": [
         {
@@ -3669,13 +4054,17 @@
       "type": "sata",
       "category": "ectopic_pregnancy_rupture",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 302,
+      "rationaleWords": 406,
       "paragraphs": 3,
       "clinicalHits": [
+        "perfusion",
         "shock",
-        "bleeding"
+        "bleeding",
+        "hemorrhage",
+        "ectopic",
+        "surgical"
       ],
       "resources": [
         {
@@ -3701,11 +4090,17 @@
       "type": "ordering",
       "category": "fire_safety_race_pass_oxygen",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 238,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 302,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -3723,22 +4118,26 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-31-siadh-seizure-risk-04",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 235,
+      "rationaleWords": 399,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "sodium",
-        "seizure"
+        "infection",
+        "fluid",
+        "seizure",
+        "headache"
       ],
       "resources": [
         {
@@ -3764,13 +4163,17 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 281,
+      "rationaleWords": 348,
       "paragraphs": 3,
       "clinicalHits": [
         "infection",
-        "dehydration"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -3796,14 +4199,19 @@
       "type": "mcq",
       "category": "delegation_infection_control",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 421,
+      "rationaleWords": 541,
       "paragraphs": 3,
       "clinicalHits": [
+        "shock",
+        "sepsis",
         "infection",
         "delegation",
-        "isolation"
+        "isolation",
+        "antibiotics",
+        "meningitis",
+        "droplet"
       ],
       "resources": [
         {
@@ -3829,14 +4237,18 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 266,
+      "rationaleWords": 385,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
         "oxygenation",
-        "embolism"
+        "shock",
+        "embolism",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -3862,12 +4274,16 @@
       "type": "sata",
       "category": "newborn_hypoglycemia_jitteriness",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 247,
+      "rationaleWords": 374,
       "paragraphs": 3,
       "clinicalHits": [
-        "glucose"
+        "airway",
+        "breathing",
+        "circulation",
+        "glucose",
+        "infection"
       ],
       "resources": [
         {
@@ -3886,20 +4302,24 @@
       "wrongOptionCount": 2,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1354-n020",
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -3917,20 +4337,24 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-47-lithium-toxicity-05",
       "type": "case_study",
       "category": "psychosocial",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 294,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 365,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -3946,27 +4370,28 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1206-n023",
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 356,
+      "rationaleWords": 495,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -3992,16 +4417,19 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 90,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 280,
+      "rationaleWords": 338,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
         "renal",
+        "fluid",
+        "dehydration",
         "seizure",
-        "fetal",
-        "magnesium"
+        "magnesium",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -4033,14 +4461,19 @@
       "type": "scenario_mcq",
       "category": "breastfeeding_latch_assessment_intervention",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 333,
+      "rationaleWords": 485,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
         "oxygenation",
-        "fetal"
+        "infection",
+        "fetal",
+        "postpartum"
       ],
       "resources": [
         {
@@ -4066,13 +4499,18 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 87,
+      "score": 92,
       "readiness": "premium-ready",
-      "rationaleWords": 252,
+      "rationaleWords": 369,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
-        "ischemia"
+        "ischemia",
+        "myocardial",
+        "infection"
       ],
       "resources": [
         {
@@ -4098,11 +4536,17 @@
       "type": "scenario_mcq",
       "category": "acute_psychosis_deescalation_safety",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 408,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 503,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -4118,26 +4562,27 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb875-n001",
       "type": "mcq",
       "category": "pharmacology_corticosteroid_teaching",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 485,
+      "rationaleWords": 553,
       "paragraphs": 3,
       "clinicalHits": [
+        "shock",
         "glucose",
         "infection",
-        "edema"
+        "edema",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -4163,14 +4608,19 @@
       "type": "bow_tie",
       "category": "safety_infection_control",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 88,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 191,
+      "rationaleWords": 360,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "sepsis",
         "infection",
-        "fever"
+        "fever",
+        "antibiotics",
+        "cultures"
       ],
       "resources": [
         {
@@ -4196,15 +4646,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 351,
+      "rationaleWords": 467,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -4230,14 +4684,19 @@
       "type": "sata",
       "category": "severe_hyponatremia_seizure",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 263,
+      "rationaleWords": 395,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "electrolyte",
         "sodium",
-        "seizure"
+        "infection",
+        "seizure",
+        "headache"
       ],
       "resources": [
         {
@@ -4263,12 +4722,17 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 78,
-      "readiness": "official-style-pass",
-      "rationaleWords": 249,
+      "score": 91,
+      "readiness": "premium-ready",
+      "rationaleWords": 327,
       "paragraphs": 3,
       "clinicalHits": [
-        "oxygenation"
+        "oxygenation",
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -4287,23 +4751,24 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 18,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-05-cardiac-tamponade-post-procedure-03",
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 217,
+      "rationaleWords": 336,
       "paragraphs": 3,
       "clinicalHits": [
         "perfusion",
         "shock",
-        "fluid"
+        "fluid",
+        "cortisol",
+        "adrenal",
+        "steroid"
       ],
       "resources": [
         {
@@ -4329,15 +4794,19 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 196,
+      "rationaleWords": 377,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
         "shock",
         "sepsis",
-        "lactate"
+        "lactate",
+        "infection"
       ],
       "resources": [
         {
@@ -4363,11 +4832,17 @@
       "type": "decision_map_mcq",
       "category": "adolescent_depression_screening_phq",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 59,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 397,
+      "score": 97,
+      "readiness": "premium-ready",
+      "rationaleWords": 516,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "infection"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -4383,24 +4858,27 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-36-placental-abruption-05",
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 264,
+      "rationaleWords": 405,
       "paragraphs": 3,
       "clinicalHits": [
-        "fetal"
+        "airway",
+        "breathing",
+        "circulation",
+        "bleeding",
+        "infection",
+        "fetal",
+        "placental"
       ],
       "resources": [
         {
@@ -4419,24 +4897,26 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-bowtie-01-sepsis-ed",
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 196,
+      "rationaleWords": 377,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "perfusion",
         "shock",
         "sepsis",
-        "lactate"
+        "lactate",
+        "infection"
       ],
       "resources": [
         {
@@ -4462,15 +4942,19 @@
       "type": "bow_tie",
       "category": "pharmacological",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 89,
+      "score": 93,
       "readiness": "premium-ready",
-      "rationaleWords": 260,
+      "rationaleWords": 341,
       "paragraphs": 3,
       "clinicalHits": [
         "oxygenation",
+        "renal",
+        "fluid",
+        "dehydration",
         "opioid",
         "naloxone",
-        "sedation"
+        "sedation",
+        "ventilation"
       ],
       "resources": [
         {
@@ -4502,13 +4986,16 @@
       "type": "scenario_mcq",
       "category": "advance_directive_conflict_family",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 329,
+      "rationaleWords": 489,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
         "circulation",
-        "perfusion"
+        "perfusion",
+        "infection"
       ],
       "resources": [
         {
@@ -4534,12 +5021,18 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 237,
+      "rationaleWords": 411,
       "paragraphs": 3,
       "clinicalHits": [
-        "perfusion"
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "glucose",
+        "infection",
+        "headache"
       ],
       "resources": [
         {
@@ -4558,24 +5051,26 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1938-n023",
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 315,
+      "rationaleWords": 454,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -4601,15 +5096,19 @@
       "type": "sata",
       "category": "cord_prolapse_positioning",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 349,
+      "rationaleWords": 465,
       "paragraphs": 3,
       "clinicalHits": [
         "circulation",
         "perfusion",
+        "oxygenation",
         "hypoxia",
-        "fetal"
+        "fetal",
+        "bradycardia",
+        "cord",
+        "umbilical"
       ],
       "resources": [
         {
@@ -4635,13 +5134,17 @@
       "type": "mcq",
       "category": "endocrine_metabolic",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 263,
+      "rationaleWords": 365,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "glucose",
         "insulin",
+        "infection",
         "seizure"
       ],
       "resources": [
@@ -4674,13 +5177,17 @@
       "type": "decision_map_mcq",
       "category": "incident_report_medication_error_chain",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 98,
       "readiness": "premium-ready",
-      "rationaleWords": 358,
+      "rationaleWords": 518,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "glucose",
-        "insulin"
+        "insulin",
+        "infection"
       ],
       "resources": [
         {
@@ -4712,11 +5219,17 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -4734,21 +5247,25 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "p1-cjmm-33-severe-preeclampsia-05",
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 94,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 241,
+      "rationaleWords": 383,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
+        "infection",
+        "edema",
         "seizure",
+        "preeclampsia",
         "magnesium"
       ],
       "resources": [
@@ -4781,15 +5298,19 @@
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 331,
+      "rationaleWords": 470,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -4815,14 +5336,19 @@
       "type": "sata",
       "category": "severe_hyponatremia_seizure",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 95,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 258,
+      "rationaleWords": 390,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "electrolyte",
         "sodium",
-        "seizure"
+        "infection",
+        "seizure",
+        "headache"
       ],
       "resources": [
         {
@@ -4848,12 +5374,16 @@
       "type": "decision_map_mcq",
       "category": "contrast_induced_nephropathy_prevention",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 97,
       "readiness": "premium-ready",
-      "rationaleWords": 344,
+      "rationaleWords": 430,
       "paragraphs": 3,
       "clinicalHits": [
-        "renal"
+        "renal",
+        "fluid",
+        "dehydration",
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -4872,20 +5402,21 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1078-n021",
       "type": "ordering",
       "category": "central_line_insertion_clabsi_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
-      "rationaleWords": 232,
+      "rationaleWords": 291,
       "paragraphs": 3,
       "clinicalHits": [
+        "airway",
+        "breathing",
+        "circulation",
         "infection",
         "sterile"
       ],
@@ -4913,12 +5444,18 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 85,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 285,
+      "rationaleWords": 414,
       "paragraphs": 3,
       "clinicalHits": [
-        "perfusion"
+        "airway",
+        "breathing",
+        "circulation",
+        "perfusion",
+        "glucose",
+        "infection",
+        "headache"
       ],
       "resources": [
         {
@@ -4937,24 +5474,25 @@
       "wrongOptionCount": 3,
       "distractorCoverage": 25,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb838-n006",
       "type": "mcq",
       "category": "rising_work_of_breathing",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 99,
       "readiness": "premium-ready",
-      "rationaleWords": 307,
+      "rationaleWords": 469,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "infection"
+        "infection",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -4980,11 +5518,17 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -5002,24 +5546,26 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1069-n023",
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 96,
+      "score": 100,
       "readiness": "premium-ready",
-      "rationaleWords": 362,
+      "rationaleWords": 501,
       "paragraphs": 3,
       "clinicalHits": [
         "airway",
         "breathing",
+        "circulation",
         "oxygenation",
-        "delegation"
+        "infection",
+        "delegation",
+        "ventilation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -5045,11 +5591,17 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 67,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 227,
+      "score": 80,
+      "readiness": "official-style-pass",
+      "rationaleWords": 276,
       "paragraphs": 3,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea",
+        "spores",
+        "sporicidal",
+        "contact",
+        "transmission"
+      ],
       "resources": [
         {
           "title": "NCSBN Test Plan 2026",
@@ -5067,23 +5619,25 @@
       "wrongOptionCount": 0,
       "distractorCoverage": 8,
       "ambiguityFlags": [],
-      "gaps": [
-        "name mechanism more explicitly"
-      ]
+      "gaps": []
     },
     {
       "id": "mb1002-n001",
       "type": "ordering",
       "category": "postpartum_hemorrhage_boggy_fundus",
       "sourceFile": "packages\\content\\staging\\rationale-pilot\\p1.6-structured-rationale-pilot.json",
-      "score": 78,
+      "score": 82,
       "readiness": "official-style-pass",
-      "rationaleWords": 210,
+      "rationaleWords": 252,
       "paragraphs": 3,
       "clinicalHits": [
+        "circulation",
         "bleeding",
         "hemorrhage",
-        "postpartum"
+        "uterine",
+        "postpartum",
+        "fundus",
+        "atony"
       ],
       "resources": [
         {

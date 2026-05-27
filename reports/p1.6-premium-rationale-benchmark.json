@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-27T18:52:41.206Z",
+  "generatedAt": "2026-05-27T22:37:09.203Z",
   "inputDir": "packages\\content\\staging\\promoted-v2",
   "sampleSize": 50,
   "corpusQuestions": 29006,
@@ -13,17 +13,17 @@
     "ambiguity": 5
   },
   "summary": {
-    "averageScore": 60.3,
-    "medianScore": 66,
+    "averageScore": 64.6,
+    "medianScore": 68,
     "readiness": {
-      "premium-ready": 2,
-      "official-style-pass": 17,
-      "needs-p1.6": 31
+      "premium-ready": 5,
+      "official-style-pass": 15,
+      "needs-p1.6": 30
     },
     "gapCounts": {
       "expand to 3-5 paragraphs": 50,
-      "name mechanism more explicitly": 43,
-      "strengthen why-each-wrong teaching": 15,
+      "name mechanism more explicitly": 39,
+      "strengthen why-each-wrong teaching": 11,
       "state priority/safety rationale": 18
     }
   },
@@ -148,11 +148,13 @@
       "type": "case_study",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-ngn-case-studies.json",
-      "score": 42,
+      "score": 68,
       "readiness": "needs-p1.6",
       "rationaleWords": 39,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "respiratory"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -168,11 +170,10 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
       "gaps": [
         "expand to 3-5 paragraphs",
-        "strengthen why-each-wrong teaching",
         "name mechanism more explicitly"
       ]
     },
@@ -214,12 +215,13 @@
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-ngn-case-studies.json",
-      "score": 76,
-      "readiness": "official-style-pass",
+      "score": 85,
+      "readiness": "premium-ready",
       "rationaleWords": 37,
       "paragraphs": 1,
       "clinicalHits": [
-        "magnesium"
+        "magnesium",
+        "ventilation"
       ],
       "resources": [
         {
@@ -251,8 +253,7 @@
       "distractorCoverage": 25,
       "ambiguityFlags": [],
       "gaps": [
-        "expand to 3-5 paragraphs",
-        "name mechanism more explicitly"
+        "expand to 3-5 paragraphs"
       ]
     },
     {
@@ -260,57 +261,13 @@
       "type": "case_study",
       "category": "psychosocial",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-ngn-case-studies.json",
-      "score": 50,
-      "readiness": "needs-p1.6",
-      "rationaleWords": 37,
-      "paragraphs": 1,
-      "clinicalHits": [],
-      "resources": [
-        {
-          "title": "NCSBN 2026 NCLEX-RN test plan",
-          "href": "https://www.nclex.com/test-plans",
-          "source": "NCSBN / NCLEX",
-          "sourceKind": "official"
-        },
-        {
-          "title": "NCSBN NGN sample questions and exam preview",
-          "href": "https://www.nclex.com/prepare",
-          "source": "NCSBN / NCLEX",
-          "sourceKind": "official"
-        },
-        {
-          "title": "NCLEX test plan: management of care and clinical judgment",
-          "href": "https://www.nclex.com/test-plans",
-          "source": "NCSBN / NCLEX",
-          "sourceKind": "tool"
-        },
-        {
-          "title": "Free delegation/prioritization NCLEX video search",
-          "href": "https://www.youtube.com/results?search_query=delegation+prioritization+NCLEX+RegisteredNurseRN",
-          "source": "YouTube public search",
-          "sourceKind": "video"
-        }
-      ],
-      "wrongOptionCount": 3,
-      "distractorCoverage": 0,
-      "ambiguityFlags": [],
-      "gaps": [
-        "expand to 3-5 paragraphs",
-        "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly"
-      ]
-    },
-    {
-      "id": "p1-cjmm-13-opioid-respiratory-depression-03",
-      "type": "case_study",
-      "category": "physiological_adaptation",
-      "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-ngn-case-studies.json",
-      "score": 76,
-      "readiness": "official-style-pass",
+      "score": 85,
+      "readiness": "premium-ready",
       "rationaleWords": 37,
       "paragraphs": 1,
       "clinicalHits": [
-        "opioid"
+        "lithium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -342,8 +299,53 @@
       "distractorCoverage": 25,
       "ambiguityFlags": [],
       "gaps": [
-        "expand to 3-5 paragraphs",
-        "name mechanism more explicitly"
+        "expand to 3-5 paragraphs"
+      ]
+    },
+    {
+      "id": "p1-cjmm-13-opioid-respiratory-depression-03",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-ngn-case-studies.json",
+      "score": 85,
+      "readiness": "premium-ready",
+      "rationaleWords": 37,
+      "paragraphs": 1,
+      "clinicalHits": [
+        "opioid",
+        "respiratory"
+      ],
+      "resources": [
+        {
+          "title": "NCSBN 2026 NCLEX-RN test plan",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "NCSBN / NCLEX",
+          "sourceKind": "official"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "href": "https://www.nclex.com/prepare",
+          "source": "NCSBN / NCLEX",
+          "sourceKind": "official"
+        },
+        {
+          "title": "NCLEX test plan: management of care and clinical judgment",
+          "href": "https://www.nclex.com/test-plans",
+          "source": "NCSBN / NCLEX",
+          "sourceKind": "tool"
+        },
+        {
+          "title": "Free delegation/prioritization NCLEX video search",
+          "href": "https://www.youtube.com/results?search_query=delegation+prioritization+NCLEX+RegisteredNurseRN",
+          "source": "YouTube public search",
+          "sourceKind": "video"
+        }
+      ],
+      "wrongOptionCount": 3,
+      "distractorCoverage": 25,
+      "ambiguityFlags": [],
+      "gaps": [
+        "expand to 3-5 paragraphs"
       ]
     },
     {
@@ -351,13 +353,14 @@
       "type": "case_study",
       "category": "health_promotion",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-ngn-case-studies.json",
-      "score": 86,
+      "score": 87,
       "readiness": "premium-ready",
       "rationaleWords": 41,
       "paragraphs": 1,
       "clinicalHits": [
         "bleeding",
-        "hemorrhage"
+        "hemorrhage",
+        "ectopic"
       ],
       "resources": [
         {
@@ -432,7 +435,7 @@
       "type": "bow_tie",
       "category": "pharmacological",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-bow-ties.json",
-      "score": 77,
+      "score": 80,
       "readiness": "official-style-pass",
       "rationaleWords": 24,
       "paragraphs": 1,
@@ -440,7 +443,10 @@
         "oxygenation",
         "opioid",
         "naloxone",
-        "sedation"
+        "sedation",
+        "ventilation",
+        "respiratory",
+        "toxicity"
       ],
       "resources": [
         {
@@ -507,14 +513,16 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-bow-ties.json",
-      "score": 66,
+      "score": 68,
       "readiness": "needs-p1.6",
       "rationaleWords": 21,
       "paragraphs": 1,
       "clinicalHits": [
         "perfusion",
         "shock",
-        "lactate"
+        "lactate",
+        "antibiotics",
+        "cultures"
       ],
       "resources": [
         {
@@ -595,7 +603,7 @@
       "type": "bow_tie",
       "category": "physiological_adaptation",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\p1-bow-ties.json",
-      "score": 77,
+      "score": 78,
       "readiness": "official-style-pass",
       "rationaleWords": 22,
       "paragraphs": 1,
@@ -603,7 +611,8 @@
         "perfusion",
         "renal",
         "seizure",
-        "magnesium"
+        "magnesium",
+        "toxicity"
       ],
       "resources": [
         {
@@ -645,11 +654,13 @@
       "type": "matrix",
       "category": "neuroleptic_malignant_syndrome",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-976.json",
-      "score": 31,
+      "score": 57,
       "readiness": "needs-p1.6",
       "rationaleWords": 44,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "diarrhea"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -665,11 +676,10 @@
         }
       ],
       "wrongOptionCount": 2,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
       "gaps": [
         "expand to 3-5 paragraphs",
-        "strengthen why-each-wrong teaching",
         "name mechanism more explicitly",
         "state priority/safety rationale"
       ]
@@ -679,12 +689,13 @@
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1602.json",
-      "score": 57,
+      "score": 64,
       "readiness": "needs-p1.6",
       "rationaleWords": 49,
       "paragraphs": 1,
       "clinicalHits": [
-        "delegation"
+        "delegation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -726,14 +737,16 @@
       "type": "matrix",
       "category": "placental_abruption_pain",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-918.json",
-      "score": 76,
+      "score": 78,
       "readiness": "official-style-pass",
       "rationaleWords": 38,
       "paragraphs": 1,
       "clinicalHits": [
         "bleeding",
         "uterine",
-        "fetal"
+        "fetal",
+        "placenta",
+        "placental"
       ],
       "resources": [
         {
@@ -810,12 +823,13 @@
       "type": "matrix",
       "category": "delegation_postop_floor_rn_to_uap",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1698.json",
-      "score": 57,
+      "score": 64,
       "readiness": "needs-p1.6",
       "rationaleWords": 49,
       "paragraphs": 1,
       "clinicalHits": [
-        "delegation"
+        "delegation",
+        "respiratory"
       ],
       "resources": [
         {
@@ -857,13 +871,14 @@
       "type": "sata",
       "category": "ectopic_pregnancy_rupture",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1928.json",
-      "score": 77,
+      "score": 78,
       "readiness": "official-style-pass",
       "rationaleWords": 55,
       "paragraphs": 1,
       "clinicalHits": [
         "shock",
-        "bleeding"
+        "bleeding",
+        "ectopic"
       ],
       "resources": [
         {
@@ -904,13 +919,14 @@
       "type": "sata",
       "category": "ectopic_pregnancy_rupture",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1846.json",
-      "score": 77,
+      "score": 78,
       "readiness": "official-style-pass",
       "rationaleWords": 55,
       "paragraphs": 1,
       "clinicalHits": [
         "shock",
-        "bleeding"
+        "bleeding",
+        "ectopic"
       ],
       "resources": [
         {
@@ -951,11 +967,13 @@
       "type": "sata",
       "category": "organophosphate_poisoning",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1880.json",
-      "score": 56,
+      "score": 57,
       "readiness": "needs-p1.6",
       "rationaleWords": 41,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "toxicity"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -1017,13 +1035,14 @@
       "type": "sata",
       "category": "ectopic_pregnancy_rupture",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1832.json",
-      "score": 77,
+      "score": 78,
       "readiness": "official-style-pass",
       "rationaleWords": 55,
       "paragraphs": 1,
       "clinicalHits": [
         "shock",
-        "bleeding"
+        "bleeding",
+        "ectopic"
       ],
       "resources": [
         {
@@ -1064,11 +1083,14 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1308.json",
-      "score": 39,
+      "score": 47,
       "readiness": "needs-p1.6",
       "rationaleWords": 48,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "spores",
+        "sporicidal"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -1144,11 +1166,14 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1710.json",
-      "score": 39,
+      "score": 47,
       "readiness": "needs-p1.6",
       "rationaleWords": 48,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "spores",
+        "sporicidal"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -1177,11 +1202,14 @@
       "type": "ordering",
       "category": "c_diff_transmission_prevention_bundle",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1749.json",
-      "score": 39,
+      "score": 47,
       "readiness": "needs-p1.6",
       "rationaleWords": 48,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "spores",
+        "sporicidal"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -1392,11 +1420,15 @@
       "type": "scenario_mcq",
       "category": "cauda_equina_bladder_retention",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1915.json",
-      "score": 30,
+      "score": 64,
       "readiness": "needs-p1.6",
       "rationaleWords": 37,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "weakness",
+        "cord",
+        "compression"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -1412,11 +1444,10 @@
         }
       ],
       "wrongOptionCount": 3,
-      "distractorCoverage": 0,
+      "distractorCoverage": 25,
       "ambiguityFlags": [],
       "gaps": [
         "expand to 3-5 paragraphs",
-        "strengthen why-each-wrong teaching",
         "name mechanism more explicitly",
         "state priority/safety rationale"
       ]
@@ -1536,13 +1567,15 @@
       "type": "decision_map_mcq",
       "category": "myasthenic_crisis_airway",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-1838.json",
-      "score": 76,
+      "score": 78,
       "readiness": "official-style-pass",
       "rationaleWords": 45,
       "paragraphs": 1,
       "clinicalHits": [
         "airway",
-        "breathing"
+        "breathing",
+        "ventilatory",
+        "weakness"
       ],
       "resources": [
         {
@@ -1650,12 +1683,15 @@
       "type": "mcq",
       "category": "respiratory_oxygenation",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-540.json",
-      "score": 37,
+      "score": 48,
       "readiness": "needs-p1.6",
       "rationaleWords": 36,
       "paragraphs": 1,
       "clinicalHits": [
-        "oxygenation"
+        "oxygenation",
+        "ventilation",
+        "ventilatory",
+        "respiratory"
       ],
       "resources": [
         {
@@ -1679,7 +1715,6 @@
       "gaps": [
         "expand to 3-5 paragraphs",
         "strengthen why-each-wrong teaching",
-        "name mechanism more explicitly",
         "state priority/safety rationale"
       ]
     },
@@ -1772,11 +1807,14 @@
       "type": "mcq",
       "category": "safety_infection_control",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-579.json",
-      "score": 40,
+      "score": 48,
       "readiness": "needs-p1.6",
       "rationaleWords": 39,
       "paragraphs": 1,
-      "clinicalHits": [],
+      "clinicalHits": [
+        "respiratory",
+        "contact"
+      ],
       "resources": [
         {
           "title": "NCSBN 2026 NCLEX-RN test plan",
@@ -1890,13 +1928,15 @@
       "type": "mcq",
       "category": "autonomic_dysreflexia_bladder",
       "sourceFile": "packages\\content\\staging\\promoted-v2\\mixed-batch-874.json",
-      "score": 79,
+      "score": 81,
       "readiness": "official-style-pass",
       "rationaleWords": 64,
       "paragraphs": 1,
       "clinicalHits": [
         "stroke",
-        "seizure"
+        "seizure",
+        "cord",
+        "headache"
       ],
       "resources": [
         {

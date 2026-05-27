@@ -20,6 +20,7 @@
     "d1:sync:p1.6:staging": "node scripts/sync-d1-question-bank.mjs --database=chapai-staging --remote --config=wrangler.staging.jsonc --input-dir=packages/content/staging/rationale-pilot",
     "benchmark:rationales": "node --import tsx scripts/benchmark-premium-rationales.mjs",
     "pilot:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs",
+    "backfill:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs --mode=full --out=packages/content/staging/promoted-v3",
     "deploy": "turbo deploy"
   },
   "devDependencies": {

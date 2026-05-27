@@ -15,6 +15,7 @@ const args = new Map(
 
 const inputDir = path.resolve(root, args.get("input") ?? "packages/content/staging/promoted-v2");
 const outputDir = path.resolve(root, args.get("out") ?? "packages/content/staging/rationale-pilot");
+const mode = args.get("mode") ?? "pilot";
 const sampleSize = Number(args.get("sample-size") ?? 150);
 const seed = args.get("seed") ?? "p1.6-structured-rationale-pilot";
 const outputFile = path.join(outputDir, "p1.6-structured-rationale-pilot.json");
@@ -27,6 +28,68 @@ const clinicalTerms = [
   "infection", "neutropenia", "fever", "renal", "fluid", "dehydration", "edema", "seizure", "intracranial",
   "uterine", "fetal", "postpartum", "preeclampsia", "magnesium", "anaphylaxis", "epinephrine", "opioid",
   "naloxone", "sedation", "aspiration", "falls", "delegation", "scope", "sterile", "isolation",
+  "antibiotic", "antibiotics", "meningitis", "droplet", "culture", "cultures", "lumbar", "puncture",
+  "ventilation", "ventilatory", "respiratory", "vital capacity", "neuromuscular", "weakness", "bradycardia",
+  "cord", "umbilical", "compression", "oxytocin", "fundus", "atony", "placenta", "ectopic", "surgical",
+  "cortisol", "adrenal", "steroid", "lithium", "toxicity", "diarrhea", "spores", "sporicidal", "contact",
+  "transmission", "headache", "post-dural", "fetal heart", "placental", "IVIG", "plasmapheresis",
+];
+
+const conditionProfiles = [
+  {
+    match: /\b(meningitis|nuchal|photophobia|petechiae|droplet|broad-spectrum antibiotics|lumbar puncture)\b/i,
+    label: "bacterial meningitis with possible sepsis",
+    terms: ["meningitis", "infection", "sepsis", "antibiotics", "droplet"],
+    mechanism: "delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+  },
+  {
+    match: /\b(guillain|ascending weakness|vital capacity|respiratory mechanics|ivig|plasmapheresis)\b/i,
+    label: "Guillain-Barre respiratory muscle weakness",
+    terms: ["ventilation", "vital capacity", "respiratory", "neuromuscular", "weakness"],
+    mechanism: "ascending neuromuscular weakness can impair ventilation, so declining vital capacity signals airway and breathing risk.",
+  },
+  {
+    match: /\b(cord prolapse|visible cord|umbilical|fetal bradycardia|presenting part|knee-chest|trendelenburg)\b/i,
+    label: "umbilical cord compression",
+    terms: ["cord", "compression", "fetal", "bradycardia", "oxygenation"],
+    mechanism: "cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+  },
+  {
+    match: /\b(postpartum hemorrhage|boggy fundus|fundal massage|uterine atony|oxytocin|lochia)\b/i,
+    label: "uterine atony hemorrhage",
+    terms: ["postpartum", "hemorrhage", "uterine", "atony", "oxytocin"],
+    mechanism: "uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+  },
+  {
+    match: /\b(ectopic|ruptured ectopic|shoulder pain|adnexal|surgical evaluation)\b/i,
+    label: "ruptured ectopic pregnancy hemorrhage",
+    terms: ["ectopic", "bleeding", "hemorrhage", "perfusion", "surgical"],
+    mechanism: "intra-abdominal bleeding threatens perfusion, so urgent surgical evaluation and hemodynamic support outrank teaching.",
+  },
+  {
+    match: /\b(adrenal crisis|cortisol|hydrocortisone|steroid|hypotension|hyperkalemia)\b/i,
+    label: "adrenal crisis with shock risk",
+    terms: ["adrenal", "cortisol", "steroid", "shock", "fluid"],
+    mechanism: "cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+  },
+  {
+    match: /\b(lithium|tremor|ataxia|toxicity|renal|dehydration)\b/i,
+    label: "lithium toxicity and renal clearance",
+    terms: ["lithium", "toxicity", "renal", "fluid", "dehydration"],
+    mechanism: "dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+  },
+  {
+    match: /\b(c\.?\s*difficile|clostridioides|spores|sporicidal|soap-and-water|profuse diarrhea)\b/i,
+    label: "C. difficile spore transmission",
+    terms: ["diarrhea", "spores", "sporicidal", "contact", "transmission"],
+    mechanism: "C. difficile spores persist in the environment, so contact precautions, soap-and-water hygiene, and sporicidal cleaning interrupt transmission.",
+  },
+  {
+    match: /\b(lumbar puncture|post-dural|upright headache|spinal spaces|cerebrospinal)\b/i,
+    label: "post-lumbar-puncture complication monitoring",
+    terms: ["lumbar", "puncture", "headache", "post-dural", "safety"],
+    mechanism: "a severe positional headache after puncture can reflect cerebrospinal fluid leak and needs assessment instead of routine ambulation or dismissal.",
+  },
 ];
 
 const drugCitationMap = [
@@ -71,6 +134,43 @@ function titleCase(value) {
 
 function words(value) {
   return cleanText(value).split(/\s+/).filter(Boolean);
+}
+
+function collectQuestionText(question) {
+  return cleanText([
+    question.id,
+    question.caseStudyId,
+    question.scenarioTitle,
+    question.category,
+    question.subcategory,
+    question.nclexClientNeed,
+    question.cjmmStep,
+    question.stem,
+    question.scenario,
+    question.rationale,
+    question.deepRationale,
+    question.takeaway,
+    JSON.stringify(question.exhibits ?? []),
+    JSON.stringify(question.options ?? []),
+    JSON.stringify(question.distractorRationales ?? {}),
+  ].filter(Boolean).join(" "));
+}
+
+function inferClinicalFocus(question) {
+  const haystack = collectQuestionText(question);
+  const profile = conditionProfiles.find((entry) => entry.match.test(haystack));
+  const hits = clinicalTerms.filter((term) => new RegExp(`\\b${term.replace(/\s+/g, "\\s+")}\\b`, "i").test(haystack));
+  const terms = [...new Set([...(profile?.terms ?? []), ...hits])].slice(0, 6);
+  const fallbackLabel = titleCase(question.scenarioTitle || question.subcategory || question.category || "clinical priority");
+  const label = profile?.label ?? fallbackLabel;
+  const mechanism = profile?.mechanism
+    ?? `${label} changes patient stability; the nurse should prioritize the cue that protects airway, breathing, circulation, safety, or infection control before routine care.`;
+  return {
+    label,
+    mechanism,
+    terms: terms.length ? terms : ["priority", "safety", "perfusion"],
+    cue: terms.length ? terms.slice(0, 4).join(", ") : label,
+  };
 }
 
 function readQuestions() {
@@ -149,20 +249,12 @@ function correctOptionText(question) {
 }
 
 function clinicalHits(question) {
-  const haystack = [
-    question.category,
-    question.subcategory,
-    question.stem,
-    question.rationale,
-    question.deepRationale,
-    question.takeaway,
-    JSON.stringify(question.distractorRationales ?? {}),
-  ].join(" ");
-  return clinicalTerms.filter((term) => new RegExp(`\\b${term}\\b`, "i").test(haystack)).slice(0, 5);
+  const haystack = collectQuestionText(question);
+  return clinicalTerms.filter((term) => new RegExp(`\\b${term.replace(/\s+/g, "\\s+")}\\b`, "i").test(haystack)).slice(0, 5);
 }
 
 function hasClinicalTerm(value) {
-  return clinicalTerms.some((term) => new RegExp(`\\b${term}\\b`, "i").test(value));
+  return clinicalTerms.some((term) => new RegExp(`\\b${term.replace(/\s+/g, "\\s+")}\\b`, "i").test(value));
 }
 
 function buildCitations(question) {
@@ -209,7 +301,7 @@ function getWrongIds(question) {
   return options.filter((option) => !correctIds.has(option.id)).map((option) => option.id);
 }
 
-function buildWhyWrong(question, mechanismCue) {
+function buildWhyWrong(question, focus) {
   const source = question.distractorRationales && typeof question.distractorRationales === "object"
     ? question.distractorRationales
     : {};
@@ -217,9 +309,7 @@ function buildWhyWrong(question, mechanismCue) {
 
   for (const [key, value] of Object.entries(source)) {
     const rawText = sentence(value);
-    const text = hasClinicalTerm(rawText)
-      ? rawText
-      : sentence(`${rawText} In this stem, the safer comparison is the ${mechanismCue} priority before routine care or teaching.`);
+    const text = sentence(`${rawText} Clinically, this misses ${focus.label}: ${focus.mechanism}`);
     if (words(text).length >= 10) {
       whyWrong[key] = text;
     }
@@ -228,14 +318,14 @@ function buildWhyWrong(question, mechanismCue) {
   for (const id of getWrongIds(question)) {
     if (whyWrong[id]) continue;
     const option = question.options.find((item) => item.id === id);
-    whyWrong[id] = `Option ${id.toUpperCase()} is weaker because "${cleanText(option?.text)}" does not match the keyed ${mechanismCue} priority: ${correctOptionText(question)}. Recheck the stem cues before selecting this response.`;
+    whyWrong[id] = `Option ${id.toUpperCase()} is weaker because "${cleanText(option?.text)}" does not address ${focus.label}. ${focus.mechanism} The keyed response better protects ${focus.terms.slice(0, 3).join(", ")} in this stem.`;
   }
 
   return whyWrong;
 }
 
 function buildStructuredRationale(question) {
-  const hits = clinicalHits(question);
+  const focus = inferClinicalFocus(question);
   const topic = titleCase(question.subcategory || question.category);
   const rationale = sentence(question.deepRationale || question.rationale || question.takeaway || "Review the keyed answer against the highest-risk patient cue in the stem");
   const citations = buildCitations(question);
@@ -243,15 +333,12 @@ function buildStructuredRationale(question) {
   const resourceNote = studyResources.length
     ? `The attached study resources can reinforce ${studyResources.slice(0, 2).map((item) => item.topic).join(" and ")}.`
     : "Use the attached NCLEX blueprint citation to review the expected clinical-judgment behavior.";
-  const mechanismCue = hits.length
-    ? hits.join(", ")
-    : titleCase(question.nclexClientNeed || question.category);
 
   return {
-    overview: sentence(`The safest answer is ${correctOptionText(question)}. ${rationale}`),
-    mechanism: sentence(`This item tests ${topic} through ${mechanismCue} cues because those findings change patient stability and determine which intervention reduces immediate risk before lower-priority teaching or routine tasks`),
-    whyCorrect: sentence(`${correctOptionText(question)} is correct because it follows the rationale's priority logic and matches the highest-risk cue in the stem. ${resourceNote}`),
-    whyWrong: buildWhyWrong(question, mechanismCue),
+    overview: sentence(`The safest answer is ${correctOptionText(question)}. ${rationale} The clinical focus is ${focus.label}, so the review should connect the answer to ${focus.terms.slice(0, 4).join(", ")}.`),
+    mechanism: sentence(`This item tests ${topic} through ${focus.label}: ${focus.mechanism} These ${focus.cue} cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected`),
+    whyCorrect: sentence(`${correctOptionText(question)} is correct because it directly addresses ${focus.label}. ${focus.mechanism} ${resourceNote}`),
+    whyWrong: buildWhyWrong(question, focus),
     citations,
   };
 }
@@ -270,9 +357,7 @@ function validateStructuredRationale(question) {
   return result;
 }
 
-const allQuestions = readQuestions();
-const pilotEntries = pickPilot(allQuestions);
-const pilotQuestions = pilotEntries.map(({ question, file }) => {
+function enrichQuestion(question, file, { includeSourcePath = false } = {}) {
   const structuredRationale = buildStructuredRationale(question);
   const references = [
     ...(Array.isArray(question.references) ? question.references : []),
@@ -296,52 +381,131 @@ const pilotQuestions = pilotEntries.map(({ question, file }) => {
     references: uniqueReferences,
     reviewStatus: "review",
     revision: Math.max(Number(question.revision ?? 1), 2),
-    sourcePath: file,
+    ...(includeSourcePath ? { sourcePath: file } : {}),
   };
-});
-
-const errors = pilotQuestions.flatMap((question) =>
-  validateStructuredRationale(question).map((issue) => ({ id: question.id, issue })),
-);
-
-if (errors.length) {
-  console.error(JSON.stringify(errors.slice(0, 20), null, 2));
-  throw new Error(`Structured rationale pilot validation failed for ${errors.length} checks`);
 }
 
-fs.mkdirSync(outputDir, { recursive: true });
-fs.mkdirSync(path.dirname(reportFile), { recursive: true });
-fs.writeFileSync(outputFile, `${JSON.stringify({
-  batchId: "p1.6-structured-rationale-pilot",
-  generatedAt: new Date().toISOString(),
-  generatedBy: {
-    agentId: "codex",
-    runtime: "deterministic",
-    promptSource: "scripts/generate-structured-rationale-pilot.mjs",
-  },
-  examMix: { nclex: pilotQuestions.length },
-  validation: { valid: true, errors: [] },
-  questions: pilotQuestions,
-}, null, 2)}\n`);
+function writePilot() {
+  const allQuestions = readQuestions();
+  const pilotEntries = pickPilot(allQuestions);
+  const pilotQuestions = pilotEntries.map(({ question, file }) =>
+    enrichQuestion(question, file, { includeSourcePath: true }),
+  );
 
-const byType = pilotQuestions.reduce((acc, question) => {
-  acc[question.type] = (acc[question.type] ?? 0) + 1;
-  return acc;
-}, {});
-let report = `# P1.6 Structured Rationale Pilot\n\n`;
-report += `Generated: ${new Date().toISOString()}\n\n`;
-report += `Input: \`${path.relative(root, inputDir)}\`\n\n`;
-report += `Output: \`${path.relative(root, outputFile)}\`\n\n`;
-report += `Items: ${pilotQuestions.length}\n\n`;
-report += `## Type Mix\n\n`;
-for (const [type, count] of Object.entries(byType).sort()) {
-  report += `- ${type}: ${count}\n`;
+  const errors = pilotQuestions.flatMap((question) =>
+    validateStructuredRationale(question).map((issue) => ({ id: question.id, issue })),
+  );
+
+  if (errors.length) {
+    console.error(JSON.stringify(errors.slice(0, 20), null, 2));
+    throw new Error(`Structured rationale pilot validation failed for ${errors.length} checks`);
+  }
+
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.mkdirSync(path.dirname(reportFile), { recursive: true });
+  fs.writeFileSync(outputFile, `${JSON.stringify({
+    batchId: "p1.6-structured-rationale-pilot",
+    generatedAt: new Date().toISOString(),
+    generatedBy: {
+      agentId: "codex",
+      runtime: "deterministic",
+      promptSource: "scripts/generate-structured-rationale-pilot.mjs",
+    },
+    examMix: { nclex: pilotQuestions.length },
+    validation: { valid: true, errors: [] },
+    questions: pilotQuestions,
+  }, null, 2)}\n`);
+
+  const byType = pilotQuestions.reduce((acc, question) => {
+    acc[question.type] = (acc[question.type] ?? 0) + 1;
+    return acc;
+  }, {});
+  let report = `# P1.6 Structured Rationale Pilot\n\n`;
+  report += `Generated: ${new Date().toISOString()}\n\n`;
+  report += `Input: \`${path.relative(root, inputDir)}\`\n\n`;
+  report += `Output: \`${path.relative(root, outputFile)}\`\n\n`;
+  report += `Items: ${pilotQuestions.length}\n\n`;
+  report += `## Type Mix\n\n`;
+  for (const [type, count] of Object.entries(byType).sort()) {
+    report += `- ${type}: ${count}\n`;
+  }
+  report += `\n## Guardrails\n\n`;
+  report += `- No model calls.\n`;
+  report += `- No in-place bank edits.\n`;
+  report += `- Uses NCSBN official links for broad citation anchoring and NIH MedlinePlus drug monographs only when a mapped drug is present.\n`;
+  report += `- This is a pilot artifact for review; it is not production-synced.\n`;
+  fs.writeFileSync(reportFile, report);
+
+  console.log(JSON.stringify({ outputFile: path.relative(root, outputFile), reportFile: path.relative(root, reportFile), items: pilotQuestions.length, byType }, null, 2));
 }
-report += `\n## Guardrails\n\n`;
-report += `- No model calls.\n`;
-report += `- No in-place bank edits.\n`;
-report += `- Uses NCSBN official links for broad citation anchoring and NIH MedlinePlus drug monographs only when a mapped drug is present.\n`;
-report += `- This is a pilot artifact for review; it is not production-synced.\n`;
-fs.writeFileSync(reportFile, report);
 
-console.log(JSON.stringify({ outputFile: path.relative(root, outputFile), reportFile: path.relative(root, reportFile), items: pilotQuestions.length, byType }, null, 2));
+function writeFullBank() {
+  const files = fs.readdirSync(inputDir)
+    .filter((file) => file.endsWith(".json"))
+    .sort((left, right) => left.localeCompare(right, undefined, { numeric: true }));
+  const byType = {};
+  let itemCount = 0;
+  let errorCount = 0;
+
+  fs.mkdirSync(outputDir, { recursive: true });
+
+  for (const file of files) {
+    const sourcePath = path.join(inputDir, file);
+    const payload = JSON.parse(fs.readFileSync(sourcePath, "utf8").replace(/^\uFEFF/, ""));
+    const originalQuestions = Array.isArray(payload) ? payload : payload.questions;
+    if (!Array.isArray(originalQuestions)) continue;
+    const outputQuestions = originalQuestions.map((question) => {
+      if (question?.exam !== "nclex") return question;
+      const enriched = enrichQuestion(question, path.relative(root, sourcePath));
+      const errors = validateStructuredRationale(enriched);
+      if (errors.length) errorCount += errors.length;
+      byType[enriched.type] = (byType[enriched.type] ?? 0) + 1;
+      itemCount += 1;
+      return enriched;
+    });
+    const outputPayload = Array.isArray(payload)
+      ? outputQuestions
+      : {
+          ...payload,
+          generatedBy: {
+            ...(payload.generatedBy ?? {}),
+            structuredRationaleBackfill: {
+              agentId: "codex",
+              runtime: "deterministic",
+              promptSource: "scripts/generate-structured-rationale-pilot.mjs",
+            },
+          },
+          questions: outputQuestions,
+        };
+    fs.writeFileSync(path.join(outputDir, file), `${JSON.stringify(outputPayload, null, 2)}\n`);
+  }
+
+  const fullReportFile = path.join(root, "reports", "p1.6-structured-rationale-full-bank.md");
+  let report = `# P1.6 Structured Rationale Full-Bank Backfill\n\n`;
+  report += `Generated: ${new Date().toISOString()}\n\n`;
+  report += `Input: \`${path.relative(root, inputDir)}\`\n\n`;
+  report += `Output: \`${path.relative(root, outputDir)}\`\n\n`;
+  report += `Files: ${files.length}\n\n`;
+  report += `NCLEX items: ${itemCount}\n\n`;
+  report += `Validation issues: ${errorCount}\n\n`;
+  report += `## Type Mix\n\n`;
+  for (const [type, count] of Object.entries(byType).sort()) {
+    report += `- ${type}: ${count}\n`;
+  }
+  report += `\n## Guardrails\n\n`;
+  report += `- No model calls.\n`;
+  report += `- No in-place bank edits; source directory is left untouched.\n`;
+  report += `- Output is a parallel generated bank and must be spot-checked before production sync.\n`;
+  fs.writeFileSync(fullReportFile, report);
+
+  console.log(JSON.stringify({ outputDir: path.relative(root, outputDir), reportFile: path.relative(root, fullReportFile), files: files.length, items: itemCount, validationIssues: errorCount, byType }, null, 2));
+  if (errorCount) {
+    throw new Error(`Full-bank structured rationale validation failed for ${errorCount} checks`);
+  }
+}
+
+if (mode === "full") {
+  writeFullBank();
+} else {
+  writePilot();
+}
