@@ -5,6 +5,7 @@ import { getPreferredIntelTab, getQuestionIntegrityIssues, type QuestionIntelTab
 import { ClinicalReviewStation } from "@/components/practice/ClinicalReviewStation";
 import NclexExamPane from "@/components/practice/NclexExamPane";
 import { buildPracticeChartReviewModel, type ChartReviewTab } from "@/lib/chart-review-model";
+import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import { getStudyResourcesForQuestion } from "@/lib/study-resources";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
@@ -318,6 +319,10 @@ export default function PracticeTerminalPane({
   const answeredCount = questionStatuses.filter((item) => item.answered).length;
   const currentFlagged = questionStatuses.find((item) => item.id === question.id)?.flagged ?? false;
   const rationaleText = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
+  const displayableDistractorRationales = getDisplayableDistractorRationales(
+    question,
+    answerRecord?.distractorRationales ?? question.distractorRationales,
+  );
   const promptSupport = [question.takeaway, question.speedCue].filter(Boolean) as string[];
   const coachingFrame = answerRecord?.coachingFrame ?? question.coachingFrame ?? [];
   const references = answerRecord?.references ?? question.references ?? [];
@@ -1474,11 +1479,11 @@ export default function PracticeTerminalPane({
                   {/* Expanded section — distractor review, coaching, diagram */}
                   {rationaleExpanded ? (
                     <div className="quiz-rationale-expanded-body">
-                      {answerRecord?.distractorRationales ? (
+                      {Object.keys(displayableDistractorRationales).length > 0 ? (
                         <div className="quiz-rail-card quiz-monitor-rationale-card">
                           <p className="quiz-terminal-kicker">distractor review</p>
                           <div className="mt-3 grid gap-2">
-                            {Object.entries(answerRecord.distractorRationales).map(([label, explanation]) => (
+                            {Object.entries(displayableDistractorRationales).map(([label, explanation]) => (
                               <div key={label} className="quiz-rail-row">
                                 <strong>{label.toUpperCase()}</strong>
                                 <span>{explanation}</span>

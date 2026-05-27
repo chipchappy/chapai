@@ -11,7 +11,14 @@ export type QuestionType =
   | "bow_tie"
   | "scenario_mcq"
   | "decision_map_mcq";
-export type QuestionAnswer = string | string[] | Record<string, string>;
+export type CjmmStep =
+  | "recognize-cues"
+  | "analyze-cues"
+  | "prioritize-hypotheses"
+  | "generate-solutions"
+  | "take-actions"
+  | "evaluate-outcomes";
+export type QuestionAnswer = string | string[] | Record<string, string | string[]>;
 export type CognitiveLevel = "apply" | "analyze" | "synthesize" | "evaluate";
 export type NclexClientNeed =
   | "management_of_care"
@@ -55,6 +62,18 @@ export interface QuestionOption {
   text: string;
 }
 
+export interface BowTieCell {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+}
+
+export interface BowTieQuestion {
+  center: BowTieCell;
+  leftActions: BowTieCell[];
+  rightMonitoring: BowTieCell[];
+}
+
 export interface QuizQuestion {
   id: string;
   exam: Exam;
@@ -65,6 +84,8 @@ export interface QuizQuestion {
   subcategory?: string;
   difficulty: 1 | 2 | 3 | 4 | 5;
   stem: string;
+  caseStudyId?: string;
+  cjmmStep?: CjmmStep;
   scenarioTitle?: string;
   scenario?: string;
   additionalInfo?: string;
@@ -109,6 +130,7 @@ export interface QuizQuestion {
     label: string;
     answer: string;
   }>;
+  bowTie?: BowTieQuestion;
   rationale: string;
   deepRationale?: string;
   distractorRationales?: Record<string, string>;

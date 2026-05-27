@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic";
 const schema = z.object({
   sessionId:      z.string().min(1),          // accept demo- prefixed ids too
   questionId:     z.string(),
-  selectedAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.string())]).optional(),
+  selectedAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.union([z.string(), z.array(z.string())]))]).optional(),
   selectedOptionId: z.string().optional(),
   timeSpentMs:    z.number().int().positive().optional(),
 });

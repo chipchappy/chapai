@@ -245,6 +245,19 @@ async function loadLivePracticeQuestions(exam: Exam) {
       reviewStatus: questions.reviewStatus,
       revision: questions.revision,
       publishState: questions.publishState,
+      scenarioTitle: questions.scenarioTitle,
+      caseStudyId: questions.caseStudyId,
+      cjmmStep: questions.cjmmStep,
+      scenario: questions.scenario,
+      additionalInfo: questions.additionalInfo,
+      exhibits: questions.exhibits,
+      chartReview: questions.chartReview,
+      matrixColumns: questions.matrixColumns,
+      matrixRows: questions.matrixRows,
+      bowTie: questions.bowTie,
+      visualRationale: questions.visualRationale,
+      referencesJson: questions.referencesJson,
+      correctOrder: questions.correctOrder,
     })
     .from(questions)
     .where(eq(questions.exam, exam));

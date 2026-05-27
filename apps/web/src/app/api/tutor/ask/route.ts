@@ -28,7 +28,7 @@ function readCookieValue(request: NextRequest, name: string) {
 
 const practiceQuestionSchema = z.object({
   stem: z.string(),
-  correctAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.string())]).optional(),
+  correctAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.union([z.string(), z.array(z.string())]))]).optional(),
   rationale: z.string(),
   deepRationale: z.string().optional(),
   category: z.string(),
@@ -85,7 +85,7 @@ const schema = z.object({
   question: practiceQuestionSchema.optional(),
   userMessage: z.string().max(500),
   context: z.enum(["rationale", "general"]).default("rationale"),
-  selectedAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.string())]).optional(),
+  selectedAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.union([z.string(), z.array(z.string())]))]).optional(),
   answeredCorrectly: z.boolean().optional(),
   history: z.array(z.object({ role: z.enum(["user", "assistant"]), content: z.string() })).max(5).default([]),
 });
@@ -110,10 +110,14 @@ type TutorQuestion = {
   coachingFrame?: string[];
 };
 
-function formatTutorCorrectAnswer(answer: z.infer<typeof practiceQuestionSchema>["correctAnswer"]) {
+function formatTutorCorrectAnswer(answer: QuestionAnswer | z.infer<typeof practiceQuestionSchema>["correctAnswer"]) {
   if (!answer) return "unknown";
   if (Array.isArray(answer)) return answer.map((item) => item.toUpperCase()).join(", ");
-  if (typeof answer === "object") return Object.entries(answer).map(([label, value]) => `${label}: ${value}`).join(" | ");
+  if (typeof answer === "object") {
+    return Object.entries(answer)
+      .map(([label, value]) => `${label}: ${Array.isArray(value) ? value.join(", ") : value}`)
+      .join(" | ");
+  }
   return answer.toUpperCase();
 }
 

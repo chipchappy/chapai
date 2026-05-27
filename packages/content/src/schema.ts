@@ -5,6 +5,40 @@ export const questionOptionSchema = z.object({
   text: z.string(),
 });
 
+export const cjmmStepSchema = z.enum([
+  "recognize-cues",
+  "analyze-cues",
+  "prioritize-hypotheses",
+  "generate-solutions",
+  "take-actions",
+  "evaluate-outcomes",
+]);
+
+export const exhibitSchema = z.object({
+  type: z.enum(["note", "timeline", "labs", "vitals", "orders", "assessment"]),
+  title: z.string(),
+  body: z.string().optional(),
+  items: z.array(z.string()).optional(),
+});
+
+export const bowTieCellSchema = z.object({
+  id: z.string(),
+  text: z.string(),
+  isCorrect: z.boolean(),
+});
+
+export const bowTieSchema = z.object({
+  center: bowTieCellSchema,
+  leftActions: z.array(bowTieCellSchema).min(4),
+  rightMonitoring: z.array(bowTieCellSchema).min(4),
+});
+
+export const questionAnswerSchema = z.union([
+  z.string(),
+  z.array(z.string()),
+  z.record(z.string(), z.union([z.string(), z.array(z.string())])),
+]);
+
 export const visualRationaleMetricSchema = z.object({
   label: z.string(),
   value: z.string(),
@@ -35,8 +69,20 @@ export const canonicalQuestionSchema = z.object({
   subcategory: z.string().optional(),
   difficulty: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5)]),
   stem: z.string(),
+  caseStudyId: z.string().optional(),
+  cjmmStep: cjmmStepSchema.optional(),
+  scenarioTitle: z.string().optional(),
+  scenario: z.string().optional(),
+  additionalInfo: z.string().optional(),
+  exhibits: z.array(exhibitSchema).optional(),
   options: z.array(questionOptionSchema).min(2),
-  answer: z.string(),
+  answer: questionAnswerSchema,
+  matrixColumns: z.array(z.string()).optional(),
+  matrixRows: z.array(z.object({
+    label: z.string(),
+    answer: z.string(),
+  })).optional(),
+  bowTie: bowTieSchema.optional(),
   rationale: z.string(),
   distractorRationales: z.record(z.string(), z.string()).optional(),
   tags: z.array(z.string()).default([]),

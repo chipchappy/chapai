@@ -31,6 +31,14 @@ type StudyTheme = "light" | "dark";
 
 const STANDARD_COUNTS = [10, 20, 50] as const;
 const STUDY_THEME_STORAGE_KEY = "chapai-study-theme";
+const CJMM_STEP_ORDER = [
+  "recognize-cues",
+  "analyze-cues",
+  "prioritize-hypotheses",
+  "generate-solutions",
+  "take-actions",
+  "evaluate-outcomes",
+] as const;
 const QUESTION_TYPE_OPTIONS: Array<{ value: QuestionType; label: string }> = [
   { value: "mcq", label: "MCQ" },
   { value: "sata", label: "SATA" },
@@ -52,6 +60,37 @@ function loadPracticeSnapshot() {
       return null;
     }
   }
+}
+
+function isUnfoldingCaseQuestion(question: PracticeQuestion | null | undefined) {
+  return question?.kind === "case-study" && Boolean(question.caseStudyId && question.cjmmStep);
+}
+
+function orderUnfoldingCaseQuestions(questions: PracticeQuestion[]) {
+  const stepIndex = new Map(CJMM_STEP_ORDER.map((step, index) => [step, index]));
+  return [...questions].sort((left, right) => {
+    if (left.caseStudyId && right.caseStudyId && left.caseStudyId === right.caseStudyId) {
+      return (stepIndex.get(left.cjmmStep as (typeof CJMM_STEP_ORDER)[number]) ?? 99)
+        - (stepIndex.get(right.cjmmStep as (typeof CJMM_STEP_ORDER)[number]) ?? 99);
+    }
+    return 0;
+  });
+}
+
+function canVisitQuestionIndex(session: PracticeSessionState, targetIndex: number) {
+  const target = session.questions[targetIndex];
+  if (!target || !isUnfoldingCaseQuestion(target)) {
+    return Boolean(target);
+  }
+
+  for (let index = 0; index < targetIndex; index += 1) {
+    const prior = session.questions[index];
+    if (prior.caseStudyId === target.caseStudyId && !session.answers[prior.id]) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 function savePracticeSnapshot(snapshot: string) {
@@ -510,6 +549,9 @@ export default function QuizPage({
     const payload = await response.json();
     const data = payload.data ?? payload;
     let questions = mapLiveQuestionBank(data.questions, input.mode);
+    if (input.mode === "case-study") {
+      questions = orderUnfoldingCaseQuestions(questions);
+    }
     if (input.requireScenarioData) {
       questions = questions.filter((question) =>
         Boolean(question.exhibits?.length || question.scenarioTitle || question.additionalInfo || question.visualRationale || question.diagramBlueprint),
@@ -541,10 +583,10 @@ export default function QuizPage({
       return;
     }
 
-    if (mode === "case-study" && exam !== "nclex") {
+    if (mode === "case-study") {
       const loaded = await openLiveDerivedSession({
         exam,
-        count: standardCount,
+        count: exam === "nclex" ? 6 : standardCount,
         mode,
         questionType: "case_study",
         label: `${exam.toUpperCase()} live case studies`,
@@ -734,11 +776,20 @@ export default function QuizPage({
 
     const isLastQuestion = state.session.currentIndex >= state.session.questions.length - 1;
     if (isLastQuestion) {
+      const currentQuestion = state.session.questions[state.session.currentIndex];
+      if (isUnfoldingCaseQuestion(currentQuestion) && !state.session.answers[currentQuestion.id]) {
+        return;
+      }
       dispatch({ type: "finish-session", finishedAt: Date.now() });
       return;
     }
 
-    dispatch({ type: "set-index", index: state.session.currentIndex + 1 });
+    const nextIndex = state.session.currentIndex + 1;
+    if (!canVisitQuestionIndex(state.session, nextIndex)) {
+      return;
+    }
+
+    dispatch({ type: "set-index", index: nextIndex });
   }
 
   function handlePrev() {
@@ -751,6 +802,14 @@ export default function QuizPage({
 
   function handleJump(index: number) {
     if (!state.session) {
+      return;
+    }
+
+    const currentQuestion = state.session.questions[state.session.currentIndex];
+    if (index > state.session.currentIndex && isUnfoldingCaseQuestion(currentQuestion) && !state.session.answers[currentQuestion.id]) {
+      return;
+    }
+    if (!canVisitQuestionIndex(state.session, index)) {
       return;
     }
 
@@ -803,7 +862,13 @@ export default function QuizPage({
     : null;
   const canOpenTutor = Boolean(canUseTutor && currentQuestion && currentRecord);
   const canAdvanceQuestion = Boolean(
-    session && currentQuestion && (session.currentIndex < session.questions.length - 1 || currentRecord),
+    session
+      && currentQuestion
+      && (
+        session.currentIndex < session.questions.length - 1
+          ? canVisitQuestionIndex(session, session.currentIndex + 1)
+          : currentRecord
+      ),
   );
 
   useEffect(() => {

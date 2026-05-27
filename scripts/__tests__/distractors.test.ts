@@ -12,6 +12,7 @@ import {
   validateRationale,
 } from "../rewrite-distractor-rationales.mjs";
 import { scanQuestionTypes } from "../retag-question-types.mjs";
+import { scanNgnAuthenticity } from "../validate-ngn-authenticity.mjs";
 
 const testDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(testDir, "..", "..");
@@ -82,5 +83,11 @@ describe("NGN type relabel guard", () => {
     assert.deepEqual(summary.invalidFiles, []);
     assert.equal(summary.retaggableCaseStudy, 0, "case_study items must share scenarioTitle and scenario with at least two siblings");
     assert.equal(summary.retaggableBowTie, 0, "bow_tie items must have a real three-zone bowTie answer structure");
+  });
+
+  it("finds only authentic six-step cases and three-zone bow-ties in the selected bank", () => {
+    const summary = scanNgnAuthenticity(scanDir);
+
+    assert.deepEqual(summary.errors, []);
   });
 });

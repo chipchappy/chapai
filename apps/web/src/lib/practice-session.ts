@@ -99,7 +99,14 @@ function arraysMatchInOrder(left: string[], right: string[]) {
   return left.every((value, index) => value.trim().toLowerCase() === right[index]?.trim().toLowerCase());
 }
 
-function recordsMatch(left: Record<string, string>, right: Record<string, string>) {
+function normalizeRecordValue(value: string | string[] | undefined) {
+  if (Array.isArray(value)) {
+    return value.map((item) => item.trim().toLowerCase()).sort().join("|");
+  }
+  return String(value ?? "").trim().toLowerCase();
+}
+
+function recordsMatch(left: Record<string, string | string[]>, right: Record<string, string | string[]>) {
   const leftEntries = Object.entries(left);
   const rightEntries = Object.entries(right);
 
@@ -107,14 +114,14 @@ function recordsMatch(left: Record<string, string>, right: Record<string, string
     return false;
   }
 
-  return rightEntries.every(([key, value]) => (left[key] ?? "").trim().toLowerCase() === value.trim().toLowerCase());
+  return rightEntries.every(([key, value]) => normalizeRecordValue(left[key]) === normalizeRecordValue(value));
 }
 
 export function evaluateQuestion(question: PracticeQuestion, answer: PracticeAnswer): PracticeEvaluation {
   if (question.kind === "matrix") {
-    const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string>;
+    const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string | string[]>;
     const rows = question.matrixRows ?? [];
-    const correct = rows.every((row) => (selected[row.label] ?? "").toLowerCase() === row.answer.toLowerCase());
+    const correct = rows.every((row) => String(selected[row.label] ?? "").toLowerCase() === row.answer.toLowerCase());
     return {
       correct,
       correctAnswer: Object.fromEntries(rows.map((row) => [row.label, row.answer])),
@@ -154,8 +161,8 @@ export function evaluateQuestion(question: PracticeQuestion, answer: PracticeAns
   }
 
   if (question.correctAnswer && typeof question.correctAnswer === "object" && !Array.isArray(question.correctAnswer)) {
-    const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string>;
-    const correctAnswer = question.correctAnswer as Record<string, string>;
+    const selected = (answer && typeof answer === "object" && !Array.isArray(answer) ? answer : {}) as Record<string, string | string[]>;
+    const correctAnswer = question.correctAnswer as Record<string, string | string[]>;
     return {
       correct: recordsMatch(selected, correctAnswer),
       correctAnswer,
