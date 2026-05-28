@@ -107,6 +107,28 @@ export const questions = sqliteTable("questions", {
     .notNull(),
 });
 
+// NCLEX pharmacology remediation cards. Array fields are stored as JSON text
+// to keep the D1 schema portable with the rest of the question-bank tables.
+export const drugCards = sqliteTable("drug_cards", {
+  id: text("id").primaryKey(),
+  genericName: text("generic_name").notNull(),
+  brandNames: text("brand_names").default("[]").notNull(),
+  drugClass: text("class").notNull(),
+  mechanism: text("mechanism").notNull(),
+  priorityLabs: text("priority_labs").default("[]").notNull(),
+  nursingAssessments: text("nursing_assessments").default("[]").notNull(),
+  contraindications: text("contraindications").default("[]").notNull(),
+  blackBoxWarning: text("black_box_warning"),
+  nclexHighYield: integer("nclex_high_yield", { mode: "boolean" }).default(true).notNull(),
+  sourceHref: text("source_href"),
+  createdAt: integer("created_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  updatedAt: integer("updated_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
 // Billing and entitlement records used by the hosted checkout flow.
 export const billingEvents = sqliteTable("billing_events", {
   id: text("id")

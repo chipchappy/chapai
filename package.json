@@ -24,6 +24,7 @@
     "pilot:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs",
     "backfill:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs --mode=full --out=packages/content/staging/promoted-v3",
     "recalibrate:difficulty": "node scripts/recalibrate-difficulty.mjs",
+    "seed:drug-cards": "node scripts/seed-drug-cards.mjs",
     "deploy": "turbo deploy"
   },
   "devDependencies": {
