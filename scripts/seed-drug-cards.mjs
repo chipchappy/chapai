@@ -13,13 +13,16 @@ const columns = [
   "id",
   "generic_name",
   "brand_names",
-  "class",
+  "drug_class",
   "mechanism",
-  "priority_labs",
-  "nursing_assessments",
+  "indications",
   "contraindications",
   "black_box_warning",
-  "nclex_high_yield",
+  "priority_labs",
+  "patient_teaching",
+  "nursing_implications",
+  "related_tags",
+  "publish_state",
   "updated_at",
 ];
 
@@ -54,6 +57,12 @@ function parseArgs(argv) {
     else throw new Error(`Unknown option: ${arg}`);
   }
 
+  if (options.config && !path.isAbsolute(options.config)) {
+    const repoRelative = path.resolve(repoRoot, options.config);
+    const appRelative = path.resolve(webDir, options.config);
+    options.config = fs.existsSync(repoRelative) ? repoRelative : appRelative;
+  }
+
   if (!options.database && !options.dryRun) {
     throw new Error("Pass --database=<d1-name> or --dry-run");
   }
@@ -70,6 +79,18 @@ function sqlString(value) {
 
 function jsonText(value) {
   return JSON.stringify(Array.isArray(value) ? value : []);
+}
+
+function patientTeaching(card) {
+  return card.nursingAssessments.filter((item) => /\b(teach|report|avoid|do not|separate|consistent|follow-up)\b/i.test(item));
+}
+
+function relatedTags(card) {
+  return [
+    card.nclexHighYield === false ? null : "nclex-high-yield",
+    card.class,
+    ...card.genericName.split(/\s+/),
+  ].filter(Boolean);
 }
 
 function readCards(input) {
@@ -105,11 +126,14 @@ function toValues(card) {
     sqlString(jsonText(card.brandNames)),
     sqlString(card.class),
     sqlString(card.mechanism),
-    sqlString(jsonText(card.priorityLabs)),
-    sqlString(jsonText(card.nursingAssessments)),
+    sqlString(jsonText(card.indications)),
     sqlString(jsonText(card.contraindications)),
     sqlString(card.blackBoxWarning ?? null),
-    card.nclexHighYield === false ? "0" : "1",
+    sqlString(jsonText(card.priorityLabs)),
+    sqlString(jsonText(patientTeaching(card))),
+    sqlString(jsonText(card.nursingAssessments)),
+    sqlString(jsonText(relatedTags(card))),
+    sqlString("published"),
     "(unixepoch())",
   ].join(", ");
 }
