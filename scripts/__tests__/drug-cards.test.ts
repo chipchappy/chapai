@@ -6,7 +6,7 @@ import { getDrugCardStudyResourcesFromText, mergeStudyResources } from "../../ap
 
 describe("drug card library", () => {
   it("loads unique high-yield NCLEX drug cards with required teaching fields", () => {
-    assert.ok(DRUG_CARDS.length >= 50);
+    assert.ok(DRUG_CARDS.length >= 100);
     assert.equal(new Set(DRUG_CARDS.map((card) => card.id)).size, DRUG_CARDS.length);
     for (const card of DRUG_CARDS) {
       assert.ok(card.genericName.length > 0);
