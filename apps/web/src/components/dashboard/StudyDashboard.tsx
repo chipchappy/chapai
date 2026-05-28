@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import type { StudyResource } from "@/lib/study-resources";
 
 interface SessionSummary {
   id: string;
@@ -55,6 +56,7 @@ interface WeakAreaRecommendation {
   cjmmStep: string | null;
   cjmmLabel: string | null;
   href: string;
+  studyResources?: StudyResource[];
 }
 
 interface DashboardData {
@@ -138,6 +140,36 @@ function StatCard({
       <p className="mt-3 font-serif text-[2rem] leading-none text-dark">{value}</p>
       {sub ? <p className="mt-2 text-sm leading-6 text-muted">{sub}</p> : null}
     </article>
+  );
+}
+
+function isExternalHref(href: string) {
+  return /^https?:\/\//i.test(href);
+}
+
+function ResourceActionRow({ resource, tone = "Study" }: { resource: StudyResource; tone?: string }) {
+  const content = (
+    <>
+      <span>
+        <strong>{resource.title}</strong>
+        <small>{resource.why}</small>
+      </span>
+      <span className="signal-pill signal-pill-sage">{tone}</span>
+    </>
+  );
+
+  if (isExternalHref(resource.href)) {
+    return (
+      <a href={resource.href} target="_blank" rel="noreferrer" className="dashboard-action-row">
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={resource.href} className="dashboard-action-row">
+      {content}
+    </Link>
   );
 }
 
@@ -232,6 +264,7 @@ export default function StudyDashboard() {
   const strongestLane = useMemo(() => [...examStats].sort((a, b) => b.accuracy - a.accuracy)[0] ?? null, [examStats]);
   const weakestLane = weakAreas[0] ?? null;
   const resumeHref = data?.recommendation?.href ?? (weakestLane ? `/quiz?category=${encodeURIComponent(weakestLane.category)}` : "/quiz?exam=nclex&mode=standard");
+  const recommendationResources = useMemo(() => data?.recommendation?.studyResources ?? [], [data?.recommendation?.studyResources]);
 
   const nextObjective = useMemo(() => {
     if (!data) {
@@ -257,7 +290,7 @@ export default function StudyDashboard() {
       return {
         label: "Next objective",
         title: `Rebuild ${weakestLane.label}.`,
-        body: `${weakestLane.accuracy}% accuracy across ${weakestLane.totalAnswered} saved answers.${challenge ? ` Bias the next review toward ${challenge}.` : ""} Open a fresh live-bank run and keep the rationale loop tight.`,
+        body: `${weakestLane.accuracy}% accuracy across ${weakestLane.totalAnswered} saved answers.${challenge ? ` Bias the next review toward ${challenge}.` : ""}${recommendationResources[0] ? ` Pair it with ${recommendationResources[0].title}.` : " Open a fresh live-bank run and keep the rationale loop tight."}`,
         href: resumeHref,
         cta: "Resume practice \u2192",
         tone: "gold" as const,
@@ -274,7 +307,7 @@ export default function StudyDashboard() {
       cta: data.recentSessions.length > 0 ? "Resume practice \u2192" : "Start your first session",
       tone: "blue" as const,
     };
-  }, [data, weakestCjmm, weakestDifficulty, weakestLane, resumeHref]);
+  }, [data, weakestCjmm, weakestDifficulty, weakestLane, resumeHref, recommendationResources]);
 
   if (loading) {
     return (
@@ -372,6 +405,9 @@ export default function StudyDashboard() {
               </span>
               <span className="signal-pill signal-pill-sage">Target</span>
             </Link>
+            {recommendationResources[0] ? (
+              <ResourceActionRow resource={recommendationResources[0]} tone="Study" />
+            ) : null}
             <Link href="/quiz?mode=practice-exam&practiceExam=nclex-sim-1" className="dashboard-action-row">
               <span>
                 <strong>Practice exam</strong>
@@ -540,6 +576,24 @@ export default function StudyDashboard() {
                             .filter(Boolean)
                             .join(" | ")}
                         </p>
+                      </div>
+                    ) : null}
+                    {recommendationResources.length ? (
+                      <div className="rounded-[18px] border border-[rgba(176,141,87,0.22)] bg-[rgba(250,246,239,0.88)] px-4 py-3">
+                        <p className="text-sm font-semibold text-dark">Study material</p>
+                        <div className="mt-3 space-y-2">
+                          {recommendationResources.slice(0, 3).map((resource) => (
+                            isExternalHref(resource.href) ? (
+                              <a key={`${resource.kind}-${resource.href}`} href={resource.href} target="_blank" rel="noreferrer" className="block text-sm font-semibold text-[#5A7F88] hover:text-dark">
+                                {resource.title}
+                              </a>
+                            ) : (
+                              <Link key={`${resource.kind}-${resource.href}`} href={resource.href} className="block text-sm font-semibold text-[#5A7F88] hover:text-dark">
+                                {resource.title}
+                              </Link>
+                            )
+                          ))}
+                        </div>
                       </div>
                     ) : null}
                   </div>
