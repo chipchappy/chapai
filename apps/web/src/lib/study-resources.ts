@@ -271,12 +271,21 @@ const CLIENT_NEED_RESOURCES: Record<string, StudyResource[]> = {
   pharmacological: [
     {
       kind: "tool",
-      title: "Clarity pharmacology question set",
-      href: "/free/nclex-pharmacology-questions",
+      title: "Clarity pharmacology drug cards",
+      href: "/study/pharmacology",
       source: "Clarity NCLEX",
       topic: "Pharmacology",
       free: true,
       why: "Use this for medication safety, adverse effects, contraindications, priority labs, and nursing assessments.",
+    },
+    {
+      kind: "tool",
+      title: "Clarity pharmacology question set",
+      href: "/free/nclex-pharmacology-questions",
+      source: "Clarity NCLEX",
+      topic: "Pharmacology practice",
+      free: true,
+      why: "Use this to turn medication review into NCLEX-style answer selection practice.",
     },
     {
       kind: "tool",

@@ -11,6 +11,7 @@ describe("study resource recommendations", () => {
       cjmmStep: "take-actions",
     });
 
+    assert.ok(resources.some((resource) => resource.href === "/study/pharmacology"));
     assert.ok(resources.some((resource) => resource.href === "/free/nclex-pharmacology-questions"));
     assert.ok(resources.some((resource) => resource.href === "/tools/dosage-calculator"));
     assert.ok(resources.every((resource, index, list) => list.findIndex((candidate) => candidate.href === resource.href) === index));
