@@ -6,6 +6,7 @@ import { and, eq, isNotNull, sql } from "drizzle-orm";
 import { createRequestContext } from "@/lib/logger";
 import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { getStudyResourcesForWeakArea } from "@/lib/study-resources";
 
 export const dynamic = "force-dynamic";
 
@@ -166,23 +167,32 @@ export async function GET(request: Request) {
     const weakestCategory = areas[0] ?? null;
     const weakestDifficulty = difficultyAreas[0] ?? null;
     const weakestCjmm = cjmmSteps[0] ?? null;
+    const recommendation = weakestCategory || weakestDifficulty || weakestCjmm
+      ? {
+          category: weakestCategory?.category ?? null,
+          categoryLabel: weakestCategory?.label ?? null,
+          difficulty: weakestDifficulty?.difficulty ?? null,
+          difficultyLabel: weakestDifficulty?.label ?? null,
+          cjmmStep: weakestCjmm?.step ?? null,
+          cjmmLabel: weakestCjmm?.label ?? null,
+          href: weakestCategory ? `/quiz?category=${encodeURIComponent(weakestCategory.category)}` : "/quiz?exam=nclex&mode=ngn",
+          studyResources: getStudyResourcesForWeakArea({
+            exam: "nclex",
+            category: weakestCategory?.category,
+            categoryLabel: weakestCategory?.label,
+            difficulty: weakestDifficulty?.difficulty,
+            cjmmStep: weakestCjmm?.step,
+            limit: 4,
+          }),
+        }
+      : null;
 
     return jsonSuccess({
       areas,
       difficultyAreas,
       cjmmSteps,
       weakestCategory: weakestCategory?.category ?? null,
-      recommendation: weakestCategory || weakestDifficulty || weakestCjmm
-        ? {
-            category: weakestCategory?.category ?? null,
-            categoryLabel: weakestCategory?.label ?? null,
-            difficulty: weakestDifficulty?.difficulty ?? null,
-            difficultyLabel: weakestDifficulty?.label ?? null,
-            cjmmStep: weakestCjmm?.step ?? null,
-            cjmmLabel: weakestCjmm?.label ?? null,
-            href: weakestCategory ? `/quiz?category=${encodeURIComponent(weakestCategory.category)}` : "/quiz?exam=nclex&mode=ngn",
-          }
-        : null,
+      recommendation,
       meta: {
         totalAnswered,
         premiumAnswered,
