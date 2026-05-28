@@ -6,6 +6,7 @@ import { ClinicalReviewStation } from "@/components/practice/ClinicalReviewStati
 import NclexExamPane from "@/components/practice/NclexExamPane";
 import { buildPracticeChartReviewModel, type ChartReviewTab } from "@/lib/chart-review-model";
 import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
+import DrugLinkedText from "@/components/practice/DrugLinkedText";
 import { getStudyResourcesForQuestion } from "@/lib/study-resources";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
@@ -1153,7 +1154,7 @@ export default function PracticeTerminalPane({
                         </div>
                         <span className={`quiz-study-ehr-status is-open`}>{answerRecord?.correct ? "green" : "review"}</span>
                       </div>
-                      <p className="quiz-rail-prose mt-3 text-sm leading-7 text-[var(--quiz-muted)]">{rationaleText}</p>
+                      <p className="quiz-rail-prose mt-3 text-sm leading-7 text-[var(--quiz-muted)]"><DrugLinkedText text={rationaleText} /></p>
                       <div className="quiz-study-ehr-debrief-actions">
                         {diagramBlueprint ? <span>diagram: {diagramBlueprint.focus}</span> : null}
                         {references.length ? <span>{references.length} cited source{references.length === 1 ? "" : "s"}</span> : null}
@@ -1471,7 +1472,7 @@ export default function PracticeTerminalPane({
                     ) : null}
                     {rationaleExpanded ? (
                       <>
-                        <p className="quiz-rail-prose mt-3 text-sm leading-7 text-[var(--quiz-muted)]">{rationaleText}</p>
+                        <p className="quiz-rail-prose mt-3 text-sm leading-7 text-[var(--quiz-muted)]"><DrugLinkedText text={rationaleText} /></p>
                         <button type="button" onClick={() => setRationaleExpanded(false)} className="quiz-rationale-toggle-btn">
                           collapse ↑
                         </button>
@@ -1492,15 +1493,15 @@ export default function PracticeTerminalPane({
                           <div className="mt-3 grid gap-3">
                             <div className="quiz-rail-row flex-col items-start gap-1">
                               <strong>Overview</strong>
-                              <span>{structuredRationale.overview}</span>
+                              <span><DrugLinkedText text={structuredRationale.overview} /></span>
                             </div>
                             <div className="quiz-rail-row flex-col items-start gap-1">
                               <strong>Clinical mechanism</strong>
-                              <span>{structuredRationale.mechanism}</span>
+                              <span><DrugLinkedText text={structuredRationale.mechanism} /></span>
                             </div>
                             <div className="quiz-rail-row flex-col items-start gap-1">
                               <strong>Why the correct answer works</strong>
-                              <span>{structuredRationale.whyCorrect}</span>
+                              <span><DrugLinkedText text={structuredRationale.whyCorrect} /></span>
                             </div>
                           </div>
                         </div>
@@ -1514,7 +1515,7 @@ export default function PracticeTerminalPane({
                                 <summary className="cursor-pointer font-semibold text-[var(--quiz-ink-strong)]">
                                   Option {label.toUpperCase()}
                                 </summary>
-                                <span>{explanation}</span>
+                                <span><DrugLinkedText text={explanation} /></span>
                               </details>
                             ))}
                           </div>
