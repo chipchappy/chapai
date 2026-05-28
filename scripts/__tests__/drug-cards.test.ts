@@ -18,8 +18,12 @@ describe("drug card library", () => {
   });
 
   it("supports search and rationale linking terms", () => {
+    const terms = getDrugCardTerms();
     assert.equal(getDrugCardById("warfarin")?.genericName, "warfarin");
     assert.ok(searchDrugCards("potassium").some((card) => card.id === "digoxin"));
-    assert.ok(getDrugCardTerms().some((entry) => entry.term === "Coumadin" && entry.card.id === "warfarin"));
+    assert.ok(terms.some((entry) => entry.term === "Coumadin" && entry.card.id === "warfarin"));
+    for (const card of DRUG_CARDS) {
+      assert.ok(terms.some((entry) => entry.term === card.genericName && entry.card.id === card.id));
+    }
   });
 });

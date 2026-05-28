@@ -1,4 +1,6 @@
 import rawDrugCards from "../../../../packages/content/staging/drug-cards/nclex-high-yield.json";
+export { getDrugCardTerms } from "./drug-card-terms";
+export type { DrugCardTerm } from "./drug-card-terms";
 
 export interface DrugCard {
   id: string;
@@ -11,11 +13,6 @@ export interface DrugCard {
   contraindications: string[];
   blackBoxWarning?: string;
   nclexHighYield: boolean;
-}
-
-export interface DrugCardTerm {
-  term: string;
-  card: DrugCard;
 }
 
 export const DRUG_CARDS = (rawDrugCards as DrugCard[])
@@ -31,22 +28,6 @@ export const DRUG_CARDS = (rawDrugCards as DrugCard[])
 
 export function getDrugCardById(id: string) {
   return DRUG_CARDS.find((card) => card.id === id) ?? null;
-}
-
-export function getDrugCardTerms(): DrugCardTerm[] {
-  const terms = new Map<string, DrugCardTerm>();
-  for (const card of DRUG_CARDS) {
-    for (const term of [card.genericName, ...card.brandNames]) {
-      const normalized = term.trim();
-      if (!normalized) continue;
-      const key = normalized.toLowerCase();
-      if (!terms.has(key)) {
-        terms.set(key, { term: normalized, card });
-      }
-    }
-  }
-
-  return [...terms.values()].sort((left, right) => right.term.length - left.term.length);
 }
 
 export function searchDrugCards(query: string) {

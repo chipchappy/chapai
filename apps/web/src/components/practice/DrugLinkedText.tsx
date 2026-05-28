@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getDrugCardTerms } from "@/lib/drug-cards";
+import { getDrugCardTerms } from "@/lib/drug-card-terms";
 
 function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
