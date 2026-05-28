@@ -23,6 +23,7 @@
     "benchmark:rationales": "node --import tsx scripts/benchmark-premium-rationales.mjs",
     "pilot:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs",
     "backfill:rationales": "node --import tsx scripts/generate-structured-rationale-pilot.mjs --mode=full --out=packages/content/staging/promoted-v3",
+    "recalibrate:difficulty": "node scripts/recalibrate-difficulty.mjs",
     "deploy": "turbo deploy"
   },
   "devDependencies": {

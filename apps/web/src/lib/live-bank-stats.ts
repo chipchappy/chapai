@@ -12,11 +12,18 @@ export type LiveBankStats = {
   nclexMcqLive: number;
   nclexNgnLive: number;
   nclexNgnRatio: number;
+  nclexStructuredLive: number;
+  nclexLegacyLive: number;
+  nclexPremiumCoverageRatio: number;
+  nclexDifficultyDistribution: DifficultyDistribution;
+  nclexPremiumDifficultyDistribution: DifficultyDistribution;
 };
 
 type BankQuestion = {
   exam?: string;
   type?: string;
+  difficulty?: number;
+  structuredRationale?: unknown;
   scenarioTitle?: string;
   scenario?: string;
   bowTie?: {
@@ -24,6 +31,14 @@ type BankQuestion = {
     leftActions?: unknown[];
     rightMonitoring?: unknown[];
   };
+};
+
+export type DifficultyDistribution = {
+  1: number;
+  2: number;
+  3: number;
+  4: number;
+  5: number;
 };
 
 function resolveWorkspaceRoot() {
@@ -66,6 +81,38 @@ function hasRealBowTieShape(question: BankQuestion) {
   );
 }
 
+function emptyDifficultyDistribution(): DifficultyDistribution {
+  return { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+}
+
+function countDifficulty(rows: BankQuestion[], structuredOnly = false): DifficultyDistribution {
+  const distribution = emptyDifficultyDistribution();
+  for (const question of rows) {
+    if (structuredOnly && !question.structuredRationale) {
+      continue;
+    }
+    const difficulty = Number(question.difficulty);
+    if (difficulty >= 1 && difficulty <= 5) {
+      distribution[difficulty as keyof DifficultyDistribution] += 1;
+    }
+  }
+  return distribution;
+}
+
+function distributionFromRows(
+  rows: Array<{ difficulty: number | null; count: number; structuredCount?: number }>,
+  key: "count" | "structuredCount",
+): DifficultyDistribution {
+  const distribution = emptyDifficultyDistribution();
+  for (const row of rows) {
+    const difficulty = Number(row.difficulty);
+    if (difficulty >= 1 && difficulty <= 5) {
+      distribution[difficulty as keyof DifficultyDistribution] = Number(row[key] ?? 0);
+    }
+  }
+  return distribution;
+}
+
 function readQuestionsFromDirectory(dir: string) {
   if (!fs.existsSync(dir)) {
     return [] as BankQuestion[];
@@ -90,6 +137,8 @@ function readQuestionsFromDirectory(dir: string) {
 function getStrictNclexStatsFromFiles() {
   const root = resolveWorkspaceRoot();
   const candidateDirs = [
+    path.join(root, "packages", "content", "staging", "promoted-v4"),
+    path.join(root, "packages", "content", "staging", "promoted-v3"),
     path.join(root, "packages", "content", "staging", "promoted-v2"),
     path.join(root, "packages", "content", "staging", "promoted"),
     path.join(root, "packages", "content", "questions", "nclex", "live"),
@@ -122,12 +171,19 @@ function getStrictNclexStatsFromFiles() {
     return false;
   }).length;
   const nclexMcqLive = nclexQuestions.filter((question) => question.type === "mcq").length;
+  const nclexStructuredLive = nclexQuestions.filter((question) => question.structuredRationale).length;
+  const nclexLegacyLive = Math.max(0, nclexQuestions.length - nclexStructuredLive);
 
   return {
     live: nclexQuestions.length,
     mcqLive: nclexMcqLive,
     ngnLive: nclexNgnLive,
     ngnRatio: nclexQuestions.length > 0 ? Math.round((nclexNgnLive / nclexQuestions.length) * 100) : 0,
+    structuredLive: nclexStructuredLive,
+    legacyLive: nclexLegacyLive,
+    premiumCoverageRatio: nclexQuestions.length > 0 ? Math.round((nclexStructuredLive / nclexQuestions.length) * 100) : 0,
+    difficultyDistribution: countDifficulty(nclexQuestions),
+    premiumDifficultyDistribution: countDifficulty(nclexQuestions, true),
   };
 }
 
@@ -145,6 +201,11 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
     nclexMcqLive: strictFileStats?.mcqLive ?? summary.nclex.mcqLive,
     nclexNgnLive: strictFileStats?.ngnLive ?? summary.nclex.ngnLive,
     nclexNgnRatio: strictFileStats?.ngnRatio ?? summary.nclex.ngnRatio,
+    nclexStructuredLive: strictFileStats?.structuredLive ?? summary.nclex.live,
+    nclexLegacyLive: strictFileStats?.legacyLive ?? 0,
+    nclexPremiumCoverageRatio: strictFileStats?.premiumCoverageRatio ?? 100,
+    nclexDifficultyDistribution: strictFileStats?.difficultyDistribution ?? emptyDifficultyDistribution(),
+    nclexPremiumDifficultyDistribution: strictFileStats?.premiumDifficultyDistribution ?? emptyDifficultyDistribution(),
   } satisfies LiveBankStats;
 
   const env = resolveEnv();
@@ -171,9 +232,28 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
       .where(eq(questions.exam, "nclex"))
       .groupBy(questions.type);
 
+    const nclexDifficultyRows = await db
+      .select({
+        difficulty: questions.difficulty,
+        count: sql<number>`count(*)`,
+        structuredCount: sql<number>`sum(case when ${questions.structuredRationale} is not null and ${questions.structuredRationale} <> '' then 1 else 0 end)`,
+      })
+      .from(questions)
+      .where(eq(questions.exam, "nclex"))
+      .groupBy(questions.difficulty);
+
+    const nclexStructuredRows = await db
+      .select({
+        count: sql<number>`sum(case when ${questions.structuredRationale} is not null and ${questions.structuredRationale} <> '' then 1 else 0 end)`,
+      })
+      .from(questions)
+      .where(eq(questions.exam, "nclex"));
+
     const ccrnLive = Number(examRows.find((row) => row.exam === "ccrn")?.count ?? fallback.ccrnLive);
     const nclexLive = Number(examRows.find((row) => row.exam === "nclex")?.count ?? fallback.nclexLive);
     const nclexMcqLive = countType(nclexTypeRows, "mcq");
+    const nclexStructuredLive = Number(nclexStructuredRows[0]?.count ?? fallback.nclexStructuredLive);
+    const nclexLegacyLive = Math.max(0, nclexLive - nclexStructuredLive);
     const nclexNgnLive =
       countType(nclexTypeRows, "sata")
       + countType(nclexTypeRows, "matrix")
@@ -187,6 +267,11 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
       nclexMcqLive,
       nclexNgnLive,
       nclexNgnRatio: nclexLive > 0 ? Math.round((nclexNgnLive / nclexLive) * 100) : fallback.nclexNgnRatio,
+      nclexStructuredLive,
+      nclexLegacyLive,
+      nclexPremiumCoverageRatio: nclexLive > 0 ? Math.round((nclexStructuredLive / nclexLive) * 100) : fallback.nclexPremiumCoverageRatio,
+      nclexDifficultyDistribution: distributionFromRows(nclexDifficultyRows, "count"),
+      nclexPremiumDifficultyDistribution: distributionFromRows(nclexDifficultyRows, "structuredCount"),
     };
   } catch {
     return fallback;
