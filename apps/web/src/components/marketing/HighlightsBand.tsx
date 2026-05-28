@@ -15,6 +15,9 @@ interface HighlightsBandProps {
   caseStudies?: number;
   readinessExams?: number;
   drugCards?: number;
+  premiumStructuredCount?: number;
+  legacyCount?: number;
+  difficultyDistribution?: Record<1 | 2 | 3 | 4 | 5, number>;
 }
 
 const SUBJECTS: Subject[] = [
@@ -38,10 +41,26 @@ export default function HighlightsBand({
   caseStudies = 50,
   readinessExams = 5,
   drugCards = 200,
+  premiumStructuredCount = questionCount,
+  legacyCount = 0,
+  difficultyDistribution,
 }: HighlightsBandProps) {
+  const difficultyTotal = difficultyDistribution
+    ? Object.values(difficultyDistribution).reduce((sum, count) => sum + count, 0)
+    : 0;
+  const difficultyMix = difficultyDistribution && difficultyTotal > 0
+    ? ([1, 2, 3, 4, 5] as const)
+        .map((difficulty) => Math.round(((difficultyDistribution[difficulty] ?? 0) / difficultyTotal) * 100))
+        .join("/")
+    : "10/25/35/20/10";
   const stats: Stat[] = [
     { value: questionCount.toLocaleString(), label: "Refined NCLEX items", hint: "Unique distractor reasoning on every one" },
     { value: `${ngnRatio || 25}%`, label: "Real NGN mix", hint: "Case studies, bow-tie, matrix, SATA" },
+    {
+      value: difficultyMix,
+      label: "Difficulty mix",
+      hint: `${premiumStructuredCount.toLocaleString()} structured baseline rows${legacyCount > 0 ? `; ${legacyCount.toLocaleString()} legacy rows tracked separately` : ""}`,
+    },
     { value: `${caseStudies}+`, label: "Multi-step case studies", hint: "CJMM 6-step unfolding format" },
     { value: `${readinessExams}`, label: "Timed readiness exams", hint: "Simulate the live CAT" },
     { value: `${drugCards}+`, label: "Pharmacology tables", hint: "Class · MOA · priority labs · antidotes" },

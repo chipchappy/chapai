@@ -61,6 +61,9 @@ export default async function HomePage() {
       <HighlightsBand
         questionCount={stats.nclexLive}
         ngnRatio={stats.nclexNgnRatio}
+        premiumStructuredCount={stats.nclexStructuredLive}
+        legacyCount={stats.nclexLegacyLive}
+        difficultyDistribution={stats.nclexPremiumDifficultyDistribution}
         caseStudies={50}
         readinessExams={5}
         drugCards={200}

@@ -31,14 +31,45 @@ interface WeakArea {
   accuracy: number;
 }
 
+interface DifficultyArea {
+  difficulty: number;
+  label: string;
+  totalAnswered: number;
+  correctAnswered: number;
+  accuracy: number;
+}
+
+interface CjmmArea {
+  step: string;
+  label: string;
+  totalAnswered: number;
+  correctAnswered: number;
+  accuracy: number;
+}
+
+interface WeakAreaRecommendation {
+  category: string | null;
+  categoryLabel: string | null;
+  difficulty: number | null;
+  difficultyLabel: string | null;
+  cjmmStep: string | null;
+  cjmmLabel: string | null;
+  href: string;
+}
+
 interface DashboardData {
   recentSessions: SessionSummary[];
   reviewQueue: ReviewItem[];
   weakAreas: WeakArea[];
+  difficultyAreas: DifficultyArea[];
+  cjmmSteps: CjmmArea[];
+  recommendation: WeakAreaRecommendation | null;
   streak: number;
   sevenDayAccuracy: number;
   totalAnswered: number;
   totalCorrect: number;
+  premiumAnswered: number;
+  legacyAnswered: number;
 }
 
 type ApiEnvelope<T> = T | { success?: boolean; data?: T };
@@ -133,7 +164,13 @@ export default function StudyDashboard() {
           stats?: { totalQuestions?: number; totalCorrect?: number; overallAccuracy?: number };
         }>(historyPayload, { sessions: [] });
         const review = unwrapApiData<{ items?: ReviewItem[]; meta?: { dueNow?: number } }>(reviewPayload, { items: [] });
-        const weakAreas = unwrapApiData<{ areas?: WeakArea[] }>(weakAreasPayload, { areas: [] });
+        const weakAreas = unwrapApiData<{
+          areas?: WeakArea[];
+          difficultyAreas?: DifficultyArea[];
+          cjmmSteps?: CjmmArea[];
+          recommendation?: WeakAreaRecommendation | null;
+          meta?: { premiumAnswered?: number; legacyAnswered?: number };
+        }>(weakAreasPayload, { areas: [] });
         const sessions: SessionSummary[] = history.sessions || [];
 
         setData({
@@ -142,18 +179,28 @@ export default function StudyDashboard() {
           streak: history.streak || 0,
           sevenDayAccuracy: history.sevenDayAccuracy || 0,
           weakAreas: (weakAreas.areas || []).slice(0, 3),
+          difficultyAreas: (weakAreas.difficultyAreas || []).slice(0, 3),
+          cjmmSteps: (weakAreas.cjmmSteps || []).slice(0, 3),
+          recommendation: weakAreas.recommendation ?? null,
           totalAnswered: history.stats?.totalQuestions ?? sessions.reduce((sum, session) => sum + session.totalQuestions, 0),
           totalCorrect: history.stats?.totalCorrect ?? sessions.reduce((sum, session) => sum + session.correctAnswers, 0),
+          premiumAnswered: weakAreas.meta?.premiumAnswered ?? 0,
+          legacyAnswered: weakAreas.meta?.legacyAnswered ?? 0,
         });
       } catch {
         setData({
           recentSessions: [],
           reviewQueue: [],
           weakAreas: [],
+          difficultyAreas: [],
+          cjmmSteps: [],
+          recommendation: null,
           streak: 0,
           sevenDayAccuracy: 0,
           totalAnswered: 0,
           totalCorrect: 0,
+          premiumAnswered: 0,
+          legacyAnswered: 0,
         });
       } finally {
         setLoading(false);
@@ -180,9 +227,11 @@ export default function StudyDashboard() {
   }, [data?.recentSessions]);
 
   const weakAreas = data?.weakAreas ?? [];
+  const weakestDifficulty = data?.difficultyAreas[0] ?? null;
+  const weakestCjmm = data?.cjmmSteps[0] ?? null;
   const strongestLane = useMemo(() => [...examStats].sort((a, b) => b.accuracy - a.accuracy)[0] ?? null, [examStats]);
   const weakestLane = weakAreas[0] ?? null;
-  const resumeHref = weakestLane ? `/quiz?category=${encodeURIComponent(weakestLane.category)}` : "/quiz?exam=nclex&mode=standard";
+  const resumeHref = data?.recommendation?.href ?? (weakestLane ? `/quiz?category=${encodeURIComponent(weakestLane.category)}` : "/quiz?exam=nclex&mode=standard");
 
   const nextObjective = useMemo(() => {
     if (!data) {
@@ -201,10 +250,14 @@ export default function StudyDashboard() {
     }
 
     if (weakestLane) {
+      const challenge = [
+        weakestDifficulty ? weakestDifficulty.label : null,
+        weakestCjmm ? weakestCjmm.label : null,
+      ].filter(Boolean).join(" / ");
       return {
         label: "Next objective",
         title: `Rebuild ${weakestLane.label}.`,
-        body: `${weakestLane.accuracy}% accuracy across ${weakestLane.totalAnswered} saved answers. Open a fresh live-bank run and keep the rationale loop tight.`,
+        body: `${weakestLane.accuracy}% accuracy across ${weakestLane.totalAnswered} saved answers.${challenge ? ` Bias the next review toward ${challenge}.` : ""} Open a fresh live-bank run and keep the rationale loop tight.`,
         href: resumeHref,
         cta: "Resume practice \u2192",
         tone: "gold" as const,
@@ -221,7 +274,7 @@ export default function StudyDashboard() {
       cta: data.recentSessions.length > 0 ? "Resume practice \u2192" : "Start your first session",
       tone: "blue" as const,
     };
-  }, [data, weakestLane, resumeHref]);
+  }, [data, weakestCjmm, weakestDifficulty, weakestLane, resumeHref]);
 
   if (loading) {
     return (
@@ -273,7 +326,7 @@ export default function StudyDashboard() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <StatCard label="Streak" value={data?.streak ?? 0} sub="days in a row" tone="sage" />
         <StatCard label="7-day accuracy" value={data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}%` : "n/a"} sub="completed sessions" tone="blue" />
         <StatCard label="Due now" value={data?.reviewQueue.length ?? 0} sub="spaced repetition queue" tone="gold" />
@@ -281,6 +334,12 @@ export default function StudyDashboard() {
           label="Weak categories"
           value={weakAreas.length || "n/a"}
           sub={weakAreas.length ? weakAreas.map((area) => area.label).join(", ") : "none identified yet"}
+        />
+        <StatCard
+          label="Next challenge"
+          value={weakestDifficulty ? `L${weakestDifficulty.difficulty}` : "n/a"}
+          sub={weakestCjmm ? weakestCjmm.label : "CJMM signal pending"}
+          tone="blue"
         />
       </section>
 
@@ -301,6 +360,17 @@ export default function StudyDashboard() {
                 <small>Matrix, ordering, bow-tie, and multipart reps.</small>
               </span>
               <span className="signal-pill signal-pill-gold">NGN</span>
+            </Link>
+            <Link href={resumeHref} className="dashboard-action-row">
+              <span>
+                <strong>Recommended challenge</strong>
+                <small>
+                  {weakestDifficulty || weakestCjmm
+                    ? [weakestDifficulty?.label, weakestCjmm?.label].filter(Boolean).join(" / ")
+                    : "Difficulty and CJMM targeting appears after saved answers."}
+                </small>
+              </span>
+              <span className="signal-pill signal-pill-sage">Target</span>
             </Link>
             <Link href="/quiz?mode=practice-exam&practiceExam=nclex-sim-1" className="dashboard-action-row">
               <span>
@@ -326,6 +396,14 @@ export default function StudyDashboard() {
             <div className="dashboard-signal-row">
               <span>Weakest lane</span>
               <strong>{weakestLane?.label ?? "None yet"}</strong>
+            </div>
+            <div className="dashboard-signal-row">
+              <span>Weakest CJMM</span>
+              <strong>{weakestCjmm?.label ?? "Pending"}</strong>
+            </div>
+            <div className="dashboard-signal-row">
+              <span>Premium baseline</span>
+              <strong>{data?.legacyAnswered ? `${data.premiumAnswered}/${data.totalAnswered}` : "Current"}</strong>
             </div>
           </div>
         </article>
@@ -454,6 +532,16 @@ export default function StudyDashboard() {
                         </p>
                       </div>
                     ))}
+                    {(weakestDifficulty || weakestCjmm) ? (
+                      <div className="rounded-[18px] border border-[rgba(90,127,136,0.18)] bg-[rgba(239,246,248,0.88)] px-4 py-3">
+                        <p className="text-sm font-semibold text-dark">Adaptive target</p>
+                        <p className="mt-1 text-sm leading-6 text-muted">
+                          {[weakestDifficulty ? `${weakestDifficulty.label} at ${weakestDifficulty.accuracy}%` : null, weakestCjmm ? `${weakestCjmm.label} at ${weakestCjmm.accuracy}%` : null]
+                            .filter(Boolean)
+                            .join(" | ")}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
                 ) : (
                   <p className="mt-4 text-sm leading-6 text-muted">
