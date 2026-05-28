@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS drug_cards (
   indications TEXT DEFAULT '[]',
   contraindications TEXT DEFAULT '[]',
   black_box_warning TEXT,
+  source_name TEXT,
+  source_href TEXT,
   priority_labs TEXT DEFAULT '[]',
   patient_teaching TEXT DEFAULT '[]',
   nursing_implications TEXT DEFAULT '[]',

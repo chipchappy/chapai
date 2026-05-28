@@ -2,270 +2,1491 @@
   {
     "id": "heparin",
     "genericName": "heparin",
-    "brandNames": ["Hep-Lock"],
+    "brandNames": [
+      "Hep-Lock"
+    ],
     "class": "anticoagulant",
     "mechanism": "Enhances antithrombin activity, which inhibits thrombin and factor Xa to reduce clot propagation.",
-    "priorityLabs": ["aPTT or anti-Xa per protocol", "platelets", "hemoglobin and hematocrit"],
-    "nursingAssessments": ["Assess for bleeding, bruising, hematuria, melena, and neurologic change.", "Monitor platelet trend for heparin-induced thrombocytopenia.", "Keep protamine sulfate available when clinically indicated."],
-    "contraindications": ["active major bleeding", "history of heparin-induced thrombocytopenia", "severe uncontrolled hypertension"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "aPTT or anti-Xa per protocol",
+      "platelets",
+      "hemoglobin and hematocrit"
+    ],
+    "nursingAssessments": [
+      "Assess for bleeding, bruising, hematuria, melena, and neurologic change.",
+      "Monitor platelet trend for heparin-induced thrombocytopenia.",
+      "Keep protamine sulfate available when clinically indicated."
+    ],
+    "contraindications": [
+      "active major bleeding",
+      "history of heparin-induced thrombocytopenia",
+      "severe uncontrolled hypertension"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682826.html"
   },
   {
     "id": "warfarin",
     "genericName": "warfarin",
-    "brandNames": ["Coumadin", "Jantoven"],
+    "brandNames": [
+      "Coumadin",
+      "Jantoven"
+    ],
     "class": "vitamin K antagonist anticoagulant",
     "mechanism": "Inhibits vitamin K dependent clotting factor synthesis, reducing factors II, VII, IX, and X.",
-    "priorityLabs": ["PT/INR", "hemoglobin and hematocrit", "liver function if clinically indicated"],
-    "nursingAssessments": ["Assess for bleeding and medication or diet changes that affect INR.", "Teach consistent vitamin K intake rather than avoidance.", "Confirm pregnancy status when relevant because fetal harm is a major concern."],
-    "contraindications": ["pregnancy unless specifically directed for a narrow indication", "active major bleeding", "recent high-risk surgery without prescriber clearance"],
+    "priorityLabs": [
+      "PT/INR",
+      "hemoglobin and hematocrit",
+      "liver function if clinically indicated"
+    ],
+    "nursingAssessments": [
+      "Assess for bleeding and medication or diet changes that affect INR.",
+      "Teach consistent vitamin K intake rather than avoidance.",
+      "Confirm pregnancy status when relevant because fetal harm is a major concern."
+    ],
+    "contraindications": [
+      "pregnancy unless specifically directed for a narrow indication",
+      "active major bleeding",
+      "recent high-risk surgery without prescriber clearance"
+    ],
     "blackBoxWarning": "Can cause major or fatal bleeding; INR monitoring and careful dose adjustment are required.",
-    "nclexHighYield": true
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682277.html"
   },
   {
     "id": "enoxaparin",
     "genericName": "enoxaparin",
-    "brandNames": ["Lovenox"],
+    "brandNames": [
+      "Lovenox"
+    ],
     "class": "low molecular weight heparin anticoagulant",
     "mechanism": "Potentiates antithrombin with greater factor Xa inhibition than thrombin inhibition.",
-    "priorityLabs": ["platelets", "hemoglobin and hematocrit", "creatinine", "anti-Xa in selected clients"],
-    "nursingAssessments": ["Assess for bleeding and injection-site hematoma.", "Use abdominal subcutaneous administration technique and avoid rubbing the site.", "Watch closely with renal impairment because accumulation increases bleeding risk."],
-    "contraindications": ["active major bleeding", "history of heparin-induced thrombocytopenia", "neuraxial anesthesia without timing precautions"],
+    "priorityLabs": [
+      "platelets",
+      "hemoglobin and hematocrit",
+      "creatinine",
+      "anti-Xa in selected clients"
+    ],
+    "nursingAssessments": [
+      "Assess for bleeding and injection-site hematoma.",
+      "Use abdominal subcutaneous administration technique and avoid rubbing the site.",
+      "Watch closely with renal impairment because accumulation increases bleeding risk."
+    ],
+    "contraindications": [
+      "active major bleeding",
+      "history of heparin-induced thrombocytopenia",
+      "neuraxial anesthesia without timing precautions"
+    ],
     "blackBoxWarning": "Spinal or epidural hematomas can occur with neuraxial anesthesia or spinal puncture.",
-    "nclexHighYield": true
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a601210.html"
   },
   {
     "id": "clopidogrel",
     "genericName": "clopidogrel",
-    "brandNames": ["Plavix"],
+    "brandNames": [
+      "Plavix"
+    ],
     "class": "P2Y12 platelet inhibitor",
     "mechanism": "Irreversibly blocks ADP-mediated platelet activation and aggregation, reducing arterial thrombus formation.",
-    "priorityLabs": ["platelets", "hemoglobin and hematocrit"],
-    "nursingAssessments": ["Assess for bleeding, bruising, black stools, and stroke or MI symptoms.", "Review upcoming procedures because platelet effect persists after discontinuation.", "Check for concurrent anticoagulants or NSAIDs that increase bleeding risk."],
-    "contraindications": ["active pathologic bleeding", "hypersensitivity to clopidogrel"],
+    "priorityLabs": [
+      "platelets",
+      "hemoglobin and hematocrit"
+    ],
+    "nursingAssessments": [
+      "Assess for bleeding, bruising, black stools, and stroke or MI symptoms.",
+      "Review upcoming procedures because platelet effect persists after discontinuation.",
+      "Check for concurrent anticoagulants or NSAIDs that increase bleeding risk."
+    ],
+    "contraindications": [
+      "active pathologic bleeding",
+      "hypersensitivity to clopidogrel"
+    ],
     "blackBoxWarning": "Reduced effectiveness can occur in CYP2C19 poor metabolizers.",
-    "nclexHighYield": true
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a601040.html"
   },
   {
     "id": "digoxin",
     "genericName": "digoxin",
-    "brandNames": ["Lanoxin"],
+    "brandNames": [
+      "Lanoxin"
+    ],
     "class": "cardiac glycoside",
     "mechanism": "Increases myocardial contractility and slows AV-node conduction by inhibiting the sodium-potassium ATPase pump.",
-    "priorityLabs": ["digoxin level", "potassium", "magnesium", "creatinine"],
-    "nursingAssessments": ["Check apical pulse before administration and hold per ordered parameters.", "Assess for toxicity: nausea, vomiting, confusion, visual halos, dysrhythmias, or bradycardia.", "Watch hypokalemia because it increases digoxin toxicity risk."],
-    "contraindications": ["ventricular fibrillation", "significant bradycardia or heart block without pacing unless prescribed"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "digoxin level",
+      "potassium",
+      "magnesium",
+      "creatinine"
+    ],
+    "nursingAssessments": [
+      "Check apical pulse before administration and hold per ordered parameters.",
+      "Assess for toxicity: nausea, vomiting, confusion, visual halos, dysrhythmias, or bradycardia.",
+      "Watch hypokalemia because it increases digoxin toxicity risk."
+    ],
+    "contraindications": [
+      "ventricular fibrillation",
+      "significant bradycardia or heart block without pacing unless prescribed"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682301.html"
   },
   {
     "id": "furosemide",
     "genericName": "furosemide",
-    "brandNames": ["Lasix"],
+    "brandNames": [
+      "Lasix"
+    ],
     "class": "loop diuretic",
     "mechanism": "Blocks sodium and chloride reabsorption in the loop of Henle, increasing diuresis.",
-    "priorityLabs": ["potassium", "magnesium", "sodium", "creatinine"],
-    "nursingAssessments": ["Monitor daily weight, intake and output, blood pressure, and edema or crackles.", "Assess for hypokalemia, dehydration, and orthostatic hypotension.", "Monitor hearing with high IV doses or concurrent ototoxic drugs."],
-    "contraindications": ["anuria", "severe dehydration or electrolyte depletion until corrected"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "potassium",
+      "magnesium",
+      "sodium",
+      "creatinine"
+    ],
+    "nursingAssessments": [
+      "Monitor daily weight, intake and output, blood pressure, and edema or crackles.",
+      "Assess for hypokalemia, dehydration, and orthostatic hypotension.",
+      "Monitor hearing with high IV doses or concurrent ototoxic drugs."
+    ],
+    "contraindications": [
+      "anuria",
+      "severe dehydration or electrolyte depletion until corrected"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682858.html"
   },
   {
     "id": "lisinopril",
     "genericName": "lisinopril",
-    "brandNames": ["Prinivil", "Zestril"],
+    "brandNames": [
+      "Prinivil",
+      "Zestril"
+    ],
     "class": "ACE inhibitor",
     "mechanism": "Inhibits conversion of angiotensin I to angiotensin II, lowering vasoconstriction and aldosterone effects.",
-    "priorityLabs": ["potassium", "creatinine", "blood pressure"],
-    "nursingAssessments": ["Assess for cough, hyperkalemia, hypotension, and angioedema.", "Monitor renal function after initiation or dose increases.", "Teach to report face, lip, tongue, or throat swelling immediately."],
-    "contraindications": ["pregnancy", "history of ACE-inhibitor angioedema", "bilateral renal artery stenosis unless specifically managed"],
+    "priorityLabs": [
+      "potassium",
+      "creatinine",
+      "blood pressure"
+    ],
+    "nursingAssessments": [
+      "Assess for cough, hyperkalemia, hypotension, and angioedema.",
+      "Monitor renal function after initiation or dose increases.",
+      "Teach to report face, lip, tongue, or throat swelling immediately."
+    ],
+    "contraindications": [
+      "pregnancy",
+      "history of ACE-inhibitor angioedema",
+      "bilateral renal artery stenosis unless specifically managed"
+    ],
     "blackBoxWarning": "Can cause fetal toxicity when used during pregnancy.",
-    "nclexHighYield": true
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a692051.html"
   },
   {
     "id": "metoprolol",
     "genericName": "metoprolol",
-    "brandNames": ["Lopressor", "Toprol XL"],
+    "brandNames": [
+      "Lopressor",
+      "Toprol XL"
+    ],
     "class": "beta-1 selective blocker",
     "mechanism": "Blocks beta-1 receptors to lower heart rate, contractility, and myocardial oxygen demand.",
-    "priorityLabs": ["heart rate", "blood pressure", "glucose trend in clients with diabetes"],
-    "nursingAssessments": ["Check pulse and blood pressure before administration.", "Assess for bradycardia, hypotension, dizziness, and worsening heart failure symptoms.", "Teach not to stop abruptly unless directed."],
-    "contraindications": ["severe bradycardia", "second- or third-degree heart block without pacing", "cardiogenic shock"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "heart rate",
+      "blood pressure",
+      "glucose trend in clients with diabetes"
+    ],
+    "nursingAssessments": [
+      "Check pulse and blood pressure before administration.",
+      "Assess for bradycardia, hypotension, dizziness, and worsening heart failure symptoms.",
+      "Teach not to stop abruptly unless directed."
+    ],
+    "contraindications": [
+      "severe bradycardia",
+      "second- or third-degree heart block without pacing",
+      "cardiogenic shock"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682864.html"
   },
   {
     "id": "nitroglycerin",
     "genericName": "nitroglycerin",
-    "brandNames": ["Nitrostat", "Nitro-Dur"],
+    "brandNames": [
+      "Nitrostat",
+      "Nitro-Dur"
+    ],
     "class": "nitrate vasodilator",
     "mechanism": "Releases nitric oxide, causing venous and arterial dilation that lowers preload and myocardial oxygen demand.",
-    "priorityLabs": ["blood pressure", "chest pain response", "recent phosphodiesterase-5 inhibitor use"],
-    "nursingAssessments": ["Assess chest pain, blood pressure, and dizziness before and after dosing.", "Hold and notify the prescriber for significant hypotension.", "Teach clients to avoid erectile dysfunction drugs while using nitrates."],
-    "contraindications": ["recent sildenafil, tadalafil, or similar PDE-5 inhibitor use", "severe hypotension", "right ventricular infarction unless directed"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "blood pressure",
+      "chest pain response",
+      "recent phosphodiesterase-5 inhibitor use"
+    ],
+    "nursingAssessments": [
+      "Assess chest pain, blood pressure, and dizziness before and after dosing.",
+      "Hold and notify the prescriber for significant hypotension.",
+      "Teach clients to avoid erectile dysfunction drugs while using nitrates."
+    ],
+    "contraindications": [
+      "recent sildenafil, tadalafil, or similar PDE-5 inhibitor use",
+      "severe hypotension",
+      "right ventricular infarction unless directed"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a601086.html"
   },
   {
     "id": "amiodarone",
     "genericName": "amiodarone",
-    "brandNames": ["Pacerone", "Cordarone"],
+    "brandNames": [
+      "Pacerone",
+      "Cordarone"
+    ],
     "class": "class III antiarrhythmic",
     "mechanism": "Prolongs cardiac repolarization and refractory period while also affecting sodium, calcium, and beta receptors.",
-    "priorityLabs": ["ECG and QT interval", "potassium", "magnesium", "thyroid function", "liver function"],
-    "nursingAssessments": ["Monitor rhythm, QT prolongation, bradycardia, and hypotension.", "Assess pulmonary symptoms such as new cough or dyspnea.", "Teach photosensitivity precautions and the need for long-term monitoring."],
-    "contraindications": ["severe sinus-node dysfunction without pacing", "second- or third-degree AV block without pacing", "cardiogenic shock"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "ECG and QT interval",
+      "potassium",
+      "magnesium",
+      "thyroid function",
+      "liver function"
+    ],
+    "nursingAssessments": [
+      "Monitor rhythm, QT prolongation, bradycardia, and hypotension.",
+      "Assess pulmonary symptoms such as new cough or dyspnea.",
+      "Teach photosensitivity precautions and the need for long-term monitoring."
+    ],
+    "contraindications": [
+      "severe sinus-node dysfunction without pacing",
+      "second- or third-degree AV block without pacing",
+      "cardiogenic shock"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a687009.html"
   },
   {
     "id": "regular-insulin",
     "genericName": "regular insulin",
-    "brandNames": ["Humulin R", "Novolin R"],
+    "brandNames": [
+      "Humulin R",
+      "Novolin R"
+    ],
     "class": "short-acting insulin",
     "mechanism": "Promotes cellular glucose uptake and shifts potassium into cells.",
-    "priorityLabs": ["blood glucose", "potassium", "ketones when DKA is suspected"],
-    "nursingAssessments": ["Check glucose before administration and monitor for hypoglycemia.", "Use IV regular insulin for DKA protocols when ordered.", "Monitor potassium because insulin therapy can worsen hypokalemia."],
-    "contraindications": ["hypoglycemia", "uncorrected hypokalemia for IV insulin protocols unless urgently directed"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "blood glucose",
+      "potassium",
+      "ketones when DKA is suspected"
+    ],
+    "nursingAssessments": [
+      "Check glucose before administration and monitor for hypoglycemia.",
+      "Use IV regular insulin for DKA protocols when ordered.",
+      "Monitor potassium because insulin therapy can worsen hypokalemia."
+    ],
+    "contraindications": [
+      "hypoglycemia",
+      "uncorrected hypokalemia for IV insulin protocols unless urgently directed"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682611.html"
   },
   {
     "id": "insulin-glargine",
     "genericName": "insulin glargine",
-    "brandNames": ["Lantus", "Basaglar", "Toujeo"],
+    "brandNames": [
+      "Lantus",
+      "Basaglar",
+      "Toujeo"
+    ],
     "class": "long-acting basal insulin",
     "mechanism": "Provides slow basal insulin release to lower fasting and between-meal glucose.",
-    "priorityLabs": ["fasting glucose", "A1C", "blood glucose with symptoms"],
-    "nursingAssessments": ["Do not mix with other insulins in the same syringe.", "Assess for nocturnal or fasting hypoglycemia.", "Teach consistent timing and hypoglycemia treatment."],
-    "contraindications": ["hypoglycemia", "hypersensitivity to insulin glargine"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "fasting glucose",
+      "A1C",
+      "blood glucose with symptoms"
+    ],
+    "nursingAssessments": [
+      "Do not mix with other insulins in the same syringe.",
+      "Assess for nocturnal or fasting hypoglycemia.",
+      "Teach consistent timing and hypoglycemia treatment."
+    ],
+    "contraindications": [
+      "hypoglycemia",
+      "hypersensitivity to insulin glargine"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a600027.html"
   },
   {
     "id": "metformin",
     "genericName": "metformin",
-    "brandNames": ["Glucophage"],
+    "brandNames": [
+      "Glucophage"
+    ],
     "class": "biguanide antihyperglycemic",
     "mechanism": "Decreases hepatic glucose production and improves insulin sensitivity.",
-    "priorityLabs": ["creatinine and eGFR", "blood glucose", "A1C"],
-    "nursingAssessments": ["Assess renal function before use and around contrast procedures per policy.", "Monitor for severe GI symptoms, malaise, myalgias, or respiratory distress that could suggest lactic acidosis.", "Teach that metformin does not usually cause hypoglycemia by itself."],
-    "contraindications": ["severe renal impairment", "metabolic acidosis", "acute condition causing hypoxia or poor perfusion unless directed"],
+    "priorityLabs": [
+      "creatinine and eGFR",
+      "blood glucose",
+      "A1C"
+    ],
+    "nursingAssessments": [
+      "Assess renal function before use and around contrast procedures per policy.",
+      "Monitor for severe GI symptoms, malaise, myalgias, or respiratory distress that could suggest lactic acidosis.",
+      "Teach that metformin does not usually cause hypoglycemia by itself."
+    ],
+    "contraindications": [
+      "severe renal impairment",
+      "metabolic acidosis",
+      "acute condition causing hypoxia or poor perfusion unless directed"
+    ],
     "blackBoxWarning": "Lactic acidosis is a rare but serious risk, especially with renal impairment or hypoxic states.",
-    "nclexHighYield": true
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a696005.html"
   },
   {
     "id": "levothyroxine",
     "genericName": "levothyroxine",
-    "brandNames": ["Synthroid", "Levoxyl"],
+    "brandNames": [
+      "Synthroid",
+      "Levoxyl"
+    ],
     "class": "thyroid hormone replacement",
     "mechanism": "Replaces thyroxine, supporting metabolic activity and normal thyroid hormone levels.",
-    "priorityLabs": ["TSH", "free T4", "heart rate"],
-    "nursingAssessments": ["Assess for overreplacement: tachycardia, palpitations, heat intolerance, and weight loss.", "Teach morning administration on an empty stomach with consistent timing.", "Separate from calcium or iron supplements because absorption can decrease."],
-    "contraindications": ["uncorrected adrenal insufficiency", "acute myocardial infarction unless directed"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "TSH",
+      "free T4",
+      "heart rate"
+    ],
+    "nursingAssessments": [
+      "Assess for overreplacement: tachycardia, palpitations, heat intolerance, and weight loss.",
+      "Teach morning administration on an empty stomach with consistent timing.",
+      "Separate from calcium or iron supplements because absorption can decrease."
+    ],
+    "contraindications": [
+      "uncorrected adrenal insufficiency",
+      "acute myocardial infarction unless directed"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682461.html"
   },
   {
     "id": "vancomycin",
     "genericName": "vancomycin",
-    "brandNames": ["Vancocin"],
+    "brandNames": [
+      "Vancocin"
+    ],
     "class": "glycopeptide antibiotic",
     "mechanism": "Inhibits bacterial cell-wall synthesis, especially against gram-positive organisms.",
-    "priorityLabs": ["vancomycin trough or AUC monitoring per protocol", "creatinine", "culture and sensitivity"],
-    "nursingAssessments": ["Monitor renal function and infusion reactions.", "Infuse at the ordered rate to reduce flushing and hypotension.", "Assess for hearing changes when risk factors for ototoxicity are present."],
-    "contraindications": ["hypersensitivity to vancomycin"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "vancomycin trough or AUC monitoring per protocol",
+      "creatinine",
+      "culture and sensitivity"
+    ],
+    "nursingAssessments": [
+      "Monitor renal function and infusion reactions.",
+      "Infuse at the ordered rate to reduce flushing and hypotension.",
+      "Assess for hearing changes when risk factors for ototoxicity are present."
+    ],
+    "contraindications": [
+      "hypersensitivity to vancomycin"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a604038.html"
   },
   {
     "id": "gentamicin",
     "genericName": "gentamicin",
-    "brandNames": ["Garamycin"],
+    "brandNames": [
+      "Garamycin"
+    ],
     "class": "aminoglycoside antibiotic",
     "mechanism": "Binds the bacterial 30S ribosomal subunit, impairing protein synthesis.",
-    "priorityLabs": ["peak and trough levels when ordered", "creatinine", "urine output"],
-    "nursingAssessments": ["Assess renal function, urine output, and hearing or balance changes.", "Monitor drug levels to reduce nephrotoxicity and ototoxicity.", "Use culture data to confirm appropriate coverage."],
-    "contraindications": ["hypersensitivity to aminoglycosides", "use with caution in renal impairment or myasthenia gravis"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "peak and trough levels when ordered",
+      "creatinine",
+      "urine output"
+    ],
+    "nursingAssessments": [
+      "Assess renal function, urine output, and hearing or balance changes.",
+      "Monitor drug levels to reduce nephrotoxicity and ototoxicity.",
+      "Use culture data to confirm appropriate coverage."
+    ],
+    "contraindications": [
+      "hypersensitivity to aminoglycosides",
+      "use with caution in renal impairment or myasthenia gravis"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682275.html"
   },
   {
     "id": "lithium",
     "genericName": "lithium",
-    "brandNames": ["Lithobid"],
+    "brandNames": [
+      "Lithobid"
+    ],
     "class": "mood stabilizer",
     "mechanism": "Modulates neurotransmission and second-messenger signaling to reduce manic symptoms.",
-    "priorityLabs": ["serum lithium level", "sodium", "creatinine", "TSH"],
-    "nursingAssessments": ["Assess for toxicity: vomiting, diarrhea, coarse tremor, confusion, ataxia, or seizures.", "Teach consistent sodium and fluid intake.", "Monitor renal and thyroid function during therapy."],
-    "contraindications": ["significant renal impairment unless specialist managed", "severe dehydration or sodium depletion", "pregnancy unless benefits outweigh risks"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "serum lithium level",
+      "sodium",
+      "creatinine",
+      "TSH"
+    ],
+    "nursingAssessments": [
+      "Assess for toxicity: vomiting, diarrhea, coarse tremor, confusion, ataxia, or seizures.",
+      "Teach consistent sodium and fluid intake.",
+      "Monitor renal and thyroid function during therapy."
+    ],
+    "contraindications": [
+      "significant renal impairment unless specialist managed",
+      "severe dehydration or sodium depletion",
+      "pregnancy unless benefits outweigh risks"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a681039.html"
   },
   {
     "id": "magnesium-sulfate",
     "genericName": "magnesium sulfate",
-    "brandNames": ["magnesium sulfate"],
+    "brandNames": [
+      "magnesium sulfate"
+    ],
     "class": "electrolyte replacement and anticonvulsant",
     "mechanism": "Depresses neuromuscular transmission and stabilizes excitable membranes, reducing seizure activity.",
-    "priorityLabs": ["serum magnesium when ordered", "respiratory rate", "deep tendon reflexes", "urine output"],
-    "nursingAssessments": ["Monitor respirations, reflexes, level of consciousness, and urine output.", "Keep calcium gluconate available for toxicity when used for preeclampsia.", "Assess seizure activity and blood pressure in obstetric use."],
-    "contraindications": ["heart block", "severe renal failure without close monitoring", "myasthenia gravis unless specialist directed"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "serum magnesium when ordered",
+      "respiratory rate",
+      "deep tendon reflexes",
+      "urine output"
+    ],
+    "nursingAssessments": [
+      "Monitor respirations, reflexes, level of consciousness, and urine output.",
+      "Keep calcium gluconate available for toxicity when used for preeclampsia.",
+      "Assess seizure activity and blood pressure in obstetric use."
+    ],
+    "contraindications": [
+      "heart block",
+      "severe renal failure without close monitoring",
+      "myasthenia gravis unless specialist directed"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information index",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/index.html"
   },
   {
     "id": "albuterol",
     "genericName": "albuterol",
-    "brandNames": ["ProAir", "Ventolin", "Proventil"],
+    "brandNames": [
+      "ProAir",
+      "Ventolin",
+      "Proventil"
+    ],
     "class": "short-acting beta-2 agonist bronchodilator",
     "mechanism": "Stimulates beta-2 receptors in bronchial smooth muscle, causing bronchodilation.",
-    "priorityLabs": ["respiratory rate", "oxygen saturation", "heart rate", "potassium with high-dose therapy"],
-    "nursingAssessments": ["Assess breath sounds, work of breathing, and response after treatment.", "Monitor tachycardia, tremor, and nervousness.", "Teach rescue inhaler use and when to seek urgent care."],
-    "contraindications": ["hypersensitivity to albuterol"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "respiratory rate",
+      "oxygen saturation",
+      "heart rate",
+      "potassium with high-dose therapy"
+    ],
+    "nursingAssessments": [
+      "Assess breath sounds, work of breathing, and response after treatment.",
+      "Monitor tachycardia, tremor, and nervousness.",
+      "Teach rescue inhaler use and when to seek urgent care."
+    ],
+    "contraindications": [
+      "hypersensitivity to albuterol"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682145.html"
   },
   {
     "id": "prednisone",
     "genericName": "prednisone",
-    "brandNames": ["Deltasone"],
+    "brandNames": [
+      "Deltasone"
+    ],
     "class": "systemic corticosteroid",
     "mechanism": "Suppresses inflammatory and immune responses through glucocorticoid receptor activity.",
-    "priorityLabs": ["blood glucose", "white blood cell trend", "potassium with high doses"],
-    "nursingAssessments": ["Assess for infection, hyperglycemia, mood changes, fluid retention, and GI irritation.", "Teach not to stop long-term therapy abruptly.", "Use the lowest effective dose and taper when ordered."],
-    "contraindications": ["systemic fungal infection", "live vaccine use during high-dose immunosuppression unless directed"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "blood glucose",
+      "white blood cell trend",
+      "potassium with high doses"
+    ],
+    "nursingAssessments": [
+      "Assess for infection, hyperglycemia, mood changes, fluid retention, and GI irritation.",
+      "Teach not to stop long-term therapy abruptly.",
+      "Use the lowest effective dose and taper when ordered."
+    ],
+    "contraindications": [
+      "systemic fungal infection",
+      "live vaccine use during high-dose immunosuppression unless directed"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a601102.html"
   },
   {
     "id": "phenytoin",
     "genericName": "phenytoin",
-    "brandNames": ["Dilantin"],
+    "brandNames": [
+      "Dilantin"
+    ],
     "class": "antiepileptic",
     "mechanism": "Stabilizes neuronal membranes by slowing sodium-channel recovery during repetitive firing.",
-    "priorityLabs": ["phenytoin level", "albumin", "liver function", "CBC when ordered"],
-    "nursingAssessments": ["Assess for nystagmus, ataxia, slurred speech, rash, and gingival hyperplasia.", "Use filtered tubing for IV administration per policy and monitor cardiac rhythm with IV loading.", "Teach oral hygiene and adherence."],
-    "contraindications": ["sinus bradycardia", "sinoatrial block", "second- or third-degree AV block without pacing"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "phenytoin level",
+      "albumin",
+      "liver function",
+      "CBC when ordered"
+    ],
+    "nursingAssessments": [
+      "Assess for nystagmus, ataxia, slurred speech, rash, and gingival hyperplasia.",
+      "Use filtered tubing for IV administration per policy and monitor cardiac rhythm with IV loading.",
+      "Teach oral hygiene and adherence."
+    ],
+    "contraindications": [
+      "sinus bradycardia",
+      "sinoatrial block",
+      "second- or third-degree AV block without pacing"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682022.html"
   },
   {
     "id": "naloxone",
     "genericName": "naloxone",
-    "brandNames": ["Narcan"],
+    "brandNames": [
+      "Narcan"
+    ],
     "class": "opioid antagonist",
     "mechanism": "Competitively blocks opioid receptors, reversing opioid-induced respiratory and CNS depression.",
-    "priorityLabs": ["respiratory rate", "oxygen saturation", "level of consciousness"],
-    "nursingAssessments": ["Assess airway, breathing, sedation, and recurrent respiratory depression.", "Prepare for acute withdrawal in opioid-dependent clients.", "Repeat dosing may be needed because naloxone can wear off before the opioid."],
-    "contraindications": ["hypersensitivity to naloxone"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "respiratory rate",
+      "oxygen saturation",
+      "level of consciousness"
+    ],
+    "nursingAssessments": [
+      "Assess airway, breathing, sedation, and recurrent respiratory depression.",
+      "Prepare for acute withdrawal in opioid-dependent clients.",
+      "Repeat dosing may be needed because naloxone can wear off before the opioid."
+    ],
+    "contraindications": [
+      "hypersensitivity to naloxone"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a612022.html"
   },
   {
     "id": "epinephrine",
     "genericName": "epinephrine",
-    "brandNames": ["Adrenalin", "EpiPen"],
+    "brandNames": [
+      "Adrenalin",
+      "EpiPen"
+    ],
     "class": "adrenergic agonist",
     "mechanism": "Stimulates alpha and beta receptors to increase vasoconstriction, bronchodilation, heart rate, and contractility.",
-    "priorityLabs": ["heart rate", "blood pressure", "ECG rhythm", "oxygen saturation"],
-    "nursingAssessments": ["Use promptly for anaphylaxis per protocol.", "Monitor chest pain, severe hypertension, dysrhythmia, and perfusion.", "Teach autoinjector technique and emergency follow-up after use."],
-    "contraindications": ["no absolute contraindication in life-threatening anaphylaxis"],
-    "nclexHighYield": true
+    "priorityLabs": [
+      "heart rate",
+      "blood pressure",
+      "ECG rhythm",
+      "oxygen saturation"
+    ],
+    "nursingAssessments": [
+      "Use promptly for anaphylaxis per protocol.",
+      "Monitor chest pain, severe hypertension, dysrhythmia, and perfusion.",
+      "Teach autoinjector technique and emergency follow-up after use."
+    ],
+    "contraindications": [
+      "no absolute contraindication in life-threatening anaphylaxis"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a603002.html"
   },
   {
     "id": "acetaminophen",
     "genericName": "acetaminophen",
-    "brandNames": ["Tylenol"],
+    "brandNames": [
+      "Tylenol"
+    ],
     "class": "non-opioid analgesic and antipyretic",
     "mechanism": "Reduces fever and pain through central prostaglandin-related effects.",
-    "priorityLabs": ["total daily dose", "liver function", "acetaminophen level in overdose"],
-    "nursingAssessments": ["Add all sources to prevent unintentional overdose.", "Assess alcohol use and liver disease risk.", "Know that acetylcysteine is used for significant overdose when indicated."],
-    "contraindications": ["severe active liver disease", "hypersensitivity to acetaminophen"],
+    "priorityLabs": [
+      "total daily dose",
+      "liver function",
+      "acetaminophen level in overdose"
+    ],
+    "nursingAssessments": [
+      "Add all sources to prevent unintentional overdose.",
+      "Assess alcohol use and liver disease risk.",
+      "Know that acetylcysteine is used for significant overdose when indicated."
+    ],
+    "contraindications": [
+      "severe active liver disease",
+      "hypersensitivity to acetaminophen"
+    ],
+    "nclexHighYield": true,
+    "sourceName": "MedlinePlus Drug Information",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a611019.html"
+  },
+  {
+    "id": "ceftriaxone",
+    "genericName": "ceftriaxone",
+    "brandNames": [
+      "Rocephin"
+    ],
+    "class": "third-generation cephalosporin antibiotic",
+    "mechanism": "Binds bacterial penicillin-binding proteins and inhibits cell-wall synthesis, causing bacterial cell death.",
+    "indications": [
+      "serious susceptible bacterial infection",
+      "pneumonia, meningitis, sepsis, or gonorrhea when ordered"
+    ],
+    "priorityLabs": [
+      "culture and sensitivity",
+      "white blood cell count",
+      "bilirubin risk in neonates"
+    ],
+    "nursingAssessments": [
+      "Assess for cephalosporin or severe penicillin allergy before administration.",
+      "Monitor for diarrhea, abdominal cramping, or findings concerning for C. difficile infection.",
+      "Avoid mixing or co-infusing with calcium-containing IV solutions in neonates."
+    ],
+    "contraindications": [
+      "cephalosporin hypersensitivity",
+      "hyperbilirubinemic neonate or premature neonate",
+      "neonate receiving calcium-containing IV products"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a685032.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "azithromycin",
+    "genericName": "azithromycin",
+    "brandNames": [
+      "Zithromax",
+      "Z-Pak"
+    ],
+    "class": "macrolide antibiotic",
+    "mechanism": "Binds the 50S ribosomal subunit and suppresses bacterial protein synthesis.",
+    "indications": [
+      "susceptible respiratory, skin, or sexually transmitted infection"
+    ],
+    "priorityLabs": [
+      "culture and sensitivity when available",
+      "liver function if symptoms occur",
+      "ECG or QT risk review"
+    ],
+    "nursingAssessments": [
+      "Assess for palpitations, syncope, or other dysrhythmia symptoms in clients with QT risk.",
+      "Monitor for severe diarrhea or signs of C. difficile infection.",
+      "Teach the client to report jaundice, dark urine, or severe abdominal pain."
+    ],
+    "contraindications": [
+      "macrolide hypersensitivity",
+      "prior cholestatic jaundice or hepatic dysfunction with azithromycin"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a697037.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "ciprofloxacin",
+    "genericName": "ciprofloxacin",
+    "brandNames": [
+      "Cipro"
+    ],
+    "class": "fluoroquinolone antibiotic",
+    "mechanism": "Inhibits bacterial DNA gyrase and topoisomerase IV, impairing DNA replication.",
+    "indications": [
+      "susceptible urinary, gastrointestinal, bone, joint, or respiratory infection"
+    ],
+    "priorityLabs": [
+      "culture and sensitivity",
+      "creatinine",
+      "blood glucose in diabetes",
+      "INR if taking warfarin"
+    ],
+    "nursingAssessments": [
+      "Assess tendon pain, swelling, neuropathy symptoms, confusion, or seizure risk.",
+      "Monitor for severe diarrhea, QT prolongation risk, and glucose instability.",
+      "Teach clients to separate doses from antacids, iron, zinc, calcium, and dairy-heavy intake."
+    ],
+    "contraindications": [
+      "fluoroquinolone hypersensitivity",
+      "concurrent tizanidine use",
+      "myasthenia gravis unless no safer alternative exists"
+    ],
+    "blackBoxWarning": "Fluoroquinolones can cause disabling tendon, nerve, CNS, and myasthenia gravis adverse effects.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a688016.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "amoxicillin",
+    "genericName": "amoxicillin",
+    "brandNames": [
+      "Amoxil"
+    ],
+    "class": "aminopenicillin antibiotic",
+    "mechanism": "Inhibits bacterial cell-wall synthesis by binding penicillin-binding proteins.",
+    "indications": [
+      "susceptible ear, sinus, respiratory, urinary, skin, or H. pylori-related infection"
+    ],
+    "priorityLabs": [
+      "culture and sensitivity when available",
+      "renal function for dose adjustment"
+    ],
+    "nursingAssessments": [
+      "Assess for penicillin allergy, rash, wheezing, or anaphylaxis.",
+      "Monitor for diarrhea and possible C. difficile infection.",
+      "Teach completion of the full prescribed course unless a serious reaction occurs."
+    ],
+    "contraindications": [
+      "serious penicillin hypersensitivity",
+      "prior severe beta-lactam reaction"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a685001.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "sulfamethoxazole-trimethoprim",
+    "genericName": "sulfamethoxazole-trimethoprim",
+    "brandNames": [
+      "Bactrim",
+      "Septra",
+      "Co-trimoxazole"
+    ],
+    "class": "sulfonamide antifolate antibiotic",
+    "mechanism": "Blocks sequential folate synthesis steps, reducing bacterial nucleotide production.",
+    "indications": [
+      "susceptible urinary, respiratory, skin, or Pneumocystis infection"
+    ],
+    "priorityLabs": [
+      "CBC",
+      "creatinine",
+      "potassium",
+      "culture and sensitivity"
+    ],
+    "nursingAssessments": [
+      "Assess for rash, mucosal lesions, fever, or signs of Stevens-Johnson syndrome.",
+      "Monitor potassium, renal function, and blood counts during higher-risk therapy.",
+      "Encourage adequate fluids unless contraindicated to reduce crystalluria risk."
+    ],
+    "contraindications": [
+      "sulfonamide hypersensitivity",
+      "infant younger than 2 months",
+      "marked liver damage or severe renal impairment without monitoring",
+      "megaloblastic anemia due to folate deficiency"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a684026.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "isoniazid",
+    "genericName": "isoniazid",
+    "brandNames": [
+      "Nydrazid"
+    ],
+    "class": "antimycobacterial",
+    "mechanism": "Inhibits mycolic acid synthesis, weakening the Mycobacterium tuberculosis cell wall.",
+    "indications": [
+      "latent or active tuberculosis treatment when prescribed"
+    ],
+    "priorityLabs": [
+      "AST and ALT",
+      "bilirubin if symptoms occur",
+      "tuberculosis regimen adherence"
+    ],
+    "nursingAssessments": [
+      "Assess for fatigue, anorexia, nausea, dark urine, jaundice, or right upper quadrant pain.",
+      "Monitor for peripheral neuropathy and administer pyridoxine when prescribed.",
+      "Teach avoidance of alcohol because hepatotoxicity risk increases."
+    ],
+    "contraindications": [
+      "acute liver disease",
+      "prior severe isoniazid-associated hepatic injury",
+      "severe isoniazid hypersensitivity"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682401.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "rifampin",
+    "genericName": "rifampin",
+    "brandNames": [
+      "Rifadin",
+      "Rimactane"
+    ],
+    "class": "rifamycin antimycobacterial",
+    "mechanism": "Inhibits bacterial DNA-dependent RNA polymerase, suppressing RNA synthesis.",
+    "indications": [
+      "active tuberculosis combination therapy",
+      "selected meningococcal carrier prophylaxis"
+    ],
+    "priorityLabs": [
+      "liver function",
+      "CBC when ordered",
+      "culture response"
+    ],
+    "nursingAssessments": [
+      "Teach that urine, sweat, saliva, and tears can turn orange-red.",
+      "Review major drug interactions, including oral contraceptives, warfarin, and antiretrovirals.",
+      "Assess for hepatotoxicity symptoms and adherence to combination therapy."
+    ],
+    "contraindications": [
+      "rifamycin hypersensitivity",
+      "use with certain protease inhibitors or interacting antivirals unless directed"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682403.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "fluconazole",
+    "genericName": "fluconazole",
+    "brandNames": [
+      "Diflucan"
+    ],
+    "class": "triazole antifungal",
+    "mechanism": "Inhibits fungal sterol synthesis, disrupting fungal cell membrane integrity.",
+    "indications": [
+      "susceptible Candida or cryptococcal infection"
+    ],
+    "priorityLabs": [
+      "liver function",
+      "renal function",
+      "QT risk review"
+    ],
+    "nursingAssessments": [
+      "Assess for jaundice, dark urine, severe rash, or persistent nausea.",
+      "Review interacting drugs that increase QT prolongation or bleeding risk.",
+      "Monitor renal function because dose adjustment may be needed."
+    ],
+    "contraindications": [
+      "fluconazole hypersensitivity",
+      "concurrent QT-prolonging drugs specifically contraindicated by prescriber guidance"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a690002.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "morphine",
+    "genericName": "morphine",
+    "brandNames": [
+      "MS Contin",
+      "Duramorph"
+    ],
+    "class": "opioid analgesic",
+    "mechanism": "Stimulates mu-opioid receptors to reduce pain transmission and alter pain perception.",
+    "indications": [
+      "moderate to severe pain",
+      "selected dyspnea or palliative indications when prescribed"
+    ],
+    "priorityLabs": [
+      "respiratory rate",
+      "oxygen saturation",
+      "sedation score",
+      "blood pressure"
+    ],
+    "nursingAssessments": [
+      "Assess airway, respiratory rate, sedation, blood pressure, and pain response before and after dosing.",
+      "Keep naloxone available and monitor more closely with benzodiazepines or other sedatives.",
+      "Institute bowel regimen and fall precautions when clinically appropriate."
+    ],
+    "contraindications": [
+      "significant respiratory depression",
+      "acute or severe bronchial asthma in an unmonitored setting",
+      "known or suspected GI obstruction"
+    ],
+    "blackBoxWarning": "Opioids can cause addiction, misuse, life-threatening respiratory depression, and fatal sedation with benzodiazepines or alcohol.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a601161.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "fentanyl",
+    "genericName": "fentanyl",
+    "brandNames": [
+      "Duragesic",
+      "Sublimaze"
+    ],
+    "class": "potent opioid analgesic",
+    "mechanism": "Stimulates mu-opioid receptors, producing analgesia and dose-related respiratory depression.",
+    "indications": [
+      "severe pain requiring opioid therapy",
+      "anesthesia or procedural analgesia when ordered"
+    ],
+    "priorityLabs": [
+      "respiratory rate",
+      "oxygen saturation",
+      "sedation score",
+      "blood pressure"
+    ],
+    "nursingAssessments": [
+      "Assess opioid tolerance and respiratory status before transdermal or high-potency use.",
+      "Avoid heat over transdermal patches because absorption can increase dangerously.",
+      "Monitor for recurrent respiratory depression and keep naloxone available."
+    ],
+    "contraindications": [
+      "opioid non-tolerant client for transdermal fentanyl",
+      "significant respiratory depression",
+      "acute or severe asthma in an unmonitored setting"
+    ],
+    "blackBoxWarning": "Fentanyl can cause fatal respiratory depression, accidental exposure, misuse, and dangerous interactions with CNS depressants.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a605043.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "oxycodone",
+    "genericName": "oxycodone",
+    "brandNames": [
+      "OxyContin",
+      "Roxicodone"
+    ],
+    "class": "opioid analgesic",
+    "mechanism": "Stimulates mu-opioid receptors to decrease pain signaling and pain perception.",
+    "indications": [
+      "moderate to severe pain requiring opioid therapy"
+    ],
+    "priorityLabs": [
+      "respiratory rate",
+      "oxygen saturation",
+      "sedation score",
+      "bowel function"
+    ],
+    "nursingAssessments": [
+      "Assess sedation and respiratory rate before giving and after peak effect.",
+      "Monitor constipation, nausea, urinary retention, falls, and misuse risk.",
+      "Teach avoidance of alcohol, benzodiazepines, and unprescribed sedatives."
+    ],
+    "contraindications": [
+      "significant respiratory depression",
+      "acute or severe bronchial asthma in an unmonitored setting",
+      "known or suspected GI obstruction"
+    ],
+    "blackBoxWarning": "Oxycodone carries risks of addiction, misuse, life-threatening respiratory depression, and fatal interactions with CNS depressants.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682132.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "lorazepam",
+    "genericName": "lorazepam",
+    "brandNames": [
+      "Ativan"
+    ],
+    "class": "benzodiazepine",
+    "mechanism": "Enhances GABA-A receptor activity, increasing inhibitory neurotransmission in the CNS.",
+    "indications": [
+      "anxiety",
+      "status epilepticus or procedural sedation when ordered",
+      "alcohol withdrawal support when prescribed"
+    ],
+    "priorityLabs": [
+      "respiratory rate",
+      "sedation score",
+      "blood pressure",
+      "fall risk"
+    ],
+    "nursingAssessments": [
+      "Assess sedation, respiratory rate, blood pressure, and fall risk.",
+      "Use extra caution with opioids, alcohol, or other CNS depressants.",
+      "Monitor for paradoxical agitation, confusion, and withdrawal with abrupt discontinuation."
+    ],
+    "contraindications": [
+      "benzodiazepine hypersensitivity",
+      "acute narrow-angle glaucoma unless specifically managed"
+    ],
+    "blackBoxWarning": "Benzodiazepines with opioids can cause profound sedation, respiratory depression, coma, and death.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682053.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "diazepam",
+    "genericName": "diazepam",
+    "brandNames": [
+      "Valium",
+      "Diastat"
+    ],
+    "class": "benzodiazepine",
+    "mechanism": "Enhances GABA-A receptor activity, reducing neuronal excitability and CNS overstimulation.",
+    "indications": [
+      "anxiety",
+      "muscle spasm",
+      "seizure rescue or alcohol withdrawal when ordered"
+    ],
+    "priorityLabs": [
+      "respiratory rate",
+      "sedation score",
+      "blood pressure",
+      "liver function if prolonged therapy"
+    ],
+    "nursingAssessments": [
+      "Assess respiratory status, sedation, gait stability, and fall risk.",
+      "Avoid combining with opioids or alcohol unless explicitly directed and monitored.",
+      "Teach not to stop chronic therapy abruptly because withdrawal and seizures can occur."
+    ],
+    "contraindications": [
+      "severe respiratory insufficiency without monitoring",
+      "sleep apnea syndrome",
+      "myasthenia gravis",
+      "acute narrow-angle glaucoma unless managed"
+    ],
+    "blackBoxWarning": "Benzodiazepines with opioids can cause profound sedation, respiratory depression, coma, and death.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682047.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "haloperidol",
+    "genericName": "haloperidol",
+    "brandNames": [
+      "Haldol"
+    ],
+    "class": "first-generation antipsychotic",
+    "mechanism": "Blocks dopamine D2 receptors, reducing psychotic symptoms and agitation.",
+    "indications": [
+      "schizophrenia",
+      "acute agitation when prescribed",
+      "Tourette disorder in selected clients"
+    ],
+    "priorityLabs": [
+      "ECG and QT interval when risk is present",
+      "potassium",
+      "magnesium",
+      "temperature and rigidity assessment"
+    ],
+    "nursingAssessments": [
+      "Assess extrapyramidal symptoms, acute dystonia, akathisia, and tardive dyskinesia.",
+      "Monitor for neuroleptic malignant syndrome: fever, rigidity, autonomic instability, and confusion.",
+      "Use fall precautions and monitor QT risk with IV or high-dose therapy."
+    ],
+    "contraindications": [
+      "Parkinson disease or Lewy body dementia unless specialist directed",
+      "severe CNS depression",
+      "haloperidol hypersensitivity"
+    ],
+    "blackBoxWarning": "Antipsychotics increase mortality risk in older adults with dementia-related psychosis.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682180.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "risperidone",
+    "genericName": "risperidone",
+    "brandNames": [
+      "Risperdal"
+    ],
+    "class": "second-generation antipsychotic",
+    "mechanism": "Blocks dopamine D2 and serotonin 5-HT2 receptors to reduce psychotic and mood symptoms.",
+    "indications": [
+      "schizophrenia",
+      "bipolar mania",
+      "irritability associated with autism when prescribed"
+    ],
+    "priorityLabs": [
+      "weight and BMI",
+      "fasting glucose or A1C",
+      "lipid panel",
+      "movement-disorder screening"
+    ],
+    "nursingAssessments": [
+      "Monitor weight, glucose, lipids, orthostatic hypotension, and sedation.",
+      "Assess extrapyramidal symptoms, tardive dyskinesia, and prolactin-related effects.",
+      "Watch for neuroleptic malignant syndrome findings."
+    ],
+    "contraindications": [
+      "risperidone or paliperidone hypersensitivity"
+    ],
+    "blackBoxWarning": "Antipsychotics increase mortality risk in older adults with dementia-related psychosis.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a694015.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "sertraline",
+    "genericName": "sertraline",
+    "brandNames": [
+      "Zoloft"
+    ],
+    "class": "selective serotonin reuptake inhibitor",
+    "mechanism": "Inhibits serotonin reuptake, increasing serotonergic activity in the CNS.",
+    "indications": [
+      "depression",
+      "anxiety disorders",
+      "PTSD",
+      "OCD or panic disorder when prescribed"
+    ],
+    "priorityLabs": [
+      "suicidal ideation monitoring",
+      "serum sodium in high-risk clients",
+      "bleeding risk review"
+    ],
+    "nursingAssessments": [
+      "Assess mood, suicidality, sleep, agitation, and therapeutic response over several weeks.",
+      "Monitor for serotonin syndrome, especially with other serotonergic drugs.",
+      "Review bleeding risk with NSAIDs, aspirin, anticoagulants, or antiplatelets."
+    ],
+    "contraindications": [
+      "MAOI use within the unsafe washout period",
+      "pimozide use",
+      "sertraline hypersensitivity"
+    ],
+    "blackBoxWarning": "Antidepressants can increase suicidal thoughts and behaviors in children, adolescents, and young adults.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a697048.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "aspirin",
+    "genericName": "aspirin",
+    "brandNames": [
+      "Bayer",
+      "Ecotrin"
+    ],
+    "class": "salicylate antiplatelet and analgesic",
+    "mechanism": "Irreversibly inhibits cyclooxygenase, reducing platelet aggregation and prostaglandin formation.",
+    "indications": [
+      "pain or fever",
+      "secondary cardiovascular prevention when prescribed",
+      "acute coronary syndrome protocols"
+    ],
+    "priorityLabs": [
+      "bleeding assessment",
+      "hemoglobin and hematocrit",
+      "renal function",
+      "salicylate level in overdose"
+    ],
+    "nursingAssessments": [
+      "Assess for GI bleeding, bruising, tinnitus, bronchospasm, and allergy.",
+      "Avoid use in children or teenagers with viral illness because of Reye syndrome risk.",
+      "Review concurrent anticoagulants, antiplatelets, NSAIDs, and alcohol use."
+    ],
+    "contraindications": [
+      "aspirin or NSAID hypersensitivity",
+      "active major bleeding",
+      "children or teenagers with viral illness unless specifically directed"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682878.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "atorvastatin",
+    "genericName": "atorvastatin",
+    "brandNames": [
+      "Lipitor"
+    ],
+    "class": "HMG-CoA reductase inhibitor",
+    "mechanism": "Inhibits hepatic cholesterol synthesis, increasing LDL receptor activity and lowering LDL cholesterol.",
+    "indications": [
+      "hyperlipidemia",
+      "ASCVD risk reduction"
+    ],
+    "priorityLabs": [
+      "lipid panel",
+      "liver function if symptoms occur",
+      "CK if muscle symptoms occur"
+    ],
+    "nursingAssessments": [
+      "Assess new muscle pain, weakness, dark urine, or severe fatigue.",
+      "Teach to report liver injury symptoms such as jaundice or dark urine.",
+      "Review pregnancy status because statins are generally avoided in pregnancy."
+    ],
+    "contraindications": [
+      "active liver disease",
+      "pregnancy unless a specialist determines benefit outweighs risk",
+      "atorvastatin hypersensitivity"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a600045.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "hydrochlorothiazide",
+    "genericName": "hydrochlorothiazide",
+    "brandNames": [
+      "Microzide"
+    ],
+    "class": "thiazide diuretic",
+    "mechanism": "Inhibits sodium and chloride reabsorption in the distal convoluted tubule.",
+    "indications": [
+      "hypertension",
+      "edema when prescribed"
+    ],
+    "priorityLabs": [
+      "potassium",
+      "sodium",
+      "calcium",
+      "creatinine",
+      "glucose"
+    ],
+    "nursingAssessments": [
+      "Monitor blood pressure, orthostatic symptoms, daily weight, and edema.",
+      "Assess hypokalemia, hyponatremia, dehydration, hyperglycemia, and photosensitivity.",
+      "Teach slow position changes and potassium guidance based on the care plan."
+    ],
+    "contraindications": [
+      "anuria",
+      "hydrochlorothiazide hypersensitivity"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682571.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "spironolactone",
+    "genericName": "spironolactone",
+    "brandNames": [
+      "Aldactone"
+    ],
+    "class": "potassium-sparing aldosterone antagonist diuretic",
+    "mechanism": "Blocks aldosterone receptors, increasing sodium excretion while conserving potassium.",
+    "indications": [
+      "heart failure",
+      "hypertension",
+      "edema or hyperaldosteronism when prescribed"
+    ],
+    "priorityLabs": [
+      "potassium",
+      "creatinine",
+      "blood pressure"
+    ],
+    "nursingAssessments": [
+      "Monitor potassium and renal function closely after initiation or dose changes.",
+      "Teach avoidance of potassium supplements and salt substitutes unless directed.",
+      "Assess dehydration, hypotension, gynecomastia, and menstrual changes."
+    ],
+    "contraindications": [
+      "hyperkalemia",
+      "Addison disease",
+      "anuria or significant renal impairment without specialist direction"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682627.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "potassium-chloride",
+    "genericName": "potassium chloride",
+    "brandNames": [
+      "Klor-Con"
+    ],
+    "class": "electrolyte replacement",
+    "mechanism": "Replaces potassium required for normal cardiac, skeletal, and smooth muscle function.",
+    "indications": [
+      "hypokalemia treatment or prevention"
+    ],
+    "priorityLabs": [
+      "serum potassium",
+      "creatinine",
+      "ECG rhythm when indicated"
+    ],
+    "nursingAssessments": [
+      "Never administer IV potassium by IV push.",
+      "Monitor IV site closely because extravasation can cause tissue injury.",
+      "Assess ECG changes, muscle weakness, paresthesias, and renal function."
+    ],
+    "contraindications": [
+      "hyperkalemia",
+      "severe renal impairment without close monitoring",
+      "untreated Addison disease"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a625021.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "oxytocin",
+    "genericName": "oxytocin",
+    "brandNames": [
+      "Pitocin"
+    ],
+    "class": "uterotonic hormone",
+    "mechanism": "Stimulates uterine smooth muscle contraction through oxytocin receptors.",
+    "indications": [
+      "labor induction or augmentation",
+      "postpartum uterine atony or hemorrhage management"
+    ],
+    "priorityLabs": [
+      "uterine contraction pattern",
+      "fetal heart rate",
+      "maternal blood pressure",
+      "intake and output"
+    ],
+    "nursingAssessments": [
+      "Monitor uterine tachysystole, fetal heart rate changes, and maternal vital signs.",
+      "Stop or reduce infusion and notify the prescriber per protocol for tachysystole or fetal distress.",
+      "Assess for water intoxication with prolonged high-dose infusion."
+    ],
+    "contraindications": [
+      "significant fetal distress when delivery is not imminent",
+      "placenta previa",
+      "transverse lie or other contraindication to vaginal birth"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682685.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "methotrexate",
+    "genericName": "methotrexate",
+    "brandNames": [
+      "Trexall",
+      "Rheumatrex"
+    ],
+    "class": "antimetabolite and folate antagonist",
+    "mechanism": "Inhibits dihydrofolate reductase and folate-dependent cell replication in rapidly dividing cells.",
+    "indications": [
+      "selected cancers",
+      "rheumatoid arthritis",
+      "psoriasis",
+      "ectopic pregnancy management when prescribed"
+    ],
+    "priorityLabs": [
+      "CBC",
+      "liver function",
+      "creatinine",
+      "pregnancy status when relevant"
+    ],
+    "nursingAssessments": [
+      "Assess infection, mouth sores, unusual bleeding, dyspnea, and hepatotoxicity symptoms.",
+      "Teach strict dosing schedule because weekly regimens can be accidentally taken daily.",
+      "Confirm pregnancy precautions for clients of reproductive potential."
+    ],
+    "contraindications": [
+      "pregnancy for non-oncologic indications",
+      "severe liver disease",
+      "severe renal impairment",
+      "significant immunodeficiency or blood dyscrasia unless specialist managed"
+    ],
+    "blackBoxWarning": "Methotrexate can cause serious toxicities including marrow suppression, hepatic, pulmonary, renal, GI, dermatologic, and fetal harm.",
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682019.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "misoprostol",
+    "genericName": "misoprostol",
+    "brandNames": [
+      "Cytotec"
+    ],
+    "class": "prostaglandin E1 analog",
+    "mechanism": "Stimulates prostaglandin receptors, increasing uterine tone and protecting gastric mucosa.",
+    "indications": [
+      "ulcer prevention with NSAIDs",
+      "cervical ripening or postpartum hemorrhage protocols when ordered"
+    ],
+    "priorityLabs": [
+      "pregnancy status for ulcer-prevention use",
+      "uterine activity",
+      "bleeding assessment"
+    ],
+    "nursingAssessments": [
+      "Assess cramping, diarrhea, fever, bleeding, and uterine activity when used obstetrically.",
+      "Verify indication carefully because pregnancy is contraindicated for ulcer-prevention use.",
+      "Monitor fetal status and uterine tachysystole when used for cervical ripening."
+    ],
+    "contraindications": [
+      "pregnancy when used for NSAID ulcer prevention",
+      "prostaglandin hypersensitivity",
+      "contraindication to labor or vaginal birth for cervical-ripening use"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a689009.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "ferrous-sulfate",
+    "genericName": "ferrous sulfate",
+    "brandNames": [
+      "Feosol"
+    ],
+    "class": "oral iron supplement",
+    "mechanism": "Provides elemental iron needed for hemoglobin synthesis and oxygen transport.",
+    "indications": [
+      "iron-deficiency anemia treatment or prevention"
+    ],
+    "priorityLabs": [
+      "hemoglobin and hematocrit",
+      "ferritin",
+      "iron studies"
+    ],
+    "nursingAssessments": [
+      "Teach that dark stools and constipation can occur.",
+      "Separate from calcium, antacids, and some antibiotics because absorption can decrease.",
+      "Keep out of reach of children because iron overdose can be fatal."
+    ],
+    "contraindications": [
+      "iron overload disorders such as hemochromatosis",
+      "hemolytic anemia unless iron deficiency is confirmed"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a682778.html",
+    "sourceName": "MedlinePlus Drug Information",
+    "nclexHighYield": true
+  },
+  {
+    "id": "norepinephrine",
+    "genericName": "norepinephrine",
+    "brandNames": [
+      "Levophed"
+    ],
+    "class": "vasopressor adrenergic agonist",
+    "mechanism": "Stimulates alpha-1 and beta-1 receptors, increasing vascular tone and supporting cardiac output.",
+    "indications": [
+      "acute hypotension or shock requiring vasopressor support"
+    ],
+    "priorityLabs": [
+      "MAP and blood pressure",
+      "ECG rhythm",
+      "peripheral perfusion",
+      "lactate when shock is present"
+    ],
+    "nursingAssessments": [
+      "Titrate to ordered hemodynamic goals with continuous blood pressure and rhythm monitoring.",
+      "Assess IV site and tissue perfusion frequently because extravasation can cause ischemic injury.",
+      "Correct hypovolemia when possible because vasoconstriction alone does not restore circulating volume."
+    ],
+    "contraindications": [
+      "uncorrected hypovolemia unless emergency support is required",
+      "mesenteric or peripheral vascular thrombosis unless benefits outweigh risks"
+    ],
+    "sourceHref": "https://medlineplus.gov/druginfo/meds/a625019.html",
+    "sourceName": "MedlinePlus Drug Information",
     "nclexHighYield": true
   }
 ]

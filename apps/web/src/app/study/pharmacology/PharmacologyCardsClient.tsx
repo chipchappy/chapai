@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { searchDrugCards, type DrugCard } from "@/lib/drug-cards";
+import { searchDrugCardList, type DrugCard } from "@/lib/drug-cards";
 
 function DrugCardPreview({ card }: { card: DrugCard }) {
   return (
@@ -21,6 +21,7 @@ function DrugCardPreview({ card }: { card: DrugCard }) {
           <span key={lab} className="signal-pill">{lab}</span>
         ))}
       </div>
+      {card.sourceName ? <p className="mt-4 text-xs font-semibold text-muted">Source: {card.sourceName}</p> : null}
       <Link href={`/study/pharmacology/${card.id}`} className="btn-secondary mt-5 inline-flex">
         Open card
       </Link>
@@ -28,9 +29,40 @@ function DrugCardPreview({ card }: { card: DrugCard }) {
   );
 }
 
-export default function PharmacologyCardsClient() {
+type ApiPayload = {
+  success?: boolean;
+  data?: {
+    cards?: DrugCard[];
+    meta?: {
+      source?: "d1" | "static";
+    };
+  };
+};
+
+export default function PharmacologyCardsClient({ initialCards }: { initialCards: DrugCard[] }) {
   const [query, setQuery] = useState("");
-  const cards = useMemo(() => searchDrugCards(query), [query]);
+  const [cards, setCards] = useState(initialCards);
+  const [source, setSource] = useState<"d1" | "static">("static");
+  const filteredCards = useMemo(() => searchDrugCardList(cards, query), [cards, query]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/study/pharmacology", { cache: "no-store" })
+      .then((response) => response.ok ? response.json() as Promise<ApiPayload> : null)
+      .then((payload) => {
+        const nextCards = payload?.data?.cards;
+        if (!cancelled && nextCards?.length) {
+          setCards(nextCards);
+          setSource(payload?.data?.meta?.source ?? "d1");
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setSource("static");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -42,6 +74,9 @@ export default function PharmacologyCardsClient() {
             <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
               Search by generic name, brand name, class, lab, contraindication, or nursing assessment. These cards are designed to connect weak-area analytics to focused review.
             </p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+              {source === "d1" ? "Live D1-backed library" : "Static fallback library"}
+            </p>
           </div>
           <div className="study-console-panel bg-white/70">
             <label className="terminal-label" htmlFor="drug-search">Search cards</label>
@@ -52,13 +87,13 @@ export default function PharmacologyCardsClient() {
               placeholder="heparin, potassium, beta blocker..."
               className="mt-3 w-full rounded-[16px] border border-[rgba(74,85,89,0.14)] bg-white px-4 py-3 text-sm text-dark outline-none transition focus:border-[#b08d57]"
             />
-            <p className="mt-3 text-sm leading-6 text-muted">{cards.length} of {searchDrugCards("").length} cards shown.</p>
+            <p className="mt-3 text-sm leading-6 text-muted">{filteredCards.length} of {cards.length} cards shown.</p>
           </div>
         </div>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {cards.map((card) => <DrugCardPreview key={card.id} card={card} />)}
+        {filteredCards.map((card) => <DrugCardPreview key={card.id} card={card} />)}
       </section>
     </div>
   );

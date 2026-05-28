@@ -121,6 +121,8 @@ export const drugCards = sqliteTable("drug_cards", {
   patientTeaching: text("patient_teaching").default("[]"),
   contraindications: text("contraindications").default("[]"),
   blackBoxWarning: text("black_box_warning"),
+  sourceName: text("source_name"),
+  sourceHref: text("source_href"),
   relatedTags: text("related_tags").default("[]"),
   publishState: text("publish_state").default("published").notNull(),
   createdAt: integer("created_at")

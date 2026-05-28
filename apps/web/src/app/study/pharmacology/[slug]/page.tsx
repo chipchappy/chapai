@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { DRUG_CARDS, getDrugCardById } from "@/lib/drug-cards";
+import { getDrugCardFromD1, getStaticDrugCardById } from "@/lib/drug-card-store";
+import { resolveEnv } from "@/lib/db";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 
 interface PageProps {
@@ -45,7 +47,13 @@ export default async function DrugCardPage({ params }: PageProps) {
     redirect(`/auth/login?next=/study/pharmacology/${encodeURIComponent(slug)}`);
   }
 
-  const card = getDrugCardById(slug);
+  let card = null;
+  try {
+    card = await getDrugCardFromD1(resolveEnv(), slug);
+  } catch {
+    card = null;
+  }
+  card ??= getStaticDrugCardById(slug);
   if (!card) {
     notFound();
   }
@@ -70,6 +78,13 @@ export default async function DrugCardPage({ params }: PageProps) {
             <div className="mt-5 rounded-[18px] border border-[rgba(144,72,52,0.2)] bg-[rgba(144,72,52,0.08)] px-4 py-3 text-sm leading-6 text-[#7b4332]">
               <strong>Boxed warning focus:</strong> {card.blackBoxWarning}
             </div>
+          ) : null}
+          {card.sourceHref ? (
+            <a href={card.sourceHref} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm font-semibold text-[#5A7F88] hover:text-dark">
+              Source: {card.sourceName ?? "Drug information"}
+            </a>
+          ) : card.sourceName ? (
+            <p className="mt-5 text-sm font-semibold text-muted">Source: {card.sourceName}</p>
           ) : null}
         </section>
         <div className="grid gap-4 lg:grid-cols-3">

@@ -12,6 +12,8 @@ export interface DrugCard {
   nursingAssessments: string[];
   contraindications: string[];
   blackBoxWarning?: string;
+  sourceName?: string;
+  sourceHref?: string;
   nclexHighYield: boolean;
 }
 
@@ -22,6 +24,8 @@ export const DRUG_CARDS = (rawDrugCards as DrugCard[])
     priorityLabs: card.priorityLabs ?? [],
     nursingAssessments: card.nursingAssessments ?? [],
     contraindications: card.contraindications ?? [],
+    sourceName: card.sourceName,
+    sourceHref: card.sourceHref,
     nclexHighYield: card.nclexHighYield !== false,
   }))
   .sort((left, right) => left.genericName.localeCompare(right.genericName));
@@ -30,13 +34,13 @@ export function getDrugCardById(id: string) {
   return DRUG_CARDS.find((card) => card.id === id) ?? null;
 }
 
-export function searchDrugCards(query: string) {
+export function searchDrugCardList(cards: DrugCard[], query: string) {
   const normalized = query.trim().toLowerCase();
   if (!normalized) {
-    return DRUG_CARDS;
+    return cards;
   }
 
-  return DRUG_CARDS.filter((card) => {
+  return cards.filter((card) => {
     const haystack = [
       card.genericName,
       ...card.brandNames,
@@ -46,10 +50,15 @@ export function searchDrugCards(query: string) {
       ...card.nursingAssessments,
       ...card.contraindications,
       card.blackBoxWarning,
+      card.sourceName,
     ]
       .filter(Boolean)
       .join(" ")
       .toLowerCase();
     return haystack.includes(normalized);
   });
+}
+
+export function searchDrugCards(query: string) {
+  return searchDrugCardList(DRUG_CARDS, query);
 }

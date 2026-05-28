@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PharmacologyCardsClient from "@/app/study/pharmacology/PharmacologyCardsClient";
+import { DRUG_CARDS } from "@/lib/drug-cards";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default async function PharmacologyPage() {
   return (
     <main className="min-h-screen bg-bg px-4 py-8 md:py-12">
       <div className="mx-auto max-w-6xl">
-        <PharmacologyCardsClient />
+        <PharmacologyCardsClient initialCards={DRUG_CARDS} />
       </div>
     </main>
   );

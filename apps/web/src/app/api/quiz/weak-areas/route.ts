@@ -2,11 +2,12 @@ import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { getHostedUserByAccount } from "@/lib/billing-store";
 import { allowLocalFallbacks } from "@/lib/env";
 import { questions, quizAnswers, quizSessions } from "@chapai/db/schema";
-import { and, eq, isNotNull, sql } from "drizzle-orm";
+import { and, desc, eq, isNotNull, sql } from "drizzle-orm";
 import { createRequestContext } from "@/lib/logger";
 import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getStudyResourcesForWeakArea } from "@/lib/study-resources";
+import { getDrugCardStudyResourcesFromText, mergeStudyResources } from "@/lib/drug-card-recommendations";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,11 @@ function displayCategory(category: string) {
 
 function displayCjmmStep(step: string) {
   return displayCategory(step);
+}
+
+function compactText(value: unknown) {
+  if (value == null) return "";
+  return typeof value === "string" ? value : JSON.stringify(value);
 }
 
 export async function GET(request: Request) {
@@ -117,6 +123,26 @@ export async function GET(request: Request) {
       .innerJoin(questions, eq(quizAnswers.questionId, questions.id))
       .where(and(eq(quizSessions.userId, hostedUser.id), isNotNull(quizSessions.completedAt)));
 
+    const missedMedicationRows = await db
+      .select({
+        stem: questions.stem,
+        options: questions.options,
+        rationale: questions.rationale,
+        structuredRationale: questions.structuredRationale,
+        distractorRationales: questions.distractorRationales,
+        chartReview: questions.chartReview,
+        scenario: questions.scenario,
+        additionalInfo: questions.additionalInfo,
+        exhibits: questions.exhibits,
+        selectedAnswer: quizAnswers.selectedAnswer,
+      })
+      .from(quizAnswers)
+      .innerJoin(quizSessions, eq(quizAnswers.sessionId, quizSessions.id))
+      .innerJoin(questions, eq(quizAnswers.questionId, questions.id))
+      .where(and(eq(quizSessions.userId, hostedUser.id), isNotNull(quizSessions.completedAt), eq(quizAnswers.isCorrect, false)))
+      .orderBy(desc(quizAnswers.answeredAt))
+      .limit(50);
+
     const areas = rows
       .map((row) => {
         const total = Number(row.totalAnswered ?? 0);
@@ -167,6 +193,21 @@ export async function GET(request: Request) {
     const weakestCategory = areas[0] ?? null;
     const weakestDifficulty = difficultyAreas[0] ?? null;
     const weakestCjmm = cjmmSteps[0] ?? null;
+    const drugCardResources = getDrugCardStudyResourcesFromText(
+      missedMedicationRows.flatMap((row) => [
+        row.stem,
+        row.options,
+        row.rationale,
+        row.structuredRationale,
+        row.distractorRationales,
+        row.chartReview,
+        row.scenario,
+        row.additionalInfo,
+        row.exhibits,
+        row.selectedAnswer,
+      ].map(compactText)),
+      3,
+    );
     const recommendation = weakestCategory || weakestDifficulty || weakestCjmm
       ? {
           category: weakestCategory?.category ?? null,
@@ -176,14 +217,18 @@ export async function GET(request: Request) {
           cjmmStep: weakestCjmm?.step ?? null,
           cjmmLabel: weakestCjmm?.label ?? null,
           href: weakestCategory ? `/quiz?category=${encodeURIComponent(weakestCategory.category)}` : "/quiz?exam=nclex&mode=ngn",
-          studyResources: getStudyResourcesForWeakArea({
-            exam: "nclex",
-            category: weakestCategory?.category,
-            categoryLabel: weakestCategory?.label,
-            difficulty: weakestDifficulty?.difficulty,
-            cjmmStep: weakestCjmm?.step,
-            limit: 4,
-          }),
+          studyResources: mergeStudyResources(
+            drugCardResources,
+            getStudyResourcesForWeakArea({
+              exam: "nclex",
+              category: weakestCategory?.category,
+              categoryLabel: weakestCategory?.label,
+              difficulty: weakestDifficulty?.difficulty,
+              cjmmStep: weakestCjmm?.step,
+              limit: 4,
+            }),
+            4,
+          ),
         }
       : null;
 
