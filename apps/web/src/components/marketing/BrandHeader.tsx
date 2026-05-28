@@ -74,34 +74,6 @@ function ThemeToggle() {
 }
 
 export default function BrandHeader() {
-  const [practiceHref, setPracticeHref] = useState("/quiz");
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function resolvePracticeHref() {
-      try {
-        const response = await fetch("/api/auth/status", { cache: "no-store" });
-        const payload = await response.json().catch(() => null) as null | {
-          success?: boolean;
-          data?: { authenticated?: boolean };
-        };
-
-        if (!cancelled && response.ok && payload?.success && payload.data?.authenticated) {
-          setPracticeHref("/study");
-        }
-      } catch {
-        // Keep the anonymous practice destination when auth status cannot be checked.
-      }
-    }
-
-    void resolvePracticeHref();
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
   return (
     <header className={styles.header} data-premium-chrome="true">
       <div className={styles.inner}>
@@ -111,9 +83,9 @@ export default function BrandHeader() {
         <nav className={styles.nav} aria-label="Primary">
           <Link href="/nclex">NCLEX</Link>
           <Link href="/ccrn">CCRN</Link>
-          <Link href="/free">Free practice</Link>
-          <Link href="/tools/nclex-countdown">Tools</Link>
-          <Link href={practiceHref}>Practice</Link>
+          <Link href="/quiz">Free practice</Link>
+          <Link href="/study">Tools</Link>
+          <Link href="/quiz">Practice</Link>
           <Link href="/pricing">Pricing</Link>
         </nav>
         <div className={styles.actions}>

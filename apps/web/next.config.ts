@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/free",
+        destination: "/quiz",
+        permanent: false,
+      },
+      {
+        source: "/tools",
+        destination: "/study",
+        permanent: false,
+      },
+      {
         source: "/",
         has: [
           {
