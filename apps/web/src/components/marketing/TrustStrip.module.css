@@ -33,11 +33,13 @@
 
 .value {
   display: block;
-  color: var(--c-text-strong);
+  /* Soft charcoal — pulls the strong text toward the warm sand bg so the
+     stat numbers read premium + breathable rather than bold black. */
+  color: color-mix(in srgb, var(--c-text-strong) 78%, var(--c-bg) 22%);
   font-family: var(--font-serif);
   font-size: clamp(1.75rem, 3vw, 2.7rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.015em;
   line-height: 1.02;
 }
 

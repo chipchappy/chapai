@@ -3722,11 +3722,11 @@
   --c-gold: #B0935A;
   --c-border: rgba(30, 42, 36, 0.16);
   --c-border-soft: rgba(30, 42, 36, 0.06);
-  /* Sansita Swashed leads — wavy retro slab with swash terminals, pinned to
-     weight 500 so it reads modern + slightly chunky without going bold.
-     Instrument Serif + Fraunces + Newsreader carry fallbacks for any glyph
-     Sansita Swashed doesn't cover. */
-  --font-serif: var(--font-sansita-swashed), var(--font-instrument-serif), var(--font-fraunces), var(--font-newsreader), "Source Serif Pro", Georgia, serif;
+  /* Yeseva One leads — single-weight retro display serif with wavy elegant
+     letterforms. Lighter visual weight, reads premium + groovy. Instrument
+     Serif + Fraunces + Newsreader carry fallbacks for any glyph it doesn't
+     cover. */
+  --font-serif: var(--font-yeseva-one), var(--font-instrument-serif), var(--font-fraunces), var(--font-newsreader), "Source Serif Pro", Georgia, serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-serif);
   --font-playfair: var(--font-serif);
@@ -31728,15 +31728,18 @@ main hr {
   opacity: 0.5;
 }
 
-/* ---------- Round 16 — Sansita Swashed display tuning ---------- */
-/* Sansita Swashed already carries its waviness in the swash terminals, so
-   we keep tracking neutral and let the letterforms breathe. font-weight
-   is pulled down to 500 so headlines read modern + slightly chunky, not
-   bold. Variation axes kept for the Fraunces fallback. */
+/* ---------- Round 17 — Yeseva One display tuning ---------- */
+/* Yeseva One ships at a single weight so we don't fight the typeface — we
+   just keep tracking near 0 and soften the color so the big display lines
+   sit in charcoal rather than near-black. font-weight stays 400 (Yeseva's
+   only weight) and the variation axes are kept for the Fraunces fallback. */
 h1, h2, h3, .highlights-band__title, .quiz-catalog-title, .dash-hero__title,
 .drug-card__name, .streak-share__title, .pricing-personalized__title {
-  font-weight: 500;
+  font-weight: 400;
   font-variation-settings: "opsz" 144, "SOFT" 80;
   letter-spacing: 0;
   font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "ss01" 1;
+  /* Soft charcoal — mixes the strong text color toward the background so
+     the headlines read warm + premium instead of stark black on sand. */
+  color: color-mix(in srgb, var(--c-text-strong) 78%, var(--c-bg) 22%);
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Newsreader, Outfit, Sansita_Swashed } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Newsreader, Outfit, Yeseva_One } from "next/font/google";
 import "@/styles/globals.css";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import BrandHeader from "@/components/marketing/BrandHeader";
@@ -53,14 +53,13 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-// Sansita Swashed — variable slab serif with retro-groovy swashes. Lighter
-// and wavier than Caprasimo, hits the Palrome vibe without the chunky weight.
-// Free for commercial use (SIL Open Font License). Weight pinned to 500 so
-// the letterforms read modern + slightly chunky, not bold.
-const sansitaSwashed = Sansita_Swashed({
+// Yeseva One — single-weight retro display serif with wavy elegant
+// letterforms. Lighter visual weight than Sansita Swashed; reads premium
+// and groovy without the heaviness. Free under SIL Open Font License.
+const yesevaOne = Yeseva_One({
   subsets: ["latin"],
-  variable: "--font-sansita-swashed",
-  weight: ["500"],
+  variable: "--font-yeseva-one",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -211,7 +210,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const env = getServerEnv();
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${sansitaSwashed.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${yesevaOne.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
