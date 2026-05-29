@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caprasimo, Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Newsreader, Outfit } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Newsreader, Outfit, Sansita_Swashed } from "next/font/google";
 import "@/styles/globals.css";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import BrandHeader from "@/components/marketing/BrandHeader";
@@ -53,13 +53,14 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-// Caprasimo — thick soft-slab retro display with wavy strokes. Free for
-// commercial use (SIL Open Font License). Primary display face for the
-// "retro groovy" feel the brand is going after.
-const caprasimo = Caprasimo({
+// Sansita Swashed — variable slab serif with retro-groovy swashes. Lighter
+// and wavier than Caprasimo, hits the Palrome vibe without the chunky weight.
+// Free for commercial use (SIL Open Font License). Weight pinned to 500 so
+// the letterforms read modern + slightly chunky, not bold.
+const sansitaSwashed = Sansita_Swashed({
   subsets: ["latin"],
-  variable: "--font-caprasimo",
-  weight: ["400"],
+  variable: "--font-sansita-swashed",
+  weight: ["500"],
   display: "swap",
 });
 
@@ -210,7 +211,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const env = getServerEnv();
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${caprasimo.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${sansitaSwashed.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

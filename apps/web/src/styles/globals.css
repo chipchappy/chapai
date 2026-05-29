@@ -3722,10 +3722,11 @@
   --c-gold: #B0935A;
   --c-border: rgba(30, 42, 36, 0.16);
   --c-border-soft: rgba(30, 42, 36, 0.06);
-  /* Caprasimo leads — thick soft-slab retro-groovy display with wavy
-     strokes. Instrument Serif + Fraunces + Newsreader carry fallbacks
-     (Caprasimo ships at 400 only; weight is faked by browser when needed). */
-  --font-serif: var(--font-caprasimo), var(--font-instrument-serif), var(--font-fraunces), var(--font-newsreader), "Source Serif Pro", Georgia, serif;
+  /* Sansita Swashed leads — wavy retro slab with swash terminals, pinned to
+     weight 500 so it reads modern + slightly chunky without going bold.
+     Instrument Serif + Fraunces + Newsreader carry fallbacks for any glyph
+     Sansita Swashed doesn't cover. */
+  --font-serif: var(--font-sansita-swashed), var(--font-instrument-serif), var(--font-fraunces), var(--font-newsreader), "Source Serif Pro", Georgia, serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-serif);
   --font-playfair: var(--font-serif);
@@ -31727,13 +31728,15 @@ main hr {
   opacity: 0.5;
 }
 
-/* ---------- Round 15 — Caprasimo display tuning ---------- */
-/* Caprasimo is a chunky soft-slab — letterforms already sit close, so
-   leave tracking near 0. Ligatures + discretionary ligatures on for the
-   retro-groovy wavy alts. Variation axes kept for Fraunces fallback. */
+/* ---------- Round 16 — Sansita Swashed display tuning ---------- */
+/* Sansita Swashed already carries its waviness in the swash terminals, so
+   we keep tracking neutral and let the letterforms breathe. font-weight
+   is pulled down to 500 so headlines read modern + slightly chunky, not
+   bold. Variation axes kept for the Fraunces fallback. */
 h1, h2, h3, .highlights-band__title, .quiz-catalog-title, .dash-hero__title,
 .drug-card__name, .streak-share__title, .pricing-personalized__title {
-  font-variation-settings: "opsz" 144, "SOFT" 60;
-  letter-spacing: -0.005em;
+  font-weight: 500;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  letter-spacing: 0;
   font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "ss01" 1;
 }
