@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import PracticeTerminalPane from "@/components/practice/PracticeTerminalPane";
+import RationaleDrugCardTeaser from "@/components/practice/RationaleDrugCardTeaser";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
 interface PracticeQuestionPaneProps {
@@ -673,6 +674,14 @@ export default function PracticeQuestionPane({
                     </summary>
                     <p className="mt-3 text-[1rem] leading-[1.85] text-dark">{teachingDeepRationale}</p>
                   </details>
+
+                  <RationaleDrugCardTeaser
+                    category={question.category ?? null}
+                    tags={Array.isArray((question as { tags?: unknown }).tags)
+                      ? (((question as { tags?: unknown }).tags as unknown[]).filter((t): t is string => typeof t === "string").slice(0, 6))
+                      : null}
+                    rationale={typeof teachingDeepRationale === "string" ? teachingDeepRationale : null}
+                  />
 
                   {distractorRationales && Object.keys(distractorRationales).length > 0 ? (
                     <div className="debrief-card rounded-[20px] border border-[rgba(108,96,79,0.1)] bg-[linear-gradient(180deg,rgba(255,255,255,0.78),rgba(250,244,236,0.9))] px-4 py-4">

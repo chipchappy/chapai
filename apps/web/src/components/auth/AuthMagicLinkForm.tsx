@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function AuthMagicLinkForm({ nextPath = "/account/billing" }: { nextPath?: string }) {
+export default function AuthMagicLinkForm({ nextPath = "/dashboard" }: { nextPath?: string }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [acceptedLegal, setAcceptedLegal] = useState(false);
@@ -71,7 +71,15 @@ export default function AuthMagicLinkForm({ nextPath = "/account/billing" }: { n
       </label>
 
       <label className="block">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">Password</span>
+        <div className="flex items-baseline justify-between gap-2">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">Password</span>
+          <a
+            href="/auth/forgot"
+            className="text-[12px] font-semibold text-[var(--c-text-strong)] underline decoration-[var(--c-border-strong)] underline-offset-4 hover:text-[var(--c-gold-deep)]"
+          >
+            Forgot password?
+          </a>
+        </div>
         <input
           type="password"
           autoComplete="current-password"

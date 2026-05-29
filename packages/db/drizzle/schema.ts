@@ -209,6 +209,9 @@ export const quizSessions = sqliteTable("quiz_sessions", {
   userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
   exam: text("exam", { enum: ["nclex", "ccrn"] }).notNull(),
   category: text("category"), // null = all categories
+  mode: text("mode"),
+  practiceExamId: text("practice_exam_id"),
+  currentIndex: integer("current_index").default(0).notNull(),
   totalQuestions: integer("total_questions").notNull(),
   correctCount: integer("correct_count").default(0).notNull(),
   startedAt: integer("started_at")

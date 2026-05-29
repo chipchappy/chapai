@@ -470,15 +470,18 @@ export async function createSession(
   db: DB,
   userId: string | undefined,
   config: QuizSessionConfig,
-  questionList: QuizQuestion[]
+  questionList: QuizQuestion[],
+  extras?: { practiceExamId?: string; mode?: string; sessionId?: string },
 ): Promise<string> {
-  const sessionId = crypto.randomUUID();
+  const sessionId = extras?.sessionId ?? crypto.randomUUID();
 
   await db.insert(quizSessions).values({
     id: sessionId,
     userId: userId ?? null,
     exam: config.exam,
     category: config.category ?? null,
+    mode: extras?.mode ?? "standard",
+    practiceExamId: extras?.practiceExamId ?? null,
     totalQuestions: questionList.length,
     questionIds: JSON.stringify(questionList.map((q) => q.id)),
   });

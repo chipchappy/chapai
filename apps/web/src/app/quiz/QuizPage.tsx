@@ -66,6 +66,36 @@ function savePracticeSnapshot(snapshot: string) {
   }
 }
 
+const READINESS_ATTEMPTS_KEY = "chapai-readiness-attempts";
+
+type ReadinessAttempt = {
+  accuracy: number;
+  correctAnswers: number;
+  totalQuestions: number;
+  takenAtMs: number;
+};
+
+function loadReadinessAttempts(): Record<string, ReadinessAttempt> {
+  try {
+    const raw = window.localStorage.getItem(READINESS_ATTEMPTS_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "object" && parsed ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveReadinessAttempt(examId: string, attempt: ReadinessAttempt) {
+  try {
+    const current = loadReadinessAttempts();
+    current[examId] = attempt;
+    window.localStorage.setItem(READINESS_ATTEMPTS_KEY, JSON.stringify(current));
+  } catch {
+    // ignore — best-effort persistence
+  }
+}
+
 function clearPracticeSnapshot() {
   try {
     window.localStorage.removeItem(PRACTICE_STORAGE_KEY);
@@ -225,6 +255,16 @@ export default function QuizPage({
   practiceExamLimit,
   canUseIcuSimBeta,
   canUseAdvancedAnalytics,
+  categoryProgress = {},
+  totalAnsweredByExam = { nclex: 0, ccrn: 0 },
+  isAuthenticated = false,
+  streakDays = 0,
+  todayAnswered = 0,
+  suggestedCategoryLabel = null,
+  serverReadinessAttempts = {},
+  willPersonalize = false,
+  deepLinkQuestionId = null,
+  deepLinkOpenTutor = false,
 }: {
   tier: Tier;
   initialExam?: string;
@@ -249,6 +289,16 @@ export default function QuizPage({
   practiceExamLimit: number;
   canUseIcuSimBeta: boolean;
   canUseAdvancedAnalytics: boolean;
+  categoryProgress?: Record<string, { answered: number; correct: number; accuracy: number }>;
+  totalAnsweredByExam?: { nclex: number; ccrn: number };
+  isAuthenticated?: boolean;
+  streakDays?: number;
+  todayAnswered?: number;
+  suggestedCategoryLabel?: string | null;
+  serverReadinessAttempts?: Record<string, { accuracy: number; correctAnswers: number; totalQuestions: number; takenAtMs: number }>;
+  willPersonalize?: boolean;
+  deepLinkQuestionId?: string | null;
+  deepLinkOpenTutor?: boolean;
 }) {
   const [state, dispatch] = useReducer(practiceReducer, undefined, createEmptyRuntimeState);
   const [selectedExam, setSelectedExam] = useState<Exam>(resolveAccessibleExam(initialExam, accessExamTrack));
@@ -392,6 +442,82 @@ export default function QuizPage({
     savePracticeSnapshot(createSessionSnapshot(state.session));
   }, [state.session]);
 
+  // Persist practice-exam cursor server-side (cross-device resume). Coalesced
+  // by sessionId+index so a fast Next/Prev loop doesn't spam the endpoint.
+  const lastPositionRef = useRef<{ id: string; index: number } | null>(null);
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const session = state.session;
+    if (!session || session.mode !== "practice-exam") return;
+    const sig = { id: session.id, index: session.currentIndex };
+    if (
+      lastPositionRef.current &&
+      lastPositionRef.current.id === sig.id &&
+      lastPositionRef.current.index === sig.index
+    ) {
+      return;
+    }
+    lastPositionRef.current = sig;
+    fetch(`/api/quiz/sessions/${encodeURIComponent(session.id)}/position`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentIndex: session.currentIndex }),
+      keepalive: true,
+    }).catch(() => undefined);
+  }, [isAuthenticated, state.session]);
+
+  // Deep-link: ?question=<id> or ?tutorQuestion=<id>
+  // Fetches a single question and starts a 1-item review-style session. If the
+  // tutorQuestion variant is used, auto-opens the tutor drawer once the session
+  // is in place. Snapshot in storage takes precedence — we don't clobber an
+  // active in-progress session.
+  const deepLinkQuestionHandledRef = useRef(false);
+  useEffect(() => {
+    if (deepLinkQuestionHandledRef.current) return;
+    if (!deepLinkQuestionId) return;
+    if (state.session) return; // active session — skip
+    deepLinkQuestionHandledRef.current = true;
+    void (async () => {
+      try {
+        const response = await fetch(
+          `/api/quiz/question/${encodeURIComponent(deepLinkQuestionId)}`,
+          { headers: { Accept: "application/json" } },
+        );
+        if (!response.ok) {
+          setError("That question is no longer available. Pick a fresh category to keep studying.");
+          return;
+        }
+        const payload = await response.json().catch(() => null);
+        const rawQuestion = payload?.data?.question ?? null;
+        if (!rawQuestion) {
+          setError("That question is no longer available. Pick a fresh category to keep studying.");
+          return;
+        }
+        const [question] = mapLiveQuestionBank([rawQuestion], "standard");
+        if (!question) return;
+        const session = createClientSession({
+          mode: "standard",
+          exam: question.exam,
+          label: deepLinkOpenTutor ? "Tutor follow-up" : "Daily question",
+          description: deepLinkOpenTutor
+            ? "Walk through this missed item with the tutor, then keep going."
+            : "Today's daily question. One full rationale, one tutor follow-up on tap.",
+          questions: [question],
+        });
+        dispatch({ type: "start-session", payload: session });
+        if (deepLinkOpenTutor) {
+          // Defer one tick so the session has settled into state before opening
+          // the tutor drawer.
+          setTimeout(() => {
+            dispatch({ type: "open-tutor", questionId: question.id });
+          }, 0);
+        }
+      } catch {
+        setError("Could not load that question. Pick a fresh category to keep studying.");
+      }
+    })();
+  }, [deepLinkQuestionId, deepLinkOpenTutor, state.session]);
+
   const liveQuestionType = ngnOnly && selectedQuestionType === "mcq" ? "" : selectedQuestionType;
   const liveNgnOnly = liveQuestionType === "mcq" ? false : ngnOnly;
 
@@ -454,6 +580,7 @@ export default function QuizPage({
       body: JSON.stringify({
         exam,
         count,
+        personalize: isAuthenticated,
         ...getLiveSessionPayload(),
       }),
     });
@@ -648,17 +775,33 @@ export default function QuizPage({
 
     const payload = await response.json();
     const data = payload.data ?? payload;
+    // If the server has an in-progress session for this exam, resume into it
+    // rather than minting a new attempt id. Cross-device resume.
+    const resume = data.resume as { sessionId?: string; currentIndex?: number } | undefined;
+    const attemptId = resume?.sessionId ??
+      (typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `exam-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`);
+    const startIndex = typeof resume?.currentIndex === "number" ? resume.currentIndex : 0;
+    if (startIndex > 0) {
+      setResumeToast(`Picked up where you left off (Q${startIndex + 1})`);
+    }
+    const base = createClientSession({
+      id: attemptId,
+      mode: "practice-exam",
+      exam: data.definition.exam,
+      label: data.definition.label,
+      description: data.definition.description,
+      questions: data.questions,
+      timeLimitMinutes: data.definition.timeLimitMinutes,
+    });
     dispatch({
       type: "start-session",
-      payload: createClientSession({
-        id: data.definition.id,
-        mode: "practice-exam",
-        exam: data.definition.exam,
-        label: data.definition.label,
-        description: data.definition.description,
-        questions: data.questions,
-        timeLimitMinutes: data.definition.timeLimitMinutes,
-      }),
+      payload: {
+        ...base,
+        practiceExamId: data.definition.id,
+        currentIndex: Math.min(startIndex, Math.max(0, base.questions.length - 1)),
+      },
     });
   }
 
@@ -718,6 +861,34 @@ export default function QuizPage({
       return;
     }
 
+    if (state.session.mode === "practice-exam" && isAuthenticated) {
+      // Server-side sync of practice-exam answers — lazy-creates the quiz_sessions
+      // row on the first answer so cross-device readiness history works.
+      const selectedValue = Array.isArray(state.activeAnswer)
+        ? JSON.stringify(state.activeAnswer)
+        : typeof state.activeAnswer === "string"
+          ? state.activeAnswer
+          : JSON.stringify(state.activeAnswer);
+      try {
+        await fetch("/api/quiz/answer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: state.session.id,
+            questionId: question.id,
+            selectedOptionId: selectedValue,
+            timeSpentMs: Math.max(1000, Date.now() - state.session.startedAt),
+            practiceExamId: state.session.practiceExamId ?? state.session.id,
+            examTrack: state.session.exam,
+            totalQuestions: state.session.questions.length,
+            questionIds: state.session.questions.map((q) => q.id),
+          }),
+        });
+      } catch {
+        // Best-effort sync — UI still proceeds with local correctness from the question metadata.
+      }
+    }
+
     dispatch({
       type: "submit-answer",
       questionId: question.id,
@@ -768,6 +939,24 @@ export default function QuizPage({
     dispatch({ type: "start-session", payload: reviewSession });
   }
 
+  // Drill → tutor handoff: build the missed-review session AND auto-open the
+  // tutor drawer on the first miss. Gated by canUseTutor on the UI side so this
+  // function is safe to call even for free-tier users (the tutor drawer itself
+  // enforces tier gating).
+  function startMissedReviewWithTutor() {
+    if (!state.session) return;
+    const reviewSession = createMissedReviewSession(state.session);
+    if (!reviewSession || reviewSession.questions.length === 0) return;
+    const firstQuestionId = reviewSession.questions[0]?.id;
+    dispatch({ type: "start-session", payload: reviewSession });
+    if (firstQuestionId) {
+      // Defer so the session reducer settles before we layer the tutor open
+      setTimeout(() => {
+        dispatch({ type: "open-tutor", questionId: firstQuestionId });
+      }, 0);
+    }
+  }
+
   const session = state.session;
   const currentQuestion = session ? session.questions[session.currentIndex] : null;
   const currentRecord = currentQuestion ? session?.answers[currentQuestion.id] : undefined;
@@ -783,6 +972,118 @@ export default function QuizPage({
       }))
     : [];
   const scoreSummary = session ? computeSessionScore(session) : null;
+
+  // Local readiness-attempt history (per device). Avoids schema changes.
+  const [readinessAttempts, setReadinessAttempts] = useState<Record<string, ReadinessAttempt>>({});
+
+  // Transient "Picked up where you left off (QN)" toast for cross-device
+  // practice-exam resumes. Auto-dismisses after 4.5s.
+  const [resumeToast, setResumeToast] = useState<string | null>(null);
+  useEffect(() => {
+    if (!resumeToast) return;
+    const id = setTimeout(() => setResumeToast(null), 4500);
+    return () => clearTimeout(id);
+  }, [resumeToast]);
+
+  // Drug-card recommendation surfaced on the results screen for missed pharm
+  // questions. Lazily fetched once when the results phase opens.
+  const [drugCardRec, setDrugCardRec] = useState<{
+    id: string;
+    genericName: string;
+    drugClass: string;
+  } | null>(null);
+  const drugCardFetchRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (state.phase !== "results" || !session || !scoreSummary) {
+      setDrugCardRec(null);
+      drugCardFetchRef.current = null;
+      return;
+    }
+    const missed = scoreSummary.missedQuestionIds[0];
+    const missedQuestion = missed
+      ? session.questions.find((q) => q.id === missed)
+      : null;
+    if (!missedQuestion) return;
+    const category = missedQuestion.category ?? "";
+    // Question metadata varies; coerce defensively
+    const rawTags = (missedQuestion as { tags?: unknown }).tags;
+    const tags = Array.isArray(rawTags)
+      ? (rawTags as unknown[]).filter((t): t is string => typeof t === "string").slice(0, 6)
+      : [];
+    const sig = `${session.id}::${category}::${tags.join(",")}`;
+    if (drugCardFetchRef.current === sig) return;
+    drugCardFetchRef.current = sig;
+    if (!category && tags.length === 0) return;
+    const url = new URL("/api/drug-cards/recommend", window.location.origin);
+    url.searchParams.set("category", category);
+    if (tags.length > 0) url.searchParams.set("tags", tags.join(","));
+    fetch(url.toString())
+      .then((r) => (r.ok ? r.json() : null))
+      .then((payload) => {
+        const card = payload?.data;
+        if (card?.id && card?.genericName && card?.drugClass) {
+          setDrugCardRec({
+            id: card.id,
+            genericName: card.genericName,
+            drugClass: card.drugClass,
+          });
+        }
+      })
+      .catch(() => undefined);
+  }, [state.phase, session, scoreSummary]);
+
+  useEffect(() => {
+    const local = loadReadinessAttempts();
+    const merged: typeof local = { ...local };
+    for (const [examId, server] of Object.entries(serverReadinessAttempts)) {
+      const existing = merged[examId];
+      if (!existing || server.takenAtMs >= existing.takenAtMs) {
+        merged[examId] = server;
+      }
+    }
+    setReadinessAttempts(merged);
+  }, [serverReadinessAttempts]);
+
+  useEffect(() => {
+    if (
+      state.phase === "results" &&
+      session &&
+      session.mode === "practice-exam" &&
+      scoreSummary &&
+      scoreSummary.totalQuestions > 0
+    ) {
+      const attempt: ReadinessAttempt = {
+        accuracy: scoreSummary.score,
+        correctAnswers: scoreSummary.correctAnswers,
+        totalQuestions: scoreSummary.totalQuestions,
+        takenAtMs: Date.now(),
+      };
+      const key = session.practiceExamId ?? session.id;
+      saveReadinessAttempt(key, attempt);
+      setReadinessAttempts((prev) => ({ ...prev, [key]: attempt }));
+    }
+  }, [state.phase, session, scoreSummary]);
+
+  // NGN mix derivation (3-position): "mcq" | "realistic" | "ngn"
+  const ngnMix: "mcq" | "realistic" | "ngn" = ngnOnly
+    ? "ngn"
+    : selectedQuestionType === "mcq"
+      ? "mcq"
+      : "realistic";
+
+  const setNgnMix = (next: "mcq" | "realistic" | "ngn") => {
+    if (next === "mcq") {
+      setNgnOnly(false);
+      setSelectedQuestionType("mcq");
+    } else if (next === "ngn") {
+      setNgnOnly(true);
+      if (selectedQuestionType === "mcq") setSelectedQuestionType("");
+    } else {
+      // realistic — natural blueprint mix
+      setNgnOnly(false);
+      if (selectedQuestionType === "mcq") setSelectedQuestionType("");
+    }
+  };
   const answeredCount = session ? Object.keys(session.answers).length : 0;
   const correctCount = session ? Object.values(session.answers).filter((item) => item.correct).length : 0;
   const sessionProgressPercent = session ? Math.round(((session.currentIndex + 1) / session.questions.length) * 100) : 0;
@@ -895,6 +1196,13 @@ export default function QuizPage({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [canAdvanceQuestion, canOpenTutor, currentQuestion, currentRecord, session, state.activeAnswer, state.phase]);
   return (
+    <>
+    {resumeToast ? (
+      <div className="quiz-resume-toast" role="status" aria-live="polite">
+        <span aria-hidden="true">⤴</span>
+        {resumeToast}
+      </div>
+    ) : null}
     <QuizTerminalShell
       phase={state.phase}
       tier={tier}
@@ -938,6 +1246,16 @@ export default function QuizPage({
       catalogCards={catalogCards}
       practiceExamDefinitions={practiceExamDefinitions}
       categoryOptions={categoryOptions}
+      categoryProgress={categoryProgress}
+      totalAnsweredByExam={totalAnsweredByExam}
+      isAuthenticated={isAuthenticated}
+      streakDays={streakDays}
+      todayAnswered={todayAnswered}
+      suggestedCategoryLabel={suggestedCategoryLabel}
+      readinessAttempts={readinessAttempts}
+      ngnMix={ngnMix}
+      onSetNgnMix={setNgnMix}
+      willPersonalize={willPersonalize}
       questionTypeOptions={QUESTION_TYPE_OPTIONS}
       draftAnswer={currentRecord?.selected ?? state.activeAnswer}
       practiceExamStatusCopy={getPracticeExamStatusCopy(practiceExamLimit, practiceExamDefinitions.length, canUseIcuSimBeta)}
@@ -1004,10 +1322,39 @@ export default function QuizPage({
       onToggleFlag={() => currentQuestion ? dispatch({ type: "toggle-flag", questionId: currentQuestion.id }) : undefined}
       onOpenTutor={() => currentQuestion ? dispatch({ type: "open-tutor", questionId: currentQuestion.id }) : undefined}
       onCloseTutor={() => dispatch({ type: "close-tutor" })}
+      onContinueDrillFromTutor={
+        // Only meaningful for single-question deep-link sessions. Swaps the
+        // session for a 10-question category drill of the same topic.
+        state.session && state.session.questions.length === 1 && currentQuestion?.category
+          ? () => {
+              const category = currentQuestion.category;
+              const exam = state.session?.exam ?? selectedExam;
+              // Telemetry: did the tutor follow-up convert into more practice?
+              void import("@/lib/analytics").then(({ trackEvent }) => {
+                trackEvent("tutor_continue_drill_clicked", {
+                  category,
+                  exam,
+                  source_question_id: currentQuestion.id,
+                });
+              }).catch(() => undefined);
+              dispatch({ type: "close-tutor" });
+              setSelectedCategory(category);
+              startTransition(() => {
+                void openStandardSession(exam, 10);
+              });
+            }
+          : undefined
+      }
+      continueDrillLabel={
+        state.session && state.session.questions.length === 1 && currentQuestion?.category
+          ? `Continue with 9 more in ${getCategoryLabel(state.session.exam, currentQuestion.category)} →`
+          : null
+      }
       onFinishSession={() => dispatch({ type: "finish-session", finishedAt: Date.now() })}
       onResetSession={() => dispatch({ type: "reset" })}
       onStartMissedReview={startMissedReview}
     />
+    </>
   );
   /* legacy quiz renderer retained temporarily for rollback reference
   return (
@@ -1477,10 +1824,41 @@ export default function QuizPage({
                   <button type="button" onClick={startMissedReview} className="btn-primary" disabled={scoreSummary.missedQuestionIds.length === 0}>
                     Review missed
                   </button>
+                  {canUseTutor && scoreSummary.missedQuestionIds.length >= 3 ? (
+                    <button
+                      type="button"
+                      onClick={startMissedReviewWithTutor}
+                      className="btn-terra"
+                      title="Walk through your top misses with the AI tutor"
+                    >
+                      🤖 Walk through misses with tutor →
+                    </button>
+                  ) : null}
+                  {isAuthenticated ? (
+                    <a href="/dashboard" className="btn-secondary">
+                      View dashboard →
+                    </a>
+                  ) : null}
+                  {drugCardRec ? (
+                    <a
+                      href={`/drug-cards/${encodeURIComponent(drugCardRec.id)}`}
+                      className="quiz-drug-card-link"
+                      title={`Drug card: ${drugCardRec.genericName} (${drugCardRec.drugClass})`}
+                    >
+                      📖 Brush up: {drugCardRec.genericName} ({drugCardRec.drugClass})
+                    </a>
+                  ) : null}
                   <button type="button" onClick={() => dispatch({ type: "open-catalog" })} className="btn-secondary">
                     New session
                   </button>
                 </div>
+                {isAuthenticated ? (
+                  <p className="mt-3 text-xs leading-5 text-muted">
+                    {canUseTutor && scoreSummary.missedQuestionIds.length >= 3
+                      ? `${scoreSummary.missedQuestionIds.length} misses ready for tutor walk-through. Your dashboard just updated too.`
+                      : "Your dashboard just updated — readiness score, weak areas, and the next-best-move all reflect this run."}
+                  </p>
+                ) : null}
               </div>
 
               {canUseAdvancedAnalytics ? (
@@ -1532,5 +1910,7 @@ export default function QuizPage({
     </div>
   );
   */
+  // (No-op fallback above is unreachable — the live render lives in
+  // QuizTerminalShell. Resume toast is rendered globally below.)
 }
 

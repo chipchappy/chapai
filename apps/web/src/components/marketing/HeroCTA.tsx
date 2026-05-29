@@ -35,7 +35,7 @@ export default function HeroCTA({ heroArt = "home" }: HeroCTAProps) {
             <CtaButtons />
           </div>
           <p className={styles.quote}>
-            UWorld $109/mo. Kaplan $349. Bootcamp $169. <strong>Clarity $9.99.</strong>
+            UWorld $139/mo. Archer $79/mo. Kaplan $80. <strong>Clarity $9.99/mo.</strong>
           </p>
           <p className={styles.microcopy}>
             <span>&#10003; No credit card</span>

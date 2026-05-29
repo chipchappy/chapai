@@ -18,13 +18,14 @@ export default async function LoginPage({
   searchParams?: Promise<{ next?: string; auth?: string }>;
 }) {
   const params = (await searchParams) ?? {};
-  const nextPath = params.next?.startsWith("/") ? params.next : "/quiz";
+  const nextPath = params.next?.startsWith("/") ? params.next : "/dashboard";
   const authState = params.auth;
   const authMessages: Record<string, string> = {
     unavailable: "Sign-in is temporarily unavailable. Give it a minute, then request a fresh link.",
     "missing-link": "That sign-in link is incomplete. Request a fresh link below.",
     expired: "That sign-in link expired. Request a fresh link below to continue.",
     failed: "We could not complete sign-in from that link. Request a fresh link below.",
+    "reset-success": "Password updated. Sign in below with your new password.",
   };
   const authMessage = authState ? authMessages[authState] ?? authMessages.failed : null;
 
