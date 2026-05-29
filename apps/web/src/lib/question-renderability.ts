@@ -25,6 +25,11 @@ type QuestionLike = {
   }> | null;
   matrixColumns?: string[] | null;
   matrixRows?: Array<{ label: string; answer: string }> | null;
+  bowTie?: {
+    center?: unknown;
+    leftActions?: unknown[];
+    rightMonitoring?: unknown[];
+  } | null;
 };
 
 export type QuestionIntelTab = "prompt" | "chart" | "labs" | "orders" | "notes" | "rationale" | "sources";
@@ -70,6 +75,14 @@ function hasCaseIntel(question: QuestionLike) {
   );
 }
 
+function hasBowTieStructure(question: QuestionLike) {
+  return Boolean(
+    question.bowTie?.center
+      && (question.bowTie.leftActions?.length ?? 0) >= 4
+      && (question.bowTie.rightMonitoring?.length ?? 0) >= 4,
+  );
+}
+
 export function getQuestionIntegrityIssues(question: QuestionLike) {
   const issues: string[] = [];
   const kind = resolveKind(question);
@@ -79,6 +92,7 @@ export function getQuestionIntegrityIssues(question: QuestionLike) {
   }
 
   if ((kind === "mcq" || kind === "multi-select" || kind === "case-study" || kind === "bow-tie")
+    && !(kind === "bow-tie" && hasBowTieStructure(question))
     && (question.options?.length ?? 0) < 2) {
     issues.push("missing-options");
   }
@@ -109,7 +123,7 @@ export function getQuestionIntegrityIssues(question: QuestionLike) {
     issues.push("missing-case-intel");
   }
 
-  if (kind === "bow-tie" && !hasCaseIntel(question) && (question.options?.length ?? 0) < 3) {
+  if (kind === "bow-tie" && !hasBowTieStructure(question) && !hasCaseIntel(question) && (question.options?.length ?? 0) < 3) {
     issues.push("missing-bow-tie-context");
   }
 
