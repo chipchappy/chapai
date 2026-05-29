@@ -6,6 +6,7 @@ import { getQuestionById } from "@/lib/content-bank";
 import { answerLocalSession } from "@/lib/local-quiz-store";
 import { recordAnswer } from "@/lib/quiz-engine";
 import { getStandardPreviewDeck } from "@/lib/practice-data";
+import { getStudyResourcesForQuestion } from "@/lib/study-resources";
 import { questions, quizSessions } from "@chapai/db/schema";
 import { eq } from "drizzle-orm";
 import type { ApiResponse } from "@/lib/types";
@@ -245,6 +246,18 @@ export async function POST(req: NextRequest) {
         });
       }
 
+      const references = local.question.references?.length
+        ? local.question.references
+        : getStudyResourcesForQuestion({
+            exam: local.question.exam,
+            category: local.question.category,
+            stem: local.question.stem,
+            rationale: local.question.rationale,
+            deepRationale: local.question.deepRationale,
+            takeaway: local.question.takeaway,
+            nclexClientNeed: local.question.nclexClientNeed,
+          });
+
       return jsonSuccess({
         correct: local.isCorrect,
         correctAnswer: local.question.answer,
@@ -254,7 +267,7 @@ export async function POST(req: NextRequest) {
         takeaway: local.question.takeaway ?? null,
         visualRationale: local.question.visualRationale ?? null,
         diagramBlueprint: local.question.diagramBlueprint ?? null,
-        references: local.question.references ?? [],
+        references,
         coachingFrame: local.question.coachingFrame ?? [],
       }, 200, { requestId: requestContext.requestId });
     }
@@ -274,7 +287,14 @@ export async function POST(req: NextRequest) {
     // Keep the curated live bank as the teaching source of truth,
     // while the database continues to store session/answer history.
     const question = await db
-      .select({ answer: questions.answer, rationale: questions.rationale, distractorRationales: questions.distractorRationales })
+      .select({
+        answer: questions.answer,
+        rationale: questions.rationale,
+        distractorRationales: questions.distractorRationales,
+        exam: questions.exam,
+        category: questions.category,
+        stem: questions.stem,
+      })
       .from(questions)
       .where(eq(questions.id, questionId))
       .get();
@@ -296,6 +316,18 @@ export async function POST(req: NextRequest) {
         : null
     );
     const isCorrect = answersMatch(selectedAnswer, correctAnswer);
+    const payloadReferences = canonicalQuestion?.references ?? demoQuestion?.references ?? teachingPayload.references ?? [];
+    const references = payloadReferences.length
+      ? payloadReferences
+      : getStudyResourcesForQuestion({
+          exam: canonicalQuestion?.exam ?? demoQuestion?.exam ?? question?.exam ?? "nclex",
+          category: canonicalQuestion?.category ?? demoQuestion?.category ?? question?.category ?? "General",
+          stem: canonicalQuestion?.stem ?? demoQuestion?.stem ?? question?.stem ?? "",
+          rationale,
+          deepRationale,
+          takeaway: canonicalQuestion?.takeaway ?? demoQuestion?.takeaway,
+          nclexClientNeed: canonicalQuestion?.nclexClientNeed,
+        }).slice(0, 4);
 
     // Skip DB write for demo sessions (they use non-UUID IDs and aren't in D1)
     if (!sessionId.startsWith("demo-")) {
@@ -339,7 +371,7 @@ export async function POST(req: NextRequest) {
         ?? null,
       visualRationale: canonicalQuestion?.visualRationale ?? teachingPayload.visualRationale ?? null,
       diagramBlueprint: canonicalQuestion?.diagramBlueprint ?? teachingPayload.diagramBlueprint ?? null,
-      references: canonicalQuestion?.references ?? demoQuestion?.references ?? teachingPayload.references ?? [],
+      references,
       coachingFrame: canonicalQuestion?.coachingFrame ?? teachingPayload.coachingFrame ?? [],
     }, 200, { requestId: requestContext.requestId });
 
