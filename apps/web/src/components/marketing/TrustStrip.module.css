@@ -1,53 +1,60 @@
 .strip {
-  background: var(--c-bg);
-  padding: 0 1rem 1.5rem;
+  background: transparent;
+  /* Tight vertical rhythm so the strip + the highlights band both land
+     above the fold on a 14" laptop. */
+  padding: 6px 1rem 12px;
 }
 
+/* One soft panel — gentle radius, low-opacity cream fill so the stats float
+   as a single anchor without competing with the hero card above. No hard
+   dividers anywhere; the eye reads four numbers grouped by spacing alone. */
 .inner {
   display: grid;
   width: min(1180px, 100%);
   margin: 0 auto;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--c-border);
-  border-bottom: 1px solid var(--c-border);
+  gap: 12px;
+  padding: 22px clamp(18px, 3vw, 36px);
+  border-radius: 28px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--c-bg-elevated) 55%, transparent) 0%,
+    color-mix(in srgb, var(--c-bg-elevated) 30%, transparent) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--c-border-soft) 70%, transparent);
+  backdrop-filter: blur(6px) saturate(1.04);
+  -webkit-backdrop-filter: blur(6px) saturate(1.04);
 }
 
 .stat {
-  padding: 1.1rem 1.1rem;
-}
-
-.stat + .stat {
-  border-left: 1px solid var(--c-border-soft);
+  padding: 6px 8px;
+  text-align: left;
 }
 
 .value {
   display: block;
-  color: var(--c-text);
+  color: var(--c-text-strong);
   font-family: var(--font-serif);
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-size: clamp(1.75rem, 3vw, 2.7rem);
   font-weight: 500;
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
 }
 
 .label {
   display: block;
-  margin-top: 0.35rem;
+  margin-top: 0.45rem;
   color: var(--c-text-muted);
   font-size: 0.84rem;
   font-weight: 600;
   line-height: 1.35;
+  letter-spacing: 0.005em;
 }
 
 @media (max-width: 760px) {
   .inner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .stat:nth-child(odd) {
-    border-left: 0;
-  }
-
-  .stat:nth-child(n + 3) {
-    border-top: 1px solid var(--c-border-soft);
+    padding: 18px 18px;
+    gap: 8px;
   }
 }

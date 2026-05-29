@@ -5,6 +5,9 @@ type TrustStripProps = {
   questionCount?: number;
   /** Number of timed readiness exams. */
   examCount?: number;
+  /** NGN-specific live count from the bank. Drives the first stat so the
+   *  strip doesn't repeat the total shown again in HighlightsBand below. */
+  ngnCount?: number;
 };
 
 function flooredCount(n?: number) {
@@ -12,12 +15,13 @@ function flooredCount(n?: number) {
   return `${(Math.floor(n / 100) * 100).toLocaleString()}+`;
 }
 
-export default function TrustStrip({ questionCount, examCount = 5 }: TrustStripProps) {
+export default function TrustStrip({ questionCount, examCount = 5, ngnCount }: TrustStripProps) {
+  const ngnDisplay = flooredCount(ngnCount ?? Math.round((questionCount ?? 0) * 0.35));
   const stats: Array<[string, string]> = [
-    [flooredCount(questionCount), "Live practice items, mostly NGN"],
+    [ngnDisplay, "NGN-style items (case, bow-tie, matrix)"],
     [String(examCount), "Timed readiness exams"],
     ["Free", "Study account, no credit card"],
-    ["$9.99", "/mo NCLEX Monthly"],
+    ["$9.99/month", "Full access"],
   ];
 
   return (
