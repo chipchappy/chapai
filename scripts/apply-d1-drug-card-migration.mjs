@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -106,24 +107,31 @@ function run(options, statement) {
     process.stdout.write(`[dry-run] ${statement.sql}\n`);
     return;
   }
-  const args = [...baseArgs(options), "--command", statement.sql];
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "chapai-drug-card-migrate-"));
+  const filePath = path.join(tmpDir, `${statement.label.replace(/[^a-z0-9_.-]/gi, "_")}.sql`);
+  fs.writeFileSync(filePath, `${statement.sql};\n`, "utf8");
+  const args = [...baseArgs(options), "--file", filePath];
   const command = wranglerCommand(args);
-  const result = spawnSync(command.bin, command.args, {
-    cwd: webDir,
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "pipe"],
-  });
-  const combined = `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
-  if (result.status === 0) {
-    process.stdout.write(`applied: ${statement.label}\n`);
-    return;
+  try {
+    const result = spawnSync(command.bin, command.args, {
+      cwd: webDir,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    const combined = `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
+    if (result.status === 0) {
+      process.stdout.write(`applied: ${statement.label}\n`);
+      return;
+    }
+    if (/duplicate column name/i.test(combined)) {
+      process.stdout.write(`already present: ${statement.label}\n`);
+      return;
+    }
+    process.stderr.write(combined);
+    throw new Error(`Drug-card migration failed at ${statement.label}`);
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
   }
-  if (/duplicate column name/i.test(combined)) {
-    process.stdout.write(`already present: ${statement.label}\n`);
-    return;
-  }
-  process.stderr.write(combined);
-  throw new Error(`Drug-card migration failed at ${statement.label}`);
 }
 
 const options = parseArgs(process.argv.slice(2));
