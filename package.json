@@ -7,6 +7,7 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "type-check": "npm run type-check --workspace=@chapai/web",
+    "guard:no-visual-drift": "node scripts/check-no-visual-drift.mjs",
     "smoke:live-student-flows": "node scripts/smoke-live-student-flows.mjs",
     "deploy": "turbo deploy"
   },

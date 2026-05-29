@@ -26,6 +26,10 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: node scripts/ops/guard-canonical-brain-writes.mjs
 
+      - name: Guard no visual drift
+        working-directory: ${{ github.workspace }}
+        run: node scripts/check-no-visual-drift.mjs --base="${{ github.event.before }}" --head="${{ github.sha }}"
+
       - name: Build
         run: npm run build:worker
         env:
