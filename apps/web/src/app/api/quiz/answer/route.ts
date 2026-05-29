@@ -17,6 +17,24 @@ import type { QuestionAnswer } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
+type D1PreparedStatement = {
+  bind: (...values: unknown[]) => {
+    first: <T = Record<string, unknown>>() => Promise<T | null>;
+  };
+};
+
+type D1Like = {
+  prepare: (query: string) => D1PreparedStatement;
+};
+
+type QuestionTeachingPayload = {
+  structuredRationale: unknown | null;
+  references: unknown[];
+  visualRationale: unknown | null;
+  diagramBlueprint: unknown | null;
+  coachingFrame: unknown[];
+};
+
 const schema = z.object({
   sessionId:      z.string().min(1),          // accept demo- prefixed ids too
   questionId:     z.string(),
@@ -124,6 +142,66 @@ function answersMatch(left: unknown, right: unknown) {
   return normalizedLeft === normalizedRight;
 }
 
+function parseJsonValue<T>(raw: string | null | undefined, fallback: T): T {
+  if (!raw) {
+    return fallback;
+  }
+
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+function getRawD1Database(env: ReturnType<typeof resolveEnv>): D1Like | null {
+  const candidate = env.DB as Partial<D1Like> | undefined;
+  return typeof candidate?.prepare === "function" ? candidate as D1Like : null;
+}
+
+async function loadQuestionTeachingPayload(
+  env: ReturnType<typeof resolveEnv>,
+  questionId: string,
+): Promise<QuestionTeachingPayload> {
+  const empty: QuestionTeachingPayload = {
+    structuredRationale: null,
+    references: [],
+    visualRationale: null,
+    diagramBlueprint: null,
+    coachingFrame: [],
+  };
+  const d1 = getRawD1Database(env);
+  if (!d1) {
+    return empty;
+  }
+
+  const readColumn = async (column: string) => {
+    try {
+      const row = await d1
+        .prepare(`SELECT ${column} AS value FROM questions WHERE id = ?`)
+        .bind(questionId)
+        .first<{ value?: string | null }>();
+      return row?.value ?? null;
+    } catch {
+      return null;
+    }
+  };
+
+  const [structuredRationale, referencesJson, visualRationale] = await Promise.all([
+    readColumn("structured_rationale"),
+    readColumn("references_json"),
+    readColumn("visual_rationale"),
+  ]);
+
+  return {
+    structuredRationale: parseJsonValue(structuredRationale, null),
+    references: parseJsonValue<unknown[]>(referencesJson, []),
+    visualRationale: parseJsonValue(visualRationale, null),
+    diagramBlueprint: null,
+    coachingFrame: [],
+  };
+}
+
 export async function POST(req: NextRequest) {
   const requestContext = createRequestContext(req, { route: "/api/quiz/answer" });
   try {
@@ -200,6 +278,7 @@ export async function POST(req: NextRequest) {
       .from(questions)
       .where(eq(questions.id, questionId))
       .get();
+    const teachingPayload = await loadQuestionTeachingPayload(env, questionId);
 
     if (!question && !canonicalQuestion && !demoQuestion) {
       return jsonError(404, "QUESTION_NOT_FOUND", "Question not found", requestContext, {
@@ -255,10 +334,13 @@ export async function POST(req: NextRequest) {
       deepRationale,
       distractorRationales,
       takeaway: canonicalQuestion?.takeaway ?? demoQuestion?.takeaway ?? null,
-      visualRationale: canonicalQuestion?.visualRationale ?? null,
-      diagramBlueprint: canonicalQuestion?.diagramBlueprint ?? null,
-      references: canonicalQuestion?.references ?? [],
-      coachingFrame: canonicalQuestion?.coachingFrame ?? [],
+      structuredRationale: (canonicalQuestion as { structuredRationale?: unknown } | null)?.structuredRationale
+        ?? teachingPayload.structuredRationale
+        ?? null,
+      visualRationale: canonicalQuestion?.visualRationale ?? teachingPayload.visualRationale ?? null,
+      diagramBlueprint: canonicalQuestion?.diagramBlueprint ?? teachingPayload.diagramBlueprint ?? null,
+      references: canonicalQuestion?.references ?? demoQuestion?.references ?? teachingPayload.references ?? [],
+      coachingFrame: canonicalQuestion?.coachingFrame ?? teachingPayload.coachingFrame ?? [],
     }, 200, { requestId: requestContext.requestId });
 
   } catch (err) {

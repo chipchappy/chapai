@@ -2,8 +2,21 @@
 
 export type Exam = "nclex" | "ccrn";
 export type Tier = "free" | "plus" | "pro";
-export type QuestionType = "mcq" | "sata" | "ordering" | "matrix" | "case_study" | "bow_tie";
-export type QuestionAnswer = string | string[] | Record<string, string>;
+export type QuestionType =
+  | "mcq"
+  | "sata"
+  | "ordering"
+  | "matrix"
+  | "case_study"
+  | "bow_tie";
+export type CjmmStep =
+  | "recognize-cues"
+  | "analyze-cues"
+  | "prioritize-hypotheses"
+  | "generate-solutions"
+  | "take-actions"
+  | "evaluate-outcomes";
+export type QuestionAnswer = string | string[] | Record<string, string | string[]>;
 export type CognitiveLevel = "apply" | "analyze" | "synthesize" | "evaluate";
 export type NclexClientNeed =
   | "management_of_care"
@@ -47,6 +60,34 @@ export interface QuestionOption {
   text: string;
 }
 
+export interface BowTieCell {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+}
+
+export interface BowTieQuestion {
+  center: BowTieCell;
+  leftActions: BowTieCell[];
+  rightMonitoring: BowTieCell[];
+}
+
+export interface StructuredRationaleCitation {
+  source: string;
+  chapter?: string;
+  page?: string;
+  href?: string;
+  note?: string;
+}
+
+export interface StructuredRationale {
+  overview: string;
+  mechanism: string;
+  whyCorrect: string;
+  whyWrong: Record<string, string>;
+  citations: StructuredRationaleCitation[];
+}
+
 export interface QuizQuestion {
   id: string;
   exam: Exam;
@@ -57,6 +98,8 @@ export interface QuizQuestion {
   subcategory?: string;
   difficulty: 1 | 2 | 3 | 4 | 5;
   stem: string;
+  caseStudyId?: string;
+  cjmmStep?: CjmmStep;
   scenarioTitle?: string;
   scenario?: string;
   additionalInfo?: string;
@@ -101,7 +144,9 @@ export interface QuizQuestion {
     label: string;
     answer: string;
   }>;
+  bowTie?: BowTieQuestion;
   rationale: string;
+  structuredRationale?: StructuredRationale;
   deepRationale?: string;
   distractorRationales?: Record<string, string>;
   tags?: string[];
@@ -162,10 +207,11 @@ export interface OrderingQuestion extends QuizQuestion {
 export interface QuizSessionConfig {
   exam: Exam;
   category?: string;    // undefined = all categories (weighted by blueprint)
-  count: 5 | 10 | 20 | 25 | 50 | 75 | 100;
+  count: 5 | 6 | 10 | 20 | 25 | 50 | 75 | 100;
   type?: QuestionType;  // legacy alias for questionType
   questionType?: QuestionType;
   ngnOnly?: boolean;
+  personalize?: boolean;
 }
 
 export interface QuizSessionState {

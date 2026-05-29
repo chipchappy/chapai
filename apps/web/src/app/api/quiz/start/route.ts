@@ -82,6 +82,7 @@ const schema = z.object({
   questionType: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).optional(),
   type: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).optional(),
   ngnOnly: z.boolean().optional(),
+  personalize: z.boolean().optional(),
   count:    z.union([
     z.literal(5), z.literal(10), z.literal(20), z.literal(25), z.literal(50), z.literal(75), z.literal(100)
   ]).default(10),

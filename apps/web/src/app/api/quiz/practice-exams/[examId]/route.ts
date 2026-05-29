@@ -62,7 +62,7 @@ function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
             ? "bow-tie"
             : question.type === "case_study"
               ? "case-study"
-            : "mcq";
+              : "mcq";
 
   return {
     id: question.id,
@@ -232,6 +232,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
       options: questions.options,
       answer: questions.answer,
       rationale: questions.rationale,
+      structuredRationale: questions.structuredRationale,
       distractorRationales: questions.distractorRationales,
       tags: questions.tags,
       blueprintPct: questions.blueprintPct,
@@ -240,6 +241,19 @@ async function loadLivePracticeQuestions(exam: Exam) {
       reviewStatus: questions.reviewStatus,
       revision: questions.revision,
       publishState: questions.publishState,
+      scenarioTitle: questions.scenarioTitle,
+      caseStudyId: questions.caseStudyId,
+      cjmmStep: questions.cjmmStep,
+      scenario: questions.scenario,
+      additionalInfo: questions.additionalInfo,
+      exhibits: questions.exhibits,
+      chartReview: questions.chartReview,
+      matrixColumns: questions.matrixColumns,
+      matrixRows: questions.matrixRows,
+      bowTie: questions.bowTie,
+      visualRationale: questions.visualRationale,
+      referencesJson: questions.referencesJson,
+      correctOrder: questions.correctOrder,
     })
     .from(questions)
     .where(eq(questions.exam, exam));
