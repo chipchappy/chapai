@@ -59,6 +59,22 @@ const CONCURRENCY = Math.max(1, Number(args.concurrency ?? 4));
 const DRY_RUN = Boolean(args["dry-run"]);
 const EXTRA_WHERE = args.where ? `AND ${args.where}` : "";
 
+// Run wrangler via shell with a single quoted command string. spawnSync with
+// shell:true + array-args re-tokenizes on Windows cmd.exe and splits SQL
+// values on commas; building one already-quoted string avoids that.
+const SPAWN_OPTS = {
+  cwd: WEB_DIR,
+  encoding: "utf8",
+  maxBuffer: 128 * 1024 * 1024,
+  shell: true,
+};
+function shellQuote(s) {
+  // Windows cmd.exe: double-quote, escape embedded quotes by doubling.
+  if (process.platform === "win32") return `"${String(s).replace(/"/g, '""')}"`;
+  // POSIX: single-quote, replace embedded single quotes with '\''.
+  return `'${String(s).replace(/'/g, "'\\''")}'`;
+}
+
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 if (!ANTHROPIC_API_KEY) {
   console.error("ERROR: ANTHROPIC_API_KEY env var is required.");
@@ -79,20 +95,49 @@ const FETCH_SQL = `
   LIMIT ${LIMIT}
 `.trim();
 
-/** Run a wrangler d1 execute command, return parsed JSON results. */
-function wranglerD1(sqlOrFile, isFile = false) {
-  const flag = isFile ? "--file" : "--command";
-  const result = spawnSync(
-    "npx",
-    ["wrangler", "d1", "execute", "chapai-prod", "--remote", "--json", `${flag}=${sqlOrFile}`],
-    { cwd: WEB_DIR, encoding: "utf8", maxBuffer: 64 * 1024 * 1024, shell: true },
-  );
+/** Strip wrangler's progress chatter to find the JSON payload. --file mode
+ *  prints "Checking if file needs uploading / Uploading..." before the JSON. */
+function extractJsonFromWranglerOutput(stdout) {
+  const idx = stdout.indexOf("[\n  {");
+  if (idx >= 0) return stdout.slice(idx);
+  const firstBracket = stdout.indexOf("[");
+  if (firstBracket >= 0) return stdout.slice(firstBracket);
+  return stdout;
+}
+
+/** Run a SELECT via --command (returns row results). SQL must fit on one
+ *  shell argument — multi-line is collapsed to a single line first. */
+function wranglerD1Query(sql) {
+  const oneLine = sql.replace(/\s+/g, " ").trim();
+  const cmd = `npx wrangler d1 execute chapai-prod --remote --json --command=${shellQuote(oneLine)}`;
+  const result = spawnSync(cmd, SPAWN_OPTS);
   if (result.status !== 0) {
-    console.error("wrangler d1 execute failed:", result.stderr || result.stdout);
-    throw new Error(`wrangler d1 execute exited ${result.status}`);
+    console.error("wrangler d1 query failed:");
+    console.error("STDERR:", (result.stderr || "").slice(0, 1500));
+    console.error("STDOUT:", (result.stdout || "").slice(0, 1500));
+    throw new Error(`wrangler d1 query exited ${result.status}`);
   }
   try {
-    return JSON.parse(result.stdout);
+    return JSON.parse(extractJsonFromWranglerOutput(result.stdout));
+  } catch (e) {
+    console.error("Could not parse wrangler JSON output:", result.stdout.slice(0, 500));
+    throw e;
+  }
+}
+
+/** Run a multi-statement UPDATE batch via --file. Returns the summary JSON
+ *  (Total queries executed / Rows read / Rows written), NOT row results. */
+function wranglerD1ExecFile(sqlFilePath) {
+  const cmd = `npx wrangler d1 execute chapai-prod --remote --json --file=${shellQuote(sqlFilePath)}`;
+  const result = spawnSync(cmd, SPAWN_OPTS);
+  if (result.status !== 0) {
+    console.error("wrangler d1 exec failed:");
+    console.error("STDERR:", (result.stderr || "").slice(0, 1500));
+    console.error("STDOUT:", (result.stdout || "").slice(0, 1500));
+    throw new Error(`wrangler d1 exec exited ${result.status}`);
+  }
+  try {
+    return JSON.parse(extractJsonFromWranglerOutput(result.stdout));
   } catch (e) {
     console.error("Could not parse wrangler JSON output:", result.stdout.slice(0, 500));
     throw e;
@@ -104,10 +149,22 @@ function escapeSql(s) {
 }
 
 function buildPrompt(q) {
-  // Parse options safely
+  // Options arrive as JSON-stringified array of {id, text} objects from D1.
+  // Format them as "A) text" style so the model sees clean, readable choices.
   let options = q.options;
   try { options = JSON.parse(q.options); } catch {}
-  const optionsText = Array.isArray(options) ? options.join("\n") : String(options ?? "");
+  let optionsText = "";
+  if (Array.isArray(options)) {
+    optionsText = options
+      .map((o, i) => {
+        if (typeof o === "string") return `${String.fromCharCode(65 + i)}) ${o}`;
+        const id = (o?.id ?? String.fromCharCode(65 + i)).toString().toUpperCase();
+        return `${id}) ${o?.text ?? ""}`;
+      })
+      .join("\n");
+  } else {
+    optionsText = String(options ?? "");
+  }
   let existingDistractors = {};
   try { existingDistractors = JSON.parse(q.distractor_rationales || "{}"); } catch {}
   const hasDistractors = Object.keys(existingDistractors).length > 0;
@@ -206,8 +263,8 @@ async function runConcurrent(items, fn, concurrency) {
 
 async function main() {
   console.log(`[deep-rationale] fetching up to ${LIMIT} pending questions (exam=${EXAM})…`);
-  const fetched = wranglerD1(FETCH_SQL);
-  // wrangler returns either an array or {result:[{results:[…]}]} depending on version
+  const fetched = wranglerD1Query(FETCH_SQL);
+  // wrangler 4.x returns [{results: [...], success: true, meta: {...}}]
   const rows =
     Array.isArray(fetched) && fetched[0]?.results
       ? fetched[0].results
@@ -216,9 +273,21 @@ async function main() {
     console.log("[deep-rationale] nothing to author — exiting.");
     return;
   }
-  console.log(`[deep-rationale] authoring ${rows.length} with concurrency=${CONCURRENCY}…`);
+  console.log(`[deep-rationale] authoring ${rows.length} with concurrency=${CONCURRENCY} model=${MODEL}…`);
+  const startMs = Date.now();
+  let completed = 0;
+  const tickInterval = setInterval(() => {
+    const pct = Math.round((completed / rows.length) * 100);
+    const elapsed = Math.round((Date.now() - startMs) / 1000);
+    console.log(`[deep-rationale] progress: ${completed}/${rows.length} (${pct}%) elapsed=${elapsed}s`);
+  }, 15000);
 
-  const results = await runConcurrent(rows, authorOne, CONCURRENCY);
+  const results = await runConcurrent(rows, async (q, i) => {
+    const out = await authorOne(q);
+    completed++;
+    return out;
+  }, CONCURRENCY);
+  clearInterval(tickInterval);
 
   let successCount = 0;
   let failCount = 0;
@@ -284,12 +353,14 @@ async function main() {
   writeFileSync(batchFile, updates.join("\n"), "utf8");
   console.log(`[deep-rationale] writing ${updates.length} updates to D1 via ${batchFile}…`);
 
-  const writeResult = wranglerD1(batchFile, true);
-  // Sum changes across statements
-  const totalChanges =
-    (Array.isArray(writeResult) ? writeResult : writeResult?.result ?? [])
-      .reduce((acc, r) => acc + (r?.meta?.changes ?? 0), 0);
-  console.log(`[deep-rationale] D1 reports ${totalChanges} rows changed.`);
+  const writeResult = wranglerD1ExecFile(batchFile);
+  // --file mode returns a summary object, not per-statement changes counts.
+  const summary =
+    Array.isArray(writeResult) && writeResult[0]?.results?.[0]
+      ? writeResult[0].results[0]
+      : {};
+  console.log(`[deep-rationale] D1 write summary:`, summary);
+  console.log(`[deep-rationale] DONE — authored ${updates.length} questions this batch.`);
 }
 
 main().catch((e) => {
