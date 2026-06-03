@@ -272,11 +272,15 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
  * If category is specified, selects from that category only.
  * Otherwise, distributes questions proportionally to exam blueprint.
  */
+export type CategoryAccuracyMap = Record<string, { accuracy: number; answered: number }>;
+
 export async function selectQuestions(
   db: DB,
   config: QuizSessionConfig,
   access?: {
     questionBankAccessPercent?: number;
+    personalize?: boolean;
+    categoryAccuracy?: CategoryAccuracyMap;
   },
 ): Promise<QuizQuestion[]> {
   const { exam, count } = config;
@@ -325,7 +329,13 @@ export async function selectQuestions(
     })
     .from(questions)
     .where(and(...conditions))
-    .orderBy(sql`random()`)
+    // Quality tilt: prefer questions with per-distractor rationales AND
+    // at least one citation, then fall back to random within each tier.
+    // Keeps the deck looking fresh while pushing the thin/legacy rows down.
+    .orderBy(
+      sql`CASE WHEN ${questions.distractorRationales} IS NOT NULL AND ${questions.distractorRationales} <> '' AND ${questions.distractorRationales} <> '{}' AND ${questions.referencesJson} IS NOT NULL AND ${questions.referencesJson} <> '' AND ${questions.referencesJson} <> '[]' THEN 0 ELSE 1 END`,
+      sql`random()`,
+    )
     .limit(candidateLimit);
   const dbBank = dbRows.map(mapQuestionRowToQuizQuestion);
   const filteredBank = dbBank.filter((question) => matchesQuizFilters(question, config));
@@ -353,6 +363,60 @@ export async function selectQuestions(
     return bank
       .sort(() => Math.random() - 0.5)
       .slice(0, count);
+  }
+
+  // Personalized weak-area-biased selection (60% weak / 30% mid / 10% strong)
+  if (access?.personalize && access.categoryAccuracy && Object.keys(access.categoryAccuracy).length > 0) {
+    const VOLUME_MIN = 5;
+    const scored = Object.entries(access.categoryAccuracy)
+      .filter(([, v]) => v.answered >= VOLUME_MIN)
+      .map(([cat, v]) => ({ cat, accuracy: v.accuracy }));
+
+    if (scored.length >= 2) {
+      scored.sort((a, b) => a.accuracy - b.accuracy);
+      const third = Math.max(1, Math.floor(scored.length / 3));
+      const weakCats = new Set(scored.slice(0, third).map((s) => s.cat));
+      const strongCats = new Set(scored.slice(-third).map((s) => s.cat));
+
+      const weakTarget = Math.round(count * 0.6);
+      const midTarget = Math.round(count * 0.3);
+      // strongTarget = remainder
+
+      const pickFrom = (predicate: (q: QuizQuestion) => boolean, n: number, exclude: Set<string>) => {
+        const pool = bank.filter((q) => predicate(q) && !exclude.has(q.id));
+        const shuffled = pool.sort(() => Math.random() - 0.5).slice(0, n);
+        return shuffled;
+      };
+
+      const selectedIds = new Set<string>();
+      const result: QuizQuestion[] = [];
+
+      const weakPicks = pickFrom(
+        (q) => weakCats.has(q.category),
+        weakTarget,
+        selectedIds,
+      );
+      weakPicks.forEach((q) => selectedIds.add(q.id));
+      result.push(...weakPicks);
+
+      const midPicks = pickFrom(
+        (q) => !weakCats.has(q.category) && !strongCats.has(q.category),
+        midTarget,
+        selectedIds,
+      );
+      midPicks.forEach((q) => selectedIds.add(q.id));
+      result.push(...midPicks);
+
+      // Fill remainder from any category (including strong)
+      const remainder = pickFrom(() => true, count - result.length, selectedIds);
+      remainder.forEach((q) => selectedIds.add(q.id));
+      result.push(...remainder);
+
+      if (result.length >= Math.min(count, bank.length)) {
+        return result.sort(() => Math.random() - 0.5).slice(0, count);
+      }
+      // Fall through to blueprint selection if we couldn't gather enough.
+    }
   }
 
   // Weighted multi-category selection
@@ -400,15 +464,18 @@ export async function createSession(
   db: DB,
   userId: string | undefined,
   config: QuizSessionConfig,
-  questionList: QuizQuestion[]
+  questionList: QuizQuestion[],
+  extras?: { practiceExamId?: string; mode?: string; sessionId?: string },
 ): Promise<string> {
-  const sessionId = crypto.randomUUID();
+  const sessionId = extras?.sessionId ?? crypto.randomUUID();
 
   await db.insert(quizSessions).values({
     id: sessionId,
     userId: userId ?? null,
     exam: config.exam,
     category: config.category ?? null,
+    mode: extras?.mode ?? "standard",
+    practiceExamId: extras?.practiceExamId ?? null,
     totalQuestions: questionList.length,
     questionIds: JSON.stringify(questionList.map((q) => q.id)),
   });

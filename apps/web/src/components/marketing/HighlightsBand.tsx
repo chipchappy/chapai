@@ -40,12 +40,15 @@ export default function HighlightsBand({
   drugCards = 200,
 }: HighlightsBandProps) {
   const stats: Stat[] = [
-    { value: questionCount.toLocaleString(), label: "Refined NCLEX items", hint: "Unique distractor reasoning on every one" },
+    { value: questionCount.toLocaleString(), label: "Refined NCLEX items", hint: "Every stem unique — no padded duplicate counts" },
     { value: `${ngnRatio || 25}%`, label: "Real NGN mix", hint: "Case studies, bow-tie, matrix, SATA" },
     { value: `${caseStudies}+`, label: "Multi-step case studies", hint: "CJMM 6-step unfolding format" },
     { value: `${readinessExams}`, label: "Timed readiness exams", hint: "Simulate the live CAT" },
-    { value: `${drugCards}+`, label: "Pharmacology tables", hint: "Class · MOA · priority labs · antidotes" },
+    { value: "AI", label: "Tutor on every question", hint: "Plain-English clinical reasoning in seconds" },
   ];
+
+  // unused, kept for backward compatibility of caller
+  void drugCards;
 
   return (
     <section className="highlights-band">
