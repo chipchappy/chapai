@@ -22,6 +22,7 @@ type QuestionRow = {
   distractorRationales: string | null;
   tags: string | null;
   blueprintPct: number | null;
+  deepRationale?: string | null;
   conceptNotes: string | null;
   provenance: string | null;
   reviewStatus: string | null;
@@ -253,6 +254,7 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
     answer,
     ...matrix,
     rationale: row.rationale,
+    deepRationale: row.deepRationale ?? undefined,
     distractorRationales: parseJsonValue<Record<string, string> | undefined>(row.distractorRationales, undefined),
     tags,
     blueprintPct: row.blueprintPct ?? undefined,
@@ -308,6 +310,7 @@ export async function selectQuestions(
       options: questions.options,
       answer: questions.answer,
       rationale: questions.rationale,
+      deepRationale: questions.deepRationale,
       distractorRationales: questions.distractorRationales,
       tags: questions.tags,
       blueprintPct: questions.blueprintPct,

@@ -15,7 +15,7 @@ export const users = sqliteTable("users", {
     .$defaultFn(() => crypto.randomUUID()),
   email: text("email").unique().notNull(),
   name: text("name"),
-  tier: text("tier", { enum: ["free", "trial", "base", "vip", "unlimited"] })
+  tier: text("tier", { enum: ["free", "plus", "pro"] })
     .default("free")
     .notNull(),
   stripeCustomerId: text("stripe_customer_id"),
@@ -28,6 +28,138 @@ export const users = sqliteTable("users", {
     .default(sql`(unixepoch())`)
     .notNull(),
 });
+
+export const billingSubscriptions = sqliteTable("billing_subscriptions", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+  email: text("email"),
+  tier: text("tier", { enum: ["plus", "pro"] }).notNull(),
+  planCode: text("plan_code").notNull(),
+  status: text("status").notNull(),
+  examTrack: text("exam_track", { enum: ["all", "nclex", "ccrn"] }).default("all").notNull(),
+  entitlements: text("entitlements").notNull(),
+  stripeCustomerId: text("stripe_customer_id"),
+  stripeSubscriptionId: text("stripe_subscription_id"),
+  stripeCheckoutSessionId: text("stripe_checkout_session_id"),
+  currentPeriodEnd: integer("current_period_end"),
+  expiresAt: integer("expires_at"),
+  canceledAt: integer("canceled_at"),
+  createdAt: integer("created_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  updatedAt: integer("updated_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export const billingEvents = sqliteTable("billing_events", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  stripeEventId: text("stripe_event_id").notNull().unique(),
+  type: text("type").notNull(),
+  processedAt: integer("processed_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  payload: text("payload").notNull(),
+});
+
+export const userEntitlements = sqliteTable("user_entitlements", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+  email: text("email"),
+  tier: text("tier", { enum: ["plus", "pro"] }).notNull(),
+  planCode: text("plan_code").notNull(),
+  status: text("status").notNull(),
+  examTrack: text("exam_track", { enum: ["all", "nclex", "ccrn"] }).default("all").notNull(),
+  entitlements: text("entitlements").notNull(),
+  stripeCheckoutSessionId: text("stripe_checkout_session_id").unique(),
+  stripeCustomerId: text("stripe_customer_id"),
+  stripeSubscriptionId: text("stripe_subscription_id"),
+  expiresAt: integer("expires_at"),
+  currentPeriodEnd: integer("current_period_end"),
+  sourceEventId: text("source_event_id").references(() => billingEvents.id, { onDelete: "set null" }),
+  createdAt: integer("created_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  updatedAt: integer("updated_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export const legalAcceptances = sqliteTable("legal_acceptances", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+  email: text("email").notNull(),
+  policyType: text("policy_type", { enum: ["terms", "privacy"] }).notNull(),
+  policyVersion: text("policy_version").notNull(),
+  source: text("source", { enum: ["auth_login", "checkout"] }).notNull(),
+  ipHash: text("ip_hash"),
+  userAgent: text("user_agent"),
+  acceptedAt: integer("accepted_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export const authAccounts = sqliteTable("auth_accounts", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  email: text("email").notNull().unique(),
+  passwordHash: text("password_hash").notNull(),
+  passwordSalt: text("password_salt").notNull(),
+  createdAt: integer("created_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  updatedAt: integer("updated_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export const accessKeys = sqliteTable("access_keys", {
+  id: text("id").primaryKey(),
+  code: text("code").notNull(),
+  normalizedCode: text("normalized_code").notNull().unique(),
+  type: text("type", { enum: ["founder-pass", "creator-pass", "tester-pass", "demo-pass", "reviewer-pass"] }).notNull(),
+  scope: text("scope", { enum: ["all", "ccrn", "nclex"] }).default("all").notNull(),
+  status: text("status", { enum: ["active", "revoked", "expired"] }).default("active").notNull(),
+  createdAt: integer("created_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  expiresAt: integer("expires_at"),
+  maxRedeems: integer("max_redeems").default(1).notNull(),
+  redeemCount: integer("redeem_count").default(0).notNull(),
+  lastRedeemedAt: integer("last_redeemed_at"),
+  notes: text("notes"),
+});
+
+export const practiceExamUnlocks = sqliteTable(
+  "practice_exam_unlocks",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    examId: text("exam_id").notNull(),
+    examTrack: text("exam_track", { enum: ["nclex", "ccrn"] }).notNull(),
+    sourcePlanCode: text("source_plan_code").notNull(),
+    firstOpenedAt: integer("first_opened_at")
+      .default(sql`(unixepoch())`)
+      .notNull(),
+    lastOpenedAt: integer("last_opened_at")
+      .default(sql`(unixepoch())`)
+      .notNull(),
+  },
+  (t) => ({ pk: primaryKey({ columns: [t.userId, t.examId] }) })
+);
 
 // NextAuth sessions
 export const sessions = sqliteTable("sessions", {
@@ -68,11 +200,31 @@ export const questions = sqliteTable("questions", {
   // mcq: "B" | sata: '["A","C"]'
   answer: text("answer").notNull(),
   rationale: text("rationale").notNull(),
+  // Premium "deep dive" rationale (600-1200 chars). Free tier sees the
+  // standard rationale above; paid tier additionally gets this block.
+  deepRationale: text("deep_rationale"),
+  // Unix seconds when the deep_rationale was authored. NULL means the
+  // authoring script hasn't visited this row yet — used for resume.
+  deepRationaleAuthoredAt: integer("deep_rationale_authored_at"),
   // JSON: { "A": "why A is wrong", "C": "why C is wrong" }
   distractorRationales: text("distractor_rationales"),
   // JSON string array: ["MAP", "cardiogenic_shock"]
   tags: text("tags"),
   blueprintPct: real("blueprint_pct"),
+  conceptNotes: text("concept_notes"),
+  provenance: text("provenance"),
+  reviewStatus: text("review_status"),
+  revision: integer("revision"),
+  publishState: text("publish_state"),
+  scenarioTitle: text("scenario_title"),
+  scenario: text("scenario"),
+  additionalInfo: text("additional_info"),
+  exhibits: text("exhibits"),
+  chartReview: text("chart_review"),
+  matrixColumns: text("matrix_columns"),
+  matrixRows: text("matrix_rows"),
+  visualRationale: text("visual_rationale"),
+  referencesJson: text("references_json"),
   // For ordering questions: JSON array of correct sequence
   correctOrder: text("correct_order"),
   createdAt: integer("created_at")
@@ -89,6 +241,12 @@ export const quizSessions = sqliteTable("quiz_sessions", {
   userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
   exam: text("exam", { enum: ["nclex", "ccrn"] }).notNull(),
   category: text("category"), // null = all categories
+  // Mode label for this session. Free-form; "standard", "practice-exam", "review", etc.
+  mode: text("mode"),
+  // For practice-exam sessions: the catalog exam id (e.g., "nclex-sim-1") for cross-device history.
+  practiceExamId: text("practice_exam_id"),
+  // Cross-device cursor: which question the user is on (0-indexed).
+  currentIndex: integer("current_index").default(0).notNull(),
   totalQuestions: integer("total_questions").notNull(),
   correctCount: integer("correct_count").default(0).notNull(),
   startedAt: integer("started_at")
@@ -166,6 +324,65 @@ export const caseStudies = sqliteTable("case_studies", {
 
 // ─── Daily Usage Limits ───────────────────────────────────────────────────────
 
+export const achievementEvents = sqliteTable("achievement_events", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").notNull(),
+  achievementKey: text("achievement_key").notNull(),
+  occurredAt: integer("occurred_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  metadata: text("metadata"),
+});
+
+export const drugCards = sqliteTable("drug_cards", {
+  id: text("id").primaryKey(),
+  genericName: text("generic_name").notNull(),
+  brandNames: text("brand_names"),
+  drugClass: text("drug_class").notNull(),
+  mechanism: text("mechanism"),
+  indications: text("indications"),
+  contraindications: text("contraindications"),
+  blackBoxWarning: text("black_box_warning"),
+  priorityLabs: text("priority_labs"),
+  patientTeaching: text("patient_teaching"),
+  nursingImplications: text("nursing_implications"),
+  relatedTags: text("related_tags"),
+  publishState: text("publish_state").default("published").notNull(),
+  createdAt: integer("created_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  updatedAt: integer("updated_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export const drugCardBookmarks = sqliteTable(
+  "drug_card_bookmarks",
+  {
+    userId: text("user_id").notNull(),
+    drugCardId: text("drug_card_id").notNull(),
+    easeFactor: real("ease_factor").default(2.5).notNull(),
+    intervalDays: integer("interval_days").default(1).notNull(),
+    repetitions: integer("repetitions").default(0).notNull(),
+    nextReviewAt: integer("next_review_at"),
+    lastReviewedAt: integer("last_reviewed_at"),
+    createdAt: integer("created_at")
+      .default(sql`(unixepoch())`)
+      .notNull(),
+  },
+  (t) => ({ pk: primaryKey({ columns: [t.userId, t.drugCardId] }) })
+);
+
+export const streakEmailOptouts = sqliteTable("streak_email_optouts", {
+  email: text("email").primaryKey(),
+  optedOutAt: integer("opted_out_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  source: text("source"),
+});
+
 export const dailyUsage = sqliteTable(
   "daily_usage",
   {
@@ -184,6 +401,13 @@ export const dailyUsage = sqliteTable(
 
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
+export type BillingSubscription = typeof billingSubscriptions.$inferSelect;
+export type BillingEvent = typeof billingEvents.$inferSelect;
+export type UserEntitlement = typeof userEntitlements.$inferSelect;
+export type LegalAcceptance = typeof legalAcceptances.$inferSelect;
+export type AuthAccount = typeof authAccounts.$inferSelect;
+export type AccessKey = typeof accessKeys.$inferSelect;
+export type PracticeExamUnlock = typeof practiceExamUnlocks.$inferSelect;
 export type Question = typeof questions.$inferSelect;
 export type NewQuestion = typeof questions.$inferInsert;
 export type QuizSession = typeof quizSessions.$inferSelect;
