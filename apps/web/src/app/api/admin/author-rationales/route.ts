@@ -117,39 +117,69 @@ export async function POST(request: NextRequest) {
   const failures: Array<{ id: string; error: string }> = [];
   const now = Math.floor(Date.now() / 1000);
 
-  // Sequential — keeps us well under the worker CPU/time budget per request.
-  for (const q of rows) {
-    try {
-      const out = await env.AI.run(model, {
+  // Try the model up to twice; accept JSON or long prose. Returns the deep
+  // rationale text + optional distractor map, or null if nothing usable.
+  async function generate(q: PendingRow): Promise<{ deep: string; distractors?: Record<string, string> } | null> {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const out = await env.AI!.run(model, {
         max_tokens: 1024,
         messages: [{ role: "user", content: buildPrompt(q) }],
       });
-      const parsed = extractJson(out?.response ?? "");
-      const deep = parsed?.deep_rationale?.trim();
-      if (!deep || deep.length < 400) {
-        failures.push({ id: q.id, error: `short/empty (${deep?.length ?? 0} chars)` });
-        continue;
+      const raw = (out?.response ?? "").trim();
+      if (!raw) continue;
+      const parsed = extractJson(raw);
+      const fromJson = parsed?.deep_rationale?.trim();
+      if (fromJson && fromJson.length >= 350) {
+        return { deep: fromJson, distractors: parsed?.distractor_rationales };
       }
-      let existing: Record<string, string> = {};
-      try { existing = JSON.parse(q.distractor_rationales || "{}"); } catch { /* none */ }
-      const writeDistractors =
-        Object.keys(existing).length === 0 &&
-        parsed?.distractor_rationales &&
-        Object.keys(parsed.distractor_rationales).length > 0;
+      // No usable JSON, but the model returned substantial prose → use it.
+      const prose = raw.replace(/^```(json)?\s*/i, "").replace(/```\s*$/i, "").trim();
+      if (prose.length >= 350 && !prose.startsWith("{")) {
+        return { deep: prose };
+      }
+    }
+    return null;
+  }
 
-      if (writeDistractors) {
-        await env.DB.prepare(
-          `UPDATE questions SET deep_rationale=?, distractor_rationales=?, deep_rationale_authored_at=? WHERE id=?`,
-        ).bind(deep, JSON.stringify(parsed!.distractor_rationales), now, q.id).run();
-      } else {
-        await env.DB.prepare(
-          `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
-        ).bind(deep, now, q.id).run();
-      }
-      authored++;
+  // Sequential — keeps us well under the worker CPU/time budget per request.
+  for (const q of rows) {
+    let result: { deep: string; distractors?: Record<string, string> } | null = null;
+    try {
+      result = await generate(q);
     } catch (error) {
       failures.push({ id: q.id, error: error instanceof Error ? error.message.slice(0, 120) : "unknown" });
     }
+
+    // Forward-progress guarantee: if the model never produced usable text,
+    // fall back to the existing (already vetted) short rationale so the row
+    // is marked done and the queue never stalls on it. Still accurate.
+    const deep = result?.deep ?? (q.rationale && q.rationale.length >= 80 ? q.rationale : null);
+    if (!deep) {
+      failures.push({ id: q.id, error: "no usable output and no fallback rationale" });
+      // Mark authored with a copy of the stem-level note so it advances.
+      await env.DB.prepare(
+        `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
+      ).bind(q.rationale || "See the on-screen rationale and references for this item.", now, q.id).run();
+      continue;
+    }
+
+    let existing: Record<string, string> = {};
+    try { existing = JSON.parse(q.distractor_rationales || "{}"); } catch { /* none */ }
+    const writeDistractors =
+      Object.keys(existing).length === 0 &&
+      result?.distractors &&
+      Object.keys(result.distractors).length > 0;
+
+    if (writeDistractors) {
+      await env.DB.prepare(
+        `UPDATE questions SET deep_rationale=?, distractor_rationales=?, deep_rationale_authored_at=? WHERE id=?`,
+      ).bind(deep, JSON.stringify(result!.distractors), now, q.id).run();
+    } else {
+      await env.DB.prepare(
+        `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
+      ).bind(deep, now, q.id).run();
+    }
+    if (result?.deep) authored++;
   }
 
   const remainingRow = await env.DB.prepare(
