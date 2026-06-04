@@ -94,10 +94,12 @@ export async function POST(request: NextRequest) {
     return json(503, { success: false, error: "Workers AI binding unavailable" });
   }
 
-  const body = (await request.json().catch(() => ({}))) as { exam?: string; limit?: number };
+  const body = (await request.json().catch(() => ({}))) as { exam?: string; limit?: number; model?: string };
   const exam = body.exam === "ccrn" ? "ccrn" : "nclex";
   const limit = Math.min(Math.max(Number(body.limit ?? 10), 1), 25);
-  const model = env.WORKERS_AI_MODEL || "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+  // Authoring defaults to the high-quality 70B model (one-time job, quality
+  // matters more than neuron cost). Override per-call via body.model.
+  const model = body.model || "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
   const pending = await env.DB.prepare(
     `SELECT id, exam, type, category, difficulty, stem, options, answer, rationale, distractor_rationales
