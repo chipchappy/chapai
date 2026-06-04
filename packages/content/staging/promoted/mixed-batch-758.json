@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-758",
+  "generatedAt": "2026-04-08T16:33:51-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb758-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 4,
+      "stem": "A 5-year-old is admitted with meningococcal meningitis. Which isolation precautions should be initiated immediately, and for how long should they be maintained?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact precautions; maintain until discharge"
+        },
+        {
+          "id": "b",
+          "text": "Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy"
+        },
+        {
+          "id": "c",
+          "text": "Airborne precautions in a negative-pressure room; maintain for 48 hours"
+        },
+        {
+          "id": "d",
+          "text": "Standard precautions only; meningococcal meningitis is not transmissible person-to-person"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neisseria meningitidis (meningococcal meningitis) is transmitted via respiratory droplets (large droplets, short range <3 feet) \u2014 not airborne (small droplet nuclei). Droplet precautions are required: surgical mask within 3 feet, private room or cohorting, mask for transport. Duration: droplet precautions are maintained for the first 24 hours after initiation of effective antibiotic therapy (typically ceftriaxone), after which the organism is no longer detectable in respiratory secretions. Close contacts (household members, childcare contacts) should receive prophylaxis with rifampin, ciprofloxacin, or ceftriaxone.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+        "conclusion": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin)."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A patient in the PACU states she was awake during her surgery \u2014 she recalls the surgeons' conversation, felt pressure on her abdomen but no pain, and could not move or signal anyone. She is trembling, tearful, and says 'It was the most terrifying experience of my life.' Which nursing response and plan of care is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassure her that awareness under anesthesia is medically impossible with modern monitoring, and that she was likely dreaming"
+        },
+        {
+          "id": "b",
+          "text": "Validate her experience fully, document her report accurately, notify the anesthesia provider and risk management per policy, provide immediate emotional support, and initiate referral for trauma-focused psychological counseling for potential PTSD"
+        },
+        {
+          "id": "c",
+          "text": "Document 'patient reports dream during anesthesia' and notify only the charge nurse"
+        },
+        {
+          "id": "d",
+          "text": "Administer a PRN anxiolytic and reassess her emotional state in 2 hours before taking further action"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Intraoperative awareness with recall (accidental awareness during general anesthesia \u2014 AAGA) affects approximately 1-2 per 1,000 general anesthetics. Patients may recall sounds, conversation, touch, pressure, or in severe cases pain and complete paralysis (most traumatizing \u2014 the patient is conscious but paralyzed and unable to alert the team). PTSD develops in up to 70% of awareness cases if not addressed. Nursing priorities: (1) BELIEVE the patient \u2014 dismissing her account (gaslighting) causes profound additional psychological harm, violates patient dignity, and creates significant legal liability; (2) Validate her distress and provide immediate compassionate support; (3) Document her exact words accurately and objectively; (4) Notify the anesthesia provider \u2014 awareness should trigger review of anesthetic depth monitoring (BIS), neuromuscular blockade management, and volatile agent delivery; (5) Notify risk management per institutional policy; (6) Refer promptly for trauma-focused therapy (EMDR or CBT for PTSD). Administering sedatives to suppress the patient's report is not appropriate.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intraoperative awareness: BELIEVE and VALIDATE the patient. Document accurately. Notify anesthesia + risk management. Refer for trauma/PTSD counseling. Dismissing the experience causes psychological harm. Affects ~1-2/1,000 GAs.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient receiving a blood transfusion who develops hives, pruritus, and a temperature of 38.5\u00b0C (101.3\u00b0F) 20 minutes into the transfusion. What is the FIRST nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Slow the transfusion rate and administer diphenhydramine as ordered"
+        },
+        {
+          "id": "b",
+          "text": "Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and blood bank"
+        },
+        {
+          "id": "c",
+          "text": "Complete the transfusion quickly since the reaction appears mild"
+        },
+        {
+          "id": "d",
+          "text": "Obtain a blood culture and administer acetaminophen for the fever"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Any signs of a transfusion reaction\u2014including hives, pruritus, and fever\u2014require immediate cessation of the transfusion. The key concern is that mild symptoms can rapidly progress to severe hemolytic or anaphylactic reactions. The tubing must be disconnected (not just slowed) and the IV kept patent with normal saline using new tubing to prevent infusion of remaining blood product. The provider and blood bank must be notified, and the blood bag and tubing are returned to the blood bank for analysis. Continuing or completing the transfusion risks life-threatening escalation.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Transfusion reaction protocol: STOP \u2192 Saline via new line \u2192 Notify provider + blood bank \u2192 Return blood bag + tubing \u2192 Document. Never slow the rate and continue if a reaction is suspected.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A nurse is working at a migrant farmworker health clinic. A patient presents with signs of pesticide exposure: miosis, excessive salivation, lacrimation, urination, defecation, emesis, and muscle fasciculations. Which class of pesticide is most likely involved and what is the priority antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pyrethroid insecticide; administer diphenhydramine for allergic response"
+        },
+        {
+          "id": "b",
+          "text": "Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates"
+        },
+        {
+          "id": "c",
+          "text": "Organochlorine; administer activated charcoal and benzodiazepines"
+        },
+        {
+          "id": "d",
+          "text": "Herbicide (glyphosate); administer IV sodium bicarbonate"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Organophosphate and carbamate pesticides inhibit acetylcholinesterase, causing accumulation of acetylcholine at muscarinic and nicotinic receptors. Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating. Nicotinic: muscle fasciculations, weakness, paralysis. CNS: seizures, coma. Antidote: (1) Atropine IV (competitive muscarinic antagonist) \u2014 dose titrated to dry secretions, not pupil size; (2) Pralidoxime (2-PAM) reactivates cholinesterase if given early (before 'aging') \u2014 effective for organophosphates, not carbamates. Migrant farmworkers are at high risk due to occupational pesticide exposure.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Organophosphate poisoning (DUMBELS): atropine (blocks muscarinic effects) + pralidoxime/2-PAM (reactivates cholinesterase); high risk in farmworkers; titrate atropine to dry secretions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A patient with Stage III pressure injury to the sacrum has a wound that is 4 cm \u00d7 6 cm \u00d7 2.5 cm deep with 30% yellow slough, 70% granulation tissue, minimal exudate, and intact surrounding skin. Which wound care plan is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pack wound tightly with dry gauze and change dressing twice daily"
+        },
+        {
+          "id": "b",
+          "text": "Apply silver sulfadiazine cream and cover with gauze"
+        },
+        {
+          "id": "c",
+          "text": "Debride slough with autolytic method using moisture-retentive dressing; avoid tight packing"
+        },
+        {
+          "id": "d",
+          "text": "Apply wet-to-dry dressing to debride the slough mechanically"
+        }
+      ],
+      "answer": "c",
+      "rationale": "For a wound with granulation tissue and slough: autolytic debridement using a moisture-retentive dressing (hydrocolloid or hydrogel) promotes selective removal of devitalized tissue while protecting new granulation. Tight packing (A) disrupts fragile granulation tissue and causes trauma on removal. Wet-to-dry dressings (D) are non-selective \u2014 they remove both slough AND healthy tissue. Silver sulfadiazine (B) is for burn wounds, not chronic pressure injuries. Principles: fill (don't pack) dead space, maintain moist wound environment, and protect periwound skin.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pressure injury with slough: autolytic debridement with moisture-retentive dressing. Never tight-pack wounds \u2014 fill dead space loosely.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "A 79-year-old patient on a medical unit is found to have a 5 cm \u00d7 4 cm sacral wound with full-thickness tissue loss, visible subcutaneous fat, and partial slough coverage of the wound base. No bone, tendon, or muscle is visible. What is the correct NPUAP/EPUAP pressure injury stage and priority nursing intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage 1; increase repositioning frequency and apply a transparent film dressing"
+        },
+        {
+          "id": "b",
+          "text": "Stage 3; apply a moisture-retentive dressing, reposition every 2 hours off the sacrum, consult wound care specialist, and address nutrition"
+        },
+        {
+          "id": "c",
+          "text": "Stage 4; immediate surgical debridement is required before any wound care intervention"
+        },
+        {
+          "id": "d",
+          "text": "Unstageable; cover with dry gauze until slough completely resolves before determining stage or treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "NPUAP/EPUAP Pressure Injury Stages: Stage 1 \u2014 non-blanchable erythema, intact skin; Stage 2 \u2014 partial thickness dermis loss, shallow open ulcer; Stage 3 \u2014 full-thickness skin loss with visible subcutaneous fat, may have slough, but no bone/tendon/muscle visible; Stage 4 \u2014 full-thickness with exposed bone, tendon, or muscle; Unstageable \u2014 base entirely obscured by non-removable slough or eschar. This wound is Stage 3 (full-thickness, subcutaneous fat visible, partial slough but bone/tendon not exposed). Management: moist wound healing (foam, hydrocolloid, or alginate dressings based on exudate level), reposition every 2 hours off the sacrum, pressure redistribution support surface, wound care specialist consultation, nutritional assessment (protein, zinc, vitamin C support wound healing). Dry gauze is contraindicated \u2014 desiccates wound bed and impairs healing. Slough does not make a wound automatically unstageable (unstageable requires the base to be completely obscured).",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stage 3 pressure injury: full-thickness, subcutaneous fat visible, no bone/tendon. Treat with moist wound dressings, 2-hour repositioning, pressure redistribution, nutrition support, and wound care consult. Dry gauze contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "After a patient falls while attempting to ambulate unassisted, the nurse completes an incident report. Which statement about incident reports is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The incident report should be referenced in the patient's medical record to ensure continuity of care"
+        },
+        {
+          "id": "b",
+          "text": "The incident report is an internal quality improvement tool; it is not referenced in the medical record and is not discoverable in litigation"
+        },
+        {
+          "id": "c",
+          "text": "Incident reports are part of the permanent medical record and must be provided to patients upon request"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should document 'incident report filed' in the nursing notes to alert other providers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Incident reports (occurrence reports) are internal quality improvement documents: they are NOT referenced in the patient's medical record. Referencing them in the chart (A, D) makes them discoverable in litigation, eliminating their protection as internal QI documents. The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without mentioning the incident report. In many states, incident reports prepared in anticipation of litigation may be protected from discovery, but only if not referenced in the chart. They are not part of the permanent medical record (C).",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Incident reports: do NOT reference in the medical record; document clinical facts of the event in the chart only \u2014 referencing the incident report makes it legally discoverable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hellp_syndrome",
+      "subcategory": "HELLP Syndrome",
+      "difficulty": 4,
+      "stem": "A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea, and malaise. Labs reveal: AST 280 U/L, LDH 950 U/L, platelets 74,000/mm3, hemoglobin 9.8 g/dL with schistocytes on smear, and normal creatinine. Which condition do these findings indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute fatty liver of pregnancy (AFLP)"
+        },
+        {
+          "id": "b",
+          "text": "HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)"
+        },
+        {
+          "id": "c",
+          "text": "Thrombotic thrombocytopenic purpura (TTP)"
+        },
+        {
+          "id": "d",
+          "text": "Viral hepatitis with thrombocytopenia"
+        }
+      ],
+      "answer": "b",
+      "rationale": "HELLP syndrome is a variant of severe preeclampsia: Hemolysis (schistocytes, elevated LDH, low Hgb), Elevated Liver enzymes (AST >70 U/L), Low Platelets (<100,000). RUQ/epigastric pain from hepatic capsule distension is classic. Definitive treatment is delivery. AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration \u2014 different mechanism. TTP (C) presents with the pentad including fever and renal failure. Viral hepatitis (D) would not present with schistocytes and would have different epidemiology.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "HELLP Syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "HELLP = Hemolysis (schistocytes + elevated LDH) + Elevated Liver enzymes + Low Platelets; treatment is delivery regardless of gestational age.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient develops respiratory distress 12 hours after total thyroidectomy, with stridor, dysphagia, and progressive anterior neck swelling. SpO2 is 88% on 6 L/min nasal cannula. Which action is the NURSE'S IMMEDIATE PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer calcium gluconate IV and draw ionized calcium level"
+        },
+        {
+          "id": "b",
+          "text": "Open the surgical wound at the bedside to relieve hematoma compression"
+        },
+        {
+          "id": "c",
+          "text": "Increase oxygen to 15 L/min via non-rebreather and call rapid response"
+        },
+        {
+          "id": "d",
+          "text": "Position the patient in high Fowler's and prepare for emergent intubation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Post-thyroidectomy respiratory distress with anterior neck swelling indicates expanding hematoma compressing the trachea. This is an airway emergency. Bedside wound opening to evacuate the hematoma is the immediate intervention \u2014 wound opening kits should be at the bedside on all post-thyroidectomy patients for this reason. While this is being done, the team prepares for emergent surgical re-exploration. Calcium gluconate (A) treats hypocalcemia from hypoparathyroidism (tetany, perioral numbness, Trousseau's sign) \u2014 not the presenting emergency. NRB mask (C) won't overcome a mechanical airway obstruction.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-thyroidectomy neck swelling + stridor = hematoma compressing airway \u2192 open the surgical wound immediately. Keep wound kit at bedside.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb758-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "involuntary_commitment",
+      "subcategory": "Involuntary Commitment",
+      "difficulty": 3,
+      "stem": "A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. He has not slept in 5 days, believes he is receiving messages from aliens, and stated he plans to 'make his neighbor pay' for 'spying on him.' Which criterion most legally supports involuntary psychiatric commitment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Presence of a psychiatric diagnosis requiring treatment"
+        },
+        {
+          "id": "b",
+          "text": "Refusal of recommended medication"
+        },
+        {
+          "id": "c",
+          "text": "Danger to others based on specific expressed threat"
+        },
+        {
+          "id": "d",
+          "text": "Inability to care for personal hygiene and nutrition"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Involuntary psychiatric commitment (civil commitment) requires that the person poses a danger to self, danger to others, or is gravely disabled (unable to meet basic needs of food, clothing, shelter due to mental illness). This patient's specific threat to 'make his neighbor pay' combined with active psychosis meets the danger-to-others criterion. Having a psychiatric diagnosis alone (A) is not sufficient for commitment. Medication refusal (B) alone does not meet criteria. While grave disability (D) could apply, the most legally defensible criterion here is the specific threat to another person.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Involuntary Commitment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Involuntary commitment requires: danger to self, danger to others (specific threat + mental illness), or grave disability \u2014 psychiatric diagnosis alone is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

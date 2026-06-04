@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-767",
+  "generatedAt": "2026-04-08T18:17:43-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb767-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 4,
+      "stem": "A 12-year-old presents with 18 hours of periumbilical pain now localized to the right lower quadrant, nausea, fever of 39.1°C, and rebound tenderness. The nurse assesses guarding and rigidity of the abdomen on palpation. Which finding most suggests appendiceal perforation has occurred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebound tenderness in the RLQ"
+        },
+        {
+          "id": "b",
+          "text": "Migration of pain from periumbilical to RLQ over 24 hours"
+        },
+        {
+          "id": "c",
+          "text": "Sudden relief of pain followed by diffuse abdominal rigidity and fever spike"
+        },
+        {
+          "id": "d",
+          "text": "Nausea and anorexia with low-grade fever"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The classic sign of appendiceal perforation is sudden relief of pain when the appendix ruptures (release of pressure), immediately followed by diffuse peritonitis as fecal material spreads throughout the peritoneum: diffuse board-like rigidity, rebound tenderness throughout the abdomen, and temperature spike. WBC may dramatically rise. The child may briefly appear to improve (pain relief) before rapidly deteriorating. Pre-perforation signs: McBurney's point tenderness, RLQ rebound tenderness, Rovsing's sign, psoas sign. Post-perforation: diffuse guarding, paralytic ileus. Emergency appendectomy is required.",
+      "distractorRationales": {
+        "a": "Rebound tenderness in the RLQ misses the clinical pattern: Pediatric Nursing pain points to Sudden relief of pain followed by diffuse abdominal rigidity and fever spike, so choosing it can postpone safety actions and worsen infection progression.",
+        "b": "Migration of pain from periumbilical to RLQ over 24 hours misses the clinical pattern: Pediatric Nursing pain points to Sudden relief of pain followed by diffuse abdominal rigidity and fever spike, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Nausea and anorexia with low-grade fever misses the clinical pattern: Pediatric Nursing pain points to Sudden relief of pain followed by diffuse abdominal rigidity and fever spike, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Appendiceal perforation: sudden pain relief → followed by diffuse board-like rigidity + diffuse rebound + fever spike = peritonitis from perforation; emergency appendectomy required.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Appendiceal perforation: sudden pain relief → followed by diffuse board-like rigidity + diffuse rebound + fever spike = peritonitis from perforation; emergency appendectomy required.",
+        "conclusion": "Appendiceal perforation: sudden pain relief → followed by diffuse board-like rigidity + diffuse rebound + fever spike = peritonitis from perforation; emergency appendectomy required."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight — no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply — laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO ≥8 hours. Light meals (toast, clear liquids): NPO ≥6 hours. Non-clear liquids including milk and formula: NPO ≥6 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid — stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "Nothing by mouth after midnight — no exceptions for any type of food or liquid misses the clinical pattern: Perioperative Care aspiration points to Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water,, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "b": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery misses the clinical pattern: Perioperative Care aspiration points to Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water,, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "No restrictions apply — laparoscopic procedures do not carry aspiration risk misses the clinical pattern: Perioperative Care aspiration points to Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water,, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids ≥6-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "Drawing up each insulin in a separate syringe misses the clinical pattern: Pharmacology / Insulin Safety hypoglycemia points to Mixing glargine and aspart in the same syringe before administration, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "Injecting the aspart subcutaneously 15 minutes before the meal misses the clinical pattern: Pharmacology / Insulin Safety hypoglycemia points to Mixing glargine and aspart in the same syringe before administration, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "Rotating injection sites between the abdomen and thigh misses the clinical pattern: Pharmacology / Insulin Safety hypoglycemia points to Mixing glargine and aspart in the same syringe before administration, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10 misses the clinical pattern: Safety And Infection Control / Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights misses the clinical pattern: Safety And Infection Control / Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due misses the clinical pattern: Safety And Infection Control / Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) — mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "Providing mammography screening to detect early breast cancer in women over 40 misses the clinical pattern: Community Health cardiac points to Administering the influenza vaccine to a healthy adult before flu season, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Prescribing physical therapy for a patient recovering from a hip fracture misses the clinical pattern: Community Health cardiac points to Administering the influenza vaccine to a healthy adult before flu season, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Conducting a colonoscopy to identify and remove pre-cancerous polyps misses the clinical pattern: Community Health cardiac points to Administering the influenza vaccine to a healthy adult before flu season, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "A patient who is anxious about an upcoming procedure misses the clinical pattern: Critical Care Fundamentals oxygenation points to A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "A patient who needs discharge teaching before going home misses the clinical pattern: Critical Care Fundamentals oxygenation points to A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "A patient asking for pain medication rated 4/10 misses the clinical pattern: Critical Care Fundamentals oxygenation points to A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives — alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension — directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "Age >65 and female gender misses the clinical pattern: Gerontology calcium points to History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Mild bilateral hearing loss and BMI of 29 misses the clinical pattern: Gerontology calcium points to History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Mild arthritis in both knees and occasional evening confusion misses the clinical pattern: Gerontology calcium points to History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN is caring for four patients and needs to delegate tasks. Which task is appropriate to assign to an unlicensed assistive personnel (UAP/CNA)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the breath sounds of a patient with new-onset dyspnea"
+        },
+        {
+          "id": "b",
+          "text": "Administer a tube feeding to a stable patient via an established G-tube"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative patient 24 hours after hip replacement surgery"
+        },
+        {
+          "id": "d",
+          "text": "Teach a diabetic patient how to perform foot care"
+        }
+      ],
+      "answer": "c",
+      "rationale": "UAPs can perform tasks that are routine, repetitive, and do not require nursing judgment or assessment. Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the RN has assessed the patient's stability. Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Administering tube feedings (B) — in many states, enteral feeding via established G-tube can be delegated to trained UAPs, but the skill level required is greater than ambulation; this varies by state — ambulation is universally appropriate for CNA delegation. Patient education (D) is an RN responsibility requiring professional judgment.",
+      "distractorRationales": {
+        "a": "Assess the breath sounds of a patient with new-onset dyspnea misses the clinical pattern: Delegation delegation points to Ambulate a postoperative patient 24 hours after hip replacement surgery, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "b": "Administer a tube feeding to a stable patient via an established G-tube misses the clinical pattern: Delegation delegation points to Ambulate a postoperative patient 24 hours after hip replacement surgery, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Teach a diabetic patient how to perform foot care misses the clinical pattern: Delegation delegation points to Ambulate a postoperative patient 24 hours after hip replacement surgery, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can perform routine, non-assessment tasks: ambulation, ADLs, vital signs on stable patients, I&O — assessment, teaching, and medication administration remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 4,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider misses the clinical pattern: Postpartum Hemorrhage hemorrhage points to Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Call the provider, obtain type and crossmatch, begin blood transfusion misses the clinical pattern: Postpartum Hemorrhage hemorrhage points to Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent misses the clinical pattern: Postpartum Hemorrhage hemorrhage points to Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb767-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound — gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "distractorRationales": {
+        "a": "Elevate the leg and apply warm compresses misses the clinical pattern: Medical Surgical Advanced dvt points to Notify the provider and anticipate orders for duplex ultrasound, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "b": "Perform Homan's sign assessment and document the result misses the clinical pattern: Medical Surgical Advanced dvt points to Notify the provider and anticipate orders for duplex ultrasound, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Administer the scheduled enoxaparin and continue monitoring misses the clinical pattern: Medical Surgical Advanced dvt points to Notify the provider and anticipate orders for duplex ultrasound, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound — Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

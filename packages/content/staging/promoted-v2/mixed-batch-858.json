@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-858",
+  "generatedAt": "2026-04-09T18:46:58-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb858-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_triage",
+      "subcategory": "chest_pain_triage",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and nausea"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a pillow"
+        },
+        {
+          "id": "c",
+          "text": "A patient wanting discharge paperwork"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for ice water"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New chest pressure with nausea may indicate acute cardiac ischemia and must be assessed immediately. **Why the others are wrong:** - B Comfort requests are not the top priority. - C Discharge teaching can wait. - D Water is not urgent compared with possible cardiac symptoms.",
+      "distractorRationales": {
+        "b": "A patient asking for a pillow misses the clinical pattern: Chest Pain Triage cardiac points to A patient with new chest pressure and nausea, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "A patient wanting discharge paperwork misses the clinical pattern: Chest Pain Triage cardiac points to A patient with new chest pressure and nausea, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "A patient asking for ice water misses the clinical pattern: Chest Pain Triage cardiac points to A patient with new chest pressure and nausea, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "chest_pain_triage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest symptoms with nausea are high-priority until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "infection_prevention",
+      "subcategory": "infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action best helps reduce transmission when caring for a patient with a contagious infection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform appropriate hand hygiene before and after care"
+        },
+        {
+          "id": "b",
+          "text": "Reuse gloves if they still look clean"
+        },
+        {
+          "id": "c",
+          "text": "Skip precautions if the patient feels better"
+        },
+        {
+          "id": "d",
+          "text": "Share equipment without cleaning it"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hand hygiene remains one of the most effective infection prevention measures.",
+      "distractorRationales": {
+        "b": "Reuse gloves if they still look clean misses the clinical pattern: Infection Prevention infection points to Perform appropriate hand hygiene before and after care, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Skip precautions if the patient feels better misses the clinical pattern: Infection Prevention infection points to Perform appropriate hand hygiene before and after care, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Share equipment without cleaning it misses the clinical pattern: Infection Prevention infection points to Perform appropriate hand hygiene before and after care, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Simple infection-control steps still matter most.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "infection_prevention",
+        "caption": "Simple infection-control steps still matter most.",
+        "conclusion": "Simple infection-control steps still matter most."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_deterioration",
+      "subcategory": "new_deterioration",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse see first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with new chest pressure and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient needing help setting up a meal tray"
+        },
+        {
+          "id": "c",
+          "text": "A patient asking when rounds will begin"
+        },
+        {
+          "id": "d",
+          "text": "A patient who wants to know if family can visit later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with diaphoresis can signal an acute cardiac emergency and must be assessed immediately. **Why the others are wrong:** - B Meal setup is not urgent. - C Rounds timing is nonurgent. - D Visiting questions can wait.",
+      "distractorRationales": {
+        "b": "A patient needing help setting up a meal tray misses the clinical pattern: New Deterioration cardiac points to A patient with new chest pressure and diaphoresis, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "A patient asking when rounds will begin misses the clinical pattern: New Deterioration cardiac points to A patient with new chest pressure and diaphoresis, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "A patient who wants to know if family can visit later misses the clinical pattern: New Deterioration cardiac points to A patient with new chest pressure and diaphoresis, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "new_deterioration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute chest symptoms outrank routine requests.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safe_delegation",
+      "subcategory": "safe_delegation",
+      "difficulty": 3,
+      "stem": "Which task is best for the nurse to delegate to AP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transporting a stable patient to radiology"
+        },
+        {
+          "id": "b",
+          "text": "Teaching a patient how to use an inhaler"
+        },
+        {
+          "id": "c",
+          "text": "Evaluating a new complaint of dizziness"
+        },
+        {
+          "id": "d",
+          "text": "Deciding whether chest pain needs an ECG"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Transporting a stable patient is a routine, predictable task that can be delegated when the nurse remains available for assessment follow-up. **Why the others are wrong:** - B Teaching requires nursing knowledge. - C Dizziness requires assessment first. - D Chest pain decisions require nursing judgment and escalation.",
+      "distractorRationales": {
+        "b": "Teaching a patient how to use an inhaler misses the clinical pattern: Safe Delegation pain points to Transporting a stable patient to radiology, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Evaluating a new complaint of dizziness misses the clinical pattern: Safe Delegation pain points to Transporting a stable patient to radiology, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Deciding whether chest pain needs an ECG misses the clinical pattern: Safe Delegation pain points to Transporting a stable patient to radiology, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "safe_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate routine tasks for stable patients, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "stable_vs_unstable",
+      "subcategory": "stable_vs_unstable",
+      "difficulty": 3,
+      "stem": "Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient with chest pain and diaphoresis"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "A patient waiting for discharge teaching tomorrow"
+        },
+        {
+          "id": "d",
+          "text": "A patient requesting help finding a charger"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pain with diaphoresis suggests a potentially unstable cardiovascular event and takes priority over routine comfort or nonurgent requests.",
+      "distractorRationales": {
+        "b": "A patient asking for a blanket misses the clinical pattern: Stable Vs Unstable pain points to A patient with chest pain and diaphoresis, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "A patient waiting for discharge teaching tomorrow misses the clinical pattern: Stable Vs Unstable pain points to A patient with chest pain and diaphoresis, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "A patient requesting help finding a charger misses the clinical pattern: Stable Vs Unstable pain points to A patient with chest pain and diaphoresis, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "stable_vs_unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstable symptoms always come before comfort tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hellp_syndrome",
+      "subcategory": "hellp_syndrome",
+      "difficulty": 3,
+      "stem": "A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea, and malaise. Labs reveal: AST 280 U/L, LDH 950 U/L, platelets 74,000/mm3, hemoglobin 9.8 g/dL with schistocytes on smear, and normal creatinine. Which condition do these findings indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute fatty liver of pregnancy (AFLP)"
+        },
+        {
+          "id": "b",
+          "text": "HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)"
+        },
+        {
+          "id": "c",
+          "text": "Thrombotic thrombocytopenic purpura (TTP)"
+        },
+        {
+          "id": "d",
+          "text": "Viral hepatitis with thrombocytopenia"
+        }
+      ],
+      "answer": "b",
+      "rationale": "HELLP syndrome is a variant of severe preeclampsia: Hemolysis (schistocytes, elevated LDH, low Hgb), Elevated Liver enzymes (AST >70 U/L), Low Platelets (<100,000). RUQ/epigastric pain from hepatic capsule distension is classic. Definitive treatment is delivery. AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism. TTP (C) presents with the pentad including fever and renal failure. Viral hepatitis (D) would not present with schistocytes and would have different epidemiology.",
+      "distractorRationales": {
+        "a": "Acute fatty liver of pregnancy (AFLP) misses the clinical pattern: Hellp Syndrome hypoglycemia points to HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets), so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Thrombotic thrombocytopenic purpura (TTP) misses the clinical pattern: Hellp Syndrome hypoglycemia points to HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets), so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Viral hepatitis with thrombocytopenia misses the clinical pattern: Hellp Syndrome hypoglycemia points to HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets), so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "hellp_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "HELLP = Hemolysis (schistocytes + elevated LDH) + Elevated Liver enzymes + Low Platelets; treatment is delivery regardless of gestational age.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "involuntary_commitment",
+      "subcategory": "involuntary_commitment",
+      "difficulty": 3,
+      "stem": "A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. He has not slept in 5 days, believes he is receiving messages from aliens, and stated he plans to 'make his neighbor pay' for 'spying on him.' Which criterion most legally supports involuntary psychiatric commitment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Presence of a psychiatric diagnosis requiring treatment"
+        },
+        {
+          "id": "b",
+          "text": "Refusal of recommended medication"
+        },
+        {
+          "id": "c",
+          "text": "Danger to others based on specific expressed threat"
+        },
+        {
+          "id": "d",
+          "text": "Inability to care for personal hygiene and nutrition"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Involuntary psychiatric commitment (civil commitment) requires that the person poses a danger to self, danger to others, or is gravely disabled (unable to meet basic needs of food, clothing, shelter due to mental illness). This patient's specific threat to 'make his neighbor pay' combined with active psychosis meets the danger-to-others criterion. Having a psychiatric diagnosis alone (A) is not sufficient for commitment. Medication refusal (B) alone does not meet criteria. While grave disability (D) could apply, the most legally defensible criterion here is the specific threat to another person.",
+      "distractorRationales": {
+        "a": "Presence of a psychiatric diagnosis requiring treatment misses the clinical pattern: Involuntary Commitment safety points to Danger to others based on specific expressed threat, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "b": "Refusal of recommended medication misses the clinical pattern: Involuntary Commitment safety points to Danger to others based on specific expressed threat, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Inability to care for personal hygiene and nutrition misses the clinical pattern: Involuntary Commitment safety points to Danger to others based on specific expressed threat, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "involuntary_commitment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Involuntary commitment requires: danger to self, danger to others (specific threat + mental illness), or grave disability — psychiatric diagnosis alone is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_confusion",
+      "subcategory": "acute_confusion",
+      "difficulty": 3,
+      "stem": "A patient suddenly becomes confused and pulls at lines. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the patient for a possible acute cause and protect safety"
+        },
+        {
+          "id": "b",
+          "text": "Assume the confusion is normal in the evening"
+        },
+        {
+          "id": "c",
+          "text": "Leave the patient alone to avoid upsetting them"
+        },
+        {
+          "id": "d",
+          "text": "Focus only on the charting"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden confusion can signal an acute change. The nurse should protect the patient and look for the cause. **Why the others are wrong:** - B Sudden confusion should not be dismissed. - C Leaving the patient alone can increase harm. - D Charting does not come before assessment and safety.",
+      "distractorRationales": {
+        "b": "Assume the confusion is normal in the evening misses the clinical pattern: Acute Confusion assessment points to Assess the patient for a possible acute cause and protect safety, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Leave the patient alone to avoid upsetting them misses the clinical pattern: Acute Confusion assessment points to Assess the patient for a possible acute cause and protect safety, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Focus only on the charting misses the clinical pattern: Acute Confusion assessment points to Assess the patient for a possible acute cause and protect safety, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "acute_confusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New confusion should be treated as a change in condition, not routine behavior.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_level_change",
+      "subcategory": "acute_level_change",
+      "difficulty": 3,
+      "stem": "A patient becomes much less responsive after previously answering clearly. What is the nurse's first priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess airway, breathing, circulation, and neurologic status"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the patient to wake up naturally"
+        },
+        {
+          "id": "c",
+          "text": "Document that the patient is probably just tired"
+        },
+        {
+          "id": "d",
+          "text": "Offer the patient food before assessing further"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden decreased responsiveness can reflect neurologic, respiratory, circulatory, or metabolic deterioration. **Why the others are wrong:** - B Delay may miss a serious change. - C Tiredness should not be assumed. - D Food does not replace an urgent assessment.",
+      "distractorRationales": {
+        "b": "Wait for the patient to wake up naturally misses the clinical pattern: Acute Level Change respiratory points to Reassess airway, breathing, circulation, and neurologic status, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Document that the patient is probably just tired misses the clinical pattern: Acute Level Change respiratory points to Reassess airway, breathing, circulation, and neurologic status, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Offer the patient food before assessing further misses the clinical pattern: Acute Level Change respiratory points to Reassess airway, breathing, circulation, and neurologic status, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "acute_level_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden decreased responsiveness is an emergency until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb858-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_neurologic_warning_sign",
+      "subcategory": "acute_neurologic_warning_sign",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops slurred speech and one-sided facial droop. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the stroke response process immediately"
+        },
+        {
+          "id": "b",
+          "text": "Recheck the patient after the next medication pass"
+        },
+        {
+          "id": "c",
+          "text": "Ask the patient to rest and avoid talking"
+        },
+        {
+          "id": "d",
+          "text": "Document the change and continue routine care"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden focal neurologic changes can signal stroke. Rapid response matters because time-sensitive treatment may be available. **Why the others are wrong:** - B Delay can cost critical treatment time. - C Rest does not address the neurologic emergency. - D Routine care is not appropriate when stroke is possible.",
+      "distractorRationales": {
+        "b": "Recheck the patient after the next medication pass misses the clinical pattern: Acute Neurologic Warning Sign stroke points to Activate the stroke response process immediately, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Ask the patient to rest and avoid talking misses the clinical pattern: Acute Neurologic Warning Sign stroke points to Activate the stroke response process immediately, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Document the change and continue routine care misses the clinical pattern: Acute Neurologic Warning Sign stroke points to Activate the stroke response process immediately, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "acute_neurologic_warning_sign",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden slurred speech and facial droop are stroke warning signs.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "acute_neurologic_warning_sign",
+        "caption": "Sudden slurred speech and facial droop are stroke warning signs.",
+        "conclusion": "Sudden slurred speech and facial droop are stroke warning signs."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

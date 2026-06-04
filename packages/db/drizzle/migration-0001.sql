@@ -26,6 +26,52 @@ CREATE TABLE IF NOT EXISTS verification_tokens (
   PRIMARY KEY (identifier, token)
 );
 
+CREATE TABLE IF NOT EXISTS billing_subscriptions (
+  id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+  user_id TEXT REFERENCES users(id) ON DELETE SET NULL,
+  email TEXT,
+  tier TEXT NOT NULL CHECK(tier IN ('plus','pro')),
+  plan_code TEXT NOT NULL,
+  status TEXT NOT NULL,
+  exam_track TEXT NOT NULL DEFAULT 'all' CHECK(exam_track IN ('all','nclex','ccrn')),
+  entitlements TEXT NOT NULL,
+  stripe_customer_id TEXT,
+  stripe_subscription_id TEXT,
+  stripe_checkout_session_id TEXT,
+  current_period_end INTEGER,
+  expires_at INTEGER,
+  canceled_at INTEGER,
+  created_at INTEGER DEFAULT (unixepoch()),
+  updated_at INTEGER DEFAULT (unixepoch())
+);
+
+CREATE TABLE IF NOT EXISTS billing_events (
+  id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+  stripe_event_id TEXT NOT NULL UNIQUE,
+  type TEXT NOT NULL,
+  processed_at INTEGER DEFAULT (unixepoch()),
+  payload TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_entitlements (
+  id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+  user_id TEXT REFERENCES users(id) ON DELETE SET NULL,
+  email TEXT,
+  tier TEXT NOT NULL CHECK(tier IN ('plus','pro')),
+  plan_code TEXT NOT NULL,
+  status TEXT NOT NULL,
+  exam_track TEXT NOT NULL DEFAULT 'all' CHECK(exam_track IN ('all','nclex','ccrn')),
+  entitlements TEXT NOT NULL,
+  stripe_checkout_session_id TEXT UNIQUE,
+  stripe_customer_id TEXT,
+  stripe_subscription_id TEXT,
+  expires_at INTEGER,
+  current_period_end INTEGER,
+  source_event_id TEXT REFERENCES billing_events(id) ON DELETE SET NULL,
+  created_at INTEGER DEFAULT (unixepoch()),
+  updated_at INTEGER DEFAULT (unixepoch())
+);
+
 CREATE TABLE IF NOT EXISTS questions (
   id TEXT PRIMARY KEY,
   exam TEXT NOT NULL CHECK(exam IN ('nclex','ccrn')),
@@ -40,6 +86,11 @@ CREATE TABLE IF NOT EXISTS questions (
   distractor_rationales TEXT,
   tags TEXT,
   blueprint_pct REAL,
+  concept_notes TEXT,
+  provenance TEXT,
+  review_status TEXT,
+  revision INTEGER,
+  publish_state TEXT,
   correct_order TEXT,
   created_at INTEGER DEFAULT (unixepoch())
 );
@@ -106,3 +157,6 @@ CREATE INDEX IF NOT EXISTS idx_questions_exam_difficulty ON questions(exam, diff
 CREATE INDEX IF NOT EXISTS idx_quiz_answers_user_id ON quiz_answers(user_id);
 CREATE INDEX IF NOT EXISTS idx_review_schedule_next ON review_schedule(user_id, next_review_at);
 CREATE INDEX IF NOT EXISTS idx_quiz_sessions_user ON quiz_sessions(user_id, started_at);
+CREATE INDEX IF NOT EXISTS idx_billing_subscriptions_customer ON billing_subscriptions(stripe_customer_id);
+CREATE INDEX IF NOT EXISTS idx_billing_subscriptions_subscription ON billing_subscriptions(stripe_subscription_id);
+CREATE INDEX IF NOT EXISTS idx_user_entitlements_customer ON user_entitlements(stripe_customer_id);

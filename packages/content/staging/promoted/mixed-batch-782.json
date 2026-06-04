@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-782",
+  "generatedAt": "2026-04-09T00:01:02-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb782-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A ventilated patient has a PA catheter. Current readings: PCWP 6 mmHg, CVP 2 mmHg, CO 2.4 L/min, SVR 1,840 dyn\u00b7s/cm\u2075, MAP 52 mmHg. Which hemodynamic profile and etiology is MOST consistent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cardiogenic shock: low CO, high PCWP, high SVR"
+        },
+        {
+          "id": "b",
+          "text": "Distributive (septic) shock: low CO, low PCWP, low SVR"
+        },
+        {
+          "id": "c",
+          "text": "Hypovolemic shock: low CO, low PCWP, high SVR"
+        },
+        {
+          "id": "d",
+          "text": "Obstructive shock: low CO, elevated PCWP, elevated CVP"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Hypovolemic shock profile: low CO (inadequate preload), low PCWP (depleted LV filling), low CVP (low venous return), HIGH SVR (compensatory vasoconstriction to maintain pressure). Distributive/septic shock (B) also has low PCWP but will have LOW SVR (massive vasodilation). Cardiogenic shock (A) has low CO with HIGH PCWP (backed-up fluid). Obstructive shock (D) typically has elevated CVP with equalization of filling pressures. The combination of low CO + low PCWP + HIGH SVR + low MAP = hypovolemia.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypovolemic shock: low CO, low PCWP, HIGH SVR. Distributive: low CO, low PCWP, LOW SVR. Cardiogenic: low CO, HIGH PCWP, high SVR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 85-year-old with moderate Alzheimer's dementia becomes extremely agitated, combative, and confused every evening around 5-6 PM (sundowning behavior). She repeatedly attempts to climb out of bed and is at high fall risk. Her family requests soft wrist restraints. Which nursing approach is MOST appropriate as first-line management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply soft wrist restraints bilaterally \u2014 this is the safest approach to prevent falls during sundowning"
+        },
+        {
+          "id": "b",
+          "text": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes"
+        },
+        {
+          "id": "c",
+          "text": "Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection"
+        },
+        {
+          "id": "d",
+          "text": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Physical restraints in elderly dementia patients with sundowning WORSEN outcomes: they increase agitation and distress, increase fall and injury risk (patients attempt to escape restraints), contribute to delirium, cause pressure injuries, aspiration, and death. Restraints are a last resort, never first-line, and require physician order with regular reassessment. Evidence-based non-pharmacological first-line approaches: (1) Light therapy \u2014 bright light exposure in the morning resets circadian rhythm; reduce stimulation in the evening; (2) Consistent daily routine and familiar environment; (3) Family presence during peak agitation times (5-7 PM); (4) Structured meaningful activity during the day prevents excessive daytime sleeping; (5) Calm, simple, one-step verbal redirection. If pharmacotherapy is needed after non-pharmacological failure, low-dose scheduled quetiapine may be considered. High-dose IV haloperidol is not appropriate first-line. Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients \u2014 they worsen confusion and fall risk.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sundowning first-line: non-pharmacological \u2014 light therapy, routine, family presence, daytime activity, redirection. Physical restraints WORSEN agitation and cause harm. Benzodiazepines contraindicated in elderly dementia patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400. How should this be documented correctly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Backdate the entry to 0900 to reflect the actual time of administration"
+        },
+        {
+          "id": "b",
+          "text": "Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response"
+        },
+        {
+          "id": "c",
+          "text": "Use correction fluid (Wite-Out) to correct the medication administration record if paper-based"
+        },
+        {
+          "id": "d",
+          "text": "Skip documenting the medication since it was already administered and observed to have been effective"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Late entry documentation: write the current date and time, clearly label as 'late entry,' include the actual time the event occurred, and document the relevant information. This maintains an accurate legal and clinical record without misrepresentation. Backdating (A) is falsification of medical records \u2014 a criminal offense and grounds for license revocation. Correction fluid (C) is never used in medical records; errors are corrected by drawing a single line through the error, initialing, dating, and noting 'error' \u2014 never obliterating. Omitting documentation (D) creates a legal and clinical record gap.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Late entry: write current time, label 'late entry,' include actual event time \u2014 backdating is falsification; never use Wite-Out on medical records.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient in a long leg cast following tibial fracture reports severe, unrelenting pain rated 9/10 that is not relieved by opioids, along with paresthesia in the foot and tenseness of the cast. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the PRN opioid analgesic and elevate the extremity above heart level"
+        },
+        {
+          "id": "b",
+          "text": "Assess the 6 P's and notify the provider immediately"
+        },
+        {
+          "id": "c",
+          "text": "Apply ice pack to reduce swelling and reassess in 30 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast padding and document as a comfort measure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia, and paresthesia (early sign of nerve ischemia). The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment. The nurse must notify the provider IMMEDIATELY \u2014 compartment syndrome is a surgical emergency requiring fasciotomy within 6 hours to prevent permanent nerve and muscle damage. Elevating above heart level (A) decreases arterial perfusion, worsening ischemia. Ice (C) and cast loosening (D) delay definitive treatment.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Compartment syndrome 6 P's: pain out of proportion is the EARLIEST sign. Fasciotomy must occur within 6 hours to prevent permanent damage.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 4,
+      "stem": "A patient on lithium for bipolar disorder presents with tremor, ataxia, slurred speech, and confusion. Serum lithium level is 2.4 mEq/L. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the next lithium dose and recheck level in 12 hours"
+        },
+        {
+          "id": "b",
+          "text": "Administer activated charcoal to reduce absorption"
+        },
+        {
+          "id": "c",
+          "text": "Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Lithium toxicity: therapeutic range 0.6\u20131.2 mEq/L. Level 1.5\u20132.0 = mild toxicity (nausea, tremor, polyuria). Level 2.0\u20132.5 = moderate toxicity (ataxia, confusion, slurred speech \u2014 this patient). Level >2.5 = severe (seizures, coma, cardiac arrest). Moderate-severe toxicity requires: stop lithium, IV NS hydration (promotes renal lithium excretion), and consideration for hemodialysis (most effective removal method). Simply holding a dose (A) is inadequate. Activated charcoal (B) does not bind lithium effectively. Sodium bicarbonate (D) is used for salicylate toxicity, not lithium.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium level >2.0 mEq/L with neurological symptoms: stop lithium, IV NS hydration, evaluate for hemodialysis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A nurse needs to assess pain in a 2-year-old who is post-operative and cannot verbalize pain. Which pain assessment tool is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Numeric Rating Scale (0\u201310) \u2014 ask the child to point to a number"
+        },
+        {
+          "id": "b",
+          "text": "FLACC scale (Face, Legs, Activity, Cry, Consolability)"
+        },
+        {
+          "id": "c",
+          "text": "Wong-Baker FACES Pain Rating Scale"
+        },
+        {
+          "id": "d",
+          "text": "Visual Analog Scale (VAS)"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The FLACC scale is validated for infants and young children (<3\u20134 years) who cannot self-report pain. It assesses five behavioral indicators scored 0\u20132 each (total 0\u201310): Face (grimacing vs neutral), Legs (kicking vs relaxed), Activity (arching vs still), Cry (screaming vs quiet), Consolability (inconsolable vs content). Wong-Baker FACES is valid for children \u22653\u20134 years who can understand the cartoon faces and self-report. Numeric scales require cognitive development typically seen at \u22657 years. VAS requires fine motor pointing and is not validated for toddlers.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3\u20134 years (behavioral); Wong-Baker FACES for ages 3\u20137 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3\u20134 years (behavioral); Wong-Baker FACES for ages 3\u20137 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+        "conclusion": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3\u20134 years (behavioral); Wong-Baker FACES for ages 3\u20137 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A 16-year-old male with no prior anesthesia history is 45 minutes into general anesthesia for scoliosis repair using sevoflurane and succinylcholine for intubation. Temperature is now 41.8\u00b0C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg, and the patient is diffusely rigid. The team administers dantrolene 2.5 mg/kg IV. Which statement about dantrolene's mechanism AND the most critical additional intervention is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation"
+        },
+        {
+          "id": "b",
+          "text": "Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves"
+        },
+        {
+          "id": "c",
+          "text": "Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are sufficient once dantrolene is given"
+        },
+        {
+          "id": "d",
+          "text": "Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Dantrolene mechanism: selectively blocks the RYR1 (ryanodine receptor type 1) on the sarcoplasmic reticulum membrane, directly preventing the uncontrolled calcium efflux that drives the MH hypermetabolic crisis. Without continuous calcium release, muscle contraction ceases, and hyperthermia, rigidity, and acidosis begin to resolve. In this case, sevoflurane MUST be stopped immediately \u2014 if it was not stopped when masseter rigidity first occurred during succinylcholine administration (an early warning sign), this was a critical error that escalated the crisis. After first dantrolene bolus: (1) Repeat dantrolene 2.5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total); (2) Hyperventilate 100% O2 at high flow (flush volatile agent, treat hypercapnia); (3) Active cooling (ice packs to axillae, groin, neck); (4) Treat VT \u2014 avoid calcium channel blockers (interact fatally with dantrolene causing cardiovascular collapse); (5) Sodium bicarbonate for severe acidosis; (6) Treat hyperkalemia. Masseter spasm after succinylcholine should always trigger MH protocol and cessation of volatile agent.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Dantrolene blocks RYR1 calcium release \u2014 the direct MH mechanism. Masseter spasm after succinylcholine = abort case immediately, activate MH protocol. Repeat dantrolene q5 min. Avoid calcium channel blockers (interact fatally with dantrolene).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 4,
+      "stem": "A nurse on a step-down unit is monitoring four patients. Which clinical finding requires the nurse to call the rapid response team (RRT) IMMEDIATELY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the last 2 hours and is now using accessory muscles"
+        },
+        {
+          "id": "b",
+          "text": "A 74-year-old with atrial fibrillation with a ventricular rate of 88 bpm, unchanged from admission"
+        },
+        {
+          "id": "c",
+          "text": "A 55-year-old post-cholecystectomy who reports nausea and has vomited once"
+        },
+        {
+          "id": "d",
+          "text": "A 66-year-old with CHF whose morning weight is 2 lbs higher than yesterday"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A rising respiratory rate to 26/min with accessory muscle use in a pneumonia patient signals deteriorating respiratory status and impending respiratory failure\u2014a classic RRT trigger. Tachypnea > 25/min, increased work of breathing, and a worsening trend over 2 hours meets standard early warning score thresholds for team activation. The AFib patient is at a controlled, unchanged rate (not a new emergency). Post-op nausea with one emesis is common and manageable on the unit. A 2-lb overnight weight gain in CHF warrants provider notification but not RRT activation unless accompanied by respiratory distress.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RRT triggers include: RR > 25, acute accessory muscle use, O2 sat drop, acute altered mental status, SBP < 90. Trends matter as much as absolute values\u2014worsening over 2 hours is a red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after a negative test 6 months ago. Chest X-ray is negative. The patient has no symptoms. What is the recommended follow-up management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the PPD in 3 months to confirm conversion"
+        },
+        {
+          "id": "b",
+          "text": "No treatment needed \u2014 latent TB does not require intervention if the patient is asymptomatic"
+        },
+        {
+          "id": "c",
+          "text": "Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity"
+        },
+        {
+          "id": "d",
+          "text": "Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB"
+        }
+      ],
+      "answer": "c",
+      "rationale": "A recent PPD conversion (negative \u2192 positive within 2 years) with negative chest X-ray indicates latent TB infection (LTBI). Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). First-line LTBI regimens: (1) INH daily \u00d7 9 months (9H) \u2014 standard; (2) Rifapentine + INH weekly \u00d7 12 weeks (3HP) \u2014 shorter, increasingly preferred; (3) Rifampin daily \u00d7 4 months. INH monitoring: monthly clinical evaluation for hepatotoxicity symptoms (jaundice, nausea, fatigue, RUQ pain); baseline LFTs for high-risk patients; hold INH if AST >3\u00d7 ULN with symptoms or >5\u00d7 ULN asymptomatic. 4-drug RIPE is for active TB, not LTBI.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Recent PPD conversion + negative CXR = LTBI \u2192 INH prophylaxis 9 months (or 3HP 12 weeks); monitor monthly for INH hepatotoxicity; 4-drug RIPE is for active TB only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb782-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "suicide_risk_assessment",
+      "subcategory": "Suicide Risk Assessment",
+      "difficulty": 3,
+      "stem": "A nurse is assessing a client who says: 'I've been thinking about ending my life. I have my grandfather's gun at home and I plan to use it this weekend when my family is away.' Which suicide risk category applies, and what is the immediate nursing priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Low risk; schedule outpatient follow-up within 2 weeks"
+        },
+        {
+          "id": "b",
+          "text": "Moderate risk; increase therapy frequency and provide a safety plan"
+        },
+        {
+          "id": "c",
+          "text": "High risk; initiate involuntary hospitalization and remove access to means immediately"
+        },
+        {
+          "id": "d",
+          "text": "Moderate risk; contact family members to monitor the patient at home"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient has a specific plan (gun), access to lethal means (gun at home), a timeframe (this weekend), and intent (plans to use it). This constellation \u2014 ideation + plan + means + timeframe \u2014 represents HIGH lethality risk. Immediate action: do not leave the patient alone, initiate emergency psychiatric evaluation, and facilitate involuntary hospitalization if the patient refuses voluntary admission. Means restriction (removing or securing the firearm) is critical. Outpatient follow-up (A) and home monitoring (D) are wholly inadequate for this risk level.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Suicide Risk Assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "High suicide risk = specific plan + lethal means + timeframe + intent; immediate hospitalization and means restriction are required.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

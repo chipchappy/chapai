@@ -11,7 +11,11 @@ export type AnalyticsEvent =
   | "competitor_expose_email_opened"
   | "quiz_question_answered"
   | "quiz_marked_for_review"
-  | "quiz_status_set";
+  | "quiz_status_set"
+  | "tutor_continue_drill_clicked"
+  | "achievement_toast_shown"
+  | "share_streak_clicked"
+  | "share_streak_downloaded";
 
 type AnalyticsProps = Record<string, string | number | boolean | null | undefined>;
 

@@ -203,6 +203,9 @@ export interface PracticeAnswerRecord {
 
 export interface PracticeSessionState {
   id: string;
+  // For practice-exam sessions: the catalog exam id (e.g., "nclex-sim-1").
+  // Stable across retakes; `id` rotates per attempt for the quiz_sessions PK.
+  practiceExamId?: string;
   mode: PracticeMode;
   exam: Exam;
   label: string;

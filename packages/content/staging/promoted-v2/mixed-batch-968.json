@@ -1,0 +1,751 @@
+{
+  "batchId": "mixed-batch-968",
+  "generatedAt": "2026-04-10T21:29:24-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb968-n001",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "acute_rejection_transplant",
+      "subcategory": "acute_rejection_transplant",
+      "difficulty": 3,
+      "stem": "A client is 2 weeks after kidney transplant. Which findings should make the nurse suspect acute rejection and notify the provider right away?",
+      "scenarioTitle": "Early transplant warning cluster",
+      "scenario": "The client reports decreased appetite and generally not feeling well since yesterday.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Fever"
+        },
+        {
+          "id": "b",
+          "text": "Tenderness over the graft site"
+        },
+        {
+          "id": "c",
+          "text": "Decreased urine output"
+        },
+        {
+          "id": "d",
+          "text": "Blood pressure lower than baseline after standing once"
+        },
+        {
+          "id": "e",
+          "text": "Rising serum creatinine"
+        },
+        {
+          "id": "f",
+          "text": "Mild tremor after tacrolimus dose"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Acute rejection is recognized by combining graft tenderness, fever, falling urine output, and worsening renal function rather than treating each clue in isolation. The nurse should move quickly because early escalation protects graft function.",
+      "distractorRationales": {
+        "d": "Blood pressure lower than baseline after standing once misses the clinical pattern: Acute Rejection Transplant isolation points to Fever plus Tenderness over the graft site plus Decreased urine output plus Rising serum creatinine, so choosing it can postpone safety actions and worsen infection progression.",
+        "f": "Mild tremor after tacrolimus dose misses the clinical pattern: Acute Rejection Transplant isolation points to Fever plus Tenderness over the graft site plus Decreased urine output plus Rising serum creatinine, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "acute_rejection_transplant",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus graft tenderness plus low urine output after transplant is a rejection pattern until proven otherwise.",
+      "speedCue": "On exam day, pair transplant timing with graft tenderness and kidney decline before you anchor on medication side effects.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n002",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "burn_inhalation_stridor",
+      "subcategory": "burn_inhalation_stridor",
+      "difficulty": 3,
+      "stem": "A client arrives after a house fire. Which findings should make the nurse prepare for early airway intervention related to inhalation injury?",
+      "scenarioTitle": "Burn airway red flags",
+      "scenario": "The client has singed nasal hair, soot around the mouth, and is speaking in a raspy voice.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hoarseness"
+        },
+        {
+          "id": "b",
+          "text": "Facial burns"
+        },
+        {
+          "id": "c",
+          "text": "Soot in the sputum"
+        },
+        {
+          "id": "d",
+          "text": "Pink, warm skin over the arms only"
+        },
+        {
+          "id": "e",
+          "text": "Stridor"
+        },
+        {
+          "id": "f",
+          "text": "Mild pain score of 3/10"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Burn inhalation injury should be recognized quickly from airway-threat clues rather than waiting for visible collapse. Hoarseness, facial burns, soot, and stridor together point to progressive airway edema and need for rapid airway planning.",
+      "distractorRationales": {
+        "d": "Pink, warm skin over the arms only misses the clinical pattern: Burn Inhalation Stridor airway points to Hoarseness plus Facial burns plus Soot in the sputum plus Stridor, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Mild pain score of 3/10 misses the clinical pattern: Burn Inhalation Stridor airway points to Hoarseness plus Facial burns plus Soot in the sputum plus Stridor, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "burn_inhalation_stridor",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Face burns plus soot plus voice change is an airway warning pattern.",
+      "speedCue": "If the stem gives smoke exposure and voice or soot clues, answer for swelling before the client looks worse.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n003",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "cord_prolapse_positioning",
+      "difficulty": 3,
+      "stem": "A client in labor has a sudden fetal heart rate drop after rupture of membranes and the nurse sees a loop of umbilical cord. Which immediate actions should the nurse take?",
+      "scenarioTitle": "Cord prolapse rescue",
+      "scenario": "The fetal heart rate remains in the 70s while help is being called.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a gloved hand to lift the presenting part off the cord"
+        },
+        {
+          "id": "b",
+          "text": "Position the client to relieve pressure on the cord"
+        },
+        {
+          "id": "c",
+          "text": "Attempt to push the visible cord back into the vagina"
+        },
+        {
+          "id": "d",
+          "text": "Delay intervention until the provider is at the bedside"
+        },
+        {
+          "id": "e",
+          "text": "Call for immediate obstetric assistance"
+        },
+        {
+          "id": "f",
+          "text": "Start coached pushing with the next contraction"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Cord prolapse is a compression emergency. The nurse's first moves are to relieve the pressure, position the client to reduce compression, and summon immediate obstetric help. Pushing the cord back or delaying action increases fetal hypoxia risk.",
+      "distractorRationales": {
+        "c": "Attempt to push the visible cord back into the vagina misses the clinical pattern: Cord Prolapse Positioning hypoxia points to Use a gloved hand to lift the presenting part off the cord plus Position the client, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Delay intervention until the provider is at the bedside misses the clinical pattern: Cord Prolapse Positioning hypoxia points to Use a gloved hand to lift the presenting part off the cord plus Position the client, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "f": "Start coached pushing with the next contraction misses the clinical pattern: Cord Prolapse Positioning hypoxia points to Use a gloved hand to lift the presenting part off the cord plus Position the client, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "cord_prolapse_positioning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cord prolapse means relieve compression now, not when the provider arrives.",
+      "speedCue": "If you can see the cord and the heart rate crashes, think pressure-off-the-cord immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n004",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "ectopic_pregnancy_rupture",
+      "subcategory": "ectopic_pregnancy_rupture",
+      "difficulty": 3,
+      "stem": "A client with a positive pregnancy test reports sudden unilateral pelvic pain, dizziness, and left shoulder pain. Which findings support the nurse's concern for a ruptured ectopic pregnancy?",
+      "scenarioTitle": "Early-pregnancy shock clues",
+      "scenario": "The client looks pale and anxious in triage. Blood pressure is 86/48 mm Hg and heart rate is 128/min.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypotension"
+        },
+        {
+          "id": "b",
+          "text": "Shoulder pain"
+        },
+        {
+          "id": "c",
+          "text": "Rigid abdomen"
+        },
+        {
+          "id": "d",
+          "text": "Light pink spotting only"
+        },
+        {
+          "id": "e",
+          "text": "Tachycardia"
+        },
+        {
+          "id": "f",
+          "text": "Improving pelvic discomfort after rest"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Ruptured ectopic pregnancy should be recognized quickly from the clue cluster of unilateral pain, hypotension, tachycardia, and referred shoulder pain from intraperitoneal bleeding. The nurse should connect these findings to hemorrhagic instability instead of treating them as routine first-trimester discomfort.",
+      "distractorRationales": {
+        "c": "Rigid abdomen misses the clinical pattern: Ectopic Pregnancy Rupture bleeding points to Hypotension plus Shoulder pain plus Tachycardia, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Light pink spotting only misses the clinical pattern: Ectopic Pregnancy Rupture bleeding points to Hypotension plus Shoulder pain plus Tachycardia, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "f": "Improving pelvic discomfort after rest misses the clinical pattern: Ectopic Pregnancy Rupture bleeding points to Hypotension plus Shoulder pain plus Tachycardia, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "ectopic_pregnancy_rupture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When pregnancy, unilateral pain, shoulder pain, and shock signs appear together, think ruptured ectopic fast.",
+      "speedCue": "Pregnancy plus unilateral pain plus shoulder pain plus hypotension is a hemorrhage pattern, not a routine discomfort pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n005",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "neonatal_sepsis_instability",
+      "subcategory": "neonatal_sepsis_instability",
+      "difficulty": 3,
+      "stem": "A newborn is 18 hours old. Which findings should increase the nurse's concern for neonatal sepsis?",
+      "scenarioTitle": "Newborn instability cluster",
+      "scenario": "The newborn has not fed well since birth and is harder to arouse than earlier in the shift.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Temperature instability"
+        },
+        {
+          "id": "b",
+          "text": "Poor feeding"
+        },
+        {
+          "id": "c",
+          "text": "Lethargy"
+        },
+        {
+          "id": "d",
+          "text": "Brief hiccups after a feeding"
+        },
+        {
+          "id": "e",
+          "text": "Respiratory changes"
+        },
+        {
+          "id": "f",
+          "text": "Pink skin while crying"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Neonatal sepsis often presents as subtle instability rather than a single dramatic sign. Temperature instability, poor feeding, lethargy, and respiratory change together should push the nurse toward rapid escalation.",
+      "distractorRationales": {
+        "d": "Brief hiccups after a feeding misses the clinical pattern: Neonatal Sepsis Instability respiratory points to Temperature instability plus Poor feeding plus Lethargy plus Respiratory changes, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Pink skin while crying misses the clinical pattern: Neonatal Sepsis Instability respiratory points to Temperature instability plus Poor feeding plus Lethargy plus Respiratory changes, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "neonatal_sepsis_instability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In newborns, poor feeding plus lethargy plus temperature or breathing change is a sepsis pattern.",
+      "speedCue": "Do not wait for one dramatic sign in a newborn; small instability clues add up quickly.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n006",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "organophosphate_poisoning",
+      "subcategory": "organophosphate_poisoning",
+      "difficulty": 3,
+      "stem": "A farm worker arrives after pesticide exposure. Which findings support organophosphate poisoning?",
+      "scenarioTitle": "Cholinergic toxicity cluster",
+      "scenario": "The client is diaphoretic, restless, and has labored respirations.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Salivation"
+        },
+        {
+          "id": "b",
+          "text": "Bronchospasm or wheezing"
+        },
+        {
+          "id": "c",
+          "text": "Pinpoint pupils"
+        },
+        {
+          "id": "d",
+          "text": "Dry flushed skin"
+        },
+        {
+          "id": "e",
+          "text": "Diarrhea"
+        },
+        {
+          "id": "f",
+          "text": "Urinary retention"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Organophosphate toxicity creates a cholinergic overload pattern with secretions, bronchospasm, miosis, and GI hyperactivity. The nurse should recognize the SLUDGE-style cluster instead of looking for dry sympathetic findings.",
+      "distractorRationales": {
+        "d": "Dry flushed skin misses the clinical pattern: Organophosphate Poisoning toxicity points to Salivation plus Bronchospasm or wheezing plus Pinpoint pupils plus Diarrhea, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Urinary retention misses the clinical pattern: Organophosphate Poisoning toxicity points to Salivation plus Bronchospasm or wheezing plus Pinpoint pupils plus Diarrhea, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "organophosphate_poisoning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Secretions plus wheeze plus pinpoint pupils after pesticide exposure is a cholinergic emergency.",
+      "speedCue": "Wet beats dry here: secretions and constricted pupils should move you to organophosphate toxicity fast.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n007",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "pulmonary_embolism_post_op",
+      "subcategory": "pulmonary_embolism_post_op",
+      "difficulty": 3,
+      "stem": "A client 2 days after abdominal surgery becomes suddenly dyspneic and anxious. Which findings strengthen the nurse's concern for pulmonary embolism?",
+      "scenarioTitle": "Post-op PE clues",
+      "scenario": "The client's oxygen saturation is falling despite coaching to take deep breaths.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Pleuritic chest pain"
+        },
+        {
+          "id": "b",
+          "text": "Tachycardia"
+        },
+        {
+          "id": "c",
+          "text": "Sudden oxygen desaturation"
+        },
+        {
+          "id": "d",
+          "text": "Gradual relief of dyspnea when supine"
+        },
+        {
+          "id": "e",
+          "text": "New hemoptysis"
+        },
+        {
+          "id": "f",
+          "text": "Symmetric warm feet without swelling"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pulmonary embolism is supported by the rapid clue bundle of sudden dyspnea, pleuritic pain, tachycardia, hypoxemia, and sometimes hemoptysis after surgery. The nurse should bundle these clues quickly rather than anchoring on anxiety or shallow breathing alone.",
+      "distractorRationales": {
+        "d": "Gradual relief of dyspnea when supine misses the clinical pattern: Pulmonary Embolism Post Op breathing points to Pleuritic chest pain plus Tachycardia plus Sudden oxygen desaturation plus New hemoptysis, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Symmetric warm feet without swelling misses the clinical pattern: Pulmonary Embolism Post Op breathing points to Pleuritic chest pain plus Tachycardia plus Sudden oxygen desaturation plus New hemoptysis, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "pulmonary_embolism_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The fastest PE pattern is sudden dyspnea plus pleuritic pain plus tachycardia plus dropping oxygen.",
+      "speedCue": "If the client deteriorates suddenly after surgery, combine the respiratory and perfusion clues before assuming pain or anxiety.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n008",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "serotonin_syndrome",
+      "subcategory": "serotonin_syndrome",
+      "difficulty": 3,
+      "stem": "A client taking sertraline started linezolid yesterday and is now restless. Which findings support serotonin syndrome?",
+      "scenarioTitle": "Medication interaction recognition",
+      "scenario": "The client is flushed and pacing in the room during assessment.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hyperreflexia"
+        },
+        {
+          "id": "b",
+          "text": "Diarrhea"
+        },
+        {
+          "id": "c",
+          "text": "Fever"
+        },
+        {
+          "id": "d",
+          "text": "Lead-pipe muscle rigidity only"
+        },
+        {
+          "id": "e",
+          "text": "Agitation"
+        },
+        {
+          "id": "f",
+          "text": "Bradykinesia"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia. The nurse should sort this pattern away from neuroleptic malignant syndrome, which is more classically linked to severe rigidity rather than brisk reflexes and diarrhea.",
+      "distractorRationales": {
+        "d": "Lead-pipe muscle rigidity only misses the clinical pattern: Serotonin Syndrome serotonin points to Hyperreflexia plus Diarrhea plus Fever plus Agitation, so choosing it can postpone safety actions and worsen infection progression.",
+        "f": "Bradykinesia misses the clinical pattern: Serotonin Syndrome serotonin points to Hyperreflexia plus Diarrhea plus Fever plus Agitation, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "serotonin_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Agitation plus fever plus hyperreflexia after serotonergic overlap points to serotonin syndrome fast.",
+      "speedCue": "Hyperreflexia helps separate serotonin syndrome from other high-fever medication syndromes.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n009",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "transsphenoidal_csf_leak",
+      "subcategory": "transsphenoidal_csf_leak",
+      "difficulty": 3,
+      "stem": "A client 12 hours after transsphenoidal hypophysectomy has a steady drip of clear drainage from the nose. Which nursing actions are appropriate?",
+      "scenarioTitle": "CSF leak precautions",
+      "scenario": "The client says the drainage tastes salty and asks to blow the nose to clear it.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider about possible CSF leakage"
+        },
+        {
+          "id": "b",
+          "text": "Instruct the client to avoid coughing, sneezing, or blowing the nose"
+        },
+        {
+          "id": "c",
+          "text": "Assess the drainage and protect the drip without packing it tightly"
+        },
+        {
+          "id": "d",
+          "text": "Place the client in Trendelenburg to reduce drainage"
+        },
+        {
+          "id": "e",
+          "text": "Monitor for meningitis or worsening neurologic changes"
+        },
+        {
+          "id": "f",
+          "text": "Encourage frequent straw use for hydration"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Possible CSF leak after transsphenoidal surgery requires prompt report, pressure-reducing precautions, careful drainage assessment, and infection vigilance. Actions that increase intracranial or nasal pressure raise complication risk.",
+      "distractorRationales": {
+        "d": "Place the client in Trendelenburg to reduce drainage misses the clinical pattern: Transsphenoidal Csf Leak infection points to Notify the provider about possible CSF leakage plus Instruct the client to avoid coughing, sneezing, or, so choosing it can postpone safety actions and worsen infection progression.",
+        "f": "Encourage frequent straw use for hydration misses the clinical pattern: Transsphenoidal Csf Leak infection points to Notify the provider about possible CSF leakage plus Instruct the client to avoid coughing, sneezing, or, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "transsphenoidal_csf_leak",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Clear salty drainage after transsphenoidal surgery means protect the site and think CSF leak fast.",
+      "speedCue": "Salty drainage plus postop pituitary surgery is the shortcut clue to pressure-avoidance precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n010",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "amniotic_fluid_embolism",
+      "subcategory": "amniotic_fluid_embolism",
+      "difficulty": 3,
+      "stem": "During labor, a client suddenly becomes cyanotic, hypotensive, and difficult to arouse. Which actions should the nurse anticipate as part of the immediate response?",
+      "scenarioTitle": "AFE emergency bundle",
+      "scenario": "The fetal tracing deteriorates as the maternal oxygen saturation drops rapidly.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Call the obstetric emergency response team"
+        },
+        {
+          "id": "b",
+          "text": "Support airway and oxygenation at once"
+        },
+        {
+          "id": "c",
+          "text": "Prepare for rapid hemodynamic support"
+        },
+        {
+          "id": "d",
+          "text": "Delay intervention until the cause of collapse is definitively confirmed"
+        },
+        {
+          "id": "e",
+          "text": "Continue close maternal-fetal reassessment during stabilization"
+        },
+        {
+          "id": "f",
+          "text": "Encourage the client to push through the next contraction if responsive"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "AFE should trigger an immediate airway-perfusion-team response. Waiting for diagnostic certainty wastes time in a catastrophic maternal collapse pattern.",
+      "distractorRationales": {
+        "d": "Delay intervention until the cause of collapse is definitively confirmed misses the clinical pattern: Amniotic Fluid Embolism airway points to Call the obstetric emergency response team plus Support airway and oxygenation at once plus Prepare for, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Encourage the client to push through the next contraction if responsive misses the clinical pattern: Amniotic Fluid Embolism airway points to Call the obstetric emergency response team plus Support airway and oxygenation at once plus Prepare for, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "amniotic_fluid_embolism",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden labor collapse means emergency response, airway support, hemodynamic rescue, and tight reassessment.",
+      "speedCue": "Abrupt hypoxia plus hypotension during labor should read as catastrophe, not routine instability.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n011",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV contrast becomes flushed, wheezy, and hypotensive. Which nursing actions belong in the immediate response?",
+      "scenarioTitle": "Anaphylaxis action set",
+      "scenario": "The client is coughing, scratching at the neck, and speaking only in short phrases.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the triggering exposure"
+        },
+        {
+          "id": "b",
+          "text": "Support airway and oxygenation"
+        },
+        {
+          "id": "c",
+          "text": "Administer epinephrine per protocol"
+        },
+        {
+          "id": "d",
+          "text": "Wait to see whether an antihistamine alone resolves the symptoms"
+        },
+        {
+          "id": "e",
+          "text": "Prepare for additional fluid support and monitoring"
+        },
+        {
+          "id": "f",
+          "text": "Encourage the client to rest quietly without escalation"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Anaphylaxis is managed as an airway-perfusion emergency: stop the trigger, support oxygenation, give epinephrine, and continue the resuscitation bundle. Waiting for mild-medication relief risks rapid deterioration.",
+      "distractorRationales": {
+        "d": "Wait to see whether an antihistamine alone resolves the symptoms misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the triggering exposure plus Support airway and oxygenation plus Administer epinephrine per protocol plus Prepare, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Encourage the client to rest quietly without escalation misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the triggering exposure plus Support airway and oxygenation plus Administer epinephrine per protocol plus Prepare, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stop the trigger, treat the airway, give epinephrine, and keep resuscitating.",
+      "speedCue": "Wheeze plus hypotension plus swelling should trigger epinephrine thinking, not slow reassessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb968-n012",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury develops severe hypertension, flushing above the lesion, and a pounding headache. Which actions should the nurse take first?",
+      "scenarioTitle": "Autonomic dysreflexia action set",
+      "scenario": "The urinary drainage tubing is kinked and the client says the headache began suddenly.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright"
+        },
+        {
+          "id": "b",
+          "text": "Check for and relieve the bladder trigger"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider or rapid response if pressure stays elevated"
+        },
+        {
+          "id": "d",
+          "text": "Lay the client flat to improve perfusion"
+        },
+        {
+          "id": "e",
+          "text": "Prepare rescue antihypertensive therapy if ordered"
+        },
+        {
+          "id": "f",
+          "text": "Delay intervention until the next vital-sign cycle"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Autonomic dysreflexia is treated by lowering pressure with positioning, removing the trigger, escalating persistent hypertension, and preparing rescue medication if needed. Delaying action or lying flat worsens the danger pattern.",
+      "distractorRationales": {
+        "d": "Lay the client flat to improve perfusion misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright plus Check for and relieve the bladder trigger plus Notify the provider, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "f": "Delay intervention until the next vital-sign cycle misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright plus Check for and relieve the bladder trigger plus Notify the provider, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sit up, find the trigger, escalate if pressure stays high, and be ready to treat the surge.",
+      "speedCue": "Headache plus flushing plus severe hypertension above the lesion is the clue cluster that should stop everything else.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

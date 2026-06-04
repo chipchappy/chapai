@@ -1,0 +1,540 @@
+{
+  "batchId": "mixed-batch-860",
+  "generatedAt": "2026-04-09T18:57:13-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb860-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "Restrict oral fluids and monitor weight misses the clinical pattern: Adrenal Crisis Hypotension sodium points to Administer IV hydrocortisone and isotonic fluids, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Hold corticosteroids until the morning cortisol level is drawn misses the clinical pattern: Adrenal Crisis Hypotension sodium points to Administer IV hydrocortisone and isotonic fluids, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Teach the client about low-sodium foods misses the clinical pattern: Adrenal Crisis Hypotension sodium points to Administer IV hydrocortisone and isotonic fluids, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "Lay the client flat and increase the room temperature misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Ask the client to rest quietly until the headache passes misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Offer oral fluids and reassess in 30 minutes misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "compartment_syndrome_warning",
+      "subcategory": "compartment_syndrome_warning",
+      "difficulty": 3,
+      "stem": "A client with a short leg cast reports increasing pain that is not relieved by opioids. The toes are pale and the client reports numbness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider immediately about possible compartment syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Apply ice over the cast and reassess after the next pain dose."
+        },
+        {
+          "id": "c",
+          "text": "Elevate the leg above the level of the heart."
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast with scissors at the bedside."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Pain out of proportion, pallor, and numbness suggest compartment syndrome, which can threaten tissue viability and limb function. Immediate provider notification and urgent evaluation are needed. Comfort-only measures or excessive elevation can worsen ischemia or delay definitive treatment.",
+      "distractorRationales": {
+        "b": "Apply ice over the cast and reassess after the next pain dose misses the clinical pattern: Compartment Syndrome Warning pain points to Notify the provider immediately about possible compartment syndrome, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Elevate the leg above the level of the heart misses the clinical pattern: Compartment Syndrome Warning pain points to Notify the provider immediately about possible compartment syndrome, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Loosen the cast with scissors at the bedside misses the clinical pattern: Compartment Syndrome Warning pain points to Notify the provider immediately about possible compartment syndrome, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "compartment_syndrome_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pain that outpaces the injury plus pallor or numbness under a cast should trigger concern for compartment syndrome.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "epidural_hypotension_fetal",
+      "subcategory": "epidural_hypotension_fetal",
+      "difficulty": 3,
+      "stem": "A laboring client receives an epidural and 5 minutes later becomes pale and dizzy. Blood pressure is 78/42 mmHg and the fetal heart rate shows recurrent late decelerations. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reposition the client and increase the IV fluid rate."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to push with the next contraction."
+        },
+        {
+          "id": "c",
+          "text": "Lower the head of the bed and leave the client flat."
+        },
+        {
+          "id": "d",
+          "text": "Document an expected epidural response and reassess later."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Maternal hypotension after epidural analgesia can reduce uteroplacental perfusion and trigger late decelerations. The nurse should reposition the client and support circulating volume immediately. Delaying action increases fetal hypoxia risk.",
+      "distractorRationales": {
+        "b": "Encourage the client to push with the next contraction misses the clinical pattern: Epidural Hypotension Fetal perfusion points to Reposition the client and increase the IV fluid rate, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Lower the head of the bed and leave the client flat misses the clinical pattern: Epidural Hypotension Fetal perfusion points to Reposition the client and increase the IV fluid rate, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Document an expected epidural response and reassess later misses the clinical pattern: Epidural Hypotension Fetal perfusion points to Reposition the client and increase the IV fluid rate, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "epidural_hypotension_fetal",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maternal hypotension after epidural should be corrected quickly to restore fetal perfusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hyperkalemia_ecg_emergency",
+      "subcategory": "hyperkalemia_ecg_emergency",
+      "difficulty": 3,
+      "stem": "A client with acute kidney injury has a potassium level of 6.8 mEq/L and peaked T waves on the cardiac monitor. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to administer IV calcium gluconate."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to increase oral fluids."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on a potassium-restricted diet."
+        },
+        {
+          "id": "d",
+          "text": "Repeat the potassium level in 4 hours."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hyperkalemia with ECG changes places the client at immediate risk for lethal dysrhythmias. IV calcium gluconate stabilizes the cardiac membrane while other therapies work to lower serum potassium. Dietary teaching and delayed reassessment do not address the urgent electrical instability.",
+      "distractorRationales": {
+        "b": "Encourage the client to increase oral fluids misses the clinical pattern: Hyperkalemia Ecg Emergency potassium points to Prepare to administer IV calcium gluconate, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Place the client on a potassium-restricted diet misses the clinical pattern: Hyperkalemia Ecg Emergency potassium points to Prepare to administer IV calcium gluconate, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Repeat the potassium level in 4 hours misses the clinical pattern: Hyperkalemia Ecg Emergency potassium points to Prepare to administer IV calcium gluconate, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "hyperkalemia_ecg_emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hyperkalemia plus peaked T waves is a cardiac emergency: stabilize the myocardium first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity_dehydration",
+      "subcategory": "lithium_toxicity_dehydration",
+      "difficulty": 3,
+      "stem": "A client taking lithium for bipolar disorder has vomiting, coarse hand tremors, and increasing confusion after several days of diarrhea. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the lithium and notify the provider."
+        },
+        {
+          "id": "b",
+          "text": "Give the lithium with crackers to reduce stomach upset."
+        },
+        {
+          "id": "c",
+          "text": "Teach the client to double the next dose."
+        },
+        {
+          "id": "d",
+          "text": "Encourage the client to restrict sodium intake further."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Vomiting, worsening tremor, and confusion after fluid loss suggest lithium toxicity. The nurse should stop further doses and notify the provider for prompt evaluation. Dehydration and sodium loss can raise lithium levels, so more restriction or additional dosing would be unsafe.",
+      "distractorRationales": {
+        "b": "Give the lithium with crackers to reduce stomach upset misses the clinical pattern: Lithium Toxicity Dehydration dehydration points to Hold the lithium and notify the provider, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Teach the client to double the next dose misses the clinical pattern: Lithium Toxicity Dehydration dehydration points to Hold the lithium and notify the provider, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Encourage the client to restrict sodium intake further misses the clinical pattern: Lithium Toxicity Dehydration dehydration points to Hold the lithium and notify the provider, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "lithium_toxicity_dehydration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "GI loss plus confusion and coarse tremor on lithium should be treated as toxicity until proven otherwise.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lpn_scope_post_op",
+      "subcategory": "lpn_scope_post_op",
+      "difficulty": 3,
+      "stem": "The RN is assigning care for a group of postoperative clients. Which task is appropriate to delegate to an experienced LPN/LVN?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reinforce teaching already provided about incentive spirometry."
+        },
+        {
+          "id": "b",
+          "text": "Perform the initial assessment of a client returning from PACU."
+        },
+        {
+          "id": "c",
+          "text": "Develop the nursing care plan for a new admission."
+        },
+        {
+          "id": "d",
+          "text": "Interpret a change in the client's telemetry rhythm."
+        }
+      ],
+      "answer": "a",
+      "rationale": "An experienced LPN or LVN may reinforce established teaching and perform focused care for stable clients, depending on policy. The initial postoperative assessment, care planning, and rhythm interpretation require RN-level assessment and clinical judgment. Safe delegation depends on stability, predictability, and the need for judgment.",
+      "distractorRationales": {
+        "b": "Perform the initial assessment of a client returning from PACU misses the clinical pattern: Lpn Scope Post Op delegation points to Reinforce teaching already provided about incentive spirometry, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Develop the nursing care plan for a new admission misses the clinical pattern: Lpn Scope Post Op delegation points to Reinforce teaching already provided about incentive spirometry, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Interpret a change in the client's telemetry rhythm misses the clinical pattern: Lpn Scope Post Op delegation points to Reinforce teaching already provided about incentive spirometry, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "lpn_scope_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate stable, predictable care and reinforcement to the LPN or LVN, not initial assessment or interpretation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "malignant_hyperthermia_initial",
+      "subcategory": "malignant_hyperthermia_initial",
+      "difficulty": 3,
+      "stem": "In the postanesthesia care unit, a client develops rising end-tidal CO2, muscle rigidity, and a rapidly increasing temperature. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to administer dantrolene and call the rapid response team."
+        },
+        {
+          "id": "b",
+          "text": "Cover the client with warm blankets to prevent shivering."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the client to cough and deep-breathe."
+        },
+        {
+          "id": "d",
+          "text": "Delay action until laboratory confirmation is available."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Rising end-tidal CO2, rigidity, and hyperthermia after anesthesia suggest malignant hyperthermia, a life-threatening emergency. Dantrolene and immediate escalation are critical. Waiting for lab confirmation or focusing on comfort measures delays definitive treatment.",
+      "distractorRationales": {
+        "b": "Cover the client with warm blankets to prevent shivering misses the clinical pattern: Malignant Hyperthermia Initial hyperthermia points to Prepare to administer dantrolene and call the rapid response team, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Encourage the client to cough and deep-breathe misses the clinical pattern: Malignant Hyperthermia Initial hyperthermia points to Prepare to administer dantrolene and call the rapid response team, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Delay action until laboratory confirmation is available misses the clinical pattern: Malignant Hyperthermia Initial hyperthermia points to Prepare to administer dantrolene and call the rapid response team, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "malignant_hyperthermia_initial",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected malignant hyperthermia demands immediate dantrolene and emergency escalation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "meningitis_isolation",
+      "subcategory": "meningitis_isolation",
+      "difficulty": 3,
+      "stem": "A client is admitted with suspected bacterial meningitis. Which infection-control measure should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Initiate droplet precautions."
+        },
+        {
+          "id": "b",
+          "text": "Place the client in airborne isolation."
+        },
+        {
+          "id": "c",
+          "text": "Use reverse isolation to protect the client."
+        },
+        {
+          "id": "d",
+          "text": "Delay precautions until a lumbar puncture confirms the diagnosis."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Suspected bacterial meningitis requires prompt droplet precautions to reduce transmission risk. The nurse should not wait for confirmation before initiating appropriate isolation. Airborne or reverse isolation do not match the primary transmission risk for typical bacterial meningitis.",
+      "distractorRationales": {
+        "b": "Place the client in airborne isolation misses the clinical pattern: Meningitis Isolation infection points to Initiate droplet precautions, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Use reverse isolation to protect the client misses the clinical pattern: Meningitis Isolation infection points to Initiate droplet precautions, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Delay precautions until a lumbar puncture confirms the diagnosis misses the clinical pattern: Meningitis Isolation infection points to Initiate droplet precautions, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "meningitis_isolation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Start droplet precautions right away when bacterial meningitis is suspected.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neutropenic_precautions",
+      "subcategory": "neutropenic_precautions",
+      "difficulty": 3,
+      "stem": "A client receiving chemotherapy has an absolute neutrophil count of 400/mm3. Which nursing action is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Avoid fresh flowers and raw fruits brought from outside."
+        },
+        {
+          "id": "b",
+          "text": "Take a rectal temperature every 4 hours."
+        },
+        {
+          "id": "c",
+          "text": "Limit oral care to once each shift to avoid bleeding."
+        },
+        {
+          "id": "d",
+          "text": "Encourage the client to visit the crowded day room to reduce isolation."
+        }
+      ],
+      "answer": "a",
+      "rationale": "An absolute neutrophil count of 400/mm3 indicates severe neutropenia and a high risk for infection. Reducing exposure to environmental organisms, including flowers and unwashed fresh produce, is appropriate. Rectal temperatures and unnecessary crowd exposure increase infection risk rather than protecting the client.",
+      "distractorRationales": {
+        "b": "Take a rectal temperature every 4 hours misses the clinical pattern: Neutropenic Precautions infection points to Avoid fresh flowers and raw fruits brought from outside, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Limit oral care to once each shift to avoid bleeding misses the clinical pattern: Neutropenic Precautions infection points to Avoid fresh flowers and raw fruits brought from outside, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Encourage the client to visit the crowded day room to reduce isolation misses the clinical pattern: Neutropenic Precautions infection points to Avoid fresh flowers and raw fruits brought from outside, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "neutropenic_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "With severe neutropenia, the nurse should lower exposure to infection sources rather than increase invasive or crowd contact.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "newborn_bilirubin_warning",
+      "subcategory": "newborn_bilirubin_warning",
+      "difficulty": 3,
+      "stem": "A newborn is 18 hours old and is noted to have yellow discoloration of the sclera and chest. Which response by the nurse is best?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Report the early jaundice because jaundice in the first 24 hours is concerning."
+        },
+        {
+          "id": "b",
+          "text": "Reassure the parent that all newborn jaundice is expected."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the parent to place the newborn in direct sunlight."
+        },
+        {
+          "id": "d",
+          "text": "Wait until the newborn is 48 hours old before documenting the finding."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Jaundice appearing in the first 24 hours of life is not considered normal transitional jaundice and should be reported for prompt evaluation. Early jaundice can signal hemolysis or other pathologic causes. Reassurance or delay risks missing rising bilirubin levels that may need treatment.",
+      "distractorRationales": {
+        "b": "Reassure the parent that all newborn jaundice is expected misses the clinical pattern: Newborn Bilirubin Warning newborn points to Report the early jaundice because jaundice in the first 24 hours is concerning, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Encourage the parent to place the newborn in direct sunlight misses the clinical pattern: Newborn Bilirubin Warning newborn points to Report the early jaundice because jaundice in the first 24 hours is concerning, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Wait until the newborn is 48 hours old before documenting the finding misses the clinical pattern: Newborn Bilirubin Warning newborn points to Report the early jaundice because jaundice in the first 24 hours is concerning, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "newborn_bilirubin_warning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Jaundice in the first 24 hours is a report-now finding in the newborn.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "newborn_bilirubin_warning",
+        "caption": "Jaundice in the first 24 hours is a report-now finding in the newborn.",
+        "conclusion": "Jaundice in the first 24 hours is a report-now finding in the newborn."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb860-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_endometritis",
+      "subcategory": "postpartum_endometritis",
+      "difficulty": 3,
+      "stem": "Two days after a cesarean birth, a client has uterine tenderness, foul-smelling lochia, and a temperature of 101.8 F (38.8 C). Which complication should the nurse suspect?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Endometritis."
+        },
+        {
+          "id": "b",
+          "text": "Uterine inversion."
+        },
+        {
+          "id": "c",
+          "text": "Postpartum blues."
+        },
+        {
+          "id": "d",
+          "text": "Expected afterpains."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Fever, uterine tenderness, and foul-smelling lochia after birth are classic findings of endometritis. The cesarean birth increases infection risk, making this complication especially important to recognize quickly. Uterine inversion is an acute obstetric emergency with a very different presentation, and postpartum blues do not cause fever or uterine pain.",
+      "distractorRationales": {
+        "b": "Uterine inversion misses the clinical pattern: Postpartum Endometritis infection points to Endometritis, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Postpartum blues misses the clinical pattern: Postpartum Endometritis infection points to Endometritis, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Expected afterpains misses the clinical pattern: Postpartum Endometritis infection points to Endometritis, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "postpartum_endometritis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Postpartum fever with uterine tenderness and foul lochia points to endometritis, not routine recovery discomfort.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

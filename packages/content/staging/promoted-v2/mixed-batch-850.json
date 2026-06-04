@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-850",
+  "generatedAt": "2026-04-09T17:38:21-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb850-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "pharmacology_metformin_safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "distractorRationales": {
+        "a": "Administer metformin as scheduled since the procedure is elective misses the clinical pattern: Pharmacology Metformin Safety insulin points to Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "Switch the patient to insulin therapy permanently before the procedure misses the clinical pattern: Pharmacology Metformin Safety insulin points to Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "Administer metformin with the morning meal on the day of the procedure and hold only for misses the clinical pattern: Pharmacology Metformin Safety insulin points to Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "pharmacology_metformin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_hypoglycemia_treatment",
+      "subcategory": "pharmacology_hypoglycemia_treatment",
+      "difficulty": 3,
+      "stem": "A nurse finds a conscious patient with type 1 diabetes with a blood glucose of 54 mg/dL and symptoms of shakiness and diaphoresis. The patient is alert and able to swallow. Which is the CORRECT initial treatment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer glucagon 1 mg subcutaneously"
+        },
+        {
+          "id": "b",
+          "text": "Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck glucose in 15 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50 mL of 50% dextrose (D50) IV push"
+        },
+        {
+          "id": "d",
+          "text": "Give the patient a full meal immediately to restore blood glucose"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The '15-15 rule' is the standard for treating conscious, alert patients with mild-to-moderate hypoglycemia who can swallow safely: give 15 grams of rapid-acting carbohydrate (4 oz orange juice, 4 oz regular soda, or 3-4 glucose tablets), wait 15 minutes, and recheck blood glucose. If still < 70 mg/dL, repeat the treatment. This is the safest, most physiologically appropriate approach. Glucagon is reserved for unconscious or unable-to-swallow patients. D50 IV push is reserved for unconscious patients or those without IV access who cannot take oral carbohydrates. A full meal is slower to absorb and can cause a prolonged correction — it is the follow-up after glucose normalizes, not the acute treatment.",
+      "distractorRationales": {
+        "a": "Administer glucagon 1 mg subcutaneously misses the clinical pattern: Pharmacology Hypoglycemia Treatment hypoglycemia points to Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "Administer 50 mL of 50% dextrose (D50) IV push misses the clinical pattern: Pharmacology Hypoglycemia Treatment hypoglycemia points to Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "Give the patient a full meal immediately to restore blood glucose misses the clinical pattern: Pharmacology Hypoglycemia Treatment hypoglycemia points to Administer 15 grams of fast-acting carbohydrate orally (e.g., 4 oz juice or glucose tablets) and recheck, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "pharmacology_hypoglycemia_treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Conscious hypoglycemic patient who can swallow: 15g fast-acting carbs (15-15 rule) → recheck in 15 min → repeat if still low → then a snack with protein. Reserve glucagon for unconscious/unable-to-swallow. Reserve D50 for severe hypoglycemia without oral access.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "pharmacology_corticosteroid_teaching",
+      "difficulty": 3,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "distractorRationales": {
+        "a": "'I should not stop this medication suddenly without talking to my doctor.' misses the clinical pattern: Pharmacology Corticosteroid Teaching copd points to 'I can stop taking this medication early if I start feeling better.', so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "'I should monitor my blood sugar more closely while taking this medication.' misses the clinical pattern: Pharmacology Corticosteroid Teaching copd points to 'I can stop taking this medication early if I start feeling better.', so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "'I should take this medication in the morning with food.' misses the clinical pattern: Pharmacology Corticosteroid Teaching copd points to 'I can stop taking this medication early if I start feeling better.', so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "pharmacology_corticosteroid_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_warfarin_safety",
+      "subcategory": "pharmacology_warfarin_safety",
+      "difficulty": 3,
+      "stem": "A patient on warfarin therapy for atrial fibrillation has an INR of 4.8 (therapeutic range 2.0-3.0). The patient has no active bleeding. What is the MOST appropriate nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer vitamin K 10 mg IV push immediately"
+        },
+        {
+          "id": "b",
+          "text": "Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs"
+        },
+        {
+          "id": "c",
+          "text": "Administer fresh frozen plasma to rapidly reverse anticoagulation"
+        },
+        {
+          "id": "d",
+          "text": "Continue warfarin at the same dose and recheck INR in 3 days"
+        }
+      ],
+      "answer": "b",
+      "rationale": "An INR of 4.8 represents supratherapeutic anticoagulation with elevated bleeding risk, but no active bleeding is present. Standard management for INR 4-10 without bleeding in a patient on warfarin for non-mechanical valve indication: hold warfarin, monitor for bleeding signs, and the INR will self-correct over 24-72 hours as the drug is metabolized. The provider should be notified to evaluate for dose adjustment. Vitamin K is indicated for INR > 10, or INR 4-10 with bleeding risk factors or active bleeding. High-dose IV vitamin K (10 mg) causes prolonged warfarin resistance and is reserved for emergencies. FFP is for life-threatening bleeding requiring immediate reversal. Continuing the same dose ignores the supratherapeutic level.",
+      "distractorRationales": {
+        "a": "Administer vitamin K 10 mg IV push immediately misses the clinical pattern: Pharmacology Warfarin Safety bleeding points to Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Administer fresh frozen plasma to rapidly reverse anticoagulation misses the clinical pattern: Pharmacology Warfarin Safety bleeding points to Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Continue warfarin at the same dose and recheck INR in 3 days misses the clinical pattern: Pharmacology Warfarin Safety bleeding points to Hold the warfarin dose, notify the provider, and monitor closely for bleeding signs, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "pharmacology_warfarin_safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Supratherapeutic INR (no bleeding): INR 4-10 → hold warfarin + notify provider + monitor. INR > 10 or any bleeding → vitamin K. Life-threatening bleeding → FFP or 4-factor PCC (prothrombin complex concentrate). Never continue the same dose if INR is out of range.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_sglt2_inhibitors",
+      "subcategory": "pharmacology_endocrine_sglt2_inhibitors",
+      "difficulty": 3,
+      "stem": "A patient with type 2 diabetes takes empagliflozin (Jardiance) and is scheduled for a laparoscopic cholecystectomy tomorrow. The anesthesiologist orders 'hold all diabetes medications the morning of surgery.' Which additional concern should the nurse identify and report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to risk of euglycemic diabetic ketoacidosis"
+        },
+        {
+          "id": "b",
+          "text": "Empagliflozin has no pre-surgical risks and can be given the morning of surgery safely"
+        },
+        {
+          "id": "c",
+          "text": "The patient should receive double the dose of empagliflozin pre-operatively to prevent hyperglycemia"
+        },
+        {
+          "id": "d",
+          "text": "SGLT2 inhibitors should be switched to metformin 24 hours before surgery"
+        }
+      ],
+      "answer": "a",
+      "rationale": "SGLT2 inhibitors (empagliflozin, canagliflozin, dapagliflozin) carry a risk of euglycemic DKA — a form of DKA where blood glucose can be near-normal or only mildly elevated, making it easy to miss. This risk is significantly increased perioperatively due to fasting, surgical stress, and altered carbohydrate metabolism. Current guidelines (ADA, FDA, ERAS protocols) recommend holding SGLT2 inhibitors 3-4 days before elective surgery. Holding only the morning of surgery is insufficient. The nurse should escalate this finding to the anesthesiologist and surgeon for clarification and an updated order to hold the medication earlier. This is an emerging but increasingly important perioperative safety issue.",
+      "distractorRationales": {
+        "b": "Empagliflozin has no pre-surgical risks and can be given the morning of surgery safely misses the clinical pattern: Pharmacology Endocrine Sglt2 Inhibitors glucose points to SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "The patient should receive double the dose of empagliflozin pre-operatively to prevent hyperglycemia misses the clinical pattern: Pharmacology Endocrine Sglt2 Inhibitors glucose points to SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "SGLT2 inhibitors should be switched to metformin 24 hours before surgery misses the clinical pattern: Pharmacology Endocrine Sglt2 Inhibitors glucose points to SGLT2 inhibitors should be held 3-4 days before surgery, not just the morning of, due to, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "pharmacology_endocrine_sglt2_inhibitors",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "SGLT2 inhibitors (gliflozins) + surgery = euglycemic DKA risk. Hold 3-4 days before elective procedures. Euglycemic DKA is dangerous because normal blood glucose masks the diagnosis. Key teaching: fasting + SGLT2 inhibitor = starvation ketosis + insulin deficiency = DKA without classic hyperglycemia.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "subcategory": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a newly diagnosed type 2 diabetes patient about glipizide (a sulfonylurea). Which statement is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This medication works best when taken with a large meal"
+        },
+        {
+          "id": "b",
+          "text": "This medication can cause low blood sugar — carry a fast-acting sugar source at all times"
+        },
+        {
+          "id": "c",
+          "text": "This medication does not cause weight gain"
+        },
+        {
+          "id": "d",
+          "text": "Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Sulfonylureas (glipizide, glyburide, glimepiride) work by stimulating pancreatic beta cells to release insulin, independent of blood glucose levels. This means they can cause hypoglycemia even when the patient is not eating — unlike some other diabetes medications. Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness, diaphoresis, confusion). Glipizide is taken 30 minutes before meals (not with a large meal) to time insulin release with carbohydrate absorption. Sulfonylureas often cause modest weight gain. Blood glucose monitoring remains important for safety and titration.",
+      "distractorRationales": {
+        "a": "This medication works best when taken with a large meal misses the clinical pattern: Pharmacology Medication Teaching Oral Hypoglycemics hypoglycemia points to This medication can cause low blood sugar — carry a fast-acting sugar source at all times, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "This medication does not cause weight gain misses the clinical pattern: Pharmacology Medication Teaching Oral Hypoglycemics hypoglycemia points to This medication can cause low blood sugar — carry a fast-acting sugar source at all times, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels misses the clinical pattern: Pharmacology Medication Teaching Oral Hypoglycemics hypoglycemia points to This medication can cause low blood sugar — carry a fast-acting sugar source at all times, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "pharmacology_medication_teaching_oral_hypoglycemics",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Always carry fast-acting carbs. Glipizide: 30 min before meals. Monitor BG. Watch for weight gain. Avoid skipping meals while on this medication.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "pediatric_nursing",
+      "difficulty": 3,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80–130 bpm, RR 22–37 breaths/min, BP approximately 90–100/55–65 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age — neonates have the highest HR and RR, lowest BP.",
+      "distractorRationales": {
+        "a": "HR 68, RR 14, BP 120/80 misses the clinical pattern: Pediatric Nursing tachycardia points to HR 100, RR 26, BP 92/56, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "HR 145, RR 40, BP 80/48 misses the clinical pattern: Pediatric Nursing tachycardia points to HR 100, RR 26, BP 92/56, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "HR 55, RR 18, BP 110/72 misses the clinical pattern: Pediatric Nursing tachycardia points to HR 100, RR 26, BP 92/56, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "pediatric_nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pediatric_nursing",
+        "caption": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120–160, RR 30–60; toddler HR 80–130, RR 22–37; school-age HR 70–110, RR 18–25; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "perioperative_care",
+      "difficulty": 3,
+      "stem": "The surgical team is about to make the first incision. Per the WHO Surgical Safety Checklist, which action must occur at this exact moment, and who must participate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The surgeon alone verbally confirms the surgical site using the patient's consent form"
+        },
+        {
+          "id": "b",
+          "text": "The circulating nurse confirms patient identity and procedure using the patient's wristband"
+        },
+        {
+          "id": "c",
+          "text": "The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure, positioning, antibiotic prophylaxis, and any anticipated critical concerns"
+        },
+        {
+          "id": "d",
+          "text": "The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The WHO Surgical Safety Checklist 'time-out' occurs IMMEDIATELY before skin incision and is a mandatory complete pause involving ALL team members: surgeon, anesthesia provider, scrub technician, and circulating nurse. Each member must actively participate — passive listening does not satisfy the requirement. Items confirmed during time-out: (1) Patient identity (name, DOB, MRN); (2) Surgical site and laterality (confirmed with visible site marking); (3) Planned procedure; (4) Correct patient positioning; (5) Antibiotic prophylaxis administered within the prior 60 minutes; (6) Relevant imaging displayed; (7) Anticipated critical steps, significant blood loss, or special equipment needs. The time-out is distinct from the 'sign-in' (before anesthesia induction) and 'sign-out' (before leaving the OR). Implementation has reduced wrong-site surgery, wrong-patient surgery, and serious complications by more than 50% globally.",
+      "distractorRationales": {
+        "a": "The surgeon alone verbally confirms the surgical site using the patient's consent form misses the clinical pattern: Perioperative Care incision points to The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure,, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "b": "The circulating nurse confirms patient identity and procedure using the patient's wristband misses the clinical pattern: Perioperative Care incision points to The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure,, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins misses the clinical pattern: Perioperative Care incision points to The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure,, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "perioperative_care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Time-out: ALL team members pause immediately before incision to verbally confirm patient ID, site/side, procedure, positioning, antibiotic timing, and critical concerns. Individual confirmation is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_safety_five_rights",
+      "subcategory": "pharmacology_medication_safety_five_rights",
+      "difficulty": 3,
+      "stem": "A nurse picks up a syringe that a previous nurse prepared and left in the medication room labeled 'Patient Jones — morphine 4 mg.' The nurse's patient is Jones and the morphine dose is ordered. Which action should the nurse take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the pre-drawn syringe since it is labeled with the correct patient name and drug"
+        },
+        {
+          "id": "b",
+          "text": "Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system"
+        },
+        {
+          "id": "c",
+          "text": "Ask the previous nurse to verify the dose by phone before administering"
+        },
+        {
+          "id": "d",
+          "text": "Document the medication as given and monitor the patient closely for response"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pre-drawn, unlabeled (or hand-labeled) syringes prepared by another nurse and left in a medication room present serious patient safety risks: the medication, dose, or preparation process cannot be independently verified by the administering nurse. Per safety standards (Joint Commission, ISMP), nurses should never administer a medication that they did not personally prepare and verify from a labeled, system-dispensed source. The pre-drawn syringe should be discarded and a fresh dose prepared directly from the medication dispensing cabinet, allowing the nurse to independently verify the drug, dose, concentration, expiration, and route. Phone verification by the previous nurse is insufficient — the administering nurse bears full accountability.",
+      "distractorRationales": {
+        "a": "Administer the pre-drawn syringe since it is labeled with the correct patient name and drug misses the clinical pattern: Pharmacology Medication Safety Five Rights dose points to Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Ask the previous nurse to verify the dose by phone before administering misses the clinical pattern: Pharmacology Medication Safety Five Rights dose points to Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Document the medication as given and monitor the patient closely for response misses the clinical pattern: Pharmacology Medication Safety Five Rights dose points to Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "pharmacology_medication_safety_five_rights",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Never administer a medication drawn up by another nurse. You cannot verify what is in that syringe. Discard and prepare your own dose. This applies in all settings. The 'rights' of medication administration include right verification — and that starts with you preparing the medication yourself.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb850-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "safety_and_infection_control_prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10 misses the clinical pattern: Safety And Infection Control Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights misses the clinical pattern: Safety And Infection Control Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due misses the clinical pattern: Safety And Infection Control Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "safety_and_infection_control_prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

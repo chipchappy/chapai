@@ -14,7 +14,7 @@ const schema = z.object({
   password: z.string().min(8),
   acceptedTerms: z.literal(true),
   acceptedPrivacy: z.literal(true),
-  nextPath: z.string().startsWith("/").default("/quiz"),
+  nextPath: z.string().startsWith("/").default("/dashboard"),
 });
 
 function getSupabaseAuthCookieName(supabaseUrl: string) {

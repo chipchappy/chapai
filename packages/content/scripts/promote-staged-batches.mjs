@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,7 +9,8 @@ const questionsRoot = path.join(packageRoot, "questions");
 const stagingRoot = path.join(packageRoot, "staging");
 const generatedRoot = path.join(stagingRoot, "generated");
 const promotedRoot = path.join(stagingRoot, "promoted");
-const summaryFile = path.join(packageRoot, "src", "generated-summary.ts");
+const refreshSummaryScript = path.join(scriptDir, "refresh-content-summary.mjs");
+const canonicalNclexLiveFile = path.join(questionsRoot, "nclex", "live", "reviewed-curated-live.unique.json");
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -37,11 +39,20 @@ function listJsonFiles(dir) {
 }
 
 function validateQuestion(question, batchId, index) {
-  const requiredStringKeys = ["id", "exam", "type", "category", "stem", "answer", "rationale"];
+  const requiredStringKeys = ["id", "exam", "type", "category", "stem", "rationale"];
   for (const key of requiredStringKeys) {
     if (!String(question?.[key] ?? "").trim()) {
       throw new Error(`Invalid question in ${batchId} at index ${index}: missing ${key}`);
     }
+  }
+
+  const answer = question?.answer;
+  const hasValidAnswer =
+    (typeof answer === "string" && answer.trim().length > 0)
+    || (Array.isArray(answer) && answer.length > 0 && answer.every((item) => String(item).trim().length > 0))
+    || (answer && typeof answer === "object" && Object.keys(answer).length > 0 && Object.values(answer).every((item) => String(item ?? "").trim().length > 0));
+  if (!hasValidAnswer) {
+    throw new Error(`Invalid question in ${batchId} at index ${index}: missing answer`);
   }
 
   if (!["ccrn", "nclex"].includes(question.exam)) {
@@ -105,21 +116,35 @@ function countQuestions(dir) {
     .length;
 }
 
-function refreshSummary() {
-  const payload = {
-    generatedAt: new Date().toISOString(),
-    ccrn: {
-      live: countQuestions(path.join(questionsRoot, "ccrn", "live")),
-      draft: countQuestions(path.join(questionsRoot, "ccrn", "draft")),
-    },
-    nclex: {
-      live: countQuestions(path.join(questionsRoot, "nclex", "live")),
-      draft: countQuestions(path.join(questionsRoot, "nclex", "draft")),
-    },
-  };
+function countLiveQuestions(exam) {
+  if (exam === "nclex" && fs.existsSync(canonicalNclexLiveFile)) {
+    return readJson(canonicalNclexLiveFile, []).length;
+  }
 
-  fs.writeFileSync(summaryFile, `export const contentSummary = ${JSON.stringify(payload, null, 2)} as const;\n`, "utf8");
-  return payload;
+  return countQuestions(path.join(questionsRoot, exam, "live"));
+}
+
+function refreshSummary() {
+  try {
+    const raw = execFileSync(process.execPath, [refreshSummaryScript], {
+      cwd: packageRoot,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    return JSON.parse(raw);
+  } catch {
+    return {
+      generatedAt: new Date().toISOString(),
+      ccrn: {
+        live: countLiveQuestions("ccrn"),
+        draft: countQuestions(path.join(questionsRoot, "ccrn", "draft")),
+      },
+      nclex: {
+        live: countLiveQuestions("nclex"),
+        draft: countQuestions(path.join(questionsRoot, "nclex", "draft")),
+      },
+    };
+  }
 }
 
 function main() {

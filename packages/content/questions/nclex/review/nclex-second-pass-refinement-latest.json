@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-05-22T17:50:15.021Z",
+  "exam": "nclex",
+  "policy": {
+    "rawBulkBatching": "disabled",
+    "targetApprovedRefinedUnique": 5000,
+    "governingSources": [
+      "https://www.ncsbn.org/publications/2026-nclex-rn-test-plan",
+      "https://www.ncsbn.org/public-files/2026_RN_Test-Plan_English-F.pdf",
+      "https://www.nclex.com/clinical-judgment-measurement-model.page"
+    ]
+  },
+  "summary": {
+    "sourceCount": 5000,
+    "uniqueIds": 5000,
+    "approvedRefinedUsableUnique": 5000,
+    "needsReview": 0,
+    "approved": 5000,
+    "refined": 0,
+    "rejected": 0,
+    "topUpNeeded": false,
+    "remainingTo5000": 0
+  },
+  "mix": {
+    "typeMix": {
+      "bow_tie": 1133,
+      "case_study": 1125,
+      "matrix": 1070,
+      "mcq": 846,
+      "ordering": 415,
+      "sata": 411
+    },
+    "clientNeedMix": {
+      "basic_care_comfort": 481,
+      "health_promotion": 450,
+      "management_of_care": 899,
+      "pharmacological": 770,
+      "physiological_adaptation": 700,
+      "psychosocial": 450,
+      "risk_reduction": 600,
+      "safety_infection_control": 650
+    },
+    "ngnCoreCount": 3743,
+    "ngnWithSataCount": 4154,
+    "chartReviewCount": 5000,
+    "diagramCount": 5000,
+    "citedCount": 5000
+  },
+  "topUp": {
+    "status": "target_met_no_batching_needed",
+    "itemDeficits": [
+      {
+        "key": "mcq",
+        "target": 1500,
+        "live": 846,
+        "deficit": 654
+      },
+      {
+        "key": "sata",
+        "target": 750,
+        "live": 411,
+        "deficit": 339
+      },
+      {
+        "key": "ordering",
+        "target": 500,
+        "live": 415,
+        "deficit": 85
+      }
+    ],
+    "clientNeedDeficits": [
+      {
+        "key": "pharmacological",
+        "target": 800,
+        "live": 770,
+        "deficit": 30
+      },
+      {
+        "key": "management_of_care",
+        "target": 900,
+        "live": 899,
+        "deficit": 1
+      }
+    ],
+    "nextAction": "Keep generation disabled and continue sampled quality audits."
+  },
+  "issueCounts": {
+    "chart_orders_not_provided": 1468,
+    "rationale_too_thin": 290,
+    "rationale_key_alignment_weak": 1056,
+    "chart_missing_hpi": 465,
+    "chart_missing_decision_data": 231,
+    "missing_distractor_rationales": 26,
+    "diagram_question_id_mismatch": 737
+  }
+}

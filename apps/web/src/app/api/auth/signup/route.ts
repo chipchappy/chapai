@@ -16,7 +16,7 @@ const schema = z.object({
   newsletterOptIn: z.boolean().default(false),
   acceptedTerms: z.literal(true),
   acceptedPrivacy: z.literal(true),
-  nextPath: z.string().startsWith("/").default("/quiz?welcome=1"),
+  nextPath: z.string().startsWith("/").default("/dashboard?welcome=1"),
 });
 
 function getSupabaseAuthCookieName(supabaseUrl: string) {
@@ -186,6 +186,14 @@ export async function POST(request: NextRequest) {
         source: "signup",
       });
     }
+    // Always enroll the new account in the streak-protection audience so
+    // streak emails ride on Resend's deliverability. Fire-and-forget; the
+    // signup response isn't blocked on it.
+    enrollNewsletter({
+      email: payload.email,
+      list: "streak-protection",
+      source: "signup_streak_default",
+    }).catch(() => undefined);
 
     const token = createLocalSessionToken({ userId: result.account.userId, email: result.account.email });
     if (!token) {

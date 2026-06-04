@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-755",
+  "generatedAt": "2026-04-08T16:33:47-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb755-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "During a wound assessment, the nurse observes a pressure injury where the base is entirely covered with yellow, adherent slough and the wound depth cannot be determined. The nurse correctly documents this as:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage III pressure injury"
+        },
+        {
+          "id": "b",
+          "text": "Stage IV pressure injury"
+        },
+        {
+          "id": "c",
+          "text": "Unstageable pressure injury"
+        },
+        {
+          "id": "d",
+          "text": "Suspected deep tissue pressure injury"
+        }
+      ],
+      "answer": "c",
+      "rationale": "An unstageable pressure injury is one in which the base is obscured by slough (yellow, tan, gray) or eschar, preventing accurate staging. The wound cannot be assessed as Stage III or IV without debriding the wound bed. Suspected deep tissue injury (D) presents as intact or non-intact skin with deep purple or maroon discoloration or blood-filled blister from underlying soft tissue damage \u2014 not covered with slough. Once debrided, the wound can be restaged.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstageable = base obscured by slough/eschar, cannot determine depth. Suspected deep tissue injury = intact purple/maroon discoloration.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "Which age-related physiological changes MOST directly alter drug pharmacokinetics in elderly patients, creating the highest risk of toxicity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increased gastric acid production and increased GI motility \u2192 reduced oral drug absorption for most medications"
+        },
+        {
+          "id": "b",
+          "text": "Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage \u2192 renally and hepatically cleared drugs accumulate and fat-soluble drugs have prolonged half-lives"
+        },
+        {
+          "id": "c",
+          "text": "Increased plasma albumin levels \u2192 less free drug available, requiring higher doses in elderly"
+        },
+        {
+          "id": "d",
+          "text": "Increased cardiac output \u2192 faster distribution, shorter half-lives, and need for higher doses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Key age-related pharmacokinetic changes: (1) Renal \u2014 GFR declines ~1 mL/min/year after age 40 (Cockcroft-Gault may overestimate renal function in elderly with low muscle mass) \u2192 renally cleared drugs accumulate: digoxin, metformin, aminoglycosides, NSAIDs, methotrexate; (2) Hepatic \u2014 reduced hepatic mass, blood flow, and CYP450 activity \u2192 first-pass metabolism reduced (increased oral bioavailability), phase I reactions (oxidation, reduction) more impaired than phase II (conjugation); (3) Body composition \u2014 increased fat, decreased lean mass, decreased total body water \u2192 fat-soluble drugs (benzodiazepines, diazepam, amiodarone) have larger volume of distribution and prolonged half-lives; water-soluble drugs (lithium, digoxin) reach higher concentrations with same dose; (4) Protein \u2014 decreased albumin \u2192 increased free fraction of highly protein-bound drugs (warfarin, phenytoin). GI motility decreases (not increases) with age. Cardiac output decreases.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Elderly pharmacokinetics: decreased GFR (drug accumulation), decreased hepatic clearance, increased fat (prolonged half-lives of fat-soluble drugs), decreased albumin (more free drug). Principle: 'Start low, go slow.'",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chain_of_command",
+      "subcategory": "Chain of Command",
+      "difficulty": 4,
+      "stem": "An RN is concerned that a patient's deteriorating condition is not being addressed. She has called the resident twice and the attending once, but no orders have been given and the patient's condition is worsening. What is the next appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document that the physician was notified and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer"
+        },
+        {
+          "id": "c",
+          "text": "Call the patient's family to inform them of the situation and have them contact the physician"
+        },
+        {
+          "id": "d",
+          "text": "Administer PRN medications independently based on nursing judgment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "When a nurse cannot get a timely response from the physician and patient safety is at risk, the chain of command must be activated: charge nurse \u2192 nursing supervisor \u2192 department director \u2192 chief of staff/chief of medicine \u2192 risk management/patient safety officer. Many hospitals also have rapid response teams (RRT) that can be activated by nursing. Documentation alone (A) does not protect the patient. Contacting family (C) violates HIPAA and does not address the immediate clinical problem. Administering medications without orders (D) is outside RN scope of practice and illegal.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Chain of Command",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When physician is unresponsive to clinical concerns: activate chain of command (charge nurse \u2192 supervisor \u2192 administrator) and/or call rapid response \u2014 document all attempts.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 4,
+      "stem": "A patient with severe preeclampsia is receiving IV magnesium sulfate. The nurse assesses: RR 10, deep tendon reflexes absent, urine output 20 mL/hr, serum magnesium level 12 mEq/L. Which action is the immediate priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decrease the magnesium infusion rate by 50% and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and document the findings"
+        },
+        {
+          "id": "d",
+          "text": "Increase IV fluid rate to improve urine output and enhance magnesium excretion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9\u201310 mEq/L. This patient has multiple toxicity signs (RR 10, absent DTRs, oliguria, Mg 12 mEq/L). The infusion must be stopped immediately. Calcium gluconate 1 g IV (10 mL of 10% solution over 3\u20135 minutes) is the antidote \u2014 calcium antagonizes magnesium's effects. Decreasing the rate (A) is insufficient when toxicity is already established with respiratory compromise. Notifying the provider (C) happens simultaneously but stopping the infusion is the first action. Fluids (D) may help excretion but not fast enough to address impending respiratory arrest.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium toxicity: stop infusion immediately + calcium gluconate 1 g IV as antidote; monitor RR and DTRs every hour during infusion.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "The nurse is assessing two patients. Patient A has BP 80/50, sodium 124 mEq/L, potassium 6.1 mEq/L, and hyperpigmentation. Patient B has BP 158/94, sodium 148 mEq/L, potassium 3.1 mEq/L, and truncal obesity with purple striae. Which conditions CORRECTLY match these presentations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patient A: Cushing's syndrome; Patient B: Addison's disease"
+        },
+        {
+          "id": "b",
+          "text": "Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome"
+        },
+        {
+          "id": "c",
+          "text": "Patient A: Hypothyroidism; Patient B: Hyperaldosteronism"
+        },
+        {
+          "id": "d",
+          "text": "Patient A: SIADH; Patient B: Diabetes insipidus"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Addison's disease (primary adrenal insufficiency): cortisol and aldosterone deficiency \u2192 hyponatremia, hyperkalemia, hypotension, and hyperpigmentation (elevated ACTH stimulates melanocytes). Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae, and moon face from chronic cortisol excess. These are opposite presentations driven by opposite hormonal states.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addison's = hypoNa, hyperK, hypotension, hyperpigmentation. Cushing's = hyperNa, hypoK, hypertension, truncal obesity, striae.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 4,
+      "stem": "A patient on clozapine for treatment-resistant schizophrenia develops fever 39.8\u00b0C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status, and autonomic instability (fluctuating BP, tachycardia). Which condition is this, and what is the immediate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents"
+        },
+        {
+          "id": "b",
+          "text": "Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; administer IV diphenhydramine 50 mg"
+        },
+        {
+          "id": "d",
+          "text": "Anticholinergic toxicity from clozapine; administer physostigmine"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neuroleptic malignant syndrome (NMS) is a life-threatening idiosyncratic reaction to antipsychotics characterized by the tetrad: hyperthermia, severe muscle rigidity, altered mental status, and autonomic instability. It develops over days-weeks. Immediate management: stop the antipsychotic, aggressive cooling, IV fluids, dantrolene (muscle relaxant) and/or bromocriptine (dopamine agonist). Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. Acute dystonia (C) does not include fever or autonomic instability.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability \u2014 stop antipsychotic immediately; treat with dantrolene and/or bromocriptine.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_dysrhythmias",
+      "subcategory": "Cardiovascular / Dysrhythmias",
+      "difficulty": 3,
+      "stem": "A nurse is monitoring a patient on telemetry when the rhythm suddenly changes to a wide-complex, regular tachycardia at 180 bpm. The patient is alert, with BP 102/60 mmHg and reports palpitations but no chest pain. Which intervention should the nurse anticipate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediate unsynchronized defibrillation at 200J"
+        },
+        {
+          "id": "b",
+          "text": "Prepare for synchronized cardioversion at 100J after sedation"
+        },
+        {
+          "id": "c",
+          "text": "Administer IV adenosine 6 mg rapid push to terminate the rhythm"
+        },
+        {
+          "id": "d",
+          "text": "Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring hemodynamics closely"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification before treatment. WCT is most commonly ventricular tachycardia (VT) but can also be supraventricular tachycardia with aberrant conduction (SVT-A). A 12-lead ECG helps differentiate. If VT is confirmed: amiodarone or procainamide IV is the antiarrhythmic of choice for stable VT. Synchronized cardioversion is reserved for hemodynamically unstable stable VT (BP < 90, ischemia, altered mental status). Unsynchronized defibrillation (defib) is for pulseless VT/VF. Adenosine is appropriate for narrow-complex SVT; it is not first-line for wide-complex tachycardia and can be harmful in VT.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Cardiovascular / Dysrhythmias",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stable wide-complex tachycardia: 12-lead first \u2192 provider \u2192 antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Dysrhythmias",
+        "caption": "Stable wide-complex tachycardia: 12-lead first \u2192 provider \u2192 antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+        "conclusion": "Stable wide-complex tachycardia: 12-lead first \u2192 provider \u2192 antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "Parents bring their 9-month-old to the ED with episodic, inconsolable crying every 15\u201320 minutes, pulling the knees to the chest, and passage of stools described as 'jelly-like and dark red.' The abdomen is mildly distended. What is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer oral rehydration solution and observe for 2 hours"
+        },
+        {
+          "id": "b",
+          "text": "Prepare the family for a possible emergent surgical laparotomy"
+        },
+        {
+          "id": "c",
+          "text": "Notify the physician; these findings are consistent with intussusception \u2014 prepare for diagnostic and potentially therapeutic air or contrast enema"
+        },
+        {
+          "id": "d",
+          "text": "Obtain stool culture for Campylobacter and Salmonella"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Classic intussusception triad: episodic colicky pain (bowel telescoping and releasing), vomiting, and currant jelly stools (blood and mucus from mucosal ischemia). Most common site: ileocecal junction. Peak age: 6\u201336 months. Diagnosis: ultrasound (target sign). Treatment: air or hydrostatic (contrast) enema under fluoroscopy or ultrasound \u2014 diagnostic and therapeutic in ~80% of cases. Surgical reduction is required if enema fails or peritonitis present. Stool culture addresses infectious causes, not mechanical obstruction. Waiting worsens intestinal ischemia.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler \u2192 ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler \u2192 ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails.",
+        "conclusion": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler \u2192 ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A morbidly obese patient with symptomatic GERD requires urgent surgery. The anesthesiologist plans rapid sequence induction (RSI). During RSI, which nursing action is most important to reduce pulmonary aspiration risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place the patient in Trendelenburg position to maximize airway visualization"
+        },
+        {
+          "id": "b",
+          "text": "Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Insert a nasogastric tube immediately before induction to fully decompress the stomach"
+        },
+        {
+          "id": "d",
+          "text": "Administer metoclopramide IV push 10 minutes before induction to empty the stomach"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSI is used for patients at elevated aspiration risk (obesity, GERD, full stomach, pregnancy, bowel obstruction). It combines: pre-oxygenation \u2192 simultaneous administration of a rapid induction agent (propofol/ketamine) and a fast-onset neuromuscular blocking agent (succinylcholine or high-dose rocuronium) \u2192 immediate intubation without manual ventilation. The nurse's critical role: apply firm downward pressure on the cricoid cartilage (Sellick maneuver) to compress the esophagus between the cricoid ring and the cervical vertebra, preventing passive regurgitation of gastric contents until ETT cuff is inflated and placement confirmed by capnography. If active vomiting occurs, cricoid pressure must be released immediately (holds vomiting in and increases aspiration risk). NGT cannot adequately empty the stomach in time and does not protect the airway. Trendelenburg (head-down) increases aspiration risk. Metoclopramide is adjunctive preparation, not a substitute for RSI or cricoid pressure.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSI aspiration prevention: nurse applies cricoid pressure (Sellick maneuver) \u2014 compresses esophagus to prevent passive regurgitation during intubation. Release if active vomiting occurs. Used for all high-risk aspiration patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb755-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 4,
+      "stem": "A nurse on a step-down unit is monitoring four patients. Which clinical finding requires the nurse to call the rapid response team (RRT) IMMEDIATELY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the last 2 hours and is now using accessory muscles"
+        },
+        {
+          "id": "b",
+          "text": "A 74-year-old with atrial fibrillation with a ventricular rate of 88 bpm, unchanged from admission"
+        },
+        {
+          "id": "c",
+          "text": "A 55-year-old post-cholecystectomy who reports nausea and has vomited once"
+        },
+        {
+          "id": "d",
+          "text": "A 66-year-old with CHF whose morning weight is 2 lbs higher than yesterday"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A rising respiratory rate to 26/min with accessory muscle use in a pneumonia patient signals deteriorating respiratory status and impending respiratory failure\u2014a classic RRT trigger. Tachypnea > 25/min, increased work of breathing, and a worsening trend over 2 hours meets standard early warning score thresholds for team activation. The AFib patient is at a controlled, unchanged rate (not a new emergency). Post-op nausea with one emesis is common and manageable on the unit. A 2-lb overnight weight gain in CHF warrants provider notification but not RRT activation unless accompanied by respiratory distress.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RRT triggers include: RR > 25, acute accessory muscle use, O2 sat drop, acute altered mental status, SBP < 90. Trends matter as much as absolute values\u2014worsening over 2 hours is a red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "batchId": "mixed-batch-820",
+  "generatedAt": "2026-04-09T11:06:47-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb820-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A patient is 4 hours post right hemicolectomy. Current vital signs: HR 132, BP 78/50 (was 120/74 post-op), RR 26, SpO2 93%, patient is anxious and diaphoretic. The surgical drain has collected 310 mL of bright red blood in the past 2 hours. What is the nurse's correct priority sequence of actions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the IV fluid rate, administer a scheduled analgesic, and notify the physician within the next 30-60 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Clamp the surgical drain to slow blood loss; place the patient in standard Trendelenburg (head-down 30\u00b0)"
+        },
+        {
+          "id": "c",
+          "text": "Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20\u00b0), infuse ordered IV fluids rapidly, notify the surgeon STAT, activate the massive transfusion protocol, and prepare the patient for possible emergent return to OR"
+        },
+        {
+          "id": "d",
+          "text": "Administer protamine sulfate IV to reverse any residual surgical anticoagulation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient is in post-operative hemorrhagic shock (Class II-III): bright red surgical drain output 310 mL/2 hrs (active arterial bleeding), compensatory tachycardia, hypotension, tachypnea, diaphoresis, and anxiety. Priority sequence: (1) Ensure 2 large-bore IVs (16g or larger) if not already present; (2) Modified Trendelenburg (legs elevated 15-20\u00b0) \u2014 provides passive autotransfusion of ~500 mL and assesses fluid responsiveness; DO NOT use classic Trendelenburg (head-down), which impairs respiratory mechanics and venous return; (3) Rapid IV fluid infusion + packed RBCs (O-negative if type-and-screen pending); (4) Activate massive transfusion protocol (1:1:1 ratio of PRBCs:FFP:platelets) for suspected massive hemorrhage; (5) Notify surgeon STAT \u2014 post-operative hemorrhage requires surgical re-exploration; (6) Prepare for emergency OR. Clamping the drain causes hematoma formation and masks ongoing hemorrhage without stopping the bleeding. Protamine reverses heparin anticoagulation \u2014 not indicated here.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op hemorrhagic shock: bright red drain + tachycardia + hypotension = surgical emergency. Large-bore IVs + fluids + blood + notify surgeon STAT + MTP + OR. Modified Trendelenburg (legs up), NOT classic head-down. Do not clamp drain.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 4,
+      "stem": "An RN delegates vital signs assessment to a UAP for four patients. Which patient's vital signs should the RN personally reassess rather than relying solely on the UAP's report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A postoperative day 2 cholecystectomy patient with stable vitals"
+        },
+        {
+          "id": "b",
+          "text": "A patient with hypertension whose BP has been consistently 140-150/88-92 throughout the shift"
+        },
+        {
+          "id": "c",
+          "text": "A patient who recently returned from cardiac catheterization and now has a UAP-reported BP of 80/50 and HR of 118"
+        },
+        {
+          "id": "d",
+          "text": "A patient admitted for cellulitis with temperature reported as 37.8\u00b0C (100\u00b0F)"
+        }
+      ],
+      "answer": "c",
+      "rationale": "When a UAP reports an abnormal or unexpected finding, the RN must personally assess and verify. A patient returning from cardiac catheterization with BP 80/50 and HR 118 requires immediate RN assessment \u2014 this could indicate arterial bleeding at the access site, cardiac tamponade, contrast reaction, or other life-threatening complication. The RN cannot manage this situation based solely on a UAP report; personal assessment, clinical judgment, and immediate intervention may be required. The other patients have findings within expected parameters for their diagnoses. The RN remains accountable for all delegated tasks and must respond to concerning reports.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When UAP reports an unexpected or critical finding, the RN must personally assess \u2014 do not manage clinical deterioration based solely on UAP-reported data.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) \u2014 mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease \u2014 rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress \u2014 an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history \u2014 the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives \u2014 alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension \u2014 directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 4,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus \u2014 stimulates uterine contraction. (2) Empty the bladder \u2014 a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin \u2014 first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked \u2014 the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound \u2014 gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound \u2014 Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb820-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "Therapeutic Communication",
+      "difficulty": 2,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation \u2014 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Therapeutic Communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

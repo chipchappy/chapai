@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-842",
+  "generatedAt": "2026-04-09T15:35:19-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb842-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "escalating_distress",
+      "subcategory": "escalating_distress",
+      "difficulty": 3,
+      "stem": "A patient with shortness of breath is now using accessory muscles and can only speak two or three words at a time. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess breathing, oxygenation, and work of breathing immediately"
+        },
+        {
+          "id": "b",
+          "text": "Ask the patient to rest before checking vital signs"
+        },
+        {
+          "id": "c",
+          "text": "Wait to see whether the shortness of breath improves on its own"
+        },
+        {
+          "id": "d",
+          "text": "Focus on the lung sounds later in the shift"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Accessory muscle use and short phrases suggest rising respiratory distress. The nurse should reassess the patient right away. **Why the others are wrong:** - B Rest does not replace urgent assessment. - C Delay can miss a worsening airway or breathing problem. - D Lung sounds are important, but not later in the shift.",
+      "distractorRationales": {
+        "b": "Ask the patient to rest before checking vital signs misses the clinical pattern: Escalating Distress airway points to Reassess breathing, oxygenation, and work of breathing immediately, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Wait to see whether the shortness of breath improves on its own misses the clinical pattern: Escalating Distress airway points to Reassess breathing, oxygenation, and work of breathing immediately, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Focus on the lung sounds later in the shift misses the clinical pattern: Escalating Distress airway points to Reassess breathing, oxygenation, and work of breathing immediately, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "escalating_distress",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Speech limitation plus accessory muscle use is a respiratory warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "unstable_perfusion",
+      "subcategory": "unstable_perfusion",
+      "difficulty": 3,
+      "stem": "A patient becomes cool, pale, and diaphoretic with a weakening pulse and dropping urine output. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Circulation may be unstable and perfusion may be worsening"
+        },
+        {
+          "id": "b",
+          "text": "The patient is stable because the skin is not blue"
+        },
+        {
+          "id": "c",
+          "text": "Urine output is unrelated to circulation"
+        },
+        {
+          "id": "d",
+          "text": "These findings are expected if the patient is anxious"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Cool skin, weak pulse, and falling urine output can reflect poor perfusion and a worsening cardiovascular problem. **Why the others are wrong:** - B Cyanosis is not required for instability. - C Urine output is a useful perfusion marker. - D Anxiety does not explain the full perfusion pattern.",
+      "distractorRationales": {
+        "b": "The patient is stable because the skin is not blue misses the clinical pattern: Unstable Perfusion perfusion points to Circulation may be unstable and perfusion may be worsening, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Urine output is unrelated to circulation misses the clinical pattern: Unstable Perfusion perfusion points to Circulation may be unstable and perfusion may be worsening, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "These findings are expected if the patient is anxious misses the clinical pattern: Unstable Perfusion perfusion points to Circulation may be unstable and perfusion may be worsening, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "unstable_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cold skin and dropping urine output can signal poor circulation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "unstable_perfusion",
+        "caption": "Cold skin and dropping urine output can signal poor circulation.",
+        "conclusion": "Cold skin and dropping urine output can signal poor circulation."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_neurologic_warning_sign",
+      "subcategory": "acute_neurologic_warning_sign",
+      "difficulty": 3,
+      "stem": "A patient suddenly develops slurred speech and one-sided facial droop. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the stroke response process immediately"
+        },
+        {
+          "id": "b",
+          "text": "Recheck the patient after the next medication pass"
+        },
+        {
+          "id": "c",
+          "text": "Ask the patient to rest and avoid talking"
+        },
+        {
+          "id": "d",
+          "text": "Document the change and continue routine care"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden focal neurologic changes can signal stroke. Rapid response matters because time-sensitive treatment may be available. **Why the others are wrong:** - B Delay can cost critical treatment time. - C Rest does not address the neurologic emergency. - D Routine care is not appropriate when stroke is possible.",
+      "distractorRationales": {
+        "b": "Recheck the patient after the next medication pass misses the clinical pattern: Acute Neurologic Warning Sign stroke points to Activate the stroke response process immediately, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Ask the patient to rest and avoid talking misses the clinical pattern: Acute Neurologic Warning Sign stroke points to Activate the stroke response process immediately, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Document the change and continue routine care misses the clinical pattern: Acute Neurologic Warning Sign stroke points to Activate the stroke response process immediately, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "acute_neurologic_warning_sign",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden slurred speech and facial droop are stroke warning signs.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "acute_neurologic_warning_sign",
+        "caption": "Sudden slurred speech and facial droop are stroke warning signs.",
+        "conclusion": "Sudden slurred speech and facial droop are stroke warning signs."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_assessment",
+      "subcategory": "dehydration_assessment",
+      "difficulty": 3,
+      "stem": "A toddler has had vomiting and diarrhea for two days. Which finding should the nurse recognize as most concerning for dehydration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fewer wet diapers than usual"
+        },
+        {
+          "id": "b",
+          "text": "Asking for water"
+        },
+        {
+          "id": "c",
+          "text": "Mild irritability at nap time"
+        },
+        {
+          "id": "d",
+          "text": "A normal appetite earlier in the week"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Decreased urine output is a key dehydration clue in young children and should be taken seriously. **Why the others are wrong:** - B Asking for water is not the strongest warning sign. - C Mild irritability is nonspecific. - D A prior normal appetite does not answer the current question.",
+      "distractorRationales": {
+        "b": "Asking for water misses the clinical pattern: Dehydration Assessment dehydration points to Fewer wet diapers than usual, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "c": "Mild irritability at nap time misses the clinical pattern: Dehydration Assessment dehydration points to Fewer wet diapers than usual, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "d": "A normal appetite earlier in the week misses the clinical pattern: Dehydration Assessment dehydration points to Fewer wet diapers than usual, so choosing it can postpone safety actions and worsen pediatric or newborn instability."
+      },
+      "tags": [
+        "dehydration_assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In children, fewer wet diapers can be an important dehydration sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "airway_change_after_treatment",
+      "subcategory": "airway_change_after_treatment",
+      "difficulty": 3,
+      "stem": "A patient with asthma initially improves after treatment, but later becomes quieter, less able to speak, and more fatigued. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be tiring and failing to sustain respiratory effort"
+        },
+        {
+          "id": "b",
+          "text": "The quieter breathing proves the patient is improving"
+        },
+        {
+          "id": "c",
+          "text": "Fatigue is unrelated if the lungs were wheezing earlier"
+        },
+        {
+          "id": "d",
+          "text": "The nurse can wait until the next round to reassess"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A quieter patient who is more fatigued can actually be worsening. Less noise is not always better when work of breathing is falling off because the patient is tiring. **Why the others are wrong:** - B Less sound can mean less effort, not improvement. - C Earlier wheezing does not rule out later fatigue. - D This pattern needs prompt reassessment.",
+      "distractorRationales": {
+        "b": "The quieter breathing proves the patient is improving misses the clinical pattern: Airway Change After Treatment airway points to The patient may be tiring and failing to sustain respiratory effort, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Fatigue is unrelated if the lungs were wheezing earlier misses the clinical pattern: Airway Change After Treatment airway points to The patient may be tiring and failing to sustain respiratory effort, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "The nurse can wait until the next round to reassess misses the clinical pattern: Airway Change After Treatment airway points to The patient may be tiring and failing to sustain respiratory effort, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "airway_change_after_treatment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Less audible effort can be a bad sign if the patient is tiring.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_with_instability",
+      "subcategory": "chest_pain_with_instability",
+      "difficulty": 3,
+      "stem": "A patient reports chest pressure and becomes hypotensive and tachycardic. What is the most useful bedside interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an acute cardiovascular emergency"
+        },
+        {
+          "id": "b",
+          "text": "The pain is likely harmless because the patient is still awake"
+        },
+        {
+          "id": "c",
+          "text": "The heart rate change is the only issue"
+        },
+        {
+          "id": "d",
+          "text": "The blood pressure will likely fix itself without reassessment"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment. **Why the others are wrong:** - B Awake status does not make the chest pain safe. - C The whole pattern matters, not just the heart rate. - D Waiting for spontaneous correction is unsafe.",
+      "distractorRationales": {
+        "b": "The pain is likely harmless because the patient is still awake misses the clinical pattern: Chest Pain With Instability cardiac points to The patient may be having an acute cardiovascular emergency, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "The heart rate change is the only issue misses the clinical pattern: Chest Pain With Instability cardiac points to The patient may be having an acute cardiovascular emergency, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "The blood pressure will likely fix itself without reassessment misses the clinical pattern: Chest Pain With Instability cardiac points to The patient may be having an acute cardiovascular emergency, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "chest_pain_with_instability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest pain plus unstable vitals is a high-risk pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "new_weakness",
+      "subcategory": "new_weakness",
+      "difficulty": 3,
+      "stem": "Which finding should the nurse treat as the most urgent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "New unilateral arm weakness"
+        },
+        {
+          "id": "b",
+          "text": "A patient asking for a blanket"
+        },
+        {
+          "id": "c",
+          "text": "Mild boredom during a long wait"
+        },
+        {
+          "id": "d",
+          "text": "A patient wanting the television volume adjusted"
+        }
+      ],
+      "answer": "a",
+      "rationale": "New one-sided weakness can signal stroke and needs immediate attention. **Why the others are wrong:** - B This is nonurgent. - C Boredom is not a clinical change. - D Comfort adjustments are not the highest priority.",
+      "distractorRationales": {
+        "b": "A patient asking for a blanket misses the clinical pattern: New Weakness stroke points to New unilateral arm weakness, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Mild boredom during a long wait misses the clinical pattern: New Weakness stroke points to New unilateral arm weakness, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "A patient wanting the television volume adjusted misses the clinical pattern: New Weakness stroke points to New unilateral arm weakness, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "new_weakness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden one-sided weakness should always be treated as urgent.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_hydration",
+      "subcategory": "fever_and_hydration",
+      "difficulty": 3,
+      "stem": "A child with fever is not drinking much and has a dry mouth. What should the nurse be most concerned about?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Fever always means the child is hydrated enough"
+        },
+        {
+          "id": "c",
+          "text": "Dry mouth is normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is expected and never matters"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake with fever can quickly lead to dehydration in children, so intake and output deserve close attention. **Why the others are wrong:** - B Fever does not protect against dehydration. - C Dry mouth is a useful warning sign. - D Low drinking can become dangerous in pediatrics.",
+      "distractorRationales": {
+        "b": "Fever always means the child is hydrated enough misses the clinical pattern: Fever And Hydration dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Dry mouth is normal in every sick child misses the clinical pattern: Fever And Hydration dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Drinking less is expected and never matters misses the clinical pattern: Fever And Hydration dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "fever_and_hydration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus poor intake can quickly become a fluid problem in children.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_irritability",
+      "subcategory": "fever_and_irritability",
+      "difficulty": 3,
+      "stem": "A toddler with fever is irritable, has fewer tears when crying, and is not drinking well. What is the nurse's biggest concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Irritability always means the fever is harmless"
+        },
+        {
+          "id": "c",
+          "text": "Fewer tears are normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is only a concern in adults"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Irritability, fewer tears, and poor intake can all point to dehydration in young children. **Why the others are wrong:** - B Irritability does not make fever safe. - C Fewer tears can be a dehydration sign. - D Children are often more vulnerable to fluid loss.",
+      "distractorRationales": {
+        "b": "Irritability always means the fever is harmless misses the clinical pattern: Fever And Irritability dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Fewer tears are normal in every sick child misses the clinical pattern: Fever And Irritability dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Drinking less is only a concern in adults misses the clinical pattern: Fever And Irritability dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "fever_and_irritability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as crying changes and poor intake.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb842-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "secretions_and_fatigue",
+      "subcategory": "secretions_and_fatigue",
+      "difficulty": 3,
+      "stem": "A patient with pneumonia is less able to clear thick secretions and is getting more tired. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Airway clearance may be failing and respiratory fatigue may be developing"
+        },
+        {
+          "id": "b",
+          "text": "Thick secretions are reassuring because they mean the patient is coughing"
+        },
+        {
+          "id": "c",
+          "text": "Fatigue is not important if the patient can still speak"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should wait until the next round to reassess"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Inability to clear secretions with increasing fatigue can signal worsening respiratory status and rising risk of airway compromise. **Why the others are wrong:** - B Thick secretions can block the airway. - C Fatigue can be an early warning sign. - D Delay can miss deterioration.",
+      "distractorRationales": {
+        "b": "Thick secretions are reassuring because they mean the patient is coughing misses the clinical pattern: Secretions And Fatigue airway points to Airway clearance may be failing and respiratory fatigue may be developing, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Fatigue is not important if the patient can still speak misses the clinical pattern: Secretions And Fatigue airway points to Airway clearance may be failing and respiratory fatigue may be developing, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "The nurse should wait until the next round to reassess misses the clinical pattern: Secretions And Fatigue airway points to Airway clearance may be failing and respiratory fatigue may be developing, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "secretions_and_fatigue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Poor secretion clearance plus fatigue is a respiratory red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

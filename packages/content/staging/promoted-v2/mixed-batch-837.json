@@ -1,0 +1,464 @@
+{
+  "batchId": "mixed-batch-837",
+  "generatedAt": "2026-04-09T14:47:48-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb837-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_irritability",
+      "subcategory": "fever_and_irritability",
+      "difficulty": 3,
+      "stem": "A toddler with fever is irritable, has fewer tears when crying, and is not drinking well. What is the nurse's biggest concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Irritability always means the fever is harmless"
+        },
+        {
+          "id": "c",
+          "text": "Fewer tears are normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is only a concern in adults"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Irritability, fewer tears, and poor intake can all point to dehydration in young children. **Why the others are wrong:** - B Irritability does not make fever safe. - C Fewer tears can be a dehydration sign. - D Children are often more vulnerable to fluid loss.",
+      "distractorRationales": {
+        "b": "Irritability always means the fever is harmless misses the clinical pattern: Fever And Irritability dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Fewer tears are normal in every sick child misses the clinical pattern: Fever And Irritability dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Drinking less is only a concern in adults misses the clinical pattern: Fever And Irritability dehydration points to The child may be becoming dehydrated, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "fever_and_irritability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as crying changes and poor intake.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "secretions_and_fatigue",
+      "subcategory": "secretions_and_fatigue",
+      "difficulty": 3,
+      "stem": "A patient with pneumonia is less able to clear thick secretions and is getting more tired. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Airway clearance may be failing and respiratory fatigue may be developing"
+        },
+        {
+          "id": "b",
+          "text": "Thick secretions are reassuring because they mean the patient is coughing"
+        },
+        {
+          "id": "c",
+          "text": "Fatigue is not important if the patient can still speak"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should wait until the next round to reassess"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Inability to clear secretions with increasing fatigue can signal worsening respiratory status and rising risk of airway compromise. **Why the others are wrong:** - B Thick secretions can block the airway. - C Fatigue can be an early warning sign. - D Delay can miss deterioration.",
+      "distractorRationales": {
+        "b": "Thick secretions are reassuring because they mean the patient is coughing misses the clinical pattern: Secretions And Fatigue airway points to Airway clearance may be failing and respiratory fatigue may be developing, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Fatigue is not important if the patient can still speak misses the clinical pattern: Secretions And Fatigue airway points to Airway clearance may be failing and respiratory fatigue may be developing, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "The nurse should wait until the next round to reassess misses the clinical pattern: Secretions And Fatigue airway points to Airway clearance may be failing and respiratory fatigue may be developing, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "secretions_and_fatigue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Poor secretion clearance plus fatigue is a respiratory red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "orthostatic_change",
+      "subcategory": "orthostatic_change",
+      "difficulty": 3,
+      "stem": "An older adult becomes dizzy, tachycardic, and pale when standing. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be volume depleted or not tolerating position change"
+        },
+        {
+          "id": "b",
+          "text": "Dizziness on standing is always normal in older adults"
+        },
+        {
+          "id": "c",
+          "text": "Tachycardia proves the patient is stable"
+        },
+        {
+          "id": "d",
+          "text": "Pale skin has no relation to circulation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Standing-related symptoms with tachycardia and pallor can indicate poor volume status or inadequate cardiovascular response. **Why the others are wrong:** - B Orthostatic symptoms should not be dismissed. - C Tachycardia can reflect compensation, not stability. - D Pallor can reflect decreased perfusion.",
+      "distractorRationales": {
+        "b": "Dizziness on standing is always normal in older adults misses the clinical pattern: Orthostatic Change perfusion points to The patient may be volume depleted or not tolerating position change, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Tachycardia proves the patient is stable misses the clinical pattern: Orthostatic Change perfusion points to The patient may be volume depleted or not tolerating position change, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Pale skin has no relation to circulation misses the clinical pattern: Orthostatic Change perfusion points to The patient may be volume depleted or not tolerating position change, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "orthostatic_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Position-related dizziness can reveal poor circulation or volume loss.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "sudden_headache_and_change",
+      "subcategory": "sudden_headache_and_change",
+      "difficulty": 3,
+      "stem": "A patient reports a sudden severe headache and is harder to arouse than before. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform an urgent neurologic assessment and notify the provider"
+        },
+        {
+          "id": "b",
+          "text": "Ask the patient to rest in a dark room and wait"
+        },
+        {
+          "id": "c",
+          "text": "Treat it as a routine headache"
+        },
+        {
+          "id": "d",
+          "text": "Offer fluids first and reassess later"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden severe headache with altered responsiveness can signal a neurologic emergency and needs immediate assessment. **Why the others are wrong:** - B Waiting can be dangerous. - C This is not routine. - D Fluids do not replace urgent assessment.",
+      "distractorRationales": {
+        "b": "Ask the patient to rest in a dark room and wait misses the clinical pattern: Sudden Headache And Change neurologic points to Perform an urgent neurologic assessment and notify the provider, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Treat it as a routine headache misses the clinical pattern: Sudden Headache And Change neurologic points to Perform an urgent neurologic assessment and notify the provider, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Offer fluids first and reassess later misses the clinical pattern: Sudden Headache And Change neurologic points to Perform an urgent neurologic assessment and notify the provider, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "sudden_headache_and_change",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden severe headache plus decreased arousal is a warning sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "oxygen_and_fatigue",
+      "subcategory": "oxygen_and_fatigue",
+      "difficulty": 3,
+      "stem": "A patient with COPD is increasingly fatigued and has a rising carbon dioxide trend. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ventilation may be failing and the patient needs prompt reassessment"
+        },
+        {
+          "id": "b",
+          "text": "Fatigue is expected and does not matter"
+        },
+        {
+          "id": "c",
+          "text": "A rising carbon dioxide trend is only important if fever is present"
+        },
+        {
+          "id": "d",
+          "text": "The patient is improving because oxygen is still being used"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Rising carbon dioxide with fatigue suggests ventilatory failure and the need for close reassessment. **Why the others are wrong:** - B Fatigue can signal a serious change. - C Fever is not required for CO2 retention. - D Oxygen use does not guarantee adequate ventilation.",
+      "distractorRationales": {
+        "b": "Fatigue is expected and does not matter misses the clinical pattern: Oxygen And Fatigue ventilation points to Ventilation may be failing and the patient needs prompt reassessment, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "A rising carbon dioxide trend is only important if fever is present misses the clinical pattern: Oxygen And Fatigue ventilation points to Ventilation may be failing and the patient needs prompt reassessment, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "The patient is improving because oxygen is still being used misses the clinical pattern: Oxygen And Fatigue ventilation points to Ventilation may be failing and the patient needs prompt reassessment, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "oxygen_and_fatigue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rising carbon dioxide can mean the patient is tiring out.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "oxygen_and_fatigue",
+        "caption": "Rising carbon dioxide can mean the patient is tiring out.",
+        "conclusion": "Rising carbon dioxide can mean the patient is tiring out."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_perfusion",
+      "subcategory": "fever_and_perfusion",
+      "difficulty": 3,
+      "stem": "A child with fever is sleepy, has dry mucous membranes, and has not had a wet diaper since morning. What is the nurse's best concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may have significant dehydration and needs prompt evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Sleepiness means the fever is improving"
+        },
+        {
+          "id": "c",
+          "text": "Dry mucous membranes are not meaningful in children"
+        },
+        {
+          "id": "d",
+          "text": "A wet diaper is irrelevant if the child ate breakfast"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sleepiness, dry mucous membranes, and reduced urine output together suggest a significant fluid deficit. **Why the others are wrong:** - B Sleepiness can be a danger sign. - C Mucous membranes are a useful clue. - D Intake and urine output matter more than breakfast alone.",
+      "distractorRationales": {
+        "b": "Sleepiness means the fever is improving misses the clinical pattern: Fever And Perfusion perfusion points to The child may have significant dehydration and needs prompt evaluation, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Dry mucous membranes are not meaningful in children misses the clinical pattern: Fever And Perfusion perfusion points to The child may have significant dehydration and needs prompt evaluation, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "A wet diaper is irrelevant if the child ate breakfast misses the clinical pattern: Fever And Perfusion perfusion points to The child may have significant dehydration and needs prompt evaluation, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "fever_and_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus low urine output and sleepiness can mean dehydration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "fever_and_perfusion",
+        "caption": "Fever plus low urine output and sleepiness can mean dehydration.",
+        "conclusion": "Fever plus low urine output and sleepiness can mean dehydration."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "prioritization_delegation",
+      "subcategory": "prioritization_delegation",
+      "difficulty": 3,
+      "stem": "Which task is appropriate for the nurse to delegate to a UAP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess a new postoperative incision."
+        },
+        {
+          "id": "b",
+          "text": "Obtain routine vital signs on a stable client."
+        },
+        {
+          "id": "c",
+          "text": "Teach incentive spirometry."
+        },
+        {
+          "id": "d",
+          "text": "Interpret telemetry findings."
+        }
+      ],
+      "answer": "b",
+      "rationale": "Routine, predictable tasks for stable clients can be delegated. Assessment, teaching, and interpretation remain RN responsibilities. The correct option requires no clinical judgment.",
+      "distractorRationales": {
+        "a": "Assess a new postoperative incision misses the clinical pattern: Prioritization Delegation delegation points to Obtain routine vital signs on a stable client, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Teach incentive spirometry misses the clinical pattern: Prioritization Delegation delegation points to Obtain routine vital signs on a stable client, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Interpret telemetry findings misses the clinical pattern: Prioritization Delegation delegation points to Obtain routine vital signs on a stable client, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "prioritization_delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delegate stable routine work, not assessment or teaching.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "pediatric_nursing",
+      "difficulty": 3,
+      "stem": "A 12-year-old presents with 18 hours of periumbilical pain now localized to the right lower quadrant, nausea, fever of 39.1°C, and rebound tenderness. The nurse assesses guarding and rigidity of the abdomen on palpation. Which finding most suggests appendiceal perforation has occurred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebound tenderness in the RLQ"
+        },
+        {
+          "id": "b",
+          "text": "Migration of pain from periumbilical to RLQ over 24 hours"
+        },
+        {
+          "id": "c",
+          "text": "Sudden relief of pain followed by diffuse abdominal rigidity and fever spike"
+        },
+        {
+          "id": "d",
+          "text": "Nausea and anorexia with low-grade fever"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The classic sign of appendiceal perforation is sudden relief of pain when the appendix ruptures (release of pressure), immediately followed by diffuse peritonitis as fecal material spreads throughout the peritoneum: diffuse board-like rigidity, rebound tenderness throughout the abdomen, and temperature spike. WBC may dramatically rise. The child may briefly appear to improve (pain relief) before rapidly deteriorating. Pre-perforation signs: McBurney's point tenderness, RLQ rebound tenderness, Rovsing's sign, psoas sign. Post-perforation: diffuse guarding, paralytic ileus. Emergency appendectomy is required.",
+      "distractorRationales": {
+        "a": "Rebound tenderness in the RLQ misses the clinical pattern: Pediatric Nursing pain points to Sudden relief of pain followed by diffuse abdominal rigidity and fever spike, so choosing it can postpone safety actions and worsen infection progression.",
+        "b": "Migration of pain from periumbilical to RLQ over 24 hours misses the clinical pattern: Pediatric Nursing pain points to Sudden relief of pain followed by diffuse abdominal rigidity and fever spike, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Nausea and anorexia with low-grade fever misses the clinical pattern: Pediatric Nursing pain points to Sudden relief of pain followed by diffuse abdominal rigidity and fever spike, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "pediatric_nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Appendiceal perforation: sudden pain relief → followed by diffuse board-like rigidity + diffuse rebound + fever spike = peritonitis from perforation; emergency appendectomy required.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "pediatric_nursing",
+        "caption": "Appendiceal perforation: sudden pain relief → followed by diffuse board-like rigidity + diffuse rebound + fever spike = peritonitis from perforation; emergency appendectomy required.",
+        "conclusion": "Appendiceal perforation: sudden pain relief → followed by diffuse board-like rigidity + diffuse rebound + fever spike = peritonitis from perforation; emergency appendectomy required."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "safety_and_infection_control_prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient receiving a blood transfusion who develops hives, pruritus, and a temperature of 38.5°C (101.3°F) 20 minutes into the transfusion. What is the FIRST nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Slow the transfusion rate and administer diphenhydramine as ordered"
+        },
+        {
+          "id": "b",
+          "text": "Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and blood bank"
+        },
+        {
+          "id": "c",
+          "text": "Complete the transfusion quickly since the reaction appears mild"
+        },
+        {
+          "id": "d",
+          "text": "Obtain a blood culture and administer acetaminophen for the fever"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Any signs of a transfusion reaction—including hives, pruritus, and fever—require immediate cessation of the transfusion. The key concern is that mild symptoms can rapidly progress to severe hemolytic or anaphylactic reactions. The tubing must be disconnected (not just slowed) and the IV kept patent with normal saline using new tubing to prevent infusion of remaining blood product. The provider and blood bank must be notified, and the blood bag and tubing are returned to the blood bank for analysis. Continuing or completing the transfusion risks life-threatening escalation.",
+      "distractorRationales": {
+        "a": "Slow the transfusion rate and administer diphenhydramine as ordered misses the clinical pattern: Safety And Infection Control Prioritization infection points to Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Complete the transfusion quickly since the reaction appears mild misses the clinical pattern: Safety And Infection Control Prioritization infection points to Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Obtain a blood culture and administer acetaminophen for the fever misses the clinical pattern: Safety And Infection Control Prioritization infection points to Stop the transfusion immediately, keep IV access open with normal saline, and notify the provider and, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "safety_and_infection_control_prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Transfusion reaction protocol: STOP → Saline via new line → Notify provider + blood bank → Return blood bag + tubing → Document. Never slow the rate and continue if a reaction is suspected.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    },
+    {
+      "id": "mb837-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "medical_surgical_advanced",
+      "difficulty": 3,
+      "stem": "A patient develops respiratory distress 12 hours after total thyroidectomy, with stridor, dysphagia, and progressive anterior neck swelling. SpO2 is 88% on 6 L/min nasal cannula. Which action is the NURSE'S IMMEDIATE PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer calcium gluconate IV and draw ionized calcium level"
+        },
+        {
+          "id": "b",
+          "text": "Open the surgical wound at the bedside to relieve hematoma compression"
+        },
+        {
+          "id": "c",
+          "text": "Increase oxygen to 15 L/min via non-rebreather and call rapid response"
+        },
+        {
+          "id": "d",
+          "text": "Position the patient in high Fowler's and prepare for emergent intubation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Post-thyroidectomy respiratory distress with anterior neck swelling indicates expanding hematoma compressing the trachea. This is an airway emergency. Bedside wound opening to evacuate the hematoma is the immediate intervention — wound opening kits should be at the bedside on all post-thyroidectomy patients for this reason. While this is being done, the team prepares for emergent surgical re-exploration. Calcium gluconate (A) treats hypocalcemia from hypoparathyroidism (tetany, perioral numbness, Trousseau's sign) — not the presenting emergency. NRB mask (C) won't overcome a mechanical airway obstruction.",
+      "distractorRationales": {
+        "a": "Administer calcium gluconate IV and draw ionized calcium level misses the clinical pattern: Medical Surgical Advanced airway points to Open the surgical wound at the bedside to relieve hematoma compression, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Increase oxygen to 15 L/min via non-rebreather and call rapid response misses the clinical pattern: Medical Surgical Advanced airway points to Open the surgical wound at the bedside to relieve hematoma compression, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Position the patient in high Fowler's and prepare for emergent intubation misses the clinical pattern: Medical Surgical Advanced airway points to Open the surgical wound at the bedside to relieve hematoma compression, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "medical_surgical_advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-thyroidectomy neck swelling + stridor = hematoma compressing airway → open the surgical wound immediately. Keep wound kit at bedside.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/generated-nemoclaw-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance."
+    }
+  ]
+}

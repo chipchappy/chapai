@@ -1,0 +1,368 @@
+{
+  "batchId": "mixed-batch-805",
+  "generatedAt": "2026-04-09T06:54:08-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 8
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb805-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 4,
+      "stem": "A patient on clozapine for treatment-resistant schizophrenia develops fever 39.8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status, and autonomic instability (fluctuating BP, tachycardia). Which condition is this, and what is the immediate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents"
+        },
+        {
+          "id": "b",
+          "text": "Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; administer IV diphenhydramine 50 mg"
+        },
+        {
+          "id": "d",
+          "text": "Anticholinergic toxicity from clozapine; administer physostigmine"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neuroleptic malignant syndrome (NMS) is a life-threatening idiosyncratic reaction to antipsychotics characterized by the tetrad: hyperthermia, severe muscle rigidity, altered mental status, and autonomic instability. It develops over days-weeks. Immediate management: stop the antipsychotic, aggressive cooling, IV fluids, dantrolene (muscle relaxant) and/or bromocriptine (dopamine agonist). Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. Acute dystonia (C) does not include fever or autonomic instability.",
+      "distractorRationales": {
+        "a": "Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents misses the clinical pattern: Antipsychotic Medication Safety reaction points to Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Acute dystonia; administer IV diphenhydramine 50 mg misses the clinical pattern: Antipsychotic Medication Safety reaction points to Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Anticholinergic toxicity from clozapine; administer physostigmine misses the clinical pattern: Antipsychotic Medication Safety reaction points to Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability — stop antipsychotic immediately; treat with dantrolene and/or bromocriptine.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "Parents bring their 9-month-old to the ED with episodic, inconsolable crying every 15–20 minutes, pulling the knees to the chest, and passage of stools described as 'jelly-like and dark red.' The abdomen is mildly distended. What is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer oral rehydration solution and observe for 2 hours"
+        },
+        {
+          "id": "b",
+          "text": "Prepare the family for a possible emergent surgical laparotomy"
+        },
+        {
+          "id": "c",
+          "text": "Notify the physician; these findings are consistent with intussusception — prepare for diagnostic and potentially therapeutic air or contrast enema"
+        },
+        {
+          "id": "d",
+          "text": "Obtain stool culture for Campylobacter and Salmonella"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Classic intussusception triad: episodic colicky pain (bowel telescoping and releasing), vomiting, and currant jelly stools (blood and mucus from mucosal ischemia). Most common site: ileocecal junction. Peak age: 6–36 months. Diagnosis: ultrasound (target sign). Treatment: air or hydrostatic (contrast) enema under fluoroscopy or ultrasound — diagnostic and therapeutic in ~80% of cases. Surgical reduction is required if enema fails or peritonitis present. Stool culture addresses infectious causes, not mechanical obstruction. Waiting worsens intestinal ischemia.",
+      "distractorRationales": {
+        "a": "Administer oral rehydration solution and observe for 2 hours misses the clinical pattern: Pediatric Nursing pain points to Notify the physician; these findings are consistent with intussusception — prepare for diagnostic and potentially therapeutic, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "b": "Prepare the family for a possible emergent surgical laparotomy misses the clinical pattern: Pediatric Nursing pain points to Notify the physician; these findings are consistent with intussusception — prepare for diagnostic and potentially therapeutic, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Obtain stool culture for Campylobacter and Salmonella misses the clinical pattern: Pediatric Nursing pain points to Notify the physician; these findings are consistent with intussusception — prepare for diagnostic and potentially therapeutic, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails.",
+        "conclusion": "Intussusception: episodic colicky pain + vomiting + currant jelly stools in infant/toddler → ultrasound diagnosis; air/contrast enema is therapeutic in 80%; surgical if enema fails."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A morbidly obese patient with symptomatic GERD requires urgent surgery. The anesthesiologist plans rapid sequence induction (RSI). During RSI, which nursing action is most important to reduce pulmonary aspiration risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place the patient in Trendelenburg position to maximize airway visualization"
+        },
+        {
+          "id": "b",
+          "text": "Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Insert a nasogastric tube immediately before induction to fully decompress the stomach"
+        },
+        {
+          "id": "d",
+          "text": "Administer metoclopramide IV push 10 minutes before induction to empty the stomach"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSI is used for patients at elevated aspiration risk (obesity, GERD, full stomach, pregnancy, bowel obstruction). It combines: pre-oxygenation → simultaneous administration of a rapid induction agent (propofol/ketamine) and a fast-onset neuromuscular blocking agent (succinylcholine or high-dose rocuronium) → immediate intubation without manual ventilation. The nurse's critical role: apply firm downward pressure on the cricoid cartilage (Sellick maneuver) to compress the esophagus between the cricoid ring and the cervical vertebra, preventing passive regurgitation of gastric contents until ETT cuff is inflated and placement confirmed by capnography. If active vomiting occurs, cricoid pressure must be released immediately (holds vomiting in and increases aspiration risk). NGT cannot adequately empty the stomach in time and does not protect the airway. Trendelenburg (head-down) increases aspiration risk. Metoclopramide is adjunctive preparation, not a substitute for RSI or cricoid pressure.",
+      "distractorRationales": {
+        "a": "Place the patient in Trendelenburg position to maximize airway visualization misses the clinical pattern: Perioperative Care airway points to Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Insert a nasogastric tube immediately before induction to fully decompress the stomach misses the clinical pattern: Perioperative Care airway points to Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Administer metoclopramide IV push 10 minutes before induction to empty the stomach misses the clinical pattern: Perioperative Care airway points to Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSI aspiration prevention: nurse applies cricoid pressure (Sellick maneuver) — compresses esophagus to prevent passive regurgitation during intubation. Release if active vomiting occurs. Used for all high-risk aspiration patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "During a wound assessment, the nurse observes a pressure injury where the base is entirely covered with yellow, adherent slough and the wound depth cannot be determined. The nurse correctly documents this as:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage III pressure injury"
+        },
+        {
+          "id": "b",
+          "text": "Stage IV pressure injury"
+        },
+        {
+          "id": "c",
+          "text": "Unstageable pressure injury"
+        },
+        {
+          "id": "d",
+          "text": "Suspected deep tissue pressure injury"
+        }
+      ],
+      "answer": "c",
+      "rationale": "An unstageable pressure injury is one in which the base is obscured by slough (yellow, tan, gray) or eschar, preventing accurate staging. The wound cannot be assessed as Stage III or IV without debriding the wound bed. Suspected deep tissue injury (D) presents as intact or non-intact skin with deep purple or maroon discoloration or blood-filled blister from underlying soft tissue damage — not covered with slough. Once debrided, the wound can be restaged.",
+      "distractorRationales": {
+        "a": "Stage III pressure injury misses the clinical pattern: Critical Care Fundamentals wound points to Unstageable pressure injury, so choosing it can postpone safety actions and worsen infection progression.",
+        "b": "Stage IV pressure injury misses the clinical pattern: Critical Care Fundamentals wound points to Unstageable pressure injury, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Suspected deep tissue pressure injury misses the clinical pattern: Critical Care Fundamentals wound points to Unstageable pressure injury, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Unstageable = base obscured by slough/eschar, cannot determine depth. Suspected deep tissue injury = intact purple/maroon discoloration.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "Which age-related physiological changes MOST directly alter drug pharmacokinetics in elderly patients, creating the highest risk of toxicity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increased gastric acid production and increased GI motility → reduced oral drug absorption for most medications"
+        },
+        {
+          "id": "b",
+          "text": "Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally and hepatically cleared drugs accumulate and fat-soluble drugs have prolonged half-lives"
+        },
+        {
+          "id": "c",
+          "text": "Increased plasma albumin levels → less free drug available, requiring higher doses in elderly"
+        },
+        {
+          "id": "d",
+          "text": "Increased cardiac output → faster distribution, shorter half-lives, and need for higher doses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Key age-related pharmacokinetic changes: (1) Renal — GFR declines ~1 mL/min/year after age 40 (Cockcroft-Gault may overestimate renal function in elderly with low muscle mass) → renally cleared drugs accumulate: digoxin, metformin, aminoglycosides, NSAIDs, methotrexate; (2) Hepatic — reduced hepatic mass, blood flow, and CYP450 activity → first-pass metabolism reduced (increased oral bioavailability), phase I reactions (oxidation, reduction) more impaired than phase II (conjugation); (3) Body composition — increased fat, decreased lean mass, decreased total body water → fat-soluble drugs (benzodiazepines, diazepam, amiodarone) have larger volume of distribution and prolonged half-lives; water-soluble drugs (lithium, digoxin) reach higher concentrations with same dose; (4) Protein — decreased albumin → increased free fraction of highly protein-bound drugs (warfarin, phenytoin). GI motility decreases (not increases) with age. Cardiac output decreases.",
+      "distractorRationales": {
+        "a": "Increased gastric acid production and increased GI motility → reduced oral drug absorption for most medications misses the clinical pattern: Gerontology warfarin points to Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Increased plasma albumin levels → less free drug available, requiring higher doses in elderly misses the clinical pattern: Gerontology warfarin points to Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Increased cardiac output → faster distribution, shorter half-lives, and need for higher doses misses the clinical pattern: Gerontology warfarin points to Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Elderly pharmacokinetics: decreased GFR (drug accumulation), decreased hepatic clearance, increased fat (prolonged half-lives of fat-soluble drugs), decreased albumin (more free drug). Principle: 'Start low, go slow.'",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chain_of_command",
+      "subcategory": "Chain of Command",
+      "difficulty": 4,
+      "stem": "An RN is concerned that a patient's deteriorating condition is not being addressed. She has called the resident twice and the attending once, but no orders have been given and the patient's condition is worsening. What is the next appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document that the physician was notified and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer"
+        },
+        {
+          "id": "c",
+          "text": "Call the patient's family to inform them of the situation and have them contact the physician"
+        },
+        {
+          "id": "d",
+          "text": "Administer PRN medications independently based on nursing judgment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "When a nurse cannot get a timely response from the physician and patient safety is at risk, the chain of command must be activated: charge nurse → nursing supervisor → department director → chief of staff/chief of medicine → risk management/patient safety officer. Many hospitals also have rapid response teams (RRT) that can be activated by nursing. Documentation alone (A) does not protect the patient. Contacting family (C) violates HIPAA and does not address the immediate clinical problem. Administering medications without orders (D) is outside RN scope of practice and illegal.",
+      "distractorRationales": {
+        "a": "Document that the physician was notified and continue monitoring misses the clinical pattern: Chain Of Command safety points to Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Call the patient's family to inform them of the situation and have them contact the physician misses the clinical pattern: Chain Of Command safety points to Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Administer PRN medications independently based on nursing judgment misses the clinical pattern: Chain Of Command safety points to Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Chain of Command",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When physician is unresponsive to clinical concerns: activate chain of command (charge nurse → supervisor → administrator) and/or call rapid response — document all attempts.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 4,
+      "stem": "A patient with severe preeclampsia is receiving IV magnesium sulfate. The nurse assesses: RR 10, deep tendon reflexes absent, urine output 20 mL/hr, serum magnesium level 12 mEq/L. Which action is the immediate priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decrease the magnesium infusion rate by 50% and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and document the findings"
+        },
+        {
+          "id": "d",
+          "text": "Increase IV fluid rate to improve urine output and enhance magnesium excretion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9–10 mEq/L. This patient has multiple toxicity signs (RR 10, absent DTRs, oliguria, Mg 12 mEq/L). The infusion must be stopped immediately. Calcium gluconate 1 g IV (10 mL of 10% solution over 3–5 minutes) is the antidote — calcium antagonizes magnesium's effects. Decreasing the rate (A) is insufficient when toxicity is already established with respiratory compromise. Notifying the provider (C) happens simultaneously but stopping the infusion is the first action. Fluids (D) may help excretion but not fast enough to address impending respiratory arrest.",
+      "distractorRationales": {
+        "a": "Decrease the magnesium infusion rate by 50% and continue monitoring misses the clinical pattern: Severe Preeclampsia respiratory points to Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Notify the provider and document the findings misses the clinical pattern: Severe Preeclampsia respiratory points to Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Increase IV fluid rate to improve urine output and enhance magnesium excretion misses the clinical pattern: Severe Preeclampsia respiratory points to Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium toxicity: stop infusion immediately + calcium gluconate 1 g IV as antidote; monitor RR and DTRs every hour during infusion.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb805-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "The nurse is assessing two patients. Patient A has BP 80/50, sodium 124 mEq/L, potassium 6.1 mEq/L, and hyperpigmentation. Patient B has BP 158/94, sodium 148 mEq/L, potassium 3.1 mEq/L, and truncal obesity with purple striae. Which conditions CORRECTLY match these presentations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patient A: Cushing's syndrome; Patient B: Addison's disease"
+        },
+        {
+          "id": "b",
+          "text": "Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome"
+        },
+        {
+          "id": "c",
+          "text": "Patient A: Hypothyroidism; Patient B: Hyperaldosteronism"
+        },
+        {
+          "id": "d",
+          "text": "Patient A: SIADH; Patient B: Diabetes insipidus"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Addison's disease (primary adrenal insufficiency): cortisol and aldosterone deficiency → hyponatremia, hyperkalemia, hypotension, and hyperpigmentation (elevated ACTH stimulates melanocytes). Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae, and moon face from chronic cortisol excess. These are opposite presentations driven by opposite hormonal states.",
+      "distractorRationales": {
+        "a": "Patient A: Cushing's syndrome; Patient B: Addison's disease misses the clinical pattern: Medical Surgical Advanced potassium points to Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Patient A: Hypothyroidism; Patient B: Hyperaldosteronism misses the clinical pattern: Medical Surgical Advanced potassium points to Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Patient A: SIADH; Patient B: Diabetes insipidus misses the clinical pattern: Medical Surgical Advanced potassium points to Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addison's = hypoNa, hyperK, hypotension, hyperpigmentation. Cushing's = hyperNa, hypoK, hypertension, truncal obesity, striae.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

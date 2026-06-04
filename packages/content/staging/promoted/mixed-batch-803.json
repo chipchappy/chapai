@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-803",
+  "generatedAt": "2026-04-09T06:31:45-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb803-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "The nurse is caring for a patient 4 days after bowel surgery. The patient has not passed flatus, bowel sounds are hypoactive in all quadrants, and the abdomen is mildly distended. Vital signs are stable. The nurse CORRECTLY identifies this presentation as:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Paralytic ileus \u2014 expected post-operative finding"
+        },
+        {
+          "id": "b",
+          "text": "Small bowel obstruction requiring immediate NG tube decompression"
+        },
+        {
+          "id": "c",
+          "text": "Peritonitis requiring emergent surgical consultation"
+        },
+        {
+          "id": "d",
+          "text": "Large bowel obstruction requiring CT scan and surgical consult"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Paralytic ileus (adynamic ileus) is an expected complication in the first 3\u20135 days after abdominal or bowel surgery, caused by handling of the bowel and anesthetic effects. It presents with absent or hypoactive bowel sounds, lack of flatus, and mild distension without severe pain, fever, or hemodynamic instability. Mechanical obstruction (B, D) presents with high-pitched borborygmi, crampy pain, and vomiting \u2014 not simply hypoactive sounds. Peritonitis (C) would have fever, rigid abdomen, and rebound tenderness.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Ileus vs obstruction: ileus = absent/hypoactive sounds, mild distension, expected post-op; obstruction = high-pitched sounds, crampy pain, vomiting.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_stroke",
+      "subcategory": "Neurological / Stroke",
+      "difficulty": 4,
+      "stem": "A patient arrives in the ED with sudden onset of right-sided facial droop, right arm weakness, and slurred speech that began 90 minutes ago. NIHSS score is 12. CT head is negative for hemorrhage. The patient's blood pressure is 178/96 mmHg. Which intervention is the highest priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Begin antihypertensive therapy immediately to bring BP below 140/90 mmHg"
+        },
+        {
+          "id": "b",
+          "text": "Prepare the patient for IV thrombolysis with alteplase (tPA) \u2014 notify the provider of eligibility and start the time-critical pre-tPA workup"
+        },
+        {
+          "id": "c",
+          "text": "Administer aspirin 325 mg orally for antiplatelet therapy"
+        },
+        {
+          "id": "d",
+          "text": "Obtain emergent MRI brain to confirm ischemic versus hemorrhagic stroke before any treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient presents within the 4.5-hour tPA window with an ischemic stroke (CT negative for hemorrhage) and a significant neurological deficit (NIHSS 12). IV alteplase is the priority intervention \u2014 every minute of delay worsens outcomes ('time is brain' \u2014 ~1.9 million neurons lost per minute). In ischemic stroke with tPA candidacy, blood pressure is treated only if > 185/110 mmHg; at 178/96, aggressive BP lowering is not indicated (it can worsen ischemia). Aspirin is not given within 24 hours of tPA. CT is already done \u2014 MRI is not required for tPA administration when CT excludes hemorrhage. The nurse should mobilize the stroke team and prepare for tPA.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Neurological / Stroke",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Neurological / Stroke",
+        "caption": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA.",
+        "conclusion": "Ischemic stroke + within 4.5h window + no hemorrhage on CT = tPA eligibility evaluation is the priority. Time is brain. Do NOT lower BP below 185/110 before tPA. Aspirin is contraindicated within 24h of tPA."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 4-year-old presents to the ED with acute-onset fever, drooling, severe sore throat, tripod positioning, and muffled voice. The parent reports the child refuses to move from the sitting forward-leaning position. Which action is the nurse's highest priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Obtain a throat swab for rapid strep testing"
+        },
+        {
+          "id": "b",
+          "text": "Lie the child flat to assess the oropharynx with a tongue depressor"
+        },
+        {
+          "id": "c",
+          "text": "Notify the physician immediately and keep the child calm in the position of comfort \u2014 do not examine the throat"
+        },
+        {
+          "id": "d",
+          "text": "Apply a continuous pulse oximetry probe and administer acetaminophen"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This presentation is classic epiglottitis: tripod positioning (leaning forward on hands), drooling, muffled 'hot potato' voice, high fever, severe dysphagia, and refusal to lie flat. Epiglottitis is a life-threatening airway emergency. CRITICAL: do not attempt throat examination or use a tongue depressor \u2014 stimulation can trigger laryngospasm and complete airway obstruction. Do not lay the child down. Keep the child calm in position of comfort, call physician and anesthesiology/ENT immediately, prepare for emergency airway management (intubation or tracheotomy) in OR. This contrasts with croup: 'seal bark' cough, steeple sign on X-ray, treated with racemic epinephrine and dexamethasone.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down \u2192 call physician, keep calm in comfort position, prepare for emergency airway.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down \u2192 call physician, keep calm in comfort position, prepare for emergency airway.",
+        "conclusion": "Epiglottitis: tripod + drooling + muffled voice = airway emergency; NEVER examine throat or lay child down \u2192 call physician, keep calm in comfort position, prepare for emergency airway."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 19-year-old with no prior medical or anesthesia history is 30 minutes into general anesthesia for appendectomy. The PACU nurse is called to the OR: temperature 39.9\u00b0C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%, and ETCO2 82 mmHg. What is the priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response"
+        },
+        {
+          "id": "b",
+          "text": "Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart"
+        },
+        {
+          "id": "c",
+          "text": "Administer succinylcholine to relieve the masseter rigidity and improve ventilation"
+        },
+        {
+          "id": "d",
+          "text": "Treat the hyperkalemia first with calcium gluconate \u2014 MH-induced hyperkalemia is the immediate threat"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Malignant hyperthermia (MH) is a life-threatening pharmacogenetic disorder triggered in susceptible individuals (RYR1 gene mutation) by volatile anesthetic agents (sevoflurane, desflurane, halothane) and succinylcholine. Uncontrolled calcium release from the sarcoplasmic reticulum causes: sustained muscle contraction \u2192 hyperthermia (temperature rises 1\u00b0C every 5 minutes if untreated), diffuse rigidity, masseter spasm (early sign), respiratory and metabolic acidosis (CO2 soaring), rhabdomyolysis, hyperkalemia, and ventricular dysrhythmias. Untreated MH mortality exceeds 80%. Protocol: (1) Stop ALL triggering agents immediately; (2) Hyperventilate with 100% O2 at 2-3\u00d7 normal minute ventilation (flush volatile agents, treat hypercapnia); (3) Dantrolene 2.5 mg/kg IV bolus \u2014 repeat every 5 minutes until crisis resolves (max ~10 mg/kg); (4) Cooling measures; (5) Treat hyperkalemia, acidosis, and dysrhythmias as they arise. Succinylcholine IS a triggering agent \u2014 administering it would worsen MH.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "MH: rising temp + masseter rigidity + high ETCO2 + tachycardia during general anesthesia. STOP triggering agents immediately. Dantrolene 2.5 mg/kg IV STAT (repeat q5 min). Succinylcholine triggers MH \u2014 never give.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_teaching_oral_hypoglycemics",
+      "subcategory": "Pharmacology / Medication Teaching / Oral Hypoglycemics",
+      "difficulty": 2,
+      "stem": "A nurse is teaching a newly diagnosed type 2 diabetes patient about glipizide (a sulfonylurea). Which statement is MOST important to include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This medication works best when taken with a large meal"
+        },
+        {
+          "id": "b",
+          "text": "This medication can cause low blood sugar \u2014 carry a fast-acting sugar source at all times"
+        },
+        {
+          "id": "c",
+          "text": "This medication does not cause weight gain"
+        },
+        {
+          "id": "d",
+          "text": "Blood glucose monitoring is not necessary since this medication automatically maintains glucose levels"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Sulfonylureas (glipizide, glyburide, glimepiride) work by stimulating pancreatic beta cells to release insulin, independent of blood glucose levels. This means they can cause hypoglycemia even when the patient is not eating \u2014 unlike some other diabetes medications. Patients must be educated to always carry fast-acting glucose (glucose tablets, juice) and to recognize hypoglycemia symptoms (shakiness, diaphoresis, confusion). Glipizide is taken 30 minutes before meals (not with a large meal) to time insulin release with carbohydrate absorption. Sulfonylureas often cause modest weight gain. Blood glucose monitoring remains important for safety and titration.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Medication Teaching / Oral Hypoglycemics",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sulfonylureas = insulin secretagogues = hypoglycemia risk even when not eating. Always carry fast-acting carbs. Glipizide: 30 min before meals. Monitor BG. Watch for weight gain. Avoid skipping meals while on this medication.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access. The nurse finds the patient diaphoretic, the right groin dressing saturated with blood, and the patient's blood pressure has dropped from 128/76 to 88/50 mmHg. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply direct, firm manual pressure to the right groin site immediately"
+        },
+        {
+          "id": "b",
+          "text": "Elevate the foot of the bed and call the provider"
+        },
+        {
+          "id": "c",
+          "text": "Obtain a STAT hemoglobin and hematocrit"
+        },
+        {
+          "id": "d",
+          "text": "Increase the IV fluid rate per standing orders and reassess in 15 minutes"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient is showing signs of femoral artery hemorrhage with hemodynamic instability (hypotension, diaphoresis, saturated dressing). The priority is hemorrhage control: applying immediate, firm manual pressure directly over the puncture site. This is the most time-critical intervention to stop ongoing blood loss. Calling the provider and obtaining labs are necessary but are performed concurrently by a second nurse after pressure is established. Trendelenburg positioning is not recommended for vascular hemorrhage, and delaying for 15 minutes risks cardiovascular collapse.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency. Stop the bleed first (manual pressure), then call and escalate. Hemorrhage control precedes all other actions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A community health nurse is planning an immunization education program. Which statement about adult immunization schedules is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Tdap booster is recommended annually for all adults"
+        },
+        {
+          "id": "b",
+          "text": "Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine is recommended annually for everyone 6 months and older"
+        },
+        {
+          "id": "c",
+          "text": "The shingles (zoster) vaccine is recommended for adults 40 years and older"
+        },
+        {
+          "id": "d",
+          "text": "The MMR vaccine is required annually for healthcare workers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Current ACIP adult immunization priorities: (1) Influenza: annually for everyone \u22656 months; (2) Tdap: once as an adult, then Td booster every 10 years; Tdap specifically recommended during each pregnancy at 27\u201336 weeks gestation (protects newborn via transplacental antibodies); (3) Pneumococcal: PCV15 or PCV20 for all adults \u226565; PCV20 or PCV15 + PPSV23 for high-risk adults 19\u201364; (4) Zoster (Shingrix): recommended for adults \u226550 years (not 40), 2-dose series; (5) MMR: not annual; 2-dose series if no immunity; HCWs need 2-dose MMR if no evidence of immunity.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Key immunization schedule: flu annually (all \u22656 mo); Tdap in pregnancy (27\u201336w); pneumococcal at 65+; Shingrix (zoster) at 50+, 2-dose series; Tdap once as adult, Td booster q10y.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with a newly placed right subclavian central venous catheter. To reduce the risk of central line-associated bloodstream infection (CLABSI), which bundle element is MOST important during dressing changes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the dressing every 24 hours regardless of appearance"
+        },
+        {
+          "id": "b",
+          "text": "Use chlorhexidine-based antiseptic and maintain strict sterile technique"
+        },
+        {
+          "id": "c",
+          "text": "Apply antibiotic ointment to the insertion site with each dressing change"
+        },
+        {
+          "id": "d",
+          "text": "Flush the line with normal saline immediately before accessing the port"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The CLABSI prevention bundle includes: hand hygiene, maximal sterile barrier precautions, chlorhexidine skin antisepsis, optimal catheter site selection, and daily review of catheter necessity. Chlorhexidine-based antiseptic (not povidone-iodine) is the evidence-based standard for site care because it has sustained antimicrobial activity. Dressings should be changed every 7 days (transparent) or every 2 days (gauze), or when wet/loose/soiled \u2014 not every 24 hours (A). Antibiotic ointment (C) is not recommended and can promote resistant organisms.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "CLABSI bundle: chlorhexidine antiseptic, maximal sterile barriers, hand hygiene, daily necessity assessment, optimal site selection.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression, and GERD takes: amlodipine, diphenhydramine (for sleep), amitriptyline, ibuprofen, and omeprazole. Using Beers Criteria principles, which medications present the GREATEST risk for this elderly patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Omeprazole and amlodipine \u2014 both increase fall risk and should be avoided in elderly"
+        },
+        {
+          "id": "b",
+          "text": "Diphenhydramine and amitriptyline \u2014 both are highly anticholinergic and explicitly listed as inappropriate in the AGS Beers Criteria"
+        },
+        {
+          "id": "c",
+          "text": "Ibuprofen alone \u2014 GI bleeding is the only significant concern in this patient"
+        },
+        {
+          "id": "d",
+          "text": "Amlodipine and ibuprofen \u2014 calcium channel blockers are contraindicated over age 80"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The 2023 AGS Beers Criteria identifies medications potentially inappropriate in adults \u226565. Diphenhydramine (first-generation antihistamine) and amitriptyline (tricyclic antidepressant) are both strongly anticholinergic and explicitly listed as 'avoid' in elderly. Anticholinergic effects (cumulative burden): cognitive impairment, delirium, urinary retention, constipation, dry mouth, tachycardia, blurred vision, and increased fall risk. Amitriptyline additionally causes orthostatic hypotension (fall risk), cardiac conduction abnormalities, and QT prolongation. Additional concerns in this patient: ibuprofen (NSAID) \u2014 risk of GI bleeding (especially with GERD), renal impairment, and cardiovascular events (also Beers listed \u2014 prefer acetaminophen). Safer alternatives: melatonin or low-dose doxepin for insomnia; SSRIs/SNRIs for depression (avoid TCAs); acetaminophen for pain.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Beers Criteria: anticholinergics (diphenhydramine, TCAs like amitriptyline) are highest risk in elderly \u2014 cause delirium, falls, urinary retention. NSAIDs also Beers-listed. Review medications at every hospitalization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb803-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "floating_nurse",
+      "subcategory": "Floating Nurse",
+      "difficulty": 3,
+      "stem": "An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Which action by the floating RN is most appropriate regarding scope of limitations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Refuse the assignment because floating to a specialty unit is unsafe"
+        },
+        {
+          "id": "b",
+          "text": "Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP"
+        },
+        {
+          "id": "c",
+          "text": "Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and request supervision for unfamiliar procedures"
+        },
+        {
+          "id": "d",
+          "text": "Accept the assignment only if she is designated as a second nurse, not as primary nurse"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Floating RNs are obligated to inform the charge nurse of limitations in specialty skills. They cannot refuse the assignment categorically (A) \u2014 refusing is appropriate only if the assignment is unsafe based on skills AND the unit cannot accommodate limitations. They must not perform tasks outside their competence independently (B). Accepting with disclosure of limitations and requesting supervision (C) is the professional and legally safe approach. The float nurse should receive a patient assignment matched to her competency level, with support for unfamiliar procedures. Simply being a 'second nurse' (D) does not adequately protect the patient or satisfy professional accountability.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Floating Nurse",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Float nurses: disclose competency limitations to charge nurse, accept assignments within skills, request supervision \u2014 outright refusal is not appropriate unless assignment is unsafe and no accommodation is possible.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

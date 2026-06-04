@@ -23,6 +23,11 @@ const schema = z.object({
   selectedAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.string())]).optional(),
   selectedOptionId: z.string().optional(),
   timeSpentMs:    z.number().int().positive().optional(),
+  // For lazy practice-exam session creation on the first answer
+  practiceExamId: z.string().optional(),
+  examTrack: z.enum(["nclex", "ccrn"]).optional(),
+  totalQuestions: z.number().int().positive().max(500).optional(),
+  questionIds: z.array(z.string()).max(500).optional(),
 });
 
 /** Look up a question from the in-memory demo deck (used when D1 is empty) */
@@ -226,13 +231,48 @@ export async function POST(req: NextRequest) {
         .where(eq(quizSessions.id, sessionId))
         .get();
 
+      // Lazy practice-exam session creation: if no row exists but the client
+      // supplied practiceExamId + examTrack, create the session on first answer.
+      // Only allowed for authenticated users to avoid orphaned rows.
       if (!session) {
-        return jsonError(404, "SESSION_NOT_FOUND", "Session not found", requestContext, {
-          requestId: requestContext.requestId,
-        });
-      }
-
-      if (session.userId && session.userId !== hostedUser?.id) {
+        if (parsed.practiceExamId && parsed.examTrack && hostedUser?.id) {
+          try {
+            const questionIdsJson = JSON.stringify(parsed.questionIds ?? []);
+            await db.insert(quizSessions).values({
+              id: sessionId,
+              userId: hostedUser.id,
+              exam: parsed.examTrack,
+              category: null,
+              mode: "practice-exam",
+              practiceExamId: parsed.practiceExamId,
+              totalQuestions: parsed.totalQuestions ?? (parsed.questionIds?.length ?? 1),
+              questionIds: questionIdsJson,
+            });
+          } catch (error) {
+            // Race: another concurrent answer may have created it.
+            const retry = await db
+              .select({ id: quizSessions.id, userId: quizSessions.userId })
+              .from(quizSessions)
+              .where(eq(quizSessions.id, sessionId))
+              .get();
+            if (!retry) {
+              return jsonError(500, "SESSION_LAZY_CREATE_FAILED", "Could not create practice-exam session.", requestContext, {
+                requestId: requestContext.requestId,
+              });
+            }
+            if (retry.userId && retry.userId !== hostedUser?.id) {
+              return jsonError(403, "SESSION_OWNERSHIP_MISMATCH", "This session belongs to a different account.", requestContext, {
+                requestId: requestContext.requestId,
+              });
+            }
+            void error;
+          }
+        } else {
+          return jsonError(404, "SESSION_NOT_FOUND", "Session not found", requestContext, {
+            requestId: requestContext.requestId,
+          });
+        }
+      } else if (session.userId && session.userId !== hostedUser?.id) {
         return jsonError(403, "SESSION_OWNERSHIP_MISMATCH", "This session belongs to a different account.", requestContext, {
           requestId: requestContext.requestId,
         });
@@ -246,6 +286,20 @@ export async function POST(req: NextRequest) {
         isCorrect,
         timeSpentMs,
       });
+
+      // For practice-exam sessions, roll up correctCount + completedAt so the
+      // dashboard's readiness history reflects this attempt right away.
+      if (parsed.practiceExamId && hostedUser?.id) {
+        try {
+          const { finalizeReadinessSession } = await import("@/lib/student-dashboard");
+          await finalizeReadinessSession(db, {
+            sessionId,
+            userId: hostedUser.id,
+          });
+        } catch {
+          // non-fatal
+        }
+      }
     }
 
     return jsonSuccess({

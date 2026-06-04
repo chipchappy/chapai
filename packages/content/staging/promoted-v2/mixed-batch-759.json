@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-759",
+  "generatedAt": "2026-04-08T16:39:56-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb759-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a patient newly prescribed lithium about safety monitoring. Which statement by the patient indicates correct understanding of lithium toxicity prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.'"
+        },
+        {
+          "id": "b",
+          "text": "'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.'"
+        },
+        {
+          "id": "c",
+          "text": "'I can stop taking lithium when I feel better, as long as my mood is stable.'"
+        },
+        {
+          "id": "d",
+          "text": "'Ibuprofen is safe to take for headaches while on lithium.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Lithium is excreted by the kidney and competes with sodium for reabsorption. When sodium levels drop (from low-sodium diet, diarrhea, vomiting, sweating, diuretics), the kidney retains lithium — causing toxicity. Consistent sodium and fluid intake, and monitoring for dehydration causes, are essential safety measures. Low-sodium diet (A) increases lithium retention and toxicity risk — the opposite of safe. Abrupt discontinuation (C) causes rebound mania. NSAIDs like ibuprofen (D) decrease renal lithium excretion, raising lithium levels significantly — they are contraindicated.",
+      "distractorRationales": {
+        "a": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.' misses the clinical pattern: Lithium Toxicity dehydration points to 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea,, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "'I can stop taking lithium when I feel better, as long as my mood is stable.' misses the clinical pattern: Lithium Toxicity dehydration points to 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea,, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "'Ibuprofen is safe to take for headaches while on lithium.' misses the clinical pattern: Lithium Toxicity dehydration points to 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea,, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium safety: maintain consistent sodium/fluid intake; avoid NSAIDs (raise lithium levels); report vomiting/diarrhea/excessive sweating immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_seizure_management",
+      "subcategory": "Neurological / Seizure Management",
+      "difficulty": 2,
+      "stem": "A nurse is with a patient who suddenly begins experiencing a generalized tonic-clonic seizure. What is the PRIORITY nursing action during the seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insert an oral airway to prevent tongue biting and aspiration"
+        },
+        {
+          "id": "b",
+          "text": "Restrain the patient's limbs to prevent injury"
+        },
+        {
+          "id": "c",
+          "text": "Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer diazepam 10 mg IV immediately per standing orders"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an active seizure, the nursing priorities are safety and observation: protect the head (soft padding), clear hazardous objects from the immediate environment, position on the side (lateral decubitus) to prevent aspiration when the seizure subsides, and time the duration. Nothing should be inserted into the mouth during an active seizure — this can cause injury to the patient and the nurse, and the jaw cannot be pried open safely. Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Medication (benzodiazepine) is indicated for prolonged seizures (> 5 minutes, status epilepticus) — not every seizure automatically requires IV medication.",
+      "distractorRationales": {
+        "a": "Insert an oral airway to prevent tongue biting and aspiration misses the clinical pattern: Neurological / Seizure Management aspiration points to Protect the patient's head, clear the environment of hazards, turn the patient on their side, and, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "b": "Restrain the patient's limbs to prevent injury misses the clinical pattern: Neurological / Seizure Management aspiration points to Protect the patient's head, clear the environment of hazards, turn the patient on their side, and, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Administer diazepam 10 mg IV immediately per standing orders misses the clinical pattern: Neurological / Seizure Management aspiration points to Protect the patient's head, clear the environment of hazards, turn the patient on their side, and, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "Neurological / Seizure Management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Neurological / Seizure Management",
+        "caption": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+        "conclusion": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes)."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 4,
+      "stem": "A parent asks the nurse why their 8-year-old child cannot be given aspirin for a fever during this influenza illness. The nurse's teaching should be based on which evidence-based concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Aspirin causes gastrointestinal bleeding in children under 12"
+        },
+        {
+          "id": "b",
+          "text": "Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome — a rare but potentially fatal encephalopathy and hepatotoxicity"
+        },
+        {
+          "id": "c",
+          "text": "Aspirin causes febrile seizures in school-age children"
+        },
+        {
+          "id": "d",
+          "text": "Aspirin inhibits platelet function and increases bleeding risk in children with viral infections"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Reye's syndrome is a rare but life-threatening condition characterized by non-inflammatory encephalopathy and microvesicular hepatic steatosis. It is strongly associated with aspirin use in children during viral illnesses, particularly influenza (types A and B) and varicella. Pathophysiology: salicylate-induced mitochondrial dysfunction during viral illness. Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%). Since the CDC advisory in the 1980s recommending against aspirin in children <18 during viral illnesses, Reye's syndrome incidence has fallen dramatically. Preferred antipyretics: acetaminophen or ibuprofen.",
+      "distractorRationales": {
+        "a": "Aspirin causes gastrointestinal bleeding in children under 12 misses the clinical pattern: Pediatric Nursing edema points to Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Aspirin causes febrile seizures in school-age children misses the clinical pattern: Pediatric Nursing edema points to Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Aspirin inhibits platelet function and increases bleeding risk in children with viral infections misses the clinical pattern: Pediatric Nursing edema points to Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen.",
+        "conclusion": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient 2 days post-abdominal surgery. The patient calls the nurse and states, 'I felt something pop in my stomach and I'm looking at my intestines.' The nurse enters the room and observes evisceration of abdominal contents. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Attempt to manually replace the intestines and apply a sterile dressing"
+        },
+        {
+          "id": "b",
+          "text": "Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and call for help"
+        },
+        {
+          "id": "c",
+          "text": "Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical team"
+        },
+        {
+          "id": "d",
+          "text": "Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document the finding"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Wound evisceration is a surgical emergency. The priority is to protect the eviscerated tissue from desiccation and contamination. Cover the bowel immediately with sterile gauze moistened with normal saline (not dry gauze, which would desiccate tissue; not replaced, which risks contamination and injury). The patient should be kept NPO, positioned to reduce tension on the wound (often supine with knees slightly flexed), and the surgical team notified immediately for emergent return to the OR. Attempting to replace bowel or using dry dressings or binders can cause irreparable harm.",
+      "distractorRationales": {
+        "a": "Attempt to manually replace the intestines and apply a sterile dressing misses the clinical pattern: Safety And Infection Control / Stable Vs. Unstable infection points to Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical misses the clinical pattern: Safety And Infection Control / Stable Vs. Unstable infection points to Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document misses the clinical pattern: Safety And Infection Control / Stable Vs. Unstable infection points to Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evisceration: Cover with sterile saline-soaked gauze (NEVER replace), keep patient still, call surgeon STAT, keep NPO. Dry gauze and binders are contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A public health nurse is performing TB contact tracing after identifying an active pulmonary TB case in an elementary school teacher. The school has 420 students and 35 staff. Which group should be prioritized for PPD/IGRA testing and evaluated first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All community residents within a 1-mile radius of the school"
+        },
+        {
+          "id": "b",
+          "text": "Close contacts — students in the infected teacher's classroom and staff sharing the teachers' lounge (highest-risk exposure contacts)"
+        },
+        {
+          "id": "c",
+          "text": "Only the principal and vice-principal as the administrative contacts"
+        },
+        {
+          "id": "d",
+          "text": "All 420 students simultaneously to ensure no child is missed"
+        }
+      ],
+      "answer": "b",
+      "rationale": "TB contact investigation follows a concentric circle approach. Priority 1 — close contacts (highest risk): household members, individuals with prolonged face-to-face exposure in an enclosed space. For a school teacher: students in the infected teacher's classroom (daily prolonged contact), colleagues sharing enclosed spaces (teachers' lounge, planning periods). Priority 2 — casual contacts: students in the same school but different classrooms. Priority 3 — community contacts. All close contacts receive TST/IGRA regardless of symptom status. Positive contacts → chest X-ray → LTBI vs active TB determination → treatment. Mass testing of all 420 students before stratifying risk wastes resources and creates unnecessary anxiety.",
+      "distractorRationales": {
+        "a": "All community residents within a 1-mile radius of the school misses the clinical pattern: Community Health pulmonary points to Close contacts — students in the infected teacher's classroom and staff sharing the teachers' lounge (highest-risk, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Only the principal and vice-principal as the administrative contacts misses the clinical pattern: Community Health pulmonary points to Close contacts — students in the infected teacher's classroom and staff sharing the teachers' lounge (highest-risk, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "All 420 students simultaneously to ensure no child is missed misses the clinical pattern: Community Health pulmonary points to Close contacts — students in the infected teacher's classroom and staff sharing the teachers' lounge (highest-risk, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "TB contact tracing: concentric circle approach — prioritize closest contacts first (classroom students, shared-space colleagues); cascade outward only if high conversion rate found in inner circle.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A nurse is titrating norepinephrine for a patient in septic shock. Current MAP is 58 mmHg on norepinephrine 0.18 mcg/kg/min. Lactate is 5.4 mmol/L. The provider orders vasopressin 0.03 units/min added as a second vasopressor. The nurse understands the rationale for vasopressin addition is PRIMARILY to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace endogenous vasopressin that is depleted in prolonged septic shock"
+        },
+        {
+          "id": "b",
+          "text": "Improve cardiac output by increasing stroke volume"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the oxygen demand of the myocardium by lowering heart rate"
+        },
+        {
+          "id": "d",
+          "text": "Decrease SVR to improve tissue perfusion in high-output septic shock"
+        }
+      ],
+      "answer": "a",
+      "rationale": "In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the shock state. Exogenous vasopressin (0.03–0.04 units/min) is added as a fixed-dose adjunct — not titrated — to replace depleted stores and allow reduction ('sparing') of norepinephrine dose (to reduce NE-related adverse effects). Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate (C). It does NOT reduce SVR (D).",
+      "distractorRationales": {
+        "b": "Improve cardiac output by increasing stroke volume misses the clinical pattern: Critical Care Fundamentals shock points to Replace endogenous vasopressin that is depleted in prolonged septic shock, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Reduce the oxygen demand of the myocardium by lowering heart rate misses the clinical pattern: Critical Care Fundamentals shock points to Replace endogenous vasopressin that is depleted in prolonged septic shock, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Decrease SVR to improve tissue perfusion in high-output septic shock misses the clinical pattern: Critical Care Fundamentals shock points to Replace endogenous vasopressin that is depleted in prolonged septic shock, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect). Fixed dose, not titrated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 86-year-old woman with CKD stage 3, atrial fibrillation, type 2 diabetes, hypertension, and heart failure takes: warfarin, metformin, lisinopril, furosemide, spironolactone, digoxin, and glipizide. She is admitted with dizziness, yellow-green visual halos, nausea, and bradycardia (HR 44, irregular). INR is 5.1 and potassium is 3.0 mEq/L. Which drug-drug-disease interaction cascade best explains her presentation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms"
+        },
+        {
+          "id": "b",
+          "text": "Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia"
+        },
+        {
+          "id": "c",
+          "text": "Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance from CKD stage 3"
+        },
+        {
+          "id": "d",
+          "text": "Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia, heart block, dysrhythmias), and visual changes (yellow-green halos, blurred vision, scotomas). Precipitating cascade: (1) Furosemide → hypokalemia (K+ 3.0 mEq/L); (2) Spironolactone partially counteracts furosemide-induced K+ loss but is insufficient; (3) Hypokalemia increases digoxin-Na+/K+-ATPase binding affinity → potentiates digoxin effect even at previously therapeutic serum levels; (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation; (5) Supratherapeutic INR (5.1) is a separate finding — likely from dietary change or drug interaction affecting warfarin metabolism. Management: hold digoxin, carefully replete potassium (IV in symptomatic bradycardia), cardiac monitoring, Digibind (digoxin immune Fab) for severe bradycardia or life-threatening dysrhythmia; hold warfarin and administer vitamin K for INR reversal.",
+      "distractorRationales": {
+        "a": "Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms misses the clinical pattern: Gerontology warfarin points to Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "b": "Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia misses the clinical pattern: Gerontology warfarin points to Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding misses the clinical pattern: Gerontology warfarin points to Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Digoxin toxicity: yellow-green halos + bradycardia + nausea. Hypokalemia potentiates digoxin toxicity even at 'therapeutic' levels. CKD reduces digoxin clearance. Treat: hold digoxin, correct K+, Digibind for severe cases.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "Mandatory Reporting",
+      "difficulty": 3,
+      "stem": "A nurse discovers that a colleague has been diverting controlled substances — taking opioids from the medication dispensing cabinet that are charted as wasted but are not being wasted appropriately. The colleague appears to be under the influence during a shift. Which action is the nurse's ethical and legal obligation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Speak privately with the colleague and give them a chance to self-report before taking action"
+        },
+        {
+          "id": "b",
+          "text": "Document the suspicion in a personal diary for future reference if the behavior continues"
+        },
+        {
+          "id": "c",
+          "text": "Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion"
+        },
+        {
+          "id": "d",
+          "text": "Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Suspected drug diversion by a healthcare colleague must be reported immediately through the chain of command — charge nurse and supervisor — per facility policy. This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the ANA Code of Ethics, and triggers the appropriate investigation process. Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction. Personal documentation (B) does not fulfill the reporting obligation. Going directly to the State BON (D) bypasses the facility process, which should occur first — BON involvement follows internal reporting.",
+      "distractorRationales": {
+        "a": "Speak privately with the colleague and give them a chance to self-report before taking action misses the clinical pattern: Mandatory Reporting safety points to Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "b": "Document the suspicion in a personal diary for future reference if the behavior continues misses the clinical pattern: Mandatory Reporting safety points to Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration misses the clinical pattern: Mandatory Reporting safety points to Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Mandatory Reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected drug diversion: report immediately to charge nurse and supervisor per facility policy — patient safety is the priority; ethical obligation requires reporting, not covering up.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_apgar",
+      "subcategory": "Neonatal APGAR",
+      "difficulty": 2,
+      "stem": "A neonate is assessed at 1 minute of life. The nurse notes: heart rate 98 bpm, weak cry, some flexion of extremities, grimace only in response to stimulation, and blue hands and feet with pink body. What is the APGAR score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "6"
+        },
+        {
+          "id": "c",
+          "text": "7"
+        },
+        {
+          "id": "d",
+          "text": "8"
+        }
+      ],
+      "answer": "a",
+      "rationale": "APGAR scoring: Appearance (color): pink body, blue hands/feet (acrocyanosis) = 1. Pulse (HR): 98 bpm (<100) = 1. Grimace (reflex): grimace only = 1. Activity (muscle tone): some flexion = 1. Respirations: weak cry = 1. Total APGAR = 5. Score 7–10 = normal. Score 4–6 = moderate depression — requires oxygen and stimulation. Score 0–3 = severe depression requiring immediate resuscitation.",
+      "distractorRationales": {
+        "b": "6 misses the clinical pattern: Neonatal APGAR oxygen points to 5, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "7 misses the clinical pattern: Neonatal APGAR oxygen points to 5, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "8 misses the clinical pattern: Neonatal APGAR oxygen points to 5, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Neonatal APGAR",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "APGAR ≤6 = requires intervention; acrocyanosis (blue hands/feet only) = 1 point; central cyanosis (blue trunk/face) = 0 points.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb759-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient undergoes repair of a ruptured abdominal aortic aneurysm. Post-operatively, the nurse notes urine output 10 mL/hr for 3 consecutive hours, lower extremity mottling, pain and weakness of both legs, and absent dorsalis pedis pulses bilaterally. MAP is 62 mmHg. Which complication BEST explains all findings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute kidney injury from contrast nephropathy"
+        },
+        {
+          "id": "b",
+          "text": "Abdominal compartment syndrome with visceral and spinal cord ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Bilateral femoral artery thrombosis from arterial catheter placement"
+        },
+        {
+          "id": "d",
+          "text": "Graft limb occlusion with distal ischemia and atheroembolism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop. Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis), and causes visceral ischemia. Mottling and absent pedal pulses in combination with oliguria and leg weakness after AAA repair point to ACS causing multi-organ ischemia. Bladder pressure >20 mmHg with organ dysfunction confirms the diagnosis. Bilateral femoral thrombosis (C) would not explain oliguria. Contrast nephropathy (A) would not explain limb ischemia.",
+      "distractorRationales": {
+        "a": "Acute kidney injury from contrast nephropathy misses the clinical pattern: Medical Surgical Advanced perfusion points to Abdominal compartment syndrome with visceral and spinal cord ischemia, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Bilateral femoral artery thrombosis from arterial catheter placement misses the clinical pattern: Medical Surgical Advanced perfusion points to Abdominal compartment syndrome with visceral and spinal cord ischemia, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Graft limb occlusion with distal ischemia and atheroembolism misses the clinical pattern: Medical Surgical Advanced perfusion points to Abdominal compartment syndrome with visceral and spinal cord ischemia, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-AAA oliguria + lower extremity ischemia + elevated bladder pressure = abdominal compartment syndrome. Measure bladder pressure.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

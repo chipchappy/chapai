@@ -1,0 +1,404 @@
+{
+  "batchId": "mixed-batch-750",
+  "generatedAt": "2026-04-08T16:27:05-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb750-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80\u2013130 bpm, RR 22\u201337 breaths/min, BP approximately 90\u2013100/55\u201365 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age \u2014 neonates have the highest HR and RR, lowest BP.",
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "The surgical team is about to make the first incision. Per the WHO Surgical Safety Checklist, which action must occur at this exact moment, and who must participate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The surgeon alone verbally confirms the surgical site using the patient's consent form"
+        },
+        {
+          "id": "b",
+          "text": "The circulating nurse confirms patient identity and procedure using the patient's wristband"
+        },
+        {
+          "id": "c",
+          "text": "The entire surgical team pauses and verbally confirms: patient identity, surgical site and side, planned procedure, positioning, antibiotic prophylaxis, and any anticipated critical concerns"
+        },
+        {
+          "id": "d",
+          "text": "The anesthesiologist confirms ETT placement with waveform capnography before the time-out begins"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The WHO Surgical Safety Checklist 'time-out' occurs IMMEDIATELY before skin incision and is a mandatory complete pause involving ALL team members: surgeon, anesthesia provider, scrub technician, and circulating nurse. Each member must actively participate \u2014 passive listening does not satisfy the requirement. Items confirmed during time-out: (1) Patient identity (name, DOB, MRN); (2) Surgical site and laterality (confirmed with visible site marking); (3) Planned procedure; (4) Correct patient positioning; (5) Antibiotic prophylaxis administered within the prior 60 minutes; (6) Relevant imaging displayed; (7) Anticipated critical steps, significant blood loss, or special equipment needs. The time-out is distinct from the 'sign-in' (before anesthesia induction) and 'sign-out' (before leaving the OR). Implementation has reduced wrong-site surgery, wrong-patient surgery, and serious complications by more than 50% globally.",
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Time-out: ALL team members pause immediately before incision to verbally confirm patient ID, site/side, procedure, positioning, antibiotic timing, and critical concerns. Individual confirmation is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_medication_safety_five_rights",
+      "subcategory": "Pharmacology / Medication Safety / Five Rights",
+      "difficulty": 2,
+      "stem": "A nurse picks up a syringe that a previous nurse prepared and left in the medication room labeled 'Patient Jones \u2014 morphine 4 mg.' The nurse's patient is Jones and the morphine dose is ordered. Which action should the nurse take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the pre-drawn syringe since it is labeled with the correct patient name and drug"
+        },
+        {
+          "id": "b",
+          "text": "Discard the pre-drawn syringe and prepare a new dose from the medication dispensing system"
+        },
+        {
+          "id": "c",
+          "text": "Ask the previous nurse to verify the dose by phone before administering"
+        },
+        {
+          "id": "d",
+          "text": "Document the medication as given and monitor the patient closely for response"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pre-drawn, unlabeled (or hand-labeled) syringes prepared by another nurse and left in a medication room present serious patient safety risks: the medication, dose, or preparation process cannot be independently verified by the administering nurse. Per safety standards (Joint Commission, ISMP), nurses should never administer a medication that they did not personally prepare and verify from a labeled, system-dispensed source. The pre-drawn syringe should be discarded and a fresh dose prepared directly from the medication dispensing cabinet, allowing the nurse to independently verify the drug, dose, concentration, expiration, and route. Phone verification by the previous nurse is insufficient \u2014 the administering nurse bears full accountability.",
+      "tags": [
+        "Pharmacology / Medication Safety / Five Rights",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Never administer a medication drawn up by another nurse. You cannot verify what is in that syringe. Discard and prepare your own dose. This applies in all settings. The 'rights' of medication administration include right verification \u2014 and that starts with you preparing the medication yourself.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) \u2014 mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease \u2014 rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress \u2014 an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history \u2014 the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives \u2014 alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension \u2014 directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN is caring for four patients and needs to delegate tasks. Which task is appropriate to assign to an unlicensed assistive personnel (UAP/CNA)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the breath sounds of a patient with new-onset dyspnea"
+        },
+        {
+          "id": "b",
+          "text": "Administer a tube feeding to a stable patient via an established G-tube"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative patient 24 hours after hip replacement surgery"
+        },
+        {
+          "id": "d",
+          "text": "Teach a diabetic patient how to perform foot care"
+        }
+      ],
+      "answer": "c",
+      "rationale": "UAPs can perform tasks that are routine, repetitive, and do not require nursing judgment or assessment. Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the RN has assessed the patient's stability. Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Administering tube feedings (B) \u2014 in many states, enteral feeding via established G-tube can be delegated to trained UAPs, but the skill level required is greater than ambulation; this varies by state \u2014 ambulation is universally appropriate for CNA delegation. Patient education (D) is an RN responsibility requiring professional judgment.",
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can perform routine, non-assessment tasks: ambulation, ADLs, vital signs on stable patients, I&O \u2014 assessment, teaching, and medication administration remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 4,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus \u2014 stimulates uterine contraction. (2) Empty the bladder \u2014 a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin \u2014 first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked \u2014 the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb750-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound \u2014 gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound \u2014 Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

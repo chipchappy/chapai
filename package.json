@@ -7,6 +7,12 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "type-check": "npm run type-check --workspace=@chapai/web",
+    "agent:audit": "node scripts/audit-agent-capabilities.mjs --repair",
+    "agent:audit:dry": "node scripts/audit-agent-capabilities.mjs --dry-run",
+    "agent:health": "node scripts/ops/assert-agent-supervision-health.mjs",
+    "agent:supervisor": "node scripts/ops/chapai-agent-supervisor.mjs",
+    "agent:watchdog": "node scripts/ops/chapai-watchdog.mjs",
+    "agent:watchdog:dry": "node scripts/ops/chapai-watchdog.mjs --dry-run",
     "deploy": "turbo deploy"
   },
   "devDependencies": {

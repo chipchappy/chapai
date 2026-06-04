@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-800",
+  "generatedAt": "2026-04-09T05:33:51-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb800-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_dysrhythmias",
+      "subcategory": "Cardiovascular / Dysrhythmias",
+      "difficulty": 3,
+      "stem": "A nurse is monitoring a patient on telemetry when the rhythm suddenly changes to a wide-complex, regular tachycardia at 180 bpm. The patient is alert, with BP 102/60 mmHg and reports palpitations but no chest pain. Which intervention should the nurse anticipate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediate unsynchronized defibrillation at 200J"
+        },
+        {
+          "id": "b",
+          "text": "Prepare for synchronized cardioversion at 100J after sedation"
+        },
+        {
+          "id": "c",
+          "text": "Administer IV adenosine 6 mg rapid push to terminate the rhythm"
+        },
+        {
+          "id": "d",
+          "text": "Apply a 12-lead ECG, notify the provider, and prepare antiarrhythmic therapy (amiodarone or procainamide) while monitoring hemodynamics closely"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Wide-complex tachycardia (WCT) in a hemodynamically stable patient (alert, BP 102/60, no chest pain) requires accurate rhythm identification before treatment. WCT is most commonly ventricular tachycardia (VT) but can also be supraventricular tachycardia with aberrant conduction (SVT-A). A 12-lead ECG helps differentiate. If VT is confirmed: amiodarone or procainamide IV is the antiarrhythmic of choice for stable VT. Synchronized cardioversion is reserved for hemodynamically unstable stable VT (BP < 90, ischemia, altered mental status). Unsynchronized defibrillation (defib) is for pulseless VT/VF. Adenosine is appropriate for narrow-complex SVT; it is not first-line for wide-complex tachycardia and can be harmful in VT.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Cardiovascular / Dysrhythmias",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stable wide-complex tachycardia: 12-lead first \u2192 provider \u2192 antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Dysrhythmias",
+        "caption": "Stable wide-complex tachycardia: 12-lead first \u2192 provider \u2192 antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse.",
+        "conclusion": "Stable wide-complex tachycardia: 12-lead first \u2192 provider \u2192 antiarrhythmic (amiodarone or procainamide for VT). Unstable VT = synchronized cardioversion. Pulseless VT = unsynchronized defibrillation. Never defibrillate a patient who has a pulse."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80\u2013130 bpm, RR 22\u201337 breaths/min, BP approximately 90\u2013100/55\u201365 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age \u2014 neonates have the highest HR and RR, lowest BP.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight \u2014 no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply \u2014 laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO \u22658 hours. Light meals (toast, clear liquids): NPO \u22656 hours. Non-clear liquids including milk and formula: NPO \u22656 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid \u2014 stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids \u22656-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A patient with septic shock is intubated and mechanically ventilated on FiO2 0.65. ABG results: pH 7.28, PaCO2 32 mmHg, HCO3 14 mEq/L, PaO2 74 mmHg. The provider asks the nurse to identify the acid-base disturbance and whether compensation is adequate. Which interpretation is CORRECT?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory alkalosis with metabolic compensation; adequate"
+        },
+        {
+          "id": "b",
+          "text": "Metabolic acidosis with respiratory compensation; compensation is incomplete"
+        },
+        {
+          "id": "c",
+          "text": "Mixed metabolic and respiratory acidosis; no compensation present"
+        },
+        {
+          "id": "d",
+          "text": "Metabolic acidosis with respiratory compensation; compensation is excessive"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Step-by-step: (1) pH 7.28 = acidosis. (2) HCO3 14 = metabolic acidosis (primary). (3) PaCO2 32 = low, meaning lungs are compensating by blowing off CO2 (respiratory compensation). (4) Winter's formula checks adequacy: expected PaCO2 = 1.5(HCO3) + 8 \u00b12 = 1.5(14)+8 = 29 \u00b12 = 27\u201331. Actual PaCO2 is 32, which is slightly above the expected range, meaning compensation is present but slightly incomplete. This pattern is consistent with metabolic acidosis from septic lactic acidosis with partial respiratory compensation.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Use Winter's formula (1.5\u00d7HCO3 + 8 \u00b12) to check adequacy of respiratory compensation for metabolic acidosis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 3,
+      "stem": "A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements, and facial grimacing that persist even when the medication is held. Which condition does this describe?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute dystonia"
+        },
+        {
+          "id": "b",
+          "text": "Tardive dyskinesia"
+        },
+        {
+          "id": "c",
+          "text": "Akathisia"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Tardive dyskinesia (TD) develops after months to years of antipsychotic use. It is characterized by involuntary, repetitive, purposeless movements of the face, tongue, and extremities (lip smacking, tongue protrusion, choreiform movements). Key feature: movements PERSIST or worsen when the antipsychotic is reduced/stopped initially. It may be irreversible. VMAT2 inhibitors (valbenazine, deutetrabenazine) are FDA-approved treatments. Acute dystonia (A) is sudden onset within days and responds to anticholinergics. Akathisia (C) is restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Tardive dyskinesia: involuntary repetitive orofacial movements after years of antipsychotic use \u2014 may be irreversible; treat with VMAT2 inhibitors.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) \u2014 mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease \u2014 rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history \u2014 the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives \u2014 alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension \u2014 directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb800-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN is caring for four patients and needs to delegate tasks. Which task is appropriate to assign to an unlicensed assistive personnel (UAP/CNA)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the breath sounds of a patient with new-onset dyspnea"
+        },
+        {
+          "id": "b",
+          "text": "Administer a tube feeding to a stable patient via an established G-tube"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative patient 24 hours after hip replacement surgery"
+        },
+        {
+          "id": "d",
+          "text": "Teach a diabetic patient how to perform foot care"
+        }
+      ],
+      "answer": "c",
+      "rationale": "UAPs can perform tasks that are routine, repetitive, and do not require nursing judgment or assessment. Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the RN has assessed the patient's stability. Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Administering tube feedings (B) \u2014 in many states, enteral feeding via established G-tube can be delegated to trained UAPs, but the skill level required is greater than ambulation; this varies by state \u2014 ambulation is universally appropriate for CNA delegation. Patient education (D) is an RN responsibility requiring professional judgment.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can perform routine, non-assessment tasks: ambulation, ADLs, vital signs on stable patients, I&O \u2014 assessment, teaching, and medication administration remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

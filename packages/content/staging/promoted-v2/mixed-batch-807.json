@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-807",
+  "generatedAt": "2026-04-09T07:24:56-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb807-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient in a long leg cast following tibial fracture reports severe, unrelenting pain rated 9/10 that is not relieved by opioids, along with paresthesia in the foot and tenseness of the cast. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the PRN opioid analgesic and elevate the extremity above heart level"
+        },
+        {
+          "id": "b",
+          "text": "Assess the 6 P's and notify the provider immediately"
+        },
+        {
+          "id": "c",
+          "text": "Apply ice pack to reduce swelling and reassess in 30 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast padding and document as a comfort measure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia, and paresthesia (early sign of nerve ischemia). The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment. The nurse must notify the provider IMMEDIATELY — compartment syndrome is a surgical emergency requiring fasciotomy within 6 hours to prevent permanent nerve and muscle damage. Elevating above heart level (A) decreases arterial perfusion, worsening ischemia. Ice (C) and cast loosening (D) delay definitive treatment.",
+      "distractorRationales": {
+        "a": "Administer the PRN opioid analgesic and elevate the extremity above heart level misses the clinical pattern: Medical Surgical Advanced perfusion points to Assess the 6 P's and notify the provider immediately, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Apply ice pack to reduce swelling and reassess in 30 minutes misses the clinical pattern: Medical Surgical Advanced perfusion points to Assess the 6 P's and notify the provider immediately, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Loosen the cast padding and document as a comfort measure misses the clinical pattern: Medical Surgical Advanced perfusion points to Assess the 6 P's and notify the provider immediately, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Compartment syndrome 6 P's: pain out of proportion is the EARLIEST sign. Fasciotomy must occur within 6 hours to prevent permanent damage.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 4,
+      "stem": "A patient on lithium for bipolar disorder presents with tremor, ataxia, slurred speech, and confusion. Serum lithium level is 2.4 mEq/L. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the next lithium dose and recheck level in 12 hours"
+        },
+        {
+          "id": "b",
+          "text": "Administer activated charcoal to reduce absorption"
+        },
+        {
+          "id": "c",
+          "text": "Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Lithium toxicity: therapeutic range 0.6–1.2 mEq/L. Level 1.5–2.0 = mild toxicity (nausea, tremor, polyuria). Level 2.0–2.5 = moderate toxicity (ataxia, confusion, slurred speech — this patient). Level >2.5 = severe (seizures, coma, cardiac arrest). Moderate-severe toxicity requires: stop lithium, IV NS hydration (promotes renal lithium excretion), and consideration for hemodialysis (most effective removal method). Simply holding a dose (A) is inadequate. Activated charcoal (B) does not bind lithium effectively. Sodium bicarbonate (D) is used for salicylate toxicity, not lithium.",
+      "distractorRationales": {
+        "a": "Hold the next lithium dose and recheck level in 12 hours misses the clinical pattern: Lithium Toxicity sodium points to Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "b": "Administer activated charcoal to reduce absorption misses the clinical pattern: Lithium Toxicity sodium points to Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion misses the clinical pattern: Lithium Toxicity sodium points to Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium level >2.0 mEq/L with neurological symptoms: stop lithium, IV NS hydration, evaluate for hemodialysis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A nurse needs to assess pain in a 2-year-old who is post-operative and cannot verbalize pain. Which pain assessment tool is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Numeric Rating Scale (0–10) — ask the child to point to a number"
+        },
+        {
+          "id": "b",
+          "text": "FLACC scale (Face, Legs, Activity, Cry, Consolability)"
+        },
+        {
+          "id": "c",
+          "text": "Wong-Baker FACES Pain Rating Scale"
+        },
+        {
+          "id": "d",
+          "text": "Visual Analog Scale (VAS)"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The FLACC scale is validated for infants and young children (<3–4 years) who cannot self-report pain. It assesses five behavioral indicators scored 0–2 each (total 0–10): Face (grimacing vs neutral), Legs (kicking vs relaxed), Activity (arching vs still), Cry (screaming vs quiet), Consolability (inconsolable vs content). Wong-Baker FACES is valid for children ≥3–4 years who can understand the cartoon faces and self-report. Numeric scales require cognitive development typically seen at ≥7 years. VAS requires fine motor pointing and is not validated for toddlers.",
+      "distractorRationales": {
+        "a": "Numeric Rating Scale (0–10) — ask the child to point to a number misses the clinical pattern: Pediatric Nursing pain points to FLACC scale (Face, Legs, Activity, Cry, Consolability), so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "c": "Wong-Baker FACES Pain Rating Scale misses the clinical pattern: Pediatric Nursing pain points to FLACC scale (Face, Legs, Activity, Cry, Consolability), so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "d": "Visual Analog Scale (VAS) misses the clinical pattern: Pediatric Nursing pain points to FLACC scale (Face, Legs, Activity, Cry, Consolability), so choosing it can postpone safety actions and worsen pediatric or newborn instability."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability.",
+        "conclusion": "Pediatric pain scales: FLACC for preverbal/non-verbal children <3–4 years (behavioral); Wong-Baker FACES for ages 3–7 (self-report with faces); Numeric/VAS for age 7+ with cognitive ability."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A 16-year-old male with no prior anesthesia history is 45 minutes into general anesthesia for scoliosis repair using sevoflurane and succinylcholine for intubation. Temperature is now 41.8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg, and the patient is diffusely rigid. The team administers dantrolene 2.5 mg/kg IV. Which statement about dantrolene's mechanism AND the most critical additional intervention is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation"
+        },
+        {
+          "id": "b",
+          "text": "Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves"
+        },
+        {
+          "id": "c",
+          "text": "Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are sufficient once dantrolene is given"
+        },
+        {
+          "id": "d",
+          "text": "Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Dantrolene mechanism: selectively blocks the RYR1 (ryanodine receptor type 1) on the sarcoplasmic reticulum membrane, directly preventing the uncontrolled calcium efflux that drives the MH hypermetabolic crisis. Without continuous calcium release, muscle contraction ceases, and hyperthermia, rigidity, and acidosis begin to resolve. In this case, sevoflurane MUST be stopped immediately — if it was not stopped when masseter rigidity first occurred during succinylcholine administration (an early warning sign), this was a critical error that escalated the crisis. After first dantrolene bolus: (1) Repeat dantrolene 2.5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total); (2) Hyperventilate 100% O2 at high flow (flush volatile agent, treat hypercapnia); (3) Active cooling (ice packs to axillae, groin, neck); (4) Treat VT — avoid calcium channel blockers (interact fatally with dantrolene causing cardiovascular collapse); (5) Sodium bicarbonate for severe acidosis; (6) Treat hyperkalemia. Masseter spasm after succinylcholine should always trigger MH protocol and cessation of volatile agent.",
+      "distractorRationales": {
+        "a": "Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation misses the clinical pattern: Perioperative Care spo2 points to Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are misses the clinical pattern: Perioperative Care spo2 points to Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly misses the clinical pattern: Perioperative Care spo2 points to Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Dantrolene blocks RYR1 calcium release — the direct MH mechanism. Masseter spasm after succinylcholine = abort case immediately, activate MH protocol. Repeat dantrolene q5 min. Avoid calcium channel blockers (interact fatally with dantrolene).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 4,
+      "stem": "A nurse on a step-down unit is monitoring four patients. Which clinical finding requires the nurse to call the rapid response team (RRT) IMMEDIATELY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the last 2 hours and is now using accessory muscles"
+        },
+        {
+          "id": "b",
+          "text": "A 74-year-old with atrial fibrillation with a ventricular rate of 88 bpm, unchanged from admission"
+        },
+        {
+          "id": "c",
+          "text": "A 55-year-old post-cholecystectomy who reports nausea and has vomited once"
+        },
+        {
+          "id": "d",
+          "text": "A 66-year-old with CHF whose morning weight is 2 lbs higher than yesterday"
+        }
+      ],
+      "answer": "a",
+      "rationale": "A rising respiratory rate to 26/min with accessory muscle use in a pneumonia patient signals deteriorating respiratory status and impending respiratory failure—a classic RRT trigger. Tachypnea > 25/min, increased work of breathing, and a worsening trend over 2 hours meets standard early warning score thresholds for team activation. The AFib patient is at a controlled, unchanged rate (not a new emergency). Post-op nausea with one emesis is common and manageable on the unit. A 2-lb overnight weight gain in CHF warrants provider notification but not RRT activation unless accompanied by respiratory distress.",
+      "distractorRationales": {
+        "b": "A 74-year-old with atrial fibrillation with a ventricular rate of 88 bpm, unchanged from admission misses the clinical pattern: Safety And Infection Control / Prioritization breathing points to A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "A 55-year-old post-cholecystectomy who reports nausea and has vomited once misses the clinical pattern: Safety And Infection Control / Prioritization breathing points to A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "A 66-year-old with CHF whose morning weight is 2 lbs higher than yesterday misses the clinical pattern: Safety And Infection Control / Prioritization breathing points to A 60-year-old with pneumonia whose respiratory rate has increased from 18 to 26 breaths/min over the, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RRT triggers include: RR > 25, acute accessory muscle use, O2 sat drop, acute altered mental status, SBP < 90. Trends matter as much as absolute values—worsening over 2 hours is a red flag.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse is conducting a windshield survey of a new community. Which activities are part of this community needs assessment method?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administering surveys to a random sample of 500 residents about health behaviors"
+        },
+        {
+          "id": "b",
+          "text": "Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, and visible health resources"
+        },
+        {
+          "id": "c",
+          "text": "Reviewing hospital admission records to identify the top 5 diagnoses in the zip code"
+        },
+        {
+          "id": "d",
+          "text": "Interviewing community leaders at the health department and city council"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A windshield survey is a direct observational assessment of a community conducted by driving or walking through it. Observations include: housing conditions (quality, density, vacancy), businesses and industries, transportation availability, green space and recreational facilities, visible health hazards (pollution, liquor stores, food deserts), people present (age groups, homelessness), religious institutions, schools, healthcare facilities, and safety indicators. This method provides rapid, first-hand community data before formal surveys or record reviews. It complements quantitative data (vital statistics, epidemiologic data) with qualitative environmental observations.",
+      "distractorRationales": {
+        "a": "Administering surveys to a random sample of 500 residents about health behaviors misses the clinical pattern: Community Health assessment points to Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, and, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Reviewing hospital admission records to identify the top 5 diagnoses in the zip code misses the clinical pattern: Community Health assessment points to Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, and, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Interviewing community leaders at the health department and city council misses the clinical pattern: Community Health assessment points to Driving or walking through the community to observe housing, businesses, transportation, green space, safety indicators, and, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Windshield survey = observational community assessment method; nurse drives/walks through community to document housing, services, hazards, and health resources as a starting point for needs assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A ventilated patient has a PA catheter. Current readings: PCWP 6 mmHg, CVP 2 mmHg, CO 2.4 L/min, SVR 1,840 dyn·s/cm⁵, MAP 52 mmHg. Which hemodynamic profile and etiology is MOST consistent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cardiogenic shock: low CO, high PCWP, high SVR"
+        },
+        {
+          "id": "b",
+          "text": "Distributive (septic) shock: low CO, low PCWP, low SVR"
+        },
+        {
+          "id": "c",
+          "text": "Hypovolemic shock: low CO, low PCWP, high SVR"
+        },
+        {
+          "id": "d",
+          "text": "Obstructive shock: low CO, elevated PCWP, elevated CVP"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Hypovolemic shock profile: low CO (inadequate preload), low PCWP (depleted LV filling), low CVP (low venous return), HIGH SVR (compensatory vasoconstriction to maintain pressure). Distributive/septic shock (B) also has low PCWP but will have LOW SVR (massive vasodilation). Cardiogenic shock (A) has low CO with HIGH PCWP (backed-up fluid). Obstructive shock (D) typically has elevated CVP with equalization of filling pressures. The combination of low CO + low PCWP + HIGH SVR + low MAP = hypovolemia.",
+      "distractorRationales": {
+        "a": "Cardiogenic shock: low CO, high PCWP, high SVR misses the clinical pattern: Critical Care Fundamentals shock points to Hypovolemic shock: low CO, low PCWP, high SVR, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "b": "Distributive (septic) shock: low CO, low PCWP, low SVR misses the clinical pattern: Critical Care Fundamentals shock points to Hypovolemic shock: low CO, low PCWP, high SVR, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Obstructive shock: low CO, elevated PCWP, elevated CVP misses the clinical pattern: Critical Care Fundamentals shock points to Hypovolemic shock: low CO, low PCWP, high SVR, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypovolemic shock: low CO, low PCWP, HIGH SVR. Distributive: low CO, low PCWP, LOW SVR. Cardiogenic: low CO, HIGH PCWP, high SVR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 85-year-old with moderate Alzheimer's dementia becomes extremely agitated, combative, and confused every evening around 5-6 PM (sundowning behavior). She repeatedly attempts to climb out of bed and is at high fall risk. Her family requests soft wrist restraints. Which nursing approach is MOST appropriate as first-line management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning"
+        },
+        {
+          "id": "b",
+          "text": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes"
+        },
+        {
+          "id": "c",
+          "text": "Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection"
+        },
+        {
+          "id": "d",
+          "text": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Physical restraints in elderly dementia patients with sundowning WORSEN outcomes: they increase agitation and distress, increase fall and injury risk (patients attempt to escape restraints), contribute to delirium, cause pressure injuries, aspiration, and death. Restraints are a last resort, never first-line, and require physician order with regular reassessment. Evidence-based non-pharmacological first-line approaches: (1) Light therapy — bright light exposure in the morning resets circadian rhythm; reduce stimulation in the evening; (2) Consistent daily routine and familiar environment; (3) Family presence during peak agitation times (5-7 PM); (4) Structured meaningful activity during the day prevents excessive daytime sleeping; (5) Calm, simple, one-step verbal redirection. If pharmacotherapy is needed after non-pharmacological failure, low-dose scheduled quetiapine may be considered. High-dose IV haloperidol is not appropriate first-line. Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall risk.",
+      "distractorRationales": {
+        "a": "Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning misses the clinical pattern: Gerontology aspiration points to Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "b": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes misses the clinical pattern: Gerontology aspiration points to Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening misses the clinical pattern: Gerontology aspiration points to Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sundowning first-line: non-pharmacological — light therapy, routine, family presence, daytime activity, redirection. Physical restraints WORSEN agitation and cause harm. Benzodiazepines contraindicated in elderly dementia patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "Mandatory Reporting",
+      "difficulty": 3,
+      "stem": "A nurse caring for a 7-year-old child notices multiple bruises in various stages of healing on the torso, bilateral arm bruises with patterned marks, and the child flinches when the nurse approaches. The mother explains the bruises are from 'falling off a bike.' Which nursing action is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document the mother's explanation in the chart and continue routine care"
+        },
+        {
+          "id": "b",
+          "text": "Confront the mother and ask her directly if she is abusing the child"
+        },
+        {
+          "id": "c",
+          "text": "Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is certain"
+        },
+        {
+          "id": "d",
+          "text": "Discuss concerns with the healthcare team and only report if the physician agrees the findings are suspicious"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Nurses are mandatory reporters in all 50 states. Mandatory reporting requires reporting SUSPICION of child abuse — absolute certainty is not required. A nurse who fails to report suspected child abuse can face criminal charges, license sanctions, and civil liability. The threshold is reasonable suspicion based on assessment findings. The report goes directly to the state's child protective services (CPS) — this is the nurse's independent legal obligation, not contingent on physician agreement (D). Confronting the caregiver (B) may endanger the child. Documentation alone (A) does not fulfill the mandatory report obligation.",
+      "distractorRationales": {
+        "a": "Document the mother's explanation in the chart and continue routine care misses the clinical pattern: Mandatory Reporting assessment points to Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "b": "Confront the mother and ask her directly if she is abusing the child misses the clinical pattern: Mandatory Reporting assessment points to Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "d": "Discuss concerns with the healthcare team and only report if the physician agrees the findings are misses the clinical pattern: Mandatory Reporting assessment points to Report suspicion of child abuse to the appropriate state agency regardless of whether the nurse is, so choosing it can postpone safety actions and worsen pediatric or newborn instability."
+      },
+      "tags": [
+        "Mandatory Reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reporting: report SUSPICION of abuse — you do not need to be certain; report directly to CPS; this is the nurse's legal obligation regardless of physician agreement.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb807-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400. How should this be documented correctly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Backdate the entry to 0900 to reflect the actual time of administration"
+        },
+        {
+          "id": "b",
+          "text": "Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response"
+        },
+        {
+          "id": "c",
+          "text": "Use correction fluid (Wite-Out) to correct the medication administration record if paper-based"
+        },
+        {
+          "id": "d",
+          "text": "Skip documenting the medication since it was already administered and observed to have been effective"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Late entry documentation: write the current date and time, clearly label as 'late entry,' include the actual time the event occurred, and document the relevant information. This maintains an accurate legal and clinical record without misrepresentation. Backdating (A) is falsification of medical records — a criminal offense and grounds for license revocation. Correction fluid (C) is never used in medical records; errors are corrected by drawing a single line through the error, initialing, dating, and noting 'error' — never obliterating. Omitting documentation (D) creates a legal and clinical record gap.",
+      "distractorRationales": {
+        "a": "Backdate the entry to 0900 to reflect the actual time of administration misses the clinical pattern: Documentation fluid points to Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Use correction fluid (Wite-Out) to correct the medication administration record if paper-based misses the clinical pattern: Documentation fluid points to Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Skip documenting the medication since it was already administered and observed to have been effective misses the clinical pattern: Documentation fluid points to Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Late entry: write current time, label 'late entry,' include actual event time — backdating is falsification; never use Wite-Out on medical records.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

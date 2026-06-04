@@ -82,6 +82,7 @@ const schema = z.object({
   questionType: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).optional(),
   type: z.enum(["mcq", "sata", "ordering", "matrix", "case_study", "bow_tie"]).optional(),
   ngnOnly: z.boolean().optional(),
+  personalize: z.boolean().optional(),
   count:    z.union([
     z.literal(5), z.literal(10), z.literal(20), z.literal(25), z.literal(50), z.literal(75), z.literal(100)
   ]).default(10),
@@ -157,9 +158,40 @@ export async function POST(req: NextRequest) {
 
     const db = getDB(env);
     let questionList: QuizQuestion[] = [];
+
+    // For authed users with personalize + no explicit category/type, fetch their
+    // category accuracy so we can bias selection toward weak areas.
+    let categoryAccuracy: Record<string, { accuracy: number; answered: number }> | undefined;
+    const shouldPersonalize =
+      Boolean(parsed.data.personalize) &&
+      Boolean(user?.id) &&
+      !config.category &&
+      !config.questionType &&
+      !config.ngnOnly;
+
+    if (shouldPersonalize && user?.id) {
+      try {
+        const { getStudentDashboardData } = await import("@/lib/student-dashboard");
+        const dash = await getStudentDashboardData(db, { userId: user.id, email: user.email ?? null });
+        const map: Record<string, { accuracy: number; answered: number }> = {};
+        for (const stat of dash.categoryStats) {
+          if (stat.exam === config.exam) {
+            map[stat.category] = { accuracy: stat.accuracy, answered: stat.answered };
+          }
+        }
+        if (Object.keys(map).length > 0) {
+          categoryAccuracy = map;
+        }
+      } catch (error) {
+        logError("quiz/start personalize fetch failed", error, requestContext);
+      }
+    }
+
     try {
       questionList = await selectQuestions(db, config, {
         questionBankAccessPercent: access.questionBankAccessPercent,
+        personalize: shouldPersonalize,
+        categoryAccuracy,
       });
     } catch (error) {
       logError("quiz/start selection failed", error, requestContext);

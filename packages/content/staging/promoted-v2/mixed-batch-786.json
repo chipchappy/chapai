@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-786",
+  "generatedAt": "2026-04-09T01:21:02-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb786-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "Pharmacology / Metformin Safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "distractorRationales": {
+        "a": "Administer metformin as scheduled since the procedure is elective misses the clinical pattern: Pharmacology / Metformin Safety insulin points to Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "Switch the patient to insulin therapy permanently before the procedure misses the clinical pattern: Pharmacology / Metformin Safety insulin points to Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "Administer metformin with the morning meal on the day of the procedure and hold only for misses the clinical pattern: Pharmacology / Metformin Safety insulin points to Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "Pharmacology / Metformin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10 misses the clinical pattern: Safety And Infection Control / Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "c": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights misses the clinical pattern: Safety And Infection Control / Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "d": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due misses the clinical pattern: Safety And Infection Control / Prioritization infection points to A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "shoulder_dystocia",
+      "subcategory": "Shoulder Dystocia",
+      "difficulty": 4,
+      "stem": "During delivery, after the baby's head delivers, the anterior shoulder fails to deliver. The turtle sign is present (head retracts against the perineum). Which intervention is attempted FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply fundal pressure to push the baby down"
+        },
+        {
+          "id": "b",
+          "text": "McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure"
+        },
+        {
+          "id": "c",
+          "text": "Zavanelli maneuver: cephalic replacement followed by emergency cesarean"
+        },
+        {
+          "id": "d",
+          "text": "Perform an episiotomy to enlarge the vaginal opening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Shoulder dystocia is an obstetric emergency. The McRoberts maneuver (sharply flexing maternal thighs onto the abdomen) flattens the lumbar lordosis and rotates the pubic symphysis superiorly, increasing the functional AP diameter of the pelvis. Combined with suprapubic pressure (pushing the anterior shoulder downward and laterally), this resolves approximately 90% of cases. Fundal pressure (A) is absolutely contraindicated — it worsens impaction of the shoulder. Zavanelli maneuver (C) is a last resort when all other maneuvers fail. Episiotomy (D) alone does not help shoulder dystocia as the obstruction is bony, not soft tissue.",
+      "distractorRationales": {
+        "a": "Apply fundal pressure to push the baby down misses the clinical pattern: Shoulder Dystocia safety points to McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Zavanelli maneuver: cephalic replacement followed by emergency cesarean misses the clinical pattern: Shoulder Dystocia safety points to McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Perform an episiotomy to enlarge the vaginal opening misses the clinical pattern: Shoulder Dystocia safety points to McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Shoulder Dystocia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Shoulder dystocia: McRoberts + suprapubic pressure first; fundal pressure is absolutely contraindicated — it worsens the impaction.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient undergoes repair of a ruptured abdominal aortic aneurysm. Post-operatively, the nurse notes urine output 10 mL/hr for 3 consecutive hours, lower extremity mottling, pain and weakness of both legs, and absent dorsalis pedis pulses bilaterally. MAP is 62 mmHg. Which complication BEST explains all findings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute kidney injury from contrast nephropathy"
+        },
+        {
+          "id": "b",
+          "text": "Abdominal compartment syndrome with visceral and spinal cord ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Bilateral femoral artery thrombosis from arterial catheter placement"
+        },
+        {
+          "id": "d",
+          "text": "Graft limb occlusion with distal ischemia and atheroembolism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop. Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis), and causes visceral ischemia. Mottling and absent pedal pulses in combination with oliguria and leg weakness after AAA repair point to ACS causing multi-organ ischemia. Bladder pressure >20 mmHg with organ dysfunction confirms the diagnosis. Bilateral femoral thrombosis (C) would not explain oliguria. Contrast nephropathy (A) would not explain limb ischemia.",
+      "distractorRationales": {
+        "a": "Acute kidney injury from contrast nephropathy misses the clinical pattern: Medical Surgical Advanced perfusion points to Abdominal compartment syndrome with visceral and spinal cord ischemia, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Bilateral femoral artery thrombosis from arterial catheter placement misses the clinical pattern: Medical Surgical Advanced perfusion points to Abdominal compartment syndrome with visceral and spinal cord ischemia, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Graft limb occlusion with distal ischemia and atheroembolism misses the clinical pattern: Medical Surgical Advanced perfusion points to Abdominal compartment syndrome with visceral and spinal cord ischemia, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-AAA oliguria + lower extremity ischemia + elevated bladder pressure = abdominal compartment syndrome. Measure bladder pressure.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 2,
+      "stem": "A community health nurse is teaching a group of nursing students about levels of prevention. Which example correctly illustrates primary prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Providing mammography screening to detect early breast cancer in women over 40"
+        },
+        {
+          "id": "b",
+          "text": "Administering the influenza vaccine to a healthy adult before flu season"
+        },
+        {
+          "id": "c",
+          "text": "Prescribing physical therapy for a patient recovering from a hip fracture"
+        },
+        {
+          "id": "d",
+          "text": "Conducting a colonoscopy to identify and remove pre-cancerous polyps"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Primary prevention: actions taken before disease occurs to prevent onset. Examples: immunization, health education, smoking cessation counseling, fluoridated water, condom use. Secondary prevention: early detection of existing disease (screening) — mammography, colonoscopy, blood pressure screening, Pap smear. Tertiary prevention: reducing disability and restoring function in patients with established disease — rehabilitation, cardiac rehab, chronic disease management. Mammography and colonoscopy are secondary prevention (detecting disease before symptoms). Physical therapy post-fracture is tertiary prevention.",
+      "distractorRationales": {
+        "a": "Providing mammography screening to detect early breast cancer in women over 40 misses the clinical pattern: Community Health cardiac points to Administering the influenza vaccine to a healthy adult before flu season, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Prescribing physical therapy for a patient recovering from a hip fracture misses the clinical pattern: Community Health cardiac points to Administering the influenza vaccine to a healthy adult before flu season, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Conducting a colonoscopy to identify and remove pre-cancerous polyps misses the clinical pattern: Community Health cardiac points to Administering the influenza vaccine to a healthy adult before flu season, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Primary prevention = before disease (vaccines, education); Secondary = early detection (screening); Tertiary = limit disability/restore function (rehab). Not to be confused with clinical levels of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress — an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "A patient who is anxious about an upcoming procedure misses the clinical pattern: Critical Care Fundamentals oxygenation points to A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "A patient who needs discharge teaching before going home misses the clinical pattern: Critical Care Fundamentals oxygenation points to A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "A patient asking for pain medication rated 4/10 misses the clinical pattern: Critical Care Fundamentals oxygenation points to A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives — alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension — directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "Age >65 and female gender misses the clinical pattern: Gerontology calcium points to History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Mild bilateral hearing loss and BMI of 29 misses the clinical pattern: Gerontology calcium points to History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Mild arthritis in both knees and occasional evening confusion misses the clinical pattern: Gerontology calcium points to History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN is caring for four patients and needs to delegate tasks. Which task is appropriate to assign to an unlicensed assistive personnel (UAP/CNA)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the breath sounds of a patient with new-onset dyspnea"
+        },
+        {
+          "id": "b",
+          "text": "Administer a tube feeding to a stable patient via an established G-tube"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative patient 24 hours after hip replacement surgery"
+        },
+        {
+          "id": "d",
+          "text": "Teach a diabetic patient how to perform foot care"
+        }
+      ],
+      "answer": "c",
+      "rationale": "UAPs can perform tasks that are routine, repetitive, and do not require nursing judgment or assessment. Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the RN has assessed the patient's stability. Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Administering tube feedings (B) — in many states, enteral feeding via established G-tube can be delegated to trained UAPs, but the skill level required is greater than ambulation; this varies by state — ambulation is universally appropriate for CNA delegation. Patient education (D) is an RN responsibility requiring professional judgment.",
+      "distractorRationales": {
+        "a": "Assess the breath sounds of a patient with new-onset dyspnea misses the clinical pattern: Delegation delegation points to Ambulate a postoperative patient 24 hours after hip replacement surgery, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "b": "Administer a tube feeding to a stable patient via an established G-tube misses the clinical pattern: Delegation delegation points to Ambulate a postoperative patient 24 hours after hip replacement surgery, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Teach a diabetic patient how to perform foot care misses the clinical pattern: Delegation delegation points to Ambulate a postoperative patient 24 hours after hip replacement surgery, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can perform routine, non-assessment tasks: ambulation, ADLs, vital signs on stable patients, I&O — assessment, teaching, and medication administration remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "Therapeutic Communication",
+      "difficulty": 2,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation — 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "'I understand. Sometimes things feel hopeless, but you have so much to live for.' misses the clinical pattern: Therapeutic Communication safety points to 'Tell me more about what you mean when you say nothing matters.', so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "'Everyone feels that way sometimes. It will get better soon.' misses the clinical pattern: Therapeutic Communication safety points to 'Tell me more about what you mean when you say nothing matters.', so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "'You shouldn't think like that. Let's focus on the positive things in your life.' misses the clinical pattern: Therapeutic Communication safety points to 'Tell me more about what you mean when you say nothing matters.', so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "Therapeutic Communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb786-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to ≥ 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "The patient reports less anxiety and requests to watch television misses the clinical pattern: Respiratory / Oxygenation ventilation points to Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Adventitious breath sounds increase bilaterally after the nebulizer misses the clinical pattern: Respiratory / Oxygenation ventilation points to Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "The patient's skin color remains unchanged and RR remains at 24/min misses the clinical pattern: Respiratory / Oxygenation ventilation points to Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

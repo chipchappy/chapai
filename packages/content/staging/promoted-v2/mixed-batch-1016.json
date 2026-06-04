@@ -1,0 +1,647 @@
+{
+  "batchId": "mixed-batch-1016",
+  "generatedAt": "2026-04-11T08:55:49-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb1016-n001",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "pheochromocytoma_crisis",
+      "subcategory": "pheochromocytoma_crisis",
+      "difficulty": 3,
+      "stem": "For each finding, click to specify whether the finding is more consistent with pheochromocytoma crisis or less consistent with pheochromocytoma crisis.",
+      "scenarioTitle": "Catecholamine surge pattern",
+      "scenario": "The client reports recurrent episodes of severe headache and pounding palpitations.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with pheochromocytoma crisis"
+        }
+      ],
+      "answer": {
+        "Diaphoresis with severe hypertension": "More consistent with pheochromocytoma crisis",
+        "Sudden pounding headache": "More consistent with pheochromocytoma crisis",
+        "Slow progressive ankle edema only": "Less consistent with pheochromocytoma crisis",
+        "Chronic productive cough": "Less consistent with pheochromocytoma crisis"
+      },
+      "matrixColumns": [
+        "More consistent with pheochromocytoma crisis",
+        "Less consistent with pheochromocytoma crisis"
+      ],
+      "matrixRows": [
+        {
+          "label": "Diaphoresis with severe hypertension",
+          "answer": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Sudden pounding headache",
+          "answer": "More consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Slow progressive ankle edema only",
+          "answer": "Less consistent with pheochromocytoma crisis"
+        },
+        {
+          "label": "Chronic productive cough",
+          "answer": "Less consistent with pheochromocytoma crisis"
+        }
+      ],
+      "rationale": "Pheochromocytoma crisis is solved faster when the learner bundles headache, diaphoresis, palpitations, and severe hypertension as a catecholamine surge pattern. Chronic, non-episodic findings push the answer away from this diagnosis.",
+      "distractorRationales": {
+        "a": "More consistent with pheochromocytoma crisis misses the clinical pattern: Pheochromocytoma Crisis hypertension points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "b": "Less consistent with pheochromocytoma crisis misses the clinical pattern: Pheochromocytoma Crisis hypertension points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "pheochromocytoma_crisis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Headache, diaphoresis, palpitations, and severe episodic hypertension belong together as a pheochromocytoma pattern.",
+      "speedCue": "The speed clue is episodic sympathetic surge, not slow chronic symptom drift.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n002",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "tumor_lysis_syndrome",
+      "subcategory": "tumor_lysis_syndrome",
+      "difficulty": 3,
+      "stem": "Which conclusion should direct the nurse's next move after this chemotherapy change?",
+      "scenarioTitle": "Electrolyte crash after induction therapy",
+      "scenario": "A client with high-grade lymphoma is 18 hours into induction chemotherapy and reports worsening weakness and nausea.",
+      "additionalInfo": "Telemetry now shows peaked T waves, urine output has fallen, potassium is 6.1 mEq/L, phosphate is elevated, and creatinine is rising.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected chemotherapy fatigue that only needs rest"
+        },
+        {
+          "id": "c",
+          "text": "Uncomplicated dehydration that can wait for the next shift"
+        },
+        {
+          "id": "d",
+          "text": "Simple nausea from treatment without true metabolic collapse"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The speed clue is post-chemotherapy electrolyte collapse with telemetry change and falling renal function. The nurse should answer from hyperkalemic and renal risk, not from a vague oncology side-effect frame.",
+      "distractorRationales": {
+        "b": "Expected chemotherapy fatigue that only needs rest misses the clinical pattern: Tumor Lysis Syndrome electrolyte points to Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Uncomplicated dehydration that can wait for the next shift misses the clinical pattern: Tumor Lysis Syndrome electrolyte points to Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Simple nausea from treatment without true metabolic collapse misses the clinical pattern: Tumor Lysis Syndrome electrolyte points to Tumor lysis syndrome requiring urgent electrolyte rescue and renal-protection escalation, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "tumor_lysis_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In tumor lysis syndrome, the timeline after chemotherapy matters as much as the individual lab values.",
+      "speedCue": "Chemo plus peaked T waves plus worsening creatinine should feel immediate.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n003",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "severe_hyponatremia_seizure",
+      "subcategory": "severe_hyponatremia_seizure",
+      "difficulty": 3,
+      "stem": "Which findings make severe symptomatic hyponatremia the best interpretation? Select all that apply.",
+      "scenarioTitle": "Hyponatremia emergency clue set",
+      "scenario": "A client taking a thiazide diuretic becomes progressively more confused during admission.",
+      "additionalInfo": "The nurse is deciding whether the change is mostly electrolyte collapse or routine fatigue.",
+      "options": [
+        {
+          "id": "a",
+          "text": "New confusion with headache"
+        },
+        {
+          "id": "b",
+          "text": "Seizure activity after worsening mentation"
+        },
+        {
+          "id": "c",
+          "text": "Serum sodium of 118 mEq/L"
+        },
+        {
+          "id": "d",
+          "text": "Dry hacking cough for 1 week"
+        },
+        {
+          "id": "e",
+          "text": "Normal orientation and steady gait"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The key cluster is a very low sodium level plus acute neurologic deterioration. The nurse should read the lab and the brain symptoms together, because that combination changes the urgency immediately.",
+      "distractorRationales": {
+        "d": "Dry hacking cough for 1 week misses the clinical pattern: Severe Hyponatremia Seizure electrolyte points to New confusion with headache plus Seizure activity after worsening mentation plus Serum sodium of 118 mEq/L, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "e": "Normal orientation and steady gait misses the clinical pattern: Severe Hyponatremia Seizure electrolyte points to New confusion with headache plus Seizure activity after worsening mentation plus Serum sodium of 118 mEq/L, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "severe_hyponatremia_seizure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "A sodium number matters more when the nervous system is already failing in front of you.",
+      "speedCue": "Low sodium plus neuro change is the shortcut; don't split the clue cluster apart.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n004",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "ectopic_pregnancy_rupture",
+      "subcategory": "ectopic_pregnancy_rupture",
+      "difficulty": 3,
+      "stem": "Which conclusion should guide the nurse's first move in this triage presentation?",
+      "scenarioTitle": "Early-pregnancy hemorrhage case",
+      "scenario": "A client with a positive home pregnancy test presents with severe right-sided pelvic pain, dizziness, and shoulder pain.",
+      "additionalInfo": "Blood pressure is 86/48 mm Hg, heart rate is 128/min, and a small amount of dark vaginal bleeding is present.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected implantation discomfort that can wait for clinic follow-up"
+        },
+        {
+          "id": "c",
+          "text": "Placenta previa because vaginal bleeding is present"
+        },
+        {
+          "id": "d",
+          "text": "Hyperemesis only because pregnancy symptoms are common early"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pregnancy plus unilateral pain, shoulder pain, hypotension, and bleeding create a hemorrhage map. The nurse should answer from shock risk, not from the small amount of visible bleeding.",
+      "distractorRationales": {
+        "b": "Expected implantation discomfort that can wait for clinic follow-up misses the clinical pattern: Ectopic Pregnancy Rupture bleeding points to Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Placenta previa because vaginal bleeding is present misses the clinical pattern: Ectopic Pregnancy Rupture bleeding points to Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Hyperemesis only because pregnancy symptoms are common early misses the clinical pattern: Ectopic Pregnancy Rupture bleeding points to Ruptured ectopic pregnancy requiring immediate hemorrhage-focused escalation, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "ectopic_pregnancy_rupture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Shoulder pain can be the clue that makes internal bleeding feel obvious instead of subtle.",
+      "speedCue": "Positive pregnancy plus one-sided pain plus hypotension is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n005",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "neuroleptic_malignant_syndrome",
+      "subcategory": "neuroleptic_malignant_syndrome",
+      "difficulty": 3,
+      "stem": "Which conclusion should drive the nurse's next move in this medication reaction?",
+      "scenarioTitle": "Rigid fevered client after antipsychotic change",
+      "scenario": "A client who started fluphenazine 2 days ago is febrile, diaphoretic, rigid, and difficult to arouse.",
+      "additionalInfo": "Heart rate is 132/min, blood pressure is fluctuating, and the client has no diarrhea or inducible clonus.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected sedation that only needs extra rest"
+        },
+        {
+          "id": "c",
+          "text": "Serotonin syndrome because fever is present"
+        },
+        {
+          "id": "d",
+          "text": "A benign viral illness unrelated to the medication"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is rigidity, fever, autonomic instability, and recent antipsychotic exposure. The nurse should connect the rigid high-fever picture to neuroleptic malignant syndrome and escalate quickly instead of drifting toward softer explanations.",
+      "distractorRationales": {
+        "b": "Expected sedation that only needs extra rest misses the clinical pattern: Neuroleptic Malignant Syndrome reaction points to Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Serotonin syndrome because fever is present misses the clinical pattern: Neuroleptic Malignant Syndrome reaction points to Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "A benign viral illness unrelated to the medication misses the clinical pattern: Neuroleptic Malignant Syndrome reaction points to Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "neuroleptic_malignant_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity.",
+      "speedCue": "High fever plus rigidity after a dopamine-blocking drug is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neuroleptic_malignant_syndrome",
+        "caption": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity.",
+        "conclusion": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n006",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "placental_abruption_pain",
+      "subcategory": "placental_abruption_pain",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's response to this bleeding pattern?",
+      "scenarioTitle": "Painful bleed with fetal change",
+      "scenario": "A client at 36 weeks' gestation has sudden abdominal pain after a minor vehicle collision.",
+      "additionalInfo": "Dark vaginal bleeding is present, the uterus feels rigid, and the fetal heart tracing now shows recurrent late decelerations.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Placental abruption requiring immediate maternal-fetal stabilization and provider escalation"
+        },
+        {
+          "id": "b",
+          "text": "Placenta previa because any third-trimester bleeding is usually painless"
+        },
+        {
+          "id": "c",
+          "text": "Normal post-trauma observation findings with no urgent fetal risk"
+        },
+        {
+          "id": "d",
+          "text": "False labor that only needs hydration and reassessment"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pain, dark bleeding, uterine rigidity, and fetal compromise form an abruption pattern. The safest answer is the one that treats this as a perfusion emergency for both parent and fetus.",
+      "distractorRationales": {
+        "b": "Placenta previa because any third-trimester bleeding is usually painless misses the clinical pattern: Placental Abruption Pain perfusion points to Placental abruption requiring immediate maternal-fetal stabilization and provider escalation, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Normal post-trauma observation findings with no urgent fetal risk misses the clinical pattern: Placental Abruption Pain perfusion points to Placental abruption requiring immediate maternal-fetal stabilization and provider escalation, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "False labor that only needs hydration and reassessment misses the clinical pattern: Placental Abruption Pain perfusion points to Placental abruption requiring immediate maternal-fetal stabilization and provider escalation, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "placental_abruption_pain",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pain plus a firm uterus should pull you away from previa and toward abruption fast.",
+      "speedCue": "Rigid uterus plus painful bleeding is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n007",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "cord_prolapse_positioning",
+      "difficulty": 3,
+      "stem": "Which decision map should guide the nurse's next move in this fetal emergency?",
+      "scenarioTitle": "Cord pressure relief map",
+      "scenario": "Immediately after spontaneous rupture of membranes, the fetal heart rate drops to 70/min and remains there.",
+      "additionalInfo": "The nurse palpates a pulsating loop of cord in the vagina while the client is still in bed.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation"
+        },
+        {
+          "id": "b",
+          "text": "Normal transient deceleration that only needs continued monitoring"
+        },
+        {
+          "id": "c",
+          "text": "Placenta previa with no positioning urgency"
+        },
+        {
+          "id": "d",
+          "text": "Benign fetal sleep cycle that should resolve without bedside action"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is rupture of membranes, sudden profound bradycardia, and a palpable cord. The nurse should answer from relieving cord compression first, not from interpreting this as a softer tracing issue.",
+      "distractorRationales": {
+        "b": "Normal transient deceleration that only needs continued monitoring misses the clinical pattern: Cord Prolapse Positioning bradycardia points to Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Placenta previa with no positioning urgency misses the clinical pattern: Cord Prolapse Positioning bradycardia points to Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Benign fetal sleep cycle that should resolve without bedside action misses the clinical pattern: Cord Prolapse Positioning bradycardia points to Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "cord_prolapse_positioning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The life-saving move is driven by pressure relief, not by waiting for better fetal data.",
+      "speedCue": "A visible or palpable cord plus fetal bradycardia should make the map immediate.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n008",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "organophosphate_poisoning",
+      "subcategory": "organophosphate_poisoning",
+      "difficulty": 3,
+      "stem": "Which decision map best fits this toxic-exposure presentation?",
+      "scenarioTitle": "Cholinergic toxicity map",
+      "scenario": "A farm worker arrives drenched in pesticide with wheezing, salivation, diarrhea, and pinpoint pupils.",
+      "additionalInfo": "The client is bradycardic, sweaty, and increasingly confused.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Opioid overdose because the pupils are constricted"
+        },
+        {
+          "id": "c",
+          "text": "Simple gastroenteritis with incidental wheezing"
+        },
+        {
+          "id": "d",
+          "text": "Expected heat exhaustion that only needs water and rest"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The speed clue is the wet cholinergic cluster: secretions, wheezing, diarrhea, bradycardia, and miosis after pesticide exposure. The nurse should choose the map that removes exposure risk and treats the toxidrome fast.",
+      "distractorRationales": {
+        "b": "Opioid overdose because the pupils are constricted misses the clinical pattern: Organophosphate Poisoning bradycardia points to Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Simple gastroenteritis with incidental wheezing misses the clinical pattern: Organophosphate Poisoning bradycardia points to Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Expected heat exhaustion that only needs water and rest misses the clinical pattern: Organophosphate Poisoning bradycardia points to Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "organophosphate_poisoning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When the stem looks wet in every direction, think cholinergic toxicity before you chase one isolated symptom.",
+      "speedCue": "Wet lungs, wet skin, wet gut, small pupils, pesticide.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n009",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "neonatal_sepsis_instability",
+      "subcategory": "neonatal_sepsis_instability",
+      "difficulty": 3,
+      "stem": "Which conclusion best fits this newborn's change in status?",
+      "scenarioTitle": "Newborn sepsis cue map",
+      "scenario": "A 22-hour-old newborn is feeding poorly, becomes limp during assessment, and has episodes of shallow breathing with temperature 36.0 C (96.8 F).",
+      "additionalInfo": "The parent says the baby was more alert earlier and is now difficult to wake for feeds.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Early neonatal sepsis pattern requiring prompt escalation and full sepsis evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Normal first-day newborn sleepiness with no urgent concern"
+        },
+        {
+          "id": "c",
+          "text": "Transient feeding intolerance only"
+        },
+        {
+          "id": "d",
+          "text": "Expected cooling that will resolve with a blanket alone"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Poor feeding, lethargy, temperature instability, and breathing change create a high-risk neonatal sepsis pattern. The nurse should connect the instability cluster quickly instead of explaining each sign away separately.",
+      "distractorRationales": {
+        "b": "Normal first-day newborn sleepiness with no urgent concern misses the clinical pattern: Neonatal Sepsis Instability breathing points to Early neonatal sepsis pattern requiring prompt escalation and full sepsis evaluation, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Transient feeding intolerance only misses the clinical pattern: Neonatal Sepsis Instability breathing points to Early neonatal sepsis pattern requiring prompt escalation and full sepsis evaluation, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Expected cooling that will resolve with a blanket alone misses the clinical pattern: Neonatal Sepsis Instability breathing points to Early neonatal sepsis pattern requiring prompt escalation and full sepsis evaluation, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "neonatal_sepsis_instability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Several subtle instability clues together should outweigh one reassuring explanation in a newborn.",
+      "speedCue": "When feeding, temperature, arousal, and breathing all drift the wrong way together, think sepsis early.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n010",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "dka_fluid_priority",
+      "subcategory": "dka_fluid_priority",
+      "difficulty": 3,
+      "stem": "Which clinical map should guide the nurse's first moves for this client with diabetic ketoacidosis?",
+      "scenarioTitle": "DKA stabilization decision map",
+      "scenario": "A client with type 1 diabetes arrives vomiting, tachypneic, and confused after two days of flu-like illness.",
+      "additionalInfo": "Blood glucose is 598 mg/dL, potassium is 5.6 mEq/L, bicarbonate is 9 mEq/L, blood pressure is 84/46 mm Hg, and mucous membranes are very dry.",
+      "options": [
+        {
+          "id": "a",
+          "text": "DKA shock pattern requiring isotonic fluid resuscitation before downstream insulin progression"
+        },
+        {
+          "id": "b",
+          "text": "Hyperglycemia alone that should be corrected with long-acting insulin first"
+        },
+        {
+          "id": "c",
+          "text": "Simple dehydration treatable with oral fluids because potassium is high"
+        },
+        {
+          "id": "d",
+          "text": "Stable diabetes management issue that can wait for repeat chemistry values"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The nurse should map this as a perfusion and acidosis emergency first. Severe dehydration, hypotension, and Kussmaul respirations point to fluid-first stabilization before routine insulin thinking.",
+      "distractorRationales": {
+        "b": "Hyperglycemia alone that should be corrected with long-acting insulin first misses the clinical pattern: Dka Fluid Priority perfusion points to DKA shock pattern requiring isotonic fluid resuscitation before downstream insulin progression, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Simple dehydration treatable with oral fluids because potassium is high misses the clinical pattern: Dka Fluid Priority perfusion points to DKA shock pattern requiring isotonic fluid resuscitation before downstream insulin progression, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Stable diabetes management issue that can wait for repeat chemistry values misses the clinical pattern: Dka Fluid Priority perfusion points to DKA shock pattern requiring isotonic fluid resuscitation before downstream insulin progression, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "dka_fluid_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In DKA, the first answer comes from perfusion failure, not from glucose alone.",
+      "speedCue": "Hypotension plus dehydration plus Kussmaul breathing should instantly move fluids ahead of routine diabetes tasks.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n011",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "pulmonary_embolism_post_op",
+      "subcategory": "pulmonary_embolism_post_op",
+      "difficulty": 3,
+      "stem": "Which clinical map best explains this client's sudden change after surgery?",
+      "scenarioTitle": "Post-op PE decision map",
+      "scenario": "A client 2 days after abdominal surgery suddenly becomes short of breath with pleuritic chest pain while walking.",
+      "additionalInfo": "Oxygen saturation drops to 88%, heart rate is 132/min, and one calf is visibly more swollen than the other.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse"
+        },
+        {
+          "id": "b",
+          "text": "Routine postoperative fatigue from ambulation only"
+        },
+        {
+          "id": "c",
+          "text": "Panic symptoms without a clot-related emergency"
+        },
+        {
+          "id": "d",
+          "text": "Incisional pain causing harmless rapid breathing"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The decision map is sudden dyspnea plus pleuritic pain, hypoxemia, tachycardia, and a DVT clue. The nurse should treat this as PE until proven otherwise and escalate immediately.",
+      "distractorRationales": {
+        "b": "Routine postoperative fatigue from ambulation only misses the clinical pattern: Pulmonary Embolism Post Op oxygen points to Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Panic symptoms without a clot-related emergency misses the clinical pattern: Pulmonary Embolism Post Op oxygen points to Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Incisional pain causing harmless rapid breathing misses the clinical pattern: Pulmonary Embolism Post Op oxygen points to Pulmonary embolism pattern requiring urgent escalation for perfusion and oxygenation collapse, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "pulmonary_embolism_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When respiratory collapse travels with a clot clue, the answer should come from perfusion risk, not reassurance.",
+      "speedCue": "The fastest route is chest pain plus falling oxygen plus unilateral calf swelling after surgery.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb1016-n012",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "newborn_hypoglycemia_jitteriness",
+      "subcategory": "newborn_hypoglycemia_jitteriness",
+      "difficulty": 3,
+      "stem": "Which findings support the nurse's concern that this newborn is becoming hypoglycemic? Select all that apply.",
+      "scenarioTitle": "Jittery newborn cue cluster",
+      "scenario": "A newborn of a gestational-diabetic parent is 3 hours old and is becoming harder to feed.",
+      "additionalInfo": "The nurse is deciding whether the bedside change fits a glucose problem or a routine transition period.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jitteriness with tremulous extremities"
+        },
+        {
+          "id": "b",
+          "text": "Weak or poor feeding effort"
+        },
+        {
+          "id": "c",
+          "text": "Low axillary temperature"
+        },
+        {
+          "id": "d",
+          "text": "Strong lusty cry with vigorous rooting"
+        },
+        {
+          "id": "e",
+          "text": "Pink color and normal spontaneous wakefulness"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Newborn hypoglycemia often shows up as jitteriness, poor feeding, and temperature instability. The nurse should cluster the subtle findings together quickly instead of waiting for a dramatic crash.",
+      "distractorRationales": {
+        "d": "Strong lusty cry with vigorous rooting misses the clinical pattern: Newborn Hypoglycemia Jitteriness hypoglycemia points to Jitteriness with tremulous extremities plus Weak or poor feeding effort plus Low axillary temperature, so choosing it can postpone safety actions and worsen unstable glucose physiology.",
+        "e": "Pink color and normal spontaneous wakefulness misses the clinical pattern: Newborn Hypoglycemia Jitteriness hypoglycemia points to Jitteriness with tremulous extremities plus Weak or poor feeding effort plus Low axillary temperature, so choosing it can postpone safety actions and worsen unstable glucose physiology."
+      },
+      "tags": [
+        "newborn_hypoglycemia_jitteriness",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In newborns, multiple small instability clues often matter more than one dramatic sign.",
+      "speedCue": "Jitteriness plus poor feeding should move glucose near the top immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "newborn_hypoglycemia_jitteriness",
+        "caption": "In newborns, multiple small instability clues often matter more than one dramatic sign.",
+        "conclusion": "In newborns, multiple small instability clues often matter more than one dramatic sign."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

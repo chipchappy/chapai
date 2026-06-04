@@ -9,12 +9,28 @@
     "./generated-summary": "./src/generated-summary.ts"
   },
   "scripts": {
+    "bank-health:nclex": "node ./scripts/report-nclex-bank-health.mjs",
+    "release-ready:nclex": "node ./scripts/assert-nclex-release-readiness.mjs",
+    "build:wave-bank:nclex": "node ./scripts/build-nclex-live-wave-bank.mjs",
+    "draft:topup:nclex": "node ./scripts/draft-nclex-original-topup.mjs",
+    "build:wave-manifest:nclex": "node ./scripts/build-nclex-wave-promotion-manifest.mjs",
+    "candidates:from-draft:nclex": "node ./scripts/build-nclex-live-promotion-candidates-from-draft.mjs",
+    "canonicalize:nclex-live": "node ./scripts/canonicalize-nclex-live-bank.mjs",
+    "enrich:visual-rationales:nclex": "node ./scripts/enrich-nclex-visual-rationales.mjs",
+    "enrich:chart-review:nclex": "node ./scripts/enrich-nclex-chart-review.mjs",
     "import:legacy": "node ./scripts/import-legacy-questions.mjs",
     "import:legacy:questions": "node ./scripts/import-legacy-questions.mjs",
     "import:legacy:review-batches": "node ./scripts/import-legacy-review-batches.mjs",
     "promote:staged": "node ./scripts/promote-staged-batches.mjs",
+    "refine:second-pass:nclex": "node ./scripts/run-nclex-second-pass-refinement.mjs",
+    "balance:active-bank:nclex": "node ./scripts/balance-nclex-active-bank.mjs",
+    "topup-plan:nclex": "node ./scripts/build-nclex-readiness-topup-plan.mjs",
+    "worker-queues:nclex": "node ./scripts/build-nclex-worker-queues.mjs",
+    "build:readiness-exams:nclex": "node ./scripts/build-nclex-readiness-exams.mjs",
+    "test:readiness-exams:nclex": "node ./scripts/test-nclex-readiness-exams.mjs",
     "refresh:summary": "node ./scripts/refresh-content-summary.mjs",
-    "pipeline:local-batches": "npm run promote:staged"
+    "pipeline:local-batches": "npm run promote:staged",
+    "test:refinement:nclex": "node ./scripts/test-nclex-second-pass-refinement.mjs"
   },
   "dependencies": {
     "zod": "^3.23.0"

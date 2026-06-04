@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-815",
+  "generatedAt": "2026-04-09T09:51:03-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb815-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 4,
+      "stem": "A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward), and severe muscle rigidity within 3 days of starting the medication. Which type of extrapyramidal symptom (EPS) is this, and what is the antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tardive dyskinesia; no effective antidote, may require medication discontinuation"
+        },
+        {
+          "id": "b",
+          "text": "Akathisia; treat with propranolol or benzodiazepines"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; treat with IV/IM diphenhydramine or benztropine"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute dystonia presents within hours to days of starting a high-potency antipsychotic (like haloperidol) as sudden, painful muscle spasms \u2014 torticollis, oculogyric crisis, opisthotonus. Treatment is IV or IM diphenhydramine (Benadryl) or benztropine (Cogentin), which are anticholinergic agents. Tardive dyskinesia (A) develops after months-years of use as involuntary repetitive movements (lip smacking, tongue protrusion). Akathisia (B) is inner restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute dystonia (torticollis, oculogyric crisis) within days of antipsychotic = IV/IM diphenhydramine or benztropine (anticholinergics).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to \u2265 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80\u2013130 bpm, RR 22\u201337 breaths/min, BP approximately 90\u2013100/55\u201365 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age \u2014 neonates have the highest HR and RR, lowest BP.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight \u2014 no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply \u2014 laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO \u22658 hours. Light meals (toast, clear liquids): NPO \u22656 hours. Non-clear liquids including milk and formula: NPO \u22656 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid \u2014 stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids \u22656-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A public health nurse is performing TB contact tracing after identifying an active pulmonary TB case in an elementary school teacher. The school has 420 students and 35 staff. Which group should be prioritized for PPD/IGRA testing and evaluated first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All community residents within a 1-mile radius of the school"
+        },
+        {
+          "id": "b",
+          "text": "Close contacts \u2014 students in the infected teacher's classroom and staff sharing the teachers' lounge (highest-risk exposure contacts)"
+        },
+        {
+          "id": "c",
+          "text": "Only the principal and vice-principal as the administrative contacts"
+        },
+        {
+          "id": "d",
+          "text": "All 420 students simultaneously to ensure no child is missed"
+        }
+      ],
+      "answer": "b",
+      "rationale": "TB contact investigation follows a concentric circle approach. Priority 1 \u2014 close contacts (highest risk): household members, individuals with prolonged face-to-face exposure in an enclosed space. For a school teacher: students in the infected teacher's classroom (daily prolonged contact), colleagues sharing enclosed spaces (teachers' lounge, planning periods). Priority 2 \u2014 casual contacts: students in the same school but different classrooms. Priority 3 \u2014 community contacts. All close contacts receive TST/IGRA regardless of symptom status. Positive contacts \u2192 chest X-ray \u2192 LTBI vs active TB determination \u2192 treatment. Mass testing of all 420 students before stratifying risk wastes resources and creates unnecessary anxiety.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "TB contact tracing: concentric circle approach \u2014 prioritize closest contacts first (classroom students, shared-space colleagues); cascade outward only if high conversion rate found in inner circle.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with a known adrenal mass is scheduled for laparoscopic adrenalectomy for pheochromocytoma. The pre-operative medication orders include phenoxybenzamine (alpha-blocker). The surgeon also wants to start a beta-blocker. The nurse understands that the CORRECT order for pre-operative blockade is:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Beta-blocker first, then alpha-blocker after adequate heart rate control"
+        },
+        {
+          "id": "b",
+          "text": "Alpha-blocker first for 7\u201314 days, then beta-blocker added if needed"
+        },
+        {
+          "id": "c",
+          "text": "Both alpha and beta-blockers started simultaneously on day 1"
+        },
+        {
+          "id": "d",
+          "text": "Beta-blocker alone is sufficient; alpha-blockers are unnecessary pre-operatively"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Alpha-blockade MUST be established before beta-blockade in pheochromocytoma. Pheos release primarily epinephrine and norepinephrine, causing vasoconstriction via alpha receptors. If a beta-blocker is given first, it blocks the vasodilatory beta-2 effect without blocking alpha-mediated vasoconstriction \u2014 resulting in paradoxical, unopposed hypertensive crisis. Alpha-blockade (phenoxybenzamine or doxazosin) is initiated 7\u201314 days pre-op; beta-blocker is added only after alpha-blockade is established, if needed for tachycardia.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pheochromocytoma pre-op: alpha-block FIRST (7\u201314 days), then add beta-blocker. Never beta-block first \u2014 causes unopposed hypertensive crisis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress \u2014 an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb815-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history \u2014 the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives \u2014 alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension \u2014 directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

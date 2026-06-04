@@ -5,6 +5,8 @@ import QuizPage from "./QuizPage";
 import { getLiveContentSummary } from "@/lib/live-content-summary";
 import { getServerAccessContext } from "@/lib/server-access";
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
+import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { getStudentDashboardData, getReadinessAttempts } from "@/lib/student-dashboard";
 
 export const metadata: Metadata = {
   title: "Practice center",
@@ -25,6 +27,8 @@ type PageSearchParams = {
   category?: string;
   questionType?: string;
   ngnOnly?: string;
+  question?: string;       // QOTD deep-link
+  tutorQuestion?: string;  // Dashboard tutor-followup deep-link
 };
 
 export default async function Page({
@@ -81,6 +85,63 @@ export default async function Page({
     }
   }
 
+  // Per-category progress for the signed-in student (drives progress bars under each tile)
+  const user = await getAuthenticatedUser();
+  let categoryProgress: Record<string, { answered: number; correct: number; accuracy: number }> = {};
+  let totalAnsweredByExam = { nclex: 0, ccrn: 0 };
+  let streakDays = 0;
+  let todayAnswered = 0;
+  let suggestedCategoryValue: string | null = null;
+  let suggestedCategoryLabel: string | null = null;
+  let serverReadinessAttempts: Record<string, { accuracy: number; correctAnswers: number; totalQuestions: number; takenAtMs: number }> = {};
+  let willPersonalize = false;
+  if (user && hasDatabase(env)) {
+    try {
+      const db = getDB(env);
+      const dash = await getStudentDashboardData(db, { userId: user.id, email: user.email ?? null });
+      for (const stat of dash.categoryStats) {
+        categoryProgress[`${stat.exam}::${stat.category}`] = {
+          answered: stat.answered,
+          correct: stat.correct,
+          accuracy: stat.accuracy,
+        };
+        totalAnsweredByExam[stat.exam] += stat.answered;
+      }
+      streakDays = dash.streakDays;
+      todayAnswered = dash.todayAnswered;
+      // Will personalize iff student has ≥2 categories with ≥5 attempts each on the current exam.
+      const qualifying = dash.categoryStats.filter((c) => c.answered >= 5);
+      willPersonalize = qualifying.length >= 2;
+      if (dash.suggestedCategory) {
+        suggestedCategoryValue = dash.suggestedCategory.category;
+        suggestedCategoryLabel = dash.suggestedCategory.category
+          .split(/[-_]/)
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ");
+      }
+      try {
+        const attempts = await getReadinessAttempts(db, user.id);
+        const stripped: typeof serverReadinessAttempts = {};
+        for (const [examId, rec] of Object.entries(attempts)) {
+          stripped[examId] = {
+            accuracy: rec.accuracy,
+            correctAnswers: rec.correctAnswers,
+            totalQuestions: rec.totalQuestions,
+            takenAtMs: rec.takenAtMs,
+          };
+        }
+        serverReadinessAttempts = stripped;
+      } catch {
+        // non-fatal
+      }
+    } catch {
+      // Non-fatal — render the page without progress bars if the dashboard query fails.
+    }
+  }
+
+  // Smart category default — pre-select student's weakest category when no explicit URL filter
+  const resolvedInitialCategory = params.category ?? suggestedCategoryValue ?? undefined;
+
   return (
     <main className="quiz-route-screen">
       <QuizPage
@@ -88,7 +149,7 @@ export default async function Page({
         initialExam={params.exam}
         initialMode={params.mode}
         initialPracticeExam={params.practiceExam}
-        initialCategory={params.category}
+        initialCategory={resolvedInitialCategory}
         initialQuestionType={params.questionType}
         initialNgnOnly={params.ngnOnly}
         liveCounts={liveCounts}
@@ -103,6 +164,16 @@ export default async function Page({
         canUsePracticeExams={access.canUsePracticeExams}
         canUseIcuSimBeta={access.canUseIcuSimBeta}
         canUseAdvancedAnalytics={access.canUseAdvancedAnalytics}
+        categoryProgress={categoryProgress}
+        totalAnsweredByExam={totalAnsweredByExam}
+        isAuthenticated={Boolean(user)}
+        streakDays={streakDays}
+        todayAnswered={todayAnswered}
+        suggestedCategoryLabel={suggestedCategoryLabel}
+        serverReadinessAttempts={serverReadinessAttempts}
+        willPersonalize={willPersonalize}
+        deepLinkQuestionId={params.question ?? params.tutorQuestion ?? null}
+        deepLinkOpenTutor={Boolean(params.tutorQuestion)}
       />
     </main>
   );

@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-811",
+  "generatedAt": "2026-04-09T08:33:38-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb811-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_safe_staffing",
+      "subcategory": "Delegation / Safe Staffing",
+      "difficulty": 3,
+      "stem": "A registered nurse receives a new patient assignment at shift start. The RN reviews the five patients and determines that patient care tasks need to be distributed. Which of the following tasks can be appropriately delegated to a licensed practical nurse (LPN)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the admission assessment for a new patient with unstable angina"
+        },
+        {
+          "id": "b",
+          "text": "Develop the care plan for a patient with newly diagnosed type 1 diabetes"
+        },
+        {
+          "id": "c",
+          "text": "Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm"
+        },
+        {
+          "id": "d",
+          "text": "Educate the patient and family about a new diagnosis of atrial fibrillation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate \u2014 appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation \u2014 this is an RN function.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Delegation / Safe Staffing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications to stable patients, perform routine procedures, collect data for stable conditions. RN scope: initial assessment, care planning, teaching, evaluating unstable patients, and tasks requiring clinical judgment. RNs cannot delegate assessment, teaching, or care planning.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "Pharmacology / Metformin Safety",
+      "difficulty": 3,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis \u2014 a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Metformin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient 2 days post-abdominal surgery. The patient calls the nurse and states, 'I felt something pop in my stomach and I'm looking at my intestines.' The nurse enters the room and observes evisceration of abdominal contents. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Attempt to manually replace the intestines and apply a sterile dressing"
+        },
+        {
+          "id": "b",
+          "text": "Cover the eviscerated contents with sterile normal saline-soaked gauze, do not attempt to replace them, and call for help"
+        },
+        {
+          "id": "c",
+          "text": "Place the patient supine with legs straight, apply a dry sterile dressing, and activate the surgical team"
+        },
+        {
+          "id": "d",
+          "text": "Ask the patient to lie still, apply an abdominal binder to contain the bowel, and document the finding"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Wound evisceration is a surgical emergency. The priority is to protect the eviscerated tissue from desiccation and contamination. Cover the bowel immediately with sterile gauze moistened with normal saline (not dry gauze, which would desiccate tissue; not replaced, which risks contamination and injury). The patient should be kept NPO, positioned to reduce tension on the wound (often supine with knees slightly flexed), and the surgical team notified immediately for emergent return to the OR. Attempting to replace bowel or using dry dressings or binders can cause irreparable harm.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evisceration: Cover with sterile saline-soaked gauze (NEVER replace), keep patient still, call surgeon STAT, keep NPO. Dry gauze and binders are contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 4,
+      "stem": "A nurse at a community health center is providing care for a homeless patient with chronic schizophrenia who has been non-adherent to antipsychotics and presents with decompensated psychosis. The patient refuses hospitalization. Which nursing approach reflects the ethical principle of justice and the public health model for vulnerable populations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Immediately call law enforcement for involuntary commitment since the patient is homeless"
+        },
+        {
+          "id": "b",
+          "text": "Discharge the patient with a 30-day prescription and advise them to follow up in one month"
+        },
+        {
+          "id": "c",
+          "text": "Apply harm reduction principles: assess immediate safety, engage assertive community treatment (ACT), coordinate long-acting injectable antipsychotic if appropriate, and connect to housing and social services"
+        },
+        {
+          "id": "d",
+          "text": "Refuse care until the patient agrees to hospitalization to protect the healthcare team"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Justice in community health requires equitable care for vulnerable populations, who face structural barriers (housing instability, stigma, limited healthcare access) that increase health disparities. Harm reduction principles: meet patients where they are, reduce immediate harm without requiring abstinence/full adherence, minimize barriers to engagement. Assertive Community Treatment (ACT): multidisciplinary team providing intensive outreach, case management, and mental health services to individuals with severe mental illness who are not engaging with traditional services \u2014 evidence-based, reduces hospitalization and homelessness. Long-acting injectable antipsychotics address non-adherence barriers. Involuntary commitment requires imminent danger to self/others, not simply homelessness or non-adherence.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Homeless, mentally ill, non-adherent patient: apply harm reduction + Assertive Community Treatment (ACT); involuntary commitment requires imminent danger (not just homelessness); address social determinants of health.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "shoulder_dystocia",
+      "subcategory": "Shoulder Dystocia",
+      "difficulty": 4,
+      "stem": "During delivery, after the baby's head delivers, the anterior shoulder fails to deliver. The turtle sign is present (head retracts against the perineum). Which intervention is attempted FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply fundal pressure to push the baby down"
+        },
+        {
+          "id": "b",
+          "text": "McRoberts maneuver: hyperflexion of maternal thighs against the abdomen with suprapubic pressure"
+        },
+        {
+          "id": "c",
+          "text": "Zavanelli maneuver: cephalic replacement followed by emergency cesarean"
+        },
+        {
+          "id": "d",
+          "text": "Perform an episiotomy to enlarge the vaginal opening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Shoulder dystocia is an obstetric emergency. The McRoberts maneuver (sharply flexing maternal thighs onto the abdomen) flattens the lumbar lordosis and rotates the pubic symphysis superiorly, increasing the functional AP diameter of the pelvis. Combined with suprapubic pressure (pushing the anterior shoulder downward and laterally), this resolves approximately 90% of cases. Fundal pressure (A) is absolutely contraindicated \u2014 it worsens impaction of the shoulder. Zavanelli maneuver (C) is a last resort when all other maneuvers fail. Episiotomy (D) alone does not help shoulder dystocia as the obstruction is bony, not soft tissue.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Shoulder Dystocia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Shoulder dystocia: McRoberts + suprapubic pressure first; fundal pressure is absolutely contraindicated \u2014 it worsens the impaction.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "A patient undergoes repair of a ruptured abdominal aortic aneurysm. Post-operatively, the nurse notes urine output 10 mL/hr for 3 consecutive hours, lower extremity mottling, pain and weakness of both legs, and absent dorsalis pedis pulses bilaterally. MAP is 62 mmHg. Which complication BEST explains all findings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute kidney injury from contrast nephropathy"
+        },
+        {
+          "id": "b",
+          "text": "Abdominal compartment syndrome with visceral and spinal cord ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Bilateral femoral artery thrombosis from arterial catheter placement"
+        },
+        {
+          "id": "d",
+          "text": "Graft limb occlusion with distal ischemia and atheroembolism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop. Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis), and causes visceral ischemia. Mottling and absent pedal pulses in combination with oliguria and leg weakness after AAA repair point to ACS causing multi-organ ischemia. Bladder pressure >20 mmHg with organ dysfunction confirms the diagnosis. Bilateral femoral thrombosis (C) would not explain oliguria. Contrast nephropathy (A) would not explain limb ischemia.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-AAA oliguria + lower extremity ischemia + elevated bladder pressure = abdominal compartment syndrome. Measure bladder pressure.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a patient newly prescribed lithium about safety monitoring. Which statement by the patient indicates correct understanding of lithium toxicity prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.'"
+        },
+        {
+          "id": "b",
+          "text": "'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.'"
+        },
+        {
+          "id": "c",
+          "text": "'I can stop taking lithium when I feel better, as long as my mood is stable.'"
+        },
+        {
+          "id": "d",
+          "text": "'Ibuprofen is safe to take for headaches while on lithium.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Lithium is excreted by the kidney and competes with sodium for reabsorption. When sodium levels drop (from low-sodium diet, diarrhea, vomiting, sweating, diuretics), the kidney retains lithium \u2014 causing toxicity. Consistent sodium and fluid intake, and monitoring for dehydration causes, are essential safety measures. Low-sodium diet (A) increases lithium retention and toxicity risk \u2014 the opposite of safe. Abrupt discontinuation (C) causes rebound mania. NSAIDs like ibuprofen (D) decrease renal lithium excretion, raising lithium levels significantly \u2014 they are contraindicated.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium safety: maintain consistent sodium/fluid intake; avoid NSAIDs (raise lithium levels); report vomiting/diarrhea/excessive sweating immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure. The nurse inspects the perineum and notes a 4 cm tense, purple, fluctuant mass on the right labia. What does this indicate, and what is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Normal postpartum edema; apply ice pack and reassure the patient"
+        },
+        {
+          "id": "b",
+          "text": "Vulvar hematoma; notify the provider immediately and monitor vital signs"
+        },
+        {
+          "id": "c",
+          "text": "Episiotomy dehiscence; apply sterile dressing and call the surgeon"
+        },
+        {
+          "id": "d",
+          "text": "Bartholin's cyst; apply warm compresses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A tense, purple, fluctuant (fluid-filled), rapidly expanding perineal mass with severe pain is a vulvar hematoma \u2014 accumulation of blood in soft tissue from injured blood vessels, often after vaginal delivery or episiotomy. Small hematomas (<3\u20134 cm) may be managed conservatively with ice and observation; larger or expanding hematomas require surgical incision and evacuation. The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise, and apply an ice pack for comfort. Normal edema (A) is soft, not fluctuant or purple. Episiotomy dehiscence (C) would show wound separation. A Bartholin's cyst (D) is not a postpartum complication.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Perineal hematoma: tense, fluctuant, purple mass with severe pain post-delivery \u2014 notify provider immediately; monitor for expansion and hemodynamic instability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "subcategory": "Delegation / Infection Control",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with C. difficile (CDI) colitis. Which instruction is MOST important to give the nursing assistant assigned to this patient's room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread"
+        },
+        {
+          "id": "b",
+          "text": "Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room"
+        },
+        {
+          "id": "c",
+          "text": "Wear only gloves since C. diff is transmitted via droplets"
+        },
+        {
+          "id": "d",
+          "text": "Apply an N95 respirator before entering the room due to airborne risk"
+        }
+      ],
+      "answer": "b",
+      "rationale": "C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers \u2014 soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Delegation / Infection Control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. diff = contact precautions (gloves + gown) + soap and water handwashing. Alcohol hand sanitizer does NOT kill C. diff spores. This is one of the few situations where soap/water is explicitly superior to ABHR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb811-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_hypertensive_emergency",
+      "subcategory": "Cardiovascular / Hypertensive Emergency",
+      "difficulty": 4,
+      "stem": "A patient presents with BP 218/130 mmHg, severe headache, blurred vision, and confusion. Fundoscopic exam shows papilledema. Urinalysis shows proteinuria and hematuria. Which condition is present and what is the correct blood pressure management approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypertensive urgency \u2014 oral labetalol and discharge home with follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Hypertensive emergency (malignant hypertension) \u2014 lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Hypertensive emergency \u2014 lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further end-organ damage"
+        },
+        {
+          "id": "d",
+          "text": "Severe hypertension without emergency \u2014 reassess BP after 30 minutes of rest before intervening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient has hypertensive emergency (malignant hypertension) \u2014 severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments \u2014 a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage \u2014 treated with oral agents over hours to days.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Cardiovascular / Hypertensive Emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP \u2264 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia \u2014 the brain has autoregulated UP.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Hypertensive Emergency",
+        "caption": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP \u2264 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia \u2014 the brain has autoregulated UP.",
+        "conclusion": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP \u2264 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia \u2014 the brain has autoregulated UP."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

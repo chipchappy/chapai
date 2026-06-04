@@ -14,6 +14,12 @@ interface PracticeTutorDrawerProps {
   selectedAnswer?: PracticeAnswer;
   answeredCorrectly?: boolean;
   onClose: () => void;
+  // Optional continue-drill CTA. When provided, the drawer renders a
+  // "Continue with N more in {category}" button under the close action.
+  // Used for single-question deep-link sessions where the student should
+  // keep practicing after the tutor walk-through.
+  onContinueDrill?: () => void;
+  continueDrillLabel?: string;
 }
 
 function answerLabel(answer: PracticeAnswer | undefined) {
@@ -32,7 +38,7 @@ function pillClass(tone: "sage" | "blue" | "gold" | "neutral" = "neutral") {
         : "border-[rgba(74,85,89,0.12)] bg-white/72 text-muted";
 }
 
-export default function PracticeTutorDrawer({ question, selectedAnswer, answeredCorrectly, onClose }: PracticeTutorDrawerProps) {
+export default function PracticeTutorDrawer({ question, selectedAnswer, answeredCorrectly, onClose, onContinueDrill, continueDrillLabel }: PracticeTutorDrawerProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
@@ -180,11 +186,23 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[rgba(223,232,224,0.54)]">AI Tutor</p>
               <h2 className="mt-3 font-serif text-[2.2rem] leading-[0.95] text-[#eff0e8]">clinical coaching, not just explanations.</h2>
             </div>
-            <button onClick={onClose} className="rounded-full border border-[rgba(216,228,217,0.12)] p-2 text-[rgba(223,232,224,0.58)] transition hover:text-[#eff0e8]" aria-label="Close tutor">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-            </button>
+            <div className="flex items-center gap-2">
+              {onContinueDrill ? (
+                <button
+                  type="button"
+                  onClick={onContinueDrill}
+                  className="rounded-full border border-[rgba(126,157,134,0.4)] bg-[rgba(126,157,134,0.16)] px-3.5 py-1.5 text-xs font-semibold text-[#bcd6c1] transition hover:bg-[rgba(126,157,134,0.28)] hover:text-[#dfe8e0]"
+                  title="Keep practicing in this category"
+                >
+                  {continueDrillLabel ?? "Continue with 9 more →"}
+                </button>
+              ) : null}
+              <button onClick={onClose} className="rounded-full border border-[rgba(216,228,217,0.12)] p-2 text-[rgba(223,232,224,0.58)] transition hover:text-[#eff0e8]" aria-label="Close tutor">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           <div className="mt-6 space-y-3 rounded-[24px] border border-[rgba(216,228,217,0.1)] bg-[linear-gradient(180deg,rgba(22,37,30,0.92),rgba(13,25,20,0.92))] p-4 shadow-[0_20px_40px_rgba(0,0,0,0.24)]">

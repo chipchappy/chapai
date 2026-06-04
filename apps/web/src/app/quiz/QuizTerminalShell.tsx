@@ -71,6 +71,21 @@ type QuizTerminalShellProps = {
   practiceExamDefinitions: PracticeExamDefinition[];
   categoryOptions: Array<{ value: string; label: string }>;
   questionTypeOptions: Array<{ value: QuestionType; label: string }>;
+  categoryProgress?: Record<string, { answered: number; correct: number; accuracy: number }>;
+  totalAnsweredByExam?: { nclex: number; ccrn: number };
+  isAuthenticated?: boolean;
+  streakDays?: number;
+  todayAnswered?: number;
+  suggestedCategoryLabel?: string | null;
+  readinessAttempts?: Record<string, {
+    accuracy: number;
+    correctAnswers: number;
+    totalQuestions: number;
+    takenAtMs: number;
+  }>;
+  ngnMix?: "mcq" | "realistic" | "ngn";
+  onSetNgnMix?: (next: "mcq" | "realistic" | "ngn") => void;
+  willPersonalize?: boolean;
   draftAnswer: import("@/lib/practice-types").PracticeAnswer;
   practiceExamStatusCopy: string;
   formatTime: (seconds: number) => string;
@@ -92,6 +107,8 @@ type QuizTerminalShellProps = {
   onToggleFlag: () => void;
   onOpenTutor: () => void;
   onCloseTutor: () => void;
+  onContinueDrillFromTutor?: () => void;
+  continueDrillLabel?: string | null;
   onFinishSession: () => void;
   onResetSession: () => void;
   onStartMissedReview: () => void;
@@ -142,6 +159,16 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     practiceExamDefinitions,
     categoryOptions,
     questionTypeOptions,
+    categoryProgress = {},
+    totalAnsweredByExam = { nclex: 0, ccrn: 0 },
+    isAuthenticated = false,
+    streakDays = 0,
+    todayAnswered = 0,
+    suggestedCategoryLabel = null,
+    readinessAttempts = {},
+    ngnMix = "realistic",
+    onSetNgnMix,
+    willPersonalize = false,
     draftAnswer,
     practiceExamStatusCopy,
     formatTime,
@@ -163,6 +190,8 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     onToggleFlag,
     onOpenTutor,
     onCloseTutor,
+    onContinueDrillFromTutor,
+    continueDrillLabel,
     onFinishSession,
     onResetSession,
     onStartMissedReview,
@@ -171,30 +200,20 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
 
   return (
     <div className={`quiz-terminal-app quiz-terminal-tier-${tier}`} data-study-theme={studyTheme}>
-      {!nclexExamActive ? <header className="quiz-terminal-header">
+      {!nclexExamActive && phase !== "catalog" ? <header className="quiz-terminal-header">
         <div className="flex items-center gap-3">
           <BrandMark compact />
           <div>
             <p className="quiz-terminal-kicker">Clarity terminal</p>
             <p className="quiz-terminal-copy">
-              {phase === "catalog"
-                ? "Launch a live clinical study run."
-                : session
-                  ? `${session.exam.toUpperCase()} · ${session.mode.replace("-", " ")} · question ${session.currentIndex + 1} of ${session.questions.length}`
-                  : runStatus}
+              {session
+                ? `${session.exam.toUpperCase()} · ${session.mode.replace("-", " ")} · question ${session.currentIndex + 1} of ${session.questions.length}`
+                : runStatus}
             </p>
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-start gap-2">
-          {phase === "catalog" ? (
-            <>
-              <span className="quiz-chip">nclex {liveCounts.nclex}</span>
-              <span className="quiz-chip">ccrn {liveCounts.ccrn}</span>
-              <span className="quiz-chip quiz-chip-accent">ngn {nclexStats.ngnRatio}%</span>
-              <span className="quiz-chip">{tier}</span>
-              {accessType ? <span className="quiz-chip">{accessType}</span> : null}
-            </>
-          ) : session ? (
+          {session ? (
             <>
               <span className="quiz-chip">{session.exam.toUpperCase()}</span>
               <span className="quiz-chip">{session.mode.replace("-", " ")}</span>
@@ -208,237 +227,357 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
             <button type="button" onClick={() => onSetStudyTheme("light")} className={`quiz-theme-option ${studyTheme === "light" ? "is-active" : ""}`}>light</button>
             <button type="button" onClick={() => onSetStudyTheme("dark")} className={`quiz-theme-option ${studyTheme === "dark" ? "is-active" : ""}`}>dark</button>
           </div>
-          {phase !== "catalog" ? (
-            <button type="button" onClick={onBackToCatalog} className="quiz-terminal-link">exit run</button>
-          ) : (
-            <>
-              <a href="/nclex" className="quiz-terminal-link">nclex</a>
-              <a href="/ccrn" className="quiz-terminal-link">ccrn</a>
-              <a href="/upgrade" className="quiz-terminal-link">plans</a>
-            </>
-          )}
+          <button type="button" onClick={onBackToCatalog} className="quiz-terminal-link">exit run</button>
         </div>
       </header> : null}
 
       <div className="quiz-terminal-body">
         {phase === "catalog" ? (
           <section className="quiz-terminal-state quiz-terminal-scroll">
-            <div className="quiz-terminal-catalog-grid">
-              <section className="quiz-terminal-panel quiz-terminal-panel-hero">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="quiz-chip quiz-chip-accent">mission launch</span>
-                  <span className="quiz-chip">access {accessibleLiveCount}/{selectedExam === "nclex" ? liveCounts.nclex : liveCounts.ccrn}</span>
-                  <span className="quiz-chip">{questionBankAccessPercent}% unlocked</span>
-                  <span className="quiz-chip">{accessExamTrack === "all" ? "dual track" : `${accessExamTrack.toUpperCase()} track`}</span>
+            <div className="quiz-catalog-shell">
+              {/* Slim head — only chips. Visual emphasis goes to the two
+                  equal-weight hero CTAs immediately below. */}
+              <header className="quiz-catalog-head quiz-catalog-head--slim">
+                <div className="quiz-catalog-head__row">
+                  <p className="quiz-catalog-eyebrow">Practice center</p>
+                  <div className="quiz-catalog-head__chips">
+                    {isAuthenticated && (streakDays > 0 || todayAnswered > 0) ? (
+                      <span className="quiz-catalog-streak-pill" aria-label={`${streakDays}-day streak, ${todayAnswered} answered today`}>
+                        <span aria-hidden="true">🔥</span>
+                        <span>
+                          <strong>{streakDays}</strong>-day streak
+                        </span>
+                        <span aria-hidden="true" className="quiz-catalog-streak-pill__sep">·</span>
+                        <span>
+                          <strong>{todayAnswered}</strong> today
+                        </span>
+                      </span>
+                    ) : null}
+                    {tier === "free" ? (
+                      <a href="/pricing" className="quiz-catalog-free-pill" aria-label="Free plan limit — view upgrade options">
+                        <span>Free plan · 10 questions/day</span>
+                        <span className="quiz-catalog-free-pill__cta">Upgrade →</span>
+                      </a>
+                    ) : null}
+                  </div>
                 </div>
-                <h1 className="mt-4 text-[var(--quiz-ink-strong)]">
-                  launch the qbank like a real testing client.
-                </h1>
-                <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--quiz-muted)]">
-                  Start standard reps, NGN sets, case flow, or a timed practice exam without leaving the same workspace. The launch deck stays short, the text stays legible, and the same question carries chart review, rationale, citations, and tutor follow-up.
-                </p>
-                <div className="mt-5 grid gap-3 xl:grid-cols-3">
-                  <div className="quiz-terminal-stat">
-                    <span>live bank</span>
-                    <strong>{selectedExam === "nclex" ? liveCounts.nclex : liveCounts.ccrn}</strong>
-                    <small>{selectedExam.toUpperCase()} questions available on this route.</small>
-                  </div>
-                  <div className="quiz-terminal-stat">
-                    <span>focus</span>
-                    <strong>{activeFilterSummary || "All lanes"}</strong>
-                    <small>Client need, item type, or NGN-only launch.</small>
-                  </div>
-                  <div className="quiz-terminal-stat">
-                    <span>study layer</span>
-                    <strong>{tier === "free" ? "Preview" : tier === "plus" ? "Base premium" : "Dual premium"}</strong>
-                    <small>{tier === "free" ? "Terminal preview with locked premium rail depth." : tier === "plus" ? "Full qbank and richer debrief rail on your track." : "Advanced analytics, tutor, and dual-track immersion."}</small>
-                  </div>
+              </header>
+
+              {/* Hero CTA — big single button with baseline suggestion */}
+              <section className="quiz-catalog-hero">
+                <div className="quiz-catalog-hero__main">
+                  {willPersonalize && isAuthenticated && !selectedCategory ? (
+                    <span className="quiz-catalog-hero__adaptive-badge" aria-label="Adaptive selection enabled">
+                      <span aria-hidden="true">🎯</span>
+                      <span>Tuned to your weak areas</span>
+                    </span>
+                  ) : null}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const card =
+                        catalogCards.find((c) => c.mode === "standard" && c.exam === selectedExam) ??
+                        catalogCards.find((c) => c.mode === "standard") ??
+                        catalogCards[0];
+                      if (card) onLaunchCatalogCard(card);
+                    }}
+                    className="quiz-catalog-hero__cta"
+                    disabled={isPending}
+                  >
+                    <span className="quiz-catalog-hero__cta-text">
+                      {isPending
+                        ? "Loading…"
+                        : suggestedCategoryLabel && !selectedCategory
+                          ? `Start studying — ${suggestedCategoryLabel}`
+                          : selectedCategory
+                            ? `Start studying — ${categoryOptions.find((o) => o.value === selectedCategory)?.label ?? "drill"}`
+                            : "Start studying"}
+                    </span>
+                    <span className="quiz-catalog-hero__cta-meta">
+                      {standardCount} {selectedExam.toUpperCase()} questions
+                      {suggestedCategoryLabel && !selectedCategory ? " · weakest area" : ""}
+                      {ngnOnly ? " · NGN only" : ""}
+                    </span>
+                  </button>
+                  <details className="quiz-catalog-advanced">
+                    <summary className="quiz-catalog-advanced__summary">Advanced filters</summary>
+                    <div className="quiz-catalog-advanced__grid">
+                      <div className="quiz-catalog-advanced__group">
+                        <span className="quiz-catalog-label">Exam</span>
+                        <div className="quiz-catalog-pillset">
+                          {(["nclex", "ccrn"] as const).map((exam) => {
+                            const trackLocked = accessExamTrack !== "all" && accessExamTrack !== exam;
+                            const emptyBank = (exam === "nclex" ? liveCounts.nclex : liveCounts.ccrn) === 0;
+                            const isDisabled = trackLocked || emptyBank;
+                            const tooltip = trackLocked
+                              ? `Your plan covers ${accessExamTrack.toUpperCase()} only — upgrade to add ${exam.toUpperCase()}.`
+                              : emptyBank
+                                ? `${exam.toUpperCase()} bank is empty — coming soon.`
+                                : undefined;
+                            return (
+                              <button
+                                key={exam}
+                                type="button"
+                                onClick={() => onSetSelectedExam(exam)}
+                                className={`quiz-catalog-pill ${selectedExam === exam ? "is-active" : ""} ${isDisabled ? "is-locked" : ""}`}
+                                disabled={isDisabled}
+                                title={tooltip}
+                              >
+                                {exam.toUpperCase()}
+                                {isDisabled ? <span className="quiz-catalog-pill__lock" aria-hidden="true">·🔒</span> : null}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <div className="quiz-catalog-advanced__group">
+                        <span className="quiz-catalog-label">Questions</span>
+                        <div className="quiz-catalog-pillset">
+                          {[10, 20, 50].map((count) => (
+                            <button
+                              key={count}
+                              type="button"
+                              onClick={() => onSetStandardCount(count as 10 | 20 | 50)}
+                              className={`quiz-catalog-pill ${standardCount === count ? "is-active" : ""}`}
+                            >
+                              {count}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="quiz-catalog-advanced__group quiz-catalog-advanced__group--wide">
+                        <span className="quiz-catalog-label">Focus</span>
+                        <select
+                          value={selectedCategory}
+                          onChange={(event) => onSetSelectedCategory(event.target.value)}
+                          className="quiz-catalog-select"
+                        >
+                          <option value="">All categories</option>
+                          {categoryOptions.map((option) => (
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="quiz-catalog-advanced__group quiz-catalog-advanced__group--wide">
+                        <span className="quiz-catalog-label">Question type</span>
+                        <select
+                          value={selectedQuestionType}
+                          onChange={(event) => onSetSelectedQuestionType(event.target.value as QuestionType | "")}
+                          className="quiz-catalog-select"
+                        >
+                          <option value="">Any type</option>
+                          {questionTypeOptions.map((option) => (
+                            <option key={option.value} value={option.value} disabled={ngnOnly && option.value === "mcq"}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="quiz-catalog-advanced__group quiz-catalog-advanced__group--wide">
+                        <span className="quiz-catalog-label">NGN mix</span>
+                        <div className="quiz-catalog-pillset" role="group" aria-label="NGN question mix">
+                          {([
+                            { value: "mcq" as const, label: "MCQ only", desc: "Classic multiple-choice" },
+                            { value: "realistic" as const, label: "Realistic mix", desc: "≈35% NGN — matches the live exam" },
+                            { value: "ngn" as const, label: "NGN only", desc: "Case studies, bow-tie, matrix" },
+                          ]).map((opt) => (
+                            <button
+                              key={opt.value}
+                              type="button"
+                              onClick={() => onSetNgnMix?.(opt.value)}
+                              className={`quiz-catalog-pill ${ngnMix === opt.value ? "is-active" : ""}`}
+                              title={opt.desc}
+                            >
+                              {opt.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="quiz-catalog-advanced__toggles">
+                        <button type="button" onClick={onResetFilters} className="quiz-catalog-reset">
+                          Reset filters
+                        </button>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+
+                {/* Baseline / readiness exam — always visible as the equal-weight
+                    second hero option. Copy adapts to whether this is the first
+                    attempt or a retake. */}
+                {(() => {
+                  const totalAnswered = (totalAnsweredByExam.nclex ?? 0) + (totalAnsweredByExam.ccrn ?? 0);
+                  const diagnostic = practiceExamDefinitions.find((d) => d.exam === selectedExam) ?? practiceExamDefinitions[0];
+                  if (!diagnostic) return null;
+                  const isFirstTime = !isAuthenticated || totalAnswered < 25;
+                  const hasAttempted = Boolean(readinessAttempts[diagnostic.id]);
+                  return (
+                    <aside className="quiz-catalog-baseline">
+                      <span className="quiz-catalog-baseline__kicker">
+                        {hasAttempted ? "Retake readiness exam" : isFirstTime ? "Take first free readiness exam" : "Readiness exam"}
+                      </span>
+                      <h3 className="quiz-catalog-baseline__title">
+                        {hasAttempted ? "Retest after focused study." : "Take a baseline readiness exam."}
+                      </h3>
+                      <p className="quiz-catalog-baseline__body">
+                        {hasAttempted
+                          ? `Last attempt: ${readinessAttempts[diagnostic.id]?.accuracy}% on ${readinessAttempts[diagnostic.id]?.takenAtMs ? new Date(readinessAttempts[diagnostic.id]!.takenAtMs).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—"}. Retest with a fresh non-overlapping form.`
+                          : `One full ${diagnostic.exam.toUpperCase()} readiness run pinpoints your weak and strong areas so the dashboard can tune the next 30 days of study to you.`}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => onLaunchPracticeExam(diagnostic.id)}
+                        className="quiz-catalog-baseline__cta"
+                        disabled={!canUsePracticeExams}
+                      >
+                        {canUsePracticeExams
+                          ? `${hasAttempted ? "Retake" : "Take"} ${diagnostic.label} →`
+                          : "Upgrade to unlock readiness exams"}
+                      </button>
+                      <p className="quiz-catalog-baseline__meta">
+                        {diagnostic.length} questions · {diagnostic.timeLimitMinutes} min · scored against the blueprint
+                      </p>
+                    </aside>
+                  );
+                })()}
+              </section>
+
+              {error ? <div className="quiz-terminal-alert">{error}</div> : null}
+
+              {/* Category tile grid with progress bars + free-tier lock indicators.
+                  On the free plan, the first 2 categories per exam stay unlocked
+                  so students can try them; the rest show a lock badge that links
+                  to pricing. */}
+              <section className="quiz-catalog-block">
+                <div className="quiz-catalog-block__head">
+                  <p className="quiz-catalog-label">{selectedExam.toUpperCase()} categories</p>
+                  <p className="quiz-catalog-block__hint">
+                    {isAuthenticated
+                      ? "Bars show your current accuracy. Click any to drill the weak ones."
+                      : tier === "free"
+                        ? `Free preview unlocks the first 2 categories. Click a category to start.`
+                        : `Click a category to start a ${standardCount}-question set.`}
+                  </p>
+                </div>
+                <div className="quiz-catalog-tiles">
+                  {categoryOptions.map((option, idx) => {
+                    const progress = categoryProgress[`${selectedExam}::${option.value}`];
+                    const accuracy = progress?.accuracy ?? 0;
+                    const answered = progress?.answered ?? 0;
+                    const hasProgress = answered > 0;
+                    const isLockedFree = tier === "free" && idx >= 2;
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          if (isLockedFree) {
+                            window.location.href = "/pricing?utm_source=catalog_lock";
+                            return;
+                          }
+                          onSetSelectedCategory(option.value);
+                          const card =
+                            catalogCards.find((c) => c.mode === "standard" && c.exam === selectedExam) ??
+                            catalogCards[0];
+                          if (card) onLaunchCatalogCard(card);
+                        }}
+                        className={`quiz-catalog-tile ${selectedCategory === option.value ? "is-active" : ""} ${isLockedFree ? "is-locked" : ""}`}
+                        aria-disabled={isLockedFree}
+                        title={isLockedFree ? "Upgrade to unlock this category" : undefined}
+                      >
+                        <span className="quiz-catalog-tile__name">
+                          {option.label}
+                          {isLockedFree ? <span className="quiz-catalog-tile__lock-icon" aria-hidden="true"> 🔒</span> : null}
+                        </span>
+                        {isAuthenticated ? (
+                          <div className="quiz-catalog-tile__progress">
+                            <div className="quiz-catalog-tile__progress-track">
+                              <div
+                                className={`quiz-catalog-tile__progress-fill ${accuracy >= 75 ? "is-strong" : accuracy < 60 && hasProgress ? "is-weak" : ""}`}
+                                style={{ width: `${hasProgress ? Math.max(3, accuracy) : 0}%` }}
+                              />
+                            </div>
+                            <div className="quiz-catalog-tile__progress-meta">
+                              <span>
+                                {hasProgress ? (
+                                  <>
+                                    <span
+                                      aria-hidden="true"
+                                      className={`quiz-catalog-tile__icon ${accuracy >= 75 ? "is-strong" : accuracy < 60 ? "is-weak" : "is-mid"}`}
+                                    >
+                                      {accuracy >= 75 ? "↑" : accuracy < 60 ? "↓" : "→"}
+                                    </span>
+                                    {accuracy}% accuracy
+                                  </>
+                                ) : "No data yet"}
+                              </span>
+                              <span>{hasProgress ? `${answered} q` : "Start →"}</span>
+                            </div>
+                          </div>
+                        ) : isLockedFree ? (
+                          <span className="quiz-catalog-tile__cta quiz-catalog-tile__cta--locked">Upgrade →</span>
+                        ) : (
+                          <span className="quiz-catalog-tile__cta">Start →</span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               </section>
 
-              <section className="quiz-terminal-panel quiz-terminal-panel-controls">
-                <div className="grid gap-4 lg:grid-cols-2">
-                  <div>
-                    <p className="quiz-terminal-kicker">Exam lane</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {(["nclex", "ccrn"] as const).map((exam) => (
-                        <button key={exam} type="button" onClick={() => onSetSelectedExam(exam)} className={`quiz-terminal-toggle ${selectedExam === exam ? "is-active" : ""}`} disabled={accessExamTrack !== "all" && accessExamTrack !== exam}>
-                          {exam.toUpperCase()}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="quiz-terminal-kicker">Deck size</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {[10, 20, 50].map((count) => (
-                        <button key={count} type="button" onClick={() => onSetStandardCount(count as 10 | 20 | 50)} className={`quiz-terminal-toggle ${standardCount === count ? "is-active" : ""}`}>
-                          {count}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+              {/* Readiness exams — compact bottom strip */}
+              <section className="quiz-catalog-block">
+                <div className="quiz-catalog-block__head">
+                  <p className="quiz-catalog-label">Readiness exams</p>
+                  <p className="quiz-catalog-block__hint">
+                    {practiceExamStatusCopy}
+                    {canUseIcuSimBeta ? " · ICU sim beta included." : ""}
+                  </p>
                 </div>
-
-                <div className="mt-5 grid gap-4 lg:grid-cols-2">
-                  <label className="quiz-terminal-field">
-                    <span className="quiz-terminal-kicker">Category</span>
-                    <select value={selectedCategory} onChange={(event) => onSetSelectedCategory(event.target.value)}>
-                      <option value="">All categories</option>
-                      {categoryOptions.map((option) => (
-                        <option key={option.value} value={option.value}>{option.label}</option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="quiz-terminal-field">
-                    <span className="quiz-terminal-kicker">Question type</span>
-                    <select value={selectedQuestionType} onChange={(event) => onSetSelectedQuestionType(event.target.value as QuestionType | "")}>
-                      <option value="">Any type</option>
-                      {questionTypeOptions.map((option) => (
-                        <option key={option.value} value={option.value} disabled={ngnOnly && option.value === "mcq"}>{option.label}</option>
-                      ))}
-                    </select>
-                  </label>
-                </div>
-
-                <div className="mt-5 flex flex-wrap items-center gap-2">
-                  <button type="button" onClick={() => onSetNgnOnly(!ngnOnly)} className={`quiz-terminal-toggle ${ngnOnly ? "is-active" : ""}`}>
-                    NGN only
-                  </button>
-                  <button type="button" onClick={onResetFilters} className="quiz-terminal-link">Reset filters</button>
-                  <span className="quiz-terminal-copy">{activeFilterSummary || "All live filters active."}</span>
+                <div className="quiz-catalog-exam-row">
+                  {practiceExamDefinitions.map((definition) => {
+                    const attempt = readinessAttempts[definition.id];
+                    const attemptDate = attempt ? new Date(attempt.takenAtMs) : null;
+                    const accuracyTone =
+                      attempt && attempt.accuracy >= 75
+                        ? "is-strong"
+                        : attempt && attempt.accuracy < 60
+                          ? "is-weak"
+                          : attempt
+                            ? "is-mid"
+                            : "";
+                    return (
+                      <button
+                        key={definition.id}
+                        type="button"
+                        onClick={() => onLaunchPracticeExam(definition.id)}
+                        className={`quiz-catalog-exam-card ${attempt ? "has-attempt" : ""}`}
+                      >
+                        <span className="quiz-catalog-exam-card__exam">{definition.exam.toUpperCase()}</span>
+                        <strong className="quiz-catalog-exam-card__label">{definition.label}</strong>
+                        <span className="quiz-catalog-exam-card__meta">
+                          {definition.length} q · {definition.timeLimitMinutes} min
+                        </span>
+                        {attempt ? (
+                          <span className={`quiz-catalog-exam-card__attempt ${accuracyTone}`}>
+                            <span aria-hidden="true">
+                              {attempt.accuracy >= 75 ? "↑" : attempt.accuracy < 60 ? "↓" : "→"}
+                            </span>
+                            <strong>{attempt.accuracy}%</strong>
+                            <span className="quiz-catalog-exam-card__attempt-date">
+                              {attemptDate ? attemptDate.toLocaleDateString("en-US", { month: "short", day: "numeric" }) : ""}
+                            </span>
+                          </span>
+                        ) : null}
+                        {!canUsePracticeExams ? (
+                          <span className="quiz-catalog-exam-card__locked">Upgrade to unlock</span>
+                        ) : null}
+                      </button>
+                    );
+                  })}
                 </div>
               </section>
             </div>
-
-            {error ? <div className="quiz-terminal-alert">{error}</div> : null}
-
-            <section className="quiz-terminal-section">
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Study by subject</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">{selectedExam.toUpperCase()} categories.</h2>
-                </div>
-                <p className="quiz-terminal-copy">Choose a lane first, then launch standard, NGN, case, or timed practice.</p>
-              </div>
-              <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                {categoryOptions.map((option, index) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => onSetSelectedCategory(option.value)}
-                    className={`quiz-terminal-lane ${selectedCategory === option.value ? "is-featured" : ""}`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{String(index + 1).padStart(2, "0")}</span>
-                      <span className="quiz-chip">{selectedCategory === option.value ? "active" : "filter"}</span>
-                    </div>
-                    <h3 className="mt-4 text-[var(--quiz-ink-strong)]">{option.label}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[var(--quiz-muted)]">Route the next deck through this clinical category and keep the rationale tied to the same weakness.</p>
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="quiz-terminal-section">
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Study by question type</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">NGN and classic formats.</h2>
-                </div>
-                <p className="quiz-terminal-copy">Matrix, ordering, case study, and bow-tie items stay in the same test shell.</p>
-              </div>
-              <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                {questionTypeOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => {
-                      onSetSelectedQuestionType(option.value);
-                      if (option.value !== "mcq") {
-                        onSetNgnOnly(true);
-                      }
-                    }}
-                    className={`quiz-terminal-lane ${selectedQuestionType === option.value ? "is-featured" : ""}`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{option.value.replace(/_/g, " ")}</span>
-                      <span className="quiz-chip">{selectedQuestionType === option.value ? "active" : "choose"}</span>
-                    </div>
-                    <h3 className="mt-4 text-[var(--quiz-ink-strong)]">{option.label}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[var(--quiz-muted)]">{QUESTION_TYPE_DETAILS[option.value]}</p>
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="quiz-terminal-section">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Study lanes</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">choose the next run.</h2>
-                </div>
-                <p className="quiz-terminal-copy">{canUseRichModes ? "Rich modes unlocked." : "Standard bank active."}</p>
-              </div>
-              <div className="mt-5 grid gap-4 xl:grid-cols-3">
-                {catalogCards.map((card) => {
-                  const standardTrackLocked = card.mode === "standard"
-                    && Boolean(card.exam)
-                    && accessExamTrack !== "all"
-                    && card.exam !== accessExamTrack;
-                  const locked = standardTrackLocked || (card.mode === "practice-exam"
-                    ? !canUsePracticeExams
-                    : card.mode === "standard"
-                      ? false
-                      : !canUseRichModes);
-
-                  return (
-                    <button
-                      key={card.id}
-                      type="button"
-                      onClick={() => onLaunchCatalogCard(card)}
-                      className={`quiz-terminal-lane ${card.featured ? "is-featured" : ""}`}
-                    >
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="quiz-chip">{card.hint}</span>
-                        <span className="quiz-chip">{locked ? "Locked" : card.exam ? card.exam.toUpperCase() : selectedExam.toUpperCase()}</span>
-                      </div>
-                      <h3 className="mt-5 text-[var(--quiz-ink-strong)]">{card.label}</h3>
-                      <p className="mt-3 text-sm leading-7 text-[var(--quiz-muted)]">{card.description}</p>
-                      <div className="mt-5 flex items-center justify-between text-sm text-[var(--quiz-muted)]">
-                        <span>{card.count} items</span>
-                        <span>{locked ? "Upgrade" : "Launch"}</span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
-
-            <section className="quiz-terminal-section">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Timed simulations</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">fixed-length practice exams.</h2>
-                </div>
-                <p className="quiz-terminal-copy">{practiceExamStatusCopy}{canUseIcuSimBeta ? " ICU sim beta included." : ""}</p>
-              </div>
-              <div className="mt-5 grid gap-4 lg:grid-cols-5">
-                {practiceExamDefinitions.map((definition) => (
-                  <button key={definition.id} type="button" onClick={() => onLaunchPracticeExam(definition.id)} className="quiz-terminal-exam-card">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{definition.exam.toUpperCase()}</span>
-                      {!canUsePracticeExams ? <span className="quiz-chip">Locked</span> : null}
-                    </div>
-                    <strong className="mt-5 block text-[var(--quiz-ink-strong)]">{definition.label}</strong>
-                    <p className="mt-3 text-sm leading-6 text-[var(--quiz-muted)]">{definition.description}</p>
-                    <div className="mt-5 text-xs uppercase tracking-[0.18em] text-[var(--quiz-muted)]">
-                      {definition.length} questions | {definition.timeLimitMinutes} min
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </section>
           </section>
         ) : null}
 
@@ -628,6 +767,8 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
           selectedAnswer={tutorRecord.selected}
           answeredCorrectly={tutorRecord.correct}
           onClose={onCloseTutor}
+          onContinueDrill={onContinueDrillFromTutor}
+          continueDrillLabel={continueDrillLabel ?? undefined}
         />
       ) : null}
 

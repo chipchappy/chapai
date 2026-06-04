@@ -1,0 +1,454 @@
+{
+  "batchId": "mixed-batch-822",
+  "generatedAt": "2026-04-09T11:37:24-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb822-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access. The nurse finds the patient diaphoretic, the right groin dressing saturated with blood, and the patient's blood pressure has dropped from 128/76 to 88/50 mmHg. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply direct, firm manual pressure to the right groin site immediately"
+        },
+        {
+          "id": "b",
+          "text": "Elevate the foot of the bed and call the provider"
+        },
+        {
+          "id": "c",
+          "text": "Obtain a STAT hemoglobin and hematocrit"
+        },
+        {
+          "id": "d",
+          "text": "Increase the IV fluid rate per standing orders and reassess in 15 minutes"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient is showing signs of femoral artery hemorrhage with hemodynamic instability (hypotension, diaphoresis, saturated dressing). The priority is hemorrhage control: applying immediate, firm manual pressure directly over the puncture site. This is the most time-critical intervention to stop ongoing blood loss. Calling the provider and obtaining labs are necessary but are performed concurrently by a second nurse after pressure is established. Trendelenburg positioning is not recommended for vascular hemorrhage, and delaying for 15 minutes risks cardiovascular collapse.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency. Stop the bleed first (manual pressure), then call and escalate. Hemorrhage control precedes all other actions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A home health nurse is assessing fall risk in a 78-year-old patient living independently. The patient completes the Timed Up and Go (TUG) test in 16 seconds. How should the nurse interpret this result and what intervention is indicated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "TUG <20 seconds is normal for age; no intervention needed"
+        },
+        {
+          "id": "b",
+          "text": "TUG \u226512 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention program"
+        },
+        {
+          "id": "c",
+          "text": "TUG is only valid in a clinical setting; results cannot be applied to home fall risk"
+        },
+        {
+          "id": "d",
+          "text": "TUG >30 seconds indicates fall risk; 16 seconds is normal"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The Timed Up and Go (TUG) test measures functional mobility: the patient rises from a standard chair, walks 3 meters, turns, walks back, and sits down. Scoring: <10 seconds = freely mobile, low fall risk; 10\u201319 seconds = mostly independent but increased fall risk; 20\u201329 seconds = variable mobility, moderate fall risk; \u226530 seconds = impaired mobility, high fall risk and need for assistance. A TUG of 16 seconds places this patient in the moderate fall risk category, warranting physical therapy referral, home safety assessment (remove throw rugs, install grab bars), medication review (sedatives, antihypertensives), and fall prevention education.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "TUG test: <10s = low risk; 10\u201319s = increased risk; \u226520s = moderate-high risk. TUG \u226512 seconds in elderly \u2192 fall risk; refer to PT, home safety assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with hyperthyroidism develops sudden-onset temperature 39.8\u00b0C, HR 148 with atrial fibrillation, tremor, and confusion after an emergency appendectomy. Which sequence of pharmacologic interventions is CORRECT for thyroid storm?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Iodine \u2192 propylthiouracil (PTU) \u2192 propranolol"
+        },
+        {
+          "id": "b",
+          "text": "Propylthiouracil (PTU) \u2192 propranolol \u2192 iodine (one hour after PTU)"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol \u2192 iodine \u2192 PTU"
+        },
+        {
+          "id": "d",
+          "text": "Methimazole \u2192 iodine \u2192 esmolol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The correct sequence for thyroid storm is: (1) PTU first \u2014 blocks new thyroid hormone synthesis AND peripheral T4\u2192T3 conversion; (2) propranolol \u2014 controls tachycardia and sympathetic symptoms; (3) iodine (Lugol's solution or SSKI) given at least 1 hour AFTER PTU. Iodine must be given after PTU because iodine provides substrate for thyroid hormone production \u2014 if given before a thionamide, it can worsen the storm (Jod-Basedow effect). Methimazole (D) does not block peripheral conversion.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm drug sequence: PTU \u2192 propranolol \u2192 iodine (1 hour after PTU). Never give iodine first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_thyroid_storm",
+      "subcategory": "Pharmacology / Endocrine / Thyroid Storm",
+      "difficulty": 4,
+      "stem": "A patient with untreated hyperthyroidism is admitted postoperatively with HR 148 bpm (AF), temperature 39.8\u00b0C, BP 158/92 mmHg, and extreme agitation. The nurse suspects thyroid storm. Which medication sequence reflects the CORRECT pharmacological management priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Propylthiouracil (PTU) first \u2192 then potassium iodide \u2192 then propranolol \u2192 then glucocorticoid"
+        },
+        {
+          "id": "b",
+          "text": "Methimazole first \u2192 then radioactive iodine \u2192 then atenolol"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol first \u2192 then PTU \u2192 then potassium iodide \u2192 then hydrocortisone"
+        },
+        {
+          "id": "d",
+          "text": "Potassium iodide first \u2192 then PTU \u2192 then propranolol"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Thyroid storm management follows a specific pharmacological sequence to block thyroid hormone synthesis and release: (1) PTU first \u2014 blocks new hormone synthesis AND peripheral T4-to-T3 conversion (this is why PTU is preferred over methimazole in storm). (2) Potassium iodide (Lugol's) given 1 hour AFTER PTU \u2014 blocks thyroid hormone release (the Wolff-Chaikoff effect). Giving iodine before the antithyroid drug would paradoxically worsen hormone synthesis. (3) Propranolol \u2014 controls adrenergic symptoms (tachycardia, hypertension, tremor). (4) Glucocorticoids (hydrocortisone/dexamethasone) \u2014 reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency. Radioactive iodine is NOT used in thyroid storm \u2014 it is an elective outpatient treatment.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Endocrine / Thyroid Storm",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm Rx sequence: PTU \u2192 (wait 1h) \u2192 Potassium iodide \u2192 Propranolol \u2192 Hydrocortisone. KEY: PTU BEFORE iodine (blocking synthesis before blocking release). Never give iodine first \u2014 it can fuel more hormone synthesis if the gland isn't blocked.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 2,
+      "stem": "A nurse has four patients to assess. Which patient should the nurse see FIRST, applying Maslow's hierarchy of needs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient who is anxious about an upcoming procedure"
+        },
+        {
+          "id": "b",
+          "text": "A patient with a respiratory rate of 8 breaths/min and SpO2 of 88%"
+        },
+        {
+          "id": "c",
+          "text": "A patient who needs discharge teaching before going home"
+        },
+        {
+          "id": "d",
+          "text": "A patient asking for pain medication rated 4/10"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Maslow's hierarchy places physiological needs at the foundation. Oxygenation is the highest physiological priority. A patient with RR 8 and SpO2 88% is in respiratory distress \u2014 an immediate life-threatening concern that takes absolute priority. Anxiety (A) is a safety/psychological need. Discharge teaching (C) is a self-actualization/cognitive need. Pain rated 4/10 (D) is physiological but not immediately life-threatening compared to respiratory failure.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Maslow hierarchy on NCLEX: airway/breathing/circulation (physiological) always come before safety, love/belonging, esteem, and self-actualization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history \u2014 the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives \u2014 alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension \u2014 directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN is caring for four patients and needs to delegate tasks. Which task is appropriate to assign to an unlicensed assistive personnel (UAP/CNA)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess the breath sounds of a patient with new-onset dyspnea"
+        },
+        {
+          "id": "b",
+          "text": "Administer a tube feeding to a stable patient via an established G-tube"
+        },
+        {
+          "id": "c",
+          "text": "Ambulate a postoperative patient 24 hours after hip replacement surgery"
+        },
+        {
+          "id": "d",
+          "text": "Teach a diabetic patient how to perform foot care"
+        }
+      ],
+      "answer": "c",
+      "rationale": "UAPs can perform tasks that are routine, repetitive, and do not require nursing judgment or assessment. Ambulating a stable postoperative patient 24 hours post-hip replacement is a safe, predictable task for UAP after the RN has assessed the patient's stability. Assessment of breath sounds (A) requires nursing judgment and cannot be delegated. Administering tube feedings (B) \u2014 in many states, enteral feeding via established G-tube can be delegated to trained UAPs, but the skill level required is greater than ambulation; this varies by state \u2014 ambulation is universally appropriate for CNA delegation. Patient education (D) is an RN responsibility requiring professional judgment.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can perform routine, non-assessment tasks: ambulation, ADLs, vital signs on stable patients, I&O \u2014 assessment, teaching, and medication administration remain with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 4,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus \u2014 stimulates uterine contraction. (2) Empty the bladder \u2014 a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin \u2014 first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked \u2014 the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "Therapeutic Communication",
+      "difficulty": 2,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation \u2014 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Therapeutic Communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb822-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to \u2265 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

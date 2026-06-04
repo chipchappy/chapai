@@ -1,0 +1,411 @@
+{
+  "batchId": "mixed-batch-808",
+  "generatedAt": "2026-04-09T07:40:00-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 9
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb808-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient is admitted with acute pancreatitis, amylase 980 units/L, and lipase 1,240 units/L. They are NPO, receiving IV fluids, and reporting pain 7/10. On day 3, the patient is hemodynamically stable with improving pain. The provider considers nutrition. Which approach reflects current evidence-based guidelines?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Continue NPO until amylase and lipase normalize, then advance to clear liquids"
+        },
+        {
+          "id": "b",
+          "text": "Begin total parenteral nutrition (TPN) immediately via central line to rest the pancreas"
+        },
+        {
+          "id": "c",
+          "text": "Initiate early enteral nutrition via nasojejunal tube within 24\u201372 hours of admission"
+        },
+        {
+          "id": "d",
+          "text": "Advance to oral clear liquids only if the patient reports no abdominal pain"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current guidelines (ACG, SCCM) recommend early enteral nutrition within 24\u201372 hours in acute pancreatitis, particularly in moderate-to-severe disease. Early EN maintains gut integrity, reduces bacterial translocation, and decreases infectious complications compared to TPN. Prolonged NPO (A) and waiting for enzyme normalization delay recovery. TPN (B) is associated with higher infection rates and should be used only when enteral access is not achievable. Waiting for complete pain resolution (D) unnecessarily delays nutrition.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute pancreatitis: early enteral nutrition within 24\u201372 hours is preferred over TPN; NPO is no longer the standard of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "involuntary_commitment",
+      "subcategory": "Involuntary Commitment",
+      "difficulty": 3,
+      "stem": "A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. He has not slept in 5 days, believes he is receiving messages from aliens, and stated he plans to 'make his neighbor pay' for 'spying on him.' Which criterion most legally supports involuntary psychiatric commitment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Presence of a psychiatric diagnosis requiring treatment"
+        },
+        {
+          "id": "b",
+          "text": "Refusal of recommended medication"
+        },
+        {
+          "id": "c",
+          "text": "Danger to others based on specific expressed threat"
+        },
+        {
+          "id": "d",
+          "text": "Inability to care for personal hygiene and nutrition"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Involuntary psychiatric commitment (civil commitment) requires that the person poses a danger to self, danger to others, or is gravely disabled (unable to meet basic needs of food, clothing, shelter due to mental illness). This patient's specific threat to 'make his neighbor pay' combined with active psychosis meets the danger-to-others criterion. Having a psychiatric diagnosis alone (A) is not sufficient for commitment. Medication refusal (B) alone does not meet criteria. While grave disability (D) could apply, the most legally defensible criterion here is the specific threat to another person.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Involuntary Commitment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Involuntary commitment requires: danger to self, danger to others (specific threat + mental illness), or grave disability \u2014 psychiatric diagnosis alone is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 4,
+      "stem": "A 5-year-old is admitted with meningococcal meningitis. Which isolation precautions should be initiated immediately, and for how long should they be maintained?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact precautions; maintain until discharge"
+        },
+        {
+          "id": "b",
+          "text": "Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy"
+        },
+        {
+          "id": "c",
+          "text": "Airborne precautions in a negative-pressure room; maintain for 48 hours"
+        },
+        {
+          "id": "d",
+          "text": "Standard precautions only; meningococcal meningitis is not transmissible person-to-person"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neisseria meningitidis (meningococcal meningitis) is transmitted via respiratory droplets (large droplets, short range <3 feet) \u2014 not airborne (small droplet nuclei). Droplet precautions are required: surgical mask within 3 feet, private room or cohorting, mask for transport. Duration: droplet precautions are maintained for the first 24 hours after initiation of effective antibiotic therapy (typically ceftriaxone), after which the organism is no longer detectable in respiratory secretions. Close contacts (household members, childcare contacts) should receive prophylaxis with rifampin, ciprofloxacin, or ceftriaxone.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+        "conclusion": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin)."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A patient is 4 hours post right hemicolectomy. Current vital signs: HR 132, BP 78/50 (was 120/74 post-op), RR 26, SpO2 93%, patient is anxious and diaphoretic. The surgical drain has collected 310 mL of bright red blood in the past 2 hours. What is the nurse's correct priority sequence of actions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the IV fluid rate, administer a scheduled analgesic, and notify the physician within the next 30-60 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Clamp the surgical drain to slow blood loss; place the patient in standard Trendelenburg (head-down 30\u00b0)"
+        },
+        {
+          "id": "c",
+          "text": "Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20\u00b0), infuse ordered IV fluids rapidly, notify the surgeon STAT, activate the massive transfusion protocol, and prepare the patient for possible emergent return to OR"
+        },
+        {
+          "id": "d",
+          "text": "Administer protamine sulfate IV to reverse any residual surgical anticoagulation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient is in post-operative hemorrhagic shock (Class II-III): bright red surgical drain output 310 mL/2 hrs (active arterial bleeding), compensatory tachycardia, hypotension, tachypnea, diaphoresis, and anxiety. Priority sequence: (1) Ensure 2 large-bore IVs (16g or larger) if not already present; (2) Modified Trendelenburg (legs elevated 15-20\u00b0) \u2014 provides passive autotransfusion of ~500 mL and assesses fluid responsiveness; DO NOT use classic Trendelenburg (head-down), which impairs respiratory mechanics and venous return; (3) Rapid IV fluid infusion + packed RBCs (O-negative if type-and-screen pending); (4) Activate massive transfusion protocol (1:1:1 ratio of PRBCs:FFP:platelets) for suspected massive hemorrhage; (5) Notify surgeon STAT \u2014 post-operative hemorrhage requires surgical re-exploration; (6) Prepare for emergency OR. Clamping the drain causes hematoma formation and masks ongoing hemorrhage without stopping the bleeding. Protamine reverses heparin anticoagulation \u2014 not indicated here.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op hemorrhagic shock: bright red drain + tachycardia + hypotension = surgical emergency. Large-bore IVs + fluids + blood + notify surgeon STAT + MTP + OR. Modified Trendelenburg (legs up), NOT classic head-down. Do not clamp drain.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after a negative test 6 months ago. Chest X-ray is negative. The patient has no symptoms. What is the recommended follow-up management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the PPD in 3 months to confirm conversion"
+        },
+        {
+          "id": "b",
+          "text": "No treatment needed \u2014 latent TB does not require intervention if the patient is asymptomatic"
+        },
+        {
+          "id": "c",
+          "text": "Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity"
+        },
+        {
+          "id": "d",
+          "text": "Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB"
+        }
+      ],
+      "answer": "c",
+      "rationale": "A recent PPD conversion (negative \u2192 positive within 2 years) with negative chest X-ray indicates latent TB infection (LTBI). Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). First-line LTBI regimens: (1) INH daily \u00d7 9 months (9H) \u2014 standard; (2) Rifapentine + INH weekly \u00d7 12 weeks (3HP) \u2014 shorter, increasingly preferred; (3) Rifampin daily \u00d7 4 months. INH monitoring: monthly clinical evaluation for hepatotoxicity symptoms (jaundice, nausea, fatigue, RUQ pain); baseline LFTs for high-risk patients; hold INH if AST >3\u00d7 ULN with symptoms or >5\u00d7 ULN asymptomatic. 4-drug RIPE is for active TB, not LTBI.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Recent PPD conversion + negative CXR = LTBI \u2192 INH prophylaxis 9 months (or 3HP 12 weeks); monitor monthly for INH hepatotoxicity; 4-drug RIPE is for active TB only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 4,
+      "stem": "A patient with Stage III pressure injury to the sacrum has a wound that is 4 cm \u00d7 6 cm \u00d7 2.5 cm deep with 30% yellow slough, 70% granulation tissue, minimal exudate, and intact surrounding skin. Which wound care plan is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pack wound tightly with dry gauze and change dressing twice daily"
+        },
+        {
+          "id": "b",
+          "text": "Apply silver sulfadiazine cream and cover with gauze"
+        },
+        {
+          "id": "c",
+          "text": "Debride slough with autolytic method using moisture-retentive dressing; avoid tight packing"
+        },
+        {
+          "id": "d",
+          "text": "Apply wet-to-dry dressing to debride the slough mechanically"
+        }
+      ],
+      "answer": "c",
+      "rationale": "For a wound with granulation tissue and slough: autolytic debridement using a moisture-retentive dressing (hydrocolloid or hydrogel) promotes selective removal of devitalized tissue while protecting new granulation. Tight packing (A) disrupts fragile granulation tissue and causes trauma on removal. Wet-to-dry dressings (D) are non-selective \u2014 they remove both slough AND healthy tissue. Silver sulfadiazine (B) is for burn wounds, not chronic pressure injuries. Principles: fill (don't pack) dead space, maintain moist wound environment, and protect periwound skin.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pressure injury with slough: autolytic debridement with moisture-retentive dressing. Never tight-pack wounds \u2014 fill dead space loosely.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "A 79-year-old patient on a medical unit is found to have a 5 cm \u00d7 4 cm sacral wound with full-thickness tissue loss, visible subcutaneous fat, and partial slough coverage of the wound base. No bone, tendon, or muscle is visible. What is the correct NPUAP/EPUAP pressure injury stage and priority nursing intervention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stage 1; increase repositioning frequency and apply a transparent film dressing"
+        },
+        {
+          "id": "b",
+          "text": "Stage 3; apply a moisture-retentive dressing, reposition every 2 hours off the sacrum, consult wound care specialist, and address nutrition"
+        },
+        {
+          "id": "c",
+          "text": "Stage 4; immediate surgical debridement is required before any wound care intervention"
+        },
+        {
+          "id": "d",
+          "text": "Unstageable; cover with dry gauze until slough completely resolves before determining stage or treatment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "NPUAP/EPUAP Pressure Injury Stages: Stage 1 \u2014 non-blanchable erythema, intact skin; Stage 2 \u2014 partial thickness dermis loss, shallow open ulcer; Stage 3 \u2014 full-thickness skin loss with visible subcutaneous fat, may have slough, but no bone/tendon/muscle visible; Stage 4 \u2014 full-thickness with exposed bone, tendon, or muscle; Unstageable \u2014 base entirely obscured by non-removable slough or eschar. This wound is Stage 3 (full-thickness, subcutaneous fat visible, partial slough but bone/tendon not exposed). Management: moist wound healing (foam, hydrocolloid, or alginate dressings based on exudate level), reposition every 2 hours off the sacrum, pressure redistribution support surface, wound care specialist consultation, nutritional assessment (protein, zinc, vitamin C support wound healing). Dry gauze is contraindicated \u2014 desiccates wound bed and impairs healing. Slough does not make a wound automatically unstageable (unstageable requires the base to be completely obscured).",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Stage 3 pressure injury: full-thickness, subcutaneous fat visible, no bone/tendon. Treat with moist wound dressings, 2-hour repositioning, pressure redistribution, nutrition support, and wound care consult. Dry gauze contraindicated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 3,
+      "stem": "After a patient falls while attempting to ambulate unassisted, the nurse completes an incident report. Which statement about incident reports is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The incident report should be referenced in the patient's medical record to ensure continuity of care"
+        },
+        {
+          "id": "b",
+          "text": "The incident report is an internal quality improvement tool; it is not referenced in the medical record and is not discoverable in litigation"
+        },
+        {
+          "id": "c",
+          "text": "Incident reports are part of the permanent medical record and must be provided to patients upon request"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should document 'incident report filed' in the nursing notes to alert other providers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Incident reports (occurrence reports) are internal quality improvement documents: they are NOT referenced in the patient's medical record. Referencing them in the chart (A, D) makes them discoverable in litigation, eliminating their protection as internal QI documents. The nurse documents the clinical facts in the medical record (what happened, patient response, assessment findings, interventions) without mentioning the incident report. In many states, incident reports prepared in anticipation of litigation may be protected from discovery, but only if not referenced in the chart. They are not part of the permanent medical record (C).",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Incident reports: do NOT reference in the medical record; document clinical facts of the event in the chart only \u2014 referencing the incident report makes it legally discoverable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb808-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hellp_syndrome",
+      "subcategory": "HELLP Syndrome",
+      "difficulty": 4,
+      "stem": "A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea, and malaise. Labs reveal: AST 280 U/L, LDH 950 U/L, platelets 74,000/mm3, hemoglobin 9.8 g/dL with schistocytes on smear, and normal creatinine. Which condition do these findings indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute fatty liver of pregnancy (AFLP)"
+        },
+        {
+          "id": "b",
+          "text": "HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)"
+        },
+        {
+          "id": "c",
+          "text": "Thrombotic thrombocytopenic purpura (TTP)"
+        },
+        {
+          "id": "d",
+          "text": "Viral hepatitis with thrombocytopenia"
+        }
+      ],
+      "answer": "b",
+      "rationale": "HELLP syndrome is a variant of severe preeclampsia: Hemolysis (schistocytes, elevated LDH, low Hgb), Elevated Liver enzymes (AST >70 U/L), Low Platelets (<100,000). RUQ/epigastric pain from hepatic capsule distension is classic. Definitive treatment is delivery. AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration \u2014 different mechanism. TTP (C) presents with the pentad including fever and renal failure. Viral hepatitis (D) would not present with schistocytes and would have different epidemiology.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "HELLP Syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "HELLP = Hemolysis (schistocytes + elevated LDH) + Elevated Liver enzymes + Low Platelets; treatment is delivery regardless of gestational age.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}

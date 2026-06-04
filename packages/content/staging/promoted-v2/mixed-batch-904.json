@@ -1,0 +1,545 @@
+{
+  "batchId": "mixed-batch-904",
+  "generatedAt": "2026-04-10T07:12:07-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb904-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "de_escalation",
+      "subcategory": "de_escalation",
+      "difficulty": 3,
+      "stem": "A patient with schizophrenia becomes increasingly agitated in the day room, pacing, clenching fists, and stating loudly: 'Everyone is trying to poison me!' Which nurse action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approach the patient with two other staff members and prepare for physical restraint"
+        },
+        {
+          "id": "b",
+          "text": "Call security immediately and lock the day room"
+        },
+        {
+          "id": "c",
+          "text": "Calmly approach alone, make brief eye contact, use a low voice, and offer to move to a quieter space"
+        },
+        {
+          "id": "d",
+          "text": "Tell the patient loudly: 'You need to calm down or you will be restrained'"
+        }
+      ],
+      "answer": "c",
+      "rationale": "De-escalation techniques include: calm tone of voice, non-threatening body language, offering choice/control (moving to quiet space), reducing environmental stimulation, and validating feelings without agreeing with delusions. Approaching with multiple staff (A) can feel threatening and escalate the situation. Locking the unit (B) removes the patient's sense of freedom and escalates. Threatening restraint (D) is coercive and contraindicated in de-escalation. Physical restraint is the last resort after verbal de-escalation fails.",
+      "distractorRationales": {
+        "a": "Approach the patient with two other staff members and prepare for physical restraint misses the clinical pattern: De Escalation restraint points to Calmly approach alone, make brief eye contact, use a low voice, and offer to move to, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "b": "Call security immediately and lock the day room misses the clinical pattern: De Escalation restraint points to Calmly approach alone, make brief eye contact, use a low voice, and offer to move to, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Tell the patient loudly: 'You need to calm down or you will be restrained' misses the clinical pattern: De Escalation restraint points to Calmly approach alone, make brief eye contact, use a low voice, and offer to move to, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "de_escalation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "De-escalation: calm voice, non-threatening approach, reduce stimulation, offer choices — physical restraint is last resort only.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_management",
+      "subcategory": "delegation_management",
+      "difficulty": 3,
+      "stem": "A charge nurse on a busy medical unit receives four calls simultaneously. Which situation should the charge nurse address PERSONALLY and FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given"
+        },
+        {
+          "id": "b",
+          "text": "A CNA reporting that a patient pulled out their peripheral IV"
+        },
+        {
+          "id": "c",
+          "text": "A family member asking about the patient's discharge plan"
+        },
+        {
+          "id": "d",
+          "text": "A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88% and cannot be aroused"
+        }
+      ],
+      "answer": "d",
+      "rationale": "The patient who is unresponsive, diaphoretic, hypoxic, and has chest pain is in acute cardiovascular or respiratory distress — this is a potential cardiac arrest or shock scenario requiring immediate, high-level nursing assessment and intervention. The charge nurse must respond in person and likely activate a rapid response or code. Missed scheduled medications is an important safety issue but not immediately life-threatening and can be delegated to the LPN's supervising RN. A dislodged IV requires reinsertion — important but not immediately life-threatening. Family discharge questions can be deferred to the primary nurse or case manager.",
+      "distractorRationales": {
+        "a": "A licensed practical nurse (LPN) reporting that a patient's scheduled morning medications have not been given misses the clinical pattern: Delegation Management respiratory points to A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "b": "A CNA reporting that a patient pulled out their peripheral IV misses the clinical pattern: Delegation Management respiratory points to A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "A family member asking about the patient's discharge plan misses the clinical pattern: Delegation Management respiratory points to A nurse reporting that a patient with chest pain and diaphoresis has an SpO2 of 88%, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "delegation_management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Triage for charge nurse response: unresponsive patient with chest pain + hypoxia + diaphoresis = potential code = charge nurse goes first and activates RRT/code response. All other issues can be triaged or delegated.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "floating_nurse",
+      "subcategory": "floating_nurse",
+      "difficulty": 3,
+      "stem": "An RN who regularly works on a medical-surgical unit is floated to the cardiac ICU. Which action by the floating RN is most appropriate regarding scope of limitations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Refuse the assignment because floating to a specialty unit is unsafe"
+        },
+        {
+          "id": "b",
+          "text": "Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP"
+        },
+        {
+          "id": "c",
+          "text": "Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and request supervision for unfamiliar procedures"
+        },
+        {
+          "id": "d",
+          "text": "Accept the assignment only if she is designated as a second nurse, not as primary nurse"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Floating RNs are obligated to inform the charge nurse of limitations in specialty skills. They cannot refuse the assignment categorically (A) — refusing is appropriate only if the assignment is unsafe based on skills AND the unit cannot accommodate limitations. They must not perform tasks outside their competence independently (B). Accepting with disclosure of limitations and requesting supervision (C) is the professional and legally safe approach. The float nurse should receive a patient assignment matched to her competency level, with support for unfamiliar procedures. Simply being a 'second nurse' (D) does not adequately protect the patient or satisfy professional accountability.",
+      "distractorRationales": {
+        "a": "Refuse the assignment because floating to a specialty unit is unsafe misses the clinical pattern: Floating Nurse cardiac points to Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "b": "Accept the assignment and manage all CICU patients including titrating vasopressors and managing IABP misses the clinical pattern: Floating Nurse cardiac points to Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Accept the assignment only if she is designated as a second nurse, not as primary nurse misses the clinical pattern: Floating Nurse cardiac points to Inform the charge nurse of any tasks outside her competence, accept patients within her skills, and, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "floating_nurse",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Float nurses: disclose competency limitations to charge nurse, accept assignments within skills, request supervision — outright refusal is not appropriate unless assignment is unsafe and no accommodation is possible.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_apgar",
+      "subcategory": "neonatal_apgar",
+      "difficulty": 3,
+      "stem": "A neonate is assessed at 1 minute of life. The nurse notes: heart rate 98 bpm, weak cry, some flexion of extremities, grimace only in response to stimulation, and blue hands and feet with pink body. What is the APGAR score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "6"
+        },
+        {
+          "id": "c",
+          "text": "7"
+        },
+        {
+          "id": "d",
+          "text": "8"
+        }
+      ],
+      "answer": "a",
+      "rationale": "APGAR scoring: Appearance (color): pink body, blue hands/feet (acrocyanosis) = 1. Pulse (HR): 98 bpm (<100) = 1. Grimace (reflex): grimace only = 1. Activity (muscle tone): some flexion = 1. Respirations: weak cry = 1. Total APGAR = 5. Score 7–10 = normal. Score 4–6 = moderate depression — requires oxygen and stimulation. Score 0–3 = severe depression requiring immediate resuscitation.",
+      "distractorRationales": {
+        "b": "6 misses the clinical pattern: Neonatal Apgar oxygen points to 5, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "7 misses the clinical pattern: Neonatal Apgar oxygen points to 5, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "8 misses the clinical pattern: Neonatal Apgar oxygen points to 5, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "neonatal_apgar",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "APGAR ≤6 = requires intervention; acrocyanosis (blue hands/feet only) = 1 point; central cyanosis (blue trunk/face) = 0 points.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_seizure_management",
+      "subcategory": "neurological_seizure_management",
+      "difficulty": 3,
+      "stem": "A nurse is with a patient who suddenly begins experiencing a generalized tonic-clonic seizure. What is the PRIORITY nursing action during the seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insert an oral airway to prevent tongue biting and aspiration"
+        },
+        {
+          "id": "b",
+          "text": "Restrain the patient's limbs to prevent injury"
+        },
+        {
+          "id": "c",
+          "text": "Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer diazepam 10 mg IV immediately per standing orders"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an active seizure, the nursing priorities are safety and observation: protect the head (soft padding), clear hazardous objects from the immediate environment, position on the side (lateral decubitus) to prevent aspiration when the seizure subsides, and time the duration. Nothing should be inserted into the mouth during an active seizure — this can cause injury to the patient and the nurse, and the jaw cannot be pried open safely. Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Medication (benzodiazepine) is indicated for prolonged seizures (> 5 minutes, status epilepticus) — not every seizure automatically requires IV medication.",
+      "distractorRationales": {
+        "a": "Insert an oral airway to prevent tongue biting and aspiration misses the clinical pattern: Neurological Seizure Management aspiration points to Protect the patient's head, clear the environment of hazards, turn the patient on their side, and, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "b": "Restrain the patient's limbs to prevent injury misses the clinical pattern: Neurological Seizure Management aspiration points to Protect the patient's head, clear the environment of hazards, turn the patient on their side, and, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Administer diazepam 10 mg IV immediately per standing orders misses the clinical pattern: Neurological Seizure Management aspiration points to Protect the patient's head, clear the environment of hazards, turn the patient on their side, and, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "neurological_seizure_management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neurological_seizure_management",
+        "caption": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+        "conclusion": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes)."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "acute_angle_glaucoma",
+      "difficulty": 3,
+      "stem": "A client reports severe eye pain, blurred vision, and seeing halos around lights. Which interpretation by the nurse is most accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client may have acute angle-closure glaucoma and needs urgent evaluation."
+        },
+        {
+          "id": "b",
+          "text": "This is an expected effect of routine eye fatigue."
+        },
+        {
+          "id": "c",
+          "text": "The client is likely having a migraine and can rest at home."
+        },
+        {
+          "id": "d",
+          "text": "These findings show that prescribed eye drops are working well."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe eye pain with blurred vision and halos is concerning for acute angle-closure glaucoma, an ocular emergency that can threaten vision. The nurse should recognize the need for urgent ophthalmic evaluation rather than dismissing the symptoms as routine strain. Time-sensitive treatment matters for outcome.",
+      "distractorRationales": {
+        "b": "This is an expected effect of routine eye fatigue misses the clinical pattern: Acute Angle Glaucoma pain points to The client may have acute angle-closure glaucoma and needs urgent evaluation, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "The client is likely having a migraine and can rest at home misses the clinical pattern: Acute Angle Glaucoma pain points to The client may have acute angle-closure glaucoma and needs urgent evaluation, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "These findings show that prescribed eye drops are working well misses the clinical pattern: Acute Angle Glaucoma pain points to The client may have acute angle-closure glaucoma and needs urgent evaluation, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "acute_angle_glaucoma",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Eye pain plus halos and blurred vision should trigger concern for acute angle-closure glaucoma.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 3,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "Restrict oral fluids and monitor weight misses the clinical pattern: Adrenal Crisis Hypotension sodium points to Administer IV hydrocortisone and isotonic fluids, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Hold corticosteroids until the morning cortisol level is drawn misses the clinical pattern: Adrenal Crisis Hypotension sodium points to Administer IV hydrocortisone and isotonic fluids, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Teach the client about low-sodium foods misses the clinical pattern: Adrenal Crisis Hypotension sodium points to Administer IV hydrocortisone and isotonic fluids, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "Obtain a full allergy history before intervening misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the infusion and prepare to administer epinephrine, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Slow the infusion to reduce the reaction misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the infusion and prepare to administer epinephrine, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Document the event and continue monitoring misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the infusion and prepare to administer epinephrine, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "Lay the client flat and increase the room temperature misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Ask the client to rest quietly until the headache passes misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Offer oral fluids and reassess in 30 minutes misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "blood_transfusion_reaction",
+      "difficulty": 3,
+      "stem": "A nurse begins a packed red blood cell transfusion for a client with postoperative anemia. Fifteen minutes later the client reports chills, low back pain, and chest tightness. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the transfusion and keep the IV line open with normal saline."
+        },
+        {
+          "id": "b",
+          "text": "Slow the transfusion rate and reassess in 5 minutes."
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as an expected febrile response."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chills, low back pain, and chest tightness shortly after starting blood are red-flag findings for an acute transfusion reaction. The nurse should stop the blood immediately to prevent further exposure and maintain IV access with normal saline using new tubing so emergency treatment can be given. Slowing the infusion or masking symptoms delays the response to a potentially life-threatening complication.",
+      "distractorRationales": {
+        "b": "Slow the transfusion rate and reassess in 5 minutes misses the clinical pattern: Blood Transfusion Reaction transfusion points to Stop the transfusion and keep the IV line open with normal saline, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Administer acetaminophen and continue the transfusion misses the clinical pattern: Blood Transfusion Reaction transfusion points to Stop the transfusion and keep the IV line open with normal saline, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Document the symptoms as an expected febrile response misses the clinical pattern: Blood Transfusion Reaction transfusion points to Stop the transfusion and keep the IV line open with normal saline, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "blood_transfusion_reaction",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected transfusion reaction means stop the blood first and keep the line open with normal saline.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "c_diff_spore_precautions",
+      "subcategory": "c_diff_spore_precautions",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for Clostridioides difficile. Which infection-control action should the nurse implement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use soap and water for hand hygiene after removing gloves."
+        },
+        {
+          "id": "b",
+          "text": "Use alcohol-based sanitizer alone because it is faster."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on droplet precautions only."
+        },
+        {
+          "id": "d",
+          "text": "Share the blood pressure cuff after wiping it with a dry towel."
+        }
+      ],
+      "answer": "a",
+      "rationale": "C. difficile spores are not reliably removed by alcohol-based hand rub alone, so soap-and-water hand hygiene is required after glove removal. Contact precautions and dedicated equipment are also important. Using only sanitizer or shared equipment increases transmission risk.",
+      "distractorRationales": {
+        "b": "Use alcohol-based sanitizer alone because it is faster misses the clinical pattern: C Diff Spore Precautions infection points to Use soap and water for hand hygiene after removing gloves, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Place the client on droplet precautions only misses the clinical pattern: C Diff Spore Precautions infection points to Use soap and water for hand hygiene after removing gloves, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Share the blood pressure cuff after wiping it with a dry towel misses the clinical pattern: C Diff Spore Precautions infection points to Use soap and water for hand hygiene after removing gloves, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "c_diff_spore_precautions",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. difficile care requires soap-and-water hand hygiene and contact precautions.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb904-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "central_line_infection_prevention",
+      "subcategory": "central_line_infection_prevention",
+      "difficulty": 3,
+      "stem": "Which action by the nurse best helps prevent a central line-associated bloodstream infection in a hospitalized client?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Scrub the hub before each access and maintain a sterile dressing."
+        },
+        {
+          "id": "b",
+          "text": "Change the dressing only when the client reports discomfort."
+        },
+        {
+          "id": "c",
+          "text": "Use the line for routine blood draws to avoid extra venipunctures."
+        },
+        {
+          "id": "d",
+          "text": "Leave one port uncapped between intermittent infusions."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Consistent hub disinfection and sterile dressing care are core nursing actions for preventing central line infections. Using the line casually or leaving it uncapped increases contamination risk. Dressing changes should follow evidence-based timing and contamination rules, not patient comfort alone.",
+      "distractorRationales": {
+        "b": "Change the dressing only when the client reports discomfort misses the clinical pattern: Central Line Infection Prevention infection points to Scrub the hub before each access and maintain a sterile dressing, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Use the line for routine blood draws to avoid extra venipunctures misses the clinical pattern: Central Line Infection Prevention infection points to Scrub the hub before each access and maintain a sterile dressing, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Leave one port uncapped between intermittent infusions misses the clinical pattern: Central Line Infection Prevention infection points to Scrub the hub before each access and maintain a sterile dressing, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "central_line_infection_prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "central_line_infection_prevention",
+        "caption": "Preventing CLABSI depends on aseptic access and sterile site care every time.",
+        "conclusion": "Preventing CLABSI depends on aseptic access and sterile site care every time."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

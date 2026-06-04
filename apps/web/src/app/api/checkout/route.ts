@@ -103,7 +103,9 @@ export async function POST(req: Request) {
     });
 
     const appUrl = new URL(req.url).origin;
-    const successTarget = new URL(body.successUrl || `${appUrl}/success`);
+    // Default to the dashboard celebration view; legacy callers can still pass
+    // a custom `successUrl` for one-off flows.
+    const successTarget = new URL(body.successUrl || `${appUrl}/dashboard?upgrade=success`);
     successTarget.searchParams.set("plan", offer.planCode);
     successTarget.searchParams.set("package", offer.label);
     successTarget.searchParams.set("session_id", "{CHECKOUT_SESSION_ID}");

@@ -1,0 +1,1414 @@
+{
+  "batchId": "mixed-batch-1154",
+  "generatedAt": "2026-05-26T18:23:45.253Z",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "local-zeroed-batch-repair",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 24
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb1154-n001",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "acute_angle_glaucoma",
+      "subcategory": "Acute angle-closure glaucoma",
+      "difficulty": 4,
+      "stem": "Which conclusion should guide the nurse's next move in this eye emergency?",
+      "scenarioTitle": "Halos and eye pain case",
+      "scenario": "A client reports sudden severe eye pain, blurred vision, nausea, and seeing halos around lights.",
+      "additionalInfo": "The affected eye appears red and the client says the pain escalated over the past hour.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute angle-closure glaucoma requiring urgent vision-saving evaluation and treatment"
+        },
+        {
+          "id": "b",
+          "text": "A typical migraine with harmless visual aura"
+        },
+        {
+          "id": "c",
+          "text": "Expected eye strain from screen exposure"
+        },
+        {
+          "id": "d",
+          "text": "Benign conjunctivitis that can wait for routine clinic follow-up"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Severe eye pain, halos, nausea, and a red eye create an acute-pressure map rather than a comfort problem. The nurse should answer from urgent vision protection.",
+      "distractorRationales": {
+        "b": "A typical migraine with harmless visual aura misses the clinical pattern: Acute Angle Closure Glaucoma pain points to Acute angle-closure glaucoma requiring urgent vision-saving evaluation and treatment, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Expected eye strain from screen exposure misses the clinical pattern: Acute Angle Closure Glaucoma pain points to Acute angle-closure glaucoma requiring urgent vision-saving evaluation and treatment, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Benign conjunctivitis that can wait for routine clinic follow-up misses the clinical pattern: Acute Angle Closure Glaucoma pain points to Acute angle-closure glaucoma requiring urgent vision-saving evaluation and treatment, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "ophthalmology",
+        "acute angle glaucoma",
+        "Acute angle-closure glaucoma",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Eye pain plus halos plus nausea is a vision-threatening clue cluster.",
+      "speedCue": "Halos plus a painful red eye is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n002",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "subcategory": "Acute kidney injury trend recognition",
+      "difficulty": 4,
+      "stem": "For each finding, click to specify whether the finding supports worsening acute kidney injury or a less urgent monitoring picture.",
+      "scenarioTitle": "AKI trend sort",
+      "scenario": "The nurse is comparing several renal function trends for a client whose kidney status is worsening.",
+      "additionalInfo": "The provider asks the nurse to identify which findings point to deterioration that needs faster action.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports worsening acute kidney injury"
+        },
+        {
+          "id": "b",
+          "text": "Less urgent monitoring picture"
+        }
+      ],
+      "answer": {
+        "Rising creatinine with falling urine output": "Supports worsening acute kidney injury",
+        "Progressive edema and increasing potassium": "Supports worsening acute kidney injury",
+        "Stable creatinine with adequate hourly urine output": "Less urgent monitoring picture",
+        "Improved intake with steady daily weight": "Less urgent monitoring picture"
+      },
+      "matrixColumns": [
+        "Supports worsening acute kidney injury",
+        "Less urgent monitoring picture"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rising creatinine with falling urine output",
+          "answer": "Supports worsening acute kidney injury"
+        },
+        {
+          "label": "Progressive edema and increasing potassium",
+          "answer": "Supports worsening acute kidney injury"
+        },
+        {
+          "label": "Stable creatinine with adequate hourly urine output",
+          "answer": "Less urgent monitoring picture"
+        },
+        {
+          "label": "Improved intake with steady daily weight",
+          "answer": "Less urgent monitoring picture"
+        }
+      ],
+      "rationale": "Acute kidney injury becomes more urgent when urine output falls, creatinine rises, and electrolyte complications emerge. Stable output and renal trends belong on the less urgent side because they do not signal deterioration.",
+      "distractorRationales": {
+        "a": "Supports worsening acute kidney injury misses the clinical pattern: Acute Kidney Injury Trend Recognition electrolyte points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "b": "Less urgent monitoring picture misses the clinical pattern: Acute Kidney Injury Trend Recognition electrolyte points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "NGN",
+        "matrix",
+        "physiological adaptation",
+        "acute kidney injury",
+        "Acute kidney injury trend recognition",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Falling urine plus rising creatinine is the shortcut to worsening AKI.",
+      "speedCue": "Creatinine up and urine down means kidney injury is moving the wrong way.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n003",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "acute_psychosis_deescalation_safety",
+      "subcategory": "Psychosis de-escalation safety",
+      "difficulty": 4,
+      "stem": "Which interpretation should guide the nurse's next move when this client becomes increasingly paranoid and agitated?",
+      "scenarioTitle": "Psychosis safety case",
+      "scenario": "A client with schizophrenia is pacing, shouting that staff members are trying to poison him, and clenching his fists.",
+      "additionalInfo": "The unit is noisy, and several other clients have gathered nearby to watch the scene.",
+      "options": [
+        {
+          "id": "a",
+          "text": "This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal of excess triggers"
+        },
+        {
+          "id": "b",
+          "text": "The nurse should argue with the delusion to prove the belief is false"
+        },
+        {
+          "id": "c",
+          "text": "The nurse should bring more clients close by to normalize the interaction"
+        },
+        {
+          "id": "d",
+          "text": "The nurse should leave immediately without setting limits or assessing risk"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Acute psychosis with rising agitation should be answered with safety, lower stimulation, and calm limit setting rather than confrontation. Arguing about the delusion or adding more external stimulation increases the risk that the client's distress escalates into violence.",
+      "distractorRationales": {
+        "b": "The nurse should argue with the delusion to prove the belief is false misses the clinical pattern: Psychosis De Escalation Safety safety points to This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "The nurse should bring more clients close by to normalize the interaction misses the clinical pattern: Psychosis De Escalation Safety safety points to This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "The nurse should leave immediately without setting limits or assessing risk misses the clinical pattern: Psychosis De Escalation Safety safety points to This is a safety and de-escalation situation that calls for a calm, low-stimulation approach and removal, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "psychosocial",
+        "psychosis",
+        "Psychosis de-escalation safety",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "In psychosis, the nurse leads with safety and calm structure, not debate.",
+      "speedCue": "Paranoia plus clenched fists means lower the room before you lower the delusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n004",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "acute_rejection_transplant",
+      "subcategory": "Transplant rejection",
+      "difficulty": 4,
+      "stem": "A client is 2 weeks after kidney transplant. Which findings should make the nurse suspect acute rejection and notify the provider right away?",
+      "scenarioTitle": "Early transplant warning cluster",
+      "scenario": "The client reports decreased appetite and generally not feeling well since yesterday.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fever"
+        },
+        {
+          "id": "b",
+          "text": "Tenderness over the graft site"
+        },
+        {
+          "id": "c",
+          "text": "Decreased urine output"
+        },
+        {
+          "id": "d",
+          "text": "Blood pressure lower than baseline after standing once"
+        },
+        {
+          "id": "e",
+          "text": "Rising serum creatinine"
+        },
+        {
+          "id": "f",
+          "text": "Mild tremor after tacrolimus dose"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Acute rejection is recognized by combining graft tenderness, fever, falling urine output, and worsening renal function rather than treating each clue in isolation. The nurse should move quickly because early escalation protects graft function.",
+      "distractorRationales": {
+        "d": "Blood pressure lower than baseline after standing once misses the clinical pattern: Transplant Rejection isolation points to Fever plus Tenderness over the graft site plus Decreased urine output plus Rising serum creatinine, so choosing it can postpone safety actions and worsen infection progression.",
+        "f": "Mild tremor after tacrolimus dose misses the clinical pattern: Transplant Rejection isolation points to Fever plus Tenderness over the graft site plus Decreased urine output plus Rising serum creatinine, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "NGN",
+        "transplant",
+        "rejection",
+        "sata",
+        "Transplant rejection",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Fever plus graft tenderness plus low urine output after transplant is a rejection pattern until proven otherwise.",
+      "speedCue": "On exam day, pair transplant timing with graft tenderness and kidney decline before you anchor on medication side effects.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n005",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "adolescent_depression_screening_phq",
+      "subcategory": "Adolescent depression screening",
+      "difficulty": 3,
+      "stem": "Which decision map best explains the nurse's priority after an adolescent screens positive for depression?",
+      "scenarioTitle": "Screen-positive next-step map",
+      "scenario": "A 16-year-old scores in the moderate range on a depression screening tool during a school-based clinic visit.",
+      "additionalInfo": "The adolescent shrugs and says, 'I'm just tired all the time. It's not a big deal.'",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support"
+        },
+        {
+          "id": "b",
+          "text": "Reassure the adolescent that screening tools often overreact and no follow-up is needed"
+        },
+        {
+          "id": "c",
+          "text": "Skip all direct questions about self-harm because they may plant the idea"
+        },
+        {
+          "id": "d",
+          "text": "Wait until the next annual visit to revisit mood symptoms"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A positive depression screen is a prompt for direct safety assessment and follow-up support, not a reassurance cue. The nurse should not avoid suicide questions or delay referral simply because the adolescent is minimizing symptoms.",
+      "distractorRationales": {
+        "b": "Reassure the adolescent that screening tools often overreact and no follow-up is needed misses the clinical pattern: Adolescent Depression Screening assessment points to Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Skip all direct questions about self-harm because they may plant the idea misses the clinical pattern: Adolescent Depression Screening assessment points to Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "Wait until the next annual visit to revisit mood symptoms misses the clinical pattern: Adolescent Depression Screening assessment points to Treat the screen as meaningful, assess safety directly, and connect the adolescent with follow-up support, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "NGN",
+        "bow tie",
+        "health promotion",
+        "adolescent depression",
+        "Adolescent depression screening",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Screening only helps when a positive result leads to direct safety assessment and follow-up.",
+      "speedCue": "A positive screen means ask directly, not later.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n006",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "Adrenal crisis",
+      "difficulty": 4,
+      "stem": "Which decision map best explains this client's rapid deterioration?",
+      "scenarioTitle": "Adrenal crisis rescue map",
+      "scenario": "A client with chronic adrenal insufficiency has been vomiting for 24 hours and now looks weak and confused.",
+      "additionalInfo": "Blood pressure is 82/46 mm Hg, sodium is 124 mEq/L, potassium is 5.8 mEq/L, and the morning steroid dose was missed.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Simple dehydration that only needs oral fluids"
+        },
+        {
+          "id": "c",
+          "text": "Expected fatigue from chronic illness without emergency risk"
+        },
+        {
+          "id": "d",
+          "text": "A benign stomach virus that can wait for clinic follow-up"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Vomiting, hypotension, hyponatremia, hyperkalemia, and missed steroids create an adrenal-crisis map. The nurse should answer from endocrine shock rescue, not from comfort care or delayed reassessment.",
+      "distractorRationales": {
+        "b": "Simple dehydration that only needs oral fluids misses the clinical pattern: Adrenal Crisis shock points to Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Expected fatigue from chronic illness without emergency risk misses the clinical pattern: Adrenal Crisis shock points to Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "A benign stomach virus that can wait for clinic follow-up misses the clinical pattern: Adrenal Crisis shock points to Adrenal crisis requiring immediate steroid replacement, fluid support, and shock-focused escalation, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "NGN",
+        "bow tie",
+        "endocrine",
+        "adrenal crisis",
+        "Adrenal crisis",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "The lab pattern matters most when it arrives with hypotension and missed steroid coverage.",
+      "speedCue": "Hypotension plus low sodium plus high potassium should feel like adrenal crisis fast.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n007",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "advance_directive_conflict_family",
+      "subcategory": "Advance directive conflict",
+      "difficulty": 4,
+      "stem": "Which interpretation should guide the nurse's next move when family demands conflict with a documented client directive?",
+      "scenarioTitle": "Advance directive conflict case",
+      "scenario": "A client with metastatic cancer has a signed advance directive declining intubation and CPR.",
+      "additionalInfo": "The client is now unresponsive, and two adult children insist the nurse should 'do everything' while the provider is en route.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Honor the documented advance directive while escalating the conflict through the provider and ethics chain"
+        },
+        {
+          "id": "b",
+          "text": "Ignore the directive because family requests automatically override prior written wishes"
+        },
+        {
+          "id": "c",
+          "text": "Delay all action until the family agrees on a plan"
+        },
+        {
+          "id": "d",
+          "text": "Ask the family to sign a new code-status form at the bedside before doing anything else"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A valid advance directive reflects the client's expressed wishes and should guide care when the client can no longer speak. The nurse should follow that documented plan while escalating the family conflict through the proper chain rather than treating family pressure as a replacement for the client's autonomy.",
+      "distractorRationales": {
+        "b": "Ignore the directive because family requests automatically override prior written wishes misses the clinical pattern: Advance Directive Conflict safety points to Honor the documented advance directive while escalating the conflict through the provider and ethics chain, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Delay all action until the family agrees on a plan misses the clinical pattern: Advance Directive Conflict safety points to Honor the documented advance directive while escalating the conflict through the provider and ethics chain, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Ask the family to sign a new code-status form at the bedside before doing anything else misses the clinical pattern: Advance Directive Conflict safety points to Honor the documented advance directive while escalating the conflict through the provider and ethics chain, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "management of care",
+        "advance directive",
+        "Advance directive conflict",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "When family demands conflict with a valid directive, the client's documented wishes stay at the center of care.",
+      "speedCue": "The shortcut is autonomy first: a signed directive is the client's voice when the family is distressed.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n008",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "aminoglycoside_peak_trough_nephrotoxicity",
+      "subcategory": "Aminoglycoside monitoring",
+      "difficulty": 4,
+      "stem": "For each finding, click to specify whether the finding supports aminoglycoside toxicity concern or routine expected monitoring without clear toxicity concern.",
+      "scenarioTitle": "Aminoglycoside toxicity sort",
+      "scenario": "A client is receiving gentamicin for a resistant infection.",
+      "additionalInfo": "The nurse is reviewing bedside clues and laboratory trends before the next dose.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports toxicity concern"
+        },
+        {
+          "id": "b",
+          "text": "Routine monitoring without clear toxicity concern"
+        }
+      ],
+      "answer": {
+        "Rising creatinine and decreasing urine output": "Supports toxicity concern",
+        "New tinnitus or hearing change": "Supports toxicity concern",
+        "Documented trough level checked as ordered": "Routine monitoring without clear toxicity concern",
+        "Stable renal function with therapeutic trend review": "Routine monitoring without clear toxicity concern"
+      },
+      "matrixColumns": [
+        "Supports toxicity concern",
+        "Routine monitoring without clear toxicity concern"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rising creatinine and decreasing urine output",
+          "answer": "Supports toxicity concern"
+        },
+        {
+          "label": "New tinnitus or hearing change",
+          "answer": "Supports toxicity concern"
+        },
+        {
+          "label": "Documented trough level checked as ordered",
+          "answer": "Routine monitoring without clear toxicity concern"
+        },
+        {
+          "label": "Stable renal function with therapeutic trend review",
+          "answer": "Routine monitoring without clear toxicity concern"
+        }
+      ],
+      "rationale": "Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being checked. The nurse should connect renal decline and hearing changes to a hold-and-escalate mindset rather than treating every monitoring step as danger.",
+      "distractorRationales": {
+        "a": "Supports toxicity concern misses the clinical pattern: Aminoglycoside Monitoring infection points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen infection progression.",
+        "b": "Routine monitoring without clear toxicity concern misses the clinical pattern: Aminoglycoside Monitoring infection points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "NGN",
+        "matrix",
+        "pharmacology",
+        "aminoglycoside",
+        "Aminoglycoside monitoring",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Monitoring is routine; toxicity is when renal or hearing clues shift.",
+      "speedCue": "Creatinine up or tinnitus new means think aminoglycoside toxicity fast.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n009",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "amniotic_fluid_embolism",
+      "subcategory": "Amniotic fluid embolism",
+      "difficulty": 5,
+      "stem": "A laboring client suddenly becomes hypoxic, hypotensive, and unresponsive. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "AFE collapse sequence",
+      "scenario": "The fetal monitor shows abrupt deterioration while the client becomes cyanotic.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Call the obstetric emergency response and bring resuscitation support to the bedside"
+        },
+        {
+          "id": "b",
+          "text": "Support airway and oxygenation immediately"
+        },
+        {
+          "id": "c",
+          "text": "Begin rapid hemodynamic support and prepare for perimortem interventions if directed"
+        },
+        {
+          "id": "d",
+          "text": "Continue close maternal-fetal reassessment while the team stabilizes the client"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Amniotic fluid embolism is answered fastest when the nurse recognizes the catastrophic oxygenation-perfusion pattern and moves into emergency response. Help and airway support come first, followed by aggressive hemodynamic stabilization and continued reassessment.",
+      "distractorRationales": {},
+      "tags": [
+        "NGN",
+        "AFE",
+        "ordering",
+        "maternal-newborn",
+        "Amniotic fluid embolism",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "AFE is a sudden collapse pattern that should trigger emergency response, airway support, and rapid maternal stabilization.",
+      "speedCue": "The clue cluster is abrupt hypoxia plus hypotension during labor or right after birth, not a slow deterioration pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n010",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "Anaphylaxis",
+      "difficulty": 4,
+      "stem": "A client develops wheezing, facial swelling, and hypotension during an IV antibiotic infusion. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "Anaphylaxis rescue sequence",
+      "scenario": "The client is anxious and struggling to speak in full sentences.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and call for immediate help"
+        },
+        {
+          "id": "b",
+          "text": "Administer epinephrine per protocol"
+        },
+        {
+          "id": "c",
+          "text": "Support airway and oxygenation"
+        },
+        {
+          "id": "d",
+          "text": "Prepare for additional fluids and monitoring after first-line treatment"
+        }
+      ],
+      "answer": [
+        "a",
+        "c",
+        "b",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Anaphylaxis becomes easier to answer when the nurse spots the airway-perfusion emergency pattern and moves rapidly. Stop the trigger, support oxygenation, give epinephrine, and then continue the resuscitation bundle with fluids and monitoring.",
+      "distractorRationales": {},
+      "tags": [
+        "NGN",
+        "anaphylaxis",
+        "ordering",
+        "priority",
+        "Anaphylaxis",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Anaphylaxis is a trigger-off, airway-support, epinephrine-first sequence.",
+      "speedCue": "Wheeze plus swelling plus hypotension should make you stop the medication and think epinephrine, not antihistamine-only care.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n011",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "arterial_blood_gas_interpretation_compensation",
+      "subcategory": "Arterial blood gas interpretation",
+      "difficulty": 4,
+      "stem": "For each arterial blood gas pattern, click to specify whether the pattern is primarily respiratory or primarily metabolic.",
+      "scenarioTitle": "ABG pattern sort",
+      "scenario": "The nurse is triaging several ABG reports and needs to sort the primary problem quickly before acting.",
+      "additionalInfo": "Each row represents the main disturbance, not the final compensation story.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Primarily respiratory"
+        },
+        {
+          "id": "b",
+          "text": "Primarily metabolic"
+        }
+      ],
+      "answer": {
+        "pH 7.29, PaCO2 58 mm Hg, HCO3 26 mEq/L": "Primarily respiratory",
+        "pH 7.30, PaCO2 31 mm Hg, HCO3 16 mEq/L": "Primarily metabolic",
+        "pH 7.50, PaCO2 30 mm Hg, HCO3 24 mEq/L": "Primarily respiratory",
+        "pH 7.48, PaCO2 42 mm Hg, HCO3 31 mEq/L": "Primarily metabolic"
+      },
+      "matrixColumns": [
+        "Primarily respiratory",
+        "Primarily metabolic"
+      ],
+      "matrixRows": [
+        {
+          "label": "pH 7.29, PaCO2 58 mm Hg, HCO3 26 mEq/L",
+          "answer": "Primarily respiratory"
+        },
+        {
+          "label": "pH 7.30, PaCO2 31 mm Hg, HCO3 16 mEq/L",
+          "answer": "Primarily metabolic"
+        },
+        {
+          "label": "pH 7.50, PaCO2 30 mm Hg, HCO3 24 mEq/L",
+          "answer": "Primarily respiratory"
+        },
+        {
+          "label": "pH 7.48, PaCO2 42 mm Hg, HCO3 31 mEq/L",
+          "answer": "Primarily metabolic"
+        }
+      ],
+      "rationale": "Fast ABG interpretation starts by deciding which value is pushing the pH out of range. Elevated or low carbon dioxide points toward respiratory causes, while an abnormal bicarbonate driving the pH change points toward metabolic causes.",
+      "distractorRationales": {
+        "a": "Primarily respiratory misses the clinical pattern: Arterial Blood Gas Interpretation respiratory points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "b": "Primarily metabolic misses the clinical pattern: Arterial Blood Gas Interpretation respiratory points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "NGN",
+        "matrix",
+        "risk reduction",
+        "ABG",
+        "Arterial blood gas interpretation",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Find what is moving the pH first; compensation is the second step.",
+      "speedCue": "pH first, then match the value pushing it.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n012",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "Autonomic dysreflexia",
+      "difficulty": 4,
+      "stem": "A client with a T4 spinal cord injury develops a pounding headache, flushing above the injury, and severe hypertension. Place the actions in the order the nurse should take them.",
+      "scenarioTitle": "Autonomic dysreflexia rescue",
+      "scenario": "The urinary drainage tubing is kinked at the bedside.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright"
+        },
+        {
+          "id": "b",
+          "text": "Check and relieve the noxious trigger such as the bladder problem"
+        },
+        {
+          "id": "c",
+          "text": "Call for rapid provider support if blood pressure remains high"
+        },
+        {
+          "id": "d",
+          "text": "Prepare antihypertensive rescue therapy if ordered after trigger relief"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Autonomic dysreflexia is managed by lowering pressure with positioning, removing the trigger, escalating if pressure does not improve, and preparing medication support as needed. The bladder clue is the speed clue that should shorten decision time.",
+      "distractorRationales": {},
+      "tags": [
+        "NGN",
+        "autonomic dysreflexia",
+        "ordering",
+        "spinal cord injury",
+        "Autonomic dysreflexia",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Severe hypertension in high spinal injury means sit up, find the trigger, and relieve it fast.",
+      "speedCue": "The fast clue is headache plus flushing plus hypertension above the lesion, especially when a bladder trigger is present.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n013",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "blood_transfusion_reaction",
+      "subcategory": "Transfusion reaction",
+      "difficulty": 4,
+      "stem": "Which clinical map should guide the nurse's next move after this transfusion starts?",
+      "scenarioTitle": "Early transfusion reaction map",
+      "scenario": "Fifteen minutes after packed red blood cells begin, a client reports chills, low-back pain, and chest tightness.",
+      "additionalInfo": "The transfusion is still running and the nurse is choosing between documenting, slowing, or stopping the blood.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated"
+        },
+        {
+          "id": "b",
+          "text": "Expected warming discomfort that only needs reassurance"
+        },
+        {
+          "id": "c",
+          "text": "Anxiety from the hospital setting without transfusion relevance"
+        },
+        {
+          "id": "d",
+          "text": "A minor symptom set that should be charted while the blood continues"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Chills, low-back pain, and chest tightness soon after transfusion create a reaction map, not a comfort issue. The nurse should answer from stop-the-blood-first logic.",
+      "distractorRationales": {
+        "b": "Expected warming discomfort that only needs reassurance misses the clinical pattern: Transfusion Reaction transfusion points to Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Anxiety from the hospital setting without transfusion relevance misses the clinical pattern: Transfusion Reaction transfusion points to Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "A minor symptom set that should be charted while the blood continues misses the clinical pattern: Transfusion Reaction transfusion points to Acute transfusion reaction requiring the blood to be stopped and the reaction protocol activated, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "NGN",
+        "bow tie",
+        "transfusion",
+        "safety",
+        "Transfusion reaction",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "The first safe move is driven by timing plus symptom cluster, not by waiting for more proof.",
+      "speedCue": "New reaction symptoms soon after blood starts means stop the blood first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n014",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "breastfeeding_latch_assessment_intervention",
+      "subcategory": "Breastfeeding latch support",
+      "difficulty": 3,
+      "stem": "Which conclusion should guide the nurse's next move when a newborn feed is painful and ineffective?",
+      "scenarioTitle": "Latch assessment case",
+      "scenario": "A postpartum client says breastfeeding is sharply painful and the newborn falls asleep after a few shallow sucks.",
+      "additionalInfo": "The infant has had fewer wet diapers since discharge teaching began earlier that morning.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess latch and positioning, then support a deeper latch with feeding observation"
+        },
+        {
+          "id": "b",
+          "text": "Tell the parent to limit feeds because nipple pain means the baby is feeding too often"
+        },
+        {
+          "id": "c",
+          "text": "Switch to water between feeds until the nipples heal"
+        },
+        {
+          "id": "d",
+          "text": "Recommend stopping breastfeeding for the rest of the day without reassessment"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pain with shallow ineffective sucking points to latch and transfer problems, not simply normal soreness. The nurse should reassess positioning and feeding effectiveness before recommending delays or supplements that do not fix the cause.",
+      "distractorRationales": {
+        "b": "Tell the parent to limit feeds because nipple pain means the baby is feeding too often misses the clinical pattern: Breastfeeding Latch Support pain points to Assess latch and positioning, then support a deeper latch with feeding observation, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "c": "Switch to water between feeds until the nipples heal misses the clinical pattern: Breastfeeding Latch Support pain points to Assess latch and positioning, then support a deeper latch with feeding observation, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "d": "Recommend stopping breastfeeding for the rest of the day without reassessment misses the clinical pattern: Breastfeeding Latch Support pain points to Assess latch and positioning, then support a deeper latch with feeding observation, so choosing it can postpone safety actions and worsen pediatric or newborn instability."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "health promotion",
+        "breastfeeding",
+        "Breastfeeding latch support",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Pain plus poor output means reassess latch, not just reassure.",
+      "speedCue": "Painful shallow sucks and fewer wets point to latch failure first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n015",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "burn_inhalation_stridor",
+      "subcategory": "Burn inhalation injury",
+      "difficulty": 4,
+      "stem": "A client arrives after a house fire. Which findings should make the nurse prepare for early airway intervention related to inhalation injury?",
+      "scenarioTitle": "Burn airway red flags",
+      "scenario": "The client has singed nasal hair, soot around the mouth, and is speaking in a raspy voice.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hoarseness"
+        },
+        {
+          "id": "b",
+          "text": "Facial burns"
+        },
+        {
+          "id": "c",
+          "text": "Soot in the sputum"
+        },
+        {
+          "id": "d",
+          "text": "Pink, warm skin over the arms only"
+        },
+        {
+          "id": "e",
+          "text": "Stridor"
+        },
+        {
+          "id": "f",
+          "text": "Mild pain score of 3/10"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Burn inhalation injury should be recognized quickly from airway-threat clues rather than waiting for visible collapse. Hoarseness, facial burns, soot, and stridor together point to progressive airway edema and need for rapid airway planning.",
+      "distractorRationales": {
+        "d": "Pink, warm skin over the arms only misses the clinical pattern: Burn Inhalation Injury airway points to Hoarseness plus Facial burns plus Soot in the sputum plus Stridor, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "f": "Mild pain score of 3/10 misses the clinical pattern: Burn Inhalation Injury airway points to Hoarseness plus Facial burns plus Soot in the sputum plus Stridor, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "NGN",
+        "burns",
+        "airway",
+        "sata",
+        "Burn inhalation injury",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Face burns plus soot plus voice change is an airway warning pattern.",
+      "speedCue": "If the stem gives smoke exposure and voice or soot clues, answer for swelling before the client looks worse.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n016",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "subcategory": "C. difficile prevention bundle",
+      "difficulty": 3,
+      "stem": "A client with profuse diarrhea tests positive for C. difficile. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "C. difficile bundle sequence",
+      "scenario": "The nurse receives the result just before transferring the client to a semi-private room.",
+      "additionalInfo": "The unit has gowns, gloves, soap-and-water handwashing sinks, and sporicidal disinfectant available.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Initiate contact-plus-enteric precautions with gown and gloves"
+        },
+        {
+          "id": "b",
+          "text": "Place the client in an appropriate room and dedicate equipment when possible"
+        },
+        {
+          "id": "c",
+          "text": "Perform soap-and-water hand hygiene after care"
+        },
+        {
+          "id": "d",
+          "text": "Ensure the environment is cleaned with a sporicidal product"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "C. difficile prevention works as a bundle: start precautions, protect room placement and equipment, use soap-and-water hand hygiene, and ensure sporicidal cleaning. The sequence keeps spores from spreading while also protecting the next patient environment.",
+      "distractorRationales": {},
+      "tags": [
+        "NGN",
+        "ordering",
+        "infection control",
+        "C. difficile",
+        "C. difficile prevention bundle",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning.",
+      "speedCue": "The shortcut is spores: alcohol gel alone is not enough.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n017",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "cauda_equina_bladder_retention",
+      "subcategory": "Cauda equina syndrome",
+      "difficulty": 4,
+      "stem": "Which interpretation should guide the nurse's next move with this back-pain presentation?",
+      "scenarioTitle": "Cauda equina emergency case",
+      "scenario": "A client with severe low-back pain reports new urinary retention, numbness in the inner thighs, and increasing leg weakness.",
+      "additionalInfo": "The client asks whether this is just another sciatica flare and whether walking it off would help.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cauda equina syndrome requiring urgent spinal decompression evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Routine lumbar strain that should improve with activity"
+        },
+        {
+          "id": "c",
+          "text": "Expected opioid side effects causing harmless bladder hesitancy"
+        },
+        {
+          "id": "d",
+          "text": "An anxiety response to chronic back pain without neurologic danger"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "New urinary retention, saddle anesthesia symptoms, and weakness create a cauda-equina map. The nurse should answer from cord-compression urgency, not from routine back-pain thinking.",
+      "distractorRationales": {
+        "b": "Routine lumbar strain that should improve with activity misses the clinical pattern: Cauda Equina Syndrome pain points to Cauda equina syndrome requiring urgent spinal decompression evaluation, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "c": "Expected opioid side effects causing harmless bladder hesitancy misses the clinical pattern: Cauda Equina Syndrome pain points to Cauda equina syndrome requiring urgent spinal decompression evaluation, so choosing it can postpone safety actions and worsen clinical safety risk.",
+        "d": "An anxiety response to chronic back pain without neurologic danger misses the clinical pattern: Cauda Equina Syndrome pain points to Cauda equina syndrome requiring urgent spinal decompression evaluation, so choosing it can postpone safety actions and worsen clinical safety risk."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "neurology",
+        "cauda equina",
+        "Cauda equina syndrome",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Bladder retention and saddle numbness are the clues that make back pain urgent.",
+      "speedCue": "Back pain plus retention plus saddle symptoms is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n018",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "central_line_insertion_clabsi_bundle",
+      "subcategory": "Central-line insertion CLABSI bundle",
+      "difficulty": 4,
+      "stem": "Place the nursing actions in the order that best supports a central-line insertion bundle to reduce bloodstream infection risk.",
+      "scenarioTitle": "CLABSI prevention sequence",
+      "scenario": "A provider is preparing to insert a central venous catheter at the bedside.",
+      "additionalInfo": "The nurse is responsible for bundle support and stopping the procedure if sterile breaks occur.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform hand hygiene and confirm the sterile setup is complete"
+        },
+        {
+          "id": "b",
+          "text": "Use maximal barrier precautions and proper skin antisepsis"
+        },
+        {
+          "id": "c",
+          "text": "Pause the procedure if sterile technique is broken"
+        },
+        {
+          "id": "d",
+          "text": "Document line necessity and bundle completion after insertion"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "CLABSI prevention depends on hand hygiene, maximal barrier technique, chlorhexidine skin prep, speaking up about sterility breaks, and documenting bundle adherence. The nurse should not treat a sterile break as a minor issue when the line is still being placed.",
+      "distractorRationales": {},
+      "tags": [
+        "NGN",
+        "ordering",
+        "risk reduction",
+        "central line",
+        "Central-line insertion CLABSI bundle",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Sterile discipline is part of the line procedure, not optional aftercare.",
+      "speedCue": "If the sterile field breaks, the next move is stop, not excuse.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n019",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "chest_tube_air_leak",
+      "subcategory": "Chest tube air leak",
+      "difficulty": 4,
+      "stem": "Which interpretation should guide the nurse's next move in this drainage-system problem?",
+      "scenarioTitle": "Continuous bubbling case",
+      "scenario": "A client with a chest tube has continuous bubbling in the water-seal chamber.",
+      "additionalInfo": "Breath sounds are stable and the nurse is deciding whether to ignore it, clamp the tube, or inspect the system.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Possible air leak requiring system inspection to identify where the leak is entering"
+        },
+        {
+          "id": "b",
+          "text": "Expected tidaling that means the system is definitely normal"
+        },
+        {
+          "id": "c",
+          "text": "A reason to clamp the chest tube immediately without further assessment"
+        },
+        {
+          "id": "d",
+          "text": "A harmless finding that never needs investigation"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Continuous bubbling in the water-seal chamber suggests an air leak until proven otherwise. The nurse should answer from system inspection and leak localization, not from passive reassurance or reflex clamping.",
+      "distractorRationales": {
+        "b": "Expected tidaling that means the system is definitely normal misses the clinical pattern: Chest Tube Air Leak safety points to Possible air leak requiring system inspection to identify where the leak is entering, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "A reason to clamp the chest tube immediately without further assessment misses the clinical pattern: Chest Tube Air Leak safety points to Possible air leak requiring system inspection to identify where the leak is entering, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "A harmless finding that never needs investigation misses the clinical pattern: Chest Tube Air Leak safety points to Possible air leak requiring system inspection to identify where the leak is entering, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "respiratory",
+        "chest tube",
+        "Chest tube air leak",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Continuous bubbling and normal tidaling are not the same thing.",
+      "speedCue": "Water-seal continuous bubbling is the shortcut to air-leak thinking.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n020",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "compartment_syndrome_warning",
+      "subcategory": "Compartment syndrome",
+      "difficulty": 4,
+      "stem": "Which decision map best explains this change after fracture care?",
+      "scenarioTitle": "Casted limb perfusion map",
+      "scenario": "A client with a new lower-leg cast reports escalating pain that is not relieved by opioids.",
+      "additionalInfo": "The toes are pale, numb, and increasingly painful with passive stretch.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection"
+        },
+        {
+          "id": "b",
+          "text": "Expected postoperative pain that can wait for the next dose of medication"
+        },
+        {
+          "id": "c",
+          "text": "Routine swelling without perfusion concern"
+        },
+        {
+          "id": "d",
+          "text": "Simple anxiety because the cast feels tight"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Pain out of proportion with neurovascular decline creates a compartment syndrome map. The nurse should answer from perfusion rescue, not analgesia alone.",
+      "distractorRationales": {
+        "b": "Expected postoperative pain that can wait for the next dose of medication misses the clinical pattern: Compartment Syndrome perfusion points to Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Routine swelling without perfusion concern misses the clinical pattern: Compartment Syndrome perfusion points to Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Simple anxiety because the cast feels tight misses the clinical pattern: Compartment Syndrome perfusion points to Compartment syndrome requiring urgent pressure-relief escalation and neurovascular protection, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "NGN",
+        "bow tie",
+        "orthopedics",
+        "compartment syndrome",
+        "Compartment syndrome",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "The pain pattern matters more than the cast itself.",
+      "speedCue": "Pain out of proportion plus passive-stretch pain is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n021",
+      "exam": "nclex",
+      "type": "bow_tie",
+      "category": "contrast_induced_nephropathy_prevention",
+      "subcategory": "Contrast nephropathy prevention",
+      "difficulty": 4,
+      "stem": "Which decision map best explains the nurse's priority before this client receives IV contrast?",
+      "scenarioTitle": "Contrast-risk prevention map",
+      "scenario": "A client with chronic kidney disease is scheduled for a contrast-enhanced CT study.",
+      "additionalInfo": "The nurse notes elevated creatinine and asks which prevention frame should guide care before transport.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends"
+        },
+        {
+          "id": "b",
+          "text": "Treat the study as risk-free because contrast only affects clients on dialysis"
+        },
+        {
+          "id": "c",
+          "text": "Delay hydration because IV fluids can interfere with the scanner"
+        },
+        {
+          "id": "d",
+          "text": "Ignore baseline creatinine as long as the client is not reporting pain"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Contrast prevention starts with recognizing renal vulnerability and supporting kidney-protective preparation, especially hydration and medication review when ordered. The nurse should not treat contrast risk as absent just because the client is stable at the bedside.",
+      "distractorRationales": {
+        "b": "Treat the study as risk-free because contrast only affects clients on dialysis misses the clinical pattern: Contrast Nephropathy Prevention renal points to Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Delay hydration because IV fluids can interfere with the scanner misses the clinical pattern: Contrast Nephropathy Prevention renal points to Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Ignore baseline creatinine as long as the client is not reporting pain misses the clinical pattern: Contrast Nephropathy Prevention renal points to Identify renal vulnerability, protect hydration and kidney-safe preparation, and watch post-contrast renal trends, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "NGN",
+        "bow tie",
+        "risk reduction",
+        "contrast",
+        "Contrast nephropathy prevention",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Stable appearance does not erase contrast risk when the kidneys are already vulnerable.",
+      "speedCue": "High creatinine before contrast means prevention mode, not routine transport mode.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n022",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "Umbilical cord prolapse",
+      "difficulty": 4,
+      "stem": "A client in labor has a sudden fetal heart rate drop after rupture of membranes and the nurse sees a loop of umbilical cord. Which immediate actions should the nurse take?",
+      "scenarioTitle": "Cord prolapse rescue",
+      "scenario": "The fetal heart rate remains in the 70s while help is being called.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a gloved hand to lift the presenting part off the cord"
+        },
+        {
+          "id": "b",
+          "text": "Position the client to relieve pressure on the cord"
+        },
+        {
+          "id": "c",
+          "text": "Attempt to push the visible cord back into the vagina"
+        },
+        {
+          "id": "d",
+          "text": "Delay intervention until the provider is at the bedside"
+        },
+        {
+          "id": "e",
+          "text": "Call for immediate obstetric assistance"
+        },
+        {
+          "id": "f",
+          "text": "Start coached pushing with the next contraction"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Cord prolapse is a compression emergency. The nurse's first moves are to relieve the pressure, position the client to reduce compression, and summon immediate obstetric help. Pushing the cord back or delaying action increases fetal hypoxia risk.",
+      "distractorRationales": {
+        "c": "Attempt to push the visible cord back into the vagina misses the clinical pattern: Umbilical Cord Prolapse hypoxia points to Use a gloved hand to lift the presenting part off the cord plus Position the client, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Delay intervention until the provider is at the bedside misses the clinical pattern: Umbilical Cord Prolapse hypoxia points to Use a gloved hand to lift the presenting part off the cord plus Position the client, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "f": "Start coached pushing with the next contraction misses the clinical pattern: Umbilical Cord Prolapse hypoxia points to Use a gloved hand to lift the presenting part off the cord plus Position the client, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "NGN",
+        "obstetrics",
+        "cord prolapse",
+        "sata",
+        "Umbilical cord prolapse",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Cord prolapse means relieve compression now, not when the provider arrives.",
+      "speedCue": "If you can see the cord and the heart rate crashes, think pressure-off-the-cord immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n023",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "delegation_postop_floor_rn_to_uap",
+      "subcategory": "Postoperative delegation",
+      "difficulty": 4,
+      "stem": "For each postoperative task, click to specify whether the task should stay with the RN or can be delegated to the UAP.",
+      "scenarioTitle": "Delegation on a postop floor",
+      "scenario": "The RN is caring for several postoperative clients and is working with an experienced UAP.",
+      "additionalInfo": "The RN must decide which work can safely move and which work must stay with licensed nursing judgment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep with RN"
+        },
+        {
+          "id": "b",
+          "text": "Delegate to UAP"
+        }
+      ],
+      "answer": {
+        "Assess a client with new shortness of breath two hours after surgery": "Keep with RN",
+        "Assist a stable client to the bathroom for the first time after the RN has assessed": "Delegate to UAP",
+        "Reinforce coughing and deep-breathing after the RN provides the initial teaching": "Delegate to UAP",
+        "Evaluate a new report of uncontrolled incisional pain": "Keep with RN"
+      },
+      "matrixColumns": [
+        "Keep with RN",
+        "Delegate to UAP"
+      ],
+      "matrixRows": [
+        {
+          "label": "Assess a client with new shortness of breath two hours after surgery",
+          "answer": "Keep with RN"
+        },
+        {
+          "label": "Assist a stable client to the bathroom for the first time after the RN has assessed",
+          "answer": "Delegate to UAP"
+        },
+        {
+          "label": "Reinforce coughing and deep-breathing after the RN provides the initial teaching",
+          "answer": "Delegate to UAP"
+        },
+        {
+          "label": "Evaluate a new report of uncontrolled incisional pain",
+          "answer": "Keep with RN"
+        }
+      ],
+      "rationale": "Delegation becomes faster when the nurse separates stable, predictable tasks from new assessment or evaluation needs. Acute respiratory change and uncontrolled pain require RN judgment, while routine assistance and reinforcement after assessment can move safely to the UAP.",
+      "distractorRationales": {
+        "a": "Keep with RN misses the clinical pattern: Postoperative Delegation respiratory points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "b": "Delegate to UAP misses the clinical pattern: Postoperative Delegation respiratory points to the row-specific answer pattern, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "NGN",
+        "matrix",
+        "management of care",
+        "delegation",
+        "Postoperative delegation",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "New problems stay with the RN; stable, routine assistance can move.",
+      "speedCue": "Ask whether the task needs fresh assessment or evaluation. If yes, it stays with the RN.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    },
+    {
+      "id": "mb1154-n024",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "digoxin_toxicity",
+      "subcategory": "Digoxin toxicity",
+      "difficulty": 4,
+      "stem": "Which conclusion should guide the nurse's next move for this client with heart failure?",
+      "scenarioTitle": "Yellow halos and nausea case",
+      "scenario": "A client taking digoxin reports poor appetite, nausea, and new yellow halos around lights.",
+      "additionalInfo": "The apical pulse is 48/min and the client says the symptoms worsened after a week of poor oral intake.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Digoxin toxicity requiring the medication to be held and the provider notified"
+        },
+        {
+          "id": "b",
+          "text": "Expected vision change from aging eyes only"
+        },
+        {
+          "id": "c",
+          "text": "Routine heart-failure fatigue that should be ignored"
+        },
+        {
+          "id": "d",
+          "text": "Benign nausea unrelated to cardiac medication"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Yellow halos, nausea, poor intake, and bradycardia create a digoxin-toxicity pattern. The nurse should answer from medication danger, not from generic heart-failure symptoms.",
+      "distractorRationales": {
+        "b": "Expected vision change from aging eyes only misses the clinical pattern: Digoxin Toxicity bradycardia points to Digoxin toxicity requiring the medication to be held and the provider notified, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "c": "Routine heart-failure fatigue that should be ignored misses the clinical pattern: Digoxin Toxicity bradycardia points to Digoxin toxicity requiring the medication to be held and the provider notified, so choosing it can postpone safety actions and worsen medication toxicity.",
+        "d": "Benign nausea unrelated to cardiac medication misses the clinical pattern: Digoxin Toxicity bradycardia points to Digoxin toxicity requiring the medication to be held and the provider notified, so choosing it can postpone safety actions and worsen medication toxicity."
+      },
+      "tags": [
+        "NGN",
+        "case study",
+        "cardiac meds",
+        "digoxin toxicity",
+        "Digoxin toxicity",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Visual change plus bradycardia is what makes this digoxin stem move fast.",
+      "speedCue": "Halos plus a slow pulse is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes."
+    }
+  ]
+}

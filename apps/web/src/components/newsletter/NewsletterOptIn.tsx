@@ -4,7 +4,7 @@ import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./NewsletterOptIn.module.css";
 
-export default function NewsletterOptIn({ nextPath = "/quiz?welcome=1" }: { nextPath?: string }) {
+export default function NewsletterOptIn({ nextPath = "/dashboard?welcome=1" }: { nextPath?: string }) {
   const [message, setMessage] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [acceptedLegal, setAcceptedLegal] = useState(false);

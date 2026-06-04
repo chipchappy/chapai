@@ -1,0 +1,612 @@
+{
+  "batchId": "mixed-batch-962",
+  "generatedAt": "2026-04-10T20:34:12-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "chapai/packages/content/questions/nclex/draft/*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 12
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb962-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "anaphylaxis_epinephrine_first",
+      "difficulty": 3,
+      "stem": "A client receiving IV antibiotics suddenly develops wheezing, widespread hives, and swelling of the lips. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and prepare to administer epinephrine."
+        },
+        {
+          "id": "b",
+          "text": "Obtain a full allergy history before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Slow the infusion to reduce the reaction."
+        },
+        {
+          "id": "d",
+          "text": "Document the event and continue monitoring."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Wheezing, hives, and lip swelling indicate anaphylaxis. The causative infusion should be stopped immediately and epinephrine readied or administered per protocol because airway compromise and shock can develop quickly. Delaying definitive treatment can be fatal.",
+      "distractorRationales": {
+        "b": "Obtain a full allergy history before intervening misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the infusion and prepare to administer epinephrine, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Slow the infusion to reduce the reaction misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the infusion and prepare to administer epinephrine, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Document the event and continue monitoring misses the clinical pattern: Anaphylaxis Epinephrine First airway points to Stop the infusion and prepare to administer epinephrine, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "anaphylaxis_epinephrine_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When anaphylaxis begins, stop the trigger and act for airway and circulation immediately.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "autonomic_dysreflexia_bladder",
+      "subcategory": "autonomic_dysreflexia_bladder",
+      "difficulty": 3,
+      "stem": "A client with a T4 spinal cord injury suddenly reports a pounding headache and has a blood pressure of 208/110 mmHg. Which nursing action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Sit the client upright and assess for bladder distention."
+        },
+        {
+          "id": "b",
+          "text": "Lay the client flat and increase the room temperature."
+        },
+        {
+          "id": "c",
+          "text": "Ask the client to rest quietly until the headache passes."
+        },
+        {
+          "id": "d",
+          "text": "Offer oral fluids and reassess in 30 minutes."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Severe hypertension and headache in a client with a high spinal cord injury suggest autonomic dysreflexia, often triggered by bladder distention. The nurse should sit the client upright to lower blood pressure and remove the triggering stimulus right away. Delay increases the risk of stroke or seizure.",
+      "distractorRationales": {
+        "b": "Lay the client flat and increase the room temperature misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Ask the client to rest quietly until the headache passes misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Offer oral fluids and reassess in 30 minutes misses the clinical pattern: Autonomic Dysreflexia Bladder hypertension points to Sit the client upright and assess for bladder distention, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "autonomic_dysreflexia_bladder",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Autonomic dysreflexia is a remove-the-trigger emergency, often starting with sitting the client up and checking the bladder.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "heparin_induced_thrombocytopenia",
+      "subcategory": "heparin_induced_thrombocytopenia",
+      "difficulty": 3,
+      "stem": "A client receiving a heparin infusion for a deep vein thrombosis has a platelet count that fell from 220,000/mm3 to 88,000/mm3 over 4 days. The client now reports new leg pain. Which action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the heparin infusion and notify the provider about possible HIT."
+        },
+        {
+          "id": "b",
+          "text": "Increase the heparin rate because the client may be under-anticoagulated."
+        },
+        {
+          "id": "c",
+          "text": "Give aspirin with the next medication pass and continue heparin."
+        },
+        {
+          "id": "d",
+          "text": "Document the platelet drop as expected and recheck tomorrow."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A substantial platelet fall with new thrombosis symptoms during heparin therapy suggests heparin-induced thrombocytopenia. The nurse should stop heparin and escalate immediately because continued exposure can worsen thrombosis risk. This is different from generic supratherapeutic aPTT toxicity.",
+      "distractorRationales": {
+        "b": "Increase the heparin rate because the client may be under-anticoagulated misses the clinical pattern: Heparin Induced Thrombocytopenia heparin points to Stop the heparin infusion and notify the provider about possible HIT, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Give aspirin with the next medication pass and continue heparin misses the clinical pattern: Heparin Induced Thrombocytopenia heparin points to Stop the heparin infusion and notify the provider about possible HIT, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Document the platelet drop as expected and recheck tomorrow misses the clinical pattern: Heparin Induced Thrombocytopenia heparin points to Stop the heparin infusion and notify the provider about possible HIT, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "heparin_induced_thrombocytopenia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Platelet fall plus new thrombosis clues on heparin should trigger concern for HIT, not more heparin.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neuroleptic_malignant_syndrome",
+      "subcategory": "neuroleptic_malignant_syndrome",
+      "difficulty": 3,
+      "stem": "A client who recently started haloperidol develops severe muscle rigidity, a temperature of 104 F (40 C), and fluctuating blood pressure. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the antipsychotic and notify the provider about possible neuroleptic malignant syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose early to stabilize behavior."
+        },
+        {
+          "id": "c",
+          "text": "Apply extra blankets to reduce shivering."
+        },
+        {
+          "id": "d",
+          "text": "Wait to see if the symptoms improve after sleep."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Hyperthermia, rigidity, and autonomic instability after antipsychotic therapy are classic clues for neuroleptic malignant syndrome. The triggering drug should be stopped and emergency evaluation begun immediately. Delayed recognition can lead to rhabdomyolysis, renal injury, and death.",
+      "distractorRationales": {
+        "b": "Give the next dose early to stabilize behavior misses the clinical pattern: Neuroleptic Malignant Syndrome renal points to Hold the antipsychotic and notify the provider about possible neuroleptic malignant syndrome, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Apply extra blankets to reduce shivering misses the clinical pattern: Neuroleptic Malignant Syndrome renal points to Hold the antipsychotic and notify the provider about possible neuroleptic malignant syndrome, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Wait to see if the symptoms improve after sleep misses the clinical pattern: Neuroleptic Malignant Syndrome renal points to Hold the antipsychotic and notify the provider about possible neuroleptic malignant syndrome, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "neuroleptic_malignant_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rigidity plus high fever after an antipsychotic is a stop-the-drug emergency pattern.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neuroleptic_malignant_syndrome",
+        "caption": "Rigidity plus high fever after an antipsychotic is a stop-the-drug emergency pattern.",
+        "conclusion": "Rigidity plus high fever after an antipsychotic is a stop-the-drug emergency pattern."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "organophosphate_poisoning",
+      "subcategory": "organophosphate_poisoning",
+      "difficulty": 3,
+      "stem": "A farm worker arrives after pesticide exposure with salivation, wheezing, pinpoint pupils, and diarrhea. Which action should the nurse expect first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Support the airway, remove contaminated clothing, and prepare atropine."
+        },
+        {
+          "id": "b",
+          "text": "Induce vomiting and give oral fluids."
+        },
+        {
+          "id": "c",
+          "text": "Delay care until laboratory confirmation is available."
+        },
+        {
+          "id": "d",
+          "text": "Apply warm blankets and observe for 1 hour."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The cholinergic toxidrome after pesticide exposure suggests organophosphate poisoning. Airway support, decontamination, and antidotal treatment are priorities because respiratory compromise can worsen quickly. Waiting for confirmation delays emergency care.",
+      "distractorRationales": {
+        "b": "Induce vomiting and give oral fluids misses the clinical pattern: Organophosphate Poisoning airway points to Support the airway, remove contaminated clothing, and prepare atropine, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Delay care until laboratory confirmation is available misses the clinical pattern: Organophosphate Poisoning airway points to Support the airway, remove contaminated clothing, and prepare atropine, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Apply warm blankets and observe for 1 hour misses the clinical pattern: Organophosphate Poisoning airway points to Support the airway, remove contaminated clothing, and prepare atropine, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "organophosphate_poisoning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Organophosphate poisoning is a decontaminate-and-treat airway emergency.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pheochromocytoma_crisis",
+      "subcategory": "pheochromocytoma_crisis",
+      "difficulty": 3,
+      "stem": "A client reports sudden pounding headaches, diaphoresis, palpitations, and a blood pressure of 236/128 mm Hg. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider immediately and anticipate rapid blood pressure control for a catecholamine crisis."
+        },
+        {
+          "id": "b",
+          "text": "Have the client rest quietly and recheck the blood pressure at the next routine assessment."
+        },
+        {
+          "id": "c",
+          "text": "Encourage the client to drink fluids because dehydration is the most likely cause."
+        },
+        {
+          "id": "d",
+          "text": "Document the episode as anxiety because the symptoms are intermittent."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Paroxysmal severe hypertension with headache, diaphoresis, and palpitations is a classic clue cluster for pheochromocytoma crisis. The nurse should escalate immediately because end-organ injury, dysrhythmia, or stroke can occur if the blood pressure is not controlled. The time-saving exam clue is the triad pattern, not just the elevated number.",
+      "distractorRationales": {
+        "b": "Have the client rest quietly and recheck the blood pressure at the next routine assessment misses the clinical pattern: Pheochromocytoma Crisis dysrhythmia points to Notify the provider immediately and anticipate rapid blood pressure control for a catecholamine crisis, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "c": "Encourage the client to drink fluids because dehydration is the most likely cause misses the clinical pattern: Pheochromocytoma Crisis dysrhythmia points to Notify the provider immediately and anticipate rapid blood pressure control for a catecholamine crisis, so choosing it can postpone safety actions and worsen neurologic deterioration.",
+        "d": "Document the episode as anxiety because the symptoms are intermittent misses the clinical pattern: Pheochromocytoma Crisis dysrhythmia points to Notify the provider immediately and anticipate rapid blood pressure control for a catecholamine crisis, so choosing it can postpone safety actions and worsen neurologic deterioration."
+      },
+      "tags": [
+        "pheochromocytoma_crisis",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Intermittent pounding headache, diaphoresis, and extreme hypertension should trigger pheochromocytoma crisis thinking fast.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "placenta_previa_bleeding",
+      "subcategory": "placenta_previa_bleeding",
+      "difficulty": 3,
+      "stem": "A pregnant client at 32 weeks reports painless bright red vaginal bleeding. Which nursing action is the priority?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply an external fetal monitor and avoid a vaginal examination."
+        },
+        {
+          "id": "b",
+          "text": "Perform a sterile vaginal exam to assess dilation."
+        },
+        {
+          "id": "c",
+          "text": "Instruct the client to walk in the hallway to check if the bleeding slows."
+        },
+        {
+          "id": "d",
+          "text": "Prepare the client for a routine discharge if contractions are absent."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Painless bright red bleeding in the third trimester suggests placenta previa. The nurse should assess maternal-fetal status while avoiding vaginal examination because digital exams can worsen hemorrhage when the placenta overlies the cervical os. Early recognition and protection from avoidable bleeding are the priority.",
+      "distractorRationales": {
+        "b": "Perform a sterile vaginal exam to assess dilation misses the clinical pattern: Placenta Previa Bleeding bleeding points to Apply an external fetal monitor and avoid a vaginal examination, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Instruct the client to walk in the hallway to check if the bleeding slows misses the clinical pattern: Placenta Previa Bleeding bleeding points to Apply an external fetal monitor and avoid a vaginal examination, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Prepare the client for a routine discharge if contractions are absent misses the clinical pattern: Placenta Previa Bleeding bleeding points to Apply an external fetal monitor and avoid a vaginal examination, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "placenta_previa_bleeding",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected placenta previa means monitor and protect; do not perform a vaginal exam.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage_boggy_fundus",
+      "subcategory": "postpartum_hemorrhage_boggy_fundus",
+      "difficulty": 3,
+      "stem": "One hour after birth a client has a boggy fundus, saturates a perineal pad in 15 minutes, and has a pulse of 118/min. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Massage the fundus and call for assistance."
+        },
+        {
+          "id": "b",
+          "text": "Ask the client to breastfeed before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Prepare the client for discharge teaching."
+        },
+        {
+          "id": "d",
+          "text": "Recheck the lochia in 1 hour."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "A boggy fundus with heavy bleeding suggests uterine atony, the most common cause of postpartum hemorrhage. The nurse should massage the fundus immediately while summoning help and preparing further interventions. Waiting or delaying treatment increases the risk of rapid hemodynamic deterioration.",
+      "distractorRationales": {
+        "b": "Ask the client to breastfeed before intervening misses the clinical pattern: Postpartum Hemorrhage Boggy Fundus bleeding points to Massage the fundus and call for assistance, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "c": "Prepare the client for discharge teaching misses the clinical pattern: Postpartum Hemorrhage Boggy Fundus bleeding points to Massage the fundus and call for assistance, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury.",
+        "d": "Recheck the lochia in 1 hour misses the clinical pattern: Postpartum Hemorrhage Boggy Fundus bleeding points to Massage the fundus and call for assistance, so choosing it can postpone safety actions and worsen bleeding or anticoagulation injury."
+      },
+      "tags": [
+        "postpartum_hemorrhage_boggy_fundus",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy fundus plus heavy lochia means treat uterine atony immediately with fundal massage and escalation.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pulmonary_embolism_post_op",
+      "subcategory": "pulmonary_embolism_post_op",
+      "difficulty": 3,
+      "stem": "A client 2 days after surgery suddenly becomes short of breath, anxious, and tachycardic, with oxygen saturation 84% on room air. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply oxygen and notify the provider about suspected pulmonary embolism."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to use the incentive spirometer and rest."
+        },
+        {
+          "id": "c",
+          "text": "Document postoperative anxiety and reassess later."
+        },
+        {
+          "id": "d",
+          "text": "Give oral fluids and wait for the next vital signs check."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Sudden dyspnea, hypoxemia, tachycardia, and anxiety after surgery suggest pulmonary embolism until proven otherwise. Immediate oxygenation support and escalation are the priorities. Reassurance alone would miss a time-sensitive life threat.",
+      "distractorRationales": {
+        "b": "Encourage the client to use the incentive spirometer and rest misses the clinical pattern: Pulmonary Embolism Post Op oxygen points to Apply oxygen and notify the provider about suspected pulmonary embolism, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "c": "Document postoperative anxiety and reassess later misses the clinical pattern: Pulmonary Embolism Post Op oxygen points to Apply oxygen and notify the provider about suspected pulmonary embolism, so choosing it can postpone safety actions and worsen oxygenation or ventilation.",
+        "d": "Give oral fluids and wait for the next vital signs check misses the clinical pattern: Pulmonary Embolism Post Op oxygen points to Apply oxygen and notify the provider about suspected pulmonary embolism, so choosing it can postpone safety actions and worsen oxygenation or ventilation."
+      },
+      "tags": [
+        "pulmonary_embolism_post_op",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden postoperative hypoxia and tachycardia should trigger pulmonary embolism thinking right away.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pyloric_stenosis_projectile_vomiting",
+      "subcategory": "pyloric_stenosis_projectile_vomiting",
+      "difficulty": 3,
+      "stem": "A 5-week-old infant has forceful projectile vomiting after feedings and remains hungry afterward. Which finding would the nurse expect?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "A palpable olive-shaped mass in the upper abdomen."
+        },
+        {
+          "id": "b",
+          "text": "Bilious green emesis with abdominal distention."
+        },
+        {
+          "id": "c",
+          "text": "Bloody diarrhea with lethargy."
+        },
+        {
+          "id": "d",
+          "text": "A wet cough that worsens while feeding."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Projectile nonbilious vomiting with persistent hunger is a classic clue pattern for pyloric stenosis. An olive-shaped mass may be palpable. The other findings point toward different gastrointestinal or feeding problems.",
+      "distractorRationales": {
+        "b": "Bilious green emesis with abdominal distention misses the clinical pattern: Pyloric Stenosis Projectile Vomiting safety points to A palpable olive-shaped mass in the upper abdomen, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "c": "Bloody diarrhea with lethargy misses the clinical pattern: Pyloric Stenosis Projectile Vomiting safety points to A palpable olive-shaped mass in the upper abdomen, so choosing it can postpone safety actions and worsen pediatric or newborn instability.",
+        "d": "A wet cough that worsens while feeding misses the clinical pattern: Pyloric Stenosis Projectile Vomiting safety points to A palpable olive-shaped mass in the upper abdomen, so choosing it can postpone safety actions and worsen pediatric or newborn instability."
+      },
+      "tags": [
+        "pyloric_stenosis_projectile_vomiting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Projectile vomiting plus ongoing hunger should make pyloric stenosis one of the first patterns the student recognizes.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n011",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "serotonin_syndrome",
+      "subcategory": "serotonin_syndrome",
+      "difficulty": 3,
+      "stem": "A client taking sertraline started a new migraine medication and now has agitation, diarrhea, fever, and hyperreflexia. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold serotonergic medications and notify the provider about possible serotonin syndrome."
+        },
+        {
+          "id": "b",
+          "text": "Give the next antidepressant dose to prevent withdrawal."
+        },
+        {
+          "id": "c",
+          "text": "Encourage caffeine to improve alertness."
+        },
+        {
+          "id": "d",
+          "text": "Document the symptoms as expected anxiety."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Agitation, hyperreflexia, fever, and diarrhea after interacting serotonergic drugs suggest serotonin syndrome. The nurse should stop further serotonergic exposure and escalate care immediately. Delayed recognition can lead to worsening instability.",
+      "distractorRationales": {
+        "b": "Give the next antidepressant dose to prevent withdrawal misses the clinical pattern: Serotonin Syndrome serotonin points to Hold serotonergic medications and notify the provider about possible serotonin syndrome, so choosing it can postpone safety actions and worsen infection progression.",
+        "c": "Encourage caffeine to improve alertness misses the clinical pattern: Serotonin Syndrome serotonin points to Hold serotonergic medications and notify the provider about possible serotonin syndrome, so choosing it can postpone safety actions and worsen infection progression.",
+        "d": "Document the symptoms as expected anxiety misses the clinical pattern: Serotonin Syndrome serotonin points to Hold serotonergic medications and notify the provider about possible serotonin syndrome, so choosing it can postpone safety actions and worsen infection progression."
+      },
+      "tags": [
+        "serotonin_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hyperreflexia and fever after serotonergic drug overlap is a clue pattern that should trigger serotonin syndrome thinking fast.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    },
+    {
+      "id": "mb962-n012",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "transsphenoidal_csf_leak",
+      "subcategory": "transsphenoidal_csf_leak",
+      "difficulty": 3,
+      "stem": "A client 12 hours after transsphenoidal hypophysectomy has a steady drip of clear drainage from the nose and reports a salty taste in the throat. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because the findings suggest a cerebrospinal fluid leak."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to cough and deep-breathe to clear the drainage."
+        },
+        {
+          "id": "c",
+          "text": "Insert nasal packing to stop the drainage."
+        },
+        {
+          "id": "d",
+          "text": "Place the client flat and ask about seasonal allergies."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Clear nasal drainage with a salty taste after transsphenoidal surgery is a high-yield clue for CSF leak. The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal pressure. The exam shortcut is to link the postop route with the drainage description rather than overthinking routine sinus drainage.",
+      "distractorRationales": {
+        "b": "Encourage the client to cough and deep-breathe to clear the drainage misses the clinical pattern: Transsphenoidal Csf Leak intracranial points to Notify the provider because the findings suggest a cerebrospinal fluid leak, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "c": "Insert nasal packing to stop the drainage misses the clinical pattern: Transsphenoidal Csf Leak intracranial points to Notify the provider because the findings suggest a cerebrospinal fluid leak, so choosing it can postpone safety actions and worsen circulation or perfusion.",
+        "d": "Place the client flat and ask about seasonal allergies misses the clinical pattern: Transsphenoidal Csf Leak intracranial points to Notify the provider because the findings suggest a cerebrospinal fluid leak, so choosing it can postpone safety actions and worsen circulation or perfusion."
+      },
+      "tags": [
+        "transsphenoidal_csf_leak",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Clear salty nasal drainage after transsphenoidal surgery is a report-now CSF leak pattern.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference."
+    }
+  ]
+}

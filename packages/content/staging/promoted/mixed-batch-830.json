@@ -1,0 +1,459 @@
+{
+  "batchId": "mixed-batch-830",
+  "generatedAt": "2026-04-09T13:24:15-07:00",
+  "generatedBy": {
+    "agentId": "nemoclaw-bridge",
+    "runtime": "python-bounded-route",
+    "promptSource": "ccrn-agent/data/review_batches/nclex-*.json"
+  },
+  "examMix": {
+    "ccrn": 0,
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb830-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neonatal_hypoglycemia",
+      "subcategory": "Neonatal Hypoglycemia",
+      "difficulty": 3,
+      "stem": "A large-for-gestational-age (LGA) neonate born to a mother with gestational diabetes is 2 hours old. The bedside glucose is 38 mg/dL. The neonate is jittery with poor tone. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Encourage the mother to breastfeed immediately and recheck glucose in 30 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Administer IV dextrose 10% (D10W) 2 mL/kg IV push"
+        },
+        {
+          "id": "c",
+          "text": "Notify the neonatologist and transfer to the NICU for monitoring"
+        },
+        {
+          "id": "d",
+          "text": "Administer glucagon 0.3 mg/kg IM and recheck in 15 minutes"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neonatal hypoglycemia: blood glucose <45 mg/dL in the first 24 hours with symptoms (jitteriness, hypotonia, seizures, apnea) requires IV dextrose therapy. Symptomatic hypoglycemia is treated with IV D10W 2 mL/kg bolus, followed by a continuous D10W infusion. Breastfeeding (A) is appropriate for ASYMPTOMATIC mild hypoglycemia (glucose 40\u201345), not for symptomatic hypoglycemia with jitteriness and poor tone. Glucagon (D) can be used in severe refractory hypoglycemia but IV glucose is first-line. NICU notification (C) may follow but IV glucose is the immediate intervention.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Neonatal Hypoglycemia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Symptomatic neonatal hypoglycemia (<45 mg/dL with symptoms): IV D10W 2 mL/kg bolus \u2014 breastfeeding alone is insufficient for symptomatic newborns.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A post-operative patient on day 2 following abdominal surgery complains of left calf pain, warmth, and swelling. Vital signs are stable. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevate the leg and apply warm compresses"
+        },
+        {
+          "id": "b",
+          "text": "Perform Homan's sign assessment and document the result"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and anticipate orders for duplex ultrasound"
+        },
+        {
+          "id": "d",
+          "text": "Administer the scheduled enoxaparin and continue monitoring"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Unilateral calf pain, warmth, and swelling in a post-operative patient are classic signs of deep vein thrombosis (DVT). The nurse's priority is to notify the provider so imaging (duplex ultrasound \u2014 gold standard for DVT) can be ordered promptly. Homan's sign (B) is unreliable and has been removed from clinical guidelines. Warmth and elevation (A) delay diagnosis. Administering the next prophylactic dose (D) without a confirmed DVT diagnosis and provider notification is inappropriate.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op calf pain + swelling = suspect DVT; notify provider and anticipate duplex ultrasound \u2014 Homan's sign is unreliable.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "therapeutic_communication",
+      "subcategory": "Therapeutic Communication",
+      "difficulty": 2,
+      "stem": "A client with depression says: 'I don't see the point in trying anymore. Nothing I do matters.' Which nurse response is most therapeutic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I understand. Sometimes things feel hopeless, but you have so much to live for.'"
+        },
+        {
+          "id": "b",
+          "text": "'Tell me more about what you mean when you say nothing matters.'"
+        },
+        {
+          "id": "c",
+          "text": "'Everyone feels that way sometimes. It will get better soon.'"
+        },
+        {
+          "id": "d",
+          "text": "'You shouldn't think like that. Let's focus on the positive things in your life.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Option B is an open-ended exploration that invites the client to elaborate, demonstrating active listening without judgment. It also screens for suicidal ideation \u2014 'nothing I do matters' and 'no point in trying' may signal passive suicidal thinking. Option A uses false reassurance ('so much to live for') and assumes understanding without exploring further. Option C minimizes the client's experience ('everyone feels that way'). Option D is non-therapeutic confrontation that dismisses the client's feelings.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Therapeutic Communication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Therapeutic communication: use open-ended statements to explore meaning, especially when statements may signal suicidal ideation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "respiratory_oxygenation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with pneumonia who is receiving 4L/min via nasal cannula. The SpO2 is 91%. The nurse repositions the patient and administers the scheduled nebulizer treatment. Which finding would indicate the interventions were effective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respiratory rate decreases from 24 to 18 breaths/min and SpO2 increases to 95%"
+        },
+        {
+          "id": "b",
+          "text": "The patient reports less anxiety and requests to watch television"
+        },
+        {
+          "id": "c",
+          "text": "Adventitious breath sounds increase bilaterally after the nebulizer"
+        },
+        {
+          "id": "d",
+          "text": "The patient's skin color remains unchanged and RR remains at 24/min"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Effective respiratory interventions produce measurable objective improvements in gas exchange: SpO2 rising to \u2265 94-95% and respiratory rate normalizing toward < 20/min indicate improved ventilation and oxygenation. Decreased anxiety may reflect improved oxygenation but is subjective and non-specific. Increased breath sounds after a nebulizer can indicate mobilization of secretions (which is initially normal), not necessarily a therapeutic response. Unchanged SpO2 and RR indicate no meaningful improvement from the interventions.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Respiratory / Oxygenation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Respiratory / Oxygenation",
+        "caption": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary.",
+        "conclusion": "Evaluate respiratory interventions with objective data: SpO2 trend, RR normalization, and work of breathing (accessory muscle use, nasal flaring). Subjective comfort is supportive but secondary."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A nurse is assessing vital signs in the pediatric unit. Which set of vital signs is within normal limits for a healthy 3-year-old toddler?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR 68, RR 14, BP 120/80"
+        },
+        {
+          "id": "b",
+          "text": "HR 100, RR 26, BP 92/56"
+        },
+        {
+          "id": "c",
+          "text": "HR 145, RR 40, BP 80/48"
+        },
+        {
+          "id": "d",
+          "text": "HR 55, RR 18, BP 110/72"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Normal vital signs for a 3-year-old toddler: HR 80\u2013130 bpm, RR 22\u201337 breaths/min, BP approximately 90\u2013100/55\u201365 mmHg. HR 100, RR 26, BP 92/56 are all within expected ranges. Choice A has a bradycardic HR and adult-level BP. Choice C has tachycardia that could suggest distress, and RR 40 is elevated. Choice D has significant bradycardia. Key developmental milestone: vital signs normalize toward adult ranges with age \u2014 neonates have the highest HR and RR, lowest BP.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms.",
+        "conclusion": "Pediatric VS by age: newborn HR 120\u2013160, RR 30\u201360; toddler HR 80\u2013130, RR 22\u201337; school-age HR 70\u2013110, RR 18\u201325; adolescent approaches adult norms."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 2,
+      "stem": "A patient is scheduled for elective laparoscopic cholecystectomy at 8:00 AM. Per current ASA NPO guidelines, what are the correct restrictions for solid food and clear liquids?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing by mouth after midnight \u2014 no exceptions for any type of food or liquid"
+        },
+        {
+          "id": "b",
+          "text": "Solid food stopped by midnight; clear liquids (including milk) allowed until 4 hours before surgery"
+        },
+        {
+          "id": "c",
+          "text": "Solid food (including non-clear liquids and milk) stopped at least 6-8 hours before; clear liquids (water, clear juice, black coffee) allowed until 2 hours before"
+        },
+        {
+          "id": "d",
+          "text": "No restrictions apply \u2014 laparoscopic procedures do not carry aspiration risk"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Current ASA NPO guidelines (2017, updated 2023): Solid foods, fried/fatty meals: NPO \u22658 hours. Light meals (toast, clear liquids): NPO \u22656 hours. Non-clear liquids including milk and formula: NPO \u22656 hours. Clear liquids (water, apple juice without pulp, clear carbonated beverages, black coffee or tea without cream, sports drinks): may be consumed up to 2 hours before elective procedures. Chewing gum and hard candy: treat as clear liquid \u2014 stop 2 hours before. These evidence-based guidelines replaced the outdated 'NPO after midnight' rule. The old rule increased patient discomfort, insulin resistance, and perioperative complications without reducing aspiration risk for clear fluids. High-risk patients (morbid obesity, GERD, pregnancy, gastroparesis, bowel obstruction) require individualized assessment and may need longer restriction.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "ASA NPO: solids \u22656-8 hrs before; clear liquids until 2 hrs before. 'NPO after midnight' is outdated and harmful. Clear liquids: water, clear juice (no pulp), black coffee/tea.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_insulin_safety",
+      "subcategory": "Pharmacology / Insulin Safety",
+      "difficulty": 3,
+      "stem": "A nurse is preparing to administer insulin glargine (Lantus) and insulin aspart (NovoLog) to a patient with type 1 diabetes before breakfast. Which action by the nurse requires IMMEDIATE correction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Drawing up each insulin in a separate syringe"
+        },
+        {
+          "id": "b",
+          "text": "Mixing glargine and aspart in the same syringe before administration"
+        },
+        {
+          "id": "c",
+          "text": "Injecting the aspart subcutaneously 15 minutes before the meal"
+        },
+        {
+          "id": "d",
+          "text": "Rotating injection sites between the abdomen and thigh"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Insulin glargine (Lantus) is a long-acting basal insulin with a specific pH formulation. It should NEVER be mixed with any other insulin, including rapid-acting insulins. Mixing glargine with other insulins alters its pH, causing it to crystallize and unpredictably changes both insulins' absorption profiles. The result is an unreliable pharmacokinetic profile that can cause severe hypoglycemia or hyperglycemia. Each insulin must be drawn in a separate syringe and administered as separate injections. Drawing up separately is correct. Injecting aspart before meals (pre-prandial) is appropriate. Site rotation is correct practice.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Pharmacology / Insulin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Glargine (Lantus) = NEVER MIX with other insulins. It has its own pH and formulation. Mix-up can cause crystal formation and unpredictable glycemic effect. Use separate syringes, separate injections. Applies also to detemir (Levemir).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 3,
+      "stem": "A nurse is caring for four patients on a medical-surgical unit. Which patient should the nurse assess first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 58-year-old with type 2 diabetes who reports feeling 'shaky' and has a blood glucose of 62 mg/dL"
+        },
+        {
+          "id": "b",
+          "text": "A 44-year-old post-appendectomy (day 2) requesting pain medication, pain rated 5/10"
+        },
+        {
+          "id": "c",
+          "text": "A 71-year-old with heart failure who gained 1 lb overnight and is on daily weights"
+        },
+        {
+          "id": "d",
+          "text": "A 33-year-old with a UTI who asks when the next dose of antibiotics is due"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient with a blood glucose of 62 mg/dL has symptomatic hypoglycemia ('shaky'), which is an acute, life-threatening condition requiring immediate intervention. Untreated hypoglycemia can rapidly progress to seizures, loss of consciousness, and brain injury. The other patients represent important but lower-acuity concerns: the post-op patient has manageable pain, the heart failure patient's weight gain needs assessment but is not immediately life-threatening, and the UTI patient's antibiotic timing is a scheduled task.",
+      "distractorRationales": {
+        "b": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Apply the ABCs and Maslow's hierarchy: acute metabolic emergencies (hypoglycemia, airway compromise) always outrank scheduled pain requests, routine monitoring, and informational questions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "Which age-related physiological changes MOST directly alter drug pharmacokinetics in elderly patients, creating the highest risk of toxicity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increased gastric acid production and increased GI motility \u2192 reduced oral drug absorption for most medications"
+        },
+        {
+          "id": "b",
+          "text": "Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage \u2192 renally and hepatically cleared drugs accumulate and fat-soluble drugs have prolonged half-lives"
+        },
+        {
+          "id": "c",
+          "text": "Increased plasma albumin levels \u2192 less free drug available, requiring higher doses in elderly"
+        },
+        {
+          "id": "d",
+          "text": "Increased cardiac output \u2192 faster distribution, shorter half-lives, and need for higher doses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Key age-related pharmacokinetic changes: (1) Renal \u2014 GFR declines ~1 mL/min/year after age 40 (Cockcroft-Gault may overestimate renal function in elderly with low muscle mass) \u2192 renally cleared drugs accumulate: digoxin, metformin, aminoglycosides, NSAIDs, methotrexate; (2) Hepatic \u2014 reduced hepatic mass, blood flow, and CYP450 activity \u2192 first-pass metabolism reduced (increased oral bioavailability), phase I reactions (oxidation, reduction) more impaired than phase II (conjugation); (3) Body composition \u2014 increased fat, decreased lean mass, decreased total body water \u2192 fat-soluble drugs (benzodiazepines, diazepam, amiodarone) have larger volume of distribution and prolonged half-lives; water-soluble drugs (lithium, digoxin) reach higher concentrations with same dose; (4) Protein \u2014 decreased albumin \u2192 increased free fraction of highly protein-bound drugs (warfarin, phenytoin). GI motility decreases (not increases) with age. Cardiac output decreases.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Elderly pharmacokinetics: decreased GFR (drug accumulation), decreased hepatic clearance, increased fat (prolonged half-lives of fat-soluble drugs), decreased albumin (more free drug). Principle: 'Start low, go slow.'",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    },
+    {
+      "id": "mb830-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chain_of_command",
+      "subcategory": "Chain of Command",
+      "difficulty": 4,
+      "stem": "An RN is concerned that a patient's deteriorating condition is not being addressed. She has called the resident twice and the attending once, but no orders have been given and the patient's condition is worsening. What is the next appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document that the physician was notified and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer"
+        },
+        {
+          "id": "c",
+          "text": "Call the patient's family to inform them of the situation and have them contact the physician"
+        },
+        {
+          "id": "d",
+          "text": "Administer PRN medications independently based on nursing judgment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "When a nurse cannot get a timely response from the physician and patient safety is at risk, the chain of command must be activated: charge nurse \u2192 nursing supervisor \u2192 department director \u2192 chief of staff/chief of medicine \u2192 risk management/patient safety officer. Many hospitals also have rapid response teams (RRT) that can be activated by nursing. Documentation alone (A) does not protect the patient. Contacting family (C) violates HIPAA and does not address the immediate clinical problem. Administering medications without orders (D) is outside RN scope of practice and illegal.",
+      "distractorRationales": {
+        "a": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "c": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem.",
+        "d": "This option is less safe because it delays the immediate nursing priority or does not match the highest-risk cue in the stem."
+      },
+      "tags": [
+        "Chain of Command",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When physician is unresponsive to clinical concerns: activate chain of command (charge nurse \u2192 supervisor \u2192 administrator) and/or call rapid response \u2014 document all attempts.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance."
+    }
+  ]
+}
