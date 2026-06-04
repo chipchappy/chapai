@@ -53,6 +53,6 @@
   //   0 12 * * *  → 7am ET → /api/cron/qotd-send (daily question email)
   //   0 13 * * *  → 8am ET → /api/cron/streak-protection
   "triggers": {
-    "crons": ["0 12 * * *", "0 13 * * *"]
+    "crons": ["0 12 * * *", "0 13 * * *", "*/15 * * * *"]
   }
 }
