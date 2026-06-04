@@ -137,14 +137,24 @@ export async function POST(request: NextRequest) {
     return "";
   }
 
+  // Thrown by generate() when the AI binding itself errors (e.g. daily neuron
+  // cap / rate limit) — distinct from the model returning empty/garbage text.
+  class AiUnavailableError extends Error {}
+
   // Try the model up to twice; expect plain prose. Returns the deep rationale
-  // text, or null if nothing usable.
+  // text, or null if the model returned nothing usable. Throws
+  // AiUnavailableError if the AI binding call itself fails (cap/transient).
   async function generate(q: PendingRow): Promise<{ deep: string } | null> {
     for (let attempt = 0; attempt < 2; attempt++) {
-      const out = await env.AI!.run(model, {
-        max_tokens: 1024,
-        messages: [{ role: "user", content: buildPrompt(q) }],
-      });
+      let out: unknown;
+      try {
+        out = await env.AI!.run(model, {
+          max_tokens: 1024,
+          messages: [{ role: "user", content: buildPrompt(q) }],
+        });
+      } catch (err) {
+        throw new AiUnavailableError(err instanceof Error ? err.message : "AI run failed");
+      }
       let raw = toText(out).trim();
       if (!raw) continue;
       // Strip any stray code fences or a leading JSON wrapper if the model
@@ -162,11 +172,19 @@ export async function POST(request: NextRequest) {
   }
 
   // Sequential — keeps us well under the worker CPU/time budget per request.
+  let capped = false;
   for (const q of rows) {
     let result: { deep: string } | null = null;
     try {
       result = await generate(q);
     } catch (error) {
+      if (error instanceof AiUnavailableError) {
+        // AI binding is unavailable (daily neuron cap / rate limit). Do NOT
+        // mark this or remaining rows — leave them pending so a later run
+        // (after the cap resets, or on Workers Paid) authors them properly.
+        capped = true;
+        break;
+      }
       failures.push({ id: q.id, error: error instanceof Error ? error.message.slice(0, 120) : "unknown" });
     }
 
@@ -178,9 +196,8 @@ export async function POST(request: NextRequest) {
       continue;
     }
 
-    // Forward-progress guarantee: if the model never produced usable text,
-    // fall back to the existing (already vetted) short rationale so the row
-    // is marked done and the queue never stalls on it. Still accurate.
+    // Model returned empty/garbage text (not an AI error) → fall back to the
+    // existing vetted short rationale so the queue never stalls on this row.
     failures.push({ id: q.id, error: "no usable model output; used existing rationale" });
     await env.DB.prepare(
       `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
@@ -192,5 +209,5 @@ export async function POST(request: NextRequest) {
   ).bind(exam).all<{ n: number }>();
   const remaining = remainingRow.results?.[0]?.n ?? null;
 
-  return json(200, { success: true, exam, authored, failed: failures.length, failures: failures.slice(0, 10), remaining });
+  return json(200, { success: true, exam, authored, failed: failures.length, failures: failures.slice(0, 10), remaining, capped });
 }
