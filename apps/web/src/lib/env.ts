@@ -20,6 +20,7 @@ const workerBindingSchema = z.object({
   KV: z.unknown().optional(),
   R2: z.unknown().optional(),
   ASSETS: z.unknown().optional(),
+  AI: z.unknown().optional(),
 });
 
 const serverEnvSchema = workerBindingSchema.extend({
@@ -45,6 +46,8 @@ const serverEnvSchema = workerBindingSchema.extend({
   STRIPE_PRICE_PRO_MONTHLY: z.string().startsWith("price_").optional(),
   OPENROUTER_API_KEY: z.string().min(8).optional(),
   OPENROUTER_MODEL: z.string().default("openrouter/auto"),
+  WORKERS_AI_MODEL: z.string().default("@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+  ADMIN_AUTHOR_SECRET: z.string().optional(),
   DEMO_MODE: rawBoolean.default(false),
   TELEGRAM_BOT_TOKEN: z.string().optional(),
   DEMO_KEY: z.string().optional(),
@@ -59,11 +62,14 @@ const serverEnvSchema = workerBindingSchema.extend({
   VERCEL_ENV: z.enum(["production", "preview", "development"]).optional(),
 }).passthrough();
 
+type WorkersAI = { run: (model: string, options: Record<string, unknown>) => Promise<unknown> };
+
 export type ServerEnv = z.infer<typeof serverEnvSchema> & {
   DB?: D1Database;
   KV?: KVNamespace;
   R2?: R2Bucket;
   ASSETS?: Fetcher;
+  AI?: WorkersAI;
 };
 
 function getRawEnv() {

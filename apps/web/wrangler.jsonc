@@ -2,7 +2,7 @@
   "name": "chapai-web",
   "compatibility_date": "2024-12-01",
   "compatibility_flags": ["nodejs_compat"],
-  "main": ".open-next/worker.js",
+  "main": ".open-next/worker-with-cron.js",
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
@@ -22,6 +22,11 @@
       // After creating: npx wrangler kv namespace create chapai-kv
     }
   ],
+  // Cloudflare Workers AI — free allocation (10k Neurons/day), no API key.
+  // Powers the live AI tutor and the deep-rationale authoring route.
+  "ai": {
+    "binding": "AI"
+  },
   "vars": {
     "NEXTAUTH_URL": "https://claritynclex.com",
     "NEXT_PUBLIC_APP_URL": "https://claritynclex.com",
@@ -31,6 +36,8 @@
     "DEMO_MODE": "false",
     "NEXT_PUBLIC_GA_MEASUREMENT_ID": "G-NT7C6FL4J1",
     "OPENROUTER_MODEL": "openrouter/auto",
+    "WORKERS_AI_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "ADMIN_AUTHOR_SECRET": "clarity-author-2026-rotate-me",
     "STRIPE_PRICE_TRIAL_7DAY": "price_1TIWiWANUEeCGFKSm1MZaiSh",
     "STRIPE_PRICE_PLUS_MONTHLY": "price_1TIWiXANUEeCGFKSshU1NHDz",
     "STRIPE_PRICE_PRO_MONTHLY": "price_1TIWiYANUEeCGFKS8dudVUuj"
@@ -41,5 +48,11 @@
     { "pattern": "clarityccrn.chapaisolutions.com", "custom_domain": true },
     { "pattern": "clarityhome.chapaisolutions.com", "custom_domain": true },
     { "pattern": "claritynclex.chapaisolutions.com", "custom_domain": true }
-  ]
+  ],
+  // Cron triggers — see scripts/inject-scheduled.cjs CRON_ROUTES for routing.
+  //   0 12 * * *  → 7am ET → /api/cron/qotd-send (daily question email)
+  //   0 13 * * *  → 8am ET → /api/cron/streak-protection
+  "triggers": {
+    "crons": ["0 12 * * *", "0 13 * * *"]
+  }
 }

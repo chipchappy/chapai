@@ -389,50 +389,88 @@ ${question.visualRationale ? `- Visual: ${question.visualRationale.title}${quest
 ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.join(" | ")}` : ""}
 - Context: ${context}.`;
 
-    const apiKey = (env as Record<string, unknown>).ANTHROPIC_API_KEY as string | undefined;
+    // ── AI provider: Cloudflare Workers AI (free, no API key) ──────────────
+    // Runs on the same Cloudflare infra the worker is deployed on. No external
+    // key, free allocation of 10k Neurons/day, scales to all students.
+    const aiBinding = (env as Record<string, unknown>).AI as
+      | { run: (model: string, options: Record<string, unknown>) => Promise<unknown> }
+      | undefined;
+    const workersAiModel =
+      ((env as Record<string, unknown>).WORKERS_AI_MODEL as string | undefined) ||
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 
-    if (isDemoMode(env) || !apiKey) {
+    // No binding (local dev) or demo mode → serve the static curated fallback.
+    if (isDemoMode(env) || !aiBinding || typeof aiBinding.run !== "function") {
       return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
     }
 
-    let AnthropicModule: typeof import("@anthropic-ai/sdk").default;
+    let rawResult: unknown;
     try {
-      ({ default: AnthropicModule } = await import("@anthropic-ai/sdk"));
-    } catch (error) {
-      logError("Tutor provider import failed; serving fallback", error, requestContext);
-      return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
-    }
-
-    const client = new AnthropicModule({ apiKey });
-
-    let anthropicStream: Awaited<ReturnType<typeof client.messages.stream>>;
-    try {
-      anthropicStream = client.messages.stream({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 1024,
-        system: systemPrompt,
+      rawResult = await aiBinding.run(workersAiModel, {
+        stream: true,
+        max_tokens: 700,
         messages: [
+          { role: "system", content: systemPrompt },
           ...history,
           { role: "user", content: userMessage },
         ],
       });
     } catch (error) {
-      logError("Tutor Anthropic stream init failed; serving fallback", error, requestContext);
+      logError("Tutor Workers AI init failed; serving fallback", error, requestContext);
+      return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
+    }
+
+    // Workers AI returns either a ReadableStream or a Response with a body.
+    const aiStream: ReadableStream<Uint8Array> | undefined =
+      rawResult && typeof (rawResult as ReadableStream).getReader === "function"
+        ? (rawResult as ReadableStream<Uint8Array>)
+        : (rawResult as { body?: ReadableStream<Uint8Array> })?.body;
+
+    if (!aiStream) {
+      logError("Tutor Workers AI returned no stream; serving fallback", new Error("no stream"), requestContext);
       return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
     }
 
     const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
     const readableStream = new ReadableStream({
       async start(controller) {
+        const reader = aiStream.getReader();
+        let buffer = "";
+        let emittedAny = false;
         try {
-          for await (const chunk of anthropicStream) {
-            if (chunk.type === "content_block_delta" && chunk.delta.type === "text_delta") {
-              controller.enqueue(encoder.encode(`data: ${JSON.stringify({ delta: { text: chunk.delta.text } })}\n\n`));
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split("\n");
+            buffer = lines.pop() ?? "";
+            for (const line of lines) {
+              const trimmed = line.trim();
+              if (!trimmed.startsWith("data:")) continue;
+              const payload = trimmed.slice(5).trim();
+              if (!payload || payload === "[DONE]") continue;
+              try {
+                const parsed = JSON.parse(payload) as { response?: string };
+                if (parsed.response) {
+                  emittedAny = true;
+                  controller.enqueue(
+                    encoder.encode(`data: ${JSON.stringify({ delta: { text: parsed.response } })}\n\n`),
+                  );
+                }
+              } catch {
+                // Ignore keepalive / non-JSON lines.
+              }
             }
           }
         } catch (error) {
-          logError("Tutor Anthropic stream error; closing", error, requestContext);
+          logError("Tutor Workers AI stream error; closing", error, requestContext);
         } finally {
+          if (!emittedAny) {
+            // Model produced nothing usable → inline the curated fallback text.
+            const fb = buildFallbackText({ question, context, selectedAnswer, answeredCorrectly });
+            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ delta: { text: fb } })}\n\n`));
+          }
           controller.enqueue(encoder.encode("data: [DONE]\n\n"));
           controller.close();
         }
