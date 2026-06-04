@@ -10,7 +10,7 @@ import { getPracticeExamDefinitions, getStandardPreviewDeck, mapLiveQuestionBank
 import type { PracticeExamDefinition, PracticeQuestion } from "@/lib/practice-types";
 import { getServerAccessContext } from "@/lib/server-access";
 import { getQuestionIntegrityIssues } from "@/lib/question-renderability";
-import { eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
 type RouteContext = {
@@ -203,6 +203,61 @@ function selectByBlueprint(
 }
 
 async function loadLivePracticeQuestions(exam: Exam) {
+  // PRIMARY: the live D1 PUBLISHED pool — same clean, deduped, Claude-curated
+  // bank the regular quiz uses (codex/dupes are unpublished, premium NGN +
+  // case studies included). Falls back to the bundled file bank only if D1 is
+  // unavailable/empty. Premium (final-curated-live) rows are surfaced first.
+  const env = resolveEnv();
+  if (hasDatabase(env)) {
+    const db = getDB(env);
+    const rows = await db
+      .select({
+        id: questions.id,
+        exam: questions.exam,
+        type: questions.type,
+        category: questions.category,
+        subcategory: questions.subcategory,
+        difficulty: questions.difficulty,
+        stem: questions.stem,
+        options: questions.options,
+        answer: questions.answer,
+        rationale: questions.rationale,
+        deepRationale: questions.deepRationale,
+        distractorRationales: questions.distractorRationales,
+        tags: questions.tags,
+        blueprintPct: questions.blueprintPct,
+        conceptNotes: questions.conceptNotes,
+        provenance: questions.provenance,
+        reviewStatus: questions.reviewStatus,
+        revision: questions.revision,
+        publishState: questions.publishState,
+        scenarioTitle: questions.scenarioTitle,
+        scenario: questions.scenario,
+        additionalInfo: questions.additionalInfo,
+        exhibits: questions.exhibits,
+        chartReview: questions.chartReview,
+        matrixColumns: questions.matrixColumns,
+        matrixRows: questions.matrixRows,
+        visualRationale: questions.visualRationale,
+        referencesJson: questions.referencesJson,
+        correctOrder: questions.correctOrder,
+      })
+      .from(questions)
+      .where(and(eq(questions.exam, exam), eq(questions.publishState, "published")))
+      // Premium curated questions first so exams prefer them; the rest of the
+      // clean published pool backfills to reach full exam length.
+      .orderBy(sql`CASE WHEN ${questions.reviewStatus} = 'final-curated-live' THEN 0 ELSE 1 END`);
+
+    const mapped = mapLiveQuestionBank(rows.map((row) => mapQuestionRowToQuizQuestion(row)), "practice-exam").filter((question) => {
+      const issues = getQuestionIntegrityIssues(question);
+      return issues.length === 0 || (question.kind !== "matrix" && question.kind !== "ordering" && question.kind !== "case-study" && question.kind !== "bow-tie");
+    });
+    if (mapped.length > 0) {
+      return mapped;
+    }
+  }
+
+  // Fallback: bundled file bank (only when D1 is empty/unavailable).
   const liveQuestions = getQuestionBank(exam);
   if (liveQuestions.length > 0) {
     return mapLiveQuestionBank(
@@ -214,40 +269,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
     );
   }
 
-  const env = resolveEnv();
-  if (!hasDatabase(env)) {
-    return [];
-  }
-
-  const db = getDB(env);
-  const rows = await db
-    .select({
-      id: questions.id,
-      exam: questions.exam,
-      type: questions.type,
-      category: questions.category,
-      subcategory: questions.subcategory,
-      difficulty: questions.difficulty,
-      stem: questions.stem,
-      options: questions.options,
-      answer: questions.answer,
-      rationale: questions.rationale,
-      distractorRationales: questions.distractorRationales,
-      tags: questions.tags,
-      blueprintPct: questions.blueprintPct,
-      conceptNotes: questions.conceptNotes,
-      provenance: questions.provenance,
-      reviewStatus: questions.reviewStatus,
-      revision: questions.revision,
-      publishState: questions.publishState,
-    })
-    .from(questions)
-    .where(eq(questions.exam, exam));
-
-  return mapLiveQuestionBank(rows.map((row) => mapQuestionRowToQuizQuestion(row)), "practice-exam").filter((question) => {
-    const issues = getQuestionIntegrityIssues(question);
-    return issues.length === 0 || (question.kind !== "matrix" && question.kind !== "ordering" && question.kind !== "case-study" && question.kind !== "bow-tie");
-  });
+  return [];
 }
 
 async function buildManifestIndex(exam: Exam) {
@@ -364,8 +386,37 @@ export async function GET(request: Request, context: RouteContext) {
     planCode: access.planCode,
   });
 
+  // Cross-device resume: surface the most recent in-progress (not-yet-completed)
+  // session row for this exam/user so the client can jump to the saved index.
+  let resume: { sessionId: string; currentIndex: number } | null = null;
+  try {
+    const { quizSessions } = await import("@chapai/db/schema");
+    const { and, eq, isNull, desc } = await import("drizzle-orm");
+    const row = await db
+      .select({
+        id: quizSessions.id,
+        currentIndex: quizSessions.currentIndex,
+      })
+      .from(quizSessions)
+      .where(
+        and(
+          eq(quizSessions.userId, hostedUser.id),
+          eq(quizSessions.practiceExamId, parsed.data),
+          isNull(quizSessions.completedAt),
+        ),
+      )
+      .orderBy(desc(quizSessions.startedAt))
+      .limit(1)
+      .get();
+    if (row && row.currentIndex > 0) {
+      resume = { sessionId: row.id, currentIndex: row.currentIndex };
+    }
+  } catch {
+    // non-fatal — client will start at index 0
+  }
+
   return Response.json({
     success: true,
-    data: manifest,
+    data: { ...manifest, resume },
   });
 }
