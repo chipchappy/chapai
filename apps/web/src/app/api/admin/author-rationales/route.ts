@@ -49,12 +49,11 @@ function buildPrompt(q: PendingRow) {
   const optionsText = Array.isArray(opts)
     ? opts.map((o, i) => `${(o?.id ?? String.fromCharCode(65 + i)).toString().toUpperCase()}) ${o?.text ?? ""}`).join("\n")
     : String(opts ?? "");
-  let existing: Record<string, string> = {};
-  try { existing = JSON.parse(q.distractor_rationales || "{}"); } catch { /* none */ }
-  const needDistractors = Object.keys(existing).length === 0;
   const examLabel = q.exam === "ccrn" ? "CCRN" : "NCLEX-RN";
 
-  return `You are authoring a premium "deep dive" rationale for an ${examLabel} practice question. Return STRICT JSON only — no markdown, no prose outside the JSON object.
+  // Plain-prose output — far more reliable than asking an LLM for strict JSON
+  // (LLM JSON routinely breaks on unescaped newlines/quotes inside the value).
+  return `You are an expert ${examLabel} nurse educator writing a premium "deep dive" explanation for a practice question. Write it as one flowing explanation of 600 to 1100 characters in plain text. Do NOT use JSON, markdown headers, bullet points, or code fences — just clear prose.
 
 CATEGORY: ${q.category}
 TYPE: ${q.type}   DIFFICULTY: ${q.difficulty ?? 3}/5
@@ -62,23 +61,9 @@ STEM: ${q.stem}
 OPTIONS:
 ${optionsText}
 CORRECT ANSWER: ${q.answer}
-EXISTING SHORT RATIONALE (go deeper, do not repeat): ${q.rationale}
+EXISTING SHORT RATIONALE (go deeper than this, do not just repeat it): ${q.rationale}
 
-Write a 600-1100 character "deep_rationale" structured as: (1) pathophysiology/mechanism, (2) why the correct answer wins clinically, (3) one line on why each wrong option fails, (4) one memorable clinical pearl. Confident clinical exam-prep voice. Cite specific values, drug classes, thresholds, and NCSBN/AACN/AHA conventions inline. No filler phrases like "recognize the cue."
-${needDistractors ? 'Also author "distractor_rationales": a JSON object with a 1-2 sentence clinical explanation for EVERY wrong option keyed by its letter.' : ""}
-
-Return exactly: {"deep_rationale":"..."${needDistractors ? ',"distractor_rationales":{"A":"...","B":"..."}' : ""}}`;
-}
-
-function extractJson(text: string): { deep_rationale?: string; distractor_rationales?: Record<string, string> } | null {
-  const cleaned = text.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim();
-  try { return JSON.parse(cleaned); } catch { /* try substring */ }
-  const start = cleaned.indexOf("{");
-  const end = cleaned.lastIndexOf("}");
-  if (start >= 0 && end > start) {
-    try { return JSON.parse(cleaned.slice(start, end + 1)); } catch { /* give up */ }
-  }
-  return null;
+Cover, in this order, woven into prose: (1) the underlying pathophysiology or mechanism, (2) the decisive clinical reasoning for why the correct answer wins, (3) a brief note on why each wrong option fails (the common test trap), and (4) one memorable clinical pearl a student can carry to other questions. Use a confident clinical exam-prep voice. Cite specific lab values, drug classes, thresholds, and NCSBN/AACN/AHA conventions inline where relevant. Avoid filler phrases like "recognize the cue." Begin the explanation directly.`;
 }
 
 export async function POST(request: NextRequest) {
@@ -94,8 +79,23 @@ export async function POST(request: NextRequest) {
     return json(503, { success: false, error: "Workers AI binding unavailable" });
   }
 
-  const body = (await request.json().catch(() => ({}))) as { exam?: string; limit?: number; model?: string };
+  const body = (await request.json().catch(() => ({}))) as { exam?: string; limit?: number; model?: string; debug?: boolean };
   const exam = body.exam === "ccrn" ? "ccrn" : "nclex";
+
+  // Debug: run the model once on a sample prompt and return the raw shape.
+  if (body.debug) {
+    const dbgModel = body.model || "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+    const out = await env.AI.run(dbgModel, {
+      max_tokens: 1024,
+      messages: [{ role: "user", content: "Write a 2-sentence clinical note about why a potassium of 6.8 mEq/L is dangerous. Return plain text." }],
+    });
+    return json(200, {
+      debug: true, model: dbgModel,
+      typeofOut: typeof out,
+      keys: out && typeof out === "object" ? Object.keys(out) : null,
+      sample: JSON.stringify(out).slice(0, 800),
+    });
+  }
   const limit = Math.min(Math.max(Number(body.limit ?? 10), 1), 25);
   // Authoring defaults to the high-quality 70B model (one-time job, quality
   // matters more than neuron cost). Override per-call via body.model.
@@ -117,25 +117,45 @@ export async function POST(request: NextRequest) {
   const failures: Array<{ id: string; error: string }> = [];
   const now = Math.floor(Date.now() / 1000);
 
-  // Try the model up to twice; accept JSON or long prose. Returns the deep
-  // rationale text + optional distractor map, or null if nothing usable.
-  async function generate(q: PendingRow): Promise<{ deep: string; distractors?: Record<string, string> } | null> {
+  // Coerce any Workers AI return shape to a text string.
+  function toText(out: unknown): string {
+    if (typeof out === "string") return out;
+    if (out && typeof out === "object") {
+      const o = out as Record<string, unknown>;
+      if (typeof o.response === "string") return o.response;
+      // Some models nest under response.response or choices[].message.content.
+      if (o.response && typeof o.response === "object") {
+        const r = o.response as Record<string, unknown>;
+        if (typeof r.response === "string") return r.response;
+      }
+      const choices = o.choices as Array<{ message?: { content?: string }; text?: string }> | undefined;
+      if (Array.isArray(choices) && choices[0]) {
+        return choices[0].message?.content ?? choices[0].text ?? "";
+      }
+      if (typeof o.result === "string") return o.result;
+    }
+    return "";
+  }
+
+  // Try the model up to twice; expect plain prose. Returns the deep rationale
+  // text, or null if nothing usable.
+  async function generate(q: PendingRow): Promise<{ deep: string } | null> {
     for (let attempt = 0; attempt < 2; attempt++) {
       const out = await env.AI!.run(model, {
         max_tokens: 1024,
         messages: [{ role: "user", content: buildPrompt(q) }],
       });
-      const raw = (out?.response ?? "").trim();
+      let raw = toText(out).trim();
       if (!raw) continue;
-      const parsed = extractJson(raw);
-      const fromJson = parsed?.deep_rationale?.trim();
-      if (fromJson && fromJson.length >= 350) {
-        return { deep: fromJson, distractors: parsed?.distractor_rationales };
+      // Strip any stray code fences or a leading JSON wrapper if the model
+      // ignored the plain-text instruction.
+      raw = raw.replace(/^```(json|text)?\s*/i, "").replace(/```\s*$/i, "").trim();
+      const jsonMatch = raw.match(/"deep_rationale"\s*:\s*"([\s\S]*?)"\s*[,}]/);
+      if (jsonMatch && jsonMatch[1].length >= 350) {
+        return { deep: jsonMatch[1].replace(/\\n/g, " ").replace(/\\"/g, '"').trim() };
       }
-      // No usable JSON, but the model returned substantial prose → use it.
-      const prose = raw.replace(/^```(json)?\s*/i, "").replace(/```\s*$/i, "").trim();
-      if (prose.length >= 350 && !prose.startsWith("{")) {
-        return { deep: prose };
+      if (raw.length >= 350 && !raw.startsWith("{")) {
+        return { deep: raw };
       }
     }
     return null;
@@ -143,43 +163,28 @@ export async function POST(request: NextRequest) {
 
   // Sequential — keeps us well under the worker CPU/time budget per request.
   for (const q of rows) {
-    let result: { deep: string; distractors?: Record<string, string> } | null = null;
+    let result: { deep: string } | null = null;
     try {
       result = await generate(q);
     } catch (error) {
       failures.push({ id: q.id, error: error instanceof Error ? error.message.slice(0, 120) : "unknown" });
     }
 
-    // Forward-progress guarantee: if the model never produced usable text,
-    // fall back to the existing (already vetted) short rationale so the row
-    // is marked done and the queue never stalls on it. Still accurate.
-    const deep = result?.deep ?? (q.rationale && q.rationale.length >= 80 ? q.rationale : null);
-    if (!deep) {
-      failures.push({ id: q.id, error: "no usable output and no fallback rationale" });
-      // Mark authored with a copy of the stem-level note so it advances.
+    if (result?.deep) {
       await env.DB.prepare(
         `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
-      ).bind(q.rationale || "See the on-screen rationale and references for this item.", now, q.id).run();
+      ).bind(result.deep, now, q.id).run();
+      authored++;
       continue;
     }
 
-    let existing: Record<string, string> = {};
-    try { existing = JSON.parse(q.distractor_rationales || "{}"); } catch { /* none */ }
-    const writeDistractors =
-      Object.keys(existing).length === 0 &&
-      result?.distractors &&
-      Object.keys(result.distractors).length > 0;
-
-    if (writeDistractors) {
-      await env.DB.prepare(
-        `UPDATE questions SET deep_rationale=?, distractor_rationales=?, deep_rationale_authored_at=? WHERE id=?`,
-      ).bind(deep, JSON.stringify(result!.distractors), now, q.id).run();
-    } else {
-      await env.DB.prepare(
-        `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
-      ).bind(deep, now, q.id).run();
-    }
-    if (result?.deep) authored++;
+    // Forward-progress guarantee: if the model never produced usable text,
+    // fall back to the existing (already vetted) short rationale so the row
+    // is marked done and the queue never stalls on it. Still accurate.
+    failures.push({ id: q.id, error: "no usable model output; used existing rationale" });
+    await env.DB.prepare(
+      `UPDATE questions SET deep_rationale=?, deep_rationale_authored_at=? WHERE id=?`,
+    ).bind(q.rationale || "See the on-screen rationale and references for this item.", now, q.id).run();
   }
 
   const remainingRow = await env.DB.prepare(
