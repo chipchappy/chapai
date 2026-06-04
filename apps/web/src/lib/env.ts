@@ -48,6 +48,8 @@ const serverEnvSchema = workerBindingSchema.extend({
   OPENROUTER_MODEL: z.string().default("openrouter/auto"),
   WORKERS_AI_MODEL: z.string().default("@cf/meta/llama-3.1-8b-instruct"),
   ADMIN_AUTHOR_SECRET: z.string().optional(),
+  GEMINI_API_KEY: z.string().optional(),
+  GEN_NVIDIA_API_KEY: z.string().optional(),
   DEMO_MODE: rawBoolean.default(false),
   TELEGRAM_BOT_TOKEN: z.string().optional(),
   DEMO_KEY: z.string().optional(),
