@@ -1,0 +1,53 @@
+-- Premium editorial pass batch 006.
+-- Manual source-backed promotions from the generated review queue.
+-- No schema, Stripe, auth, UI, layout, CSS, or navigation changes.
+
+UPDATE questions
+SET publish_state='published',
+    review_status='final-curated-live',
+    rationale='The client is in adrenal crisis with profound hypotension, vomiting, weakness, hyponatremia, hyperkalemia, and low glucose. Priority anticipated care includes IV hydrocortisone, rapid isotonic saline replacement, and close hypoglycemia monitoring.',
+    deep_rationale='Adrenal crisis is a life-threatening endocrine emergency caused by inadequate cortisol activity during physiologic stress. This stem shows shock-level hypotension, tachycardia, vomiting, abdominal pain, altered mentation, hyponatremia, hyperkalemia, and low glucose in a client with known Addison disease. IV hydrocortisone addresses the deficient glucocorticoid effect and also supports mineralocorticoid activity during the acute crisis. Rapid 0.9% sodium chloride replacement treats hypovolemia and helps correct sodium and perfusion deficits. Glucose monitoring is needed because cortisol deficiency impairs counter-regulation and can worsen hypoglycemia. IV insulin with dextrose is not the first adrenal-crisis intervention for this potassium level and could worsen the immediate glucose problem if mishandled. Potassium-sparing diuretics would worsen hyperkalemia. Fluid restriction would worsen hypovolemia and shock. Clinical pearl: adrenal crisis is treated with steroids plus isotonic volume replacement first; potassium and glucose trends are reassessed as perfusion and cortisol replacement begin to work.',
+    references_json='[{"title":"Diagnosis and Management of Adrenal Insufficiency - Endotext, NCBI Bookshelf","citation":"Endotext describes adrenal crisis as a life-threatening emergency requiring prompt hydrocortisone and fluid replacement, with 0.9% saline helping correct electrolyte and volume deficits."},{"title":"NCSBN 2026 NCLEX-RN Test Plan","citation":"NCSBN 2026 RN Test Plan, Physiological Adaptation and Clinical Judgment."}]',
+    deep_rationale_authored_at=unixepoch(),
+    provenance=COALESCE(provenance,'gen') || '|editorial-batch-006:manual-source-backed-promote'
+WHERE id='gen-gemini-1780646428-2-exumr';
+
+UPDATE questions
+SET publish_state='published',
+    review_status='final-curated-live',
+    rationale='The client has suspected septic shock: infection source, altered mental status, hypotension, tachycardia, tachypnea, lactate 4.8 mmol/L, and thrombocytopenia. First-hour priorities include broad-spectrum IV antibiotics, 30 mL/kg crystalloid resuscitation, and bedside glucose assessment for altered mentation.',
+    deep_rationale='Septic shock is a perfusion emergency caused by infection-triggered vasodilation, capillary leak, mitochondrial dysfunction, and organ hypoperfusion. The stem gives a likely urinary source, fever, altered mental status, hypotension, lactate 4.8 mmol/L, and platelet suppression, which together signal life-threatening sepsis physiology. Broad-spectrum IV antibiotics target the infectious driver and should not be delayed once septic shock or high-likelihood sepsis is recognized. Crystalloid resuscitation supports intravascular volume and tissue perfusion in hypotension or lactate elevation. A bedside glucose check is appropriate because hypoglycemia or severe dysglycemia can contribute to altered mental status and must be corrected quickly. Low-flow oxygen by itself is not the sepsis-bundle intervention that reverses shock physiology when no oxygen saturation is provided, and furosemide would worsen intravascular depletion. Clinical pearl: in septic shock, protect perfusion while treating the source: antibiotics, fluids, glucose check when mentation is altered, cultures when feasible without delaying care, and rapid escalation for vasopressors as ordered.',
+    references_json='[{"title":"Surviving Sepsis Campaign 2021 Guidelines","citation":"The adult SSC guideline recommends immediate antimicrobials, ideally within 1 hour for possible septic shock or high-likelihood sepsis, and at least 30 mL/kg IV crystalloid within 3 hours for sepsis-induced hypoperfusion or septic shock."},{"title":"NCSBN 2026 NCLEX-RN Test Plan","citation":"NCSBN 2026 RN Test Plan, Physiological Adaptation, Management of Care, and Clinical Judgment."}]',
+    deep_rationale_authored_at=unixepoch(),
+    provenance=COALESCE(provenance,'gen') || '|editorial-batch-006:manual-source-backed-promote'
+WHERE id='gen-nemotron-1780671627-5-407f9';
+
+UPDATE questions
+SET publish_state='published',
+    review_status='final-curated-live',
+    rationale='The highest-acuity clients are the one with chest pain plus hypotension and hypoxia, and the one with altered mental status from glucose 42 mg/dL. Both have immediate threats to perfusion, oxygen delivery, or cerebral glucose supply.',
+    deep_rationale='Emergency prioritization uses immediate threat and reversibility. The client with crushing chest pain, diaphoresis, hypotension, tachycardia, and oxygen saturation of 88% may be developing acute coronary syndrome with shock physiology and impaired oxygen delivery. This client needs immediate assessment, oxygenation support as indicated, ECG/ACS pathway activation, IV access, and provider escalation. The client with diabetes, altered mental status, and glucose 42 mg/dL has clinically significant hypoglycemia with neuroglycopenia; this can progress rapidly to seizure, loss of consciousness, aspiration, and neurologic injury if not treated. The postoperative client has mild pain and borderline vital signs but no immediate ABC or neurologic collapse in the option. The treated asthma client is currently stable after albuterol. The open femur fracture is serious, but the listed vital signs do not show shock or oxygenation failure. Clinical pearl: first-now triage favors unstable circulation, oxygenation failure, and reversible neurologic threats.',
+    references_json='[{"title":"NCSBN 2026 NCLEX-RN Test Plan","citation":"NCSBN 2026 RN Test Plan emphasizes clinical judgment, prioritization, and recognizing urgent changes in condition."},{"title":"ADA Standards of Care in Diabetes - 2026","citation":"ADA Standards identify glucose below 54 mg/dL as clinically significant hypoglycemia requiring immediate action, with glucagon indicated when the person cannot or will not take oral carbohydrate."},{"title":"AHA Guidelines for CPR and Emergency Cardiovascular Care","citation":"AHA emergency cardiovascular care guidance supports rapid recognition and escalation for suspected acute coronary syndrome and shock."}]',
+    deep_rationale_authored_at=unixepoch(),
+    provenance=COALESCE(provenance,'gen') || '|editorial-batch-006:manual-source-backed-promote'
+WHERE id='gen-nemotron-1780641920-1-refx9';
+
+UPDATE questions
+SET publish_state='published',
+    review_status='final-curated-live',
+    rationale='The findings most consistent with fluid volume overload are rapid weight gain, peripheral edema, elevated jugular venous pressure, and oliguria in the setting of heart failure. Hypotension is not the expected finding in this presented overload pattern.',
+    deep_rationale='Fluid volume overload in heart failure reflects congestion from impaired forward flow and increased venous pressure. Rapid weight gain is one of the most useful bedside clues because retained fluid changes weight before edema becomes severe. Two-plus pitting edema and elevated jugular venous pressure indicate systemic venous congestion. Decreased urine output can occur when cardiac output and renal perfusion fall despite excess total-body fluid, so it can coexist with overload in decompensated heart failure. Hypotension is not the finding that best fits this particular stem because the client is hypertensive and congested; hypotension would raise concern for shock, severe low-output failure, or overdiuresis rather than uncomplicated volume overload. Clinical pearl: in heart failure, total-body excess fluid and effective arterial perfusion can diverge, so edema and oliguria can be present at the same time.',
+    references_json='[{"title":"2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure","citation":"The AHA/ACC/HFSA guideline describes congestion and fluid overload management in hospitalized heart failure, including clinical evidence of congestion and diuretic titration."},{"title":"NCSBN 2026 NCLEX-RN Test Plan","citation":"NCSBN 2026 RN Test Plan, Physiological Adaptation and Clinical Judgment."}]',
+    deep_rationale_authored_at=unixepoch(),
+    provenance=COALESCE(provenance,'gen') || '|editorial-batch-006:manual-source-backed-promote'
+WHERE id='gen-nemotron-1780624821-3-1b41r';
+
+UPDATE questions
+SET publish_state='published',
+    review_status='final-curated-live',
+    rationale='Among the listed findings, tachypnea is the strongest early systemic sepsis clue because respiratory rate is part of qSOFA screening and reflects physiologic compensation for infection-related hypoperfusion. Local wound inflammation alone does not establish systemic involvement.',
+    deep_rationale='The client has a postoperative wound infection picture with systemic deterioration. Fever and leukocytosis support infection, but they are less specific for organ dysfunction. Local redness and swelling identify the wound as a possible source, but they do not show that the infection is affecting systemic perfusion. A respiratory rate of 24/min is a qSOFA warning sign and often reflects compensation for metabolic stress or early hypoperfusion. In real triage, the hypotension in the stem would also be highly concerning and should prompt immediate sepsis escalation; among the answer options, tachypnea is the best indicator of early systemic sepsis risk. Clinical pearl: do not wait for dramatic fever or very high WBC to act when respiratory rate, blood pressure, or mentation suggests organ dysfunction.',
+    references_json='[{"title":"AHRQ PSNet - Failed Interpretation of Screening Tool: Delayed Treatment","citation":"AHRQ summarizes qSOFA elements including respiratory rate at least 22/min, systolic blood pressure below 90 mm Hg, and altered mental status as bedside sepsis risk indicators."},{"title":"Surviving Sepsis Campaign 2021 Guidelines","citation":"SSC guidelines emphasize rapid recognition and treatment of sepsis and septic shock."},{"title":"NCSBN 2026 NCLEX-RN Test Plan","citation":"NCSBN 2026 RN Test Plan, Physiological Adaptation and Clinical Judgment."}]',
+    deep_rationale_authored_at=unixepoch(),
+    provenance=COALESCE(provenance,'gen') || '|editorial-batch-006:manual-source-backed-promote'
+WHERE id='gen-nemotron-1780634720-1-cqa4i';
