@@ -13,6 +13,7 @@
     "agent:supervisor": "node scripts/ops/chapai-agent-supervisor.mjs",
     "agent:watchdog": "node scripts/ops/chapai-watchdog.mjs",
     "agent:watchdog:dry": "node scripts/ops/chapai-watchdog.mjs --dry-run",
+    "content:review:nclex": "node scripts/review-nclex-candidate-bank.mjs",
     "deploy": "turbo deploy"
   },
   "devDependencies": {

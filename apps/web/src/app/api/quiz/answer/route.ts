@@ -71,6 +71,23 @@ function normalizeStoredAnswer(answer: QuestionAnswer | string | null | undefine
   return raw;
 }
 
+function parseStoredReferences(raw: string | null | undefined) {
+  if (!raw) {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      return parsed.filter((entry) => entry && typeof entry === "object");
+    }
+  } catch {
+    // Keep references empty when the stored payload is malformed.
+  }
+
+  return [];
+}
+
 function parseComparableAnswer(input: unknown) {
   if (Array.isArray(input)) {
     return [...input]
@@ -201,7 +218,13 @@ export async function POST(req: NextRequest) {
     // Keep the curated live bank as the teaching source of truth,
     // while the database continues to store session/answer history.
     const question = await db
-      .select({ answer: questions.answer, rationale: questions.rationale, distractorRationales: questions.distractorRationales })
+      .select({
+        answer: questions.answer,
+        rationale: questions.rationale,
+        deepRationale: questions.deepRationale,
+        distractorRationales: questions.distractorRationales,
+        referencesJson: questions.referencesJson,
+      })
       .from(questions)
       .where(eq(questions.id, questionId))
       .get();
@@ -215,7 +238,8 @@ export async function POST(req: NextRequest) {
     const demoCorrect = demoQuestion ? demoQuestion.correctAnswer : null;
     const correctAnswer = normalizeStoredAnswer(canonicalQuestion?.answer ?? demoCorrect ?? question?.answer ?? "");
     const rationale = canonicalQuestion?.rationale ?? demoQuestion?.rationale ?? question?.rationale ?? "";
-    const deepRationale = canonicalQuestion?.deepRationale ?? rationale;
+    const deepRationale = canonicalQuestion?.deepRationale ?? question?.deepRationale ?? rationale;
+    const references = canonicalQuestion?.references ?? parseStoredReferences(question?.referencesJson);
     const distractorRationales = canonicalQuestion?.distractorRationales ?? demoQuestion?.distractorRationales ?? (
       question?.distractorRationales
         ? JSON.parse(question.distractorRationales)
@@ -311,7 +335,7 @@ export async function POST(req: NextRequest) {
       takeaway: canonicalQuestion?.takeaway ?? demoQuestion?.takeaway ?? null,
       visualRationale: canonicalQuestion?.visualRationale ?? null,
       diagramBlueprint: canonicalQuestion?.diagramBlueprint ?? null,
-      references: canonicalQuestion?.references ?? [],
+      references,
       coachingFrame: canonicalQuestion?.coachingFrame ?? [],
     }, 200, { requestId: requestContext.requestId });
 

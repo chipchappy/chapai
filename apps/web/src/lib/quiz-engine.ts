@@ -332,11 +332,14 @@ export async function selectQuestions(
     })
     .from(questions)
     .where(and(...conditions))
-    // Quality tilt: prefer questions with per-distractor rationales AND
-    // at least one citation, then fall back to random within each tier.
-    // Keeps the deck looking fresh while pushing the thin/legacy rows down.
+    // Quality tilt: lead with final-curated rows, then rows with premium
+    // rationales, distractor teaching, and citations. Random only within each
+    // tier so stronger reviewed material surfaces before legacy rows.
     .orderBy(
+      sql`CASE WHEN ${questions.reviewStatus} = 'final-curated-live' THEN 0 ELSE 1 END`,
+      sql`CASE WHEN ${questions.deepRationale} IS NOT NULL AND ${questions.deepRationale} <> '' THEN 0 ELSE 1 END`,
       sql`CASE WHEN ${questions.distractorRationales} IS NOT NULL AND ${questions.distractorRationales} <> '' AND ${questions.distractorRationales} <> '{}' AND ${questions.referencesJson} IS NOT NULL AND ${questions.referencesJson} <> '' AND ${questions.referencesJson} <> '[]' THEN 0 ELSE 1 END`,
+      sql`CASE WHEN ${questions.type} <> 'mcq' THEN 0 ELSE 1 END`,
       sql`random()`,
     )
     .limit(candidateLimit);
