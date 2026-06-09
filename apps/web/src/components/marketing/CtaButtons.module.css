@@ -47,15 +47,29 @@
 }
 
 .secondary {
-  border: 1px solid var(--c-border);
-  background: rgba(251, 247, 238, 0.72);
-  color: var(--c-text);
+  border: 1.5px solid var(--c-border-strong);
+  background: var(--c-bg-elevated);
+  color: var(--c-text-strong);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .secondary {
+  background: color-mix(in srgb, var(--c-bg-elevated) 80%, transparent);
+  color: var(--c-text-strong);
+  border-color: var(--c-border-strong);
 }
 
 .secondary:hover,
 .secondary:focus-visible {
-  border-color: color-mix(in srgb, var(--c-ocean) 42%, var(--c-border));
+  border-color: var(--c-gold-deep);
+  color: var(--c-gold-deep);
   background: var(--c-bg-elevated);
+}
+
+[data-theme="dark"] .secondary:hover,
+[data-theme="dark"] .secondary:focus-visible {
+  border-color: var(--c-gold);
+  color: var(--c-gold);
 }
 
 @keyframes ctaPulse {

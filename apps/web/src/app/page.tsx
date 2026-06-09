@@ -56,14 +56,11 @@ export default async function HomePage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }} />
       <HeroCTA />
-      <TrustStrip questionCount={stats.nclexLive} examCount={5} />
+      <TrustStrip questionCount={stats.nclexLive} examCount={5} ngnCount={stats.nclexNgnLive} />
 
       <HighlightsBand
         questionCount={stats.nclexLive}
         ngnRatio={stats.nclexNgnRatio}
-        premiumStructuredCount={stats.nclexStructuredLive}
-        legacyCount={stats.nclexLegacyLive}
-        difficultyDistribution={stats.nclexPremiumDifficultyDistribution}
         caseStudies={50}
         readinessExams={5}
         drugCards={200}

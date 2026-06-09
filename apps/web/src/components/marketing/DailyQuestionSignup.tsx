@@ -49,37 +49,37 @@ export default function DailyQuestionSignup({
   }
 
   return (
-    <section className="daily-question-signup mx-auto max-w-[1180px] rounded-[36px] border border-[rgba(176,141,87,0.18)] bg-[rgba(255,250,242,0.78)] px-6 py-8 backdrop-blur-md md:px-10 md:py-10">
+    <section className="daily-question-signup mx-auto max-w-[1180px] rounded-[36px] border border-[var(--c-border-soft)] bg-[var(--c-surface-glass)] px-6 py-8 backdrop-blur-md md:px-10 md:py-10">
       <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
         <div className="max-w-[30rem]">
-          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6F6A63]">
+          <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--c-text-muted)]">
             Daily question list
           </span>
-          <h3 className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] leading-[0.98] tracking-[-0.05em] text-[#1E2328]">
+          <h3 className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] leading-[0.98] tracking-[-0.05em] text-[var(--c-text-strong)]">
             {title}
           </h3>
-          <p className="mt-5 font-sans text-[1rem] leading-8 text-[#5E5C58]">{body}</p>
+          <p className="mt-5 font-sans text-[1rem] leading-8 text-[var(--c-text-body)]">{body}</p>
         </div>
 
         <form className="grid gap-4 md:grid-cols-[minmax(0,1.25fr)_minmax(12rem,0.85fr)_auto] md:items-end" onSubmit={handleSubmit}>
           <label className="flex flex-col gap-2">
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[#767069]">Email</span>
+            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--c-text-muted)]">Email</span>
             <input
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="name@hospital.org"
               required
-              className="h-12 rounded-[12px] border border-[rgba(95,99,101,0.14)] bg-[rgba(255,255,255,0.86)] px-4 font-sans text-sm text-[#1E2328] outline-none transition duration-200 focus:border-[rgba(126,157,134,0.36)] focus:ring-2 focus:ring-[rgba(126,157,134,0.12)]"
+              className="h-12 rounded-[12px] border border-[var(--c-border-strong)] bg-[var(--c-bg-elevated)] px-4 font-sans text-sm text-[var(--c-text-strong)] outline-none transition duration-200 focus:border-[var(--c-sage-deep)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c-sage)_22%,transparent)]"
             />
           </label>
 
           <label className="flex flex-col gap-2">
-            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[#767069]">Role</span>
+            <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--c-text-muted)]">Role</span>
             <select
               value={role}
               onChange={(event) => setRole(event.target.value as typeof role)}
-              className="h-12 rounded-[12px] border border-[rgba(95,99,101,0.14)] bg-[rgba(255,255,255,0.86)] px-4 font-sans text-sm text-[#1E2328] outline-none transition duration-200 focus:border-[rgba(126,157,134,0.36)] focus:ring-2 focus:ring-[rgba(126,157,134,0.12)]"
+              className="h-12 rounded-[12px] border border-[var(--c-border-strong)] bg-[var(--c-bg-elevated)] px-4 font-sans text-sm text-[var(--c-text-strong)] outline-none transition duration-200 focus:border-[var(--c-sage-deep)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--c-sage)_22%,transparent)]"
             >
               <option value="student">Student</option>
               <option value="icu-nurse">ICU nurse</option>
@@ -90,7 +90,7 @@ export default function DailyQuestionSignup({
 
           <button
             type="submit"
-            className="inline-flex h-12 items-center justify-center rounded-[14px] bg-[#7E9D86] px-6 font-sans text-sm font-semibold text-white transition duration-200 hover:bg-[#6F8D76] disabled:opacity-50"
+            className="inline-flex h-12 items-center justify-center rounded-[14px] bg-[var(--c-sage-deep)] px-6 font-sans text-sm font-semibold text-white transition duration-200 hover:bg-[var(--c-sage-deep-hover)] disabled:opacity-50"
             disabled={status === "saving"}
           >
             {status === "saving" ? "Saving..." : "Get the daily question"}
@@ -98,7 +98,7 @@ export default function DailyQuestionSignup({
         </form>
       </div>
 
-      <small className="mt-4 block font-sans text-xs leading-6 text-[#6D6A66]">
+      <small className="mt-4 block font-sans text-xs leading-6 text-[var(--c-text-muted)]">
         {message || "Simple, free, and designed to keep your study streak alive."}
       </small>
     </section>

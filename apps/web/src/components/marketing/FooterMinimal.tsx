@@ -116,6 +116,7 @@ export default function FooterMinimal() {
             <li><Link href="/pricing">Pricing</Link></li>
             <li><Link href="/auth/login">Sign in</Link></li>
             <li><Link href="/auth/signup">Start free</Link></li>
+            <li><Link href="/account/settings">Settings</Link></li>
             <li><a href="mailto:support@chapaisolutions.com">Contact</a></li>
             <li><Link href="/faq">FAQ</Link></li>
           </ul>
@@ -132,8 +133,12 @@ export default function FooterMinimal() {
 
       <div className="clarity-footer__bottom">
         <span>&copy; {year} Chapai Solutions LLC · Clarity Clinical Prep</span>
-        <span>Not affiliated with NCSBN. NCLEX-RN is a registered trademark of NCSBN.</span>
+        <span>Independent NCLEX-RN&reg; &amp; CCRN&reg; prep · Not affiliated with NCSBN or AACN</span>
       </div>
+
+      <p className="clarity-footer__legal">
+        NCLEX&reg;, NCLEX-RN&reg;, and NCLEX-PN&reg; are registered trademarks of the National Council of State Boards of Nursing, Inc. (NCSBN&reg;). CCRN&reg; is a registered trademark of the American Association of Critical-Care Nurses (AACN). Clarity Clinical Prep is an independent study tool and is not affiliated with, endorsed by, sponsored by, or otherwise connected to NCSBN or AACN. All practice questions are original works created by our team and are not actual exam questions or official exam content. These marks are referenced solely to describe the exams this product helps users prepare for.
+      </p>
     </footer>
   );
 }

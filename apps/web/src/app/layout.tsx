@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter, Newsreader } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Newsreader, Outfit, Yeseva_One } from "next/font/google";
 import "@/styles/globals.css";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import BrandHeader from "@/components/marketing/BrandHeader";
@@ -24,6 +24,42 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-ibm-plex-mono",
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Fraunces kept as a fallback layer (already loaded) but the primary
+// display face is now Instrument Serif — sleek, wavy letterforms with
+// almost-italic flow even at the upright weight. Reads as modern graphic
+// design + premium editorial in one face.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  axes: ["opsz", "SOFT"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+// Yeseva One — single-weight retro display serif with wavy elegant
+// letterforms. Lighter visual weight than Sansita Swashed; reads premium
+// and groovy without the heaviness. Free under SIL Open Font License.
+const yesevaOne = Yeseva_One({
+  subsets: ["latin"],
+  variable: "--font-yeseva-one",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -71,11 +107,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon.jpg", type: "image/jpeg" },
-      { url: "/logo.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-512.png", sizes: "512x512", type: "image/png" },
     ],
-    shortcut: "/icon.jpg",
-    apple: [{ url: "/apple-icon.jpg", sizes: "180x180" }],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
@@ -170,7 +210,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const env = getServerEnv();
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${yesevaOne.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
