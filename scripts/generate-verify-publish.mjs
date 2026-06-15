@@ -51,7 +51,43 @@ function readKey(envName, fileName, re) {
 let GEMINI_CAPPED = false; // set true once Gemini returns 429 so we stop hammering it
 const GEMINI_KEY = readKey("GEMINI_API_KEY", "freegeminikey.txt", /AIza[0-9A-Za-z_\-]{20,}/);
 const NVIDIA_KEY = readKey("GEN_NVIDIA_API_KEY", "freenemotronkey.txt", /nvapi-[0-9A-Za-z_\-]{20,}/);
-if (!GEMINI_KEY) { console.error("No Gemini key (Downloads/freegeminikey.txt)"); process.exit(1); }
+const GROQ_KEY = readKey("GROQ_API_KEY", "groqkey.txt", /gsk_[0-9A-Za-z]{20,}/);
+const CEREBRAS_KEY = readKey("CEREBRAS_API_KEY", "cerebraskey.txt", /csk-[0-9A-Za-z]{20,}/);
+
+// Per-provider cap flags so a 429 on one provider doesn't stall the others.
+const caps = { groq: { capped: false }, cerebras: { capped: false }, nemo: { capped: false } };
+
+// Generic OpenAI-compatible chat call (Groq, Cerebras, NVIDIA NIM).
+async function oaiChat(url, key, model, prompt, maxTokens, capRef, jsonMode) {
+  if (!key || capRef.capped) return "";
+  try {
+    const body = { model, messages: [{ role: "system", content: "You output only strict JSON." }, { role: "user", content: prompt }], temperature: 0.6, max_tokens: maxTokens };
+    if (jsonMode) body.response_format = { type: "json_object" };
+    const res = await fetch(url, { method: "POST", headers: { "content-type": "application/json", Authorization: `Bearer ${key}` }, body: JSON.stringify(body), signal: AbortSignal.timeout(45000) });
+    if (res.status === 429) { capRef.capped = true; return ""; }
+    if (!res.ok) return "";
+    const j = await res.json();
+    return j.choices?.[0]?.message?.content || j.choices?.[0]?.message?.reasoning_content || "";
+  } catch { return ""; }
+}
+
+// Provider registry. Groq + Cerebras run Llama-3.3-70B fast; NVIDIA Nemotron
+// 49B; Gemini 2.5 Flash. Each is a separate free quota pool.
+const PROVIDERS = {
+  groq: (p, mt) => oaiChat("https://api.groq.com/openai/v1/chat/completions", GROQ_KEY, "llama-3.3-70b-versatile", p, mt, caps.groq, true),
+  cerebras: (p, mt) => oaiChat("https://api.cerebras.ai/v1/chat/completions", CEREBRAS_KEY, "llama-3.3-70b", p, mt, caps.cerebras, true),
+  nemo: (p, mt) => oaiChat("https://integrate.api.nvidia.com/v1/chat/completions", NVIDIA_KEY, "nvidia/llama-3.3-nemotron-super-49b-v1.5", p, mt, caps.nemo, false),
+  gemini: (p, mt) => gemini(p, mt),
+};
+function availableModels() {
+  const a = [];
+  if (GROQ_KEY && !caps.groq.capped) a.push("groq");
+  if (CEREBRAS_KEY && !caps.cerebras.capped) a.push("cerebras");
+  if (NVIDIA_KEY && !caps.nemo.capped) a.push("nemo");
+  if (GEMINI_KEY && !GEMINI_CAPPED) a.push("gemini");
+  return a;
+}
+if (availableModels().length === 0) { console.error("No model keys found (groqkey.txt / cerebraskey.txt / freegeminikey.txt / freenemotronkey.txt in Downloads)"); process.exit(1); }
 
 // ---- wrangler D1 helpers (Windows-safe quoting) ----
 const SHELL = { cwd: WEB, encoding: "utf8", maxBuffer: 128 * 1024 * 1024, shell: true };
@@ -170,15 +206,16 @@ function validate(type, o) {
 
 async function verify(type, o, genModel) {
   const prompt = `You are a strict NCLEX-RN clinical-accuracy reviewer. Review this ${type} question. Check: (1) is the keyed correct answer clinically correct? (2) is the rationale medically accurate with no errors? (3) is it appropriately difficult and unambiguous? Return STRICT JSON {"verdict":"PASS"|"FAIL","reason":"short"}. FAIL if the answer is wrong, the rationale contains any clinical error, the question is ambiguous/debatable, or it is medically inaccurate.\n\nQUESTION: ${JSON.stringify({ stem: o.stem, options: o.options ?? o.matrix_columns, answer: o.answer, rationale: o.rationale }).slice(0, 3500)}`;
-  // Cross-model verification: prefer the OTHER model than the generator.
-  // Fall back to whichever is available (so a Gemini cap doesn't stall us).
-  let out = "";
-  if (genModel === "nemo" && !GEMINI_CAPPED) out = await gemini(prompt, 256);
-  else if (genModel === "gemini" && NVIDIA_KEY) out = await nemotron(prompt);
-  if (!out && !GEMINI_CAPPED) out = await gemini(prompt, 256);
-  if (!out && NVIDIA_KEY) out = await nemotron(prompt);
-  const parsed = extractJson(out);
-  return parsed?.verdict === "PASS";
+  // Cross-model verification: review with a DIFFERENT model than the generator.
+  // Try up to 2 verifiers; fail-closed (no PASS = reject) to prevent slop.
+  const others = availableModels().filter((m) => m !== genModel);
+  const order = (others.length ? others : availableModels()).slice(0, 2);
+  for (const vm of order) {
+    const out = await PROVIDERS[vm](prompt, 300);
+    const parsed = extractJson(out);
+    if (parsed && parsed.verdict) return parsed.verdict === "PASS";
+  }
+  return false;
 }
 
 function esc(s) { return String(s ?? "").replace(/'/g, "''"); }
@@ -196,15 +233,17 @@ async function main() {
   while (published < TARGET && attempts < TARGET * 6) {
     attempts++;
     const type = chooseType(); const subject = pick(SUBJECTS); const diff = 2 + Math.floor(Math.random() * 3);
-    // Prefer Nemotron generation when Gemini is capped (separate quota pool).
-    const useNemo = NVIDIA_KEY && (GEMINI_CAPPED || attempts % 2 === 0);
-    const raw = useNemo ? await nemotron(genPrompt(type, subject, diff)) : await gemini(genPrompt(type, subject, diff));
+    // Pick a generator from whatever providers still have quota.
+    const gens = availableModels();
+    if (gens.length === 0) { console.log("[gvp] all providers capped/exhausted — stopping early"); break; }
+    const gm = pick(gens);
+    const raw = await PROVIDERS[gm](genPrompt(type, subject, diff), 2048);
     const obj = extractJson(raw); if (!obj) { genFail++; continue; }
     const v = validate(type, obj); if (!v) { gateFail++; continue; }
     const key = v.stem.slice(0, 80).toLowerCase();
     if (live.has(key)) { dupFail++; continue; }
-    // cross-verify clinical accuracy (other model when possible)
-    const ok = await verify(type, obj, useNemo ? "nemo" : "gemini"); if (!ok) { verifyFail++; continue; }
+    // cross-verify clinical accuracy with a different model
+    const ok = await verify(type, obj, gm); if (!ok) { verifyFail++; continue; }
     live.add(key);
     const id = `genv-${useNemo ? "nemo" : "gemini"}-${now}-${attempts}-${Math.random().toString(36).slice(2, 7)}`;
     const cat = subject.replace(/[^a-z0-9]+/gi, "_").toLowerCase();
