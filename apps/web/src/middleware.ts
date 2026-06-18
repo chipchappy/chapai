@@ -15,6 +15,10 @@ const LEGACY_HOSTS_TO_REDIRECT = new Set([
   "claritynclex.chapaisolutions.com",
 ]);
 
+const LEGACY_BLOG_REDIRECTS = new Map([
+  ["/blog/top-ten-free-nclex-study-tools", "/blog/top-ten-free-nclex-study-tools-best-free-practice-questions"],
+]);
+
 function applySecurityHeaders(response: NextResponse) {
   response.headers.set("Strict-Transport-Security", "max-age=31536000");
   response.headers.set("X-Content-Type-Options", "nosniff");
@@ -47,6 +51,7 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.toLowerCase().split(":")[0] ?? "";
   const forwardedProto = request.headers.get("x-forwarded-proto")?.toLowerCase();
   const isProductionHost = productionHosts.has(host);
+  const pathname = request.nextUrl.pathname.replace(/\/+$/, "") || "/";
 
   if (isProductionHost && (forwardedProto === "http" || request.nextUrl.protocol === "http:")) {
     const url = request.nextUrl.clone();
@@ -59,6 +64,14 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.protocol = "https:";
     url.host = CANONICAL_HOST;
+    return applySecurityHeaders(NextResponse.redirect(url, 301));
+  }
+
+  const legacyBlogRedirect = LEGACY_BLOG_REDIRECTS.get(pathname);
+  if (legacyBlogRedirect) {
+    const url = request.nextUrl.clone();
+    url.pathname = legacyBlogRedirect;
+    url.search = "";
     return applySecurityHeaders(NextResponse.redirect(url, 301));
   }
 
