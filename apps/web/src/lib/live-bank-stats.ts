@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { eq, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { questions } from "@chapai/db/schema";
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { getLiveContentSummary } from "@/lib/live-content-summary";
@@ -221,6 +221,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
         count: sql<number>`count(*)`,
       })
       .from(questions)
+      .where(eq(questions.publishState, "published"))
       .groupBy(questions.exam);
 
     const nclexTypeRows = await db
@@ -229,7 +230,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
         count: sql<number>`count(*)`,
       })
       .from(questions)
-      .where(eq(questions.exam, "nclex"))
+      .where(and(eq(questions.exam, "nclex"), eq(questions.publishState, "published")))
       .groupBy(questions.type);
 
     const nclexDifficultyRows = await db
@@ -239,7 +240,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
         structuredCount: sql<number>`sum(case when ${questions.structuredRationale} is not null and ${questions.structuredRationale} <> '' then 1 else 0 end)`,
       })
       .from(questions)
-      .where(eq(questions.exam, "nclex"))
+      .where(and(eq(questions.exam, "nclex"), eq(questions.publishState, "published")))
       .groupBy(questions.difficulty);
 
     const nclexStructuredRows = await db
@@ -247,7 +248,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
         count: sql<number>`sum(case when ${questions.structuredRationale} is not null and ${questions.structuredRationale} <> '' then 1 else 0 end)`,
       })
       .from(questions)
-      .where(eq(questions.exam, "nclex"));
+      .where(and(eq(questions.exam, "nclex"), eq(questions.publishState, "published")));
 
     const ccrnLive = Number(examRows.find((row) => row.exam === "ccrn")?.count ?? fallback.ccrnLive);
     const nclexLive = Number(examRows.find((row) => row.exam === "nclex")?.count ?? fallback.nclexLive);
