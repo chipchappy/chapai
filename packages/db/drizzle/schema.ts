@@ -105,6 +105,7 @@ export const legalAcceptances = sqliteTable("legal_acceptances", {
   acceptedAt: integer("accepted_at")
     .default(sql`(unixepoch())`)
     .notNull(),
+  createdAt: integer("created_at"),
 });
 
 export const authAccounts = sqliteTable("auth_accounts", {
