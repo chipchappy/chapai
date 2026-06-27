@@ -85,6 +85,8 @@ const schema = z.object({
   count:    z.union([
     z.literal(5), z.literal(6), z.literal(10), z.literal(20), z.literal(25), z.literal(50), z.literal(75), z.literal(100)
   ]).default(10),
+  adaptive: z.boolean().optional(),
+  excludeIds: z.array(z.string()).max(2000).optional(),
 });
 
 
@@ -156,10 +158,22 @@ export async function POST(req: NextRequest) {
     }
 
     const db = getDB(env);
+    // Resolve the hosted user up front so adaptive selection can read their
+    // per-category weakness history (and reuse it for session creation below).
+    const hostedUser = user?.email
+      ? await ensureHostedUser(db, {
+          userId: user.id,
+          email: user.email,
+          name: typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : null,
+        })
+      : null;
     let questionList: QuizQuestion[] = [];
     try {
       questionList = await selectQuestions(db, config, {
         questionBankAccessPercent: access.questionBankAccessPercent,
+        userId: hostedUser?.id,
+        adaptive: parsed.data.adaptive,
+        excludeIds: parsed.data.excludeIds,
       });
     } catch (error) {
       logError("quiz/start selection failed", error, requestContext);
@@ -181,14 +195,6 @@ export async function POST(req: NextRequest) {
         { requestId: requestContext.requestId },
       );
     }
-
-    const hostedUser = user?.email
-      ? await ensureHostedUser(db, {
-          userId: user.id,
-          email: user.email,
-          name: typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : null,
-        })
-      : null;
 
     try {
       const sessionId = await createSession(db, hostedUser?.id ?? undefined, config, questionList);

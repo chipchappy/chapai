@@ -325,15 +325,43 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
 }
 
 /**
+ * Per-category accuracy for a hosted user, used to bias adaptive sessions toward
+ * the categories where the student is weakest (NCLEX CAT-style focus).
+ */
+async function getCategoryAccuracy(db: DB, userId: string, exam: QuizSessionConfig["exam"]) {
+  const rows = await db
+    .select({
+      category: questions.category,
+      total: sql<number>`count(${quizAnswers.id})`,
+      correct: sql<number>`sum(case when ${quizAnswers.isCorrect} then 1 else 0 end)`,
+    })
+    .from(quizAnswers)
+    .innerJoin(quizSessions, eq(quizAnswers.sessionId, quizSessions.id))
+    .innerJoin(questions, eq(quizAnswers.questionId, questions.id))
+    .where(and(eq(quizSessions.userId, userId), eq(questions.exam, exam)))
+    .groupBy(questions.category);
+  const map = new Map<string, { total: number; correct: number }>();
+  for (const row of rows) {
+    map.set(row.category, { total: Number(row.total) || 0, correct: Number(row.correct) || 0 });
+  }
+  return map;
+}
+
+/**
  * Select questions weighted by blueprint percentages.
  * If category is specified, selects from that category only.
  * Otherwise, distributes questions proportionally to exam blueprint.
+ * When `adaptive` + `userId` are supplied, biases toward the user's weak
+ * categories instead; `excludeIds` drops already-seen items (endless mode).
  */
 export async function selectQuestions(
   db: DB,
   config: QuizSessionConfig,
   access?: {
     questionBankAccessPercent?: number;
+    userId?: string;
+    adaptive?: boolean;
+    excludeIds?: string[];
   },
 ): Promise<QuizQuestion[]> {
   const { exam, count } = config;
@@ -396,10 +424,12 @@ export async function selectQuestions(
   const dbBank = dbRows.map(mapQuestionRowToQuizQuestion);
   const filteredBank = dbBank.filter((question) => matchesQuizFilters(question, config));
   const { eligible, skipped } = filterRenderableQuestions(filteredBank);
-  const bank = applyQuestionBankAccessLimit(
+  const accessLimited = applyQuestionBankAccessLimit(
     eligible,
     access?.questionBankAccessPercent ?? 100,
   );
+  const excludeSet = new Set(access?.excludeIds ?? []);
+  const bank = excludeSet.size > 0 ? accessLimited.filter((question) => !excludeSet.has(question.id)) : accessLimited;
 
   if (skipped.length > 0) {
     log("warn", "quiz/start skipped incomplete rich questions", {
@@ -423,6 +453,18 @@ export async function selectQuestions(
     return bank
       .sort(() => Math.random() - 0.5)
       .slice(0, count);
+  }
+
+  // Adaptive: bias toward the user's weak categories (NCLEX CAT-style focus on
+  // weaknesses). Unseen items are already excluded via excludeIds.
+  if (access?.adaptive && access?.userId) {
+    const accByCat = await getCategoryAccuracy(db, access.userId, exam);
+    const scoreOf = (question: QuizQuestion) => {
+      const stat = accByCat.get(question.category);
+      const weakness = stat && stat.total >= 3 ? 1 - stat.correct / stat.total : 0.55;
+      return weakness * 2 + Math.random();
+    };
+    return [...bank].sort((a, b) => scoreOf(b) - scoreOf(a)).slice(0, count);
   }
 
   // Weighted multi-category selection

@@ -293,7 +293,8 @@ export default function QuizPage({
 }) {
   const [state, dispatch] = useReducer(practiceReducer, undefined, createEmptyRuntimeState);
   const [selectedExam, setSelectedExam] = useState<Exam>(resolveAccessibleExam(initialExam, accessExamTrack));
-  const [standardCount, setStandardCount] = useState<(typeof STANDARD_COUNTS)[number]>(10);
+  const [standardCount, setStandardCount] = useState<(typeof STANDARD_COUNTS)[number] | "unlimited">("unlimited");
+  const [isEndless, setIsEndless] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory ?? "");
   const [selectedQuestionType, setSelectedQuestionType] = useState<QuestionType | "">(sanitizeQuestionType(initialQuestionType));
   const [ngnOnly, setNgnOnly] = useState<boolean>(sanitizeNgnOnly(initialNgnOnly));
@@ -303,6 +304,7 @@ export default function QuizPage({
   const [now, setNow] = useState(Date.now());
   const hydratedRef = useRef(false);
   const deepLinkHandledRef = useRef(false);
+  const fetchingMoreRef = useRef(false);
 
   const catalogCards = useMemo(() => (
     getPracticeCatalogCards(liveCounts).map((card) => {
@@ -487,14 +489,17 @@ export default function QuizPage({
       : `Standard live-bank question flow with rationale, citations, diagrams, and ${canUseTutor ? "tutor support" : "guided review"}.`;
   }
 
-  async function openStandardSession(exam: Exam, count: number) {
+  async function openStandardSession(exam: Exam, count: number | "unlimited") {
     setError(null);
+    const endless = count === "unlimited";
+    const batchCount = endless ? 25 : count;
     const response = await fetch("/api/quiz/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         exam,
-        count,
+        count: batchCount,
+        adaptive: endless || undefined,
         ...getLiveSessionPayload(),
       }),
     });
@@ -508,17 +513,56 @@ export default function QuizPage({
     const payload = await response.json();
     const data = payload.data ?? payload;
     const questions = mapLiveQuestionBank(data.questions, "standard");
+    setIsEndless(endless);
     dispatch({
       type: "start-session",
       payload: createClientSession({
         id: data.sessionId,
         mode: "standard",
         exam,
-        label: buildLiveSessionLabel(exam),
-        description: buildLiveSessionDescription(exam),
+        label: endless ? `${buildLiveSessionLabel(exam)} · Adaptive` : buildLiveSessionLabel(exam),
+        description: endless
+          ? `Endless adaptive practice — keeps serving questions and leans into your weak areas, like the real CAT. ${buildLiveSessionDescription(exam)}`
+          : buildLiveSessionDescription(exam),
         questions,
       }),
     });
+  }
+
+  // Endless adaptive mode: pull another weakness-weighted batch and append it,
+  // excluding everything already in the session so the student never repeats.
+  async function appendMoreAdaptive() {
+    if (!state.session || fetchingMoreRef.current) {
+      return;
+    }
+    fetchingMoreRef.current = true;
+    try {
+      const seenIds = state.session.questions.map((question) => question.id);
+      const response = await fetch("/api/quiz/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          exam: state.session.exam,
+          count: 25,
+          adaptive: true,
+          excludeIds: seenIds.slice(-500),
+          ...getLiveSessionPayload(),
+        }),
+      });
+      if (!response.ok) {
+        return;
+      }
+      const payload = await response.json();
+      const data = payload.data ?? payload;
+      const more = mapLiveQuestionBank(data.questions, "standard");
+      if (more.length > 0) {
+        dispatch({ type: "append-questions", questions: more });
+      }
+    } catch {
+      // non-fatal: the student keeps their current queue
+    } finally {
+      fetchingMoreRef.current = false;
+    }
   }
 
   async function openLiveDerivedSession(input: {
@@ -578,6 +622,8 @@ export default function QuizPage({
 
   async function openRichSession(mode: Extract<PracticeMode, "chart" | "case-study" | "ngn">, exam: Exam) {
     setError(null);
+    setIsEndless(false);
+    const richCount = standardCount === "unlimited" ? 20 : standardCount;
     if (!canUseRichModes) {
       setError(getPremiumLockMessage("rich"));
       return;
@@ -586,7 +632,7 @@ export default function QuizPage({
     if (mode === "case-study") {
       const loaded = await openLiveDerivedSession({
         exam,
-        count: exam === "nclex" ? 6 : standardCount,
+        count: exam === "nclex" ? 6 : richCount,
         mode,
         questionType: "case_study",
         label: `${exam.toUpperCase()} live case studies`,
@@ -601,7 +647,7 @@ export default function QuizPage({
     if (mode === "ngn") {
       const loaded = await openLiveDerivedSession({
         exam,
-        count: standardCount,
+        count: richCount,
         mode,
         ngnOnly: true,
         label: `${exam.toUpperCase()} NGN live bank`,
@@ -615,7 +661,7 @@ export default function QuizPage({
     if (mode === "chart") {
       const loaded = await openLiveDerivedSession({
         exam,
-        count: standardCount,
+        count: richCount,
         mode,
         ngnOnly: true,
         label: `${exam.toUpperCase()} chart and signal review`,
@@ -663,6 +709,7 @@ export default function QuizPage({
 
   async function openPracticeExam(examId: string) {
     setError(null);
+    setIsEndless(false);
     if (!canUsePracticeExams) {
       setError(getPremiumLockMessage("practice-exams"));
       return;
@@ -778,10 +825,20 @@ export default function QuizPage({
       return;
     }
 
+    // Endless adaptive: top up the queue as the student nears the end so the
+    // session never runs out.
+    if (isEndless && state.session.questions.length - state.session.currentIndex <= 5) {
+      void appendMoreAdaptive();
+    }
+
     const isLastQuestion = state.session.currentIndex >= state.session.questions.length - 1;
     if (isLastQuestion) {
       const currentQuestion = state.session.questions[state.session.currentIndex];
       if (isUnfoldingCaseQuestion(currentQuestion) && !state.session.answers[currentQuestion.id]) {
+        return;
+      }
+      if (isEndless) {
+        // Don't auto-finish an endless run — wait for the next adaptive batch.
         return;
       }
       dispatch({ type: "finish-session", finishedAt: Date.now() });

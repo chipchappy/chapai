@@ -26,6 +26,7 @@ export type PracticeAction =
   | { type: "set-answer"; payload: PracticeAnswer }
   | { type: "toggle-flag"; questionId: string }
   | { type: "set-index"; index: number }
+  | { type: "append-questions"; questions: PracticeQuestion[] }
   | { type: "submit-answer"; questionId: string; record: PracticeAnswerRecord }
   | { type: "finish-session"; finishedAt: number }
   | { type: "open-review" }
@@ -389,6 +390,23 @@ export function practiceReducer(state: PracticeRuntimeState, action: PracticeAct
           currentIndex: action.index,
         },
         activeAnswer: draftFromSession(state.session, action.index),
+      };
+    }
+    case "append-questions": {
+      if (!state.session) {
+        return state;
+      }
+      const existingIds = new Set(state.session.questions.map((question) => question.id));
+      const additions = action.questions.filter((question) => !existingIds.has(question.id));
+      if (additions.length === 0) {
+        return state;
+      }
+      return {
+        ...state,
+        session: {
+          ...state.session,
+          questions: [...state.session.questions, ...additions],
+        },
       };
     }
     case "submit-answer": {
