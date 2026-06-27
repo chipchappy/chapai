@@ -39,7 +39,7 @@ type QuizTerminalShellProps = {
   selectedCategory: string;
   selectedQuestionType: QuestionType | "";
   ngnOnly: boolean;
-  standardCount: 10 | 20 | 50;
+  standardCount: 10 | 20 | 50 | "unlimited";
   activeFilterSummary: string;
   liveCounts: PracticeCounts;
   nclexStats: {
@@ -78,7 +78,7 @@ type QuizTerminalShellProps = {
   formatTime: (seconds: number) => string;
   onSetSelectedExam: (exam: Exam) => void;
   onSetStudyTheme: (theme: "light" | "dark") => void;
-  onSetStandardCount: (count: 10 | 20 | 50) => void;
+  onSetStandardCount: (count: 10 | 20 | 50 | "unlimited") => void;
   onSetSelectedCategory: (category: string) => void;
   onSetSelectedQuestionType: (questionType: QuestionType | "") => void;
   onSetNgnOnly: (next: boolean) => void;
@@ -273,6 +273,9 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                   <div>
                     <p className="quiz-terminal-kicker">Deck size</p>
                     <div className="mt-3 flex flex-wrap gap-2">
+                      <button type="button" onClick={() => onSetStandardCount("unlimited")} className={`quiz-terminal-toggle ${standardCount === "unlimited" ? "is-active" : ""}`}>
+                        Unlimited
+                      </button>
                       {[10, 20, 50].map((count) => (
                         <button key={count} type="button" onClick={() => onSetStandardCount(count as 10 | 20 | 50)} className={`quiz-terminal-toggle ${standardCount === count ? "is-active" : ""}`}>
                           {count}
