@@ -94,6 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "clarity-vs-saunders",
     "clarity-vs-hurst",
     "clarity-vs-bootcamp",
+    "clarity-vs-kaplan",
   ].map((slug) => ({
     url: `${base}/compare/${slug}`,
     lastModified: now,
