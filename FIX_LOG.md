@@ -33,4 +33,11 @@
 ## Deploy record
 | Date | Version | Commits | Gate result |
 |---|---|---|---|
-| (pending) | — | 9909022 (F1) + harness docs | — |
+| 2026-07-01 | `76f73fb7-1e54-4e01-a181-b0fc4406f9a2` | 9909022 (F1) + harness | **GREEN — 24/24 smoke passed** (desktop + mobile-390); F1 verified exactly: homepage 2,600 = D1 published 2,600; nav/theme/design fingerprint unchanged. Recorded as last-good. |
+
+## Harness fixes found during first gate run (test-code only, no app changes)
+- iPhone device preset requires WebKit (not installed) → mobile project switched to
+  Chromium-based emulation.
+- `.or()` locator strict-mode violation when both alternatives visible → `.first()`.
+- Conditional `test.skip(fixtures, testInfo)` signature invalid → replaced with
+  per-project `grepInvert` tags (`@mobileOnly` / `@desktopOnly`).

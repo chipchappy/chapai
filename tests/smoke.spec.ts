@@ -53,8 +53,7 @@ test.describe("brand + nav fingerprint (canonical baseline)", () => {
   });
 });
 
-test.describe("theme persists across every tab (hard requirement)", () => {
-  test.skip(({ browserName }, testInfo) => testInfo.project.name !== "desktop", "desktop covers nav clicks");
+test.describe("theme persists across every tab (hard requirement) @desktopOnly", () => {
   test("dark theme survives all 5 tab navigations", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
     const toggle = page.locator("button.theme-toggle").first();
@@ -89,8 +88,9 @@ test.describe("core product", () => {
     const getErrors = collectConsoleErrors(page);
     await page.goto("/quiz?exam=nclex&mode=standard", { waitUntil: "networkidle" });
     // Tolerant of item type: an item counter, a Submit control, or option buttons
-    const rendered = page.locator("text=/Item \\d+ of \\d+/").first()
-      .or(page.getByRole("button", { name: /submit/i }).first());
+    const rendered = page.locator("text=/Item \\d+ of \\d+/")
+      .or(page.getByRole("button", { name: /submit/i }))
+      .first();
     await expect(rendered, "a live question should render").toBeVisible({ timeout: 20_000 });
     expect(getErrors()).toEqual([]);
   });
@@ -101,8 +101,7 @@ test.describe("core product", () => {
   });
 });
 
-test.describe("mobile 390px integrity", () => {
-  test.skip(({ browserName }, testInfo) => testInfo.project.name !== "mobile-390", "mobile project only");
+test.describe("mobile 390px integrity @mobileOnly", () => {
   for (const path of ["/", "/quiz", "/pricing", "/nclex"]) {
     test(`no horizontal page overflow: ${path}`, async ({ page }) => {
       await page.goto(path, { waitUntil: "domcontentloaded" });

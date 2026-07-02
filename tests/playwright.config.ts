@@ -14,7 +14,24 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1366, height: 900 } } },
-    { name: "mobile-390", use: { ...devices["iPhone 12"], viewport: { width: 390, height: 844 } } },
+    {
+      name: "desktop",
+      grepInvert: /@mobileOnly/,
+      use: { ...devices["Desktop Chrome"], viewport: { width: 1366, height: 900 } },
+    },
+    {
+      // Chromium-based mobile emulation (WebKit is not installed in this env;
+      // iPhone presets default to WebKit and would fail to launch).
+      name: "mobile-390",
+      grepInvert: /@desktopOnly/,
+      use: {
+        browserName: "chromium",
+        viewport: { width: 390, height: 844 },
+        isMobile: true,
+        hasTouch: true,
+        userAgent:
+          "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+      },
+    },
   ],
 });
