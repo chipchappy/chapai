@@ -39,16 +39,22 @@ function shuffleQuestions<T>(items: T[]) {
 }
 
 /** Build a demo-backed response when the live bank is empty */
-function demoFallback(exam: "nclex" | "ccrn", count: number, config?: Partial<QuizSessionConfig>) {
+function demoFallback(exam: "nclex" | "ccrn", count: number, config?: Partial<QuizSessionConfig>, excludeIds?: string[]) {
+  // Endless mode sends already-seen ids — honor them here too, or anonymous
+  // endless sessions receive duplicates, the client dedups to zero additions,
+  // and the student gets stranded on the last question.
+  const excluded = new Set(excludeIds ?? []);
   const liveDeck = shuffleQuestions(
-    getQuestionBank(exam).filter((question) => matchesQuizFilters(question, { exam, count, ...config } as QuizSessionConfig)),
+    getQuestionBank(exam)
+      .filter((question) => !excluded.has(question.id))
+      .filter((question) => matchesQuizFilters(question, { exam, count, ...config } as QuizSessionConfig)),
   );
 
   if (liveDeck.length > 0) {
     return { sessionId: `demo-${Date.now()}`, questions: liveDeck.slice(0, Math.min(count, liveDeck.length)) };
   }
 
-  const deck = getStandardPreviewDeck().filter((q) => q.exam === exam);
+  const deck = getStandardPreviewDeck().filter((q) => q.exam === exam && !excluded.has(q.id));
   // shuffle deterministically based on time bucket so we vary the set each call
   const bucket = Math.floor(Date.now() / (1000 * 60 * 60));
   const shuffled = [...deck].sort((a, b) => {
@@ -129,7 +135,7 @@ export async function POST(req: NextRequest) {
     // Only fall back to synthetic demo deck for non-pro preview users without a session.
     // Pro-tier demo key holders get real questions from the DB (sessionId will be demo-${Date.now()}). 
     if (previewAccess && !user?.id && previewKeyTier !== "pro") {
-      return jsonSuccess(demoFallback(config.exam, config.count ?? 10, config), 200, { requestId: requestContext.requestId });
+      return jsonSuccess(demoFallback(config.exam, config.count ?? 10, config, parsed.data.excludeIds), 200, { requestId: requestContext.requestId });
     }
 
     if (access.examTrack !== "all" && access.examTrack !== config.exam) {
@@ -153,7 +159,7 @@ export async function POST(req: NextRequest) {
         return jsonSuccess(local, 200, { requestId: requestContext.requestId });
       }
       // Fall back to in-memory demo deck
-      const fallback = demoFallback(config.exam, config.count ?? 10, config);
+      const fallback = demoFallback(config.exam, config.count ?? 10, config, parsed.data.excludeIds);
       return jsonSuccess(fallback, 200, { requestId: requestContext.requestId });
     }
 

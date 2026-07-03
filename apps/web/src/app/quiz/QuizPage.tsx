@@ -531,13 +531,16 @@ export default function QuizPage({
 
   // Endless adaptive mode: pull another weakness-weighted batch and append it,
   // excluding everything already in the session so the student never repeats.
-  async function appendMoreAdaptive() {
+  // Returns how many genuinely NEW questions were added (0 = bank exhausted or
+  // fetch failed) so callers can close the run instead of stranding the student.
+  async function appendMoreAdaptive(): Promise<number> {
     if (!state.session || fetchingMoreRef.current) {
-      return;
+      return 0;
     }
     fetchingMoreRef.current = true;
     try {
       const seenIds = state.session.questions.map((question) => question.id);
+      const seenSet = new Set(seenIds);
       const response = await fetch("/api/quiz/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -550,16 +553,18 @@ export default function QuizPage({
         }),
       });
       if (!response.ok) {
-        return;
+        return 0;
       }
       const payload = await response.json();
       const data = payload.data ?? payload;
-      const more = mapLiveQuestionBank(data.questions, "standard");
+      const more = mapLiveQuestionBank(data.questions, "standard").filter((question) => !seenSet.has(question.id));
       if (more.length > 0) {
         dispatch({ type: "append-questions", questions: more });
       }
+      return more.length;
     } catch {
       // non-fatal: the student keeps their current queue
+      return 0;
     } finally {
       fetchingMoreRef.current = false;
     }
@@ -838,7 +843,18 @@ export default function QuizPage({
         return;
       }
       if (isEndless) {
-        // Don't auto-finish an endless run — wait for the next adaptive batch.
+        // Endless run at the queue's end: fetch the next adaptive batch and
+        // advance into it — or, if the bank is exhausted / fetch failed, close
+        // the run gracefully instead of stranding the student on this question.
+        const lastIndex = state.session.currentIndex;
+        void (async () => {
+          const added = await appendMoreAdaptive();
+          if (added > 0) {
+            dispatch({ type: "set-index", index: lastIndex + 1 });
+          } else {
+            dispatch({ type: "finish-session", finishedAt: Date.now() });
+          }
+        })();
         return;
       }
       dispatch({ type: "finish-session", finishedAt: Date.now() });
