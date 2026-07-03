@@ -36,6 +36,7 @@
 | 2026-07-01 | `76f73fb7-1e54-4e01-a181-b0fc4406f9a2` | 9909022 (F1) + harness | **GREEN — 24/24 smoke passed** (desktop + mobile-390); F1 verified exactly: homepage 2,600 = D1 published 2,600; nav/theme/design fingerprint unchanged. Recorded as last-good. |
 | 2026-07-02 | `4b952009` | 5424708+ddf2f09+c5e3032+391ff6c | **RED — auto-rolled-back** to 76f73fb7 in seconds. Smoke caught /favicon.ico 404 → exposed a REAL pre-existing defect: the entire favicon set (8 files) was missing from this lineage (audit's earlier 200 was an edge-cache fluke). |
 | 2026-07-02 | `c947849a-5807-4afc-ad16-afa9a2658e6a` | + 113199c (favicon restore from 010c77c) | **GREEN — 31/31 smoke passed.** Live-verified: favicon set 200s, closing CTA, case-study stat live from D1 (239+), Quiz JSON-LD, Clarity branding, truthful count 2,745, nav canon + theme intact. Recorded as last-good. |
+| 2026-07-02 (2) | `f24b8f08-cffc-4b6b-a5a1-6281720421f8` | fe6e112+ea66674 (R1 adaptive endless + stranding fix), dbecdc0 (R2 CSP enforced), c600a0d (P0-4 Pass Pledge), 323390a (P0-3 pricing FAQ + schema), aa9ff30 (smoke coverage) | **GREEN — 37/37 smoke passed.** Live-verified: CSP enforced header, Unlimited default active on /quiz, adaptive+excludeIds honored (25-q batch), Pass Pledge + FAQ render, nav canon + truthful count (2,769) intact. Recorded as last-good. |
 
 ## 2026-07-02 batch (approved: "continue with next best fixes")
 - **F4 titles — FALSE POSITIVE, corrected.** Real `<title>` tags are clean
