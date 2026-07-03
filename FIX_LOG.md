@@ -34,6 +34,25 @@
 | Date | Version | Commits | Gate result |
 |---|---|---|---|
 | 2026-07-01 | `76f73fb7-1e54-4e01-a181-b0fc4406f9a2` | 9909022 (F1) + harness | **GREEN — 24/24 smoke passed** (desktop + mobile-390); F1 verified exactly: homepage 2,600 = D1 published 2,600; nav/theme/design fingerprint unchanged. Recorded as last-good. |
+| 2026-07-02 | `4b952009` | 5424708+ddf2f09+c5e3032+391ff6c | **RED — auto-rolled-back** to 76f73fb7 in seconds. Smoke caught /favicon.ico 404 → exposed a REAL pre-existing defect: the entire favicon set (8 files) was missing from this lineage (audit's earlier 200 was an edge-cache fluke). |
+| 2026-07-02 | `c947849a-5807-4afc-ad16-afa9a2658e6a` | + 113199c (favicon restore from 010c77c) | **GREEN — 31/31 smoke passed.** Live-verified: favicon set 200s, closing CTA, case-study stat live from D1 (239+), Quiz JSON-LD, Clarity branding, truthful count 2,745, nav canon + theme intact. Recorded as last-good. |
+
+## 2026-07-02 batch (approved: "continue with next best fixes")
+- **F4 titles — FALSE POSITIVE, corrected.** Real `<title>` tags are clean
+  ("NCLEX Countdown Timer — Days, Hours, Minutes…"); the audit's regex mangled
+  multibyte punctuation. No change; audit item closed as PASS.
+- **F3 cloze scaffold (commit 5424708):** root cause = hardcoded fallback sentence
+  in `NclexExamPane.renderClozeSentence()` fabricating "safest priority response"
+  framing on any item lacking a clozeTemplate. Replaced with neutral prompts.
+- **F5 branding (commit ddf2f09):** 16 "ChapAI" mentions → "Clarity" on the
+  UWorld/Archer compare pages; slugs + canonicals untouched.
+- **P0 pack + F6 (commit c5e3032):** closing CTA section on home (existing tokens,
+  `CtaButtons surface=home-closing`); HighlightsBand case-study stat now live from
+  D1 (223 actual vs hardcoded "50+"); Quiz JSON-LD node added to home @graph.
+- **Gate refusal incident (working as designed) + chore commit:** first gate run
+  REFUSED on a dirty tree — tracked `tsconfig.typecheck.tsbuildinfo` cache is
+  rewritten by every tsc run. Untracked + gitignored so the clean-tree check
+  stays meaningful.
 
 ## Harness fixes found during first gate run (test-code only, no app changes)
 - iPhone device preset requires WebKit (not installed) → mobile project switched to
