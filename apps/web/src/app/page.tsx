@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CtaButtons from "@/components/marketing/CtaButtons";
 import HeroCTA from "@/components/marketing/HeroCTA";
 import PricingCards from "@/components/marketing/PricingCards";
 import TrustStrip from "@/components/marketing/TrustStrip";
@@ -49,6 +50,22 @@ export default async function HomePage() {
           priceCurrency: "USD",
         },
       },
+      {
+        "@type": "Quiz",
+        name: "NCLEX-RN Practice Questions",
+        about: {
+          "@type": "Thing",
+          name: "NCLEX-RN examination",
+        },
+        educationalLevel: "Professional certification",
+        assesses: "Clinical judgment for entry-level registered nursing practice",
+        provider: { "@id": `${SITE_URL}/#org` },
+        hasPart: [
+          { "@type": "Question", eduQuestionType: "Multiple choice", name: "Standard NCLEX-style multiple choice items" },
+          { "@type": "Question", eduQuestionType: "Checkbox", name: "Select-all-that-apply (SATA) items" },
+          { "@type": "Question", eduQuestionType: "Matching", name: "Next Generation NCLEX matrix, bow-tie, and case-study items" },
+        ],
+      },
     ],
   };
 
@@ -61,7 +78,7 @@ export default async function HomePage() {
       <HighlightsBand
         questionCount={stats.nclexLive}
         ngnRatio={stats.nclexNgnRatio}
-        caseStudies={50}
+        caseStudies={stats.nclexCaseStudyLive}
         readinessExams={5}
         drugCards={200}
       />
@@ -78,6 +95,20 @@ export default async function HomePage() {
       </div>
 
       <PricingCards />
+
+      {/* Closing CTA — same primary action at the end of the scroll (single,
+          consistent conversion path; styling reuses existing tokens only). */}
+      <section className="px-4 pb-20 pt-4">
+        <div className="mx-auto max-w-[720px] text-center">
+          <h2 className="font-serif text-[2.3rem] leading-[1.02] text-dark">Ready when you are.</h2>
+          <p className="mt-3 text-base leading-7 text-muted">
+            Free daily questions to start — the full NGN bank, AI tutor, and readiness exams when you&rsquo;re ready.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <CtaButtons surface="home-closing" />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

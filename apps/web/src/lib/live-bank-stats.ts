@@ -12,6 +12,7 @@ export type LiveBankStats = {
   nclexMcqLive: number;
   nclexNgnLive: number;
   nclexNgnRatio: number;
+  nclexCaseStudyLive: number;
   nclexStructuredLive: number;
   nclexLegacyLive: number;
   nclexPremiumCoverageRatio: number;
@@ -201,6 +202,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
     nclexMcqLive: strictFileStats?.mcqLive ?? summary.nclex.mcqLive,
     nclexNgnLive: strictFileStats?.ngnLive ?? summary.nclex.ngnLive,
     nclexNgnRatio: strictFileStats?.ngnRatio ?? summary.nclex.ngnRatio,
+    nclexCaseStudyLive: 50, // conservative floor when D1 is unavailable
     nclexStructuredLive: strictFileStats?.structuredLive ?? summary.nclex.live,
     nclexLegacyLive: strictFileStats?.legacyLive ?? 0,
     nclexPremiumCoverageRatio: strictFileStats?.premiumCoverageRatio ?? 100,
@@ -268,6 +270,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
       nclexMcqLive,
       nclexNgnLive,
       nclexNgnRatio: nclexLive > 0 ? Math.round((nclexNgnLive / nclexLive) * 100) : fallback.nclexNgnRatio,
+      nclexCaseStudyLive: countType(nclexTypeRows, "case_study") || fallback.nclexCaseStudyLive,
       nclexStructuredLive,
       nclexLegacyLive,
       nclexPremiumCoverageRatio: nclexLive > 0 ? Math.round((nclexStructuredLive / nclexLive) * 100) : fallback.nclexPremiumCoverageRatio,
