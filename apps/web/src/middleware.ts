@@ -30,7 +30,7 @@ function applySecurityHeaders(response: NextResponse) {
     "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), browsing-topics=()",
   );
   response.headers.set(
-    "Content-Security-Policy-Report-Only",
+    "Content-Security-Policy",
     [
       "default-src 'self'",
       "base-uri 'self'",
