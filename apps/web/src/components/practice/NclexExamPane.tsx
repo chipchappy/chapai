@@ -342,9 +342,12 @@ export default function NclexExamPane({
     if (!question.clozeTemplate) {
       return (
         <>
+          {/* No cloze template on this item: keep the prompt neutral — never
+              fabricate clinical framing that may contradict the actual stem. */}
           <p className="nclex-fill-sentence">
-            The nurse should identify the finding that requires the <strong>safest priority response</strong>
-            {question.kind === "ordering" ? " and place the options in sequence." : "."}
+            {question.kind === "ordering"
+              ? <>Place the options in the <strong>correct sequence</strong> to complete the response.</>
+              : <>Select the choice that <strong>best completes</strong> the response.</>}
           </p>
           <div className="nclex-blank-row" aria-label="selected answer blanks">
             {(question.kind === "ordering" ? Array.from({ length: clozeBlankCount }, (_, slot) => slot) : [0]).map((slot) => (
