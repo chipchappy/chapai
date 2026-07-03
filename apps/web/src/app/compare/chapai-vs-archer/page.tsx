@@ -5,9 +5,9 @@ import { getLiveContentSummary } from "@/lib/live-content-summary";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "ChapAI vs Archer",
+  title: "Clarity vs Archer",
   description:
-    "Comparing ChapAI vs Archer? See the cleaner package structure, premium design, original question growth, and AI-guided review difference.",
+    "Comparing Clarity vs Archer? See the cleaner package structure, premium design, original question growth, and AI-guided review difference.",
   alternates: {
     canonical: "/compare/chapai-vs-archer",
   },
@@ -19,8 +19,8 @@ export default function ChapAiVsArcherPage() {
   return (
     <IntentLanding
       eyebrow="Comparison page"
-      title="ChapAI vs Archer: a calmer package, cleaner surface, and more original growth lane."
-      body="This page is for buyers who already know the market and want the faster answer. ChapAI is not trying to out-shout everyone. It is trying to feel cleaner, more premium, and more clinically believable while the content engine keeps expanding."
+      title="Clarity vs Archer: a calmer package, cleaner surface, and more original growth lane."
+      body="This page is for buyers who already know the market and want the faster answer. Clarity is not trying to out-shout everyone. It is trying to feel cleaner, more premium, and more clinically believable while the content engine keeps expanding."
       stats={[
         { label: "CCRN live", value: `${summary.ccrn.live}` },
         { label: "NCLEX drafted", value: `${summary.nclex.draft}` },
@@ -28,7 +28,7 @@ export default function ChapAiVsArcherPage() {
       ]}
       accentLabel="Comparison intent"
       primaryHref="/upgrade"
-      primaryLabel="Compare ChapAI packages"
+      primaryLabel="Compare Clarity packages"
       secondaryHref="/quiz"
       secondaryLabel="Try the product"
       whyTitle="The real buyer question is not just 'which qbank has more questions?'"
@@ -36,7 +36,7 @@ export default function ChapAiVsArcherPage() {
       proofPoints={[
         {
           label: "Separate packages",
-          text: "ChapAI treats CCRN and NCLEX as distinct buying decisions instead of forcing one blended surface onto two very different markets.",
+          text: "Clarity treats CCRN and NCLEX as distinct buying decisions instead of forcing one blended surface onto two very different markets.",
         },
         {
           label: "Premium UI",
@@ -55,11 +55,11 @@ export default function ChapAiVsArcherPage() {
       urgencyBody="Comparison traffic is high-intent. This page is built to capture that buyer and move them straight to package selection before they bounce."
       faq={[
         {
-          question: "What is the biggest difference between ChapAI and Archer?",
+          question: "What is the biggest difference between Clarity and Archer?",
           answer: "The difference is focus and feel: distinct package paths for CCRN and NCLEX, more premium design, and a growth engine that keeps producing original batches.",
         },
         {
-          question: "Is ChapAI already usable now?",
+          question: "Is Clarity already usable now?",
           answer: "Yes. The quiz flow, package page, checkout, tutor fallback, and growing content bank are already live while the surface keeps improving.",
         },
         {
