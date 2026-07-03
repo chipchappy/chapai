@@ -99,6 +99,34 @@ test.describe("core product", () => {
     const exam = await request.get("/api/quiz/practice-exams/nclex-sim-1");
     expect(exam.status(), "practice exam requires auth").toBe(401);
   });
+
+  test("adaptive endless params accepted by quiz/start", async ({ request }) => {
+    const resp = await request.post("/api/quiz/start", {
+      data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
+    });
+    expect(resp.status(), "adaptive start").toBe(200);
+    const body = await resp.json();
+    const questions = (body.data ?? body).questions ?? [];
+    expect(questions.length, "adaptive batch returns questions").toBeGreaterThanOrEqual(1);
+    expect(questions.some((q: { id: string }) => q.id === "smoke-nonexistent-id"), "excludeIds honored").toBe(false);
+  });
+
+  test("quiz catalog defaults to Unlimited deck size", async ({ page }) => {
+    await page.goto("/quiz", { waitUntil: "networkidle" });
+    const unlimited = page.locator("button", { hasText: "Unlimited" }).first();
+    await expect(unlimited, "Unlimited toggle exists").toBeVisible({ timeout: 15_000 });
+    await expect(unlimited, "Unlimited is the default").toHaveClass(/is-active/);
+  });
+
+  test("pricing shows Pass Pledge + FAQ accordion", async ({ page }) => {
+    await page.goto("/pricing", { waitUntil: "domcontentloaded" });
+    await expect(page.getByText("The Clarity Pass Pledge").first()).toBeVisible();
+    expect(await page.locator("details").count(), "FAQ items render").toBeGreaterThanOrEqual(5);
+    // First FAQ opens and reveals its answer
+    const first = page.locator("details summary").first();
+    await first.click();
+    await expect(page.locator("details[open] p").first()).toBeVisible();
+  });
 });
 
 test.describe("mobile 390px integrity @mobileOnly", () => {
