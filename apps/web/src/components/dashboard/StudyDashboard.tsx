@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { StudyResource } from "@/lib/study-resources";
+import ReadinessBanner from "@/components/dashboard/ReadinessBanner";
 
 interface SessionSummary {
   id: string;
@@ -322,8 +323,18 @@ export default function StudyDashboard() {
     );
   }
 
+  const overallAccuracy = data && data.totalAnswered > 0
+    ? Math.round((data.totalCorrect / data.totalAnswered) * 100)
+    : 0;
+
   return (
     <div className="mx-auto max-w-6xl space-y-6">
+      <ReadinessBanner
+        accuracy={overallAccuracy}
+        totalAnswered={data?.totalAnswered ?? 0}
+        sevenDayAccuracy={data?.sevenDayAccuracy ?? 0}
+      />
+
       <section className="dashboard-hub overflow-hidden rounded-[30px] p-6">
         <div className="grid gap-5 xl:grid-cols-[1.14fr_0.86fr]">
           <div className="max-w-3xl">

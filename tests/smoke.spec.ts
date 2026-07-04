@@ -100,6 +100,11 @@ test.describe("core product", () => {
     expect(exam.status(), "practice exam requires auth").toBe(401);
   });
 
+  test("study dashboard is auth-gated (anon → login)", async ({ page }) => {
+    await page.goto("/study", { waitUntil: "domcontentloaded" });
+    expect(page.url(), "anon /study should redirect to login").toContain("/auth/login");
+  });
+
   test("adaptive endless params accepted by quiz/start", async ({ request }) => {
     const resp = await request.post("/api/quiz/start", {
       data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
