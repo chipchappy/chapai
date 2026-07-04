@@ -122,6 +122,18 @@ test.describe("core product", () => {
     expect(questions.some((q: { id: string }) => q.id === "smoke-nonexistent-id"), "excludeIds honored").toBe(false);
   });
 
+  test("start-here picker recommends a readiness exam for a close test date", async ({ page }) => {
+    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await page.locator("button", { hasText: "Not sure where to start" }).first().click();
+    const picker = page.getByTestId("start-here-picker");
+    await picker.locator("button", { hasText: "NCLEX" }).first().click();
+    await picker.locator("button", { hasText: "Under 4 weeks" }).click();
+    await picker.locator("button", { hasText: "Test-day readiness" }).click();
+    await expect(page.getByTestId("start-here-launch"), "recommendation link renders").toBeVisible();
+    expect(await page.getByTestId("start-here-launch").getAttribute("href"), "close date → timed readiness exam")
+      .toContain("practiceExam=nclex-sim-1");
+  });
+
   test("quiz catalog defaults to Unlimited deck size", async ({ page }) => {
     await page.goto("/quiz", { waitUntil: "networkidle" });
     const unlimited = page.locator("button", { hasText: "Unlimited" }).first();

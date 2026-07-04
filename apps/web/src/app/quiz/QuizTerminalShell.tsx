@@ -1,5 +1,7 @@
 "use client";
 
+import StartHerePicker from "./StartHerePicker";
+
 import BrandMark from "@/components/brand/BrandMark";
 import PracticeQuestionPane from "@/components/practice/PracticeQuestionPane";
 import PracticeTutorDrawer from "@/components/practice/PracticeTutorDrawer";
@@ -239,6 +241,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                 <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--quiz-muted)]">
                   Start standard reps, NGN sets, case flow, or a timed practice exam without leaving the same workspace. The launch deck stays short, the text stays legible, and the same question carries chart review, rationale, citations, and tutor follow-up.
                 </p>
+                <StartHerePicker />
                 <div className="mt-5 grid gap-3 xl:grid-cols-3">
                   <div className="quiz-terminal-stat">
                     <span>live bank</span>
