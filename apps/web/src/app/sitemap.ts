@@ -90,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const compareEntries: MetadataRoute.Sitemap = [
     "chapai-vs-archer",
     "chapai-vs-uworld",
+    "clarity-vs-kaplan",
     "clarity-vs-mark-klimek",
     "clarity-vs-saunders",
     "clarity-vs-hurst",
