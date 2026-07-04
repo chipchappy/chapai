@@ -105,6 +105,12 @@ test.describe("core product", () => {
     expect(page.url(), "anon /study should redirect to login").toContain("/auth/login");
   });
 
+  test("/dashboard is auth-gated for students (anon → login, not guild-access)", async ({ page }) => {
+    await page.goto("/dashboard", { waitUntil: "domcontentloaded" });
+    await page.waitForURL("**/auth/login**", { timeout: 10_000 });
+    expect(page.url(), "anon /dashboard should land on login").toContain("/auth/login");
+  });
+
   test("/account resolves to the billing surface (auth-gated)", async ({ page }) => {
     await page.goto("/account", { waitUntil: "domcontentloaded" });
     await page.waitForURL("**/auth/login**", { timeout: 10_000 });

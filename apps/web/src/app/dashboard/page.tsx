@@ -1,14 +1,16 @@
 import { getDashboardAccessContext } from "@/lib/dashboard-access";
 import MissionControlAutoRefresh from "@/components/dashboard/MissionControlAutoRefresh";
 import MissionControlDashboard from "@/components/dashboard/MissionControlDashboard";
+import StudyDashboard from "@/components/dashboard/StudyDashboard";
 import { getMissionControlSnapshot } from "@/lib/mission-control";
+import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Guild Dashboard - ChapAI",
-  description: "Live guild dashboard for agent brains, batch growth, runtime health, and direct human fixes.",
+  title: "Dashboard",
+  description: "Your personalized study dashboard: progress, readiness signal, and the next best move.",
   robots: {
     index: false,
     follow: false,
@@ -42,7 +44,22 @@ export default async function DashboardPage({
 }) {
   const params = (await searchParams) ?? {};
   const access = await getDashboardAccessContext();
-  if (access.role === "none") {
+
+  // Guild/ops keys keep the mission-control view.
+  if (access.role !== "none") {
+    const snapshot = await getMissionControlSnapshot();
+    return (
+      <main className="page-shell">
+        {params.welcome === "1" ? <WelcomeBanner /> : null}
+        <MissionControlAutoRefresh />
+        <MissionControlDashboard snapshot={snapshot} access={access} />
+      </main>
+    );
+  }
+
+  // Students land on their personal study dashboard, not guild ops.
+  const user = await getAuthenticatedUser();
+  if (!user) {
     if (params.welcome === "1") {
       return (
         <main className="page-shell">
@@ -50,16 +67,13 @@ export default async function DashboardPage({
         </main>
       );
     }
-    redirect("/guild-access?next=%2Fdashboard");
+    redirect("/auth/login?next=%2Fdashboard");
   }
 
-  const snapshot = await getMissionControlSnapshot();
-
   return (
-    <main className="page-shell">
+    <main className="min-h-screen bg-bg px-4 py-8 md:py-12">
       {params.welcome === "1" ? <WelcomeBanner /> : null}
-      <MissionControlAutoRefresh />
-      <MissionControlDashboard snapshot={snapshot} access={access} />
+      <StudyDashboard />
     </main>
   );
 }
