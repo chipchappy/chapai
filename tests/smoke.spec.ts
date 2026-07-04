@@ -152,7 +152,7 @@ test.describe("core product", () => {
   test("quiz catalog defaults to Unlimited deck size (inside filters)", async ({ page }) => {
     await page.goto("/quiz", { waitUntil: "networkidle" });
     await page.locator(".quiz-catalog-advanced__summary").click();
-    const unlimited = page.locator("button", { hasText: "Unlimited" }).first();
+    const unlimited = page.locator(".quiz-catalog-advanced button", { hasText: "Unlimited" }).first();
     await expect(unlimited, "Unlimited toggle exists").toBeVisible({ timeout: 15_000 });
     await expect(unlimited, "Unlimited is the default").toHaveClass(/is-active/);
   });
