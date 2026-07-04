@@ -11,7 +11,8 @@
 | Favicon set | ✅ RESTORED (113199c) — was a real missing-asset defect caught by the gate |
 | R1 adaptive endless quiz | ✅ SHIPPED (fe6e112 + stranding fix ea66674, deploy f24b8f08) |
 | R2 enforced CSP | ✅ SHIPPED (dbecdc0, deploy f24b8f08) |
-| R3 Kaplan compare page | ⏳ queued on `main` (cherry-pick when approved) |
+| R3 Kaplan compare page | ✅ SHIPPED (6272813, deploy 3e84b796) |
+| P2-2 readiness verdict banner | ✅ SHIPPED (5f4c1c4, deploy 5618d72a) — /study, honest accuracy-based verdict + Pass Pledge tie-in |
 | R4 QOTD email | 🔒 BLOCKED — no Resend key exists; user: create at resend.com → `Downloads/resendkey.txt` |
 | P1-1 spacing normalization / P1-2 label discipline | ⏳ deferred — visual-drift risk mid-marketing; schedule post-push |
 | P1-3 editorial stamps | ❌ DROPPED — pages already carry 2026 signals + dateModified schema; a hardcoded month stamp becomes a staleness liability |
