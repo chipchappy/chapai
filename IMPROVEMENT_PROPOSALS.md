@@ -1,4 +1,23 @@
 # IMPROVEMENT_PROPOSALS.md — Phase 4 (propose-first; nothing here ships without explicit approval)
+
+## Status ledger (updated 2026-07-02)
+| Item | Status |
+|---|---|
+| P0-1 closing CTA (home) | ✅ SHIPPED (c5e3032, deploy c947849a) |
+| P0-2 truthful stats | ✅ SHIPPED — counts + case-study stat now live from D1 |
+| P0-3 pricing FAQ accordion | ✅ SHIPPED (323390a, deploy f24b8f08) |
+| P0-4 Pass Pledge guarantee | ✅ SHIPPED (c600a0d, deploy f24b8f08) — mechanic: On-Track×5 + fail → 3 months Dual Premium free |
+| P1-5 hygiene (branding, cloze, Quiz schema) | ✅ SHIPPED; F4 titles = audit false positive (closed) |
+| Favicon set | ✅ RESTORED (113199c) — was a real missing-asset defect caught by the gate |
+| R1 adaptive endless quiz | ✅ SHIPPED (fe6e112 + stranding fix ea66674, deploy f24b8f08) |
+| R2 enforced CSP | ✅ SHIPPED (dbecdc0, deploy f24b8f08) |
+| R3 Kaplan compare page | ⏳ queued on `main` (cherry-pick when approved) |
+| R4 QOTD email | 🔒 BLOCKED — no Resend key exists; user: create at resend.com → `Downloads/resendkey.txt` |
+| P1-1 spacing normalization / P1-2 label discipline | ⏳ deferred — visual-drift risk mid-marketing; schedule post-push |
+| P1-3 editorial stamps | ❌ DROPPED — pages already carry 2026 signals + dateModified schema; a hardcoded month stamp becomes a staleness liability |
+| Perf: home stats memo (60s) | 🚀 in gate run 5 (61e4500) — home cache-miss TTFB was 2,839ms |
+| P2 items (percentile, readiness verdict, start quiz, payments, /account, micro-interactions) | ⏳ awaiting selection |
+
 Benchmarked 2026-07-01 against **anthropic.com** (design inspiration), **Archer Review**, **NCLEX Bootcamp** (fetched + analyzed), and UWorld (domain knowledge). Constraint honored throughout: **refine the existing layout/brand — never replace it.** Every proposal states what, why (competitor gap or conversion metric), effort (S/M/L), risk, and which smoke tests cover it.
 
 ## What the benchmarks actually do well (observed)
