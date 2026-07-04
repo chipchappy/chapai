@@ -192,7 +192,17 @@ function countType(rows: Array<{ type: string | null; count: number }>, type: st
   return Number(rows.find((row) => row.type === type)?.count ?? 0);
 }
 
+// The homepage is force-dynamic, so every edge-cache miss ran 4 D1 stat queries
+// (~2.8s TTFB measured 2026-07-02). Worker isolates persist module state, so a
+// short memo collapses that to at most once per minute per isolate. Only
+// successful D1 results are cached — fallbacks never poison the memo.
+let statsMemo: { at: number; value: LiveBankStats } | null = null;
+const STATS_MEMO_TTL_MS = 60_000;
+
 export async function getLiveBankStats(): Promise<LiveBankStats> {
+  if (statsMemo && Date.now() - statsMemo.at < STATS_MEMO_TTL_MS) {
+    return statsMemo.value;
+  }
   const summary = getLiveContentSummary();
   const strictFileStats = getStrictNclexStatsFromFiles();
   const fallback = {
@@ -263,7 +273,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
       + countType(nclexTypeRows, "case_study")
       + countType(nclexTypeRows, "bow_tie");
 
-    return {
+    const result: LiveBankStats = {
       ccrnLive,
       nclexLive,
       totalLive: ccrnLive + nclexLive,
@@ -277,6 +287,8 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
       nclexDifficultyDistribution: distributionFromRows(nclexDifficultyRows, "count"),
       nclexPremiumDifficultyDistribution: distributionFromRows(nclexDifficultyRows, "structuredCount"),
     };
+    statsMemo = { at: Date.now(), value: result };
+    return result;
   } catch {
     return fallback;
   }
