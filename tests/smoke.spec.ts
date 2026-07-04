@@ -156,6 +156,12 @@ test.describe("core product", () => {
     await expect(page.locator(".quiz-catalog-advanced__summary"), "filters panel available below").toBeVisible();
   });
 
+  test("five readiness exams render below the hero (NCLEX)", async ({ page }) => {
+    await page.goto("/quiz", { waitUntil: "networkidle" });
+    const cards = page.getByTestId("readiness-exam-grid").locator(".quiz-readiness-card");
+    await expect(cards, "five NCLEX readiness forms").toHaveCount(5, { timeout: 15_000 });
+  });
+
   test("quiz catalog defaults to Unlimited deck size (inside filters)", async ({ page }) => {
     await page.goto("/quiz", { waitUntil: "networkidle" });
     await page.locator(".quiz-catalog-advanced__summary").click();

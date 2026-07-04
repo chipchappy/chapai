@@ -31754,3 +31754,108 @@ h1, h2, h3, .highlights-band__title, .quiz-catalog-title, .dash-hero__title,
      the headlines read warm + premium instead of stark black on sand. */
   color: color-mix(in srgb, var(--c-text-strong) 78%, var(--c-bg) 22%);
 }
+
+/* ── Practice-center grand hero (user-directed 2026-07-04): the green Study-now
+   and orange Readiness cards dominate the first viewport; five readiness exams
+   sit below in a warm earth-gold band that complements sage + adobe. ───────── */
+.quiz-catalog-hero--grand {
+  min-height: min(54vh, 560px);
+  align-items: stretch;
+}
+.quiz-catalog-hero--grand .quiz-catalog-hero__main {
+  display: flex;
+  flex-direction: column;
+}
+.quiz-catalog-hero--grand .quiz-catalog-hero__cta {
+  flex: 1 1 auto;
+  min-height: 300px;
+  padding: 44px 48px;
+  border-radius: 28px;
+}
+.quiz-catalog-hero--grand .quiz-catalog-hero__cta-text {
+  font-size: clamp(2.6rem, 4.6vw, 4.2rem);
+  line-height: 1;
+}
+.quiz-catalog-hero--grand .quiz-catalog-hero__cta-meta {
+  font-size: 1.02rem;
+  margin-top: 14px;
+}
+.quiz-catalog-hero--grand .quiz-catalog-baseline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 38px;
+  border-radius: 28px;
+}
+.quiz-catalog-hero--grand .quiz-catalog-baseline__title {
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+}
+@media (max-width: 900px) {
+  .quiz-catalog-hero--grand { min-height: 0; }
+  .quiz-catalog-hero--grand .quiz-catalog-hero__cta { min-height: 200px; padding: 30px 26px; }
+}
+
+.quiz-readiness-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-top: 14px;
+}
+.quiz-readiness-card {
+  text-align: left;
+  border: 1px solid rgba(176, 141, 87, 0.34);
+  border-radius: 22px;
+  padding: 22px 20px;
+  background: linear-gradient(180deg, rgba(214, 180, 120, 0.2), rgba(255, 252, 247, 0.92));
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.quiz-readiness-card:hover:not(:disabled) {
+  transform: translateY(-3px);
+  border-color: rgba(176, 141, 87, 0.6);
+  box-shadow: 0 14px 30px rgba(120, 92, 44, 0.12);
+}
+.quiz-readiness-card strong {
+  display: block;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 1.22rem;
+  line-height: 1.15;
+  color: var(--quiz-ink-strong, #2a2c2e);
+}
+.quiz-readiness-card small {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(122, 96, 52, 0.85);
+}
+.quiz-readiness-card .quiz-readiness-card__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgba(176, 141, 87, 0.18);
+  color: rgba(122, 96, 52, 0.95);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.quiz-theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.quiz-theme-icon:hover { border-color: rgba(148, 163, 184, 0.6); transform: rotate(12deg); }
+.quiz-theme-icon svg { width: 17px; height: 17px; }

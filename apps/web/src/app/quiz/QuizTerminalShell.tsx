@@ -12,17 +12,6 @@ import type { QuestionType } from "@/lib/types";
 
 type Exam = "nclex" | "ccrn";
 
-const QUESTION_TYPE_DETAILS: Record<QuestionType, string> = {
-  mcq: "single best answer",
-  sata: "select all that apply",
-  ordering: "sequence the safest steps",
-  matrix: "row-by-row clinical judgment",
-  case_study: "scenario, exhibits, labs, and rationale",
-  bow_tie: "condition, actions, and monitoring",
-  scenario_mcq: "scenario-based single best answer",
-  decision_map_mcq: "clinical decision map single best answer",
-};
-
 function getExamTitle(exam: Exam) {
   return exam === "nclex" ? "NCLEX-RN practice test" : "CCRN practice test";
 }
@@ -135,9 +124,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     elapsedSeconds,
     canOpenTutor,
     canUseTutor,
-    canUseRichModes,
     canUsePracticeExams,
-    canUseIcuSimBeta,
     canUseAdvancedAnalytics,
     practiceExamLimit,
     catalogCards,
@@ -145,7 +132,6 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     categoryOptions,
     questionTypeOptions,
     draftAnswer,
-    practiceExamStatusCopy,
     formatTime,
     onSetSelectedExam,
     onSetStudyTheme,
@@ -206,10 +192,23 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
           ) : null}
         </div>
         <div className="flex flex-wrap items-center justify-end gap-2">
-          <div className="quiz-theme-switch" role="group" aria-label="Study theme">
-            <button type="button" onClick={() => onSetStudyTheme("light")} className={`quiz-theme-option ${studyTheme === "light" ? "is-active" : ""}`}>light</button>
-            <button type="button" onClick={() => onSetStudyTheme("dark")} className={`quiz-theme-option ${studyTheme === "dark" ? "is-active" : ""}`}>dark</button>
-          </div>
+          <button
+            type="button"
+            onClick={() => onSetStudyTheme(studyTheme === "light" ? "dark" : "light")}
+            className="quiz-theme-icon"
+            aria-label={studyTheme === "light" ? "Switch to dark theme" : "Switch to light theme"}
+          >
+            {studyTheme === "light" ? (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
           {phase !== "catalog" ? (
             <button type="button" onClick={onBackToCatalog} className="quiz-terminal-link">exit run</button>
           ) : (
@@ -241,7 +240,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
 
             {/* Two-card hero: green "Study now" bank launch with filters below,
                 orange readiness exam as the equal-weight second option. */}
-            <section className="quiz-catalog-hero">
+            <section className="quiz-catalog-hero quiz-catalog-hero--grand">
               <div className="quiz-catalog-hero__main">
                 <button
                   type="button"
@@ -371,125 +370,24 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
             <section className="quiz-terminal-section">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <p className="quiz-terminal-kicker">Study by subject</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">{selectedExam.toUpperCase()} categories.</h2>
+                  <p className="quiz-terminal-kicker">Readiness exams</p>
+                  <h2 className="text-[var(--quiz-ink-strong)]">Five timed forms. One honest verdict.</h2>
                 </div>
-                <p className="quiz-terminal-copy">Choose a lane first, then launch standard, NGN, case, or timed practice.</p>
+                <p className="quiz-terminal-copy">Score On Track on all five to unlock the Pass Pledge.</p>
               </div>
-              <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-                {categoryOptions.map((option, index) => (
+              <div className="quiz-readiness-grid" data-testid="readiness-exam-grid">
+                {practiceExamDefinitions.filter((definition) => definition.exam === selectedExam).map((definition, index) => (
                   <button
-                    key={option.value}
+                    key={definition.id}
                     type="button"
-                    onClick={() => onSetSelectedCategory(option.value)}
-                    className={`quiz-terminal-lane ${selectedCategory === option.value ? "is-featured" : ""}`}
+                    onClick={() => onLaunchPracticeExam(definition.id)}
+                    className="quiz-readiness-card"
                   >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{String(index + 1).padStart(2, "0")}</span>
-                      <span className="quiz-chip">{selectedCategory === option.value ? "active" : "filter"}</span>
-                    </div>
-                    <h3 className="mt-4 text-[var(--quiz-ink-strong)]">{option.label}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[var(--quiz-muted)]">Route the next deck through this clinical category and keep the rationale tied to the same weakness.</p>
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="quiz-terminal-section">
-              <div className="flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Study by question type</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">NGN and classic formats.</h2>
-                </div>
-                <p className="quiz-terminal-copy">Matrix, ordering, case study, and bow-tie items stay in the same test shell.</p>
-              </div>
-              <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                {questionTypeOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => {
-                      onSetSelectedQuestionType(option.value);
-                      if (option.value !== "mcq") {
-                        onSetNgnOnly(true);
-                      }
-                    }}
-                    className={`quiz-terminal-lane ${selectedQuestionType === option.value ? "is-featured" : ""}`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{option.value.replace(/_/g, " ")}</span>
-                      <span className="quiz-chip">{selectedQuestionType === option.value ? "active" : "choose"}</span>
-                    </div>
-                    <h3 className="mt-4 text-[var(--quiz-ink-strong)]">{option.label}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[var(--quiz-muted)]">{QUESTION_TYPE_DETAILS[option.value]}</p>
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="quiz-terminal-section">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Study lanes</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">choose the next run.</h2>
-                </div>
-                <p className="quiz-terminal-copy">{canUseRichModes ? "Rich modes unlocked." : "Standard bank active."}</p>
-              </div>
-              <div className="mt-5 grid gap-4 xl:grid-cols-3">
-                {catalogCards.map((card) => {
-                  const standardTrackLocked = card.mode === "standard"
-                    && Boolean(card.exam)
-                    && accessExamTrack !== "all"
-                    && card.exam !== accessExamTrack;
-                  const locked = standardTrackLocked || (card.mode === "practice-exam"
-                    ? !canUsePracticeExams
-                    : card.mode === "standard"
-                      ? false
-                      : !canUseRichModes);
-
-                  return (
-                    <button
-                      key={card.id}
-                      type="button"
-                      onClick={() => onLaunchCatalogCard(card)}
-                      className={`quiz-terminal-lane ${card.featured ? "is-featured" : ""}`}
-                    >
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="quiz-chip">{card.hint}</span>
-                        <span className="quiz-chip">{locked ? "Locked" : card.exam ? card.exam.toUpperCase() : selectedExam.toUpperCase()}</span>
-                      </div>
-                      <h3 className="mt-5 text-[var(--quiz-ink-strong)]">{card.label}</h3>
-                      <p className="mt-3 text-sm leading-7 text-[var(--quiz-muted)]">{card.description}</p>
-                      <div className="mt-5 flex items-center justify-between text-sm text-[var(--quiz-muted)]">
-                        <span>{card.count} items</span>
-                        <span>{locked ? "Upgrade" : "Launch"}</span>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
-
-            <section className="quiz-terminal-section">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="quiz-terminal-kicker">Timed simulations</p>
-                  <h2 className="text-[var(--quiz-ink-strong)]">fixed-length practice exams.</h2>
-                </div>
-                <p className="quiz-terminal-copy">{practiceExamStatusCopy}{canUseIcuSimBeta ? " ICU sim beta included." : ""}</p>
-              </div>
-              <div className="mt-5 grid gap-4 lg:grid-cols-5">
-                {practiceExamDefinitions.map((definition) => (
-                  <button key={definition.id} type="button" onClick={() => onLaunchPracticeExam(definition.id)} className="quiz-terminal-exam-card">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="quiz-chip">{definition.exam.toUpperCase()}</span>
-                      {!canUsePracticeExams ? <span className="quiz-chip">Locked</span> : null}
-                    </div>
-                    <strong className="mt-5 block text-[var(--quiz-ink-strong)]">{definition.label}</strong>
-                    <p className="mt-3 text-sm leading-6 text-[var(--quiz-muted)]">{definition.description}</p>
-                    <div className="mt-5 text-xs uppercase tracking-[0.18em] text-[var(--quiz-muted)]">
-                      {definition.length} questions | {definition.timeLimitMinutes} min
-                    </div>
+                    <span className="quiz-readiness-card__num">{index + 1}</span>
+                    <strong>{definition.label}</strong>
+                    <small>
+                      {definition.length} questions · {definition.timeLimitMinutes} min{!canUsePracticeExams ? " · premium" : ""}
+                    </small>
                   </button>
                 ))}
               </div>
