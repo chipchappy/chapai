@@ -43,16 +43,11 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 
-      - name: Set OPENROUTER_API_KEY → production
+      # PRODUCTION DEPLOYS FROM CI ARE DISABLED (2026-07-02).
+      # `main` is the Phase-4 proposal shelf, several features ahead of the
+      # canonical live site — auto-deploying it caused the revert cycle.
+      # The ONLY sanctioned production path is the smoke-gated script on the
+      # `stable` branch: bash scripts/deploy-stable.sh (see TESTING.md).
+      - name: Production deploy disabled — use scripts/deploy-stable.sh from `stable`
         if: github.ref == 'refs/heads/main'
-        run: echo "${{ secrets.OPENROUTER_API_KEY }}" | npx wrangler secret put OPENROUTER_API_KEY --name chapai-web
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-
-      - name: Deploy → PRODUCTION
-        if: github.ref == 'refs/heads/main'
-        run: npx wrangler deploy --config wrangler.jsonc
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: echo "Refusing CI prod deploy. main is not the deploy lineage; ship via scripts/deploy-stable.sh on stable."
