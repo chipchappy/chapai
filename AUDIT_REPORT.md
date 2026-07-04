@@ -59,7 +59,7 @@ Next.js 15.5.14 (App Router) → @opennextjs/cloudflare → Cloudflare Worker `c
 | SSL + redirects | **PASS** | HSTS on; http→https 308; www→apex canonical |
 | Security headers | **PASS w/ note** | HSTS, nosniff, X-Frame DENY, Referrer-Policy, Permissions-Policy. CSP is **report-only** in this build (enforcement exists in git, rolled off) |
 | **Mobile 390px overflow** | **FAIL → F2** | `/quiz` scrollWidth 445 vs 390 (~55px horizontal pan; "Start studying" card clipped — screenshot `mobile390_quiz.png`). Other 4 pages clean |
-| Lighthouse baselines | **PENDING** | Scheduled (lighthouse CLI in tests workspace) |
+| Perf baselines (mobile 390px) | **DONE 2026-07-02** | Playwright-measured CWV (Lighthouse runner crashes Playwright Chromium in this env — `tests/perf-baseline.mjs` is the repeatable method): **/quiz** TTFB 108ms · FCP 308ms · LCP 632ms · CLS 0; **/pricing** TTFB 147ms · LCP 344ms · CLS 0; **/ (home)** TTFB **2,839ms** · LCP 3,020ms · CLS 0 on cache miss — home is `force-dynamic` + 4 D1 stat queries per uncached request; edge cache (s-maxage=600) absorbs most traffic. **Perf candidate P1: 60s in-isolate memo for getLiveBankStats** (smallest diff, next round) |
 
 ## Fix queue (Phase 2 — nothing fixed yet, per protocol)
 | # | Severity | Finding | Root cause (known?) | Proposed smallest diff |
