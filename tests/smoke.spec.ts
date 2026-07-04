@@ -107,6 +107,7 @@ test.describe("core product", () => {
 
   test("/account resolves to the billing surface (auth-gated)", async ({ page }) => {
     await page.goto("/account", { waitUntil: "domcontentloaded" });
+    await page.waitForURL("**/auth/login**", { timeout: 10_000 });
     expect(page.url(), "anon /account should land on login for billing").toContain("/auth/login");
   });
 
