@@ -111,6 +111,13 @@ test.describe("core product", () => {
     expect(page.url(), "anon /dashboard should land on login").toContain("/auth/login");
   });
 
+  test("study evaluation API fails soft for anon", async ({ request }) => {
+    const resp = await request.get("/api/study/evaluation");
+    expect(resp.status(), "evaluation returns 200").toBe(200);
+    const body = await resp.json();
+    expect((body.data ?? body).evaluation, "anon gets null evaluation, never an error").toBeNull();
+  });
+
   test("/account resolves to the billing surface (auth-gated)", async ({ page }) => {
     await page.goto("/account", { waitUntil: "domcontentloaded" });
     await page.waitForURL("**/auth/login**", { timeout: 10_000 });

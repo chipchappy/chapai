@@ -18,6 +18,7 @@ export interface ReadinessVerdict {
   advice: string;
   meterPct: number;
   targetLabel: string;
+  likelihood: string;
 }
 
 export const MIN_SIGNAL_ANSWERS = 25;
@@ -36,6 +37,7 @@ export function computeReadiness(accuracy: number, totalAnswered: number): Readi
       advice: `Answer ${remaining} more question${remaining === 1 ? "" : "s"} to generate a readiness read.`,
       meterPct: Math.round((totalAnswered / MIN_SIGNAL_ANSWERS) * 100),
       targetLabel: `${totalAnswered}/${MIN_SIGNAL_ANSWERS} answered`,
+      likelihood: "Too early to call",
     };
   }
 
@@ -47,6 +49,7 @@ export function computeReadiness(accuracy: number, totalAnswered: number): Readi
       advice: "Hold your volume steady and keep the review queue light — that consistency is what protects the score.",
       meterPct: acc,
       targetLabel: "On Track line: 65%",
+      likelihood: "On pace to pass if the trend holds",
     };
   }
 
@@ -58,6 +61,7 @@ export function computeReadiness(accuracy: number, totalAnswered: number): Readi
       advice: "A focused week or two on your weakest lanes usually moves this over 65%.",
       meterPct: acc,
       targetLabel: "On Track line: 65%",
+      likelihood: "Borderline — winnable in 1–2 focused weeks",
     };
   }
 
@@ -68,6 +72,7 @@ export function computeReadiness(accuracy: number, totalAnswered: number): Readi
     advice: "Prioritize the review queue and the rationale loop before adding raw volume.",
     meterPct: acc,
     targetLabel: "On Track line: 65%",
+    likelihood: "At risk at current accuracy",
   };
 }
 
@@ -119,6 +124,9 @@ export default function ReadinessBanner({
             <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${tone.chip}`}>
               {verdict.verdict}
             </span>
+            <span className="inline-flex rounded-full border border-[rgba(74,85,89,0.16)] bg-white/60 px-3 py-1 text-xs font-medium text-muted">
+              {verdict.likelihood}
+            </span>
           </div>
           <h2 className="mt-3 font-serif text-[1.7rem] leading-[1.02] text-dark">{verdict.headline}</h2>
           <p className="mt-2 text-sm leading-6 text-muted">{verdict.advice}</p>
@@ -132,6 +140,15 @@ export default function ReadinessBanner({
             <div className="mt-2 h-2 overflow-hidden rounded-full bg-[rgba(74,85,89,0.08)]">
               <div className={`h-full rounded-full ${tone.meter}`} style={{ width: `${verdict.meterPct}%` }} />
             </div>
+            {hasSignal ? (
+              <p className="mt-2 text-xs leading-5 text-muted">
+                NCLEX standard comparison: practice banks treat ~{ON_TRACK_ACCURACY}% as the on-track line. You&rsquo;re{" "}
+                {Math.round(accuracy) >= ON_TRACK_ACCURACY
+                  ? `${Math.round(accuracy) - ON_TRACK_ACCURACY} pts above it`
+                  : `${ON_TRACK_ACCURACY - Math.round(accuracy)} pts below it`}
+                .
+              </p>
+            ) : null}
           </div>
         </div>
 

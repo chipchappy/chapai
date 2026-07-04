@@ -179,6 +179,23 @@ export default function StudyDashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "history" | "review">("overview");
+  const [aiEvaluation, setAiEvaluation] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/study/evaluation", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((payload) => {
+        const body = unwrapApiData<{ evaluation?: string | null }>(payload, { evaluation: null });
+        if (!cancelled && typeof body.evaluation === "string" && body.evaluation.length > 0) {
+          setAiEvaluation(body.evaluation);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     async function load() {
@@ -470,17 +487,26 @@ export default function StudyDashboard() {
         </article>
 
         <article className="study-console-panel">
-          <p className="terminal-label">Coach note</p>
-          <h2 className="mt-3 font-serif text-[1.8rem] leading-[0.98] text-dark">
-            {data?.reviewQueue.length ? "Protect recall before pushing speed." : "Use your clearest lane to press volume."}
-          </h2>
-          <p className="mt-3 text-sm leading-7 text-muted">
-            {data?.reviewQueue.length
-              ? "A clean review queue keeps misses from quietly compounding. Clear due items, then go back to fresh bank reps."
-              : strongestLane
-                ? `${strongestLane.exam} is converting best right now. Stack more reps there while you still have rhythm, then return to the weaker lane.`
-                : "The dashboard will get smarter as soon as you log a few sessions. Start with a clean live-bank run."}
-          </p>
+          <div className="flex items-center gap-2">
+            <p className="terminal-label">{aiEvaluation ? "AI evaluation" : "Coach note"}</p>
+            {aiEvaluation ? <span className="signal-pill signal-pill-blue">AI</span> : null}
+          </div>
+          {aiEvaluation ? (
+            <p className="mt-3 text-sm leading-7 text-muted">{aiEvaluation}</p>
+          ) : (
+            <>
+              <h2 className="mt-3 font-serif text-[1.8rem] leading-[0.98] text-dark">
+                {data?.reviewQueue.length ? "Protect recall before pushing speed." : "Use your clearest lane to press volume."}
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-muted">
+                {data?.reviewQueue.length
+                  ? "A clean review queue keeps misses from quietly compounding. Clear due items, then go back to fresh bank reps."
+                  : strongestLane
+                    ? `${strongestLane.exam} is converting best right now. Stack more reps there while you still have rhythm, then return to the weaker lane.`
+                    : "The dashboard will get smarter as soon as you log a few sessions. Start with a clean live-bank run."}
+              </p>
+            </>
+          )}
         </article>
       </section>
 
