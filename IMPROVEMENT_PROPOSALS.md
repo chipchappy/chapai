@@ -14,6 +14,8 @@
 | R3 Kaplan compare page | ✅ SHIPPED (6272813, deploy 3e84b796) |
 | P2-2 readiness verdict banner | ✅ SHIPPED (5f4c1c4, deploy 5618d72a) — /study, honest accuracy-based verdict + Pass Pledge tie-in |
 | P2-6 /account billing surface | ✅ SHIPPED (7b35f20+c1306a1, deploy 1335e811) — audit F8 closed; page pre-existed, gap was discoverability |
+| P2-3 start-here picker | ✅ SHIPPED (a86fece, deploy f9060127) — 3 questions → existing deep links on /quiz |
+| P2-1 peer percentile | ✅ SHIPPED (e56c233, deploy a949c7ef) — honest gates: ≥20 answers + ≥10 peers or null |
 | R4 QOTD email | 🔒 BLOCKED — no Resend key exists; user: create at resend.com → `Downloads/resendkey.txt` |
 | P1-1 spacing normalization / P1-2 label discipline | ⏳ deferred — visual-drift risk mid-marketing; schedule post-push |
 | P1-3 editorial stamps | ❌ DROPPED — pages already carry 2026 signals + dateModified schema; a hardcoded month stamp becomes a staleness liability |
