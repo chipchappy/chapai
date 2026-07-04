@@ -2,7 +2,7 @@ import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { getHostedUserByAccount } from "@/lib/billing-store";
 import { allowLocalFallbacks } from "@/lib/env";
 import { quizSessions } from "@chapai/db/schema";
-import { and, desc, eq, isNotNull } from "drizzle-orm";
+import { and, desc, eq, gte, isNotNull, sql } from "drizzle-orm";
 import { createRequestContext } from "@/lib/logger";
 import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
@@ -96,6 +96,33 @@ export async function GET(request: Request) {
     const sevenDayQuestions = sevenDaySessions.reduce((sum, s) => sum + s.totalQuestions, 0);
     const sevenDayCorrect = sevenDaySessions.reduce((sum, s) => sum + s.correctCount, 0);
 
+    // Peer percentile: 7-day accuracy vs other users. Honest by construction —
+    // null unless the user has >=20 answers this week AND >=10 peers qualify.
+    let peerPercentile: number | null = null;
+    if (sevenDayQuestions >= 20) {
+      const peerRows = await db
+        .select({
+          userId: quizSessions.userId,
+          answered: sql<number>`sum(${quizSessions.totalQuestions})`,
+          correct: sql<number>`sum(${quizSessions.correctCount})`,
+        })
+        .from(quizSessions)
+        .where(and(
+          isNotNull(quizSessions.completedAt),
+          isNotNull(quizSessions.userId),
+          gte(quizSessions.startedAt, sevenDaysAgo),
+        ))
+        .groupBy(quizSessions.userId);
+
+      const peers = peerRows
+        .filter((row) => row.userId !== hostedUser.id && Number(row.answered) >= 20)
+        .map((row) => Number(row.correct) / Number(row.answered));
+      if (peers.length >= 10) {
+        const mine = sevenDayCorrect / sevenDayQuestions;
+        peerPercentile = Math.round((peers.filter((acc) => acc < mine).length / peers.length) * 100);
+      }
+    }
+
     return jsonSuccess({
       sessions: sessions.map((s) => ({
         id: s.id,
@@ -113,6 +140,7 @@ export async function GET(request: Request) {
           : 0,
       })),
       streak: calculateStreak(allSessions),
+      peerPercentile,
       sevenDayAccuracy: sevenDayQuestions > 0
         ? Math.round((sevenDayCorrect / sevenDayQuestions) * 100)
         : 0,

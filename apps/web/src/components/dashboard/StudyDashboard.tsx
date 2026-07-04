@@ -68,6 +68,7 @@ interface DashboardData {
   cjmmSteps: CjmmArea[];
   recommendation: WeakAreaRecommendation | null;
   streak: number;
+  peerPercentile: number | null;
   sevenDayAccuracy: number;
   totalAnswered: number;
   totalCorrect: number;
@@ -194,6 +195,7 @@ export default function StudyDashboard() {
           sessions?: SessionSummary[];
           streak?: number;
           sevenDayAccuracy?: number;
+          peerPercentile?: number | null;
           stats?: { totalQuestions?: number; totalCorrect?: number; overallAccuracy?: number };
         }>(historyPayload, { sessions: [] });
         const review = unwrapApiData<{ items?: ReviewItem[]; meta?: { dueNow?: number } }>(reviewPayload, { items: [] });
@@ -210,6 +212,7 @@ export default function StudyDashboard() {
           recentSessions: sessions.slice(0, 10),
           reviewQueue: review.items || [],
           streak: history.streak || 0,
+          peerPercentile: history.peerPercentile ?? null,
           sevenDayAccuracy: history.sevenDayAccuracy || 0,
           weakAreas: (weakAreas.areas || []).slice(0, 3),
           difficultyAreas: (weakAreas.difficultyAreas || []).slice(0, 3),
@@ -229,6 +232,7 @@ export default function StudyDashboard() {
           cjmmSteps: [],
           recommendation: null,
           streak: 0,
+          peerPercentile: null,
           sevenDayAccuracy: 0,
           totalAnswered: 0,
           totalCorrect: 0,
@@ -348,6 +352,9 @@ export default function StudyDashboard() {
               <span className="signal-pill signal-pill-blue">{data?.totalAnswered ?? 0} answered</span>
               <span className="signal-pill signal-pill-gold">{data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}% 7-day` : "No 7-day score yet"}</span>
               <span className="signal-pill">{data?.reviewQueue.length ?? 0} due now</span>
+              {typeof data?.peerPercentile === "number" ? (
+                <span className="signal-pill signal-pill-sage">Ahead of {data.peerPercentile}% of students this week</span>
+              ) : null}
               {strongestLane ? <span className="signal-pill">Best lane: {strongestLane.exam}</span> : null}
             </div>
           </div>
