@@ -110,8 +110,6 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     isPending,
     accessType,
     accessExamTrack,
-    accessibleLiveCount,
-    questionBankAccessPercent,
     selectedExam,
     selectedCategory,
     selectedQuestionType,
@@ -227,97 +225,146 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
       <div className="quiz-terminal-body">
         {phase === "catalog" ? (
           <section className="quiz-terminal-state quiz-terminal-scroll">
-            <div className="quiz-terminal-catalog-grid">
-              <section className="quiz-terminal-panel quiz-terminal-panel-hero">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="quiz-chip quiz-chip-accent">mission launch</span>
-                  <span className="quiz-chip">access {accessibleLiveCount}/{selectedExam === "nclex" ? liveCounts.nclex : liveCounts.ccrn}</span>
-                  <span className="quiz-chip">{questionBankAccessPercent}% unlocked</span>
-                  <span className="quiz-chip">{accessExamTrack === "all" ? "dual track" : `${accessExamTrack.toUpperCase()} track`}</span>
+            <header className="quiz-catalog-head quiz-catalog-head--slim">
+              <div className="quiz-catalog-head__row">
+                <p className="quiz-catalog-eyebrow">Practice center</p>
+                <div className="quiz-catalog-head__chips">
+                  {tier === "free" ? (
+                    <a href="/pricing" className="quiz-catalog-free-pill" aria-label="Free plan limit — view upgrade options">
+                      <span>Free plan · limited daily questions</span>
+                      <span className="quiz-catalog-free-pill__cta">Upgrade &rarr;</span>
+                    </a>
+                  ) : null}
                 </div>
-                <h1 className="mt-4 text-[var(--quiz-ink-strong)]">
-                  launch the qbank like a real testing client.
-                </h1>
-                <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--quiz-muted)]">
-                  Start standard reps, NGN sets, case flow, or a timed practice exam without leaving the same workspace. The launch deck stays short, the text stays legible, and the same question carries chart review, rationale, citations, and tutor follow-up.
-                </p>
-                <StartHerePicker />
-                <div className="mt-5 grid gap-3 xl:grid-cols-3">
-                  <div className="quiz-terminal-stat">
-                    <span>live bank</span>
-                    <strong>{selectedExam === "nclex" ? liveCounts.nclex : liveCounts.ccrn}</strong>
-                    <small>{selectedExam.toUpperCase()} questions available on this route.</small>
-                  </div>
-                  <div className="quiz-terminal-stat">
-                    <span>focus</span>
-                    <strong>{activeFilterSummary || "All lanes"}</strong>
-                    <small>Client need, item type, or NGN-only launch.</small>
-                  </div>
-                  <div className="quiz-terminal-stat">
-                    <span>study layer</span>
-                    <strong>{tier === "free" ? "Preview" : tier === "plus" ? "Base premium" : "Dual premium"}</strong>
-                    <small>{tier === "free" ? "Terminal preview with locked premium rail depth." : tier === "plus" ? "Full qbank and richer debrief rail on your track." : "Advanced analytics, tutor, and dual-track immersion."}</small>
-                  </div>
-                </div>
-              </section>
+              </div>
+            </header>
 
-              <section className="quiz-terminal-panel quiz-terminal-panel-controls">
-                <div className="grid gap-4 lg:grid-cols-2">
-                  <div>
-                    <p className="quiz-terminal-kicker">Exam lane</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {(["nclex", "ccrn"] as const).map((exam) => (
-                        <button key={exam} type="button" onClick={() => onSetSelectedExam(exam)} className={`quiz-terminal-toggle ${selectedExam === exam ? "is-active" : ""}`} disabled={accessExamTrack !== "all" && accessExamTrack !== exam}>
-                          {exam.toUpperCase()}
-                        </button>
-                      ))}
+            {/* Two-card hero: green "Study now" bank launch with filters below,
+                orange readiness exam as the equal-weight second option. */}
+            <section className="quiz-catalog-hero">
+              <div className="quiz-catalog-hero__main">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const card =
+                      catalogCards.find((c) => c.mode === "standard" && c.exam === selectedExam) ??
+                      catalogCards.find((c) => c.mode === "standard") ??
+                      catalogCards[0];
+                    if (card) onLaunchCatalogCard(card);
+                  }}
+                  className="quiz-catalog-hero__cta"
+                  disabled={isPending}
+                >
+                  <span className="quiz-catalog-hero__cta-text">
+                    {isPending ? "Loading…" : "Study now"}
+                  </span>
+                  <span className="quiz-catalog-hero__cta-meta">
+                    {standardCount === "unlimited" ? "Unlimited" : standardCount} {selectedExam.toUpperCase()} questions
+                    {ngnOnly ? " · NGN only" : ""}
+                    {selectedCategory
+                      ? ` · ${categoryOptions.find((o) => o.value === selectedCategory)?.label ?? "focused drill"}`
+                      : " · adapts to your weak areas"}
+                  </span>
+                </button>
+
+                <details className="quiz-catalog-advanced">
+                  <summary className="quiz-catalog-advanced__summary">Customize filters</summary>
+                  <div className="quiz-catalog-advanced__grid">
+                    <div className="quiz-catalog-advanced__group">
+                      <span className="quiz-catalog-label">Exam</span>
+                      <div className="quiz-catalog-pillset">
+                        {(["nclex", "ccrn"] as const).map((exam) => (
+                          <button
+                            key={exam}
+                            type="button"
+                            onClick={() => onSetSelectedExam(exam)}
+                            className={`quiz-catalog-pill ${selectedExam === exam ? "is-active" : ""}`}
+                            disabled={accessExamTrack !== "all" && accessExamTrack !== exam}
+                          >
+                            {exam.toUpperCase()}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <p className="quiz-terminal-kicker">Deck size</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      <button type="button" onClick={() => onSetStandardCount("unlimited")} className={`quiz-terminal-toggle ${standardCount === "unlimited" ? "is-active" : ""}`}>
-                        Unlimited
+                    <div className="quiz-catalog-advanced__group">
+                      <span className="quiz-catalog-label">Deck size</span>
+                      <div className="quiz-catalog-pillset">
+                        <button type="button" onClick={() => onSetStandardCount("unlimited")} className={`quiz-catalog-pill ${standardCount === "unlimited" ? "is-active" : ""}`}>
+                          Unlimited
+                        </button>
+                        {[10, 20, 50].map((count) => (
+                          <button key={count} type="button" onClick={() => onSetStandardCount(count as 10 | 20 | 50)} className={`quiz-catalog-pill ${standardCount === count ? "is-active" : ""}`}>
+                            {count}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="quiz-catalog-advanced__group quiz-catalog-advanced__group--wide">
+                      <span className="quiz-catalog-label">Category</span>
+                      <select
+                        value={selectedCategory}
+                        onChange={(event) => onSetSelectedCategory(event.target.value)}
+                        className="quiz-catalog-select"
+                      >
+                        <option value="">All categories</option>
+                        {categoryOptions.map((option) => (
+                          <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="quiz-catalog-advanced__group quiz-catalog-advanced__group--wide">
+                      <span className="quiz-catalog-label">Question type</span>
+                      <select
+                        value={selectedQuestionType}
+                        onChange={(event) => onSetSelectedQuestionType(event.target.value as QuestionType | "")}
+                        className="quiz-catalog-select"
+                      >
+                        <option value="">Any type</option>
+                        {questionTypeOptions.map((option) => (
+                          <option key={option.value} value={option.value} disabled={ngnOnly && option.value === "mcq"}>{option.label}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="quiz-catalog-advanced__toggles">
+                      <button type="button" onClick={() => onSetNgnOnly(!ngnOnly)} className={`quiz-catalog-pill ${ngnOnly ? "is-active" : ""}`}>
+                        NGN only
                       </button>
-                      {[10, 20, 50].map((count) => (
-                        <button key={count} type="button" onClick={() => onSetStandardCount(count as 10 | 20 | 50)} className={`quiz-terminal-toggle ${standardCount === count ? "is-active" : ""}`}>
-                          {count}
-                        </button>
-                      ))}
+                      <button type="button" onClick={onResetFilters} className="quiz-catalog-reset">
+                        Reset filters
+                      </button>
+                      <span className="quiz-catalog-label">{activeFilterSummary || "All live filters active."}</span>
                     </div>
                   </div>
-                </div>
+                </details>
 
-                <div className="mt-5 grid gap-4 lg:grid-cols-2">
-                  <label className="quiz-terminal-field">
-                    <span className="quiz-terminal-kicker">Category</span>
-                    <select value={selectedCategory} onChange={(event) => onSetSelectedCategory(event.target.value)}>
-                      <option value="">All categories</option>
-                      {categoryOptions.map((option) => (
-                        <option key={option.value} value={option.value}>{option.label}</option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="quiz-terminal-field">
-                    <span className="quiz-terminal-kicker">Question type</span>
-                    <select value={selectedQuestionType} onChange={(event) => onSetSelectedQuestionType(event.target.value as QuestionType | "")}>
-                      <option value="">Any type</option>
-                      {questionTypeOptions.map((option) => (
-                        <option key={option.value} value={option.value} disabled={ngnOnly && option.value === "mcq"}>{option.label}</option>
-                      ))}
-                    </select>
-                  </label>
-                </div>
+                <StartHerePicker />
+              </div>
 
-                <div className="mt-5 flex flex-wrap items-center gap-2">
-                  <button type="button" onClick={() => onSetNgnOnly(!ngnOnly)} className={`quiz-terminal-toggle ${ngnOnly ? "is-active" : ""}`}>
-                    NGN only
-                  </button>
-                  <button type="button" onClick={onResetFilters} className="quiz-terminal-link">Reset filters</button>
-                  <span className="quiz-terminal-copy">{activeFilterSummary || "All live filters active."}</span>
-                </div>
-              </section>
-            </div>
+              {(() => {
+                const diagnostic = practiceExamDefinitions.find((d) => d.exam === selectedExam) ?? practiceExamDefinitions[0];
+                if (!diagnostic) return null;
+                return (
+                  <aside className="quiz-catalog-baseline">
+                    <span className="quiz-catalog-baseline__kicker">Readiness exam</span>
+                    <h3 className="quiz-catalog-baseline__title">Take a baseline readiness exam.</h3>
+                    <p className="quiz-catalog-baseline__body">
+                      One full {diagnostic.exam.toUpperCase()} readiness run pinpoints your weak and strong areas so the dashboard can tune the next 30 days of study to you.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => onLaunchPracticeExam(diagnostic.id)}
+                      className="quiz-catalog-baseline__cta"
+                      disabled={!canUsePracticeExams}
+                    >
+                      {canUsePracticeExams ? `Take ${diagnostic.label} →` : "Upgrade to unlock readiness exams"}
+                    </button>
+                    <p className="quiz-catalog-baseline__meta">
+                      {diagnostic.length} questions · {diagnostic.timeLimitMinutes} min · scored against the blueprint
+                    </p>
+                  </aside>
+                );
+              })()}
+            </section>
 
             {error ? <div className="quiz-terminal-alert">{error}</div> : null}
 
