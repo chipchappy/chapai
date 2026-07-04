@@ -426,6 +426,13 @@ export default function StudyDashboard() {
               </span>
               <span className="signal-pill">Timed</span>
             </Link>
+            <Link href="/account/billing" className="dashboard-action-row">
+              <span>
+                <strong>Account &amp; billing</strong>
+                <small>Plan status, payment method, cancel anytime.</small>
+              </span>
+              <span className="signal-pill">Manage</span>
+            </Link>
           </div>
         </article>
 

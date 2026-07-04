@@ -105,6 +105,11 @@ test.describe("core product", () => {
     expect(page.url(), "anon /study should redirect to login").toContain("/auth/login");
   });
 
+  test("/account resolves to the billing surface (auth-gated)", async ({ page }) => {
+    await page.goto("/account", { waitUntil: "domcontentloaded" });
+    expect(page.url(), "anon /account should land on login for billing").toContain("/auth/login");
+  });
+
   test("adaptive endless params accepted by quiz/start", async ({ request }) => {
     const resp = await request.post("/api/quiz/start", {
       data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
