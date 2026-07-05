@@ -360,10 +360,7 @@ export default function StudyDashboard() {
         <div className="grid gap-5 xl:grid-cols-[1.14fr_0.86fr]">
           <div className="max-w-3xl">
             <p className="terminal-label">Study dashboard</p>
-            <h1 className="mt-3 font-serif text-[2.9rem] leading-[0.94] text-dark">Keep the next study move obvious.</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-              Turn raw study history into a clear objective, a cleaner review loop, and faster access to the exact mode you should open next.
-            </p>
+            <h1 className="mt-3 font-serif text-[2.4rem] leading-[0.96] text-dark">Your study console.</h1>
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="signal-pill signal-pill-sage">{data?.streak ?? 0} day streak</span>
               <span className="signal-pill signal-pill-blue">{data?.totalAnswered ?? 0} answered</span>
@@ -394,7 +391,7 @@ export default function StudyDashboard() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="Streak" value={data?.streak ?? 0} sub="days in a row" tone="sage" />
         <StatCard label="7-day accuracy" value={data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}%` : "n/a"} sub="completed sessions" tone="blue" />
         <StatCard label="Due now" value={data?.reviewQueue.length ?? 0} sub="spaced repetition queue" tone="gold" />
@@ -403,15 +400,9 @@ export default function StudyDashboard() {
           value={weakAreas.length || "n/a"}
           sub={weakAreas.length ? weakAreas.map((area) => area.label).join(", ") : "none identified yet"}
         />
-        <StatCard
-          label="Next challenge"
-          value={weakestDifficulty ? `L${weakestDifficulty.difficulty}` : "n/a"}
-          sub={weakestCjmm ? weakestCjmm.label : "CJMM signal pending"}
-          tone="blue"
-        />
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-3">
+      <section className="grid gap-4 lg:grid-cols-2">
         <article className="study-console-panel">
           <p className="terminal-label">Quick launch</p>
           <div className="mt-4 grid gap-3">
@@ -457,32 +448,6 @@ export default function StudyDashboard() {
               </span>
               <span className="signal-pill">Manage</span>
             </Link>
-          </div>
-        </article>
-
-        <article className="study-console-panel">
-          <p className="terminal-label">Momentum</p>
-          <div className="mt-4 space-y-3">
-            <div className="dashboard-signal-row">
-              <span>Queue pressure</span>
-              <strong>{data?.reviewQueue.length ?? 0}</strong>
-            </div>
-            <div className="dashboard-signal-row">
-              <span>Best lane</span>
-              <strong>{strongestLane?.exam ?? "Building"}</strong>
-            </div>
-            <div className="dashboard-signal-row">
-              <span>Weakest lane</span>
-              <strong>{weakestLane?.label ?? "None yet"}</strong>
-            </div>
-            <div className="dashboard-signal-row">
-              <span>Weakest CJMM</span>
-              <strong>{weakestCjmm?.label ?? "Pending"}</strong>
-            </div>
-            <div className="dashboard-signal-row">
-              <span>Premium baseline</span>
-              <strong>{data?.legacyAnswered ? `${data.premiumAnswered}/${data.totalAnswered}` : "Current"}</strong>
-            </div>
           </div>
         </article>
 
