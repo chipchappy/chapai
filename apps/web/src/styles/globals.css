@@ -31859,3 +31859,60 @@ h1, h2, h3, .highlights-band__title, .quiz-catalog-title, .dash-hero__title,
 }
 .quiz-theme-icon:hover { border-color: rgba(148, 163, 184, 0.6); transform: rotate(12deg); }
 .quiz-theme-icon svg { width: 17px; height: 17px; }
+
+/* ── Dashboard surface warmth (user-directed 2026-07-04): light mode reads
+   sand/beige like the rest of the site; dark mode reads stone with the sage +
+   adobe tints the other tabs carry. Scoped to dashboard surfaces only. ────── */
+.dashboard-hub,
+.study-console-panel,
+.dashboard-objective,
+.dashboard-empty,
+.metric-tile {
+  border: 1px solid rgba(139, 120, 93, 0.16);
+  background: linear-gradient(180deg, rgba(250, 244, 232, 0.92), rgba(243, 234, 218, 0.95));
+}
+.readiness-banner {
+  background-blend-mode: multiply;
+}
+
+[data-theme="dark"] .dashboard-hub,
+[data-theme="dark"] .study-console-panel,
+[data-theme="dark"] .dashboard-objective,
+[data-theme="dark"] .dashboard-empty,
+[data-theme="dark"] .metric-tile,
+[data-theme="dark"] .readiness-banner {
+  border: 1px solid rgba(126, 157, 134, 0.2);
+  background: linear-gradient(180deg, rgba(50, 53, 50, 0.94), rgba(38, 40, 42, 0.96));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+}
+[data-theme="dark"] .dashboard-hub::before,
+[data-theme="dark"] .study-console-panel::before,
+[data-theme="dark"] .dashboard-objective::before {
+  background:
+    radial-gradient(circle at top right, rgba(126, 157, 134, 0.16), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(196, 121, 86, 0.14), transparent 28%);
+}
+[data-theme="dark"] .dashboard-action-row,
+[data-theme="dark"] .dashboard-session-row {
+  border-color: rgba(126, 157, 134, 0.16);
+  background: rgba(58, 62, 68, 0.42);
+}
+
+/* Fixed-hex Tailwind text classes don't flip with the theme — remap them inside
+   dashboard surfaces so dark stone panels stay readable. */
+[data-theme="dark"] .dashboard-hub .text-dark,
+[data-theme="dark"] .study-console-panel .text-dark,
+[data-theme="dark"] .dashboard-objective .text-dark,
+[data-theme="dark"] .dashboard-empty .text-dark,
+[data-theme="dark"] .metric-tile .text-dark,
+[data-theme="dark"] .readiness-banner .text-dark {
+  color: var(--c-text-strong);
+}
+[data-theme="dark"] .dashboard-hub .text-muted,
+[data-theme="dark"] .study-console-panel .text-muted,
+[data-theme="dark"] .dashboard-objective .text-muted,
+[data-theme="dark"] .dashboard-empty .text-muted,
+[data-theme="dark"] .metric-tile .text-muted,
+[data-theme="dark"] .readiness-banner .text-muted {
+  color: var(--c-text-body);
+}

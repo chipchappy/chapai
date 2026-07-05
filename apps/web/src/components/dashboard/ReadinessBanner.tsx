@@ -116,7 +116,7 @@ export default function ReadinessBanner({
     : "No answers logged yet.";
 
   return (
-    <section className={`rounded-[24px] border p-5 ${tone.wrap}`} aria-label="Predicted NCLEX readiness">
+    <section className={`readiness-banner rounded-[24px] border p-5 ${tone.wrap}`} aria-label="Predicted NCLEX readiness">
       <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-3">

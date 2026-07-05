@@ -121,7 +121,7 @@ function ProgressRing({ label, pct, target, tone, sub }: { label: string; pct: n
   const radius = 34;
   const circumference = 2 * Math.PI * radius;
   return (
-    <article className="metric-tile rounded-[24px] bg-[rgba(255,252,247,0.94)] p-5">
+    <article className="metric-tile rounded-[24px] p-5">
       <p className="terminal-label">{label}</p>
       <div className="mt-3 flex items-center gap-4">
         <svg viewBox="0 0 84 84" className="h-20 w-20 shrink-0 -rotate-90">
@@ -154,7 +154,7 @@ function MilestoneBar({ label, value, steps, tone, unit }: { label: string; valu
   const prev = [...steps].reverse().find((step) => step <= value) ?? 0;
   const pct = value >= next ? 100 : next === prev ? 100 : Math.round(((value - prev) / (next - prev)) * 100);
   return (
-    <article className="metric-tile rounded-[24px] bg-[rgba(255,252,247,0.94)] p-5">
+    <article className="metric-tile rounded-[24px] p-5">
       <p className="terminal-label">{label}</p>
       <p className="mt-3 font-serif text-[2.1rem] leading-none text-dark">
         {value}
@@ -350,11 +350,11 @@ export default function StudyDashboard() {
         sevenDayAccuracy={data?.sevenDayAccuracy ?? 0}
       />
 
-      <section className="dashboard-hub overflow-hidden rounded-[30px] p-6">
+      <section className="dashboard-hub overflow-hidden rounded-[30px] p-6 md:p-9">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="terminal-label">Study dashboard</p>
-            <h1 className="mt-2 font-serif text-[2.4rem] leading-[0.96] text-dark">Your study console.</h1>
+            <h1 className="mt-2 font-serif text-[clamp(2.4rem,3.4vw,3.1rem)] leading-[0.96] text-dark">Your study console.</h1>
           </div>
           <div className="flex flex-wrap gap-2">
             {typeof data?.peerPercentile === "number" ? (
@@ -383,6 +383,43 @@ export default function StudyDashboard() {
           <MilestoneBar label="Questions answered" value={data?.totalAnswered ?? 0} steps={[50, 100, 250, 500, 1000, 2500, 5000]} tone="#c9a15a" unit="answered" />
           <MilestoneBar label="Study streak" value={data?.streak ?? 0} steps={[3, 7, 14, 30, 60, 100]} tone="#c47956" unit="days" />
         </div>
+
+        {weakAreas.length ? (
+          <div className="mt-6 border-t border-[rgba(139,120,93,0.16)] pt-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="terminal-label">Weak points</p>
+              <Link href={resumeHref} className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5A7F88] hover:text-dark">
+                Drill the weakest &rarr;
+              </Link>
+            </div>
+            <div className="mt-4 grid gap-x-6 gap-y-4 md:grid-cols-3">
+              {weakAreas.map((area) => (
+                <div key={`${area.exam}-${area.category}`}>
+                  <div className="flex items-center justify-between gap-3 text-sm">
+                    <span className="font-medium text-dark">{area.label}</span>
+                    <span className="text-muted">{area.accuracy}%</span>
+                  </div>
+                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-[rgba(74,85,89,0.12)]">
+                    <div
+                      className={`h-full rounded-full ${area.accuracy >= 65 ? "bg-[#7e9d86]" : area.accuracy >= 50 ? "bg-[#c9a15a]" : "bg-[#c47956]"}`}
+                      style={{ width: `${Math.max(6, area.accuracy)}%` }}
+                    />
+                  </div>
+                  <p className="mt-1 text-xs text-muted">{area.totalAnswered} answered</p>
+                </div>
+              ))}
+            </div>
+            {(weakestDifficulty || weakestCjmm) ? (
+              <p className="mt-3 text-xs leading-5 text-muted">
+                Adaptive target:{" "}
+                {[
+                  weakestDifficulty ? `${weakestDifficulty.label} (${weakestDifficulty.accuracy}%)` : null,
+                  weakestCjmm ? `${weakestCjmm.label} (${weakestCjmm.accuracy}%)` : null,
+                ].filter(Boolean).join(" · ")}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
@@ -446,45 +483,7 @@ export default function StudyDashboard() {
         </article>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-2">
-        <article className="study-console-panel">
-          <p className="terminal-label">Weak points</p>
-          {weakAreas.length ? (
-            <div className="mt-4 space-y-4">
-              {weakAreas.map((area) => (
-                <div key={`${area.exam}-${area.category}`}>
-                  <div className="flex items-center justify-between gap-3 text-sm">
-                    <span className="font-medium text-dark">{area.label}</span>
-                    <span className="text-muted">{area.accuracy}% · {area.totalAnswered} answered</span>
-                  </div>
-                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-[rgba(74,85,89,0.08)]">
-                    <div
-                      className={`h-full rounded-full ${area.accuracy >= 65 ? "bg-[#7e9d86]" : area.accuracy >= 50 ? "bg-[#c9a15a]" : "bg-[#c47956]"}`}
-                      style={{ width: `${Math.max(6, area.accuracy)}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-              {(weakestDifficulty || weakestCjmm) ? (
-                <p className="text-xs leading-5 text-muted">
-                  Adaptive target:{" "}
-                  {[
-                    weakestDifficulty ? `${weakestDifficulty.label} (${weakestDifficulty.accuracy}%)` : null,
-                    weakestCjmm ? `${weakestCjmm.label} (${weakestCjmm.accuracy}%)` : null,
-                  ].filter(Boolean).join(" · ")}
-                </p>
-              ) : null}
-              <Link href={resumeHref} className="btn-secondary inline-flex">
-                Drill the weakest lane &rarr;
-              </Link>
-            </div>
-          ) : (
-            <p className="mt-4 text-sm leading-6 text-muted">
-              No weak area stands out yet — these bars appear after a few saved sessions.
-            </p>
-          )}
-        </article>
-
+      <section>
         <article className="study-console-panel">
           <div className="flex items-center justify-between gap-3">
             <p className="terminal-label">Recent sessions</p>
@@ -504,7 +503,7 @@ export default function StudyDashboard() {
           ) : null}
           {data?.recentSessions.length ? (
             <div className="mt-4 space-y-3">
-              {data.recentSessions.slice(0, 5).map((session) => (
+              {data.recentSessions.slice(0, 4).map((session) => (
                 <div key={session.id} className="dashboard-session-row">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5A7F88]">{session.exam}</p>
