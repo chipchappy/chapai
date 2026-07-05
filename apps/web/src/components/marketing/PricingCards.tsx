@@ -87,11 +87,12 @@ export default function PricingCards() {
               <p className={styles.tagline}>Real practice before you pay a cent.</p>
             </div>
             <ul className={styles.features}>
-              <li>Standard live-bank practice</li>
+              <li><strong>200 free practice questions</strong> across every topic</li>
+              <li><strong>1 free readiness exam</strong> to see where you stand</li>
               <li>NCLEX-style rationales and citations</li>
               <li>Daily Question email optional</li>
               <li className={styles.locked}>
-                Readiness exams, rich NGN modes, tutor, and advanced analytics unlock with paid plans
+                Unlimited bank, 4 more readiness exams, rich NGN modes, and the AI tutor unlock with paid plans
               </li>
             </ul>
             <div className={styles.actions}>

@@ -121,7 +121,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[720px] text-center">
           <h2 className="font-serif text-[2.3rem] leading-[1.02] text-dark">Ready when you are.</h2>
           <p className="mt-3 text-base leading-7 text-muted">
-            Free daily questions to start — the full NGN bank, AI tutor, and readiness exams when you&rsquo;re ready.
+            200 free practice questions and a free readiness exam to start — the unlimited NGN bank, AI tutor, and all 5 readiness exams when you&rsquo;re ready.
           </p>
           <div className="mt-6 flex justify-center">
             <CtaButtons surface="home-closing" />
