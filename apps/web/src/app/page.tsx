@@ -83,7 +83,28 @@ export default async function HomePage() {
         drugCards={200}
       />
 
-      <div className="px-4 pt-8 pb-14">
+      <PricingCards />
+
+      {/* Guarantee band — the Pass Pledge, visible right at the pricing decision. */}
+      <section className="px-4 pb-12">
+        <div className="mx-auto flex max-w-[880px] flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-[22px] border border-[rgba(111,141,118,0.3)] bg-[linear-gradient(180deg,rgba(240,246,241,0.9),rgba(255,252,247,0.95))] px-6 py-5 text-center">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(111,141,118,0.16)] text-[#55715e]" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </span>
+          <p className="text-sm leading-6 text-dark">
+            <strong className="font-semibold">Backed by the Clarity Pass Pledge</strong> — score On Track on all 5 readiness
+            exams and don&rsquo;t pass? Your next 3 months are free.{" "}
+            <a href="/pricing#pledge" className="underline decoration-dotted underline-offset-2 text-[#55715e] hover:text-dark">
+              See the pledge
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <div className="px-4 pt-2 pb-14">
         <div className="mx-auto max-w-[1180px]">
           <DailyQuestionSignup
             source="home-front-page"
@@ -93,8 +114,6 @@ export default async function HomePage() {
           />
         </div>
       </div>
-
-      <PricingCards />
 
       {/* Closing CTA — same primary action at the end of the scroll (single,
           consistent conversion path; styling reuses existing tokens only). */}

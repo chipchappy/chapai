@@ -44,11 +44,31 @@ export default function PricingPage() {
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      {/* Guarantee ribbon — the pledge is visible before the price is. */}
+      <section className="px-4 pt-8">
+        <div className="mx-auto flex max-w-[880px] flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-[22px] border border-[rgba(111,141,118,0.3)] bg-[linear-gradient(180deg,rgba(240,246,241,0.9),rgba(255,252,247,0.95))] px-6 py-4 text-center">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(111,141,118,0.16)] text-[#55715e]" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </span>
+          <p className="text-sm leading-6 text-dark">
+            <strong className="font-semibold">Every plan is backed by the Clarity Pass Pledge</strong> — do the work,
+            and if you don&rsquo;t pass, your next 3 months are free.{" "}
+            <a href="#pledge" className="underline decoration-dotted underline-offset-2 text-[#55715e] hover:text-dark">
+              Details
+            </a>
+          </p>
+        </div>
+      </section>
+
       <PricingCards />
 
       {/* The Clarity Pass Pledge — trust mechanic (P0-4). Terms are explicit and
           tied to the plan that actually includes all 5 readiness exams. */}
-      <section className="px-4 pb-6 pt-2">
+      <section id="pledge" className="px-4 pb-6 pt-2">
         <div className="mx-auto max-w-[880px] rounded-[28px] border border-[rgba(126,157,134,0.24)] bg-[rgba(126,157,134,0.08)] p-6 text-center md:p-8">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">The Clarity Pass Pledge</p>
           <h2 className="mt-3 font-serif text-[2rem] leading-[1.02] text-dark">
