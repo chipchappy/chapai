@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import StartHerePicker from "./StartHerePicker";
 
 import BrandMark from "@/components/brand/BrandMark";
@@ -157,6 +158,26 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
   } = props;
   const nclexExamActive = Boolean(session && phase !== "catalog" && phase !== "results" && currentQuestion?.exam === "nclex");
 
+  // Free-tier meter: lifetime questions used toward the 200 free allowance.
+  const [freeUsed, setFreeUsed] = useState<number | null>(null);
+  useEffect(() => {
+    if (tier !== "free") return;
+    let cancelled = false;
+    fetch("/api/quiz/history", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((payload) => {
+        const stats = (payload?.data ?? payload)?.stats;
+        if (!cancelled && typeof stats?.totalQuestions === "number") {
+          setFreeUsed(stats.totalQuestions);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [tier]);
+  const freeRemaining = freeUsed === null ? null : Math.max(0, 200 - freeUsed);
+
   return (
     <div className={`quiz-terminal-app quiz-terminal-tier-${tier}`} data-study-theme={studyTheme}>
       {!nclexExamActive ? <header className="quiz-terminal-header">
@@ -229,8 +250,14 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                 <p className="quiz-catalog-eyebrow">Practice center</p>
                 <div className="quiz-catalog-head__chips">
                   {tier === "free" ? (
-                    <a href="/pricing" className="quiz-catalog-free-pill" aria-label="Free plan limit — view upgrade options">
-                      <span>Free plan · limited daily questions</span>
+                    <a href="/pricing" className="quiz-catalog-free-pill" aria-label="Free plan allowance — view upgrade options">
+                      <span>
+                        {freeRemaining === null
+                          ? "200 free practice questions"
+                          : freeRemaining > 0
+                            ? `${freeRemaining} of 200 free questions left`
+                            : "Free questions used — unlock the full bank"}
+                      </span>
                       <span className="quiz-catalog-free-pill__cta">Upgrade &rarr;</span>
                     </a>
                   ) : null}
@@ -365,7 +392,14 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
               })()}
             </section>
 
-            {error ? <div className="quiz-terminal-alert">{error}</div> : null}
+            {error ? (
+              <div className="quiz-terminal-alert">
+                {error}
+                {/free question|upgrade/i.test(error) ? (
+                  <a href="/pricing" className="btn-primary mt-3 inline-flex">See plans &rarr;</a>
+                ) : null}
+              </div>
+            ) : null}
 
             <section className="quiz-terminal-section">
               <div className="flex flex-wrap items-end justify-between gap-3">
@@ -386,7 +420,8 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                     <span className="quiz-readiness-card__num">{index + 1}</span>
                     <strong>{definition.label}</strong>
                     <small>
-                      {definition.length} questions · {definition.timeLimitMinutes} min{!canUsePracticeExams ? " · premium" : ""}
+                      {definition.length} questions · {definition.timeLimitMinutes} min
+                      {index === 0 && definition.exam === "nclex" ? " · free with account" : !canUsePracticeExams ? " · premium" : ""}
                     </small>
                   </button>
                 ))}

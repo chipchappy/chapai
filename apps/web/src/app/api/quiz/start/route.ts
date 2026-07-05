@@ -4,6 +4,8 @@ import { allowLocalFallbacks } from "@/lib/env";
 import { createRequestContext, logError } from "@/lib/logger";
 import { startLocalSession } from "@/lib/local-quiz-store";
 import { ensureHostedUser } from "@/lib/billing-store";
+import { quizAnswers } from "@chapai/db/schema";
+import { eq, sql } from "drizzle-orm";
 import { selectQuestions, createSession } from "@/lib/quiz-engine";
 import { getQuestionBank } from "@/lib/content-bank";
 import { getStandardPreviewDeck } from "@/lib/practice-data";
@@ -173,13 +175,43 @@ export async function POST(req: NextRequest) {
           name: typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : null,
         })
       : null;
+    // Free plan: 200 lifetime practice questions, then the paywall. The batch is
+    // capped to the remaining allowance and the response carries the meter so the
+    // UI can gamify progress toward the limit.
+    const FREE_QUESTION_LIMIT = 200;
+    let freeQuestions: { used: number; limit: number } | null = null;
+    let effectiveConfig = config;
+    if (hostedUser && access.tier === "free" && !previewAccess) {
+      const usedRows = await db
+        .select({ used: sql<number>`count(*)` })
+        .from(quizAnswers)
+        .where(eq(quizAnswers.userId, hostedUser.id));
+      const used = Number(usedRows[0]?.used ?? 0);
+      if (used >= FREE_QUESTION_LIMIT) {
+        return jsonError(
+          403,
+          "FREE_LIMIT_REACHED",
+          `You've completed all ${FREE_QUESTION_LIMIT} free questions — upgrade to unlock the full reviewed bank, all readiness exams, and the AI tutor.`,
+          requestContext,
+          { requestId: requestContext.requestId },
+        );
+      }
+      freeQuestions = { used, limit: FREE_QUESTION_LIMIT };
+      const remaining = FREE_QUESTION_LIMIT - used;
+      const requested = typeof config.count === "number" ? config.count : 10;
+      // count is a literal union in the schema; the capped value is still a
+      // plain positive int, which is all the engine/session code needs.
+      effectiveConfig = { ...config, count: Math.max(1, Math.min(requested, remaining)) as typeof config.count };
+    }
+
     let questionList: QuizQuestion[] = [];
     try {
-      questionList = await selectQuestions(db, config, {
+      questionList = await selectQuestions(db, effectiveConfig, {
         questionBankAccessPercent: access.questionBankAccessPercent,
         userId: hostedUser?.id,
         adaptive: parsed.data.adaptive,
         excludeIds: parsed.data.excludeIds,
+        diversify: access.tier === "free",
       });
     } catch (error) {
       logError("quiz/start selection failed", error, requestContext);
@@ -203,16 +235,16 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      const sessionId = await createSession(db, hostedUser?.id ?? undefined, config, questionList);
+      const sessionId = await createSession(db, hostedUser?.id ?? undefined, effectiveConfig, questionList);
       return jsonSuccess(
-        { sessionId, questions: questionList } satisfies { sessionId: string; questions: typeof questionList },
+        { sessionId, questions: questionList, freeQuestions },
         200,
         { requestId: requestContext.requestId },
       );
     } catch (error) {
       logError("quiz/start session creation failed; returning demo payload", error, requestContext);
       return jsonSuccess(
-        { sessionId: `demo-${Date.now()}`, questions: questionList } satisfies { sessionId: string; questions: typeof questionList },
+        { sessionId: `demo-${Date.now()}`, questions: questionList, freeQuestions },
         200,
         { requestId: requestContext.requestId },
       );

@@ -160,6 +160,14 @@ test.describe("core product", () => {
     await page.goto("/quiz", { waitUntil: "networkidle" });
     const cards = page.getByTestId("readiness-exam-grid").locator(".quiz-readiness-card");
     await expect(cards, "five NCLEX readiness forms").toHaveCount(5, { timeout: 15_000 });
+    await expect(cards.nth(0), "first readiness exam is free").toContainText("free with account");
+    await expect(cards.nth(4), "later readiness exams are premium").toContainText("premium");
+  });
+
+  test("free plan shows the 200-question allowance pill (anon)", async ({ page }) => {
+    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await expect(page.locator(".quiz-catalog-free-pill"), "free allowance pill renders")
+      .toContainText(/200 free|free questions/i);
   });
 
   test("quiz catalog defaults to Unlimited deck size (inside filters)", async ({ page }) => {

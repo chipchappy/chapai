@@ -3,6 +3,9 @@ import { practiceExamUnlocks } from "@chapai/db/schema";
 import type { DB } from "@/lib/db";
 import { examIdMatchesTrack, getLaunchOffer, type LaunchPlanCode } from "@/lib/launch-offers";
 
+// Exactly one readiness exam is free (with an account); the other four are paid.
+export const FREE_PRACTICE_EXAM_ID = "nclex-sim-1";
+
 function getTrackFromExamId(examId: string) {
   return examId.startsWith("ccrn-") ? "ccrn" : "nclex";
 }

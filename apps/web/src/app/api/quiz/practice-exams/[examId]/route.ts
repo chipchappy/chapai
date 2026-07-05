@@ -4,7 +4,7 @@ import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { mapQuestionRowToQuizQuestion } from "@/lib/quiz-engine";
 import { ensureHostedUser } from "@/lib/billing-store";
 import { isLaunchPlanCode } from "@/lib/launch-offers";
-import { canUnlockPracticeExam, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
+import { canUnlockPracticeExam, FREE_PRACTICE_EXAM_ID, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
 import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam, type QuizQuestion } from "@/lib/types";
 import { getPracticeExamDefinitions, getStandardPreviewDeck, mapLiveQuestionBank } from "@/lib/practice-data";
 import type { PracticeExamDefinition, PracticeQuestion } from "@/lib/practice-types";
@@ -324,10 +324,13 @@ export async function GET(request: Request, context: RouteContext) {
     }, { status: 401 });
   }
 
-  if (!access.canUsePracticeExams || !access.planCode || !isLaunchPlanCode(access.planCode)) {
+  // One readiness exam is free with any account; the other four stay premium.
+  const isFreeExam = parsed.data === FREE_PRACTICE_EXAM_ID;
+
+  if (!isFreeExam && (!access.canUsePracticeExams || !access.planCode || !isLaunchPlanCode(access.planCode))) {
     return Response.json({
       success: false,
-      error: "This account does not have practice exam access yet.",
+      error: "This readiness exam is part of the paid plans — your first one (NCLEX Full Simulation 1) is free.",
       code: "PREMIUM_REQUIRED",
     }, { status: 403 });
   }
@@ -362,27 +365,30 @@ export async function GET(request: Request, context: RouteContext) {
     return Response.json({ success: false, error: "Hosted account lookup failed." }, { status: 503 });
   }
 
-  const unlockCheck = await canUnlockPracticeExam(db, {
-    userId: hostedUser.id,
-    examId: parsed.data,
-    planCode: access.planCode,
-  });
+  // The free exam skips plan-scope checks and unlock accounting entirely.
+  if (!isFreeExam && access.planCode && isLaunchPlanCode(access.planCode)) {
+    const unlockCheck = await canUnlockPracticeExam(db, {
+      userId: hostedUser.id,
+      examId: parsed.data,
+      planCode: access.planCode,
+    });
 
-  if (!unlockCheck.allowed) {
-    return Response.json({
-      success: false,
-      error: unlockCheck.reason,
-      code: "PRACTICE_EXAM_LIMIT_REACHED",
-      practiceExamLimit: access.practiceExamLimit,
-      unlockedExamIds: unlockCheck.unlockedExamIds,
-    }, { status: 403 });
+    if (!unlockCheck.allowed) {
+      return Response.json({
+        success: false,
+        error: unlockCheck.reason,
+        code: "PRACTICE_EXAM_LIMIT_REACHED",
+        practiceExamLimit: access.practiceExamLimit,
+        unlockedExamIds: unlockCheck.unlockedExamIds,
+      }, { status: 403 });
+    }
+
+    await recordPracticeExamUnlock(db, {
+      userId: hostedUser.id,
+      examId: parsed.data,
+      planCode: access.planCode,
+    });
   }
-
-  await recordPracticeExamUnlock(db, {
-    userId: hostedUser.id,
-    examId: parsed.data,
-    planCode: access.planCode,
-  });
 
   return Response.json({
     success: true,

@@ -362,6 +362,7 @@ export async function selectQuestions(
     userId?: string;
     adaptive?: boolean;
     excludeIds?: string[];
+    diversify?: boolean;
   },
 ): Promise<QuizQuestion[]> {
   const { exam, count } = config;
@@ -447,6 +448,30 @@ export async function selectQuestions(
 
   if (questionType === "case_study") {
     return selectCompleteCaseStudyGroups(bank, count);
+  }
+
+  // Free-tier diversification: round-robin across categories so the limited
+  // free allowance samples the whole exam (all client needs + a natural mix of
+  // item types) instead of clustering in one lane. Explicit filters win.
+  if (access?.diversify && !config.category && !questionType && !config.ngnOnly) {
+    const byCategory = new Map<string, QuizQuestion[]>();
+    for (const question of [...bank].sort(() => Math.random() - 0.5)) {
+      const list = byCategory.get(question.category) ?? [];
+      list.push(question);
+      byCategory.set(question.category, list);
+    }
+    const buckets = [...byCategory.values()];
+    const picked: QuizQuestion[] = [];
+    let cursor = 0;
+    while (picked.length < count && buckets.some((bucket) => bucket.length > 0)) {
+      const bucket = buckets[cursor % buckets.length];
+      const question = bucket.shift();
+      if (question) {
+        picked.push(question);
+      }
+      cursor += 1;
+    }
+    return picked;
   }
 
   if (config.category || questionType || config.ngnOnly) {
