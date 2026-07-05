@@ -394,8 +394,53 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
 - Context: ${context}.`;
 
     const apiKey = (env as Record<string, unknown>).ANTHROPIC_API_KEY as string | undefined;
+    const geminiKey = (env as Record<string, unknown>).GEMINI_API_KEY as string | undefined;
 
-    if (isDemoMode(env) || !apiKey) {
+    if (isDemoMode(env)) {
+      return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
+    }
+
+    // No Anthropic key on this worker — serve real AI via Gemini 2.5 Flash so the
+    // premium tutor is never a canned response. Generated once, then piped through
+    // the same SSE shape the client already consumes.
+    if (!apiKey && geminiKey) {
+      try {
+        const contents = [
+          ...history.map((message) => ({
+            role: message.role === "assistant" ? "model" : "user",
+            parts: [{ text: message.content }],
+          })),
+          { role: "user", parts: [{ text: userMessage }] },
+        ];
+        const geminiResponse = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: systemPrompt }] },
+              contents,
+              generationConfig: { maxOutputTokens: 1024, temperature: 0.4 },
+            }),
+          },
+        );
+        if (geminiResponse.ok) {
+          const payload = await geminiResponse.json() as {
+            candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+          };
+          const text = payload.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("").trim();
+          if (text && text.length > 20) {
+            return streamFallback(text);
+          }
+        }
+        logError("Tutor Gemini response unusable; serving fallback", await geminiResponse.text().catch(() => ""), requestContext);
+      } catch (error) {
+        logError("Tutor Gemini call failed; serving fallback", error, requestContext);
+      }
+      return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
+    }
+
+    if (!apiKey) {
       return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
     }
 
