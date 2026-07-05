@@ -116,69 +116,63 @@ function ScoreBadge({ score }: { score: number }) {
   return <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${tone}`}>{score}%</span>;
 }
 
-function StatCard({
-  label,
-  value,
-  sub,
-  tone = "neutral",
-}: {
-  label: string;
-  value: string | number;
-  sub?: string;
-  tone?: "neutral" | "sage" | "blue" | "gold";
-}) {
-  const toneClasses =
-    tone === "sage"
-      ? "bg-[linear-gradient(180deg,rgba(240,246,241,0.95),rgba(255,252,247,0.96))]"
-      : tone === "blue"
-        ? "bg-[linear-gradient(180deg,rgba(239,246,248,0.95),rgba(255,252,247,0.96))]"
-        : tone === "gold"
-          ? "bg-[linear-gradient(180deg,rgba(250,245,232,0.96),rgba(255,252,247,0.96))]"
-          : "bg-[rgba(255,252,247,0.94)]";
-
+function ProgressRing({ label, pct, target, tone, sub }: { label: string; pct: number; target: number; tone: string; sub?: string }) {
+  const clamped = Math.max(0, Math.min(100, Math.round(pct)));
+  const radius = 34;
+  const circumference = 2 * Math.PI * radius;
   return (
-    <article className={`metric-tile rounded-[24px] p-5 ${toneClasses}`}>
+    <article className="metric-tile rounded-[24px] bg-[rgba(255,252,247,0.94)] p-5">
       <p className="terminal-label">{label}</p>
-      <p className="mt-3 font-serif text-[2rem] leading-none text-dark">{value}</p>
-      {sub ? <p className="mt-2 text-sm leading-6 text-muted">{sub}</p> : null}
+      <div className="mt-3 flex items-center gap-4">
+        <svg viewBox="0 0 84 84" className="h-20 w-20 shrink-0 -rotate-90">
+          <circle cx="42" cy="42" r={radius} fill="none" stroke="rgba(74,85,89,0.1)" strokeWidth="8" />
+          <circle
+            cx="42"
+            cy="42"
+            r={radius}
+            fill="none"
+            stroke={tone}
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeDasharray={`${(clamped / 100) * circumference} ${circumference}`}
+          />
+        </svg>
+        <div className="min-w-0">
+          <p className="font-serif text-[2.1rem] leading-none text-dark">{clamped}%</p>
+          <p className="mt-1 text-xs leading-5 text-muted">
+            {clamped >= target ? `${clamped - target} pts above` : `${target - clamped} pts below`} the {target}% line
+          </p>
+        </div>
+      </div>
+      {sub ? <p className="mt-3 text-xs leading-5 text-muted">{sub}</p> : null}
     </article>
   );
 }
 
-function isExternalHref(href: string) {
-  return /^https?:\/\//i.test(href);
-}
-
-function ResourceActionRow({ resource, tone = "Study" }: { resource: StudyResource; tone?: string }) {
-  const content = (
-    <>
-      <span>
-        <strong>{resource.title}</strong>
-        <small>{resource.why}</small>
-      </span>
-      <span className="signal-pill signal-pill-sage">{tone}</span>
-    </>
-  );
-
-  if (isExternalHref(resource.href)) {
-    return (
-      <a href={resource.href} target="_blank" rel="noreferrer" className="dashboard-action-row">
-        {content}
-      </a>
-    );
-  }
-
+function MilestoneBar({ label, value, steps, tone, unit }: { label: string; value: number; steps: number[]; tone: string; unit: string }) {
+  const next = steps.find((step) => step > value) ?? steps[steps.length - 1];
+  const prev = [...steps].reverse().find((step) => step <= value) ?? 0;
+  const pct = value >= next ? 100 : next === prev ? 100 : Math.round(((value - prev) / (next - prev)) * 100);
   return (
-    <Link href={resource.href} className="dashboard-action-row">
-      {content}
-    </Link>
+    <article className="metric-tile rounded-[24px] bg-[rgba(255,252,247,0.94)] p-5">
+      <p className="terminal-label">{label}</p>
+      <p className="mt-3 font-serif text-[2.1rem] leading-none text-dark">
+        {value}
+        <span className="ml-2 text-sm font-normal text-muted">{unit}</span>
+      </p>
+      <div className="mt-3 h-2 overflow-hidden rounded-full bg-[rgba(74,85,89,0.08)]">
+        <div className="h-full rounded-full" style={{ width: `${Math.max(4, pct)}%`, background: tone }} />
+      </div>
+      <p className="mt-2 text-xs leading-5 text-muted">
+        {value >= next ? `Top milestone reached.` : `${next - value} to the ${next} milestone`}
+      </p>
+    </article>
   );
 }
 
 export default function StudyDashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "history" | "review">("overview");
   const [aiEvaluation, setAiEvaluation] = useState<string | null>(null);
 
   useEffect(() => {
@@ -357,62 +351,53 @@ export default function StudyDashboard() {
       />
 
       <section className="dashboard-hub overflow-hidden rounded-[30px] p-6">
-        <div className="grid gap-5 xl:grid-cols-[1.14fr_0.86fr]">
-          <div className="max-w-3xl">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
             <p className="terminal-label">Study dashboard</p>
-            <h1 className="mt-3 font-serif text-[2.4rem] leading-[0.96] text-dark">Your study console.</h1>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <span className="signal-pill signal-pill-sage">{data?.streak ?? 0} day streak</span>
-              <span className="signal-pill signal-pill-blue">{data?.totalAnswered ?? 0} answered</span>
-              <span className="signal-pill signal-pill-gold">{data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}% 7-day` : "No 7-day score yet"}</span>
-              <span className="signal-pill">{data?.reviewQueue.length ?? 0} due now</span>
-              {typeof data?.peerPercentile === "number" ? (
-                <span className="signal-pill signal-pill-sage">Ahead of {data.peerPercentile}% of students this week</span>
-              ) : null}
-              {strongestLane ? <span className="signal-pill">Best lane: {strongestLane.exam}</span> : null}
-            </div>
+            <h1 className="mt-2 font-serif text-[2.4rem] leading-[0.96] text-dark">Your study console.</h1>
           </div>
-
-          {nextObjective ? (
-            <div className={`dashboard-objective dashboard-objective-${nextObjective.tone}`}>
-              <p className="terminal-label">{nextObjective.label}</p>
-              <h2 className="mt-3 font-serif text-[2rem] leading-[0.96] text-dark">{nextObjective.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-muted">{nextObjective.body}</p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <Link href={nextObjective.href} className="btn-primary">
-                  {nextObjective.cta}
-                </Link>
-                <Link href="/quiz?mode=practice-exam&practiceExam=nclex-sim-1" className="btn-secondary">
-                  Open simulation
-                </Link>
-              </div>
-            </div>
-          ) : null}
+          <div className="flex flex-wrap gap-2">
+            {typeof data?.peerPercentile === "number" ? (
+              <span className="signal-pill signal-pill-sage">Ahead of {data.peerPercentile}% of students this week</span>
+            ) : null}
+            <span className="signal-pill signal-pill-gold">{data?.reviewQueue.length ?? 0} due for review</span>
+            {strongestLane ? <span className="signal-pill">Best lane: {strongestLane.exam}</span> : null}
+          </div>
         </div>
-      </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Streak" value={data?.streak ?? 0} sub="days in a row" tone="sage" />
-        <StatCard label="7-day accuracy" value={data && data.totalAnswered > 0 ? `${data.sevenDayAccuracy}%` : "n/a"} sub="completed sessions" tone="blue" />
-        <StatCard label="Due now" value={data?.reviewQueue.length ?? 0} sub="spaced repetition queue" tone="gold" />
-        <StatCard
-          label="Weak categories"
-          value={weakAreas.length || "n/a"}
-          sub={weakAreas.length ? weakAreas.map((area) => area.label).join(", ") : "none identified yet"}
-        />
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <ProgressRing
+            label="Overall accuracy"
+            pct={overallAccuracy}
+            target={65}
+            tone="#7e9d86"
+            sub={`${data?.totalCorrect ?? 0}/${data?.totalAnswered ?? 0} correct all-time`}
+          />
+          <ProgressRing
+            label="7-day accuracy"
+            pct={data && data.totalAnswered > 0 ? data.sevenDayAccuracy : 0}
+            target={65}
+            tone="#5A7F88"
+            sub="completed sessions this week"
+          />
+          <MilestoneBar label="Questions answered" value={data?.totalAnswered ?? 0} steps={[50, 100, 250, 500, 1000, 2500, 5000]} tone="#c9a15a" unit="answered" />
+          <MilestoneBar label="Study streak" value={data?.streak ?? 0} steps={[3, 7, 14, 30, 60, 100]} tone="#c47956" unit="days" />
+        </div>
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
         <article className="study-console-panel">
-          <p className="terminal-label">Quick launch</p>
-          <div className="mt-4 grid gap-3">
-            <Link href={resumeHref} className="dashboard-action-row">
-              <span>
-                <strong>Resume practice</strong>
-                <small>{weakestLane ? `Open ${weakestLane.label} from the reviewed bank.` : "Open a clean NCLEX rep from the reviewed bank."}</small>
-              </span>
-              <span className="signal-pill signal-pill-blue">Launch</span>
-            </Link>
+          <p className="terminal-label">Next move</p>
+          {nextObjective ? (
+            <>
+              <h2 className="mt-3 font-serif text-[1.8rem] leading-[0.98] text-dark">{nextObjective.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">{nextObjective.body}</p>
+              <Link href={nextObjective.href} className="btn-primary mt-4 inline-flex">
+                {nextObjective.cta}
+              </Link>
+            </>
+          ) : null}
+          <div className="mt-5 grid gap-3">
             <Link href="/quiz?exam=nclex&mode=ngn" className="dashboard-action-row">
               <span>
                 <strong>NGN focus</strong>
@@ -420,24 +405,10 @@ export default function StudyDashboard() {
               </span>
               <span className="signal-pill signal-pill-gold">NGN</span>
             </Link>
-            <Link href={resumeHref} className="dashboard-action-row">
-              <span>
-                <strong>Recommended challenge</strong>
-                <small>
-                  {weakestDifficulty || weakestCjmm
-                    ? [weakestDifficulty?.label, weakestCjmm?.label].filter(Boolean).join(" / ")
-                    : "Difficulty and CJMM targeting appears after saved answers."}
-                </small>
-              </span>
-              <span className="signal-pill signal-pill-sage">Target</span>
-            </Link>
-            {recommendationResources[0] ? (
-              <ResourceActionRow resource={recommendationResources[0]} tone="Study" />
-            ) : null}
             <Link href="/quiz?mode=practice-exam&practiceExam=nclex-sim-1" className="dashboard-action-row">
               <span>
-                <strong>Practice exam</strong>
-                <small>Fixed-length timed simulation with the same bank.</small>
+                <strong>Readiness exam</strong>
+                <small>Timed, scored against the blueprint — feeds your verdict.</small>
               </span>
               <span className="signal-pill">Timed</span>
             </Link>
@@ -475,159 +446,66 @@ export default function StudyDashboard() {
         </article>
       </section>
 
-      <section className="study-console-panel">
-        <div className="dashboard-tab-strip flex gap-1 rounded-[18px] bg-[rgba(245,241,232,0.86)] p-1">
-          {(["overview", "history", "review"] as const).map((tab) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveTab(tab)}
-              className={`flex-1 rounded-[14px] px-4 py-2.5 text-sm font-semibold capitalize transition ${
-                activeTab === tab ? "bg-white text-dark shadow-[0_8px_18px_rgba(31,38,43,0.06)]" : "text-muted hover:text-dark"
-              }`}
-            >
-              {tab === "review" ? `Review (${data?.reviewQueue.length ?? 0})` : tab}
-            </button>
-          ))}
-        </div>
-
-        {activeTab === "overview" ? (
-          <div className="mt-5 grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="space-y-4">
-              <article className="study-console-panel bg-white/70">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="terminal-label">Recent sessions</p>
-                  <Link href="/quiz" className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5A7F88]">
-                    Practice now
-                  </Link>
+      <section className="grid gap-4 lg:grid-cols-2">
+        <article className="study-console-panel">
+          <p className="terminal-label">Weak points</p>
+          {weakAreas.length ? (
+            <div className="mt-4 space-y-4">
+              {weakAreas.map((area) => (
+                <div key={`${area.exam}-${area.category}`}>
+                  <div className="flex items-center justify-between gap-3 text-sm">
+                    <span className="font-medium text-dark">{area.label}</span>
+                    <span className="text-muted">{area.accuracy}% · {area.totalAnswered} answered</span>
+                  </div>
+                  <div className="mt-2 h-2 overflow-hidden rounded-full bg-[rgba(74,85,89,0.08)]">
+                    <div
+                      className={`h-full rounded-full ${area.accuracy >= 65 ? "bg-[#7e9d86]" : area.accuracy >= 50 ? "bg-[#c9a15a]" : "bg-[#c47956]"}`}
+                      style={{ width: `${Math.max(6, area.accuracy)}%` }}
+                    />
+                  </div>
                 </div>
-                {data?.recentSessions.length ? (
-                  <div className="mt-4 space-y-3">
-                    {data.recentSessions.slice(0, 5).map((session) => (
-                      <div key={session.id} className="dashboard-session-row">
-                        <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5A7F88]">{session.exam}</p>
-                          <p className="mt-1 text-sm text-dark">
-                            {session.correctAnswers}/{session.totalQuestions} correct
-                          </p>
-                          <p className="mt-1 text-xs text-muted">
-                            {sessionDate(session).toLocaleDateString(undefined, {
-                              month: "short",
-                              day: "numeric",
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })}
-                          </p>
-                        </div>
-                        <ScoreBadge score={sessionScore(session)} />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="dashboard-empty mt-4">
-                    <p className="font-semibold text-dark">No saved sessions yet.</p>
-                    <p className="mt-2 text-sm leading-6 text-muted">Start a live-bank set and your progress will appear here automatically.</p>
-                  </div>
-                )}
-              </article>
-
-              {data && data.reviewQueue.length > 0 ? (
-                <article className="dashboard-objective dashboard-objective-sage">
-                  <p className="terminal-label">Review queue</p>
-                  <h2 className="mt-3 font-serif text-[1.8rem] leading-[0.98] text-dark">{data.reviewQueue.length} items due next.</h2>
-                  <p className="mt-3 text-sm leading-6 text-muted">
-                    Keep the queue light and the retention curve steadier by clearing the next review block inside the same study surface.
-                  </p>
-                  <Link href="/quiz?mode=review" className="btn-secondary mt-4 inline-flex">
-                    Start review
-                  </Link>
-                </article>
+              ))}
+              {(weakestDifficulty || weakestCjmm) ? (
+                <p className="text-xs leading-5 text-muted">
+                  Adaptive target:{" "}
+                  {[
+                    weakestDifficulty ? `${weakestDifficulty.label} (${weakestDifficulty.accuracy}%)` : null,
+                    weakestCjmm ? `${weakestCjmm.label} (${weakestCjmm.accuracy}%)` : null,
+                  ].filter(Boolean).join(" · ")}
+                </p>
               ) : null}
+              <Link href={resumeHref} className="btn-secondary inline-flex">
+                Drill the weakest lane &rarr;
+              </Link>
             </div>
+          ) : (
+            <p className="mt-4 text-sm leading-6 text-muted">
+              No weak area stands out yet — these bars appear after a few saved sessions.
+            </p>
+          )}
+        </article>
 
-            <div className="space-y-4">
-              <article className="study-console-panel bg-white/70">
-                <p className="terminal-label">Exam trends</p>
-                <div className="mt-4 space-y-3">
-                  {examStats.length ? (
-                    examStats
-                      .sort((a, b) => a.accuracy - b.accuracy)
-                      .map((stat) => (
-                        <div key={stat.exam}>
-                          <div className="flex items-center justify-between gap-3 text-sm">
-                            <span className="font-medium text-dark">{stat.exam}</span>
-                            <span className="text-muted">{stat.accuracy}%</span>
-                          </div>
-                          <div className="mt-2 h-2 overflow-hidden rounded-full bg-[rgba(74,85,89,0.08)]">
-                            <div
-                              className={`h-full rounded-full ${stat.accuracy >= 75 ? "bg-[#7e9d86]" : stat.accuracy >= 60 ? "bg-[#5A7F88]" : "bg-[#c47956]"}`}
-                              style={{ width: `${stat.accuracy}%` }}
-                            />
-                          </div>
-                        </div>
-                      ))
-                  ) : (
-                    <p className="text-sm leading-6 text-muted">Session trends will appear here after your first saved run.</p>
-                  )}
-                </div>
-              </article>
-
-              <article className="study-console-panel bg-white/70">
-                <p className="terminal-label">Focus next</p>
-                {weakAreas.length ? (
-                  <div className="mt-4 space-y-3">
-                    {weakAreas.map((area) => (
-                      <div key={`${area.exam}-${area.category}`} className="rounded-[18px] border border-[rgba(196,121,86,0.18)] bg-[rgba(250,242,236,0.88)] px-4 py-3">
-                        <p className="text-sm font-semibold text-dark">{area.label}</p>
-                        <p className="mt-1 text-sm leading-6 text-muted">
-                          {area.accuracy}% accuracy across {area.totalAnswered} saved answers. Open a fresh set and keep the rationale loop tight.
-                        </p>
-                      </div>
-                    ))}
-                    {(weakestDifficulty || weakestCjmm) ? (
-                      <div className="rounded-[18px] border border-[rgba(90,127,136,0.18)] bg-[rgba(239,246,248,0.88)] px-4 py-3">
-                        <p className="text-sm font-semibold text-dark">Adaptive target</p>
-                        <p className="mt-1 text-sm leading-6 text-muted">
-                          {[weakestDifficulty ? `${weakestDifficulty.label} at ${weakestDifficulty.accuracy}%` : null, weakestCjmm ? `${weakestCjmm.label} at ${weakestCjmm.accuracy}%` : null]
-                            .filter(Boolean)
-                            .join(" | ")}
-                        </p>
-                      </div>
-                    ) : null}
-                    {recommendationResources.length ? (
-                      <div className="rounded-[18px] border border-[rgba(176,141,87,0.22)] bg-[rgba(250,246,239,0.88)] px-4 py-3">
-                        <p className="text-sm font-semibold text-dark">Study material</p>
-                        <div className="mt-3 space-y-2">
-                          {recommendationResources.slice(0, 3).map((resource) => (
-                            isExternalHref(resource.href) ? (
-                              <a key={`${resource.kind}-${resource.href}`} href={resource.href} target="_blank" rel="noreferrer" className="block text-sm font-semibold text-[#5A7F88] hover:text-dark">
-                                {resource.title}
-                              </a>
-                            ) : (
-                              <Link key={`${resource.kind}-${resource.href}`} href={resource.href} className="block text-sm font-semibold text-[#5A7F88] hover:text-dark">
-                                {resource.title}
-                              </Link>
-                            )
-                          ))}
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-                ) : (
-                  <p className="mt-4 text-sm leading-6 text-muted">
-                    No weak area is standing out yet. Keep stacking clean reps and use the tutor on misses to keep that edge.
-                  </p>
-                )}
-              </article>
-            </div>
+        <article className="study-console-panel">
+          <div className="flex items-center justify-between gap-3">
+            <p className="terminal-label">Recent sessions</p>
+            <Link href="/quiz" className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5A7F88]">
+              Practice now
+            </Link>
           </div>
-        ) : null}
-
-        {activeTab === "history" ? (
-          <div className="mt-5 rounded-[24px] bg-white/70 shadow-[0_12px_28px_rgba(31,38,43,0.03)]">
-            {data?.recentSessions.length ? (
-              data.recentSessions.map((session) => (
-                <div key={session.id} className="dashboard-session-row border-b border-[rgba(74,85,89,0.08)] last:border-b-0">
+          {data && data.reviewQueue.length > 0 ? (
+            <div className="mt-4 rounded-[18px] border border-[rgba(111,141,118,0.2)] bg-[rgba(240,246,241,0.7)] px-4 py-3 text-sm">
+              <span className="font-semibold text-dark">
+                {data.reviewQueue.length} question{data.reviewQueue.length === 1 ? "" : "s"} due for spaced review.
+              </span>{" "}
+              <Link href="/quiz?mode=review" className="underline decoration-dotted underline-offset-2 text-[#55715e] hover:text-dark">
+                Start review
+              </Link>
+            </div>
+          ) : null}
+          {data?.recentSessions.length ? (
+            <div className="mt-4 space-y-3">
+              {data.recentSessions.slice(0, 5).map((session) => (
+                <div key={session.id} className="dashboard-session-row">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#5A7F88]">{session.exam}</p>
                     <p className="mt-1 text-sm text-dark">
@@ -644,49 +522,15 @@ export default function StudyDashboard() {
                   </div>
                   <ScoreBadge score={sessionScore(session)} />
                 </div>
-              ))
-            ) : (
-              <div className="dashboard-empty px-5 py-8 text-center text-sm text-muted">No session history yet.</div>
-            )}
-          </div>
-        ) : null}
-
-        {activeTab === "review" ? (
-          <div className="mt-5 space-y-4">
-            {data?.reviewQueue.length ? (
-              <>
-                <div className="dashboard-objective dashboard-objective-sage">
-                  <p className="text-sm font-semibold text-dark">{data.reviewQueue.length} question{data.reviewQueue.length === 1 ? "" : "s"} due for spaced review.</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    Review them inside the main quiz surface so misses, citations, and tutor follow-up all stay together.
-                  </p>
-                  <Link href="/quiz?mode=review" className="btn-primary mt-4 inline-flex">
-                    Start review
-                  </Link>
-                </div>
-                <div className="rounded-[24px] bg-white/70 divide-y divide-[rgba(74,85,89,0.08)] shadow-[0_12px_28px_rgba(31,38,43,0.03)]">
-                  {data.reviewQueue.slice(0, 8).map((item) => (
-                    <div key={item.questionId} className="dashboard-session-row">
-                      <div>
-                        <p className="text-sm leading-6 text-dark">{item.stem}</p>
-                        <p className="mt-2 text-xs uppercase tracking-[0.16em] text-muted">
-                          Due {item.nextReviewAt ? new Date(item.nextReviewAt).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "now"} | difficulty {item.difficulty}/5
-                        </p>
-                      </div>
-                      <span className="signal-pill signal-pill-sage">Due</span>
-                    </div>
-                  ))}
-                  {data.reviewQueue.length > 8 ? <div className="px-5 py-4 text-xs uppercase tracking-[0.16em] text-muted">+{data.reviewQueue.length - 8} more in queue</div> : null}
-                </div>
-              </>
-            ) : (
-              <div className="dashboard-empty rounded-[24px] bg-white/70 p-8 text-center shadow-[0_12px_28px_rgba(31,38,43,0.03)]">
-                <p className="font-semibold text-dark">All caught up.</p>
-                <p className="mt-2 text-sm leading-6 text-muted">No questions are due for spaced review right now.</p>
-              </div>
-            )}
-          </div>
-        ) : null}
+              ))}
+            </div>
+          ) : (
+            <div className="dashboard-empty mt-4">
+              <p className="font-semibold text-dark">No saved sessions yet.</p>
+              <p className="mt-2 text-sm leading-6 text-muted">Start a live-bank set and your progress will appear here automatically.</p>
+            </div>
+          )}
+        </article>
       </section>
     </div>
   );
