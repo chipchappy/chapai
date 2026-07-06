@@ -6,6 +6,7 @@ import { getServerEnv } from "@/lib/env";
 import { createLocalAuthAccount, createLocalSessionToken, getSharedAuthCookieDomain, setLocalAuthCookie } from "@/lib/local-auth";
 import { getDB, hasDatabase } from "@/lib/db";
 import { recordCurrentPolicyAcceptances } from "@/lib/legal-store";
+import { redeemAccessKeyForUser, type TrialRedemption } from "@/lib/access-key-trials";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -17,7 +18,29 @@ const schema = z.object({
   acceptedTerms: z.literal(true),
   acceptedPrivacy: z.literal(true),
   nextPath: z.string().startsWith("/").default("/study?welcome=1"),
+  accessKey: z.string().trim().max(64).optional(),
 });
+
+// Redeem an optional institutional access key for the freshly created account.
+// A bad key never blocks the free account — the result is surfaced to the UI.
+async function maybeRedeemAccessKey(
+  env: ReturnType<typeof getServerEnv>,
+  input: { code?: string; userId: string | null; email: string },
+): Promise<TrialRedemption | null> {
+  const code = input.code?.trim();
+  if (!code || !hasDatabase(env)) {
+    return null;
+  }
+  try {
+    return await redeemAccessKeyForUser(getDB(env), {
+      userId: input.userId,
+      email: input.email,
+      code,
+    });
+  } catch {
+    return { granted: false, reason: "error", message: "The access key could not be checked right now — you can add it later from your account." };
+  }
+}
 
 function getSupabaseAuthCookieName(supabaseUrl: string) {
   const hostname = new URL(supabaseUrl).hostname;
@@ -195,6 +218,11 @@ export async function POST(request: NextRequest) {
       });
     }
     await recordLegalAcceptance(result.account.userId);
+    const trial = await maybeRedeemAccessKey(env, {
+      code: payload.accessKey,
+      userId: result.account.userId,
+      email: result.account.email,
+    });
 
     const response = json(200, {
       success: true,
@@ -202,6 +230,7 @@ export async function POST(request: NextRequest) {
         redirectPath: payload.nextPath,
         message: "Account created.",
         newsletter,
+        trial,
       },
     });
     setLocalAuthCookie(response, token, requestHost);
@@ -227,12 +256,19 @@ export async function POST(request: NextRequest) {
     });
   }
 
+  const trial = await maybeRedeemAccessKey(env, {
+    code: payload.accessKey,
+    userId: session.user.id,
+    email: payload.email,
+  });
+
   const response = json(200, {
     success: true,
     data: {
       redirectPath: payload.nextPath,
       message: "Account created.",
       newsletter,
+      trial,
     },
   });
   persistSupabaseSession(response, env.NEXT_PUBLIC_SUPABASE_URL!, session, requestHost);

@@ -11,7 +11,8 @@ export type AnalyticsEvent =
   | "competitor_expose_email_opened"
   | "quiz_question_answered"
   | "quiz_marked_for_review"
-  | "quiz_status_set";
+  | "quiz_status_set"
+  | "access_key_redeemed";
 
 type AnalyticsProps = Record<string, string | number | boolean | null | undefined>;
 

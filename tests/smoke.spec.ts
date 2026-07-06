@@ -100,6 +100,14 @@ test.describe("core product", () => {
     expect(exam.status(), "practice exam requires auth").toBe(401);
   });
 
+  test("signup exposes an optional access-key field", async ({ page }) => {
+    await page.goto("/auth/signup", { waitUntil: "domcontentloaded" });
+    const toggle = page.getByTestId("access-key-toggle");
+    await expect(toggle, "access-key toggle renders on signup").toBeVisible({ timeout: 10_000 });
+    await toggle.click();
+    await expect(page.getByTestId("access-key-input"), "access-key input appears when toggled").toBeVisible();
+  });
+
   test("study dashboard is auth-gated (anon → login)", async ({ page }) => {
     await page.goto("/study", { waitUntil: "domcontentloaded" });
     expect(page.url(), "anon /study should redirect to login").toContain("/auth/login");
