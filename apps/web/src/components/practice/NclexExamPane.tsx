@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { BowTieSelector } from "@/components/practice/BowTieSelector";
+import RationaleDiagram from "@/components/practice/RationaleDiagram";
 import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
@@ -568,6 +569,9 @@ export default function NclexExamPane({
                   </div>
                 ) : null}
               </div>
+
+              {/* Uniform visual rationale diagram — renders when the item carries one. */}
+              {question.visualRationale ? <RationaleDiagram data={question.visualRationale} /> : null}
 
               {/* Distractor rationales — always visible, no click-to-expand. */}
               {Object.keys(incorrectExplanations).length ? (
