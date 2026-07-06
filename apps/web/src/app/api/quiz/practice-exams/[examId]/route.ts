@@ -169,6 +169,20 @@ function getBlueprint(exam: Exam) {
     : Object.fromEntries(Object.entries(NCLEX_CATEGORIES).map(([, value]) => [value.label, value.pct]));
 }
 
+// Readiness exams should mirror real NCLEX-RN difficulty: bias every category
+// bucket toward the HARDEST, premium (structured-rationale) items. Seeded shuffle
+// first keeps the 5 forms varied; the stable sort then floats the toughest to the
+// top. Because the forms reserve IDs across each other, they cascade from hardest
+// down — all five stay challenging and non-overlapping.
+function hardestFirst(items: PracticeQuestion[], seed: string) {
+  const jittered = seededShuffle(items, seed);
+  return [...jittered].sort((a, b) => {
+    const scoreA = (typeof a.difficulty === "number" ? a.difficulty : 3) + (a.structuredRationale ? 0.5 : 0);
+    const scoreB = (typeof b.difficulty === "number" ? b.difficulty : 3) + (b.structuredRationale ? 0.5 : 0);
+    return scoreB - scoreA;
+  });
+}
+
 function selectByBlueprint(
   questions: PracticeQuestion[],
   blueprint: Record<string, number>,
@@ -191,17 +205,17 @@ function selectByBlueprint(
 
   for (const [category, pct] of Object.entries(blueprint)) {
     const target = Math.max(1, Math.round((pct / 100) * count));
-    const bucket = seededShuffle(buckets.get(category) ?? [], `${seed}:${category}`);
+    const bucket = hardestFirst(buckets.get(category) ?? [], `${seed}:${category}`);
     selected.push(...takeUniqueQuestions(bucket, target, reservedIds, usedInManifest, usedSignatures));
   }
 
   if (selected.length < count) {
-    const remainder = seededShuffle(questions, `${seed}:remainder`);
+    const remainder = hardestFirst(questions, `${seed}:remainder`);
     selected.push(...takeUniqueQuestions(remainder, count - selected.length, reservedIds, usedInManifest, usedSignatures));
   }
 
   if (selected.length < count) {
-    const overflow = seededShuffle(questions, `${seed}:overflow`);
+    const overflow = hardestFirst(questions, `${seed}:overflow`);
     selected.push(...takeUniqueQuestions(overflow, count - selected.length, new Set<string>(), usedInManifest, usedSignatures));
   }
 
