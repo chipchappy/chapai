@@ -33,6 +33,7 @@
 ## Deploy record
 | Date | Version | Commits | Gate result |
 |---|---|---|---|
+| 2026-07-05 (4) | `53d59505-5e07-4c91-b65d-0032bb3a69ff` | 3d1e7b6 (institutional access-key trial system) | **GREEN — 61/61** (retry). Prior attempt gate-26 RED (2 bare-404 console flakes on /,/quiz,/pricing during post-deploy asset propagation) → auto-rolled-back to f874c6a9; verified all shared assets 200 live + commit touches no shared/layout resource → transient, retried clean. Signup optional access key → 30-day full-premium trial via trialing userEntitlements row; data persists past expiry; admin CLI + grant ledger. Ran via bash.exe (Git Bash PATH broke this session). |
 | 2026-07-01 | `76f73fb7-1e54-4e01-a181-b0fc4406f9a2` | 9909022 (F1) + harness | **GREEN — 24/24 smoke passed** (desktop + mobile-390); F1 verified exactly: homepage 2,600 = D1 published 2,600; nav/theme/design fingerprint unchanged. Recorded as last-good. |
 | 2026-07-02 | `4b952009` | 5424708+ddf2f09+c5e3032+391ff6c | **RED — auto-rolled-back** to 76f73fb7 in seconds. Smoke caught /favicon.ico 404 → exposed a REAL pre-existing defect: the entire favicon set (8 files) was missing from this lineage (audit's earlier 200 was an edge-cache fluke). |
 | 2026-07-02 | `c947849a-5807-4afc-ad16-afa9a2658e6a` | + 113199c (favicon restore from 010c77c) | **GREEN — 31/31 smoke passed.** Live-verified: favicon set 200s, closing CTA, case-study stat live from D1 (239+), Quiz JSON-LD, Clarity branding, truthful count 2,745, nav canon + theme intact. Recorded as last-good. |
