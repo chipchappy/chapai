@@ -29,7 +29,18 @@ VID=$(echo "$DEPLOY_OUT" | grep -oE 'Current Version ID: [a-f0-9-]+' | awk '{pri
 echo "Deployed version: ${VID:-unknown}"
 
 echo "── Gate 3: post-deploy smoke (auto-rollback on fail) ──"
-sleep 8
+# New _next/static/chunks need time to propagate to Cloudflare's edge before the
+# smoke browser loads them — an under-8s settle caused recurring transient
+# ChunkLoadError/404 flakes (gates 26/28/30). Settle, then warm the key routes to
+# prime the edge cache so the very first smoke navigation hits populated PoPs.
+sleep 25
+for path in "/" "/quiz" "/pricing" "/nclex"; do
+  curl -s -o /dev/null "https://claritynclex.com${path}?warm=$(date +%s)" || true
+  curl -s "https://claritynclex.com${path}" 2>/dev/null | grep -oE '/_next/static/chunks/[a-zA-Z0-9/_.-]+\.js' | head -6 | while read -r chunk; do
+    curl -s -o /dev/null "https://claritynclex.com${chunk}" || true
+  done
+done
+sleep 5
 if ( cd tests && npx playwright test smoke --reporter=line ); then
   echo "${VID}" > scripts/.last-good-version
   git rev-parse HEAD > scripts/.last-good-commit
