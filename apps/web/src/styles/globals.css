@@ -27328,6 +27328,110 @@ body:has(.nclex-exam-shell) nextjs-portal {
   cursor: pointer;
 }
 
+/* ── Rationale review: emphasized correct answer, always-visible distractors,
+   and a warm periwinkle AI-tutor chat entry (user-directed 2026-07-05). ────── */
+.nclex-correct-rationale {
+  margin-top: 14px;
+  border: 1px solid rgba(111, 141, 118, 0.36);
+  border-left: 4px solid #6f8d76;
+  background: linear-gradient(180deg, rgba(240, 246, 241, 0.92), rgba(255, 252, 247, 0.96));
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.nclex-correct-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #55715e;
+}
+.nclex-correct-rationale .nclex-rationale-copy {
+  margin-top: 8px;
+  font-weight: 500;
+}
+.nclex-correct-detail {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nclex-correct-detail p { font-size: 15px; line-height: 1.56; color: #384038; }
+
+.nclex-distractor-list {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.nclex-distractor-heading {
+  font-size: 0.95rem;
+  color: #5a5148;
+}
+.nclex-distractor-row {
+  border: 1px solid rgba(196, 121, 86, 0.22);
+  border-left: 3px solid rgba(196, 121, 86, 0.6);
+  background: rgba(250, 242, 236, 0.6);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.nclex-distractor-row b { color: #9b5e42; }
+.nclex-distractor-row p { margin-top: 4px; font-size: 15px; line-height: 1.55; }
+
+.nclex-tutor-box {
+  margin-top: 26px;
+  border: 1px solid rgba(124, 131, 214, 0.36);
+  background: linear-gradient(180deg, rgba(198, 201, 240, 0.24), rgba(224, 226, 248, 0.36));
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+.nclex-tutor-box__head { display: flex; gap: 12px; align-items: flex-start; }
+.nclex-tutor-box__spark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(124, 131, 214, 0.22);
+  color: #5b60b0;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.nclex-tutor-box__head strong { display: block; color: #3a3e6e; font-size: 1.02rem; }
+.nclex-tutor-box__head small { display: block; margin-top: 2px; color: #6a6e9a; font-size: 0.82rem; line-height: 1.42; }
+.nclex-tutor-box__entry {
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid rgba(124, 131, 214, 0.42);
+  background: #fff;
+  border-radius: 999px;
+  padding: 11px 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.nclex-tutor-box__entry:hover { border-color: rgba(124, 131, 214, 0.7); box-shadow: 0 6px 16px rgba(91, 96, 176, 0.14); }
+.nclex-tutor-box__placeholder { color: #8a8fb8; font-size: 0.9rem; }
+.nclex-tutor-box__send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #7c83d6;
+  color: #fff;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
 .nclex-bottombar {
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;

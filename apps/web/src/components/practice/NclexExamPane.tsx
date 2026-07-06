@@ -313,11 +313,14 @@ export default function NclexExamPane({
       );
     }
 
+    const notesLines = chartContent.notes.length ? chartContent.notes : splitSentences(question.stem).slice(0, 3);
     const lines = chartTab === "orders" ? chartContent.orders : chartTab === "history" ? chartContent.history : chartContent.notes;
+    // History & Physical mirrors the clinical scenario when the item carries no
+    // dedicated H&P exhibit — real exams always populate this tab, never blank it.
     const fallback = chartTab === "notes"
       ? splitSentences(question.stem).slice(0, 3)
       : chartTab === "history"
-        ? [question.category, question.takeaway].filter(Boolean)
+        ? notesLines
         : [];
 
     return (lines.length ? lines : fallback).length ? (
@@ -552,26 +555,33 @@ export default function NclexExamPane({
                 <div><span>Time Spent</span><strong>{formatClock(seconds)}</strong></div>
               </div>
               <h3 className="nclex-explanation-title">Explanation</h3>
-              <p className="nclex-rationale-copy">{rationale}</p>
-              {structuredRationale ? (
-                <div className="nclex-incorrect-block">
-                  <strong>Structured rationale:</strong>
-                  <p><b>Overview</b> {structuredRationale.overview}</p>
-                  <p><b>Clinical mechanism</b> {structuredRationale.mechanism}</p>
-                  <p><b>Why correct</b> {structuredRationale.whyCorrect}</p>
-                </div>
-              ) : null}
+
+              {/* Correct-answer rationale — visually emphasized above the distractors. */}
+              <div className="nclex-correct-rationale">
+                <span className="nclex-correct-label" aria-hidden="true">✓ Why this is correct</span>
+                <p className="nclex-rationale-copy">{structuredRationale?.whyCorrect ?? rationale}</p>
+                {structuredRationale ? (
+                  <div className="nclex-correct-detail">
+                    {structuredRationale.overview ? <p><b>Overview.</b> {structuredRationale.overview}</p> : null}
+                    {structuredRationale.mechanism ? <p><b>Clinical mechanism.</b> {structuredRationale.mechanism}</p> : null}
+                    {structuredRationale.whyCorrect && structuredRationale.whyCorrect !== rationale ? <p>{rationale}</p> : null}
+                  </div>
+                ) : null}
+              </div>
+
+              {/* Distractor rationales — always visible, no click-to-expand. */}
               {Object.keys(incorrectExplanations).length ? (
-                <div className="nclex-incorrect-block">
-                  <strong>Why each wrong:</strong>
+                <div className="nclex-distractor-list">
+                  <strong className="nclex-distractor-heading">Why each other option is wrong</strong>
                   {Object.entries(incorrectExplanations).map(([label, text]) => (
-                    <details key={label}>
-                      <summary><b>Option {label.toUpperCase()}</b></summary>
+                    <div key={label} className="nclex-distractor-row">
+                      <b>Option {label.toUpperCase()}</b>
                       <p>{text}</p>
-                    </details>
+                    </div>
                   ))}
                 </div>
               ) : null}
+
               {question.takeaway ? (
                 <div className="nclex-key-takeaway">
                   <strong>Key Takeaway:</strong>
@@ -593,7 +603,23 @@ export default function NclexExamPane({
                 </div>
               ) : null}
               {references.length ? <button type="button" className="nclex-source-link">View Sources</button> : null}
-              {canOpenTutor ? <button type="button" className="nclex-tutor-link" onClick={onOpenTutor}>Ask Clarity AI</button> : null}
+
+              {/* AI tutor — warm periwinkle chat entry that opens the working streaming tutor. */}
+              {canOpenTutor ? (
+                <div className="nclex-tutor-box">
+                  <div className="nclex-tutor-box__head">
+                    <span className="nclex-tutor-box__spark" aria-hidden="true">✦</span>
+                    <div>
+                      <strong>Ask Clarity AI</strong>
+                      <small>Your built-in study coach — ask why an answer is right or wrong, get a test-taking strategy, or drill the concept.</small>
+                    </div>
+                  </div>
+                  <button type="button" className="nclex-tutor-box__entry" onClick={onOpenTutor}>
+                    <span className="nclex-tutor-box__placeholder">Ask about this question, a distractor, or the concept…</span>
+                    <span className="nclex-tutor-box__send" aria-hidden="true">➤</span>
+                  </button>
+                </div>
+              ) : null}
             </section>
           ) : null}
         </section>
