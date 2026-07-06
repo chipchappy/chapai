@@ -106,16 +106,19 @@ export const metadata: Metadata = {
     },
   },
   icons: {
+    // v3 = tight-cropped brand "c" (was heavily padded → unrecognizable at tab/search sizes).
+    // Query string busts browser + Google favicon caches so the new mark propagates.
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=3", sizes: "any" },
+      { url: "/favicon-16.png?v=3", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png?v=3", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48.png?v=3", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96.png?v=3", sizes: "96x96", type: "image/png" },
+      { url: "/favicon-192.png?v=3", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-512.png?v=3", sizes: "512x512", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico?v=3",
+    apple: [{ url: "/apple-touch-icon.png?v=3", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
