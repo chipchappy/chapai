@@ -200,12 +200,15 @@ export default function NclexExamPane({
   const clozeBlankCount = question.clozeBlankCount ?? (question.kind === "ordering" ? Math.max(correct.length, 3) : 1);
   const rationale = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
   const structuredRationale = answerRecord?.structuredRationale ?? question.structuredRationale;
-  const incorrectExplanations = Object.keys(structuredRationale?.whyWrong ?? {}).length
-    ? structuredRationale?.whyWrong ?? {}
-    : getDisplayableDistractorRationales(
-        question,
-        answerRecord?.distractorRationales ?? question.distractorRationales,
-      );
+  // Prefer the vetted distractor rationales; the generated structured whyWrong is
+  // only a fallback for items that never had per-option explanations.
+  const vettedDistractors = getDisplayableDistractorRationales(
+    question,
+    answerRecord?.distractorRationales ?? question.distractorRationales,
+  );
+  const incorrectExplanations = Object.keys(vettedDistractors).length
+    ? vettedDistractors
+    : structuredRationale?.whyWrong ?? {};
   const references = answerRecord?.references ?? question.references ?? [];
   const structuredCitations = structuredRationale?.citations ?? [];
   const selectedTexts = activeIds
@@ -557,15 +560,16 @@ export default function NclexExamPane({
               </div>
               <h3 className="nclex-explanation-title">Explanation</h3>
 
-              {/* Correct-answer rationale — visually emphasized above the distractors. */}
+              {/* Correct-answer rationale — the full high-quality deep rationale is
+                  ALWAYS the primary content; the structured overview/mechanism is
+                  supplemental context beneath it, never a replacement. */}
               <div className="nclex-correct-rationale">
                 <span className="nclex-correct-label" aria-hidden="true">✓ Why this is correct</span>
-                <p className="nclex-rationale-copy">{structuredRationale?.whyCorrect ?? rationale}</p>
-                {structuredRationale ? (
+                <p className="nclex-rationale-copy">{rationale}</p>
+                {structuredRationale && (structuredRationale.overview || structuredRationale.mechanism) ? (
                   <div className="nclex-correct-detail">
                     {structuredRationale.overview ? <p><b>Overview.</b> {structuredRationale.overview}</p> : null}
                     {structuredRationale.mechanism ? <p><b>Clinical mechanism.</b> {structuredRationale.mechanism}</p> : null}
-                    {structuredRationale.whyCorrect && structuredRationale.whyCorrect !== rationale ? <p>{rationale}</p> : null}
                   </div>
                 ) : null}
               </div>
