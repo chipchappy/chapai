@@ -40,40 +40,54 @@ function readKey(envName, fileName, re) {
   const raw = readFileSync(p, "utf8");
   const m = raw.match(re); return m ? m[0] : "";
 }
-const CEREBRAS_KEY = readKey("CEREBRAS_API_KEY", "cerebraskey.txt", /csk-[0-9A-Za-z]{20,}/);
-const GROQ_KEY = readKey("GROQ_API_KEY", "groqkey.txt", /gsk_[0-9A-Za-z]{20,}/);
+// Provider rotation with the proven throttle from the live content engine:
+// per-provider rate limits, 429 cooldown, failure parking, and pick-the-ready.
+// OpenRouter (top model) is used exclusively when a valid key exists; otherwise
+// the free pair Cerebras gpt-oss-120b + Groq llama-3.3-70b.
 const OPENROUTER_KEY = readKey("OPENROUTER_API_KEY", "openrouterkey.txt", /sk-or-[0-9A-Za-z_\-]{20,}/);
+const DEFS = OPENROUTER_KEY
+  ? { openrouter: { key: OPENROUTER_KEY, rpm: 20, url: "https://openrouter.ai/api/v1/chat/completions", model: "anthropic/claude-3.5-sonnet", low: false } }
+  : {
+      cerebras: { key: readKey("CEREBRAS_API_KEY", "cerebraskey.txt", /csk-[0-9A-Za-z]{20,}/), rpm: 5, url: "https://api.cerebras.ai/v1/chat/completions", model: "gpt-oss-120b", low: true },
+      groq: { key: readKey("GROQ_API_KEY", "groqkey.txt", /gsk_[0-9A-Za-z]{20,}/), rpm: 6, url: "https://api.groq.com/openai/v1/chat/completions", model: "llama-3.3-70b-versatile", low: false },
+    };
 const USE_TOP = Boolean(OPENROUTER_KEY);
-
-// Provider rotation: OpenRouter top model when a valid key exists (the paid-quality
-// path), else the proven free pair — Cerebras gpt-oss-120b (primary) + Groq
-// llama-3.3-70b (fallback), same providers the live content engine runs on.
-async function oneCall(provider, prompt) {
-  if (provider === "openrouter") {
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST", headers: { "content-type": "application/json", Authorization: `Bearer ${OPENROUTER_KEY}` },
-      body: JSON.stringify({ model: "anthropic/claude-3.5-sonnet", messages: [{ role: "user", content: prompt }], temperature: 0.4, max_tokens: 1400 }),
-      signal: AbortSignal.timeout(45000),
-    });
-    if (!res.ok) return "";
-    return (await res.json()).choices?.[0]?.message?.content ?? "";
-  }
-  const cfg = provider === "cerebras"
-    ? { url: "https://api.cerebras.ai/v1/chat/completions", key: CEREBRAS_KEY, model: "gpt-oss-120b", low: true }
-    : { url: "https://api.groq.com/openai/v1/chat/completions", key: GROQ_KEY, model: "llama-3.3-70b-versatile", low: false };
-  const body = { model: cfg.model, messages: [{ role: "user", content: prompt }], temperature: 0.4, max_tokens: 1400 };
-  if (cfg.low) body.reasoning_effort = "low";
-  const res = await fetch(cfg.url, { method: "POST", headers: { "content-type": "application/json", Authorization: `Bearer ${cfg.key}` }, body: JSON.stringify(body), signal: AbortSignal.timeout(45000) });
-  if (!res.ok) return "";
+const state = {};
+for (const k of Object.keys(DEFS)) state[k] = { last: 0, cooldownUntil: 0, minInterval: Math.ceil((60000 / DEFS[k].rpm) * 1.12), fails: 0 };
+const healthy = () => Object.keys(DEFS).filter((k) => DEFS[k].key);
+const nextFree = (k) => Math.max(state[k].cooldownUntil, state[k].last + state[k].minInterval);
+function pick() {
+  const now = Date.now();
+  let c = healthy().filter((k) => state[k].cooldownUntil < now + 300000 && state[k].fails < 5);
+  if (!c.length) c = healthy().filter((k) => state[k].cooldownUntil < now + 300000);
+  if (!c.length) c = healthy();
+  if (!c.length) return null;
+  const ready = c.filter((k) => nextFree(k) <= now);
+  return ready.length ? ready[Math.floor(Math.random() * ready.length)] : c.sort((a, b) => nextFree(a) - nextFree(b))[0];
+}
+async function rawCall(name, prompt) {
+  const d = DEFS[name];
+  const body = { model: d.model, messages: [{ role: "user", content: prompt }], temperature: 0.4, max_tokens: 1400 };
+  if (d.low) body.reasoning_effort = "low";
+  const res = await fetch(d.url, { method: "POST", headers: { "content-type": "application/json", Authorization: `Bearer ${d.key}` }, body: JSON.stringify(body), signal: AbortSignal.timeout(45000) });
+  if (res.status === 429) return { text: "", status: 429, retryAfter: Number(res.headers.get("retry-after")) || 60 };
+  if (!res.ok) return { text: "", status: res.status };
   const j = await res.json();
-  return j.choices?.[0]?.message?.content || j.choices?.[0]?.message?.reasoning_content || "";
+  return { text: j.choices?.[0]?.message?.content || j.choices?.[0]?.message?.reasoning_content || "", status: 200 };
 }
 async function callModel(prompt) {
-  const chain = USE_TOP ? ["openrouter"] : ["cerebras", "groq"];
-  for (const p of chain) {
-    try { const t = await oneCall(p, prompt); if (t && t.length > 30) return t; } catch { /* try next */ }
-  }
-  return "";
+  const name = pick();
+  if (!name) return "";
+  const wait = Math.max(0, nextFree(name) - Date.now());
+  if (wait > 0) await sleep(wait);
+  const s = state[name];
+  s.last = Date.now();
+  let r;
+  try { r = await rawCall(name, prompt); } catch { r = { text: "", status: -1 }; }
+  if (r.status === 429) s.cooldownUntil = Date.now() + r.retryAfter * 1000;
+  else if (r.status === -1 || r.status >= 500) s.cooldownUntil = Date.now() + 900000;
+  if (!r.text) { s.fails++; } else { s.fails = 0; }
+  return r.text;
 }
 
 const SHELL = { cwd: WEB, encoding: "utf8", maxBuffer: 256 * 1024 * 1024, shell: true };
@@ -146,8 +160,8 @@ function validVisual(v) {
 }
 
 async function main() {
-  console.error(`[visual] limit=${LIMIT} model=${USE_TOP ? "openrouter/claude-3.5-sonnet (TOP)" : "cerebras gpt-oss-120b + groq (free)"} dry=${DRY} hardest=${HARDEST}`);
-  if (!CEREBRAS_KEY && !GROQ_KEY && !USE_TOP) { console.error("[visual] no model key (need Downloads/cerebraskey.txt, groqkey.txt, or openrouterkey.txt)"); process.exit(1); }
+  console.error(`[visual] limit=${LIMIT} providers=[${healthy().join(",")}]${USE_TOP ? " TOP" : ""} dry=${DRY} hardest=${HARDEST}`);
+  if (!healthy().length) { console.error("[visual] no model key (need Downloads/cerebraskey.txt, groqkey.txt, or openrouterkey.txt)"); process.exit(1); }
   const order = HARDEST ? "difficulty DESC, " : "";
   const rows = d1Query(`SELECT id, stem, options, answer, rationale FROM questions WHERE exam='nclex' AND publish_state='published' AND rationale IS NOT NULL AND length(rationale)>=60 AND (visual_rationale IS NULL OR length(visual_rationale)<10) ORDER BY ${order}review_status='final-curated-live' DESC LIMIT ${LIMIT}`);
   console.error(`[visual] ${rows.length} candidate rows`);
@@ -174,7 +188,7 @@ async function main() {
     if (visual) vis++; else structOnly++;
     if (updates.length >= 5) flush();
     if (i % 5 === 0 || i <= 3) console.error(`[visual] ${i}/${rows.length} diagrams=${vis} struct-only=${structOnly} fail=${fail} ${((Date.now() - t0) / 60000).toFixed(1)}min`);
-    if (!USE_TOP) await sleep(12500); // Cerebras ~5 rpm — stay under the free limit
+    // pacing handled by the provider throttle in callModel
   }
   flush();
   console.error(`[visual] DONE diagrams=${vis} struct-only=${structOnly} fail=${fail} scanned=${i}${DRY ? " (DRY)" : ""}`);
