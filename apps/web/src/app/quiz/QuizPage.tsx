@@ -387,7 +387,11 @@ export default function QuizPage({
 
     const snapshot = runtimeFromSnapshot(loadPracticeSnapshot());
     if (snapshot) {
-      dispatch({ type: "hydrate", payload: snapshot });
+      // A fresh "Study now" visit must always land on the catalog (the green
+      // Study-now + orange Readiness two-card hero) — never auto-resume straight
+      // into a mid-session question. Keep the restored session in state so nothing
+      // is lost, but force the phase back to the catalog.
+      dispatch({ type: "hydrate", payload: { ...snapshot, phase: "catalog" } });
     }
   }, [initialMode, initialPracticeExam]);
 
