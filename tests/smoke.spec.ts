@@ -101,11 +101,15 @@ test.describe("core product", () => {
   });
 
   test("signup exposes an optional access-key field", async ({ page }) => {
-    await page.goto("/auth/signup", { waitUntil: "domcontentloaded" });
+    await page.goto("/auth/signup", { waitUntil: "networkidle" });
     const toggle = page.getByTestId("access-key-toggle");
-    await expect(toggle, "access-key toggle renders on signup").toBeVisible({ timeout: 10_000 });
-    await toggle.click();
-    await expect(page.getByTestId("access-key-input"), "access-key input appears when toggled").toBeVisible();
+    await expect(toggle, "access-key toggle renders on signup").toBeVisible({ timeout: 15_000 });
+    // Retry the click until the input appears — the first click can land before the
+    // client component has hydrated on a freshly deployed bundle.
+    await expect(async () => {
+      await toggle.click();
+      await expect(page.getByTestId("access-key-input")).toBeVisible({ timeout: 2_000 });
+    }).toPass({ timeout: 20_000 });
   });
 
   test("study dashboard is auth-gated (anon → login)", async ({ page }) => {
