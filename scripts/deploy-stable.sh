@@ -34,7 +34,7 @@ echo "── Gate 3: post-deploy smoke (auto-rollback on fail) ──"
 # ChunkLoadError/404 flakes (gates 26/28/30). Settle, then warm the key routes to
 # prime the edge cache so the very first smoke navigation hits populated PoPs.
 sleep 25
-for path in "/" "/quiz" "/pricing" "/nclex"; do
+for path in "/" "/quiz" "/pricing" "/nclex" "/auth/signup" "/auth/login"; do
   curl -s -o /dev/null "https://claritynclex.com${path}?warm=$(date +%s)" || true
   curl -s "https://claritynclex.com${path}" 2>/dev/null | grep -oE '/_next/static/chunks/[a-zA-Z0-9/_.-]+\.js' | head -6 | while read -r chunk; do
     curl -s -o /dev/null "https://claritynclex.com${chunk}" || true
