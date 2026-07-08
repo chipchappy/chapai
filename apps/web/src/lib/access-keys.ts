@@ -6,7 +6,7 @@ import bundledAccessKeyStore from "../../../../config/access-keys.json";
 
 export const ACCESS_KEY_COOKIE = "chapai_preview_access";
 
-export type AccessKeyType = "founder-pass" | "creator-pass" | "tester-pass" | "demo-pass" | "reviewer-pass";
+export type AccessKeyType = "founder-pass" | "creator-pass" | "tester-pass" | "demo-pass" | "reviewer-pass" | "instructor-pass";
 export type AccessKeyScope = "all" | "ccrn" | "nclex";
 export type AccessKeyStatus = "active" | "revoked" | "expired";
 

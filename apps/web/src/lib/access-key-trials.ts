@@ -20,9 +20,24 @@ const DEFAULT_TRIAL_DAYS = 30;
 const FULL_ENTITLEMENTS: PremiumEntitlement[] = ["live-bank", "rich-modes", "practice-exams", "tutor", "icu-sim-beta"];
 export const INSTITUTIONAL_TRIAL_PLAN = "institutional_trial";
 
+export type AccessRole = "student" | "instructor";
+
 export type TrialRedemption =
-  | { granted: true; expiresAt: string; institution: string | null; keyType: string }
+  | { granted: true; expiresAt: string; institution: string | null; keyType: string; role: AccessRole; cohort: string | null }
   | { granted: false; reason: string; message: string };
+
+// A cohort is one nursing program's roster. Instructor keys and student keys that
+// carry the SAME institution label resolve to the SAME cohort slug, which is how a
+// faculty account is linked to its students.
+export function cohortSlug(institution: string | null | undefined): string | null {
+  if (!institution) return null;
+  const slug = institution.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  return slug.length > 0 ? slug.slice(0, 80) : null;
+}
+
+export function roleForKeyType(keyType: string): AccessRole {
+  return keyType === "instructor-pass" ? "instructor" : "student";
+}
 
 const REASON_MESSAGES: Record<string, string> = {
   missing: "No access key entered.",
@@ -51,6 +66,27 @@ function d1Binding(env: Partial<Env>): LedgerBinding | null {
   return env.DB as unknown as LedgerBinding;
 }
 
+// Idempotent schema guard: the base table shipped earlier without role/cohort;
+// add them defensively so existing prod rows and fresh DBs both work.
+export async function ensureGrantsSchema(binding: LedgerBinding) {
+  await binding.prepare(`
+    CREATE TABLE IF NOT EXISTS access_key_grants (
+      id TEXT PRIMARY KEY,
+      user_id TEXT,
+      email TEXT,
+      key_id TEXT NOT NULL,
+      key_code TEXT NOT NULL,
+      key_type TEXT NOT NULL,
+      institution TEXT,
+      granted_at INTEGER NOT NULL,
+      expires_at INTEGER NOT NULL
+    )
+  `).run();
+  for (const col of ["role TEXT DEFAULT 'student'", "cohort TEXT"]) {
+    try { await binding.prepare(`ALTER TABLE access_key_grants ADD COLUMN ${col}`).run(); } catch { /* column exists */ }
+  }
+}
+
 async function recordGrant(input: {
   userId: string | null;
   email: string | null;
@@ -58,6 +94,8 @@ async function recordGrant(input: {
   keyCode: string;
   keyType: string;
   institution: string | null;
+  role: AccessRole;
+  cohort: string | null;
   grantedAt: number;
   expiresAt: number;
 }) {
@@ -66,22 +104,10 @@ async function recordGrant(input: {
   try {
     const binding = d1Binding(resolveEnv());
     if (!binding) return;
+    await ensureGrantsSchema(binding);
     await binding.prepare(`
-      CREATE TABLE IF NOT EXISTS access_key_grants (
-        id TEXT PRIMARY KEY,
-        user_id TEXT,
-        email TEXT,
-        key_id TEXT NOT NULL,
-        key_code TEXT NOT NULL,
-        key_type TEXT NOT NULL,
-        institution TEXT,
-        granted_at INTEGER NOT NULL,
-        expires_at INTEGER NOT NULL
-      )
-    `).run();
-    await binding.prepare(`
-      INSERT INTO access_key_grants (id, user_id, email, key_id, key_code, key_type, institution, granted_at, expires_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO access_key_grants (id, user_id, email, key_id, key_code, key_type, institution, role, cohort, granted_at, expires_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       crypto.randomUUID(),
       input.userId,
@@ -90,6 +116,8 @@ async function recordGrant(input: {
       input.keyCode,
       input.keyType,
       input.institution,
+      input.role,
+      input.cohort,
       input.grantedAt,
       input.expiresAt,
     ).run();
@@ -113,6 +141,8 @@ export async function redeemAccessKeyForUser(
   const expiresAtSec = nowSec + trialDays * 24 * 60 * 60;
   const examTrack = key.scope === "all" ? "all" : key.scope;
   const institution = key.notes && key.notes.trim().length > 0 ? key.notes.trim() : null;
+  const role = roleForKeyType(key.type);
+  const cohort = cohortSlug(institution);
 
   // Write the trial entitlement through the tested billing writer so access
   // control + auto-expiry behave exactly like a paid subscription.
@@ -134,6 +164,8 @@ export async function redeemAccessKeyForUser(
     keyCode: key.code,
     keyType: key.type,
     institution,
+    role,
+    cohort,
     grantedAt: nowSec,
     expiresAt: expiresAtSec,
   });
@@ -143,5 +175,7 @@ export async function redeemAccessKeyForUser(
     expiresAt: new Date(expiresAtSec * 1000).toISOString(),
     institution,
     keyType: key.type,
+    role,
+    cohort,
   };
 }

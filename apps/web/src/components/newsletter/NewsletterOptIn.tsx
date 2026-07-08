@@ -45,7 +45,7 @@ export default function NewsletterOptIn({ nextPath = "/study?welcome=1" }: { nex
       data?: {
         redirectPath?: string;
         message?: string;
-        trial?: { granted: boolean; message?: string; expiresAt?: string } | null;
+        trial?: { granted: boolean; message?: string; expiresAt?: string; role?: string } | null;
       };
       error?: { message?: string };
     };
@@ -62,9 +62,13 @@ export default function NewsletterOptIn({ nextPath = "/study?welcome=1" }: { nex
     }
 
     const trial = payload.data?.trial;
+    // Faculty accounts land on the instructor console, not the study dashboard.
+    const destination = trial?.granted && trial.role === "instructor" ? "/instructor" : (payload.data?.redirectPath ?? nextPath);
     if (accessKey && trial) {
       if (trial.granted) {
         trackEvent("access_key_redeemed", { granted: true });
+        window.location.replace(destination);
+        return;
       } else {
         // Account was still created — surface the key issue and stop before redirect
         // so the student can retry the key from their account rather than lose the message.

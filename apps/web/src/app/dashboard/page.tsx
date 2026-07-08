@@ -4,6 +4,7 @@ import MissionControlDashboard from "@/components/dashboard/MissionControlDashbo
 import StudyDashboard from "@/components/dashboard/StudyDashboard";
 import { getMissionControlSnapshot } from "@/lib/mission-control";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { getInstructorContext } from "@/lib/instructor-access";
 import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -68,6 +69,12 @@ export default async function DashboardPage({
       );
     }
     redirect("/auth/login?next=%2Fdashboard");
+  }
+
+  // Faculty accounts get the instructor console.
+  const instructor = await getInstructorContext({ userId: user.id, email: user.email ?? null });
+  if (instructor.isInstructor) {
+    redirect("/instructor");
   }
 
   return (

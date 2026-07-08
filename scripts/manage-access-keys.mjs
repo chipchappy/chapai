@@ -43,15 +43,17 @@ if (cmd === "list") {
   console.log(`\n${store.keys.length} keys total.`);
 } else if (cmd === "generate") {
   const institution = arg("--institution", "Trial cohort");
-  const seats = Number(arg("--seats", "30"));
+  const isInstructor = arg("--role", "student") === "instructor";
+  const keyType = isInstructor ? "instructor-pass" : "demo-pass";
+  const seats = Number(arg("--seats", isInstructor ? "5" : "30"));
   const days = Number(arg("--days", "30"));
-  const prefix = arg("--prefix", "CLARITY-TRIAL");
+  const prefix = arg("--prefix", isInstructor ? "CLARITY-FACULTY" : "CLARITY-TRIAL");
   const code = randomCode(prefix);
   const expiresAt = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
   const record = {
-    id: `trial-${crypto.randomBytes(4).toString("hex")}`,
+    id: `${isInstructor ? "faculty" : "trial"}-${crypto.randomBytes(4).toString("hex")}`,
     code,
-    type: "demo-pass",
+    type: keyType,
     scope: "all",
     status: "active",
     createdAt: new Date().toISOString(),
@@ -59,12 +61,16 @@ if (cmd === "list") {
     maxRedeems: seats,
     redeemCount: 0,
     lastRedeemedAt: null,
-    notes: institution, // surfaced as the "institution" in the grant ledger
+    // notes = the institution label. Instructor + student keys sharing this exact
+    // label resolve to the SAME cohort, linking faculty to their students.
+    notes: institution,
   };
   store.keys.push(record);
   save(store);
-  console.log(`Generated key for "${institution}":\n\n  ${code}\n\n  ${seats} seats · ${days}-day per-student trial · key valid until ${expiresAt.slice(0, 10)}`);
-  console.log(`\nPush to prod D1 now (no deploy needed):\n  npx wrangler d1 execute chapai-prod --remote --command "INSERT INTO access_keys (id, code, normalized_code, type, scope, status, created_at, expires_at, max_redeems, redeem_count, notes) VALUES ('${record.id}','${code}','${code}','demo-pass','all','active',unixepoch(),${Math.floor(Date.parse(expiresAt) / 1000)},${seats},0,'${institution.replace(/'/g, "''")}')"`);
+  const roleLabel = isInstructor ? "INSTRUCTOR (faculty console)" : "student";
+  console.log(`Generated ${roleLabel} key for "${institution}":\n\n  ${code}\n\n  ${seats} seats · ${days}-day access · valid until ${expiresAt.slice(0, 10)}`);
+  if (isInstructor) console.log(`  → Faculty who redeem this get the /instructor cohort dashboard for students who used a STUDENT key with the same institution label.`);
+  console.log(`\nPush to prod D1 now (no deploy needed):\n  npx wrangler d1 execute chapai-prod --remote --command "INSERT INTO access_keys (id, code, normalized_code, type, scope, status, created_at, expires_at, max_redeems, redeem_count, notes) VALUES ('${record.id}','${code}','${code}','${keyType}','all','active',unixepoch(),${Math.floor(Date.parse(expiresAt) / 1000)},${seats},0,'${institution.replace(/'/g, "''")}')"`);
 } else if (cmd === "disable" || cmd === "expire") {
   const code = process.argv[3]?.toUpperCase();
   const key = store.keys.find((k) => k.code.toUpperCase() === code);

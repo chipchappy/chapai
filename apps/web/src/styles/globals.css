@@ -27432,6 +27432,25 @@ body:has(.nclex-exam-shell) nextjs-portal {
   flex-shrink: 0;
 }
 
+/* ── Instructor roster table ──────────────────────────────────────────────── */
+.instructor-roster { border-collapse: separate; border-spacing: 0; }
+.instructor-roster thead th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text-muted, #6b6f6a);
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(139, 120, 93, 0.2);
+  white-space: nowrap;
+}
+.instructor-roster tbody td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(74, 85, 89, 0.07);
+  vertical-align: middle;
+}
+.instructor-roster tbody tr:hover { background: rgba(139, 120, 93, 0.05); }
+
 /* ── Uniform visual-rationale diagram ─────────────────────────────────────── */
 .rationale-diagram {
   margin: 20px 0 0;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import StudyDashboard from "@/components/dashboard/StudyDashboard";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { getInstructorContext } from "@/lib/instructor-access";
 
 export const metadata: Metadata = {
   title: "Study Dashboard",
@@ -18,6 +19,12 @@ export default async function StudyPage() {
 
   if (!user) {
     redirect("/auth/login?next=/study");
+  }
+
+  // Faculty accounts get the instructor console, never the personal study view.
+  const instructor = await getInstructorContext({ userId: user.id, email: user.email ?? null });
+  if (instructor.isInstructor) {
+    redirect("/instructor");
   }
 
   return (
