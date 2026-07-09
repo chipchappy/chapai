@@ -112,11 +112,16 @@ function buildPrompt(row) {
 {
   "diagramWorthy": boolean,   // true ONLY when a visual genuinely deepens understanding: a pathophysiology cascade, a lab/vital trend, a prioritization/nursing-process algorithm, or a staged management pathway. false for pure recall/definition/single-fact items — do NOT force a diagram.
   "visual": null OR {
-    "type": "trend" | "flow" | "pathway" | "overview",
+    "type": "trend" | "flow" | "pathway",
     "title": string,          // specific and clinical, <= 60 chars (e.g. "DKA Correction Sequence", not "Management")
     "caption": string,        // one line of orienting context, <= 100 chars
-    "metrics": [ { "label": string, "value": string, "direction": "up"|"down"|"steady", "directionLabel": string } ],  // ONLY for type "trend": real labs/vitals WITH units + reference (e.g. label "Serum K+", value "5.9 mEq/L (H)", direction "up", directionLabel "rising")
-    "nodes": [ { "label": string, "value": string } ],  // 4-6 ordered steps for flow/pathway/overview
+    // Choose "trend" whenever the item hinges on interpreting LABS or VITALS. It renders as a bar chart.
+    "metrics": [ { "label": string, "value": string, "direction": "up"|"down"|"steady", "directionLabel": string } ],  // 3-5 real labs/vitals WITH a numeric value + unit so bars scale (e.g. label "Serum K+", value "5.9 mEq/L", direction "up", directionLabel "high"); include the abnormal AND relevant normal values that define the picture
+    // Otherwise use "flow"/"pathway". It renders as a real top-down FLOWCHART, so:
+    //   nodes[0]   = the clinical TRIGGER or presenting cue (short, e.g. "Fever + chills during transfusion")
+    //   nodes[1..] = ordered ACTIONS, each label = the action, value = the concrete specific (dose/rate/target/timeframe)
+    //   nodes[last]= the expected OUTCOME / resolution (e.g. "Symptoms resolve; document reaction")
+    "nodes": [ { "label": string, "value": string } ],  // 4-6 total: trigger + actions + outcome
     "conclusion": string      // a memorable, testable clinical pearl (the single thing to remember)
   },
   "structured": {
