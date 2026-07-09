@@ -108,31 +108,37 @@ const parseOpts = (raw) => { try { const o = JSON.parse(raw); return Array.isArr
 function buildPrompt(row) {
   const opts = parseOpts(row.options);
   const optText = opts.length ? opts.map((o) => `${String(o.id).toUpperCase()}. ${o.text}`).join("\n") : "(see stem)";
-  return `You are a senior NCLEX-RN nurse educator. For the question below, return STRICT JSON only (no markdown, no prose) with this exact shape:
+  return `You are a doctorally-prepared NCLEX-RN nurse educator writing PREMIUM board-review content that must rival UWorld and Archer. Return STRICT JSON only (no markdown, no prose) with this exact shape:
 {
-  "diagramWorthy": boolean,   // true only if a diagram genuinely clarifies the concept (pathophysiology cascade, lab/vital trend, prioritization or nursing-process flow, comparative concept). false for pure recall/definition items.
+  "diagramWorthy": boolean,   // true ONLY when a visual genuinely deepens understanding: a pathophysiology cascade, a lab/vital trend, a prioritization/nursing-process algorithm, or a staged management pathway. false for pure recall/definition/single-fact items — do NOT force a diagram.
   "visual": null OR {
-    "type": "trend" | "flow" | "pathway" | "signal" | "overview",
-    "title": string,          // <= 60 chars
-    "caption": string,        // <= 90 chars, optional context
-    "metrics": [ { "label": string, "value": string, "direction": "up"|"down"|"steady", "directionLabel": string } ],  // ONLY for type "trend" (labs/vitals); else omit
-    "nodes": [ { "label": string, "value": string } ],  // ordered steps for flow/pathway/overview/signal; 3-6 items; omit for trend
-    "conclusion": string      // one-line clinical takeaway
+    "type": "trend" | "flow" | "pathway" | "overview",
+    "title": string,          // specific and clinical, <= 60 chars (e.g. "DKA Correction Sequence", not "Management")
+    "caption": string,        // one line of orienting context, <= 100 chars
+    "metrics": [ { "label": string, "value": string, "direction": "up"|"down"|"steady", "directionLabel": string } ],  // ONLY for type "trend": real labs/vitals WITH units + reference (e.g. label "Serum K+", value "5.9 mEq/L (H)", direction "up", directionLabel "rising")
+    "nodes": [ { "label": string, "value": string } ],  // 4-6 ordered steps for flow/pathway/overview
+    "conclusion": string      // a memorable, testable clinical pearl (the single thing to remember)
   },
   "structured": {
-    "overview": string,       // 1-2 sentences: the core principle
-    "mechanism": string,      // 1-2 sentences: the pathophysiology/why
-    "whyCorrect": string,     // why the correct answer is right, specific
-    "whyWrong": { "A": string, "B": string }  // per WRONG option letter, why it is wrong
+    "overview": string,       // 2-3 sentences: the governing clinical principle this item tests
+    "mechanism": string,      // 2-3 sentences: the SPECIFIC pathophysiology / pharmacology driving the answer
+    "whyCorrect": string,     // 2-3 sentences: precisely why the correct option is right, tied to the mechanism
+    "whyWrong": { "A": string, "B": string }  // one specific, non-generic sentence per WRONG option letter naming its exact clinical error
   }
 }
-Rules: be clinically accurate; never contradict the given correct answer; use only real values; concise. If diagramWorthy is false, set "visual" to null.
+QUALITY BAR — non-negotiable:
+- Node "label" MUST be a descriptive clinical phrase (e.g. "Give isotonic fluids", "Recheck K+ in 2 h"). NEVER a bare option letter ("A"), a number ("1"), or "Step 1".
+- Node "value" MUST be filled with a concrete specific: a dose, rate, lab target, timeframe, or parameter (e.g. "0.9% NaCl 15-20 mL/kg/h", "target K+ 3.5-5.0", "within first 15 min"). Never leave it empty or vague.
+- Use exact numbers, units, doses, and thresholds throughout. No hand-waving ("monitor closely", "as needed") without the specific metric.
+- Prefer type "trend" when the item hinges on interpreting lab/vital values.
+- Be clinically precise and current; NEVER contradict the given correct answer. Do not write "the nurse should" filler.
+- If diagramWorthy is false, set "visual" to null but STILL return a rich "structured" block.
 
 STEM: ${row.stem}
 OPTIONS:
 ${optText}
 CORRECT ANSWER: ${row.answer}
-EXISTING RATIONALE: ${String(row.rationale).slice(0, 700)}`;
+EXISTING RATIONALE: ${String(row.rationale).slice(0, 900)}`;
 }
 
 function extractJson(text) {
@@ -142,6 +148,13 @@ function extractJson(text) {
   try { return JSON.parse(t.slice(s, e + 1)); } catch { return null; }
 }
 
+// Quality gate: a label that is a bare option letter, a number, or "Step N" is a
+// low-effort placeholder — reject the whole diagram so only premium ones ship.
+const isWeakLabel = (s) => {
+  const t = String(s ?? "").trim();
+  return t.length < 3 || /^(option\s+)?[a-f]$/i.test(t) || /^\d+$/.test(t) || /^step\s*\d+$/i.test(t) || /^(choice|answer)\s*[a-f\d]+$/i.test(t);
+};
+
 function validVisual(v) {
   if (!v || typeof v !== "object") return null;
   const types = ["trend", "flow", "pathway", "signal", "overview"];
@@ -149,12 +162,19 @@ function validVisual(v) {
   const out = { type: v.type, title: String(v.title).slice(0, 80) };
   if (v.caption) out.caption = String(v.caption).slice(0, 140);
   if (Array.isArray(v.metrics) && v.metrics.length) {
-    out.metrics = v.metrics.slice(0, 6).map((m) => ({ label: String(m.label).slice(0, 60), value: String(m.value).slice(0, 40), direction: ["up", "down", "steady"].includes(m.direction) ? m.direction : undefined, directionLabel: m.directionLabel ? String(m.directionLabel).slice(0, 30) : undefined }));
+    const metrics = v.metrics.slice(0, 6)
+      .filter((m) => !isWeakLabel(m.label) && String(m.value ?? "").trim().length > 0)
+      .map((m) => ({ label: String(m.label).slice(0, 60), value: String(m.value).slice(0, 40), direction: ["up", "down", "steady"].includes(m.direction) ? m.direction : undefined, directionLabel: m.directionLabel ? String(m.directionLabel).slice(0, 30) : undefined }));
+    if (metrics.length >= 2) out.metrics = metrics;
   }
   if (Array.isArray(v.nodes) && v.nodes.length) {
-    out.nodes = v.nodes.slice(0, 6).map((n) => ({ label: String(n.label).slice(0, 60), value: String(n.value ?? "").slice(0, 120) }));
+    const nodes = v.nodes.slice(0, 6)
+      // Every node must have a descriptive label AND a concrete value.
+      .filter((n) => !isWeakLabel(n.label) && String(n.value ?? "").trim().length >= 3)
+      .map((n) => ({ label: String(n.label).slice(0, 60), value: String(n.value).slice(0, 120) }));
+    if (nodes.length >= 3) out.nodes = nodes;
   }
-  if (!out.metrics && !out.nodes) return null;
+  if (!out.metrics && !out.nodes) return null; // nothing survived the quality gate
   if (v.conclusion) out.conclusion = String(v.conclusion).slice(0, 200);
   return out;
 }
