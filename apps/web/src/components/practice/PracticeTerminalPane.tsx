@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { getPreferredIntelTab, getQuestionIntegrityIssues, type QuestionIntelTab } from "@/lib/question-renderability";
 import { ClinicalReviewStation } from "@/components/practice/ClinicalReviewStation";
 import NclexExamPane from "@/components/practice/NclexExamPane";
+import RationaleDiagram from "@/components/practice/RationaleDiagram";
 import { buildPracticeChartReviewModel, type ChartReviewTab } from "@/lib/chart-review-model";
 import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import DrugLinkedText from "@/components/practice/DrugLinkedText";
@@ -1533,45 +1534,7 @@ export default function PracticeTerminalPane({
                       {/* Inline visual diagram */}
                       {visualRationale ? (
                         <div className="quiz-diagram-panel">
-                          <p className="quiz-diagram-title">{visualRationale.title}</p>
-                          {(visualRationale.type === "trend" || visualRationale.type === "overview") && visualRationale.metrics?.length ? (
-                            <div>
-                              {visualRationale.metrics.map((metric) => (
-                                <div key={metric.label} className="quiz-diagram-bar-row">
-                                  <span className="quiz-diagram-bar-label">{metric.label}</span>
-                                  <div className="quiz-diagram-bar-track">
-                                    <div className="quiz-diagram-bar-fill" style={{ width: "62%" }} />
-                                  </div>
-                                  <span className="quiz-diagram-bar-value">{metric.value}</span>
-                                </div>
-                              ))}
-                            </div>
-                          ) : (visualRationale.type === "flow" || visualRationale.type === "pathway") && visualRationale.nodes?.length ? (
-                            <div className="quiz-diagram-flow">
-                              {visualRationale.nodes.map((node, i) => (
-                                <div key={node.label}>
-                                  <div className="quiz-diagram-flow-node">
-                                    {node.label}{node.value ? ` — ${node.value}` : ""}
-                                  </div>
-                                  {i < (visualRationale.nodes?.length ?? 0) - 1 ? (
-                                    <div className="quiz-diagram-flow-arrow">↓</div>
-                                  ) : null}
-                                </div>
-                              ))}
-                            </div>
-                          ) : (visualRationale.nodes ?? []).length ? (
-                            <div className="quiz-diagram-signal-grid">
-                              {(visualRationale.nodes ?? []).map((node) => (
-                                <div key={node.label} className="quiz-diagram-signal-cell">
-                                  <span>{node.label}</span>
-                                  <strong>{node.value}</strong>
-                                </div>
-                              ))}
-                            </div>
-                          ) : null}
-                          {visualRationale.conclusion ? (
-                            <p className="mt-3 text-xs italic leading-6 text-[var(--quiz-muted)]">{visualRationale.conclusion}</p>
-                          ) : null}
+                          <RationaleDiagram data={visualRationale} />
                         </div>
                       ) : diagramBlueprint ? (
                         <div className="quiz-diagram-panel">
@@ -1661,35 +1624,9 @@ export default function PracticeTerminalPane({
               {visualRationale ? (
                 <div className="quiz-rail-card quiz-monitor-tutor-card">
                   <p className="quiz-terminal-kicker">visual rationale</p>
-                  <p className="mt-3 text-sm font-semibold text-[var(--quiz-ink-strong)]">{visualRationale.title}</p>
-                  {(visualRationale.type === "trend" || visualRationale.type === "overview") && visualRationale.metrics?.length ? (
-                    <div className="quiz-diagram-panel mt-3">
-                      <p className="quiz-diagram-title">trend markers</p>
-                      {visualRationale.metrics.map((metric) => (
-                        <div key={metric.label} className="quiz-diagram-bar-row">
-                          <span className="quiz-diagram-bar-label">{metric.label}</span>
-                          <div className="quiz-diagram-bar-track">
-                            <div className="quiz-diagram-bar-fill" style={{ width: "62%" }} />
-                          </div>
-                          <span className="quiz-diagram-bar-value">{metric.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (visualRationale.type === "flow" || visualRationale.type === "pathway") && visualRationale.nodes?.length ? (
-                    <div className="quiz-diagram-flow mt-3">
-                      {visualRationale.nodes.map((node, i) => (
-                        <div key={node.label}>
-                          <div className="quiz-diagram-flow-node">
-                            {node.label}{node.value ? ` — ${node.value}` : ""}
-                          </div>
-                          {i < (visualRationale.nodes?.length ?? 0) - 1 ? (
-                            <div className="quiz-diagram-flow-arrow">↓</div>
-                          ) : null}
-                        </div>
-                      ))}
-                    </div>
-                  ) : null}
-                  {visualRationale.conclusion ? <p className="mt-2 text-sm leading-7 text-[var(--quiz-muted)]">{visualRationale.conclusion}</p> : null}
+                  <div className="mt-3">
+                    <RationaleDiagram data={visualRationale} />
+                  </div>
                 </div>
               ) : null}
               {diagramBlueprint ? (
