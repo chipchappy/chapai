@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { BowTieSelector } from "@/components/practice/BowTieSelector";
 import RationaleDiagram from "@/components/practice/RationaleDiagram";
-import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
+import { getDisplayableDistractorRationales, isDisplayableRationaleText } from "@/lib/distractor-rationale-display";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
 type NclexChartTab = "notes" | "history" | "vitals" | "labs" | "orders";
@@ -56,12 +56,78 @@ function formatAnswerValue(answer: PracticeAnswer | undefined, question: Practic
   return question.options?.find((option) => option.id === answer)?.text ?? answer.toUpperCase();
 }
 
+function buildFallbackDiagram(
+  question: PracticeQuestion,
+  answerRecord: PracticeAnswerRecord | undefined,
+  rationale: string,
+): NonNullable<PracticeQuestion["visualRationale"]> {
+  const structured = answerRecord?.structuredRationale ?? question.structuredRationale;
+  const answerTarget = formatAnswerValue(answerRecord?.correctAnswer ?? question.correctAnswer, question);
+  const cue = question.speedCue ?? question.takeaway ?? splitSentences(rationale)[0] ?? "highest-risk cue";
+  const pattern = question.diagramBlueprint?.focus ?? structured?.overview ?? question.category;
+  const mechanism = structured?.mechanism ?? question.takeaway ?? "match the cue to the safest priority action";
+
+  return {
+    type: question.diagramBlueprint?.type ?? "pathway",
+    title: question.diagramBlueprint?.title ?? "Decision pathway",
+    caption: "Trace the clue, pattern, and safest move before reviewing distractors.",
+    nodes: [
+      { label: "Cue", value: cue },
+      { label: "Pattern", value: pattern },
+      { label: "Safest move", value: answerTarget },
+      { label: "Why it wins", value: mechanism },
+    ],
+    conclusion: question.takeaway ?? "On the next rep, name the cue before choosing the action.",
+  };
+}
+
 function scoringRule(question: PracticeQuestion) {
   if (question.kind === "matrix") return "+ / - scoring";
   if (question.kind === "ordering") return "Ordered response";
   if (question.kind === "multi-select") return "Select all that apply";
   if (question.kind === "bow-tie") return "Bow-tie clinical judgment";
   return "Single best answer";
+}
+
+function getQuestionDirection(question: PracticeQuestion) {
+  if (question.kind === "multi-select") {
+    return {
+      tone: "multi",
+      label: "Select all that apply",
+      primary: question.nclexInstruction ?? "Select every answer that applies. More than one option may be correct.",
+      detail: "Do not stop after one good option; check each choice independently.",
+    };
+  }
+  if (question.kind === "matrix") {
+    return {
+      tone: "matrix",
+      label: "Complete every row",
+      primary: question.nclexInstruction ?? "For each client finding, select the best response in that row.",
+      detail: "Each row is scored independently; do not leave any row blank.",
+    };
+  }
+  if (question.kind === "ordering") {
+    return {
+      tone: "sequence",
+      label: "Ordered response",
+      primary: question.nclexInstruction ?? "Place the options in the correct sequence before submitting.",
+      detail: "Prioritize safety, ABCs, and immediate stabilization before later tasks.",
+    };
+  }
+  if (question.kind === "bow-tie") {
+    return {
+      tone: "clinical",
+      label: "Bow-tie clinical judgment",
+      primary: question.nclexInstruction ?? "Link the highest-risk cues to the condition, actions, and outcomes.",
+      detail: "Anchor the center diagnosis before choosing interventions and monitoring targets.",
+    };
+  }
+  return {
+    tone: "single",
+    label: "Single best answer",
+    primary: question.nclexInstruction ?? "Select the one option that best answers the question.",
+    detail: "Use the safest priority action supported by the stem.",
+  };
 }
 
 function formatClock(seconds: number) {
@@ -77,6 +143,26 @@ function splitSentences(text?: string) {
     .split(/(?<=[.!?])\s+/)
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function splitRationaleParagraphs(text: string) {
+  const sentences = splitSentences(text);
+  if (sentences.length <= 2) return [text];
+  return [sentences.slice(0, 2).join(" "), sentences.slice(2).join(" ")].filter(Boolean);
+}
+
+function selectTeachingRationale(question: PracticeQuestion, answerRecord?: PracticeAnswerRecord) {
+  const structured = answerRecord?.structuredRationale ?? question.structuredRationale;
+  const candidates = [
+    answerRecord?.deepRationale,
+    question.deepRationale,
+    answerRecord?.rationale,
+    question.rationale,
+    [structured?.overview, structured?.mechanism].filter(Boolean).join(" "),
+    question.takeaway,
+  ];
+  return candidates.find(isDisplayableRationaleText)
+    ?? "Use the safest answer supported by the highest-risk cue in the stem, then compare each distractor against that priority before moving on.";
 }
 
 function readableKey(key: string) {
@@ -198,7 +284,9 @@ export default function NclexExamPane({
   const caseItemNumber = question.caseItemNumber ?? questionNumber;
   const caseItemTotal = question.caseItemTotal ?? totalQuestions;
   const clozeBlankCount = question.clozeBlankCount ?? (question.kind === "ordering" ? Math.max(correct.length, 3) : 1);
-  const rationale = answerRecord?.deepRationale ?? answerRecord?.rationale ?? question.deepRationale ?? question.rationale;
+  const direction = getQuestionDirection(question);
+  const rationale = selectTeachingRationale(question, answerRecord);
+  const rationaleParagraphs = splitRationaleParagraphs(rationale);
   const structuredRationale = answerRecord?.structuredRationale ?? question.structuredRationale;
   // Prefer the vetted distractor rationales; the generated structured whyWrong is
   // only a fallback for items that never had per-option explanations.
@@ -206,11 +294,15 @@ export default function NclexExamPane({
     question,
     answerRecord?.distractorRationales ?? question.distractorRationales,
   );
+  const vettedStructuredWrong = getDisplayableDistractorRationales(question, structuredRationale?.whyWrong);
   const incorrectExplanations = Object.keys(vettedDistractors).length
     ? vettedDistractors
-    : structuredRationale?.whyWrong ?? {};
+    : vettedStructuredWrong;
   const references = answerRecord?.references ?? question.references ?? [];
   const structuredCitations = structuredRationale?.citations ?? [];
+  const visualDiagram = answerRecord?.visualRationale
+    ?? question.visualRationale
+    ?? buildFallbackDiagram(question, answerRecord, rationale);
   const selectedTexts = activeIds
     .map((id) => question.options?.find((option) => option.id === id)?.text ?? id.toUpperCase())
     .filter(Boolean);
@@ -354,13 +446,21 @@ export default function NclexExamPane({
           <p className="nclex-fill-sentence">
             {question.kind === "ordering"
               ? <>Place the options in the <strong>correct sequence</strong> to complete the response.</>
+              : question.kind === "multi-select"
+                ? <>Select <strong>all choices that apply</strong>. More than one option may be correct.</>
               : <>Select the choice that <strong>best completes</strong> the response.</>}
           </p>
-          <div className="nclex-blank-row" aria-label="selected answer blanks">
-            {(question.kind === "ordering" ? Array.from({ length: clozeBlankCount }, (_, slot) => slot) : [0]).map((slot) => (
-              <span key={slot} className="nclex-blank">{selectedTexts[slot] ?? ""}</span>
-            ))}
-          </div>
+          {question.kind === "multi-select" ? (
+            <div className="nclex-selected-chip-row" aria-label="selected answers">
+              {selectedTexts.length ? selectedTexts.map((text) => <span key={text}>{text}</span>) : <em>No selections yet</em>}
+            </div>
+          ) : (
+            <div className="nclex-blank-row" aria-label="selected answer blanks">
+              {(question.kind === "ordering" ? Array.from({ length: clozeBlankCount }, (_, slot) => slot) : [0]).map((slot) => (
+                <span key={slot} className="nclex-blank">{selectedTexts[slot] ?? ""}</span>
+              ))}
+            </div>
+          )}
         </>
       );
     }
@@ -470,7 +570,9 @@ export default function NclexExamPane({
       <div className="nclex-word-response">
         {renderClozeSentence()}
         <div className="nclex-word-box">
-          <div className="nclex-word-title">Word Choices</div>
+          <div className="nclex-word-title">
+            {question.kind === "multi-select" ? "Answer Choices - Select All That Apply" : question.kind === "ordering" ? "Word Choices - Order the Response" : "Word Choices"}
+          </div>
           {(question.options ?? []).map((option) => {
             const selected = activeIds.includes(option.id);
             const isCorrect = correct.includes(option.id);
@@ -533,14 +635,15 @@ export default function NclexExamPane({
         </section>
 
         <section className="nclex-right-pane">
+          <div className={`nclex-direction-banner is-${direction.tone}`}>
+            <span>{direction.label}</span>
+            <strong>{direction.primary}</strong>
+            <em>{direction.detail}</em>
+          </div>
           <p className="nclex-question-lead">{question.stem}</p>
           <p className="nclex-instruction">
             <span aria-hidden="true">›</span>
-            {question.nclexInstruction ?? (question.kind === "matrix"
-              ? "For each client finding, click to specify whether the finding is associated with the best clinical interpretation."
-              : question.kind === "ordering"
-                ? "Drag or select options from the choices below to place them in the correct order."
-                : "Select the option that best completes the response.")}
+            <strong>{direction.label}.</strong> {direction.primary}
           </p>
 
           {renderAnswerArea()}
@@ -565,7 +668,9 @@ export default function NclexExamPane({
                   supplemental context beneath it, never a replacement. */}
               <div className="nclex-correct-rationale">
                 <span className="nclex-correct-label" aria-hidden="true">✓ Why this is correct</span>
-                <p className="nclex-rationale-copy">{rationale}</p>
+                <div className="nclex-rationale-copy">
+                  {rationaleParagraphs.map((paragraph, index) => <p key={`${paragraph}-${index}`}>{paragraph}</p>)}
+                </div>
                 {structuredRationale && (structuredRationale.overview || structuredRationale.mechanism) ? (
                   <div className="nclex-correct-detail">
                     {structuredRationale.overview ? <p><b>Overview.</b> {structuredRationale.overview}</p> : null}
@@ -575,7 +680,7 @@ export default function NclexExamPane({
               </div>
 
               {/* Uniform visual rationale diagram — renders when the item carries one. */}
-              {question.visualRationale ? <RationaleDiagram data={question.visualRationale} /> : null}
+              <RationaleDiagram data={visualDiagram} />
 
               {/* Distractor rationales — always visible, no click-to-expand. */}
               {Object.keys(incorrectExplanations).length ? (

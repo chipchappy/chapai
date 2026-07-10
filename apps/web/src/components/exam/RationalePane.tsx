@@ -25,6 +25,45 @@ function getCredit(item: ExamItem, answers: Record<string, GridChoice | undefine
   return credit;
 }
 
+function getDirection(item: ExamItem) {
+  if (item.type === "highlight") {
+    return {
+      label: "Select all that apply",
+      detail: "Highlight every finding that requires immediate follow-up. More than one finding is correct.",
+    };
+  }
+  return {
+    label: "Complete every row",
+    detail: "Choose indicated or not indicated for each intervention before submitting.",
+  };
+}
+
+function VtePriorityDiagram() {
+  const nodes = [
+    { label: "Unstable cues", value: "dyspnea, pleuritic pain, hypoxemia, unilateral swelling" },
+    { label: "Likely pattern", value: "DVT with pulmonary embolism risk" },
+    { label: "Priority actions", value: "oxygenation, monitoring, anticoagulation safety" },
+    { label: "Avoid", value: "massage, unsafe ambulation, IM bleeding risk" },
+  ];
+
+  return (
+    <figure className={styles.visualMap} aria-label="VTE and pulmonary embolism priority pathway">
+      <figcaption>
+        <span>Visual rationale</span>
+        <strong>VTE / PE priority pathway</strong>
+      </figcaption>
+      <ol>
+        {nodes.map((node) => (
+          <li key={node.label}>
+            <span>{node.label}</span>
+            <strong>{node.value}</strong>
+          </li>
+        ))}
+      </ol>
+    </figure>
+  );
+}
+
 export default function RationalePane({
   item,
   submitted,
@@ -43,9 +82,15 @@ export default function RationalePane({
   onSubmit: () => void;
 }) {
   const credit = getCredit(item, gridAnswers, highlighted);
+  const direction = getDirection(item);
 
   return (
     <aside className={styles.pane} aria-label="Rationale pane">
+      <div className={styles.direction}>
+        <span>{direction.label}</span>
+        <strong>{item.prompt}</strong>
+        <em>{direction.detail}</em>
+      </div>
       <p className={styles.prompt}>{item.prompt}</p>
       {item.type === "highlight" ? (
         <HighlightStem item={item} selected={highlighted} submitted={submitted} onToggle={onHighlightToggle} />
@@ -97,6 +142,7 @@ export default function RationalePane({
           <BurnStagingTable />
         </div>
       ) : null}
+      {item.rationale.diagrams?.includes("vte-priority") ? <VtePriorityDiagram /> : null}
         </>
       ) : null}
     </aside>

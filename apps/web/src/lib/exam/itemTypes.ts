@@ -154,7 +154,7 @@ export const sampleExamItems: ExamItem[] = [
         "Anticoagulation requires bleeding surveillance and baseline labs.",
         "Do not massage or manipulate an extremity with suspected thrombus.",
       ],
-      diagrams: ["burn-staging"],
+      diagrams: ["vte-priority"],
     },
   },
   {
@@ -230,6 +230,7 @@ export const sampleExamItems: ExamItem[] = [
         "Immediate follow-up is driven by current instability, not only historical risk factors.",
         "Pleural chest pain, dyspnea, tachycardia, hypoxemia, and unilateral edema cluster around PE/DVT concern.",
       ],
+      diagrams: ["vte-priority"],
     },
   },
 ];

@@ -325,9 +325,10 @@ export default function PracticeTerminalPane({
     question,
     answerRecord?.distractorRationales ?? question.distractorRationales,
   );
-  const whyWrongRationales = Object.keys(structuredRationale?.whyWrong ?? {}).length
-    ? structuredRationale?.whyWrong ?? {}
-    : distractorRationales;
+  const structuredWrongRationales = getDisplayableDistractorRationales(question, structuredRationale?.whyWrong);
+  const whyWrongRationales = Object.keys(distractorRationales).length
+    ? distractorRationales
+    : structuredWrongRationales;
   const promptSupport = [question.takeaway, question.speedCue].filter(Boolean) as string[];
   const coachingFrame = answerRecord?.coachingFrame ?? question.coachingFrame ?? [];
   const references = answerRecord?.references ?? question.references ?? [];
