@@ -134,6 +134,16 @@ export async function POST(req: NextRequest) {
       logError("quiz/start access context failed", error, requestContext);
     }
 
+    // Account requirement: starting a practice session is protected study
+    // content. Signed-in users and access-key holders (founder/demo/instructor
+    // previews) pass; anonymous visitors get 401 + the signup path.
+    if (!user?.id && !previewAccess) {
+      return jsonError(401, "AUTH_REQUIRED", "Create a free account to start practicing.", {
+        ...requestContext,
+        loginUrl: "/auth/signup?next=/quiz",
+      }, { requestId: requestContext.requestId });
+    }
+
     // Only fall back to synthetic demo deck for non-pro preview users without a session.
     // Pro-tier demo key holders get real questions from the DB (sessionId will be demo-${Date.now()}). 
     if (previewAccess && !user?.id && previewKeyTier !== "pro") {

@@ -13,6 +13,7 @@ import { z } from "zod";
 import { createRequestContext } from "@/lib/logger";
 import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { ACCESS_KEY_COOKIE, validateAccessKeyRuntime } from "@/lib/access-keys";
 import type { QuestionAnswer } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -197,6 +198,22 @@ export async function POST(req: NextRequest) {
     const serializedSelectedAnswer = serializeAnswer(selectedAnswer);
     const { sessionId, questionId, timeSpentMs } = parsed;
 
+    // Account requirement: grading + rationales are protected study content.
+    // A signed-in user or a valid preview/demo access key must be present —
+    // anonymous calls get 401 with the signup path so the client can route there.
+    const user = await getAuthenticatedUser();
+    let previewAccess = false;
+    if (!user?.id) {
+      const previewCookie = req.cookies.get(ACCESS_KEY_COOKIE)?.value;
+      previewAccess = previewCookie ? Boolean(await validateAccessKeyRuntime(previewCookie)) : false;
+    }
+    if (!user?.id && !previewAccess) {
+      return jsonError(401, "AUTH_REQUIRED", "Create a free account to answer questions and unlock rationales.", {
+        ...requestContext,
+        loginUrl: "/auth/signup?next=/quiz",
+      }, { requestId: requestContext.requestId });
+    }
+
     const env = resolveEnv();
 
     if (!hasDatabase(env)) {
@@ -242,7 +259,6 @@ export async function POST(req: NextRequest) {
     }
 
     const db = getDB(env);
-    const user = await getAuthenticatedUser();
     const hostedUser = user?.email
       ? await ensureHostedUser(db, {
           userId: user.id,

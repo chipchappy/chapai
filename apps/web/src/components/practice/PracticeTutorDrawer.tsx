@@ -64,6 +64,8 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  // Server-declared gates: "auth" = needs an account, "limit" = free daily cap hit.
+  const [gate, setGate] = useState<null | "auth" | "limit">(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const studyResources = question.studyResources ?? getStudyResourcesForQuestion(question);
   const storageKey = useMemo(
@@ -116,6 +118,7 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
     const trimmed = text.trim();
     if (!trimmed || streaming) return;
 
+    const priorMessages = messages;
     const userMessage = { role: "user" as const, content: trimmed };
     const history = messages.slice(-5);
     setMessages([...messages, userMessage, { role: "assistant" as const, content: "" }]);
@@ -123,21 +126,48 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
     setStreaming(true);
 
     try {
-      const res = await fetch("/api/tutor/ask", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          question: { ...question, studyResources },
-          questionId: question.id,
-          history,
-          userMessage: trimmed,
-          context: "rationale",
-          selectedAnswer,
-          answeredCorrectly,
-        }),
-      });
+      // One automatic retry on transient failures (429 / 5xx / network) so a
+      // single edge blip never surfaces as "tutor broken" to the student.
+      let res: Response | null = null;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+          res = await fetch("/api/tutor/ask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              question: { ...question, studyResources },
+              questionId: question.id,
+              history,
+              userMessage: trimmed,
+              context: "rationale",
+              selectedAnswer,
+              answeredCorrectly,
+            }),
+          });
+        } catch {
+          res = null;
+        }
+        const transient = !res || res.status === 429 || res.status >= 500;
+        if (!transient || attempt === 1) break;
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+      }
 
-      if (!res.ok || !res.body) throw new Error("Tutor unavailable");
+      if (res && !res.ok) {
+        const payload = (await res.json().catch(() => null)) as { code?: string } | null;
+        if (res.status === 401) {
+          setGate("auth");
+          setMessages(priorMessages);
+          return;
+        }
+        if (res.status === 403 && payload?.code === "TUTOR_LIMIT") {
+          setGate("limit");
+          setMessages(priorMessages);
+          return;
+        }
+      }
+
+      if (!res || !res.ok || !res.body) throw new Error("Tutor unavailable");
+      setGate(null);
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
@@ -422,26 +452,51 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
           </div>
 
           <div className="border-t border-[rgba(255,255,255,0.06)] p-5 lg:p-6">
-            <div className="flex gap-3">
-              <textarea
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                onKeyDown={handleKeyDown}
-                rows={1}
-                placeholder="Ask the tutor..."
-                className="min-h-[3.25rem] flex-1 resize-none rounded-[18px] border border-[rgba(108,96,79,0.12)] bg-[rgba(255,255,255,0.96)] px-4 py-3 text-sm text-dark outline-none transition placeholder:text-muted focus:border-[rgba(90,127,136,0.5)] focus:ring-2 focus:ring-[rgba(90,127,136,0.12)]"
-              />
-              <button
-                onClick={() => void sendMessage(input)}
-                disabled={!input.trim() || streaming}
-                className="inline-flex h-[3.25rem] shrink-0 items-center justify-center rounded-full bg-[#4A5559] px-5 text-sm font-semibold text-white transition hover:bg-[#3B4549] disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Ask
-              </button>
-            </div>
-            <p className="mt-3 text-center text-xs text-muted">
-              Powered by the tutor API with fallback coaching for the current question context.
-            </p>
+            {gate ? (
+              <div className="rounded-[22px] border border-[rgba(194,154,86,0.28)] bg-[rgba(250,244,232,0.97)] px-5 py-4 text-center">
+                <p className="text-sm font-semibold text-dark">
+                  {gate === "auth"
+                    ? "Create a free account to use the AI tutor."
+                    : "You've used today's free tutor coaching."}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-muted">
+                  {gate === "auth"
+                    ? "Your progress and this question stay right here — you'll come straight back after signup."
+                    : "Upgrade for unlimited tutor exchanges, or come back tomorrow — your free allowance resets daily."}
+                </p>
+                <a
+                  href={gate === "auth"
+                    ? `/auth/signup?next=${typeof window !== "undefined" ? encodeURIComponent(`${window.location.pathname}${window.location.search}`) : "%2Fquiz"}`
+                    : "/pricing"}
+                  className="mt-3 inline-flex items-center justify-center rounded-full bg-[#4A5559] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#3B4549]"
+                >
+                  {gate === "auth" ? "Create free account" : "See plans"}
+                </a>
+              </div>
+            ) : (
+              <>
+                <div className="flex gap-3">
+                  <textarea
+                    value={input}
+                    onChange={(event) => setInput(event.target.value)}
+                    onKeyDown={handleKeyDown}
+                    rows={1}
+                    placeholder="Ask the tutor..."
+                    className="min-h-[3.25rem] flex-1 resize-none rounded-[18px] border border-[rgba(108,96,79,0.12)] bg-[rgba(255,255,255,0.96)] px-4 py-3 text-sm text-dark outline-none transition placeholder:text-muted focus:border-[rgba(90,127,136,0.5)] focus:ring-2 focus:ring-[rgba(90,127,136,0.12)]"
+                  />
+                  <button
+                    onClick={() => void sendMessage(input)}
+                    disabled={!input.trim() || streaming}
+                    className="inline-flex h-[3.25rem] shrink-0 items-center justify-center rounded-full bg-[#4A5559] px-5 text-sm font-semibold text-white transition hover:bg-[#3B4549] disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    Ask
+                  </button>
+                </div>
+                <p className="mt-3 text-center text-xs text-muted">
+                  Powered by the tutor API with fallback coaching for the current question context.
+                </p>
+              </>
+            )}
           </div>
         </section>
       </div>

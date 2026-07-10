@@ -11,7 +11,14 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default function SignupPage() {
+interface SignupPageProps {
+  searchParams?: Promise<{ next?: string }>;
+}
+
+export default async function SignupPage({ searchParams }: SignupPageProps) {
+  const params = (await searchParams) ?? {};
+  // Only allow same-site relative paths so ?next= can never open-redirect.
+  const nextPath = params.next?.startsWith("/") && !params.next.startsWith("//") ? params.next : "/study?welcome=1";
   return (
     <main className="min-h-screen bg-[var(--c-bg)] px-4 py-12">
       <section className="mx-auto grid max-w-[980px] gap-10 rounded-[8px] border border-[var(--c-border)] bg-[var(--c-bg-elevated)] p-6 shadow-[0_20px_48px_rgba(30,42,36,0.06)] md:grid-cols-[0.92fr_1.08fr] md:p-8">
@@ -28,7 +35,7 @@ export default function SignupPage() {
           </p>
         </div>
         <div>
-          <NewsletterOptIn nextPath="/study?welcome=1" />
+          <NewsletterOptIn nextPath={nextPath} />
         </div>
       </section>
     </main>

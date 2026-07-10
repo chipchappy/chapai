@@ -493,6 +493,14 @@ export default function QuizPage({
       : `Standard live-bank question flow with rationale, citations, diagrams, and ${canUseTutor ? "tutor support" : "guided review"}.`;
   }
 
+  // Account gate: study content requires a signed-in account (or preview key).
+  // On a 401 we send the student to signup and bring them straight back here.
+  function redirectToAccountGate(payload: { loginUrl?: string; details?: { loginUrl?: string } } | null) {
+    if (typeof window === "undefined") return;
+    const next = encodeURIComponent(`${window.location.pathname}${window.location.search}`);
+    window.location.assign(payload?.loginUrl ?? payload?.details?.loginUrl ?? `/auth/signup?next=${next}`);
+  }
+
   async function openStandardSession(exam: Exam, count: number | "unlimited") {
     setError(null);
     const endless = count === "unlimited";
@@ -510,6 +518,10 @@ export default function QuizPage({
 
     if (!response.ok) {
       const payload = await response.json().catch(() => null);
+      if (response.status === 401) {
+        redirectToAccountGate(payload);
+        return;
+      }
       setError(payload?.error ?? "Could not start the live-bank session. Please try again.");
       return;
     }
@@ -596,6 +608,9 @@ export default function QuizPage({
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        redirectToAccountGate(await response.json().catch(() => null));
+      }
       return false;
     }
 
@@ -791,6 +806,10 @@ export default function QuizPage({
       });
 
       if (!response.ok) {
+        if (response.status === 401) {
+          redirectToAccountGate(await response.json().catch(() => null));
+          return;
+        }
         setError("Could not submit this answer. Please try again.");
         return;
       }

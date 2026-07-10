@@ -72,11 +72,27 @@ test.describe("theme persists across every tab (hard requirement) @desktopOnly",
   });
 });
 
+// Study content is account-gated. Semi-public demo key exercises the full
+// question flow in smoke without needing a throwaway Supabase account.
+const DEMO_KEY_COOKIE = "chapai_preview_access=DEMO-NEURAL-2194";
+
+async function grantDemoAccess(page: import("@playwright/test").Page) {
+  const base = test.info().project.use.baseURL ?? "https://claritynclex.com";
+  await page.context().addCookies([
+    { name: "chapai_preview_access", value: "DEMO-NEURAL-2194", url: base },
+  ]);
+}
+
 test.describe("core product", () => {
-  test("quiz API serves questions (both exams)", async ({ request }) => {
+  test("quiz/start requires an account and serves questions with access", async ({ request }) => {
+    const anon = await request.post("/api/quiz/start", { data: { exam: "nclex", count: 5 } });
+    expect(anon.status(), "anon quiz/start is blocked").toBe(401);
     for (const exam of ["nclex", "ccrn"]) {
-      const resp = await request.post("/api/quiz/start", { data: { exam, count: 5 } });
-      expect(resp.status(), `quiz/start ${exam}`).toBe(200);
+      const resp = await request.post("/api/quiz/start", {
+        data: { exam, count: 5 },
+        headers: { cookie: DEMO_KEY_COOKIE },
+      });
+      expect(resp.status(), `quiz/start ${exam} (demo key)`).toBe(200);
       const body = await resp.json();
       const questions = (body.data ?? body).questions ?? [];
       expect(questions.length, `${exam} returns questions`).toBeGreaterThanOrEqual(1);
@@ -84,8 +100,26 @@ test.describe("core product", () => {
     }
   });
 
-  test("quiz session renders in UI (anon deep-link)", async ({ page }) => {
+  test("quiz/answer and tutor are account-gated (anon → 401)", async ({ request }) => {
+    const answer = await request.post("/api/quiz/answer", {
+      data: { sessionId: "demo-1", questionId: "smoke-any", selectedOptionId: "a" },
+    });
+    expect(answer.status(), "anon quiz/answer is blocked").toBe(401);
+    const tutor = await request.post("/api/tutor/ask", {
+      data: { questionId: "smoke-any", userMessage: "help", context: "rationale", history: [] },
+    });
+    expect(tutor.status(), "anon tutor is blocked").toBe(401);
+  });
+
+  test("anon deep-link into practice routes to the signup gate", async ({ page }) => {
+    await page.goto("/quiz?exam=nclex&mode=standard", { waitUntil: "domcontentloaded" });
+    await page.waitForURL("**/auth/signup**", { timeout: 20_000 });
+    expect(page.url(), "anon practice deep-link lands on signup").toContain("/auth/signup");
+  });
+
+  test("quiz session renders in UI (demo-key deep-link)", async ({ page }) => {
     const getErrors = collectConsoleErrors(page);
+    await grantDemoAccess(page);
     await page.goto("/quiz?exam=nclex&mode=standard", { waitUntil: "networkidle" });
     // Tolerant of item type: an item counter, a Submit control, or option buttons
     const rendered = page.locator("text=/Item \\d+ of \\d+/")
@@ -145,6 +179,7 @@ test.describe("core product", () => {
   test("adaptive endless params accepted by quiz/start", async ({ request }) => {
     const resp = await request.post("/api/quiz/start", {
       data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
+      headers: { cookie: DEMO_KEY_COOKIE },
     });
     expect(resp.status(), "adaptive start").toBe(200);
     const body = await resp.json();
