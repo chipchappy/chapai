@@ -4,74 +4,147 @@ type VisualRationale = NonNullable<PracticeQuestion["visualRationale"]>;
 type Node = NonNullable<VisualRationale["nodes"]>[number];
 type Metric = NonNullable<VisualRationale["metrics"]>[number];
 
-// Genuine diagrams (not numbered lists): flow/pathway render as a top-down
-// SVG flowchart with a trigger node, action boxes joined by arrow connectors,
-// and a highlighted outcome; trend renders as a proportional bar chart of the
-// relevant labs/vitals. Same visual_rationale data shape as before.
+// v3 — premium clinical visuals.
+// trend  → reference-range GAUGE per lab/vital: shaded normal band + patient
+//          marker, status computed objectively from the band (matches how a
+//          real lab report reads). Range comes from the authored metric.range,
+//          else a built-in reference table, else a clean fallback bar.
+// flow / pathway → flat top-down flowchart: solid trigger pill, quiet numbered
+//          action cards joined by thin connectors, gold-tinted outcome card.
 
-const DIR = {
-  up: { glyph: "▲", color: "#c0563f", tint: "rgba(196,86,63,0.12)", label: "high" },
-  down: { glyph: "▼", color: "#3f6f9c", tint: "rgba(63,111,156,0.12)", label: "low" },
-  steady: { glyph: "●", color: "#55715e", tint: "rgba(111,141,118,0.14)", label: "stable" },
+const STATUS = {
+  high: { color: "#bb4a2f", tint: "rgba(187,74,47,0.12)", glyph: "▲", label: "high" },
+  low: { color: "#3f5f70", tint: "rgba(63,95,112,0.12)", glyph: "▼", label: "low" },
+  ok: { color: "#55715e", tint: "rgba(111,141,118,0.14)", glyph: "●", label: "in range" },
 } as const;
+
+// Adult reference bands keyed by label match — first hit wins. Kept deliberately
+// conservative/common; authored metric.range always overrides.
+const REFERENCE_RANGES: Array<{ match: RegExp; lo: number; hi: number; note: string }> = [
+  { match: /potassium|k\+/i, lo: 3.5, hi: 5.0, note: "3.5–5.0" },
+  { match: /sodium|na\+/i, lo: 135, hi: 145, note: "135–145" },
+  { match: /inr/i, lo: 2.0, hi: 3.0, note: "goal 2.0–3.0" },
+  { match: /glucose/i, lo: 70, hi: 110, note: "70–110" },
+  { match: /\bph\b/i, lo: 7.35, hi: 7.45, note: "7.35–7.45" },
+  { match: /hco3|bicarb/i, lo: 22, hi: 26, note: "22–26" },
+  { match: /paco2/i, lo: 35, hi: 45, note: "35–45" },
+  { match: /pao2/i, lo: 80, hi: 100, note: "80–100" },
+  { match: /lactate/i, lo: 0.5, hi: 2.0, note: "0.5–2.0" },
+  { match: /bnp/i, lo: 0, hi: 100, note: "under 100" },
+  { match: /creatinine/i, lo: 0.6, hi: 1.2, note: "0.6–1.2" },
+  { match: /platelet/i, lo: 150, hi: 400, note: "150–400k" },
+  { match: /hemoglobin|hgb/i, lo: 12, hi: 17, note: "12–17" },
+  { match: /wbc|white blood/i, lo: 4.5, hi: 11, note: "4.5–11k" },
+  { match: /magnesium|mg\+/i, lo: 1.5, hi: 2.5, note: "1.5–2.5" },
+  { match: /calcium/i, lo: 8.5, hi: 10.5, note: "8.5–10.5" },
+  { match: /lithium/i, lo: 0.6, hi: 1.2, note: "0.6–1.2" },
+  { match: /digoxin/i, lo: 0.8, hi: 2.0, note: "0.8–2.0" },
+  { match: /ammonia/i, lo: 15, hi: 45, note: "15–45" },
+  { match: /anion gap/i, lo: 8, hi: 12, note: "8–12" },
+  { match: /osmolality/i, lo: 275, hi: 295, note: "275–295" },
+  { match: /heart rate|\bhr\b|pulse/i, lo: 60, hi: 100, note: "60–100" },
+  { match: /systolic|\bsbp\b/i, lo: 90, hi: 120, note: "90–120" },
+  { match: /respiratory rate|\brr\b/i, lo: 12, hi: 20, note: "12–20" },
+  { match: /spo2|oxygen sat/i, lo: 95, hi: 100, note: "95–100%" },
+  { match: /temp/i, lo: 97.8, hi: 99.1, note: "97.8–99.1°F" },
+];
 
 function firstNumber(s: string): number | null {
   const m = String(s).replace(/,/g, "").match(/-?\d+(\.\d+)?/);
   return m ? Number(m[0]) : null;
 }
 
-function ArrowConnector() {
+function parseRange(metric: Metric): { lo: number; hi: number; note: string } | null {
+  if (metric.range) {
+    const m = String(metric.range).replace(/,/g, "").match(/(-?\d+(?:\.\d+)?)\s*[-–]\s*(-?\d+(?:\.\d+)?)/);
+    if (m) {
+      const lo = Number(m[1]);
+      const hi = Number(m[2]);
+      if (Number.isFinite(lo) && Number.isFinite(hi) && hi > lo) return { lo, hi, note: `${m[1]}–${m[2]}` };
+    }
+  }
+  const hit = REFERENCE_RANGES.find((r) => r.match.test(metric.label));
+  return hit ? { lo: hit.lo, hi: hit.hi, note: hit.note } : null;
+}
+
+function GaugeRow({ metric }: { metric: Metric }) {
+  const value = firstNumber(metric.value);
+  const range = value !== null ? parseRange(metric) : null;
+
+  // Fallback: no numeric value or no known band → clean flat bar, no fake reference.
+  if (value === null || !range) {
+    const dir = metric.direction === "up" ? STATUS.high : metric.direction === "down" ? STATUS.low : STATUS.ok;
+    const width = metric.direction === "up" ? 88 : metric.direction === "down" ? 34 : 60;
+    return (
+      <div className="rd3-row">
+        <span className="rd3-label">{metric.label}</span>
+        <span className="rd3-track">
+          <span className="rd3-fill" style={{ width: `${width}%`, background: dir.color }} />
+        </span>
+        <span className="rd3-value">
+          {metric.value}
+          {metric.direction ? (
+            <em style={{ color: dir.color, background: dir.tint }}>{dir.glyph} {metric.directionLabel ?? dir.label}</em>
+          ) : null}
+        </span>
+      </div>
+    );
+  }
+
+  // Frame the scale so the band and the patient marker are both comfortably visible.
+  const bandWidth = range.hi - range.lo || 1;
+  const pad = Math.max(bandWidth * 0.55, Math.abs(value - (value > range.hi ? range.hi : range.lo)) * 0.25);
+  const min = Math.min(range.lo, value) - pad;
+  const max = Math.max(range.hi, value) + pad;
+  const span = max - min || 1;
+  const pct = (n: number) => Math.min(99, Math.max(1, ((n - min) / span) * 100));
+  const status = value < range.lo ? STATUS.low : value > range.hi ? STATUS.high : STATUS.ok;
+
   return (
-    <svg className="rd2-arrow" width="24" height="26" viewBox="0 0 24 26" aria-hidden="true" focusable="false">
-      <line x1="12" y1="0" x2="12" y2="16" stroke="#c1b291" strokeWidth="2" />
-      <path d="M6 15 L12 24 L18 15 Z" fill="#c1b291" />
-    </svg>
+    <div className="rd3-row is-gauge">
+      <span className="rd3-label">{metric.label}</span>
+      <span className="rd3-gauge" role="img" aria-label={`${metric.label} ${metric.value}, normal ${range.note}`}>
+        <span className="rd3-gauge-track">
+          <span className="rd3-gauge-band" style={{ left: `${pct(range.lo)}%`, width: `${Math.max(4, pct(range.hi) - pct(range.lo))}%` }} />
+          <span className="rd3-gauge-mark" style={{ left: `${pct(value)}%`, background: status.color }} />
+        </span>
+        <span className="rd3-gauge-scale">normal {range.note}</span>
+      </span>
+      <span className="rd3-value">
+        {metric.value}
+        <em style={{ color: status.color, background: status.tint }}>{status.glyph} {metric.directionLabel ?? status.label}</em>
+      </span>
+    </div>
   );
 }
 
-function TrendChart({ metrics }: { metrics: Metric[] }) {
-  const nums = metrics.map((m) => firstNumber(m.value));
-  const usable = nums.filter((n): n is number => n !== null);
-  const max = usable.length ? Math.max(...usable, 1) : 1;
+function Connector() {
   return (
-    <div className="rd2-bars" role="img" aria-label="Value chart">
-      {metrics.map((m, i) => {
-        const dir = m.direction ? DIR[m.direction] : null;
-        const n = nums[i];
-        const pct = n !== null ? Math.max(8, Math.round((Math.abs(n) / max) * 100)) : m.direction === "up" ? 88 : m.direction === "down" ? 34 : 60;
-        return (
-          <div className="rd2-bar-row" key={`${m.label}-${i}`}>
-            <span className="rd2-bar-label">{m.label}</span>
-            <span className="rd2-bar-track">
-              <span className="rd2-bar-fill" style={{ width: `${pct}%`, background: dir?.color ?? "#7e9d86" }} />
-            </span>
-            <span className="rd2-bar-value">
-              {m.value}
-              {dir ? <em style={{ color: dir.color, background: dir.tint }}>{dir.glyph} {m.directionLabel ?? dir.label}</em> : null}
-            </span>
-          </div>
-        );
-      })}
-    </div>
+    <svg className="rd3-connector" width="14" height="20" viewBox="0 0 14 20" aria-hidden="true" focusable="false">
+      <line x1="7" y1="0" x2="7" y2="13" stroke="#cbb98f" strokeWidth="1.5" />
+      <path d="M3.5 12.5 L7 18.5 L10.5 12.5 Z" fill="#cbb98f" />
+    </svg>
   );
 }
 
 function Flowchart({ nodes }: { nodes: Node[] }) {
   const last = nodes.length - 1;
+  let step = 0;
   return (
-    <div className="rd2-flow" role="img" aria-label="Clinical flowchart">
+    <div className="rd3-flow" role="img" aria-label="Clinical flowchart">
       {nodes.map((n, i) => {
         const role = i === 0 ? "start" : i === last ? "end" : "step";
+        if (role === "step") step += 1;
         return (
-          <div className="rd2-flow-unit" key={`${n.label}-${i}`}>
-            <div className={`rd2-box is-${role}`}>
-              {role === "step" ? <span className="rd2-box-tag" aria-hidden="true">{i}</span> : null}
-              <div className="rd2-box-body">
+          <div className="rd3-flow-unit" key={`${n.label}-${i}`}>
+            <div className={`rd3-node is-${role}`}>
+              {role === "step" ? <span className="rd3-node-num" aria-hidden="true">{step}</span> : null}
+              <div className="rd3-node-body">
                 <strong>{n.label}</strong>
                 {n.value ? <p>{n.value}</p> : null}
               </div>
             </div>
-            {i < last ? <ArrowConnector /> : null}
+            {i < last ? <Connector /> : null}
           </div>
         );
       })}
@@ -93,7 +166,13 @@ export default function RationaleDiagram({ data }: { data: VisualRationale }) {
         {data.caption ? <small>{data.caption}</small> : null}
       </figcaption>
 
-      {isTrend ? <TrendChart metrics={data.metrics!} /> : hasNodes ? <Flowchart nodes={data.nodes!} /> : hasMetrics ? <TrendChart metrics={data.metrics!} /> : null}
+      {isTrend ? (
+        <div className="rd3-rows">{data.metrics!.map((m, i) => <GaugeRow metric={m} key={`${m.label}-${i}`} />)}</div>
+      ) : hasNodes ? (
+        <Flowchart nodes={data.nodes!} />
+      ) : hasMetrics ? (
+        <div className="rd3-rows">{data.metrics!.map((m, i) => <GaugeRow metric={m} key={`${m.label}-${i}`} />)}</div>
+      ) : null}
 
       {data.conclusion ? <p className="rationale-diagram__conclusion">{data.conclusion}</p> : null}
     </figure>

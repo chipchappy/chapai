@@ -155,6 +155,8 @@ export interface PracticeQuestion {
       value: string;
       direction?: "up" | "down" | "steady";
       directionLabel?: string;
+      /** Optional authored normal band, e.g. "3.5-5.0" — overrides the renderer's built-in reference lookup. */
+      range?: string;
     }>;
     nodes?: Array<{ label: string; value: string }>;
     conclusion?: string;
