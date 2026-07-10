@@ -10,6 +10,7 @@ import { selectQuestions, createSession } from "@/lib/quiz-engine";
 import { getQuestionBank } from "@/lib/content-bank";
 import { getStandardPreviewDeck } from "@/lib/practice-data";
 import { getServerAccessContext } from "@/lib/server-access";
+import { ACCESS_KEY_COOKIE, validateAccessKeyRuntime } from "@/lib/access-keys";
 import { matchesQuestionCategory } from "@/lib/nclex-client-needs";
 import type { ResolvedPremiumAccess } from "@/lib/premium-access";
 import type { QuizSessionConfig, QuizQuestion } from "@/lib/types";
@@ -137,6 +138,14 @@ export async function POST(req: NextRequest) {
     // Account requirement: starting a practice session is protected study
     // content. Signed-in users and access-key holders (founder/demo/instructor
     // previews) pass; anonymous visitors get 401 + the signup path.
+    // Direct cookie fallback: if the access context failed, validate the raw
+    // key cookie itself so a context hiccup never locks out key holders.
+    if (!user?.id && !previewAccess) {
+      const previewCookie = req.cookies.get(ACCESS_KEY_COOKIE)?.value;
+      if (previewCookie) {
+        previewAccess = Boolean(await validateAccessKeyRuntime(previewCookie).catch(() => null));
+      }
+    }
     if (!user?.id && !previewAccess) {
       return jsonError(401, "AUTH_REQUIRED", "Create a free account to start practicing.", {
         ...requestContext,

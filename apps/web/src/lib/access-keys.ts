@@ -300,21 +300,40 @@ export async function validateAccessKeyRuntime(code: string | undefined | null) 
   const binding = asAccessKeyBinding(env);
 
   if (binding) {
-    await ensureRuntimeAccessKeyStore(binding);
-    const row = await binding.prepare(`
-      SELECT id, code, type, scope, status, created_at, expires_at, max_redeems, redeem_count, last_redeemed_at, notes
-      FROM access_keys
-      WHERE normalized_code = ?
-      LIMIT 1
-    `).bind(normalizeCode(code)).first<AccessKeyRow>();
+    // Validation must NEVER throw: this used to run the seed loop on every
+    // call, and a normalized_code UNIQUE collision between the bundled store
+    // and a rotated D1 key 500'd every key-cookie request (practice exams
+    // included). Select first; seed only when the table genuinely is missing.
+    try {
+      const select = () => binding.prepare(`
+        SELECT id, code, type, scope, status, created_at, expires_at, max_redeems, redeem_count, last_redeemed_at, notes
+        FROM access_keys
+        WHERE normalized_code = ?
+        LIMIT 1
+      `).bind(normalizeCode(code)).first<AccessKeyRow>();
 
-    const record = sanitizeRuntimeRow(row);
-    if (record) {
-      return record;
-    }
+      let row: AccessKeyRow | null = null;
+      try {
+        row = await select();
+      } catch {
+        await ensureRuntimeAccessKeyStore(binding).catch(() => undefined);
+        row = await select();
+      }
 
-    if (!row && env.DEMO_KEY && equalsCode(env.DEMO_KEY, code)) {
-      return getEnvDemoRecord(env.DEMO_KEY);
+      const record = sanitizeRuntimeRow(row);
+      if (record) {
+        return record;
+      }
+
+      if (row) {
+        return null; // key exists but is inactive/expired — do not fall through
+      }
+
+      if (env.DEMO_KEY && equalsCode(env.DEMO_KEY, code)) {
+        return getEnvDemoRecord(env.DEMO_KEY);
+      }
+    } catch {
+      // Runtime store unavailable — fall through to the static/env fallback.
     }
   }
 
@@ -378,7 +397,9 @@ export async function redeemAccessKeyRuntime(code: string | undefined | null) {
   const binding = asAccessKeyBinding(env);
 
   if (binding) {
-    await ensureRuntimeAccessKeyStore(binding);
+    // Best-effort seed only — a bundled-store collision must not block
+    // redemption of a perfectly valid key that already lives in D1.
+    await ensureRuntimeAccessKeyStore(binding).catch(() => undefined);
     const normalizedCode = normalizeCode(code);
     const row = await binding.prepare(`
       SELECT id, code, type, scope, status, created_at, expires_at, max_redeems, redeem_count, last_redeemed_at, notes

@@ -205,7 +205,7 @@ export async function POST(req: NextRequest) {
     let previewAccess = false;
     if (!user?.id) {
       const previewCookie = req.cookies.get(ACCESS_KEY_COOKIE)?.value;
-      previewAccess = previewCookie ? Boolean(await validateAccessKeyRuntime(previewCookie)) : false;
+      previewAccess = previewCookie ? Boolean(await validateAccessKeyRuntime(previewCookie).catch(() => null)) : false;
     }
     if (!user?.id && !previewAccess) {
       return jsonError(401, "AUTH_REQUIRED", "Create a free account to answer questions and unlock rationales.", {
