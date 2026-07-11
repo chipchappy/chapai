@@ -25,19 +25,23 @@ async function accessFromAccessKey(code?: string | null): Promise<ResolvedPremiu
   }
 
   const founderAccess = accessKey.type === "founder-pass";
+  // Demo + instructor keys (what universities receive) must showcase the REAL
+  // product: pro tier so quiz/start serves the live bank, not the synthetic
+  // demo deck. Only lightweight marketing preview keys stay "plus".
+  const fullAccess = founderAccess || accessKey.type === "demo-pass" || accessKey.type === "instructor-pass";
   const entitlements: PremiumEntitlement[] = ["live-bank", "rich-modes", "practice-exams", "tutor", "icu-sim-beta"];
 
   return {
-    tier: founderAccess ? "pro" : "plus",
+    tier: fullAccess ? "pro" : "plus",
     source: founderAccess ? "founder-key" : "preview-key",
     accessType: accessKey.type,
-    planCode: founderAccess ? "all_access_monthly" : "core_monthly",
-    planType: founderAccess ? "all-access-monthly" : "core-monthly",
-    displayLabel: founderAccess ? "Founder full access" : "Preview premium active",
+    planCode: fullAccess ? "all_access_monthly" : "core_monthly",
+    planType: fullAccess ? "all-access-monthly" : "core-monthly",
+    displayLabel: founderAccess ? "Founder full access" : accessKey.type === "instructor-pass" ? "Instructor full access" : "Preview premium active",
     examTrack: accessKey.scope === "all" ? "all" : accessKey.scope,
     entitlements,
     questionBankAccessPercent: 100,
-    practiceExamLimit: founderAccess ? 5 : 3,
+    practiceExamLimit: fullAccess ? 5 : 3,
     canUseTutor: true,
     canUseRichModes: true,
     canUsePracticeExams: true,
