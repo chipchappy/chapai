@@ -107,36 +107,40 @@ const parseOpts = (raw) => { try { const o = JSON.parse(raw); return Array.isArr
 
 function buildPrompt(row) {
   const opts = parseOpts(row.options);
-  const optText = opts.length ? opts.map((o) => `${String(o.id).toUpperCase()}. ${o.text}`).join("\n") : "(see stem)";
-  return `You are a doctorally-prepared NCLEX-RN nurse educator writing PREMIUM board-review content that must rival UWorld and Archer. Return STRICT JSON only (no markdown, no prose) with this exact shape:
+  const optText = opts.length ? opts.map((o) => `${String(o.id).toLowerCase()}. ${o.text}`).join("\n") : "(see stem)";
+  return `You are a doctorally-prepared NCLEX-RN nurse educator building a PREMIUM VISUAL GUIDE that must rival UWorld and Archer. This visual is a SEPARATE learning aid that sits beside a full written rationale — its job is to give a VISUAL LEARNER something that makes the answer stick, NOT to restate prose. Return STRICT JSON only (no markdown, no prose):
 {
-  "diagramWorthy": boolean,   // true ONLY when a visual genuinely deepens understanding: a pathophysiology cascade, a lab/vital trend, a prioritization/nursing-process algorithm, or a staged management pathway. false for pure recall/definition/single-fact items — do NOT force a diagram.
+  "diagramWorthy": boolean,   // true when a visual genuinely deepens understanding (a cascade, a lab picture, an onset/priority race, or an answer-decision map). false for pure recall/definition — do NOT force one.
   "visual": null OR {
-    "type": "trend" | "flow" | "pathway",
-    "title": string,          // specific and clinical, <= 60 chars (e.g. "DKA Correction Sequence", not "Management")
-    "caption": string,        // one line of orienting context, <= 100 chars
-    // Choose "trend" whenever the item hinges on interpreting LABS or VITALS. It renders as a bar chart.
-    "metrics": [ { "label": string, "value": string, "direction": "up"|"down"|"steady", "directionLabel": string } ],  // 3-5 real labs/vitals WITH a numeric value + unit so bars scale (e.g. label "Serum K+", value "5.9 mEq/L", direction "up", directionLabel "high"); include the abnormal AND relevant normal values that define the picture
-    // Otherwise use "flow"/"pathway". It renders as a real top-down FLOWCHART, so:
-    //   nodes[0]   = the clinical TRIGGER or presenting cue (short, e.g. "Fever + chills during transfusion")
-    //   nodes[1..] = ordered ACTIONS, each label = the action, value = the concrete specific (dose/rate/target/timeframe)
-    //   nodes[last]= the expected OUTCOME / resolution (e.g. "Symptoms resolve; document reaction")
-    "nodes": [ { "label": string, "value": string } ],  // 4-6 total: trigger + actions + outcome
-    "conclusion": string      // a memorable, testable clinical pearl (the single thing to remember)
+    "type": "timeline" | "compare" | "trend" | "flow" | "pathway",
+    "title": string,          // specific + clinical, <= 60 chars
+    "caption": string,        // one orienting line, <= 100 chars
+    // PICK THE TYPE THAT MAPS THIS ITEM'S DISCRIMINATOR:
+    // "timeline"  — when the answer turns on ONSET SPEED or SEQUENCE ("which first", priority, time-to-effect).
+    //   items ordered fastest/first -> slowest/last; set highlight:true on the winning move.
+    "items": [ { "label": string, "value": string, "note": string, "highlight": boolean } ],  // value = time (e.g. "1-3 min","hours"); note = why it lands there vs the others
+    // "compare"   — when it is a SELECT-BEST among plausible options; visualize the decision.
+    //   Provide a crux PER OPTION LETTER. Do NOT label correctness yourself — the app sets the checkmark from the answer key.
+    "optionNotes": { "a": string, "b": string },  // one sharp clause per option: why it wins, or its exact clinical error / when it WOULD be right
+    // "trend"     — when it hinges on interpreting LABS/VITALS (renders as reference-range gauges).
+    "metrics": [ { "label": string, "value": string, "direction": "up"|"down"|"steady", "directionLabel": string, "range": string } ],  // real value+unit; range = normal band e.g. "3.5-5.0"
+    // "flow"/"pathway" — a management/pathophysiology CASCADE (renders top-down with arrows).
+    //   nodes[0]=trigger/cue, nodes[1..]=ordered actions (value=dose/rate/target/timeframe), nodes[last]=outcome.
+    "nodes": [ { "label": string, "value": string } ],  // 4-6 total
+    "conclusion": string      // the single memorable, testable pearl
   },
   "structured": {
-    "overview": string,       // 2-3 sentences: the governing clinical principle this item tests
-    "mechanism": string,      // 2-3 sentences: the SPECIFIC pathophysiology / pharmacology driving the answer
-    "whyCorrect": string,     // 2-3 sentences: precisely why the correct option is right, tied to the mechanism
-    "whyWrong": { "A": string, "B": string }  // one specific, non-generic sentence per WRONG option letter naming its exact clinical error
+    "overview": string,       // 2-3 sentences: the governing clinical principle
+    "mechanism": string,      // 2-3 sentences: the SPECIFIC pathophysiology/pharmacology
+    "whyCorrect": string,     // 2-3 sentences: precisely why the correct option is right, tied to mechanism
+    "whyWrong": { "a": string, "b": string }  // one specific sentence per WRONG option letter naming its exact error
   }
 }
 QUALITY BAR — non-negotiable:
-- Node "label" MUST be a descriptive clinical phrase (e.g. "Give isotonic fluids", "Recheck K+ in 2 h"). NEVER a bare option letter ("A"), a number ("1"), or "Step 1".
-- Node "value" MUST be filled with a concrete specific: a dose, rate, lab target, timeframe, or parameter (e.g. "0.9% NaCl 15-20 mL/kg/h", "target K+ 3.5-5.0", "within first 15 min"). Never leave it empty or vague.
-- Use exact numbers, units, doses, and thresholds throughout. No hand-waving ("monitor closely", "as needed") without the specific metric.
-- Prefer type "trend" when the item hinges on interpreting lab/vital values.
-- Be clinically precise and current; NEVER contradict the given correct answer. Do not write "the nurse should" filler.
+- Prefer "timeline" for priority/"which-first" items and "compare" for select-best items — these map the reasoning best. Use "trend" for lab items, "flow" for management sequences.
+- Every label/note is a descriptive CLINICAL phrase with exact numbers/units/doses/timeframes. NEVER a bare letter, number, or "Step 1". No "monitor closely" filler.
+- For "compare": give a crux for EVERY option letter (correct + wrong). For "timeline": include the correct move AND the tempting-but-slower distractors so the race is visible.
+- Be current and precise; NEVER contradict the given correct answer.
 - If diagramWorthy is false, set "visual" to null but STILL return a rich "structured" block.
 
 STEM: ${row.stem}
@@ -144,6 +148,14 @@ OPTIONS:
 ${optText}
 CORRECT ANSWER: ${row.answer}
 EXISTING RATIONALE: ${String(row.rationale).slice(0, 900)}`;
+}
+
+// Parse the correct-answer key into a set of option-letter ids (SATA-aware).
+function answerIdSet(answer) {
+  const raw = String(answer ?? "").trim();
+  if (raw.startsWith("[")) { try { return new Set(JSON.parse(raw).map((x) => String(x).toLowerCase())); } catch { return new Set(); } }
+  if (raw.startsWith("{")) return new Set();
+  return new Set(raw ? [raw.toLowerCase()] : []);
 }
 
 function extractJson(text) {
@@ -160,27 +172,54 @@ const isWeakLabel = (s) => {
   return t.length < 3 || /^(option\s+)?[a-f]$/i.test(t) || /^\d+$/.test(t) || /^step\s*\d+$/i.test(t) || /^(choice|answer)\s*[a-f\d]+$/i.test(t);
 };
 
-function validVisual(v) {
+const wc = (s) => String(s ?? "").trim().split(/\s+/).filter(Boolean).length;
+
+// Validate + ASSEMBLE the visual. For "compare", verdicts are set mechanically
+// from the answer key (row) — the model is never trusted for correctness.
+function validVisual(v, row) {
   if (!v || typeof v !== "object") return null;
-  const types = ["trend", "flow", "pathway", "signal", "overview"];
+  const types = ["timeline", "compare", "trend", "flow", "pathway", "signal", "overview"];
   if (!types.includes(v.type) || !v.title) return null;
   const out = { type: v.type, title: String(v.title).slice(0, 80) };
   if (v.caption) out.caption = String(v.caption).slice(0, 140);
-  if (Array.isArray(v.metrics) && v.metrics.length) {
-    const metrics = v.metrics.slice(0, 6)
-      .filter((m) => !isWeakLabel(m.label) && String(m.value ?? "").trim().length > 0)
-      .map((m) => ({ label: String(m.label).slice(0, 60), value: String(m.value).slice(0, 40), direction: ["up", "down", "steady"].includes(m.direction) ? m.direction : undefined, directionLabel: m.directionLabel ? String(m.directionLabel).slice(0, 30) : undefined }));
-    if (metrics.length >= 2) out.metrics = metrics;
+
+  if (v.type === "compare") {
+    const opts = parseOpts(row.options);
+    const notes = v.optionNotes && typeof v.optionNotes === "object" ? v.optionNotes : {};
+    const correct = answerIdSet(row.answer);
+    if (!opts.length || opts.length < 2 || !correct.size) return null;
+    const options = opts.slice(0, 6).map((o) => {
+      const id = String(o.id).toLowerCase();
+      const note = String(notes[id] ?? notes[id.toUpperCase()] ?? "").trim().replace(/\s+/g, " ");
+      return { label: `${id.toUpperCase()} · ${String(o.text).slice(0, 70)}`, verdict: correct.has(id) ? "correct" : "wrong", note: note.slice(0, 240) };
+    });
+    // Need a real crux on most options and at least one correct verdict present.
+    if (options.filter((o) => wc(o.note) >= 5).length < Math.max(2, opts.length - 1)) return null;
+    out.options = options;
+  } else if (v.type === "timeline") {
+    if (!Array.isArray(v.items) || v.items.length < 2) return null;
+    const items = v.items.slice(0, 6)
+      .filter((it) => !isWeakLabel(it.label) && String(it.value ?? "").trim().length > 0 && wc(it.note) >= 4)
+      .map((it) => ({ label: String(it.label).slice(0, 60), value: String(it.value).slice(0, 24), note: String(it.note).slice(0, 200), highlight: Boolean(it.highlight) }));
+    if (items.length < 2) return null;
+    if (!items.some((it) => it.highlight)) items[0].highlight = true; // ensure a winner is marked
+    out.items = items;
+  } else {
+    if (Array.isArray(v.metrics) && v.metrics.length) {
+      const metrics = v.metrics.slice(0, 6)
+        .filter((m) => !isWeakLabel(m.label) && String(m.value ?? "").trim().length > 0)
+        .map((m) => ({ label: String(m.label).slice(0, 60), value: String(m.value).slice(0, 40), direction: ["up", "down", "steady"].includes(m.direction) ? m.direction : undefined, directionLabel: m.directionLabel ? String(m.directionLabel).slice(0, 30) : undefined, range: m.range && /\d/.test(String(m.range)) ? String(m.range).slice(0, 24) : undefined }));
+      if (metrics.length >= 2) out.metrics = metrics;
+    }
+    if (Array.isArray(v.nodes) && v.nodes.length) {
+      const nodes = v.nodes.slice(0, 6)
+        .filter((n) => !isWeakLabel(n.label) && String(n.value ?? "").trim().length >= 3)
+        .map((n) => ({ label: String(n.label).slice(0, 60), value: String(n.value).slice(0, 120) }));
+      if (nodes.length >= 3) out.nodes = nodes;
+    }
+    if (!out.metrics && !out.nodes) return null;
   }
-  if (Array.isArray(v.nodes) && v.nodes.length) {
-    const nodes = v.nodes.slice(0, 6)
-      // Every node must have a descriptive label AND a concrete value.
-      .filter((n) => !isWeakLabel(n.label) && String(n.value ?? "").trim().length >= 3)
-      .map((n) => ({ label: String(n.label).slice(0, 60), value: String(n.value).slice(0, 120) }));
-    if (nodes.length >= 3) out.nodes = nodes;
-  }
-  if (!out.metrics && !out.nodes) return null; // nothing survived the quality gate
-  if (v.conclusion) out.conclusion = String(v.conclusion).slice(0, 200);
+  if (v.conclusion) out.conclusion = String(v.conclusion).slice(0, 220);
   return out;
 }
 
@@ -203,7 +242,7 @@ async function main() {
     const parsed = extractJson(raw);
     if (!parsed) { fail++; continue; }
     const sets = [];
-    const visual = parsed.diagramWorthy ? validVisual(parsed.visual) : null;
+    const visual = parsed.diagramWorthy ? validVisual(parsed.visual, row) : null;
     if (visual) sets.push(`visual_rationale='${esc(JSON.stringify(visual))}'`);
     if (parsed.structured && parsed.structured.whyCorrect) {
       sets.push(`structured_rationale='${esc(JSON.stringify(parsed.structured))}'`);
