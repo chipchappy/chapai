@@ -123,8 +123,8 @@ function formatTutorCorrectAnswer(answer: QuestionAnswer | z.infer<typeof practi
 
 function getPatternFrame(q: { exam: string; category: string; rationale: string; takeaway?: string }) {
   const blob = `${q.exam} ${q.category} ${q.rationale}`.toLowerCase();
-  if (blob.match(/shock|map|cvp|perfus|cardiac|hemodynamic/)) return "hemodynamic priority: identify whether perfusion, pressure, or the pump is failing first";
-  if (blob.match(/vent|oxygen|respir|peep|fio2|plateau/)) return "ventilator pattern: decide whether oxygenation or ventilation is the main problem before changing settings";
+  if (blob.match(/shock|\bmap\b|\bcvp\b|perfus|cardiac|hemodynamic/)) return "hemodynamic priority: identify whether perfusion, pressure, or the pump is failing first";
+  if (blob.match(/\bvent(ilat|ed)?\b|oxygen|respir|\bpeep\b|fio2|plateau/)) return "ventilator pattern: decide whether oxygenation or ventilation is the main problem before changing settings";
   if (blob.match(/delegate|priorit|safety/)) return "safety-priority pattern: unstable, newly changed, or high-risk patients stay with the RN";
   if (blob.match(/pharm|med|anticoagul|insulin|glucose/)) return "medication-safety pattern: treat the life-threatening effect first, then correct the cause";
   if (blob.match(/neuro|icp|cpp|neurolo/)) return "neuro perfusion pattern: protect cerebral perfusion while lowering intracranial pressure";
@@ -414,47 +414,88 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
       return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
     }
 
-    // No Anthropic key on this worker — serve real AI via Gemini 2.5 Flash so the
-    // premium tutor is never a canned response. Generated once, then piped through
-    // the same SSE shape the client already consumes.
-    if (!apiKey && geminiKey) {
-      try {
-        const contents = [
-          ...history.map((message) => ({
-            role: message.role === "assistant" ? "model" : "user",
-            parts: [{ text: message.content }],
-          })),
-          { role: "user", parts: [{ text: userMessage }] },
-        ];
-        const geminiResponse = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiKey}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              systemInstruction: { parts: [{ text: systemPrompt }] },
-              contents,
-              generationConfig: { maxOutputTokens: 1024, temperature: 0.4 },
-            }),
-          },
-        );
-        if (geminiResponse.ok) {
-          const payload = await geminiResponse.json() as {
-            candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
-          };
-          const text = payload.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("").trim();
-          if (text && text.length > 20) {
-            return streamFallback(text);
-          }
-        }
-        logError("Tutor Gemini response unusable; serving fallback", await geminiResponse.text().catch(() => ""), requestContext);
-      } catch (error) {
-        logError("Tutor Gemini call failed; serving fallback", error, requestContext);
-      }
-      return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
-    }
-
+    // No Anthropic key on this worker — serve real AI through a provider chain
+    // (Gemini → Groq → Cerebras) so the tutor degrades to canned coaching only
+    // when every model is down. Generated once, then piped through the same
+    // SSE shape the client already consumes.
     if (!apiKey) {
+      const groqKey = (env as Record<string, unknown>).GROQ_API_KEY as string | undefined;
+      const cerebrasKey = (env as Record<string, unknown>).CEREBRAS_API_KEY as string | undefined;
+
+      if (geminiKey) {
+        try {
+          const contents = [
+            ...history.map((message) => ({
+              role: message.role === "assistant" ? "model" : "user",
+              parts: [{ text: message.content }],
+            })),
+            { role: "user", parts: [{ text: userMessage }] },
+          ];
+          const geminiResponse = await fetch(
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "x-goog-api-key": geminiKey },
+              body: JSON.stringify({
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                contents,
+                generationConfig: { maxOutputTokens: 1024, temperature: 0.4 },
+              }),
+            },
+          );
+          if (geminiResponse.ok) {
+            const payload = await geminiResponse.json() as {
+              candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+            };
+            const text = payload.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("").trim();
+            if (text && text.length > 20) {
+              return streamFallback(text);
+            }
+          }
+          logError("Tutor Gemini response unusable; trying next provider", await geminiResponse.text().catch(() => ""), requestContext);
+        } catch (error) {
+          logError("Tutor Gemini call failed; trying next provider", error, requestContext);
+        }
+      }
+
+      // OpenAI-compatible fallbacks — proven free-tier providers from the
+      // content engine. Non-streaming completion piped through the SSE shape.
+      const openAiCompatible: Array<{ name: string; key: string | undefined; url: string; model: string; reasoningLow?: boolean }> = [
+        { name: "groq", key: groqKey, url: "https://api.groq.com/openai/v1/chat/completions", model: "llama-3.3-70b-versatile" },
+        { name: "cerebras", key: cerebrasKey, url: "https://api.cerebras.ai/v1/chat/completions", model: "gpt-oss-120b", reasoningLow: true },
+      ];
+      for (const provider of openAiCompatible) {
+        if (!provider.key) continue;
+        try {
+          const body: Record<string, unknown> = {
+            model: provider.model,
+            messages: [
+              { role: "system", content: systemPrompt },
+              ...history,
+              { role: "user", content: userMessage },
+            ],
+            temperature: 0.4,
+            max_tokens: 1024,
+          };
+          if (provider.reasoningLow) body.reasoning_effort = "low";
+          const response = await fetch(provider.url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${provider.key}` },
+            body: JSON.stringify(body),
+          });
+          if (response.ok) {
+            const payload = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
+            const text = payload.choices?.[0]?.message?.content?.trim();
+            if (text && text.length > 20) {
+              return streamFallback(text);
+            }
+          }
+          logError(`Tutor ${provider.name} response unusable; trying next`, await response.text().catch(() => ""), requestContext);
+        } catch (error) {
+          logError(`Tutor ${provider.name} call failed; trying next`, error, requestContext);
+        }
+      }
+
       return streamFallback(buildFallbackText({ question, context, selectedAnswer, answeredCorrectly }));
     }
 
