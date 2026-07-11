@@ -27715,6 +27715,47 @@ body:has(.nclex-exam-shell) nextjs-portal {
 [data-theme="dark"] .rd3-node.is-end .rd3-node-body strong { color: #d9c69a; }
 [data-theme="dark"] .rd3-node.is-end .rd3-node-body p { color: #c2b18a; }
 
+/* ── compare: option decision matrix (visualizes correct + distractor logic) ── */
+.rd3-compare { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.rd3-compare-row { display: flex; align-items: flex-start; gap: 11px; border: 1px solid #e2dccb; border-left: 3px solid #cdd8ce; border-radius: 12px; background: #fff; padding: 11px 14px; }
+.rd3-compare-row.is-correct { border-color: #b9d0bd; border-left-color: #5f8168; background: #f1f7f1; }
+.rd3-compare-row.is-partial { border-left-color: #c7a35a; background: #fbf6ea; }
+.rd3-compare-row.is-wrong { border-left-color: #d8b2a6; }
+.rd3-compare-mark { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; font-size: 0.8rem; font-weight: 700; margin-top: 1px; }
+.rd3-compare-row.is-correct .rd3-compare-mark { background: #5f8168; color: #fff; }
+.rd3-compare-row.is-partial .rd3-compare-mark { background: #c7a35a; color: #fff; }
+.rd3-compare-row.is-wrong .rd3-compare-mark { background: #efe4e0; color: #a6543c; }
+.rd3-compare-body strong { display: block; font-size: 0.93rem; color: #2b2c2e; line-height: 1.3; font-weight: 600; }
+.rd3-compare-body p { margin: 3px 0 0; font-size: 0.85rem; color: #5a5e58; line-height: 1.46; }
+
+/* ── timeline: onset-speed / sequence — the axis distractors turn on ── */
+.rd3-timeline { display: flex; flex-direction: column; gap: 11px; margin-top: 6px; }
+.rd3-tl-row { border: 1px solid #e7ddc9; border-radius: 12px; padding: 10px 13px; background: #fff; }
+.rd3-tl-row.is-win { border-color: #b9d0bd; background: #f1f7f1; }
+.rd3-tl-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.rd3-tl-head strong { font-size: 0.93rem; color: #2b2c2e; font-weight: 600; }
+.rd3-tl-time { flex-shrink: 0; font-size: 0.78rem; font-weight: 700; color: #8a6a2f; background: #f5ecd6; border-radius: 999px; padding: 1px 9px; }
+.rd3-tl-row.is-win .rd3-tl-time { color: #3f5f45; background: #dcebdd; }
+.rd3-tl-track { display: block; height: 7px; border-radius: 999px; background: #ece5d6; overflow: hidden; margin: 7px 0 0; }
+.rd3-tl-fill { display: block; height: 100%; border-radius: 999px; background: #c19a56; }
+.rd3-tl-row.is-win .rd3-tl-fill { background: #5f8168; }
+.rd3-tl-note { margin: 7px 0 0; font-size: 0.84rem; color: #5a5e58; line-height: 1.46; }
+
+[data-theme="dark"] .rd3-compare-row { border-color: rgba(214,196,160,0.16); background: rgba(22,27,24,0.9); border-left-color: rgba(126,157,134,0.35); }
+[data-theme="dark"] .rd3-compare-row.is-correct { border-color: rgba(126,157,134,0.5); border-left-color: #6f9478; background: rgba(48,66,52,0.7); }
+[data-theme="dark"] .rd3-compare-row.is-partial { border-left-color: #c7a35a; background: rgba(58,50,34,0.6); }
+[data-theme="dark"] .rd3-compare-row.is-wrong { border-left-color: rgba(190,130,110,0.6); }
+[data-theme="dark"] .rd3-compare-body strong { color: #ece9df; }
+[data-theme="dark"] .rd3-compare-body p { color: #b9b5a6; }
+[data-theme="dark"] .rd3-compare-row.is-wrong .rd3-compare-mark { background: rgba(120,60,45,0.4); color: #e6a892; }
+[data-theme="dark"] .rd3-timeline .rd3-tl-row { border-color: rgba(214,196,160,0.16); background: rgba(22,27,24,0.9); }
+[data-theme="dark"] .rd3-tl-row.is-win { border-color: rgba(126,157,134,0.5); background: rgba(48,66,52,0.7); }
+[data-theme="dark"] .rd3-tl-head strong { color: #ece9df; }
+[data-theme="dark"] .rd3-tl-time { color: #d9c69a; background: rgba(58,50,34,0.7); }
+[data-theme="dark"] .rd3-tl-row.is-win .rd3-tl-time { color: #b6d3ba; background: rgba(48,66,52,0.9); }
+[data-theme="dark"] .rd3-tl-track { background: rgba(214,196,160,0.16); }
+[data-theme="dark"] .rd3-tl-note { color: #b9b5a6; }
+
 .nclex-bottombar {
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;

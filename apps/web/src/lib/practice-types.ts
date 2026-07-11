@@ -146,7 +146,7 @@ export interface PracticeQuestion {
   matrixRows?: PracticeMatrixRow[];
   bowTie?: BowTieQuestion;
   visualRationale?: {
-    type: "trend" | "flow" | "pathway" | "signal" | "overview";
+    type: "trend" | "flow" | "pathway" | "signal" | "overview" | "compare" | "timeline";
     accent?: string;
     title: string;
     caption?: string;
@@ -159,6 +159,10 @@ export interface PracticeQuestion {
       range?: string;
     }>;
     nodes?: Array<{ label: string; value: string }>;
+    /** compare: one row per answer option — visualizes the correct + distractor reasoning as a decision matrix. */
+    options?: Array<{ label: string; verdict: "correct" | "wrong" | "partial"; note: string }>;
+    /** timeline: ordered items (fastest/first → slowest/last) for onset-speed or sequence discriminators. */
+    items?: Array<{ label: string; value: string; note?: string; highlight?: boolean }>;
     conclusion?: string;
   };
   diagramBlueprint?: {

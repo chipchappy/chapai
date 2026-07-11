@@ -152,21 +152,94 @@ function Flowchart({ nodes }: { nodes: Node[] }) {
   );
 }
 
+type Option = NonNullable<VisualRationale["options"]>[number];
+type Item = NonNullable<VisualRationale["items"]>[number];
+
+// compare → a decision matrix: every answer option with a ✓/✗ verdict and the
+// one-line crux. This is the visual form of the correct + distractor rationales,
+// so the reader sees at a glance why the answer wins and each distractor loses.
+function CompareMatrix({ options }: { options: Option[] }) {
+  return (
+    <div className="rd3-compare" role="table" aria-label="Option comparison">
+      {options.map((o, i) => {
+        const v = o.verdict === "correct" ? "correct" : o.verdict === "partial" ? "partial" : "wrong";
+        const mark = v === "correct" ? "✓" : v === "partial" ? "≈" : "✕";
+        return (
+          <div className={`rd3-compare-row is-${v}`} role="row" key={`${o.label}-${i}`}>
+            <span className="rd3-compare-mark" aria-hidden="true">{mark}</span>
+            <div className="rd3-compare-body">
+              <strong>{o.label}</strong>
+              {o.note ? <p>{o.note}</p> : null}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// timeline → ordered items (fastest/first → slowest/last) with a time chip and a
+// proportional bar, the winning move highlighted. Built for onset-speed and
+// sequence discriminators, exactly the axis the distractors turn on.
+function Timeline({ items }: { items: Item[] }) {
+  const minutes = (s: string): number => {
+    const t = String(s).toLowerCase();
+    const n = firstNumber(t);
+    if (n === null) return /hour|hr|day/.test(t) ? 600 : /min/.test(t) ? 20 : 30;
+    if (/hour|hr/.test(t)) return n * 60;
+    if (/day/.test(t)) return n * 1440;
+    if (/sec/.test(t)) return n / 60;
+    return n; // assume minutes
+  };
+  const vals = items.map((it) => minutes(it.value));
+  const max = Math.max(...vals, 1);
+  return (
+    <div className="rd3-timeline" role="img" aria-label="Onset / sequence comparison">
+      {items.map((it, i) => {
+        const pct = Math.max(6, Math.round((Math.sqrt(vals[i]) / Math.sqrt(max)) * 100));
+        return (
+          <div className={`rd3-tl-row${it.highlight ? " is-win" : ""}`} key={`${it.label}-${i}`}>
+            <div className="rd3-tl-head">
+              <strong>{it.label}</strong>
+              <span className="rd3-tl-time">{it.value}</span>
+            </div>
+            <span className="rd3-tl-track"><span className="rd3-tl-fill" style={{ width: `${pct}%` }} /></span>
+            {it.note ? <p className="rd3-tl-note">{it.note}</p> : null}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+const KICKER: Record<string, string> = {
+  trend: "Lab / vital chart",
+  compare: "Answer breakdown",
+  timeline: "Onset & priority",
+};
+
 export default function RationaleDiagram({ data }: { data: VisualRationale }) {
   const hasMetrics = Array.isArray(data.metrics) && data.metrics.length > 0;
   const hasNodes = Array.isArray(data.nodes) && data.nodes.length > 0;
-  if (!hasMetrics && !hasNodes) return null;
+  const hasOptions = Array.isArray(data.options) && data.options.length > 0;
+  const hasItems = Array.isArray(data.items) && data.items.length > 0;
+  if (!hasMetrics && !hasNodes && !hasOptions && !hasItems) return null;
   const isTrend = data.type === "trend" && hasMetrics;
+  const kicker = KICKER[data.type] ?? "Study flowchart";
 
   return (
     <figure className={`rationale-diagram is-${data.type}`} aria-label={`Diagram: ${data.title}`}>
       <figcaption className="rationale-diagram__head">
-        <span className="rationale-diagram__kicker">{isTrend ? "Lab / vital chart" : "Study flowchart"}</span>
+        <span className="rationale-diagram__kicker">{kicker}</span>
         <strong>{data.title}</strong>
         {data.caption ? <small>{data.caption}</small> : null}
       </figcaption>
 
-      {isTrend ? (
+      {hasOptions ? (
+        <CompareMatrix options={data.options!} />
+      ) : hasItems ? (
+        <Timeline items={data.items!} />
+      ) : isTrend ? (
         <div className="rd3-rows">{data.metrics!.map((m, i) => <GaugeRow metric={m} key={`${m.label}-${i}`} />)}</div>
       ) : hasNodes ? (
         <Flowchart nodes={data.nodes!} />
