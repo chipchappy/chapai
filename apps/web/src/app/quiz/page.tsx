@@ -33,7 +33,11 @@ export default async function Page({
   searchParams?: Promise<PageSearchParams>;
 }) {
   const params = (await searchParams) ?? {};
-  const { access } = await getServerAccessContext();
+  const { access, user } = await getServerAccessContext();
+  // Every signed-in student gets the AI tutor after each question (the server
+  // enforces the free daily cap + premium uncapped). Premium entitlement only
+  // decides caps, not whether the tutor button exists at all.
+  const canUseTutor = access.canUseTutor || Boolean(user?.id);
   const summary = getLiveContentSummary();
   const env = resolveEnv();
   let liveCounts = {
@@ -98,7 +102,7 @@ export default async function Page({
         accessExamTrack={access.examTrack}
         questionBankAccessPercent={access.questionBankAccessPercent}
         practiceExamLimit={access.practiceExamLimit}
-        canUseTutor={access.canUseTutor}
+        canUseTutor={canUseTutor}
         canUseRichModes={access.canUseRichModes}
         canUsePracticeExams={access.canUsePracticeExams}
         canUseIcuSimBeta={access.canUseIcuSimBeta}
