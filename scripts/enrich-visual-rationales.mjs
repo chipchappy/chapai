@@ -241,7 +241,11 @@ async function main() {
   console.error(`[visual] limit=${LIMIT} providers=[${healthy().join(",")}]${USE_TOP ? " TOP" : ""} dry=${DRY} hardest=${HARDEST}`);
   if (!healthy().length) { console.error("[visual] no model key (need Downloads/cerebraskey.txt, groqkey.txt, or openrouterkey.txt)"); process.exit(1); }
   const order = HARDEST ? "difficulty DESC, " : "";
-  const rows = d1Query(`SELECT id, stem, options, answer, rationale FROM questions WHERE exam='nclex' AND publish_state='published' AND rationale IS NOT NULL AND length(rationale)>=60 AND (visual_rationale IS NULL OR length(visual_rationale)<10) ORDER BY ${order}review_status='final-curated-live' DESC LIMIT ${LIMIT}`);
+  // --fresh: only target rows never visited by the visual pass (no structured_
+  // rationale yet), so we stop re-judging questions already ruled non-diagram-
+  // worthy and grow coverage on new items instead of burning budget on churn.
+  const freshFilter = args.fresh ? "AND structured_rationale IS NULL" : "";
+  const rows = d1Query(`SELECT id, stem, options, answer, rationale FROM questions WHERE exam='nclex' AND publish_state='published' AND rationale IS NOT NULL AND length(rationale)>=60 AND (visual_rationale IS NULL OR length(visual_rationale)<10) ${freshFilter} ORDER BY ${order}review_status='final-curated-live' DESC LIMIT ${LIMIT}`);
   console.error(`[visual] ${rows.length} candidate rows`);
 
   let vis = 0, structOnly = 0, fail = 0, i = 0;
