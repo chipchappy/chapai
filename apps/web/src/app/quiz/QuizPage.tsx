@@ -505,20 +505,28 @@ export default function QuizPage({
     setError(null);
     const endless = count === "unlimited";
     const batchCount = endless ? 25 : count;
-    const response = await fetch("/api/quiz/start", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        exam,
-        count: batchCount,
-        adaptive: endless || undefined,
-        ...getLiveSessionPayload(),
-      }),
-    });
+    // Adaptive selection is CPU-heavy and a cold worker isolate can blip with a
+    // transient 5xx (503/1102). Retry a couple of times so "Study now" starts
+    // cleanly instead of surfacing an error to the student.
+    let response: Response | null = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      response = await fetch("/api/quiz/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          exam,
+          count: batchCount,
+          adaptive: endless || undefined,
+          ...getLiveSessionPayload(),
+        }),
+      });
+      if (response.ok || (response.status !== 503 && response.status < 500 && response.status !== 429)) break;
+      await new Promise((resolve) => setTimeout(resolve, 900 * (attempt + 1)));
+    }
 
-    if (!response.ok) {
-      const payload = await response.json().catch(() => null);
-      if (response.status === 401) {
+    if (!response || !response.ok) {
+      const payload = response ? await response.json().catch(() => null) : null;
+      if (response?.status === 401) {
         redirectToAccountGate(payload);
         return;
       }
