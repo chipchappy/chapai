@@ -174,13 +174,22 @@ function getBlueprint(exam: Exam) {
 // first keeps the 5 forms varied; the stable sort then floats the toughest to the
 // top. Because the forms reserve IDs across each other, they cascade from hardest
 // down — all five stay challenging and non-overlapping.
+// Difficulty stays the dominant term (exam realism), with quality bonuses that
+// float the most COMPLETE premium items — those carrying a visual guide, a
+// structured rationale, and per-distractor teaching — up to break ties. The
+// seeded shuffle runs first, so a per-student seed varies both draw and order.
+function questionQualityScore(q: PracticeQuestion) {
+  const distractorCount = q.distractorRationales && typeof q.distractorRationales === "object"
+    ? Object.keys(q.distractorRationales).length : 0;
+  return (typeof q.difficulty === "number" ? q.difficulty : 3)
+    + (q.structuredRationale ? 0.5 : 0)
+    + (q.visualRationale ? 0.7 : 0)
+    + (distractorCount >= 2 ? 0.4 : 0);
+}
+
 function hardestFirst(items: PracticeQuestion[], seed: string) {
   const jittered = seededShuffle(items, seed);
-  return [...jittered].sort((a, b) => {
-    const scoreA = (typeof a.difficulty === "number" ? a.difficulty : 3) + (a.structuredRationale ? 0.5 : 0);
-    const scoreB = (typeof b.difficulty === "number" ? b.difficulty : 3) + (b.structuredRationale ? 0.5 : 0);
-    return scoreB - scoreA;
-  });
+  return [...jittered].sort((a, b) => questionQualityScore(b) - questionQualityScore(a));
 }
 
 function selectByBlueprint(
@@ -284,7 +293,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
   });
 }
 
-async function buildManifestIndex(exam: Exam) {
+async function buildManifestIndex(exam: Exam, variantSeed: string) {
   const livePracticeQuestions = await loadLivePracticeQuestions(exam);
   const practiceQuestions = livePracticeQuestions.length > 0
     ? livePracticeQuestions
@@ -297,7 +306,7 @@ async function buildManifestIndex(exam: Exam) {
   const reservedIds = new Set<string>();
 
   for (const definition of definitions.filter((item) => item.exam === exam)) {
-    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, definition.seed, reservedIds);
+    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, `${definition.seed}:${variantSeed}`, reservedIds);
     selectedQuestions.forEach((question) => reservedIds.add(question.id));
     manifestIndex.set(definition.id, {
       definition,
@@ -308,13 +317,13 @@ async function buildManifestIndex(exam: Exam) {
   return manifestIndex;
 }
 
-async function buildManifest(examId: string) {
+async function buildManifest(examId: string, variantSeed: string) {
   const exam = examId.startsWith("ccrn") ? "ccrn" : examId.startsWith("nclex") ? "nclex" : null;
   if (!exam) {
     return null;
   }
 
-  const manifestIndex = await buildManifestIndex(exam);
+  const manifestIndex = await buildManifestIndex(exam, variantSeed);
   return manifestIndex.get(examId) ?? null;
 }
 
@@ -349,7 +358,12 @@ export async function GET(request: Request, context: RouteContext) {
     }, { status: 403 });
   }
 
-  const manifest = await buildManifest(parsed.data);
+  // Per-student variety: seed the draw + order by the student's id so no two
+  // students get the identical exam, while a given student's exam stays stable
+  // across a refresh/resume. Anonymous preview (instructor demo) gets a fresh
+  // random variant each request.
+  const variantSeed = user?.id ?? `preview-${Math.random().toString(36).slice(2)}`;
+  const manifest = await buildManifest(parsed.data, variantSeed);
   if (!manifest) {
     return Response.json({ success: false, error: "Practice exam unavailable" }, { status: 404 });
   }

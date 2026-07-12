@@ -134,6 +134,21 @@ test.describe("core product", () => {
     expect(exam.status(), "practice exam requires auth").toBe(401);
   });
 
+  test("readiness exam 1 is randomized per request (no two students identical)", async ({ request }) => {
+    const fetchOrder = async () => {
+      const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
+      expect(r.status(), "free readiness exam serves with access").toBe(200);
+      const body = await r.json();
+      return ((body.data ?? body).questions as Array<{ id: string }>).map((q) => q.id);
+    };
+    const a = await fetchOrder();
+    const b = await fetchOrder();
+    expect(a.length, "readiness exam returns a full form").toBeGreaterThanOrEqual(50);
+    // Anonymous preview draws a fresh random variant each request, so the order
+    // (and draw) must differ — the guarantee that students don't get identical exams.
+    expect(a.every((id, i) => id === b[i]), "two requests should not be identically ordered").toBe(false);
+  });
+
   test("signup exposes an optional access-key field", async ({ page }) => {
     await page.goto("/auth/signup", { waitUntil: "networkidle" });
     const toggle = page.getByTestId("access-key-toggle");

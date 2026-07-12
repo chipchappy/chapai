@@ -379,9 +379,18 @@ export async function selectQuestions(
     : config.category
     ? 900
     : Math.min(Math.max(count * 12, 120), 300);
+  // Float the most COMPLETE premium items into the capped candidate pool so the
+  // opening questions a student sees are our best foot forward: a visual guide
+  // first, then a structured rationale, then per-distractor teaching. random()
+  // shuffles within each tier, so every student gets a different order/draw.
   const orderBy = exam === "nclex"
-    ? [sql`${questions.structuredRationale} IS NULL`, sql`random()`]
-    : [sql`random()`];
+    ? [
+        sql`${questions.visualRationale} IS NULL`,
+        sql`${questions.structuredRationale} IS NULL`,
+        sql`${questions.distractorRationales} IS NULL`,
+        sql`random()`,
+      ]
+    : [sql`${questions.structuredRationale} IS NULL`, sql`random()`];
 
   const dbRows = await db
     .select({
