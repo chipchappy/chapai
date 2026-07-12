@@ -299,7 +299,24 @@ async function loadLivePracticeQuestions(exam: Exam) {
   });
 }
 
-async function buildManifestIndex(exam: Exam, variantSeed: string) {
+// The base manifest (best-question selection + 5 non-overlapping forms) is
+// deterministic and expensive to build, so cache it per worker isolate. Each
+// request then applies only a cheap per-student shuffle (see GET) — this gives
+// per-student order variety WITHOUT rebuilding the whole bank every request,
+// which was overrunning the worker and returning 503s.
+const manifestIndexCache = new Map<string, Map<string, { definition: PracticeExamDefinition; questions: PracticeQuestion[] }>>();
+
+async function buildManifestIndex(exam: Exam) {
+  const cached = manifestIndexCache.get(exam);
+  if (cached) {
+    return cached;
+  }
+  const built = await buildManifestIndexUncached(exam);
+  manifestIndexCache.set(exam, built);
+  return built;
+}
+
+async function buildManifestIndexUncached(exam: Exam) {
   const livePracticeQuestions = await loadLivePracticeQuestions(exam);
   const practiceQuestions = livePracticeQuestions.length > 0
     ? livePracticeQuestions
@@ -312,7 +329,7 @@ async function buildManifestIndex(exam: Exam, variantSeed: string) {
   const reservedIds = new Set<string>();
 
   for (const definition of definitions.filter((item) => item.exam === exam)) {
-    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, `${definition.seed}:${variantSeed}`, reservedIds);
+    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, definition.seed, reservedIds);
     selectedQuestions.forEach((question) => reservedIds.add(question.id));
     manifestIndex.set(definition.id, {
       definition,
@@ -323,13 +340,13 @@ async function buildManifestIndex(exam: Exam, variantSeed: string) {
   return manifestIndex;
 }
 
-async function buildManifest(examId: string, variantSeed: string) {
+async function buildManifest(examId: string) {
   const exam = examId.startsWith("ccrn") ? "ccrn" : examId.startsWith("nclex") ? "nclex" : null;
   if (!exam) {
     return null;
   }
 
-  const manifestIndex = await buildManifestIndex(exam, variantSeed);
+  const manifestIndex = await buildManifestIndex(exam);
   return manifestIndex.get(examId) ?? null;
 }
 
@@ -364,15 +381,20 @@ export async function GET(request: Request, context: RouteContext) {
     }, { status: 403 });
   }
 
-  // Per-student variety: seed the draw + order by the student's id so no two
-  // students get the identical exam, while a given student's exam stays stable
-  // across a refresh/resume. Anonymous preview (instructor demo) gets a fresh
-  // random variant each request.
-  const variantSeed = user?.id ?? `preview-${Math.random().toString(36).slice(2)}`;
-  const manifest = await buildManifest(parsed.data, variantSeed);
-  if (!manifest) {
+  const baseManifest = await buildManifest(parsed.data);
+  if (!baseManifest) {
     return Response.json({ success: false, error: "Practice exam unavailable" }, { status: 404 });
   }
+
+  // Per-student variety: the cached base holds the best-question selection; here
+  // we cheaply re-order it by a per-student seed so no two students get the same
+  // order, while a given student stays stable across refresh/resume. Anonymous
+  // preview (instructor demo) gets a fresh random variant each request.
+  const variantSeed = user?.id ?? `preview-${Math.random().toString(36).slice(2)}`;
+  const manifest = {
+    ...baseManifest,
+    questions: seededShuffle(baseManifest.questions, `${parsed.data}:${variantSeed}`),
+  };
 
   if (previewAccess && !user?.id) {
     return Response.json({

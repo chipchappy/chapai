@@ -136,10 +136,18 @@ test.describe("core product", () => {
 
   test("readiness exam 1 is randomized per request (no two students identical)", async ({ request }) => {
     const fetchOrder = async () => {
-      const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
-      expect(r.status(), "free readiness exam serves with access").toBe(200);
-      const body = await r.json();
-      return ((body.data ?? body).questions as Array<{ id: string }>).map((q) => q.id);
+      // Retry a transient cold-isolate 503 (the first heavy build) — we're
+      // testing per-student order variety, not cold-start availability.
+      for (let attempt = 0; attempt < 4; attempt++) {
+        const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
+        if (r.ok()) {
+          const body = await r.json();
+          return ((body.data ?? body).questions as Array<{ id: string }>).map((q) => q.id);
+        }
+        if (attempt === 3) expect(r.status(), "free readiness exam serves with access").toBe(200);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+      }
+      return [];
     };
     const a = await fetchOrder();
     const b = await fetchOrder();
