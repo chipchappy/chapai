@@ -99,14 +99,21 @@ async function callModel(prompt) {
 
 const SHELL = { cwd: WEB, encoding: "utf8", maxBuffer: 256 * 1024 * 1024, shell: true };
 function q(s) { return process.platform === "win32" ? `"${String(s).replace(/"/g, '""')}"` : `'${String(s).replace(/'/g, "'\\''")}'`; }
-function d1Query(sql) {
+function d1Query(sql, attempt = 0) {
   const r = spawnSync(`npx wrangler d1 execute chapai-prod --remote --json --command=${q(sql.replace(/\s+/g, " ").trim())}`, SHELL);
-  if (r.status !== 0) throw new Error("d1 query failed: " + (r.stderr || r.stdout).slice(0, 400));
+  if (r.status !== 0) {
+    if (attempt < 3) { spawnSync(process.platform === "win32" ? "timeout /t 3 >nul" : "sleep 3", { shell: true }); return d1Query(sql, attempt + 1); }
+    throw new Error("d1 query failed: " + (r.stderr || r.stdout).slice(0, 400));
+  }
   const m = r.stdout.match(/\[[\s\S]*\]/); return JSON.parse(m[0])[0].results;
 }
-function d1ExecFile(path) {
+function d1ExecFile(path, attempt = 0) {
   const r = spawnSync(`npx wrangler d1 execute chapai-prod --remote --file=${q(path)}`, SHELL);
-  if (r.status !== 0) throw new Error("d1 exec failed: " + (r.stderr || r.stdout).slice(0, 400));
+  if (r.status !== 0) {
+    // Windows spawnSync can die with a transient libuv assertion mid-run — retry.
+    if (attempt < 3) { spawnSync(process.platform === "win32" ? "timeout /t 3 >nul" : "sleep 3", { shell: true }); return d1ExecFile(path, attempt + 1); }
+    throw new Error("d1 exec failed: " + (r.stderr || r.stdout).slice(0, 400));
+  }
   return true;
 }
 const esc = (s) => String(s ?? "").replace(/'/g, "''");
