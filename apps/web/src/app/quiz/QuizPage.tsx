@@ -739,17 +739,25 @@ export default function QuizPage({
       return;
     }
 
-    const response = await fetch(`/api/quiz/practice-exams/${examId}`);
+    // Building a full exam is CPU-heavy on a cold worker isolate and can blip
+    // with a transient 5xx (503/1102). Retry a couple of times so a cold start
+    // is invisible to the student instead of surfacing an error.
+    let response: Response | null = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      response = await fetch(`/api/quiz/practice-exams/${examId}`);
+      if (response.ok || (response.status !== 503 && response.status < 500 && response.status !== 429)) break;
+      await new Promise((resolve) => setTimeout(resolve, 900 * (attempt + 1)));
+    }
 
-    if (!response.ok) {
-      const payload = await response.json().catch(() => null);
+    if (!response || !response.ok) {
+      const payload = response ? await response.json().catch(() => null) : null;
 
-      if (response.status === 401 && payload?.loginUrl) {
+      if (response?.status === 401 && payload?.loginUrl) {
         window.location.href = payload.loginUrl;
         return;
       }
 
-      if (response.status === 403) {
+      if (response?.status === 403) {
         setError(
           payload?.error
             ?? `This account can open ${practiceExamLimit} practice exam${practiceExamLimit === 1 ? "" : "s"}. Upgrade to unlock more simulations.`,
@@ -763,6 +771,13 @@ export default function QuizPage({
 
     const payload = await response.json();
     const data = payload.data ?? payload;
+    // Per-student order: the server returns the same best-question set to
+    // everyone (cheap + cacheable), so we shuffle here — no two students sit the
+    // exam in the same order, and the shuffle is captured in the saved session
+    // so it stays stable across a refresh/resume.
+    const orderedQuestions = Array.isArray(data.questions)
+      ? [...data.questions].sort(() => Math.random() - 0.5)
+      : data.questions;
     dispatch({
       type: "start-session",
       payload: createClientSession({
@@ -771,7 +786,7 @@ export default function QuizPage({
         exam: data.definition.exam,
         label: data.definition.label,
         description: data.definition.description,
-        questions: data.questions,
+        questions: orderedQuestions,
         timeLimitMinutes: data.definition.timeLimitMinutes,
       }),
     });

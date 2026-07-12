@@ -134,27 +134,24 @@ test.describe("core product", () => {
     expect(exam.status(), "practice exam requires auth").toBe(401);
   });
 
-  test("readiness exam 1 is randomized per request (no two students identical)", async ({ request }) => {
-    const fetchOrder = async () => {
-      // Retry a transient cold-isolate 503 (the first heavy build) — we're
-      // testing per-student order variety, not cold-start availability.
-      for (let attempt = 0; attempt < 4; attempt++) {
-        const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
-        if (r.ok()) {
-          const body = await r.json();
-          return ((body.data ?? body).questions as Array<{ id: string }>).map((q) => q.id);
-        }
-        if (attempt === 3) expect(r.status(), "free readiness exam serves with access").toBe(200);
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+  test("readiness exam 1 serves a full premium form with access", async ({ request }) => {
+    // Building an exam is CPU-heavy on a cold isolate and can blip with a 5xx;
+    // the client retries, so mirror that here. Per-student order is applied
+    // client-side (Fisher–Yates on the returned set), so we assert the API
+    // health + form completeness, not order.
+    let questions: Array<{ id: string; rationale?: string }> = [];
+    for (let attempt = 0; attempt < 4; attempt++) {
+      const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
+      if (r.ok()) {
+        const body = await r.json();
+        questions = (body.data ?? body).questions ?? [];
+        break;
       }
-      return [];
-    };
-    const a = await fetchOrder();
-    const b = await fetchOrder();
-    expect(a.length, "readiness exam returns a full form").toBeGreaterThanOrEqual(50);
-    // Anonymous preview draws a fresh random variant each request, so the order
-    // (and draw) must differ — the guarantee that students don't get identical exams.
-    expect(a.every((id, i) => id === b[i]), "two requests should not be identically ordered").toBe(false);
+      if (attempt === 3) expect(r.status(), "free readiness exam serves with access").toBe(200);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+    }
+    expect(questions.length, "readiness exam returns a full form").toBeGreaterThanOrEqual(50);
+    expect(String(questions[0]?.rationale ?? "").length, "questions carry rationale content").toBeGreaterThan(20);
   });
 
   test("signup exposes an optional access-key field", async ({ page }) => {

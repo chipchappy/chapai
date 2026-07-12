@@ -13,12 +13,6 @@ import { getQuestionIntegrityIssues } from "@/lib/question-renderability";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
-// Must be dynamic: the exam is built per-request from the signed-in user's id
-// (per-student randomized draw + order) and reads auth cookies. Without this the
-// response is statically cached and every student gets the identical exam.
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
-
 type RouteContext = {
   params: Promise<{ examId: string }>;
 };
@@ -180,22 +174,13 @@ function getBlueprint(exam: Exam) {
 // first keeps the 5 forms varied; the stable sort then floats the toughest to the
 // top. Because the forms reserve IDs across each other, they cascade from hardest
 // down — all five stay challenging and non-overlapping.
-// Difficulty stays the dominant term (exam realism), with quality bonuses that
-// float the most COMPLETE premium items — those carrying a visual guide, a
-// structured rationale, and per-distractor teaching — up to break ties. The
-// seeded shuffle runs first, so a per-student seed varies both draw and order.
-function questionQualityScore(q: PracticeQuestion) {
-  const distractorCount = q.distractorRationales && typeof q.distractorRationales === "object"
-    ? Object.keys(q.distractorRationales).length : 0;
-  return (typeof q.difficulty === "number" ? q.difficulty : 3)
-    + (q.structuredRationale ? 0.5 : 0)
-    + (q.visualRationale ? 0.7 : 0)
-    + (distractorCount >= 2 ? 0.4 : 0);
-}
-
 function hardestFirst(items: PracticeQuestion[], seed: string) {
   const jittered = seededShuffle(items, seed);
-  return [...jittered].sort((a, b) => questionQualityScore(b) - questionQualityScore(a));
+  return [...jittered].sort((a, b) => {
+    const scoreA = (typeof a.difficulty === "number" ? a.difficulty : 3) + (a.structuredRationale ? 0.5 : 0);
+    const scoreB = (typeof b.difficulty === "number" ? b.difficulty : 3) + (b.structuredRationale ? 0.5 : 0);
+    return scoreB - scoreA;
+  });
 }
 
 function selectByBlueprint(
@@ -299,24 +284,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
   });
 }
 
-// The base manifest (best-question selection + 5 non-overlapping forms) is
-// deterministic and expensive to build, so cache it per worker isolate. Each
-// request then applies only a cheap per-student shuffle (see GET) — this gives
-// per-student order variety WITHOUT rebuilding the whole bank every request,
-// which was overrunning the worker and returning 503s.
-const manifestIndexCache = new Map<string, Map<string, { definition: PracticeExamDefinition; questions: PracticeQuestion[] }>>();
-
 async function buildManifestIndex(exam: Exam) {
-  const cached = manifestIndexCache.get(exam);
-  if (cached) {
-    return cached;
-  }
-  const built = await buildManifestIndexUncached(exam);
-  manifestIndexCache.set(exam, built);
-  return built;
-}
-
-async function buildManifestIndexUncached(exam: Exam) {
   const livePracticeQuestions = await loadLivePracticeQuestions(exam);
   const practiceQuestions = livePracticeQuestions.length > 0
     ? livePracticeQuestions
@@ -381,20 +349,10 @@ export async function GET(request: Request, context: RouteContext) {
     }, { status: 403 });
   }
 
-  const baseManifest = await buildManifest(parsed.data);
-  if (!baseManifest) {
+  const manifest = await buildManifest(parsed.data);
+  if (!manifest) {
     return Response.json({ success: false, error: "Practice exam unavailable" }, { status: 404 });
   }
-
-  // Per-student variety: the cached base holds the best-question selection; here
-  // we cheaply re-order it by a per-student seed so no two students get the same
-  // order, while a given student stays stable across refresh/resume. Anonymous
-  // preview (instructor demo) gets a fresh random variant each request.
-  const variantSeed = user?.id ?? `preview-${Math.random().toString(36).slice(2)}`;
-  const manifest = {
-    ...baseManifest,
-    questions: seededShuffle(baseManifest.questions, `${parsed.data}:${variantSeed}`),
-  };
 
   if (previewAccess && !user?.id) {
     return Response.json({
