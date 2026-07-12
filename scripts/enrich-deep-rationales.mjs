@@ -35,6 +35,11 @@ const DRY = Boolean(args["dry-run"]);
 // not just fill missing ones. --hardest orders by difficulty regardless.
 const REGEN = Boolean(args.regenerate);
 const HARDEST = Boolean(args.hardest) || REGEN;
+// --premium: route through a top OpenRouter model (default claude-sonnet-5),
+// PREFERRED over the free trio, which stays as automatic fallback. Requires
+// OpenRouter credits. One flag to lift the hardest questions to Claude quality.
+const PREMIUM = Boolean(args.premium);
+const PREMIUM_MODEL = typeof args.premium === "string" ? args.premium : "anthropic/claude-sonnet-5";
 const DEBUG = Boolean(process.env.GVP_DEBUG);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -50,12 +55,19 @@ function readKey(envName, fileName, re) {
 const GEMINI_KEY = readKey("GEMINI_API_KEY", "freegeminikey.txt", /AIza[0-9A-Za-z_\-]{20,}/);
 const GROQ_KEY = readKey("GROQ_API_KEY", "groqkey.txt", /gsk_[0-9A-Za-z]{20,}/);
 const CEREBRAS_KEY = readKey("CEREBRAS_API_KEY", "cerebraskey.txt", /csk-[0-9A-Za-z]{20,}/);
+const OPENROUTER_KEY = readKey("OPENROUTER_API_KEY", "hermesopenrouter.txt", /sk-or-v1-[A-Za-z0-9]{20,}/);
 
 const DEFS = {
+  // Free trio: reliable premium at volume. OpenRouter free tier is non-viable
+  // (hy3 reasoning-loops to empty; hermes-405b-free 429), so a top OpenRouter
+  // model is opt-in via --premium (needs credits) and added below.
   cerebras: { key: CEREBRAS_KEY, rpm: 5,  url: "https://api.cerebras.ai/v1/chat/completions",    model: "gpt-oss-120b",            jsonMode: false, reasoningLow: true },
   groq:     { key: GROQ_KEY,     rpm: 6,  url: "https://api.groq.com/openai/v1/chat/completions", model: "llama-3.3-70b-versatile", jsonMode: false },
   gemini:   { key: GEMINI_KEY,   rpm: 10, url: null,                                              model: "gemini-2.5-flash",        jsonMode: false },
 };
+if (PREMIUM && OPENROUTER_KEY) {
+  DEFS.openrouter = { key: OPENROUTER_KEY, rpm: 20, url: "https://openrouter.ai/api/v1/chat/completions", model: PREMIUM_MODEL, jsonMode: false };
+}
 const state = {};
 for (const k of Object.keys(DEFS)) state[k] = { last: 0, cooldownUntil: 0, minInterval: Math.ceil((60000 / DEFS[k].rpm) * 1.12), fails: 0 };
 const healthy = () => Object.keys(DEFS).filter((k) => DEFS[k].key);
@@ -71,6 +83,8 @@ function pick() {
   const c = usable(); if (!c.length) return null;
   const now = Date.now();
   const ready = c.filter((k) => nextFree(k) <= now);
+  // In --premium mode, always prefer the top model when it is ready.
+  if (ready.includes("openrouter")) return "openrouter";
   if (ready.length) return ready[Math.floor(Math.random() * ready.length)];
   return c.sort((a, b) => nextFree(a) - nextFree(b))[0];
 }
@@ -113,14 +127,22 @@ const ANTI_SLOP = [/as an ai/i, /i cannot/i, /the question tests/i, /recognizes 
 
 const SHELL = { cwd: WEB, encoding: "utf8", maxBuffer: 256 * 1024 * 1024, shell: true };
 function q(s) { return process.platform === "win32" ? `"${String(s).replace(/"/g, '""')}"` : `'${String(s).replace(/'/g, "'\\''")}'`; }
-function d1Query(sql) {
+function d1Query(sql, attempt = 0) {
   const r = spawnSync(`npx wrangler d1 execute chapai-prod --remote --json --command=${q(sql.replace(/\s+/g, " ").trim())}`, SHELL);
-  if (r.status !== 0) throw new Error("d1 query failed: " + (r.stderr || r.stdout).slice(0, 300));
+  if (r.status !== 0) {
+    if (attempt < 3) { spawnSync(process.platform === "win32" ? "timeout /t 3 >nul" : "sleep 3", { shell: true }); return d1Query(sql, attempt + 1); }
+    throw new Error("d1 query failed: " + (r.stderr || r.stdout).slice(0, 300));
+  }
   const out = r.stdout; const m = out.match(/\[[\s\S]*\]/); return JSON.parse(m[0])[0].results;
 }
-function d1ExecFile(path) {
+function d1ExecFile(path, attempt = 0) {
   const r = spawnSync(`npx wrangler d1 execute chapai-prod --remote --file=${q(path)}`, SHELL);
-  if (r.status !== 0) throw new Error("d1 exec failed: " + (r.stderr || r.stdout).slice(0, 300));
+  if (r.status !== 0) {
+    // Windows spawnSync can die with a transient libuv assertion mid-run — retry
+    // so an ~200-minute regen job never aborts on a single flaky wrangler spawn.
+    if (attempt < 3) { spawnSync(process.platform === "win32" ? "timeout /t 3 >nul" : "sleep 3", { shell: true }); return d1ExecFile(path, attempt + 1); }
+    throw new Error("d1 exec failed: " + (r.stderr || r.stdout).slice(0, 300));
+  }
   return true;
 }
 const esc = (s) => String(s ?? "").replace(/'/g, "''");
@@ -149,10 +171,19 @@ async function main() {
   const provs = healthy();
   console.error(`[enrich] limit=${LIMIT} dry=${DRY} providers=[${provs.join(",")}] minutes=${MAX_MS === Infinity ? "∞" : MAX_MS / 60000}`);
   if (!provs.length) { console.error("[enrich] no keys"); process.exit(1); }
-  console.error(`[enrich] mode=${REGEN ? "REGENERATE existing (premium)" : "fill missing"} order=${HARDEST ? "hardest-first" : "curated-first"}`);
-  const missingFilter = REGEN ? "" : "AND (deep_rationale IS NULL OR length(deep_rationale)<250)";
-  const order = HARDEST ? "difficulty DESC, review_status='final-curated-live' DESC" : "review_status='final-curated-live' DESC";
-  const rows = d1Query(`SELECT id, stem, options, answer, rationale FROM questions WHERE exam='nclex' AND publish_state='published' AND rationale IS NOT NULL AND length(rationale)>=60 ${missingFilter} ORDER BY ${order} LIMIT ${LIMIT}`);
+  // --below=N targets rows whose deep_rationale is shorter than N chars (the
+  // genuinely-lacking set); --weakest orders shortest-first so the thinnest are
+  // refined before anything else. Overrides the default missing/regen filter.
+  const BELOW = args.below ? Number(args.below) : 0;
+  const WEAKEST = Boolean(args.weakest);
+  console.error(`[enrich] mode=${BELOW ? `below-${BELOW}` : REGEN ? "REGENERATE existing (premium)" : "fill missing"} order=${WEAKEST ? "weakest-first" : HARDEST ? "hardest-first" : "curated-first"}`);
+  const missingFilter = BELOW
+    ? `AND (deep_rationale IS NULL OR length(deep_rationale)<${BELOW})`
+    : REGEN ? "" : "AND (deep_rationale IS NULL OR length(deep_rationale)<250)";
+  const order = WEAKEST
+    ? "length(COALESCE(deep_rationale,'')) ASC"
+    : HARDEST ? "difficulty DESC, review_status='final-curated-live' DESC" : "review_status='final-curated-live' DESC";
+  const rows = d1Query(`SELECT id, stem, options, answer, rationale, length(COALESCE(deep_rationale,'')) AS cur_len FROM questions WHERE exam='nclex' AND publish_state='published' AND rationale IS NOT NULL AND length(rationale)>=60 ${missingFilter} ORDER BY ${order} LIMIT ${LIMIT}`);
   console.error(`[enrich] ${rows.length} rows to enrich`);
 
   let done = 0, fail = 0, slop = 0, i = 0;
@@ -166,6 +197,9 @@ async function main() {
     const out = (await call(m, buildPrompt(row), 1100)).trim().replace(/^```[a-z]*\s*/i, "").replace(/```$/i, "").trim();
     if (!out || out.length < 350) { fail++; if (DEBUG) console.error(`[dbg] ${row.id} short(${out.length}) via ${m}`); continue; }
     if (ANTI_SLOP.some((re) => re.test(out))) { slop++; if (DEBUG) console.error(`[dbg] ${row.id} slop`); continue; }
+    // No-regression guard: when refining existing rationales, only replace if the
+    // new one is meaningfully richer (longer) than what is already there.
+    if (Number(row.cur_len) > 0 && out.length < Number(row.cur_len) + 40) { fail++; if (DEBUG) console.error(`[dbg] ${row.id} not-richer(${out.length}<=${row.cur_len}) via ${m}`); continue; }
     const clean = out.slice(0, 2000);
     const now = Math.floor(Date.now() / 1000);
     updates.push(`UPDATE questions SET deep_rationale='${esc(clean)}', deep_rationale_authored_at=${now} WHERE id='${esc(row.id)}' AND publish_state='published';`);

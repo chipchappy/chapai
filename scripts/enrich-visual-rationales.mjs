@@ -44,14 +44,20 @@ function readKey(envName, fileName, re) {
 // per-provider rate limits, 429 cooldown, failure parking, and pick-the-ready.
 // OpenRouter (top model) is used exclusively when a valid key exists; otherwise
 // the free pair Cerebras gpt-oss-120b + Groq llama-3.3-70b.
-const OPENROUTER_KEY = readKey("OPENROUTER_API_KEY", "openrouterkey.txt", /sk-or-[0-9A-Za-z_\-]{20,}/);
-const DEFS = OPENROUTER_KEY
-  ? { openrouter: { key: OPENROUTER_KEY, rpm: 20, url: "https://openrouter.ai/api/v1/chat/completions", model: "anthropic/claude-3.5-sonnet", low: false } }
-  : {
-      cerebras: { key: readKey("CEREBRAS_API_KEY", "cerebraskey.txt", /csk-[0-9A-Za-z]{20,}/), rpm: 5, url: "https://api.cerebras.ai/v1/chat/completions", model: "gpt-oss-120b", low: true },
-      groq: { key: readKey("GROQ_API_KEY", "groqkey.txt", /gsk_[0-9A-Za-z]{20,}/), rpm: 6, url: "https://api.groq.com/openai/v1/chat/completions", model: "llama-3.3-70b-versatile", low: false },
-    };
-const USE_TOP = Boolean(OPENROUTER_KEY);
+// --premium: route through a top OpenRouter model (default claude-sonnet-5),
+// PREFERRED over the free pair which stays as fallback. Needs OpenRouter credits.
+const PREMIUM = Boolean(args.premium);
+const PREMIUM_MODEL = typeof args.premium === "string" ? args.premium : "anthropic/claude-sonnet-5";
+const OPENROUTER_KEY = readKey("OPENROUTER_API_KEY", "hermesopenrouter.txt", /sk-or-v1-[A-Za-z0-9]{20,}/)
+  || readKey("OPENROUTER_API_KEY", "openrouterkey.txt", /sk-or-[0-9A-Za-z_\-]{20,}/);
+const DEFS = {
+  cerebras: { key: readKey("CEREBRAS_API_KEY", "cerebraskey.txt", /csk-[0-9A-Za-z]{20,}/), rpm: 5, url: "https://api.cerebras.ai/v1/chat/completions", model: "gpt-oss-120b", low: true },
+  groq: { key: readKey("GROQ_API_KEY", "groqkey.txt", /gsk_[0-9A-Za-z]{20,}/), rpm: 6, url: "https://api.groq.com/openai/v1/chat/completions", model: "llama-3.3-70b-versatile", low: false },
+};
+if (PREMIUM && OPENROUTER_KEY) {
+  DEFS.openrouter = { key: OPENROUTER_KEY, rpm: 20, url: "https://openrouter.ai/api/v1/chat/completions", model: PREMIUM_MODEL, low: false };
+}
+const USE_TOP = Boolean(PREMIUM && OPENROUTER_KEY);
 const state = {};
 for (const k of Object.keys(DEFS)) state[k] = { last: 0, cooldownUntil: 0, minInterval: Math.ceil((60000 / DEFS[k].rpm) * 1.12), fails: 0 };
 const healthy = () => Object.keys(DEFS).filter((k) => DEFS[k].key);
@@ -63,6 +69,7 @@ function pick() {
   if (!c.length) c = healthy();
   if (!c.length) return null;
   const ready = c.filter((k) => nextFree(k) <= now);
+  if (ready.includes("openrouter")) return "openrouter"; // --premium: prefer the top model
   return ready.length ? ready[Math.floor(Math.random() * ready.length)] : c.sort((a, b) => nextFree(a) - nextFree(b))[0];
 }
 async function rawCall(name, prompt) {
