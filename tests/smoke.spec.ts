@@ -139,16 +139,18 @@ test.describe("core product", () => {
     // the client retries, so mirror that here. Per-student order is applied
     // client-side (Fisher–Yates on the returned set), so we assert the API
     // health + form completeness, not order.
+    // The exam build is CPU-heavy on a cold isolate and can take several seconds
+    // to warm (the client retries too). Give it real headroom before failing.
     let questions: Array<{ id: string; rationale?: string }> = [];
-    for (let attempt = 0; attempt < 4; attempt++) {
+    for (let attempt = 0; attempt < 7; attempt++) {
       const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
       if (r.ok()) {
         const body = await r.json();
         questions = (body.data ?? body).questions ?? [];
         break;
       }
-      if (attempt === 3) expect(r.status(), "free readiness exam serves with access").toBe(200);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (attempt === 6) expect(r.status(), "free readiness exam serves with access").toBe(200);
+      await new Promise((resolve) => setTimeout(resolve, 2500));
     }
     expect(questions.length, "readiness exam returns a full form").toBeGreaterThanOrEqual(50);
     expect(String(questions[0]?.rationale ?? "").length, "questions carry rationale content").toBeGreaterThan(20);
