@@ -13,6 +13,12 @@ import { getQuestionIntegrityIssues } from "@/lib/question-renderability";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
+// Must be dynamic: the exam is built per-request from the signed-in user's id
+// (per-student randomized draw + order) and reads auth cookies. Without this the
+// response is statically cached and every student gets the identical exam.
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 type RouteContext = {
   params: Promise<{ examId: string }>;
 };
