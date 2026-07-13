@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { getStudyResourcesForQuestion } from "@/lib/study-resources";
 import type { PracticeAnswer, PracticeQuestion } from "@/lib/practice-types";
 
@@ -64,6 +65,7 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [portalReady, setPortalReady] = useState(false);
   // Server-declared gates: "auth" = needs an account, "limit" = free daily cap hit.
   const [gate, setGate] = useState<null | "auth" | "limit">(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -72,6 +74,15 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
     () => `clarity-ai-tutor:${question.id}:${tutorStorageAnswerKey(selectedAnswer)}`,
     [question.id, selectedAnswer],
   );
+
+  useEffect(() => {
+    setPortalReady(true);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -267,8 +278,10 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
   const answerStateLabel = answeredCorrectly == null ? "Question still open" : answeredCorrectly ? "Answered correctly" : "Reviewing a miss";
   const contextTitle = question.title ?? question.caseTitle ?? question.chartTitle ?? question.scenarioTitle ?? "Practice question";
 
-  return (
-    <div role="dialog" aria-modal="true" aria-label="Clarity AI tutor" className="fixed inset-0 z-[80] flex items-center justify-center bg-[rgba(6,12,10,0.8)] p-3 backdrop-blur-xl sm:p-4">
+  if (!portalReady) return null;
+
+  return createPortal(
+    <div role="dialog" aria-modal="true" aria-label="Clarity AI tutor" className="fixed inset-0 z-[9999] flex items-center justify-center bg-[rgba(6,12,10,0.8)] p-3 backdrop-blur-xl sm:p-4">
       <div className="quiz-tutor-shell grid h-[calc(100dvh-1.5rem)] w-full max-w-[min(1500px,100%)] overflow-hidden rounded-[34px] border border-[rgba(216,228,217,0.12)] bg-[radial-gradient(circle_at_top_left,rgba(126,157,134,0.14),rgba(126,157,134,0)_24%),radial-gradient(circle_at_bottom_right,rgba(95,143,150,0.14),rgba(95,143,150,0)_24%),linear-gradient(180deg,rgba(14,24,20,0.98),rgba(8,15,12,0.98))] shadow-[0_40px_120px_rgba(0,0,0,0.52)] lg:grid-cols-[0.72fr_1.28fr]">
         <aside className="min-h-0 overflow-y-auto border-b border-[rgba(216,228,217,0.08)] bg-[linear-gradient(180deg,rgba(18,31,25,0.98),rgba(10,18,15,0.98))] p-5 lg:border-b-0 lg:border-r lg:border-r-[rgba(216,228,217,0.08)] lg:p-6">
           <div className="flex items-start justify-between gap-4">
@@ -501,6 +514,7 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
           </div>
         </section>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
