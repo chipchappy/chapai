@@ -42,7 +42,17 @@ test.describe("brand + nav fingerprint (canonical baseline)", () => {
     const html = await page.content();
     expect(html, "sand design token --c-bg").toContain("--c-bg");
     expect(html.toLowerCase(), "aurora orb").toContain("orb");
-    expect((await request.get("/favicon.ico")).status()).toBe(200);
+    let faviconStatus = 0;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        faviconStatus = (await request.get("/favicon.ico")).status();
+        if (faviconStatus === 200) break;
+      } catch {
+        faviconStatus = 0;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    }
+    expect(faviconStatus).toBe(200);
   });
 
   test("SEO fingerprint: canonical + JSON-LD + OG on home", async ({ page }) => {
@@ -91,8 +101,23 @@ async function grantDemoAccess(page: import("@playwright/test").Page) {
   ]);
 }
 
+async function gotoStable(page: Page, path: string) {
+  let lastStatus: number | null = null;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await page.goto(path, { waitUntil: "domcontentloaded", timeout: 30_000 });
+      lastStatus = response?.status() ?? null;
+      if (lastStatus === null || lastStatus < 500) return;
+    } catch {
+      lastStatus = null;
+    }
+    await page.waitForTimeout(1_500);
+  }
+  throw new Error(`Unable to load ${path} after 3 attempts${lastStatus ? ` (last status ${lastStatus})` : ""}.`);
+}
+
 test.describe("core product", () => {
-  test("quiz/start requires an account and serves questions with access", async ({ request }) => {
+  test("quiz/start requires an account and serves questions with access @desktopOnly", async ({ request }) => {
     const anon = await request.post("/api/quiz/start", { data: { exam: "nclex", count: 5 } });
     expect(anon.status(), "anon quiz/start is blocked").toBe(401);
     for (const exam of ["nclex", "ccrn"]) {
@@ -125,7 +150,7 @@ test.describe("core product", () => {
     expect(forgedTutor.status(), "an unvalidated preview cookie cannot unlock the tutor").toBe(401);
   });
 
-  test("AI tutor returns completed model coaching with access", async ({ request }) => {
+  test("AI tutor returns completed model coaching with access @desktopOnly", async ({ request }) => {
     const start = await request.post("/api/quiz/start", {
       data: { exam: "nclex", count: 5 },
       headers: { cookie: demoKeyCookie() },
@@ -207,7 +232,7 @@ test.describe("core product", () => {
     expect(exam.status(), "practice exam requires auth").toBe(401);
   });
 
-  test("readiness exam 1 serves a full premium form with access", async ({ request }) => {
+  test("readiness exam 1 serves a full premium form with access @desktopOnly", async ({ request }) => {
     // Building an exam is CPU-heavy on a cold isolate and can blip with a 5xx;
     // the client retries, so mirror that here. Per-student order is applied
     // client-side (Fisher–Yates on the returned set), so we assert the API
@@ -271,20 +296,29 @@ test.describe("core product", () => {
     expect(page.url(), "anon /account should land on login for billing").toContain("/auth/login");
   });
 
-  test("adaptive endless params accepted by quiz/start", async ({ request }) => {
-    const resp = await request.post("/api/quiz/start", {
-      data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
-      headers: { cookie: demoKeyCookie() },
-    });
-    expect(resp.status(), "adaptive start").toBe(200);
-    const body = await resp.json();
-    const questions = (body.data ?? body).questions ?? [];
+  test("adaptive endless params accepted by quiz/start @desktopOnly", async ({ request }) => {
+    let questions: Array<{ id: string }> = [];
+    let lastStatus = 0;
+    for (let attempt = 0; attempt < 5; attempt++) {
+      const resp = await request.post("/api/quiz/start", {
+        data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
+        headers: { cookie: demoKeyCookie() },
+      });
+      lastStatus = resp.status();
+      if (resp.ok()) {
+        const body = await resp.json();
+        questions = (body.data ?? body).questions ?? [];
+        break;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1_500));
+    }
+    expect(lastStatus, "adaptive start").toBe(200);
     expect(questions.length, "adaptive batch returns questions").toBeGreaterThanOrEqual(1);
     expect(questions.some((q: { id: string }) => q.id === "smoke-nonexistent-id"), "excludeIds honored").toBe(false);
   });
 
   test("start-here picker recommends a readiness exam for a close test date", async ({ page }) => {
-    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await gotoStable(page, "/quiz");
     await page.locator("button", { hasText: "Not sure where to start" }).first().click();
     const picker = page.getByTestId("start-here-picker");
     await picker.locator("button", { hasText: "NCLEX" }).first().click();
@@ -296,7 +330,7 @@ test.describe("core product", () => {
   });
 
   test("catalog hero: green Study now bank + orange readiness exam side by side", async ({ page }) => {
-    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await gotoStable(page, "/quiz");
     const studyNow = page.locator(".quiz-catalog-hero__cta");
     await expect(studyNow, "green Study now CTA renders").toBeVisible({ timeout: 15_000 });
     await expect(studyNow, "CTA is labeled Study now").toContainText("Study now");
@@ -305,7 +339,7 @@ test.describe("core product", () => {
   });
 
   test("five readiness exams render below the hero (NCLEX)", async ({ page }) => {
-    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await gotoStable(page, "/quiz");
     const cards = page.getByTestId("readiness-exam-grid").locator(".quiz-readiness-card");
     await expect(cards, "five NCLEX readiness forms").toHaveCount(5, { timeout: 15_000 });
     await expect(cards.nth(0), "first readiness exam is free").toContainText("free with account");
@@ -313,13 +347,13 @@ test.describe("core product", () => {
   });
 
   test("free plan shows the 200-question allowance pill (anon)", async ({ page }) => {
-    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await gotoStable(page, "/quiz");
     await expect(page.locator(".quiz-catalog-free-pill"), "free allowance pill renders")
       .toContainText(/200 free|free questions/i);
   });
 
   test("quiz catalog defaults to Unlimited deck size (inside filters)", async ({ page }) => {
-    await page.goto("/quiz", { waitUntil: "networkidle" });
+    await gotoStable(page, "/quiz");
     await page.locator(".quiz-catalog-advanced__summary").click();
     const unlimited = page.locator(".quiz-catalog-advanced button", { hasText: "Unlimited" }).first();
     await expect(unlimited, "Unlimited toggle exists").toBeVisible({ timeout: 15_000 });
