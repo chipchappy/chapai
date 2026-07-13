@@ -48,7 +48,10 @@ for path in "/" "/quiz" "/pricing" "/nclex" "/auth/signup" "/auth/login"; do
   done
 done
 sleep 5
-if ( cd tests && npx playwright test smoke --reporter=line ); then
+# Keep the production gate sequential. The readiness-form probe is deliberately
+# CPU-heavy; running it beside SSR navigations can manufacture Cloudflare 1102s
+# that real browser retries avoid and can obscure the route that actually failed.
+if ( cd tests && npx playwright test smoke --reporter=line --workers=1 ); then
   echo "${VID}" > scripts/.last-good-version
   git rev-parse HEAD > scripts/.last-good-commit
   echo "✅ DEPLOY VERIFIED — ${VID} recorded as last-good."
