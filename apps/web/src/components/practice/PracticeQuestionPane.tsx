@@ -23,6 +23,7 @@ interface PracticeQuestionPaneProps {
   canGoPrev: boolean;
   questionStatuses: Array<{ id: string; answered: boolean; flagged: boolean }>;
   canOpenTutor: boolean;
+  tutorPanel?: ReactNode;
   tier?: "free" | "plus" | "pro";
   canUseAdvancedAnalytics?: boolean;
   phase: "catalog" | "active" | "review" | "results";
@@ -143,6 +144,7 @@ export default function PracticeQuestionPane({
   canGoPrev,
   questionStatuses,
   canOpenTutor,
+  tutorPanel,
   tier,
   canUseAdvancedAnalytics,
   phase,
@@ -166,6 +168,7 @@ export default function PracticeQuestionPane({
       canGoPrev={canGoPrev}
       questionStatuses={questionStatuses}
       canOpenTutor={canOpenTutor}
+      tutorPanel={tutorPanel}
       tier={tier}
       canUseAdvancedAnalytics={canUseAdvancedAnalytics}
       phase={phase}

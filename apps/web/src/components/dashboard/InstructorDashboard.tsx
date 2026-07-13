@@ -28,6 +28,41 @@ const TONE: Record<StudentRow["readiness"]["tone"], string> = {
 
 type Aggregate = { count: number; active7: number; onTrack: number; atRisk: number; avgAccuracy: number };
 type SortMode = "priority" | "activity" | "accuracy" | "volume";
+type MetricFilter = "all" | "active" | "onTrack" | "support" | "accuracy";
+type StatTone = "blue" | "teal" | "sage" | "clay" | "gold";
+
+const STAT_STYLE: Record<StatTone, { surface: string; icon: string; value: string; bar: string }> = {
+  blue: {
+    surface: "border-[rgba(90,127,136,0.24)] bg-[linear-gradient(145deg,rgba(240,247,248,0.96),rgba(255,255,255,0.88))]",
+    icon: "bg-[rgba(90,127,136,0.14)] text-[#4f6f77]",
+    value: "text-[#405f67]",
+    bar: "bg-[#5a7f88]",
+  },
+  teal: {
+    surface: "border-[rgba(92,145,145,0.24)] bg-[linear-gradient(145deg,rgba(238,248,247,0.96),rgba(255,255,255,0.88))]",
+    icon: "bg-[rgba(92,145,145,0.14)] text-[#457575]",
+    value: "text-[#3f6e6e]",
+    bar: "bg-[#5c9191]",
+  },
+  sage: {
+    surface: "border-[rgba(111,141,118,0.26)] bg-[linear-gradient(145deg,rgba(241,247,242,0.97),rgba(255,255,255,0.88))]",
+    icon: "bg-[rgba(111,141,118,0.15)] text-[#55715e]",
+    value: "text-[#55715e]",
+    bar: "bg-[#7e9d86]",
+  },
+  clay: {
+    surface: "border-[rgba(196,121,86,0.24)] bg-[linear-gradient(145deg,rgba(252,243,238,0.97),rgba(255,255,255,0.88))]",
+    icon: "bg-[rgba(196,121,86,0.14)] text-[#9b5e42]",
+    value: "text-[#9b5e42]",
+    bar: "bg-[#c47956]",
+  },
+  gold: {
+    surface: "border-[rgba(176,141,87,0.26)] bg-[linear-gradient(145deg,rgba(252,248,238,0.97),rgba(255,255,255,0.88))]",
+    icon: "bg-[rgba(176,141,87,0.15)] text-[#8a6a2f]",
+    value: "text-[#8a6a2f]",
+    bar: "bg-[#c9a15a]",
+  },
+};
 
 function studentName(student: StudentRow) {
   if (student.name?.trim()) return student.name.trim();
@@ -67,16 +102,47 @@ function expiryDate(ts: number) {
   }).format(new Date(ts * 1000));
 }
 
-function StatTile({ icon: Icon, label, value, sub, tone }: { icon: LucideIcon; label: string; value: string | number; sub: string; tone?: string }) {
+function StatTile({
+  icon: Icon,
+  label,
+  value,
+  sub,
+  tone,
+  progress,
+  active,
+  onClick,
+}: {
+  icon: LucideIcon;
+  label: string;
+  value: string | number;
+  sub: string;
+  tone: StatTone;
+  progress: number;
+  active: boolean;
+  onClick: () => void;
+}) {
+  const style = STAT_STYLE[tone];
   return (
-    <article className="metric-tile rounded-lg p-4">
-      <div className="flex items-center justify-between gap-3">
-        <p className="terminal-label">{label}</p>
-        <Icon aria-hidden="true" className={`h-4 w-4 ${tone ?? "text-[#55715e]"}`} />
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={`group relative min-h-[126px] overflow-hidden rounded-lg border p-4 text-left shadow-[0_8px_24px_rgba(47,55,58,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(47,55,58,0.09)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7e9d86] ${style.surface} ${active ? "ring-2 ring-[#4a5559] ring-offset-2" : ""}`}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[0.68rem] font-bold uppercase text-[rgba(74,85,89,0.62)]">{label}</p>
+          <p className={`mt-2 font-serif text-[1.9rem] leading-none ${style.value}`}>{value}</p>
+        </div>
+        <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg transition-transform group-hover:scale-105 ${style.icon}`}>
+          <Icon aria-hidden="true" className="h-4 w-4" />
+        </span>
       </div>
-      <p className={`mt-3 font-serif text-[1.8rem] leading-none ${tone ?? "text-dark"}`}>{value}</p>
-      <p className="mt-1 text-xs leading-5 text-muted">{sub}</p>
-    </article>
+      <p className="mt-2 truncate text-xs text-muted">{sub}</p>
+      <span className="absolute inset-x-4 bottom-3 block h-1 overflow-hidden rounded-full bg-white/70" aria-hidden="true">
+        <span className={`block h-full rounded-full transition-[width] duration-500 ${style.bar}`} style={{ width: `${Math.max(progress > 0 ? 5 : 0, Math.min(100, progress))}%` }} />
+      </span>
+    </button>
   );
 }
 
@@ -111,24 +177,30 @@ export default function InstructorDashboard({
 }) {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortMode>("priority");
+  const [metricFilter, setMetricFilter] = useState<MetricFilter>("all");
   const [selectedEmail, setSelectedEmail] = useState(students[0]?.email ?? "");
 
   const visibleStudents = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    const filtered = normalized
+    const searched = normalized
       ? students.filter((student) => `${studentName(student)} ${student.email}`.toLowerCase().includes(normalized))
       : [...students];
+    const filtered = searched.filter((student) => {
+      if (metricFilter === "active") return student.recentAnswered > 0;
+      if (metricFilter === "onTrack") return student.answered >= 25 && student.accuracy >= 65;
+      if (metricFilter === "support") return student.answered >= 50 && student.accuracy < 58;
+      return true;
+    });
     return filtered.sort((a, b) => {
       if (sort === "activity") return (b.lastActive ?? 0) - (a.lastActive ?? 0);
       if (sort === "accuracy") return b.accuracy - a.accuracy || b.answered - a.answered;
       if (sort === "volume") return b.answered - a.answered;
       return priorityRank(a) - priorityRank(b) || a.accuracy - b.accuracy;
     });
-  }, [query, sort, students]);
+  }, [metricFilter, query, sort, students]);
 
   const selected = visibleStudents.find((student) => student.email === selectedEmail)
     ?? visibleStudents[0]
-    ?? students.find((student) => student.email === selectedEmail)
     ?? null;
   const inactive = Math.max(0, aggregate.count - aggregate.active7);
   const cohortNote = aggregate.count === 0
@@ -138,6 +210,11 @@ export default function InstructorDashboard({
       : inactive > 0
         ? `${inactive} student${inactive === 1 ? " has" : "s have"} not practiced during the past seven days.`
         : "The cohort is active this week. Maintain practice volume and timed readiness work.";
+
+  function selectMetric(filter: MetricFilter, nextSort?: SortMode) {
+    setMetricFilter((current) => current === filter && filter !== "all" ? "all" : filter);
+    if (nextSort) setSort(nextSort);
+  }
 
   return (
     <div className="mx-auto max-w-7xl space-y-5">
@@ -162,11 +239,11 @@ export default function InstructorDashboard({
       </section>
 
       <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5" aria-label="Cohort summary">
-        <StatTile icon={Users} label="Students" value={aggregate.count} sub="enrolled in this cohort" />
-        <StatTile icon={Activity} label="Active this week" value={aggregate.active7} sub={`${inactive} currently inactive`} tone="text-[#5a7f88]" />
-        <StatTile icon={CheckCircle2} label="On track" value={aggregate.onTrack} sub="65% or higher with practice" tone="text-[#55715e]" />
-        <StatTile icon={AlertTriangle} label="Needs support" value={aggregate.atRisk} sub="below 58% with enough data" tone="text-[#9b5e42]" />
-        <StatTile icon={Target} label="Cohort accuracy" value={aggregate.avgAccuracy ? `${aggregate.avgAccuracy}%` : "n/a"} sub="average among active students" tone="text-[#8a6a2f]" />
+        <StatTile icon={Users} label="Students" value={aggregate.count} sub="View the full cohort" tone="blue" progress={aggregate.count ? 100 : 0} active={metricFilter === "all"} onClick={() => selectMetric("all")} />
+        <StatTile icon={Activity} label="Active this week" value={aggregate.active7} sub={`${inactive} currently inactive`} tone="teal" progress={aggregate.count ? (aggregate.active7 / aggregate.count) * 100 : 0} active={metricFilter === "active"} onClick={() => selectMetric("active", "activity")} />
+        <StatTile icon={CheckCircle2} label="On track" value={aggregate.onTrack} sub="65%+ with practice volume" tone="sage" progress={aggregate.count ? (aggregate.onTrack / aggregate.count) * 100 : 0} active={metricFilter === "onTrack"} onClick={() => selectMetric("onTrack", "accuracy")} />
+        <StatTile icon={AlertTriangle} label="Needs support" value={aggregate.atRisk} sub="Prioritize faculty follow-up" tone="clay" progress={aggregate.count ? (aggregate.atRisk / aggregate.count) * 100 : 0} active={metricFilter === "support"} onClick={() => selectMetric("support", "priority")} />
+        <StatTile icon={Target} label="Cohort accuracy" value={aggregate.avgAccuracy ? `${aggregate.avgAccuracy}%` : "n/a"} sub="Rank students by accuracy" tone="gold" progress={aggregate.avgAccuracy} active={metricFilter === "accuracy"} onClick={() => selectMetric("accuracy", "accuracy")} />
       </section>
 
       <section className="study-console-panel overflow-hidden !p-0">

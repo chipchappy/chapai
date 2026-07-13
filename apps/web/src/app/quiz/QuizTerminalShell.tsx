@@ -536,6 +536,14 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                 canGoPrev={session.currentIndex > 0}
                 questionStatuses={questionStatuses}
                 canOpenTutor={canOpenTutor}
+                tutorPanel={tutorQuestion && tutorRecord && canUseTutor && currentQuestion.exam === "nclex" ? (
+                  <PracticeTutorDrawer
+                    question={tutorQuestion}
+                    selectedAnswer={tutorRecord.selected}
+                    answeredCorrectly={tutorRecord.correct}
+                    onClose={onCloseTutor}
+                  />
+                ) : undefined}
                 tier={tier}
                 canUseAdvancedAnalytics={canUseAdvancedAnalytics}
                 phase={phase}
@@ -610,7 +618,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
         ) : null}
       </div>
 
-      {tutorQuestion && tutorRecord && canUseTutor ? (
+      {tutorQuestion && tutorRecord && canUseTutor && currentQuestion?.exam !== "nclex" ? (
         <PracticeTutorDrawer
           question={tutorQuestion}
           selectedAnswer={tutorRecord.selected}

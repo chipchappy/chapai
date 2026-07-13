@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { getPreferredIntelTab, getQuestionIntegrityIssues, type QuestionIntelTab } from "@/lib/question-renderability";
 import { ClinicalReviewStation } from "@/components/practice/ClinicalReviewStation";
 import NclexExamPane from "@/components/practice/NclexExamPane";
@@ -36,6 +36,7 @@ interface PracticeTerminalPaneProps {
   canGoPrev: boolean;
   questionStatuses: Array<{ id: string; answered: boolean; flagged: boolean }>;
   canOpenTutor: boolean;
+  tutorPanel?: ReactNode;
   tier?: "free" | "plus" | "pro";
   canUseAdvancedAnalytics?: boolean;
   phase: "catalog" | "active" | "review" | "results";
@@ -304,6 +305,7 @@ export default function PracticeTerminalPane({
   canGoPrev,
   questionStatuses,
   canOpenTutor,
+  tutorPanel,
   tier = "free",
   canUseAdvancedAnalytics = false,
   phase,
@@ -632,6 +634,7 @@ export default function PracticeTerminalPane({
         canGoPrev={canGoPrev}
         questionStatuses={questionStatuses}
         canOpenTutor={canOpenTutor}
+        tutorPanel={tutorPanel}
         phase={phase}
       />
     );

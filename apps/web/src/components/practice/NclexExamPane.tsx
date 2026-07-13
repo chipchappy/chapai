@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { BowTieSelector } from "@/components/practice/BowTieSelector";
 import RationaleDiagram from "@/components/practice/RationaleDiagram";
 import { getDisplayableDistractorRationales, isDisplayableRationaleText } from "@/lib/distractor-rationale-display";
@@ -26,6 +26,7 @@ interface NclexExamPaneProps {
   canGoPrev: boolean;
   questionStatuses: Array<{ id: string; answered: boolean; flagged: boolean }>;
   canOpenTutor: boolean;
+  tutorPanel?: ReactNode;
   phase: "catalog" | "active" | "review" | "results";
 }
 
@@ -296,6 +297,7 @@ export default function NclexExamPane({
   canGoPrev,
   questionStatuses,
   canOpenTutor,
+  tutorPanel,
   phase,
 }: NclexExamPaneProps) {
   const answered = Boolean(answerRecord) || phase === "results";
@@ -752,7 +754,7 @@ export default function NclexExamPane({
               {references.length ? <button type="button" className="nclex-source-link">View Sources</button> : null}
 
               {/* AI tutor — warm periwinkle chat entry that opens the working streaming tutor. */}
-              {canOpenTutor ? (
+              {canOpenTutor ? tutorPanel ?? (
                 <div className="nclex-tutor-box">
                   <div className="nclex-tutor-box__head">
                     <span className="nclex-tutor-box__spark" aria-hidden="true">✦</span>

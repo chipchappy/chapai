@@ -215,11 +215,16 @@ test.describe("core product", () => {
 
     const tutorEntry = page.locator(".nclex-tutor-box__entry");
     await expect(tutorEntry, "the rationale should expose Ask Clarity AI").toBeVisible({ timeout: 20_000 });
+    const questionUrl = page.url();
     await tutorEntry.click();
-    await expect(page.getByRole("dialog", { name: "Clarity AI tutor" })).toBeVisible();
+    const inlineTutor = page.getByTestId("inline-tutor");
+    await expect(inlineTutor, "the tutor should expand inside the rationale").toBeVisible();
+    await expect(page.getByRole("dialog", { name: "Clarity AI tutor" })).toHaveCount(0);
+    expect(page.url(), "opening the tutor should not navigate away from the question").toBe(questionUrl);
+    expect(await inlineTutor.evaluate((node) => Boolean(node.closest(".nclex-rationale-panel"))), "the tutor should remain inside the question results").toBe(true);
 
     await page.getByPlaceholder("Ask the tutor...").fill("Give me the highest-priority clue in one sentence.");
-    await page.getByRole("button", { name: /^ask$/i }).click();
+    await page.getByRole("button", { name: "Ask Clarity AI" }).click();
     const reply = page.getByTestId("tutor-message-assistant").last();
     await expect.poll(async () => (await reply.textContent())?.trim().length ?? 0, {
       message: "the tutor should stream a substantive coaching reply",
