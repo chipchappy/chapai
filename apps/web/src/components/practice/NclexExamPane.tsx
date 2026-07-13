@@ -247,11 +247,18 @@ function nursingNoteFallback(question: PracticeQuestion) {
   const objectiveFindings = [...metricRows(question, "vitals"), ...metricRows(question, "labs")]
     .slice(0, 4)
     .map((item) => `Current assessment: ${item.label} ${item.value}${item.unit ? ` ${item.unit}` : ""}${item.flag && item.flag !== "normal" ? ` (${item.flag})` : ""}`);
-  return chartLines([
+  const stemFindings = splitSentences(question.stem)
+    .slice(1)
+    .filter((line) => !line.trim().endsWith("?"))
+    .slice(0, 4);
+  const lines = chartLines([
     question.additionalInfo,
     ...objectiveFindings,
-    "No separate nurses' note was supplied for this item. Use the objective findings in the available chart tabs.",
+    ...stemFindings,
   ]);
+  return lines.length
+    ? lines
+    : ["No separate nurses' note was supplied for this item. Use the objective findings in the available chart tabs."];
 }
 
 function historyFallback(question: PracticeQuestion) {
