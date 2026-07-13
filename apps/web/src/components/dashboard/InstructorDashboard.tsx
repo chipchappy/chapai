@@ -139,7 +139,7 @@ function StatTile({
         </span>
       </div>
       <p className="mt-2 truncate text-xs text-muted">{sub}</p>
-      <span className="absolute inset-x-4 bottom-3 block h-1 overflow-hidden rounded-full bg-white/70" aria-hidden="true">
+      <span className="mt-3 block h-1 overflow-hidden rounded-full bg-white/70" aria-hidden="true">
         <span className={`block h-full rounded-full transition-[width] duration-500 ${style.bar}`} style={{ width: `${Math.max(progress > 0 ? 5 : 0, Math.min(100, progress))}%` }} />
       </span>
     </button>
