@@ -127,12 +127,12 @@ function StatTile({
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`group relative min-h-[126px] overflow-hidden rounded-lg border p-4 text-left shadow-[0_8px_24px_rgba(47,55,58,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(47,55,58,0.09)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7e9d86] ${style.surface} ${active ? "ring-2 ring-[#4a5559] ring-offset-2" : ""}`}
+      className={`group relative min-h-[112px] overflow-hidden rounded-lg border p-3 text-left shadow-[0_8px_24px_rgba(47,55,58,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(47,55,58,0.09)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7e9d86] sm:min-h-[126px] sm:p-4 ${style.surface} ${active ? "ring-2 ring-[#4a5559] ring-offset-2" : ""}`}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[0.68rem] font-bold uppercase text-[rgba(74,85,89,0.62)]">{label}</p>
-          <p className={`mt-2 font-serif text-[1.9rem] leading-none ${style.value}`}>{value}</p>
+          <p className={`mt-2 font-serif text-[1.6rem] leading-none sm:text-[1.9rem] ${style.value}`}>{value}</p>
         </div>
         <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg transition-transform group-hover:scale-105 ${style.icon}`}>
           <Icon aria-hidden="true" className="h-4 w-4" />
@@ -238,7 +238,7 @@ export default function InstructorDashboard({
         <p className="mt-5 max-w-3xl border-l-2 border-[#c9a15a] pl-3 text-sm leading-6 text-dark">{cohortNote}</p>
       </section>
 
-      <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5" aria-label="Cohort summary">
+      <section className="grid grid-cols-2 gap-3 xl:grid-cols-5 [&>button:last-child]:col-span-2 xl:[&>button:last-child]:col-span-1" aria-label="Cohort summary">
         <StatTile icon={Users} label="Students" value={aggregate.count} sub="View the full cohort" tone="blue" progress={aggregate.count ? 100 : 0} active={metricFilter === "all"} onClick={() => selectMetric("all")} />
         <StatTile icon={Activity} label="Active this week" value={aggregate.active7} sub={`${inactive} currently inactive`} tone="teal" progress={aggregate.count ? (aggregate.active7 / aggregate.count) * 100 : 0} active={metricFilter === "active"} onClick={() => selectMetric("active", "activity")} />
         <StatTile icon={CheckCircle2} label="On track" value={aggregate.onTrack} sub="65%+ with practice volume" tone="sage" progress={aggregate.count ? (aggregate.onTrack / aggregate.count) * 100 : 0} active={metricFilter === "onTrack"} onClick={() => selectMetric("onTrack", "accuracy")} />
