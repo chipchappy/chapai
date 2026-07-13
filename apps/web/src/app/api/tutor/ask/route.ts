@@ -7,24 +7,12 @@ import { getDB, hasDatabase, isDemoMode, resolveEnv } from "@/lib/db";
 import { jsonError } from "@/lib/http";
 import { createRequestContext, log, logError } from "@/lib/logger";
 import { getServerAccessContext } from "@/lib/server-access";
-import { ACCESS_KEY_COOKIE } from "@/lib/access-keys";
 import { FREE_DAILY_TUTOR_LIMIT, getTutorUsageToday, recordTutorUsage } from "@/lib/tutor-usage";
 import { getStudyResourcesForQuestion, type StudyResource } from "@/lib/study-resources";
 import type { QuestionAnswer } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
-
-function readCookieValue(request: NextRequest, name: string) {
-  const header = request.headers.get("cookie") ?? "";
-  for (const pair of header.split(";")) {
-    const [rawName, ...rest] = pair.split("=");
-    if (rawName?.trim() === name) {
-      return rest.join("=").trim();
-    }
-  }
-  return request.cookies.get(name)?.value;
-}
 
 const practiceQuestionSchema = z.object({
   stem: z.string(),
@@ -185,7 +173,7 @@ function buildFallbackText(params: {
   ].join(" ");
 }
 
-function streamFallback(text: string) {
+function streamFallback(text: string, provider = "fallback") {
   const encoder = new TextEncoder();
   const chunks = text.split(/\s+/).filter(Boolean);
 
@@ -204,9 +192,21 @@ function streamFallback(text: string) {
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
         "X-Accel-Buffering": "no",
+        "X-Clarity-Tutor-Provider": provider,
+        "X-Content-Type-Options": "nosniff",
       },
     },
   );
+}
+
+async function fetchTutorProvider(url: string, init: RequestInit, timeoutMs = 10_000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 
@@ -221,24 +221,13 @@ export async function POST(req: NextRequest) {
     } as { source: string; canUseTutor: boolean };
     let user = null;
     let previewAccess = false;
-    const previewCookie = readCookieValue(req, ACCESS_KEY_COOKIE);
-    logError("Tutor access bootstrap", { previewCookie: Boolean(previewCookie) }, requestContext);
-
-    if (previewCookie) {
-      previewAccess = true;
-      access.canUseTutor = true;
-      access.source = "founder-key";
-    }
-
-    if (!previewAccess) {
-      try {
-        const accessContext = await getServerAccessContext();
-        access = accessContext.access;
-        user = accessContext.user;
-        previewAccess = access.source === "founder-key" || access.source === "preview-key";
-      } catch (error) {
-        logError("Tutor access context failed", error, requestContext);
-      }
+    try {
+      const accessContext = await getServerAccessContext();
+      access = accessContext.access;
+      user = accessContext.user;
+      previewAccess = access.source === "founder-key" || access.source === "preview-key";
+    } catch (error) {
+      logError("Tutor access context failed", error, requestContext);
     }
 
     if (!user?.id && !previewAccess) {
@@ -431,7 +420,7 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
             })),
             { role: "user", parts: [{ text: userMessage }] },
           ];
-          const geminiResponse = await fetch(
+          const geminiResponse = await fetchTutorProvider(
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
             {
               method: "POST",
@@ -449,7 +438,7 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
             };
             const text = payload.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("").trim();
             if (text && text.length > 20) {
-              return streamFallback(text);
+              return streamFallback(text, "gemini");
             }
           }
           logError("Tutor Gemini response unusable; trying next provider", await geminiResponse.text().catch(() => ""), requestContext);
@@ -478,7 +467,7 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
             max_tokens: 1024,
           };
           if (provider.reasoningLow) body.reasoning_effort = "low";
-          const response = await fetch(provider.url, {
+          const response = await fetchTutorProvider(provider.url, {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${provider.key}` },
             body: JSON.stringify(body),
@@ -487,7 +476,7 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
             const payload = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
             const text = payload.choices?.[0]?.message?.content?.trim();
             if (text && text.length > 20) {
-              return streamFallback(text);
+              return streamFallback(text, provider.name);
             }
           }
           logError(`Tutor ${provider.name} response unusable; trying next`, await response.text().catch(() => ""), requestContext);
@@ -548,6 +537,8 @@ ${question.coachingFrame?.length ? `- Coaching frame: ${question.coachingFrame.j
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
         "X-Accel-Buffering": "no",
+        "X-Clarity-Tutor-Provider": "anthropic",
+        "X-Content-Type-Options": "nosniff",
       },
     });
   } catch (error) {

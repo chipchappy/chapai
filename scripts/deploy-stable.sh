@@ -21,6 +21,13 @@ echo "── Gate 2: fresh build ───────────────�
 ( cd apps/web && npm run build:worker )
 
 echo "── Deploy ─────────────────────────────────────────────"
+SMOKE_KEY_JSON=$(cd apps/web && env -u CLOUDFLARE_API_TOKEN -u CLOUDFLARE_ACCOUNT_ID npx wrangler d1 execute chapai-prod --remote --json --command "SELECT code FROM access_keys WHERE status='active' AND type IN ('instructor-pass','demo-pass') AND (expires_at IS NULL OR expires_at > unixepoch()) AND redeem_count < max_redeems ORDER BY CASE type WHEN 'instructor-pass' THEN 0 ELSE 1 END, created_at DESC LIMIT 1") || {
+  echo "REFUSED: could not query D1 for an active smoke-test key."; exit 1
+}
+export CLARITY_SMOKE_ACCESS_KEY=$(printf '%s' "$SMOKE_KEY_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const x=JSON.parse(s);process.stdout.write(x?.[0]?.results?.[0]?.code??"")})')
+if [ -z "$CLARITY_SMOKE_ACCESS_KEY" ]; then
+  echo "REFUSED: no active D1 demo/instructor key is available for smoke tests."; exit 1
+fi
 TOKEN=$(tr -d '[:space:]' < "$HOME/Downloads/cftoken.txt")
 export CLOUDFLARE_API_TOKEN="$TOKEN" CLOUDFLARE_ACCOUNT_ID="b3a67b6d3b128b1fd003cdfdd41e8cae"
 DEPLOY_OUT=$(cd apps/web && npx wrangler deploy --config wrangler.jsonc 2>&1) || { echo "$DEPLOY_OUT"; exit 1; }

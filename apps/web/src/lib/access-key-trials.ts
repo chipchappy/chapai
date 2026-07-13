@@ -79,12 +79,16 @@ export async function ensureGrantsSchema(binding: LedgerBinding) {
       key_type TEXT NOT NULL,
       institution TEXT,
       granted_at INTEGER NOT NULL,
-      expires_at INTEGER NOT NULL
+      expires_at INTEGER NOT NULL,
+      role TEXT DEFAULT 'student',
+      cohort TEXT
     )
   `).run();
   for (const col of ["role TEXT DEFAULT 'student'", "cohort TEXT"]) {
     try { await binding.prepare(`ALTER TABLE access_key_grants ADD COLUMN ${col}`).run(); } catch { /* column exists */ }
   }
+  await binding.prepare(`CREATE INDEX IF NOT EXISTS idx_access_key_grants_cohort_role ON access_key_grants(cohort, role, expires_at)`).run();
+  await binding.prepare(`CREATE INDEX IF NOT EXISTS idx_access_key_grants_identity ON access_key_grants(user_id, email, role, expires_at)`).run();
 }
 
 async function recordGrant(input: {

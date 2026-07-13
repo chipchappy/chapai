@@ -72,14 +72,22 @@ test.describe("theme persists across every tab (hard requirement) @desktopOnly",
   });
 });
 
-// Study content is account-gated. Semi-public demo key exercises the full
-// question flow in smoke without needing a throwaway Supabase account.
-const DEMO_KEY_COOKIE = "chapai_preview_access=DEMO-NEURAL-2194";
+// Study content is account-gated. The deploy gate injects a currently active
+// D1 key so rotations cannot silently make the suite test an expired key.
+function demoKey() {
+  const key = process.env.CLARITY_SMOKE_ACCESS_KEY?.trim();
+  if (!key) throw new Error("CLARITY_SMOKE_ACCESS_KEY is required for product smoke tests.");
+  return key;
+}
+
+function demoKeyCookie() {
+  return `chapai_preview_access=${demoKey()}`;
+}
 
 async function grantDemoAccess(page: import("@playwright/test").Page) {
   const base = test.info().project.use.baseURL ?? "https://claritynclex.com";
   await page.context().addCookies([
-    { name: "chapai_preview_access", value: "DEMO-NEURAL-2194", url: base },
+    { name: "chapai_preview_access", value: demoKey(), url: base },
   ]);
 }
 
@@ -90,7 +98,7 @@ test.describe("core product", () => {
     for (const exam of ["nclex", "ccrn"]) {
       const resp = await request.post("/api/quiz/start", {
         data: { exam, count: 5 },
-        headers: { cookie: DEMO_KEY_COOKIE },
+        headers: { cookie: demoKeyCookie() },
       });
       expect(resp.status(), `quiz/start ${exam} (demo key)`).toBe(200);
       const body = await resp.json();
@@ -109,6 +117,42 @@ test.describe("core product", () => {
       data: { questionId: "smoke-any", userMessage: "help", context: "rationale", history: [] },
     });
     expect(tutor.status(), "anon tutor is blocked").toBe(401);
+
+    const forgedTutor = await request.post("/api/tutor/ask", {
+      data: { questionId: "smoke-any", userMessage: "help", context: "rationale", history: [] },
+      headers: { cookie: "chapai_preview_access=forged-smoke-key" },
+    });
+    expect(forgedTutor.status(), "an unvalidated preview cookie cannot unlock the tutor").toBe(401);
+  });
+
+  test("AI tutor returns completed model coaching with access", async ({ request }) => {
+    const start = await request.post("/api/quiz/start", {
+      data: { exam: "nclex", count: 5 },
+      headers: { cookie: demoKeyCookie() },
+    });
+    expect(start.status(), "quiz/start for tutor smoke").toBe(200);
+    const startBody = await start.json();
+    const question = ((startBody.data ?? startBody).questions ?? [])[0];
+    expect(question?.id, "tutor smoke receives a real question").toBeTruthy();
+
+    const tutor = await request.post("/api/tutor/ask", {
+      data: {
+        questionId: question.id,
+        userMessage: "What is the highest-priority clue, and why is the tempting distractor unsafe?",
+        context: "rationale",
+        history: [],
+        selectedAnswer: "A",
+        answeredCorrectly: false,
+      },
+      headers: { cookie: demoKeyCookie() },
+      timeout: 40_000,
+    });
+    expect(tutor.status(), "tutor responds with access").toBe(200);
+    expect(["anthropic", "gemini", "groq", "cerebras"], "a real model served the tutor response")
+      .toContain(tutor.headers()["x-clarity-tutor-provider"]);
+    const tutorBody = await tutor.text();
+    expect(tutorBody, "tutor completes its event stream").toContain("[DONE]");
+    expect(tutorBody.length, "tutor returns substantive coaching").toBeGreaterThan(300);
   });
 
   test("anon deep-link into practice routes to the signup gate", async ({ page }) => {
@@ -143,7 +187,7 @@ test.describe("core product", () => {
     // to warm (the client retries too). Give it real headroom before failing.
     let questions: Array<{ id: string; rationale?: string }> = [];
     for (let attempt = 0; attempt < 7; attempt++) {
-      const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: DEMO_KEY_COOKIE } });
+      const r = await request.get("/api/quiz/practice-exams/nclex-sim-1", { headers: { cookie: demoKeyCookie() } });
       if (r.ok()) {
         const body = await r.json();
         questions = (body.data ?? body).questions ?? [];
@@ -201,7 +245,7 @@ test.describe("core product", () => {
   test("adaptive endless params accepted by quiz/start", async ({ request }) => {
     const resp = await request.post("/api/quiz/start", {
       data: { exam: "nclex", count: 25, adaptive: true, excludeIds: ["smoke-nonexistent-id"] },
-      headers: { cookie: DEMO_KEY_COOKIE },
+      headers: { cookie: demoKeyCookie() },
     });
     expect(resp.status(), "adaptive start").toBe(200);
     const body = await resp.json();
@@ -265,6 +309,12 @@ test.describe("core product", () => {
 });
 
 test.describe("mobile 390px integrity @mobileOnly", () => {
+  test("mobile header exposes sign in and start free", async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await expect(page.locator('header a[href="/auth/login"]'), "mobile sign-in action is visible").toBeVisible();
+    await expect(page.locator('header a[href="/auth/signup"]'), "mobile start-free action is visible").toBeVisible();
+  });
+
   for (const path of ["/", "/quiz", "/pricing", "/nclex"]) {
     test(`no horizontal page overflow: ${path}`, async ({ page }) => {
       await page.goto(path, { waitUntil: "domcontentloaded" });

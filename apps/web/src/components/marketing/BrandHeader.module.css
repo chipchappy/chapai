@@ -114,10 +114,13 @@
     gap: 0.55rem;
   }
 
-  /* Hide the sign-in / start-free CTAs on small screens — keep header tight */
+  /* Keep both account actions visible while preserving a compact header. */
   .actions .ghost,
   .actions .primary {
-    display: none;
+    display: inline-flex;
+    min-height: 2.35rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.82rem;
   }
 
   .nav {
@@ -130,6 +133,26 @@
 }
 
 @media (max-width: 480px) {
+  .inner {
+    width: min(100% - 1rem, 1440px);
+    column-gap: 0.55rem;
+  }
+
+  .actions {
+    gap: 0.4rem;
+  }
+
+  .actions :global(.theme-toggle) {
+    display: none;
+  }
+
+  .actions .ghost,
+  .actions .primary {
+    min-height: 2.2rem;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
   .nav {
     gap: 0.9rem;
     font-size: 0.85rem;
