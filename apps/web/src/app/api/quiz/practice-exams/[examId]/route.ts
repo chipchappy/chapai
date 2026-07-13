@@ -5,12 +5,12 @@ import { mapQuestionRowToQuizQuestion } from "@/lib/quiz-engine";
 import { ensureHostedUser } from "@/lib/billing-store";
 import { isLaunchPlanCode } from "@/lib/launch-offers";
 import { canUnlockPracticeExam, FREE_PRACTICE_EXAM_ID, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
-import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam, type QuizQuestion } from "@/lib/types";
+import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam } from "@/lib/types";
 import { getPracticeExamDefinitions, getStandardPreviewDeck, mapLiveQuestionBank } from "@/lib/practice-data";
 import type { PracticeExamDefinition, PracticeQuestion } from "@/lib/practice-types";
 import { getServerAccessContext } from "@/lib/server-access";
 import { getQuestionIntegrityIssues } from "@/lib/question-renderability";
-import { eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
 type RouteContext = {
@@ -26,77 +26,6 @@ const examIdSchema = z.enum([
   "ccrn-sim-1",
   "ccrn-sim-2",
 ]);
-
-function mapLiveQuestion(question: QuizQuestion): PracticeQuestion {
-  const correctAnswer = (() => {
-    if (Array.isArray(question.answer)) {
-      return question.answer;
-    }
-    if (question.answer && typeof question.answer === "object") {
-      return question.answer;
-    }
-    const raw = String(question.answer ?? "").trim();
-    if (!raw) {
-      return "";
-    }
-    if ((raw.startsWith("[") && raw.endsWith("]")) || (raw.startsWith("{") && raw.endsWith("}"))) {
-      try {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) || (parsed && typeof parsed === "object")) {
-          return parsed;
-        }
-      } catch {
-        // keep raw fallback
-      }
-    }
-    return raw;
-  })();
-  const kind =
-    question.type === "sata"
-      ? "multi-select"
-      : question.type === "matrix"
-        ? "matrix"
-        : question.type === "ordering"
-          ? "ordering"
-          : question.type === "bow_tie"
-            ? "bow-tie"
-            : question.type === "case_study"
-              ? "case-study"
-              : question.type === "scenario_mcq"
-                ? "scenario-mcq"
-                : question.type === "decision_map_mcq"
-                  ? "decision-map-mcq"
-                  : "mcq";
-
-  return {
-    id: question.id,
-    exam: question.exam,
-    category: question.category,
-    difficulty: question.difficulty,
-    mode: "practice-exam",
-    kind,
-    questionType: question.type,
-    stem: question.stem,
-    scenarioTitle: question.scenarioTitle,
-    scenario: question.scenario,
-    additionalInfo: question.additionalInfo,
-    matrixColumns: question.matrixColumns,
-    matrixRows: question.matrixRows,
-    options: question.options.map((option) => ({ id: option.id, text: option.text })),
-    correctAnswer,
-    rationale: question.rationale,
-    structuredRationale: question.structuredRationale,
-    distractorRationales: question.distractorRationales,
-    takeaway: question.takeaway,
-    references: question.references,
-    coachingFrame: question.coachingFrame,
-    tutorReady: question.tutorReady,
-    diagramBlueprint: question.diagramBlueprint,
-    speedCue: question.speedCue,
-    source: "live",
-    visualRationale: question.visualRationale,
-  };
-}
 
 function hashSeed(seed: string) {
   let hash = 2166136261;
@@ -223,8 +152,9 @@ function selectByBlueprint(
 }
 
 async function loadLivePracticeQuestions(exam: Exam) {
-  const liveQuestions = getQuestionBank(exam);
-  if (liveQuestions.length > 0) {
+  const env = resolveEnv();
+  if (!hasDatabase(env)) {
+    const liveQuestions = getQuestionBank(exam);
     return mapLiveQuestionBank(
       liveQuestions.filter((question) => {
         const issues = getQuestionIntegrityIssues(question);
@@ -234,12 +164,8 @@ async function loadLivePracticeQuestions(exam: Exam) {
     );
   }
 
-  const env = resolveEnv();
-  if (!hasDatabase(env)) {
-    return [];
-  }
-
   const db = getDB(env);
+  const candidateLimit = exam === "nclex" ? 900 : 550;
   const rows = await db
     .select({
       id: questions.id,
@@ -276,7 +202,13 @@ async function loadLivePracticeQuestions(exam: Exam) {
       correctOrder: questions.correctOrder,
     })
     .from(questions)
-    .where(eq(questions.exam, exam));
+    .where(and(eq(questions.exam, exam), eq(questions.publishState, "published")))
+    .orderBy(
+      sql`${questions.visualRationale} IS NULL`,
+      sql`${questions.structuredRationale} IS NULL`,
+      sql`random()`,
+    )
+    .limit(candidateLimit);
 
   return mapLiveQuestionBank(rows.map((row) => mapQuestionRowToQuizQuestion(row)), "practice-exam").filter((question) => {
     const issues = getQuestionIntegrityIssues(question);
@@ -308,13 +240,43 @@ async function buildManifestIndex(exam: Exam) {
   return manifestIndex;
 }
 
+type ManifestIndex = Awaited<ReturnType<typeof buildManifestIndex>>;
+
+const MANIFEST_CACHE_TTL_MS = 10 * 60 * 1000;
+const manifestCache = new Map<Exam, {
+  expiresAt: number;
+  value: Promise<ManifestIndex>;
+}>();
+
+async function getManifestIndex(exam: Exam) {
+  const cached = manifestCache.get(exam);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.value;
+  }
+
+  const value = buildManifestIndex(exam);
+  manifestCache.set(exam, {
+    expiresAt: Date.now() + MANIFEST_CACHE_TTL_MS,
+    value,
+  });
+
+  try {
+    return await value;
+  } catch (error) {
+    if (manifestCache.get(exam)?.value === value) {
+      manifestCache.delete(exam);
+    }
+    throw error;
+  }
+}
+
 async function buildManifest(examId: string) {
   const exam = examId.startsWith("ccrn") ? "ccrn" : examId.startsWith("nclex") ? "nclex" : null;
   if (!exam) {
     return null;
   }
 
-  const manifestIndex = await buildManifestIndex(exam);
+  const manifestIndex = await getManifestIndex(exam);
   return manifestIndex.get(examId) ?? null;
 }
 

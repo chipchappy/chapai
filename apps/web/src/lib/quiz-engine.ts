@@ -377,8 +377,8 @@ export async function selectQuestions(
   const candidateLimit = questionType === "case_study"
     ? 1200
     : config.category
-    ? 900
-    : Math.min(Math.max(count * 12, 120), 300);
+    ? Math.min(Math.max(count * 4, 120), 360)
+    : Math.min(Math.max(count * 4, 90), 180);
   // Float the most COMPLETE premium items into the capped candidate pool so the
   // opening questions a student sees are our best foot forward: a visual guide
   // first, then a structured rationale, then per-distractor teaching. random()
