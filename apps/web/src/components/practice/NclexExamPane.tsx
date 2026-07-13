@@ -243,6 +243,27 @@ function exhibitLines(question: PracticeQuestion, types: Array<"note" | "timelin
     .filter(Boolean);
 }
 
+function nursingNoteFallback(question: PracticeQuestion) {
+  const objectiveFindings = [...metricRows(question, "vitals"), ...metricRows(question, "labs")]
+    .slice(0, 4)
+    .map((item) => `Current assessment: ${item.label} ${item.value}${item.unit ? ` ${item.unit}` : ""}${item.flag && item.flag !== "normal" ? ` (${item.flag})` : ""}`);
+  return chartLines([
+    question.additionalInfo,
+    ...objectiveFindings,
+    "No separate nurses' note was supplied for this item. Use the objective findings in the available chart tabs.",
+  ]);
+}
+
+function historyFallback(question: PracticeQuestion) {
+  return chartLines([
+    question.scenario,
+    question.caseContext,
+    question.scenarioTitle,
+    question.caseTitle,
+    splitSentences(question.stem)[0],
+  ]);
+}
+
 function toggleArrayValue(current: PracticeAnswer, value: string) {
   const ids = selectedIds(current);
   return ids.some((id) => id.toLowerCase() === value.toLowerCase())
@@ -316,19 +337,23 @@ export default function NclexExamPane({
     const notes = chartLines([
       ...(question.chartReview?.nursingNotes ?? []),
       ...(question.chartReview?.notes ?? []),
-      question.scenario,
-      question.caseContext,
+      ...(question.chartReview?.assessments ?? []),
+      ...(question.chartReview?.intakeOutput ?? []).map((item) => `Intake/output: ${item}`),
+      ...(question.chartReview?.medicationAdministrationRecord ?? []).map((item) => `MAR: ${item}`),
+      ...(question.chartReview?.carePlan ?? []).map((item) => `Care plan: ${item}`),
       question.additionalInfo,
       ...exhibitLines(question, ["note", "timeline", "assessment"]),
     ]);
     const history = chartLines([
       ...(question.chartReview?.hpi ?? []),
       ...(question.chartReview?.history ?? []),
-      question.caseTitle,
-      question.scenarioTitle,
       question.chartReview?.chiefComplaint ? `Chief complaint: ${question.chartReview.chiefComplaint}` : "",
+      question.scenario,
+      question.caseContext,
       ...(question.chartReview?.allergies ?? []).map((item) => `Allergy: ${item}`),
-      ...(question.chartReview?.medications ?? []).map((item) => `Medication: ${item}`),
+      ...(question.chartReview?.medications ?? []).map((item) => `Home medication: ${item}`),
+      question.scenarioTitle,
+      question.caseTitle,
     ]);
     const orders = chartLines([
       ...(question.chartReview?.orders ?? []),
@@ -409,21 +434,23 @@ export default function NclexExamPane({
       );
     }
 
-    const notesLines = chartContent.notes.length ? chartContent.notes : splitSentences(question.stem).slice(0, 3);
     const lines = chartTab === "orders" ? chartContent.orders : chartTab === "history" ? chartContent.history : chartContent.notes;
-    // History & Physical mirrors the clinical scenario when the item carries no
-    // dedicated H&P exhibit — real exams always populate this tab, never blank it.
     const fallback = chartTab === "notes"
-      ? splitSentences(question.stem).slice(0, 3)
+      ? nursingNoteFallback(question)
       : chartTab === "history"
-        ? notesLines
+        ? historyFallback(question)
         : [];
 
     return (lines.length ? lines : fallback).length ? (
       <div className="nclex-note-stack">
         {(lines.length ? lines : fallback).map((line, index) => {
           const safeLine = String(line);
-          const entry = splitChartTime(safeLine, index === 0 ? "0615:" : index === 1 ? "0645:" : "");
+          const fallbackLabel = chartTab === "notes"
+            ? `Entry ${index + 1}:`
+            : chartTab === "history"
+              ? (index === 0 ? "HPI:" : "History:")
+              : "";
+          const entry = splitChartTime(safeLine, fallbackLabel);
           return (
             <p key={`${safeLine}-${index}`}>
               <strong>{entry.time}</strong>

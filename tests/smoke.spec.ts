@@ -173,6 +173,35 @@ test.describe("core product", () => {
     expect(getErrors()).toEqual([]);
   });
 
+  test("answered question opens a working Clarity AI tutor @desktopOnly", async ({ page }) => {
+    await grantDemoAccess(page);
+    await page.goto("/quiz?exam=nclex&mode=standard", { waitUntil: "networkidle" });
+    await expect(page.getByRole("button", { name: /^submit$/i })).toBeVisible({ timeout: 25_000 });
+
+    const answerControl = page.locator([
+      ".nclex-word-choice:not([disabled])",
+      ".nclex-highlight-choice:not([disabled])",
+      ".nclex-radio-cell:not([disabled])",
+      ".nclex-bowtie button:not([disabled])",
+    ].join(", ")).first();
+    await expect(answerControl, "a selectable answer control should render").toBeVisible();
+    await answerControl.click();
+    await page.getByRole("button", { name: /^submit$/i }).click();
+
+    const tutorEntry = page.locator(".nclex-tutor-box__entry");
+    await expect(tutorEntry, "the rationale should expose Ask Clarity AI").toBeVisible({ timeout: 20_000 });
+    await tutorEntry.click();
+    await expect(page.getByRole("dialog", { name: "Clarity AI tutor" })).toBeVisible();
+
+    await page.getByPlaceholder("Ask the tutor...").fill("Give me the highest-priority clue in one sentence.");
+    await page.getByRole("button", { name: /^ask$/i }).click();
+    const reply = page.getByTestId("tutor-message-assistant").last();
+    await expect.poll(async () => (await reply.textContent())?.trim().length ?? 0, {
+      message: "the tutor should stream a substantive coaching reply",
+      timeout: 40_000,
+    }).toBeGreaterThan(80);
+  });
+
   test("premium gates hold (anon)", async ({ request }) => {
     const exam = await request.get("/api/quiz/practice-exams/nclex-sim-1");
     expect(exam.status(), "practice exam requires auth").toBe(401);

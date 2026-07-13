@@ -1,5 +1,5 @@
 import "server-only";
-import { and, desc, gte, inArray, isNotNull, eq, sql } from "drizzle-orm";
+import { and, gte, inArray, isNotNull, sql } from "drizzle-orm";
 import { quizSessions, users } from "@chapai/db/schema";
 import { hasDatabase, resolveEnv, type DB, type Env } from "@/lib/db";
 
@@ -43,12 +43,25 @@ export async function getInstructorContext(input: { userId?: string | null; emai
 }
 
 export type StudentRow = {
+  name: string | null;
   email: string;
   answered: number;
   accuracy: number;
   recentAnswered: number;
   sessions: number;
   lastActive: number | null;
+  averageTimeSeconds: number | null;
+  trend: number | null;
+  categories: Array<{ category: string; answered: number; correct: number; accuracy: number }>;
+  recentSessions: Array<{
+    id: string;
+    exam: string;
+    category: string | null;
+    answered: number;
+    correct: number;
+    accuracy: number;
+    startedAt: number;
+  }>;
   readiness: { label: string; tone: "sage" | "gold" | "clay" | "blue" };
   prediction: { band: string; midpoint: number | null; label: string; sufficient: boolean };
   recommendation: string;
@@ -99,8 +112,9 @@ export async function getCohortRoster(db: DB, cohort: string): Promise<{ student
   if (!emails.length) return { students: [], aggregate: { count: 0, active7: 0, onTrack: 0, atRisk: 0, avgAccuracy: 0 } };
 
   // 2. Map emails -> hosted user ids.
-  const hosted = await db.select({ id: users.id, email: users.email }).from(users).where(inArray(users.email, emails));
+  const hosted = await db.select({ id: users.id, email: users.email, name: users.name }).from(users).where(inArray(users.email, emails));
   const idByEmail = new Map(hosted.map((h) => [h.email, h.id]));
+  const nameByEmail = new Map(hosted.map((h) => [h.email, h.name]));
   const ids = hosted.map((h) => h.id);
 
   // 3. All-time + 7-day aggregates over completed sessions for those students.
@@ -121,6 +135,86 @@ export async function getCohortRoster(db: DB, cohort: string): Promise<{ student
   const allById = new Map(allTime.map((r) => [r.userId, r]));
   const recentById = new Map(recent.map((r) => [r.userId, Number(r.answered)]));
 
+  type CategoryAggregate = {
+    user_id: string;
+    category: string;
+    answered: number;
+    correct: number;
+    avg_time_ms: number | null;
+  };
+  type RecentSession = {
+    id: string;
+    user_id: string;
+    exam: string;
+    category: string | null;
+    total_questions: number;
+    correct_count: number;
+    started_at: number;
+  };
+
+  const placeholders = ids.map(() => "?").join(",");
+  const categoryRows = ids.length
+    ? (await binding.prepare(`
+        SELECT qa.user_id, q.category, COUNT(*) AS answered,
+          SUM(CASE WHEN qa.is_correct = 1 THEN 1 ELSE 0 END) AS correct,
+          AVG(qa.time_spent_ms) AS avg_time_ms
+        FROM quiz_answers qa
+        JOIN questions q ON q.id = qa.question_id
+        WHERE qa.user_id IN (${placeholders})
+        GROUP BY qa.user_id, q.category
+        ORDER BY answered DESC
+      `).bind(...ids).all<CategoryAggregate>()).results ?? []
+    : [];
+  const recentSessionRows = ids.length
+    ? (await binding.prepare(`
+        SELECT id, user_id, exam, category, total_questions, correct_count, started_at
+        FROM quiz_sessions
+        WHERE user_id IN (${placeholders}) AND completed_at IS NOT NULL
+        ORDER BY started_at DESC
+        LIMIT 1000
+      `).bind(...ids).all<RecentSession>()).results ?? []
+    : [];
+
+  const categoriesById = new Map<string, StudentRow["categories"]>();
+  const timeById = new Map<string, { weightedMs: number; answered: number }>();
+  for (const row of categoryRows) {
+    const answered = Number(row.answered ?? 0);
+    const correct = Number(row.correct ?? 0);
+    const categories = categoriesById.get(row.user_id) ?? [];
+    categories.push({
+      category: row.category || "Uncategorized",
+      answered,
+      correct,
+      accuracy: answered > 0 ? Math.round((correct / answered) * 100) : 0,
+    });
+    categoriesById.set(row.user_id, categories);
+    if (row.avg_time_ms != null && answered > 0) {
+      const timing = timeById.get(row.user_id) ?? { weightedMs: 0, answered: 0 };
+      timing.weightedMs += Number(row.avg_time_ms) * answered;
+      timing.answered += answered;
+      timeById.set(row.user_id, timing);
+    }
+  }
+
+  const sessionsById = new Map<string, StudentRow["recentSessions"]>();
+  for (const row of recentSessionRows) {
+    const answered = Number(row.total_questions ?? 0);
+    const correct = Number(row.correct_count ?? 0);
+    const sessions = sessionsById.get(row.user_id) ?? [];
+    if (sessions.length < 8) {
+      sessions.push({
+        id: row.id,
+        exam: row.exam,
+        category: row.category,
+        answered,
+        correct,
+        accuracy: answered > 0 ? Math.round((correct / answered) * 100) : 0,
+        startedAt: Number(row.started_at),
+      });
+      sessionsById.set(row.user_id, sessions);
+    }
+  }
+
   const students: StudentRow[] = emails.map((email) => {
     const uid = idByEmail.get(email);
     const a = uid ? allById.get(uid) : undefined;
@@ -128,13 +222,23 @@ export async function getCohortRoster(db: DB, cohort: string): Promise<{ student
     const correct = Number(a?.correct ?? 0);
     const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
     const prediction = predictPass(accuracy, answered);
+    const sessionHistory = uid ? sessionsById.get(uid) ?? [] : [];
+    const timing = uid ? timeById.get(uid) : undefined;
+    const trend = sessionHistory.length >= 2
+      ? sessionHistory[0].accuracy - sessionHistory[1].accuracy
+      : null;
     return {
+      name: nameByEmail.get(email) ?? null,
       email,
       answered,
       accuracy,
       recentAnswered: uid ? recentById.get(uid) ?? 0 : 0,
       sessions: Number(a?.sessions ?? 0),
       lastActive: a?.lastAt ? Number(a.lastAt) : null,
+      averageTimeSeconds: timing?.answered ? Math.round(timing.weightedMs / timing.answered / 1000) : null,
+      trend,
+      categories: uid ? categoriesById.get(uid) ?? [] : [],
+      recentSessions: sessionHistory,
       readiness: readinessVerdict(accuracy, answered),
       prediction,
       recommendation: recommend(prediction, accuracy, answered),

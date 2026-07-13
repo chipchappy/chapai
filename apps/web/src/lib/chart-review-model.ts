@@ -178,8 +178,8 @@ function getPracticeChartPieces(question: PracticeQuestion) {
     ...explicitList(chartReview, "medications").map((item) => `Home med: ${item}`),
     question.scenarioTitle,
     question.caseTitle,
-    question.scenario ?? question.caseContext ?? question.additionalInfo,
-    ...flattenExhibitItems(noteExhibits),
+    question.scenario,
+    question.caseContext,
   ], 6);
 
   const timeline = uniqueStrings([

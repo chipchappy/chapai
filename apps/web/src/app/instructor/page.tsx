@@ -34,6 +34,7 @@ export default async function InstructorPage() {
       <InstructorDashboard
         institution={ctx.institution}
         cohort={ctx.cohort}
+        accessExpiresAt={ctx.expiresAt}
         students={roster.students}
         aggregate={roster.aggregate}
       />

@@ -610,7 +610,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
         ) : null}
       </div>
 
-      {tutorQuestion && tutorRecord && tier !== "free" ? (
+      {tutorQuestion && tutorRecord && canUseTutor ? (
         <PracticeTutorDrawer
           question={tutorQuestion}
           selectedAnswer={tutorRecord.selected}
