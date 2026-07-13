@@ -237,7 +237,7 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
       role="region"
       aria-label="Clarity AI tutor conversation"
       data-testid="inline-tutor"
-      className="mt-4 overflow-hidden rounded-lg border border-[rgba(124,131,214,0.42)] bg-[rgba(255,255,255,0.72)] shadow-[0_12px_30px_rgba(91,96,176,0.12)]"
+      className="mb-20 mt-4 overflow-hidden rounded-lg border border-[rgba(124,131,214,0.42)] bg-[rgba(255,255,255,0.72)] shadow-[0_12px_30px_rgba(91,96,176,0.12)]"
     >
       <header className="flex items-start justify-between gap-3 border-b border-[rgba(124,131,214,0.22)] bg-[rgba(124,131,214,0.10)] px-4 py-3">
         <div className="flex min-w-0 gap-3">
@@ -257,9 +257,9 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
       {messages.length === 0 ? (
         <div className="border-b border-[rgba(124,131,214,0.16)] px-4 py-3">
           <p className="text-[0.68rem] font-semibold uppercase text-[#6a6e9a]">Quick prompts</p>
-          <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+          <div className="mt-2 flex flex-wrap gap-2">
             {starterPrompts.map((prompt) => (
-              <button key={prompt} type="button" onClick={() => setInput(prompt)} className="shrink-0 rounded-lg border border-[rgba(124,131,214,0.28)] bg-white/80 px-3 py-2 text-left text-xs font-medium text-[#4c518f] transition hover:border-[#7c83d6] hover:bg-white">
+              <button key={prompt} type="button" onClick={() => setInput(prompt)} className="max-w-full rounded-lg border border-[rgba(124,131,214,0.28)] bg-white/80 px-3 py-2 text-left text-xs font-medium text-[#4c518f] transition hover:border-[#7c83d6] hover:bg-white">
                 {prompt}
               </button>
             ))}
