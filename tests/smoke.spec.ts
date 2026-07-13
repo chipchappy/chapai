@@ -163,7 +163,7 @@ test.describe("core product", () => {
     const tutor = await request.post("/api/tutor/ask", {
       data: {
         questionId: question.id,
-        userMessage: "What is the highest-priority clue, and why is the tempting distractor unsafe?",
+        userMessage: "Explain the highest-priority clue, the underlying mechanism, why the tempting distractor is unsafe here, and when that distractor would become appropriate.",
         context: "rationale",
         history: [],
         selectedAnswer: "A",
@@ -177,7 +177,7 @@ test.describe("core product", () => {
       .toContain(tutor.headers()["x-clarity-tutor-provider"]);
     const tutorBody = await tutor.text();
     expect(tutorBody, "tutor completes its event stream").toContain("[DONE]");
-    expect(tutorBody.length, "tutor returns substantive coaching").toBeGreaterThan(300);
+    expect(tutorBody.length, "tutor returns detailed, substantive coaching").toBeGreaterThan(500);
   });
 
   test("anon deep-link into practice routes to the signup gate", async ({ page }) => {

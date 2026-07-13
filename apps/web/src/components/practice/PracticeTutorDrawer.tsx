@@ -108,7 +108,10 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
 
     const priorMessages = messages;
     const userMessage = { role: "user" as const, content: trimmed };
-    const history = messages.slice(-5);
+    const history = messages.slice(-8).map((message) => ({
+      ...message,
+      content: message.content.slice(0, 4_000),
+    }));
     setMessages([...messages, userMessage, { role: "assistant", content: "" }]);
     setInput("");
     setStreaming(true);
@@ -274,7 +277,7 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
           <div className="space-y-3">
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div data-testid={`tutor-message-${message.role}`} className={`max-w-[90%] rounded-lg px-3.5 py-2.5 text-sm leading-6 ${message.role === "user" ? "bg-[#6f75c9] text-white" : "border border-[rgba(124,131,214,0.22)] bg-white text-[#3a3e6e]"}`}>
+                <div data-testid={`tutor-message-${message.role}`} className={`max-w-[90%] whitespace-pre-wrap rounded-lg px-3.5 py-2.5 text-sm leading-6 ${message.role === "user" ? "bg-[#6f75c9] text-white" : "border border-[rgba(124,131,214,0.22)] bg-white text-[#3a3e6e]"}`}>
                   {message.content || <span className="animate-pulse">Thinking...</span>}
                 </div>
               </div>
