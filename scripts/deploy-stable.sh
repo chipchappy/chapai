@@ -45,7 +45,7 @@ for path in "/" "/quiz" "/pricing" "/nclex" "/auth/signup" "/auth/login"; do
   curl -s -o /dev/null "https://claritynclex.com${path}?warm=$(date +%s)" || true
   curl -s "https://claritynclex.com${path}" 2>/dev/null | grep -oE '/_next/static/chunks/[a-zA-Z0-9/_.-]+\.js' | head -6 | while read -r chunk; do
     curl -s -o /dev/null "https://claritynclex.com${chunk}" || true
-  done
+  done || true
 done
 sleep 5
 # Keep the production gate sequential. The readiness-form probe is deliberately
