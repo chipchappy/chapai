@@ -1705,7 +1705,7 @@ export default function QuizPage({
         </section>
       ) : null}
 
-      {state.tutorOpen && tutorQuestion && tutorRecord && tier !== "free" ? (
+      {state.tutorOpen && tutorQuestion && tutorRecord && canUseTutor ? (
         <PracticeTutorDrawer
           question={tutorQuestion}
           selectedAnswer={tutorRecord.selected}
