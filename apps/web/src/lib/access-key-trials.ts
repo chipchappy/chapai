@@ -144,9 +144,10 @@ export async function redeemAccessKeyForUser(
   const trialDays = input.trialDays ?? DEFAULT_TRIAL_DAYS;
   const rollingExpirySec = nowSec + trialDays * 24 * 60 * 60;
   const keyExpiryMs = key.expiresAt ? Date.parse(key.expiresAt) : Number.NaN;
-  const fixedInstructorExpirySec = Number.isFinite(keyExpiryMs) ? Math.floor(keyExpiryMs / 1000) : null;
-  const expiresAtSec = key.type === "instructor-pass" && fixedInstructorExpirySec
-    ? fixedInstructorExpirySec
+  const fixedKeyExpirySec = Number.isFinite(keyExpiryMs) ? Math.floor(keyExpiryMs / 1000) : null;
+  const usesFixedKeyExpiry = key.type === "instructor-pass" || key.type === "demo-pass";
+  const expiresAtSec = usesFixedKeyExpiry && fixedKeyExpirySec
+    ? fixedKeyExpirySec
     : rollingExpirySec;
   const examTrack = key.scope === "all" ? "all" : key.scope;
   const institution = key.notes && key.notes.trim().length > 0 ? key.notes.trim() : null;
