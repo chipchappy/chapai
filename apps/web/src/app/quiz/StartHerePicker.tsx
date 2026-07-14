@@ -52,7 +52,6 @@ function recommend(exam: Exam, timeline: Timeline, need: Need) {
 const STEPS: Array<{ key: "exam" | "timeline" | "need"; label: string; options: Array<{ value: string; label: string }> }> = [
   { key: "exam", label: "Which exam?", options: [
     { value: "nclex", label: "NCLEX" },
-    { value: "ccrn", label: "CCRN" },
   ] },
   { key: "timeline", label: "When do you test?", options: [
     { value: "soon", label: "Under 4 weeks" },

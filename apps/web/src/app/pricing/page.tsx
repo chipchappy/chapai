@@ -3,14 +3,14 @@ import PricingCards from "@/components/marketing/PricingCards";
 
 export const metadata: Metadata = {
   title: "Pricing | Clarity NCLEX",
-  description: "Clarity NCLEX pricing: $9.99/mo for NCLEX Base, $15.99/mo for Dual Premium, and $4.99 24-hour passes.",
+  description: "Clarity NCLEX pricing: $9.99/mo for NCLEX Monthly, $15.99/mo for Premium, and a $4.99 7-day pass.",
   alternates: { canonical: "/pricing" },
 };
 
 const PRICING_FAQS: Array<{ q: string; a: string }> = [
   {
     q: "What do I get for $9.99/month?",
-    a: "NCLEX Base includes the full live NCLEX question bank (NGN case studies, matrix, bow-tie, SATA, and standard items) with premium rationales and citations, the AI tutor on every question, 2 timed readiness exams, and your progress dashboard. Dual Premium ($15.99/mo) adds the CCRN track and unlocks all 5 readiness exams.",
+    a: "NCLEX Monthly includes the full live NCLEX question bank (NGN case studies, matrix, bow-tie, SATA, and standard items) with premium rationales and citations, the AI tutor on every question, all 5 timed readiness exams, and your progress dashboard. Premium ($15.99/mo) adds advanced analytics and upcoming clinical simulations.",
   },
   {
     q: "Can I try Clarity before paying?",

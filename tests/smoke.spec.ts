@@ -35,11 +35,17 @@ test.describe("brand + nav fingerprint (canonical baseline)", () => {
       await expect(page.locator(`header nav a:has-text("${label}")`).first(),
         `nav tab "${label}" must exist`).toHaveCount(1);
     }
+    await expect(page.locator("body")).not.toContainText("CCRN");
   });
 
   test("retired CCRN pages redirect to NCLEX", async ({ page }) => {
     await page.goto("/ccrn/ai-tutor", { waitUntil: "domcontentloaded" });
     await expect(page).toHaveURL(/\/nclex$/);
+  });
+
+  test("practice catalog exposes only the NCLEX track", async ({ page }) => {
+    await page.goto("/quiz", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("body")).not.toContainText("CCRN");
   });
 
   test("design tokens present (sand bg + orb) and favicon serves", async ({ page, request }) => {

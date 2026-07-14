@@ -74,7 +74,7 @@ export default function FooterMinimal() {
         <div>
           <BrandMark />
           <p className="clarity-footer__brand-blurb">
-            Premium NCLEX-RN and CCRN prep that costs less than a Sunday coffee. Built by nurses who refused to pay $500 for question banks.
+            Premium NCLEX-RN prep that costs less than a Sunday coffee. Built by nurses who refused to pay $500 for question banks.
           </p>
           <div className="clarity-footer__socials">
             <IconWrap label="Instagram" href="https://www.instagram.com/claritynclex"><InstagramIcon /></IconWrap>
@@ -133,11 +133,11 @@ export default function FooterMinimal() {
 
       <div className="clarity-footer__bottom">
         <span>&copy; {year} Chapai Solutions LLC · Clarity Clinical Prep</span>
-        <span>Independent NCLEX-RN&reg; &amp; CCRN&reg; prep · Not affiliated with NCSBN or AACN</span>
+        <span>Independent NCLEX-RN&reg; prep · Not affiliated with NCSBN</span>
       </div>
 
       <p className="clarity-footer__legal">
-        NCLEX&reg;, NCLEX-RN&reg;, and NCLEX-PN&reg; are registered trademarks of the National Council of State Boards of Nursing, Inc. (NCSBN&reg;). CCRN&reg; is a registered trademark of the American Association of Critical-Care Nurses (AACN). Clarity Clinical Prep is an independent study tool and is not affiliated with, endorsed by, sponsored by, or otherwise connected to NCSBN or AACN. All practice questions are original works created by our team and are not actual exam questions or official exam content. These marks are referenced solely to describe the exams this product helps users prepare for.
+        NCLEX&reg;, NCLEX-RN&reg;, and NCLEX-PN&reg; are registered trademarks of the National Council of State Boards of Nursing, Inc. (NCSBN&reg;). Clarity Clinical Prep is an independent study tool and is not affiliated with, endorsed by, sponsored by, or otherwise connected to NCSBN. All practice questions are original works created by our team and are not actual exam questions or official exam content. These marks are referenced solely to describe the exams this product helps users prepare for.
       </p>
     </footer>
   );

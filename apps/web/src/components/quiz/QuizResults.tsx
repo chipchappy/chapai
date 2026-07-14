@@ -135,14 +135,13 @@ export default function QuizResults({
         <div className="mt-6 rounded-[20px] border border-[rgba(74,85,89,0.1)] bg-[linear-gradient(135deg,rgba(249,246,239,0.96),rgba(242,237,226,0.82))] p-5 text-left shadow-[0_10px_28px_rgba(52,48,41,0.05)]">
           <p className="mb-1 text-sm font-bold text-dark">Unlock the full live product</p>
           <p className="mb-3 text-xs leading-6 text-muted">
-            Choose a focused 24-hour pass for NCLEX or CCRN, move into a full single-track base plan, or unlock
-            both banks, 5 practice exams, AI tutor access, and advanced analytics with Dual Premium.
+            Choose a focused NCLEX pass, move into the full monthly bank, or unlock
+            5 practice exams, AI tutor access, and advanced analytics with Premium.
           </p>
           <div className="mb-4 grid gap-2 text-xs leading-6 text-muted sm:grid-cols-2">
             <span>NCLEX 24-hour access - $4.99</span>
-            <span>CCRN 24-hour access - $4.99</span>
-            <span>NCLEX or CCRN Base - $9.99/mo</span>
-            <span>Dual Premium - $15.99/mo</span>
+            <span>NCLEX Monthly - $9.99/mo</span>
+            <span>Premium - $15.99/mo</span>
           </div>
           <a href="/upgrade" className="inline-flex items-center gap-2 rounded-full bg-[#4A5559] px-5 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-[#394245]">
             View launch plans

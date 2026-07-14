@@ -198,7 +198,6 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
           {phase === "catalog" ? (
             <>
               <span className="quiz-chip">nclex {liveCounts.nclex}</span>
-              <span className="quiz-chip">ccrn {liveCounts.ccrn}</span>
               <span className="quiz-chip quiz-chip-accent">ngn {nclexStats.ngnRatio}%</span>
               <span className="quiz-chip">{tier}</span>
               {accessType ? <span className="quiz-chip">{accessType}</span> : null}
@@ -235,7 +234,6 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
           ) : (
             <>
               <a href="/nclex" className="quiz-terminal-link">nclex</a>
-              <a href="/ccrn" className="quiz-terminal-link">ccrn</a>
               <a href="/upgrade" className="quiz-terminal-link">plans</a>
             </>
           )}
@@ -299,7 +297,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                     <div className="quiz-catalog-advanced__group">
                       <span className="quiz-catalog-label">Exam</span>
                       <div className="quiz-catalog-pillset">
-                        {(["nclex", "ccrn"] as const).map((exam) => (
+                        {(["nclex"] as const).map((exam) => (
                           <button
                             key={exam}
                             type="button"

@@ -15,19 +15,9 @@ export const metadata = {
 
 const practiceLinks = [
   {
-    href: "/quiz?exam=ccrn&mode=standard",
-    label: "Standard CCRN",
-    note: "Use the live-bank session flow with larger question taking and rationale review.",
-  },
-  {
     href: "/quiz?exam=nclex&mode=chart",
     label: "Chart Reading",
     note: "Stress-test wide data panels, trend reading, and chart-based reasoning.",
-  },
-  {
-    href: "/quiz?exam=ccrn&mode=case-study",
-    label: "CCRN Case Study",
-    note: "Open the clinically serious bedside format with labs, vitals, and hemodynamics.",
   },
   {
     href: "/quiz?exam=nclex&mode=ngn",
@@ -40,7 +30,7 @@ const practiceLinks = [
     note: "Launch a fixed-length simulation with timer, review states, and score flow.",
   },
   {
-    href: "/ccrn/ai-tutor",
+    href: "/quiz?exam=nclex&mode=standard",
     label: "AI Tutor",
     note: "Verify that premium access unlocks the coaching layer without dead ends.",
   },

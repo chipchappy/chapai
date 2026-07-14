@@ -3,9 +3,9 @@ import Link from "next/link";
 import { getAllPosts } from "@/content/blog/posts";
 
 export const metadata: Metadata = {
-  title: "NCLEX & CCRN study blog",
+  title: "NCLEX study blog",
   description:
-    "Clear, no-fluff guides on NCLEX and CCRN prep: NGN case studies, study plans, prioritization, and exam-day strategy from Clarity Clinical Prep.",
+    "Clear, no-fluff guides on NCLEX prep: NGN case studies, study plans, prioritization, and exam-day strategy from Clarity Clinical Prep.",
   alternates: { canonical: "/blog" },
 };
 
@@ -31,7 +31,7 @@ export default function BlogIndexPage() {
             Study guides that respect your time.
           </h1>
           <p className="mt-5 max-w-[36rem] text-base leading-8 text-[var(--c-text-muted)]">
-            Practical NCLEX and CCRN prep — NGN case studies, study plans, and exam-day strategy, written the way we build the
+            Practical NCLEX prep — NGN case studies, study plans, and exam-day strategy, written the way we build the
             product: calm, clear, and clinically grounded.
           </p>
 

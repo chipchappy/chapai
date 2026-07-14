@@ -121,8 +121,8 @@ function clearPracticeSnapshot() {
   }
 }
 
-function sanitizeExam(value: string | undefined): Exam {
-  return value === "ccrn" ? "ccrn" : "nclex";
+function sanitizeExam(_value: string | undefined): Exam {
+  return "nclex";
 }
 
 function resolveAccessibleExam(value: string | undefined, accessExamTrack: "all" | "ccrn" | "nclex"): Exam {

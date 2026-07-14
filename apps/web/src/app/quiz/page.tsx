@@ -8,7 +8,7 @@ import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Practice center",
-  description: "Large-format NCLEX and CCRN practice with AI-guided review, chart reading, case studies, and simulations.",
+  description: "Large-format NCLEX practice with AI-guided review, chart reading, case studies, and simulations.",
   alternates: {
     canonical: "/quiz",
   },

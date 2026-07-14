@@ -27,12 +27,12 @@ function getErrorCopy(error: string | undefined) {
 
 const unlockedLinks = [
   {
-    href: "/quiz?exam=ccrn&mode=standard",
+    href: "/quiz?exam=nclex&mode=standard",
     label: "Open standard practice",
     note: "Launch the live-bank question flow with the upgraded player.",
   },
   {
-    href: "/quiz?exam=ccrn&mode=case-study",
+    href: "/quiz?exam=nclex&mode=case-study",
     label: "Open case study mode",
     note: "Inspect the bedside data panels and clinically serious case format.",
   },

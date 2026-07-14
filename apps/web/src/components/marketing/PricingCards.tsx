@@ -50,10 +50,9 @@ const paidTiers: PaidTier[] = [
     name: "Premium",
     cadence: "/mo",
     badge: "Best overall value",
-    tagline: "NCLEX + CCRN + AI tutor.",
+    tagline: "Advanced NCLEX prep + AI tutor.",
     features: [
       "Everything in NCLEX Monthly",
-      "CCRN study bank included",
       "AI tutor on every question",
       "Clinical simulations - coming soon",
       "Advanced analytics",

@@ -89,7 +89,6 @@ export const metadata: Metadata = {
     "NCLEX pharmacology questions",
     "NCLEX practice questions free",
     "free nursing exam prep",
-    "CCRN practice questions",
     "AI nursing tutor",
     "Next Generation NCLEX practice",
   ],
@@ -204,7 +203,7 @@ const globalSchema = {
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
       description:
-        "Online nursing exam preparation platform for NCLEX-RN and CCRN candidates.",
+        "Online nursing exam preparation platform for NCLEX-RN candidates.",
     },
   ],
 };
