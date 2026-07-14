@@ -40,7 +40,7 @@ function applySecurityHeaders(response: NextResponse) {
       "img-src 'self' data: blob: https:",
       "font-src 'self' data: https://fonts.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://static.cloudflareinsights.com",
       "connect-src 'self' https:",
       "frame-src https://js.stripe.com https://checkout.stripe.com",
     ].join("; "),
