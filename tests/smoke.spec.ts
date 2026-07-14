@@ -7,8 +7,8 @@ import { test, expect, type Page } from "@playwright/test";
 // quiz renders, mobile 390px integrity, SEO fingerprint.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const KEY_PAGES = ["/", "/quiz", "/pricing", "/nclex", "/ccrn", "/auth/signup", "/free", "/nclex-lab-values", "/nclex-glossary", "/compare/clarity-vs-kaplan"];
-const CANONICAL_NAV = ["NCLEX", "CCRN", "Study now", "Dashboard", "Pricing"];
+const KEY_PAGES = ["/", "/quiz", "/pricing", "/nclex", "/auth/signup", "/free", "/nclex-lab-values", "/nclex-glossary", "/compare/clarity-vs-kaplan"];
+const CANONICAL_NAV = ["NCLEX", "Study now", "Dashboard", "Pricing"];
 
 function collectConsoleErrors(page: Page) {
   const errors: string[] = [];
@@ -35,6 +35,11 @@ test.describe("brand + nav fingerprint (canonical baseline)", () => {
       await expect(page.locator(`header nav a:has-text("${label}")`).first(),
         `nav tab "${label}" must exist`).toHaveCount(1);
     }
+  });
+
+  test("retired CCRN pages redirect to NCLEX", async ({ page }) => {
+    await page.goto("/ccrn/ai-tutor", { waitUntil: "domcontentloaded" });
+    await expect(page).toHaveURL(/\/nclex$/);
   });
 
   test("design tokens present (sand bg + orb) and favicon serves", async ({ page, request }) => {

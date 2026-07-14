@@ -82,7 +82,6 @@ export default function BrandHeader() {
         </Link>
         <nav className={styles.nav} aria-label="Primary">
           <Link href="/nclex">NCLEX</Link>
-          <Link href="/ccrn">CCRN</Link>
           <Link href="/quiz">Study now</Link>
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/pricing">Pricing</Link>

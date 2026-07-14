@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/free/", "/blog/", "/nclex/", "/ccrn/", "/compare/"],
+        allow: ["/", "/free/", "/blog/", "/nclex/", "/compare/"],
         disallow: [
           "/dashboard",
           "/guild-access",

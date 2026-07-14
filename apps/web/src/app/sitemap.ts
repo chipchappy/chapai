@@ -51,7 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: "daily", priority: 1 },
     { url: `${base}/nclex`, lastModified: now, changeFrequency: "daily", priority: 0.95 },
-    { url: `${base}/ccrn`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/quiz`, lastModified: now, changeFrequency: "daily", priority: 0.88 },
     { url: `${base}/pricing`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/upgrade`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
@@ -71,20 +70,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.82,
-  }));
-
-  const ccrnTopics: MetadataRoute.Sitemap = [
-    "hemodynamics-questions",
-    "best-study-tool",
-    "vasoactive-drips",
-    "24-hour-cram",
-    "study-plan",
-    "ai-tutor",
-  ].map((slug) => ({
-    url: `${base}/ccrn/${slug}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.78,
   }));
 
   const compareEntries: MetadataRoute.Sitemap = [
@@ -134,7 +119,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...toolEntries,
     ...stateEntries,
     ...nclexTopics,
-    ...ccrnTopics,
     ...compareEntries,
     ...blogEntries,
   ];

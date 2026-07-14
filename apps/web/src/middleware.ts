@@ -67,10 +67,18 @@ export function middleware(request: NextRequest) {
     return applySecurityHeaders(NextResponse.redirect(url, 301));
   }
 
-  if (host === "clarityccrn.chapaisolutions.com" && request.nextUrl.pathname === "/") {
+  if (host === "clarityccrn.chapaisolutions.com") {
     const url = request.nextUrl.clone();
-    url.pathname = "/ccrn";
-    return applySecurityHeaders(NextResponse.redirect(url));
+    url.host = CANONICAL_HOST;
+    url.pathname = "/nclex";
+    return applySecurityHeaders(NextResponse.redirect(url, 301));
+  }
+
+  if (request.nextUrl.pathname === "/ccrn" || request.nextUrl.pathname.startsWith("/ccrn/")) {
+    const url = request.nextUrl.clone();
+    url.host = CANONICAL_HOST;
+    url.pathname = "/nclex";
+    return applySecurityHeaders(NextResponse.redirect(url, 301));
   }
 
   if (request.nextUrl.pathname === "/study" && !hasAuthCookie(request)) {
