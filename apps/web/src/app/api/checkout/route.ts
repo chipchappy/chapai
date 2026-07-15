@@ -3,7 +3,8 @@ import { z } from "zod";
 import { createRequestContext, log, logError } from "@/lib/logger";
 import { handleRouteError, jsonError, jsonSuccess } from "@/lib/http";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
-import { ensureHostedUser, getBillingCustomerForUser } from "@/lib/billing-store";
+import { ensureHostedUser, getActiveEntitlementForUser, getBillingCustomerForUser } from "@/lib/billing-store";
+import { buildCheckoutIdempotencyKey, inspectStripeCheckoutSafety } from "@/lib/checkout-safety";
 import { getLaunchOffer, planCodeFromLegacySignals } from "@/lib/launch-offers";
 import { recordCurrentPolicyAcceptances } from "@/lib/legal-store";
 import { getStripePriceMap } from "@/lib/stripe-config";
@@ -44,6 +45,16 @@ function getOfferPriceId(planCode: string | null | undefined) {
       return prices.all_access_monthly || null;
     default:
       return null;
+  }
+}
+
+function sameOriginUrl(candidate: string | undefined, appUrl: string, fallbackPath: string) {
+  if (!candidate) return `${appUrl}${fallbackPath}`;
+  try {
+    const url = new URL(candidate);
+    return url.origin === appUrl ? url.toString() : `${appUrl}${fallbackPath}`;
+  } catch {
+    return `${appUrl}${fallbackPath}`;
   }
 }
 
@@ -95,6 +106,50 @@ export async function POST(req: Request) {
       });
     }
 
+    const existingEntitlement = await getActiveEntitlementForUser(db, {
+      userId: user.id,
+      email: user.email,
+    });
+    const duplicatesExistingPurchase = Boolean(existingEntitlement) && (
+      existingEntitlement?.planCode === offer.planCode
+      || (offer.checkoutMode === "subscription" && Boolean(existingEntitlement?.stripeSubscriptionId))
+    );
+    if (duplicatesExistingPurchase) {
+      return jsonError(409, "PURCHASE_ALREADY_ACTIVE", "This account already has active paid access. Manage the existing purchase instead of starting another charge.", {
+        ...requestContext,
+        billingUrl: "/account/billing",
+      }, {
+        requestId: requestContext.requestId,
+      });
+    }
+
+    const billingCustomer = await getBillingCustomerForUser(db, {
+      userId: user.id,
+      email: user.email,
+    });
+    let stripeSafety;
+    try {
+      stripeSafety = await inspectStripeCheckoutSafety({
+        secretKey: env.STRIPE_SECRET_KEY,
+        email: user.email,
+        userId: user.id,
+        knownCustomerId: billingCustomer?.stripe_customer_id,
+      });
+    } catch (error) {
+      logError("Stripe duplicate-purchase safety lookup failed", error, requestContext);
+      return jsonError(503, "CHECKOUT_SAFETY_UNAVAILABLE", "Checkout is temporarily paused because existing billing could not be verified. No charge was created.", requestContext, {
+        requestId: requestContext.requestId,
+      });
+    }
+    if (stripeSafety.blockingSubscription) {
+      return jsonError(409, "SUBSCRIPTION_ALREADY_ACTIVE", "An active subscription already exists for this account. Manage it from billing instead of purchasing again.", {
+        ...requestContext,
+        billingUrl: "/account/billing",
+      }, {
+        requestId: requestContext.requestId,
+      });
+    }
+
     await recordCurrentPolicyAcceptances(db, {
       email: user.email,
       userId: user.id,
@@ -102,8 +157,9 @@ export async function POST(req: Request) {
       request: req,
     });
 
-    const appUrl = new URL(req.url).origin;
-    const successTarget = new URL(body.successUrl || `${appUrl}/success`);
+    const configuredAppUrl = env.NEXT_PUBLIC_APP_URL || env.NEXTAUTH_URL || new URL(req.url).origin;
+    const appUrl = new URL(configuredAppUrl).origin;
+    const successTarget = new URL(sameOriginUrl(body.successUrl, appUrl, "/success"));
     successTarget.searchParams.set("plan", offer.planCode);
     successTarget.searchParams.set("package", offer.label);
     successTarget.searchParams.set("session_id", "{CHECKOUT_SESSION_ID}");
@@ -115,7 +171,7 @@ export async function POST(req: Request) {
       mode: offer.checkoutMode,
       "line_items[0][quantity]": "1",
       success_url: successTarget.toString(),
-      cancel_url: body.cancelUrl || `${appUrl}/upgrade`,
+      cancel_url: sameOriginUrl(body.cancelUrl, appUrl, "/upgrade"),
       allow_promotion_codes: "true",
       billing_address_collection: "auto",
     });
@@ -124,14 +180,13 @@ export async function POST(req: Request) {
       params.set("payment_method_types[0]", "card");
     }
 
-    const billingCustomer = await getBillingCustomerForUser(db, {
-      userId: user.id,
-      email: user.email,
-    });
-    if (billingCustomer?.stripe_customer_id) {
-      params.set("customer", billingCustomer.stripe_customer_id);
+    if (stripeSafety.customerId) {
+      params.set("customer", stripeSafety.customerId);
     } else {
       params.set("customer_email", user.email);
+      if (offer.checkoutMode === "payment") {
+        params.set("customer_creation", "always");
+      }
     }
 
     const preferredPriceId = getOfferPriceId(offer.planCode);
@@ -148,10 +203,6 @@ export async function POST(req: Request) {
       }
     }
 
-    const expiresAt = offer.accessHours
-      ? new Date(Date.now() + offer.accessHours * 60 * 60 * 1000).toISOString()
-      : undefined;
-
     const metadataEntries = Object.entries({
       supabase_user_id: user.id,
       user_email: user.email,
@@ -165,7 +216,6 @@ export async function POST(req: Request) {
       entitlements: offer.entitlements.join(","),
       advanced_analytics: offer.canUseAdvancedAnalytics ? "true" : undefined,
       access_hours: offer.accessHours ? String(offer.accessHours) : undefined,
-      expires_at: expiresAt,
       purchase_type: offer.checkoutMode === "payment" ? "fixed-term" : "subscription",
       price_id: priceId ?? undefined,
     }).filter((entry): entry is [string, string] => typeof entry[1] === "string" && entry[1].length > 0);
@@ -181,11 +231,17 @@ export async function POST(req: Request) {
       params.set("client_reference_id", offer.examTrackScope);
     }
 
+    const purchaseFamily = offer.checkoutMode === "subscription" ? "subscription" : offer.planCode;
+    const idempotencyKey = await buildCheckoutIdempotencyKey({
+      userId: user.id,
+      purchaseFamily,
+    });
     const stripeRes = await fetch("https://api.stripe.com/v1/checkout/sessions", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
         "Content-Type": "application/x-www-form-urlencoded",
+        "Idempotency-Key": idempotencyKey,
       },
       body: params.toString(),
     });

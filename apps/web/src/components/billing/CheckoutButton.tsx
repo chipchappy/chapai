@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 export default function CheckoutButton({
@@ -33,6 +33,8 @@ export default function CheckoutButton({
   const [isLoading, setIsLoading] = useState(false);
   const [acceptedLegal, setAcceptedLegal] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const checkoutInFlight = useRef(false);
+  const redirecting = useRef(false);
   const loadingLabel = checkoutMode === "payment" ? "Preparing secure checkout..." : "Opening secure checkout...";
 
   return (
@@ -42,6 +44,8 @@ export default function CheckoutButton({
         className={className}
         disabled={isLoading}
         onClick={async () => {
+          if (checkoutInFlight.current) return;
+          checkoutInFlight.current = true;
           try {
             setIsLoading(true);
             setErrorMessage(null);
@@ -78,11 +82,15 @@ export default function CheckoutButton({
               throw new Error(payload?.error || "Checkout failed");
             }
 
-            window.location.href = payload.data.url;
+            redirecting.current = true;
+            window.location.assign(payload.data.url);
           } catch (error) {
             setErrorMessage(error instanceof Error ? error.message : "Checkout failed");
           } finally {
-            setIsLoading(false);
+            if (!redirecting.current) {
+              checkoutInFlight.current = false;
+              setIsLoading(false);
+            }
           }
         }}
       >

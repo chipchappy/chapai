@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
 import {
+  deleteBillingEvent,
   findBillingEvent,
   recordBillingEventOnce,
   upsertBillingState,
@@ -105,6 +106,14 @@ export async function POST(req: NextRequest) {
       type: event.type,
       payload: rawBody,
     });
+    if (!recorded.inserted) {
+      log("info", "Concurrent duplicate Stripe webhook ignored", {
+        ...requestContext,
+        stripeEventId: event.id,
+        stripeEventType: event.type,
+      });
+      return new Response("OK", { status: 200 });
+    }
     const eventRowId = recorded.event?.id ?? event.id;
 
     switch (event.type) {
@@ -127,6 +136,12 @@ export async function POST(req: NextRequest) {
 
     return new Response("OK", { status: 200 });
   } catch (error) {
+    await deleteBillingEvent(db, event.id).catch((cleanupError) => {
+      logError("Failed to release Stripe webhook retry lock", cleanupError, {
+        ...requestContext,
+        stripeEventId: event.id,
+      });
+    });
     logError("Stripe webhook handler failed", error, {
       ...requestContext,
       stripeEventId: event.id,

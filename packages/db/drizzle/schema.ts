@@ -141,7 +141,7 @@ export const billingEvents = sqliteTable("billing_events", {
   stripeEventId: text("stripe_event_id").unique().notNull(),
   type: text("type").notNull(),
   payload: text("payload").notNull(),
-  createdAt: integer("created_at")
+  processedAt: integer("processed_at")
     .default(sql`(unixepoch())`)
     .notNull(),
 });

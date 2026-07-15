@@ -162,11 +162,11 @@ export async function recordBillingEventOnce(db: DB, input: {
   type: string;
   payload: string;
 }) {
-  await db.insert(billingEvents).values({
+  const inserted = await db.insert(billingEvents).values({
     stripeEventId: input.stripeEventId,
     type: input.type,
     payload: input.payload,
-  }).onConflictDoNothing({ target: billingEvents.stripeEventId });
+  }).onConflictDoNothing({ target: billingEvents.stripeEventId }).returning({ id: billingEvents.id }).get();
 
   const event = await db
     .select()
@@ -175,13 +175,17 @@ export async function recordBillingEventOnce(db: DB, input: {
     .get();
 
   return {
-    alreadyProcessed: Boolean(event && event.type !== input.type),
+    inserted: Boolean(inserted),
     event,
   };
 }
 
 export async function findBillingEvent(db: DB, stripeEventId: string) {
   return db.select().from(billingEvents).where(eq(billingEvents.stripeEventId, stripeEventId)).get();
+}
+
+export async function deleteBillingEvent(db: DB, stripeEventId: string) {
+  await db.delete(billingEvents).where(eq(billingEvents.stripeEventId, stripeEventId));
 }
 
 export async function findEntitlementByCheckoutSessionId(db: DB, stripeCheckoutSessionId: string): Promise<HostedEntitlementRecord | null> {
