@@ -7,7 +7,7 @@ import { test, expect, type Page } from "@playwright/test";
 // quiz renders, mobile 390px integrity, SEO fingerprint.
 // ─────────────────────────────────────────────────────────────────────────────
 
-const KEY_PAGES = ["/", "/quiz", "/pricing", "/nclex", "/auth/signup", "/free", "/nclex-lab-values", "/nclex-glossary", "/compare/clarity-vs-kaplan"];
+const KEY_PAGES = ["/", "/quiz", "/pricing", "/nclex", "/programs", "/auth/signup", "/free", "/nclex-lab-values", "/nclex-glossary", "/compare/clarity-vs-kaplan"];
 const CANONICAL_NAV = ["NCLEX", "Study now", "Dashboard", "Pricing"];
 
 function collectConsoleErrors(page: Page) {

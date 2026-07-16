@@ -85,6 +85,7 @@ export default function BrandHeader() {
           <Link href="/quiz">Study now</Link>
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/pricing">Pricing</Link>
+          <Link href="/programs">For Programs</Link>
         </nav>
         <div className={styles.actions}>
           <ThemeToggle />
