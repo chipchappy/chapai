@@ -221,11 +221,17 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
         ? ["Connect the clue, action, and outcome.", "What bow-tie trap could pull me off course?", "Which cue anchors the decision map?"]
         : question.kind === "case-study"
           ? ["What findings are most urgent?", "How should I reason through the labs and vitals?", "What is the trap in this case?"]
-          : [
-              `Why is ${answerLabel(selectedAnswer)} not the best answer?`,
-              "What clue should I have weighted more heavily?",
-              "What distractor was most tempting and why?",
-            ];
+          : answeredCorrectly
+            ? [
+                `Why is ${answerLabel(question.correctAnswer)} the best answer?`,
+                "Which exact clues make this answer safest?",
+                "How do I recognize this pattern faster next time?",
+              ]
+            : [
+                `Why is ${answerLabel(selectedAnswer)} not the best answer?`,
+                "What clue should I have weighted more heavily?",
+                "What distractor was most tempting and why?",
+              ];
 
   const primer = answeredCorrectly
     ? question.takeaway

@@ -174,6 +174,24 @@ test.describe("core product", () => {
     const tutor = await request.post("/api/tutor/ask", {
       data: {
         questionId: question.id,
+        question: {
+          stem: question.stem,
+          questionType: question.type,
+          options: question.options,
+          correctAnswer: question.answer,
+          rationale: question.rationale,
+          structuredRationale: question.structuredRationale
+            ? {
+                overview: question.structuredRationale.overview,
+                mechanism: question.structuredRationale.mechanism,
+                whyCorrect: question.structuredRationale.whyCorrect,
+                whyWrong: question.structuredRationale.whyWrong,
+                // Some production records keep citations in referencesJson.
+              }
+            : undefined,
+          category: question.category,
+          exam: question.exam,
+        },
         userMessage: "Explain the highest-priority clue, the underlying mechanism, why the tempting distractor is unsafe here, and when that distractor would become appropriate.",
         context: "rationale",
         history: [],
@@ -189,6 +207,7 @@ test.describe("core product", () => {
     const tutorBody = await tutor.text();
     expect(tutorBody, "tutor completes its event stream").toContain("[DONE]");
     expect(tutorBody.length, "tutor returns detailed, substantive coaching").toBeGreaterThan(500);
+    expect(tutorBody, "valid context never falls into the missing-source response").not.toContain("approved tutor source");
   });
 
   test("anon deep-link into practice routes to the signup gate", async ({ page }) => {
@@ -241,6 +260,8 @@ test.describe("core product", () => {
       message: "the tutor should stream a substantive coaching reply",
       timeout: 40_000,
     }).toBeGreaterThan(80);
+    await expect(reply, "the inline tutor should use this question instead of a generic source fallback")
+      .not.toContainText("approved tutor source");
   });
 
   test("premium gates hold (anon)", async ({ request }) => {
