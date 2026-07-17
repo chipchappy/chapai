@@ -390,6 +390,10 @@ export function practiceReducer(state: PracticeRuntimeState, action: PracticeAct
           currentIndex: action.index,
         },
         activeAnswer: draftFromSession(state.session, action.index),
+        // Navigating to another question closes the tutor so the next question
+        // opens a fresh thread instead of carrying the prior answer over.
+        tutorOpen: false,
+        tutorQuestionId: null,
       };
     }
     case "append-questions": {

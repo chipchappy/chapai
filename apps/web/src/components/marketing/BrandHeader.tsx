@@ -73,7 +73,45 @@ function ThemeToggle() {
   );
 }
 
+type AuthState = { status: "loading" | "in" | "out"; email: string | null };
+
+function useAuthState(): AuthState {
+  const [auth, setAuth] = useState<AuthState>({ status: "loading", email: null });
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const res = await fetch("/api/auth/status", { headers: { accept: "application/json" } });
+        const json = (await res.json().catch(() => null)) as
+          | { authenticated?: boolean; email?: string | null; data?: { authenticated?: boolean; email?: string | null } }
+          | null;
+        const data = json?.data ?? json ?? {};
+        if (!active) return;
+        setAuth(data.authenticated ? { status: "in", email: data.email ?? null } : { status: "out", email: null });
+      } catch {
+        // Fail toward the signed-out chrome so anonymous visitors still get the CTAs.
+        if (active) setAuth({ status: "out", email: null });
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, []);
+  return auth;
+}
+
+function AccountChip({ email }: { email: string | null }) {
+  const initial = (email?.trim()?.[0] ?? "•").toUpperCase();
+  return (
+    <Link className={styles.account} href="/account" aria-label="Your account">
+      <span className={styles.accountAvatar} aria-hidden="true">{initial}</span>
+      {email ? <span className={styles.accountEmail}>{email}</span> : null}
+    </Link>
+  );
+}
+
 export default function BrandHeader() {
+  const auth = useAuthState();
   return (
     <header className={styles.header} data-premium-chrome="true">
       <div className={styles.inner}>
@@ -89,23 +127,29 @@ export default function BrandHeader() {
         </nav>
         <div className={styles.actions}>
           <ThemeToggle />
-          <Link className={styles.ghost} href="/auth/login">
-            Sign in
-          </Link>
-          <Link
-            className={styles.primary}
-            href="/auth/signup"
-            onClick={(event) => {
-              trackEvent("hero_primary_cta_clicked", { surface: "header" });
-              const href = withCurrentUtm("/auth/signup", new URLSearchParams(window.location.search));
-              if (href !== "/auth/signup") {
-                event.preventDefault();
-                window.location.assign(href);
-              }
-            }}
-          >
-            Start free
-          </Link>
+          {auth.status === "in" ? (
+            <AccountChip email={auth.email} />
+          ) : auth.status === "out" ? (
+            <>
+              <Link className={styles.ghost} href="/auth/login">
+                Sign in
+              </Link>
+              <Link
+                className={styles.primary}
+                href="/auth/signup"
+                onClick={(event) => {
+                  trackEvent("hero_primary_cta_clicked", { surface: "header" });
+                  const href = withCurrentUtm("/auth/signup", new URLSearchParams(window.location.search));
+                  if (href !== "/auth/signup") {
+                    event.preventDefault();
+                    window.location.assign(href);
+                  }
+                }}
+              >
+                Start free
+              </Link>
+            </>
+          ) : null}
         </div>
       </div>
     </header>
