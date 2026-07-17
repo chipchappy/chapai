@@ -97,6 +97,11 @@
 }
 
 .account {
+  position: relative;
+  display: inline-flex;
+}
+
+.accountTrigger {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -104,13 +109,16 @@
   padding: 0.3rem 0.75rem 0.3rem 0.35rem;
   border: 1px solid var(--c-border);
   border-radius: 999px;
+  background: transparent;
   color: var(--c-text);
-  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.account:hover,
-.account:focus-visible {
+.account:hover .accountTrigger,
+.account:focus-within .accountTrigger,
+.account[data-open="true"] .accountTrigger {
   border-color: var(--c-sage-deep);
   background: color-mix(in srgb, var(--c-sage-deep) 8%, transparent);
 }
@@ -135,6 +143,81 @@
   font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.accountMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 60;
+  min-width: 12.5rem;
+  margin-top: 0.5rem;
+  padding: 0.4rem;
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  background: var(--c-bg-elevated);
+  box-shadow: 0 18px 44px rgba(31, 34, 37, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease;
+}
+
+/* Transparent bridge across the gap so hover doesn't drop between chip and menu. */
+.accountMenu::before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 0.5rem;
+}
+
+.account:hover .accountMenu,
+.account:focus-within .accountMenu,
+.account[data-open="true"] .accountMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.accountMenuEmail {
+  margin: 0.15rem 0.2rem 0.35rem;
+  padding: 0 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--c-border-soft);
+  overflow: hidden;
+  font-size: 0.76rem;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.accountMenuItem {
+  display: block;
+  padding: 0.55rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--c-text);
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.accountMenuItem:hover,
+.accountMenuItem:focus-visible {
+  background: color-mix(in srgb, var(--c-sage-deep) 10%, transparent);
+}
+
+.accountMenuSignout {
+  color: var(--c-adobe);
+}
+
+.accountMenuSignout:hover,
+.accountMenuSignout:focus-visible {
+  background: color-mix(in srgb, var(--c-adobe) 12%, transparent);
+  color: var(--c-adobe);
 }
 
 @media (max-width: 820px) {
@@ -195,8 +278,8 @@
     font-size: 0.76rem;
   }
 
-  /* Compact to just the avatar on phones. */
-  .account {
+  /* Compact to just the avatar on phones; the email moves into the dropdown. */
+  .accountTrigger {
     padding: 0.2rem;
     border-color: transparent;
   }

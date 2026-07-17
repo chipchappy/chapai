@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BrandMark from "@/components/brand/BrandMark";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./BrandHeader.module.css";
@@ -100,13 +100,60 @@ function useAuthState(): AuthState {
   return auth;
 }
 
-function AccountChip({ email }: { email: string | null }) {
+function AccountMenu({ email }: { email: string | null }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
   const initial = (email?.trim()?.[0] ?? "•").toUpperCase();
+
+  useEffect(() => {
+    if (!open) return;
+    function onPointerDown(event: PointerEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false);
+    }
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <Link className={styles.account} href="/account" aria-label="Your account">
-      <span className={styles.accountAvatar} aria-hidden="true">{initial}</span>
-      {email ? <span className={styles.accountEmail}>{email}</span> : null}
-    </Link>
+    // Hover opens on desktop; tap toggles on touch; Escape / click-outside close.
+    <div
+      ref={ref}
+      className={styles.account}
+      data-open={open}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        className={styles.accountTrigger}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label="Account menu"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span className={styles.accountAvatar} aria-hidden="true">{initial}</span>
+        {email ? <span className={styles.accountEmail}>{email}</span> : null}
+      </button>
+      <div className={styles.accountMenu} role="menu">
+        {email ? <p className={styles.accountMenuEmail}>{email}</p> : null}
+        <Link role="menuitem" className={styles.accountMenuItem} href="/dashboard" onClick={() => setOpen(false)}>
+          Dashboard
+        </Link>
+        <Link role="menuitem" className={styles.accountMenuItem} href="/account" onClick={() => setOpen(false)}>
+          Account settings
+        </Link>
+        <a role="menuitem" className={`${styles.accountMenuItem} ${styles.accountMenuSignout}`} href="/auth/logout">
+          Sign out
+        </a>
+      </div>
+    </div>
   );
 }
 
@@ -128,7 +175,7 @@ export default function BrandHeader() {
         <div className={styles.actions}>
           <ThemeToggle />
           {auth.status === "in" ? (
-            <AccountChip email={auth.email} />
+            <AccountMenu email={auth.email} />
           ) : auth.status === "out" ? (
             <>
               <Link className={styles.ghost} href="/auth/login">
