@@ -23,6 +23,39 @@ export function isNclexClientNeed(value: string | null | undefined): value is Nc
   return NCLEX_CLIENT_NEED_KEYS.includes(String(value ?? "").trim() as NclexClientNeed);
 }
 
+/**
+ * Exact official NCLEX client-need labels -> canonical key.
+ *
+ * When `category` already IS the official label, keyword inference is not just
+ * unnecessary, it is actively wrong: "Pharmacological and Parenteral Therapies"
+ * hits the `enteral` pattern inside "par-enteral" and resolves to
+ * basic_care_comfort, and "Management of Care" matches no pattern at all and
+ * falls through to the physiological_adaptation default. Matching the label
+ * outright removes the guesswork for those rows and leaves slug-style
+ * categories (chest_tube_management, dic, …) on the inference path unchanged.
+ */
+const CANONICAL_LABEL_TO_CLIENT_NEED: Record<string, NclexClientNeed> = {
+  "management of care": "management_of_care",
+  "safety and infection control": "safety_infection_control",
+  "safety & infection control": "safety_infection_control",
+  "health promotion and maintenance": "health_promotion",
+  "health promotion & maintenance": "health_promotion",
+  "psychosocial integrity": "psychosocial",
+  "basic care and comfort": "basic_care_comfort",
+  "basic care & comfort": "basic_care_comfort",
+  "pharmacological and parenteral therapies": "pharmacological",
+  "pharmacological & parenteral therapies": "pharmacological",
+  "pharmacological & parenteral": "pharmacological",
+  "reduction of risk potential": "risk_reduction",
+  "physiological adaptation": "physiological_adaptation",
+};
+
+export function clientNeedFromCanonicalLabel(
+  category: string | null | undefined,
+): NclexClientNeed | undefined {
+  return CANONICAL_LABEL_TO_CLIENT_NEED[String(category ?? "").trim().toLowerCase()];
+}
+
 export function inferNclexClientNeedFromText(rawText: string | null | undefined): NclexClientNeed {
   const text = String(rawText ?? "").toLowerCase();
   if (!text) {
@@ -46,6 +79,12 @@ export function resolveNclexClientNeed(candidate: NclexClientNeedCandidate): Ncl
 
   if (isNclexClientNeed(candidate.nclexClientNeed)) {
     return candidate.nclexClientNeed;
+  }
+
+  // An exact official label is authoritative — never guess at what it means.
+  const labelled = clientNeedFromCanonicalLabel(candidate.category);
+  if (labelled) {
+    return labelled;
   }
 
   return inferNclexClientNeedFromText(
