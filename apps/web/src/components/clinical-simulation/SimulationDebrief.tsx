@@ -1,0 +1,134 @@
+"use client";
+
+import Link from "next/link";
+import { AlertTriangle, ArrowLeft, CheckCircle2, Clock3, Download, ExternalLink, RotateCcw, TrendingUp } from "lucide-react";
+import type { SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
+import type { ClinicalScenario, CompetencyDomain } from "@/lib/clinical-simulation/schema";
+import styles from "./clinical-simulation.module.css";
+
+const domainLabels: Record<CompetencyDomain, string> = {
+  assessment: "Assessment",
+  "clinical-recognition": "Clinical recognition",
+  prioritization: "Prioritization",
+  safety: "Safety",
+  "medication-administration": "Medication administration",
+  intervention: "Intervention selection",
+  escalation: "Escalation",
+  communication: "Communication",
+  reassessment: "Reassessment",
+  documentation: "Documentation",
+  "patient-education": "Patient education",
+  "time-management": "Time management",
+};
+
+export default function SimulationDebrief({ scenario, debrief, attemptId, traceExportEnabled = false }: { scenario: ClinicalScenario; debrief: Debrief; attemptId: string; traceExportEnabled?: boolean }) {
+  const actionById = new Map(scenario.actions.map((action) => [action.id, action]));
+  const timelineByEntryId = new Map(debrief.timeline.map((entry) => [entry.id, entry]));
+  const outcomeLabel = debrief.outcome === "stabilized" ? "Patient stabilized" : debrief.outcome === "partially-stabilized" ? "Partial stabilization" : "Patient deteriorated";
+
+  return (
+    <main className={styles.debrief}>
+      <header className={styles.debriefHeader}>
+        <span className={styles.eyebrow}>Clinical debrief</span>
+        <div className={styles.outcomeLine}>
+          {debrief.outcome === "stabilized" ? <CheckCircle2 aria-hidden="true" /> : <AlertTriangle aria-hidden="true" />}
+          <div><h1>{outcomeLabel}</h1><p>{scenario.debrief.overview}</p></div>
+        </div>
+        <div className={styles.debriefActions}>
+          <Link href="/clinical-simulation"><ArrowLeft size={17} aria-hidden="true" /> Catalog</Link>
+          <Link href={`/clinical-simulation/${scenario.slug}`}><RotateCcw size={17} aria-hidden="true" /> Replay</Link>
+          {traceExportEnabled ? <a href={`/api/clinical-simulation/attempts/${encodeURIComponent(attemptId)}/trace`} download><Download size={17} aria-hidden="true" /> Export trace</a> : null}
+        </div>
+      </header>
+
+      <section className={styles.trajectoryBand}>
+        <div><span>Strongest domain</span><strong>{debrief.strongestDomain ? domainLabels[debrief.strongestDomain] : "Not observed"}</strong></div>
+        <div><span>Growth priority</span><strong>{debrief.weakestDomain ? domainLabels[debrief.weakestDomain] : "Not observed"}</strong></div>
+        <div><span>Critical errors</span><strong>{debrief.criticalErrors.length}</strong></div>
+      </section>
+
+      <section className={styles.metricStrip} aria-label="Attempt timing">
+        {Object.entries({
+          "First assessment": debrief.metrics.timeToFirstAssessment,
+          Recognition: debrief.metrics.timeToRecognition,
+          "Major intervention": debrief.metrics.timeToFirstMajorIntervention,
+          Escalation: debrief.metrics.timeToEscalation,
+          Reassessment: debrief.metrics.timeToReassessment,
+          Documentation: debrief.metrics.timeToDocumentation,
+        }).map(([label, minute]) => <div key={label}><Clock3 size={15} aria-hidden="true" /><span>{label}</span><strong>{minute == null ? "Not completed" : `+${minute} min`}</strong></div>)}
+      </section>
+
+      <section className={styles.finalStateBand} aria-labelledby="final-state-heading">
+        <div><span className={styles.eyebrow}>Final patient condition</span><h2 id="final-state-heading">State at minute {debrief.finalPatientState.virtualMinute}</h2><p>{debrief.outcomeExplanation}</p></div>
+        <dl>
+          <div><dt>BP / MAP</dt><dd>{debrief.finalPatientState.bloodPressure} / {debrief.finalPatientState.map}</dd></div>
+          <div><dt>HR / RR</dt><dd>{debrief.finalPatientState.heartRate} / {debrief.finalPatientState.respiratoryRate}</dd></div>
+          <div><dt>SpO2</dt><dd>{debrief.finalPatientState.spo2}%</dd></div>
+          <div><dt>Urine output</dt><dd>{debrief.finalPatientState.urineOutputMlHr} mL/hr</dd></div>
+          <div><dt>Lactate</dt><dd>{debrief.finalPatientState.lactate == null ? "Not available" : `${debrief.finalPatientState.lactate} mmol/L`}</dd></div>
+          <div><dt>Mental status</dt><dd>{debrief.finalPatientState.mentalStatus}</dd></div>
+        </dl>
+      </section>
+
+      <div className={styles.debriefColumns}>
+        <section aria-labelledby="competencies-heading">
+          <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>Competency profile</span><h2 id="competencies-heading">What the attempt demonstrated</h2></div></div>
+          <div className={styles.domainList}>
+            {debrief.domainScores.map((score) => {
+              const percent = score.possible ? Math.round((score.earned / score.possible) * 100) : 0;
+              return <div key={score.domain} className={styles.domainRow}>
+                <div><strong>{domainLabels[score.domain]}</strong><span>{score.level}</span></div>
+                <div className={styles.domainTrack} aria-label={`${domainLabels[score.domain]} ${percent} percent`}><span style={{ width: `${percent}%` }} /></div>
+                <output>{score.earned}/{score.possible}</output>
+              </div>;
+            })}
+          </div>
+        </section>
+
+        <section aria-labelledby="priorities-heading">
+          <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>Clinical priorities</span><h2 id="priorities-heading">Actions that shaped the outcome</h2></div></div>
+          <div className={styles.priorityLists}>
+            <div>
+              <h3><CheckCircle2 size={17} aria-hidden="true" /> Completed priorities</h3>
+              <ul>{debrief.completedRequiredActions.map((id) => <li key={id}>{actionById.get(id)?.label ?? id}</li>)}</ul>
+            </div>
+            <div>
+              <h3><TrendingUp size={17} aria-hidden="true" /> Missed priorities</h3>
+              {debrief.missedRequiredActions.length ? <ul>{debrief.missedRequiredActions.map((id) => <li key={id}><strong>{actionById.get(id)?.label ?? id}</strong><span>{actionById.get(id)?.rationale}</span></li>)}</ul> : <p>All required clinical priorities were completed.</p>}
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section className={styles.debriefNarrative} aria-labelledby="trajectory-heading">
+        <h2 id="trajectory-heading">Why the patient changed</h2>
+        <p>{debrief.outcomeExplanation}</p>
+        <ul>{debrief.causalFactors.map((factor) => <li key={factor}>{factor}</li>)}</ul>
+        <p><strong>Untreated trajectory:</strong> {scenario.debrief.untreatedTrajectory}</p>
+        <div>{scenario.debrief.keyPrinciples.map((principle) => <span key={principle}>{principle}</span>)}</div>
+      </section>
+
+      <section className={styles.medicationDebrief} aria-labelledby="medication-debrief-heading">
+        <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>Medication safety</span><h2 id="medication-debrief-heading">Medication decisions in this attempt</h2></div></div>
+        {debrief.medicationActionIds.length ? <ul>{debrief.medicationActionIds.map((entryId) => {
+          const entry = timelineByEntryId.get(entryId);
+          return entry ? <li key={entry.id} data-classification={entry.classification}><strong>{entry.label}</strong><span>+{entry.virtualMinute} min / {entry.classification.replaceAll("_", " ")}</span><p>{entry.feedback}</p></li> : null;
+        })}</ul> : <p>No medication decision was recorded.</p>}
+      </section>
+
+      <section className={styles.timelineDebrief} aria-labelledby="timeline-heading">
+        <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>Decision timeline</span><h2 id="timeline-heading">Your clinical sequence</h2></div></div>
+        {debrief.timeline.length ? <ol>{debrief.timeline.map((entry) => <li key={entry.id} data-classification={entry.classification}>
+          <time>+{entry.virtualMinute} min</time><div><strong>{entry.label}</strong><span>{entry.classification.replaceAll("_", " ")}</span><p>{entry.feedback}</p>{entry.stateChanges.length ? <small>{entry.stateChanges.map((change) => `${change.path}: ${String(change.before)} -> ${String(change.after)}`).join(" / ")}</small> : null}</div>
+        </li>)}</ol> : <p>No actions were recorded.</p>}
+      </section>
+
+      <aside className={styles.replayFocus}><TrendingUp size={20} aria-hidden="true" /><div><strong>Suggested replay focus</strong><p>{debrief.suggestedReplayFocus}</p></div></aside>
+
+      <section className={styles.evidenceSection} aria-labelledby="evidence-heading">
+        <div><span className={styles.eyebrow}>Evidence record</span><h2 id="evidence-heading">Sources informing this scenario</h2><p>Clinical review status: {scenario.clinicalReviewerStatus.replaceAll("-", " ")}. Content remains educational and subject to facility policy and local protocols.</p></div>
+        <ul>{scenario.evidence.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title}<ExternalLink size={14} aria-hidden="true" /></a><span>{source.organization} / {source.guidelineVersion} / reviewed {source.reviewedAt}</span></li>)}</ul>
+      </section>
+    </main>
+  );
+}

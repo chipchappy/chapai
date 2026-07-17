@@ -292,4 +292,17 @@
     gap: 0.9rem;
     font-size: 0.85rem;
   }
+
+  .navWithSimulation {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem 0.4rem;
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .navWithSimulation a {
+    min-width: 0;
+    white-space: nowrap;
+  }
 }

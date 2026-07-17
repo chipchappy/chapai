@@ -73,24 +73,43 @@ function ThemeToggle() {
   );
 }
 
-type AuthState = { status: "loading" | "in" | "out"; email: string | null };
+type AuthState = {
+  status: "loading" | "in" | "out";
+  email: string | null;
+  clinicalSimulationEnabled: boolean;
+};
 
 function useAuthState(): AuthState {
-  const [auth, setAuth] = useState<AuthState>({ status: "loading", email: null });
+  const [auth, setAuth] = useState<AuthState>({ status: "loading", email: null, clinicalSimulationEnabled: false });
   useEffect(() => {
     let active = true;
     (async () => {
       try {
         const res = await fetch("/api/auth/status", { headers: { accept: "application/json" } });
         const json = (await res.json().catch(() => null)) as
-          | { authenticated?: boolean; email?: string | null; data?: { authenticated?: boolean; email?: string | null } }
+          | {
+              authenticated?: boolean;
+              email?: string | null;
+              clinicalSimulationEnabled?: boolean;
+              data?: { authenticated?: boolean; email?: string | null; clinicalSimulationEnabled?: boolean };
+            }
           | null;
         const data = json?.data ?? json ?? {};
         if (!active) return;
-        setAuth(data.authenticated ? { status: "in", email: data.email ?? null } : { status: "out", email: null });
+        setAuth(data.authenticated
+          ? {
+              status: "in",
+              email: data.email ?? null,
+              clinicalSimulationEnabled: Boolean(data.clinicalSimulationEnabled),
+            }
+          : {
+              status: "out",
+              email: null,
+              clinicalSimulationEnabled: Boolean(data.clinicalSimulationEnabled),
+            });
       } catch {
         // Fail toward the signed-out chrome so anonymous visitors still get the CTAs.
-        if (active) setAuth({ status: "out", email: null });
+        if (active) setAuth({ status: "out", email: null, clinicalSimulationEnabled: false });
       }
     })();
     return () => {
@@ -165,12 +184,13 @@ export default function BrandHeader() {
         <Link href="/" aria-label="Clarity home">
           <BrandMark />
         </Link>
-        <nav className={styles.nav} aria-label="Primary">
+        <nav className={`${styles.nav} ${auth.clinicalSimulationEnabled ? styles.navWithSimulation : ""}`} aria-label="Primary">
           <Link href="/nclex">NCLEX</Link>
           <Link href="/quiz">Study now</Link>
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/pricing">Pricing</Link>
           <Link href="/programs">For Programs</Link>
+          {auth.clinicalSimulationEnabled ? <Link href="/clinical-simulation">Clinical Simulation</Link> : null}
         </nav>
         <div className={styles.actions}>
           <ThemeToggle />

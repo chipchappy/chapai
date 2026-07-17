@@ -1,0 +1,658 @@
+import {
+  assertValidScenario,
+  type ClinicalScenario,
+  type ClinicalScenarioInput,
+  type CompetencyDomain,
+} from "./schema";
+
+type ActionInput = ClinicalScenarioInput["actions"][number];
+type ActionOptions = Partial<Omit<ActionInput, "id" | "label" | "category" | "baseClassification" | "rationale" | "evidenceIds" | "description" | "feedback">> & {
+  description?: string;
+  feedback?: string;
+};
+
+const REVIEWED_AT = "2026-07-17";
+
+function score(domain: CompetencyDomain, points: number) {
+  return { domain, points };
+}
+
+function set(path: string, value: unknown) {
+  return { path, operation: "set" as const, value };
+}
+
+function add(path: string, value: number) {
+  return { path, operation: "add" as const, value };
+}
+
+function push(path: string, value: unknown) {
+  return { path, operation: "push" as const, value };
+}
+
+function action(
+  id: string,
+  label: string,
+  category: ActionInput["category"],
+  baseClassification: ActionInput["baseClassification"],
+  rationale: string,
+  evidenceIds: string[],
+  options: ActionOptions = {},
+): ActionInput {
+  return {
+    id,
+    label,
+    category,
+    baseClassification,
+    rationale,
+    evidenceIds,
+    description: options.description ?? rationale,
+    feedback: options.feedback ?? `${label} changed the available clinical picture or plan of care.`,
+    prerequisites: [],
+    safetyChecks: [],
+    effects: [],
+    delayedEffects: [],
+    revealFindings: [],
+    score: [],
+    repeatable: false,
+    ...options,
+  };
+}
+
+const baseState = {
+  vitals: { heartRate: 88, systolic: 118, diastolic: 72, map: 87, respiratoryRate: 18, spo2: 96, temperatureC: 37.1, pain: 3 },
+  levelOfConsciousness: "alert",
+  orientation: "oriented to person, place, time, and situation",
+  urineOutputMlHr: 40,
+  fluidBalanceMl: 0,
+  respiratoryEffort: "unlabored",
+  breathSounds: "clear bilaterally",
+  oxygenDevice: "room air",
+  oxygenFlow: "none",
+  cardiacRhythm: "sinus rhythm",
+  perfusion: "warm extremities with brisk capillary refill",
+  skin: "warm and dry",
+  behavior: "calm and cooperative",
+  anxiety: 2,
+  agitation: 0,
+  bleedingMl: 0,
+  drainOutputMl: 0,
+  labs: {},
+  devices: {},
+  flags: {},
+};
+
+const sbarElements = [
+  { id: "identity", label: "Patient identity and location" },
+  { id: "concern", label: "Immediate concern" },
+  { id: "background", label: "Relevant background" },
+  { id: "assessment", label: "Current assessment and trends" },
+  { id: "interventions", label: "Actions already taken and response" },
+  { id: "request", label: "Specific request or recommendation" },
+];
+
+const documentationFields = [
+  { id: "assessment", label: "Focused assessment and objective findings" },
+  { id: "intervention", label: "Interventions and medication actions" },
+  { id: "response", label: "Patient response and reassessment" },
+  { id: "notification", label: "Team notification and new orders" },
+  { id: "safety", label: "Safety precautions" },
+];
+
+const postopSource = {
+  id: "ahrq-postop-hemorrhage",
+  title: "Selected Best Practices and Suggestions for Improvement: Postoperative Hemorrhage or Hematoma",
+  organization: "Agency for Healthcare Research and Quality",
+  publicationDate: "2016",
+  url: "https://www.ahrq.gov/sites/default/files/wysiwyg/professionals/systems/hospital/qitoolkit/combined/d4f_combo_psi09-postophemorrhage-bestpractices.pdf",
+  guidelineVersion: "AHRQ QI Toolkit PSI 09",
+  applicableRecommendation: "Monitor for early hemorrhage findings, document trends, and rapidly escalate concern through the chain of authority.",
+  reviewedAt: REVIEWED_AT,
+  reviewerStatus: "needs-clinical-review" as const,
+};
+
+const acsSource = {
+  id: "aha-acs-2025",
+  title: "2025 Guideline for the Management of Patients With Acute Coronary Syndromes",
+  organization: "American Heart Association and American College of Cardiology",
+  publicationDate: "2025-02-27",
+  url: "https://professional.heart.org/en/science-news/2025-guideline-for-the-management-of-patients-with-acute-coronary-syndromes",
+  guidelineVersion: "2025 ACC/AHA/ACEP/NAEMSP/SCAI ACS Guideline",
+  applicableRecommendation: "Promptly recognize suspected ACS, obtain diagnostic evaluation, review medication contraindications, and escalate time-sensitive care.",
+  reviewedAt: REVIEWED_AT,
+  reviewerStatus: "needs-clinical-review" as const,
+};
+
+const copdSource = {
+  id: "gold-copd-2026",
+  title: "Global Strategy for Prevention, Diagnosis and Management of COPD: 2026 Report",
+  organization: "Global Initiative for Chronic Obstructive Lung Disease",
+  publicationDate: "2025-12-08",
+  url: "https://goldcopd.org/2026-gold-report-and-pocket-guide/",
+  guidelineVersion: "GOLD 2026 Report v1.3",
+  applicableRecommendation: "Assess severe exacerbations with serial oxygenation and blood gases, provide indicated bronchodilators, and use NIV for hypercapnic failure when appropriate.",
+  reviewedAt: REVIEWED_AT,
+  reviewerStatus: "needs-clinical-review" as const,
+};
+
+const sepsisSource = {
+  id: "ssc-adult-2026",
+  title: "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026",
+  organization: "Society of Critical Care Medicine and European Society of Intensive Care Medicine",
+  publicationDate: "2026",
+  url: "https://www.sccm.org/survivingsepsiscampaign/guidelines-and-resources/surviving-sepsis-campaign-adult-guidelines",
+  guidelineVersion: "2026 Adult Guidelines",
+  applicableRecommendation: "Prioritize early recognition, appropriate antimicrobial therapy, individualized hemodynamic resuscitation, perfusion reassessment, and source control.",
+  reviewedAt: REVIEWED_AT,
+  reviewerStatus: "needs-clinical-review" as const,
+};
+
+const sedationSource = {
+  id: "asa-sedation-2018",
+  title: "Practice Guidelines for Moderate Procedural Sedation and Analgesia 2018",
+  organization: "American Society of Anesthesiologists and collaborating societies",
+  publicationDate: "2018-03-01",
+  url: "https://doi.org/10.1097/ALN.0000000000002043",
+  guidelineVersion: "Anesthesiology 2018;128:437-479",
+  applicableRecommendation: "Continuously monitor for deeper-than-intended sedation and rapidly support airway, ventilation, oxygenation, and circulation when compromise occurs.",
+  reviewedAt: REVIEWED_AT,
+  reviewerStatus: "needs-clinical-review" as const,
+};
+
+const suicideSource = {
+  id: "samhsa-safe-t-2024",
+  title: "SAFE-T Suicide Assessment Five Step Evaluation and Triage",
+  organization: "Substance Abuse and Mental Health Services Administration",
+  publicationDate: "2024-12-01",
+  url: "https://library.samhsa.gov/product/safe-t-suicide-assessment-five-step-evaluation-and-triage/pep24-01-036",
+  guidelineVersion: "PEP24-01-036",
+  applicableRecommendation: "Identify risk and protective factors, conduct direct suicide inquiry, determine risk and intervention, and document a treatment plan.",
+  reviewedAt: REVIEWED_AT,
+  reviewerStatus: "needs-clinical-review" as const,
+};
+
+const commonCompletion = { minimumActions: 4, maximumVirtualMinutes: 35 };
+
+const postoperativeBleeding: ClinicalScenarioInput = {
+  id: "sim-medsurg-postop-bleeding-v1",
+  slug: "postoperative-deterioration",
+  title: "Postoperative Deterioration",
+  unit: "medical-surgical",
+  specialty: "Adult postoperative care",
+  difficulty: "intermediate",
+  estimatedMinutes: 25,
+  version: "1.0.0",
+  status: "clinical-review",
+  guidelineReviewDate: REVIEWED_AT,
+  clinicalReviewerStatus: "needs-review",
+  learningObjectives: ["Recognize a postoperative hemorrhage trend", "Prioritize focused assessment and escalation", "Reassess perfusion after intervention"],
+  prerequisiteKnowledge: ["Postoperative assessment", "Shock recognition", "SBAR communication"],
+  prebrief: {
+    shift: "Day shift, postoperative surgical unit",
+    role: "Primary registered nurse for one recently returned surgical patient",
+    resources: ["Charge nurse", "Surgical resident", "Rapid response team", "Laboratory and blood bank"],
+    handoff: "Elena Ruiz returned from open colectomy two hours ago. PACU reported stable vital signs, a patent peripheral IV, Foley catheter, and a Jackson-Pratt drain with 45 mL sanguineous output at transfer.",
+    safetyNote: "Educational simulation only. Follow facility policy, provider orders, local escalation criteria, and bedside clinical judgment in practice.",
+  },
+  patient: {
+    name: "Elena Ruiz", age: 64, sex: "female", pronouns: "she/her", room: "4B-412",
+    presentingProblem: "Increasing abdominal pain and weakness after abdominal surgery",
+    history: ["Hypertension", "Colon cancer"], surgicalHistory: ["Open colectomy today"], psychiatricHistory: [],
+    medicationHistory: ["Lisinopril", "Enoxaparin prophylaxis ordered for 21:00"], allergies: ["No known drug allergies"],
+    socialHistory: ["Lives with spouse", "Independent before admission"], substanceUseHistory: ["No current tobacco use"],
+    baselineFunction: "Independent with activities of daily living", codeStatus: "Full code", isolation: "Standard precautions",
+    risks: { fall: "high", suicide: "not indicated", elopement: "low", skin: "moderate" },
+  },
+  chart: {
+    orders: ["Vital signs every 4 hours and as needed", "Notify surgery for hemodynamic change", "CBC and type/screen if bleeding suspected", "Balanced crystalloid bolus per provider order"],
+    prnOrders: ["Hydromorphone IV for severe pain with respiratory and sedation assessment"],
+    homeMedications: ["Lisinopril 20 mg daily"], activeMedications: ["Acetaminophen scheduled", "Enoxaparin scheduled at 21:00"],
+    linesDevices: ["18-gauge peripheral IV", "Foley catheter", "Jackson-Pratt drain"],
+    labs: [{ name: "Hemoglobin", value: "10.1 g/dL preoperative", flag: "low" }],
+    diagnostics: [{ name: "Operative note", result: "Estimated blood loss 350 mL; no intraoperative complication documented", availableAtMinute: 0 }],
+  },
+  initialState: {
+    ...baseState,
+    vitals: { heartRate: 108, systolic: 98, diastolic: 62, map: 74, respiratoryRate: 22, spo2: 95, temperatureC: 36.7, pain: 7 },
+    urineOutputMlHr: 22, fluidBalanceMl: 650, perfusion: "cool fingertips; capillary refill 3 seconds", skin: "pale and mildly diaphoretic",
+    behavior: "restless and reports feeling weak", anxiety: 5, bleedingMl: 160, drainOutputMl: 160,
+    labs: { hemoglobin: 8.9, hematocrit: 27 }, devices: { peripheralIV: "patent", foley: "22 mL in last hour", jpDrain: "sanguineous output" },
+    flags: { suspectedBleeding: true, rapidResponseActivated: false },
+  },
+  randomization: [{ path: "vitals.heartRate", minDelta: -4, maxDelta: 5 }, { path: "drainOutputMl", minDelta: -15, maxDelta: 20 }],
+  assessments: [
+    { id: "operative-baseline", category: "Chart review", label: "Review operative baseline", finding: "Estimated blood loss was 150 mL and drain output was scant at PACU transfer, making the current output a meaningful change." },
+    { id: "vital-trend", category: "General", label: "Repeat vital signs", finding: "HR is rising while blood pressure and MAP trend downward." },
+    { id: "drain-finding", category: "Lines and devices", label: "Inspect drain and dressing", finding: "JP output is increasingly sanguineous; dressing edge is newly saturated." },
+    { id: "perfusion-finding", category: "Cardiovascular", label: "Assess perfusion", finding: "Cool skin, delayed capillary refill, restlessness, and low urine output suggest impaired perfusion." },
+    { id: "iv-finding", category: "Lines and devices", label: "Verify IV access", finding: "The 18-gauge peripheral IV flushes without resistance or infiltration." },
+  ],
+  actions: [
+    action("review-handoff", "Review handoff and operative note", "chart", "appropriate", "Baseline blood loss and device output establish the comparison needed to recognize a new trend.", [postopSource.id], { revealFindings: ["operative-baseline"], score: [score("clinical-recognition", 2)] }),
+    action("repeat-vitals", "Obtain and trend vital signs", "assessment", "essential", "Tachycardia with falling blood pressure after surgery may be an early hemorrhage pattern and requires prompt reassessment.", [postopSource.id], { optimalByMinute: 3, lateAfterMinute: 6, revealFindings: ["vital-trend"], score: [score("assessment", 4), score("time-management", 2)] }),
+    action("assess-drain", "Inspect incision, dressing, and drain", "assessment", "essential", "Direct assessment quantifies visible blood loss and identifies a rapidly changing surgical complication.", [postopSource.id], { revealFindings: ["drain-finding"], score: [score("assessment", 4), score("clinical-recognition", 3)] }),
+    action("assess-perfusion", "Assess perfusion and urine output", "assessment", "high_priority", "Mental status, skin perfusion, capillary refill, and urine output help identify end-organ hypoperfusion.", [postopSource.id], { revealFindings: ["perfusion-finding"], score: [score("assessment", 3), score("clinical-recognition", 3)] }),
+    action("verify-iv", "Verify large-bore IV patency", "safety", "high_priority", "Reliable vascular access is needed before ordered resuscitation and transfer.", [postopSource.id], { effects: [set("devices.peripheralIV", "patency verified")], revealFindings: ["iv-finding"], score: [score("safety", 3)] }),
+    action("hold-enoxaparin", "Hold scheduled enoxaparin and clarify", "medication", "appropriate", "Active bleeding concern warrants withholding the scheduled anticoagulant and prompt clarification rather than automatic administration.", [postopSource.id], { prerequisites: ["assess-drain"], effects: [set("flags.enoxaparinHeld", true)], score: [score("medication-administration", 3), score("safety", 2)], medication: { genericName: "enoxaparin", brandName: "Lovenox", indication: "VTE prophylaxis", orderedDose: "40 mg", route: "subcutaneous", frequency: "daily", parameters: ["Verify active order"], holdParameters: ["Active bleeding or provider-directed hold"], requiredAssessment: ["Bleeding assessment"], requiredLabs: ["Platelet count when available"], highAlert: true, independentDoubleCheck: false, onsetMinutes: 0 } }),
+    action("notify-surgery", "Notify surgical provider using SBAR", "communication", "essential", "Urgent, complete communication should include the trend, drain output, perfusion findings, actions taken, and a specific request for bedside evaluation.", [postopSource.id], { prerequisites: ["repeat-vitals", "assess-drain"], lateAfterMinute: 8, communication: { prompt: "Select the elements to include in the urgent surgical SBAR.", elements: sbarElements, requiredElementIds: ["identity", "concern", "assessment", "interventions", "request"] }, effects: [set("flags.providerNotified", true)], score: [score("communication", 4), score("escalation", 3)] }),
+    action("rapid-response", "Activate rapid response", "communication", "high_priority", "Persistent hypotension and worsening perfusion warrant rapid bedside escalation without waiting for routine callbacks.", [postopSource.id], { prerequisites: ["repeat-vitals", "assess-perfusion"], lateAfterMinute: 10, effects: [set("flags.rapidResponseActivated", true)], score: [score("escalation", 4), score("prioritization", 3)] }),
+    action("ordered-fluid", "Administer the ordered balanced crystalloid bolus", "intervention", "high_priority", "Ordered resuscitation may support perfusion while definitive hemorrhage management is mobilized; response must be reassessed.", [postopSource.id], { safetyChecks: ["verify-iv"], effects: [add("fluidBalanceMl", 500), add("vitals.systolic", 7), add("vitals.map", 5)], delayedEffects: [{ delayMinutes: 3, effects: [add("vitals.systolic", -3)], feedback: "Blood pressure improvement is not sustained, reinforcing concern for ongoing blood loss." }], score: [score("intervention", 4), score("safety", 2)] }),
+    action("reassess-postop", "Reassess after interventions", "assessment", "essential", "Reassessment determines whether temporary measures restored perfusion or whether deterioration continues.", [postopSource.id], { prerequisites: ["ordered-fluid"], repeatable: true, effects: [set("flags.reassessed", true)], revealFindings: ["vital-trend", "perfusion-finding"], score: [score("reassessment", 4)] }),
+    action("document-postop", "Document deterioration and response", "documentation", "appropriate", "The record should preserve objective trends, interventions, notifications, orders, and patient response.", [postopSource.id], { documentation: { prompt: "Select the clinically relevant documentation elements.", fields: documentationFields, requiredFieldIds: ["assessment", "intervention", "response", "notification"] }, effects: [set("flags.documented", true)], score: [score("documentation", 3)] }),
+    action("give-enoxaparin", "Administer scheduled enoxaparin", "medication", "critical_error", "Anticoagulation during suspected active postoperative bleeding can increase harm and must be clarified.", [postopSource.id], { effects: [add("bleedingMl", 120), add("drainOutputMl", 100), add("vitals.systolic", -10)], criticalError: "Anticoagulant administered during suspected active bleeding", medication: { genericName: "enoxaparin", indication: "VTE prophylaxis", orderedDose: "40 mg", route: "subcutaneous", frequency: "daily", parameters: [], holdParameters: ["Suspected active bleeding"], requiredAssessment: ["Bleeding assessment"], requiredLabs: [], highAlert: true, independentDoubleCheck: false, onsetMinutes: 0 } }),
+  ],
+  events: [
+    { id: "bleeding-progresses", atMinute: 6, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["notify-surgery"] }, effects: [add("vitals.heartRate", 10), add("vitals.systolic", -8), add("vitals.map", -6), add("drainOutputMl", 75)], feedback: "Drain output increases as tachycardia worsens and pressure falls.", severity: "warning" },
+    { id: "shock-progresses", atMinute: 12, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["rapid-response"] }, effects: [add("vitals.systolic", -16), add("vitals.map", -12), set("levelOfConsciousness", "drowsy but arousable"), add("urineOutputMlHr", -10)], feedback: "Delayed escalation is followed by worsening shock and decreased responsiveness.", severity: "critical" },
+    { id: "team-arrives", atMinute: 3, condition: { all: [], completedAll: ["rapid-response"], completedAny: [], notCompleted: [] }, effects: [set("flags.transferPreparation", true)], feedback: "The rapid response team arrives and prepares urgent laboratory testing and higher-level care.", severity: "info" },
+  ],
+  completion: { ...commonCompletion, requiredActionIds: ["repeat-vitals", "assess-drain", "notify-surgery", "rapid-response", "reassess-postop"] },
+  debrief: { overview: "This scenario tests recognition and rescue of postoperative hemorrhage through trend assessment, escalation, resuscitation support, and reassessment.", untreatedTrajectory: "Without rapid recognition and definitive surgical management, ongoing bleeding can progress to hemorrhagic shock and organ injury.", keyPrinciples: ["Trend changes rather than isolated values", "Escalate persistent deterioration through the chain of command", "Reassess response while definitive care is mobilized"] },
+  evidence: [postopSource],
+};
+
+const acuteCoronarySyndrome: ClinicalScenarioInput = {
+  id: "sim-telemetry-acs-v1", slug: "evolving-acute-coronary-syndrome", title: "Chest Pain With Evolving Acute Coronary Syndrome",
+  unit: "telemetry", specialty: "Cardiac nursing", difficulty: "intermediate", estimatedMinutes: 25, version: "1.0.0", status: "clinical-review", guidelineReviewDate: REVIEWED_AT, clinicalReviewerStatus: "needs-review",
+  learningObjectives: ["Recognize an evolving ACS presentation", "Obtain and escalate time-sensitive diagnostic findings", "Review medication contraindications before administration"],
+  prerequisiteKnowledge: ["Focused cardiovascular assessment", "12-lead ECG basics", "ACS medication safety"],
+  prebrief: { shift: "Evening shift, telemetry unit", role: "Primary RN", resources: ["Telemetry monitor", "12-lead ECG", "Cardiology provider", "Rapid response team"], handoff: "Marcus Lee was admitted for observation after intermittent exertional chest discomfort. Initial troponin was pending and the first ECG showed nonspecific ST-T changes. He now activates the call light for new pressure and nausea.", safetyNote: "This is an educational scenario. Apply local chest-pain protocols, provider orders, and emergency response systems in practice." },
+  patient: { name: "Marcus Lee", age: 58, sex: "male", pronouns: "he/him", room: "3T-318", presentingProblem: "New substernal pressure with diaphoresis and nausea", history: ["Hypertension", "Hyperlipidemia"], surgicalHistory: [], psychiatricHistory: [], medicationHistory: ["Atorvastatin", "Tadalafil taken approximately 10 hours ago"], allergies: ["No known drug allergies"], socialHistory: ["Office manager", "Family at bedside"], substanceUseHistory: ["Former smoker"], baselineFunction: "Independent", codeStatus: "Full code", isolation: "Standard precautions", risks: { fall: "moderate", suicide: "not indicated", elopement: "low", skin: "low" } },
+  chart: { orders: ["12-lead ECG for recurrent chest pain", "Chewable aspirin if no allergy or active bleeding", "Notify cardiology for ECG change", "Nitroglycerin only after contraindication and hemodynamic review"], prnOrders: ["Sublingual nitroglycerin per protocol when not contraindicated"], homeMedications: ["Atorvastatin", "Tadalafil as needed"], activeMedications: ["Aspirin order pending safety review"], linesDevices: ["Telemetry", "Peripheral IV"], labs: [{ name: "High-sensitivity troponin", value: "pending", flag: "normal" }], diagnostics: [{ name: "Initial ECG", result: "Sinus rhythm with nonspecific ST-T changes", availableAtMinute: 0 }, { name: "Repeat ECG", result: "New ST-segment depression in lateral leads", availableAtMinute: 4 }] },
+  initialState: { ...baseState, vitals: { heartRate: 102, systolic: 108, diastolic: 68, map: 81, respiratoryRate: 21, spo2: 96, temperatureC: 36.9, pain: 7 }, cardiacRhythm: "sinus tachycardia", skin: "cool and diaphoretic", behavior: "anxious, clutching center of chest", anxiety: 7, devices: { telemetry: "sinus tachycardia", peripheralIV: "patent" }, flags: { tadalafilRecent: true, activeBleeding: false, aspirinAllergy: false } },
+  randomization: [{ path: "vitals.heartRate", minDelta: -3, maxDelta: 4 }, { path: "vitals.systolic", minDelta: -4, maxDelta: 3 }],
+  assessments: [
+    { id: "chest-pain-assessment", category: "Cardiovascular", label: "Assess chest discomfort", finding: "Pressure is substernal, 7/10, began at rest, and is accompanied by nausea and diaphoresis." },
+    { id: "medication-history", category: "Safety", label: "Review allergies, bleeding, and medications", finding: "No aspirin allergy or active bleeding; tadalafil was taken about 10 hours ago." },
+    { id: "repeat-ecg", category: "Diagnostics", label: "Obtain repeat 12-lead ECG", finding: "New lateral ST-segment depression is present compared with the admission tracing." },
+    { id: "symptom-reassessment", category: "Pain", label: "Reassess symptoms", finding: "Pressure persists and remains associated with diaphoresis." },
+  ],
+  actions: [
+    action("assess-chest-pain", "Perform focused cardiovascular assessment", "assessment", "essential", "Character, onset, associated symptoms, hemodynamics, and perfusion establish urgency and guide immediate actions.", [acsSource.id], { optimalByMinute: 2, revealFindings: ["chest-pain-assessment"], score: [score("assessment", 4), score("clinical-recognition", 3)] }),
+    action("repeat-ecg", "Obtain a 12-lead ECG", "assessment", "essential", "A repeat ECG during active symptoms can reveal dynamic ischemic change that was absent initially.", [acsSource.id], { lateAfterMinute: 5, revealFindings: ["repeat-ecg"], effects: [set("flags.ecgChangeKnown", true)], score: [score("assessment", 4), score("time-management", 3)] }),
+    action("review-acs-safety", "Review allergy, bleeding, and PDE-5 history", "safety", "essential", "Medication safety requires checking aspirin contraindications and recent phosphodiesterase-5 inhibitor use before nitrates.", [acsSource.id], { revealFindings: ["medication-history"], effects: [set("flags.safetyReviewComplete", true)], score: [score("safety", 4), score("medication-administration", 2)] }),
+    action("administer-aspirin", "Administer ordered chewable aspirin", "medication", "high_priority", "When ordered and not contraindicated, aspirin addresses platelet activation in suspected ACS.", [acsSource.id], { safetyChecks: ["review-acs-safety"], effects: [set("flags.aspirinGiven", true)], score: [score("medication-administration", 4), score("prioritization", 2)], medication: { genericName: "aspirin", indication: "Suspected acute coronary syndrome", orderedDose: "324 mg chewable", route: "oral", frequency: "once", parameters: ["Confirm active order"], holdParameters: ["Serious aspirin allergy", "Active major bleeding"], requiredAssessment: ["Allergy and bleeding review"], requiredLabs: [], onsetMinutes: 5, highAlert: false, independentDoubleCheck: false, reassessmentMinutes: 5 } }),
+    action("hold-nitroglycerin", "Hold nitroglycerin and clarify contraindication", "medication", "high_priority", "Recent tadalafil plus borderline blood pressure creates a nitrate safety concern requiring clarification.", [acsSource.id], { safetyChecks: ["review-acs-safety"], effects: [set("flags.nitroglycerinHeld", true)], score: [score("medication-administration", 4), score("safety", 3)] }),
+    action("notify-cardiology", "Notify cardiology using focused SBAR", "communication", "essential", "Dynamic symptoms and ECG changes require urgent communication with a specific request for bedside evaluation and escalation.", [acsSource.id], { prerequisites: ["assess-chest-pain", "repeat-ecg"], lateAfterMinute: 7, communication: { prompt: "Build the urgent cardiac SBAR.", elements: sbarElements, requiredElementIds: ["identity", "concern", "assessment", "background", "request"] }, effects: [set("flags.cardiologyNotified", true)], score: [score("communication", 4), score("escalation", 4)] }),
+    action("apply-routine-oxygen", "Apply oxygen despite stable saturation", "intervention", "low_value", "Oxygen should be individualized to oxygenation and respiratory status rather than applied reflexively to every chest-pain presentation.", [acsSource.id], { effects: [set("oxygenDevice", "nasal cannula"), set("oxygenFlow", "2 L/min")], feedback: "Oxygen equipment is applied, but the patient was not hypoxemic and no patient-state benefit occurs." }),
+    action("give-nitroglycerin", "Administer sublingual nitroglycerin", "medication", "critical_error", "Recent tadalafil and low-normal pressure make nitrate administration unsafe because profound hypotension can occur.", [acsSource.id], { effects: [add("vitals.systolic", -28), add("vitals.map", -20), set("perfusion", "cool with delayed capillary refill")], criticalError: "Nitroglycerin administered despite recent PDE-5 inhibitor use", medication: { genericName: "nitroglycerin", indication: "Ischemic chest discomfort when not contraindicated", orderedDose: "0.4 mg", route: "sublingual", frequency: "per protocol", parameters: ["Review blood pressure and contraindications"], holdParameters: ["Recent PDE-5 inhibitor", "Hypotension"], requiredAssessment: ["Blood pressure", "Medication history"], requiredLabs: [], onsetMinutes: 2, highAlert: true, independentDoubleCheck: false, reassessmentMinutes: 5 } }),
+    action("reassess-acs", "Reassess pain, vitals, and rhythm", "assessment", "essential", "Serial symptoms, hemodynamics, and rhythm show whether ischemia or instability is progressing.", [acsSource.id], { prerequisites: ["administer-aspirin"], repeatable: true, revealFindings: ["symptom-reassessment"], effects: [set("flags.reassessed", true)], score: [score("reassessment", 4)] }),
+    action("document-acs", "Document ACS assessment and escalation", "documentation", "appropriate", "Objective symptoms, ECG timing, medication safety, administration, response, and notifications must be recorded.", [acsSource.id], { documentation: { prompt: "Select the required event documentation.", fields: documentationFields, requiredFieldIds: ["assessment", "intervention", "response", "notification"] }, effects: [set("flags.documented", true)], score: [score("documentation", 3)] }),
+  ],
+  events: [
+    { id: "ischemia-evolves", atMinute: 4, condition: { all: [], completedAll: [], completedAny: [], notCompleted: [] }, effects: [set("cardiacRhythm", "sinus tachycardia with dynamic ST depression"), add("vitals.heartRate", 5)], feedback: "The monitor trend changes while the patient reports persistent pressure.", severity: "warning" },
+    { id: "acs-delay", atMinute: 10, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["notify-cardiology"] }, effects: [add("vitals.systolic", -12), add("vitals.heartRate", 10), add("vitals.pain", 1)], feedback: "Without escalation, discomfort and hemodynamic stress worsen.", severity: "critical" },
+    { id: "cardiac-team-response", atMinute: 2, condition: { all: [], completedAll: ["notify-cardiology"], completedAny: [], notCompleted: [] }, effects: [set("flags.cardiacPathwayActivated", true)], feedback: "Cardiology acknowledges the dynamic ECG and activates urgent evaluation.", severity: "info" },
+  ],
+  completion: { ...commonCompletion, requiredActionIds: ["assess-chest-pain", "repeat-ecg", "review-acs-safety", "notify-cardiology", "reassess-acs"] },
+  debrief: { overview: "The case rewards symptom-focused assessment, dynamic ECG recognition, medication contraindication review, urgent escalation, and reassessment.", untreatedTrajectory: "Ongoing coronary ischemia can progress to infarction, dysrhythmia, hemodynamic instability, or cardiac arrest.", keyPrinciples: ["Repeat diagnostics when symptoms evolve", "Match oxygen to oxygenation rather than habit", "Check nitrate contraindications before administration"] },
+  evidence: [acsSource],
+};
+
+const respiratoryDeterioration: ClinicalScenarioInput = {
+  id: "sim-stepdown-respiratory-v1", slug: "acute-respiratory-deterioration", title: "Acute Hypercapnic Respiratory Deterioration",
+  unit: "step-down", specialty: "Progressive respiratory care", difficulty: "advanced", estimatedMinutes: 30, version: "1.0.0", status: "clinical-review", guidelineReviewDate: REVIEWED_AT, clinicalReviewerStatus: "needs-review",
+  learningObjectives: ["Recognize acute hypercapnic respiratory failure", "Sequence oxygen, bronchodilator, and NIV support", "Identify NIV failure and escalate"], prerequisiteKnowledge: ["COPD exacerbation", "Blood-gas interpretation", "Noninvasive ventilation monitoring"],
+  prebrief: { shift: "Night shift, progressive care unit", role: "Primary RN", resources: ["Respiratory therapist", "Hospitalist", "Rapid response team", "ICU transfer pathway"], handoff: "James Carter has COPD and was admitted for an acute exacerbation. He is on 2 L/min nasal cannula and has become increasingly somnolent with greater work of breathing over the last hour.", safetyNote: "Educational simulation only. Oxygen targets, NIV initiation, and escalation must follow patient-specific orders and local protocols in clinical practice." },
+  patient: { name: "James Carter", age: 71, sex: "male", pronouns: "he/him", room: "5P-526", presentingProblem: "Worsening dyspnea and somnolence", history: ["Severe COPD", "Heart failure with preserved ejection fraction"], surgicalHistory: [], psychiatricHistory: [], medicationHistory: ["Tiotropium", "Albuterol", "Furosemide"], allergies: ["Penicillin rash"], socialHistory: ["Lives alone with daughter nearby"], substanceUseHistory: ["45 pack-year smoking history; quit 3 years ago"], baselineFunction: "Ambulates short distances with portable oxygen", codeStatus: "Full code", isolation: "Droplet precautions pending viral testing", risks: { fall: "high", suicide: "not indicated", elopement: "low", skin: "high" } },
+  chart: { orders: ["Titrate oxygen to patient-specific target", "Albuterol/ipratropium nebulizer", "Obtain blood gas for deterioration", "Notify provider and RT for NIV evaluation"], prnOrders: ["Repeat bronchodilator per respiratory protocol"], homeMedications: ["Tiotropium", "Albuterol", "Furosemide"], activeMedications: ["Methylprednisolone", "Albuterol/ipratropium"], linesDevices: ["Peripheral IV", "Continuous pulse oximetry"], labs: [{ name: "VBG", value: "pH 7.29 / pCO2 68 mmHg", flag: "critical" }], diagnostics: [{ name: "Chest radiograph", result: "Hyperinflation without focal infiltrate; mild vascular congestion", availableAtMinute: 5 }] },
+  initialState: { ...baseState, vitals: { heartRate: 112, systolic: 148, diastolic: 84, map: 105, respiratoryRate: 30, spo2: 86, temperatureC: 37.5, pain: 1 }, levelOfConsciousness: "drowsy but follows commands", orientation: "oriented to person and place", gcs: 14, urineOutputMlHr: 32, respiratoryEffort: "labored with accessory-muscle use", breathSounds: "diffuse expiratory wheeze with diminished bases", oxygenDevice: "nasal cannula", oxygenFlow: "2 L/min", cardiacRhythm: "sinus tachycardia", perfusion: "warm with capillary refill 2 seconds", skin: "diaphoretic", behavior: "fatigued and answers in short phrases", anxiety: 6, labs: { pH: 7.29, pCO2: 68, pO2: 52, bicarbonate: 31 }, devices: { pulseOximetry: "continuous", peripheralIV: "patent" }, flags: { hypercapnicFailure: true, nivStarted: false } },
+  randomization: [{ path: "vitals.spo2", minDelta: -2, maxDelta: 2 }, { path: "labs.pCO2", minDelta: -3, maxDelta: 4 }],
+  assessments: [
+    { id: "respiratory-finding", category: "Respiratory", label: "Focused respiratory assessment", finding: "Accessory-muscle use, poor air movement, wheeze, and short-phrase speech indicate significant distress." },
+    { id: "neuro-finding", category: "Neurologic", label: "Assess mental status", finding: "Increasing somnolence may reflect worsening hypercapnia." },
+    { id: "blood-gas-finding", category: "Diagnostics", label: "Review blood gas", finding: "Acidemia with markedly elevated pCO2 supports acute-on-chronic hypercapnic respiratory failure." },
+    { id: "niv-response", category: "Reassessment", label: "Reassess NIV response", finding: "Work of breathing and oxygenation improve, but continued monitoring is required for fatigue or declining consciousness." },
+  ],
+  actions: [
+    action("assess-respiratory", "Perform focused respiratory assessment", "assessment", "essential", "Work of breathing, air movement, speech, oxygenation, and mental status establish respiratory failure severity.", [copdSource.id], { revealFindings: ["respiratory-finding"], score: [score("assessment", 4), score("clinical-recognition", 3)] }),
+    action("assess-neuro", "Assess level of consciousness", "assessment", "high_priority", "A change in consciousness can signal worsening carbon dioxide retention and impending ventilatory failure.", [copdSource.id], { revealFindings: ["neuro-finding"], score: [score("assessment", 3), score("clinical-recognition", 3)] }),
+    action("position-upright", "Position upright", "intervention", "high_priority", "Upright positioning supports diaphragmatic excursion and reduces work of breathing while definitive support is arranged.", [copdSource.id], { effects: [add("vitals.spo2", 2), add("vitals.respiratoryRate", -2), set("flags.upright", true)], score: [score("intervention", 3), score("prioritization", 2)] }),
+    action("titrate-oxygen", "Titrate oxygen within ordered target", "intervention", "essential", "Hypoxemia requires controlled oxygen titration with close assessment rather than withholding oxygen or using an unmonitored fixed approach.", [copdSource.id], { prerequisites: ["assess-respiratory"], effects: [set("oxygenDevice", "Venturi mask"), set("oxygenFlow", "ordered controlled concentration"), add("vitals.spo2", 5)], score: [score("intervention", 4), score("safety", 3)] }),
+    action("review-blood-gas", "Review blood gas and trend", "assessment", "essential", "Blood-gas data distinguish oxygenation failure from hypercapnic ventilatory failure and guide escalation.", [copdSource.id], { revealFindings: ["blood-gas-finding"], effects: [set("flags.bloodGasReviewed", true)], score: [score("clinical-recognition", 4)] }),
+    action("administer-bronchodilator", "Administer ordered albuterol/ipratropium", "medication", "high_priority", "Ordered short-acting bronchodilation treats airflow obstruction and requires response monitoring.", [copdSource.id], { safetyChecks: ["assess-respiratory"], effects: [set("flags.bronchodilatorGiven", true)], delayedEffects: [{ delayMinutes: 4, effects: [add("vitals.respiratoryRate", -3), set("breathSounds", "improved air movement with residual wheeze")], feedback: "Air movement improves after bronchodilator therapy." }], score: [score("medication-administration", 4), score("reassessment", 1)], medication: { genericName: "albuterol/ipratropium", indication: "Acute COPD exacerbation", orderedDose: "per respiratory protocol", route: "inhaled", frequency: "once, then reassess", parameters: ["Monitor heart rate and response"], holdParameters: ["Clarify severe new tachydysrhythmia"], requiredAssessment: ["Breath sounds", "Heart rate"], requiredLabs: [], onsetMinutes: 4, reassessmentMinutes: 10, highAlert: false, independentDoubleCheck: false } }),
+    action("contact-rt", "Contact respiratory therapy for NIV", "communication", "essential", "Acidemic hypercapnic respiratory failure with distress requires prompt team evaluation for noninvasive ventilatory support.", [copdSource.id], { prerequisites: ["review-blood-gas"], communication: { prompt: "Select the information to communicate to respiratory therapy.", elements: sbarElements, requiredElementIds: ["identity", "concern", "assessment", "interventions", "request"] }, effects: [set("flags.rtAtBedside", true)], score: [score("communication", 4), score("escalation", 3)] }),
+    action("start-niv", "Initiate ordered noninvasive ventilation", "intervention", "essential", "NIV can improve gas exchange and reduce work of breathing in appropriate hypercapnic failure, with close monitoring for failure.", [copdSource.id], { prerequisites: ["contact-rt"], effects: [set("flags.nivStarted", true), set("oxygenDevice", "bilevel noninvasive ventilation"), add("vitals.spo2", 5), add("vitals.respiratoryRate", -5)], delayedEffects: [{ delayMinutes: 5, effects: [add("labs.pCO2", -8), add("labs.pH", 0.04), set("levelOfConsciousness", "alert and less fatigued")], feedback: "Gas exchange and mental status improve after NIV initiation." }], score: [score("intervention", 5), score("prioritization", 3)] }),
+    action("reassess-niv", "Reassess NIV tolerance and gas exchange", "assessment", "essential", "NIV requires serial assessment of mental status, respiratory effort, oxygenation, mask tolerance, and blood gas response.", [copdSource.id], { prerequisites: ["start-niv"], repeatable: true, revealFindings: ["niv-response"], effects: [set("flags.nivReassessed", true)], score: [score("reassessment", 4)] }),
+    action("remove-oxygen", "Remove oxygen to avoid carbon dioxide retention", "intervention", "critical_error", "Withholding oxygen from a hypoxemic patient is unsafe; oxygen should be titrated and ventilation addressed while monitoring response.", [copdSource.id], { effects: [set("oxygenDevice", "room air"), set("oxygenFlow", "none"), add("vitals.spo2", -8), set("levelOfConsciousness", "more somnolent")], criticalError: "Oxygen removed during significant hypoxemia" }),
+    action("document-respiratory", "Document respiratory deterioration and response", "documentation", "appropriate", "Documentation should capture assessment, support changes, medication, team communication, and objective response.", [copdSource.id], { documentation: { prompt: "Select the respiratory event documentation.", fields: documentationFields, requiredFieldIds: ["assessment", "intervention", "response", "notification"] }, effects: [set("flags.documented", true)], score: [score("documentation", 3)] }),
+  ],
+  events: [
+    { id: "respiratory-fatigue", atMinute: 7, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["start-niv"] }, effects: [add("vitals.respiratoryRate", 4), add("vitals.spo2", -4), set("levelOfConsciousness", "increasingly somnolent")], feedback: "Without ventilatory support, fatigue and hypoxemia worsen.", severity: "critical" },
+    { id: "co2-rises", atMinute: 12, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["start-niv"] }, effects: [add("labs.pCO2", 10), add("labs.pH", -0.05), set("gcs", 11)], feedback: "Carbon dioxide rises and acidemia worsens as ventilatory failure progresses.", severity: "critical" },
+    { id: "niv-improves", atMinute: 4, condition: { all: [], completedAll: ["start-niv"], completedAny: [], notCompleted: [] }, effects: [set("flags.transferRiskReduced", true)], feedback: "The patient appears less distressed, but requires ongoing failure surveillance.", severity: "info" },
+  ],
+  completion: { ...commonCompletion, requiredActionIds: ["assess-respiratory", "review-blood-gas", "contact-rt", "start-niv", "reassess-niv"] },
+  debrief: { overview: "This case emphasizes recognition and treatment of acute-on-chronic hypercapnic respiratory failure.", untreatedTrajectory: "Progressive fatigue and carbon dioxide retention can lead to declining consciousness, NIV failure, and invasive airway support.", keyPrinciples: ["Treat hypoxemia while addressing ventilation", "Use serial blood gases and clinical assessment", "Escalate promptly when mental status or work of breathing worsens"] }, evidence: [copdSource],
+};
+
+const septicShock: ClinicalScenarioInput = {
+  id: "sim-icu-septic-shock-v1",
+  slug: "septic-shock",
+  title: "Septic Shock With Worsening Hypoperfusion",
+  unit: "intensive-care",
+  specialty: "Critical care",
+  difficulty: "advanced",
+  estimatedMinutes: 35,
+  version: "1.1.0",
+  status: "clinical-review",
+  guidelineReviewDate: REVIEWED_AT,
+  clinicalReviewerStatus: "needs-review",
+  learningObjectives: [
+    "Recognize septic shock from converging perfusion findings",
+    "Sequence cultures, antimicrobial therapy, individualized fluid resuscitation, and vasopressor support",
+    "Escalate and reassess MAP, mentation, urine output, oxygenation, and lactate response",
+  ],
+  prerequisiteKnowledge: ["Sepsis and shock physiology", "Vasoactive infusion safety", "Perfusion assessment"],
+  prebrief: {
+    shift: "Day shift, medical ICU",
+    role: "Primary ICU RN",
+    resources: ["Intensivist", "Charge nurse", "Pharmacist", "Respiratory therapist", "Sepsis response pathway"],
+    handoff: "Amina Johnson was transferred for suspected pneumonia with hypotension, lactate 4.6 mmol/L, altered mentation, and low urine output. Blood cultures, renal-adjusted empiric antibiotics, an initial balanced crystalloid bolus, repeat lactate, and norepinephrine titration to the ordered MAP goal are active orders.",
+    safetyNote: "Technical testing - clinical review required. Medication selection, dosing, fluid strategy, and vasopressor titration must follow the active scenario orders, facility policy, and bedside response.",
+  },
+  patient: {
+    name: "Amina Johnson",
+    age: 67,
+    sex: "female",
+    pronouns: "she/her",
+    room: "ICU-9",
+    presentingProblem: "Septic shock from suspected pneumonia",
+    history: ["Type 2 diabetes", "Chronic kidney disease stage 3", "Hypertension"],
+    surgicalHistory: ["Remote cholecystectomy"],
+    psychiatricHistory: [],
+    medicationHistory: ["Metformin", "Losartan"],
+    allergies: ["No known drug allergies"],
+    socialHistory: ["Retired teacher", "Lives with spouse"],
+    substanceUseHistory: ["No current alcohol or tobacco use"],
+    baselineFunction: "Independent with cane; normally alert and fully oriented",
+    codeStatus: "Full code",
+    isolation: "Droplet precautions",
+    risks: { fall: "high", suicide: "not indicated", elopement: "low", skin: "high" },
+  },
+  chart: {
+    orders: [
+      "Blood cultures x2 before antibiotics when this does not delay therapy",
+      "Empiric broad-spectrum antibiotics per local pathway with renal adjustment",
+      "Balanced crystalloid 500 mL IV bolus, then reassess fluid responsiveness and lungs",
+      "Norepinephrine infusion: titrate within active order to MAP goal at least 65 mmHg",
+      "Repeat lactate after initial resuscitation",
+      "Supplemental oxygen titrated to the active saturation target",
+      "Strict intake and output via Foley catheter",
+    ],
+    prnOrders: ["Acetaminophen for fever or discomfort when not contraindicated"],
+    homeMedications: ["Metformin 500 mg by mouth twice daily", "Losartan 50 mg by mouth daily"],
+    activeMedications: ["Balanced crystalloid", "Empiric antibiotics pending", "Norepinephrine available"],
+    linesDevices: ["Peripheral IV x2", "Foley catheter", "Radial arterial line being prepared", "Nasal cannula"],
+    labs: [
+      { name: "Lactate", stateKey: "lactate", value: "4.6", unit: "mmol/L", flag: "critical" },
+      { name: "Creatinine", stateKey: "creatinine", value: "2.1", unit: "mg/dL", flag: "high" },
+      { name: "WBC", stateKey: "wbc", value: "18.4", unit: "K/uL", flag: "high" },
+      { name: "Glucose", stateKey: "glucose", value: "214", unit: "mg/dL", flag: "high" },
+      { name: "Culture status", stateKey: "cultureStatus", value: "Not collected", flag: "normal" },
+      { name: "Repeat lactate", stateKey: "repeatLactate", value: "Pending collection", unit: "mmol/L", flag: "critical", availableAtMinute: 12 },
+    ],
+    diagnostics: [
+      { name: "Chest radiograph", result: "Right lower-lobe airspace opacity concerning for pneumonia", availableAtMinute: 0 },
+      { name: "Arterial waveform", result: "Low-amplitude waveform with respiratory variation before pressor support", availableAtMinute: 3 },
+    ],
+  },
+  initialState: {
+    ...baseState,
+    vitals: { heartRate: 122, systolic: 78, diastolic: 44, map: 55, respiratoryRate: 28, spo2: 92, temperatureC: 39.1, pain: 2 },
+    levelOfConsciousness: "lethargic but arousable",
+    orientation: "oriented to person only",
+    gcs: 13,
+    bloodGlucose: 214,
+    urineOutputMlHr: 12,
+    fluidBalanceMl: 800,
+    respiratoryEffort: "tachypneic with mild accessory-muscle use",
+    breathSounds: "coarse crackles at the right base",
+    oxygenDevice: "nasal cannula",
+    oxygenFlow: "3 L/min",
+    cardiacRhythm: "sinus tachycardia",
+    perfusion: "mottled knees with delayed capillary refill",
+    capillaryRefill: "4 seconds",
+    skin: "hot centrally with cool extremities",
+    behavior: "lethargic and slow to answer",
+    labs: { lactate: 4.6, creatinine: 2.1, wbc: 18.4, glucose: 214, cultureStatus: "Not collected", repeatLactate: "Pending collection" },
+    devices: { peripheralIV1: "patent 18 gauge", peripheralIV2: "patency not yet verified", foley: "12 mL dark urine in last hour", arterialLine: "setup at bedside" },
+    infusionRates: { norepinephrineMcgKgMin: 0 },
+    activeComplications: ["distributive shock", "acute kidney injury"],
+    flags: {
+      shock: true,
+      culturesCollected: false,
+      antibioticsGiven: false,
+      vasopressorRunning: false,
+      shockReassessed: false,
+      intensivistUpdated: false,
+      criticalDeterioration: false,
+    },
+  },
+  randomization: [
+    { path: "vitals.map", minDelta: -3, maxDelta: 3 },
+    { path: "vitals.heartRate", minDelta: -4, maxDelta: 4 },
+    { path: "labs.lactate", minDelta: -0.3, maxDelta: 0.4, integer: false },
+  ],
+  assessments: [
+    { id: "general-survey-finding", category: "General survey", label: "General survey", finding: "The patient is acutely ill, lethargic, tachypneic, and poorly perfused compared with baseline." },
+    { id: "airway-finding", category: "Airway", label: "Assess airway", finding: "The airway is currently patent; protective reflexes are present but mentation is declining." },
+    { id: "respiratory-finding", category: "Respiratory", label: "Assess breathing and oxygenation", finding: "Tachypnea, mild accessory-muscle use, and right-basilar crackles accompany borderline oxygenation on 3 L/min." },
+    { id: "hemodynamic-finding", category: "Cardiovascular", label: "Assess hemodynamics and perfusion", finding: "MAP is below goal with tachycardia, mottling, delayed capillary refill, oliguria, and altered mentation." },
+    { id: "neurologic-finding", category: "Neurologic", label: "Assess mental status", finding: "GCS is 13; the patient is lethargic and oriented only to person, a change from baseline." },
+    { id: "io-finding", category: "Intake and output", label: "Measure urine output", finding: "Only 12 mL of concentrated urine was produced in the last hour despite a positive fluid balance." },
+    { id: "iv-finding", category: "Lines and devices", label: "Assess IV access and devices", finding: "One 18-gauge IV is patent; the second peripheral line still requires verification before high-alert infusion use." },
+    { id: "source-finding", category: "Infection source", label: "Assess suspected infection source", finding: "Fever, right-basilar crackles, and the chest radiograph support a pulmonary source." },
+    { id: "safety-finding", category: "Safety", label: "Complete medication and environmental safety check", finding: "No allergy is documented; renal dysfunction, hypotension, fall risk, line security, and pressure-injury prevention require attention." },
+    { id: "fluid-response", category: "Reassessment", label: "Reassess fluid responsiveness", finding: "A passive leg raise produces only a small transient pressure change; bibasilar crackles are increasing." },
+    { id: "shock-reassessment", category: "Reassessment", label: "Reassess shock response", finding: "Trend MAP, mental status, capillary refill, urine output, oxygenation, IV site, and repeat lactate against the pre-intervention baseline." },
+  ],
+  actions: [
+    action("general-survey", "Perform general survey", "assessment", "high_priority", "A rapid general survey identifies immediate instability and establishes a comparison point for later deterioration.", [sepsisSource.id], { revealFindings: ["general-survey-finding"], score: [score("assessment", 2), score("clinical-recognition", 2)] }),
+    action("assess-airway", "Assess airway and protective reflexes", "assessment", "appropriate", "Declining mentation can threaten airway protection even when the airway is initially patent.", [sepsisSource.id], { revealFindings: ["airway-finding"], score: [score("assessment", 2), score("safety", 1)] }),
+    action("assess-respiratory", "Assess breathing and oxygenation", "assessment", "high_priority", "Respiratory effort, oxygenation, and lung findings help distinguish infection severity and fluid intolerance.", [sepsisSource.id], { revealFindings: ["respiratory-finding"], score: [score("assessment", 3), score("clinical-recognition", 2)] }),
+    action("assess-hemodynamics", "Assess hemodynamics, skin, and perfusion", "assessment", "essential", "Shock recognition integrates MAP, mental status, skin, capillary refill, urine output, lactate, and trend rather than one isolated value.", [sepsisSource.id], { optimalByMinute: 2, revealFindings: ["hemodynamic-finding"], score: [score("assessment", 5), score("clinical-recognition", 5), score("time-management", 2)] }),
+    action("assess-neuro", "Assess neurologic status and GCS", "assessment", "high_priority", "Acute mental-status decline is an end-organ perfusion finding and may signal worsening shock.", [sepsisSource.id], { revealFindings: ["neurologic-finding"], score: [score("assessment", 3), score("clinical-recognition", 2)] }),
+    action("measure-urine", "Measure and trend urine output", "assessment", "high_priority", "Oliguria is an important end-organ perfusion trend and should be interpreted with renal history and hemodynamics.", [sepsisSource.id], { revealFindings: ["io-finding"], effects: [set("flags.urineMeasured", true)], score: [score("assessment", 3), score("reassessment", 1)] }),
+    action("assess-iv-access", "Assess IV access, infusion site, and devices", "assessment", "essential", "Reliable access and frequent site assessment are required for resuscitation and vasoactive medication safety.", [sepsisSource.id], { revealFindings: ["iv-finding"], effects: [set("ivPatency", "two peripheral sites assessed; one suitable for temporary pressor use per policy"), set("devices.peripheralIV2", "patency verified")], score: [score("assessment", 3), score("safety", 3)] }),
+    action("assess-source", "Assess suspected infection source", "assessment", "high_priority", "A focused source assessment supports diagnostics, antimicrobial therapy, and source-control planning.", [sepsisSource.id], { revealFindings: ["source-finding"], effects: [set("flags.pulmonarySourceRecognized", true)], score: [score("assessment", 3), score("clinical-recognition", 2)] }),
+    action("verify-medication-safety", "Verify allergies, renal function, and medication orders", "safety", "essential", "Allergy status, renal function, active orders, compatibility, and patient-specific hold parameters must be verified before medication administration.", [sepsisSource.id], { revealFindings: ["safety-finding"], effects: [set("flags.medicationSafetyVerified", true)], score: [score("safety", 4), score("medication-administration", 3)] }),
+    action("collect-cultures", "Collect ordered blood cultures", "intervention", "appropriate", "Cultures support targeted therapy when obtained promptly without creating a harmful delay in antimicrobial administration.", [sepsisSource.id], { lateAfterMinute: 5, effects: [set("flags.culturesCollected", true), set("labs.cultureStatus", "Collected - pending")], score: [score("intervention", 2), score("time-management", 2)] }),
+    action("give-antibiotics", "Administer ordered empiric antibiotics", "medication", "essential", "Septic shock requires prompt appropriate antimicrobial therapy; culture collection must not create avoidable treatment delay.", [sepsisSource.id], {
+      safetyChecks: ["verify-medication-safety"],
+      lateAfterMinute: 8,
+      effects: [set("flags.antibioticsGiven", true)],
+      delayedEffects: [{ delayMinutes: 8, effects: [add("vitals.temperatureC", -0.4), add("labs.lactate", -0.4)], feedback: "After antimicrobial therapy and ongoing resuscitation, fever and lactate begin to trend down; perfusion still requires reassessment." }],
+      score: [score("medication-administration", 5), score("time-management", 4), score("prioritization", 2)],
+      medication: {
+        genericName: "empiric broad-spectrum antibiotics",
+        indication: "Septic shock with suspected pulmonary source",
+        orderedDose: "per active ICU order with renal adjustment",
+        availableConcentration: "pharmacy-prepared, patient-specific concentration",
+        route: "intravenous",
+        frequency: "initial dose",
+        parameters: ["Verify active order", "Do not delay for cultures when collection is not prompt", "Use local antibiogram and renal adjustment"],
+        holdParameters: ["Clarify serious allergy, incompatible order, or unavailable renal adjustment"],
+        requiredAssessment: ["Allergy review", "Suspected source", "IV patency"],
+        requiredLabs: ["Creatinine and estimated renal function"],
+        compatibility: ["Verify line compatibility with concurrent infusions"],
+        onsetMinutes: 8,
+        peakMinutes: 30,
+        durationMinutes: 240,
+        reassessmentMinutes: 15,
+        expectedEffect: "Control of suspected infection over time; hemodynamic rescue still requires fluids and vasopressor support",
+        adverseEffects: ["Hypersensitivity", "Infusion reaction", "Renal toxicity depending on agent"],
+        highAlert: false,
+        independentDoubleCheck: false,
+      },
+    }),
+    action("fluid-bolus", "Administer ordered balanced crystalloid bolus", "intervention", "high_priority", "The ordered initial fluid bolus should be followed by individualized hemodynamic and lung reassessment to avoid under-resuscitation or fluid overload.", [sepsisSource.id], { safetyChecks: ["assess-iv-access"], effects: [add("fluidBalanceMl", 500), add("vitals.map", 5), add("vitals.systolic", 7)], delayedEffects: [{ delayMinutes: 2, effects: [add("vitals.map", -2)], feedback: "The initial pressure response is only partly sustained, indicating persistent vasodilatory shock." }], score: [score("intervention", 4), score("prioritization", 2), score("safety", 1)] }),
+    action("assess-fluid-response", "Reassess fluid responsiveness and lungs", "assessment", "essential", "Additional fluid should be guided by perfusion response and signs of intolerance rather than automatic repeated boluses.", [sepsisSource.id], { prerequisites: ["fluid-bolus"], repeatable: true, revealFindings: ["fluid-response"], effects: [set("flags.fluidReassessed", true)], score: [score("reassessment", 5), score("safety", 3)] }),
+    action("adjust-oxygen", "Titrate oxygen within the active order", "intervention", "appropriate", "Oxygen support should respond to current saturation and work of breathing while the cause of shock is treated.", [sepsisSource.id], { prerequisites: ["assess-respiratory"], effects: [set("oxygenDevice", "nasal cannula"), set("oxygenFlow", "5 L/min"), add("vitals.spo2", 3)], score: [score("intervention", 2), score("safety", 1)] }),
+    action("verify-pressor", "Verify norepinephrine order, concentration, pump, and line", "safety", "essential", "Vasopressor administration requires verification of the order, concentration, smart-pump settings, access, and monitoring plan.", [sepsisSource.id], { prerequisites: ["assess-iv-access"], effects: [set("flags.pressorVerified", true)], score: [score("safety", 5), score("medication-administration", 3)] }),
+    action("start-norepinephrine", "Start ordered norepinephrine infusion", "medication", "essential", "Persistent hypotension after initial fluid assessment requires ordered vasopressor support with close MAP, perfusion, and IV-site monitoring.", [sepsisSource.id], {
+      safetyChecks: ["verify-pressor"],
+      prerequisites: ["assess-fluid-response"],
+      lateAfterMinute: 10,
+      effects: [set("flags.vasopressorRunning", true), set("infusionRates.norepinephrineMcgKgMin", 0.05), add("vitals.map", 12), add("vitals.systolic", 15)],
+      delayedEffects: [{ delayMinutes: 5, effects: [add("urineOutputMlHr", 10), set("levelOfConsciousness", "more alert"), set("orientation", "oriented to person and place")], feedback: "Sustained MAP improvement is followed by early recovery in mentation and urine output." }],
+      score: [score("medication-administration", 5), score("intervention", 4), score("time-management", 3)],
+      medication: {
+        genericName: "norepinephrine",
+        indication: "Persistent septic shock hypotension",
+        orderedDose: "start at 0.05 mcg/kg/min and titrate within the active order",
+        availableConcentration: "4 mg in 250 mL (16 mcg/mL) pharmacy-prepared bag",
+        route: "intravenous infusion",
+        frequency: "continuous",
+        parameters: ["Use smart pump", "Titrate to ordered MAP goal", "Monitor rhythm, perfusion, and site"],
+        holdParameters: ["Stop the affected line and escalate suspected extravasation; do not abruptly stop a functioning rescue infusion without a safe plan"],
+        requiredAssessment: ["MAP", "Perfusion", "Rhythm", "IV site"],
+        requiredLabs: [],
+        compatibility: ["Dedicated lumen preferred; verify compatibility before sharing a line"],
+        titrationRange: "0.01 to 1 mcg/kg/min within active scenario order",
+        maximumRate: "Do not exceed the active order or local protocol",
+        onsetMinutes: 1,
+        peakMinutes: 5,
+        reassessmentMinutes: 2,
+        expectedEffect: "Increase vascular tone and MAP with improvement in end-organ perfusion when shock is responsive",
+        adverseEffects: ["Dysrhythmia", "Excessive vasoconstriction", "Extravasation injury"],
+        highAlert: true,
+        independentDoubleCheck: true,
+      },
+    }),
+    action("titrate-norepinephrine", "Titrate norepinephrine within the active order", "medication", "appropriate", "Titration should use the ordered MAP goal plus end-organ perfusion and adverse-effect monitoring, not an isolated pressure value.", [sepsisSource.id], { prerequisites: ["start-norepinephrine"], repeatable: true, effects: [add("infusionRates.norepinephrineMcgKgMin", 0.02), add("vitals.map", 4), add("vitals.systolic", 5)], delayedEffects: [{ delayMinutes: 3, effects: [add("urineOutputMlHr", 5)], feedback: "Urine output begins to improve as the perfusion pressure is sustained." }], score: [score("medication-administration", 3), score("reassessment", 1)], medication: { genericName: "norepinephrine", indication: "MAP below active goal during septic shock", orderedDose: "increase by 0.02 mcg/kg/min within the active order", availableConcentration: "4 mg in 250 mL (16 mcg/mL)", route: "intravenous infusion", frequency: "titrate and reassess", parameters: ["Confirm current MAP and perfusion", "Reassess two minutes after change"], holdParameters: ["Clarify dose beyond active order", "Stop affected line for suspected extravasation"], requiredAssessment: ["MAP", "Perfusion", "IV site"], requiredLabs: [], onsetMinutes: 1, reassessmentMinutes: 2, highAlert: true, independentDoubleCheck: true } }),
+    action("hold-home-medications", "Hold losartan and metformin; clarify ongoing plan", "medication", "appropriate", "Hypotension and acute kidney injury make routine administration of these home medications inappropriate without clarification.", [sepsisSource.id], { safetyChecks: ["verify-medication-safety"], effects: [set("flags.homeMedicationsHeld", true)], score: [score("medication-administration", 3), score("safety", 2)], medication: { genericName: "losartan and metformin", indication: "Home medications under reconciliation", orderedDose: "hold pending hemodynamic and renal review", route: "oral", frequency: "home schedule", parameters: ["Review MAP", "Review renal function"], holdParameters: ["Hypotension", "Acute kidney injury"], requiredAssessment: ["Hemodynamics"], requiredLabs: ["Creatinine"], onsetMinutes: 0, highAlert: false, independentDoubleCheck: false } }),
+    action("draw-repeat-lactate", "Draw ordered repeat lactate", "intervention", "appropriate", "A repeat lactate contributes to perfusion reassessment but must be interpreted with the bedside trend and should not delay treatment.", [sepsisSource.id], { effects: [set("flags.repeatLactateDrawn", true), set("labs.repeatLactate", "Processing")], score: [score("intervention", 2), score("reassessment", 2)] }),
+    action("notify-intensivist", "Update intensivist with shock SBAR", "communication", "essential", "The team needs current perfusion trends, response to fluid, antibiotic status, vasopressor requirement, and a specific request for bedside review and source-control planning.", [sepsisSource.id], {
+      communication: {
+        prompt: "Select the elements for the shock update.",
+        elements: sbarElements,
+        requiredElementIds: ["identity", "concern", "background", "assessment", "interventions", "request"],
+        responses: [
+          { condition: { all: [{ path: "vitals.map", operator: "lt", value: 55 }], completedAll: ["assess-hemodynamics"], completedAny: [], notCompleted: ["start-norepinephrine"] }, message: "The intensivist recognizes refractory hypotension, confirms immediate vasopressor initiation under the active order, and comes to the bedside.", effects: [set("flags.intensivistResponding", true)], delayMinutes: 1 },
+          { condition: { all: [{ path: "vitals.map", operator: "gte", value: 65 }], completedAll: ["give-antibiotics", "start-norepinephrine"], completedAny: [], notCompleted: [] }, message: "The intensivist acknowledges the improving MAP, requests continued perfusion and line reassessment, and confirms the repeat-lactate and source-control plan.", effects: [set("flags.intensivistResponding", true)], delayMinutes: 1 },
+          { message: "The intensivist requests the latest MAP, fluid response, antibiotic status, urine output, and repeat-lactate plan, then confirms urgent bedside reassessment.", effects: [set("flags.intensivistResponding", true)], delayMinutes: 1 },
+        ],
+      },
+      effects: [set("flags.intensivistUpdated", true)],
+      score: [score("communication", 5), score("escalation", 4), score("time-management", 2)],
+    }),
+    action("notify-charge-nurse", "Notify charge nurse and mobilize ICU support", "communication", "high_priority", "Early team mobilization supports safe high-alert medication initiation, additional access, and rapid response to worsening shock.", [sepsisSource.id], { communication: { prompt: "Select the relevant escalation elements.", elements: sbarElements, requiredElementIds: ["identity", "concern", "assessment", "interventions", "request"] }, effects: [set("flags.chargeNurseUpdated", true)], score: [score("communication", 3), score("escalation", 2)] }),
+    action("activate-emergency-response", "Activate ICU emergency escalation", "communication", "acceptable_alternative", "Profound hypotension, rapidly declining mentation, or impending arrest requires immediate unit emergency escalation in addition to intensivist notification.", [sepsisSource.id], { communication: { prompt: "Select the emergency escalation elements.", elements: sbarElements, requiredElementIds: ["identity", "concern", "assessment", "request"] }, effects: [set("flags.emergencyResponseActivated", true)], score: [score("escalation", 4), score("communication", 2), score("safety", 2)] }),
+    action("reassess-shock", "Reassess MAP, perfusion, mentation, urine, lungs, and IV site", "assessment", "essential", "Hemodynamic targets are proxies; serial bedside perfusion, oxygenation, line safety, urine output, and lactate determine whether shock is improving.", [sepsisSource.id], { prerequisites: ["start-norepinephrine"], repeatable: true, revealFindings: ["shock-reassessment"], effects: [set("flags.shockReassessed", true), set("timeSinceLastReassessment", 0)], score: [score("reassessment", 6), score("clinical-recognition", 2), score("safety", 1)] }),
+    action("document-sepsis", "Document shock assessment, treatment, escalation, and response", "documentation", "essential", "Objective perfusion findings, medication timing and titration, communication, new orders, safety checks, and patient response belong in the event record.", [sepsisSource.id], { documentation: { prompt: "Select the required shock documentation.", fields: documentationFields, requiredFieldIds: ["assessment", "intervention", "response", "notification", "safety"] }, effects: [set("flags.documented", true)], score: [score("documentation", 5)] }),
+    action("repeat-blind-fluid", "Give another large fluid bolus without reassessment", "intervention", "unsafe", "Repeated fluid without evaluating responsiveness or intolerance can worsen pulmonary edema and delay vasopressor support.", [sepsisSource.id], { effects: [add("fluidBalanceMl", 1000), add("vitals.spo2", -7), set("breathSounds", "diffuse crackles with worsening work of breathing"), push("activeComplications", "fluid-associated pulmonary edema")], feedback: "Oxygenation and respiratory effort worsen after unassessed additional fluid." }),
+    action("administer-losartan", "Administer scheduled losartan", "medication", "critical_error", "Administering an antihypertensive during profound shock and acute kidney injury can worsen hypotension and organ perfusion.", [sepsisSource.id], { effects: [add("vitals.map", -9), add("vitals.systolic", -12), add("labs.creatinine", 0.3)], criticalError: "Losartan administered during profound hypotension and acute kidney injury", medication: { genericName: "losartan", indication: "Home hypertension regimen", orderedDose: "50 mg", route: "oral", frequency: "daily", parameters: ["Verify active inpatient order"], holdParameters: ["Hypotension", "Acute kidney injury"], requiredAssessment: ["Blood pressure"], requiredLabs: ["Creatinine", "Potassium when available"], onsetMinutes: 30, highAlert: false, independentDoubleCheck: false } }),
+  ],
+  events: [
+    { id: "recognition-delay", atMinute: 3, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["assess-hemodynamics"] }, effects: [add("vitals.map", -3), add("vitals.heartRate", 4), set("levelOfConsciousness", "increasingly lethargic")], feedback: "Without focused shock assessment, hypotension and tachycardia progress while mental status declines.", severity: "warning" },
+    { id: "shock-worsens", atMinute: 6, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["start-norepinephrine"] }, effects: [add("vitals.map", -7), add("urineOutputMlHr", -5), add("labs.lactate", 0.7), set("levelOfConsciousness", "difficult to arouse")], feedback: "Persistent hypotension deepens end-organ hypoperfusion.", severity: "critical" },
+    { id: "antibiotic-delay", atMinute: 10, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["give-antibiotics"] }, effects: [add("labs.lactate", 1.1), add("vitals.temperatureC", 0.3), add("vitals.heartRate", 5)], feedback: "Antimicrobial delay is followed by worsening lactate, fever, and tachycardia.", severity: "critical" },
+    { id: "reassessment-missed", atMinute: 12, condition: { all: [{ path: "flags.vasopressorRunning", operator: "eq", value: true }], completedAll: [], completedAny: [], notCompleted: ["reassess-shock"] }, effects: [add("vitals.map", -4), set("perfusion", "cool, mottled extremities with a poorly assessed IV site"), set("flags.reassessmentWindowMissed", true)], feedback: "The initial pressor response was not reassessed; MAP drifts down and perfusion concerns remain unrecognized.", severity: "critical" },
+    { id: "repeat-lactate-improves", atMinute: 14, condition: { all: [], completedAll: ["draw-repeat-lactate", "give-antibiotics", "start-norepinephrine"], completedAny: [], notCompleted: [] }, effects: [set("labs.repeatLactate", 3.2)], feedback: "Repeat lactate is 3.2 mmol/L, an improving but still abnormal trend that requires continued reassessment.", severity: "info" },
+    { id: "repeat-lactate-worsens", atMinute: 14, condition: { all: [], completedAll: ["draw-repeat-lactate"], completedAny: [], notCompleted: ["give-antibiotics", "start-norepinephrine"] }, effects: [set("labs.repeatLactate", 6.1)], feedback: "Repeat lactate rises to 6.1 mmol/L while definitive shock treatment remains incomplete.", severity: "critical" },
+    { id: "escalation-delay", atMinute: 15, condition: { all: [{ path: "vitals.map", operator: "lt", value: 65 }], completedAll: [], completedAny: [], notCompleted: ["notify-intensivist"] }, effects: [add("vitals.map", -5), set("flags.teamResponseDelayed", true)], feedback: "Failure to escalate delays bedside team response while hypotension persists.", severity: "critical" },
+    { id: "critical-deterioration", atMinute: 18, condition: { all: [{ path: "vitals.map", operator: "lt", value: 55 }], completedAll: [], completedAny: [], notCompleted: ["activate-emergency-response"] }, effects: [set("vitals.map", 42), set("vitals.systolic", 62), add("vitals.heartRate", 12), set("gcs", 8), set("levelOfConsciousness", "responds only to painful stimulus"), set("urineOutputMlHr", 0), set("flags.criticalDeterioration", true), push("activeComplications", "critical shock with impending cardiovascular collapse")], feedback: "The patient reaches critical shock with severe hypotension, loss of urine output, and marked neurologic decline. Immediate emergency escalation is required.", severity: "critical" },
+    { id: "shock-stabilizes", atMinute: 4, condition: { all: [], completedAll: ["give-antibiotics", "start-norepinephrine"], completedAny: [], notCompleted: [] }, effects: [set("flags.stabilizing", true)], feedback: "The MAP trend begins to stabilize while antimicrobial therapy and source-control planning continue.", severity: "info" },
+  ],
+  completion: {
+    minimumActions: 6,
+    maximumVirtualMinutes: 35,
+    requiredActionIds: ["assess-hemodynamics", "give-antibiotics", "assess-fluid-response", "start-norepinephrine", "notify-intensivist", "reassess-shock", "document-sepsis"],
+    failureConditions: [{ id: "critical-shock", label: "Critical shock deterioration", rationale: "Severe persistent hypotension with neurologic and renal deterioration indicates that shock rescue and escalation were not completed in time.", condition: { all: [{ path: "flags.criticalDeterioration", operator: "eq", value: true }], completedAll: [], completedAny: [], notCompleted: [] } }],
+  },
+  debrief: {
+    overview: "This attempt is evaluated against the actual timing and physiologic response to shock recognition, antimicrobials, individualized fluid, vasopressor support, escalation, and reassessment.",
+    untreatedTrajectory: "Uncorrected distributive shock can progress from hypotension and altered mentation to worsening lactate, anuria, respiratory compromise, multiorgan dysfunction, and cardiovascular collapse.",
+    keyPrinciples: ["Do not let diagnostics create harmful antimicrobial delay", "Reassess fluid responsiveness and tolerance before repeating volume", "Pair MAP with mentation, skin perfusion, urine output, oxygenation, and lactate trends", "Escalate persistent or worsening shock early"],
+  },
+  evidence: [sepsisSource],
+};
+
+const sedationCompromise: ClinicalScenarioInput = {
+  id: "sim-procedural-airway-v1", slug: "sedation-airway-compromise", title: "Sedation-Related Airway Compromise", unit: "procedural", specialty: "Perioperative and procedural nursing", difficulty: "intermediate", estimatedMinutes: 25, version: "1.0.0", status: "clinical-review", guidelineReviewDate: REVIEWED_AT, clinicalReviewerStatus: "needs-review",
+  learningObjectives: ["Complete procedural safety verification", "Recognize unintended deep sedation and obstruction", "Sequence airway support, reversal, escalation, and recovery reassessment"], prerequisiteKnowledge: ["Sedation continuum", "Basic airway maneuvers", "Medication reversal monitoring"],
+  prebrief: { shift: "Outpatient procedural suite", role: "RN monitoring a patient during moderate sedation", resources: ["Procedural physician", "Airway cart", "Anesthesia response", "Reversal medications under order"], handoff: "Priya Shah is scheduled for endoscopy with moderate sedation. Consent is signed, IV access is present, and fentanyl plus midazolam are ordered in incremental doses. You are responsible for continuous monitoring and recovery documentation.", safetyNote: "Educational simulation only. Sedation credentials, medication authority, airway rescue, and reversal use are governed by facility policy and provider orders." },
+  patient: { name: "Priya Shah", age: 52, sex: "female", pronouns: "she/her", room: "Procedure 2", presentingProblem: "Elective endoscopy", history: ["Obstructive sleep apnea", "GERD"], surgicalHistory: [], psychiatricHistory: [], medicationHistory: ["Omeprazole"], allergies: ["No known drug allergies"], socialHistory: ["Spouse will accompany home"], substanceUseHistory: ["No substance use"], baselineFunction: "Independent", codeStatus: "Full code", isolation: "Standard precautions", risks: { fall: "high after sedation", suicide: "not indicated", elopement: "low", skin: "low" } },
+  chart: { orders: ["Moderate sedation per procedural order", "Continuous oxygenation and ventilation monitoring", "Naloxone for opioid-related respiratory depression when ordered and indicated", "Activate emergency airway response for unresolved compromise"], prnOrders: ["Supplemental oxygen", "Naloxone per reversal order"], homeMedications: ["Omeprazole"], activeMedications: ["Midazolam incremental dosing", "Fentanyl incremental dosing"], linesDevices: ["Peripheral IV", "Pulse oximetry", "Capnography", "Noninvasive blood pressure"], labs: [], diagnostics: [{ name: "Pre-procedure airway screen", result: "OSA history; no current respiratory distress", availableAtMinute: 0 }] },
+  initialState: { ...baseState, vitals: { heartRate: 82, systolic: 126, diastolic: 76, map: 93, respiratoryRate: 16, spo2: 98, temperatureC: 36.8, pain: 0 }, sedationScore: 0, respiratoryEffort: "unlabored", oxygenDevice: "nasal cannula", oxygenFlow: "2 L/min", behavior: "calm and conversant", devices: { peripheralIV: "patent", capnography: "waveform present", pulseOximetry: "98%" }, flags: { consentVerified: false, timeoutComplete: false, airwayCompromise: false, opioidReceived: true } },
+  randomization: [{ path: "vitals.heartRate", minDelta: -3, maxDelta: 3 }],
+  assessments: [
+    { id: "preprocedure-finding", category: "Procedural readiness", label: "Complete readiness assessment", finding: "Consent, allergies, NPO status, escort, airway risk, equipment, and rescue resources are verified." },
+    { id: "airway-finding", category: "Airway", label: "Assess airway and ventilation", finding: "The patient is not responding to voice, has snoring obstruction, shallow respirations, and a diminishing capnography waveform." },
+    { id: "recovery-finding", category: "Recovery", label: "Reassess recovery", finding: "The patient is awake, maintains a patent airway, and has stable oxygenation, ventilation, and hemodynamics." },
+  ],
+  actions: [
+    action("verify-procedure", "Verify identity, consent, allergies, and NPO status", "safety", "essential", "Pre-procedure verification prevents wrong-patient/procedure and readiness errors and identifies airway risk.", [sedationSource.id], { revealFindings: ["preprocedure-finding"], effects: [set("flags.consentVerified", true)], score: [score("safety", 4)] }),
+    action("perform-timeout", "Perform procedural timeout", "communication", "essential", "A team timeout confirms patient, procedure, consent, positioning, medications, equipment, and rescue readiness.", [sedationSource.id], { prerequisites: ["verify-procedure"], communication: { prompt: "Select the timeout elements.", elements: sbarElements, requiredElementIds: ["identity", "concern", "background", "request"] }, effects: [set("flags.timeoutComplete", true)], score: [score("communication", 3), score("safety", 3)] }),
+    action("assess-airway", "Assess responsiveness, airway, and ventilation", "assessment", "essential", "During sedation, a declining response, obstruction, and hypoventilation must be recognized before oxygen saturation alone becomes profoundly abnormal.", [sedationSource.id], { revealFindings: ["airway-finding"], effects: [set("flags.airwayCompromiseRecognized", true)], score: [score("assessment", 4), score("clinical-recognition", 4)] }),
+    action("stop-sedation", "Stop sedative and opioid administration", "medication", "high_priority", "Further depressant medication should stop immediately when unintended deep sedation or respiratory compromise is recognized.", [sedationSource.id], { prerequisites: ["assess-airway"], effects: [set("flags.sedationStopped", true)], score: [score("medication-administration", 3), score("safety", 3)] }),
+    action("reposition-airway", "Open airway and reposition", "intervention", "essential", "Head repositioning, jaw support, stimulation, and suction readiness are immediate responses to obstructive sedation-related compromise.", [sedationSource.id], { prerequisites: ["assess-airway"], effects: [set("respiratoryEffort", "shallow but airway patent"), add("vitals.spo2", 5), add("vitals.respiratoryRate", 3)], score: [score("intervention", 5), score("prioritization", 3)] }),
+    action("support-ventilation", "Provide bag-mask ventilation", "intervention", "high_priority", "If spontaneous ventilation remains inadequate, positive-pressure ventilation and emergency help are required.", [sedationSource.id], { prerequisites: ["reposition-airway"], effects: [set("respiratoryEffort", "assisted ventilation effective"), add("vitals.spo2", 6), add("vitals.respiratoryRate", 4)], score: [score("intervention", 4), score("safety", 2)] }),
+    action("call-airway-response", "Activate emergency airway response", "communication", "essential", "Persistent hypoventilation requires rapid access to personnel capable of advanced airway rescue.", [sedationSource.id], { prerequisites: ["assess-airway"], effects: [set("flags.airwayTeamCalled", true)], score: [score("escalation", 4), score("communication", 2)] }),
+    action("administer-naloxone", "Administer ordered naloxone", "medication", "high_priority", "When opioid effect contributes to respiratory depression, ordered naloxone may improve ventilation but does not replace immediate airway support.", [sedationSource.id], { safetyChecks: ["stop-sedation"], prerequisites: ["reposition-airway"], effects: [set("flags.naloxoneGiven", true)], delayedEffects: [{ delayMinutes: 2, effects: [set("levelOfConsciousness", "awake to voice"), set("sedationScore", 0), add("vitals.respiratoryRate", 4)], feedback: "Ventilation and responsiveness improve after reversal; recurrence monitoring remains necessary." }], score: [score("medication-administration", 4), score("prioritization", 2)], medication: { genericName: "naloxone", indication: "Opioid-related respiratory depression", orderedDose: "titrated per active reversal order", route: "intravenous", frequency: "repeat per order and response", parameters: ["Support airway before and during reversal", "Monitor for recurrent depression"], holdParameters: ["Clarify if opioid exposure is not established"], requiredAssessment: ["Respiratory effort", "Sedation level"], requiredLabs: [], onsetMinutes: 2, highAlert: true, independentDoubleCheck: false, reassessmentMinutes: 2 } }),
+    action("reassess-recovery", "Reassess airway and recovery criteria", "assessment", "essential", "Recovery requires sustained airway patency, ventilation, oxygenation, hemodynamic stability, and return toward baseline after reversal.", [sedationSource.id], { prerequisites: ["reposition-airway"], repeatable: true, revealFindings: ["recovery-finding"], effects: [set("flags.recoveryReassessed", true)], score: [score("reassessment", 4)] }),
+    action("continue-sedation", "Administer another sedative dose", "medication", "critical_error", "Additional sedative during active obstruction and hypoventilation can deepen respiratory depression and delay rescue.", [sedationSource.id], { effects: [add("vitals.respiratoryRate", -6), add("vitals.spo2", -12), set("levelOfConsciousness", "unresponsive")], criticalError: "Additional sedative administered during respiratory compromise", medication: { genericName: "midazolam", indication: "Procedural anxiolysis", orderedDose: "incremental dose", route: "intravenous", frequency: "titrated", parameters: ["Allow prior dose to take effect"], holdParameters: ["Respiratory depression", "Unintended deep sedation"], requiredAssessment: ["Sedation and ventilation"], requiredLabs: [], onsetMinutes: 2, highAlert: true, independentDoubleCheck: false, reassessmentMinutes: 2 } }),
+    action("document-sedation", "Document sedation event and recovery", "documentation", "appropriate", "The event record should include monitoring trends, airway interventions, medication/reversal, notifications, and sustained recovery.", [sedationSource.id], { documentation: { prompt: "Select the procedural event documentation.", fields: documentationFields, requiredFieldIds: ["assessment", "intervention", "response", "notification"] }, effects: [set("flags.documented", true)], score: [score("documentation", 3)] }),
+  ],
+  events: [
+    { id: "sedation-deepens", atMinute: 4, condition: { all: [], completedAll: [], completedAny: [], notCompleted: [] }, effects: [set("levelOfConsciousness", "unresponsive to voice"), set("sedationScore", -4), set("respiratoryEffort", "snoring obstruction with shallow breaths"), add("vitals.respiratoryRate", -8), add("vitals.spo2", -8), set("flags.airwayCompromise", true)], feedback: "The patient becomes deeply sedated with obstruction and hypoventilation.", severity: "critical" },
+    { id: "apnea-progresses", atMinute: 8, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["reposition-airway"] }, effects: [set("respiratoryEffort", "apneic"), set("vitals.respiratoryRate", 0), add("vitals.spo2", -18)], feedback: "Unrelieved obstruction progresses to apnea and severe desaturation.", severity: "critical" },
+    { id: "airway-recovers", atMinute: 2, condition: { all: [], completedAll: ["reposition-airway", "call-airway-response"], completedAny: [], notCompleted: [] }, effects: [set("flags.airwayStabilizing", true)], feedback: "Airway support restores a more reliable ventilation pattern while the response team evaluates.", severity: "info" },
+  ],
+  completion: { ...commonCompletion, requiredActionIds: ["verify-procedure", "assess-airway", "reposition-airway", "call-airway-response", "reassess-recovery"] },
+  debrief: { overview: "The case tests procedural verification and rapid rescue from unintended deep sedation with airway obstruction.", untreatedTrajectory: "Unrecognized hypoventilation can progress to apnea, hypoxic injury, cardiac arrest, and death.", keyPrinciples: ["Ventilation monitoring can reveal compromise before saturation falls", "Airway support precedes or accompanies pharmacologic reversal", "Observe for recurrence after reversal"] }, evidence: [sedationSource],
+};
+
+const psychiatricSafety: ClinicalScenarioInput = {
+  id: "sim-psych-suicide-agitation-v1", slug: "agitation-and-suicide-risk", title: "Escalating Agitation and Suicide Risk", unit: "psychiatric", specialty: "Behavioral health nursing", difficulty: "intermediate", estimatedMinutes: 30, version: "1.0.0", status: "clinical-review", guidelineReviewDate: REVIEWED_AT, clinicalReviewerStatus: "needs-review",
+  learningObjectives: ["Conduct a direct suicide inquiry", "Reduce environmental risk using least-restrictive care", "Use therapeutic de-escalation and structured reassessment"], prerequisiteKnowledge: ["Therapeutic communication", "Suicide risk assessment", "Least-restrictive interventions"],
+  prebrief: { shift: "Evening shift, inpatient behavioral health intake", role: "Admitting RN", resources: ["Behavioral health provider", "Charge nurse", "Observation staff", "Security for imminent danger only"], handoff: "Noah Williams arrived after telling a sibling that life is not worth living. He now minimizes the statement, paces near the exit, and becomes irritable when asked to surrender his backpack.", safetyNote: "Educational simulation only. Suicide precautions, emergency medication, observation, search, restraint, and seclusion must follow law, facility policy, provider orders, and immediate safety needs." },
+  patient: { name: "Noah Williams", age: 29, sex: "male", pronouns: "he/him", room: "Behavioral intake 3", presentingProblem: "Agitation with conflicting statements about self-harm", history: ["Major depressive disorder"], surgicalHistory: [], psychiatricHistory: ["Prior suicide attempt 3 years ago", "Stopped sertraline 2 months ago"], medicationHistory: ["Sertraline previously"], allergies: ["No known drug allergies"], socialHistory: ["Recent relationship loss", "Currently staying with sibling"], substanceUseHistory: ["Alcohol use increased over the last month"], baselineFunction: "Independent", codeStatus: "Full code", isolation: "Standard precautions", risks: { fall: "low", suicide: "undetermined at intake", elopement: "moderate", skin: "low" } },
+  chart: { orders: ["Behavioral health evaluation", "Initiate risk-based observation and environmental precautions per policy", "Notify provider for escalating agitation or positive suicide assessment"], prnOrders: ["Oral medication for agitation after assessment and provider review"], homeMedications: ["Sertraline, not currently taking"], activeMedications: [], linesDevices: [], labs: [{ name: "Blood alcohol", value: "pending", flag: "normal" }], diagnostics: [] },
+  initialState: { ...baseState, vitals: { heartRate: 104, systolic: 136, diastolic: 82, map: 100, respiratoryRate: 20, spo2: 98, temperatureC: 36.9, pain: 0 }, levelOfConsciousness: "alert", orientation: "oriented to person, place, time, and situation", behavior: "pacing, guarded, voice becoming louder", anxiety: 8, agitation: 6, flags: { suicideRiskKnown: false, activePlan: true, meansInBackpack: true, observationStarted: false, environmentSecured: false } },
+  randomization: [{ path: "agitation", minDelta: -1, maxDelta: 1 }, { path: "vitals.heartRate", minDelta: -4, maxDelta: 4 }],
+  assessments: [
+    { id: "mental-status-finding", category: "Mental status", label: "Assess mental status and intoxication", finding: "Speech is pressured but coherent; affect is constricted; recent alcohol use is reported without delirium findings." },
+    { id: "suicide-disclosure", category: "Safety", label: "Ask directly about suicide", finding: "The patient reports a plan to overdose tonight and says medication is in the backpack." },
+    { id: "environment-finding", category: "Safety", label: "Assess environment", finding: "The backpack is within reach and the exit path is unobstructed." },
+    { id: "behavior-reassessment", category: "Reassessment", label: "Reassess agitation and risk", finding: "With a quieter setting, direct support, and clear limits, pacing slows and the patient agrees to remain with staff." },
+  ],
+  actions: [
+    action("assess-mental-status", "Assess mental status, substance use, and behavior", "assessment", "high_priority", "Medical, substance-related, and psychiatric contributors must be assessed while immediate safety is maintained.", [suicideSource.id], { revealFindings: ["mental-status-finding"], score: [score("assessment", 3), score("clinical-recognition", 2)] }),
+    action("direct-suicide-assessment", "Ask directly about ideation, plan, intent, and means", "assessment", "essential", "Direct inquiry identifies the immediacy and severity of suicide risk and does not rely on vague reassurance.", [suicideSource.id], { optimalByMinute: 4, revealFindings: ["suicide-disclosure"], effects: [set("flags.suicideRiskKnown", true)], score: [score("assessment", 5), score("clinical-recognition", 4)] }),
+    action("assess-environment", "Assess the environment for hazards and elopement", "safety", "essential", "Potential means and exit risk require immediate environmental assessment and mitigation.", [suicideSource.id], { revealFindings: ["environment-finding"], score: [score("safety", 4)] }),
+    action("secure-environment", "Secure belongings and create a safer environment", "safety", "essential", "Removing accessible means and reducing stimulation are proportionate safety measures when performed respectfully and per policy.", [suicideSource.id], { prerequisites: ["assess-environment", "direct-suicide-assessment"], effects: [set("flags.environmentSecured", true), set("flags.meansInBackpack", false), add("agitation", -1)], score: [score("safety", 5), score("prioritization", 3)] }),
+    action("start-observation", "Initiate risk-based continuous observation", "safety", "essential", "A patient with active plan, intent, and available means should not be left alone while definitive evaluation and precautions are arranged.", [suicideSource.id], { prerequisites: ["direct-suicide-assessment"], effects: [set("flags.observationStarted", true)], score: [score("safety", 5), score("prioritization", 3)] }),
+    action("therapeutic-deescalation", "Use calm, direct verbal de-escalation", "communication", "high_priority", "A calm tone, validation, choices within limits, adequate space, and clear expectations support least-restrictive stabilization.", [suicideSource.id], { communication: { prompt: "Select the therapeutic elements to use.", elements: [{ id: "calm", label: "Use a calm, nonjudgmental tone" }, { id: "validate", label: "Acknowledge distress without endorsing unsafe behavior" }, { id: "space", label: "Maintain personal space and a clear exit" }, { id: "choices", label: "Offer realistic choices within safety limits" }, { id: "threat", label: "Threaten restraint for noncompliance" }], requiredElementIds: ["calm", "validate", "space", "choices"] }, effects: [add("agitation", -3), add("anxiety", -2)], score: [score("communication", 5), score("intervention", 3)] }),
+    action("notify-behavioral-team", "Notify behavioral health provider and charge nurse", "communication", "essential", "The team needs the direct risk findings, current behavior, safety actions, substance history, and a request for urgent evaluation.", [suicideSource.id], { prerequisites: ["direct-suicide-assessment"], communication: { prompt: "Build the safety-focused SBAR.", elements: sbarElements, requiredElementIds: ["identity", "concern", "background", "assessment", "interventions", "request"] }, effects: [set("flags.teamNotified", true)], score: [score("communication", 4), score("escalation", 4)] }),
+    action("call-security", "Request security presence", "communication", "acceptable_alternative", "Security can support imminent violence or elopement risk, but should not replace therapeutic de-escalation or be used reflexively.", [suicideSource.id], { prerequisites: ["therapeutic-deescalation"], effects: [set("flags.securityStandby", true)], feedback: "Security remains out of immediate view while the clinical team continues least-restrictive care.", score: [score("safety", 1)] }),
+    action("apply-restraints", "Initiate restraint immediately", "intervention", "critical_error", "Restraint without an immediate danger and without attempting less-restrictive measures introduces trauma and legal and physical risk.", [suicideSource.id], { effects: [add("agitation", 4), add("anxiety", 3), set("behavior", "struggling and shouting")], criticalError: "Restraint initiated without immediate danger or least-restrictive attempts" }),
+    action("leave-alone", "Leave the patient alone to reduce stimulation", "safety", "critical_error", "A patient with an active suicide plan and available means requires continuous safety observation, not isolation from staff.", [suicideSource.id], { effects: [set("flags.patientUnobserved", true), add("agitation", 2)], criticalError: "High-risk patient left unobserved" }),
+    action("reassess-behavior", "Reassess suicide risk and agitation", "assessment", "essential", "Risk and behavioral state must be reassessed after environmental and communication interventions and with any clinical change.", [suicideSource.id], { prerequisites: ["secure-environment", "therapeutic-deescalation"], repeatable: true, revealFindings: ["behavior-reassessment"], effects: [set("flags.riskReassessed", true)], score: [score("reassessment", 4)] }),
+    action("document-psych", "Document risk assessment and safety plan", "documentation", "essential", "Documentation should include direct inquiry, overall risk, environmental controls, observation, team communication, response, and ongoing plan.", [suicideSource.id], { documentation: { prompt: "Select the behavioral health documentation elements.", fields: documentationFields, requiredFieldIds: ["assessment", "intervention", "response", "notification", "safety"] }, effects: [set("flags.documented", true)], score: [score("documentation", 4)] }),
+  ],
+  events: [
+    { id: "agitation-escalates", atMinute: 6, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["therapeutic-deescalation"] }, effects: [add("agitation", 2), set("behavior", "voice raised; moves closer to exit")], feedback: "Without therapeutic engagement, agitation and elopement behavior increase.", severity: "warning" },
+    { id: "unsafe-access", atMinute: 10, condition: { all: [], completedAll: [], completedAny: [], notCompleted: ["secure-environment"] }, effects: [set("flags.backpackOpened", true), add("agitation", 2)], feedback: "The patient reaches the unsecured backpack containing potential means.", severity: "critical" },
+    { id: "deescalation-response", atMinute: 2, condition: { all: [], completedAll: ["secure-environment", "therapeutic-deescalation", "start-observation"], completedAny: [], notCompleted: [] }, effects: [set("behavior", "sitting with staff and speaking quietly"), add("agitation", -2)], feedback: "The patient accepts continued observation and engages with the team.", severity: "info" },
+  ],
+  completion: { ...commonCompletion, requiredActionIds: ["direct-suicide-assessment", "secure-environment", "start-observation", "notify-behavioral-team", "reassess-behavior", "document-psych"] },
+  debrief: { overview: "This case integrates direct suicide assessment, environmental safety, observation, therapeutic communication, escalation, and documentation.", untreatedTrajectory: "Unrecognized active intent and accessible means can lead to self-harm, elopement, or escalating behavioral emergency.", keyPrinciples: ["Ask directly about ideation, plan, intent, behavior, and means", "Use the least restrictive effective intervention", "Reassess risk whenever behavior or circumstances change"] }, evidence: [suicideSource],
+};
+
+export const clinicalScenarios: ClinicalScenario[] = [
+  postoperativeBleeding,
+  acuteCoronarySyndrome,
+  respiratoryDeterioration,
+  septicShock,
+  sedationCompromise,
+  psychiatricSafety,
+].map(assertValidScenario);
+
+export function getClinicalScenarioBySlug(slug: string) {
+  return clinicalScenarios.find((scenario) => scenario.slug === slug) ?? null;
+}
+
+export function getClinicalScenarioById(id: string) {
+  return clinicalScenarios.find((scenario) => scenario.id === id) ?? null;
+}

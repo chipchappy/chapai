@@ -12,7 +12,19 @@ export type AnalyticsEvent =
   | "quiz_question_answered"
   | "quiz_marked_for_review"
   | "quiz_status_set"
-  | "access_key_redeemed";
+  | "access_key_redeemed"
+  | "simulation_started"
+  | "simulation_resumed"
+  | "simulation_completed"
+  | "simulation_abandoned"
+  | "simulation_debrief_viewed"
+  | "simulation_replay_started"
+  | "simulation_first_assessment"
+  | "simulation_critical_action_completed"
+  | "simulation_unsafe_action_attempted"
+  | "simulation_hint_used"
+  | "simulation_mode_selected"
+  | "simulation_unit_selected";
 
 type AnalyticsProps = Record<string, string | number | boolean | null | undefined>;
 

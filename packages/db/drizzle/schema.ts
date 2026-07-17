@@ -354,6 +354,58 @@ export const practiceExamUnlocks = sqliteTable(
   (t) => ({ pk: primaryKey({ columns: [t.userId, t.examId] }) })
 );
 
+// Clinical Simulation is isolated from quiz sessions so the feature can be
+// enabled, migrated, and rolled back without touching NCLEX progress.
+export const clinicalSimulationAttempts = sqliteTable("clinical_simulation_attempts", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  scenarioId: text("scenario_id").notNull(),
+  scenarioVersion: text("scenario_version").notNull(),
+  mode: text("mode", { enum: ["guided", "independent"] }).notNull(),
+  status: text("status", { enum: ["in_progress", "completed", "abandoned"] }).notNull(),
+  seed: integer("seed").notNull(),
+  virtualMinute: integer("virtual_minute").default(0).notNull(),
+  currentState: text("current_state").notNull(),
+  scoreDomains: text("score_domains"),
+  criticalErrors: text("critical_errors").default("[]").notNull(),
+  debriefViewed: integer("debrief_viewed", { mode: "boolean" }).default(false).notNull(),
+  startedAt: integer("started_at").default(sql`(unixepoch())`).notNull(),
+  updatedAt: integer("updated_at").default(sql`(unixepoch())`).notNull(),
+  completedAt: integer("completed_at"),
+});
+
+export const clinicalSimulationActions = sqliteTable("clinical_simulation_actions", {
+  id: text("id").primaryKey(),
+  attemptId: text("attempt_id")
+    .notNull()
+    .references(() => clinicalSimulationAttempts.id, { onDelete: "cascade" }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  actionId: text("action_id").notNull(),
+  category: text("category").notNull(),
+  classification: text("classification").notNull(),
+  virtualMinute: integer("virtual_minute").notNull(),
+  details: text("details").default("{}").notNull(),
+  stateTransition: text("state_transition").default("{}").notNull(),
+  createdAt: integer("created_at").default(sql`(unixepoch())`).notNull(),
+});
+
+export const clinicalSimulationAssignments = sqliteTable("clinical_simulation_assignments", {
+  id: text("id").primaryKey(),
+  cohort: text("cohort").notNull(),
+  instructorUserId: text("instructor_user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  scenarioId: text("scenario_id").notNull(),
+  mode: text("mode", { enum: ["guided", "independent"] }).notNull(),
+  minimumDomainLevel: text("minimum_domain_level"),
+  dueAt: integer("due_at"),
+  createdAt: integer("created_at").default(sql`(unixepoch())`).notNull(),
+});
+
 // ─── Type exports ─────────────────────────────────────────────────────────────
 
 export type User = typeof users.$inferSelect;
@@ -364,3 +416,6 @@ export type QuizSession = typeof quizSessions.$inferSelect;
 export type NewQuizSession = typeof quizSessions.$inferInsert;
 export type QuizAnswer = typeof quizAnswers.$inferSelect;
 export type CaseStudy = typeof caseStudies.$inferSelect;
+export type ClinicalSimulationAttempt = typeof clinicalSimulationAttempts.$inferSelect;
+export type ClinicalSimulationAction = typeof clinicalSimulationActions.$inferSelect;
+export type ClinicalSimulationAssignment = typeof clinicalSimulationAssignments.$inferSelect;

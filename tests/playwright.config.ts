@@ -3,6 +3,7 @@ import { defineConfig, devices } from "@playwright/test";
 // BASE_URL defaults to production — the suite is read-only (no signups, no
 // payments, no writes). Point it at staging/preview via env when available.
 const BASE_URL = process.env.BASE_URL ?? "https://claritynclex.com";
+const LOCAL_HTTPS = /^https:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$)/.test(BASE_URL);
 
 export default defineConfig({
   testDir: ".",
@@ -11,6 +12,7 @@ export default defineConfig({
   reporter: [["line"]],
   use: {
     baseURL: BASE_URL,
+    ignoreHTTPSErrors: LOCAL_HTTPS,
     trace: "retain-on-failure",
   },
   projects: [

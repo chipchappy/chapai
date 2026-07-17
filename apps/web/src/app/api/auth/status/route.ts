@@ -1,6 +1,7 @@
 import { createRequestContext } from "@/lib/logger";
 import { jsonSuccess } from "@/lib/http";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
+import { isClinicalSimulationEnabledForUser } from "@/lib/clinical-simulation/feature";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ export async function GET(request: Request) {
     {
       authenticated: Boolean(user),
       email: user?.email ?? null,
+      clinicalSimulationEnabled: isClinicalSimulationEnabledForUser(user?.email),
     },
     200,
     { requestId: requestContext.requestId },

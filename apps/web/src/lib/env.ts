@@ -46,6 +46,8 @@ const serverEnvSchema = workerBindingSchema.extend({
   OPENROUTER_API_KEY: z.string().min(8).optional(),
   OPENROUTER_MODEL: z.string().default("openrouter/auto"),
   DEMO_MODE: rawBoolean.default(false),
+  CLINICAL_SIMULATION_ENABLED: rawBoolean.default(false),
+  CLINICAL_SIMULATION_ADMIN_EMAILS: z.string().optional(),
   TELEGRAM_BOT_TOKEN: z.string().optional(),
   DEMO_KEY: z.string().optional(),
   SENTRY_DSN: z.string().url().optional(),
