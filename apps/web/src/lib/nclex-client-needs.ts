@@ -66,7 +66,11 @@ export function inferNclexClientNeedFromText(rawText: string | null | undefined)
   if (/(infection|isolation|precaution|fall|restraint|tb|mrsa|c[_ ]?diff|sharps|airborne|latex|hazmat|timeout|fire[_ ]safety|contact[_ ]precautions|transmission)/.test(text)) return "safety_infection_control";
   if (/(screen|immuniz|well[_ ]child|prenatal|breastfeed|contracept|milestone|health[_ ]promotion|lifestyle|smoking[_ ]cessation|cancer[_ ]screening|gestational[_ ]diabetes[_ ]screening|osteoporosis)/.test(text)) return "health_promotion";
   if (/(psych|suicid|grief|ptsd|assault|autism|depress|schizoph|withdrawal|anorexia|domestic[_ ]violence|crisis[_ ]intervention|opioid[_ ]use[_ ]disorder|acute[_ ]psychosis|de[_ ]escalation)/.test(text)) return "psychosocial";
-  if (/(ostomy|feeding|tube|pain|rom|pressure[_ ]inj|sleep|nutrition|comfort|postmortem|wound[_ ]vac|palliative|ng[_ ]tube|enteral|immobility|perioperative[_ ]npo)/.test(text)) return "basic_care_comfort";
+  // `(?<!chest[ _])tube` matches tube EXCEPT in "chest tube"/"chest_tube": the bare
+  // `tube` here is tested before risk_reduction's `chest[_ ]tube`, so without this
+  // guard all 95 published chest_tube_management rows misfile as basic_care_comfort
+  // instead of risk_reduction. Other tube care (ng tube, feeding tube) is preserved.
+  if (/(ostomy|feeding|(?<!chest[ _])tube|pain|rom|pressure[_ ]inj|sleep|nutrition|comfort|postmortem|wound[_ ]vac|palliative|ng[_ ]tube|enteral|immobility|perioperative[_ ]npo)/.test(text)) return "basic_care_comfort";
   if (/(insulin|heparin|warfarin|digoxin|drug|medication|anticoagul|pharm|toxic|overdose|antidote|aminoglycoside|chemotherapy|lithium|magnesium[_ ]sulfate|nitroglycerin|leucovorin|serotonin[_ ]syndrome|neuroleptic[_ ]malignant)/.test(text)) return "pharmacological";
   if (/(risk|monitor|chest[_ ]tube|abg|ecg|catheter|central[_ ]line|contrast|biopsy|dialysis|procedure|complication|reduction|lumbar[_ ]puncture|cardiac[_ ]catheterization|peritoneal[_ ]dialysis|transfusion|air[_ ]leak|peritonitis|diagnostic)/.test(text)) return "risk_reduction";
   return "physiological_adaptation";

@@ -76,15 +76,23 @@ describe("nclex client-need resolution", () => {
     }
   });
 
-  // KNOWN SHADOWING (not fixed here — changing the keyword chain would reclassify
-  // live rows and deserves its own decision). basic_care_comfort carries a bare
-  // `tube` and is tested BEFORE risk_reduction, so risk_reduction's own
-  // `chest[_ ]tube` pattern is unreachable and all 93 published
-  // chest_tube_management rows land in basic_care_comfort. Pinned so the day
-  // someone tightens `tube` to `\btube\b`, this test tells them what moves.
-  it("documents the chest-tube shadowing (93 live rows)", () => {
-    assert.equal(resolveNclexClientNeed({ exam: "nclex", category: "chest_tube_management" }), "basic_care_comfort");
-    assert.equal(inferNclexClientNeedFromText("chest tube"), "basic_care_comfort");
+  // Chest tube management is a Reduction of Risk Potential skill. basic_care_comfort's
+  // bare `tube` is tested before risk_reduction's `chest[_ ]tube`, so a `(?<!chest[ _])`
+  // lookbehind is needed to stop "chest tube"/"chest_tube" misfiling as basic care.
+  // Measured blast radius: exactly 95 published rows moved basic_care_comfort ->
+  // risk_reduction, nothing else.
+  it("routes chest tube (both separators) to risk_reduction, not basic care", () => {
+    assert.equal(resolveNclexClientNeed({ exam: "nclex", category: "chest_tube_management" }), "risk_reduction");
+    assert.equal(resolveNclexClientNeed({ exam: "nclex", category: "chest_tube_management", subcategory: "chest tube management" }), "risk_reduction");
+    assert.equal(inferNclexClientNeedFromText("chest tube"), "risk_reduction");
+    assert.equal(inferNclexClientNeedFromText("chest_tube"), "risk_reduction");
+  });
+
+  // The lookbehind must be surgical: only "chest tube" is excused from basic_care_comfort.
+  it("preserves other tube care in basic_care_comfort", () => {
+    assert.equal(inferNclexClientNeedFromText("ng tube placement"), "basic_care_comfort");
+    assert.equal(inferNclexClientNeedFromText("feeding tube care"), "basic_care_comfort");
+    assert.equal(inferNclexClientNeedFromText("tracheostomy tube suctioning"), "basic_care_comfort");
   });
 
   it("ignores non-nclex exams", () => {
