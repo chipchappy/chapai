@@ -910,11 +910,13 @@
 .alarmNormal { background: #88b797; }
 
 .waveform {
-  min-height: 130px;
-  padding: 8px 12px 0;
+  min-height: 172px;
+  padding: 8px 12px 8px;
 }
 
-.waveform svg {
+.waveform svg,
+.waveformCanvas {
+  display: block;
   width: 100%;
   height: 100%;
 }
