@@ -1,0 +1,666 @@
+.sceneShell {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border-right: 1px solid #b9c6c1;
+  background: #f4f7f4;
+  color: #243a38;
+}
+
+.sceneToolbar {
+  z-index: 4;
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 12px 6px 14px;
+  border-bottom: 1px solid #cbd5d1;
+  background: #f7faf7;
+}
+
+.sceneToolbar > div:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.sceneToolbar > div:first-child span {
+  color: #70817d;
+  font-size: 0.61rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sceneToolbar > div:first-child strong {
+  overflow: hidden;
+  color: #243a38;
+  font-size: 0.7rem;
+  font-weight: 760;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.viewControl {
+  display: inline-grid;
+  grid-template-columns: repeat(4, minmax(34px, auto));
+  overflow: hidden;
+  border: 1px solid #bdc9c5;
+  border-radius: 6px;
+  background: #e7eeea;
+}
+
+.viewControl button {
+  display: inline-flex;
+  min-width: 38px;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 0;
+  border-right: 1px solid #c4ceca;
+  padding: 0 8px;
+  color: #506561;
+  background: transparent;
+  font: inherit;
+  font-size: 0.64rem;
+  font-weight: 740;
+  cursor: pointer;
+}
+
+.viewControl button:last-child { border-right: 0; }
+.viewControl button:hover { background: #f0f5f2; }
+.viewControl button:focus-visible { outline: 3px solid #7f9bd4; outline-offset: -3px; }
+.viewControl button[data-active="true"] { color: #fff; background: #4e7068; }
+
+.sceneViewport {
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #dce5e1;
+}
+
+.sceneViewport > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  transition: transform 280ms ease;
+}
+
+.sceneViewport[data-view="focused"] > svg { transform: translate(-3%, 4%) scale(1.1); }
+.sceneViewport[data-view="equipment"] > svg { transform: translate(-13%, 3%) scale(1.15); }
+.sceneViewport[data-view="overview"] > svg { transform: scale(0.96); }
+
+.bed { filter: drop-shadow(0 8px 7px rgba(44, 61, 57, 0.18)); }
+.patient { filter: drop-shadow(0 5px 4px rgba(52, 62, 59, 0.17)); transform-origin: 55% 70%; }
+.ambulatoryPatient { filter: drop-shadow(0 6px 4px rgba(52, 62, 59, 0.17)); transform-origin: 48% 88%; }
+
+.chestMotion {
+  transform-box: fill-box;
+  transform-origin: 50% 78%;
+  animation: sceneBreath var(--breath-duration, 3s) ease-in-out infinite;
+}
+
+.sceneViewport[data-breathing="shallow"] .chestMotion { animation-timing-function: ease-out; }
+.sceneViewport[data-breathing="deep"] .chestMotion,
+.sceneViewport[data-breathing="kussmaul"] .chestMotion { animation-name: sceneDeepBreath; animation-timing-function: cubic-bezier(0.35, 0, 0.55, 1); }
+.sceneViewport[data-breathing="irregular"] .chestMotion { animation-name: sceneIrregularBreath; }
+.sceneViewport[data-breathing="agonal"] .chestMotion { animation-name: sceneAgonalBreath; }
+.sceneViewport[data-breathing="apnea"] .chestMotion { animation: none; }
+
+.accessoryMotion {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.accessoryMotion[data-active="true"] { animation: accessoryLift var(--breath-duration, 2s) ease-in-out infinite; }
+
+.headMotion {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.patient[data-movement="1"] .headMotion { animation: subtleHead 9s ease-in-out infinite; }
+.patient[data-movement="2"] .headMotion,
+.ambulatoryPatient[data-movement="2"] { animation: restlessShift 3.8s ease-in-out infinite; }
+.patient[data-movement="3"],
+.ambulatoryPatient[data-movement="3"] { animation: agitatedShift 1.7s ease-in-out infinite alternate; }
+.patient[data-seizure="true"],
+.ambulatoryPatient[data-seizure="true"] { animation: seizureMotion 150ms linear infinite alternate; }
+.patient[data-guarding="true"] { transform: rotate(-0.6deg); }
+
+.eyeTrack { animation: patientBlink var(--blink-duration, 5s) linear infinite; }
+.eyeTrack[data-tracks="false"] { animation-duration: calc(var(--blink-duration, 5s) * 1.6); }
+.diaphoresis { animation: moistureSheen 3.4s ease-in-out infinite; }
+
+.connectionLayer path[data-connection="iv"],
+.connectionLayer path[data-connection="arterial"] {
+  stroke-dasharray: 9 5;
+  animation: fluidFlow 2.4s linear infinite;
+}
+
+.connectionLayer path[data-connection="oxygen"],
+.connectionLayer path[data-connection="ventilator"] { filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6)); }
+.connectionLayer { opacity: 0.84; }
+.ecgLeadLayer { opacity: 0.88; }
+.oxygenDevice { filter: drop-shadow(0 1px 1px rgba(53, 84, 78, 0.24)); }
+.defibPads { filter: drop-shadow(0 2px 2px rgba(46, 57, 54, 0.22)); }
+
+.hotspotLayer {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hotspot {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+}
+
+.hotspot > span {
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.88);
+  border-radius: 50%;
+  background: rgba(48, 91, 82, 0.22);
+  box-shadow: 0 0 0 1px rgba(41, 77, 70, 0.32), 0 2px 6px rgba(35, 52, 48, 0.18);
+  opacity: 0.34;
+  transition: inset 150ms ease, opacity 150ms ease, background 150ms ease;
+}
+
+.hotspot:hover > span,
+.hotspot:focus-visible > span,
+.hotspot[data-active="true"] > span { inset: 4px; background: rgba(57, 108, 96, 0.78); opacity: 1; }
+.hotspot:focus-visible { outline: 3px solid #f4d489; outline-offset: 1px; border-radius: 50%; }
+
+.focusPanel {
+  position: absolute;
+  z-index: 6;
+  top: 13px;
+  right: 13px;
+  width: min(310px, calc(100% - 26px));
+  border: 1px solid rgba(82, 105, 100, 0.42);
+  border-radius: 7px;
+  background: rgba(248, 250, 247, 0.97);
+  box-shadow: 0 12px 30px rgba(39, 57, 52, 0.2);
+  backdrop-filter: blur(7px);
+}
+
+.focusPanel > header {
+  display: flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 9px 7px 13px;
+  border-bottom: 1px solid #d7dfdb;
+}
+
+.focusPanel > header > div { display: grid; gap: 1px; }
+.focusPanel > header span { color: #71817d; font-size: 0.57rem; font-weight: 800; text-transform: uppercase; }
+.focusPanel > header strong { font-size: 0.82rem; }
+.focusPanel > header button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 4px;
+  color: #51645f;
+  background: transparent;
+  cursor: pointer;
+}
+.focusPanel > header button:hover { background: #e7eeea; }
+.focusPanel > header button:focus-visible { outline: 3px solid #7f9bd4; }
+
+.focusVisual {
+  display: grid;
+  min-height: 72px;
+  place-items: center;
+  margin: 12px 13px 0;
+  border: 1px solid #d4deda;
+  border-radius: 6px;
+  color: #4c7168;
+  background: #edf3ef;
+}
+
+.focusVisual > svg { width: 30px; height: 30px; }
+.focusPanel > p { margin: 10px 13px 13px; color: #354a47; font-size: 0.74rem; line-height: 1.52; }
+.focusPanel[data-revealed="false"] .focusVisual { color: #8a713e; background: #f8f3e5; }
+
+.assessmentAction {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  margin: 0 13px 13px;
+  border: 1px solid #486e65;
+  border-radius: 5px;
+  padding: 0 11px;
+  color: #fff;
+  background: #4d736a;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+.assessmentAction:hover { background: #3d6259; }
+.assessmentAction:focus-visible { outline: 3px solid #7f9bd4; outline-offset: 2px; }
+
+.pupilView {
+  display: flex;
+  gap: 17px;
+}
+
+.pupilView::before,
+.pupilView::after {
+  position: absolute;
+  width: 46px;
+  height: 25px;
+  border: 2px solid #9b8a7d;
+  border-radius: 50%;
+  background: #f6f4ed;
+  content: "";
+}
+
+.pupilView::before { transform: translateX(-31px); }
+.pupilView::after { transform: translateX(31px); }
+.pupilView > span {
+  z-index: 1;
+  display: block;
+  width: var(--pupil-size, 7px);
+  height: var(--pupil-size, 7px);
+  border-radius: 50%;
+  background: #27302f;
+}
+.pupilView[data-revealed="false"] { filter: blur(2px); opacity: 0.52; }
+
+.emergencyBanner {
+  position: absolute;
+  z-index: 5;
+  bottom: 13px;
+  left: 13px;
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(130, 46, 43, 0.55);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: #fff;
+  background: rgba(153, 54, 49, 0.9);
+  font-size: 0.67rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.sceneFooter {
+  display: grid;
+  gap: 7px;
+  padding: 9px 12px 10px;
+  border-top: 1px solid #c7d1cd;
+  background: #f8faf7;
+}
+
+.observedCues,
+.targetList {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.observedCues span {
+  border: 1px solid #ccd6d2;
+  border-radius: 4px;
+  padding: 3px 6px;
+  color: #516561;
+  background: #edf2ef;
+  font-size: 0.59rem;
+  font-weight: 720;
+  text-transform: capitalize;
+}
+
+.targetList button {
+  display: inline-flex;
+  min-height: 29px;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0 7px;
+  color: #45645d;
+  background: transparent;
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 740;
+  cursor: pointer;
+}
+.targetList button:hover { border-color: #bdcbc6; background: #edf3ef; }
+.targetList button[data-active="true"] { border-color: #78978f; background: #dce9e4; }
+.targetList button:focus-visible { outline: 3px solid #7f9bd4; outline-offset: 1px; }
+
+.screenReaderStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.sceneViewport[data-paused="true"] * {
+  animation-play-state: paused !important;
+}
+
+.sceneViewport[data-reduced-motion="true"] > svg { transition: none; }
+
+.sceneViewport[data-reduced-motion="true"] .patient,
+.sceneViewport[data-reduced-motion="true"] .ambulatoryPatient,
+.sceneViewport[data-reduced-motion="true"] .headMotion,
+.sceneViewport[data-reduced-motion="true"] .eyeTrack,
+.sceneViewport[data-reduced-motion="true"] .diaphoresis,
+.sceneViewport[data-reduced-motion="true"] .connectionLayer path,
+.sceneViewport[data-reduced-motion="true"] .accessoryMotion { animation: none !important; }
+
+.sceneViewport[data-reduced-motion="true"] .chestMotion {
+  animation: reducedBreath 5s ease-in-out infinite !important;
+  animation-play-state: running !important;
+}
+
+.sceneViewport[data-reduced-motion="true"][data-breathing="apnea"] .chestMotion { animation: none !important; }
+.sceneViewport[data-reduced-motion="true"][data-paused="true"] .chestMotion { animation-play-state: paused !important; }
+.sceneViewport[data-quality="reduced"] .patient,
+.sceneViewport[data-quality="reduced"] .bed,
+.sceneViewport[data-quality="reduced"] .ambulatoryPatient { filter: none; }
+
+.visualDeveloper {
+  margin-top: 14px;
+  border: 1px solid #c8d3cf;
+  border-radius: 7px;
+  padding: 13px;
+  background: #f7faf7;
+}
+
+.visualDeveloper > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.visualDeveloper > header > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #355b52;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.visualDeveloper > header button {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #b9c7c2;
+  border-radius: 5px;
+  padding: 0 9px;
+  color: #425c56;
+  background: #fff;
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 730;
+  cursor: pointer;
+}
+
+.visualDeveloper > header button:disabled { opacity: 0.48; cursor: not-allowed; }
+.visualDeveloper > p { margin: 8px 0 12px; color: #687b76; font-size: 0.68rem; line-height: 1.45; }
+
+.visualControlGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.visualControlGrid label,
+.visualRanges label {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.visualControlGrid label > span,
+.visualRanges label > span {
+  color: #647671;
+  font-size: 0.59rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.visualControlGrid select,
+.visualControlGrid input[type="number"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  border: 1px solid #bac8c3;
+  border-radius: 5px;
+  padding: 0 8px;
+  color: #2d4540;
+  background: #fff;
+  font: inherit;
+  font-size: 0.68rem;
+}
+
+.visualRanges {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 13px;
+}
+
+.visualRanges label > span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.visualRanges output { color: #345c52; font-family: var(--font-mono); }
+.visualRanges input { width: 100%; accent-color: #527a70; }
+
+.visualToggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.visualToggles label {
+  display: inline-flex;
+  min-height: 31px;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #c2ceca;
+  border-radius: 5px;
+  padding: 0 8px;
+  color: #435c56;
+  background: #fff;
+  font-size: 0.65rem;
+  font-weight: 720;
+}
+
+.visualToggles input { accent-color: #4e756b; }
+
+.visualDiagnostics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 13px;
+}
+
+.visualDiagnostics > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 8px;
+  border: 1px solid #cad5d1;
+  border-radius: 6px;
+  padding: 9px;
+  background: #edf3ef;
+}
+
+.visualDiagnostics svg { grid-row: 1 / 4; align-self: center; color: #55786f; }
+.visualDiagnostics span { color: #6b7e79; font-size: 0.57rem; font-weight: 800; text-transform: uppercase; }
+.visualDiagnostics strong { color: #29463f; font-size: 0.7rem; }
+.visualDiagnostics small { overflow-wrap: anywhere; color: #687a75; font-size: 0.61rem; }
+
+@keyframes sceneBreath {
+  0%, 100% { transform: scaleY(1); }
+  42% { transform: scaleY(var(--chest-scale, 1.025)); }
+  58% { transform: scaleY(var(--chest-scale, 1.025)); }
+}
+
+@keyframes sceneDeepBreath {
+  0%, 100% { transform: scaleY(0.995); }
+  48% { transform: scaleY(var(--chest-scale, 1.035)); }
+}
+
+@keyframes sceneIrregularBreath {
+  0%, 18%, 100% { transform: scaleY(1); }
+  8% { transform: scaleY(var(--chest-scale, 1.025)); }
+  48% { transform: scaleY(1); }
+  67% { transform: scaleY(var(--chest-scale, 1.025)); }
+}
+
+@keyframes sceneAgonalBreath {
+  0%, 72%, 100% { transform: scaleY(1); }
+  84% { transform: scaleY(var(--chest-scale, 1.02)); }
+}
+
+@keyframes accessoryLift {
+  0%, 100% { transform: translateY(0); }
+  42% { transform: translateY(-4px); }
+}
+
+@keyframes patientBlink {
+  0%, 92%, 96%, 100% { opacity: 1; }
+  94% { opacity: 0.08; }
+}
+
+@keyframes subtleHead {
+  0%, 55%, 100% { transform: rotate(0); }
+  68% { transform: rotate(0.7deg); }
+}
+
+@keyframes restlessShift {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  45% { transform: translate(2px, -1px) rotate(0.4deg); }
+  70% { transform: translate(-1px, 1px) rotate(-0.3deg); }
+}
+
+@keyframes agitatedShift {
+  from { transform: translate(-2px, 0) rotate(-0.5deg); }
+  to { transform: translate(3px, -1px) rotate(0.7deg); }
+}
+
+@keyframes seizureMotion {
+  from { transform: translate(-3px, 1px) rotate(-0.8deg); }
+  to { transform: translate(3px, -1px) rotate(0.8deg); }
+}
+
+@keyframes moistureSheen {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes fluidFlow { to { stroke-dashoffset: -28; } }
+@keyframes reducedBreath { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.008); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sceneViewport > svg { transition: none; }
+  .patient,
+  .ambulatoryPatient,
+  .headMotion,
+  .eyeTrack,
+  .diaphoresis,
+  .connectionLayer path,
+  .accessoryMotion { animation: none !important; }
+  .chestMotion { animation: reducedBreath 5s ease-in-out infinite; }
+}
+
+@media (prefers-contrast: more) {
+  .sceneShell { border-color: #263c38; }
+  .sceneToolbar,
+  .sceneFooter { background: #fff; }
+  .hotspot > span { border-color: #fff; background: #173f37; box-shadow: 0 0 0 3px #000; opacity: 1; }
+  .observedCues span { border-color: #263c38; color: #162824; background: #fff; }
+}
+
+@media (max-width: 1180px) {
+  .sceneViewport,
+  .sceneViewport > svg { min-height: 330px; }
+  .viewControl button span { display: none; }
+}
+
+@media (max-width: 960px) {
+  .sceneShell { border-right: 0; border-bottom: 1px solid #b9c6c1; }
+  .viewControl button span { display: inline; }
+}
+
+@media (max-width: 720px) {
+  .sceneShell { border-right: 0; border-bottom: 1px solid #b9c6c1; }
+  .sceneToolbar { align-items: flex-start; flex-direction: column; padding: 8px 10px; }
+  .viewControl { width: 100%; grid-template-columns: repeat(4, 1fr); }
+  .viewControl button { min-height: 36px; }
+  .viewControl button span { display: inline; }
+  .sceneViewport,
+  .sceneViewport > svg { min-height: 285px; }
+  .sceneViewport > svg { width: 145%; transform: translateX(-14%); }
+  .sceneViewport[data-view="focused"] > svg { transform: translate(-20%, 4%) scale(1.08); }
+  .sceneViewport[data-view="equipment"] > svg { transform: translate(-32%, 2%) scale(1.05); }
+  .sceneViewport[data-view="overview"] > svg { transform: translateX(-14%) scale(0.96); }
+  .hotspotLayer { width: 145%; transform: translateX(-14%); }
+  .sceneViewport[data-view="focused"] .hotspotLayer { transform: translate(-20%, 4%) scale(1.08); }
+  .sceneViewport[data-view="equipment"] .hotspotLayer { transform: translate(-32%, 2%) scale(1.05); }
+  .sceneViewport[data-view="overview"] .hotspotLayer { transform: translateX(-14%) scale(0.96); }
+  .hotspot { width: 40px; height: 40px; }
+  .hotspot > span { inset: 10px; }
+  .focusPanel { top: 8px; right: 8px; width: calc(100% - 16px); }
+  .focusVisual { min-height: 56px; }
+  .observedCues { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+  .observedCues span { flex: 0 0 auto; }
+  .targetList { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .targetList button { justify-content: center; min-height: 36px; }
+  .visualControlGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visualDiagnostics { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 430px) {
+  .viewControl button span { display: none; }
+  .sceneViewport,
+  .sceneViewport > svg { min-height: 250px; }
+  .sceneViewport > svg { width: 165%; transform: translateX(-20%); }
+  .sceneViewport[data-view="focused"] > svg { transform: translate(-28%, 4%) scale(1.05); }
+  .sceneViewport[data-view="equipment"] > svg { transform: translate(-42%, 2%); }
+  .sceneViewport[data-view="overview"] > svg { transform: translateX(-20%) scale(0.93); }
+  .hotspotLayer { width: 165%; transform: translateX(-20%); }
+  .sceneViewport[data-view="focused"] .hotspotLayer { transform: translate(-28%, 4%) scale(1.05); }
+  .sceneViewport[data-view="equipment"] .hotspotLayer { transform: translate(-42%, 2%); }
+  .sceneViewport[data-view="overview"] .hotspotLayer { transform: translateX(-20%) scale(0.93); }
+  .targetList { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .observedCues span:nth-child(n + 4) { display: none; }
+  .visualControlGrid,
+  .visualRanges { grid-template-columns: 1fr; }
+  .visualDeveloper > header { align-items: flex-start; flex-direction: column; }
+}

@@ -20,16 +20,25 @@ function classifyRhythm(raw: string | undefined, hr: number): Rhythm {
 }
 
 function hasArterialLine(state: PatientState): boolean {
-  const haystack = Object.values(state.devices ?? {}).join(" ").toLowerCase();
-  return /arterial|a-?line|art line|abp|radial line/.test(haystack);
+  return Object.entries(state.devices ?? {}).some(([key, detail]) => {
+    const value = `${key} ${detail}`.toLowerCase();
+    return /arterial|a-?line|art line|abp|radial line/.test(value)
+      && /patent|transduced|connected|waveform/.test(value)
+      && !/setup|prepar|pending/.test(value);
+  });
 }
 
 function gauss(x: number, mu: number, sig: number) {
   return Math.exp(-((x - mu) * (x - mu)) / (2 * sig * sig));
 }
-function ecgWave(phase: number, r: Rhythm): number {
-  if (r === "asystole") return (Math.random() - 0.5) * 0.015;
-  if (r === "vfib") return Math.sin(phase * 41) * 0.55 + (Math.random() - 0.5) * 0.5;
+function deterministicNoise(value: number, seed: number) {
+  const raw = Math.sin(value * 12.9898 + seed * 78.233) * 43758.5453;
+  return raw - Math.floor(raw) - 0.5;
+}
+
+function ecgWave(phase: number, r: Rhythm, seed: number): number {
+  if (r === "asystole") return deterministicNoise(phase * 80, seed) * 0.015;
+  if (r === "vfib") return Math.sin(phase * 41) * 0.55 + deterministicNoise(phase * 67, seed) * 0.5;
   if (r === "vtach") return Math.sin(phase * Math.PI * 2 - 0.4) * 0.82 - 0.05;
   let y = 0;
   if (r !== "afib") y += 0.13 * gauss(phase, 0.17, 0.028);
@@ -37,7 +46,7 @@ function ecgWave(phase: number, r: Rhythm): number {
   y += 1.02 * gauss(phase, 0.41, 0.01);
   y -= 0.24 * gauss(phase, 0.445, 0.011);
   y += 0.26 * gauss(phase, 0.63, 0.045);
-  if (r === "afib") y += (Math.random() - 0.5) * 0.05;
+  if (r === "afib") y += deterministicNoise(phase * 45, seed) * 0.05;
   return y;
 }
 function plethWave(phase: number, amp: number): number {
@@ -104,6 +113,7 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
     let ecgPhase = 0;
     let respPhase = 0;
     let beatJitter = 1;
+    let beatIndex = 0;
     let last: number[] = [];
     let raf = 0;
     let lastT = performance.now();
@@ -138,7 +148,7 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
       const amp = lane.ampFrac * height;
       if (lane.kind === "ecg") {
         const eamp = rhythm === "asystole" ? 0.04 : 1;
-        return cy - ecgWave(ecgPhase, rhythm) * amp * eamp;
+        return cy - ecgWave(ecgPhase, rhythm, s.seed + beatIndex) * amp * eamp;
       }
       if (lane.kind === "abp") {
         const aamp = rhythm === "asystole" || rhythm === "vfib" ? 0.12 : 1;
@@ -205,7 +215,8 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
         ecgPhase += dt / beat;
         if (ecgPhase >= 1) {
           ecgPhase -= 1;
-          beatJitter = rhythm === "afib" ? 0.62 + Math.random() * 0.85 : 1;
+          beatIndex += 1;
+          beatJitter = rhythm === "afib" ? 0.62 + (deterministicNoise(beatIndex, s.seed) + 0.5) * 0.85 : 1;
         }
       }
       respPhase += dt * (Math.max(4, s.vitals.respiratoryRate) / 60);

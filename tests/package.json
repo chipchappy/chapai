@@ -2,7 +2,9 @@
   "name": "clarity-smoke-tests",
   "private": true,
   "scripts": {
-    "clinical-sim": "playwright test clinical-simulation.spec.ts --reporter=line",
+    "clinical-sim": "playwright test clinical-simulation.spec.ts clinical-simulation-scene.spec.ts --reporter=line",
+    "clinical-sim:visual": "playwright test clinical-simulation-scene.visual.spec.ts --reporter=line",
+    "clinical-sim:visual:update": "playwright test clinical-simulation-scene.visual.spec.ts --update-snapshots=all --reporter=line",
     "smoke": "playwright test smoke --reporter=line",
     "visual": "playwright test visual --reporter=line",
     "visual:update": "playwright test visual --update-snapshots --reporter=line"

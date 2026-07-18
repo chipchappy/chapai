@@ -167,6 +167,8 @@ function normalizePatientStateInPlace(state: PatientState) {
   state.actionLog = state.actionLog.map((entry) => ({ ...entry, stateChanges: entry.stateChanges ?? [], teamResponse: entry.teamResponse ?? null }));
   state.notices = state.notices.map((notice) => ({ ...notice, stateChanges: notice.stateChanges ?? [] }));
   state.activeComplications ??= [];
+  state.position ??= "semi-fowler";
+  state.headOfBedDegrees = clamp(Number(state.headOfBedDegrees ?? 30), -15, 90);
   state.timeSinceLastReassessment = Math.max(0, Math.round(state.timeSinceLastReassessment ?? 0));
   state.vitals.heartRate = clamp(Math.round(state.vitals.heartRate), 0, 300);
   state.vitals.systolic = clamp(Math.round(state.vitals.systolic), 0, 300);

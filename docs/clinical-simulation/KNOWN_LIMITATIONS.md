@@ -14,6 +14,14 @@
 - Guided mode provides a workflow cue, not adaptive tutoring.
 - A save failure is shown and the last confirmed server state remains resumable, but there is no offline action queue. The learner must retry an action after connectivity returns.
 
+## Patient Scene
+
+- The scene is an original programmatic-vector foundation, not a fully commissioned medical illustration library. It still requires formal nurse, accessibility, and medical-device art review.
+- Mechanical ventilation, defibrillation pads, pleural drainage, edema, seizure, and arrest states are renderable in the protected preview, but not every device has a complete learner-operated workflow in current scenarios.
+- Focused assessment currently covers face, pupils, breathing, perfusion, IV, oxygen, monitor, pumps, urinary output, drain, and position. Wounds, pressure points, posterior lung fields, mouth/airway detail, and exact pitting edema need richer focused panels.
+- No sound is implemented. All alarms remain visual and text based.
+- CSS/SVG behavior is verified in Chromium. Safari and Firefox visual compatibility require a dedicated pass.
+
 ## Data and Compatibility
 
 - D1 does not support PostgreSQL row-level security. API and store queries enforce attempt ownership; this must be retained and independently security-reviewed before release.

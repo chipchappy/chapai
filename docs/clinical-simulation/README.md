@@ -1,6 +1,6 @@
 # Clarity Clinical Simulation
 
-**Runnable internal testing build: Yes.** The feature runs locally from `feature/clinical-simulation`, is disabled by default outside its isolated local worker, and has not been deployed.
+**Runnable internal testing build: Yes.** The reactive-scene phase runs locally from its isolated feature branch and has not been deployed. The previously deployed simulator remains restricted by its production flag and administrator allowlist.
 
 ## What Is Runnable
 
@@ -10,6 +10,7 @@
 - Five additional end-to-end technical-testing scenarios
 - Server-owned D1 persistence and per-user attempt isolation
 - Protected developer panel with time controls, event triggers, state inspection, reset/restart, debug copy, and sanitized trace export
+- Engine-driven 2.5D patient scenes with six room presets, responsive positioning, clinical skin and respiratory cues, modular devices, connected tubing, focused assessments, and reveal-safe accessibility text
 - Automated scenario, engine, API-flow, responsive UI, feature-gate, and NCLEX-route regression tests
 
 All six scenarios are marked `Technical testing - clinical review required`. Automated validation is not clinical approval.
@@ -19,7 +20,6 @@ All six scenarios are marked `Technical testing - clinical review required`. Aut
 Run from the repository root in PowerShell:
 
 ```powershell
-git switch feature/clinical-simulation
 npm ci
 npm run clinical-sim:setup
 npm run clinical-sim:validate
@@ -45,6 +45,7 @@ npm run clinical-sim:seed       # Idempotent setup alias; scenarios are versione
 npm run clinical-sim:validate   # Validate every playable scenario and hidden outline
 npm run clinical-sim:test       # Focused unit and trajectory suite
 npm run clinical-sim:e2e        # Playwright; requires the local worker and E2E env vars
+npm run clinical-sim:visual     # Deterministic patient-scene screenshot regression
 npm run clinical-sim:inspect    # List local stored attempts without opening the UI
 npm run clinical-sim:reset      # Remove local attempts/assignments; preserve test users
 npm run clinical-sim:destroy    # Remove only isolated local simulator state and env file
@@ -54,7 +55,11 @@ npm run clinical-sim:destroy    # Remove only isolated local simulator state and
 
 `CLINICAL_SIMULATION_ENABLED` defaults to `false`. When false, the navigation item is absent and the page/API routes return 404. In production, the flag alone is insufficient: the authenticated email must also be explicitly listed in `CLINICAL_SIMULATION_ADMIN_EMAILS`.
 
+Each page repeats the access check before scenario lookup, in addition to the layout and API guards. This prevents Next.js parallel server rendering from placing protected scenario data in a soft-404 response payload.
+
 The tracked local Wrangler file enables the flag only in a development worker with a separate local D1 database. No deploy command is part of this workflow.
+
+See [PATIENT_SCENE_ARCHITECTURE.md](./PATIENT_SCENE_ARCHITECTURE.md) for the visual-state boundary and [VISUAL_TESTING.md](./VISUAL_TESTING.md) for scene verification.
 
 ## Data Isolation
 

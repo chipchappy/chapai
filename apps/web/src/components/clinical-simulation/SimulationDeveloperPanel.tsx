@@ -13,8 +13,13 @@ import {
   TimerReset,
   Zap,
 } from "lucide-react";
+import type { ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
+import VisualDeveloperControls from "@/components/clinical-simulation/scene/VisualDeveloperControls";
 import { scoreSimulation, type PatientState } from "@/lib/clinical-simulation/engine";
+import { getActiveSceneAssetIds, findMissingSceneAssets } from "@/lib/clinical-simulation/scene-assets";
+import { getSceneAnchors, getSceneConnections } from "@/lib/clinical-simulation/scene-geometry";
 import type { ClinicalScenario, ScenarioValidationIssue } from "@/lib/clinical-simulation/schema";
+import type { PatientVisualState, VisualDebugOverrides } from "@/lib/clinical-simulation/visual-state";
 import styles from "./clinical-simulation.module.css";
 
 export type DeveloperScenarioInfo = {
@@ -35,6 +40,10 @@ type Props = {
   onReset: (seed?: number) => Promise<void>;
   onRestart: (seed?: number) => Promise<void>;
   onTriggerEvent: (eventId: string) => Promise<void>;
+  visualState: PatientVisualState;
+  visualOverrides: VisualDebugOverrides;
+  scenePerformance: ScenePerformanceSample | null;
+  onVisualOverrides: (next: VisualDebugOverrides) => void;
 };
 
 export default function SimulationDeveloperPanel({
@@ -50,11 +59,19 @@ export default function SimulationDeveloperPanel({
   onReset,
   onRestart,
   onTriggerEvent,
+  visualState,
+  visualOverrides,
+  scenePerformance,
+  onVisualOverrides,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [eventId, setEventId] = useState(info.events.find((event) => !state.processedEventIds.includes(event.id))?.id ?? info.events[0]?.id ?? "");
   const [message, setMessage] = useState<string | null>(null);
   const scores = useMemo(() => scoreSimulation(scenario, state), [scenario, state]);
+  const sceneAnchors = useMemo(() => getSceneAnchors(visualState), [visualState]);
+  const sceneConnections = useMemo(() => getSceneConnections(visualState, sceneAnchors), [sceneAnchors, visualState]);
+  const activeSceneAssets = useMemo(() => getActiveSceneAssetIds(visualState), [visualState]);
+  const missingSceneAssets = useMemo(() => findMissingSceneAssets(visualState), [visualState]);
   const pendingEvents = useMemo(() => [
     ...state.pendingEffects.map((effect) => ({ id: effect.id, dueMinute: effect.dueMinute, source: "delayed effect" })),
     ...info.events
@@ -150,8 +167,14 @@ export default function SimulationDeveloperPanel({
         {message ? <p className={styles.developerMessage} role="status">{message}</p> : null}
         {!info.validation.success ? <div className={styles.validationErrors} role="alert"><strong>Scenario validation failed</strong><ul>{info.validation.issues.map((issue) => <li key={`${issue.path}-${issue.message}`}>{issue.path}: {issue.message}</li>)}</ul></div> : null}
 
+        <VisualDeveloperControls visual={visualState} overrides={visualOverrides} performance={scenePerformance} disabled={busy} onChange={onVisualOverrides} />
+
         <div className={styles.developerGrid}>
           <details open><summary>Current and hidden patient state</summary><pre>{JSON.stringify(state, null, 2)}</pre></details>
+          <details open><summary>Derived patient visual state</summary><pre>{JSON.stringify(visualState, null, 2)}</pre></details>
+          <details><summary>Scene assets, anchors, and tubing ({activeSceneAssets.length} assets / {sceneConnections.length} connections)</summary><pre>{JSON.stringify({ activeSceneAssets, missingSceneAssets, anchors: sceneAnchors, connections: sceneConnections }, null, 2)}</pre></details>
+          <details><summary>Visual consistency warnings ({visualState.warnings.length})</summary><pre>{JSON.stringify(visualState.warnings, null, 2)}</pre></details>
+          <details><summary>Render performance</summary><pre>{JSON.stringify(scenePerformance, null, 2)}</pre></details>
           <details><summary>Pending event queue ({pendingEvents.length})</summary><pre>{JSON.stringify(pendingEvents, null, 2)}</pre></details>
           <details><summary>Current score breakdown</summary><pre>{JSON.stringify(scores, null, 2)}</pre></details>
           <details><summary>Completion conditions</summary><pre>{JSON.stringify(scenario.completion, null, 2)}</pre></details>

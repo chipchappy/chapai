@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import SimulationWorkspace from "@/components/clinical-simulation/SimulationWorkspace";
+import { requireClinicalSimulationPageAccess } from "@/lib/clinical-simulation/page-access";
 import { getClinicalScenarioBySlug } from "@/lib/clinical-simulation/scenarios";
 
 type PageProps = {
@@ -8,6 +9,7 @@ type PageProps = {
 };
 
 export default async function ClinicalSimulationRunPage({ params, searchParams }: PageProps) {
+  await requireClinicalSimulationPageAccess();
   const [{ slug }, query] = await Promise.all([params, searchParams]);
   const scenario = getClinicalScenarioBySlug(slug);
   if (!scenario) notFound();

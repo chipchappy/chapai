@@ -102,6 +102,25 @@ test.describe("Clinical Simulation disabled isolation", () => {
   });
 });
 
+test.describe("Clinical Simulation page data boundary", () => {
+  test.skip(!enabled, "The target must enable the simulator to exercise its anonymous page guard.");
+
+  test("anonymous page responses do not serialize protected scenario data @desktopOnly", async ({ request }) => {
+    const protectedPaths = [
+      "/clinical-simulation",
+      "/clinical-simulation/septic-shock",
+      "/clinical-simulation/septic-shock/run?attempt=missing",
+    ];
+    for (const path of protectedPaths) {
+      const response = await request.get(path);
+      const body = await response.text();
+      expect(body, path).not.toContain("Postoperative Deterioration");
+      expect(body, path).not.toContain("GCS is 13");
+      expect(body, path).not.toContain("clinicalScenarios");
+    }
+  });
+});
+
 test.describe("Clinical Simulation enabled vertical slice", () => {
   test.skip(!enabled || !testEmail || !testPassword, "Set the local Clinical Simulation E2E environment variables.");
 

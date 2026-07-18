@@ -48,6 +48,21 @@ export const actionClassifications = [
   "critical_error",
 ] as const;
 
+export const patientPositions = [
+  "supine",
+  "semi-fowler",
+  "fowler",
+  "high-fowler",
+  "trendelenburg",
+  "reverse-trendelenburg",
+  "left-lateral",
+  "right-lateral",
+  "recovery",
+  "prone",
+  "tripod",
+  "sitting-edge",
+] as const;
+
 const evidenceSchema = z.object({
   id: z.string().min(2),
   title: z.string().min(8),
@@ -85,6 +100,8 @@ const initialStateSchema = z.object({
   breathSounds: z.string(),
   oxygenDevice: z.string(),
   oxygenFlow: z.string(),
+  position: z.enum(patientPositions).default("semi-fowler"),
+  headOfBedDegrees: z.number().min(-15).max(90).default(30),
   ventilator: z.record(z.union([z.string(), z.number(), z.boolean()])).default({}),
   cardiacRhythm: z.string(),
   perfusion: z.string(),
@@ -294,6 +311,7 @@ export type ScenarioCondition = NonNullable<ClinicalScenario["events"][number]["
 export type ActionCategory = (typeof actionCategories)[number];
 export type CompetencyDomain = (typeof competencyDomains)[number];
 export type ActionClassification = (typeof actionClassifications)[number];
+export type PatientPosition = (typeof patientPositions)[number];
 
 export type ScenarioValidationIssue = { path: string; message: string };
 

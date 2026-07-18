@@ -6,8 +6,8 @@ The simulator is additive. It shares authentication, hosted user identity, brand
 
 ## Request Flow
 
-1. `clinical-simulation/layout.tsx` checks the server feature gate and authentication.
-2. Every `/api/clinical-simulation/*` handler repeats the feature and identity checks.
+1. `page-access.ts` checks the server feature gate and authentication in the layout and every page before scenario lookup or rendering. The repeated page checks prevent parallel React Server Component rendering from serializing protected child data behind a parent soft-404.
+2. Every `/api/clinical-simulation/*` handler independently repeats the feature and identity checks.
 3. `ensureHostedUser` maps the authenticated account to the existing D1 user identity.
 4. The attempt API loads the attempt with both `attempt_id` and `user_id` predicates.
 5. The server applies a structured action or clock advance through the deterministic engine.
@@ -23,6 +23,7 @@ The browser never submits a score or arbitrary patient state.
 - `future-scenario-outlines.ts`: non-playable planning records only
 - `engine.ts`: seeded state creation, effects, conditions, events, time, action classification, scoring, debrief
 - `feature.ts`: fail-closed environment and production allowlist gate
+- `page-access.ts`: fail-closed page guard applied before protected scenario data is rendered
 - `access.ts`: feature, authentication, D1, and hosted-user API guard
 - `store.ts`: isolated attempt, action, debrief, and assignment persistence
 - `components/clinical-simulation/*`: catalog, prebrief, workstation, monitor, and debrief
@@ -57,6 +58,7 @@ Cloudflare D1 does not provide PostgreSQL-style row-level security. Equivalent i
 - Instructor reports first resolve an active instructor cohort, then join only active student grants in that cohort.
 - Assignment creation always uses the resolved instructor cohort and hosted instructor user.
 - Disabled feature routes return 404 before data access.
+- Production page access requires an authenticated allowlisted email at both the page and layout boundaries.
 
 If persistence moves to Supabase PostgreSQL, mirror these rules in database RLS policies and retain API checks as defense in depth.
 

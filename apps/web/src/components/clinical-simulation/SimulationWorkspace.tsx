@@ -11,8 +11,6 @@ import {
   ChevronRight,
   ClipboardCheck,
   Clock3,
-  FileText,
-  Gauge,
   HeartPulse,
   ListChecks,
   LogOut,
@@ -26,10 +24,12 @@ import {
   TestTube2,
 } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
+import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
 import SimulationDebrief from "@/components/clinical-simulation/SimulationDebrief";
 import { canCompleteSimulation, type PatientState, type SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
 import type { ClinicalScenario, ScenarioAction } from "@/lib/clinical-simulation/schema";
+import { derivePatientVisualState, type SceneQuality, type VisualDebugOverrides } from "@/lib/clinical-simulation/visual-state";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./clinical-simulation.module.css";
 
@@ -150,6 +150,9 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [attemptMeta, setAttemptMeta] = useState<AttemptMeta | null>(null);
   const [developerInfo, setDeveloperInfo] = useState<DeveloperScenarioInfo | null>(null);
   const [developerToolsEnabled, setDeveloperToolsEnabled] = useState(false);
+  const [visualOverrides, setVisualOverrides] = useState<VisualDebugOverrides>({});
+  const [scenePerformance, setScenePerformance] = useState<ScenePerformanceSample | null>(null);
+  const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
   const [activeTab, setActiveTab] = useState<TabId>("patient");
   const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [speed, setSpeed] = useState<1 | 5>(1);
@@ -158,6 +161,12 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [error, setError] = useState<string | null>(null);
   const workingRef = useRef(false);
   const debriefTracked = useRef(false);
+
+  useEffect(() => {
+    const connection = navigator as Navigator & { connection?: { saveData?: boolean } };
+    const constrained = (navigator.hardwareConcurrency ?? 8) <= 4 || Boolean(connection.connection?.saveData) || window.matchMedia("(max-width: 520px)").matches;
+    setSceneQuality(constrained ? "reduced" : "full");
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -272,8 +281,14 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
     router.push("/clinical-simulation");
   }
 
+  const patientVisualState = useMemo(
+    () => state ? derivePatientVisualState(scenario, state, developerToolsEnabled ? visualOverrides : undefined, sceneQuality) : null,
+    [developerToolsEnabled, scenario, sceneQuality, state, visualOverrides],
+  );
+  const updateScenePerformance = useCallback((sample: ScenePerformanceSample) => setScenePerformance(sample), []);
+
   if (loading) return <main className={styles.workspaceLoading}><Activity className={styles.spin} aria-hidden="true" /><span>Loading patient state</span></main>;
-  if (!state) return <main className={styles.workspaceError}><AlertTriangle aria-hidden="true" /><h1>Simulation unavailable</h1><p>{error}</p><Link href="/clinical-simulation">Return to catalog</Link></main>;
+  if (!state || !patientVisualState) return <main className={styles.workspaceError}><AlertTriangle aria-hidden="true" /><h1>Simulation unavailable</h1><p>{error}</p><Link href="/clinical-simulation">Return to catalog</Link></main>;
   if (debrief) return <SimulationDebrief scenario={scenario} debrief={debrief} attemptId={attemptId} traceExportEnabled={developerToolsEnabled} />;
 
   const simulationState = state;
@@ -322,19 +337,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       </header>
 
       <section className={styles.clinicalView}>
-        <div className={styles.patientScene}>
-          <div className={styles.sceneHeader}><span>Bedside view</span><strong>{state.levelOfConsciousness} / {state.orientation}</strong></div>
-          <div className={styles.bedVisual} aria-label={`Patient is ${state.levelOfConsciousness}. Respiratory effort is ${state.respiratoryEffort}.`}>
-            <div className={styles.ivPole}><i /><i /><span>IV</span></div>
-            <div className={styles.bedFrame}><div className={styles.pillow} /><div className={styles.patientFigure}><span /><i /></div></div>
-            <div className={styles.equipmentLabels}>
-              <span><Activity size={14} aria-hidden="true" /> {state.oxygenDevice} {state.oxygenFlow}</span>
-              <span><Gauge size={14} aria-hidden="true" /> {state.respiratoryEffort}</span>
-              <span><FileText size={14} aria-hidden="true" /> {state.devices.drain ?? state.devices.iv ?? "Standard monitoring"}</span>
-            </div>
-          </div>
-          <div className={styles.visibleCues}><span>Appearance</span><p>{state.skin}. {state.perfusion}. Behavior: {state.behavior}.</p></div>
-        </div>
+        <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
         <BedsideMonitor state={state} />
         <aside className={styles.responseFeed} aria-live="polite">
           <header><Activity size={16} aria-hidden="true" /> Patient response</header>
@@ -356,6 +359,10 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         onReset={async (seed) => { await perform({ operation: "reset", ...(seed ? { seed } : {}) }); setSelections({}); }}
         onRestart={restartAttempt}
         onTriggerEvent={async (eventId) => { await perform({ operation: "trigger_event", eventId }); }}
+        visualState={patientVisualState}
+        visualOverrides={visualOverrides}
+        scenePerformance={scenePerformance}
+        onVisualOverrides={setVisualOverrides}
       /> : null}
 
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}
