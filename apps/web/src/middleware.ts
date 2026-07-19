@@ -20,8 +20,11 @@ function hasAuthCookie(request: NextRequest) {
     || request.cookies.getAll().some((cookie) => /^sb-[a-z0-9]+-auth-token$/i.test(cookie.name));
 }
 
-function applySecurityHeaders(response: NextResponse) {
-  response.headers.set("Strict-Transport-Security", "max-age=31536000");
+function applySecurityHeaders(response: NextResponse, local = false) {
+  // localhost only: HSTS is a footgun on localhost and Next's dev client needs
+  // eval + a websocket for React Refresh/HMR. Production hosts never match, so
+  // the deployed policy is unchanged.
+  if (!local) response.headers.set("Strict-Transport-Security", "max-age=31536000");
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
@@ -40,16 +43,21 @@ function applySecurityHeaders(response: NextResponse) {
       "img-src 'self' data: blob: https:",
       "font-src 'self' data: https://fonts.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://static.cloudflareinsights.com",
-      "connect-src 'self' https:",
+      `script-src 'self' 'unsafe-inline'${local ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://static.cloudflareinsights.com`,
+      `connect-src 'self'${local ? " ws: http:" : ""} https:`,
       "frame-src https://js.stripe.com https://checkout.stripe.com",
     ].join("; "),
   );
   return response;
 }
 
+function isLocalHost(host: string) {
+  return host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+}
+
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.toLowerCase().split(":")[0] ?? "";
+  const local = isLocalHost(host);
   const forwardedProto = request.headers.get("x-forwarded-proto")?.toLowerCase();
   const isProductionHost = productionHosts.has(host);
 
@@ -89,7 +97,7 @@ export function middleware(request: NextRequest) {
     return applySecurityHeaders(NextResponse.redirect(url));
   }
 
-  return applySecurityHeaders(NextResponse.next());
+  return applySecurityHeaders(NextResponse.next(), local);
 }
 
 export const config = {

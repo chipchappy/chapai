@@ -68,16 +68,37 @@ export default function RoomScene({ visual, idPrefix }: Props) {
   const intensive = visual.roomPreset === "intensive-care" || visual.roomPreset === "step-down";
   return (
     <g aria-hidden="true" data-room-preset={visual.roomPreset}>
+      {/* Depth pass: shading layered over the base fills so every room/lighting
+          variant keeps its own palette and only gains dimension. */}
+      <defs>
+        <linearGradient id={`${idPrefix}-wall-shade`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#243230" stopOpacity="0.17" />
+          <stop offset="0.72" stopColor="#243230" stopOpacity="0.03" />
+          <stop offset="1" stopColor="#243230" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id={`${idPrefix}-floor-shade`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#1d2b29" stopOpacity="0.24" />
+          <stop offset="1" stopColor="#1d2b29" stopOpacity="0" />
+        </linearGradient>
+        <radialGradient id={`${idPrefix}-room-vignette`} cx="50%" cy="45%" r="74%">
+          <stop offset="0.55" stopColor="#0e1a19" stopOpacity="0" />
+          <stop offset="1" stopColor="#0e1a19" stopOpacity="0.19" />
+        </radialGradient>
+      </defs>
       <rect width="1200" height="680" fill={night ? "#9ba9a7" : psychiatric ? "#d9e4dd" : "#dce5e1"} />
       <path d="M0 0 H1200 V405 H0 Z" fill={night ? "#9ba9a7" : psychiatric ? "#d8e4dd" : "#e3e9e6"} />
+      <rect width="1200" height="405" fill={`url(#${idPrefix}-wall-shade)`} />
       <path d="M0 405 H1200 V680 H0 Z" fill={psychiatric ? "#bfcac2" : "#c8ceca"} />
+      <rect y="405" width="1200" height="275" fill={`url(#${idPrefix}-floor-shade)`} />
       <path d="M0 405 H1200" stroke="#aab6b1" strokeWidth="8" />
+      <path d="M0 403 H1200" stroke="#8d9c97" strokeWidth="2" opacity="0.5" />
       <path d="M0 680 L350 405 H850 L1200 680" fill={night ? "#8c9694" : "#bdc4c0"} opacity="0.46" />
       {psychiatric ? <PsychiatricRoom /> : procedural ? <ProceduralRoom /> : <Headwall intensive={intensive} />}
       {!psychiatric ? <><Window night={night} /><RoomClock night={night} /></> : null}
       {visual.roomPreset === "medical-surgical" ? <g transform="translate(1007 338)"><rect width="143" height="92" rx="7" fill="#d8dfdc" stroke="#839592" strokeWidth="3" /><rect x="14" y="13" width="114" height="29" rx="4" fill="#f7f8f5" /><path d="M18 59 H125" stroke="#9aaba7" strokeWidth="4" /><circle cx="23" cy="100" r="9" fill="#4d5f5e" /><circle cx="119" cy="100" r="9" fill="#4d5f5e" /></g> : null}
       {visual.roomPreset === "telemetry" ? <g transform="translate(972 184)"><rect width="152" height="82" rx="9" fill="#293c3b" stroke="#70827f" strokeWidth="4" /><path d="M15 43 H34 L42 24 L52 61 L62 42 H137" fill="none" stroke="#69d899" strokeWidth="3" /><text x="76" y="73" textAnchor="middle" fill="#9eb2ad" fontSize="10">TELEMETRY</text></g> : null}
       {visual.roomPreset === "step-down" ? <g transform="translate(1041 328)"><rect width="79" height="106" rx="8" fill="#e9efec" stroke="#819590" strokeWidth="4" /><circle cx="39" cy="32" r="17" fill="#b9d4cc" /><path d="M20 76 H59" stroke="#708783" strokeWidth="6" strokeLinecap="round" /></g> : null}
+      <rect width="1200" height="680" fill={`url(#${idPrefix}-room-vignette)`} />
       {visual.roomLighting === "emergency" ? <rect width="1200" height="680" fill={`url(#${idPrefix}-alarm-light)`} opacity="0.22" /> : null}
       {visual.roomLighting === "procedure" ? <ellipse cx="670" cy="355" rx="330" ry="245" fill="#fff7d9" opacity="0.12" /> : null}
       {visual.roomLighting === "calming" ? <rect width="1200" height="680" fill="#b9d7c6" opacity="0.08" /> : null}
