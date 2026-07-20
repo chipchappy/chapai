@@ -13,6 +13,7 @@ import {
   Clock3,
   HeartPulse,
   ListChecks,
+  Lock,
   LogOut,
   MessageSquareText,
   Pause,
@@ -20,8 +21,10 @@ import {
   Play,
   Save,
   ShieldAlert,
+  Siren,
   Stethoscope,
   TestTube2,
+  Zap,
 } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
@@ -89,9 +92,56 @@ function formatClock(minute: number) {
   return `${String(hour % 24).padStart(2, "0")}:${String(minute % 60).padStart(2, "0")}`;
 }
 
+/** Actions a nurse reaches for during a resuscitation, matched from the scenario definition. */
+const CODE_ACTION_PATTERN = /defib|shock|cardiovert|\bcpr\b|compress|epinephrine|amiodarone|bag-?mask|bag-?valve|resuscitat|\bpads?\b|\bacls\b|code team|airway/i;
+
+function rhythmCodeState(rhythm: string): "shockable" | "nonshockable" | null {
+  const value = rhythm.toLowerCase();
+  if (/v-?fib|ventricular fib/.test(value)) return "shockable";
+  if (/v-?tach|ventricular tach/.test(value)) return "shockable";
+  if (/asystole|\bpea\b|pulseless electrical/.test(value)) return "nonshockable";
+  return null;
+}
+
+function CodeBluePanel({ scenario, state, busy, onAct }: { scenario: ClinicalScenario; state: PatientState; busy: boolean; onAct: (actionId: string) => void }) {
+  const codeState = rhythmCodeState(state.cardiacRhythm);
+  const startRef = useRef<number | null>(null);
+  if (codeState === null) {
+    startRef.current = null;
+    return null;
+  }
+  if (startRef.current === null) startRef.current = state.virtualMinute;
+  const elapsed = Math.max(0, state.virtualMinute - startRef.current);
+  const codeActions = scenario.actions
+    .filter((action) => (action.category === "intervention" || action.category === "medication" || action.category === "safety" || action.category === "communication") && CODE_ACTION_PATTERN.test(`${action.label} ${action.description}`))
+    .slice(0, 6);
+  return (
+    <section className={styles.codePanel} role="alert" data-code={codeState} data-testid="code-blue-panel">
+      <header>
+        <strong><Siren size={17} aria-hidden="true" /> CODE — {state.cardiacRhythm}</strong>
+        <span>{elapsed} min into the arrest</span>
+      </header>
+      <p>{codeState === "shockable"
+        ? "Shockable rhythm: start compressions, apply pads, and defibrillate without delay. Resume CPR immediately after each shock."
+        : "Non-shockable rhythm: high-quality CPR, epinephrine every 3-5 minutes, and work the reversible causes (Hs and Ts)."}</p>
+      {codeActions.length ? <div className={styles.codeActions}>
+        {codeActions.map((action) => {
+          const done = state.completedActionIds.includes(action.id);
+          return <button key={action.id} type="button" disabled={busy || (done && !action.repeatable)} data-completed={done} onClick={() => onAct(action.id)}>
+            {done ? <Check size={14} aria-hidden="true" /> : <Zap size={14} aria-hidden="true" />} {action.label}
+          </button>;
+        })}
+      </div> : null}
+    </section>
+  );
+}
+
+type PatientIdentity = { name: string; room: string; allergies: string[] };
+
 function ActionControl({
   action,
   state,
+  patient,
   selected,
   onSelection,
   onPerform,
@@ -99,6 +149,7 @@ function ActionControl({
 }: {
   action: ScenarioAction;
   state: PatientState;
+  patient: PatientIdentity;
   selected: string[];
   onSelection: (ids: string[]) => void;
   onPerform: () => void;
@@ -107,6 +158,23 @@ function ActionControl({
   const completed = state.completedActionIds.includes(action.id);
   const elements = action.communication?.elements ?? action.documentation?.fields ?? [];
   const toggle = (id: string) => onSelection(selected.includes(id) ? selected.filter((item) => item !== id) : [...selected, id]);
+
+  // Medication safety: the MAR order must be pulled from the Pyxis and verified
+  // against the rights of administration before the administer control unlocks.
+  const [pyxisPulled, setPyxisPulled] = useState(false);
+  const [verifiedRights, setVerifiedRights] = useState<string[]>([]);
+  const rights = action.medication ? [
+    { id: "patient", label: `Right patient — ${patient.name}, Room ${patient.room}` },
+    { id: "drug", label: `Right drug — ${action.medication.genericName}${action.medication.brandName ? ` (${action.medication.brandName})` : ""}` },
+    { id: "dose", label: `Right dose — ${action.medication.orderedDose}` },
+    { id: "route", label: `Right route — ${action.medication.route}` },
+    { id: "time", label: `Right time — ${action.medication.frequency}` },
+    { id: "allergy", label: `Allergies reviewed — ${patient.allergies.join(", ") || "none documented"}` },
+    ...(action.medication.independentDoubleCheck ? [{ id: "double-check", label: "Independent double-check completed with a second nurse" }] : []),
+  ] : [];
+  const rightsVerified = rights.every((right) => verifiedRights.includes(right.id));
+  const medicationGateOpen = !action.medication || completed || (pyxisPulled && rightsVerified);
+  const toggleRight = (id: string) => setVerifiedRights((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
   return (
     <article className={styles.actionRow} data-completed={completed}>
       <div className={styles.actionHeading}>
@@ -132,6 +200,25 @@ function ActionControl({
           {action.medication.independentDoubleCheck ? <em><ShieldAlert size={14} aria-hidden="true" /> Independent double-check required</em> : null}
         </div>
       ) : null}
+      {action.medication && !completed ? (
+        <div className={styles.pyxisGate} data-pulled={pyxisPulled}>
+          <header>
+            <span><Lock size={14} aria-hidden="true" /> Automated dispensing cabinet</span>
+            {pyxisPulled
+              ? <em><Check size={13} aria-hidden="true" /> Dispensed to {patient.name}</em>
+              : <button type="button" disabled={disabled} onClick={() => setPyxisPulled(true)}>Pull medication</button>}
+          </header>
+          {pyxisPulled ? (
+            <fieldset>
+              <legend>Verify against the MAR before administering</legend>
+              {rights.map((right) => <label key={right.id}>
+                <input type="checkbox" checked={verifiedRights.includes(right.id)} onChange={() => toggleRight(right.id)} />
+                <span>{right.label}</span>
+              </label>)}
+            </fieldset>
+          ) : <p>Pull the medication from the cabinet, then verify each right of administration against the MAR.</p>}
+        </div>
+      ) : null}
       {elements.length ? (
         <fieldset className={styles.structuredFields}>
           <legend>{action.communication?.prompt ?? action.documentation?.prompt}</legend>
@@ -143,9 +230,9 @@ function ActionControl({
       ) : null}
       <div className={styles.actionFooter}>
         {action.safetyChecks.length ? <span><ShieldAlert size={14} aria-hidden="true" /> Requires {action.safetyChecks.length} safety check{action.safetyChecks.length === 1 ? "" : "s"}</span> : <span />}
-        <button type="button" onClick={onPerform} disabled={disabled || (completed && !action.repeatable)}>
+        <button type="button" onClick={onPerform} disabled={disabled || (completed && !action.repeatable) || !medicationGateOpen} title={medicationGateOpen ? undefined : "Pull the medication and verify every right of administration first"}>
           {completed && !action.repeatable ? <Check size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-          {completed && !action.repeatable ? "Completed" : action.category === "communication" ? "Send communication" : action.category === "documentation" ? "Submit documentation" : "Perform action"}
+          {completed && !action.repeatable ? "Completed" : action.medication ? "Administer" : action.category === "communication" ? "Send communication" : action.category === "documentation" ? "Submit documentation" : "Perform action"}
         </button>
       </div>
     </article>
@@ -313,6 +400,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       key={action.id}
       action={action}
       state={simulationState}
+      patient={{ name: scenario.patient.name, room: scenario.patient.room, allergies: scenario.patient.allergies }}
       selected={selections[action.id] ?? []}
       onSelection={(ids) => setSelections((current) => ({ ...current, [action.id]: ids }))}
       onPerform={() => void perform({ operation: "act", actionId: action.id, selectedElements: selections[action.id] ?? [] })}
@@ -375,6 +463,8 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       /> : null}
 
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}
+
+      <CodeBluePanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
       <nav className={styles.workspaceTabs} role="tablist" aria-label="Clinical workspace">
         {tabGroups.map((group) => <div key={group.label} className={styles.tabGroup}>
