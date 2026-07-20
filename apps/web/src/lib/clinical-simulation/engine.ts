@@ -52,6 +52,14 @@ export type SimulationNotice = {
   stateChanges: StateChange[];
 };
 
+export type VitalsSample = {
+  minute: number;
+  heartRate: number;
+  map: number;
+  spo2: number;
+  respiratoryRate: number;
+};
+
 export type PatientState = ClinicalScenario["initialState"] & {
   virtualMinute: number;
   status: AttemptStatus;
@@ -66,6 +74,8 @@ export type PatientState = ClinicalScenario["initialState"] & {
   actionLog: ActionLogEntry[];
   notices: SimulationNotice[];
   criticalErrors: string[];
+  /** Per-minute vitals record powering the debrief trajectory chart. */
+  vitalsHistory: VitalsSample[];
 };
 
 export type DomainScore = {
@@ -84,6 +94,7 @@ export type SimulationDebrief = {
   weakestDomain: CompetencyDomain | null;
   criticalErrors: string[];
   timeline: ActionLogEntry[];
+  vitalsTrajectory: VitalsSample[];
   delayedActionIds: string[];
   unsafeActionIds: string[];
   medicationActionIds: string[];
@@ -155,6 +166,7 @@ function clamp(value: number, minimum: number, maximum: number) {
 }
 
 function normalizePatientStateInPlace(state: PatientState) {
+  if (!Array.isArray(state.vitalsHistory)) state.vitalsHistory = [];
   state.clockPaused ??= false;
   state.completedActionIds ??= [];
   state.revealedFindingIds ??= [];
@@ -191,6 +203,22 @@ export function normalizePatientState(input: PatientState) {
   const state = clone(input);
   normalizePatientStateInPlace(state);
   return state;
+}
+
+/** Appends (or replaces, within the same minute) a vitals snapshot, bounded for storage. */
+function recordVitalsSample(state: PatientState) {
+  const sample: VitalsSample = {
+    minute: state.virtualMinute,
+    heartRate: Math.round(state.vitals.heartRate),
+    map: Math.round(state.vitals.map),
+    spo2: Math.round(state.vitals.spo2),
+    respiratoryRate: Math.round(state.vitals.respiratoryRate),
+  };
+  const history = state.vitalsHistory;
+  const last = history[history.length - 1];
+  if (last && last.minute === sample.minute) history[history.length - 1] = sample;
+  else history.push(sample);
+  if (history.length > 200) history.splice(0, history.length - 200);
 }
 
 function applyEffects(state: PatientState, effects: ScenarioEffect[]) {
@@ -265,6 +293,7 @@ export function createInitialPatientState(scenario: ClinicalScenario, seed: numb
     actionLog: [],
     notices: [{ id: "simulation-start", virtualMinute: 0, severity: "info", message: "You have assumed care of the patient.", stateChanges: [] }],
     criticalErrors: [],
+    vitalsHistory: [],
   };
 
   const random = seededUnit(seed || 1);
@@ -274,6 +303,7 @@ export function createInitialPatientState(scenario: ClinicalScenario, seed: numb
     setPath(state, variance.path, next);
   }
   normalizePatientStateInPlace(state);
+  recordVitalsSample(state);
   return state;
 }
 
@@ -286,6 +316,7 @@ export function advanceSimulation(scenario: ClinicalScenario, current: PatientSt
     state.timeSinceLastReassessment += 1;
     processDueEffects(state);
     processEvents(scenario, state);
+    recordVitalsSample(state);
   }
   if (state.virtualMinute >= scenario.completion.maximumVirtualMinutes) {
     if (!state.notices.some((notice) => notice.id === "scenario-deadline")) {
@@ -450,6 +481,7 @@ export function applySimulationAction(
     stateChanges,
   });
   processEvents(scenario, state);
+  recordVitalsSample(state);
   return { state, entry };
 }
 
@@ -568,6 +600,7 @@ export function completeSimulation(scenario: ClinicalScenario, current: PatientS
     weakestDomain: weakest,
     criticalErrors: state.criticalErrors,
     timeline: state.actionLog,
+    vitalsTrajectory: state.vitalsHistory,
     delayedActionIds: delayed.map((entry) => entry.id),
     unsafeActionIds: unsafe.map((entry) => entry.id),
     medicationActionIds: medication.map((entry) => entry.id),

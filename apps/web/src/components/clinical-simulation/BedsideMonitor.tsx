@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
 import styles from "./clinical-simulation.module.css";
 
@@ -86,6 +87,21 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
   const stateRef = useRef(state);
   stateRef.current = state;
 
+  // Opt-in monitor tones: a QRS beep whose pitch tracks SpO2 (as on a real
+  // pulse oximeter) plus a triple chirp while alarm limits are violated.
+  const [audioOn, setAudioOn] = useState(false);
+  const audioRef = useRef<{ enabled: boolean; ctx: AudioContext | null; lastChirp: number }>({ enabled: false, ctx: null, lastChirp: 0 });
+  audioRef.current.enabled = audioOn;
+  function toggleAudio() {
+    setAudioOn((current) => {
+      const next = !current;
+      if (next && !audioRef.current.ctx) audioRef.current.ctx = new AudioContext();
+      if (next) void audioRef.current.ctx?.resume();
+      return next;
+    });
+  }
+  useEffect(() => () => { void audioRef.current.ctx?.close().catch(() => {}); }, []);
+
   // Rolling vitals history so the numerics can show 4-minute trend arrows.
   const historyRef = useRef<TrendSample[]>([]);
   useEffect(() => {
@@ -137,6 +153,23 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
           { kind: "pleth", color: "#56c8ea", cyFrac: 0.56, ampFrac: 0.11 },
           { kind: "resp", color: "#e0b866", cyFrac: 0.85, ampFrac: 0.08 },
         ];
+
+    function beep(freq: number, at = 0, dur = 0.07, gain = 0.035) {
+      const audio = audioRef.current;
+      if (!audio.enabled || !audio.ctx) return;
+      const audioCtx = audio.ctx;
+      const t = audioCtx.currentTime + at;
+      const osc = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      g.gain.setValueAtTime(gain, t);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      osc.connect(g);
+      g.connect(audioCtx.destination);
+      osc.start(t);
+      osc.stop(t + dur + 0.02);
+    }
 
     const pxPerSec = 130;
     let prevX = 0;
@@ -247,7 +280,15 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
           ecgPhase -= 1;
           beatIndex += 1;
           beatJitter = rhythm === "afib" ? 0.62 + (deterministicNoise(beatIndex, s.seed) + 0.5) * 0.85 : 1;
+          if (rhythm !== "vfib") beep(620 + Math.max(0, Math.min(20, s.vitals.spo2 - 80)) * 18);
         }
+      }
+      const alarmingNow = s.vitals.spo2 < 90 || s.vitals.map < 65 || s.vitals.heartRate > 125 || s.vitals.respiratoryRate < 8;
+      if (alarmingNow && now - audioRef.current.lastChirp > 4000) {
+        audioRef.current.lastChirp = now;
+        beep(950, 0, 0.09);
+        beep(950, 0.16, 0.09);
+        beep(950, 0.32, 0.09);
       }
       respPhase += dt * (Math.max(4, s.vitals.respiratoryRate) / 60);
       if (respPhase >= 1) respPhase -= 1;
@@ -293,6 +334,9 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
         <span className={alarming ? styles.alarmActive : styles.alarmNormal}>
           {alarming ? "ALARM / CHECK PATIENT" : "ALARMS ACTIVE"}
         </span>
+        <button type="button" className={styles.monitorAudio} onClick={toggleAudio} aria-pressed={audioOn} title={audioOn ? "Mute monitor tones" : "Enable monitor tones"} aria-label={audioOn ? "Mute monitor tones" : "Enable monitor tones"}>
+          {audioOn ? <Volume2 size={13} aria-hidden="true" /> : <VolumeX size={13} aria-hidden="true" />}
+        </button>
       </header>
       <div className={styles.waveform} aria-hidden="true">
         <canvas ref={canvasRef} className={styles.waveformCanvas} />

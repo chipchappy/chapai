@@ -2086,3 +2086,55 @@
 @media (prefers-reduced-motion: reduce) {
   .codePanel > header > strong svg { animation: none; }
 }
+
+/* ==== monitor audio toggle ==== */
+.monitorAudio {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #2b4640;
+  border-radius: 7px;
+  padding: 3px 7px;
+  background: transparent;
+  color: #7f9990;
+  cursor: pointer;
+}
+
+.monitorAudio:hover { color: #b9cec7; border-color: #3d5a52; }
+.monitorAudio[aria-pressed="true"] { color: #7fe3b0; border-color: #3f6a5c; }
+
+/* ==== debrief vitals trajectory chart ==== */
+.vitalsChartSection {
+  padding: 22px;
+  border-bottom: 1px solid #e2e8e3;
+  background: #fff;
+}
+
+.vitalsChartSection svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+}
+
+.vitalsChartLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.vitalsChartLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #5d726b;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.vitalsChartLegend i {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+}

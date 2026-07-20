@@ -218,7 +218,7 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformActi
             <radialGradient id={`${idPrefix}-alarm-light`} cx="50%" cy="35%" r="70%"><stop offset="0" stopColor="#d9534f" stopOpacity="0.5" /><stop offset="1" stopColor="#d9534f" stopOpacity="0" /></radialGradient>
             <pattern id={`${idPrefix}-mottling`} width="42" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(-9)"><path d="M4 12 Q13 2 22 12 T40 10 Q31 25 20 20 T2 26 Z" fill={visual.profile.palette.mottling} /><ellipse cx="12" cy="29" rx="8" ry="4" fill={visual.profile.palette.mottling} /></pattern>
           </defs>
-          <RoomScene visual={visual} idPrefix={idPrefix} />
+          <RoomScene visual={visual} idPrefix={idPrefix} virtualMinute={state.virtualMinute} roomLabel={scenario.patient.room} patientName={scenario.patient.name} />
           <PatientBody visual={visual} anchors={anchors} idPrefix={idPrefix} />
           <MedicalDevices visual={visual} anchors={anchors} connections={connections} idPrefix={idPrefix} vitals={state.vitals} />
         </svg>

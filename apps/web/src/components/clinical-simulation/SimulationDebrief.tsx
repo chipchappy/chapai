@@ -21,6 +21,50 @@ const domainLabels: Record<CompetencyDomain, string> = {
   "time-management": "Time management",
 };
 
+function VitalsTrajectoryChart({ debrief }: { debrief: Debrief }) {
+  const samples = debrief.vitalsTrajectory ?? [];
+  if (samples.length < 2) return null;
+  const width = 760;
+  const left = 46;
+  const right = 748;
+  const top = 16;
+  const bottom = 168;
+  const maxMinute = Math.max(samples[samples.length - 1].minute, 1);
+  const x = (minute: number) => left + (minute / maxMinute) * (right - left);
+  const y = (value: number, min: number, max: number) => bottom - ((Math.min(Math.max(value, min), max) - min) / (max - min)) * (bottom - top);
+  const series = [
+    { key: "heartRate" as const, label: "HR", color: "#2f8a5b", min: 0, max: 170 },
+    { key: "map" as const, label: "MAP", color: "#b07f2e", min: 0, max: 130 },
+    { key: "spo2" as const, label: "SpO₂", color: "#2e7fa8", min: 60, max: 100 },
+  ];
+  const markers = debrief.timeline
+    .filter((entry) => ["essential", "high_priority", "unsafe", "critical_error"].includes(entry.classification))
+    .map((entry) => ({ id: entry.id, minute: entry.virtualMinute, label: entry.label, good: entry.classification === "essential" || entry.classification === "high_priority" }));
+  const tickStep = Math.max(5, Math.ceil(maxMinute / 6 / 5) * 5);
+  const ticks: number[] = [];
+  for (let tick = 0; tick <= maxMinute; tick += tickStep) ticks.push(tick);
+  return (
+    <section className={styles.vitalsChartSection} aria-labelledby="trajectory-chart-heading">
+      <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>Physiologic trajectory</span><h2 id="trajectory-chart-heading">Vitals over the attempt, with your key decisions</h2></div></div>
+      <svg viewBox={`0 0 ${width} 212`} role="img" aria-label={`Heart rate, mean arterial pressure, and oxygen saturation across ${maxMinute} simulated minutes.`}>
+        {[0.25, 0.5, 0.75, 1].map((fraction) => <line key={fraction} x1={left} x2={right} y1={top + (bottom - top) * fraction} y2={top + (bottom - top) * fraction} stroke="#dde5df" strokeWidth="1" />)}
+        {ticks.map((tick) => <g key={tick}><line x1={x(tick)} x2={x(tick)} y1={bottom} y2={bottom + 4} stroke="#9aa8a2" /><text x={x(tick)} y={bottom + 16} textAnchor="middle" fill="#71827b" fontSize="10">+{tick}m</text></g>)}
+        <line x1={left} x2={right} y1={y(65, 0, 130)} y2={y(65, 0, 130)} stroke="#b07f2e" strokeWidth="1" strokeDasharray="5 4" opacity="0.55" />
+        <text x={right} y={y(65, 0, 130) - 4} textAnchor="end" fill="#b07f2e" fontSize="9" opacity="0.8">MAP 65</text>
+        {series.map((line) => <polyline key={line.key} fill="none" stroke={line.color} strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" points={samples.map((sample) => `${x(sample.minute).toFixed(1)},${y(sample[line.key], line.min, line.max).toFixed(1)}`).join(" ")} />)}
+        {markers.map((marker) => <g key={marker.id}><line x1={x(marker.minute)} x2={x(marker.minute)} y1={top - 6} y2={bottom} stroke={marker.good ? "#3f7d5c" : "#b0524a"} strokeWidth="1" opacity="0.3" /><circle cx={x(marker.minute)} cy={top - 8} r="4.5" fill={marker.good ? "#3f7d5c" : "#b0524a"}><title>{`+${marker.minute} min — ${marker.label}`}</title></circle></g>)}
+        <line x1={left} x2={left} y1={top} y2={bottom} stroke="#9aa8a2" />
+        <line x1={left} x2={right} y1={bottom} y2={bottom} stroke="#9aa8a2" />
+      </svg>
+      <div className={styles.vitalsChartLegend}>
+        {series.map((line) => <span key={line.key}><i style={{ background: line.color }} /> {line.label}</span>)}
+        <span><i style={{ background: "#3f7d5c", borderRadius: "50%" }} /> Priority action</span>
+        <span><i style={{ background: "#b0524a", borderRadius: "50%" }} /> Unsafe action</span>
+      </div>
+    </section>
+  );
+}
+
 export default function SimulationDebrief({ scenario, debrief, attemptId, traceExportEnabled = false }: { scenario: ClinicalScenario; debrief: Debrief; attemptId: string; traceExportEnabled?: boolean }) {
   const actionById = new Map(scenario.actions.map((action) => [action.id, action]));
   const timelineByEntryId = new Map(debrief.timeline.map((entry) => [entry.id, entry]));
@@ -57,6 +101,8 @@ export default function SimulationDebrief({ scenario, debrief, attemptId, traceE
           Documentation: debrief.metrics.timeToDocumentation,
         }).map(([label, minute]) => <div key={label}><Clock3 size={15} aria-hidden="true" /><span>{label}</span><strong>{minute == null ? "Not completed" : `+${minute} min`}</strong></div>)}
       </section>
+
+      <VitalsTrajectoryChart debrief={debrief} />
 
       <section className={styles.finalStateBand} aria-labelledby="final-state-heading">
         <div><span className={styles.eyebrow}>Final patient condition</span><h2 id="final-state-heading">State at minute {debrief.finalPatientState.virtualMinute}</h2><p>{debrief.outcomeExplanation}</p></div>

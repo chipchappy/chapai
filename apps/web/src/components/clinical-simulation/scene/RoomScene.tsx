@@ -3,6 +3,10 @@ import type { PatientVisualState } from "@/lib/clinical-simulation/visual-state"
 type Props = {
   visual: PatientVisualState;
   idPrefix: string;
+  /** Sim virtual minute — drives the wall clock (shift starts at 07:00). */
+  virtualMinute?: number;
+  roomLabel?: string;
+  patientName?: string;
 };
 
 function Headwall({ intensive = false }: { intensive?: boolean }) {
@@ -53,8 +57,55 @@ function Headwall({ intensive = false }: { intensive?: boolean }) {
   );
 }
 
-function RoomClock({ night }: { night: boolean }) {
-  return <g transform="translate(1058 88)"><circle r="31" fill="#f8faf7" stroke="#83938e" strokeWidth="4" /><path d="M0 0 L0 -17 M0 0 L13 7" stroke="#405350" strokeWidth="4" strokeLinecap="round" /><circle r="3" fill="#405350" /><text y="48" textAnchor="middle" fill={night ? "#d4e0dc" : "#516663"} fontSize="13" fontWeight="700">{night ? "NIGHT" : "DAY"}</text></g>;
+function RoomClock({ night, minute = 0 }: { night: boolean; minute?: number }) {
+  // Shift starts at 07:00; the hands advance with virtual time.
+  const totalMinutes = 7 * 60 + minute;
+  const minuteAngle = ((totalMinutes % 60) * 6 * Math.PI) / 180;
+  const hourAngle = (((totalMinutes / 60) % 12) * 30 * Math.PI) / 180;
+  const mx = (19 * Math.sin(minuteAngle)).toFixed(1);
+  const my = (-19 * Math.cos(minuteAngle)).toFixed(1);
+  const hx = (12 * Math.sin(hourAngle)).toFixed(1);
+  const hy = (-12 * Math.cos(hourAngle)).toFixed(1);
+  return <g transform="translate(1058 88)"><circle r="31" fill="#f8faf7" stroke="#83938e" strokeWidth="4" /><path d="M0 -24 V-21 M24 0 H21 M0 24 V21 M-24 0 H-21" stroke="#9aa8a3" strokeWidth="2" /><path d={`M0 0 L${mx} ${my}`} stroke="#405350" strokeWidth="3" strokeLinecap="round" /><path d={`M0 0 L${hx} ${hy}`} stroke="#405350" strokeWidth="4.4" strokeLinecap="round" /><circle r="3" fill="#405350" /><text y="48" textAnchor="middle" fill={night ? "#d4e0dc" : "#516663"} fontSize="13" fontWeight="700">{night ? "NIGHT" : "DAY"}</text></g>;
+}
+
+function PatientWhiteboard({ roomLabel, patientName }: { roomLabel?: string; patientName?: string }) {
+  return (
+    <g transform="translate(40 282)" data-room-item="whiteboard">
+      <rect width="150" height="98" rx="7" fill="#fbfcfa" stroke="#a9b7b1" strokeWidth="3.5" />
+      <rect x="8" y="8" width="134" height="20" rx="4" fill="#e3ebe6" />
+      <text x="14" y="22" fill="#43615a" fontSize="11" fontWeight="800">ROOM {roomLabel ?? "—"}</text>
+      <text x="12" y="44" fill="#4d6a92" fontSize="10.5" fontWeight="700" fontStyle="italic">{(patientName ?? "").slice(0, 20) || "Patient"}</text>
+      <text x="12" y="60" fill="#4d6a92" fontSize="9" fontStyle="italic">RN: Student Nurse</text>
+      <text x="12" y="75" fill="#4d6a92" fontSize="9" fontStyle="italic">Goal: call, don&apos;t fall</text>
+      <path d="M12 84 H100" stroke="#c6d2cc" strokeWidth="1.5" />
+      <rect x="118" y="86" width="22" height="6" rx="3" fill="#7d938d" />
+    </g>
+  );
+}
+
+function PrivacyCurtain() {
+  return (
+    <g data-room-item="curtain" opacity="0.96">
+      <path d="M196 78 H236" stroke="#7d8f89" strokeWidth="5" strokeLinecap="round" />
+      <path d="M199 82 Q194 200 200 368 Q205 374 210 368 Q206 200 209 82 Z" fill="#b7c9bf" stroke="#93a89e" strokeWidth="1.5" />
+      <path d="M212 82 Q209 210 214 372 Q219 378 224 372 Q219 210 222 82 Z" fill="#aec2b7" stroke="#8ba095" strokeWidth="1.5" />
+      <path d="M226 82 Q224 190 228 352 Q232 358 236 352 Q233 190 234 82 Z" fill="#b7c9bf" stroke="#93a89e" strokeWidth="1.5" />
+      <circle cx="201" cy="80" r="2.4" fill="#5f736d" /><circle cx="214" cy="80" r="2.4" fill="#5f736d" /><circle cx="228" cy="80" r="2.4" fill="#5f736d" />
+    </g>
+  );
+}
+
+function SharpsContainer() {
+  return (
+    <g transform="translate(968 152)" data-room-item="sharps">
+      <rect width="30" height="36" rx="4" fill="#b05a4c" stroke="#8a4238" strokeWidth="2" />
+      <rect x="-2" y="-6" width="34" height="9" rx="3" fill="#8a4238" />
+      <path d="M9 -1.5 H21" stroke="#f3e6e0" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="15" cy="19" r="8" fill="none" stroke="#f3e6e0" strokeWidth="1.8" />
+      <path d="M15 13 V25 M9.8 16 L20.2 22 M20.2 16 L9.8 22" stroke="#f3e6e0" strokeWidth="1.6" />
+    </g>
+  );
 }
 
 function Window({ night }: { night: boolean }) {
@@ -86,7 +137,7 @@ function PsychiatricRoom() {
   );
 }
 
-export default function RoomScene({ visual, idPrefix }: Props) {
+export default function RoomScene({ visual, idPrefix, virtualMinute, roomLabel, patientName }: Props) {
   const night = visual.roomLighting === "night";
   const psychiatric = visual.roomPreset === "psychiatric";
   const procedural = visual.roomPreset === "procedural";
@@ -119,7 +170,8 @@ export default function RoomScene({ visual, idPrefix }: Props) {
       <path d="M0 403 H1200" stroke="#8d9c97" strokeWidth="2" opacity="0.5" />
       <path d="M0 680 L350 405 H850 L1200 680" fill={night ? "#8c9694" : "#bdc4c0"} opacity="0.46" />
       {psychiatric ? <PsychiatricRoom /> : procedural ? <ProceduralRoom /> : <Headwall intensive={intensive} />}
-      {!psychiatric ? <><Window night={night} /><RoomClock night={night} /></> : null}
+      {!psychiatric ? <><Window night={night} /><RoomClock night={night} minute={virtualMinute} /><PrivacyCurtain /><SharpsContainer /></> : null}
+      <PatientWhiteboard roomLabel={roomLabel} patientName={patientName} />
       {visual.roomPreset === "medical-surgical" ? <g transform="translate(1007 338)"><rect width="143" height="92" rx="7" fill="#d8dfdc" stroke="#839592" strokeWidth="3" /><rect x="14" y="13" width="114" height="29" rx="4" fill="#f7f8f5" /><path d="M18 59 H125" stroke="#9aaba7" strokeWidth="4" /><circle cx="23" cy="100" r="9" fill="#4d5f5e" /><circle cx="119" cy="100" r="9" fill="#4d5f5e" /></g> : null}
       {visual.roomPreset === "telemetry" ? <g transform="translate(972 184)"><rect width="152" height="82" rx="9" fill="#293c3b" stroke="#70827f" strokeWidth="4" /><path d="M15 43 H34 L42 24 L52 61 L62 42 H137" fill="none" stroke="#69d899" strokeWidth="3" /><text x="76" y="73" textAnchor="middle" fill="#9eb2ad" fontSize="10">TELEMETRY</text></g> : null}
       {visual.roomPreset === "step-down" ? <g transform="translate(1041 328)"><rect width="79" height="106" rx="8" fill="#e9efec" stroke="#819590" strokeWidth="4" /><circle cx="39" cy="32" r="17" fill="#b9d4cc" /><path d="M20 76 H59" stroke="#708783" strokeWidth="6" strokeLinecap="round" /></g> : null}
