@@ -71,6 +71,17 @@ export default function SimulationDashboard({ scenarios }: { scenarios: Clinical
     for (const attempt of attempts) if (!map.has(attempt.scenarioId)) map.set(attempt.scenarioId, attempt);
     return map;
   }, [attempts]);
+  // Completed attempts per scenario, newest first — powers attempt-over-attempt deltas.
+  const completedByScenario = useMemo(() => {
+    const map = new Map<string, AttemptSummary[]>();
+    for (const attempt of attempts) {
+      if (attempt.status !== "completed") continue;
+      map.set(attempt.scenarioId, [...(map.get(attempt.scenarioId) ?? []), attempt]);
+    }
+    return map;
+  }, [attempts]);
+  const completedScores = attempts.filter((attempt) => attempt.status === "completed").map((attempt) => scoreFor(attempt)).filter((score): score is number => score != null);
+  const averageScore = completedScores.length ? Math.round(completedScores.reduce((sum, score) => sum + score, 0) / completedScores.length) : null;
   const activeAttempt = attempts.find((attempt) => attempt.status === "in_progress");
   const activeScenario = scenarios.find((scenario) => scenario.id === activeAttempt?.scenarioId);
   const filtered = scenarios.filter((scenario) =>
@@ -87,6 +98,7 @@ export default function SimulationDashboard({ scenarios }: { scenarios: Clinical
         </div>
         <div className={styles.dashboardSummary} aria-label="Simulation progress">
           <span><strong>{attempts.filter((attempt) => attempt.status === "completed").length}</strong> completed</span>
+          <span><strong>{averageScore != null ? `${averageScore}%` : "—"}</strong> average score</span>
           <span><strong>{scenarios.length}</strong> clinical environments</span>
         </div>
       </header>
@@ -139,6 +151,10 @@ export default function SimulationDashboard({ scenarios }: { scenarios: Clinical
             const latest = latestByScenario.get(scenario.id);
             const assignment = assignments.find((item) => item.scenarioId === scenario.id);
             const score = scoreFor(latest);
+            const completedRuns = completedByScenario.get(scenario.id) ?? [];
+            const currentScore = scoreFor(completedRuns[0]);
+            const priorScore = scoreFor(completedRuns[1]);
+            const delta = currentScore != null && priorScore != null ? currentScore - priorScore : null;
             return (
               <article className={styles.scenarioCard} key={scenario.id}>
                 <div className={styles.scenarioCardTop}>
@@ -152,7 +168,8 @@ export default function SimulationDashboard({ scenarios }: { scenarios: Clinical
                 </div>
                 <div className={styles.scenarioMeta}>
                   <span><Clock3 size={15} aria-hidden="true" /> {scenario.estimatedMinutes} min</span>
-                  <span>{assignment?.dueAt ? `Due ${new Date(assignment.dueAt * 1000).toLocaleDateString()}` : latest?.status === "completed" ? `Best recent score ${score ?? "-"}%` : latest?.status === "in_progress" ? "In progress" : "Not started"}</span>
+                  <span>{assignment?.dueAt ? `Due ${new Date(assignment.dueAt * 1000).toLocaleDateString()}` : latest?.status === "completed" ? `Latest score ${score ?? "-"}%` : latest?.status === "in_progress" ? "In progress" : "Not started"}</span>
+                  {delta != null && delta !== 0 ? <em className={styles.scoreDelta} data-direction={delta > 0 ? "up" : "down"}>{delta > 0 ? "▲" : "▼"} {Math.abs(delta)} vs prior</em> : null}
                 </div>
                 <Link className={styles.cardAction} href={latest?.status === "in_progress" ? `/clinical-simulation/${scenario.slug}/run?attempt=${latest.id}` : `/clinical-simulation/${scenario.slug}${assignment ? `?mode=${assignment.mode}` : ""}`}>
                   {latest?.status === "in_progress" ? "Resume scenario" : latest?.status === "completed" ? <><RotateCcw size={16} aria-hidden="true" /> Replay scenario</> : "Review prebrief"}

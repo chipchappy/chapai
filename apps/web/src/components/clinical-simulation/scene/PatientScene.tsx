@@ -212,7 +212,7 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformActi
         data-lighting={visual.roomLighting}
       >
         <svg data-testid="patient-scene-svg" viewBox="0 0 1200 680" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby={`${idPrefix}-title ${idPrefix}-description`}>
-          <title id={`${idPrefix}-title`}>{scenario.patient.name} in the {visual.roomPreset.replaceAll("-", " ")} bedside scene</title>
+          <title id={`${idPrefix}-title`}>{`${scenario.patient.name} in the ${visual.roomPreset.replaceAll("-", " ")} bedside scene`}</title>
           <desc id={`${idPrefix}-description`}>{visual.accessibleDescription}</desc>
           <defs>
             <radialGradient id={`${idPrefix}-alarm-light`} cx="50%" cy="35%" r="70%"><stop offset="0" stopColor="#d9534f" stopOpacity="0.5" /><stop offset="1" stopColor="#d9534f" stopOpacity="0" /></radialGradient>

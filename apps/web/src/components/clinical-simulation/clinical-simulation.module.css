@@ -2138,3 +2138,66 @@
   height: 4px;
   border-radius: 2px;
 }
+
+/* ==== prebrief baseline vitals strip ==== */
+.baselineVitals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 8px;
+  margin: 14px 0 4px;
+}
+
+.baselineVitals > div {
+  display: grid;
+  gap: 1px;
+  padding: 9px 11px;
+  border: 1px solid #d8e0da;
+  border-radius: 10px;
+  background: #f6f9f6;
+}
+
+.baselineVitals span {
+  color: #6c7f78;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.baselineVitals strong {
+  color: #24413a;
+  font-size: 1.12rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.baselineVitals small {
+  overflow: hidden;
+  color: #7d8f88;
+  font-size: 0.62rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.baselineVitalsNote {
+  margin: 4px 0 0;
+  color: #7d8f88;
+  font-size: 0.72rem;
+  font-style: italic;
+}
+
+/* ==== catalog attempt-over-attempt delta ==== */
+.scoreDelta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreDelta[data-direction="up"] { background: #e4f1e8; color: #2f6e4f; }
+.scoreDelta[data-direction="down"] { background: #f6e8e4; color: #9c4f41; }

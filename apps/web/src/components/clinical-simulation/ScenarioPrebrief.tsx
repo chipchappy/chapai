@@ -60,6 +60,17 @@ export default function ScenarioPrebrief({ scenario, defaultMode = "guided", dev
           </div>
           <h2 id="handoff-heading">Handoff report</h2>
           <p>{scenario.prebrief.handoff}</p>
+          <div className={styles.baselineVitals} aria-label="Vitals at handoff">
+            {[
+              ["HR", String(scenario.initialState.vitals.heartRate), "bpm"],
+              ["BP", `${scenario.initialState.vitals.systolic}/${scenario.initialState.vitals.diastolic}`, `MAP ${scenario.initialState.vitals.map}`],
+              ["SpO₂", String(scenario.initialState.vitals.spo2), scenario.initialState.oxygenDevice],
+              ["RR", String(scenario.initialState.vitals.respiratoryRate), "/min"],
+              ["Temp", scenario.initialState.vitals.temperatureC.toFixed(1), "°C"],
+              ["Pain", String(scenario.initialState.vitals.pain), "/10"],
+            ].map(([label, value, unit]) => <div key={label}><span>{label}</span><strong>{value}</strong><small>{unit}</small></div>)}
+          </div>
+          <p className={styles.baselineVitalsNote}>Vitals as reported at handoff — verify them yourself at the bedside.</p>
           <dl className={styles.prebriefFacts}>
             <div><dt>Allergies</dt><dd>{scenario.patient.allergies.join(", ")}</dd></div>
             <div><dt>Code status</dt><dd>{scenario.patient.codeStatus}</dd></div>
