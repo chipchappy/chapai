@@ -75,6 +75,15 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Activity }> = [
   { id: "timeline", label: "Timeline", icon: Clock3 },
 ];
 
+/** Groups the workspace tabs by clinical workflow so the nav reads as a shift routine rather than a flat list. */
+const tabGroups: Array<{ label: string; ids: TabId[] }> = [
+  { label: "Bedside", ids: ["patient", "assessment"] },
+  { label: "Chart", ids: ["chart", "orders", "labs", "diagnostics"] },
+  { label: "Act", ids: ["mar", "interventions"] },
+  { label: "Team", ids: ["communication", "documentation"] },
+  { label: "Review", ids: ["timeline"] },
+];
+
 function formatClock(minute: number) {
   const hour = 7 + Math.floor(minute / 60);
   return `${String(hour % 24).padStart(2, "0")}:${String(minute % 60).padStart(2, "0")}`;
@@ -337,7 +346,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       </header>
 
       <section className={styles.clinicalView}>
-        <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
+        <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
         <BedsideMonitor state={state} />
         <aside className={styles.responseFeed} aria-live="polite">
           <header><Activity size={16} aria-hidden="true" /> Patient response</header>
@@ -368,7 +377,17 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}
 
       <nav className={styles.workspaceTabs} role="tablist" aria-label="Clinical workspace">
-        {tabs.map((tab) => { const Icon = tab.icon; return <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id} data-active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)}><Icon size={16} aria-hidden="true" /> {tab.label}</button>; })}
+        {tabGroups.map((group) => <div key={group.label} className={styles.tabGroup}>
+          <span aria-hidden="true">{group.label}</span>
+          <div>
+            {group.ids.map((id) => {
+              const tab = tabs.find((item) => item.id === id);
+              if (!tab) return null;
+              const Icon = tab.icon;
+              return <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id} data-active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)}><Icon size={16} aria-hidden="true" /> {tab.label}</button>;
+            })}
+          </div>
+        </div>)}
       </nav>
 
       <section className={styles.tabPanel} role="tabpanel">

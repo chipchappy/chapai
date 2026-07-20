@@ -81,7 +81,7 @@ export default function SimScenePreview() {
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 340px", gap: 16, alignItems: "start" }}>
         <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 12px 40px rgba(0,0,0,0.18)" }}>
-          <PatientScene scenario={scenario} state={state} visual={visual} onOpenAssessment={() => {}} />
+          <PatientScene scenario={scenario} state={state} visual={visual} onOpenAssessment={() => {}} onPerformAction={() => {}} />
         </div>
         <BedsideMonitor state={state} />
       </div>

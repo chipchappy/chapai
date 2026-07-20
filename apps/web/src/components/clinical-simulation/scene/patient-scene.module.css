@@ -664,3 +664,42 @@
   .visualRanges { grid-template-columns: 1fr; }
   .visualDeveloper > header { align-items: flex-start; flex-direction: column; }
 }
+
+/* ==== focus-panel direct actions (click the bedside, act on the patient) ==== */
+.focusActions {
+  display: grid;
+  gap: 6px;
+  margin: 10px 14px 13px;
+}
+
+.focusActions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #cfd9d4;
+  border-radius: 9px;
+  padding: 8px 11px;
+  background: #f4f8f5;
+  color: #2e4640;
+  font: inherit;
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.focusActions button:hover:not(:disabled) {
+  border-color: #9fb9b1;
+  background: #e9f2ee;
+}
+
+.focusActions button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.focusActions button[data-completed="true"] {
+  border-color: #b5cdc2;
+  background: #eef5f0;
+  color: #557267;
+}

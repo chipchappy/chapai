@@ -1858,3 +1858,59 @@
   .cardAction { transition: none; }
   .spin { animation: none; }
 }
+
+/* ==== workflow-grouped workspace tabs ==== */
+.tabGroup {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #d4dcd8;
+}
+
+.tabGroup > span {
+  padding: 5px 13px 0;
+  color: #93a49e;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.tabGroup > div {
+  display: flex;
+  flex: 1;
+}
+
+.tabGroup button {
+  border-right: 0;
+}
+
+.tabGroup button + button {
+  border-left: 1px solid #e7ece9;
+}
+
+/* ==== monitor trend arrows + alarm pulse ==== */
+.trendArrow {
+  margin-left: 5px;
+  color: #9db3ae;
+  font-size: 0.58rem;
+  font-style: normal;
+}
+
+.trendArrow[data-trend="up"] { color: #e3c46f; }
+.trendArrow[data-trend="down"] { color: #77b9d8; }
+
+.monitorAlarming {
+  animation: monitorAlarmPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes monitorAlarmPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 100, 89, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(220, 100, 89, 0.38); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monitorAlarming {
+    animation: none;
+    outline: 2px solid rgba(220, 100, 89, 0.65);
+  }
+}

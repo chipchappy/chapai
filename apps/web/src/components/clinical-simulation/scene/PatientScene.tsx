@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useId, useMemo, useRef, useState, type CSSProperties, type RefObject } from "react";
-import { Activity, BedDouble, CircuitBoard, Eye, Focus, Maximize2, MonitorUp, ScanFace, Stethoscope, X } from "lucide-react";
+import { Activity, BedDouble, Check, CircuitBoard, Eye, Focus, Maximize2, MonitorUp, Play, ScanFace, Stethoscope, X } from "lucide-react";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
 import { getSceneAnchors, getSceneConnections, type ScenePoint } from "@/lib/clinical-simulation/scene-geometry";
 import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
@@ -28,7 +28,27 @@ type Props = {
   state: PatientState;
   visual: PatientVisualState;
   onOpenAssessment: () => void;
+  onPerformAction?: (actionId: string) => void;
+  busy?: boolean;
   onPerformanceSample?: (sample: ScenePerformanceSample) => void;
+};
+
+/**
+ * Maps each bedside focus target to the scenario actions a nurse would perform
+ * there, so clicking the patient or a device surfaces real, performable actions.
+ */
+const focusActionPatterns: Record<FocusTarget, RegExp> = {
+  face: /neuro|conscious|orientation|\bloc\b|glasgow|arousal|mental|sedation/i,
+  pupils: /pupil/i,
+  respiratory: /resp|breath|lung|airway|auscult|cough|spirometer/i,
+  perfusion: /perfusion|capillary|pulse|skin|cardiovascular|cardiac|circulat|extremit/i,
+  iv: /\biv\b|intravenous|\bline\b|site|infiltrat|patenc|flush|access/i,
+  oxygen: /oxygen|\bo2\b|cannula|mask|fio2|nonrebreather|non-rebreather/i,
+  monitor: /vital|monitor|blood pressure|telemetry|rhythm|ecg|ekg/i,
+  pump: /infus|pump|\brate\b|bolus|fluid|titrat/i,
+  urinary: /urin|foley|catheter|output|intake/i,
+  drain: /drain|chest tube|dressing|surgical site|incision|bleed/i,
+  bed: /position|reposition|head of bed|\bhob\b|fall|mobilit|ambulat/i,
 };
 
 type FocusDefinition = {
@@ -130,7 +150,7 @@ function buildFocusDefinitions(scenario: ClinicalScenario, state: PatientState, 
   return definitions.filter((item) => item.available);
 }
 
-function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformanceSample }: Props) {
+function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformAction, busy = false, onPerformanceSample }: Props) {
   const rawId = useId();
   const idPrefix = `patient-scene-${rawId.replaceAll(":", "")}`;
   const [view, setView] = useState<SceneView>("bedside");
@@ -142,6 +162,13 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformance
   const connections = useMemo(() => getSceneConnections(visual, anchors), [anchors, visual]);
   const focusDefinitions = useMemo(() => buildFocusDefinitions(scenario, state, visual, anchors), [anchors, scenario, state, visual]);
   const focused = focusDefinitions.find((item) => item.id === focus) ?? null;
+  const focusedActions = useMemo(() => {
+    if (!focused || !onPerformAction) return [];
+    const pattern = focusActionPatterns[focused.id];
+    return scenario.actions
+      .filter((action) => (action.category === "assessment" || action.category === "intervention" || action.category === "safety") && pattern.test(`${action.label} ${action.description}`))
+      .slice(0, 3);
+  }, [focused, onPerformAction, scenario.actions]);
   const quality = visual.quality;
   usePerformanceSample(sceneRef, quality, onPerformanceSample);
 
@@ -193,7 +220,7 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformance
           </defs>
           <RoomScene visual={visual} idPrefix={idPrefix} />
           <PatientBody visual={visual} anchors={anchors} idPrefix={idPrefix} />
-          <MedicalDevices visual={visual} anchors={anchors} connections={connections} idPrefix={idPrefix} />
+          <MedicalDevices visual={visual} anchors={anchors} connections={connections} idPrefix={idPrefix} vitals={state.vitals} />
         </svg>
 
         <div className={styles.hotspotLayer} aria-label="Bedside inspection targets">
@@ -207,6 +234,14 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformance
             {focused.id === "respiratory" ? <Activity aria-hidden="true" /> : focused.id === "monitor" ? <MonitorUp aria-hidden="true" /> : focused.id === "face" ? <ScanFace aria-hidden="true" /> : focused.id === "bed" ? <BedDouble aria-hidden="true" /> : <Stethoscope aria-hidden="true" />}
           </div>
           <p>{focused.revealed ? focused.description : focused.hiddenMessage}</p>
+          {focusedActions.length ? <div className={styles.focusActions} role="group" aria-label={`Actions for ${focused.shortLabel}`}>
+            {focusedActions.map((action) => {
+              const done = state.completedActionIds.includes(action.id);
+              return <button key={action.id} type="button" disabled={busy || (done && !action.repeatable)} data-completed={done} onClick={() => onPerformAction?.(action.id)}>
+                {done ? <Check size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />} {action.label}
+              </button>;
+            })}
+          </div> : null}
           {!focused.revealed ? <button type="button" className={styles.assessmentAction} onClick={onOpenAssessment}><Stethoscope size={15} aria-hidden="true" /> Open assessment actions</button> : null}
         </aside> : null}
 

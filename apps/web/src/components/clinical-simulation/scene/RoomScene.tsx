@@ -24,6 +24,31 @@ function Headwall({ intensive = false }: { intensive?: boolean }) {
         <circle cx="824" cy="186" r="12" fill="#ead6cb" stroke="#9d7068" strokeWidth="3" />
         <rect x="853" y="174" width="81" height="25" rx="5" fill="#dce4e1" />
       </> : null}
+      {/* wall gas station: O2 flowmeter + christmas tree, suction regulator + canister */}
+      <g transform={`translate(${intensive ? 600 : 842} ${intensive ? 152 : 146})`}>
+        <rect width="118" height="52" rx="6" fill="#eef2ef" stroke="#b5c2bd" strokeWidth="2" />
+        <rect x="12" y="7" width="14" height="32" rx="3" fill="#f8fbf8" stroke="#7d938d" strokeWidth="1.5" />
+        <path d="M15 12 H23 M15 18 H23 M15 24 H23 M15 30 H23" stroke="#c9d6d0" strokeWidth="1" />
+        <circle cx="19" cy="22" r="3.4" fill="#7fb89a" />
+        <path d="M19 39 V43" stroke="#6b7f79" strokeWidth="2" />
+        <circle cx="19" cy="46" r="4.6" fill="#4f8a67" stroke="#38624a" strokeWidth="1.5" />
+        <text x="33" y="18" fill="#4f8a67" fontSize="9" fontWeight="700">O₂</text>
+        <path d="M36 24 h10 M37.5 28 h7 M39 32 h4" stroke="#5c8f6f" strokeWidth="3" strokeLinecap="round" />
+        <rect x="62" y="8" width="20" height="15" rx="3" fill="#dfe7e2" stroke="#7d938d" strokeWidth="1.5" />
+        <circle cx="72" cy="15.5" r="4.6" fill="#f4f7f3" stroke="#8a9b95" strokeWidth="1.3" />
+        <path d="M72 12.6 V15.5 L74 17.4" stroke="#5c716b" strokeWidth="1.1" fill="none" />
+        <rect x="88" y="12" width="18" height="30" rx="4" fill="#f2f6f2" stroke="#8a9b95" strokeWidth="1.5" />
+        <rect x="90" y="27" width="14" height="13" rx="2" fill="#d9c98e" opacity="0.55" />
+        <rect x="87" y="7" width="20" height="7" rx="2.5" fill="#c98d5f" />
+        <text x="59" y="50" fill="#8a9b95" fontSize="6.5" fontWeight="700">SUCTION</text>
+      </g>
+      {/* spare oxygen devices on wall hooks: nasal cannula coil, simple mask, non-rebreather */}
+      <g transform={`translate(${intensive ? 524 : 398} ${intensive ? 158 : 146})`} stroke="#7f938d" fill="none" strokeWidth="1.6">
+        <path d="M8 0 v6 M50 0 v6 M92 0 v6" strokeWidth="2.4" stroke="#93a5a0" strokeLinecap="round" />
+        <circle cx="8" cy="17" r="9" /><circle cx="8" cy="17" r="5.5" /><path d="M4 27 q4 4 8 0" strokeWidth="1.2" />
+        <path d="M42 8 q8 -4 16 0 l-2 14 q-6 5 -12 0 z" fill="#eef4f0" /><path d="M42 10 q-6 3 -4 8 M58 10 q6 3 4 8" strokeWidth="1.1" />
+        <path d="M84 8 q8 -4 16 0 l-2 12 q-6 5 -12 0 z" fill="#eef4f0" /><ellipse cx="92" cy="31" rx="6" ry="8" fill="#e3ece6" />
+      </g>
     </g>
   );
 }

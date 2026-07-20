@@ -87,21 +87,44 @@ function Face({ visual, anchors, idPrefix }: { visual: PatientVisualState; ancho
   );
 }
 
-function Bed({ visual }: { visual: PatientVisualState }) {
+function Bed({ visual, idPrefix }: { visual: PatientVisualState; idPrefix: string }) {
   const lift = Math.max(-20, Math.min(135, (visual.position.headOfBedDegrees / 90) * 135));
   const headY = 472 - lift;
   return (
     <g className={styles.bed} aria-hidden="true">
+      <defs>
+        <linearGradient id={`${idPrefix}-mattress`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f3f7f2" /><stop offset="0.6" stopColor="#e6ece8" /><stop offset="1" stopColor="#d2dcd6" /></linearGradient>
+        <linearGradient id={`${idPrefix}-bedmetal`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#a2b3ae" /><stop offset="1" stopColor="#63776f" /></linearGradient>
+      </defs>
       <ellipse cx="612" cy="604" rx="390" ry="39" fill="#4c5c59" opacity="0.2" />
-      <path d={`M214 ${headY + 22} L455 468 L933 468 L966 527 L403 533 L198 ${headY + 61} Z`} fill="#e6ece8" stroke="#718783" strokeWidth="5" />
+      {/* mattress with seam + side-depth shading */}
+      <path d={`M214 ${headY + 22} L455 468 L933 468 L966 527 L403 533 L198 ${headY + 61} Z`} fill={`url(#${idPrefix}-mattress)`} stroke="#718783" strokeWidth="5" />
+      <path d={`M207 ${headY + 43} L450 487 L951 491`} fill="none" stroke="#c4d0ca" strokeWidth="2" opacity="0.85" />
       <path d={`M214 ${headY + 22} L455 468`} stroke="#9dafaa" strokeWidth="23" strokeLinecap="round" />
       <path d="M449 471 H932" stroke="#b7c7c1" strokeWidth="27" strokeLinecap="round" />
-      <path d="M203 515 H960 V548 H208 Z" fill="#778d89" />
-      <path d="M248 548 V594 M879 548 V594" stroke="#586b68" strokeWidth="11" />
-      <circle cx="248" cy="603" r="16" fill="#465956" /><circle cx="879" cy="603" r="16" fill="#465956" />
-      <path d="M238 423 V521 M915 438 V529" stroke="#5f7773" strokeWidth="10" strokeLinecap="round" />
-      <path d="M229 423 H312 M852 438 H927" stroke="#5f7773" strokeWidth="10" strokeLinecap="round" />
-      <path d={`M270 ${headY + 15} Q343 ${headY - 15} 405 ${headY + 37} L423 ${headY + 66} Q337 ${headY + 45} 260 ${headY + 48} Z`} fill="#f8faf7" stroke="#c3cfca" strokeWidth="3" />
+      <path d="M451 484 H929" stroke="#93a7a1" strokeWidth="3" opacity="0.55" />
+      {/* frame base with highlight */}
+      <path d="M203 515 H960 V548 H208 Z" fill={`url(#${idPrefix}-bedmetal)`} />
+      <path d="M211 520 H953" stroke="#c7d3ce" strokeWidth="2" opacity="0.65" />
+      {/* caster columns, forks, wheels + brake pedal */}
+      <path d="M248 548 V588 M879 548 V588" stroke="#586b68" strokeWidth="11" />
+      <path d="M239 587 H257 M870 587 H888" stroke="#4a5c59" strokeWidth="7" strokeLinecap="round" />
+      <circle cx="248" cy="603" r="16" fill="#465956" /><circle cx="248" cy="603" r="6" fill="#5f7370" />
+      <circle cx="879" cy="603" r="16" fill="#465956" /><circle cx="879" cy="603" r="6" fill="#5f7370" />
+      <path d="M266 596 L284 605" stroke="#bc8b58" strokeWidth="5" strokeLinecap="round" />
+      {/* side rails: twin horizontal bars + verticals, rounded ends */}
+      <g stroke={`url(#${idPrefix}-bedmetal)`} strokeWidth="9" strokeLinecap="round" fill="none">
+        <path d="M238 423 V518 M296 423 V472" />
+        <path d="M229 423 H312 M229 449 H312" />
+        <path d="M915 438 V526 M872 438 V480" />
+        <path d="M852 438 H927 M852 464 H927" />
+      </g>
+      {/* rail-mounted patient control pod */}
+      <g transform="translate(884 448)"><rect width="24" height="36" rx="6" fill="#5d716d" /><circle cx="12" cy="9" r="3" fill="#e8b563" /><circle cx="12" cy="18" r="3" fill="#8fd1a8" /><circle cx="12" cy="27" r="3" fill="#cfe0da" /></g>
+      {/* pillow: reaches behind the occiput and cradles the head */}
+      <path d={`M252 ${headY + 6} Q262 ${headY - 52} 330 ${headY - 42} Q396 ${headY - 30} 412 ${headY + 26} Q420 ${headY + 58} 398 ${headY + 64} Q320 ${headY + 46} 262 ${headY + 52} Q246 ${headY + 40} 252 ${headY + 6} Z`} fill="#f8faf7" stroke="#c3cfca" strokeWidth="3" />
+      <path d={`M268 ${headY - 20} Q330 ${headY - 34} 392 ${headY - 6}`} fill="none" stroke="#dde5df" strokeWidth="2.5" />
+      <path d={`M276 ${headY + 30} Q332 ${headY + 18} 388 ${headY + 36}`} fill="none" stroke="#e6ece6" strokeWidth="2" opacity="0.8" />
       <g transform="translate(558 503)"><rect width="104" height="28" rx="8" fill="#526966" /><path d="M18 14 H86" stroke="#8ca6a0" strokeWidth="4" strokeDasharray="8 6" /></g>
     </g>
   );
@@ -117,7 +140,7 @@ function AmbulatoryPatient({ visual, anchors, idPrefix }: { visual: PatientVisua
       <path d={`M${anchors.rightUpperArm.x} ${anchors.rightUpperArm.y} Q${anchors.rightForearm.x + 14} ${anchors.rightForearm.y} ${anchors.rightHand.x} ${anchors.rightHand.y}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth="21" strokeLinecap="round" fill="none" />
       <path d={`M${anchors.leftThigh.x} ${anchors.leftThigh.y} L${anchors.leftLowerLeg.x} ${anchors.leftLowerLeg.y} L${anchors.leftFoot.x} ${anchors.leftFoot.y}`} stroke="#4f6463" strokeWidth="31" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       <path d={`M${anchors.rightThigh.x} ${anchors.rightThigh.y} L${anchors.rightLowerLeg.x} ${anchors.rightLowerLeg.y} L${anchors.rightFoot.x} ${anchors.rightFoot.y}`} stroke="#455b5b" strokeWidth="31" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <path d={`M${anchors.neck.x} ${anchors.neck.y} L${anchors.upperChest.x} ${anchors.upperChest.y + 13}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth="23" strokeLinecap="round" />
+      <path d={`M${anchors.nose.x - 18} ${anchors.nose.y + 27} Q${anchors.nose.x - 19} ${anchors.nose.y + 46} ${anchors.nose.x - 23} ${anchors.nose.y + 63} L${anchors.nose.x + 9} ${anchors.nose.y + 63} Q${anchors.nose.x + 5} ${anchors.nose.y + 46} ${anchors.nose.x + 4} ${anchors.nose.y + 27} Z`} fill={`url(#${idPrefix}-skin-limb)`} />
       <Face visual={visual} anchors={anchors} idPrefix={idPrefix} />
     </g>
   );
@@ -128,9 +151,17 @@ function BedPatient({ visual, anchors, idPrefix }: Props) {
   const limbWidth = visual.skin.edema > 0 ? 21 + visual.skin.edema * 1.6 : 20;
   const lowerLegWidth = 21 + visual.skin.edema * 1.4;
   const gownColor = visual.profile.clothing === "procedural-gown" ? "#7b9ba0" : visual.profile.clothing === "icu-gown" ? "#668b8d" : "#77979b";
+  // Face-ellipse center; the neck is drawn as a tapered polygon from inside the
+  // head ellipse to under the gown collar so the join never gaps or bulges.
+  const fx = anchors.nose.x - 7;
+  const fy = anchors.nose.y + 1;
+  const midX = (fx + anchors.upperChest.x) / 2;
+  const midY = (fy + anchors.upperChest.y) / 2;
   return (
     <g className={styles.patient} data-loc={visual.consciousness.level} data-movement={visual.movement.intensity} data-seizure={visual.movement.seizure} data-guarding={visual.movement.guarding}>
-      <path d={`M${anchors.neck.x} ${anchors.neck.y} L${anchors.upperChest.x} ${anchors.upperChest.y + 6}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth="25" strokeLinecap="round" />
+      <path d={`M${fx + 6} ${fy + 26} Q${midX - 4} ${midY + 15} ${anchors.upperChest.x - 24} ${anchors.upperChest.y + 14} L${anchors.upperChest.x + 4} ${anchors.upperChest.y - 4} Q${midX + 12} ${midY - 15} ${fx + 25} ${fy + 9} Z`} fill={`url(#${idPrefix}-skin-limb)`} />
+      <path d={`M${fx + 9} ${fy + 26} Q${fx + 19} ${fy + 32} ${fx + 27} ${fy + 22}`} fill="none" stroke="var(--skin-shadow)" strokeWidth="2" strokeLinecap="round" opacity="0.28" />
+      <path d={`M${fx + 22} ${fy + 16} Q${midX + 2} ${midY + 2} ${anchors.upperChest.x - 12} ${anchors.upperChest.y + 4}`} fill="none" stroke="var(--skin-shadow)" strokeWidth="1.2" strokeLinecap="round" opacity="0.3" />
       <g className={styles.chestMotion}>
         <path d={`M${anchors.upperChest.x - torsoWidth} ${anchors.upperChest.y - 15} Q${anchors.upperChest.x} ${anchors.upperChest.y - 34} ${anchors.upperChest.x + torsoWidth} ${anchors.upperChest.y - 4} L${anchors.pelvis.x + 35} ${anchors.pelvis.y + 18} Q${anchors.abdomen.x} ${anchors.abdomen.y + 38} ${anchors.upperChest.x - torsoWidth + 15} ${anchors.upperChest.y + 35} Z`} fill={gownColor} stroke="#4d7172" strokeWidth="2.2" />
         <path d={`M${anchors.upperChest.x - torsoWidth} ${anchors.upperChest.y - 15} Q${anchors.upperChest.x} ${anchors.upperChest.y - 34} ${anchors.upperChest.x + torsoWidth} ${anchors.upperChest.y - 4} L${anchors.pelvis.x + 35} ${anchors.pelvis.y + 18} Q${anchors.abdomen.x} ${anchors.abdomen.y + 38} ${anchors.upperChest.x - torsoWidth + 15} ${anchors.upperChest.y + 35} Z`} fill={`url(#${idPrefix}-gown-shade)`} />
@@ -180,7 +211,7 @@ export default function PatientBody({ visual, anchors, idPrefix }: Props) {
       data-head-of-bed={Math.round(visual.position.headOfBedDegrees)}
     >
       <SkinDefs idPrefix={idPrefix} />
-      {visual.position.ambulatory ? <AmbulatoryPatient visual={visual} anchors={anchors} idPrefix={idPrefix} /> : <><Bed visual={visual} /><BedPatient visual={visual} anchors={anchors} idPrefix={idPrefix} /></>}
+      {visual.position.ambulatory ? <AmbulatoryPatient visual={visual} anchors={anchors} idPrefix={idPrefix} /> : <><Bed visual={visual} idPrefix={idPrefix} /><BedPatient visual={visual} anchors={anchors} idPrefix={idPrefix} /></>}
     </g>
   );
 }

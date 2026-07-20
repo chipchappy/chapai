@@ -73,10 +73,40 @@ function valueTone(value: number, low: number, high: number) {
  * scenario places one). The waveform generator reads the latest vitals through a
  * ref so it tracks engine updates without restarting the animation.
  */
+type TrendSample = { minute: number; heartRate: number; spo2: number; map: number; respiratoryRate: number };
+type TrendDirection = "up" | "down" | "flat";
+
+function TrendGlyph({ direction }: { direction: TrendDirection }) {
+  if (direction === "flat") return null;
+  return <em className={styles.trendArrow} data-trend={direction} aria-label={direction === "up" ? "trending up" : "trending down"}>{direction === "up" ? "▲" : "▼"}</em>;
+}
+
 export default function BedsideMonitor({ state }: { state: PatientState }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const stateRef = useRef(state);
   stateRef.current = state;
+
+  // Rolling vitals history so the numerics can show 4-minute trend arrows.
+  const historyRef = useRef<TrendSample[]>([]);
+  useEffect(() => {
+    const samples = historyRef.current;
+    const last = samples[samples.length - 1];
+    if (!last || last.minute !== state.virtualMinute) {
+      samples.push({ minute: state.virtualMinute, heartRate: state.vitals.heartRate, spo2: state.vitals.spo2, map: state.vitals.map, respiratoryRate: state.vitals.respiratoryRate });
+      if (samples.length > 90) samples.splice(0, samples.length - 90);
+    }
+  }, [state]);
+  function trendFor(key: keyof Omit<TrendSample, "minute">, threshold: number): TrendDirection {
+    const samples = historyRef.current;
+    const current = samples[samples.length - 1];
+    if (!current) return "flat";
+    const baseline = [...samples].reverse().find((sample) => current.minute - sample.minute >= 4);
+    if (!baseline) return "flat";
+    const delta = current[key] - baseline[key];
+    if (delta > threshold) return "up";
+    if (delta < -threshold) return "down";
+    return "flat";
+  }
 
   const showArtLine = useMemo(() => hasArterialLine(state), [state]);
   const alarming =
@@ -255,7 +285,7 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
 
   return (
     <section
-      className={styles.monitor}
+      className={`${styles.monitor}${alarming ? ` ${styles.monitorAlarming}` : ""}`}
       aria-label={`Bedside monitor. Rhythm ${state.cardiacRhythm}. Heart rate ${Math.round(state.vitals.heartRate)}. Oxygen saturation ${Math.round(state.vitals.spo2)} percent.`}
     >
       <header>
@@ -268,10 +298,10 @@ export default function BedsideMonitor({ state }: { state: PatientState }) {
         <canvas ref={canvasRef} className={styles.waveformCanvas} />
       </div>
       <div className={styles.monitorValues}>
-        <div><span>HR</span><strong className={valueTone(state.vitals.heartRate, 50, 120)}>{Math.round(state.vitals.heartRate)}</strong><small>bpm</small></div>
-        <div><span>{showArtLine ? "ART" : "NIBP"}</span><strong className={valueTone(state.vitals.map, 65, 130)}>{Math.round(state.vitals.systolic)}/{Math.round(state.vitals.diastolic)}</strong><small>MAP {Math.round(state.vitals.map)}</small></div>
-        <div><span>SpO2</span><strong className={valueTone(state.vitals.spo2, 90, 100)}>{Math.round(state.vitals.spo2)}</strong><small>%</small></div>
-        <div><span>RR</span><strong className={valueTone(state.vitals.respiratoryRate, 8, 32)}>{Math.round(state.vitals.respiratoryRate)}</strong><small>/min</small></div>
+        <div><span>HR<TrendGlyph direction={trendFor("heartRate", 5)} /></span><strong className={valueTone(state.vitals.heartRate, 50, 120)}>{Math.round(state.vitals.heartRate)}</strong><small>bpm</small></div>
+        <div><span>{showArtLine ? "ART" : "NIBP"}<TrendGlyph direction={trendFor("map", 4)} /></span><strong className={valueTone(state.vitals.map, 65, 130)}>{Math.round(state.vitals.systolic)}/{Math.round(state.vitals.diastolic)}</strong><small>MAP {Math.round(state.vitals.map)}</small></div>
+        <div><span>SpO2<TrendGlyph direction={trendFor("spo2", 2)} /></span><strong className={valueTone(state.vitals.spo2, 90, 100)}>{Math.round(state.vitals.spo2)}</strong><small>%</small></div>
+        <div><span>RR<TrendGlyph direction={trendFor("respiratoryRate", 3)} /></span><strong className={valueTone(state.vitals.respiratoryRate, 8, 32)}>{Math.round(state.vitals.respiratoryRate)}</strong><small>/min</small></div>
         <div><span>TEMP</span><strong className={valueTone(state.vitals.temperatureC, 35.5, 38.4)}>{state.vitals.temperatureC.toFixed(1)}</strong><small>°C</small></div>
       </div>
       <footer><span>{state.cardiacRhythm}</span><span>Virtual minute {state.virtualMinute}</span></footer>

@@ -2,11 +2,20 @@ import type { SceneAnchors, SceneConnection } from "@/lib/clinical-simulation/sc
 import type { PatientVisualState } from "@/lib/clinical-simulation/visual-state";
 import styles from "./patient-scene.module.css";
 
+type SceneVitals = {
+  heartRate: number;
+  spo2: number;
+  systolic: number;
+  diastolic: number;
+  respiratoryRate: number;
+};
+
 type Props = {
   visual: PatientVisualState;
   anchors: SceneAnchors;
   connections: SceneConnection[];
   idPrefix: string;
+  vitals?: SceneVitals;
 };
 
 function ConnectionLines({ connections }: { connections: SceneConnection[] }) {
@@ -61,14 +70,41 @@ function IvSites({ visual, anchors }: Pick<Props, "visual" | "anchors">) {
   })}</g>;
 }
 
+function IvBag({ x, tone }: { x: number; tone: string }) {
+  const fluid = tone === "vasopressor" ? "#e8d9a8" : tone === "antibiotic" ? "#d5e8de" : "#dfe9ec";
+  return (
+    <g transform={`translate(${x} -188)`} data-device="iv-bag">
+      <path d="M0 0 V9" stroke="#758782" strokeWidth="2.5" />
+      <path d="M-14 12 Q-14 9 -10 9 H10 Q14 9 14 12 L14 50 Q14 56 8 58 H-8 Q-14 56 -14 50 Z" fill="#eff4f1" stroke="#8fa39d" strokeWidth="2" opacity="0.95" />
+      <path d="M-11 30 H11 V50 Q11 53 7 55 H-7 Q-11 53 -11 50 Z" fill={fluid} opacity="0.85" />
+      <path d="M-8 20 H8" stroke="#b7c6c0" strokeWidth="4" opacity="0.8" />
+      <path d="M0 58 V66" stroke="#9db1ab" strokeWidth="2.2" />
+      <rect x="-3.5" y="66" width="7" height="11" rx="3" fill="#eef3f0" stroke="#8fa39d" strokeWidth="1.4" />
+      <circle cx="0" cy="70.5" r="1.5" fill="#9fc3ba" />
+    </g>
+  );
+}
+
 function IvPoleAndPumps({ visual, anchors }: Pick<Props, "visual" | "anchors">) {
   const visible = visual.devices.ivSites.length > 0 || visual.devices.pumps.length > 0;
   if (!visible) return null;
   return (
     <g transform={`translate(${anchors.ivPole.x} ${anchors.ivPole.y})`} data-device="infusion-pumps" aria-hidden="true">
-      <path d="M0 -145 V267" stroke="#667976" strokeWidth="7" /><path d="M-39 -145 H39 M0 267 L-44 292 M0 267 L44 292" stroke="#667976" strokeWidth="7" strokeLinecap="round" /><circle cx="-44" cy="293" r="9" fill="#425451" /><circle cx="44" cy="293" r="9" fill="#425451" />
-      {visual.devices.pumps.length === 0 ? <g transform="translate(-34 -127)"><path d="M4 0 H64 L57 68 H11 Z" fill="#dcebea" stroke="#718f8b" strokeWidth="2" opacity="0.9" /><path d="M15 15 H54" stroke="#a2c5c0" strokeWidth="3" /></g> : null}
-      {visual.devices.pumps.slice(0, 3).map((pump, index) => <g key={pump.id} transform={`translate(-78 ${-112 + index * 85})`}><rect width="142" height="72" rx="8" fill="#e6ece9" stroke="#657976" strokeWidth="3" /><rect x="12" y="11" width="93" height="31" rx="4" fill="#1f3331" /><text x="19" y="24" fill={pump.tone === "vasopressor" ? "#f3d36f" : pump.tone === "antibiotic" ? "#87d4c4" : "#b5d5dc"} fontSize="9" fontWeight="700">{pump.label.toUpperCase().slice(0, 18)}</text><text x="19" y="36" fill="#dce8e4" fontSize="8">{pump.rate.slice(0, 22)}</text><circle cx="120" cy="20" r="6" fill={pump.state === "alarm" ? "#d15f56" : pump.state === "running" ? "#6cad7e" : "#899996"} /><path d="M16 55 H124" stroke="#a7b5b1" strokeWidth="4" strokeLinecap="round" /></g>)}
+      <path d="M0 -190 V267" stroke="#667976" strokeWidth="7" /><path d="M-56 -190 H56 M0 267 L-44 292 M0 267 L44 292" stroke="#667976" strokeWidth="7" strokeLinecap="round" /><circle cx="-44" cy="293" r="9" fill="#425451" /><circle cx="44" cy="293" r="9" fill="#425451" />
+      <path d="M-44 -190 v6 M44 -190 v6" stroke="#667976" strokeWidth="4" strokeLinecap="round" />
+      {visual.devices.pumps.length === 0
+        ? <IvBag x={0} tone="fluid" />
+        : visual.devices.pumps.slice(0, 2).map((pump, index) => <IvBag key={`bag-${pump.id}`} x={index === 0 ? -36 : 36} tone={pump.tone} />)}
+      {visual.devices.pumps.slice(0, 3).map((pump, index) => <g key={pump.id} transform={`translate(-78 ${-112 + index * 85})`}>
+        <rect width="142" height="72" rx="8" fill="#e6ece9" stroke="#657976" strokeWidth="3" />
+        <rect x="12" y="11" width="93" height="31" rx="4" fill="#1f3331" />
+        <text x="19" y="24" fill={pump.tone === "vasopressor" ? "#f3d36f" : pump.tone === "antibiotic" ? "#87d4c4" : "#b5d5dc"} fontSize="9" fontWeight="700">{pump.label.toUpperCase().slice(0, 18)}</text>
+        <text x="19" y="36" fill="#dce8e4" fontSize="8">{pump.rate.slice(0, 22)}</text>
+        <circle cx="120" cy="20" r="6" fill={pump.state === "alarm" ? "#d15f56" : pump.state === "running" ? "#6cad7e" : "#899996"} />
+        <g fill="#95a8a3"><circle cx="22" cy="55" r="3.4" /><circle cx="36" cy="55" r="3.4" /><circle cx="50" cy="55" r="3.4" /><circle cx="64" cy="55" r="3.4" /></g>
+        <rect x="110" y="36" width="22" height="28" rx="3" fill="#d7e0dc" stroke="#7c8f8a" strokeWidth="1.6" />
+        <path d="M114 42 L128 58" stroke="#67807a" strokeWidth="2.5" strokeLinecap="round" />
+      </g>)}
     </g>
   );
 }
@@ -98,16 +134,37 @@ function Defibrillator({ visual, anchors }: Pick<Props, "visual" | "anchors">) {
   return <g transform={`translate(${anchors.defibrillator.x} ${anchors.defibrillator.y})`} data-device="defibrillator-monitor" aria-hidden="true"><rect x="-68" y="-62" width="136" height="93" rx="9" fill="#e1e6e3" stroke="#5e706d" strokeWidth="4" /><rect x="-53" y="-48" width="78" height="45" rx="4" fill="#172725" /><path d="M-45 -25 H-29 L-24 -39 L-16 -11 L-8 -26 H16" fill="none" stroke="#65d596" strokeWidth="2" /><circle cx="45" cy="-37" r="10" fill="#d5b35d" /><circle cx="45" cy="-10" r="10" fill="#c86158" /><text x="0" y="19" textAnchor="middle" fill="#4d615e" fontSize="9" fontWeight="700">DEFIBRILLATOR / MONITOR</text><path d="M-48 31 V69 M48 31 V69" stroke="#60736f" strokeWidth="6" /><circle cx="-48" cy="75" r="9" fill="#455754" /><circle cx="48" cy="75" r="9" fill="#455754" /></g>;
 }
 
-function SceneMonitor({ visual, anchors }: Pick<Props, "visual" | "anchors">) {
+function SceneMonitor({ visual, anchors, vitals }: Pick<Props, "visual" | "anchors" | "vitals">) {
   if (!visual.devices.ecgLeads) return null;
-  return <g transform={`translate(${anchors.monitor.x} ${anchors.monitor.y})`} aria-hidden="true"><rect x="-76" y="-49" width="152" height="98" rx="10" fill="#142725" stroke="#607773" strokeWidth="5" /><path d="M-61 1 H-42 L-35 -20 L-27 27 L-18 -1 H-1 L7 -15 L15 17 L23 0 H62" fill="none" stroke="#67dc98" strokeWidth="2.5" /><text x="-61" y="-31" fill="#8ca39c" fontSize="9">BEDSIDE MONITOR</text><circle cx="58" cy="-30" r="5" fill={visual.roomLighting === "emergency" ? "#dc6459" : "#6bb082"} /></g>;
+  const alarm = visual.roomLighting === "emergency" || (vitals ? vitals.spo2 < 90 || vitals.heartRate > 125 || vitals.heartRate < 50 : false);
+  return (
+    <g transform={`translate(${anchors.monitor.x} ${anchors.monitor.y})`} aria-hidden="true">
+      <rect x="-79" y="-53" width="158" height="106" rx="11" fill="#3c4a47" />
+      <rect x="-76" y="-49" width="152" height="94" rx="8" fill="#0d1d1a" stroke="#607773" strokeWidth="3" />
+      <text x="-66" y="-37" fill="#8ca39c" fontSize="7.5">BEDSIDE MONITOR</text>
+      <circle cx="62" cy="-39" r="4.5" fill={alarm ? "#dc6459" : "#6bb082"} />
+      {/* waveform lanes: ECG / pleth / resp */}
+      <path d="M-66 -18 H-56 L-51 -30 L-46 2 L-41 -18 H-30 L-26 -26 L-21 -12 H-8 L-4 -30 L2 -6 L6 -18 H22" fill="none" stroke="#67dc98" strokeWidth="2" />
+      <path d="M-66 6 q5 -12 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t8 0" fill="none" stroke="#56c8ea" strokeWidth="1.6" />
+      <path d="M-66 26 q11 -10 22 0 t22 0 t22 0 t22 0" fill="none" stroke="#e0b866" strokeWidth="1.6" />
+      <path d="M26 -46 V40" stroke="#1f332f" strokeWidth="1.5" />
+      {/* numeric column */}
+      <text x="32" y="-24" fill="#5f7b74" fontSize="6">HR</text>
+      <text x="32" y="-10" fill="#67dc98" fontSize="14" fontWeight="700" fontFamily="ui-monospace, monospace">{vitals ? Math.round(vitals.heartRate) : "--"}</text>
+      <text x="32" y="2" fill="#5f7b74" fontSize="6">SpO₂</text>
+      <text x="32" y="15" fill="#56c8ea" fontSize="12" fontWeight="700" fontFamily="ui-monospace, monospace">{vitals ? Math.round(vitals.spo2) : "--"}</text>
+      <text x="32" y="26" fill="#5f7b74" fontSize="6">RR</text>
+      <text x="32" y="38" fill="#e0b866" fontSize="11" fontWeight="700" fontFamily="ui-monospace, monospace">{vitals ? Math.round(vitals.respiratoryRate) : "--"}</text>
+      <text x="-66" y="38" fill="#cfe0da" fontSize="8" fontFamily="ui-monospace, monospace">{vitals ? `${Math.round(vitals.systolic)}/${Math.round(vitals.diastolic)}` : "--/--"} NIBP</text>
+    </g>
+  );
 }
 
-export default function MedicalDevices({ visual, anchors, connections }: Props) {
+export default function MedicalDevices({ visual, anchors, connections, vitals }: Props) {
   return (
     <g>
       <ConnectionLines connections={connections} />
-      <SceneMonitor visual={visual} anchors={anchors} />
+      <SceneMonitor visual={visual} anchors={anchors} vitals={vitals} />
       <IvPoleAndPumps visual={visual} anchors={anchors} />
       <Ventilator visual={visual} anchors={anchors} />
       <Defibrillator visual={visual} anchors={anchors} />
