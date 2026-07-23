@@ -45,7 +45,7 @@ export const NCLEX_CATEGORIES = {
   management_of_care:         { label: "Management of Care",             pct: 18 },
   safety_infection_control:   { label: "Safety & Infection Control",     pct: 13 },
   pharmacological:            { label: "Pharmacological & Parenteral",   pct: 16 },
-  reduction_of_risk:          { label: "Reduction of Risk Potential",    pct: 12 },
+  risk_reduction:             { label: "Reduction of Risk Potential",    pct: 12 },
   physiological_adaptation:   { label: "Physiological Adaptation",       pct: 14 },
   basic_care_comfort:         { label: "Basic Care & Comfort",           pct:  9 },
   psychosocial:               { label: "Psychosocial Integrity",         pct:  9 },
@@ -162,7 +162,7 @@ export interface QuizQuestion {
     href?: string;
   }>;
   provenance?: string;
-  reviewStatus?: "draft" | "review" | "approved" | "flagged" | "final-curated-live";
+  reviewStatus?: "draft" | "review" | "approved" | "flagged" | "curated-live" | "final-curated-live";
   revision?: number;
   publishState?: "draft" | "published" | "unpublished";
   visualRationale?: {

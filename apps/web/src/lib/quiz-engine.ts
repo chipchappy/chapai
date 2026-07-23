@@ -1,21 +1,19 @@
 import type { DB } from "./db";
 import type { QuizQuestion, QuizSessionConfig, QuizResults } from "./types";
 import { CCRN_CATEGORIES, NCLEX_CATEGORIES } from "./types";
+import { allocateBlueprintCounts } from "./blueprint-allocation";
 import { getQuestionBank, getQuestionById } from "./content-bank";
+import { getCaseStudyEligibleQuestions, selectCompleteCaseStudyGroups } from "./clinical-case-study";
 import { matchesQuestionCategory, isNclexClientNeed, resolveNclexClientNeed } from "./nclex-client-needs";
+import {
+  getQuestionQualityProfile,
+  qualityFirstDiverseOrder,
+} from "./question-quality";
 import { getQuestionIntegrityIssues } from "./question-renderability";
+import { seededShuffle } from "./seeded-random";
 import { log } from "./logger";
 import { questions, quizSessions, quizAnswers } from "@chapai/db/schema";
 import { eq, and, inArray, sql } from "drizzle-orm";
-
-const CJMM_STEP_ORDER = [
-  "recognize-cues",
-  "analyze-cues",
-  "prioritize-hypotheses",
-  "generate-solutions",
-  "take-actions",
-  "evaluate-outcomes",
-] as const;
 
 type QuestionRow = {
   id: string;
@@ -113,67 +111,13 @@ function filterRenderableQuestions(bank: QuizQuestion[]) {
   };
 }
 
-function hashString(value: string) {
-  let hash = 2166136261;
-  for (let index = 0; index < value.length; index += 1) {
-    hash ^= value.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return hash >>> 0;
-}
-
 function applyQuestionBankAccessLimit<T extends { id: string }>(bank: T[], accessPercent = 100) {
   const clampedPercent = Math.max(1, Math.min(100, Math.round(accessPercent)));
   if (clampedPercent >= 100 || bank.length <= 1) {
     return bank;
   }
 
-  const limited = bank.filter((question) => (hashString(`${question.id}:access-scope`) % 100) < clampedPercent);
-  if (limited.length > 0) {
-    return limited;
-  }
-
-  return [...bank]
-    .sort((left, right) => hashString(left.id) - hashString(right.id))
-    .slice(0, 1);
-}
-
-function selectCompleteCaseStudyGroups(bank: QuizQuestion[], count: number) {
-  const groups = new Map<string, QuizQuestion[]>();
-  for (const question of bank) {
-    if (question.type !== "case_study" || !question.caseStudyId) {
-      continue;
-    }
-    const group = groups.get(question.caseStudyId) ?? [];
-    group.push(question);
-    groups.set(question.caseStudyId, group);
-  }
-
-  const completeGroups = [...groups.values()]
-    .filter((group) => {
-      const steps = new Set(group.map((question) => question.cjmmStep));
-      return group.length === CJMM_STEP_ORDER.length
-        && CJMM_STEP_ORDER.every((step) => steps.has(step));
-    })
-    .map((group) => group.sort((left, right) => {
-      const leftIndex = CJMM_STEP_ORDER.indexOf(left.cjmmStep as (typeof CJMM_STEP_ORDER)[number]);
-      const rightIndex = CJMM_STEP_ORDER.indexOf(right.cjmmStep as (typeof CJMM_STEP_ORDER)[number]);
-      return leftIndex - rightIndex;
-    }))
-    .sort(() => Math.random() - 0.5);
-
-  const selected: QuizQuestion[] = [];
-  for (const group of completeGroups) {
-    if (selected.length > 0 && selected.length + group.length > count) {
-      break;
-    }
-    selected.push(...group);
-    if (selected.length >= count) {
-      break;
-    }
-  }
-
-  return selected.length > 0 ? selected : [];
+  return bank.slice(0, Math.max(1, Math.ceil((bank.length * clampedPercent) / 100)));
 }
 
 function toQuestionOptions(raw: string): QuizQuestion["options"] {
@@ -363,6 +307,7 @@ export async function selectQuestions(
     adaptive?: boolean;
     excludeIds?: string[];
     diversify?: boolean;
+    selectionSeed?: string;
   },
 ): Promise<QuizQuestion[]> {
   const { exam, count } = config;
@@ -371,23 +316,37 @@ export async function selectQuestions(
   if (questionType) {
     conditions.push(eq(questions.type, questionType));
   }
+  if (exam === "nclex" && questionType !== "case_study") {
+    conditions.push(sql`${questions.type} <> 'case_study'`);
+  }
   if (config.ngnOnly) {
     conditions.push(sql`${questions.type} <> 'mcq'`);
   }
   const candidateLimit = questionType === "case_study"
-    ? 1200
+    ? 800
     : config.category
-    ? Math.min(Math.max(count * 4, 120), 360)
-    : Math.min(Math.max(count * 4, 90), 180);
-  // Float the most COMPLETE premium items into the capped candidate pool so the
-  // opening questions a student sees are our best foot forward: a visual guide
-  // first, then a structured rationale, then per-distractor teaching. random()
-  // shuffles within each tier, so every student gets a different order/draw.
+    ? Math.min(Math.max(count * 6, 180), 480)
+    : Math.min(Math.max(count * 6, 240), 600);
+  // Use publication review plus rationale completeness as the database-level
+  // shortlist. The in-memory scorer below applies the full quality profile.
   const orderBy = exam === "nclex"
     ? [
-        sql`${questions.visualRationale} IS NULL`,
+        sql`CASE ${questions.reviewStatus}
+          WHEN 'final-curated-live' THEN 0
+          WHEN 'curated-live' THEN 1
+          WHEN 'approved' THEN 2
+          ELSE 3
+        END`,
+        sql`CASE
+          WHEN length(${questions.rationale}) >= 700 THEN 0
+          WHEN length(${questions.rationale}) >= 350 THEN 1
+          WHEN length(${questions.rationale}) >= 180 THEN 2
+          ELSE 3
+        END`,
         sql`${questions.structuredRationale} IS NULL`,
         sql`${questions.distractorRationales} IS NULL`,
+        sql`${questions.referencesJson} IS NULL`,
+        sql`${questions.visualRationale} IS NULL`,
         sql`random()`,
       ]
     : [sql`${questions.structuredRationale} IS NULL`, sql`random()`];
@@ -433,9 +392,14 @@ export async function selectQuestions(
     .limit(candidateLimit);
   const dbBank = dbRows.map(mapQuestionRowToQuizQuestion);
   const filteredBank = dbBank.filter((question) => matchesQuizFilters(question, config));
-  const { eligible, skipped } = filterRenderableQuestions(filteredBank);
+  const caseEligibleBank = exam === "nclex"
+    ? getCaseStudyEligibleQuestions(filteredBank)
+    : filteredBank;
+  const { eligible, skipped } = filterRenderableQuestions(caseEligibleBank);
+  const selectionSeed = access?.selectionSeed ?? crypto.randomUUID();
+  const qualityRanked = qualityFirstDiverseOrder(eligible, `${selectionSeed}:eligible`);
   const accessLimited = applyQuestionBankAccessLimit(
-    eligible,
+    qualityRanked,
     access?.questionBankAccessPercent ?? 100,
   );
   const excludeSet = new Set(access?.excludeIds ?? []);
@@ -456,7 +420,7 @@ export async function selectQuestions(
   }
 
   if (questionType === "case_study") {
-    return selectCompleteCaseStudyGroups(bank, count);
+    return selectCompleteCaseStudyGroups(bank, count, selectionSeed);
   }
 
   // Free-tier diversification: round-robin across categories so the limited
@@ -464,12 +428,12 @@ export async function selectQuestions(
   // item types) instead of clustering in one lane. Explicit filters win.
   if (access?.diversify && !config.category && !questionType && !config.ngnOnly) {
     const byCategory = new Map<string, QuizQuestion[]>();
-    for (const question of [...bank].sort(() => Math.random() - 0.5)) {
+    for (const question of qualityFirstDiverseOrder(bank, `${selectionSeed}:diverse-pool`)) {
       const list = byCategory.get(question.category) ?? [];
       list.push(question);
       byCategory.set(question.category, list);
     }
-    const buckets = [...byCategory.values()];
+    const buckets = seededShuffle([...byCategory.values()], `${selectionSeed}:diverse-categories`);
     const picked: QuizQuestion[] = [];
     let cursor = 0;
     while (picked.length < count && buckets.some((bucket) => bucket.length > 0)) {
@@ -484,8 +448,7 @@ export async function selectQuestions(
   }
 
   if (config.category || questionType || config.ngnOnly) {
-    return bank
-      .sort(() => Math.random() - 0.5)
+    return qualityFirstDiverseOrder(bank, `${selectionSeed}:filtered`)
       .slice(0, count);
   }
 
@@ -493,12 +456,22 @@ export async function selectQuestions(
   // weaknesses). Unseen items are already excluded via excludeIds.
   if (access?.adaptive && access?.userId) {
     const accByCat = await getCategoryAccuracy(db, access.userId, exam);
-    const scoreOf = (question: QuizQuestion) => {
+    const priorityOf = (question: QuizQuestion) => {
       const stat = accByCat.get(question.category);
       const weakness = stat && stat.total >= 3 ? 1 - stat.correct / stat.total : 0.55;
-      return weakness * 2 + Math.random();
+      const quality = getQuestionQualityProfile(question);
+      return {
+        tier: quality.tier,
+        score: quality.score + weakness * 12,
+      };
     };
-    return [...bank].sort((a, b) => scoreOf(b) - scoreOf(a)).slice(0, count);
+    return seededShuffle(bank, `${selectionSeed}:adaptive`)
+      .sort((left, right) => {
+        const leftPriority = priorityOf(left);
+        const rightPriority = priorityOf(right);
+        return leftPriority.tier - rightPriority.tier || rightPriority.score - leftPriority.score;
+      })
+      .slice(0, count);
   }
 
   // Weighted multi-category selection
@@ -508,19 +481,24 @@ export async function selectQuestions(
 
   const selected: QuizQuestion[] = [];
   const selectedIds = new Set<string>();
+  const categoryTargets = allocateBlueprintCounts(
+    Object.fromEntries(blueprintMap.map(([category, metadata]) => [category, metadata.pct])),
+    count,
+  );
 
-  for (const [cat, meta] of blueprintMap) {
-    const catCount = Math.round((meta.pct / 100) * count);
+  for (const [cat] of blueprintMap) {
+    const catCount = categoryTargets[cat] ?? 0;
     if (catCount === 0) continue;
 
-    const categoryRows = bank
-      .filter((question) => {
+    const categoryRows = qualityFirstDiverseOrder(
+      bank.filter((question) => {
         const bucket = exam === "nclex"
           ? (question.nclexClientNeed ?? resolveNclexClientNeed(question) ?? question.category)
           : question.category;
         return bucket === cat && !selectedIds.has(question.id);
-      })
-      .sort(() => Math.random() - 0.5)
+      }),
+      `${selectionSeed}:category:${cat}`,
+    )
       .slice(0, catCount);
 
     for (const row of categoryRows) {
@@ -530,15 +508,15 @@ export async function selectQuestions(
   }
 
   if (selected.length < count) {
-    const remainder = bank
-      .filter((question) => !selectedIds.has(question.id))
-      .sort(() => Math.random() - 0.5)
+    const remainder = qualityFirstDiverseOrder(
+      bank.filter((question) => !selectedIds.has(question.id)),
+      `${selectionSeed}:remainder`,
+    )
       .slice(0, count - selected.length);
     selected.push(...remainder);
   }
 
-  // Shuffle the final selection
-  return selected.sort(() => Math.random() - 0.5).slice(0, count);
+  return seededShuffle(selected, `${selectionSeed}:final`).slice(0, count);
 }
 
 /** Create a new quiz session in the database */

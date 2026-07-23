@@ -1,4 +1,4 @@
-import type { CjmmStep, Exam, NclexClientNeed } from "@/lib/types";
+import type { CjmmStep, Exam, NclexClientNeed } from "./types";
 
 export type StudyResourceKind = "official" | "clinical-reference" | "video" | "tool";
 

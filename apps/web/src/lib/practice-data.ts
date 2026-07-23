@@ -1,5 +1,5 @@
-import { demoQuestionSets, type DemoQuestion } from "@/lib/demo-content";
-import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam, type QuizQuestion } from "@/lib/types";
+import { demoQuestionSets, type DemoQuestion } from "./demo-content";
+import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam, type QuizQuestion } from "./types";
 import type {
   PracticeCatalogCard,
   PracticeChartReviewMetadata,
@@ -7,7 +7,7 @@ import type {
   PracticeMetric,
   PracticeMode,
   PracticeQuestion,
-} from "@/lib/practice-types";
+} from "./practice-types";
 
 export type PracticeCounts = {
   ccrn: number;
@@ -302,6 +302,7 @@ function mapLiveQuestion(question: QuizQuestion, mode: PracticeMode = "standard"
     references: question.references,
     coachingFrame: question.coachingFrame,
     tutorReady: question.tutorReady,
+    reviewStatus: question.reviewStatus,
     source: "live",
     visualRationale: question.visualRationale,
     diagramBlueprint: question.diagramBlueprint,
@@ -471,59 +472,114 @@ export function getPracticeExamDefinitions(liveCounts?: Partial<PracticeCounts>)
   ];
 }
 
-const nclexVteChartReview: PracticeChartReviewMetadata = {
+const nclexVteBaseChartReview: PracticeChartReviewMetadata = {
   patientTitle: "Day 1: Emergency Department",
-  patientCaption: "Six-item unfolding NGN case study with shared exhibits, vitals, orders, and rationales.",
+  patientCaption: "Unfolding emergency-department record. New information appears as the case advances.",
   chiefComplaint: "Sudden shortness of breath and right leg pain/swelling.",
-  nursingNotes: [
-    "0615: A 61-year-old client comes to the emergency department reporting shortness of breath. She had to stop and sit down while getting ready for work because she suddenly felt like she could not catch her breath. She denies cough, fever, palpitations, lightheadedness, and recent sick contacts. She recently injured her right leg in a minor bicycle accident.",
-    "0645: Client placed on 2 L/min nasal cannula and reports mild relief of dyspnea. CT pulmonary angiography and right lower extremity Doppler ultrasound are ordered. Provider anticipates hospital admission and heparin therapy if thromboembolism is confirmed.",
-  ],
   hpi: [
-    "Neurological: Alert; oriented to person, place, and time; slightly anxious.",
-    "Pulmonary: Reports dyspnea; diminished lung sounds with fine crackles in bilateral bases; sharp chest pain on inspiration; denies cough; former 10-year smoker, quit 25 years ago.",
-    "Cardiovascular: Regular rhythm; S1 and S2 present; no murmur; 2+ peripheral pulses; history of hypertension.",
-    "Gastrointestinal/Genitourinary: Abdomen soft and nontender; bowel sounds normoactive in all quadrants; healed transverse lower abdominal scar; denies dysuria; obese.",
-    "Reproductive: Postmenopausal; takes oral hormone replacement therapy for hot flashes; history of 2 cesarean sections.",
-    "Extremities: Right lower leg with erythema, tenderness, and 1+ pitting edema extending to thigh; client states the pain and swelling are getting worse; history of varicose veins.",
-    "Psychosocial: Married with 2 adult children; works long hours seated at a crowded call center.",
+    "A 61-year-old client developed sudden shortness of breath while getting ready for work approximately 45 minutes before arrival.",
+    "The client reports sharp right-sided chest pain that worsens with inspiration and increasing right calf pain and swelling for 2 days.",
+    "A minor bicycle accident injured the right lower leg 1 week ago. The client has continued working long hours while seated.",
+    "The client denies fever, productive cough, palpitations, syncope, and recent sick contacts.",
   ],
   history: [
     "Hypertension.",
-    "Former 10-year smoker; quit 25 years ago.",
-    "Varicose veins.",
+    "Obesity and varicose veins.",
+    "Former smoker; 10 pack-year history, quit 25 years ago.",
     "Recent right lower leg injury from bicycle accident.",
-    "Oral hormone replacement therapy.",
-    "Works long hours seated.",
+    "Postmenopausal; takes oral hormone replacement therapy.",
+    "No known prior deep vein thrombosis, pulmonary embolism, or bleeding disorder.",
   ],
-  vitals: [
-    { label: "T", value: "99.9 F (37.7 C)" },
-    { label: "P", value: "118", flag: "high" },
-    { label: "RR", value: "24", flag: "high" },
-    { label: "BP", value: "108/56", flag: "low" },
-    { label: "Pulse oximetry", value: "89% on room air", flag: "critical" },
+  nursingNotes: [
+    "0615: Client arrives by wheelchair, speaking in short phrases. Skin is cool and mildly diaphoretic. Right calf is erythematous, tender, and visibly larger than the left.",
+    "0620: Breath sounds are diminished with fine crackles at both bases. Client rates pleuritic chest pain 7/10 and appears anxious.",
   ],
-  labs: [
-    { label: "D-dimer", value: "elevated", flag: "high" },
-    { label: "Platelets", value: "248,000/mm3" },
-    { label: "PT/INR", value: "13 sec / 1.0" },
-    { label: "aPTT", value: "31 sec" },
-  ],
-  orders: [
-    "Apply oxygen to keep SpO2 at or above 92%.",
-    "CT pulmonary angiography.",
-    "Right lower extremity Doppler ultrasound.",
-    "Initiate IV access and prepare weight-based unfractionated heparin if prescribed.",
-    "Place client on continuous pulse oximetry.",
-  ],
-  notes: [
-    "0730: CT pulmonary angiography positive for pulmonary embolism. Doppler ultrasound positive for right lower extremity deep vein thrombosis.",
-    "0745: Provider prescribes IV unfractionated heparin bolus and continuous infusion per protocol.",
+  assessments: [
+    "Neurologic: Alert and oriented to person, place, time, and situation; follows commands.",
+    "Cardiovascular: Sinus tachycardia; S1 and S2 present; radial pulses 2+ bilaterally.",
+    "Extremities: Right calf erythema, tenderness, warmth, and 1+ pitting edema extending toward the thigh.",
   ],
   priorityCues: [
-    "Dyspnea, tachypnea, tachycardia, pleuritic chest pain, low oxygen saturation, unilateral painful leg swelling, recent leg injury, hormone therapy, varicose veins, and prolonged sitting.",
+    "Acute dyspnea, pleuritic chest pain, tachycardia, hypoxemia, and unilateral painful leg swelling.",
   ],
 };
+
+const nclexVteInitialVitals: NonNullable<PracticeChartReviewMetadata["vitals"]> = [
+  { label: "Temperature", value: "99.9 F (37.7 C)" },
+  { label: "Heart rate", value: "118/min", flag: "high" },
+  { label: "Respiratory rate", value: "24/min", flag: "high" },
+  { label: "Blood pressure", value: "108/56 mm Hg", flag: "low" },
+  { label: "SpO2", value: "89% on room air", flag: "critical" },
+];
+
+function buildNclexVteChartReview(caseItemNumber: number): PracticeChartReviewMetadata {
+  const step = Math.max(1, Math.min(6, caseItemNumber));
+  const nursingNotes = [...(nclexVteBaseChartReview.nursingNotes ?? [])];
+  const timeline = [
+    "0615: Triage assessment completed.",
+    "0620: Focused cardiopulmonary and extremity assessment documented.",
+  ];
+  const labs: NonNullable<PracticeChartReviewMetadata["labs"]> = [
+    { label: "D-dimer", value: "elevated", flag: "high" },
+  ];
+  const orders = [
+    "Apply oxygen to maintain SpO2 at or above 92%.",
+    "Place client on continuous pulse oximetry and cardiac monitoring.",
+    "Establish peripheral IV access.",
+  ];
+
+  if (step >= 2) {
+    nursingNotes.push("0645: Oxygen applied at 2 L/min by nasal cannula. SpO2 increases to 93%; client continues to report pleuritic chest pain.");
+    timeline.push("0645: CT pulmonary angiography and right lower extremity venous Doppler ordered.");
+    orders.push("Obtain CT pulmonary angiography.", "Obtain right lower extremity venous Doppler ultrasound.");
+  }
+
+  if (step >= 3) {
+    nursingNotes.push(
+      "0730: CT pulmonary angiography shows pulmonary emboli. Venous Doppler confirms acute right lower extremity deep vein thrombosis.",
+      "0745: Provider prescribes weight-based IV unfractionated heparin per facility protocol.",
+    );
+    timeline.push("0730: DVT and pulmonary embolism confirmed.", "0745: Anticoagulation order received.");
+    labs.push(
+      { label: "Platelets", value: "248,000/mm3" },
+      { label: "PT/INR", value: "13 sec / 1.0" },
+      { label: "aPTT", value: "31 sec" },
+      { label: "Hemoglobin", value: "13.2 g/dL" },
+    );
+    orders.push(
+      "Administer IV unfractionated heparin bolus and continuous infusion per protocol.",
+      "Trend aPTT or anti-Xa and platelet count per facility protocol.",
+      "Institute bleeding precautions.",
+    );
+  }
+
+  if (step >= 4) {
+    nursingNotes.push("0800: Baseline coagulation studies and platelet count reviewed. Heparin bolus administered and infusion started by smart pump after independent verification.");
+    timeline.push("0800: Heparin infusion initiated.");
+  }
+
+  if (step >= 5) {
+    nursingNotes.push("1000: Client reports a sudden severe headache. Assessment reveals new left arm weakness and pronator drift.");
+    timeline.push("1000: Acute neurologic change noted during anticoagulation.");
+  }
+
+  if (step >= 6) {
+    nursingNotes.push("Day 3, 1400: Respiratory symptoms have improved, no active bleeding is present, and discharge teaching for prescribed anticoagulation and VTE recurrence precautions is completed.");
+    timeline.push("Day 3, 1400: Client meets discharge criteria and completes teach-back.");
+  }
+
+  return {
+    ...nclexVteBaseChartReview,
+    patientCaption: `Unfolding NGN record, item ${step} of 6. Review only the information available at this point in the case.`,
+    nursingNotes,
+    unfoldingTimeline: timeline,
+    vitals: step >= 2
+      ? nclexVteInitialVitals.map((vital) => vital.label === "SpO2" ? { ...vital, value: "93% on 2 L/min nasal cannula", flag: "low" } : vital)
+      : nclexVteInitialVitals,
+    labs,
+    providerOrders: orders,
+  };
+}
 
 function makeNclexVteCaseQuestion(input: Omit<PracticeQuestion, "exam" | "mode" | "source" | "caseStudyId" | "caseStudyTitle" | "caseItemTotal" | "chartReview" | "category" | "difficulty"> & {
   id: string;
@@ -537,7 +593,7 @@ function makeNclexVteCaseQuestion(input: Omit<PracticeQuestion, "exam" | "mode" 
     caseStudyId: "nclex-vte-pe-ngn",
     caseStudyTitle: "Adult Health: Venous Thromboembolism and Pulmonary Embolism",
     caseItemTotal: 6,
-    chartReview: nclexVteChartReview,
+    chartReview: buildNclexVteChartReview(input.caseItemNumber ?? 1),
     category: input.category ?? "Physiological Adaptation",
     difficulty: input.difficulty ?? 4,
     nclexClientNeed: input.nclexClientNeed ?? "physiological_adaptation",
@@ -547,6 +603,21 @@ function makeNclexVteCaseQuestion(input: Omit<PracticeQuestion, "exam" | "mode" 
         title: "2026 NCLEX-RN Test Plan",
         citation: "NCSBN, 2026",
         href: "https://www.nclex.com/test-plans.page",
+      },
+      {
+        title: "Pulmonary Embolism",
+        citation: "National Heart, Lung, and Blood Institute",
+        href: "https://www.nhlbi.nih.gov/health/pulmonary-embolism",
+      },
+      {
+        title: "Risk Factors for Blood Clots",
+        citation: "Centers for Disease Control and Prevention",
+        href: "https://www.cdc.gov/blood-clots/risk-factors/index.html",
+      },
+      {
+        title: "Heparin Injection",
+        citation: "MedlinePlus Drug Information",
+        href: "https://medlineplus.gov/druginfo/meds/a682826.html",
       },
     ],
     ...input,
@@ -558,7 +629,10 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     id: "nclex-vte-case-01",
     kind: "multi-select",
     caseItemNumber: 1,
+    cjmmStep: "recognize-cues",
     clinicalJudgmentSkill: "Recognize cues",
+    category: "Physiological Adaptation",
+    nclexClientNeed: "physiological_adaptation",
     stem: "Click to highlight below the findings that require immediate follow-up by the nurse.",
     nclexScenarioLead: "The following scenario applies to the next 6 items.",
     nclexInstruction: "Click to highlight below the findings that require immediate follow-up by the nurse.",
@@ -588,20 +662,25 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     ],
     correctAnswer: ["a", "b", "c", "d"],
     rationale:
-      "Sudden dyspnea, tachypnea, tachycardia, low oxygen saturation, pleuritic chest pain, adventitious lung sounds, and unilateral painful leg swelling point to an acute cardiopulmonary process such as pulmonary embolism from deep vein thrombosis. These cues require immediate follow-up before lower-priority history or teaching needs.",
+      "Dyspnea, hypoxemia, pleuritic chest pain, abnormal lung sounds, and unilateral painful leg swelling are current assessment cues that require immediate follow-up. Together, they support concern for deep vein thrombosis with pulmonary embolism and impaired oxygenation. The remaining findings increase long-term VTE probability or describe lower-priority background information, but they are not the acute physiologic changes the nurse must address first. On a highlight item, separate what is happening now from what only makes the diagnosis more likely.",
     distractorRationales: {
       e: "Anxiety can occur with dyspnea, but it is not the priority cue over oxygenation and possible thromboembolism.",
       f: "Remote smoking history increases baseline risk but is not the immediate finding requiring follow-up.",
       g: "Hypertension is relevant history, but it does not explain the current acute respiratory compromise.",
       h: "Prolonged sitting contributes to VTE risk, but it is not the immediate clinical finding.",
+      i: "Obesity increases VTE risk, but it is a background risk factor rather than a new sign of cardiopulmonary instability.",
+      j: "Hormone therapy can increase thrombotic risk, but the immediate follow-up targets are the client's acute respiratory and unilateral leg findings.",
     },
-    takeaway: "In NGN case studies, first separate acute unstable cues from background risk factors.",
+    takeaway: "For NGN cue recognition, separate acute physiologic change from background risk.",
   }),
   makeNclexVteCaseQuestion({
     id: "nclex-vte-case-02",
     kind: "matrix",
     caseItemNumber: 2,
+    cjmmStep: "analyze-cues",
     clinicalJudgmentSkill: "Analyze cues",
+    category: "Reduction of Risk Potential",
+    nclexClientNeed: "risk_reduction",
     stem: "The nurse suspects that the client is experiencing a venous thromboembolism. For each client finding, click to specify whether the finding is an increased risk for VTE best explained by blood flow stasis, endothelial injury, or a hypercoagulable state.",
     nclexInstruction:
       "For each client finding, click to specify whether the finding is best explained by blood flow stasis, endothelial injury, or a hypercoagulable state.",
@@ -619,14 +698,17 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
       "Hormone replacement therapy": "Hypercoagulable State",
     },
     rationale:
-      "Virchow's triad organizes VTE risk: venous pooling and immobility create blood flow stasis, trauma to the vessel wall creates endothelial injury, and estrogen exposure increases coagulation tendency. The client has cues from all three categories, which raises concern for DVT with pulmonary embolism.",
-    takeaway: "Use Virchow's triad to convert scattered history into a coherent thromboembolism risk pattern.",
+      "Virchow's triad organizes the client's VTE risks by mechanism. Varicose veins and prolonged sitting reduce venous return and promote blood flow stasis. The prior leg injury represents endothelial damage. Estrogen exposure from hormone therapy promotes a hypercoagulable state. Several mechanisms can be present in one client and compound risk. Classify each cue by its pathophysiology rather than by how serious it sounds.",
+    takeaway: "Virchow's triad: stasis, endothelial injury, and hypercoagulability.",
   }),
   makeNclexVteCaseQuestion({
     id: "nclex-vte-case-03",
-    kind: "ordering",
+    kind: "multi-select",
     caseItemNumber: 3,
+    cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses and generate solutions",
+    category: "Physiological Adaptation",
+    nclexClientNeed: "physiological_adaptation",
     stem: "The nurse on the telemetry unit is planning care in anticipation of the client's arrival. The nurse reviews the new orders and updated Nurses' Notes and Vital Signs from 0645.",
     nclexInstruction: "Drag options from the choices below to fill in each blank in the following sentences.",
     clozeTemplate: "The client is at highest risk for developing {blank}, {blank}, and {blank}.",
@@ -639,17 +721,20 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     ],
     correctAnswer: ["c", "a", "d"],
     rationale:
-      "The confirmed pulmonary embolism and low oxygen saturation place the client at risk for respiratory failure. Anticoagulation with unfractionated heparin adds bleeding risk and requires platelet monitoring for heparin-induced thrombocytopenia. Heart failure is not the priority complication supported by the new orders and VTE diagnosis.",
+      "The confirmed pulmonary embolism and impaired oxygenation create an immediate risk for respiratory failure. Starting unfractionated heparin adds a risk for bleeding, and ongoing platelet monitoring is needed because heparin can cause immune-mediated thrombocytopenia. Heart failure can produce dyspnea, but this record does not establish it as the active problem. Select risks supported by the updated diagnosis and treatment rather than carrying forward every plausible cardiopulmonary complication.",
     distractorRationales: {
       b: "Heart failure can cause dyspnea, but this case now has confirmed DVT/PE and heparin therapy, making respiratory compromise and anticoagulation complications the priority risks.",
     },
-    takeaway: "Later NGN case items should force students to update risk as the case unfolds, not answer from the first note only.",
+    takeaway: "Update the risk picture whenever the diagnosis, orders, or response to treatment changes.",
   }),
   makeNclexVteCaseQuestion({
     id: "nclex-vte-case-04",
     kind: "multi-select",
     caseItemNumber: 4,
-    clinicalJudgmentSkill: "Take action",
+    cjmmStep: "generate-solutions",
+    clinicalJudgmentSkill: "Generate solutions",
+    category: "Pharmacological and Parenteral Therapies",
+    nclexClientNeed: "pharmacological",
     stem: "Which nursing actions are appropriate while initiating the prescribed unfractionated heparin infusion? Select all that apply.",
     nclexInstruction: "Select all actions that apply before and during initiation of the infusion.",
     options: [
@@ -661,18 +746,21 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     ],
     correctAnswer: ["a", "b", "c", "e"],
     rationale:
-      "Heparin requires baseline coagulation and platelet data, pump-controlled dosing, bleeding precautions, and close oxygenation monitoring because the pulmonary embolism remains an active respiratory risk. Intramuscular injections increase bleeding and hematoma risk while anticoagulated.",
+      "Before and during unfractionated heparin therapy, the nurse verifies baseline coagulation studies, platelet count, and other ordered blood counts; administers the high-alert infusion with a pump and required independent checks; and teaches the client to report bleeding or acute neurologic changes. Oxygen and respiratory monitoring continue because anticoagulation prevents clot extension but does not immediately reverse impaired pulmonary perfusion. Intramuscular injections should be avoided when alternatives are available because they can cause bleeding and hematoma formation.",
     distractorRationales: {
       d: "Intramuscular injections should be avoided during therapeutic anticoagulation unless specifically required because they increase bleeding and hematoma risk.",
     },
-    takeaway: "Medication safety and respiratory monitoring are both active priorities in PE care.",
+    takeaway: "Treat the clot, protect against bleeding, and continue monitoring oxygenation.",
   }),
   makeNclexVteCaseQuestion({
     id: "nclex-vte-case-05",
     kind: "mcq",
     caseItemNumber: 5,
-    clinicalJudgmentSkill: "Evaluate outcomes",
-    stem: "Two hours after heparin initiation, which finding requires the nurse to notify the provider immediately?",
+    cjmmStep: "take-actions",
+    clinicalJudgmentSkill: "Take action",
+    category: "Pharmacological and Parenteral Therapies",
+    nclexClientNeed: "pharmacological",
+    stem: "Two hours after heparin initiation, which finding requires the nurse to take immediate action and notify the provider?",
     nclexInstruction: "Select the finding that is most urgent after anticoagulation has started.",
     options: [
       { id: "a", text: "aPTT is within the protocol's therapeutic range" },
@@ -682,19 +770,22 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     ],
     correctAnswer: "c",
     rationale:
-      "Sudden severe headache with a new neurologic deficit during heparin therapy suggests possible intracranial bleeding or acute neurologic event and requires immediate provider notification. A therapeutic aPTT and improved oxygenation are expected goals, and mild bruising is monitored but is not the most urgent cue.",
+      "A sudden severe headache with a new focal neurologic deficit during heparin therapy is an emergency cue for possible intracranial bleeding or another acute neurologic event. The nurse should respond immediately according to the emergency and anticoagulation protocol and notify the provider or rapid-response team as indicated. A protocol-defined therapeutic aPTT and improving oxygen saturation are expected findings. Mild localized bruising still requires assessment and trending, but it is lower priority than an abrupt neurologic change.",
     distractorRationales: {
       a: "A therapeutic aPTT means the infusion is in range, not that the provider needs urgent notification.",
       b: "Mild bruising can occur with anticoagulation and should be monitored, but it is lower priority than acute neurologic change.",
       d: "Improved oxygen saturation is an expected positive outcome.",
     },
-    takeaway: "The highest-risk heparin complication is not a lab number; it is bleeding with neurologic or hemodynamic change.",
+    takeaway: "During anticoagulation, acute neurologic or hemodynamic change outranks an isolated expected lab result.",
   }),
   makeNclexVteCaseQuestion({
     id: "nclex-vte-case-06",
     kind: "mcq",
     caseItemNumber: 6,
-    clinicalJudgmentSkill: "Evaluate teaching",
+    cjmmStep: "evaluate-outcomes",
+    clinicalJudgmentSkill: "Evaluate outcomes",
+    category: "Health Promotion and Maintenance",
+    nclexClientNeed: "health_promotion",
     stem: "Which client statement indicates that discharge teaching about VTE prevention and anticoagulation was effective?",
     nclexInstruction: "Select the statement that shows the best understanding of prevention and safety teaching.",
     options: [
@@ -705,13 +796,13 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     ],
     correctAnswer: "b",
     rationale:
-      "The client correctly identifies both recurrent PE symptoms and anticoagulation bleeding warning signs. Anticoagulants should not be stopped early, mobility is encouraged as prescribed, and hormone therapy should not be restarted without provider direction because it contributed to hypercoagulability risk.",
+      "The correct statement identifies both recurrent pulmonary embolism symptoms and important anticoagulation-related bleeding warnings, along with the need to seek help. Anticoagulants must be taken for the prescribed duration rather than stopped when symptoms improve. Mobility should follow the discharge plan because prolonged immobility promotes venous stasis. Hormone therapy requires prescriber reassessment and should not be restarted independently after a VTE event.",
     distractorRationales: {
       a: "Stopping anticoagulation early increases the risk for recurrent clot and pulmonary embolism.",
       c: "Prolonged immobility worsens venous stasis. Activity should follow the provider's plan.",
       d: "Hormone therapy can increase clot risk and should not be restarted without provider review.",
     },
-    takeaway: "The final item should test whether the student can translate the case into safe outpatient warning signs and prevention behavior.",
+    takeaway: "Effective teach-back explains what warning signs require action and how to prevent recurrence.",
   }),
 ];
 
