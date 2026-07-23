@@ -703,15 +703,15 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
   }),
   makeNclexVteCaseQuestion({
     id: "nclex-vte-case-03",
-    kind: "multi-select",
+    kind: "ordering",
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses and generate solutions",
     category: "Physiological Adaptation",
     nclexClientNeed: "physiological_adaptation",
-    stem: "The nurse on the telemetry unit is planning care in anticipation of the client's arrival. The nurse reviews the new orders and updated Nurses' Notes and Vital Signs from 0645.",
-    nclexInstruction: "Drag options from the choices below to fill in each blank in the following sentences.",
-    clozeTemplate: "The client is at highest risk for developing {blank}, {blank}, and {blank}.",
+    stem: "The nurse reviews the confirmed pulmonary embolism, current oxygenation, and new heparin order. Place the client's potential complications in priority order, from the most immediate threat to the complication monitored with ongoing heparin exposure.",
+    nclexInstruction: "Drag each complication into the ordered blanks, starting with the most immediate threat.",
+    clozeTemplate: "Prioritize {blank} first, then monitor for {blank}, followed by surveillance for {blank} with ongoing heparin exposure.",
     clozeBlankCount: 3,
     options: [
       { id: "a", text: "bleeding" },
@@ -721,7 +721,7 @@ const nclexVteCaseStudyDeck: PracticeQuestion[] = [
     ],
     correctAnswer: ["c", "a", "d"],
     rationale:
-      "The confirmed pulmonary embolism and impaired oxygenation create an immediate risk for respiratory failure. Starting unfractionated heparin adds a risk for bleeding, and ongoing platelet monitoring is needed because heparin can cause immune-mediated thrombocytopenia. Heart failure can produce dyspnea, but this record does not establish it as the active problem. Select risks supported by the updated diagnosis and treatment rather than carrying forward every plausible cardiopulmonary complication.",
+      "Respiratory failure is the most immediate threat because the confirmed pulmonary embolism is already impairing oxygenation. Bleeding becomes the next treatment-related priority when unfractionated heparin begins. Heparin-induced thrombocytopenia remains a serious complication requiring platelet surveillance during ongoing exposure, but it does not outrank the client's present respiratory threat. Heart failure can cause dyspnea, but this record does not establish it as the active problem. On priority-order items, rank current instability before treatment complications that require continued monitoring.",
     distractorRationales: {
       b: "Heart failure can cause dyspnea, but this case now has confirmed DVT/PE and heparin therapy, making respiratory compromise and anticoagulation complications the priority risks.",
     },

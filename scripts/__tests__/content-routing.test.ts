@@ -218,6 +218,9 @@ describe("complete unfolding case-study routing", () => {
     assert.doesNotMatch(deck[0].chartReview?.nursingNotes?.join(" ") ?? "", /pulmonary emboli/i);
     assert.match(deck[2].chartReview?.nursingNotes?.join(" ") ?? "", /pulmonary emboli/i);
     assert.match(deck[4].chartReview?.nursingNotes?.join(" ") ?? "", /left arm weakness/i);
+    assert.equal(deck[2].kind, "ordering");
+    assert.match(deck[2].nclexInstruction ?? "", /most immediate threat/i);
+    assert.deepEqual(deck[2].correctAnswer, ["c", "a", "d"]);
     assert.ok(
       deck.every((question) => (question.chartReview?.hpi?.length ?? 0) >= 3),
       "each case item retains a detailed HPI",
