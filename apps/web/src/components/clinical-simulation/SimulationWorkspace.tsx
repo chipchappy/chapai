@@ -461,8 +461,6 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         </aside>
       </section>
 
-__DEV_MOVED__
-
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}
 
       <CodeBluePanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
