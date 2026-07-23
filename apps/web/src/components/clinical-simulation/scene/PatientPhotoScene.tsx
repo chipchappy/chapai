@@ -40,15 +40,15 @@ type PhotoConfig = {
 // Adult ICU female, side-view semi-Fowler's — used for the adult ICU/med-surg/
 // telemetry scenarios whose patient matches. Others fall back to the vector scene.
 const ADULT_FEMALE_SIDE: PhotoConfig = {
-  src: "/sim/patients/adult-female-icu-side.jpg",
-  aspect: 1456 / 1080,
+  src: "/sim/patients/adult-female-icu-side.webp",
+  aspect: 1448 / 1086,
   face: { x: 21, y: 30 },
   lips: { x: 23.5, y: 35 },
   chest: { x: 33, y: 45 },
   hand: { x: 43, y: 49 },
   legs: { x: 62, y: 52 },
   feet: { x: 85, y: 47 },
-  monitor: { x: 82, y: 17 },
+  monitor: { x: 79, y: 30 },
 };
 
 const PHOTO_PATIENTS: Record<string, PhotoConfig> = {
