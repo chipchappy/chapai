@@ -1,12 +1,19 @@
 import { getQuestionBank } from "@/lib/content-bank";
+import { allocateBlueprintDeficits } from "@/lib/blueprint-allocation";
+import {
+  getCaseStudyEligibleQuestions,
+  qualityFirstCaseGroups,
+  shuffleQuestionBlocks,
+} from "@/lib/clinical-case-study";
 import { questions } from "@chapai/db/schema";
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { mapQuestionRowToQuizQuestion } from "@/lib/quiz-engine";
 import { ensureHostedUser } from "@/lib/billing-store";
 import { isLaunchPlanCode } from "@/lib/launch-offers";
 import { canUnlockPracticeExam, FREE_PRACTICE_EXAM_ID, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
+import { qualityFirstDiverseOrder } from "@/lib/question-quality";
 import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam } from "@/lib/types";
-import { getPracticeExamDefinitions, getStandardPreviewDeck, mapLiveQuestionBank } from "@/lib/practice-data";
+import { getPracticeExamDefinitions, getRichDeck, getStandardPreviewDeck, mapLiveQuestionBank } from "@/lib/practice-data";
 import type { PracticeExamDefinition, PracticeQuestion } from "@/lib/practice-types";
 import { getServerAccessContext } from "@/lib/server-access";
 import { getQuestionIntegrityIssues } from "@/lib/question-renderability";
@@ -26,34 +33,6 @@ const examIdSchema = z.enum([
   "ccrn-sim-1",
   "ccrn-sim-2",
 ]);
-
-function hashSeed(seed: string) {
-  let hash = 2166136261;
-  for (let index = 0; index < seed.length; index += 1) {
-    hash ^= seed.charCodeAt(index);
-    hash = Math.imul(hash, 16777619);
-  }
-  return hash >>> 0;
-}
-
-function seededRandom(seed: string) {
-  let state = hashSeed(seed) || 1;
-  return () => {
-    state = Math.imul(state ^ (state >>> 15), state | 1);
-    state ^= state + Math.imul(state ^ (state >>> 7), state | 61);
-    return ((state ^ (state >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function seededShuffle<T>(items: T[], seed: string) {
-  const random = seededRandom(seed);
-  const next = [...items];
-  for (let index = next.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(random() * (index + 1));
-    [next[index], next[swapIndex]] = [next[swapIndex], next[index]];
-  }
-  return next;
-}
 
 function normalizeStem(stem: string) {
   return stem
@@ -94,22 +73,8 @@ function takeUniqueQuestions(
 
 function getBlueprint(exam: Exam) {
   return exam === "ccrn"
-    ? Object.fromEntries(Object.entries(CCRN_CATEGORIES).map(([, value]) => [value.label, value.pct]))
-    : Object.fromEntries(Object.entries(NCLEX_CATEGORIES).map(([, value]) => [value.label, value.pct]));
-}
-
-// Readiness exams should mirror real NCLEX-RN difficulty: bias every category
-// bucket toward the HARDEST, premium (structured-rationale) items. Seeded shuffle
-// first keeps the 5 forms varied; the stable sort then floats the toughest to the
-// top. Because the forms reserve IDs across each other, they cascade from hardest
-// down — all five stay challenging and non-overlapping.
-function hardestFirst(items: PracticeQuestion[], seed: string) {
-  const jittered = seededShuffle(items, seed);
-  return [...jittered].sort((a, b) => {
-    const scoreA = (typeof a.difficulty === "number" ? a.difficulty : 3) + (a.structuredRationale ? 0.5 : 0);
-    const scoreB = (typeof b.difficulty === "number" ? b.difficulty : 3) + (b.structuredRationale ? 0.5 : 0);
-    return scoreB - scoreA;
-  });
+    ? Object.fromEntries(Object.entries(CCRN_CATEGORIES).map(([key, value]) => [key, value.pct]))
+    : Object.fromEntries(Object.entries(NCLEX_CATEGORIES).map(([key, value]) => [key, value.pct]));
 }
 
 function selectByBlueprint(
@@ -118,6 +83,7 @@ function selectByBlueprint(
   count: number,
   seed: string,
   reservedIds: Set<string> = new Set(),
+  initialQuestions: PracticeQuestion[] = [],
 ) {
   const buckets = new Map<string, PracticeQuestion[]>();
 
@@ -128,27 +94,34 @@ function selectByBlueprint(
     buckets.set(category, bucket);
   }
 
-  const selected: PracticeQuestion[] = [];
-  const usedInManifest = new Set<string>();
-  const usedSignatures = new Set<string>();
+  const selected = [...initialQuestions];
+  const usedInManifest = new Set(initialQuestions.map((question) => question.id));
+  const usedSignatures = new Set(initialQuestions.map(questionSignature));
+  const initialCounts = Object.fromEntries(Object.keys(blueprint).map((key) => [key, 0]));
+  for (const question of initialQuestions) {
+    const category = question.exam === "nclex" ? question.nclexClientNeed ?? question.category : question.category;
+    if (category in initialCounts) initialCounts[category] += 1;
+  }
+  const categoryTargets = allocateBlueprintDeficits(blueprint, count, initialCounts);
 
-  for (const [category, pct] of Object.entries(blueprint)) {
-    const target = Math.max(1, Math.round((pct / 100) * count));
-    const bucket = hardestFirst(buckets.get(category) ?? [], `${seed}:${category}`);
+  for (const category of Object.keys(blueprint)) {
+    const target = categoryTargets[category] ?? 0;
+    if (target === 0) continue;
+    const bucket = qualityFirstDiverseOrder(buckets.get(category) ?? [], `${seed}:${category}`);
     selected.push(...takeUniqueQuestions(bucket, target, reservedIds, usedInManifest, usedSignatures));
   }
 
   if (selected.length < count) {
-    const remainder = hardestFirst(questions, `${seed}:remainder`);
+    const remainder = qualityFirstDiverseOrder(questions, `${seed}:remainder`);
     selected.push(...takeUniqueQuestions(remainder, count - selected.length, reservedIds, usedInManifest, usedSignatures));
   }
 
   if (selected.length < count) {
-    const overflow = hardestFirst(questions, `${seed}:overflow`);
+    const overflow = qualityFirstDiverseOrder(questions, `${seed}:overflow`);
     selected.push(...takeUniqueQuestions(overflow, count - selected.length, new Set<string>(), usedInManifest, usedSignatures));
   }
 
-  return seededShuffle(selected, `${seed}:final`).slice(0, count);
+  return shuffleQuestionBlocks(selected.slice(0, count), `${seed}:final`);
 }
 
 async function loadLivePracticeQuestions(exam: Exam) {
@@ -165,7 +138,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
   }
 
   const db = getDB(env);
-  const candidateLimit = exam === "nclex" ? 900 : 550;
+  const candidateLimit = exam === "nclex" ? 700 : 500;
   const rows = await db
     .select({
       id: questions.id,
@@ -202,10 +175,28 @@ async function loadLivePracticeQuestions(exam: Exam) {
       correctOrder: questions.correctOrder,
     })
     .from(questions)
-    .where(and(eq(questions.exam, exam), eq(questions.publishState, "published")))
+    .where(and(
+      eq(questions.exam, exam),
+      eq(questions.publishState, "published"),
+      sql`(${questions.type} <> 'case_study' OR ${questions.caseStudyId} IS NOT NULL)`,
+    ))
     .orderBy(
-      sql`${questions.visualRationale} IS NULL`,
+      sql`CASE ${questions.reviewStatus}
+        WHEN 'final-curated-live' THEN 0
+        WHEN 'curated-live' THEN 1
+        WHEN 'approved' THEN 2
+        ELSE 3
+      END`,
+      sql`CASE
+        WHEN length(${questions.rationale}) >= 700 THEN 0
+        WHEN length(${questions.rationale}) >= 350 THEN 1
+        WHEN length(${questions.rationale}) >= 180 THEN 2
+        ELSE 3
+      END`,
       sql`${questions.structuredRationale} IS NULL`,
+      sql`${questions.distractorRationales} IS NULL`,
+      sql`${questions.referencesJson} IS NULL`,
+      sql`${questions.visualRationale} IS NULL`,
       sql`random()`,
     )
     .limit(candidateLimit);
@@ -218,9 +209,21 @@ async function loadLivePracticeQuestions(exam: Exam) {
 
 async function buildManifestIndex(exam: Exam) {
   const livePracticeQuestions = await loadLivePracticeQuestions(exam);
-  const practiceQuestions = livePracticeQuestions.length > 0
+  const baseQuestions = livePracticeQuestions.length > 0
     ? livePracticeQuestions
     : getStandardPreviewDeck().filter((q) => q.exam === exam).map((q) => ({ ...q, mode: "practice-exam" as const }));
+  const verifiedCaseFallback = exam === "nclex"
+    ? getRichDeck("case-study").filter((question) => question.exam === "nclex")
+    : [];
+  const seenIds = new Set<string>();
+  const practiceQuestions = getCaseStudyEligibleQuestions(
+    [...baseQuestions, ...verifiedCaseFallback].filter((question) => {
+      if (seenIds.has(question.id)) return false;
+      seenIds.add(question.id);
+      return true;
+    }),
+  );
+  const standaloneQuestions = practiceQuestions.filter((question) => !question.caseStudyId);
   const definitions = getPracticeExamDefinitions({
     [exam]: practiceQuestions.length,
   });
@@ -229,7 +232,19 @@ async function buildManifestIndex(exam: Exam) {
   const reservedIds = new Set<string>();
 
   for (const definition of definitions.filter((item) => item.exam === exam)) {
-    const selectedQuestions = selectByBlueprint(practiceQuestions, blueprint, definition.length, definition.seed, reservedIds);
+    const caseGroup = exam === "nclex"
+      ? qualityFirstCaseGroups(practiceQuestions, definition.seed)
+        .find((group) => group.questions.every((question) => !reservedIds.has(question.id)))
+        ?.questions ?? []
+      : [];
+    const selectedQuestions = selectByBlueprint(
+      standaloneQuestions,
+      blueprint,
+      definition.length,
+      definition.seed,
+      reservedIds,
+      caseGroup,
+    );
     selectedQuestions.forEach((question) => reservedIds.add(question.id));
     manifestIndex.set(definition.id, {
       definition,
@@ -280,6 +295,16 @@ async function buildManifest(examId: string) {
   return manifestIndex.get(examId) ?? null;
 }
 
+function personalizeManifest(
+  manifest: { definition: PracticeExamDefinition; questions: PracticeQuestion[] },
+  seed: string,
+) {
+  return {
+    ...manifest,
+    questions: shuffleQuestionBlocks(manifest.questions, seed),
+  };
+}
+
 export async function GET(request: Request, context: RouteContext) {
   const { examId } = await context.params;
   const parsed = examIdSchema.safeParse(examId);
@@ -316,10 +341,15 @@ export async function GET(request: Request, context: RouteContext) {
     return Response.json({ success: false, error: "Practice exam unavailable" }, { status: 404 });
   }
 
+  const personalizedManifest = personalizeManifest(
+    manifest,
+    `${parsed.data}:${user?.id ?? request.headers.get("cf-ray") ?? crypto.randomUUID()}`,
+  );
+
   if (previewAccess && !user?.id) {
     return Response.json({
       success: true,
-      data: manifest,
+      data: personalizedManifest,
     });
   }
 
@@ -368,6 +398,6 @@ export async function GET(request: Request, context: RouteContext) {
 
   return Response.json({
     success: true,
-    data: manifest,
+    data: personalizedManifest,
   });
 }

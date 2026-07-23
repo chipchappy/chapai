@@ -231,6 +231,7 @@ export async function POST(req: NextRequest) {
         adaptive: parsed.data.adaptive,
         excludeIds: parsed.data.excludeIds,
         diversify: access.tier === "free",
+        selectionSeed: `${hostedUser?.id ?? "preview"}:${requestContext.requestId}`,
       });
     } catch (error) {
       logError("quiz/start selection failed", error, requestContext);

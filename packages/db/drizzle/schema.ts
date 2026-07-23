@@ -78,7 +78,9 @@ export const questions = sqliteTable("questions", {
   correctOrder: text("correct_order"),
   conceptNotes: text("concept_notes"),
   provenance: text("provenance"),
-  reviewStatus: text("review_status", { enum: ["draft", "review", "approved", "flagged", "final-curated-live"] }),
+  reviewStatus: text("review_status", {
+    enum: ["draft", "review", "approved", "flagged", "curated-live", "final-curated-live"],
+  }),
   revision: integer("revision"),
   publishState: text("publish_state", { enum: ["draft", "published", "unpublished"] }).default("published"),
   scenarioTitle: text("scenario_title"),

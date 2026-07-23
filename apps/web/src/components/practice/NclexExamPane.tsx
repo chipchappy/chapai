@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { BowTieSelector } from "@/components/practice/BowTieSelector";
 import RationaleDiagram from "@/components/practice/RationaleDiagram";
+import { buildDistinctClinicalSections, excludeClinicalOverlap } from "@/lib/clinical-chart-sections";
 import { getDisplayableDistractorRationales, isDisplayableRationaleText } from "@/lib/distractor-rationale-display";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
@@ -244,7 +245,7 @@ function exhibitLines(question: PracticeQuestion, types: Array<"note" | "timelin
     .filter(Boolean);
 }
 
-function nursingNoteFallback(question: PracticeQuestion) {
+function nursingNoteFallback(question: PracticeQuestion, history: string[] = []) {
   const objectiveFindings = [...metricRows(question, "vitals"), ...metricRows(question, "labs")]
     .slice(0, 4)
     .map((item) => `Current assessment: ${item.label} ${item.value}${item.unit ? ` ${item.unit}` : ""}${item.flag && item.flag !== "normal" ? ` (${item.flag})` : ""}`);
@@ -252,11 +253,11 @@ function nursingNoteFallback(question: PracticeQuestion) {
     .slice(1)
     .filter((line) => !line.trim().endsWith("?"))
     .slice(0, 4);
-  const lines = chartLines([
+  const lines = excludeClinicalOverlap(chartLines([
     question.additionalInfo,
     ...objectiveFindings,
     ...stemFindings,
-  ]);
+  ]), history);
   return lines.length
     ? lines
     : ["No separate nurses' note was supplied for this item. Use the objective findings in the available chart tabs."];
@@ -343,7 +344,7 @@ export default function NclexExamPane({
   }, []);
 
   const chartContent = useMemo(() => {
-    const notes = chartLines([
+    const rawNotes = chartLines([
       ...(question.chartReview?.nursingNotes ?? []),
       ...(question.chartReview?.notes ?? []),
       ...(question.chartReview?.assessments ?? []),
@@ -353,7 +354,7 @@ export default function NclexExamPane({
       question.additionalInfo,
       ...exhibitLines(question, ["note", "timeline", "assessment"]),
     ]);
-    const history = chartLines([
+    const rawHistory = chartLines([
       ...(question.chartReview?.hpi ?? []),
       ...(question.chartReview?.history ?? []),
       question.chartReview?.chiefComplaint ? `Chief complaint: ${question.chartReview.chiefComplaint}` : "",
@@ -364,6 +365,10 @@ export default function NclexExamPane({
       question.scenarioTitle,
       question.caseTitle,
     ]);
+    const distinctNarrative = buildDistinctClinicalSections({
+      hpi: rawHistory,
+      notes: rawNotes,
+    });
     const orders = chartLines([
       ...(question.chartReview?.orders ?? []),
       ...(question.chartReview?.providerOrders ?? []),
@@ -371,8 +376,8 @@ export default function NclexExamPane({
     ]);
 
     return {
-      notes,
-      history,
+      notes: distinctNarrative.notes,
+      history: distinctNarrative.hpi,
       orders,
       vitals: metricRows(question, "vitals"),
       labs: metricRows(question, "labs"),
@@ -445,7 +450,7 @@ export default function NclexExamPane({
 
     const lines = chartTab === "orders" ? chartContent.orders : chartTab === "history" ? chartContent.history : chartContent.notes;
     const fallback = chartTab === "notes"
-      ? nursingNoteFallback(question)
+      ? nursingNoteFallback(question, chartContent.history)
       : chartTab === "history"
         ? historyFallback(question)
         : [];

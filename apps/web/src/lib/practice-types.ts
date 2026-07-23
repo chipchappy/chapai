@@ -1,5 +1,5 @@
-import type { BowTieQuestion, CjmmStep, CognitiveLevel, Exam, NclexClientNeed, QuestionType, StructuredRationale } from "@/lib/types";
-import type { StudyResource } from "@/lib/study-resources";
+import type { BowTieQuestion, CjmmStep, CognitiveLevel, Exam, NclexClientNeed, QuestionType, StructuredRationale } from "./types";
+import type { StudyResource } from "./study-resources";
 
 export type PracticeMode = "standard" | "chart" | "case-study" | "ngn" | "practice-exam";
 export type PracticeQuestionKind =
@@ -107,6 +107,7 @@ export interface PracticeQuestion {
   studyResources?: StudyResource[];
   coachingFrame?: string[];
   tutorReady?: boolean;
+  reviewStatus?: "draft" | "review" | "approved" | "flagged" | "curated-live" | "final-curated-live";
   source?: "live" | "demo" | "simulated";
   title?: string;
   caseTitle?: string;

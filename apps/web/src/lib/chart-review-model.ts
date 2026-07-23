@@ -5,6 +5,7 @@ import type {
   PracticeMetric,
   PracticeQuestion,
 } from "@/lib/practice-types";
+import { buildDistinctClinicalSections } from "@/lib/clinical-chart-sections";
 import type { MarketingRouteKey } from "@/components/marketing/marketingArtwork";
 
 export type ChartReviewTab =
@@ -170,7 +171,7 @@ function getPracticeChartPieces(question: PracticeQuestion) {
   const contextTitle = chartReview?.patientTitle ?? question.caseTitle ?? question.chartTitle ?? question.scenarioTitle ?? question.title ?? "active clinical scenario";
   const contextCaption = chartReview?.patientCaption ?? question.chartCaption ?? question.takeaway ?? question.speedCue ?? "Read the chart first, then commit to the safest action.";
 
-  const hpi = uniqueStrings([
+  const rawHpi = uniqueStrings([
     chartReview?.chiefComplaint ? `Chief complaint: ${chartReview.chiefComplaint}` : undefined,
     ...explicitList(chartReview, "hpi"),
     ...explicitList(chartReview, "history"),
@@ -213,7 +214,7 @@ function getPracticeChartPieces(question: PracticeQuestion) {
     ...flattenExhibitItems(orderExhibits),
   ], 6);
 
-  const notes = uniqueStrings([
+  const rawNotes = uniqueStrings([
     ...explicitList(chartReview, "notes"),
     ...explicitList(chartReview, "nursingNotes"),
     ...explicitList(chartReview, "assessments"),
@@ -224,6 +225,10 @@ function getPracticeChartPieces(question: PracticeQuestion) {
     ...flattenExhibitItems(noteExhibits),
     ...(question.additionalInfo ? [question.additionalInfo] : []),
   ], 6);
+  const { hpi, notes } = buildDistinctClinicalSections({
+    hpi: rawHpi,
+    notes: rawNotes,
+  });
 
   return { contextTitle, contextCaption, hpi, timeline, labs, diagnostics, orders, notes };
 }
