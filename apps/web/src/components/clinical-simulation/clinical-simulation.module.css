@@ -2203,9 +2203,13 @@
 .scoreDelta[data-direction="down"] { background: #f6e8e4; color: #9c4f41; }
 
 /* ==== clinical decision-impact panel (butterfly effects) ==== */
+/* Flex, not grid: a header spanning `1 / -1` prevented auto-fit from collapsing
+   empty tracks, pinning a lone card to one 268px column and leaving the rest of
+   the row as dead space. Flex lets blocks grow into whatever space exists. */
 .impactPanel {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
   gap: 14px;
   padding: 15px 22px 18px;
   border-top: 1px solid #dde5df;
@@ -2214,7 +2218,7 @@
 }
 
 .impactPanel > header {
-  grid-column: 1 / -1;
+  flex: 1 1 100%;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2226,6 +2230,8 @@
 }
 
 .impactBlock {
+  flex: 1 1 268px;
+  min-width: 0;
   border: 1px solid #dbe4de;
   border-radius: 12px;
   padding: 12px 13px 13px;

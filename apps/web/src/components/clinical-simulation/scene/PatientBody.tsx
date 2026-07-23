@@ -107,8 +107,8 @@ function Face({ visual, anchors, idPrefix }: { visual: PatientVisualState; ancho
 function Bed({ anchors, idPrefix }: { anchors: SceneAnchors; idPrefix: string }) {
   const footAnchorX = Math.max(anchors.leftFoot.x, anchors.rightFoot.x);
   const footAnchorY = Math.max(anchors.leftFoot.y, anchors.rightFoot.y);
-  const headX = anchors.nose.x - 96;
-  const footX = footAnchorX + 84;
+  const headX = anchors.nose.x - 62;
+  const footX = footAnchorX + 46;
   // Mattress surface: tucked just under the body along its whole length.
   const surfHead = anchors.nose.y + 56;
   const surfChest = anchors.upperChest.y + 50;
@@ -178,7 +178,7 @@ function AmbulatoryPatient({ visual, anchors, idPrefix }: { visual: PatientVisua
 }
 
 function BedPatient({ visual, anchors, idPrefix }: Props) {
-  const torsoWidth = visual.profile.bodyVariant === "broad" ? 74 : visual.profile.bodyVariant === "slender" ? 54 : 64;
+  const torsoWidth = visual.profile.bodyVariant === "broad" ? 92 : visual.profile.bodyVariant === "slender" ? 70 : 81;
   const limbWidth = visual.skin.edema > 0 ? 21 + visual.skin.edema * 1.6 : 20;
   const lowerLegWidth = 21 + visual.skin.edema * 1.4;
   const gownColor = visual.profile.clothing === "procedural-gown" ? "#7b9ba0" : visual.profile.clothing === "icu-gown" ? "#668b8d" : "#77979b";

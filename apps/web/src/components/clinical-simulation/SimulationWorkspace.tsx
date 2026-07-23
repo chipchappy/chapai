@@ -461,30 +461,12 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         </aside>
       </section>
 
-      {developerToolsEnabled && developerInfo && attemptMeta ? <SimulationDeveloperPanel
-        scenario={scenario}
-        attemptId={attemptId}
-        seed={attemptMeta.seed}
-        state={state}
-        info={developerInfo}
-        busy={saving}
-        onPause={async (paused) => { await perform({ operation: "set_paused", paused }); }}
-        onAdvance={async (minutes) => { await perform({ operation: "advance", minutes }); }}
-        onAdvanceNext={async () => { await perform({ operation: "advance_next" }); }}
-        onReset={async (seed) => { await perform({ operation: "reset", ...(seed ? { seed } : {}) }); setSelections({}); }}
-        onRestart={restartAttempt}
-        onTriggerEvent={async (eventId) => { await perform({ operation: "trigger_event", eventId }); }}
-        visualState={patientVisualState}
-        visualOverrides={visualOverrides}
-        scenePerformance={scenePerformance}
-        onVisualOverrides={setVisualOverrides}
-      /> : null}
+__DEV_MOVED__
 
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}
 
       <CodeBluePanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
-      <ClinicalImpactPanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
       <nav className={styles.workspaceTabs} role="tablist" aria-label="Clinical workspace">
         {tabGroups.map((group) => <div key={group.label} className={styles.tabGroup}>
@@ -540,6 +522,27 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         {activeTab === "documentation" ? <><div className={styles.panelIntro}><h2>Structured nursing documentation</h2><p>Record the assessment, intervention, response, notification, and safety elements required by this scenario.</p></div>{renderActions(actionsByCategory.get("documentation"))}</> : null}
         {activeTab === "timeline" ? <div className={styles.liveTimeline}><h2>Clinical timeline</h2>{state.actionLog.length ? <ol>{state.actionLog.map((entry) => <li key={entry.id} data-classification={entry.classification}><time>+{entry.virtualMinute} min</time><div><strong>{entry.label}</strong><span>{entry.classification.replaceAll("_", " ")}</span><p>{entry.feedback}</p></div></li>)}</ol> : <p>No clinical actions have been recorded.</p>}</div> : null}
       </section>
+
+      <ClinicalImpactPanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
+
+      {developerToolsEnabled && developerInfo && attemptMeta ? <SimulationDeveloperPanel
+        scenario={scenario}
+        attemptId={attemptId}
+        seed={attemptMeta.seed}
+        state={state}
+        info={developerInfo}
+        busy={saving}
+        onPause={async (paused) => { await perform({ operation: "set_paused", paused }); }}
+        onAdvance={async (minutes) => { await perform({ operation: "advance", minutes }); }}
+        onAdvanceNext={async () => { await perform({ operation: "advance_next" }); }}
+        onReset={async (seed) => { await perform({ operation: "reset", ...(seed ? { seed } : {}) }); setSelections({}); }}
+        onRestart={restartAttempt}
+        onTriggerEvent={async (eventId) => { await perform({ operation: "trigger_event", eventId }); }}
+        visualState={patientVisualState}
+        visualOverrides={visualOverrides}
+        scenePerformance={scenePerformance}
+        onVisualOverrides={setVisualOverrides}
+      /> : null}
 
       <footer className={styles.workspaceFooter}>
         <div><span>{state.actionLog.length} actions recorded</span><span>{state.criticalErrors.length} critical errors</span><span>{state.clockPaused ? "Clock paused" : `${speed}x clock active`}</span>{saving ? <span>Saving...</span> : null}</div>
