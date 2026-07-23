@@ -27,6 +27,7 @@ import {
   Zap,
 } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
+import ClinicalImpactPanel from "@/components/clinical-simulation/ClinicalImpactPanel";
 import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
 import SimulationDebrief from "@/components/clinical-simulation/SimulationDebrief";
@@ -250,6 +251,8 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [scenePerformance, setScenePerformance] = useState<ScenePerformanceSample | null>(null);
   const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
   const [activeTab, setActiveTab] = useState<TabId>("patient");
+  /** Virtual minute each tab was last opened — drives "new result" badges. */
+  const [tabSeenAt, setTabSeenAt] = useState<Partial<Record<TabId, number>>>({});
   const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [speed, setSpeed] = useState<1 | 5>(1);
   const [loading, setLoading] = useState(true);
@@ -337,6 +340,21 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
     trackEvent("simulation_debrief_viewed", { scenarioId: scenario.id, unit: scenario.unit });
     void perform({ operation: "debrief_viewed" });
   }, [debrief, perform, scenario.id, scenario.unit]);
+
+  // Results that landed after the student last opened that tab.
+  const newResultCounts = useMemo(() => {
+    const minute = state?.virtualMinute ?? 0;
+    const since = (tab: TabId) => tabSeenAt[tab] ?? -1;
+    return {
+      labs: scenario.chart.labs.filter((lab) => lab.availableAtMinute > 0 && lab.availableAtMinute <= minute && lab.availableAtMinute > since("labs")).length,
+      diagnostics: scenario.chart.diagnostics.filter((item) => item.availableAtMinute > 0 && item.availableAtMinute <= minute && item.availableAtMinute > since("diagnostics")).length,
+    } as Partial<Record<TabId, number>>;
+  }, [scenario.chart.diagnostics, scenario.chart.labs, state?.virtualMinute, tabSeenAt]);
+
+  useEffect(() => {
+    if (!state) return;
+    setTabSeenAt((current) => (current[activeTab] === state.virtualMinute ? current : { ...current, [activeTab]: state.virtualMinute }));
+  }, [activeTab, state]);
 
   const actionsByCategory = useMemo(() => {
     const map = new Map<ScenarioAction["category"], ScenarioAction[]>();
@@ -466,6 +484,8 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
       <CodeBluePanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
+      <ClinicalImpactPanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
+
       <nav className={styles.workspaceTabs} role="tablist" aria-label="Clinical workspace">
         {tabGroups.map((group) => <div key={group.label} className={styles.tabGroup}>
           <span aria-hidden="true">{group.label}</span>
@@ -474,7 +494,11 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
               const tab = tabs.find((item) => item.id === id);
               if (!tab) return null;
               const Icon = tab.icon;
-              return <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id} data-active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)}><Icon size={16} aria-hidden="true" /> {tab.label}</button>;
+              const fresh = newResultCounts[tab.id] ?? 0;
+              return <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id} data-active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)}>
+                <Icon size={16} aria-hidden="true" /> {tab.label}
+                {fresh > 0 ? <em className={styles.tabBadge} aria-label={`${fresh} new result${fresh === 1 ? "" : "s"}`}>{fresh}</em> : null}
+              </button>;
             })}
           </div>
         </div>)}
