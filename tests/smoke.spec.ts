@@ -228,6 +228,31 @@ test.describe("core product", () => {
     expect(getErrors()).toEqual([]);
   });
 
+  test("verified unfolding case loads with distinct HPI and nurses' notes @desktopOnly", async ({ page }) => {
+    const getErrors = collectConsoleErrors(page);
+    const failedCaseRequests: Array<{ status: number; url: string }> = [];
+    page.on("response", (response) => {
+      if (response.url().endsWith("/api/quiz/start") && response.status() >= 400) {
+        failedCaseRequests.push({ status: response.status(), url: response.url() });
+      }
+    });
+    await grantDemoAccess(page);
+    await page.goto("/quiz?exam=nclex&mode=case-study", { waitUntil: "networkidle" });
+    await expect(page.getByText(/Item 1 of 6/i), "six-step case opens").toBeVisible({ timeout: 25_000 });
+
+    const chart = page.locator(".nclex-chart-card");
+    const notesText = await chart.innerText();
+    await page.getByRole("tab", { name: "History and Physical" }).click();
+    await expect(page.getByRole("heading", { name: "History and Physical" })).toBeVisible();
+    const historyText = await chart.innerText();
+
+    expect(notesText, "nurses' notes carry timestamped observations").toMatch(/0615|0620/);
+    expect(historyText, "HPI carries symptom onset").toMatch(/45 minutes|sudden dyspnea/i);
+    expect(historyText, "HPI and nurses' notes are distinct").not.toBe(notesText);
+    expect(failedCaseRequests, "case fallback does not emit a failed API request").toEqual([]);
+    expect(getErrors()).toEqual([]);
+  });
+
   test("answered question opens a working Clarity AI tutor @desktopOnly", async ({ page }) => {
     await grantDemoAccess(page);
     await page.goto("/quiz?exam=nclex&mode=standard", { waitUntil: "networkidle" });

@@ -241,6 +241,16 @@ export async function POST(req: NextRequest) {
     }
 
     if (questionList.length === 0) {
+      if (effectiveConfig.exam === "nclex" && effectiveConfig.questionType === "case_study") {
+        // The client owns the clinically verified static case fallback. Return a
+        // clean empty result while D1 has no complete six-step case instead of
+        // generating a noisy 404 before that fallback opens.
+        return jsonSuccess(
+          { sessionId: `verified-case-fallback-${Date.now()}`, questions: [] },
+          200,
+          { requestId: requestContext.requestId },
+        );
+      }
       return jsonError(404, "QUESTION_SET_EMPTY", "No questions matched this filter yet.", requestContext, {
         requestId: requestContext.requestId,
       });
