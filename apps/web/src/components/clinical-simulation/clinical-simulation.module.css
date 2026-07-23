@@ -2366,3 +2366,9 @@
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
+
+/* ── photoreal scene layout: photo carries its own monitor, so 2 columns ── */
+.clinicalView[data-photo="true"] {
+  grid-template-columns: minmax(0, 1.72fr) minmax(230px, 0.5fr);
+  background: #f1ede3;
+}

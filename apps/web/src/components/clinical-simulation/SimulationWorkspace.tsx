@@ -29,6 +29,7 @@ import {
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import ClinicalImpactPanel from "@/components/clinical-simulation/ClinicalImpactPanel";
 import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
+import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simulation/scene/PatientPhotoScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
 import SimulationDebrief from "@/components/clinical-simulation/SimulationDebrief";
 import { canCompleteSimulation, type PatientState, type SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
@@ -400,6 +401,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
     [developerToolsEnabled, scenario, sceneQuality, state, visualOverrides],
   );
   const updateScenePerformance = useCallback((sample: ScenePerformanceSample) => setScenePerformance(sample), []);
+  const photoPatient = useMemo(() => getPhotoPatient(scenario.slug), [scenario.slug]);
 
   if (loading) return <main className={styles.workspaceLoading}><Activity className={styles.spin} aria-hidden="true" /><span>Loading patient state</span></main>;
   if (!state || !patientVisualState) return <main className={styles.workspaceError}><AlertTriangle aria-hidden="true" /><h1>Simulation unavailable</h1><p>{error}</p><Link href="/clinical-simulation">Return to catalog</Link></main>;
@@ -451,9 +453,15 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         </div>
       </header>
 
-      <section className={styles.clinicalView}>
-        <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
-        <BedsideMonitor state={state} />
+      <section className={styles.clinicalView} data-photo={Boolean(photoPatient)}>
+        {photoPatient ? (
+          <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} />
+        ) : (
+          <>
+            <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
+            <BedsideMonitor state={state} />
+          </>
+        )}
         <aside className={styles.responseFeed} aria-live="polite">
           <header><Activity size={16} aria-hidden="true" /> Patient response</header>
           {latestNotices.map((notice) => <div key={notice.id} data-severity={notice.severity}><time>+{notice.virtualMinute}</time><p>{notice.message}</p></div>)}
