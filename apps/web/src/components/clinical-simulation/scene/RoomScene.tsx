@@ -9,7 +9,15 @@ type Props = {
   patientName?: string;
 };
 
-function Headwall({ intensive = false }: { intensive?: boolean }) {
+/** Parses "4 L/min" / "6L" into a float so the flowmeter ball can ride the scale. */
+function parseFlow(raw: string | undefined): number | null {
+  if (!raw) return null;
+  const match = /([\d.]+)/.exec(raw);
+  const value = match ? Number(match[1]) : Number.NaN;
+  return Number.isFinite(value) ? value : null;
+}
+
+function Headwall({ intensive = false, oxygen = "room-air", oxygenFlow = "none" }: { intensive?: boolean; oxygen?: string; oxygenFlow?: string }) {
   return (
     <g>
       <rect x="220" y="86" width="785" height={intensive ? 164 : 118} rx="13" fill="#e7ece9" stroke="#bac7c2" strokeWidth="2" />
@@ -28,23 +36,41 @@ function Headwall({ intensive = false }: { intensive?: boolean }) {
         <circle cx="824" cy="186" r="12" fill="#ead6cb" stroke="#9d7068" strokeWidth="3" />
         <rect x="853" y="174" width="81" height="25" rx="5" fill="#dce4e1" />
       </> : null}
-      {/* wall gas station: O2 flowmeter + christmas tree, suction regulator + canister */}
-      <g transform={`translate(${intensive ? 600 : 842} ${intensive ? 152 : 146})`}>
-        <rect width="118" height="52" rx="6" fill="#eef2ef" stroke="#b5c2bd" strokeWidth="2" />
-        <rect x="12" y="7" width="14" height="32" rx="3" fill="#f8fbf8" stroke="#7d938d" strokeWidth="1.5" />
-        <path d="M15 12 H23 M15 18 H23 M15 24 H23 M15 30 H23" stroke="#c9d6d0" strokeWidth="1" />
-        <circle cx="19" cy="22" r="3.4" fill="#7fb89a" />
-        <path d="M19 39 V43" stroke="#6b7f79" strokeWidth="2" />
-        <circle cx="19" cy="46" r="4.6" fill="#4f8a67" stroke="#38624a" strokeWidth="1.5" />
-        <text x="33" y="18" fill="#4f8a67" fontSize="9" fontWeight="700">O₂</text>
-        <path d="M36 24 h10 M37.5 28 h7 M39 32 h4" stroke="#5c8f6f" strokeWidth="3" strokeLinecap="round" />
-        <rect x="62" y="8" width="20" height="15" rx="3" fill="#dfe7e2" stroke="#7d938d" strokeWidth="1.5" />
-        <circle cx="72" cy="15.5" r="4.6" fill="#f4f7f3" stroke="#8a9b95" strokeWidth="1.3" />
-        <path d="M72 12.6 V15.5 L74 17.4" stroke="#5c716b" strokeWidth="1.1" fill="none" />
-        <rect x="88" y="12" width="18" height="30" rx="4" fill="#f2f6f2" stroke="#8a9b95" strokeWidth="1.5" />
-        <rect x="90" y="27" width="14" height="13" rx="2" fill="#d9c98e" opacity="0.55" />
-        <rect x="87" y="7" width="20" height="7" rx="2.5" fill="#c98d5f" />
-        <text x="59" y="50" fill="#8a9b95" fontSize="6.5" fontWeight="700">SUCTION</text>
+      {/* Wall gas station. The flowmeter is LIVE: the indicator ball rides the
+          0-15 L/min scale at the flow the engine is actually delivering, and the
+          device in use is named — so a student can read the wall the way they
+          would at a real bedside. */}
+      <g transform={`translate(${intensive ? 600 : 842} ${intensive ? 152 : 146})`} data-room-item="gas-station">
+        <rect width="126" height="58" rx="6" fill="#eef2ef" stroke="#b5c2bd" strokeWidth="2" />
+        {/* thorpe-tube flowmeter, graduated 0-15 */}
+        <rect x="11" y="6" width="15" height="34" rx="3" fill="#f8fbf8" stroke="#7d938d" strokeWidth="1.5" />
+        {[0, 1, 2, 3, 4, 5].map((tick) => <path key={tick} d={`M13 ${37 - tick * 6} H${tick % 2 === 0 ? 24 : 20}`} stroke="#c1d0c9" strokeWidth="1" />)}
+        {(() => {
+          const flow = parseFlow(oxygenFlow) ?? 0;
+          const clamped = Math.max(0, Math.min(15, flow));
+          const ballY = 37 - (clamped / 15) * 30;
+          const flowing = clamped > 0 && oxygen !== "room-air";
+          return <>
+            {flowing ? <rect x="12.5" y={ballY} width="12" height={38 - ballY} rx="2" fill="#8fc9ad" opacity="0.3" /> : null}
+            <circle cx="18.5" cy={ballY} r="3.6" fill={flowing ? "#3f8a63" : "#9fb0a8"} stroke="#2f6449" strokeWidth="1" />
+          </>;
+        })()}
+        <path d="M18.5 40 V44" stroke="#6b7f79" strokeWidth="2" />
+        <circle cx="18.5" cy="47" r="4.6" fill="#4f8a67" stroke="#38624a" strokeWidth="1.5" />
+        <path d="M16.4 47 H20.6 M18.5 44.9 V49.1" stroke="#dcefe3" strokeWidth="1.1" />
+        <text x="33" y="15" fill="#4f8a67" fontSize="8.5" fontWeight="700">O₂ {oxygenFlow !== "none" ? oxygenFlow : "off"}</text>
+        <text x="33" y="25" fill="#7d938d" fontSize="6.5" fontWeight="700">{oxygen === "room-air" ? "ROOM AIR" : oxygen.replaceAll("-", " ").toUpperCase().slice(0, 17)}</text>
+        {/* christmas-tree adapter */}
+        <path d="M36 31 h10 M37.5 35 h7 M39 39 h4" stroke="#5c8f6f" strokeWidth="3" strokeLinecap="round" />
+        {/* suction regulator + canister */}
+        <rect x="68" y="8" width="20" height="15" rx="3" fill="#dfe7e2" stroke="#7d938d" strokeWidth="1.5" />
+        <circle cx="78" cy="15.5" r="4.6" fill="#f4f7f3" stroke="#8a9b95" strokeWidth="1.3" />
+        <path d="M78 12.6 V15.5 L80 17.4" stroke="#5c716b" strokeWidth="1.1" fill="none" />
+        <rect x="94" y="12" width="18" height="32" rx="4" fill="#f2f6f2" stroke="#8a9b95" strokeWidth="1.5" />
+        <rect x="96" y="29" width="14" height="13" rx="2" fill="#d9c98e" opacity="0.55" />
+        <path d="M96 33 H110" stroke="#bda86a" strokeWidth="1" opacity="0.7" />
+        <rect x="93" y="7" width="20" height="7" rx="2.5" fill="#c98d5f" />
+        <text x="65" y="53" fill="#8a9b95" fontSize="6.5" fontWeight="700">SUCTION</text>
       </g>
       {/* spare oxygen devices on wall hooks: nasal cannula coil, simple mask, non-rebreather */}
       <g transform={`translate(${intensive ? 524 : 398} ${intensive ? 158 : 146})`} stroke="#7f938d" fill="none" strokeWidth="1.6">
@@ -169,7 +195,21 @@ export default function RoomScene({ visual, idPrefix, virtualMinute, roomLabel, 
       <path d="M0 405 H1200" stroke="#aab6b1" strokeWidth="8" />
       <path d="M0 403 H1200" stroke="#8d9c97" strokeWidth="2" opacity="0.5" />
       <path d="M0 680 L350 405 H850 L1200 680" fill={night ? "#8c9694" : "#bdc4c0"} opacity="0.46" />
-      {psychiatric ? <PsychiatricRoom /> : procedural ? <ProceduralRoom /> : <Headwall intensive={intensive} />}
+      {psychiatric ? <PsychiatricRoom /> : procedural ? <ProceduralRoom /> : <Headwall intensive={intensive} oxygen={visual.devices.oxygen} oxygenFlow={visual.devices.oxygenFlow} />}
+      {/* ceiling luminaire — fills the empty upper band and gives the room a light source */}
+      <g data-room-item="ceiling-light" opacity={night ? 0.5 : 1}>
+        <rect x="470" y="24" width="268" height="34" rx="7" fill={night ? "#c3cfca" : "#f7fbf6"} stroke="#b0bfb8" strokeWidth="3" />
+        <path d="M492 41 H716" stroke={night ? "#9fb0a8" : "#e8efe6"} strokeWidth="14" strokeLinecap="round" />
+        <path d="M508 58 L480 84 M700 58 L728 84" stroke="#c8d4ce" strokeWidth="2" opacity="0.55" />
+        {!night ? <ellipse cx="604" cy="120" rx="196" ry="66" fill="#fffdf0" opacity="0.16" /> : null}
+      </g>
+      {/* visitor chair — the foreground floor read as dead space without it */}
+      {!psychiatric ? <g data-room-item="visitor-chair" transform="translate(64 452)">
+        <path d="M6 106 V150 M96 106 V150" stroke="#7d8f88" strokeWidth="7" strokeLinecap="round" />
+        <path d="M0 60 Q0 44 16 44 H86 Q102 44 102 60 V78 Q102 92 86 92 H16 Q0 92 0 78 Z" fill="#9db3a8" stroke="#789086" strokeWidth="3" />
+        <path d="M8 0 Q8 -12 22 -12 H80 Q94 -12 94 0 V48 H8 Z" fill="#adc2b7" stroke="#7d948a" strokeWidth="3" />
+        <path d="M20 6 H82" stroke="#c6d6cc" strokeWidth="3" opacity="0.7" />
+      </g> : null}
       {!psychiatric ? <><Window night={night} /><RoomClock night={night} minute={virtualMinute} /><PrivacyCurtain /><SharpsContainer /></> : null}
       <PatientWhiteboard roomLabel={roomLabel} patientName={patientName} />
       {visual.roomPreset === "medical-surgical" ? <g transform="translate(1007 338)"><rect width="143" height="92" rx="7" fill="#d8dfdc" stroke="#839592" strokeWidth="3" /><rect x="14" y="13" width="114" height="29" rx="4" fill="#f7f8f5" /><path d="M18 59 H125" stroke="#9aaba7" strokeWidth="4" /><circle cx="23" cy="100" r="9" fill="#4d5f5e" /><circle cx="119" cy="100" r="9" fill="#4d5f5e" /></g> : null}

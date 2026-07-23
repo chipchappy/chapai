@@ -61,7 +61,10 @@ function Face({ visual, anchors, idPrefix }: { visual: PatientVisualState; ancho
         ? `M${x - 8} ${y + 15} Q${x} ${y + 5} ${x + 9} ${y + 15}`
         : `M${x - 7} ${y + 14} Q${x} ${y + 15} ${x + 8} ${y + 14}`;
   return (
-    <g className={styles.headMotion} data-loc={visual.consciousness.level}>
+    // Scaled about the face centre: the head read slightly large against the
+    // foreshortened torso, and scaling the group keeps hair, features, and
+    // overlays in proportion with each other.
+    <g className={styles.headMotion} data-loc={visual.consciousness.level} transform={`translate(${x} ${y}) scale(0.9) translate(${-x} ${-y})`}>
       <ellipse cx={x} cy={y} rx="31" ry="35" fill={`url(#${idPrefix}-skin-face)`} stroke="var(--skin-shadow)" strokeWidth="1.4" />
       <path d={`M${x - 30} ${y + 8} Q${x - 24} ${y + 30} ${x} ${y + 34} Q${x + 24} ${y + 30} ${x + 30} ${y + 8} Q${x + 22} ${y + 22} ${x} ${y + 25} Q${x - 22} ${y + 22} ${x - 30} ${y + 8} Z`} fill="var(--skin-shadow)" opacity="0.18" />
       <ellipse cx={x - 17} cy={y + 8} rx="9" ry="7" fill={`url(#${idPrefix}-skin-cheek)`} />
@@ -195,15 +198,29 @@ function BedPatient({ visual, anchors, idPrefix }: Props) {
       <ellipse cx={anchors.rightHand.x} cy={anchors.rightHand.y} rx={11 + visual.skin.edema} ry={7 + visual.skin.edema * 0.7} fill={`url(#${idPrefix}-skin-limb)`} />
       <path d={`M${anchors.pelvis.x - 38} ${anchors.pelvis.y - 3} Q${anchors.leftThigh.x} ${anchors.leftThigh.y + 13} ${anchors.leftLowerLeg.x} ${anchors.leftLowerLeg.y} T${anchors.leftFoot.x} ${anchors.leftFoot.y}`} stroke="#d9e3df" strokeWidth={42 + visual.skin.edema * 1.4} strokeLinecap="round" fill="none" />
       <path d={`M${anchors.pelvis.x - 18} ${anchors.pelvis.y - 11} Q${anchors.rightThigh.x} ${anchors.rightThigh.y - 9} ${anchors.rightLowerLeg.x} ${anchors.rightLowerLeg.y} T${anchors.rightFoot.x} ${anchors.rightFoot.y}`} stroke="#cbdad5" strokeWidth={39 + visual.skin.edema * 1.4} strokeLinecap="round" fill="none" />
-      <path d={`M${anchors.abdomen.x - 70} ${anchors.abdomen.y - 5} Q${anchors.pelvis.x} ${anchors.pelvis.y + 24} ${anchors.leftLowerLeg.x + 35} ${anchors.leftLowerLeg.y + 12} L${anchors.rightLowerLeg.x + 55} ${anchors.rightLowerLeg.y + 39} Q${anchors.pelvis.x} ${anchors.pelvis.y + 58} ${anchors.abdomen.x - 66} ${anchors.abdomen.y + 24} Z`} fill="#e2e8e3" stroke="#b5c3be" strokeWidth="2" />
+      {/* Blanket over the legs. Toned distinctly from the white mattress with a
+          turned-down cuff and drape folds, so covered limbs read as a body under
+          bedding rather than as empty bed — and the feet emerging below read as
+          attached. */}
+      <g data-bedding="blanket">
+        <path d={`M${anchors.abdomen.x - 70} ${anchors.abdomen.y - 5} Q${anchors.pelvis.x} ${anchors.pelvis.y + 24} ${anchors.leftLowerLeg.x + 8} ${anchors.leftLowerLeg.y + 12} L${anchors.rightLowerLeg.x + 26} ${anchors.rightLowerLeg.y + 39} Q${anchors.pelvis.x} ${anchors.pelvis.y + 58} ${anchors.abdomen.x - 66} ${anchors.abdomen.y + 24} Z`} fill="#b7cbc2" stroke="#8fa89d" strokeWidth="2" />
+        {/* drape folds following the limbs beneath */}
+        <path d={`M${anchors.pelvis.x - 10} ${anchors.pelvis.y + 6} Q${anchors.leftThigh.x + 20} ${anchors.leftThigh.y + 20} ${anchors.leftLowerLeg.x + 30} ${anchors.leftLowerLeg.y + 16}`} fill="none" stroke="#a3bcb1" strokeWidth="2.4" opacity="0.85" />
+        <path d={`M${anchors.pelvis.x + 6} ${anchors.pelvis.y + 26} Q${anchors.rightThigh.x + 26} ${anchors.rightThigh.y + 34} ${anchors.rightLowerLeg.x + 44} ${anchors.rightLowerLeg.y + 32}`} fill="none" stroke="#a3bcb1" strokeWidth="2.4" opacity="0.7" />
+        <path d={`M${anchors.leftThigh.x - 4} ${anchors.leftThigh.y + 2} Q${anchors.leftThigh.x + 4} ${anchors.leftThigh.y + 22} ${anchors.leftThigh.x - 2} ${anchors.leftThigh.y + 40}`} fill="none" stroke="#a3bcb1" strokeWidth="1.8" opacity="0.6" />
+        {/* turned-down cuff at the chest edge */}
+        <path d={`M${anchors.abdomen.x - 72} ${anchors.abdomen.y - 6} Q${anchors.pelvis.x - 40} ${anchors.pelvis.y + 12} ${anchors.pelvis.x + 4} ${anchors.pelvis.y + 20} L${anchors.pelvis.x + 2} ${anchors.pelvis.y + 34} Q${anchors.pelvis.x - 44} ${anchors.pelvis.y + 26} ${anchors.abdomen.x - 68} ${anchors.abdomen.y + 9} Z`} fill="#dfeae4" stroke="#a9c0b6" strokeWidth="1.8" />
+        {/* hem shadow where the blanket ends and the shins emerge */}
+        <path d={`M${anchors.leftLowerLeg.x + 6} ${anchors.leftLowerLeg.y + 11} L${anchors.rightLowerLeg.x + 24} ${anchors.rightLowerLeg.y + 38}`} stroke="#8fa89d" strokeWidth="3" strokeLinecap="round" opacity="0.75" />
+      </g>
       <g data-skin-region="distal-lower-extremities">
-        <path d={`M${anchors.leftLowerLeg.x + 29} ${anchors.leftLowerLeg.y + 11} Q${anchors.leftFoot.x - 25} ${anchors.leftFoot.y + 5} ${anchors.leftFoot.x} ${anchors.leftFoot.y}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth={lowerLegWidth} strokeLinecap="round" fill="none" />
-        <path d={`M${anchors.rightLowerLeg.x + 35} ${anchors.rightLowerLeg.y + 24} Q${anchors.rightFoot.x - 22} ${anchors.rightFoot.y + 9} ${anchors.rightFoot.x} ${anchors.rightFoot.y + 5}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth={lowerLegWidth} strokeLinecap="round" fill="none" />
+        <path d={`M${anchors.leftLowerLeg.x + 2} ${anchors.leftLowerLeg.y + 11} Q${anchors.leftFoot.x - 25} ${anchors.leftFoot.y + 5} ${anchors.leftFoot.x} ${anchors.leftFoot.y}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth={lowerLegWidth} strokeLinecap="round" fill="none" />
+        <path d={`M${anchors.rightLowerLeg.x + 20} ${anchors.rightLowerLeg.y + 24} Q${anchors.rightFoot.x - 22} ${anchors.rightFoot.y + 9} ${anchors.rightFoot.x} ${anchors.rightFoot.y + 5}`} stroke={`url(#${idPrefix}-skin-limb)`} strokeWidth={lowerLegWidth} strokeLinecap="round" fill="none" />
         <ellipse cx={anchors.leftFoot.x + 5} cy={anchors.leftFoot.y} rx={15 + visual.skin.edema} ry={7 + visual.skin.edema * 0.7} fill={`url(#${idPrefix}-skin-limb)`} />
         <ellipse cx={anchors.rightFoot.x + 5} cy={anchors.rightFoot.y + 5} rx={15 + visual.skin.edema} ry={7 + visual.skin.edema * 0.7} fill={`url(#${idPrefix}-skin-limb)`} />
       </g>
       {visual.skin.bleeding > 0 && visual.roomPreset === "medical-surgical" ? <g><rect x={anchors.abdomen.x - 25} y={anchors.abdomen.y - 9} width="52" height="27" rx="5" fill="#f0eee6" stroke="#aab6b1" strokeWidth="2" /><ellipse cx={anchors.abdomen.x + 11} cy={anchors.abdomen.y + 5} rx={8 + visual.skin.bleeding * 3} ry={4 + visual.skin.bleeding * 2} fill="#9b4d4e" opacity={0.33 + visual.skin.bleeding * 0.13} /></g> : null}
-      {visual.skin.mottling > 0 ? <g data-skin-overlay="mottling" opacity={0.12 + visual.skin.mottling * 0.1}><path d={`M${anchors.leftLowerLeg.x + 29} ${anchors.leftLowerLeg.y + 11} Q${anchors.leftFoot.x - 25} ${anchors.leftFoot.y + 5} ${anchors.leftFoot.x + 10} ${anchors.leftFoot.y}`} stroke={`url(#${idPrefix}-mottling)`} strokeWidth={Math.max(11, lowerLegWidth - 5)} strokeLinecap="round" fill="none" /><path d={`M${anchors.rightLowerLeg.x + 35} ${anchors.rightLowerLeg.y + 24} Q${anchors.rightFoot.x - 22} ${anchors.rightFoot.y + 9} ${anchors.rightFoot.x + 10} ${anchors.rightFoot.y + 5}`} stroke={`url(#${idPrefix}-mottling)`} strokeWidth={Math.max(11, lowerLegWidth - 5)} strokeLinecap="round" fill="none" /><ellipse cx={anchors.leftHand.x} cy={anchors.leftHand.y} rx="10" ry="5" fill={`url(#${idPrefix}-mottling)`} /><ellipse cx={anchors.rightHand.x} cy={anchors.rightHand.y} rx="10" ry="5" fill={`url(#${idPrefix}-mottling)`} /></g> : null}
+      {visual.skin.mottling > 0 ? <g data-skin-overlay="mottling" opacity={0.12 + visual.skin.mottling * 0.1}><path d={`M${anchors.leftLowerLeg.x + 2} ${anchors.leftLowerLeg.y + 11} Q${anchors.leftFoot.x - 25} ${anchors.leftFoot.y + 5} ${anchors.leftFoot.x + 10} ${anchors.leftFoot.y}`} stroke={`url(#${idPrefix}-mottling)`} strokeWidth={Math.max(11, lowerLegWidth - 5)} strokeLinecap="round" fill="none" /><path d={`M${anchors.rightLowerLeg.x + 20} ${anchors.rightLowerLeg.y + 24} Q${anchors.rightFoot.x - 22} ${anchors.rightFoot.y + 9} ${anchors.rightFoot.x + 10} ${anchors.rightFoot.y + 5}`} stroke={`url(#${idPrefix}-mottling)`} strokeWidth={Math.max(11, lowerLegWidth - 5)} strokeLinecap="round" fill="none" /><ellipse cx={anchors.leftHand.x} cy={anchors.leftHand.y} rx="10" ry="5" fill={`url(#${idPrefix}-mottling)`} /><ellipse cx={anchors.rightHand.x} cy={anchors.rightHand.y} rx="10" ry="5" fill={`url(#${idPrefix}-mottling)`} /></g> : null}
       {visual.skin.cyanosis > 0 ? <g data-skin-overlay="cyanosis" fill="var(--skin-cyanosis)" opacity={0.16 + visual.skin.cyanosis * 0.1}><ellipse cx={anchors.leftHand.x} cy={anchors.leftHand.y} rx="10" ry="5" /><ellipse cx={anchors.rightHand.x} cy={anchors.rightHand.y} rx="10" ry="5" /><ellipse cx={anchors.leftFoot.x + 8} cy={anchors.leftFoot.y} rx="11" ry="4" /><ellipse cx={anchors.rightFoot.x + 8} cy={anchors.rightFoot.y + 5} rx="11" ry="4" /></g> : null}
       <Face visual={visual} anchors={anchors} idPrefix={idPrefix} />
     </g>
