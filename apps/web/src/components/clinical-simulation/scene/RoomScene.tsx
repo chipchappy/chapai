@@ -20,31 +20,31 @@ function parseFlow(raw: string | undefined): number | null {
 function Headwall({ intensive = false, oxygen = "room-air", oxygenFlow = "none" }: { intensive?: boolean; oxygen?: string; oxygenFlow?: string }) {
   return (
     <g>
-      <rect x="220" y="86" width="785" height={intensive ? 164 : 118} rx="13" fill="#e7ece9" stroke="#bac7c2" strokeWidth="2" />
-      <rect x="246" y="117" width="735" height="22" rx="5" fill="#99aaa5" />
-      <rect x="262" y="122" width="28" height="12" rx="3" fill="#f7fbf8" />
+      <rect x="220" y="86" width="785" height={intensive ? 164 : 118} rx="13" fill="#f0e5d2" stroke="#c8b99e" strokeWidth="2" />
+      <rect x="246" y="117" width="735" height="22" rx="5" fill="#b3a389" />
+      <rect x="262" y="122" width="28" height="12" rx="3" fill="#fdf8ea" />
       <circle cx="318" cy="128" r="8" fill="#d7e8de" stroke="#647f76" strokeWidth="3" />
       <circle cx="350" cy="128" r="8" fill="#f0d8ca" stroke="#a36d62" strokeWidth="3" />
-      <rect x="388" y="119" width="58" height="17" rx="4" fill="#f4f6f3" stroke="#869994" />
-      <rect x="856" y="119" width="42" height="17" rx="4" fill="#f4f6f3" stroke="#869994" />
-      <rect x="910" y="119" width="42" height="17" rx="4" fill="#f4f6f3" stroke="#869994" />
+      <rect x="388" y="119" width="58" height="17" rx="4" fill="#f9f1e2" stroke="#a3937a" />
+      <rect x="856" y="119" width="42" height="17" rx="4" fill="#f9f1e2" stroke="#a3937a" />
+      <rect x="910" y="119" width="42" height="17" rx="4" fill="#f9f1e2" stroke="#a3937a" />
       {intensive ? <>
-        <rect x="260" y="157" width="188" height="58" rx="6" fill="#f5f7f4" stroke="#c5cfcb" />
-        <path d="M278 188 H426" stroke="#a1b0ab" strokeWidth="3" />
-        <rect x="751" y="157" width="206" height="58" rx="6" fill="#f5f7f4" stroke="#c5cfcb" />
-        <circle cx="782" cy="186" r="12" fill="#d3e0dc" stroke="#78928a" strokeWidth="3" />
+        <rect x="260" y="157" width="188" height="58" rx="6" fill="#faf3e5" stroke="#cbbda3" />
+        <path d="M278 188 H426" stroke="#b2a288" strokeWidth="3" />
+        <rect x="751" y="157" width="206" height="58" rx="6" fill="#faf3e5" stroke="#cbbda3" />
+        <circle cx="782" cy="186" r="12" fill="#ded2ba" stroke="#97846a" strokeWidth="3" />
         <circle cx="824" cy="186" r="12" fill="#ead6cb" stroke="#9d7068" strokeWidth="3" />
-        <rect x="853" y="174" width="81" height="25" rx="5" fill="#dce4e1" />
+        <rect x="853" y="174" width="81" height="25" rx="5" fill="#e0d5bf" />
       </> : null}
       {/* Wall gas station. The flowmeter is LIVE: the indicator ball rides the
           0-15 L/min scale at the flow the engine is actually delivering, and the
           device in use is named — so a student can read the wall the way they
           would at a real bedside. */}
       <g transform={`translate(${intensive ? 600 : 842} ${intensive ? 152 : 146})`} data-room-item="gas-station">
-        <rect width="126" height="58" rx="6" fill="#eef2ef" stroke="#b5c2bd" strokeWidth="2" />
+        <rect width="126" height="58" rx="6" fill="#f6efe0" stroke="#c4b59a" strokeWidth="2" />
         {/* thorpe-tube flowmeter, graduated 0-15 */}
-        <rect x="11" y="6" width="15" height="34" rx="3" fill="#f8fbf8" stroke="#7d938d" strokeWidth="1.5" />
-        {[0, 1, 2, 3, 4, 5].map((tick) => <path key={tick} d={`M13 ${37 - tick * 6} H${tick % 2 === 0 ? 24 : 20}`} stroke="#c1d0c9" strokeWidth="1" />)}
+        <rect x="11" y="6" width="15" height="34" rx="3" fill="#fdf8ea" stroke="#96866d" strokeWidth="1.5" />
+        {[0, 1, 2, 3, 4, 5].map((tick) => <path key={tick} d={`M13 ${37 - tick * 6} H${tick % 2 === 0 ? 24 : 20}`} stroke="#cdbfa6" strokeWidth="1" />)}
         {(() => {
           const flow = parseFlow(oxygenFlow) ?? 0;
           const clamped = Math.max(0, Math.min(15, flow));
@@ -52,25 +52,25 @@ function Headwall({ intensive = false, oxygen = "room-air", oxygenFlow = "none" 
           const flowing = clamped > 0 && oxygen !== "room-air";
           return <>
             {flowing ? <rect x="12.5" y={ballY} width="12" height={38 - ballY} rx="2" fill="#8fc9ad" opacity="0.3" /> : null}
-            <circle cx="18.5" cy={ballY} r="3.6" fill={flowing ? "#3f8a63" : "#9fb0a8"} stroke="#2f6449" strokeWidth="1" />
+            <circle cx="18.5" cy={ballY} r="3.6" fill={flowing ? "#3f8a63" : "#b0a088"} stroke="#2f6449" strokeWidth="1" />
           </>;
         })()}
-        <path d="M18.5 40 V44" stroke="#6b7f79" strokeWidth="2" />
+        <path d="M18.5 40 V44" stroke="#827259" strokeWidth="2" />
         <circle cx="18.5" cy="47" r="4.6" fill="#4f8a67" stroke="#38624a" strokeWidth="1.5" />
         <path d="M16.4 47 H20.6 M18.5 44.9 V49.1" stroke="#dcefe3" strokeWidth="1.1" />
         <text x="33" y="15" fill="#4f8a67" fontSize="8.5" fontWeight="700">O₂ {oxygenFlow !== "none" ? oxygenFlow : "off"}</text>
-        <text x="33" y="25" fill="#7d938d" fontSize="6.5" fontWeight="700">{oxygen === "room-air" ? "ROOM AIR" : oxygen.replaceAll("-", " ").toUpperCase().slice(0, 17)}</text>
+        <text x="33" y="25" fill="#96866d" fontSize="6.5" fontWeight="700">{oxygen === "room-air" ? "ROOM AIR" : oxygen.replaceAll("-", " ").toUpperCase().slice(0, 17)}</text>
         {/* christmas-tree adapter */}
         <path d="M36 31 h10 M37.5 35 h7 M39 39 h4" stroke="#5c8f6f" strokeWidth="3" strokeLinecap="round" />
         {/* suction regulator + canister */}
-        <rect x="68" y="8" width="20" height="15" rx="3" fill="#dfe7e2" stroke="#7d938d" strokeWidth="1.5" />
-        <circle cx="78" cy="15.5" r="4.6" fill="#f4f7f3" stroke="#8a9b95" strokeWidth="1.3" />
+        <rect x="68" y="8" width="20" height="15" rx="3" fill="#e7dcc6" stroke="#96866d" strokeWidth="1.5" />
+        <circle cx="78" cy="15.5" r="4.6" fill="#f4f7f3" stroke="#a1917a" strokeWidth="1.3" />
         <path d="M78 12.6 V15.5 L80 17.4" stroke="#5c716b" strokeWidth="1.1" fill="none" />
-        <rect x="94" y="12" width="18" height="32" rx="4" fill="#f2f6f2" stroke="#8a9b95" strokeWidth="1.5" />
+        <rect x="94" y="12" width="18" height="32" rx="4" fill="#f9f2e4" stroke="#a1917a" strokeWidth="1.5" />
         <rect x="96" y="29" width="14" height="13" rx="2" fill="#d9c98e" opacity="0.55" />
         <path d="M96 33 H110" stroke="#bda86a" strokeWidth="1" opacity="0.7" />
         <rect x="93" y="7" width="20" height="7" rx="2.5" fill="#c98d5f" />
-        <text x="65" y="53" fill="#8a9b95" fontSize="6.5" fontWeight="700">SUCTION</text>
+        <text x="65" y="53" fill="#a1917a" fontSize="6.5" fontWeight="700">SUCTION</text>
       </g>
       {/* spare oxygen devices on wall hooks: nasal cannula coil, simple mask, non-rebreather */}
       <g transform={`translate(${intensive ? 524 : 398} ${intensive ? 158 : 146})`} stroke="#7f938d" fill="none" strokeWidth="1.6">
@@ -92,20 +92,20 @@ function RoomClock({ night, minute = 0 }: { night: boolean; minute?: number }) {
   const my = (-19 * Math.cos(minuteAngle)).toFixed(1);
   const hx = (12 * Math.sin(hourAngle)).toFixed(1);
   const hy = (-12 * Math.cos(hourAngle)).toFixed(1);
-  return <g transform="translate(1058 88)"><circle r="31" fill="#f8faf7" stroke="#83938e" strokeWidth="4" /><path d="M0 -24 V-21 M24 0 H21 M0 24 V21 M-24 0 H-21" stroke="#9aa8a3" strokeWidth="2" /><path d={`M0 0 L${mx} ${my}`} stroke="#405350" strokeWidth="3" strokeLinecap="round" /><path d={`M0 0 L${hx} ${hy}`} stroke="#405350" strokeWidth="4.4" strokeLinecap="round" /><circle r="3" fill="#405350" /><text y="48" textAnchor="middle" fill={night ? "#d4e0dc" : "#516663"} fontSize="13" fontWeight="700">{night ? "NIGHT" : "DAY"}</text></g>;
+  return <g transform="translate(1058 88)"><circle r="31" fill="#fcf7ea" stroke="#9c8c73" strokeWidth="4" /><path d="M0 -24 V-21 M24 0 H21 M0 24 V21 M-24 0 H-21" stroke="#ac9c84" strokeWidth="2" /><path d={`M0 0 L${mx} ${my}`} stroke="#405350" strokeWidth="3" strokeLinecap="round" /><path d={`M0 0 L${hx} ${hy}`} stroke="#405350" strokeWidth="4.4" strokeLinecap="round" /><circle r="3" fill="#405350" /><text y="48" textAnchor="middle" fill={night ? "#d4e0dc" : "#516663"} fontSize="13" fontWeight="700">{night ? "NIGHT" : "DAY"}</text></g>;
 }
 
 function PatientWhiteboard({ roomLabel, patientName }: { roomLabel?: string; patientName?: string }) {
   return (
     <g transform="translate(40 282)" data-room-item="whiteboard">
-      <rect width="150" height="98" rx="7" fill="#fbfcfa" stroke="#a9b7b1" strokeWidth="3.5" />
-      <rect x="8" y="8" width="134" height="20" rx="4" fill="#e3ebe6" />
+      <rect width="150" height="98" rx="7" fill="#fdf9ef" stroke="#bcac92" strokeWidth="3.5" />
+      <rect x="8" y="8" width="134" height="20" rx="4" fill="#e9dfc9" />
       <text x="14" y="22" fill="#43615a" fontSize="11" fontWeight="800">ROOM {roomLabel ?? "—"}</text>
       <text x="12" y="44" fill="#4d6a92" fontSize="10.5" fontWeight="700" fontStyle="italic">{(patientName ?? "").slice(0, 20) || "Patient"}</text>
       <text x="12" y="60" fill="#4d6a92" fontSize="9" fontStyle="italic">RN: Student Nurse</text>
       <text x="12" y="75" fill="#4d6a92" fontSize="9" fontStyle="italic">Goal: call, don&apos;t fall</text>
-      <path d="M12 84 H100" stroke="#c6d2cc" strokeWidth="1.5" />
-      <rect x="118" y="86" width="22" height="6" rx="3" fill="#7d938d" />
+      <path d="M12 84 H100" stroke="#d3c6ad" strokeWidth="1.5" />
+      <rect x="118" y="86" width="22" height="6" rx="3" fill="#96866d" />
     </g>
   );
 }
@@ -187,20 +187,20 @@ export default function RoomScene({ visual, idPrefix, virtualMinute, roomLabel, 
           <stop offset="1" stopColor="#0e1a19" stopOpacity="0.19" />
         </radialGradient>
       </defs>
-      <rect width="1200" height="680" fill={night ? "#9ba9a7" : psychiatric ? "#d9e4dd" : "#dce5e1"} />
-      <path d="M0 0 H1200 V405 H0 Z" fill={night ? "#9ba9a7" : psychiatric ? "#d8e4dd" : "#e3e9e6"} />
+      <rect width="1200" height="680" fill={night ? "#ab9c85" : psychiatric ? "#e2d7c1" : "#ded1b9"} />
+      <path d="M0 0 H1200 V405 H0 Z" fill={night ? "#ab9c85" : psychiatric ? "#e2d7c1" : "#eae0ca"} />
       <rect width="1200" height="405" fill={`url(#${idPrefix}-wall-shade)`} />
-      <path d="M0 405 H1200 V680 H0 Z" fill={psychiatric ? "#bfcac2" : "#c8ceca"} />
+      <path d="M0 405 H1200 V680 H0 Z" fill={psychiatric ? "#c6b89e" : "#c4b69b"} />
       <rect y="405" width="1200" height="275" fill={`url(#${idPrefix}-floor-shade)`} />
-      <path d="M0 405 H1200" stroke="#aab6b1" strokeWidth="8" />
+      <path d="M0 405 H1200" stroke="#b6a68b" strokeWidth="8" />
       <path d="M0 403 H1200" stroke="#8d9c97" strokeWidth="2" opacity="0.5" />
-      <path d="M0 680 L350 405 H850 L1200 680" fill={night ? "#8c9694" : "#bdc4c0"} opacity="0.46" />
+      <path d="M0 680 L350 405 H850 L1200 680" fill={night ? "#9a8c76" : "#c9bca3"} opacity="0.46" />
       {psychiatric ? <PsychiatricRoom /> : procedural ? <ProceduralRoom /> : <Headwall intensive={intensive} oxygen={visual.devices.oxygen} oxygenFlow={visual.devices.oxygenFlow} />}
       {/* ceiling luminaire — fills the empty upper band and gives the room a light source */}
       <g data-room-item="ceiling-light" opacity={night ? 0.5 : 1}>
-        <rect x="470" y="24" width="268" height="34" rx="7" fill={night ? "#c3cfca" : "#f7fbf6"} stroke="#b0bfb8" strokeWidth="3" />
-        <path d="M492 41 H716" stroke={night ? "#9fb0a8" : "#e8efe6"} strokeWidth="14" strokeLinecap="round" />
-        <path d="M508 58 L480 84 M700 58 L728 84" stroke="#c8d4ce" strokeWidth="2" opacity="0.55" />
+        <rect x="470" y="24" width="268" height="34" rx="7" fill={night ? "#d0c3aa" : "#f7fbf6"} stroke="#c1b298" strokeWidth="3" />
+        <path d="M492 41 H716" stroke={night ? "#b0a088" : "#efe6d2"} strokeWidth="14" strokeLinecap="round" />
+        <path d="M508 58 L480 84 M700 58 L728 84" stroke="#d4c7ae" strokeWidth="2" opacity="0.55" />
         {!night ? <ellipse cx="604" cy="120" rx="196" ry="66" fill="#fffdf0" opacity="0.16" /> : null}
       </g>
       {/* visitor chair — the foreground floor read as dead space without it */}

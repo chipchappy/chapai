@@ -65,8 +65,19 @@ function Face({ visual, anchors, idPrefix }: { visual: PatientVisualState; ancho
     // foreshortened torso, and scaling the group keeps hair, features, and
     // overlays in proportion with each other.
     <g className={styles.headMotion} data-loc={visual.consciousness.level} transform={`translate(${x} ${y}) scale(0.9) translate(${-x} ${-y})`}>
-      <ellipse cx={x} cy={y} rx="31" ry="35" fill={`url(#${idPrefix}-skin-face)`} stroke="var(--skin-shadow)" strokeWidth="1.4" />
-      <path d={`M${x - 30} ${y + 8} Q${x - 24} ${y + 30} ${x} ${y + 34} Q${x + 24} ${y + 30} ${x + 30} ${y + 8} Q${x + 22} ${y + 22} ${x} ${y + 25} Q${x - 22} ${y + 22} ${x - 30} ${y + 8} Z`} fill="var(--skin-shadow)" opacity="0.18" />
+      {/* Anatomical silhouette: rounded cranium tapering through the cheekbone to
+          a chin, rather than a plain oval — the oval is what made the face read
+          as a mannequin. */}
+      <path
+        d={`M${x - 30} ${y - 6} C${x - 31} ${y - 26} ${x - 16} ${y - 38} ${x + 2} ${y - 37} C${x + 21} ${y - 36} ${x + 31} ${y - 22} ${x + 30} ${y - 3} C${x + 29} ${y + 12} ${x + 24} ${y + 23} ${x + 15} ${y + 31} C${x + 8} ${y + 37} ${x - 5} ${y + 38} ${x - 13} ${y + 31} C${x - 23} ${y + 23} ${x - 29} ${y + 10} ${x - 30} ${y - 6} Z`}
+        fill={`url(#${idPrefix}-skin-face)`}
+        stroke="var(--skin-shadow)"
+        strokeWidth="1.4"
+      />
+      {/* ear at the mandible hinge */}
+      <path d={`M${x - 30} ${y - 4} q-7 1 -6 9 q1 8 7 10`} fill={`url(#${idPrefix}-skin-face)`} stroke="var(--skin-shadow)" strokeWidth="1.2" />
+      <path d={`M${x - 30} ${y} q-3 2 -2 7`} fill="none" stroke="var(--skin-shadow)" strokeWidth="1" opacity="0.55" />
+      <path d={`M${x - 28} ${y + 10} Q${x - 22} ${y + 28} ${x} ${y + 33} Q${x + 22} ${y + 28} ${x + 28} ${y + 8} Q${x + 21} ${y + 21} ${x} ${y + 25} Q${x - 21} ${y + 21} ${x - 28} ${y + 10} Z`} fill="var(--skin-shadow)" opacity="0.16" />
       <ellipse cx={x - 17} cy={y + 8} rx="9" ry="7" fill={`url(#${idPrefix}-skin-cheek)`} />
       <ellipse cx={x + 17} cy={y + 8} rx="9" ry="7" fill={`url(#${idPrefix}-skin-cheek)`} />
       <path d={`M${x - 22} ${y - 8} Q${x - 13} ${y - 12} ${x - 4} ${y - 8}`} fill="none" stroke="var(--skin-shadow)" strokeWidth="1.6" strokeLinecap="round" opacity="0.5" />
@@ -112,24 +123,24 @@ function Bed({ anchors, idPrefix }: { anchors: SceneAnchors; idPrefix: string })
   return (
     <g className={styles.bed} aria-hidden="true">
       <defs>
-        <linearGradient id={`${idPrefix}-mattress`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#f3f7f2" /><stop offset="0.6" stopColor="#e6ece8" /><stop offset="1" stopColor="#d2dcd6" /></linearGradient>
-        <linearGradient id={`${idPrefix}-bedmetal`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#a2b3ae" /><stop offset="1" stopColor="#63776f" /></linearGradient>
+        <linearGradient id={`${idPrefix}-mattress`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fbf5e8" /><stop offset="0.6" stopColor="#ece1cb" /><stop offset="1" stopColor="#d6c9b0" /></linearGradient>
+        <linearGradient id={`${idPrefix}-bedmetal`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#b6a68d" /><stop offset="1" stopColor="#7a6a52" /></linearGradient>
       </defs>
-      <ellipse cx={(headX + footX) / 2} cy={wheelY + 6} rx={(footX - headX) / 2 + 18} ry="34" fill="#4c5c59" opacity="0.18" />
+      <ellipse cx={(headX + footX) / 2} cy={wheelY + 6} rx={(footX - headX) / 2 + 18} ry="34" fill="#5c5040" opacity="0.18" />
       {/* mattress: inclined backrest + flat seat, following the body line */}
-      <path d={`${surface} L${footX} ${surfFoot + thickness} L${anchors.pelvis.x} ${surfPelvis + thickness} Q${midX} ${surfChest + thickness - 8} ${headX} ${surfHead + thickness} Z`} fill={`url(#${idPrefix}-mattress)`} stroke="#718783" strokeWidth="4" />
-      <path d={surface} fill="none" stroke="#fbfdfa" strokeWidth="3" opacity="0.9" />
-      <path d={`M${headX + 12} ${surfHead + thickness - 7} Q${midX} ${surfChest + thickness - 14} ${anchors.pelvis.x} ${surfPelvis + thickness - 6} L${footX - 10} ${surfFoot + thickness - 6}`} fill="none" stroke="#c4d0ca" strokeWidth="2" opacity="0.8" />
+      <path d={`${surface} L${footX} ${surfFoot + thickness} L${anchors.pelvis.x} ${surfPelvis + thickness} Q${midX} ${surfChest + thickness - 8} ${headX} ${surfHead + thickness} Z`} fill={`url(#${idPrefix}-mattress)`} stroke="#8c7c63" strokeWidth="4" />
+      <path d={surface} fill="none" stroke="#fdf9ee" strokeWidth="3" opacity="0.9" />
+      <path d={`M${headX + 12} ${surfHead + thickness - 7} Q${midX} ${surfChest + thickness - 14} ${anchors.pelvis.x} ${surfPelvis + thickness - 6} L${footX - 10} ${surfFoot + thickness - 6}`} fill="none" stroke="#d2c5ad" strokeWidth="2" opacity="0.8" />
       {/* draw sheet across the hips */}
-      <path d={`M${anchors.pelvis.x - 92} ${surfPelvis + 4} L${anchors.pelvis.x + 96} ${surfPelvis + 12} L${anchors.pelvis.x + 96} ${surfPelvis + thickness + 3} L${anchors.pelvis.x - 92} ${surfPelvis + thickness - 5} Z`} fill="#eef3ef" stroke="#c8d3cd" strokeWidth="2" opacity="0.92" />
+      <path d={`M${anchors.pelvis.x - 92} ${surfPelvis + 4} L${anchors.pelvis.x + 96} ${surfPelvis + 12} L${anchors.pelvis.x + 96} ${surfPelvis + thickness + 3} L${anchors.pelvis.x - 92} ${surfPelvis + thickness - 5} Z`} fill="#f7f0e1" stroke="#cfc2a9" strokeWidth="2" opacity="0.92" />
       {/* deck + frame rail */}
       <path d={`M${headX + 6} ${deckY} H${footX - 4} V${frameY} H${headX + 10} Z`} fill={`url(#${idPrefix}-bedmetal)`} />
-      <path d={`M${headX + 14} ${deckY + 5} H${footX - 14}`} stroke="#c7d3ce" strokeWidth="2" opacity="0.6" />
+      <path d={`M${headX + 14} ${deckY + 5} H${footX - 14}`} stroke="#d5c8b0" strokeWidth="2" opacity="0.6" />
       {/* caster columns, forks, wheels, brake pedal */}
-      <path d={`M${headX + 48} ${frameY} V${wheelY - 15} M${footX - 78} ${frameY} V${wheelY - 15}`} stroke="#586b68" strokeWidth="11" />
-      <path d={`M${headX + 39} ${wheelY - 16} H${headX + 57} M${footX - 87} ${wheelY - 16} H${footX - 69}`} stroke="#4a5c59" strokeWidth="7" strokeLinecap="round" />
-      <circle cx={headX + 48} cy={wheelY} r="16" fill="#465956" /><circle cx={headX + 48} cy={wheelY} r="6" fill="#5f7370" />
-      <circle cx={footX - 78} cy={wheelY} r="16" fill="#465956" /><circle cx={footX - 78} cy={wheelY} r="6" fill="#5f7370" />
+      <path d={`M${headX + 48} ${frameY} V${wheelY - 15} M${footX - 78} ${frameY} V${wheelY - 15}`} stroke="#6e6150" strokeWidth="11" />
+      <path d={`M${headX + 39} ${wheelY - 16} H${headX + 57} M${footX - 87} ${wheelY - 16} H${footX - 69}`} stroke="#5e5344" strokeWidth="7" strokeLinecap="round" />
+      <circle cx={headX + 48} cy={wheelY} r="16" fill="#5a4f40" /><circle cx={headX + 48} cy={wheelY} r="6" fill="#786a56" />
+      <circle cx={footX - 78} cy={wheelY} r="16" fill="#5a4f40" /><circle cx={footX - 78} cy={wheelY} r="6" fill="#786a56" />
       <path d={`M${headX + 66} ${wheelY - 7} L${headX + 84} ${wheelY + 2}`} stroke="#bc8b58" strokeWidth="5" strokeLinecap="round" />
       {/* side rails, parallel to the deck */}
       <g stroke={`url(#${idPrefix}-bedmetal)`} strokeWidth="9" strokeLinecap="round" fill="none">
@@ -139,12 +150,12 @@ function Bed({ anchors, idPrefix }: { anchors: SceneAnchors; idPrefix: string })
         <path d={`M${footX - 112} ${surfFoot + 30} H${footX - 34} M${footX - 112} ${surfFoot + 56} H${footX - 34}`} />
       </g>
       {/* rail-mounted patient control pod */}
-      <g transform={`translate(${footX - 108} ${surfFoot + 40})`}><rect width="24" height="36" rx="6" fill="#5d716d" /><circle cx="12" cy="9" r="3" fill="#e8b563" /><circle cx="12" cy="18" r="3" fill="#8fd1a8" /><circle cx="12" cy="27" r="3" fill="#cfe0da" /></g>
+      <g transform={`translate(${footX - 108} ${surfFoot + 40})`}><rect width="24" height="36" rx="6" fill="#736553" /><circle cx="12" cy="9" r="3" fill="#e0a95c" /><circle cx="12" cy="18" r="3" fill="#8fd1a8" /><circle cx="12" cy="27" r="3" fill="#cfe0da" /></g>
       {/* pillow: cradles the occiput, angled with the backrest */}
       <g transform={`translate(${anchors.nose.x - 34} ${anchors.nose.y + 4}) rotate(-13)`}>
-        <path d="M-62 -34 Q-52 -62 6 -58 Q62 -52 70 -12 Q76 16 34 22 Q-30 26 -60 12 Q-72 2 -62 -34 Z" fill="#f8faf7" stroke="#c3cfca" strokeWidth="3" />
-        <path d="M-46 -40 Q4 -50 56 -22" fill="none" stroke="#dde5df" strokeWidth="2.5" />
-        <path d="M-44 4 Q6 -6 58 6" fill="none" stroke="#e6ece6" strokeWidth="2" opacity="0.8" />
+        <path d="M-62 -34 Q-52 -62 6 -58 Q62 -52 70 -12 Q76 16 34 22 Q-30 26 -60 12 Q-72 2 -62 -34 Z" fill="#fcf7ea" stroke="#d0c3aa" strokeWidth="3" />
+        <path d="M-46 -40 Q4 -50 56 -22" fill="none" stroke="#e5dac4" strokeWidth="2.5" />
+        <path d="M-44 4 Q6 -6 58 6" fill="none" stroke="#ece2cc" strokeWidth="2" opacity="0.8" />
       </g>
     </g>
   );
@@ -219,7 +230,7 @@ function BedPatient({ visual, anchors, idPrefix }: Props) {
         <ellipse cx={anchors.leftFoot.x + 5} cy={anchors.leftFoot.y} rx={15 + visual.skin.edema} ry={7 + visual.skin.edema * 0.7} fill={`url(#${idPrefix}-skin-limb)`} />
         <ellipse cx={anchors.rightFoot.x + 5} cy={anchors.rightFoot.y + 5} rx={15 + visual.skin.edema} ry={7 + visual.skin.edema * 0.7} fill={`url(#${idPrefix}-skin-limb)`} />
       </g>
-      {visual.skin.bleeding > 0 && visual.roomPreset === "medical-surgical" ? <g><rect x={anchors.abdomen.x - 25} y={anchors.abdomen.y - 9} width="52" height="27" rx="5" fill="#f0eee6" stroke="#aab6b1" strokeWidth="2" /><ellipse cx={anchors.abdomen.x + 11} cy={anchors.abdomen.y + 5} rx={8 + visual.skin.bleeding * 3} ry={4 + visual.skin.bleeding * 2} fill="#9b4d4e" opacity={0.33 + visual.skin.bleeding * 0.13} /></g> : null}
+      {visual.skin.bleeding > 0 && visual.roomPreset === "medical-surgical" ? <g><rect x={anchors.abdomen.x - 25} y={anchors.abdomen.y - 9} width="52" height="27" rx="5" fill="#f0eee6" stroke="#b6a68b" strokeWidth="2" /><ellipse cx={anchors.abdomen.x + 11} cy={anchors.abdomen.y + 5} rx={8 + visual.skin.bleeding * 3} ry={4 + visual.skin.bleeding * 2} fill="#9b4d4e" opacity={0.33 + visual.skin.bleeding * 0.13} /></g> : null}
       {visual.skin.mottling > 0 ? <g data-skin-overlay="mottling" opacity={0.12 + visual.skin.mottling * 0.1}><path d={`M${anchors.leftLowerLeg.x + 2} ${anchors.leftLowerLeg.y + 11} Q${anchors.leftFoot.x - 25} ${anchors.leftFoot.y + 5} ${anchors.leftFoot.x + 10} ${anchors.leftFoot.y}`} stroke={`url(#${idPrefix}-mottling)`} strokeWidth={Math.max(11, lowerLegWidth - 5)} strokeLinecap="round" fill="none" /><path d={`M${anchors.rightLowerLeg.x + 20} ${anchors.rightLowerLeg.y + 24} Q${anchors.rightFoot.x - 22} ${anchors.rightFoot.y + 9} ${anchors.rightFoot.x + 10} ${anchors.rightFoot.y + 5}`} stroke={`url(#${idPrefix}-mottling)`} strokeWidth={Math.max(11, lowerLegWidth - 5)} strokeLinecap="round" fill="none" /><ellipse cx={anchors.leftHand.x} cy={anchors.leftHand.y} rx="10" ry="5" fill={`url(#${idPrefix}-mottling)`} /><ellipse cx={anchors.rightHand.x} cy={anchors.rightHand.y} rx="10" ry="5" fill={`url(#${idPrefix}-mottling)`} /></g> : null}
       {visual.skin.cyanosis > 0 ? <g data-skin-overlay="cyanosis" fill="var(--skin-cyanosis)" opacity={0.16 + visual.skin.cyanosis * 0.1}><ellipse cx={anchors.leftHand.x} cy={anchors.leftHand.y} rx="10" ry="5" /><ellipse cx={anchors.rightHand.x} cy={anchors.rightHand.y} rx="10" ry="5" /><ellipse cx={anchors.leftFoot.x + 8} cy={anchors.leftFoot.y} rx="11" ry="4" /><ellipse cx={anchors.rightFoot.x + 8} cy={anchors.rightFoot.y + 5} rx="11" ry="4" /></g> : null}
       <Face visual={visual} anchors={anchors} idPrefix={idPrefix} />
