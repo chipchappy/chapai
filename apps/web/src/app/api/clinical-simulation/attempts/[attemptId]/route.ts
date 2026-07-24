@@ -9,6 +9,7 @@ import {
   minutesToNextMeaningfulEvent,
   setSimulationPaused,
   triggerScenarioEvent,
+  rewindSimulation,
 } from "@/lib/clinical-simulation/engine";
 import { getClinicalScenarioById } from "@/lib/clinical-simulation/scenarios";
 import {
@@ -34,6 +35,7 @@ const updateSchema = z.discriminatedUnion("operation", [
   z.object({ operation: z.literal("abandon") }),
   z.object({ operation: z.literal("reset"), seed: z.number().int().positive().max(2_147_483_647).optional() }),
   z.object({ operation: z.literal("trigger_event"), eventId: z.string().min(1) }),
+  z.object({ operation: z.literal("rewind"), keepActions: z.number().int().min(0).max(200) }),
 ]);
 
 async function loadOwnedAttempt(attemptId: string) {
@@ -118,6 +120,12 @@ export async function PATCH(request: Request, context: RouteContext) {
         action: result.entry,
       });
       return jsonSuccess({ attempt, entry: result.entry, state: result.state });
+    }
+
+    if (input.operation === "rewind") {
+      const state = rewindSimulation(loaded.scenario, loaded.attempt.state, input.keepActions);
+      const attempt = await saveSimulationState(loaded.access.db, { userId: loaded.access.hostedUser.id, attemptId, state });
+      return jsonSuccess({ attempt, state });
     }
 
     if (input.operation === "set_paused") {

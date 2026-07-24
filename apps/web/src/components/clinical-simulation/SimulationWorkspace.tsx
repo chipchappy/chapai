@@ -50,7 +50,8 @@ type Operation =
   | { operation: "debrief_viewed" }
   | { operation: "abandon" }
   | { operation: "reset"; seed?: number }
-  | { operation: "trigger_event"; eventId: string };
+  | { operation: "trigger_event"; eventId: string }
+  | { operation: "rewind"; keepActions: number };
 
 type AttemptMeta = {
   id: string;
@@ -464,7 +465,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
             <BedsideMonitor state={state} />
           </>
         )}
-        <SimEventFeed state={state} />
+        <SimEventFeed state={state} busy={saving} onRewind={(keepActions) => void perform({ operation: "rewind", keepActions })} />
       </section>
 
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}

@@ -135,3 +135,33 @@
 .feedLegend span[data-kind="vitals"]      { background: #3a7192; }
 .feedLegend span[data-kind="progression"] { background: #b08430; }
 .feedLegend span[data-kind="team"]        { background: #7a5c96; }
+
+/* ── live scoring strip ── */
+.feedScore {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  padding: 0;
+  background: #e2d6bd;
+  border-bottom: 1px solid #e2d6bd;
+}
+.feedScore > div { display: grid; gap: 1px; padding: 7px 10px; background: #f7f1e4; }
+.feedScore span { color: #9a8a6d; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.feedScore strong { color: #3f7d5c; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.feedScore strong[data-hot="true"] { color: #b0703b; }
+
+/* ── rewind affordance ── */
+.feedRewind {
+  margin-top: 6px;
+  border: 1px solid var(--feed-accent);
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: transparent;
+  color: var(--feed-ink);
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.feedRewind:hover:not(:disabled) { background: var(--feed-accent); color: #fff; }
+.feedRewind:disabled { opacity: 0.5; cursor: default; }

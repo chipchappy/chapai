@@ -326,6 +326,53 @@ export function advanceSimulation(scenario: ClinicalScenario, current: PatientSt
   return state;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// In-simulation rewind.
+//
+// The engine is deterministic: the same seed plus the same ordered actions
+// always reproduces the same state. So a rewind is a REPLAY — rebuild from the
+// initial state and re-apply the first `keepActions` decisions at their original
+// minutes. Nothing is trusted from the client beyond an index, and the resulting
+// state is byte-identical to what the student actually had at that moment.
+//
+// This is what lets a student explore alternative routes: jump back to any of
+// their own decisions, choose differently, and watch the consequences diverge.
+// ─────────────────────────────────────────────────────────────────────────────
+export function rewindSimulation(scenario: ClinicalScenario, current: PatientState, keepActions: number) {
+  const source = normalizePatientState(current);
+  const log = source.actionLog;
+  const keep = Math.max(0, Math.min(keepActions, log.length));
+  if (keep === log.length) return source;
+
+  let state = createInitialPatientState(scenario, source.seed, source.mode);
+  for (let index = 0; index < keep; index += 1) {
+    const entry = log[index];
+    const gap = entry.virtualMinute - state.virtualMinute;
+    if (gap > 0) state = advanceSimulation(scenario, state, gap);
+    const applied = applySimulationAction(scenario, state, entry.actionId, entry.selectedElements);
+    state = applied.state;
+  }
+
+  // Land the clock where the student is rewinding to, and mark the branch so the
+  // feed and debrief can show that this run was explored rather than linear.
+  const targetMinute = keep === 0 ? 0 : log[keep - 1].virtualMinute;
+  if (state.virtualMinute < targetMinute) {
+    state = advanceSimulation(scenario, state, targetMinute - state.virtualMinute);
+  }
+  state.status = "in_progress";
+  state.clockPaused = true;
+  state.notices.push({
+    id: `rewind-${Date.now()}`,
+    virtualMinute: state.virtualMinute,
+    severity: "info",
+    message: keep === 0
+      ? "Rewound to the start of the shift. The clock is paused — choose your first action."
+      : `Rewound to just after "${log[keep - 1].label}". The clock is paused — try a different next step.`,
+    stateChanges: [],
+  });
+  return state;
+}
+
 export function setSimulationPaused(current: PatientState, paused: boolean) {
   const state = normalizePatientState(current);
   state.clockPaused = paused;

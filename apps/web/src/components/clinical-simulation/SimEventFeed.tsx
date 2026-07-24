@@ -29,6 +29,8 @@ export type FeedEntry = {
   kind: FeedKind;
   title: string;
   detail?: string;
+  /** Index into the action log; enables "rewind to just before this decision". */
+  actionIndex?: number;
 };
 
 const kindLabel: Record<FeedKind, string> = {
@@ -51,7 +53,7 @@ function kindForClassification(classification: string): FeedKind {
 export function buildFeed(state: PatientState): FeedEntry[] {
   const entries: FeedEntry[] = [];
 
-  for (const entry of state.actionLog) {
+  state.actionLog.forEach((entry, index) => {
     const isTeam = entry.category === "communication";
     entries.push({
       id: `act-${entry.id}`,
@@ -59,6 +61,7 @@ export function buildFeed(state: PatientState): FeedEntry[] {
       kind: kindForClassification(entry.classification),
       title: entry.label,
       detail: entry.feedback,
+      actionIndex: index,
     });
     // A provider/team reply is its own event so the student sees the response.
     if (isTeam && entry.teamResponse) {
@@ -84,7 +87,7 @@ export function buildFeed(state: PatientState): FeedEntry[] {
         detail: summary,
       });
     }
-  }
+  });
 
   // Scenario events + deterioration notices that were not tied to an action.
   for (const notice of state.notices) {
@@ -113,8 +116,21 @@ export function buildFeed(state: PatientState): FeedEntry[] {
   return entries.sort((a, b) => b.minute - a.minute || b.id.localeCompare(a.id));
 }
 
-export default function SimEventFeed({ state }: { state: PatientState }) {
+export default function SimEventFeed({ state, onRewind, busy = false }: { state: PatientState; onRewind?: (keepActions: number) => void; busy?: boolean }) {
   const entries = useMemo(() => buildFeed(state), [state]);
+
+  // Live scoring: optimal decisions build a streak, unsafe ones break it.
+  const scoring = useMemo(() => {
+    let optimal = 0, acceptable = 0, unsafe = 0, streak = 0, best = 0;
+    for (const entry of state.actionLog) {
+      const kind = kindForClassification(entry.classification);
+      if (kind === "optimal") { optimal += 1; streak += 1; best = Math.max(best, streak); }
+      else if (kind === "unsafe") { unsafe += 1; streak = 0; }
+      else { acceptable += 1; streak = 0; }
+    }
+    const total = optimal + acceptable + unsafe;
+    return { optimal, acceptable, unsafe, streak, best, total, pct: total ? Math.round((optimal / total) * 100) : null };
+  }, [state.actionLog]);
 
   return (
     <aside className={styles.feed} aria-label="Clinical event feed" data-testid="sim-event-feed">
@@ -122,6 +138,11 @@ export default function SimEventFeed({ state }: { state: PatientState }) {
         <span>Clinical feed</span>
         <em>{entries.length} events</em>
       </header>
+      <div className={styles.feedScore} aria-label="Clinical judgment score">
+        <div><span>Best practice</span><strong>{scoring.pct == null ? "—" : `${scoring.pct}%`}</strong></div>
+        <div><span>Streak</span><strong data-hot={scoring.streak >= 3}>{scoring.streak}{scoring.streak >= 3 ? " 🔥" : ""}</strong></div>
+        <div><span>Decisions</span><strong>{scoring.total}</strong></div>
+      </div>
       <ol className={styles.feedList} aria-live="polite">
         {entries.length ? entries.map((entry) => (
           <li key={entry.id} data-kind={entry.kind}>
@@ -131,6 +152,11 @@ export default function SimEventFeed({ state }: { state: PatientState }) {
             </div>
             <strong>{entry.title}</strong>
             {entry.detail ? <p>{entry.detail}</p> : null}
+            {entry.actionIndex != null && onRewind ? (
+              <button type="button" className={styles.feedRewind} disabled={busy} onClick={() => onRewind(entry.actionIndex as number)} title="Rewind to just before this decision and try a different route">
+                ↺ Rewind to here
+              </button>
+            ) : null}
           </li>
         )) : <li data-kind="progression"><strong>You have assumed care of the patient.</strong><p>Assess, act, and reassess — every decision is recorded here.</p></li>}
       </ol>
