@@ -76,8 +76,8 @@ const ADULT_MALE_ROOM: PhotoConfig = {
   hand: { x: 49, y: 55 },
   legs: { x: 45, y: 61 },
   feet: { x: 34, y: 74 },
-  monitor: { x: 48, y: 15 },
-  monitorWidth: 24,
+  monitor: { x: 45, y: 29 },
+  monitorWidth: 20,
   devices: [
     { id: "computer", label: "Chart (EHR)", anchor: { x: 9, y: 22 }, tab: "chart" },
     { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "mar" },
