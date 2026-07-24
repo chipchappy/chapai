@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
 import { getQuestionQualityProfile } from "../../apps/web/src/lib/question-quality";
@@ -121,5 +122,18 @@ describe("source-verified readiness clinical review", () => {
         contentVersion: 2,
       },
     })), undefined);
+  });
+
+  it("delivers the reviewed D1 answer, references, and visual teaching payload", () => {
+    const source = readFileSync(
+      new URL("../../apps/web/src/app/api/quiz/answer/route.ts", import.meta.url),
+      "utf8",
+    );
+
+    assert.match(source, /visualRationale:\s*questions\.visualRationale/);
+    assert.match(source, /referencesJson:\s*questions\.referencesJson/);
+    assert.match(source, /question\?\.answer\s*\?\?\s*canonicalQuestion\?\.answer/);
+    assert.match(source, /parseStoredJson\(question\?\.visualRationale\)/);
+    assert.match(source, /parseStoredJson\(question\?\.referencesJson\)/);
   });
 });

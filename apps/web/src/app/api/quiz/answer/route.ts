@@ -43,6 +43,15 @@ function serializeAnswer(answer: QuestionAnswer | string) {
   return String(answer ?? "");
 }
 
+function parseStoredJson<T>(value: string | null | undefined): T | undefined {
+  if (!value) return undefined;
+  try {
+    return JSON.parse(value) as T;
+  } catch {
+    return undefined;
+  }
+}
+
 function normalizeStoredAnswer(answer: QuestionAnswer | string | null | undefined): QuestionAnswer | string {
   if (Array.isArray(answer) || (answer && typeof answer === "object")) {
     return answer;
@@ -274,10 +283,12 @@ export async function POST(req: NextRequest) {
     const question = await db
       .select({
         answer: questions.answer,
-        rationale: questions.rationale,
-        structuredRationale: questions.structuredRationale,
-        distractorRationales: questions.distractorRationales,
-      })
+      rationale: questions.rationale,
+      structuredRationale: questions.structuredRationale,
+      distractorRationales: questions.distractorRationales,
+      visualRationale: questions.visualRationale,
+      referencesJson: questions.referencesJson,
+    })
       .from(questions)
       .where(eq(questions.id, questionId))
       .get();
@@ -289,19 +300,26 @@ export async function POST(req: NextRequest) {
     }
 
     const demoCorrect = demoQuestion ? demoQuestion.correctAnswer : null;
-    const correctAnswer = normalizeStoredAnswer(canonicalQuestion?.answer ?? demoCorrect ?? question?.answer ?? "");
-    const rationale = canonicalQuestion?.rationale ?? demoQuestion?.rationale ?? question?.rationale ?? "";
-    const structuredRationale = canonicalQuestion?.structuredRationale ?? (
-      question?.structuredRationale
-        ? JSON.parse(question.structuredRationale)
-        : undefined
-    );
-    const deepRationale = canonicalQuestion?.deepRationale ?? rationale;
-    const distractorRationales = canonicalQuestion?.distractorRationales ?? demoQuestion?.distractorRationales ?? (
-      question?.distractorRationales
-        ? JSON.parse(question.distractorRationales)
-        : null
-    );
+    const correctAnswer = normalizeStoredAnswer(question?.answer ?? canonicalQuestion?.answer ?? demoCorrect ?? "");
+    const rationale = question?.rationale ?? canonicalQuestion?.rationale ?? demoQuestion?.rationale ?? "";
+    const structuredRationale = parseStoredJson(question?.structuredRationale)
+      ?? canonicalQuestion?.structuredRationale
+      ?? demoQuestion?.structuredRationale;
+    const deepRationale = question?.rationale
+      ? rationale
+      : canonicalQuestion?.deepRationale ?? demoQuestion?.deepRationale ?? rationale;
+    const distractorRationales = parseStoredJson<Record<string, string>>(question?.distractorRationales)
+      ?? canonicalQuestion?.distractorRationales
+      ?? demoQuestion?.distractorRationales
+      ?? null;
+    const visualRationale = parseStoredJson(question?.visualRationale)
+      ?? canonicalQuestion?.visualRationale
+      ?? demoQuestion?.visualRationale
+      ?? null;
+    const references = parseStoredJson(question?.referencesJson)
+      ?? canonicalQuestion?.references
+      ?? demoQuestion?.references
+      ?? [];
     const bowTieScore = scoreBowTieAnswer(selectedAnswer, correctAnswer);
     const isCorrect = bowTieScore
       ? bowTieScore.pointsEarned === bowTieScore.pointsPossible
@@ -351,9 +369,9 @@ export async function POST(req: NextRequest) {
       deepRationale,
       distractorRationales,
       takeaway: canonicalQuestion?.takeaway ?? demoQuestion?.takeaway ?? null,
-      visualRationale: canonicalQuestion?.visualRationale ?? null,
+      visualRationale,
       diagramBlueprint: canonicalQuestion?.diagramBlueprint ?? null,
-      references: canonicalQuestion?.references ?? [],
+      references,
       coachingFrame: canonicalQuestion?.coachingFrame ?? [],
     }, 200, { requestId: requestContext.requestId });
 
