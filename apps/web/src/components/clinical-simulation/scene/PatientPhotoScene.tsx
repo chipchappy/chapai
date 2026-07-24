@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useMemo, useState, type CSSProperties } from "react";
-import { Activity, Check, Play, Stethoscope, X } from "lucide-react";
+import { Activity, Check, Crosshair, Play, Stethoscope, X } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
 import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
@@ -9,24 +9,34 @@ import type { PatientVisualState } from "@/lib/clinical-simulation/visual-state"
 import styles from "./patient-photo-scene.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Photoreal patient composite.
+// Photoreal patient room composite.
 //
-// A high-quality bedside PHOTOGRAPH is the base layer; every clinically-visible
-// finding is a live overlay driven by PatientVisualState, positioned over the
-// photo's anatomy in percentage coordinates. This reaches Laerdal-grade realism
-// while staying mobile-light (one image + SVG/CSS overlays) and fully
-// state-reactive: deterioration and treatment change the overlays, the monitor,
-// and the alarms in lockstep with the engine.
+// A high-quality room PHOTOGRAPH is the live environment; everything clinical is
+// a state-driven layer on top of it:
+//   - skin-finding overlays (cyanosis/mottling/diaphoresis/…) on the patient
+//   - the live canvas monitor mounted over the wall display
+//   - patient-region hotspots that surface performable scenario actions
+//   - equipment hotspots that route into the matching workspace panel
+//     (computer -> Chart, pumps -> MAR, headwall/vent -> Interventions, …)
 //
-// Anchor percentages are calibrated to the supplied side-view (semi-Fowler's)
-// image: head at left, feet at right. Refined against the real asset once it is
-// dropped into public/sim/patients/.
+// Affordances are deliberately subtle (spec: no big rings over everything):
+// invisible at rest, ring + label on hover/keyboard focus, plus an explicit
+// "show targets" toggle that reveals every interactive zone with its label.
+// Anchors are percentages of the image so zones stay aligned at every size.
 // ─────────────────────────────────────────────────────────────────────────────
 
 type Anchor = { x: number; y: number };
+
+type DeviceHotspot = {
+  id: string;
+  label: string;
+  anchor: Anchor;
+  /** Workspace tab this device opens. */
+  tab: string;
+};
+
 type PhotoConfig = {
   src: string;
-  /** Intrinsic aspect ratio (width / height) so the overlay layer matches the photo. */
   aspect: number;
   face: Anchor;
   lips: Anchor;
@@ -35,10 +45,12 @@ type PhotoConfig = {
   legs: Anchor;
   feet: Anchor;
   monitor: Anchor;
+  /** Width of the live monitor overlay as % of room width. */
+  monitorWidth?: number;
+  devices?: DeviceHotspot[];
 };
 
-// Adult ICU female, side-view semi-Fowler's — used for the adult ICU/med-surg/
-// telemetry scenarios whose patient matches. Others fall back to the vector scene.
+// Adult female, side-view semi-Fowler's (close-up bed shot).
 const ADULT_FEMALE_SIDE: PhotoConfig = {
   src: "/sim/patients/adult-female-icu-side.webp",
   aspect: 1448 / 1086,
@@ -49,13 +61,38 @@ const ADULT_FEMALE_SIDE: PhotoConfig = {
   legs: { x: 62, y: 52 },
   feet: { x: 85, y: 47 },
   monitor: { x: 79, y: 30 },
+  monitorWidth: 34,
+};
+
+// Adult male, full ICU room ("hospital simulation" wide shot): ventilator right,
+// IV pumps + EHR workstation left, headwall + airway supplies right wall, Foley
+// at the bed frame. The blank wall display is where the live monitor mounts.
+const ADULT_MALE_ROOM: PhotoConfig = {
+  src: "/sim/rooms/hospital-simulation.webp",
+  aspect: 1672 / 941,
+  face: { x: 57.5, y: 30 },
+  lips: { x: 57.5, y: 33.5 },
+  chest: { x: 54, y: 44 },
+  hand: { x: 49, y: 55 },
+  legs: { x: 45, y: 61 },
+  feet: { x: 34, y: 74 },
+  monitor: { x: 48, y: 15 },
+  monitorWidth: 24,
+  devices: [
+    { id: "computer", label: "Chart (EHR)", anchor: { x: 9, y: 22 }, tab: "chart" },
+    { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "mar" },
+    { id: "ventilator", label: "Ventilator", anchor: { x: 78, y: 36 }, tab: "interventions" },
+    { id: "headwall", label: "O₂ & suction", anchor: { x: 87, y: 17 }, tab: "interventions" },
+    { id: "airway", label: "Airway supplies", anchor: { x: 90, y: 33 }, tab: "interventions" },
+    { id: "foley", label: "Foley & output", anchor: { x: 47, y: 84 }, tab: "assessment" },
+  ],
 };
 
 const PHOTO_PATIENTS: Record<string, PhotoConfig> = {
   "septic-shock": ADULT_FEMALE_SIDE,
   "postoperative-deterioration": ADULT_FEMALE_SIDE,
   "evolving-acute-coronary-syndrome": ADULT_FEMALE_SIDE,
-  "acute-respiratory-deterioration": ADULT_FEMALE_SIDE,
+  "acute-respiratory-deterioration": ADULT_MALE_ROOM,
 };
 
 export function getPhotoPatient(slug: string): PhotoConfig | null {
@@ -81,6 +118,7 @@ function PatientPhotoScene({
   config,
   onOpenAssessment,
   onPerformAction,
+  onOpenTab,
   busy = false,
 }: {
   scenario: ClinicalScenario;
@@ -89,10 +127,12 @@ function PatientPhotoScene({
   config: PhotoConfig;
   onOpenAssessment: () => void;
   onPerformAction?: (actionId: string) => void;
+  onOpenTab?: (tab: string) => void;
   busy?: boolean;
 }) {
   const [focus, setFocus] = useState<FocusId | null>(null);
   const [imageReady, setImageReady] = useState(true);
+  const [showTargets, setShowTargets] = useState(false);
   const skin = visual.skin;
   const alarming = state.vitals.spo2 < 90 || state.vitals.map < 65 || state.vitals.heartRate > 125 || state.vitals.respiratoryRate < 8;
 
@@ -129,10 +169,15 @@ function PatientPhotoScene({
     <section className={styles.photoShell} data-testid="patient-scene" data-source={visual.source} data-alarming={alarming} aria-label="Reactive photoreal patient bedside">
       <header className={styles.photoToolbar}>
         <div><span>Reactive bedside</span><strong>{scenario.patient.name} · {visual.consciousness.level}</strong></div>
-        {alarming ? <span className={styles.photoAlarm}><Activity size={13} aria-hidden="true" /> Alarm — check patient</span> : null}
+        <div className={styles.photoToolbarRight}>
+          {alarming ? <span className={styles.photoAlarm}><Activity size={13} aria-hidden="true" /> Alarm — check patient</span> : null}
+          <button type="button" className={styles.targetToggle} aria-pressed={showTargets} onClick={() => setShowTargets((v) => !v)} title="Show interactable areas">
+            <Crosshair size={13} aria-hidden="true" /> {showTargets ? "Hide targets" : "Show targets"}
+          </button>
+        </div>
       </header>
 
-      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport">
+      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport" data-show-targets={showTargets}>
         <div className={styles.photoBreath} style={breathStyle} data-reduced={visual.reducedMotion}>
           {/* eslint-disable-next-line @next/next/no-img-element -- static bedside asset, no optimization pipeline in the worker runtime */}
           <img className={styles.photoBase} src={config.src} alt={visual.accessibleDescription} draggable={false} onError={() => setImageReady(false)} onLoad={() => setImageReady(true)} />
@@ -153,15 +198,23 @@ function PatientPhotoScene({
           {skin.edema > 0 ? <span className={styles.ovEdema} style={{ ...pct(config.feet), opacity: 0.1 + skin.edema * 0.08 }} /> : null}
         </div>
 
-        {/* ── Live monitor, mounted over the wall ── */}
-        <div className={styles.photoMonitor} style={pct(config.monitor)}>
+        {/* ── Live monitor mounted over the room's wall display ── */}
+        <div className={styles.photoMonitor} style={{ ...pct(config.monitor), width: `${config.monitorWidth ?? 30}%` }}>
           <BedsideMonitor state={state} />
         </div>
 
-        {/* ── Clickable assessment regions ── */}
+        {/* ── Patient-region hotspots (subtle: visible on hover/focus/targets) ── */}
         <div className={styles.hotspotLayer}>
           {hotspots.map((h) => (
-            <button key={h.id} type="button" className={styles.photoHotspot} style={pct(h.anchor)} data-active={focus === h.id} aria-label={focusMeta[h.id].label} title={focusMeta[h.id].label} onClick={() => setFocus(h.id)}><span /></button>
+            <button key={h.id} type="button" className={styles.photoHotspot} style={pct(h.anchor)} data-active={focus === h.id} aria-label={focusMeta[h.id].label} onClick={() => setFocus(h.id)}>
+              <span /><em>{focusMeta[h.id].label}</em>
+            </button>
+          ))}
+          {/* ── Equipment hotspots: route straight into the matching workspace panel ── */}
+          {(config.devices ?? []).map((device) => (
+            <button key={device.id} type="button" className={styles.deviceHotspot} style={pct(device.anchor)} aria-label={device.label} onClick={() => onOpenTab?.(device.tab)}>
+              <span /><em>{device.label}</em>
+            </button>
           ))}
         </div>
 

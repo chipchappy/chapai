@@ -10,6 +10,7 @@ import {
 
 const BASE = process.env.BASE_URL ?? "https://127.0.0.1:8788";
 const OUT = process.argv[2] ?? "C:/Users/Chapman/AppData/Local/Temp/claude/workspace.png";
+const SLUG = process.argv[4] ?? "septic-shock";
 const WIDTH = Number(process.argv[3] ?? 1440);
 
 const browser = await chromium.launch({ ignoreHTTPSErrors: true });
@@ -17,8 +18,8 @@ const context = await browser.newContext({ baseURL: BASE, ignoreHTTPSErrors: tru
 const page = await context.newPage();
 
 await signInToClinicalSimulation(page);
-const started = await startClinicalAttempt(page, "septic-shock", 260717);
-await page.goto(`/clinical-simulation/septic-shock/run?attempt=${started.data.id}`, { waitUntil: "domcontentloaded" });
+const started = await startClinicalAttempt(page, SLUG, 260717);
+await page.goto(`/clinical-simulation/${SLUG}/run?attempt=${started.data.id}`, { waitUntil: "domcontentloaded" });
 await page.getByTestId("patient-scene").waitFor({ state: "visible" });
 await page.waitForTimeout(1600);
 await page.screenshot({ path: OUT, fullPage: true });

@@ -455,7 +455,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
       <section className={styles.clinicalView} data-photo={Boolean(photoPatient)}>
         {photoPatient ? (
-          <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} />
+          <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} onOpenTab={(tab) => setActiveTab(tab as TabId)} busy={saving} />
         ) : (
           <>
             <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
@@ -466,6 +466,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
           <header><Activity size={16} aria-hidden="true" /> Patient response</header>
           {latestNotices.map((notice) => <div key={notice.id} data-severity={notice.severity}><time>+{notice.virtualMinute}</time><p>{notice.message}</p></div>)}
           {state.mode === "guided" ? <p className={styles.guidedCue}>Guided cue: verify immediate threats, collect focused data, intervene, then reassess and communicate the trend.</p> : null}
+          <ClinicalImpactPanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
         </aside>
       </section>
 
@@ -529,7 +530,6 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         {activeTab === "timeline" ? <div className={styles.liveTimeline}><h2>Clinical timeline</h2>{state.actionLog.length ? <ol>{state.actionLog.map((entry) => <li key={entry.id} data-classification={entry.classification}><time>+{entry.virtualMinute} min</time><div><strong>{entry.label}</strong><span>{entry.classification.replaceAll("_", " ")}</span><p>{entry.feedback}</p></div></li>)}</ol> : <p>No clinical actions have been recorded.</p>}</div> : null}
       </section>
 
-      <ClinicalImpactPanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
       {developerToolsEnabled && developerInfo && attemptMeta ? <SimulationDeveloperPanel
         scenario={scenario}

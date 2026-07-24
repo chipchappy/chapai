@@ -2372,3 +2372,14 @@
   grid-template-columns: minmax(0, 1.72fr) minmax(230px, 0.5fr);
   background: #f1ede3;
 }
+
+/* ── impact panel embedded in the right-hand clinical column ── */
+.responseFeed .impactPanel {
+  border: 0;
+  background: transparent;
+  padding: 6px 10px 12px;
+  gap: 10px;
+}
+
+.responseFeed .impactBlock { flex-basis: 100%; }
+.responseFeed .impactPanel > header { padding-top: 4px; }
