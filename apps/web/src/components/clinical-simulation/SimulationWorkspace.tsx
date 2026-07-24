@@ -30,6 +30,8 @@ import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import ClinicalImpactPanel from "@/components/clinical-simulation/ClinicalImpactPanel";
 import ChartEhr from "@/components/clinical-simulation/ChartEhr";
 import SimEventFeed from "@/components/clinical-simulation/SimEventFeed";
+import DeviceStation from "@/components/clinical-simulation/DeviceStation";
+import AssessmentStation from "@/components/clinical-simulation/AssessmentStation";
 import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
 import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simulation/scene/PatientPhotoScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
@@ -40,6 +42,7 @@ import { derivePatientVisualState, type SceneQuality, type VisualDebugOverrides 
 import { trackEvent } from "@/lib/analytics";
 import styles from "./clinical-simulation.module.css";
 
+type StationId = "assessment" | "computer" | "phone" | "interventions";
 type TabId = "patient" | "assessment" | "chart" | "orders" | "mar" | "labs" | "diagnostics" | "interventions" | "communication" | "documentation" | "timeline";
 type Operation =
   | { operation: "act"; actionId: string; selectedElements: string[] }
@@ -84,6 +87,14 @@ const tabs: Array<{ id: TabId; label: string; icon: typeof Activity }> = [
 ];
 
 /** Groups the workspace tabs by clinical workflow so the nav reads as a shift routine rather than a flat list. */
+/** The only four things a student chooses between; everything else is inside one. */
+const STATIONS: Array<{ id: StationId; label: string; hint: string; icon: typeof Activity }> = [
+  { id: "assessment", label: "Assessment", hint: "Systems · talk to patient", icon: Stethoscope },
+  { id: "computer", label: "Computer", hint: "Chart · MAR · labs · orders", icon: BookOpen },
+  { id: "phone", label: "Phone", hint: "Provider · RRT · RT", icon: MessageSquareText },
+  { id: "interventions", label: "Interventions", hint: "Treat · position · safety", icon: ShieldAlert },
+];
+
 const tabGroups: Array<{ label: string; ids: TabId[] }> = [
   { label: "Bedside", ids: ["patient", "assessment"] },
   { label: "Chart", ids: ["chart", "orders", "labs", "diagnostics"] },
@@ -255,6 +266,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [scenePerformance, setScenePerformance] = useState<ScenePerformanceSample | null>(null);
   const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
   const [activeTab, setActiveTab] = useState<TabId>("patient");
+  const [station, setStation] = useState<StationId | null>(null);
   /** Virtual minute each tab was last opened — drives "new result" badges. */
   const [tabSeenAt, setTabSeenAt] = useState<Partial<Record<TabId, number>>>({});
   const [selections, setSelections] = useState<Record<string, string[]>>({});
@@ -458,10 +470,10 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
       <section className={styles.clinicalView} data-photo={Boolean(photoPatient)}>
         {photoPatient ? (
-          <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} onOpenTab={(tab) => setActiveTab(tab as TabId)} busy={saving} />
+          <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setStation("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} onOpenTab={(tab) => setStation(tab === "chart" || tab === "mar" ? "computer" : tab === "assessment" ? "assessment" : "interventions")} busy={saving} />
         ) : (
           <>
-            <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setActiveTab("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
+            <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setStation("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
             <BedsideMonitor state={state} />
           </>
         )}
@@ -473,56 +485,48 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       <CodeBluePanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
 
-      <nav className={styles.workspaceTabs} role="tablist" aria-label="Clinical workspace">
-        {tabGroups.map((group) => <div key={group.label} className={styles.tabGroup}>
-          <span aria-hidden="true">{group.label}</span>
-          <div>
-            {group.ids.map((id) => {
-              const tab = tabs.find((item) => item.id === id);
-              if (!tab) return null;
-              const Icon = tab.icon;
-              const fresh = newResultCounts[tab.id] ?? 0;
-              return <button key={tab.id} type="button" role="tab" aria-selected={activeTab === tab.id} data-active={activeTab === tab.id} onClick={() => setActiveTab(tab.id)}>
-                <Icon size={16} aria-hidden="true" /> {tab.label}
-                {fresh > 0 ? <em className={styles.tabBadge} aria-label={`${fresh} new result${fresh === 1 ? "" : "s"}`}>{fresh}</em> : null}
-              </button>;
-            })}
-          </div>
-        </div>)}
+      {/* ── Four bedside actions. Everything else lives inside a station. ── */}
+      <nav className={styles.actionBar} aria-label="Bedside actions">
+        {STATIONS.map((item) => {
+          const Icon = item.icon;
+          const badge = item.id === "computer" ? (newResultCounts.labs ?? 0) + (newResultCounts.diagnostics ?? 0) : 0;
+          return (
+            <button key={item.id} type="button" data-active={station === item.id} onClick={() => setStation(item.id)} aria-haspopup="dialog">
+              <Icon size={19} aria-hidden="true" />
+              <span>{item.label}</span>
+              <small>{item.hint}</small>
+              {badge > 0 ? <em className={styles.actionBadge} aria-label={`${badge} new results`}>{badge}</em> : null}
+            </button>
+          );
+        })}
       </nav>
 
-      <section className={styles.tabPanel} role="tabpanel">
-        {activeTab === "patient" ? <div className={styles.patientOverview}>
-          <section><h2>Current patient state</h2><dl>
-            <div><dt>Neurologic</dt><dd>{state.levelOfConsciousness}; {state.orientation}</dd></div>
-            <div><dt>Respiratory</dt><dd>{state.respiratoryEffort}; {state.breathSounds}</dd></div>
-            <div><dt>Cardiovascular</dt><dd>{state.cardiacRhythm}; {state.perfusion}</dd></div>
-            <div><dt>Output</dt><dd>{Math.round(state.urineOutputMlHr)} mL/hr urine; {Math.round(state.drainOutputMl)} mL drain output</dd></div>
-            <div><dt>Pain</dt><dd>{state.vitals.pain}/10</dd></div>
-            <div><dt>Safety</dt><dd>Fall {scenario.patient.risks.fall}; suicide {scenario.patient.risks.suicide}; elopement {scenario.patient.risks.elopement}</dd></div>
-          </dl></section>
-          <section><h2>Lines and devices</h2><ul>{Object.entries(state.devices).map(([device, detail]) => <li key={device}><strong>{device.replaceAll("_", " ")}</strong><span>{detail}</span></li>)}</ul></section>
-        </div> : null}
+      <DeviceStation open={station === "assessment"} title="Patient assessment" subtitle="Bedside" onClose={() => setStation(null)}>
+        <AssessmentStation scenario={scenario} state={simulationState} busy={saving} onPerform={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
+      </DeviceStation>
 
-        {activeTab === "assessment" ? <div className={styles.splitWorkspace}><section><h2>Focused assessments</h2>{renderActions(actionsByCategory.get("assessment"))}</section><aside><h2>Revealed findings</h2>{visibleFindings.length ? <ul>{visibleFindings.map((finding) => {
-          const age = finding.record ? state.virtualMinute - finding.record.virtualMinute : 0;
-          return <li key={finding.id} data-stale={age >= 5}><strong>{finding.label}</strong><span>{finding.finding}</span><small>Assessed at +{finding.record?.virtualMinute ?? 0} min{age >= 5 ? " / may no longer reflect the current patient state" : " / current"}</small></li>;
-        })}</ul> : <p>Perform a relevant assessment to reveal patient-specific findings.</p>}</aside></div> : null}
+      <DeviceStation open={station === "computer"} title="Workstation — patient chart" subtitle="Computer" tone="screen" onClose={() => setStation(null)}>
+        <ChartEhr scenario={scenario} state={state} />
+        <div className={styles.stationSection}>
+          <h3><Pill size={15} aria-hidden="true" /> Medication administration record</h3>
+          <p className={styles.stationHint}>Pull from the cabinet and verify every right before administering.</p>
+          {renderActions(actionsByCategory.get("medication"))}
+        </div>
+        <div className={styles.stationSection}>
+          <h3><ClipboardCheck size={15} aria-hidden="true" /> Documentation</h3>
+          {renderActions(actionsByCategory.get("documentation"))}
+        </div>
+      </DeviceStation>
 
-        {activeTab === "chart" ? <ChartEhr scenario={scenario} state={state} /> : null}
+      <DeviceStation open={station === "phone"} title="Care team" subtitle="Phone" tone="phone" onClose={() => setStation(null)}>
+        <p className={styles.stationHint}>Report what you have actually assessed. The response depends on what you include and how urgent the patient truly is.</p>
+        {renderActions(actionsByCategory.get("communication"))}
+      </DeviceStation>
 
-        {activeTab === "orders" ? <div className={styles.orderList}><section><h2>Active orders</h2>{scenario.chart.orders.map((order) => <div key={order}><Check size={15} aria-hidden="true" /><span>{order}</span></div>)}</section><section><h2>PRN orders</h2>{scenario.chart.prnOrders.map((order) => <div key={order}><ChevronRight size={15} aria-hidden="true" /><span>{order}</span></div>)}</section></div> : null}
-        {activeTab === "mar" ? <><div className={styles.panelIntro}><h2>Medication administration record</h2><p>Review the scenario order, required assessment, laboratory data, hold parameters, and safety checks before administration.</p></div>{renderActions(actionsByCategory.get("medication"))}</> : null}
-        {activeTab === "labs" ? <div className={styles.resultTable}><h2>Laboratory results</h2>{scenario.chart.labs.filter((lab) => lab.availableAtMinute <= state.virtualMinute).map((lab) => {
-          const value = state.labs[lab.stateKey ?? lab.name] ?? lab.value;
-          return <div key={lab.name} data-flag={lab.flag}><strong>{lab.name}</strong><span>{String(value)}{lab.unit ? ` ${lab.unit}` : ""}</span><em>{lab.flag}</em></div>;
-        })}{scenario.chart.labs.some((lab) => lab.availableAtMinute > state.virtualMinute) ? <p>Additional ordered results remain pending.</p> : null}</div> : null}
-        {activeTab === "diagnostics" ? <div className={styles.resultTable}><h2>Diagnostics</h2>{scenario.chart.diagnostics.filter((item) => item.availableAtMinute <= state.virtualMinute).map((item) => <div key={item.name}><strong>{item.name}</strong><span>{item.result}</span><em>available</em></div>)}{!scenario.chart.diagnostics.some((item) => item.availableAtMinute <= state.virtualMinute) ? <p>No diagnostic results are currently available.</p> : null}</div> : null}
-        {activeTab === "interventions" ? <><div className={styles.panelIntro}><h2>Nursing interventions and safety</h2><p>Actions are evaluated by indication, timing, sequence, patient-specific safety, and response.</p></div>{renderActions([...(actionsByCategory.get("intervention") ?? []), ...(actionsByCategory.get("safety") ?? [])])}</> : null}
-        {activeTab === "communication" ? <><div className={styles.panelIntro}><h2>Care-team communication</h2><p>Select the clinically relevant SBAR or escalation elements. Exact scripted wording is not required.</p></div>{renderActions(actionsByCategory.get("communication"))}</> : null}
-        {activeTab === "documentation" ? <><div className={styles.panelIntro}><h2>Structured nursing documentation</h2><p>Record the assessment, intervention, response, notification, and safety elements required by this scenario.</p></div>{renderActions(actionsByCategory.get("documentation"))}</> : null}
-        {activeTab === "timeline" ? <div className={styles.liveTimeline}><h2>Clinical timeline</h2>{state.actionLog.length ? <ol>{state.actionLog.map((entry) => <li key={entry.id} data-classification={entry.classification}><time>+{entry.virtualMinute} min</time><div><strong>{entry.label}</strong><span>{entry.classification.replaceAll("_", " ")}</span><p>{entry.feedback}</p></div></li>)}</ol> : <p>No clinical actions have been recorded.</p>}</div> : null}
-      </section>
+      <DeviceStation open={station === "interventions"} title="Interventions" subtitle="Bedside care" onClose={() => setStation(null)}>
+        <p className={styles.stationHint}>Actions are judged on indication, timing, sequence, and patient-specific safety.</p>
+        {renderActions([...(actionsByCategory.get("intervention") ?? []), ...(actionsByCategory.get("safety") ?? [])])}
+      </DeviceStation>
 
 
       {developerToolsEnabled && developerInfo && attemptMeta ? <SimulationDeveloperPanel

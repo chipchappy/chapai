@@ -2458,3 +2458,78 @@
 .monitorCompact .monitorValues > div:nth-child(2) strong { font-size: 0.5rem; }
 .monitorCompact footer { padding: 1px 5px; font-size: 0.38rem; }
 .monitorCompact .trendArrow { display: none; }
+
+/* ==== four bedside actions ==== */
+.actionBar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px 18px 16px;
+  background: #f5efe2;
+  border-top: 1px solid #ddcfb2;
+}
+
+.actionBar button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-height: 74px;
+  border: 1px solid #ddcfb2;
+  border-radius: 13px;
+  padding: 12px 15px;
+  background: #fdf8ee;
+  color: #3f3527;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.actionBar button svg { color: #7a6a52; margin-bottom: 3px; }
+.actionBar button span { font-size: 0.92rem; font-weight: 800; }
+.actionBar button small { color: #9a8a6d; font-size: 0.7rem; }
+
+.actionBar button:hover {
+  border-color: #b08430;
+  box-shadow: 0 6px 18px rgba(120, 96, 52, 0.16);
+  transform: translateY(-1px);
+}
+
+.actionBar button:focus-visible { outline: 2px solid #3c5a52; outline-offset: 2px; }
+.actionBar button[data-active="true"] { border-color: #3c5a52; background: #eef3ee; }
+
+.actionBadge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  padding: 0 6px;
+  background: #b5713f;
+  color: #fff;
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+/* sections inside a station */
+.stationSection { margin-top: 22px; padding-top: 18px; border-top: 1px solid #e6dac2; }
+.stationSection h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 4px;
+  color: #3f3527;
+  font-size: 0.9rem;
+}
+.stationHint { margin: 0 0 12px; color: #9a8a6d; font-size: 0.78rem; }
+
+@media (max-width: 720px) {
+  .actionBar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
