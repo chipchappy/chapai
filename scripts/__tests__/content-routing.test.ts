@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 import {
   allocateBlueprintCounts,
   allocateBlueprintDeficits,
+  getBlueprintCountMismatches,
 } from "../../apps/web/src/lib/blueprint-allocation";
 import {
   getCaseStudyReleaseIssues,
@@ -270,6 +271,35 @@ describe("complete unfolding case-study routing", () => {
       assert.ok(group.questions.every((question) => (question.structuredRationale?.citations.length ?? 0) >= 2));
       assert.ok(group.questions.every((question) => getQuestionQualityProfile(question).tier <= 1));
     }
+  });
+
+  it("detects any readiness-form category drift from the exact blueprint", () => {
+    const blueprint = Object.fromEntries(
+      Object.entries(NCLEX_CATEGORIES).map(([key, value]) => [key, value.pct]),
+    );
+    const exact = allocateBlueprintCounts(blueprint, 85);
+
+    assert.deepEqual(getBlueprintCountMismatches(blueprint, 85, exact), []);
+
+    const imbalanced = {
+      ...exact,
+      psychosocial: exact.psychosocial - 3,
+      physiological_adaptation: exact.physiological_adaptation + 3,
+    };
+    const mismatches = Object.fromEntries(
+      getBlueprintCountMismatches(blueprint, 85, imbalanced)
+        .map(({ key, target, actual }) => [key, { target, actual }]),
+    );
+    assert.deepEqual(mismatches, {
+      physiological_adaptation: {
+        target: exact.physiological_adaptation,
+        actual: exact.physiological_adaptation + 3,
+      },
+      psychosocial: {
+        target: exact.psychosocial,
+        actual: exact.psychosocial - 3,
+      },
+    });
   });
 
   it("keeps readiness targets inside the 2026 ranges while avoiding low-quality quota filler", () => {

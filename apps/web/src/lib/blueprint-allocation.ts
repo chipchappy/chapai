@@ -53,3 +53,17 @@ export function allocateBlueprintDeficits(
   if (deficitTotal === remainingTotal) return deficits;
   return allocateBlueprintCounts(deficits, remainingTotal);
 }
+
+export function getBlueprintCountMismatches(
+  blueprint: Record<string, number>,
+  total: number,
+  actualCounts: Record<string, number>,
+) {
+  const targets = allocateBlueprintCounts(blueprint, total);
+
+  return Object.keys(targets).flatMap((key) => {
+    const target = targets[key] ?? 0;
+    const actual = Math.max(0, Math.floor(actualCounts[key] ?? 0));
+    return actual === target ? [] : [{ key, target, actual }];
+  });
+}

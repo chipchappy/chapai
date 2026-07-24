@@ -1,5 +1,5 @@
 import { getQuestionBank } from "@/lib/content-bank";
-import { allocateBlueprintDeficits } from "@/lib/blueprint-allocation";
+import { allocateBlueprintDeficits, getBlueprintCountMismatches } from "@/lib/blueprint-allocation";
 import {
   getCaseStudyReleaseIssues,
   getCaseStudyEligibleQuestions,
@@ -46,6 +46,7 @@ const examIdSchema = z.enum([
 
 const NCLEX_CASE_STUDY_SET_COUNT = 3;
 const MAX_NCLEX_READINESS_QUALITY_TIER = 2;
+const NCLEX_READINESS_CANDIDATE_LIMIT = 1_000;
 const launchIdSchema = z.string().uuid();
 
 function normalizeStem(stem: string) {
@@ -218,7 +219,24 @@ function selectByBlueprint(
     );
   }
 
-  return shuffleQuestionBlocks(selected.slice(0, count), `${seed}:final`);
+  const manifest = selected.slice(0, count);
+  const actualCounts: Record<string, number> = {};
+  for (const question of manifest) {
+    const category = question.exam === "nclex"
+      ? question.nclexClientNeed ?? question.category
+      : question.category;
+    actualCounts[category] = (actualCounts[category] ?? 0) + 1;
+  }
+  const mismatches = getBlueprintCountMismatches(blueprint, count, actualCounts);
+  if (mismatches.length > 0) {
+    throw new Error(
+      `READINESS_FORM_BLUEPRINT_MISMATCH: ${seed} ${mismatches
+        .map(({ key, target, actual }) => `${key}=${actual}/${target}`)
+        .join(",")}`,
+    );
+  }
+
+  return shuffleQuestionBlocks(manifest, `${seed}:final`);
 }
 
 async function loadLivePracticeQuestions(exam: Exam) {
@@ -235,7 +253,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
   }
 
   const db = getDB(env);
-  const candidateLimit = exam === "nclex" ? 700 : 500;
+  const candidateLimit = exam === "nclex" ? NCLEX_READINESS_CANDIDATE_LIMIT : 500;
   const rows = await db
     .select({
       id: questions.id,
