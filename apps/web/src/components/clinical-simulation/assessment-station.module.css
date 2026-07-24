@@ -1,0 +1,137 @@
+.assess { display: grid; grid-template-columns: 208px minmax(0, 1fr); min-height: 0; }
+
+.assessRail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 6px 4px 0;
+  border-right: 1px solid #e2d6bd;
+  overflow-y: auto;
+  max-height: 620px;
+}
+
+.assessRail button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: transparent;
+  color: #6b5c42;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.assessRail button:hover { background: #f2e9d8; color: #3f3527; }
+.assessRail button[data-active="true"] { background: #3c5a52; color: #f5f9f5; }
+
+.assessRail em {
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+.assessRail em[data-complete="true"] { color: #3f7d5c; opacity: 1; }
+.assessRail button[data-active="true"] em[data-complete="true"] { color: #a9e6c4; }
+
+.assessPane { padding: 4px 4px 8px 18px; overflow-y: auto; max-height: 620px; }
+
+.assessHeader { margin-bottom: 14px; }
+.assessHeader h3 { margin: 0; color: #3f3527; font-size: 1rem; }
+.assessHeader p { margin: 2px 0 0; color: #9a8a6d; font-size: 0.76rem; }
+
+.assessPane section { margin-bottom: 18px; }
+
+.assessPane h4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px;
+  color: #9a8a6d;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assessActions { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 7px; }
+
+.assessActions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ddcfb2;
+  border-radius: 9px;
+  padding: 9px 11px;
+  background: #fdfaf3;
+  color: #3f3527;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.assessActions button:hover:not(:disabled) { background: #f5ecd9; border-color: #c9b58e; }
+.assessActions button:disabled { opacity: 0.55; cursor: default; }
+.assessActions button[data-done="true"] { background: #eef5ee; border-color: #b7d2be; color: #2c5c42; }
+
+.assessEmpty { margin: 0; color: #9a8a6d; font-size: 0.76rem; font-style: italic; }
+
+.assessFindings { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+
+.assessFindings li {
+  border-left: 3px solid #7fb89a;
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: #f4f8f4;
+}
+
+.assessFindings li[data-stale="true"] { border-left-color: #c9992e; background: #faf3e2; }
+.assessFindings strong { display: block; color: #2f4740; font-size: 0.79rem; }
+.assessFindings p { margin: 3px 0 0; color: #4d635c; font-size: 0.76rem; line-height: 1.45; }
+.assessFindings small { display: block; margin-top: 4px; color: #9a8a6d; font-size: 0.66rem; }
+
+.assessDialogue { display: grid; gap: 8px; }
+
+.assessDialogue button {
+  border: 1px solid #d8cbe4;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: #f7f2fa;
+  color: #4f3a63;
+  font: inherit;
+  font-size: 0.77rem;
+  font-weight: 600;
+  font-style: italic;
+  text-align: left;
+  cursor: pointer;
+  justify-self: start;
+}
+
+.assessDialogue button:hover { background: #efe6f2; border-color: #c3aed3; }
+
+.assessReply {
+  margin: 6px 0 0 14px;
+  padding: 8px 12px;
+  border-left: 3px solid #7a5c96;
+  border-radius: 8px;
+  background: #f4eff8;
+  color: #4a3a58;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .assess { grid-template-columns: minmax(0, 1fr); }
+  .assessRail { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid #e2d6bd; padding: 0 0 8px; }
+  .assessRail button { white-space: nowrap; }
+  .assessPane { padding: 14px 0 0; }
+}
