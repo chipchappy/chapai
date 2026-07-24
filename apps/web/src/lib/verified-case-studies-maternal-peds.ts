@@ -39,8 +39,14 @@ function buildUnfoldingChart(
     ...base,
     timeline: visibleStages.map((stage) => stage.timeline),
     unfoldingTimeline: visibleStages.map((stage) => stage.timeline),
-    nursingNotes: visibleStages.map((stage) => stage.note),
-    notes: visibleStages.map((stage) => stage.note),
+    nursingNotes: [
+      ...(base.nursingNotes ?? []),
+      ...visibleStages.map((stage) => stage.note),
+    ],
+    notes: [
+      ...(base.nursingNotes ?? []),
+      ...visibleStages.map((stage) => stage.note),
+    ],
     vitals: latestVitals ?? base.vitals,
     labs: visibleStages.flatMap((stage) => stage.labs ?? []),
     providerOrders: visibleStages.flatMap((stage) => stage.orders ?? []),
@@ -85,6 +91,9 @@ const preeclampsiaBaseChart: PracticeChartReviewMetadata = {
   ],
   allergies: ["No known medication allergies."],
   medications: ["Prenatal vitamin", "Ferrous sulfate"],
+  nursingNotes: [
+    "0805 - Identity, gestational age, allergies, and prenatal record verified. Client positioned laterally with call light in reach while urgent maternal and fetal assessment begins.",
+  ],
 };
 
 const preeclampsiaStages: ChartStage[] = [
@@ -257,6 +266,9 @@ const dehydrationBaseChart: PracticeChartReviewMetadata = {
   ],
   allergies: ["No known medication allergies."],
   medications: ["No routine medications."],
+  nursingNotes: [
+    "1305 - Child arrives carried by the parent and is placed on a pediatric stretcher with continuous observation; the current diaper is dry and the admission weight is 10.0 kg.",
+  ],
 };
 
 const dehydrationStages: ChartStage[] = [
@@ -429,6 +441,9 @@ const asthmaBaseChart: PracticeChartReviewMetadata = {
   ],
   allergies: ["Cat dander", "No known medication allergies."],
   medications: ["Albuterol inhaler as needed", "Prescribed inhaled corticosteroid"],
+  nursingNotes: [
+    "1705 - Child is moved directly from triage to a monitored pediatric bed; parent remains at bedside and confirms the rescue inhaler provided only brief relief during transport.",
+  ],
 };
 
 const asthmaStages: ChartStage[] = [
@@ -586,6 +601,9 @@ const neonatalBaseChart: PracticeChartReviewMetadata = {
   ],
   allergies: ["No known allergies."],
   medications: ["Routine newborn prophylaxis completed per facility protocol."],
+  nursingNotes: [
+    "0705 - Newborn identification bands, maternal diabetes history, and birth weight are verified. Infant remains with the parent while the nurse prepares for symptom-triggered glucose assessment.",
+  ],
 };
 
 const neonatalStages: ChartStage[] = [
@@ -856,7 +874,7 @@ const preeclampsiaCaseStudyDeck: PracticeQuestion[] = [
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
     stem:
-      "Complete the bow-tie by identifying the priority condition, two actions to anticipate, and two parameters to monitor most closely.",
+      "Using the severe preeclampsia record, complete the bow-tie by identifying the priority condition, two actions to anticipate, and two parameters to monitor most closely.",
     nclexInstruction: "Select the center condition, two actions, and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1315,7 +1333,7 @@ const dehydrationCaseStudyDeck: PracticeQuestion[] = [
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
     stem:
-      "Complete the bow-tie by identifying the priority condition, two actions to anticipate, and two parameters to monitor most closely.",
+      "Using the pediatric dehydration record, complete the bow-tie by identifying the priority condition, two actions to anticipate, and two parameters to monitor most closely.",
     nclexInstruction: "Select the center condition, two actions, and two monitoring parameters.",
     options: [],
     bowTie: {

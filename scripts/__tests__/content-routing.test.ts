@@ -6,15 +6,17 @@ import {
   allocateBlueprintDeficits,
 } from "../../apps/web/src/lib/blueprint-allocation";
 import {
+  getCaseStudyReleaseIssues,
   getCaseStudyEligibleQuestions,
   getCompleteCaseStudyGroups,
+  qualityFirstCaseGroups,
   shuffleQuestionBlocks,
 } from "../../apps/web/src/lib/clinical-case-study";
 import {
   buildDistinctClinicalSections,
   isClinicalEntryDuplicate,
 } from "../../apps/web/src/lib/clinical-chart-sections";
-import { getRichDeck } from "../../apps/web/src/lib/practice-data";
+import { getPracticeExamDefinitions, getRichDeck } from "../../apps/web/src/lib/practice-data";
 import { getQuestionIntegrityIssues } from "../../apps/web/src/lib/question-renderability";
 import {
   getQuestionQualityProfile,
@@ -22,7 +24,10 @@ import {
   qualityFirstShuffle,
   type QualityQuestionLike,
 } from "../../apps/web/src/lib/question-quality";
-import { NCLEX_CATEGORIES } from "../../apps/web/src/lib/types";
+import {
+  NCLEX_CATEGORIES,
+  NCLEX_READINESS_BLUEPRINT,
+} from "../../apps/web/src/lib/types";
 
 function caseQuestion(id: string, caseStudyId: string | null, cjmmStep: string | null) {
   return {
@@ -209,15 +214,17 @@ describe("complete unfolding case-study routing", () => {
     }
   });
 
-  it("keeps three complete, distinct, source-grounded six-item cases", () => {
+  it("keeps fifteen release-ready, distinct, source-grounded six-item cases", () => {
     const deck = getRichDeck("case-study").filter((question) => question.exam === "nclex");
     const groups = getCompleteCaseStudyGroups(deck);
     const vte = groups.find((group) => group.id === "nclex-vte-pe-ngn");
     const sepsis = groups.find((group) => group.id === "codex-nclex-sepsis-urinary-ngn");
     const postpartum = groups.find((group) => group.id === "codex-nclex-postpartum-hemorrhage-ngn");
 
-    assert.equal(deck.length, 18);
-    assert.equal(groups.length, 3);
+    assert.equal(deck.length, 90);
+    assert.equal(groups.length, 15);
+    assert.equal(new Set(deck.map((question) => question.id)).size, deck.length);
+    assert.equal(new Set(deck.map((question) => question.stem.trim().toLowerCase())).size, deck.length);
     assert.ok(vte);
     assert.ok(sepsis);
     assert.ok(postpartum);
@@ -244,7 +251,8 @@ describe("complete unfolding case-study routing", () => {
       "HPI and nursing notes stay distinct",
     );
     assert.ok(deck.every((question) => getQuestionIntegrityIssues(question).length === 0));
-    for (const group of [vte, sepsis, postpartum]) {
+    for (const group of groups) {
+      assert.deepEqual(getCaseStudyReleaseIssues(group.questions), []);
       assert.deepEqual(
         group.questions.map((question) => question.cjmmStep),
         [
@@ -257,9 +265,57 @@ describe("complete unfolding case-study routing", () => {
         ],
       );
       assert.ok(group.questions.every((question) => question.qualityMetadata?.evidenceStatus === "source-verified"));
-      assert.ok(group.questions.every((question) => (question.structuredRationale?.citations.length ?? 0) >= 3));
+      assert.ok(group.questions.every((question) => question.qualityMetadata?.clinicalReviewStatus === "pending"));
+      assert.ok(group.questions.every((question) => question.qualityMetadata?.psychometricStatus === "precalibration"));
+      assert.ok(group.questions.every((question) => (question.structuredRationale?.citations.length ?? 0) >= 2));
       assert.ok(group.questions.every((question) => getQuestionQualityProfile(question).tier <= 1));
     }
+  });
+
+  it("keeps readiness targets inside the 2026 ranges while avoiding low-quality quota filler", () => {
+    const allocation = allocateBlueprintCounts(NCLEX_READINESS_BLUEPRINT, 85);
+
+    assert.deepEqual(allocation, {
+      management_of_care: 15,
+      safety_infection_control: 11,
+      pharmacological: 14,
+      risk_reduction: 10,
+      physiological_adaptation: 13,
+      basic_care_comfort: 8,
+      psychosocial: 8,
+      health_promotion: 6,
+    });
+  });
+
+  it("assigns three unique, subject-diverse cases to every NCLEX readiness form", () => {
+    const deck = getRichDeck("case-study").filter((question) => question.exam === "nclex");
+    const definitions = getPracticeExamDefinitions({ nclex: 999 })
+      .filter((definition) => definition.exam === "nclex");
+    const reservedQuestionIds = new Set<string>();
+    const assignedCaseIds = new Set<string>();
+
+    for (const definition of definitions) {
+      const groups = qualityFirstCaseGroups(deck, definition.seed)
+        .filter((group) => getCaseStudyReleaseIssues(group.questions).length === 0)
+        .filter((group) => group.questions.every((question) => !reservedQuestionIds.has(question.id)))
+        .slice(0, 3);
+
+      assert.equal(groups.length, 3, definition.id);
+      assert.equal(groups.flatMap((group) => group.questions).length, 18, definition.id);
+      const subjectAreas = new Set(groups.map((group) => (
+        group.questions[0].caseStudyTitle?.split(":")[0] ?? group.id
+      )));
+      assert.ok(subjectAreas.size >= 2, `${definition.id} should span at least two subject areas`);
+
+      for (const group of groups) {
+        assert.equal(assignedCaseIds.has(group.id), false, `${group.id} was reused across forms`);
+        assignedCaseIds.add(group.id);
+        group.questions.forEach((question) => reservedQuestionIds.add(question.id));
+      }
+    }
+
+    assert.equal(assignedCaseIds.size, 15);
+    assert.equal(reservedQuestionIds.size, 90);
   });
 });
 

@@ -245,6 +245,59 @@ export const quizAnswers = sqliteTable("quiz_answers", {
     .notNull(),
 });
 
+// Versioned readiness attempts intentionally do not foreign-key question_id.
+// Bundled, source-verified case items may be served from the deployed manifest
+// before they are promoted into the mutable D1 question bank.
+export const readinessExamAttempts = sqliteTable("readiness_exam_attempts", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  launchId: text("launch_id").notNull(),
+  examId: text("exam_id").notNull(),
+  assemblyVersion: text("assembly_version").notNull(),
+  contentFingerprint: text("content_fingerprint").notNull(),
+  questionIds: text("question_ids").notNull(),
+  scoringManifest: text("scoring_manifest").notNull(),
+  status: text("status", { enum: ["in_progress", "completed", "abandoned"] })
+    .default("in_progress")
+    .notNull(),
+  totalItems: integer("total_items").notNull(),
+  answeredItems: integer("answered_items").default(0).notNull(),
+  pointsEarned: real("points_earned").default(0).notNull(),
+  pointsPossible: real("points_possible").default(0).notNull(),
+  startedAt: integer("started_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+  completedAt: integer("completed_at"),
+  updatedAt: integer("updated_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
+export const readinessExamAnswers = sqliteTable("readiness_exam_answers", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  attemptId: text("attempt_id")
+    .notNull()
+    .references(() => readinessExamAttempts.id, { onDelete: "cascade" }),
+  questionId: text("question_id").notNull(),
+  questionSnapshot: text("question_snapshot").notNull(),
+  formPosition: integer("form_position").notNull(),
+  selectedAnswer: text("selected_answer").notNull(),
+  isCorrect: integer("is_correct", { mode: "boolean" }).notNull(),
+  pointsEarned: real("points_earned").notNull(),
+  pointsPossible: real("points_possible").notNull(),
+  partialCredit: real("partial_credit").notNull(),
+  timeSpentMs: integer("time_spent_ms"),
+  answeredAt: integer("answered_at")
+    .default(sql`(unixepoch())`)
+    .notNull(),
+});
+
 // ─── Spaced Repetition ────────────────────────────────────────────────────────
 
 export const reviewSchedule = sqliteTable(

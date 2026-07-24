@@ -24,6 +24,8 @@ export async function GET() {
     "quiz_sessions",
     "quiz_answers",
     "daily_usage",
+    "readiness_exam_attempts",
+    "readiness_exam_answers",
   ];
 
   if (hasDatabase(env)) {
@@ -82,11 +84,11 @@ export async function GET() {
       ...readiness,
       databaseReachable,
       d1SchemaReady,
-        requiredD1Tables,
-        supabaseReachable,
-        productionBlocks,
-        productionWarnings,
-      });
+      requiredD1Tables,
+      supabaseReachable,
+      productionBlocks,
+      productionWarnings,
+    });
   }
 
   return jsonSuccess({

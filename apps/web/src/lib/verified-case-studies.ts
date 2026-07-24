@@ -2,84 +2,12 @@ import type {
   PracticeChartReviewMetadata,
   PracticeQuestion,
 } from "./practice-types";
-
-type CaseReference = NonNullable<PracticeQuestion["references"]>[number];
-
-type VerifiedCaseDefinition = {
-  id: string;
-  title: string;
-  references: CaseReference[];
-  sourceIds: string[];
-  buildChartReview: (caseItemNumber: number) => PracticeChartReviewMetadata;
-};
-
-type VerifiedCaseQuestionInput = Omit<
-  PracticeQuestion,
-  | "exam"
-  | "mode"
-  | "source"
-  | "caseStudyId"
-  | "caseStudyTitle"
-  | "caseItemTotal"
-  | "chartReview"
-  | "references"
-  | "structuredRationale"
-  | "tutorReady"
-  | "qualityMetadata"
-> & {
-  rationaleMechanism: string;
-  whyCorrect: string;
-};
-
-const NCLEX_REFERENCE: CaseReference = {
-  title: "2026 NCLEX-RN Test Plan",
-  citation: "NCSBN, effective April 1, 2026 through March 31, 2029",
-  href: "https://www.ncsbn.org/public-files/2026_RN_Test-Plan_English-F.pdf",
-};
-
-function makeVerifiedCaseQuestion(
-  definition: VerifiedCaseDefinition,
-  input: VerifiedCaseQuestionInput,
-): PracticeQuestion {
-  const {
-    rationaleMechanism,
-    whyCorrect,
-    distractorRationales = {},
-    ...question
-  } = input;
-
-  return {
-    exam: "nclex",
-    mode: "case-study",
-    source: "simulated",
-    caseStudyId: definition.id,
-    caseStudyTitle: definition.title,
-    caseItemTotal: 6,
-    chartReview: definition.buildChartReview(input.caseItemNumber ?? 1),
-    tutorReady: true,
-    references: definition.references,
-    structuredRationale: {
-      overview: input.rationale,
-      mechanism: rationaleMechanism,
-      whyCorrect,
-      whyWrong: distractorRationales,
-      citations: definition.references.map((reference) => ({
-        source: reference.citation ?? reference.title,
-        href: reference.href,
-        note: reference.title,
-      })),
-    },
-    distractorRationales,
-    qualityMetadata: {
-      gateVersion: "nclex-publication-v1",
-      contentVersion: 1,
-      evidenceStatus: "source-verified",
-      evidenceReviewedAt: "2026-07-23",
-      sourceIds: definition.sourceIds,
-    },
-    ...question,
-  };
-}
+import {
+  makeVerifiedCaseQuestion,
+  NCLEX_REFERENCE,
+  type CaseReference,
+  type VerifiedCaseDefinition,
+} from "./verified-case-shared";
 
 const sepsisReferences: CaseReference[] = [
   NCLEX_REFERENCE,
@@ -219,6 +147,7 @@ const sepsisDefinition: VerifiedCaseDefinition = {
   title: "Adult Health: Sepsis with Acute Hypoperfusion",
   references: sepsisReferences,
   sourceIds: ["ncsbn-2026-rn-test-plan", "sccm-ssc-adult-2026", "cdc-sepsis-clinical-care-2025"],
+  evidenceReviewedAt: "2026-07-23",
   buildChartReview: buildSepsisChartReview,
 };
 
@@ -666,6 +595,7 @@ const postpartumDefinition: VerifiedCaseDefinition = {
   title: "Maternal-Newborn: Postpartum Hemorrhage",
   references: postpartumReferences,
   sourceIds: ["ncsbn-2026-rn-test-plan", "who-pph-guideline-2025", "who-pph-quick-card-2025", "acog-pb183-reaffirmed-2024"],
+  evidenceReviewedAt: "2026-07-23",
   buildChartReview: buildPostpartumChartReview,
 };
 

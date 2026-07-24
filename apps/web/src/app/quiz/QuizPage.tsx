@@ -195,6 +195,14 @@ function hasDraftAnswer(answer: PracticeAnswer) {
   return typeof answer === "string" && answer.trim().length > 0;
 }
 
+function getCurrentQuestionElapsedMs(session: PracticeSessionState) {
+  const previousSubmissionAt = Object.values(session.answers).reduce(
+    (latest, answer) => Math.max(latest, answer.submittedAt ?? 0),
+    0,
+  );
+  return Math.max(1000, Date.now() - Math.max(session.startedAt, previousSubmissionAt));
+}
+
 function formatTime(seconds: number) {
   const safe = Math.max(0, seconds);
   const hours = Math.floor(safe / 3600);
@@ -750,9 +758,10 @@ export default function QuizPage({
     // Building a full exam is CPU-heavy on a cold worker isolate and can blip
     // with a transient 5xx (503/1102). Retry a couple of times so a cold start
     // is invisible to the student instead of surfacing an error.
+    const launchId = globalThis.crypto.randomUUID();
     let response: Response | null = null;
     for (let attempt = 0; attempt < 3; attempt++) {
-      response = await fetch(`/api/quiz/practice-exams/${examId}`);
+      response = await fetch(`/api/quiz/practice-exams/${examId}?launchId=${encodeURIComponent(launchId)}`);
       if (response.ok || (response.status !== 503 && response.status < 500 && response.status !== 429)) break;
       await new Promise((resolve) => setTimeout(resolve, 900 * (attempt + 1)));
     }
@@ -779,17 +788,14 @@ export default function QuizPage({
 
     const payload = await response.json();
     const data = payload.data ?? payload;
-    // Per-student order: the server returns the same best-question set to
-    // everyone (cheap + cacheable), so we shuffle here — no two students sit the
-    // exam in the same order, and the shuffle is captured in the saved session
-    // so it stays stable across a refresh/resume.
-    const orderedQuestions = Array.isArray(data.questions)
-      ? [...data.questions].sort(() => Math.random() - 0.5)
-      : data.questions;
+    // The server applies a deterministic student-specific block shuffle. Keep
+    // that exact order so unfolding cases remain contiguous and the persistent
+    // attempt record matches the form position shown to the student.
+    const orderedQuestions = data.questions;
     dispatch({
       type: "start-session",
       payload: createClientSession({
-        id: data.definition.id,
+        id: data.attemptId ?? `preview-${data.definition.id}-${launchId}`,
         mode: "practice-exam",
         exam: data.definition.exam,
         label: data.definition.label,
@@ -824,7 +830,7 @@ export default function QuizPage({
           sessionId: state.session.id,
           questionId: question.id,
           selectedOptionId: selectedValue,
-          timeSpentMs: Math.max(1000, Date.now() - state.session.startedAt),
+          timeSpentMs: getCurrentQuestionElapsedMs(state.session),
         }),
       });
 
@@ -858,6 +864,54 @@ export default function QuizPage({
           coachingFrame: data.coachingFrame ?? question.coachingFrame,
           visualRationale: data.visualRationale ?? question.visualRationale,
           diagramBlueprint: data.diagramBlueprint ?? question.diagramBlueprint,
+          submittedAt: Date.now(),
+        },
+      });
+      return;
+    }
+
+    if (state.session.mode === "practice-exam" && !state.session.id.startsWith("preview-")) {
+      const response = await fetch("/api/quiz/practice-exams/answers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          attemptId: state.session.id,
+          questionId: question.id,
+          formPosition: state.session.currentIndex,
+          selectedAnswer: state.activeAnswer,
+          timeSpentMs: getCurrentQuestionElapsedMs(state.session),
+        }),
+      });
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          redirectToAccountGate(await response.json().catch(() => null));
+          return;
+        }
+        setError("Could not save this readiness answer. Please try again.");
+        return;
+      }
+
+      const payload = await response.json();
+      const data = payload.data ?? payload;
+      dispatch({
+        type: "submit-answer",
+        questionId: question.id,
+        record: {
+          selected: state.activeAnswer,
+          correct: data.correct,
+          correctAnswer: data.correctAnswer,
+          pointsEarned: data.pointsEarned,
+          pointsPossible: data.pointsPossible,
+          partialCredit: data.partialCredit,
+          rationale: data.rationale,
+          structuredRationale: data.structuredRationale ?? question.structuredRationale,
+          deepRationale: data.deepRationale ?? question.deepRationale,
+          takeaway: data.takeaway ?? question.takeaway,
+          distractorRationales: data.distractorRationales ?? question.distractorRationales,
+          references: data.references ?? question.references,
+          visualRationale: data.visualRationale ?? question.visualRationale,
+          diagramBlueprint: question.diagramBlueprint,
           submittedAt: Date.now(),
         },
       });

@@ -10,6 +10,8 @@ export type QualityQuestionLike = {
   qualityMetadata?: {
     evidenceStatus?: string | null;
     contentVersion?: number | null;
+    clinicalReviewStatus?: string | null;
+    psychometricStatus?: string | null;
   } | null;
   rationale?: string | null;
   deepRationale?: string | null;
@@ -39,6 +41,7 @@ export type QualityQuestionLike = {
     labs?: unknown[] | null;
     orders?: string[] | null;
     providerOrders?: string[] | null;
+    unfoldingTimeline?: string[] | null;
   } | null;
 };
 

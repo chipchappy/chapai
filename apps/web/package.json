@@ -15,6 +15,7 @@
     "d1:migrate:p1:prod": "node ../../scripts/apply-d1-p1-ngn-migration.mjs --database=chapai-prod --remote --config=wrangler.jsonc",
     "d1:sync:p1:prod": "node ../../scripts/sync-d1-question-bank.mjs --database=chapai-prod --remote --config=wrangler.jsonc --only-p1",
     "d1:migrate:instructor:prod": "wrangler d1 execute chapai-prod --remote --file=../../packages/db/drizzle/migration-0006-instructor-cohorts.sql",
+    "d1:migrate:readiness:prod": "wrangler d1 execute chapai-prod --remote --file=../../packages/db/drizzle/migration-0008-readiness-attempts.sql",
     "d1:seed:demo-student:prod": "wrangler d1 execute chapai-prod --remote --file=../../scripts/seed-demo-instructor-student.sql",
     "lint": "next lint",
     "lint:boundaries": "node scripts/check-aesthetic-boundaries.mjs",

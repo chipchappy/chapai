@@ -9,6 +9,9 @@ import type {
   PracticeQuestion,
 } from "./practice-types";
 import { verifiedAdditionalNclexCaseStudyDeck } from "./verified-case-studies";
+import { verifiedAdultAcuteNclexCaseStudyDeck } from "./verified-case-studies-adult-acute";
+import { COMPLEX_CARE_VERIFIED_CASE_STUDIES } from "./verified-case-studies-complex-care";
+import { verifiedMaternalPediatricNclexCaseStudyDeck } from "./verified-case-studies-maternal-peds";
 
 export type PracticeCounts = {
   ccrn: number;
@@ -738,6 +741,9 @@ function makeNclexVteCaseQuestion(input: Omit<PracticeQuestion, "exam" | "mode" 
       evidenceStatus: "source-verified",
       evidenceReviewedAt: "2026-07-23",
       sourceIds: ["ncsbn-2026-rn-test-plan", "nhlbi-pulmonary-embolism", "cdc-blood-clot-risk", "medlineplus-heparin"],
+      clinicalReviewStatus: "pending",
+      clinicalReviewChecklistVersion: "nclex-clinical-review-v1",
+      psychometricStatus: "precalibration",
     },
     ...input,
   };
@@ -1007,12 +1013,22 @@ export function getRichDeck(mode: "chart" | "case-study" | "ngn") {
     return [
       ...nclexVteCaseStudyDeck,
       ...verifiedAdditionalNclexCaseStudyDeck,
+      ...verifiedAdultAcuteNclexCaseStudyDeck,
+      ...verifiedMaternalPediatricNclexCaseStudyDeck,
+      ...COMPLEX_CARE_VERIFIED_CASE_STUDIES,
       ...demoDeck.filter((question) => question.exam !== "nclex"),
     ];
   }
 
   if (mode === "ngn") {
-    return [...nclexVteCaseStudyDeck, ...verifiedAdditionalNclexCaseStudyDeck, ...demoDeck];
+    return [
+      ...nclexVteCaseStudyDeck,
+      ...verifiedAdditionalNclexCaseStudyDeck,
+      ...verifiedAdultAcuteNclexCaseStudyDeck,
+      ...verifiedMaternalPediatricNclexCaseStudyDeck,
+      ...COMPLEX_CARE_VERIFIED_CASE_STUDIES,
+      ...demoDeck,
+    ];
   }
 
   return demoDeck;

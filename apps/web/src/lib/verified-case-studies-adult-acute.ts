@@ -820,7 +820,7 @@ const dkaCaseStudyDeck: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
+    stem: "Using the latest diabetic ketoacidosis record, complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1126,7 +1126,7 @@ const strokeCaseStudyDeck: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
+    stem: "Using the latest acute stroke record, complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1433,7 +1433,7 @@ const heartFailureCaseStudyDeck: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
+    stem: "Using the latest pulmonary edema record, complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1738,7 +1738,7 @@ const transfusionCaseStudyDeck: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
+    stem: "Using the latest transfusion reaction record, complete the bow-tie by selecting the condition, two priority actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {

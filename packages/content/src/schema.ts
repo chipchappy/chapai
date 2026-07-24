@@ -83,6 +83,11 @@ export const contentQualityMetadataSchema = z.object({
   evidenceStatus: z.enum(["unreviewed", "source-verified", "clinician-reviewed", "needs-revision"]),
   evidenceReviewedAt: z.string().optional(),
   sourceIds: z.array(z.string()).optional(),
+  clinicalReviewStatus: z.enum(["pending", "approved", "changes-requested"]).optional(),
+  clinicalReviewChecklistVersion: z.string().optional(),
+  clinicalReviewerId: z.string().optional(),
+  clinicalReviewedAt: z.string().optional(),
+  psychometricStatus: z.enum(["precalibration", "calibrating", "calibrated"]).optional(),
 });
 
 export const canonicalQuestionSchema = z.object({

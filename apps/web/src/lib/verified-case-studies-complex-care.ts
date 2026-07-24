@@ -65,6 +65,7 @@ const acuteChestReferences: CaseReference[] = [
 function buildDigoxinChartReview(caseItemNumber: number): PracticeChartReviewMetadata {
   const step = Math.max(1, Math.min(6, caseItemNumber));
   const nursingNotes = [
+    "0805: Client is placed on continuous cardiac monitoring with fall precautions because of weakness and an irregular bradycardic pulse.",
     "0810: Client reports nausea, poor appetite, weakness, and intermittent yellow-green halos. Apical pulse is 52/min and irregular; client denies current chest pain.",
   ];
   const timeline = [
@@ -173,6 +174,7 @@ function buildDigoxinChartReview(caseItemNumber: number): PracticeChartReviewMet
 function buildLithiumChartReview(caseItemNumber: number): PracticeChartReviewMetadata {
   const step = Math.max(1, Math.min(6, caseItemNumber));
   const nursingNotes = [
+    "1300: Client is placed on fall and seizure precautions with continuous observation because of unsteady gait and slowed responses.",
     "1305: Client is awake but slow to answer. Speech is slightly slurred, hands have a coarse tremor, and gait is unsteady with one-person assistance.",
   ];
   const timeline = [
@@ -268,6 +270,7 @@ function buildLithiumChartReview(caseItemNumber: number): PracticeChartReviewMet
 function buildCopdChartReview(caseItemNumber: number): PracticeChartReviewMetadata {
   const step = Math.max(1, Math.min(6, caseItemNumber));
   const nursingNotes = [
+    "0705: Client is placed in high-Fowler position with continuous pulse oximetry; respiratory effort and mental status are assessed without leaving the client unattended.",
     "0710: Client sits upright in tripod position, speaks in 3- to 4-word phrases, and uses accessory muscles. Breath sounds are markedly diminished with diffuse expiratory wheezes.",
   ];
   const timeline = [
@@ -378,6 +381,7 @@ function buildCopdChartReview(caseItemNumber: number): PracticeChartReviewMetada
 function buildAcuteChestChartReview(caseItemNumber: number): PracticeChartReviewMetadata {
   const step = Math.max(1, Math.min(6, caseItemNumber));
   const nursingNotes = [
+    "1635: Client is repositioned upright and continuous pulse oximetry is initiated when new chest symptoms are reported during the pain admission.",
     "1640: Client reports new right-sided chest pain with inspiration, cough, and shortness of breath. Breath sounds are diminished at the right base with fine crackles.",
   ];
   const timeline = [
@@ -699,7 +703,7 @@ export const DIGOXIN_TOXICITY_CASE: PracticeQuestion[] = [
     caseItemNumber: 4,
     cjmmStep: "generate-solutions",
     clinicalJudgmentSkill: "Generate solutions",
-    stem: "Which interventions should the nurse include in the immediate plan? Select all that apply.",
+    stem: "Which interventions should the nurse include in the immediate plan for suspected digoxin toxicity? Select all that apply.",
     nclexInstruction: "Select all interventions that apply.",
     options: [
       { id: "a", text: "Continue continuous ECG and frequent blood-pressure monitoring." },
@@ -949,7 +953,7 @@ export const LITHIUM_TOXICITY_CASE: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by identifying the priority condition, two actions, and two parameters to monitor.",
+    stem: "Using the latest lithium toxicity record, complete the bow-tie by identifying the priority condition, two actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1096,7 +1100,7 @@ export const LITHIUM_TOXICITY_CASE: PracticeQuestion[] = [
     caseItemNumber: 6,
     cjmmStep: "evaluate-outcomes",
     clinicalJudgmentSkill: "Evaluate outcomes",
-    stem: "For each post-treatment finding, identify whether it supports improvement or requires continued follow-up.",
+    stem: "For each post-dialysis lithium finding, identify whether it supports improvement or requires continued follow-up.",
     nclexInstruction: "Select one interpretation for each finding.",
     matrixColumns: ["Supports improvement", "Requires continued follow-up"],
     matrixRows: [
@@ -1259,7 +1263,7 @@ export const COPD_HYPERCAPNIA_CASE: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by identifying the priority condition, two actions, and two parameters to monitor.",
+    stem: "Using the latest COPD exacerbation record, complete the bow-tie by identifying the priority condition, two actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1318,7 +1322,7 @@ export const COPD_HYPERCAPNIA_CASE: PracticeQuestion[] = [
     caseItemNumber: 4,
     cjmmStep: "generate-solutions",
     clinicalJudgmentSkill: "Generate solutions",
-    stem: "Which interventions should the nurse include in the immediate plan? Select all that apply.",
+    stem: "Which interventions should the nurse include in the immediate plan for worsening hypercapnic respiratory failure? Select all that apply.",
     nclexInstruction: "Select all interventions that apply.",
     options: [
       { id: "a", text: "Maintain controlled oxygen and titrate to the prescribed SpO2 target." },
@@ -1570,7 +1574,7 @@ export const SICKLE_CELL_ACUTE_CHEST_CASE: PracticeQuestion[] = [
     caseItemNumber: 3,
     cjmmStep: "prioritize-hypotheses",
     clinicalJudgmentSkill: "Prioritize hypotheses",
-    stem: "Complete the bow-tie by identifying the priority condition, two actions, and two parameters to monitor.",
+    stem: "Using the latest sickle cell record, complete the bow-tie by identifying the priority condition, two actions, and two parameters to monitor.",
     nclexInstruction: "Select two actions and two monitoring parameters.",
     options: [],
     bowTie: {
@@ -1720,7 +1724,7 @@ export const SICKLE_CELL_ACUTE_CHEST_CASE: PracticeQuestion[] = [
     caseItemNumber: 6,
     cjmmStep: "evaluate-outcomes",
     clinicalJudgmentSkill: "Evaluate outcomes",
-    stem: "For each post-treatment finding, identify whether it supports improvement or requires continued follow-up.",
+    stem: "For each post-treatment acute chest syndrome finding, identify whether it supports improvement or requires continued follow-up.",
     nclexInstruction: "Select one interpretation for each finding.",
     matrixColumns: ["Supports improvement", "Requires continued follow-up"],
     matrixRows: [
