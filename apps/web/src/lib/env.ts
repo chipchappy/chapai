@@ -116,8 +116,6 @@ export function getProductionReadiness(env = getServerEnv()) {
   const hasDynamicStripeCatalog = Boolean(env.STRIPE_SECRET_KEY);
   const requiredConfig = [
     ["NEXT_PUBLIC_APP_URL", Boolean(env.NEXT_PUBLIC_APP_URL)],
-    ["NEXT_PUBLIC_SUPABASE_URL", Boolean(env.NEXT_PUBLIC_SUPABASE_URL)],
-    ["NEXT_PUBLIC_SUPABASE_ANON_KEY", Boolean(env.NEXT_PUBLIC_SUPABASE_ANON_KEY)],
     ["AUTH_SECRET", Boolean(env.AUTH_SECRET)],
     ["STRIPE_SECRET_KEY", Boolean(env.STRIPE_SECRET_KEY)],
     ["STRIPE_WEBHOOK_SECRET", Boolean(env.STRIPE_WEBHOOK_SECRET)],
