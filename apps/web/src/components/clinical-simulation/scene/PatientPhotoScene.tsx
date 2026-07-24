@@ -33,6 +33,9 @@ type DeviceHotspot = {
   anchor: Anchor;
   /** Workspace tab this device opens. */
   tab: string;
+  /** Optional outline bounds (% of image) so the whole object is traced, not
+   *  just a point — this is what makes equipment read as interactable. */
+  rect?: { x: number; y: number; w: number; h: number };
 };
 
 type PhotoConfig = {
@@ -83,12 +86,13 @@ const ADULT_MALE_ROOM: PhotoConfig = {
   monitor: { x: 48.4, y: 13.6 },
   monitorRect: { x: 42.9, y: 6.8, w: 11.2, h: 13.6 },
   devices: [
-    { id: "computer", label: "Chart (EHR)", anchor: { x: 9, y: 22 }, tab: "chart" },
-    { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "mar" },
-    { id: "ventilator", label: "Ventilator", anchor: { x: 78, y: 36 }, tab: "interventions" },
-    { id: "headwall", label: "O₂ & suction", anchor: { x: 87, y: 17 }, tab: "interventions" },
-    { id: "airway", label: "Airway supplies", anchor: { x: 90, y: 33 }, tab: "interventions" },
-    { id: "foley", label: "Foley & output", anchor: { x: 47, y: 84 }, tab: "assessment" },
+    { id: "computer", label: "Chart (EHR)", anchor: { x: 9, y: 22 }, tab: "chart", rect: { x: 1, y: 12, w: 17, h: 26 } },
+    { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "mar", rect: { x: 28.5, y: 24, w: 10, h: 16 } },
+    { id: "ventilator", label: "Ventilator", anchor: { x: 78, y: 42 }, tab: "interventions", rect: { x: 70.5, y: 28, w: 15, h: 46 } },
+    { id: "headwall", label: "O₂ & suction", anchor: { x: 88, y: 18 }, tab: "interventions", rect: { x: 82, y: 10, w: 15, h: 16 } },
+    { id: "airway", label: "Airway supplies", anchor: { x: 92, y: 32 }, tab: "interventions", rect: { x: 87, y: 24, w: 11, h: 17 } },
+    { id: "foley", label: "Foley & output", anchor: { x: 31, y: 79 }, tab: "assessment", rect: { x: 27, y: 71, w: 8, h: 16 } },
+    { id: "crashcart", label: "Crash cart", anchor: { x: 94, y: 62 }, tab: "interventions", rect: { x: 89, y: 46, w: 11, h: 34 } },
   ],
 };
 
@@ -234,7 +238,18 @@ function PatientPhotoScene({
             </button>
           ))}
           {/* ── Equipment hotspots: route straight into the matching workspace panel ── */}
-          {(config.devices ?? []).map((device) => (
+          {(config.devices ?? []).map((device) => device.rect ? (
+            <button
+              key={device.id}
+              type="button"
+              className={styles.deviceOutline}
+              style={{ left: `${device.rect.x}%`, top: `${device.rect.y}%`, width: `${device.rect.w}%`, height: `${device.rect.h}%` }}
+              aria-label={device.label}
+              onClick={() => onOpenTab?.(device.tab)}
+            >
+              <em>{device.label}</em>
+            </button>
+          ) : (
             <button key={device.id} type="button" className={styles.deviceHotspot} style={pct(device.anchor)} aria-label={device.label} onClick={() => onOpenTab?.(device.tab)}>
               <span /><em>{device.label}</em>
             </button>

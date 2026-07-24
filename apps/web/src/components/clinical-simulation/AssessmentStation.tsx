@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Check, MessageCircle, Play, Search } from "lucide-react";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
+import { derivedFindings } from "@/lib/clinical-simulation/derived-findings";
 import type { ClinicalScenario, ScenarioAction } from "@/lib/clinical-simulation/schema";
 import styles from "./assessment-station.module.css";
 
@@ -126,11 +127,11 @@ export default function AssessmentStation({
         {SYSTEMS.map((def) => {
           const count = actionsFor(def).length;
           const done = actionsFor(def).filter((a) => state.completedActionIds.includes(a.id)).length;
-          if (!count) return null;
+          const flagged = derivedFindings(state, def.id).some((f) => f.abnormal);
           return (
             <button key={def.id} type="button" data-active={def.id === systemId} onClick={() => setSystemId(def.id)} aria-current={def.id === systemId}>
-              <span>{def.label}</span>
-              <em data-complete={done > 0 && done === count}>{done}/{count}</em>
+              <span>{def.label}{flagged ? <i className={styles.assessFlag} aria-label="abnormal finding" /> : null}</span>
+              {count ? <em data-complete={done > 0 && done === count}>{done}/{count}</em> : null}
             </button>
           );
         })}
@@ -156,8 +157,25 @@ export default function AssessmentStation({
           </div> : <p className={styles.assessEmpty}>No focused assessment is defined for this system in this scenario.</p>}
         </section>
 
+        <section aria-label={`${system.label} objective data`}>
+          <h4>On examination</h4>
+          {(() => {
+            const observed = derivedFindings(state, system.id);
+            return observed.length ? (
+              <dl className={styles.assessObserved}>
+                {observed.map((f) => (
+                  <div key={f.label} data-abnormal={f.abnormal}>
+                    <dt>{f.label}</dt>
+                    <dd>{f.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : <p className={styles.assessEmpty}>No objective data for this system.</p>;
+          })()}
+        </section>
+
         <section aria-label={`${system.label} findings`}>
-          <h4>Findings</h4>
+          <h4>Assessed findings</h4>
           {systemFindings.length ? <ul className={styles.assessFindings}>
             {systemFindings.map((f) => {
               const age = f.record ? state.virtualMinute - f.record.virtualMinute : 0;

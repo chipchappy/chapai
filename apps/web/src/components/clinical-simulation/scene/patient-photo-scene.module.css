@@ -341,3 +341,56 @@
   color: #e7efe9;
   cursor: pointer;
 }
+
+/* ── outlined equipment: traces the whole object, not a point ──
+   A faint dashed edge is always present so students can see what is
+   interactable; it brightens and labels on hover/focus, and "show targets"
+   makes every outline solid at once. */
+.deviceOutline {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1.5px dashed rgba(255, 236, 200, 0.34);
+  border-radius: 10px;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 170ms ease, background 170ms ease, box-shadow 170ms ease;
+}
+
+.deviceOutline > em {
+  transform: translateY(-118%);
+  border-radius: 999px;
+  padding: 2px 9px;
+  background: rgba(20, 28, 26, 0.88);
+  color: #ffe9c6;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 170ms ease;
+  pointer-events: none;
+}
+
+.deviceOutline:hover,
+.deviceOutline:focus-visible {
+  border-color: rgba(255, 206, 130, 0.95);
+  border-style: solid;
+  background: rgba(224, 169, 92, 0.12);
+  box-shadow: 0 0 18px rgba(224, 169, 92, 0.4), inset 0 0 24px rgba(224, 169, 92, 0.12);
+  outline: none;
+}
+
+.deviceOutline:hover > em,
+.deviceOutline:focus-visible > em { opacity: 1; }
+
+.photoStage[data-show-targets="true"] .deviceOutline {
+  border-color: rgba(255, 206, 130, 0.9);
+  border-style: solid;
+  background: rgba(224, 169, 92, 0.1);
+}
+.photoStage[data-show-targets="true"] .deviceOutline > em { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) { .deviceOutline { transition: none; } }

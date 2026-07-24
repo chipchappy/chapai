@@ -135,3 +135,35 @@
   .assessRail button { white-space: nowrap; }
   .assessPane { padding: 14px 0 0; }
 }
+
+/* ── objective exam data, computed live from patient state ── */
+.assessObserved { display: grid; gap: 0; margin: 0; }
+
+.assessObserved > div {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+  gap: 12px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #efe7d8;
+  border-left: 3px solid transparent;
+}
+
+.assessObserved > div[data-abnormal="true"] {
+  border-left-color: #c9992e;
+  background: #faf4e7;
+}
+
+.assessObserved dt { color: #9a8a6d; font-size: 0.72rem; font-weight: 700; }
+.assessObserved dd { margin: 0; color: #3f3527; font-size: 0.78rem; }
+.assessObserved > div[data-abnormal="true"] dd { color: #8a6a20; font-weight: 600; }
+
+/* abnormal-finding dot on the systems rail */
+.assessFlag {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: #c9992e;
+  vertical-align: middle;
+}
