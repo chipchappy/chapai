@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "batchId": "readiness-clinical-quarantine-2026-07-24",
+  "reviewKind": "clinical-risk-quarantine",
+  "createdAt": "2026-07-24T19:09:00.000Z",
+  "appliedAt": "2026-07-24T19:12:03.5263432Z",
+  "preReleaseBookmark": "0000296e-00000000-000050b2-2a717546a467fb04b33482f9cb151c92",
+  "postReleaseBookmark": "0000296f-00000008-000050b2-bffd1687ada950fdd2434ddcc21cc4e7",
+  "evidenceNotice": "These items are quarantined from student delivery pending full source verification, licensed clinical review, and duplicate remediation. Quarantine is not clinician approval.",
+  "sources": [
+    {
+      "id": "gold-copd-2026",
+      "title": "Global Strategy for Prevention, Diagnosis and Management of COPD: 2026 Report",
+      "href": "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf"
+    },
+    {
+      "id": "pva-autonomic-dysreflexia-2025",
+      "title": "Evaluation and Management of Autonomic Dysreflexia and Other Autonomic Dysfunctions",
+      "href": "https://pva.org/wp-content/uploads/2021/09/CPG_Autonomic-Dysreflexia_2025_digital_03.26-.pdf"
+    },
+    {
+      "id": "acog-preeclampsia-2023",
+      "title": "Gestational Hypertension and Preeclampsia",
+      "href": "https://www.acog.org/clinical/clinical-guidance/practice-bulletin/articles/2020/06/gestational-hypertension-and-preeclampsia"
+    },
+    {
+      "id": "aha-bradycardia-2025",
+      "title": "Adult Bradycardia With a Pulse Algorithm",
+      "href": "https://cpr.heart.org/-/media/CPR-Files/CPR-Guidelines-Files/2025-Algorithms/Algorithm-ACLS-Bradycardia-250514.pdf"
+    }
+  ],
+  "questions": [
+    {
+      "id": "genv-cerebras-1784188762-144-8m4mj",
+      "expectedCategory": "autonomic_dysreflexia",
+      "requiredPatterns": [
+        "0.5 mg atropine",
+        "catheter was inadvertently left unclamped"
+      ],
+      "reasonCodes": [
+        "internally-contradictory-catheter-state",
+        "unsafe-autonomic-dysreflexia-sequence",
+        "obsolete-bradycardia-dose"
+      ]
+    },
+    {
+      "id": "genv-cerebras-1784794385-230-dmy9k",
+      "expectedCategory": "magnesium_sulfate_therapy",
+      "requiredPatterns": [
+        "atropine 0.5 mg",
+        "respiratory rate of 8/min"
+      ],
+      "reasonCodes": [
+        "obsolete-bradycardia-dose",
+        "antidote-administration-wording-needs-review"
+      ]
+    },
+    {
+      "id": "prem_nclex_pa1830",
+      "expectedCategory": "Basic Care and Comfort",
+      "requiredPatterns": [
+        "blunting the hypoxic drive",
+        "somnolent and has shallow respirations"
+      ],
+      "reasonCodes": [
+        "obsolete-hypoxic-drive-teaching",
+        "airway-protection-contraindication-not-addressed",
+        "client-need-miscategorized"
+      ]
+    },
+    {
+      "id": "respir055",
+      "expectedCategory": "Safety and Infection Control",
+      "requiredPatterns": [
+        "loss of hypoxic drive",
+        "which intervention is the priority?"
+      ],
+      "reasonCodes": [
+        "near-duplicate-item-family",
+        "obsolete-hypoxic-drive-teaching",
+        "unsupported-fixed-effect-claims",
+        "patient-pronoun-conflict",
+        "client-need-miscategorized"
+      ]
+    },
+    {
+      "id": "respir089",
+      "expectedCategory": "Management of Care",
+      "requiredPatterns": [
+        "loss of hypoxic drive",
+        "which intervention is the priority?"
+      ],
+      "reasonCodes": [
+        "near-duplicate-item-family",
+        "obsolete-hypoxic-drive-teaching",
+        "unsupported-fixed-effect-claims",
+        "client-need-miscategorized"
+      ]
+    },
+    {
+      "id": "respir090",
+      "expectedCategory": "Management of Care",
+      "requiredPatterns": [
+        "loss of hypoxic drive",
+        "which intervention is the priority?"
+      ],
+      "reasonCodes": [
+        "near-duplicate-item-family",
+        "obsolete-hypoxic-drive-teaching",
+        "unsupported-fixed-effect-claims",
+        "patient-pronoun-conflict",
+        "client-need-miscategorized"
+      ]
+    },
+    {
+      "id": "respir126",
+      "expectedCategory": "Psychosocial Integrity",
+      "requiredPatterns": [
+        "loss of hypoxic drive",
+        "which intervention is the priority?"
+      ],
+      "reasonCodes": [
+        "currently-routed-to-readiness",
+        "near-duplicate-item-family",
+        "obsolete-hypoxic-drive-teaching",
+        "unsupported-fixed-effect-claims",
+        "patient-pronoun-conflict",
+        "client-need-miscategorized"
+      ]
+    }
+  ],
+  "desiredState": {
+    "publishState": "draft",
+    "reviewStatus": "needs-revision"
+  }
+}

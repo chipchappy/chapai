@@ -52,6 +52,21 @@ export const NCLEX_CATEGORIES = {
   health_promotion:           { label: "Health Promotion & Maintenance", pct:  9 },
 } as const;
 
+// Readiness forms use a valid point inside each published 2026 NCLEX range
+// rather than forcing every category to its midpoint. This keeps five
+// non-overlapping forms above the content quality floor without mislabeling
+// acute-care items as Health Promotion merely to fill a quota.
+export const NCLEX_READINESS_BLUEPRINT = {
+  management_of_care: 18,
+  safety_infection_control: 13,
+  pharmacological: 16,
+  risk_reduction: 12,
+  physiological_adaptation: 16,
+  basic_care_comfort: 9,
+  psychosocial: 9,
+  health_promotion: 7,
+} as const satisfies Record<keyof typeof NCLEX_CATEGORIES, number>;
+
 export type CcrnCategory = keyof typeof CCRN_CATEGORIES;
 export type NclexCategory = keyof typeof NCLEX_CATEGORIES;
 
@@ -88,6 +103,19 @@ export interface StructuredRationale {
   whyCorrect: string;
   whyWrong: Record<string, string>;
   citations: StructuredRationaleCitation[];
+}
+
+export interface ContentQualityMetadata {
+  gateVersion: string;
+  contentVersion: number;
+  evidenceStatus: "unreviewed" | "source-verified" | "clinician-reviewed" | "needs-revision";
+  evidenceReviewedAt?: string;
+  sourceIds?: string[];
+  clinicalReviewStatus?: "pending" | "approved" | "changes-requested";
+  clinicalReviewChecklistVersion?: string;
+  clinicalReviewerId?: string;
+  clinicalReviewedAt?: string;
+  psychometricStatus?: "precalibration" | "calibrating" | "calibrated";
 }
 
 export interface QuizQuestion {
@@ -162,9 +190,10 @@ export interface QuizQuestion {
     href?: string;
   }>;
   provenance?: string;
-  reviewStatus?: "draft" | "review" | "approved" | "flagged" | "curated-live" | "final-curated-live";
+  reviewStatus?: "draft" | "needs_review" | "review" | "approved" | "flagged" | "curated-live" | "final-curated-live" | "rejected";
   revision?: number;
   publishState?: "draft" | "published" | "unpublished";
+  qualityMetadata?: ContentQualityMetadata;
   visualRationale?: {
     type: "trend" | "flow" | "pathway" | "signal" | "overview";
     accent?: string;

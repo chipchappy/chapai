@@ -77,6 +77,19 @@ export const structuredRationaleSchema = z.object({
   citations: z.array(structuredRationaleCitationSchema).default([]),
 });
 
+export const contentQualityMetadataSchema = z.object({
+  gateVersion: z.string(),
+  contentVersion: z.number().int().positive(),
+  evidenceStatus: z.enum(["unreviewed", "source-verified", "clinician-reviewed", "needs-revision"]),
+  evidenceReviewedAt: z.string().optional(),
+  sourceIds: z.array(z.string()).optional(),
+  clinicalReviewStatus: z.enum(["pending", "approved", "changes-requested"]).optional(),
+  clinicalReviewChecklistVersion: z.string().optional(),
+  clinicalReviewerId: z.string().optional(),
+  clinicalReviewedAt: z.string().optional(),
+  psychometricStatus: z.enum(["precalibration", "calibrating", "calibrated"]).optional(),
+});
+
 export const canonicalQuestionSchema = z.object({
   id: z.string(),
   exam: z.enum(["ccrn", "nclex"]),
@@ -101,11 +114,23 @@ export const canonicalQuestionSchema = z.object({
   bowTie: bowTieSchema.optional(),
   rationale: z.string(),
   structuredRationale: structuredRationaleSchema.optional(),
+  qualityMetadata: contentQualityMetadataSchema.optional(),
   distractorRationales: z.record(z.string(), z.string()).optional(),
   tags: z.array(z.string()).default([]),
   blueprintPct: z.number().optional(),
   takeaway: z.string().optional(),
   sourceStage: z.enum(["draft", "approved", "live"]).default("draft"),
+  reviewStatus: z.enum([
+    "draft",
+    "needs_review",
+    "review",
+    "approved",
+    "flagged",
+    "curated-live",
+    "final-curated-live",
+    "rejected",
+  ]).default("needs_review"),
+  publishState: z.enum(["draft", "published", "unpublished"]).default("draft"),
   sourcePath: z.string().optional(),
   visualRationale: visualRationaleSchema.optional(),
 });

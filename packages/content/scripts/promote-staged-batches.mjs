@@ -37,18 +37,28 @@ function listJsonFiles(dir) {
 }
 
 function validateQuestion(question, batchId, index) {
-  const requiredStringKeys = ["id", "exam", "type", "category", "stem", "answer", "rationale"];
+  const requiredStringKeys = ["id", "exam", "type", "category", "stem", "rationale"];
   for (const key of requiredStringKeys) {
     if (!String(question?.[key] ?? "").trim()) {
       throw new Error(`Invalid question in ${batchId} at index ${index}: missing ${key}`);
     }
+  }
+  if (question?.answer == null || (typeof question.answer === "string" && !question.answer.trim())) {
+    throw new Error(`Invalid question in ${batchId} at index ${index}: missing answer`);
   }
 
   if (!["ccrn", "nclex"].includes(question.exam)) {
     throw new Error(`Invalid exam in ${batchId} at index ${index}: ${question.exam}`);
   }
 
-  if (!Array.isArray(question.options) || question.options.length < 2) {
+  const isBowTie = question.type === "bow_tie"
+    && question.bowTie?.center?.id
+    && question.bowTie?.leftActions?.length >= 4
+    && question.bowTie?.rightMonitoring?.length >= 4;
+  const isMatrix = question.type === "matrix"
+    && question.matrixColumns?.length >= 2
+    && question.matrixRows?.length >= 3;
+  if ((!Array.isArray(question.options) || question.options.length < 2) && !isBowTie && !isMatrix) {
     throw new Error(`Invalid options in ${batchId} at index ${index}`);
   }
 
@@ -59,6 +69,14 @@ function validateQuestion(question, batchId, index) {
   return {
     ...question,
     sourceStage: "draft",
+    publishState: "draft",
+    reviewStatus: "needs_review",
+    qualityMetadata: question.qualityMetadata ?? {
+      gateVersion: "nclex-publication-v1",
+      contentVersion: 1,
+      evidenceStatus: "unreviewed",
+      sourceIds: [],
+    },
     tags: Array.isArray(question.tags) ? question.tags : [],
   };
 }

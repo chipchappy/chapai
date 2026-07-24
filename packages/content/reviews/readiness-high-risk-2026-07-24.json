@@ -1,0 +1,1565 @@
+{
+  "batchId": "readiness-high-risk-source-review-2026-07-24",
+  "reviewedAt": "2026-07-24",
+  "reviewKind": "source-verification",
+  "clinicalReviewStatus": "pending",
+  "generatedBy": {
+    "agentId": "codex-source-review",
+    "runtime": "gpt-5",
+    "promptSource": "targeted readiness-bank clinical risk audit"
+  },
+  "productionRelease": {
+    "database": "chapai-prod",
+    "appliedAt": "2026-07-24T18:43:32.4430642Z",
+    "verifiedItems": 12,
+    "preReleaseTimeTravelBookmark": "00002967-00000000-000050b2-01df5879e0dcc2bbf3fdaa0e6f46a7ac",
+    "postReleaseTimeTravelBookmark": "0000296a-00000000-000050b2-da17f89033eeca2280dface46e209428",
+    "clinicalReviewStatus": "pending",
+    "psychometricStatus": "precalibration"
+  },
+  "scope": "Twelve live readiness-bank items prioritized for medication, transfusion, cardiopulmonary, endocrine, and obstetric safety risk.",
+  "questions": [
+    {
+      "expectedCurrent": {
+        "stem": "A laboring patient at 6 cm dilation receives epidural analgesia for pain management. Fifteen minutes after placement, the nurse notes the patient's blood pressure has dropped from 128/76 to 94/58 mmHg, and she reports feeling nauseous and lightheaded. What should the nurse do first?",
+        "answer": "b",
+        "category": "Management of Care",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_hp1506",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Reduction of Risk Potential",
+      "subcategory": "intrapartum neuraxial analgesia",
+      "difficulty": 3,
+      "stem": "A laboring client at 6 cm dilation receives epidural analgesia. Fifteen minutes later, blood pressure decreases from 128/76 to 94/58 mm Hg, and the client reports nausea and lightheadedness. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the prescribed vasopressor before repositioning or reassessing the client"
+        },
+        {
+          "id": "b",
+          "text": "Turn the client laterally, increase isotonic IV fluid as prescribed, and assess the fetal heart rate"
+        },
+        {
+          "id": "c",
+          "text": "Remove the epidural catheter and place the client supine"
+        },
+        {
+          "id": "d",
+          "text": "Raise the head of the bed fully and apply a nonrebreather mask regardless of oxygen saturation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The blood pressure change, nausea, and lightheadedness shortly after epidural dosing are consistent with maternal hypotension from neuraxial sympathetic blockade. The nurse should promptly position the client laterally to reduce aortocaval compression, support venous return with the prescribed isotonic fluid intervention, and assess maternal status and the fetal heart rate. These actions address circulation and identify fetal effects while the anesthesia or obstetric team is notified. A vasopressor such as phenylephrine or ephedrine may be needed promptly when hypotension persists or is severe, but it should be given according to the obstetric anesthesia order or protocol rather than before basic assessment and positioning. The catheter is not routinely removed for a treatable blood pressure decrease. Fully upright or supine positioning can reduce venous return, and oxygen should be based on maternal oxygenation and the clinical response rather than applied as a substitute for correcting hypotension.",
+      "structuredRationale": {
+        "overview": "This is a time-sensitive maternal circulation problem after neuraxial analgesia. The safest first response combines lateral positioning, prescribed fluid support, maternal reassessment, and fetal surveillance while the nurse escalates persistent or severe hypotension to the obstetric anesthesia team.",
+        "mechanism": "Neuraxial sympathetic blockade causes vasodilation and reduced venous return. In late pregnancy, supine aortocaval compression can further reduce preload, maternal blood pressure, uteroplacental perfusion, and fetal oxygen delivery.",
+        "whyCorrect": "Lateral positioning reduces aortocaval compression, prescribed isotonic fluid supports preload, and fetal heart-rate assessment detects a clinically important consequence while definitive treatment is arranged.",
+        "whyWrong": {
+          "a": "A prescribed vasopressor may be required, but giving it before immediate positioning and reassessment ignores reversible aortocaval compression and the need to evaluate maternal and fetal response.",
+          "c": "Routine catheter removal is not the first treatment for expected neuraxial hypotension, and supine positioning can worsen aortocaval compression.",
+          "d": "A fully upright posture may further reduce venous return; oxygen does not correct the circulatory mechanism and should be guided by oxygenation and clinical status."
+        },
+        "citations": [
+          {
+            "source": "American Society of Anesthesiologists, Epidurals - Benefits and Side Effects",
+            "href": "https://madeforthismoment.asahq.org/pain-management/epidural/",
+            "note": "Describes epidural-associated blood pressure reduction and use of IV fluids and side positioning."
+          },
+          {
+            "source": "ACOG, First and Second Stage Labor Management",
+            "href": "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2024/01/first-and-second-stage-labor-management",
+            "note": "Supports individualized hydration and clinically appropriate maternal positioning."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "A vasopressor can be appropriate under an order or protocol when maternal hypotension persists, but the nurse first addresses position, circulation, and maternal-fetal assessment rather than administering it without reassessment.",
+        "c": "Removing a functioning epidural catheter is not the initial response to a common, treatable hemodynamic effect, and placing the client supine may worsen venous return.",
+        "d": "Raising the head fully can reduce preload in a hypotensive client. Oxygen may be indicated for hypoxemia or deterioration, but it does not replace treatment of the circulation problem."
+      },
+      "tags": [
+        "maternal-newborn",
+        "epidural",
+        "hypotension",
+        "reduction-of-risk"
+      ],
+      "conceptNotes": [
+        "After neuraxial analgesia, connect hypotension with sympathetic blockade and possible aortocaval compression.",
+        "Reassess both the laboring client and fetal heart rate while escalating persistent hypotension."
+      ],
+      "references": [
+        {
+          "title": "ASA: Epidurals - Benefits and Side Effects of Anesthesia During Labor",
+          "citation": "American Society of Anesthesiologists",
+          "href": "https://madeforthismoment.asahq.org/pain-management/epidural/"
+        },
+        {
+          "title": "First and Second Stage Labor Management",
+          "citation": "American College of Obstetricians and Gynecologists, 2024",
+          "href": "https://www.acog.org/clinical/clinical-guidance/clinical-practice-guideline/articles/2024/01/first-and-second-stage-labor-management"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "Post-epidural hypotension: cue to response",
+        "caption": "Restore venous return, reassess maternal-fetal status, then escalate persistent hypotension.",
+        "nodes": [
+          {
+            "label": "Recognize",
+            "value": "New hypotension with nausea or lightheadedness after epidural dosing"
+          },
+          {
+            "label": "Respond",
+            "value": "Lateral position plus prescribed isotonic fluid support"
+          },
+          {
+            "label": "Reassess",
+            "value": "Maternal pressure, symptoms, oxygenation, and fetal heart rate"
+          },
+          {
+            "label": "Escalate",
+            "value": "Notify anesthesia team; give ordered vasopressor if indicated"
+          }
+        ],
+        "conclusion": "Treat circulation and monitor both patients; do not rely on oxygen or catheter removal as the first response."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "asa-epidural",
+          "acog-labor-management-2024"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 72-year-old male presents with acute chest pain radiating to the left arm, diaphoresis, and nausea. ECG shows ST-elevation in leads V1\u2013V4. Which interventions should the nurse perform within the first 10 minutes of arrival? Select all that apply.",
+        "answer": [
+          "a",
+          "b",
+          "d"
+        ],
+        "category": "Safety and Infection Control",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ng7916",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "Physiological Adaptation",
+      "subcategory": "acute coronary syndrome",
+      "difficulty": 4,
+      "stem": "A 72-year-old client arrives with crushing chest pressure radiating to the left arm, diaphoresis, and nausea. Acute coronary syndrome is suspected. Which actions should the nurse take promptly during the initial evaluation? Select all that apply.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer 162-325 mg of non-enteric-coated chewable aspirin unless contraindicated"
+        },
+        {
+          "id": "b",
+          "text": "Obtain and have a 12-lead ECG reviewed for STEMI within 10 minutes of arrival"
+        },
+        {
+          "id": "c",
+          "text": "Draw blood for cardiac troponin as soon as possible"
+        },
+        {
+          "id": "d",
+          "text": "Establish IV access and initiate continuous cardiac and oxygen-saturation monitoring"
+        },
+        {
+          "id": "e",
+          "text": "Wait for the troponin result before notifying the time-sensitive cardiac response team"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "rationale": "Initial care for suspected acute coronary syndrome is concurrent rather than a rigid one-action sequence. Unless contraindicated, chewable aspirin should be given promptly to inhibit platelet aggregation. A 12-lead ECG should be obtained and reviewed for STEMI within 10 minutes, and cardiac troponin should be measured as soon as possible. Troponin is part of the urgent diagnostic evaluation; an early result is not required before the ECG is obtained or before a STEMI pathway is activated. IV access and continuous cardiac and oxygen-saturation monitoring support rapid medication delivery and recognition of dysrhythmia or deterioration. The unsafe choice is to delay escalation while waiting for troponin. A STEMI is diagnosed and managed from the clinical presentation and ECG, and reperfusion decisions must not be postponed for biomarker confirmation. This item intentionally tests parallel priorities: diagnose rapidly, reduce thrombosis, monitor continuously, and avoid preventable delay.",
+      "structuredRationale": {
+        "overview": "Suspected acute coronary syndrome requires several prompt actions in parallel. The nurse obtains the ECG, draws troponin, gives aspirin when safe, establishes access, monitors the client, and escalates immediately if the ECG identifies STEMI. No diagnostic task should create a preventable reperfusion delay.",
+        "mechanism": "Acute plaque disruption can produce coronary thrombosis and myocardial ischemia. Aspirin reduces platelet activation, while rapid ECG interpretation identifies an occlusive pattern requiring a time-sensitive reperfusion pathway.",
+        "whyCorrect": "Options A through D support immediate antiplatelet treatment, rapid diagnosis, laboratory evaluation, monitoring, and access without allowing one task to delay another.",
+        "whyWrong": {
+          "e": "Waiting for troponin can delay reperfusion-system activation. Troponin should be collected promptly, but a STEMI pattern on ECG warrants immediate escalation without biomarker confirmation."
+        },
+        "citations": [
+          {
+            "source": "2021 AHA/ACC Chest Pain Guideline Slide Set",
+            "href": "https://professional.heart.org/en/-/media/PHD-Files-2/Science-News/2/2021/2021-Chest-Pain-Guideline-Slide-Set-PDF-102821.pdf?sc_lang=en",
+            "note": "Recommends ECG review within 10 minutes and cardiac troponin measurement as soon as possible."
+          },
+          {
+            "source": "2025 ACC/AHA Acute Coronary Syndromes Guideline",
+            "href": "https://professional.heart.org/en/guidelines-statements/2025-accahaacepnaemspscai-guideline-for-the-management-of-patients-with-acutecir0000000000001309",
+            "note": "Current guideline hub for ACS pharmacologic and procedural management."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "e": "Troponin is drawn promptly, but waiting for the result before cardiac-team notification is unsafe because ECG-confirmed STEMI requires immediate pathway activation and reperfusion planning."
+      },
+      "tags": [
+        "cardiovascular",
+        "acute-coronary-syndrome",
+        "stemi",
+        "sata"
+      ],
+      "conceptNotes": [
+        "ECG and troponin are both early tests; troponin collection must not delay action on a STEMI ECG.",
+        "For time-sensitive emergencies, NCLEX may expect several safe actions to occur in parallel."
+      ],
+      "references": [
+        {
+          "title": "2021 AHA/ACC Guideline for the Evaluation and Diagnosis of Chest Pain: Clinical Slide Set",
+          "citation": "American Heart Association and American College of Cardiology",
+          "href": "https://professional.heart.org/en/-/media/PHD-Files-2/Science-News/2/2021/2021-Chest-Pain-Guideline-Slide-Set-PDF-102821.pdf?sc_lang=en"
+        },
+        {
+          "title": "2025 Guideline for the Management of Patients With Acute Coronary Syndromes",
+          "citation": "ACC/AHA/ACEP/NAEMSP/SCAI, 2025",
+          "href": "https://professional.heart.org/en/guidelines-statements/2025-accahaacepnaemspscai-guideline-for-the-management-of-patients-with-acutecir0000000000001309"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "Suspected ACS: parallel first actions",
+        "caption": "Do not wait for one result before starting the other time-sensitive steps.",
+        "nodes": [
+          {
+            "label": "Treat",
+            "value": "Chewable aspirin if no contraindication"
+          },
+          {
+            "label": "Identify",
+            "value": "12-lead ECG reviewed within 10 minutes"
+          },
+          {
+            "label": "Measure",
+            "value": "Troponin drawn as soon as possible"
+          },
+          {
+            "label": "Support",
+            "value": "IV access, continuous cardiac and SpO2 monitoring"
+          }
+        ],
+        "conclusion": "A STEMI ECG triggers immediate escalation; troponin should not become a reason to wait."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "aha-acc-chest-pain-2021",
+          "acc-aha-acs-2025"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 68-year-old male with COPD is admitted with acute exacerbation. Arterial blood gas results: pH 7.29, PaCO\u2082 56 mmHg, PaO\u2082 62 mmHg, HCO\u2083\u207b 24 mEq/L. Which nursing interventions are appropriate? Select all that apply.",
+        "answer": [
+          "a",
+          "b",
+          "d",
+          "e"
+        ],
+        "category": "Safety and Infection Control",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ng8191",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "Physiological Adaptation",
+      "subcategory": "COPD exacerbation with hypercapnic respiratory failure",
+      "difficulty": 4,
+      "stem": "A 68-year-old client with COPD is admitted for an acute exacerbation. ABG results are pH 7.29, PaCO2 56 mm Hg, PaO2 62 mm Hg, and HCO3- 24 mEq/L. Which nursing interventions are appropriate? Select all that apply.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Titrate controlled oxygen to a target SpO2 of 88%-92% and reassess blood gases"
+        },
+        {
+          "id": "b",
+          "text": "Position the client upright and support an orthopneic position"
+        },
+        {
+          "id": "c",
+          "text": "Apply a nonrebreather mask at 15 L/min solely to normalize SpO2 to 100%"
+        },
+        {
+          "id": "d",
+          "text": "Prepare for noninvasive positive-pressure ventilation if not contraindicated"
+        },
+        {
+          "id": "e",
+          "text": "Administer the prescribed short-acting bronchodilator"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "d",
+        "e"
+      ],
+      "rationale": "The ABG demonstrates acute respiratory acidosis with hypoxemia: the pH is low, PaCO2 is elevated, and bicarbonate has not risen enough to indicate chronic metabolic compensation. Oxygen should not be withheld from a hypoxemic client with COPD. Instead, use a controlled delivery method, titrate to an SpO2 target of 88%-92%, and reassess blood gases for adequate oxygenation, CO2 retention, and worsening acidosis. The rationale is not simply preservation of a 'hypoxic drive'; oxygen-associated hypercapnia is multifactorial and does not justify untreated hypoxemia. Upright positioning reduces work of breathing. Prescribed short-acting bronchodilators treat airflow obstruction. A pH of 7.29 with hypercapnia supports preparing for noninvasive ventilation when appropriate because it can improve ventilation and reduce work of breathing. A nonrebreather used only to force saturation to 100% is not controlled oxygen therapy in this situation, although life-threatening hypoxemia always requires immediate adequate oxygenation.",
+      "structuredRationale": {
+        "overview": "This client has an acute COPD exacerbation with hypercapnic respiratory acidosis and hypoxemia. Appropriate care combines controlled oxygen, repeat blood-gas assessment, positioning, bronchodilator therapy, and preparation for noninvasive ventilatory support. The response is guided by oxygenation, ventilation, work of breathing, and repeated clinical assessment.",
+        "mechanism": "Airflow obstruction and ventilation-perfusion mismatch impair oxygenation and CO2 elimination. Excess oxygen can worsen hypercapnia through several mechanisms, but withholding needed oxygen also causes harm.",
+        "whyCorrect": "Options A, B, D, and E improve oxygenation, reduce work of breathing, treat bronchoconstriction, and support ventilation while allowing the nurse to reassess the physiologic response.",
+        "whyWrong": {
+          "c": "The goal is controlled correction of hypoxemia, not an arbitrary saturation of 100%. High-concentration oxygen may be needed in a life-threatening emergency, but it must be titrated and reassessed."
+        },
+        "citations": [
+          {
+            "source": "GOLD 2026 Report",
+            "href": "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf",
+            "note": "Current GOLD strategy report for COPD exacerbation severity and respiratory support."
+          },
+          {
+            "source": "GOLD 2024 Report, Management of Exacerbations",
+            "href": "https://goldcopd.org/wp-content/uploads/2024/02/GOLD-2024_v1.2-11Jan24_WMV.pdf",
+            "note": "Specifies titrated oxygen to 88%-92%, blood-gas reassessment, and ventilatory support principles."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "c": "Using a nonrebreather solely to normalize saturation to 100% ignores the recommended controlled-oxygen target and the need to reassess PaCO2 and pH. Treat severe hypoxemia adequately, but titrate rather than chase a normal saturation."
+      },
+      "tags": [
+        "respiratory",
+        "copd",
+        "abg",
+        "noninvasive-ventilation",
+        "sata"
+      ],
+      "conceptNotes": [
+        "Do not teach that oxygen must be withheld to preserve a hypoxic drive.",
+        "For COPD exacerbation with hypercapnic acidosis, titrate oxygen and reassess blood gases; consider NIV."
+      ],
+      "references": [
+        {
+          "title": "Global Strategy for Prevention, Diagnosis and Management of COPD: 2026 Report",
+          "citation": "Global Initiative for Chronic Obstructive Lung Disease",
+          "href": "https://goldcopd.org/wp-content/uploads/2026/01/GOLD-REPORT-2026-v1.3-8Dec2025_WMV2.pdf"
+        },
+        {
+          "title": "GOLD 2024 Report",
+          "citation": "Global Initiative for Chronic Obstructive Lung Disease",
+          "href": "https://goldcopd.org/wp-content/uploads/2024/02/GOLD-2024_v1.2-11Jan24_WMV.pdf"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "COPD exacerbation with respiratory acidosis",
+        "caption": "Correct hypoxemia in a controlled way while supporting ventilation.",
+        "nodes": [
+          {
+            "label": "ABG pattern",
+            "value": "pH down, PaCO2 up, PaO2 down"
+          },
+          {
+            "label": "Oxygen",
+            "value": "Titrate to SpO2 88%-92%; repeat blood gas"
+          },
+          {
+            "label": "Airflow",
+            "value": "Upright position plus prescribed bronchodilator"
+          },
+          {
+            "label": "Ventilation",
+            "value": "Prepare for NIV when acidosis and distress persist"
+          }
+        ],
+        "conclusion": "The safety target is adequate oxygenation without unmonitored over-oxygenation, not oxygen avoidance."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "gold-copd-2026",
+          "gold-copd-2024-exacerbation"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 52-year-old female with type 1 diabetes mellitus is brought to the emergency department with confusion, fruity breath odor, and deep rapid respirations (Kussmaul). Blood glucose is 520 mg/dL. Which actions should the nurse take? Select all that apply.",
+        "answer": [
+          "a",
+          "b",
+          "d"
+        ],
+        "category": "Safety and Infection Control",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ng8924",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "Physiological Adaptation",
+      "subcategory": "diabetic ketoacidosis",
+      "difficulty": 4,
+      "stem": "A 52-year-old client with type 1 diabetes has confusion, Kussmaul respirations, glucose 520 mg/dL, venous pH 7.20, bicarbonate 12 mEq/L, and potassium 4.8 mEq/L. Which actions should the nurse implement or anticipate? Select all that apply.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Begin prescribed isotonic crystalloid fluid resuscitation"
+        },
+        {
+          "id": "b",
+          "text": "Begin a protocolized IV regular-insulin infusion after potassium is verified and fluids are started"
+        },
+        {
+          "id": "c",
+          "text": "Administer 50% dextrose IV push now"
+        },
+        {
+          "id": "d",
+          "text": "Monitor glucose, potassium, renal function, electrolytes, and acid-base status frequently"
+        },
+        {
+          "id": "e",
+          "text": "Stop insulin when glucose reaches 250 mg/dL even if ketoacidosis has not resolved"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "d"
+      ],
+      "rationale": "The findings support diabetic ketoacidosis with dehydration and metabolic acidosis. Initial management includes isotonic crystalloid to restore circulating volume and tissue perfusion. For moderate or severe DKA, a protocolized short-acting insulin infusion is started after potassium is known and initial fluids are underway. This client has potassium 4.8 mEq/L, so insulin is not delayed for hypokalemia, but potassium can fall rapidly as insulin, correction of acidosis, and volume expansion move or remove potassium. Frequent monitoring of glucose, potassium, renal function, electrolytes, and acid-base status is essential. A D50 push is not indicated at a glucose of 520 mg/dL. When glucose falls below about 250 mg/dL, 5%-10% dextrose is added to replacement fluid and the insulin rate is reduced; insulin continues until ketoacidosis resolves. Calling IV insulin a 'sliding scale' is inaccurate here because DKA requires a protocolized infusion with laboratory-guided adjustments and coordinated potassium management.",
+      "structuredRationale": {
+        "overview": "DKA treatment corrects volume depletion, stops ketogenesis with protocolized insulin, and prevents electrolyte complications through frequent reassessment. Glucose improvement alone does not mean the ketoacidosis has resolved. Potassium and dextrose management must be coordinated with insulin until metabolic resolution criteria are met.",
+        "mechanism": "Insulin deficiency produces lipolysis, ketone formation, osmotic diuresis, dehydration, and total-body potassium loss even when the initial serum potassium is normal or elevated.",
+        "whyCorrect": "Fluids restore perfusion, IV short-acting insulin suppresses ketogenesis after potassium is verified, and frequent laboratory monitoring detects treatment-related hypokalemia, hypoglycemia, and incomplete resolution.",
+        "whyWrong": {
+          "c": "D50 would worsen marked hyperglycemia. Dextrose-containing fluid is added later, usually when glucose falls below 250 mg/dL, so insulin can continue safely.",
+          "e": "Stopping insulin at the glucose threshold can allow ketogenesis to continue. Add dextrose and reduce insulin, then continue until the acidosis and ketonemia resolve."
+        },
+        "citations": [
+          {
+            "source": "ADA/EASD/JBDS/AACE/DTS Consensus Report on Hyperglycemic Crises",
+            "href": "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A",
+            "note": "Provides current fluid, insulin, potassium, dextrose, and monitoring recommendations."
+          },
+          {
+            "source": "ADA Standards of Care in Diabetes - 2026, Hospital Care",
+            "href": "https://diabetesjournals.org/care/article/49/Supplement_1/S339/163925/16-Diabetes-Care-in-the-Hospital-Standards-of-Care",
+            "note": "Current hospital-care standards for diabetes emergencies."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "c": "A concentrated dextrose push is used for severe hypoglycemia, not untreated DKA with glucose 520 mg/dL. Dextrose is added later to IV fluid so insulin can continue as glucose falls.",
+        "e": "The treatment endpoint is resolution of ketoacidosis, not glucose alone. Once glucose is below about 250 mg/dL, add dextrose and reduce insulin rather than stopping it prematurely."
+      },
+      "tags": [
+        "endocrine",
+        "dka",
+        "insulin",
+        "potassium",
+        "sata"
+      ],
+      "conceptNotes": [
+        "DKA causes total-body potassium depletion even when serum potassium is initially normal or high.",
+        "When glucose falls, add dextrose so insulin can continue until ketoacidosis resolves."
+      ],
+      "references": [
+        {
+          "title": "Hyperglycemic Crises in Adults With Diabetes: A Consensus Report",
+          "citation": "ADA, EASD, JBDS, AACE, and DTS, 2024",
+          "href": "https://diabetesjournals.org/care/article/47/8/1257/156808/Hyperglycemic-Crises-in-Adults-With-Diabetes-A"
+        },
+        {
+          "title": "Diabetes Care in the Hospital: Standards of Care in Diabetes - 2026",
+          "citation": "American Diabetes Association, 2026",
+          "href": "https://diabetesjournals.org/care/article/49/Supplement_1/S339/163925/16-Diabetes-Care-in-the-Hospital-Standards-of-Care"
+        }
+      ],
+      "visualRationale": {
+        "type": "pathway",
+        "title": "DKA treatment pathway",
+        "caption": "Fluids, insulin, and potassium management must move together.",
+        "nodes": [
+          {
+            "label": "Restore",
+            "value": "Isotonic crystalloid for perfusion and dehydration"
+          },
+          {
+            "label": "Verify",
+            "value": "Check K+ before and during insulin therapy"
+          },
+          {
+            "label": "Stop ketogenesis",
+            "value": "Protocolized IV short-acting insulin"
+          },
+          {
+            "label": "When glucose <250",
+            "value": "Add 5%-10% dextrose; continue insulin to DKA resolution"
+          }
+        ],
+        "conclusion": "Do not stop insulin just because glucose improves; resolve the ketoacidosis safely."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "ada-hyperglycemic-crises-2024",
+          "ada-hospital-standards-2026"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A patient is receiving a heparin infusion. Which of the following assessment findings should the nurse report to the healthcare provider? Select all that apply.",
+        "answer": [
+          "a",
+          "c",
+          "e"
+        ],
+        "category": "Safety and Infection Control",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ng9368",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "Pharmacological and Parenteral Therapies",
+      "subcategory": "unfractionated heparin monitoring",
+      "difficulty": 3,
+      "stem": "A client receiving an unfractionated heparin infusion had a baseline platelet count of 220,000/mm3. Which findings should the nurse report promptly? Select all that apply.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Platelet count 85,000/mm3"
+        },
+        {
+          "id": "b",
+          "text": "aPTT 68 seconds when the prescribed protocol target is 60-85 seconds"
+        },
+        {
+          "id": "c",
+          "text": "New severe headache with no prior headache history"
+        },
+        {
+          "id": "d",
+          "text": "Hemoglobin 13.2 g/dL with no decrease from baseline"
+        },
+        {
+          "id": "e",
+          "text": "New hematochezia"
+        }
+      ],
+      "answer": [
+        "a",
+        "c",
+        "e"
+      ],
+      "rationale": "A platelet decrease from 220,000 to 85,000/mm3 is greater than 50% and is clinically significant during heparin exposure. The nurse should report it promptly so the team can evaluate the timing, thrombosis, competing causes, and probability of heparin-induced thrombocytopenia rather than diagnosing HIT from a single value alone. A new severe headache may indicate intracranial bleeding, and hematochezia is overt gastrointestinal bleeding; both require immediate assessment and notification. The aPTT of 68 seconds is inside the target explicitly provided by this client's prescribed protocol, so it is documented and managed per protocol rather than reported as a critical out-of-range result. Therapeutic ranges vary by reagent, laboratory, and institutional anti-Xa or aPTT protocol and should not be memorized as universal. A stable hemoglobin of 13.2 g/dL does not suggest current blood loss. Heparin safety monitoring includes coagulation response, platelet trend, hematocrit or hemoglobin, and evidence of occult or overt bleeding.",
+      "structuredRationale": {
+        "overview": "Heparin monitoring is trend-based and protocol-specific. The nurse reports a major platelet fall and any possible intracranial or gastrointestinal bleeding while interpreting aPTT against the ordered institutional target rather than a universal range. Stable laboratory values are documented, trended, and managed through the prescribed nomogram.",
+        "mechanism": "Unfractionated heparin increases bleeding risk and can trigger immune-mediated platelet activation with thrombosis. A falling platelet trend and new bleeding or thrombotic symptoms require rapid evaluation.",
+        "whyCorrect": "Options A, C, and E represent a major platelet fall or possible serious bleeding. Each finding can signal a life-threatening heparin complication and warrants prompt escalation.",
+        "whyWrong": {
+          "b": "The value is within the target supplied in the stem. The nurse follows the prescribed nomogram and does not treat a protocol-specific therapeutic result as a critical abnormality.",
+          "d": "A hemoglobin that is stable from baseline does not show acute blood loss; the trend and clinical evidence of bleeding are more informative."
+        },
+        "citations": [
+          {
+            "source": "DailyMed, Heparin Sodium Injection Prescribing Information",
+            "href": "https://www.dailymed.nlm.nih.gov/dailymed/getFile.cfm?setid=83a59e7d-63e9-4eb8-87f0-52039d6893a5&type=pdf",
+            "note": "Specifies coagulation, platelet, hematocrit, and stool-blood monitoring."
+          },
+          {
+            "source": "ASH HIT Pocket Guide",
+            "href": "https://www.hematology.org/-/media/hematology/files/education/clinicians/guidelines-quality/documents/ash_vte_hit_pocketguide.pdf",
+            "note": "Defines platelet fall and timing elements used in the 4Ts probability assessment."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "b": "An aPTT of 68 seconds is inside the protocol target stated in the question. Therapeutic targets are laboratory and protocol specific, so the nurse documents and follows the nomogram.",
+        "d": "A stable hemoglobin of 13.2 g/dL does not indicate current bleeding. An acute downward trend or accompanying bleeding signs would change the priority."
+      },
+      "tags": [
+        "pharmacology",
+        "heparin",
+        "bleeding",
+        "hit",
+        "sata"
+      ],
+      "conceptNotes": [
+        "Interpret aPTT or anti-Xa using the ordered local protocol.",
+        "A greater-than-50% platelet fall is more informative for HIT probability than the absolute count alone."
+      ],
+      "references": [
+        {
+          "title": "Heparin Sodium Injection Prescribing Information",
+          "citation": "DailyMed, U.S. National Library of Medicine",
+          "href": "https://www.dailymed.nlm.nih.gov/dailymed/getFile.cfm?setid=83a59e7d-63e9-4eb8-87f0-52039d6893a5&type=pdf"
+        },
+        {
+          "title": "Diagnosis and Management of Heparin-Induced Thrombocytopenia: Pocket Guide",
+          "citation": "American Society of Hematology",
+          "href": "https://www.hematology.org/-/media/hematology/files/education/clinicians/guidelines-quality/documents/ash_vte_hit_pocketguide.pdf"
+        }
+      ],
+      "visualRationale": {
+        "type": "signal",
+        "title": "Heparin findings: routine versus report now",
+        "caption": "Use the platelet trend, bleeding symptoms, and the client's ordered coagulation target.",
+        "nodes": [
+          {
+            "label": "Report",
+            "value": "Platelets 220,000 to 85,000/mm3"
+          },
+          {
+            "label": "Report",
+            "value": "New severe headache or hematochezia"
+          },
+          {
+            "label": "Protocol result",
+            "value": "aPTT 68 seconds within stated 60-85 target"
+          },
+          {
+            "label": "Stable trend",
+            "value": "Hemoglobin unchanged from baseline"
+          }
+        ],
+        "conclusion": "A major platelet fall and new bleeding symptoms outrank an in-range protocol result."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "dailymed-heparin-monitoring",
+          "ash-hit-pocket-guide"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 76-year-old female with a history of coronary artery disease and heart failure is admitted with symptomatic atrial fibrillation at a ventricular rate of 150 bpm. The healthcare provider prescribes IV diltiazem 0.25 mg/kg bolus followed by an infusion. After administering the bolus, the nurse notes the patient's heart rate drops to 48 bpm and BP is 82/50 mmHg. Which action should the nurse take first?",
+        "answer": "c",
+        "category": "Psychosocial Integrity",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_pa6145",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Pharmacological and Parenteral Therapies",
+      "subcategory": "diltiazem adverse effects",
+      "difficulty": 4,
+      "stem": "A 76-year-old client with coronary artery disease and heart failure receives an IV diltiazem bolus for atrial fibrillation with a ventricular rate of 150/min. Before the ordered infusion is started, the heart rate falls to 48/min and blood pressure to 82/50 mm Hg. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer atropine 1 mg IV and then start the diltiazem infusion"
+        },
+        {
+          "id": "b",
+          "text": "Increase maintenance IV fluid to 200 mL/hr without assessing for pulmonary congestion"
+        },
+        {
+          "id": "c",
+          "text": "Withhold the diltiazem infusion, activate urgent clinical support, and begin ABC and cardiac-monitor assessment"
+        },
+        {
+          "id": "d",
+          "text": "Start the diltiazem infusion while preparing for transcutaneous pacing"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The client has symptomatic bradycardia with hypotension immediately after an AV-nodal-blocking drug. The nurse should not start the diltiazem infusion. Withhold the causative medication, activate the rapid-response or provider pathway, support airway, breathing, and circulation, maintain continuous monitoring, obtain a 12-lead ECG when feasible, and prepare for guideline-directed treatment. The 2025 AHA adult bradycardia algorithm uses atropine 1 mg IV, repeated every 3-5 minutes to a maximum of 3 mg, when persistent bradycardia causes cardiopulmonary compromise. Pacing or an epinephrine or dopamine infusion is considered if atropine is ineffective. Those therapies may follow rapidly, but no option should continue diltiazem in this unstable client. An unassessed high fluid rate can worsen congestion in heart failure and does not directly reverse AV-nodal suppression. The key test-taking distinction is to remove the medication-related threat while simultaneously escalating and supporting perfusion.",
+      "structuredRationale": {
+        "overview": "Profound bradycardia and hypotension after diltiazem indicate cardiopulmonary compromise from an AV-nodal blocker. The immediate nursing response is to withhold further drug, summon urgent help, support ABCs, and monitor continuously. Guideline-directed atropine, pacing, or vasoactive therapy may then be needed without delay.",
+        "mechanism": "Diltiazem slows AV nodal conduction and can reduce heart rate, blood pressure, and contractility. Older adults and clients with impaired cardiac function may tolerate these effects poorly.",
+        "whyCorrect": "Option C removes further exposure and starts the unstable-bradycardia response. It protects perfusion while the team prepares atropine, pacing, or vasoactive support as clinically indicated.",
+        "whyWrong": {
+          "a": "The atropine dose is current, but starting the diltiazem infusion afterward would continue the likely cause of bradycardia and hypotension.",
+          "b": "Aggressive unassessed fluid can worsen heart failure and does not correct drug-induced AV-nodal suppression; volume support must be individualized.",
+          "d": "Pacing may become necessary, but running the diltiazem infusion during unstable bradycardia would worsen the causative problem."
+        },
+        "citations": [
+          {
+            "source": "AHA 2025 Adult Bradycardia With a Pulse Algorithm",
+            "href": "https://cpr.heart.org/-/media/CPR-Files/CPR-Guidelines-Files/2025-Algorithms/Algorithm-ACLS-Bradycardia-250514.pdf?sc_lang=en",
+            "note": "Provides assessment priorities, atropine 1 mg dosing, and pacing or vasoactive escalation."
+          },
+          {
+            "source": "DailyMed, Diltiazem Hydrochloride Injection",
+            "href": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=5e36488b-8f2d-4dc9-b803-af1829e6fdd0&type=display",
+            "note": "Documents symptomatic hypotension, bradycardia, conduction effects, and discontinuation with supportive measures."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "Atropine 1 mg is the current initial adult dose when symptomatic bradycardia persists, but the option is unsafe because it then continues the diltiazem exposure.",
+        "b": "A fixed high fluid rate without assessment may precipitate pulmonary congestion in heart failure and does not reverse the AV-nodal-blocking effect.",
+        "d": "Transcutaneous pacing may be required if atropine is ineffective, but starting the diltiazem infusion would continue the likely cause of instability."
+      },
+      "tags": [
+        "pharmacology",
+        "diltiazem",
+        "bradycardia",
+        "acls"
+      ],
+      "conceptNotes": [
+        "The 2025 AHA adult bradycardia algorithm uses atropine 1 mg IV, not 0.5 mg.",
+        "For a medication-triggered emergency, stop further exposure while supporting ABCs and escalating."
+      ],
+      "references": [
+        {
+          "title": "Adult Bradycardia With a Pulse Algorithm",
+          "citation": "American Heart Association, 2025",
+          "href": "https://cpr.heart.org/-/media/CPR-Files/CPR-Guidelines-Files/2025-Algorithms/Algorithm-ACLS-Bradycardia-250514.pdf?sc_lang=en"
+        },
+        {
+          "title": "Diltiazem Hydrochloride Injection Prescribing Information",
+          "citation": "DailyMed, U.S. National Library of Medicine",
+          "href": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=5e36488b-8f2d-4dc9-b803-af1829e6fdd0&type=display"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "Diltiazem-related unstable bradycardia",
+        "caption": "Remove the trigger and support perfusion before escalating therapy.",
+        "nodes": [
+          {
+            "label": "Recognize compromise",
+            "value": "HR 48/min plus BP 82/50 mm Hg"
+          },
+          {
+            "label": "Stop exposure",
+            "value": "Do not start the diltiazem infusion"
+          },
+          {
+            "label": "Support and call",
+            "value": "ABCs, monitor, urgent response, ECG"
+          },
+          {
+            "label": "Treat if persistent",
+            "value": "Atropine 1 mg; pacing or vasoactive infusion if ineffective"
+          }
+        ],
+        "conclusion": "Continuing the AV-nodal blocker is unsafe in a client with drug-associated bradycardia and shock signs."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "aha-bradycardia-2025",
+          "dailymed-diltiazem-injection"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 22-year-old female with a history of asthma presents to the ED with severe dyspnea, wheezing, and use of accessory muscles. She states her albuterol inhaler is 'not helping.' On assessment, the nurse notes she is sitting in the tripod position, speaking in 2-3 word sentences, and has a pulsus paradoxus of 18 mmHg. Breath sounds are diminished with minimal wheezing. Peak expiratory flow rate (PEFR) is 30% of predicted. Which assessment finding is MOST concerning?",
+        "answer": "b",
+        "category": "Psychosocial Integrity",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_pa8857",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Physiological Adaptation",
+      "subcategory": "severe asthma exacerbation",
+      "difficulty": 4,
+      "stem": "A 22-year-old client with asthma has severe dyspnea despite repeated rescue-inhaler use. The client is in tripod position, speaks in 2-3 word phrases, has a pulsus paradoxus of 18 mm Hg, and has a peak expiratory flow of 30% of predicted. Which additional finding is most concerning?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Heart rate 118/min"
+        },
+        {
+          "id": "b",
+          "text": "Markedly diminished breath sounds with almost no wheezing"
+        },
+        {
+          "id": "c",
+          "text": "Anxiety and inability to lie flat"
+        },
+        {
+          "id": "d",
+          "text": "Prolonged expiratory phase"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Markedly diminished breath sounds with almost no wheezing in this severely distressed client suggest a 'silent chest': airflow is so limited that little turbulent air movement remains to generate wheezing. GINA identifies absent wheeze during a severe exacerbation as a possible consequence of severely reduced airflow, usually accompanied by other signs of respiratory failure. This is an ominous change that requires immediate emergency escalation, continuous assessment, aggressive prescribed bronchodilator therapy and corticosteroids, and preparation for advanced ventilatory support if the client deteriorates. Tachycardia, anxiety, inability to lie flat, prolonged expiration, short phrases, pulsus paradoxus, and a very low peak flow all confirm a severe exacerbation, but they still imply some airflow. The fading of wheeze should never be assumed to mean improvement unless work of breathing, air entry, oxygenation, speech, and objective airflow are also improving. NCLEX priority logic focuses on the cue most closely associated with impending ventilatory failure.",
+      "structuredRationale": {
+        "overview": "All findings indicate severe asthma, but a nearly silent chest is the most ominous because it can mean critically reduced airflow rather than improvement. The nurse escalates immediately and prepares for respiratory support. Objective airflow, speech, mental status, oxygenation, and work of breathing must be reassessed continuously.",
+        "mechanism": "Wheezing requires air movement through narrowed airways. As obstruction becomes extreme, airflow falls so much that wheezing can disappear even while ventilation and gas exchange worsen.",
+        "whyCorrect": "Markedly diminished air entry with minimal wheeze is a high-risk sign of severe airflow limitation and possible impending respiratory failure, making it the most urgent cue.",
+        "whyWrong": {
+          "a": "Tachycardia is common in severe distress and after beta2-agonists, but it is less specific for critically reduced airflow than a silent chest.",
+          "c": "Anxiety and orthopnea indicate significant distress but do not by themselves show the near-absence of airflow.",
+          "d": "A prolonged expiratory phase reflects obstruction, but a silent chest is more concerning because air movement may be critically low."
+        },
+        "citations": [
+          {
+            "source": "GINA 2026 Strategy Report",
+            "href": "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf",
+            "note": "States that wheeze may be absent in severe exacerbations because airflow is severely reduced."
+          },
+          {
+            "source": "GINA 2026 Strategy Report landing page",
+            "href": "https://ginasthma.org/2026-gina-strategy-report/",
+            "note": "Official current strategy-report release and scope."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "A heart rate of 118/min supports severe distress and can follow beta2-agonist use, but it does not indicate airflow failure as directly as a silent chest.",
+        "c": "Anxiety and inability to lie flat are serious manifestations of dyspnea, yet they are less ominous than nearly absent air movement.",
+        "d": "Prolonged expiration is expected with obstructive airflow disease; markedly diminished air entry suggests obstruction has progressed further."
+      },
+      "tags": [
+        "respiratory",
+        "asthma",
+        "silent-chest",
+        "priority"
+      ],
+      "conceptNotes": [
+        "Less wheezing is not improvement when air entry and work of breathing worsen.",
+        "A silent chest in severe asthma is an emergency cue for possible respiratory failure."
+      ],
+      "references": [
+        {
+          "title": "Global Strategy for Asthma Management and Prevention: 2026 Report",
+          "citation": "Global Initiative for Asthma",
+          "href": "https://ginasthma.org/wp-content/uploads/2026/05/GINA-2026-Strategy-Report-WMS.pdf"
+        },
+        {
+          "title": "2026 GINA Strategy Report",
+          "citation": "Global Initiative for Asthma",
+          "href": "https://ginasthma.org/2026-gina-strategy-report/"
+        }
+      ],
+      "visualRationale": {
+        "type": "signal",
+        "title": "When wheezing fades in severe asthma",
+        "caption": "Interpret breath sounds together with air entry and work of breathing.",
+        "nodes": [
+          {
+            "label": "Narrowed airway",
+            "value": "Turbulent airflow produces wheeze"
+          },
+          {
+            "label": "Critical obstruction",
+            "value": "Very little airflow may produce little sound"
+          },
+          {
+            "label": "Danger cue",
+            "value": "Silent chest plus short phrases and low peak flow"
+          },
+          {
+            "label": "Priority",
+            "value": "Emergency escalation and ventilatory preparedness"
+          }
+        ],
+        "conclusion": "A quieter chest can represent worsening obstruction, not recovery."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "gina-asthma-2026"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 58-year-old female presents to the ED with crushing substernal chest pain radiating to the left jaw that began 2 hours ago, accompanied by nausea and diaphoresis. ECG reveals 3 mm ST-segment elevation in leads V1\u2013V4. The patient has a history of type 2 diabetes and hypertension. Which intervention should the nurse perform first?",
+        "answer": "c",
+        "category": "Psychosocial Integrity",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_pa9490",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Physiological Adaptation",
+      "subcategory": "ST-elevation myocardial infarction",
+      "difficulty": 3,
+      "stem": "A 58-year-old client has crushing substernal chest pain, nausea, and diaphoresis. ECG shows 3-mm ST elevation in V1-V4. SpO2 is 96% on room air, blood pressure is 138/82 mm Hg, and the client has no aspirin allergy or active bleeding. Which medication-related action should the nurse take immediately while the STEMI pathway and PCI preparation proceed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply oxygen at 2 L/min solely because myocardial infarction is suspected"
+        },
+        {
+          "id": "b",
+          "text": "Wait for a positive troponin result before administering antiplatelet therapy"
+        },
+        {
+          "id": "c",
+          "text": "Administer 162-325 mg of non-enteric-coated chewable aspirin"
+        },
+        {
+          "id": "d",
+          "text": "Administer sublingual nitroglycerin before screening for contraindications"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This client has ECG-confirmed anterior STEMI and no stated aspirin contraindication. Administer non-enteric-coated chewable aspirin promptly while the team simultaneously activates the reperfusion pathway and prepares for PCI. Aspirin reduces platelet thromboxane production and helps limit growth of the coronary thrombus; current ACS guidance continues to include aspirin as foundational antiplatelet therapy. The question does not imply that aspirin should delay cath-lab activation. Routine oxygen is not indicated solely because MI is suspected when oxygen saturation is 96% and there is no respiratory distress or shock. A troponin sample should be drawn promptly, but treatment and reperfusion-system activation should not wait for a positive result when the ECG already shows STEMI. Nitroglycerin may be used for persistent ischemic discomfort when blood pressure is adequate, but the nurse must first assess for hypotension, right ventricular infarction, and recent phosphodiesterase-5 inhibitor use. The safe answer is the immediate treatment with a clear indication and no listed contraindication.",
+      "structuredRationale": {
+        "overview": "The ECG already identifies STEMI, so urgent reperfusion preparation and early antiplatelet treatment occur together. With adequate oxygenation and no aspirin contraindication, chewable aspirin is the clear immediate medication action. Neither biomarker testing nor routine oxygen should delay or replace the indicated response.",
+        "mechanism": "Plaque disruption activates platelets and forms a coronary thrombus. Aspirin irreversibly inhibits platelet cyclooxygenase-1 and reduces thromboxane-mediated platelet aggregation.",
+        "whyCorrect": "Chewable aspirin provides prompt antiplatelet effect and is indicated in ACS when there is no allergy, active bleeding, or other contraindication.",
+        "whyWrong": {
+          "a": "Routine oxygen is not needed for a stable client with SpO2 96% and no respiratory distress; oxygen is titrated for hypoxemia or clinical compromise.",
+          "b": "Troponin should be collected, but an ECG-confirmed STEMI does not wait for biomarker confirmation before treatment and reperfusion activation.",
+          "d": "Nitroglycerin requires contraindication screening and does not replace aspirin or urgent reperfusion planning."
+        },
+        "citations": [
+          {
+            "source": "2025 ACC/AHA Acute Coronary Syndromes Guideline",
+            "href": "https://professional.heart.org/en/guidelines-statements/2025-accahaacepnaemspscai-guideline-for-the-management-of-patients-with-acutecir0000000000001309",
+            "note": "Current U.S. guideline for ACS antiplatelet and invasive management."
+          },
+          {
+            "source": "AHA summary of the 2025 ACS guideline",
+            "href": "https://professional.heart.org/en/science-news/2025-guideline-for-the-management-of-patients-with-acute-coronary-syndromes/top-things-to-know",
+            "note": "Summarizes aspirin-based dual antiplatelet therapy as a core ACS strategy."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "Oxygen is a treatment for hypoxemia or cardiopulmonary compromise, not a routine requirement for every MI. This client is adequately oxygenated on room air.",
+        "b": "Troponin supports diagnosis and risk assessment, but waiting for it would delay care for an ECG-confirmed STEMI.",
+        "d": "Nitroglycerin can relieve ischemic discomfort, but it is unsafe without checking blood pressure, right-ventricular involvement, and recent PDE-5 inhibitor use."
+      },
+      "tags": [
+        "cardiovascular",
+        "stemi",
+        "aspirin",
+        "priority"
+      ],
+      "conceptNotes": [
+        "In STEMI, aspirin and reperfusion activation are parallel actions.",
+        "Do not give oxygen routinely when saturation and respiratory status are adequate."
+      ],
+      "references": [
+        {
+          "title": "2025 Guideline for the Management of Patients With Acute Coronary Syndromes",
+          "citation": "ACC/AHA/ACEP/NAEMSP/SCAI, 2025",
+          "href": "https://professional.heart.org/en/guidelines-statements/2025-accahaacepnaemspscai-guideline-for-the-management-of-patients-with-acutecir0000000000001309"
+        },
+        {
+          "title": "Top Things to Know: 2025 Guideline for Acute Coronary Syndromes",
+          "citation": "American Heart Association, 2025",
+          "href": "https://professional.heart.org/en/science-news/2025-guideline-for-the-management-of-patients-with-acute-coronary-syndromes/top-things-to-know"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "ECG-confirmed STEMI: immediate medication logic",
+        "caption": "Treat thrombosis while reperfusion preparation continues.",
+        "nodes": [
+          {
+            "label": "ECG",
+            "value": "Anterior STEMI already identified"
+          },
+          {
+            "label": "Safety screen",
+            "value": "No aspirin allergy or active bleeding"
+          },
+          {
+            "label": "Act now",
+            "value": "Chewable non-enteric-coated aspirin"
+          },
+          {
+            "label": "In parallel",
+            "value": "Activate STEMI pathway and prepare for PCI"
+          }
+        ],
+        "conclusion": "Do not delay aspirin or reperfusion for a troponin result."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "acc-aha-acs-2025"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 76-year-old male with chronic kidney disease stage 4 is admitted with confusion. His laboratory results show: sodium 128 mEq/L, potassium 5.8 mEq/L, chloride 96 mEq/L, bicarbonate 18 mEq/L, BUN 78 mg/dL, creatinine 4.2 mg/dL, and glucose 108 mg/dL. The nurse reviews the ECG, which shows peaked T waves. Which intervention should the nurse implement first?",
+        "answer": "d",
+        "category": "Psychosocial Integrity",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ph0292",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Reduction of Risk Potential",
+      "subcategory": "acute hyperkalemia with ECG changes",
+      "difficulty": 4,
+      "stem": "A 76-year-old client with stage 4 chronic kidney disease has potassium 5.8 mEq/L and new peaked T waves on ECG. Which prescribed intervention should the nurse implement first to reduce the immediate risk of a lethal dysrhythmia?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer an oral potassium-binding resin"
+        },
+        {
+          "id": "b",
+          "text": "Administer IV regular insulin with dextrose"
+        },
+        {
+          "id": "c",
+          "text": "Administer 3% sodium chloride for a sodium level of 128 mEq/L"
+        },
+        {
+          "id": "d",
+          "text": "Administer IV calcium gluconate with continuous ECG monitoring"
+        }
+      ],
+      "answer": "d",
+      "rationale": "Hyperkalemia with new ECG changes is a cardiac emergency. The first treatment priority is myocardial membrane stabilization with an IV calcium salt, administered according to the prescribed product, dose, route, and monitoring protocol. Calcium acts within minutes to reduce the risk of ventricular dysrhythmia, but it does not lower the serum potassium. After membrane stabilization, insulin with dextrose shifts potassium into cells, and the team must arrange potassium removal with therapies appropriate to kidney function and severity, including dialysis when indicated. Potassium-binding agents act too slowly to be the first response to ECG toxicity. Hypertonic saline is not the priority for sodium 128 mEq/L in this stem and would not protect the myocardium from hyperkalemia. Continuous ECG monitoring and repeated potassium and glucose measurements are necessary because the effect of calcium is temporary and rebound hyperkalemia or treatment-related hypoglycemia can occur. The NCLEX sequence is protect the heart, shift potassium, then remove potassium.",
+      "structuredRationale": {
+        "overview": "A potassium value becomes immediately dangerous when it is paired with ECG toxicity. Stabilize the cardiac membrane first with prescribed IV calcium, then shift potassium intracellularly and remove it from the body. Continuous monitoring and repeated laboratory testing are required because protection is temporary and potassium can rebound.",
+        "mechanism": "Elevated extracellular potassium alters myocardial resting membrane potential and conduction. IV calcium antagonizes the cardiac membrane effects within minutes without changing the serum potassium concentration.",
+        "whyCorrect": "IV calcium gluconate directly addresses the immediate dysrhythmia risk signaled by peaked T waves and is given with continuous ECG monitoring.",
+        "whyWrong": {
+          "a": "A potassium binder may help remove potassium, but onset is too slow to protect the myocardium during ECG toxicity.",
+          "b": "Insulin with dextrose is an important next therapy that shifts potassium into cells, but calcium first stabilizes the electrically vulnerable heart.",
+          "c": "Mild-to-moderate hyponatremia is not the immediate threat in this stem, and hypertonic saline does not treat hyperkalemic ECG changes."
+        },
+        "citations": [
+          {
+            "source": "KDIGO Acute Hyperkalemia Conference Report",
+            "href": "https://kdigo.org/wp-content/uploads/2018/04/KDIGO-Acute-Hyperkalemia-conf-report-FINAL.pdf",
+            "note": "Recommends immediate IV calcium salts for hyperkalemia with ECG changes."
+          },
+          {
+            "source": "DailyMed, Calcium Gluconate Injection",
+            "href": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=841ea51f-dc0d-45ed-8b55-bb64640cb930&type=display",
+            "note": "Provides administration and ECG-monitoring safety information."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "Oral potassium-binding therapy does not act rapidly enough to be the first intervention when the ECG already shows cardiac toxicity.",
+        "b": "Insulin plus dextrose shifts potassium into cells and should follow promptly, but it does not replace immediate cardiac membrane stabilization.",
+        "c": "A sodium of 128 mEq/L does not outrank hyperkalemia with ECG changes, and hypertonic saline does not protect against hyperkalemic dysrhythmia."
+      },
+      "tags": [
+        "renal",
+        "hyperkalemia",
+        "ecg",
+        "calcium",
+        "priority"
+      ],
+      "conceptNotes": [
+        "IV calcium protects the heart but does not lower potassium.",
+        "Emergency sequence: stabilize membrane, shift potassium, remove potassium, and reassess."
+      ],
+      "references": [
+        {
+          "title": "Acute Hyperkalemia in the Emergency Department: KDIGO Conference Summary",
+          "citation": "Kidney Disease: Improving Global Outcomes",
+          "href": "https://kdigo.org/wp-content/uploads/2018/04/KDIGO-Acute-Hyperkalemia-conf-report-FINAL.pdf"
+        },
+        {
+          "title": "Calcium Gluconate Injection Prescribing Information",
+          "citation": "DailyMed, U.S. National Library of Medicine",
+          "href": "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=841ea51f-dc0d-45ed-8b55-bb64640cb930&type=display"
+        }
+      ],
+      "visualRationale": {
+        "type": "pathway",
+        "title": "Hyperkalemia with ECG changes",
+        "caption": "Separate cardiac protection from potassium lowering.",
+        "nodes": [
+          {
+            "label": "ECG toxicity",
+            "value": "Peaked T waves signal immediate dysrhythmia risk"
+          },
+          {
+            "label": "1. Stabilize",
+            "value": "IV calcium with continuous ECG monitoring"
+          },
+          {
+            "label": "2. Shift",
+            "value": "Insulin plus dextrose and other ordered shifting therapy"
+          },
+          {
+            "label": "3. Remove",
+            "value": "Dialysis, diuresis, or binder as clinically appropriate"
+          }
+        ],
+        "conclusion": "Calcium is first for ECG toxicity because it protects the myocardium within minutes."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "kdigo-acute-hyperkalemia",
+          "dailymed-calcium-gluconate"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "During a platelet transfusion to a 28-year-old female with immune thrombocytopenic purpura (ITP), the patient develops urticaria and generalized pruritus 20 minutes into the infusion. She is afebrile with stable vital signs. What should the nurse do?",
+        "answer": "b",
+        "category": "Pharmacological and Parenteral Therapies",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ph0747",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Pharmacological and Parenteral Therapies",
+      "subcategory": "allergic transfusion reaction",
+      "difficulty": 3,
+      "stem": "Twenty minutes after a platelet transfusion begins, a client develops generalized pruritus and urticaria. Temperature, blood pressure, oxygen saturation, and breath sounds are unchanged. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Continue the transfusion and administer an antihistamine"
+        },
+        {
+          "id": "b",
+          "text": "Stop the transfusion, maintain IV access with normal saline using new tubing, assess the client, and notify the provider and transfusion service"
+        },
+        {
+          "id": "c",
+          "text": "Slow the transfusion and reassess in 15 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Administer epinephrine before assessing for airway or circulatory compromise"
+        }
+      ],
+      "answer": "b",
+      "rationale": "New urticaria and pruritus during a platelet transfusion suggest an allergic transfusion reaction, but the nurse cannot safely assume the reaction will remain mild while the blood component continues to infuse. Stop the transfusion immediately, maintain IV access with normal saline using new tubing according to policy, assess airway, breathing, circulation, vital signs, and symptoms, and notify the provider and transfusion service. The FDA-recognized Circular of Information states that a transfusion reaction requires immediate discontinuation and that the component should not be restarted unless the transfusion-service protocol authorizes it. Mild isolated urticaria often responds to an antihistamine; if symptoms completely resolve and the reaction evaluation is reassuring, restart may be considered only under the institution's protocol and an authorized order. Epinephrine is reserved for anaphylaxis findings such as airway edema, bronchospasm, severe dyspnea, or hypotension. Continuing or merely slowing the transfusion before assessment exposes the client to more of the suspected trigger.",
+      "structuredRationale": {
+        "overview": "Even when symptoms appear limited to hives and itching, the first nursing action for a new transfusion reaction is to stop the component and assess. Treatment and any restart decision follow the transfusion-service protocol. The nurse must actively screen for airway, breathing, or circulatory progression before labeling the event mild.",
+        "mechanism": "Recipient sensitivity to donor plasma proteins can produce urticaria and pruritus. A reaction can progress, and ongoing infusion continues exposure to the suspected antigen.",
+        "whyCorrect": "Stopping the transfusion limits exposure, saline preserves vascular access, focused assessment detects progression, and notification starts the required reaction evaluation and treatment pathway.",
+        "whyWrong": {
+          "a": "Continuing exposes the client to more of the suspected trigger before the reaction has been assessed and classified.",
+          "c": "Slowing is not enough for a new suspected reaction; the component is stopped while the client is assessed and the transfusion service is notified.",
+          "d": "Epinephrine is appropriate for anaphylaxis, but this client has no airway, breathing, or circulatory compromise and must first be assessed after stopping the transfusion."
+        },
+        "citations": [
+          {
+            "source": "AABB/ARC/ABC/ASBP Circular of Information, June 2024",
+            "href": "https://www.aabb.org/docs/default-source/default-document-library/resources/circular-of-information-watermark.pdf?sfvrsn=7f5d28ab_10",
+            "note": "Describes allergic reactions and requires immediate discontinuation when a transfusion reaction occurs."
+          },
+          {
+            "source": "FDA recognition of the Circular of Information",
+            "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/acceptable-circular-information-use-human-blood-and-blood-components",
+            "note": "Identifies the Circular as acceptable labeling guidance for blood and blood components."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "An antihistamine may be prescribed for isolated urticaria, but the blood component is stopped first so exposure does not continue during assessment.",
+        "c": "A slower rate still infuses the suspected trigger. Stop the transfusion and follow the reaction protocol rather than watching for progression.",
+        "d": "Epinephrine is first-line for anaphylaxis, not isolated stable urticaria. The nurse stops the transfusion and immediately assesses for airway or circulatory involvement."
+      },
+      "tags": [
+        "transfusion",
+        "platelets",
+        "allergic-reaction",
+        "patient-safety"
+      ],
+      "conceptNotes": [
+        "For any new suspected transfusion reaction, stop the component before classifying severity.",
+        "A mild allergic reaction may be restarted only if the institution's transfusion protocol and an authorized order permit it."
+      ],
+      "references": [
+        {
+          "title": "Circular of Information for the Use of Human Blood and Blood Components",
+          "citation": "AABB, American Red Cross, America's Blood Centers, and Armed Services Blood Program, June 2024",
+          "href": "https://www.aabb.org/docs/default-source/default-document-library/resources/circular-of-information-watermark.pdf?sfvrsn=7f5d28ab_10"
+        },
+        {
+          "title": "Acceptable Circular of Information for the Use of Human Blood and Blood Components",
+          "citation": "U.S. Food and Drug Administration",
+          "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/acceptable-circular-information-use-human-blood-and-blood-components"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "New hives during transfusion",
+        "caption": "Stop first, then classify and treat the reaction.",
+        "nodes": [
+          {
+            "label": "Stop",
+            "value": "Discontinue the blood component immediately"
+          },
+          {
+            "label": "Maintain access",
+            "value": "Normal saline with new tubing per policy"
+          },
+          {
+            "label": "Assess",
+            "value": "Airway, breathing, circulation, vitals, and symptoms"
+          },
+          {
+            "label": "Notify and treat",
+            "value": "Provider plus transfusion service; antihistamine if ordered"
+          }
+        ],
+        "conclusion": "Do not continue or restart until the reaction pathway authorizes it."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "aabb-circular-2024",
+          "fda-circular-recognition"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 67-year-old female post-hip replacement is receiving 1 unit of packed red blood cells (PRBCs). Fifteen minutes into the transfusion, she develops chills, lower back pain, and reports feeling \"anxious.\" Her temperature is 100.8\u00b0F (38.2\u00b0C), heart rate 104 bpm, BP 98/62 mm Hg. What is the nurse's priority action?",
+        "answer": "b",
+        "category": "Pharmacological and Parenteral Therapies",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ph0897",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Pharmacological and Parenteral Therapies",
+      "subcategory": "acute hemolytic transfusion reaction",
+      "difficulty": 3,
+      "stem": "Fifteen minutes after a packed red blood cell transfusion begins, a postoperative client develops chills, lower back pain, anxiety, temperature 38.2 C (100.8 F), heart rate 104/min, and blood pressure 98/62 mm Hg. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Slow the transfusion and administer diphenhydramine"
+        },
+        {
+          "id": "b",
+          "text": "Stop the transfusion immediately and maintain IV access with normal saline using new tubing"
+        },
+        {
+          "id": "c",
+          "text": "Administer acetaminophen and continue the transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Notify the transfusion service before stopping the transfusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Fever, chills, back pain, tachycardia, anxiety, and falling blood pressure shortly after red-cell transfusion are compatible with an acute hemolytic transfusion reaction and may precede shock, disseminated intravascular coagulation, and kidney injury. Stop the blood component immediately so no additional potentially incompatible red cells enter the circulation. Maintain IV access with normal saline using new tubing according to policy, assess airway, breathing, circulation, urine output, and vital signs, then notify the provider and transfusion service. The implicated unit, administration set, and a postreaction patient sample are typically sent for investigation under the institutional protocol. Diphenhydramine treats allergic manifestations but does not treat intravascular hemolysis. Acetaminophen can reduce fever but continuing the transfusion is dangerous. Notification is urgent, but it follows the immediate bedside action of stopping the component. The NCLEX priority is exposure control first, followed immediately by stabilization, notification, specimen handling, and monitoring for renal and coagulation complications.",
+      "structuredRationale": {
+        "overview": "The cue cluster is a life-threatening acute transfusion reaction, not isolated itching or fever. The nurse immediately stops the component, preserves IV access with saline, stabilizes the client, and activates the transfusion-reaction protocol. Product, tubing, and patient specimens are then handled according to the investigation policy.",
+        "mechanism": "Incompatible red-cell antibodies can cause rapid intravascular hemolysis, inflammatory mediator release, hypotension, hemoglobinuria, kidney injury, and disseminated coagulation.",
+        "whyCorrect": "Stopping the transfusion prevents additional antigen exposure. Normal saline through new tubing maintains access for resuscitation without infusing more of the implicated product.",
+        "whyWrong": {
+          "a": "Slowing the transfusion continues exposure, and diphenhydramine does not treat acute intravascular hemolysis.",
+          "c": "Treating fever while continuing incompatible blood can worsen hemolysis, shock, kidney injury, and coagulopathy.",
+          "d": "The transfusion service must be notified immediately after the component is stopped; the bedside exposure is terminated before making the call."
+        },
+        "citations": [
+          {
+            "source": "AABB/ARC/ABC/ASBP Circular of Information, June 2024",
+            "href": "https://www.aabb.org/docs/default-source/default-document-library/resources/circular-of-information-watermark.pdf?sfvrsn=7f5d28ab_10",
+            "note": "Lists acute hemolytic reaction cues and required immediate stop, notification, and specimen handling."
+          },
+          {
+            "source": "FDA recognition of the Circular of Information",
+            "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/acceptable-circular-information-use-human-blood-and-blood-components",
+            "note": "Confirms the Circular's status as recognized blood-component labeling guidance."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "Back pain, fever, tachycardia, and hypotension suggest hemolysis, not a mild allergic reaction. Slowing the rate continues dangerous exposure.",
+        "c": "Acetaminophen does not stop immune hemolysis, and continuing the transfusion can rapidly worsen shock and kidney injury.",
+        "d": "Notify the transfusion service urgently, but first stop the component at the bedside to prevent any additional exposure."
+      },
+      "tags": [
+        "transfusion",
+        "acute-hemolytic-reaction",
+        "blood-products",
+        "priority"
+      ],
+      "conceptNotes": [
+        "Back pain plus fever and hypotension during red-cell transfusion is a high-risk hemolytic pattern.",
+        "Stop the component first; then stabilize, notify, and send the required samples and product."
+      ],
+      "references": [
+        {
+          "title": "Circular of Information for the Use of Human Blood and Blood Components",
+          "citation": "AABB, American Red Cross, America's Blood Centers, and Armed Services Blood Program, June 2024",
+          "href": "https://www.aabb.org/docs/default-source/default-document-library/resources/circular-of-information-watermark.pdf?sfvrsn=7f5d28ab_10"
+        },
+        {
+          "title": "Acceptable Circular of Information for the Use of Human Blood and Blood Components",
+          "citation": "U.S. Food and Drug Administration",
+          "href": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/acceptable-circular-information-use-human-blood-and-blood-components"
+        }
+      ],
+      "visualRationale": {
+        "type": "flow",
+        "title": "Suspected acute hemolytic reaction",
+        "caption": "End exposure before completing the investigation steps.",
+        "nodes": [
+          {
+            "label": "Cues",
+            "value": "Fever, chills, back pain, tachycardia, hypotension"
+          },
+          {
+            "label": "First",
+            "value": "Stop transfusion immediately"
+          },
+          {
+            "label": "Stabilize",
+            "value": "New tubing with saline; assess ABCs, vitals, urine output"
+          },
+          {
+            "label": "Investigate",
+            "value": "Notify; send product, tubing, and postreaction sample"
+          }
+        ],
+        "conclusion": "Never slow or continue a transfusion when acute hemolysis is suspected."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "aabb-circular-2024",
+          "fda-circular-recognition"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    },
+    {
+      "expectedCurrent": {
+        "stem": "A 58-year-old post-operative patient in the ICU is receiving an IV heparin infusion at 14 units/kg/hr for a DVT. On day 3, the nurse notes a 30% drop in platelet count from baseline, and the patient reports new-onset abdominal pain. What is the nurse's priority action?",
+        "answer": "b",
+        "category": "Pharmacological and Parenteral Therapies",
+        "reviewStatus": "curated-live",
+        "publishState": "published"
+      },
+      "id": "prem_nclex_ph4712",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "Pharmacological and Parenteral Therapies",
+      "subcategory": "heparin-induced thrombocytopenia",
+      "difficulty": 4,
+      "stem": "A postoperative client is receiving IV unfractionated heparin for a DVT. On day 6, the platelet count has fallen from 235,000/mm3 to 104,000/mm3, and the client reports new severe abdominal pain. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the heparin rate until the aPTT reaches the protocol target"
+        },
+        {
+          "id": "b",
+          "text": "Stop the heparin infusion and all other heparin exposure, then notify the provider immediately"
+        },
+        {
+          "id": "c",
+          "text": "Administer vitamin K and continue the heparin infusion"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the platelet count to fall below 50,000/mm3 before changing therapy"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A platelet fall greater than 50% beginning on day 6 of heparin exposure, combined with new severe abdominal pain that may represent thrombosis, creates a high clinical concern for immune heparin-induced thrombocytopenia. The priority is to stop all heparin exposure, including the infusion, flushes, and heparin-coated devices when applicable, and notify the provider immediately. The team should calculate the 4Ts probability, obtain appropriate testing, evaluate for thrombosis, and begin a therapeutic non-heparin anticoagulant when indicated; simply stopping heparin without alternative anticoagulation can leave the client at substantial thrombotic risk. Increasing heparin would intensify the immune trigger. Vitamin K reverses warfarin, not heparin, and does not treat HIT. HIT is defined by the platelet trend and timing, not by waiting for an extremely low absolute count; many clients develop thrombosis while the platelet count remains above 50,000/mm3. The original day-3, 30% decline was too nonspecific without recent exposure, so this revision supplies a clinically coherent HIT pattern.",
+      "structuredRationale": {
+        "overview": "The timing, greater-than-50% platelet fall, and possible new thrombosis form a classic high-risk HIT pattern. The nurse immediately ends every heparin exposure and escalates for probability assessment, testing, and non-heparin anticoagulation. The absolute platelet count does not need to reach a profoundly low value before action is taken.",
+        "mechanism": "HIT antibodies activate platelets in the presence of heparin-PF4 complexes, producing thrombocytopenia and a paradoxically high risk of venous or arterial thrombosis.",
+        "whyCorrect": "Stopping all heparin removes the immune trigger, and immediate notification allows rapid initiation of a non-heparin anticoagulant and evaluation of the abdominal pain for thrombosis.",
+        "whyWrong": {
+          "a": "Increasing heparin worsens the immune-mediated process and can increase thrombosis risk even if the aPTT is below target.",
+          "c": "Vitamin K is a warfarin reversal agent and does not treat HIT; continuing heparin maintains the trigger.",
+          "d": "HIT is assessed by percentage fall, timing, thrombosis, and other causes. Waiting for a very low absolute count can delay lifesaving treatment."
+        },
+        "citations": [
+          {
+            "source": "ASH HIT Pocket Guide",
+            "href": "https://www.hematology.org/-/media/hematology/files/education/clinicians/guidelines-quality/documents/ash_vte_hit_pocketguide.pdf",
+            "note": "Defines 4Ts timing and platelet-fall criteria and recommends stopping heparin with non-heparin anticoagulation."
+          },
+          {
+            "source": "DailyMed, Heparin Sodium Injection Prescribing Information",
+            "href": "https://www.dailymed.nlm.nih.gov/dailymed/getFile.cfm?setid=83a59e7d-63e9-4eb8-87f0-52039d6893a5&type=pdf",
+            "note": "Provides current heparin safety warnings and platelet-monitoring requirements."
+          }
+        ]
+      },
+      "distractorRationales": {
+        "a": "HIT is a prothrombotic immune reaction, not inadequate anticoagulation. More heparin can accelerate the harmful process.",
+        "c": "Vitamin K reverses warfarin and has no role in stopping heparin-dependent platelet activation. Heparin must not continue.",
+        "d": "A greater-than-50% fall on days 5-14 is strongly weighted in the 4Ts score even when the absolute count is above 50,000/mm3."
+      },
+      "tags": [
+        "pharmacology",
+        "heparin",
+        "hit",
+        "thrombosis",
+        "priority"
+      ],
+      "conceptNotes": [
+        "Typical HIT timing is days 5-14 unless recent heparin exposure changes the timeline.",
+        "HIT is prothrombotic; expect a non-heparin anticoagulant rather than observation alone."
+      ],
+      "references": [
+        {
+          "title": "Diagnosis and Management of Heparin-Induced Thrombocytopenia: Pocket Guide",
+          "citation": "American Society of Hematology",
+          "href": "https://www.hematology.org/-/media/hematology/files/education/clinicians/guidelines-quality/documents/ash_vte_hit_pocketguide.pdf"
+        },
+        {
+          "title": "Heparin Sodium Injection Prescribing Information",
+          "citation": "DailyMed, U.S. National Library of Medicine",
+          "href": "https://www.dailymed.nlm.nih.gov/dailymed/getFile.cfm?setid=83a59e7d-63e9-4eb8-87f0-52039d6893a5&type=pdf"
+        }
+      ],
+      "visualRationale": {
+        "type": "pathway",
+        "title": "Recognizing suspected HIT",
+        "caption": "Use timing, percentage fall, thrombosis, and competing causes.",
+        "nodes": [
+          {
+            "label": "Timing",
+            "value": "Day 6 of heparin exposure"
+          },
+          {
+            "label": "Platelet trend",
+            "value": "235,000 to 104,000/mm3: greater than 50% fall"
+          },
+          {
+            "label": "Thrombosis cue",
+            "value": "New severe abdominal pain"
+          },
+          {
+            "label": "Immediate response",
+            "value": "Stop all heparin; notify; anticipate non-heparin anticoagulation"
+          }
+        ],
+        "conclusion": "Do not wait for profound thrombocytopenia when the HIT pattern is already present."
+      },
+      "reviewStatus": "final-curated-live",
+      "publishState": "published",
+      "revision": 2,
+      "qualityMetadata": {
+        "gateVersion": "nclex-publication-v1",
+        "contentVersion": 2,
+        "evidenceStatus": "source-verified",
+        "evidenceReviewedAt": "2026-07-24",
+        "sourceIds": [
+          "ash-hit-pocket-guide",
+          "dailymed-heparin-monitoring"
+        ],
+        "clinicalReviewStatus": "pending",
+        "clinicalReviewChecklistVersion": "nclex-clinical-review-v1",
+        "psychometricStatus": "precalibration"
+      }
+    }
+  ]
+}

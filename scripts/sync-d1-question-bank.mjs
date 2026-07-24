@@ -3,6 +3,10 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  assertPublishableBatch,
+  evaluatePublicationQuality,
+} from "../packages/content/scripts/publication-quality-gate.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, "..");
@@ -185,16 +189,32 @@ function answerValue(question) {
   return JSON.stringify(question.answer ?? "");
 }
 
-function provenanceValue(question, batch) {
+function provenanceValue(question, batch, qualityGate) {
+  let suppliedProvenance = null;
+  if (typeof question.provenance === "string" && question.provenance.trim()) {
+    try {
+      suppliedProvenance = JSON.parse(question.provenance);
+    } catch {
+      suppliedProvenance = { legacyValue: question.provenance };
+    }
+  } else if (question.provenance && typeof question.provenance === "object") {
+    suppliedProvenance = question.provenance;
+  }
+
   return JSON.stringify({
+    ...(suppliedProvenance ?? {}),
     batchId: batch.batchId ?? null,
     generatedBy: batch.generatedBy ?? null,
     sourcePath: question.sourcePath ?? null,
     sourceStage: question.sourceStage ?? null,
+    qualityMetadata: question.qualityMetadata ?? null,
+    qualityGate,
   });
 }
 
-function questionToRow(question, batch) {
+export function questionToRow(question, batch) {
+  const requestedPublished = question.publishState === "published";
+  const qualityGate = evaluatePublicationQuality(question);
   return {
     id: question.id,
     exam: question.exam,
@@ -212,10 +232,18 @@ function questionToRow(question, batch) {
     blueprint_pct: question.blueprintPct ?? null,
     correct_order: asJson(question.correctOrder ?? null),
     concept_notes: asJson(question.conceptNotes ?? null),
-    provenance: question.provenance ?? provenanceValue(question, batch),
-    review_status: question.reviewStatus ?? "review",
+    provenance: provenanceValue(question, batch, qualityGate),
+    review_status: requestedPublished
+      ? question.reviewStatus
+      : question.reviewStatus === "rejected"
+        ? "rejected"
+        : "needs_review",
     revision: question.revision ?? 1,
-    publish_state: question.publishState ?? "published",
+    publish_state: requestedPublished
+      ? "published"
+      : question.publishState === "unpublished"
+        ? "unpublished"
+        : "draft",
     scenario_title: question.scenarioTitle ?? null,
     case_study_id: question.caseStudyId ?? null,
     cjmm_step: question.cjmmStep ?? null,
@@ -241,13 +269,13 @@ function sqlValue(value) {
   return `'${String(value).replaceAll("'", "''")}'`;
 }
 
-function insertSql(row) {
+export function insertSql(row) {
   const values = questionColumns.map((column) => sqlValue(row[column]));
   const updates = questionColumns
     .filter((column) => column !== "id")
     .map((column) => `${column}=excluded.${column}`)
     .join(", ");
-  return `INSERT INTO questions (${questionColumns.join(", ")}) VALUES (${values.join(", ")}) ON CONFLICT(id) DO UPDATE SET ${updates};`;
+  return `INSERT INTO questions (${questionColumns.join(", ")}) VALUES (${values.join(", ")}) ON CONFLICT(id) DO UPDATE SET ${updates} WHERE COALESCE(questions.publish_state, 'draft') <> 'published' AND COALESCE(questions.review_status, '') NOT IN ('final-curated-live', 'rejected');`;
 }
 
 function deleteSql(options) {
@@ -261,18 +289,26 @@ function deleteSql(options) {
   return `DELETE FROM questions WHERE ${predicates.join(" OR ")};`;
 }
 
-function loadRows(options) {
-  const rows = [];
+export function loadRows(options) {
+  const sourceQuestions = [];
   for (const filePath of listJsonFiles(options.inputDir)) {
     const payload = readJson(filePath);
     for (const question of questionsFromPayload(payload)) {
       if (options.onlyP1 && !String(question.id ?? "").startsWith("p1-")) {
         continue;
       }
-      rows.push(questionToRow(question, payload));
+      sourceQuestions.push({ question, payload });
     }
   }
-  return rows;
+
+  const publicationRequests = sourceQuestions
+    .map(({ question }) => question)
+    .filter((question) => question.publishState === "published");
+  if (publicationRequests.length > 0) {
+    assertPublishableBatch(publicationRequests);
+  }
+
+  return sourceQuestions.map(({ question, payload }) => questionToRow(question, payload));
 }
 
 function wranglerCommand(args) {
@@ -318,7 +354,7 @@ function chunkRows(rows, chunkSize) {
   return chunks;
 }
 
-function main() {
+export function main() {
   const options = parseArgs(process.argv.slice(2));
   const sourceRows = loadRows(options);
   const rows = sourceRows.slice(
@@ -370,4 +406,7 @@ function main() {
   }
 }
 
-main();
+const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : "";
+if (invokedPath === fileURLToPath(import.meta.url)) {
+  main();
+}

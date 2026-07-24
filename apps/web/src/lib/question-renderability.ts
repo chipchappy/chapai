@@ -23,6 +23,7 @@ type QuestionLike = {
     body?: string;
     items?: string[] | string;
   }> | null;
+  chartReview?: unknown;
   matrixColumns?: string[] | null;
   matrixRows?: Array<{ label: string; answer: string }> | null;
   bowTie?: unknown;
@@ -67,7 +68,8 @@ function hasCaseIntel(question: QuestionLike) {
     question.scenarioTitle
       || question.scenario
       || question.additionalInfo
-      || exhibitCount(question) > 0,
+      || exhibitCount(question) > 0
+      || question.chartReview
   );
 }
 

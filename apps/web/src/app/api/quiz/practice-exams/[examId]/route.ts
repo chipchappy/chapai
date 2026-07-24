@@ -1,6 +1,7 @@
 import { getQuestionBank } from "@/lib/content-bank";
-import { allocateBlueprintDeficits } from "@/lib/blueprint-allocation";
+import { allocateBlueprintDeficits, getBlueprintCountMismatches } from "@/lib/blueprint-allocation";
 import {
+  getCaseStudyReleaseIssues,
   getCaseStudyEligibleQuestions,
   qualityFirstCaseGroups,
   shuffleQuestionBlocks,
@@ -11,10 +12,19 @@ import { mapQuestionRowToQuizQuestion } from "@/lib/quiz-engine";
 import { ensureHostedUser } from "@/lib/billing-store";
 import { isLaunchPlanCode } from "@/lib/launch-offers";
 import { canUnlockPracticeExam, FREE_PRACTICE_EXAM_ID, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
-import { qualityFirstDiverseOrder } from "@/lib/question-quality";
-import { CCRN_CATEGORIES, NCLEX_CATEGORIES, type Exam } from "@/lib/types";
+import { getQuestionQualityProfile, qualityFirstDiverseOrder } from "@/lib/question-quality";
+import {
+  CCRN_CATEGORIES,
+  NCLEX_READINESS_BLUEPRINT,
+  type Exam,
+} from "@/lib/types";
 import { getPracticeExamDefinitions, getRichDeck, getStandardPreviewDeck, mapLiveQuestionBank } from "@/lib/practice-data";
 import type { PracticeExamDefinition, PracticeQuestion } from "@/lib/practice-types";
+import { findOrCreateReadinessAttempt } from "@/lib/readiness-attempt-store";
+import {
+  concealReadinessAnswer,
+  READINESS_ASSEMBLY_VERSION,
+} from "@/lib/readiness-delivery";
 import { getServerAccessContext } from "@/lib/server-access";
 import { getQuestionIntegrityIssues } from "@/lib/question-renderability";
 import { and, eq, sql } from "drizzle-orm";
@@ -34,6 +44,11 @@ const examIdSchema = z.enum([
   "ccrn-sim-2",
 ]);
 
+const NCLEX_CASE_STUDY_SET_COUNT = 3;
+const MAX_NCLEX_READINESS_QUALITY_TIER = 2;
+const NCLEX_READINESS_CANDIDATE_LIMIT = 1_000;
+const launchIdSchema = z.string().uuid();
+
 function normalizeStem(stem: string) {
   return stem
     .toLowerCase()
@@ -46,10 +61,59 @@ function questionSignature(question: Pick<PracticeQuestion, "stem">) {
   return normalizeStem(question.stem);
 }
 
+function stableFingerprint(value: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function buildAssemblyMetadata(
+  definition: PracticeExamDefinition,
+  selectedQuestions: PracticeQuestion[],
+  strictExposureControl: boolean,
+) {
+  const caseGroups = new Map<string, number>();
+  const clientNeedCounts: Record<string, number> = {};
+  const qualityTierCounts: Record<string, number> = {};
+  for (const question of selectedQuestions) {
+    if (question.caseStudyId) {
+      caseGroups.set(question.caseStudyId, (caseGroups.get(question.caseStudyId) ?? 0) + 1);
+    }
+    const clientNeed = question.nclexClientNeed ?? question.category;
+    clientNeedCounts[clientNeed] = (clientNeedCounts[clientNeed] ?? 0) + 1;
+    const tier = String(getQuestionQualityProfile(question).tier);
+    qualityTierCounts[tier] = (qualityTierCounts[tier] ?? 0) + 1;
+  }
+  const contentFingerprint = stableFingerprint([
+    READINESS_ASSEMBLY_VERSION,
+    definition.id,
+    ...selectedQuestions.map((question) => (
+      `${question.id}:${question.qualityMetadata?.contentVersion ?? 0}`
+    )),
+  ].join("|"));
+
+  return {
+    assemblyVersion: READINESS_ASSEMBLY_VERSION,
+    contentFingerprint,
+    strictExposureControl,
+    questionCount: selectedQuestions.length,
+    caseStudyCount: caseGroups.size,
+    caseStudyItemCount: [...caseGroups.values()].reduce((sum, count) => sum + count, 0),
+    caseStudyIds: [...caseGroups.keys()],
+    clientNeedCounts,
+    qualityTierCounts,
+    evidenceNotice: "Source-verified content remains pending independent licensed clinical review and psychometric calibration.",
+  };
+}
+
 function takeUniqueQuestions(
   candidates: PracticeQuestion[],
   limit: number,
   reservedIds: Set<string>,
+  reservedSignatures: Set<string>,
   usedIds: Set<string>,
   usedSignatures: Set<string>,
 ) {
@@ -57,7 +121,12 @@ function takeUniqueQuestions(
 
   for (const question of candidates) {
     const signature = questionSignature(question);
-    if (reservedIds.has(question.id) || usedIds.has(question.id) || usedSignatures.has(signature)) {
+    if (
+      reservedIds.has(question.id)
+      || reservedSignatures.has(signature)
+      || usedIds.has(question.id)
+      || usedSignatures.has(signature)
+    ) {
       continue;
     }
     usedIds.add(question.id);
@@ -74,7 +143,7 @@ function takeUniqueQuestions(
 function getBlueprint(exam: Exam) {
   return exam === "ccrn"
     ? Object.fromEntries(Object.entries(CCRN_CATEGORIES).map(([key, value]) => [key, value.pct]))
-    : Object.fromEntries(Object.entries(NCLEX_CATEGORIES).map(([key, value]) => [key, value.pct]));
+    : { ...NCLEX_READINESS_BLUEPRINT };
 }
 
 function selectByBlueprint(
@@ -83,7 +152,9 @@ function selectByBlueprint(
   count: number,
   seed: string,
   reservedIds: Set<string> = new Set(),
+  reservedSignatures: Set<string> = new Set(),
   initialQuestions: PracticeQuestion[] = [],
+  allowReservedReuse = false,
 ) {
   const buckets = new Map<string, PracticeQuestion[]>();
 
@@ -108,20 +179,64 @@ function selectByBlueprint(
     const target = categoryTargets[category] ?? 0;
     if (target === 0) continue;
     const bucket = qualityFirstDiverseOrder(buckets.get(category) ?? [], `${seed}:${category}`);
-    selected.push(...takeUniqueQuestions(bucket, target, reservedIds, usedInManifest, usedSignatures));
+    selected.push(...takeUniqueQuestions(
+      bucket,
+      target,
+      reservedIds,
+      reservedSignatures,
+      usedInManifest,
+      usedSignatures,
+    ));
   }
 
   if (selected.length < count) {
     const remainder = qualityFirstDiverseOrder(questions, `${seed}:remainder`);
-    selected.push(...takeUniqueQuestions(remainder, count - selected.length, reservedIds, usedInManifest, usedSignatures));
+    selected.push(...takeUniqueQuestions(
+      remainder,
+      count - selected.length,
+      reservedIds,
+      reservedSignatures,
+      usedInManifest,
+      usedSignatures,
+    ));
   }
 
-  if (selected.length < count) {
+  if (selected.length < count && allowReservedReuse) {
     const overflow = qualityFirstDiverseOrder(questions, `${seed}:overflow`);
-    selected.push(...takeUniqueQuestions(overflow, count - selected.length, new Set<string>(), usedInManifest, usedSignatures));
+    selected.push(...takeUniqueQuestions(
+      overflow,
+      count - selected.length,
+      new Set<string>(),
+      new Set<string>(),
+      usedInManifest,
+      usedSignatures,
+    ));
   }
 
-  return shuffleQuestionBlocks(selected.slice(0, count), `${seed}:final`);
+  if (selected.length < count && !allowReservedReuse) {
+    throw new Error(
+      `READINESS_FORM_POOL_INSUFFICIENT: ${seed} assembled ${selected.length} of ${count} unique questions`,
+    );
+  }
+
+  const manifest = selected.slice(0, count);
+  const actualCounts: Record<string, number> = {};
+  for (const question of manifest) {
+    const category = question.exam === "nclex"
+      ? question.nclexClientNeed ?? question.category
+      : question.category;
+    actualCounts[category] = (actualCounts[category] ?? 0) + 1;
+  }
+  const mismatches = getBlueprintCountMismatches(blueprint, count, actualCounts);
+  if (mismatches.length > 0) {
+    throw new Error(
+      `READINESS_FORM_BLUEPRINT_MISMATCH: ${seed} ${mismatches
+        .map(({ key, target, actual }) => `${key}=${actual}/${target}`)
+        .join(",")}`,
+    );
+  }
+
+  return shuffleQuestionBlocks(manifest, `${seed}:final`);
 }
 
 async function loadLivePracticeQuestions(exam: Exam) {
@@ -138,7 +253,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
   }
 
   const db = getDB(env);
-  const candidateLimit = exam === "nclex" ? 700 : 500;
+  const candidateLimit = exam === "nclex" ? NCLEX_READINESS_CANDIDATE_LIMIT : 500;
   const rows = await db
     .select({
       id: questions.id,
@@ -197,7 +312,7 @@ async function loadLivePracticeQuestions(exam: Exam) {
       sql`${questions.distractorRationales} IS NULL`,
       sql`${questions.referencesJson} IS NULL`,
       sql`${questions.visualRationale} IS NULL`,
-      sql`random()`,
+      questions.id,
     )
     .limit(candidateLimit);
 
@@ -208,6 +323,8 @@ async function loadLivePracticeQuestions(exam: Exam) {
 }
 
 async function buildManifestIndex(exam: Exam) {
+  const env = resolveEnv();
+  const strictExposureControl = hasDatabase(env);
   const livePracticeQuestions = await loadLivePracticeQuestions(exam);
   const baseQuestions = livePracticeQuestions.length > 0
     ? livePracticeQuestions
@@ -223,19 +340,32 @@ async function buildManifestIndex(exam: Exam) {
       return true;
     }),
   );
-  const standaloneQuestions = practiceQuestions.filter((question) => !question.caseStudyId);
+  const standaloneQuestions = practiceQuestions.filter((question) => (
+    !question.caseStudyId
+    && (
+      exam !== "nclex"
+      || getQuestionQualityProfile(question).tier <= MAX_NCLEX_READINESS_QUALITY_TIER
+    )
+  ));
   const definitions = getPracticeExamDefinitions({
     [exam]: practiceQuestions.length,
   });
   const blueprint = getBlueprint(exam);
-  const manifestIndex = new Map<string, { definition: PracticeExamDefinition; questions: PracticeQuestion[] }>();
+  const manifestIndex = new Map<string, {
+    definition: PracticeExamDefinition;
+    questions: PracticeQuestion[];
+    assembly: ReturnType<typeof buildAssemblyMetadata>;
+  }>();
   const reservedIds = new Set<string>();
+  const reservedSignatures = new Set<string>();
 
   for (const definition of definitions.filter((item) => item.exam === exam)) {
-    const caseGroup = exam === "nclex"
+    const caseQuestions = exam === "nclex"
       ? qualityFirstCaseGroups(practiceQuestions, definition.seed)
-        .find((group) => group.questions.every((question) => !reservedIds.has(question.id)))
-        ?.questions ?? []
+        .filter((group) => getCaseStudyReleaseIssues(group.questions).length === 0)
+        .filter((group) => group.questions.every((question) => !reservedIds.has(question.id)))
+        .slice(0, NCLEX_CASE_STUDY_SET_COUNT)
+        .flatMap((group) => group.questions)
       : [];
     const selectedQuestions = selectByBlueprint(
       standaloneQuestions,
@@ -243,12 +373,16 @@ async function buildManifestIndex(exam: Exam) {
       definition.length,
       definition.seed,
       reservedIds,
-      caseGroup,
+      reservedSignatures,
+      caseQuestions,
+      !strictExposureControl,
     );
     selectedQuestions.forEach((question) => reservedIds.add(question.id));
+    selectedQuestions.forEach((question) => reservedSignatures.add(questionSignature(question)));
     manifestIndex.set(definition.id, {
       definition,
       questions: selectedQuestions,
+      assembly: buildAssemblyMetadata(definition, selectedQuestions, strictExposureControl),
     });
   }
 
@@ -257,7 +391,7 @@ async function buildManifestIndex(exam: Exam) {
 
 type ManifestIndex = Awaited<ReturnType<typeof buildManifestIndex>>;
 
-const MANIFEST_CACHE_TTL_MS = 10 * 60 * 1000;
+const MANIFEST_CACHE_TTL_MS = 30 * 60 * 1000;
 const manifestCache = new Map<Exam, {
   expiresAt: number;
   value: Promise<ManifestIndex>;
@@ -296,7 +430,11 @@ async function buildManifest(examId: string) {
 }
 
 function personalizeManifest(
-  manifest: { definition: PracticeExamDefinition; questions: PracticeQuestion[] },
+  manifest: {
+    definition: PracticeExamDefinition;
+    questions: PracticeQuestion[];
+    assembly: ReturnType<typeof buildAssemblyMetadata>;
+  },
   seed: string,
 ) {
   return {
@@ -315,6 +453,9 @@ export async function GET(request: Request, context: RouteContext) {
 
   const { user, access } = await getServerAccessContext();
   const previewAccess = access.source === "founder-key" || access.source === "preview-key";
+  const requestedLaunchId = new URL(request.url).searchParams.get("launchId")?.trim();
+  const launchIdResult = launchIdSchema.safeParse(requestedLaunchId);
+  const launchId = launchIdResult.success ? launchIdResult.data : crypto.randomUUID();
 
   if (!user?.id && !previewAccess) {
     return Response.json({
@@ -331,25 +472,44 @@ export async function GET(request: Request, context: RouteContext) {
   if (!isFreeExam && (!access.canUsePracticeExams || !access.planCode || !isLaunchPlanCode(access.planCode))) {
     return Response.json({
       success: false,
-      error: "This readiness exam is part of the paid plans — your first one (NCLEX Full Simulation 1) is free.",
+      error: "This readiness exam is part of the paid plans. Your first one (NCLEX Full Simulation 1) is free.",
       code: "PREMIUM_REQUIRED",
     }, { status: 403 });
   }
 
-  const manifest = await buildManifest(parsed.data);
+  let manifest: Awaited<ReturnType<typeof buildManifest>>;
+  try {
+    manifest = await buildManifest(parsed.data);
+  } catch (error) {
+    console.error("Readiness form assembly failed", {
+      examId: parsed.data,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return Response.json({
+      success: false,
+      error: "This readiness form is temporarily unavailable while its unique-question pool is being validated.",
+      code: "READINESS_FORM_ASSEMBLY_FAILED",
+    }, { status: 503 });
+  }
   if (!manifest) {
     return Response.json({ success: false, error: "Practice exam unavailable" }, { status: 404 });
   }
 
   const personalizedManifest = personalizeManifest(
     manifest,
-    `${parsed.data}:${user?.id ?? request.headers.get("cf-ray") ?? crypto.randomUUID()}`,
+    `${parsed.data}:${user?.id ?? request.headers.get("cf-ray") ?? "preview"}:${launchId}`,
   );
 
   if (previewAccess && !user?.id) {
     return Response.json({
       success: true,
       data: personalizedManifest,
+    }, {
+      headers: {
+        "Cache-Control": "no-store, max-age=0",
+        "X-Clarity-Assembly-Version": personalizedManifest.assembly.assemblyVersion,
+        "X-Clarity-Content-Fingerprint": personalizedManifest.assembly.contentFingerprint,
+      },
     });
   }
 
@@ -396,8 +556,43 @@ export async function GET(request: Request, context: RouteContext) {
     });
   }
 
+  let attemptId: string;
+  try {
+    attemptId = await findOrCreateReadinessAttempt(db, {
+      userId: hostedUser.id,
+      launchId,
+      manifest: {
+        examId: parsed.data,
+        assemblyVersion: personalizedManifest.assembly.assemblyVersion,
+        contentFingerprint: personalizedManifest.assembly.contentFingerprint,
+        questions: personalizedManifest.questions,
+      },
+    });
+  } catch (error) {
+    console.error("Readiness attempt persistence failed", {
+      examId: parsed.data,
+      userId: hostedUser.id,
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return Response.json({
+      success: false,
+      error: "This readiness exam could not start with durable progress tracking. Please retry.",
+      code: "READINESS_ATTEMPT_PERSISTENCE_FAILED",
+    }, { status: 503 });
+  }
+
   return Response.json({
     success: true,
-    data: personalizedManifest,
+    data: {
+      ...personalizedManifest,
+      questions: personalizedManifest.questions.map(concealReadinessAnswer),
+      attemptId,
+    },
+  }, {
+    headers: {
+      "Cache-Control": "no-store, max-age=0",
+      "X-Clarity-Assembly-Version": personalizedManifest.assembly.assemblyVersion,
+      "X-Clarity-Content-Fingerprint": personalizedManifest.assembly.contentFingerprint,
+    },
   });
 }

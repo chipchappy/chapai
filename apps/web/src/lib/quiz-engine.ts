@@ -9,6 +9,7 @@ import {
   getQuestionQualityProfile,
   qualityFirstDiverseOrder,
 } from "./question-quality";
+import { parseQuestionQualityMetadata } from "./question-provenance";
 import { getQuestionIntegrityIssues } from "./question-renderability";
 import { seededShuffle } from "./seeded-random";
 import { log } from "./logger";
@@ -259,6 +260,7 @@ export function mapQuestionRowToQuizQuestion(row: QuestionRow): QuizQuestion {
     blueprintPct: row.blueprintPct ?? undefined,
     conceptNotes,
     provenance: row.provenance ?? undefined,
+    qualityMetadata: parseQuestionQualityMetadata(row.provenance),
     references: storedReferences,
     reviewStatus: (row.reviewStatus as QuizQuestion["reviewStatus"]) ?? undefined,
     revision: row.revision ?? undefined,
