@@ -15,6 +15,7 @@ import {
   isClinicalEntryDuplicate,
 } from "../../apps/web/src/lib/clinical-chart-sections";
 import { getRichDeck } from "../../apps/web/src/lib/practice-data";
+import { getQuestionIntegrityIssues } from "../../apps/web/src/lib/question-renderability";
 import {
   getQuestionQualityProfile,
   qualityFirstDiverseOrder,
@@ -208,23 +209,57 @@ describe("complete unfolding case-study routing", () => {
     }
   });
 
-  it("keeps the verified VTE fallback as one genuinely unfolding six-item case", () => {
+  it("keeps three complete, distinct, source-grounded six-item cases", () => {
     const deck = getRichDeck("case-study").filter((question) => question.exam === "nclex");
     const groups = getCompleteCaseStudyGroups(deck);
+    const vte = groups.find((group) => group.id === "nclex-vte-pe-ngn");
+    const sepsis = groups.find((group) => group.id === "codex-nclex-sepsis-urinary-ngn");
+    const postpartum = groups.find((group) => group.id === "codex-nclex-postpartum-hemorrhage-ngn");
 
-    assert.equal(deck.length, 6);
-    assert.equal(groups.length, 1);
-    assert.match(deck[0].chartReview?.nursingNotes?.join(" ") ?? "", /speaking in short phrases/i);
-    assert.doesNotMatch(deck[0].chartReview?.nursingNotes?.join(" ") ?? "", /pulmonary emboli/i);
-    assert.match(deck[2].chartReview?.nursingNotes?.join(" ") ?? "", /pulmonary emboli/i);
-    assert.match(deck[4].chartReview?.nursingNotes?.join(" ") ?? "", /left arm weakness/i);
-    assert.equal(deck[2].kind, "ordering");
-    assert.match(deck[2].nclexInstruction ?? "", /most immediate threat/i);
-    assert.deepEqual(deck[2].correctAnswer, ["c", "a", "d"]);
+    assert.equal(deck.length, 18);
+    assert.equal(groups.length, 3);
+    assert.ok(vte);
+    assert.ok(sepsis);
+    assert.ok(postpartum);
+    assert.match(vte.questions[0].chartReview?.nursingNotes?.join(" ") ?? "", /speaking in short phrases/i);
+    assert.doesNotMatch(vte.questions[0].chartReview?.nursingNotes?.join(" ") ?? "", /pulmonary emboli/i);
+    assert.match(vte.questions[2].chartReview?.nursingNotes?.join(" ") ?? "", /pulmonary emboli/i);
+    assert.match(vte.questions[4].chartReview?.nursingNotes?.join(" ") ?? "", /left arm weakness/i);
+    assert.equal(vte.questions[2].kind, "ordering");
+    assert.match(vte.questions[2].nclexInstruction ?? "", /most immediate threat/i);
+    assert.deepEqual(vte.questions[2].correctAnswer, ["c", "a", "d"]);
+    assert.doesNotMatch(sepsis.questions[0].chartReview?.labs?.map((lab) => lab.label).join(" ") ?? "", /lactate/i);
+    assert.match(sepsis.questions[1].chartReview?.labs?.map((lab) => lab.label).join(" ") ?? "", /lactate/i);
+    assert.doesNotMatch(postpartum.questions[4].chartReview?.nursingNotes?.join(" ") ?? "", /cervical laceration identified/i);
+    assert.match(postpartum.questions[5].chartReview?.nursingNotes?.join(" ") ?? "", /cervical laceration/i);
     assert.ok(
       deck.every((question) => (question.chartReview?.hpi?.length ?? 0) >= 3),
       "each case item retains a detailed HPI",
     );
+    assert.ok(
+      deck.every((question) => {
+        const hpi = new Set((question.chartReview?.hpi ?? []).map((line) => line.trim().toLowerCase()));
+        return (question.chartReview?.nursingNotes ?? []).every((line) => !hpi.has(line.trim().toLowerCase()));
+      }),
+      "HPI and nursing notes stay distinct",
+    );
+    assert.ok(deck.every((question) => getQuestionIntegrityIssues(question).length === 0));
+    for (const group of [vte, sepsis, postpartum]) {
+      assert.deepEqual(
+        group.questions.map((question) => question.cjmmStep),
+        [
+          "recognize-cues",
+          "analyze-cues",
+          "prioritize-hypotheses",
+          "generate-solutions",
+          "take-actions",
+          "evaluate-outcomes",
+        ],
+      );
+      assert.ok(group.questions.every((question) => question.qualityMetadata?.evidenceStatus === "source-verified"));
+      assert.ok(group.questions.every((question) => (question.structuredRationale?.citations.length ?? 0) >= 3));
+      assert.ok(group.questions.every((question) => getQuestionQualityProfile(question).tier <= 1));
+    }
   });
 });
 

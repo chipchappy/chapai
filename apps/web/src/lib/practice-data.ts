@@ -8,6 +8,7 @@ import type {
   PracticeMode,
   PracticeQuestion,
 } from "./practice-types";
+import { verifiedAdditionalNclexCaseStudyDeck } from "./verified-case-studies";
 
 export type PracticeCounts = {
   ccrn: number;
@@ -581,11 +582,130 @@ function buildNclexVteChartReview(caseItemNumber: number): PracticeChartReviewMe
   };
 }
 
+function buildNclexVteVisualRationale(caseItemNumber: number): PracticeQuestion["visualRationale"] {
+  const visuals: NonNullable<PracticeQuestion["visualRationale"]>[] = [
+    {
+      type: "pathway",
+      title: "Acute VTE cue cluster",
+      nodes: [
+        { label: "Leg source", value: "Unilateral warmth, pain, swelling" },
+        { label: "Pulmonary change", value: "Sudden dyspnea and pleuritic pain" },
+        { label: "Gas exchange", value: "Tachypnea and SpO2 89%" },
+        { label: "Priority", value: "Escalate current instability" },
+      ],
+      conclusion: "Current respiratory and unilateral leg changes outrank background risk factors.",
+    },
+    {
+      type: "compare",
+      title: "Virchow triad mechanism map",
+      nodes: [
+        { label: "Stasis", value: "Prolonged sitting and varicose veins" },
+        { label: "Endothelial injury", value: "Recent leg trauma" },
+        { label: "Hypercoagulability", value: "Hormone exposure" },
+      ],
+      conclusion: "Multiple mechanisms can combine in one client to increase clot risk.",
+    },
+    {
+      type: "timeline",
+      title: "Threats change as treatment begins",
+      items: [
+        { label: "Present threat", value: "Respiratory failure from pulmonary embolism", highlight: true },
+        { label: "Immediate treatment risk", value: "Bleeding after anticoagulation starts" },
+        { label: "Ongoing exposure risk", value: "Heparin-induced thrombocytopenia surveillance" },
+      ],
+      conclusion: "Rank current instability before complications that require ongoing exposure.",
+    },
+    {
+      type: "flow",
+      title: "Safe heparin initiation",
+      nodes: [
+        { label: "Verify", value: "Baseline coagulation and platelet data" },
+        { label: "Administer", value: "Protocol, smart pump, independent check" },
+        { label: "Protect", value: "Bleeding precautions and teaching" },
+        { label: "Continue", value: "Oxygenation and respiratory reassessment" },
+      ],
+      conclusion: "Anticoagulation safety and pulmonary monitoring occur together.",
+    },
+    {
+      type: "signal",
+      title: "Neurologic emergency during anticoagulation",
+      nodes: [
+        { label: "Signal", value: "Sudden severe headache" },
+        { label: "Deficit", value: "New unilateral weakness" },
+        { label: "Concern", value: "Intracranial bleeding or acute neurologic event" },
+        { label: "Action", value: "Emergency response and immediate notification" },
+      ],
+      conclusion: "A new focal deficit outranks an expected anticoagulation result.",
+    },
+    {
+      type: "pathway",
+      title: "Discharge safety loop",
+      nodes: [
+        { label: "Adhere", value: "Take anticoagulant for the prescribed duration" },
+        { label: "Prevent", value: "Follow mobility and recurrence-reduction plan" },
+        { label: "Recognize", value: "Chest pain, dyspnea, bleeding, black stools" },
+        { label: "Act", value: "Seek prompt care for warning signs" },
+      ],
+      conclusion: "Effective teach-back connects adherence, prevention, and escalation.",
+    },
+  ];
+  return visuals[Math.max(1, Math.min(6, caseItemNumber)) - 1];
+}
+
+const nclexVteMechanisms = [
+  "A thrombus forming in a deep leg vein can embolize to the pulmonary circulation. Obstructed pulmonary blood flow creates ventilation-perfusion mismatch, hypoxemia, tachypnea, pleuritic pain, and strain on the right side of the heart.",
+  "Virchow's triad explains venous thrombosis through blood-flow stasis, endothelial injury, and hypercoagulability. More than one mechanism can be active in the same client and compound the probability of clot formation.",
+  "Pulmonary vascular obstruction impairs oxygenation immediately. Anticoagulation then introduces bleeding risk, while immune-mediated heparin-induced thrombocytopenia requires continued exposure and platelet surveillance rather than outranking the present respiratory threat.",
+  "Unfractionated heparin increases antithrombin activity and reduces further clot propagation. Because it is a high-alert anticoagulant, dosing verification, laboratory monitoring, bleeding precautions, and rapid recognition of neurologic bleeding cues are essential.",
+  "Therapeutic anticoagulation increases the consequence of active bleeding. A sudden severe headache with a new focal neurologic deficit can signal intracranial hemorrhage or another acute neurologic event and requires emergency evaluation.",
+  "Anticoagulation lowers recurrence risk only when taken as prescribed. Mobility planning reduces venous stasis, while rapid recognition of recurrent pulmonary symptoms and bleeding warnings supports safe recovery.",
+] as const;
+
+const nclexVteWhyCorrect = [
+  "The selected cues are the new respiratory, oxygenation, lung, and unilateral leg findings that show active physiologic change. The other findings explain baseline probability but do not represent the most immediate deterioration.",
+  "Each risk is classified by its most direct pathophysiologic mechanism: impaired venous return produces stasis, trauma damages endothelium, and estrogen exposure promotes a hypercoagulable state.",
+  "The order starts with the client's current oxygenation threat, then the immediate complication of anticoagulation, followed by a serious complication associated with ongoing heparin exposure.",
+  "The selected actions verify safe dosing, use high-alert medication safeguards, teach urgent bleeding symptoms, and continue support for the pulmonary problem that anticoagulation does not reverse immediately.",
+  "The new headache and unilateral weakness are abrupt neurologic changes during anticoagulation and therefore require immediate emergency action rather than routine trending.",
+  "The selected statement correctly combines recurrent pulmonary embolism warning signs with anticoagulation-related bleeding warnings and a clear need to seek care.",
+] as const;
+
 function makeNclexVteCaseQuestion(input: Omit<PracticeQuestion, "exam" | "mode" | "source" | "caseStudyId" | "caseStudyTitle" | "caseItemTotal" | "chartReview" | "category" | "difficulty"> & {
   id: string;
   difficulty?: PracticeQuestion["difficulty"];
   category?: string;
 }): PracticeQuestion {
+  const step = Math.max(1, Math.min(6, input.caseItemNumber ?? 1));
+  const references = [
+    {
+      title: "2026 NCLEX-RN Test Plan",
+      citation: "NCSBN, 2026",
+      href: "https://www.ncsbn.org/public-files/2026_RN_Test-Plan_English-F.pdf",
+    },
+    {
+      title: "Pulmonary Embolism",
+      citation: "National Heart, Lung, and Blood Institute",
+      href: "https://www.nhlbi.nih.gov/health/pulmonary-embolism",
+    },
+    {
+      title: "Risk Factors for Blood Clots",
+      citation: "Centers for Disease Control and Prevention",
+      href: "https://www.cdc.gov/blood-clots/risk-factors/index.html",
+    },
+    {
+      title: "Heparin Injection",
+      citation: "MedlinePlus Drug Information",
+      href: "https://medlineplus.gov/druginfo/meds/a682826.html",
+    },
+  ];
+  const distractorRationales = input.distractorRationales ?? (
+    step === 2
+      ? {
+        "mechanism-classification": "Do not place every risk factor into one category. Classify each cue by how it changes flow, the vessel wall, or coagulation tendency.",
+      }
+      : {}
+  );
+
   return {
     exam: "nclex",
     mode: "case-study",
@@ -593,33 +713,32 @@ function makeNclexVteCaseQuestion(input: Omit<PracticeQuestion, "exam" | "mode" 
     caseStudyId: "nclex-vte-pe-ngn",
     caseStudyTitle: "Adult Health: Venous Thromboembolism and Pulmonary Embolism",
     caseItemTotal: 6,
-    chartReview: buildNclexVteChartReview(input.caseItemNumber ?? 1),
+    chartReview: buildNclexVteChartReview(step),
     category: input.category ?? "Physiological Adaptation",
     difficulty: input.difficulty ?? 4,
     nclexClientNeed: input.nclexClientNeed ?? "physiological_adaptation",
     tutorReady: true,
-    references: [
-      {
-        title: "2026 NCLEX-RN Test Plan",
-        citation: "NCSBN, 2026",
-        href: "https://www.nclex.com/test-plans.page",
-      },
-      {
-        title: "Pulmonary Embolism",
-        citation: "National Heart, Lung, and Blood Institute",
-        href: "https://www.nhlbi.nih.gov/health/pulmonary-embolism",
-      },
-      {
-        title: "Risk Factors for Blood Clots",
-        citation: "Centers for Disease Control and Prevention",
-        href: "https://www.cdc.gov/blood-clots/risk-factors/index.html",
-      },
-      {
-        title: "Heparin Injection",
-        citation: "MedlinePlus Drug Information",
-        href: "https://medlineplus.gov/druginfo/meds/a682826.html",
-      },
-    ],
+    references,
+    distractorRationales,
+    structuredRationale: input.structuredRationale ?? {
+      overview: input.rationale,
+      mechanism: nclexVteMechanisms[step - 1],
+      whyCorrect: nclexVteWhyCorrect[step - 1],
+      whyWrong: distractorRationales,
+      citations: references.map((reference) => ({
+        source: reference.citation,
+        href: reference.href,
+        note: reference.title,
+      })),
+    },
+    visualRationale: input.visualRationale ?? buildNclexVteVisualRationale(step),
+    qualityMetadata: {
+      gateVersion: "nclex-publication-v1",
+      contentVersion: 2,
+      evidenceStatus: "source-verified",
+      evidenceReviewedAt: "2026-07-23",
+      sourceIds: ["ncsbn-2026-rn-test-plan", "nhlbi-pulmonary-embolism", "cdc-blood-clot-risk", "medlineplus-heparin"],
+    },
     ...input,
   };
 }
@@ -885,11 +1004,15 @@ export function getRichDeck(mode: "chart" | "case-study" | "ngn") {
   }));
 
   if (mode === "case-study") {
-    return [...nclexVteCaseStudyDeck, ...demoDeck.filter((question) => question.exam !== "nclex")];
+    return [
+      ...nclexVteCaseStudyDeck,
+      ...verifiedAdditionalNclexCaseStudyDeck,
+      ...demoDeck.filter((question) => question.exam !== "nclex"),
+    ];
   }
 
   if (mode === "ngn") {
-    return [...nclexVteCaseStudyDeck, ...demoDeck];
+    return [...nclexVteCaseStudyDeck, ...verifiedAdditionalNclexCaseStudyDeck, ...demoDeck];
   }
 
   return demoDeck;

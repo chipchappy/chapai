@@ -90,6 +90,14 @@ export interface StructuredRationale {
   citations: StructuredRationaleCitation[];
 }
 
+export interface ContentQualityMetadata {
+  gateVersion: string;
+  contentVersion: number;
+  evidenceStatus: "unreviewed" | "source-verified" | "clinician-reviewed" | "needs-revision";
+  evidenceReviewedAt?: string;
+  sourceIds?: string[];
+}
+
 export interface QuizQuestion {
   id: string;
   exam: Exam;
@@ -162,9 +170,10 @@ export interface QuizQuestion {
     href?: string;
   }>;
   provenance?: string;
-  reviewStatus?: "draft" | "review" | "approved" | "flagged" | "curated-live" | "final-curated-live";
+  reviewStatus?: "draft" | "needs_review" | "review" | "approved" | "flagged" | "curated-live" | "final-curated-live" | "rejected";
   revision?: number;
   publishState?: "draft" | "published" | "unpublished";
+  qualityMetadata?: ContentQualityMetadata;
   visualRationale?: {
     type: "trend" | "flow" | "pathway" | "signal" | "overview";
     accent?: string;

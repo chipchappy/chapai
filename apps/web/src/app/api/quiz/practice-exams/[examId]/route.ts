@@ -34,6 +34,8 @@ const examIdSchema = z.enum([
   "ccrn-sim-2",
 ]);
 
+const NCLEX_CASE_STUDY_SET_COUNT = 3;
+
 function normalizeStem(stem: string) {
   return stem
     .toLowerCase()
@@ -232,10 +234,11 @@ async function buildManifestIndex(exam: Exam) {
   const reservedIds = new Set<string>();
 
   for (const definition of definitions.filter((item) => item.exam === exam)) {
-    const caseGroup = exam === "nclex"
+    const caseQuestions = exam === "nclex"
       ? qualityFirstCaseGroups(practiceQuestions, definition.seed)
-        .find((group) => group.questions.every((question) => !reservedIds.has(question.id)))
-        ?.questions ?? []
+        .filter((group) => group.questions.every((question) => !reservedIds.has(question.id)))
+        .slice(0, NCLEX_CASE_STUDY_SET_COUNT)
+        .flatMap((group) => group.questions)
       : [];
     const selectedQuestions = selectByBlueprint(
       standaloneQuestions,
@@ -243,7 +246,7 @@ async function buildManifestIndex(exam: Exam) {
       definition.length,
       definition.seed,
       reservedIds,
-      caseGroup,
+      caseQuestions,
     );
     selectedQuestions.forEach((question) => reservedIds.add(question.id));
     manifestIndex.set(definition.id, {

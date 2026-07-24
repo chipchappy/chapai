@@ -7,6 +7,10 @@ export type QualityQuestionLike = {
   type?: string | null;
   kind?: string | null;
   reviewStatus?: string | null;
+  qualityMetadata?: {
+    evidenceStatus?: string | null;
+    contentVersion?: number | null;
+  } | null;
   rationale?: string | null;
   deepRationale?: string | null;
   structuredRationale?: {
@@ -119,6 +123,13 @@ export function getQuestionQualityProfile(question: QualityQuestionLike): Questi
   if (question.reviewStatus === "final-curated-live") score += 25;
   else if (question.reviewStatus === "curated-live") score += 14;
   else if (question.reviewStatus === "approved") score += 6;
+
+  if (question.qualityMetadata?.evidenceStatus === "clinician-reviewed") score += 12;
+  else if (question.qualityMetadata?.evidenceStatus === "source-verified") score += 6;
+  else if (question.qualityMetadata?.evidenceStatus === "needs-revision") {
+    risks.push("quality-review-required");
+    score -= 25;
+  }
 
   if (rationaleWords >= 140) score += 20;
   else if (rationaleWords >= 90) score += 16;
