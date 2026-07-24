@@ -47,6 +47,10 @@ type PhotoConfig = {
   monitor: Anchor;
   /** Width of the live monitor overlay as % of room width. */
   monitorWidth?: number;
+  /** Exact bounds of the room's blank wall screen, as % of the image. The live
+   *  monitor is inset into this rect so it reads as the room's own display
+   *  rather than a floating panel. */
+  monitorRect?: { x: number; y: number; w: number; h: number };
   devices?: DeviceHotspot[];
 };
 
@@ -76,8 +80,8 @@ const ADULT_MALE_ROOM: PhotoConfig = {
   hand: { x: 49, y: 55 },
   legs: { x: 45, y: 61 },
   feet: { x: 34, y: 74 },
-  monitor: { x: 45, y: 29 },
-  monitorWidth: 20,
+  monitor: { x: 48.4, y: 13.6 },
+  monitorRect: { x: 42.9, y: 6.8, w: 11.2, h: 13.6 },
   devices: [
     { id: "computer", label: "Chart (EHR)", anchor: { x: 9, y: 22 }, tab: "chart" },
     { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "mar" },
@@ -133,6 +137,7 @@ function PatientPhotoScene({
   const [focus, setFocus] = useState<FocusId | null>(null);
   const [imageReady, setImageReady] = useState(true);
   const [showTargets, setShowTargets] = useState(false);
+  const [monitorOpen, setMonitorOpen] = useState(false);
   const skin = visual.skin;
   const alarming = state.vitals.spo2 < 90 || state.vitals.map < 65 || state.vitals.heartRate > 125 || state.vitals.respiratoryRate < 8;
 
@@ -198,10 +203,28 @@ function PatientPhotoScene({
           {skin.edema > 0 ? <span className={styles.ovEdema} style={{ ...pct(config.feet), opacity: 0.1 + skin.edema * 0.08 }} /> : null}
         </div>
 
-        {/* ── Live monitor mounted over the room's wall display ── */}
-        <div className={styles.photoMonitor} style={{ ...pct(config.monitor), width: `${config.monitorWidth ?? 30}%` }}>
-          <BedsideMonitor state={state} />
-        </div>
+        {/* ── Live monitor: inset into the room's own wall screen ── */}
+        {config.monitorRect ? (
+          <button
+            type="button"
+            className={styles.wallScreen}
+            style={{ left: `${config.monitorRect.x}%`, top: `${config.monitorRect.y}%`, width: `${config.monitorRect.w}%`, height: `${config.monitorRect.h}%` }}
+            onClick={() => setMonitorOpen(true)}
+            aria-label="Expand bedside monitor"
+          >
+            <BedsideMonitor state={state} compact />
+          </button>
+        ) : (
+          <div className={styles.photoMonitor} style={{ ...pct(config.monitor), width: `${config.monitorWidth ?? 30}%` }}>
+            <BedsideMonitor state={state} />
+          </div>
+        )}
+        {monitorOpen ? (
+          <div className={styles.monitorExpanded} role="dialog" aria-label="Bedside monitor">
+            <button type="button" className={styles.monitorClose} onClick={() => setMonitorOpen(false)} aria-label="Close monitor"><X size={16} aria-hidden="true" /></button>
+            <BedsideMonitor state={state} />
+          </div>
+        ) : null}
 
         {/* ── Patient-region hotspots (subtle: visible on hover/focus/targets) ── */}
         <div className={styles.hotspotLayer}>

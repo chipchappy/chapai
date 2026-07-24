@@ -2444,3 +2444,17 @@
   .ehrRail { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid #e0d5bf; }
   .ehrRail button { width: auto; white-space: nowrap; }
 }
+
+/* ── compact variant: fits the room's own wall screen ── */
+.monitorCompact { height: 100%; border-radius: 2px; box-shadow: none; }
+.monitorCompact header { padding: 2px 5px; font-size: 0.42rem; }
+.monitorCompact header span { font-size: 0.42rem; letter-spacing: 0.02em; }
+.monitorCompact .monitorAudio { display: none; }
+.monitorCompact .waveform { min-height: 0; flex: 1; }
+.monitorCompact .monitorValues { margin: 0 3px 3px; gap: 1px; }
+.monitorCompact .monitorValues > div { padding: 2px 3px; }
+.monitorCompact .monitorValues span, .monitorCompact .monitorValues small { font-size: 0.36rem; }
+.monitorCompact .monitorValues strong { font-size: 0.6rem; }
+.monitorCompact .monitorValues > div:nth-child(2) strong { font-size: 0.5rem; }
+.monitorCompact footer { padding: 1px 5px; font-size: 0.38rem; }
+.monitorCompact .trendArrow { display: none; }

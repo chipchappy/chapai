@@ -1,0 +1,137 @@
+/* Rolling clinical feed — warm sand shell, colour-coded entries. */
+.feed {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-height: 100%;
+  background: #f7f1e4;
+  border-left: 1px solid #e2d6bd;
+}
+
+.feed > header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid #e2d6bd;
+  background: #f0e6d2;
+}
+
+.feed > header span {
+  color: #6b5c42;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.feed > header em {
+  color: #9a8a6d;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+.feedList {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 8px 10px 10px;
+  list-style: none;
+  display: grid;
+  gap: 7px;
+  align-content: start;
+}
+
+.feedList li {
+  border-left: 3px solid var(--feed-accent, #b9a88a);
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: var(--feed-bg, #fdfaf3);
+  animation: feedIn 260ms ease;
+}
+
+@keyframes feedIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedList li { animation: none; }
+}
+
+/* ── colour semantics ── */
+.feedList li[data-kind="optimal"]     { --feed-accent: #3f7d5c; --feed-bg: #eef5ee; --feed-ink: #2c5c42; }
+.feedList li[data-kind="acceptable"]  { --feed-accent: #c9992e; --feed-bg: #faf3e2; --feed-ink: #8a6a20; }
+.feedList li[data-kind="unsafe"]      { --feed-accent: #b0453b; --feed-bg: #fbeeeb; --feed-ink: #8f382f; }
+.feedList li[data-kind="vitals"]      { --feed-accent: #3a7192; --feed-bg: #eef4f8; --feed-ink: #2f5c78; }
+.feedList li[data-kind="progression"] { --feed-accent: #b08430; --feed-bg: #faf2e4; --feed-ink: #85601f; }
+.feedList li[data-kind="team"]        { --feed-accent: #7a5c96; --feed-bg: #f4eff8; --feed-ink: #5f477a; }
+
+.feedMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.feedMeta time {
+  color: #9a8a6d;
+  font-size: 0.66rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.feedTag {
+  border-radius: 999px;
+  padding: 1px 8px;
+  background: var(--feed-accent);
+  color: #fff;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.feedList strong {
+  display: block;
+  color: var(--feed-ink, #3f3527);
+  font-size: 0.79rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.feedList p {
+  margin: 3px 0 0;
+  color: #6b5c42;
+  font-size: 0.73rem;
+  line-height: 1.45;
+}
+
+.feedLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 9px 12px;
+  border-top: 1px solid #e2d6bd;
+  background: #f0e6d2;
+}
+
+.feedLegend span {
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.feedLegend span[data-kind="optimal"]     { background: #3f7d5c; }
+.feedLegend span[data-kind="acceptable"]  { background: #c9992e; }
+.feedLegend span[data-kind="unsafe"]      { background: #b0453b; }
+.feedLegend span[data-kind="vitals"]      { background: #3a7192; }
+.feedLegend span[data-kind="progression"] { background: #b08430; }
+.feedLegend span[data-kind="team"]        { background: #7a5c96; }

@@ -29,6 +29,7 @@ import {
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import ClinicalImpactPanel from "@/components/clinical-simulation/ClinicalImpactPanel";
 import ChartEhr from "@/components/clinical-simulation/ChartEhr";
+import SimEventFeed from "@/components/clinical-simulation/SimEventFeed";
 import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
 import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simulation/scene/PatientPhotoScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
@@ -463,12 +464,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
             <BedsideMonitor state={state} />
           </>
         )}
-        <aside className={styles.responseFeed} aria-live="polite">
-          <header><Activity size={16} aria-hidden="true" /> Patient response</header>
-          {latestNotices.map((notice) => <div key={notice.id} data-severity={notice.severity}><time>+{notice.virtualMinute}</time><p>{notice.message}</p></div>)}
-          {state.mode === "guided" ? <p className={styles.guidedCue}>Guided cue: verify immediate threats, collect focused data, intervene, then reassess and communicate the trend.</p> : null}
-          <ClinicalImpactPanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
-        </aside>
+        <SimEventFeed state={state} />
       </section>
 
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}
