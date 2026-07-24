@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import ClinicalImpactPanel from "@/components/clinical-simulation/ClinicalImpactPanel";
+import ChartEhr from "@/components/clinical-simulation/ChartEhr";
 import PatientScene, { type ScenePerformanceSample } from "@/components/clinical-simulation/scene/PatientScene";
 import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simulation/scene/PatientPhotoScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
@@ -511,11 +512,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
           return <li key={finding.id} data-stale={age >= 5}><strong>{finding.label}</strong><span>{finding.finding}</span><small>Assessed at +{finding.record?.virtualMinute ?? 0} min{age >= 5 ? " / may no longer reflect the current patient state" : " / current"}</small></li>;
         })}</ul> : <p>Perform a relevant assessment to reveal patient-specific findings.</p>}</aside></div> : null}
 
-        {activeTab === "chart" ? <div className={styles.chartGrid}>
-          <section><h2>History</h2><dl><div><dt>Presenting problem</dt><dd>{scenario.patient.presentingProblem}</dd></div><div><dt>Medical history</dt><dd>{scenario.patient.history.join(", ")}</dd></div><div><dt>Surgical history</dt><dd>{scenario.patient.surgicalHistory.join(", ") || "None documented"}</dd></div><div><dt>Psychiatric history</dt><dd>{scenario.patient.psychiatricHistory.join(", ") || "None documented"}</dd></div><div><dt>Social history</dt><dd>{scenario.patient.socialHistory.join(", ") || "No additional history"}</dd></div></dl></section>
-          <section><h2>Home medications</h2><ul>{scenario.chart.homeMedications.map((item) => <li key={item}>{item}</li>)}</ul><h2>Active medications</h2><ul>{scenario.chart.activeMedications.map((item) => <li key={item}>{item}</li>)}</ul></section>
-          <section><h2>Lines, tubes and drains</h2><ul>{scenario.chart.linesDevices.map((item) => <li key={item}>{item}</li>)}</ul></section>
-        </div> : null}
+        {activeTab === "chart" ? <ChartEhr scenario={scenario} state={state} /> : null}
 
         {activeTab === "orders" ? <div className={styles.orderList}><section><h2>Active orders</h2>{scenario.chart.orders.map((order) => <div key={order}><Check size={15} aria-hidden="true" /><span>{order}</span></div>)}</section><section><h2>PRN orders</h2>{scenario.chart.prnOrders.map((order) => <div key={order}><ChevronRight size={15} aria-hidden="true" /><span>{order}</span></div>)}</section></div> : null}
         {activeTab === "mar" ? <><div className={styles.panelIntro}><h2>Medication administration record</h2><p>Review the scenario order, required assessment, laboratory data, hold parameters, and safety checks before administration.</p></div>{renderActions(actionsByCategory.get("medication"))}</> : null}

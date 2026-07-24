@@ -2383,3 +2383,64 @@
 
 .responseFeed .impactBlock { flex-basis: 100%; }
 .responseFeed .impactPanel > header { padding-top: 4px; }
+
+/* ==== bedside EHR ==== */
+.ehr { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 0; min-height: 420px; border: 1px solid #e0d5bf; border-radius: 12px; overflow: hidden; background: #fff; }
+
+.ehrRail { display: flex; flex-direction: column; gap: 2px; padding: 10px 8px; background: #f6efe0; border-right: 1px solid #e0d5bf; }
+
+.ehrRail button {
+  display: inline-flex; align-items: center; gap: 8px; width: 100%;
+  border: 0; border-radius: 8px; padding: 8px 10px; background: transparent;
+  color: #5d726b; font: inherit; font-size: 0.76rem; font-weight: 700; text-align: left; cursor: pointer;
+}
+.ehrRail button:hover { background: #ece1cb; color: #2f4740; }
+.ehrRail button[data-active="true"] { background: #3c5a52; color: #f5f9f5; }
+
+.ehrCritical { margin-left: auto; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; background: #b0453b; color: #fff; font-size: 0.6rem; font-style: normal; font-weight: 800; }
+
+.ehrPane { padding: 16px 20px 20px; overflow-y: auto; max-height: 620px; }
+.ehrPane h2 { margin: 16px 0 8px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: #7a6a52; }
+.ehrPane h2:first-child { margin-top: 0; }
+
+.ehrList { display: grid; gap: 0; margin: 0; }
+.ehrRow { display: grid; grid-template-columns: minmax(120px, 190px) minmax(0, 1fr); gap: 14px; padding: 7px 0; border-bottom: 1px solid #efe7d8; }
+.ehrRow dt { color: #85958f; font-size: 0.72rem; font-weight: 700; }
+.ehrRow dd { margin: 0; color: #2f4740; font-size: 0.8rem; }
+
+.ehrFlag { color: #b0453b; font-weight: 700; }
+.ehrPlain { margin: 0; padding-left: 18px; display: grid; gap: 5px; color: #2f4740; font-size: 0.8rem; }
+.ehrNarrative { margin: 0 0 12px; color: #3c4f48; font-size: 0.85rem; line-height: 1.6; max-width: 74ch; }
+.ehrSafety { margin: 12px 0 0; padding: 10px 12px; border-left: 3px solid #c9b27a; background: #faf4e8; color: #6a5a3c; font-size: 0.78rem; }
+.ehrPending { margin: 10px 0 0; color: #85958f; font-size: 0.76rem; font-style: italic; }
+
+.ehrTable { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
+.ehrTable th, .ehrTable td { padding: 7px 10px; text-align: left; border-bottom: 1px solid #efe7d8; }
+.ehrTable thead th { color: #85958f; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+.ehrTable tbody th { font-weight: 700; color: #2f4740; }
+.ehrTable td span { border-radius: 999px; padding: 1px 8px; font-size: 0.66rem; font-weight: 800; text-transform: uppercase; background: #e8efe6; color: #5d726b; }
+.ehrTable td span[data-flag="high"], .ehrTable td span[data-flag="low"] { background: #f5ead6; color: #8a6a2e; }
+.ehrTable td span[data-flag="critical"] { background: #f6e2de; color: #a2443a; }
+.ehrTable tr[data-flag="critical"] { background: #fdf6f4; }
+
+.ehrTrends { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.ehrTrend { border: 1px solid #e6dcc6; border-radius: 10px; padding: 11px 13px; background: #faf7f0; color: #3f7d5c; }
+.ehrTrend[data-alert="true"] { border-color: #ddb9b1; background: #fdf6f4; color: #b0453b; }
+.ehrTrend > div { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+.ehrTrend span { color: #85958f; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.ehrTrend strong { color: #2f4740; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.ehrTrend strong small { font-size: 0.66rem; color: #85958f; font-weight: 600; }
+.ehrTrend svg { display: block; width: 100%; height: 46px; }
+.ehrTrend em { color: #85958f; font-size: 0.68rem; font-style: normal; }
+
+.ehrNotes { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.ehrNotes li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; padding-bottom: 10px; border-bottom: 1px solid #efe7d8; }
+.ehrNotes time { color: #85958f; font-size: 0.72rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ehrNotes strong { display: block; color: #2f4740; font-size: 0.8rem; }
+.ehrNotes p { margin: 3px 0 0; color: #5d726b; font-size: 0.76rem; line-height: 1.5; }
+
+@media (max-width: 720px) {
+  .ehr { grid-template-columns: minmax(0, 1fr); }
+  .ehrRail { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid #e0d5bf; }
+  .ehrRail button { width: auto; white-space: nowrap; }
+}
