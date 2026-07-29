@@ -2533,3 +2533,35 @@
 @media (max-width: 720px) {
   .actionBar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ==== debrief: best-practice route analysis ==== */
+.routeSection { padding: 22px; border-bottom: 1px solid #e6dac2; background: #fdf8ee; }
+
+.routeScore { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.routeScore > div { border: 1px solid #e6dac2; border-radius: 11px; padding: 11px 13px; background: #fff; display: grid; gap: 1px; }
+.routeScore span { color: #9a8a6d; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.routeScore strong { color: #3f7d5c; font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.routeScore small { color: #9a8a6d; font-size: 0.66rem; }
+.routeScore[data-band="developing"] strong { color: #b08430; }
+.routeScore[data-band="unsafe"] strong { color: #b0453b; }
+
+.routeHeadline { margin: 0 0 14px; color: #3f3527; font-size: 0.9rem; font-weight: 600; max-width: 76ch; }
+
+.routeSteps { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.routeSteps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 11px; border-left: 3px solid #b9a88a; border-radius: 9px; padding: 9px 12px; background: #fff; }
+.routeSteps li[data-status="optimal"] { border-left-color: #3f7d5c; background: #f4f9f4; }
+.routeSteps li[data-status="late"] { border-left-color: #c9992e; background: #fdf7e9; }
+.routeSteps li[data-status="out-of-order"] { border-left-color: #b08430; background: #fdf7e9; }
+.routeSteps li[data-status="missed"] { border-left-color: #b0453b; background: #fdf2f0; }
+
+.routeStepNum { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: #f0e6d2; color: #7a6a52; font-size: 0.74rem; font-weight: 800; }
+.routeSteps strong { color: #3f3527; font-size: 0.84rem; }
+.routeSteps em { margin-left: 8px; border-radius: 999px; padding: 1px 8px; background: #f0e6d2; color: #7a6a52; font-size: 0.6rem; font-style: normal; font-weight: 800; text-transform: uppercase; }
+.routeSteps li[data-status="optimal"] em { background: #dcedde; color: #2c5c42; }
+.routeSteps li[data-status="missed"] em { background: #f6ded9; color: #8f382f; }
+.routeSteps p { margin: 4px 0 0; color: #5d5344; font-size: 0.76rem; }
+.routeSteps small { display: block; margin-top: 3px; color: #9a8a6d; font-size: 0.7rem; font-style: italic; }
+
+.routeFocus { margin-top: 14px; border-left: 3px solid #3c5a52; border-radius: 9px; padding: 11px 14px; background: #eef3ee; }
+.routeFocus strong { display: block; color: #2f4740; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.routeFocus p { margin: 4px 0 0; color: #3c4f48; font-size: 0.82rem; }

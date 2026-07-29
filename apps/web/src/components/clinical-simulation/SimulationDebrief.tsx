@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AlertTriangle, ArrowLeft, CheckCircle2, Clock3, Download, ExternalLink, RotateCcw, TrendingUp } from "lucide-react";
 import type { SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
 import type { ClinicalScenario, CompetencyDomain } from "@/lib/clinical-simulation/schema";
+import type { BestPracticeGrade } from "@/lib/clinical-simulation/best-practice";
 import styles from "./clinical-simulation.module.css";
 
 const domainLabels: Record<CompetencyDomain, string> = {
@@ -65,7 +66,37 @@ function VitalsTrajectoryChart({ debrief }: { debrief: Debrief }) {
   );
 }
 
-export default function SimulationDebrief({ scenario, debrief, attemptId, traceExportEnabled = false }: { scenario: ClinicalScenario; debrief: Debrief; attemptId: string; traceExportEnabled?: boolean }) {
+function BestPracticeRoute({ grade }: { grade: BestPracticeGrade }) {
+  const statusLabel: Record<string, string> = { optimal: "On time", late: "Late", "out-of-order": "Out of order", missed: "Missed" };
+  return (
+    <section className={styles.routeSection} aria-labelledby="route-heading">
+      <div className={styles.sectionHeading}><div><span className={styles.eyebrow}>Best-practice route</span><h2 id="route-heading">How your route compared with expert practice</h2></div></div>
+      <div className={styles.routeScore} data-band={grade.band}>
+        <div><span>Route score</span><strong>{grade.score}</strong><small>/100 · {grade.band}</small></div>
+        <div><span>Coverage</span><strong>{grade.coverage}%</strong><small>essential care performed</small></div>
+        <div><span>Timeliness</span><strong>{grade.timeliness}%</strong><small>within the window</small></div>
+        <div><span>Sequence</span><strong>{grade.ordering}%</strong><small>in expert order</small></div>
+      </div>
+      <p className={styles.routeHeadline}>{grade.headline}</p>
+      <ol className={styles.routeSteps}>
+        {grade.steps.map((step) => (
+          <li key={step.actionId} data-status={step.status}>
+            <span className={styles.routeStepNum}>{step.idealPosition}</span>
+            <div>
+              <strong>{step.label}</strong>
+              <em>{statusLabel[step.status] ?? step.status}</em>
+              <p>{step.note}</p>
+              <small>{step.rationale}</small>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <aside className={styles.routeFocus}><strong>Next run</strong><p>{grade.nextFocus}</p></aside>
+    </section>
+  );
+}
+
+export default function SimulationDebrief({ scenario, debrief, attemptId, grade, traceExportEnabled = false }: { scenario: ClinicalScenario; debrief: Debrief; attemptId: string; grade?: BestPracticeGrade; traceExportEnabled?: boolean }) {
   const actionById = new Map(scenario.actions.map((action) => [action.id, action]));
   const timelineByEntryId = new Map(debrief.timeline.map((entry) => [entry.id, entry]));
   const outcomeLabel = debrief.outcome === "stabilized" ? "Patient stabilized" : debrief.outcome === "partially-stabilized" ? "Partial stabilization" : "Patient deteriorated";
@@ -101,6 +132,8 @@ export default function SimulationDebrief({ scenario, debrief, attemptId, traceE
           Documentation: debrief.metrics.timeToDocumentation,
         }).map(([label, minute]) => <div key={label}><Clock3 size={15} aria-hidden="true" /><span>{label}</span><strong>{minute == null ? "Not completed" : `+${minute} min`}</strong></div>)}
       </section>
+
+      {grade ? <BestPracticeRoute grade={grade} /> : null}
 
       <VitalsTrajectoryChart debrief={debrief} />
 

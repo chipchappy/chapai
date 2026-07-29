@@ -37,6 +37,7 @@ import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simula
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
 import SimulationDebrief from "@/components/clinical-simulation/SimulationDebrief";
 import { canCompleteSimulation, type PatientState, type SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
+import { gradeBestPracticeRoute } from "@/lib/clinical-simulation/best-practice";
 import type { ClinicalScenario, ScenarioAction } from "@/lib/clinical-simulation/schema";
 import { derivePatientVisualState, type SceneQuality, type VisualDebugOverrides } from "@/lib/clinical-simulation/visual-state";
 import { trackEvent } from "@/lib/analytics";
@@ -420,7 +421,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
   if (loading) return <main className={styles.workspaceLoading}><Activity className={styles.spin} aria-hidden="true" /><span>Loading patient state</span></main>;
   if (!state || !patientVisualState) return <main className={styles.workspaceError}><AlertTriangle aria-hidden="true" /><h1>Simulation unavailable</h1><p>{error}</p><Link href="/clinical-simulation">Return to catalog</Link></main>;
-  if (debrief) return <SimulationDebrief scenario={scenario} debrief={debrief} attemptId={attemptId} traceExportEnabled={developerToolsEnabled} />;
+  if (debrief) return <SimulationDebrief scenario={scenario} debrief={debrief} attemptId={attemptId} grade={gradeBestPracticeRoute(scenario, state)} traceExportEnabled={developerToolsEnabled} />;
 
   const simulationState = state;
   const canComplete = canCompleteSimulation(scenario, state);
