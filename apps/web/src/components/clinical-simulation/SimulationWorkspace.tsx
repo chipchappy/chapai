@@ -477,7 +477,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
             <BedsideMonitor state={state} />
           </>
         )}
-        <SimEventFeed state={state} busy={saving} onRewind={(keepActions) => void perform({ operation: "rewind", keepActions })} />
+        <SimEventFeed scenario={scenario} state={state} busy={saving} onRewind={(keepActions) => void perform({ operation: "rewind", keepActions })} />
       </section>
 
       {error ? <div className={styles.workspaceAlert} role="alert"><AlertTriangle size={17} aria-hidden="true" /> {error}</div> : null}

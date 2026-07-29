@@ -2,6 +2,8 @@
 
 import { useMemo } from "react";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
+import { buildAchievements, achievementSummary } from "@/lib/clinical-simulation/achievements";
+import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
 import styles from "./sim-event-feed.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -116,7 +118,7 @@ export function buildFeed(state: PatientState): FeedEntry[] {
   return entries.sort((a, b) => b.minute - a.minute || b.id.localeCompare(a.id));
 }
 
-export default function SimEventFeed({ state, onRewind, busy = false }: { state: PatientState; onRewind?: (keepActions: number) => void; busy?: boolean }) {
+export default function SimEventFeed({ scenario, state, onRewind, busy = false }: { scenario: ClinicalScenario; state: PatientState; onRewind?: (keepActions: number) => void; busy?: boolean }) {
   const entries = useMemo(() => buildFeed(state), [state]);
 
   // Live scoring: optimal decisions build a streak, unsafe ones break it.
@@ -132,6 +134,10 @@ export default function SimEventFeed({ state, onRewind, busy = false }: { state:
     return { optimal, acceptable, unsafe, streak, best, total, pct: total ? Math.round((optimal / total) * 100) : null };
   }, [state.actionLog]);
 
+  const achievements = useMemo(() => buildAchievements(scenario, state), [scenario, state]);
+  const badges = achievementSummary(achievements);
+  const nextUp = achievements.filter((a) => !a.earned && (a.progress ?? 0) > 0).sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))[0];
+
   return (
     <aside className={styles.feed} aria-label="Clinical event feed" data-testid="sim-event-feed">
       <header>
@@ -142,6 +148,20 @@ export default function SimEventFeed({ state, onRewind, busy = false }: { state:
         <div><span>Best practice</span><strong>{scoring.pct == null ? "—" : `${scoring.pct}%`}</strong></div>
         <div><span>Streak</span><strong data-hot={scoring.streak >= 3}>{scoring.streak}{scoring.streak >= 3 ? " 🔥" : ""}</strong></div>
         <div><span>Decisions</span><strong>{scoring.total}</strong></div>
+      </div>
+      <div className={styles.feedBadges} aria-label="Achievements">
+        <div className={styles.feedBadgeRow}>
+          {achievements.map((badge) => (
+            <span key={badge.id} className={styles.feedBadge} data-earned={badge.earned} title={`${badge.label} — ${badge.detail}`} aria-label={`${badge.label}${badge.earned ? " earned" : " not yet earned"}`}>
+              {badge.icon}
+            </span>
+          ))}
+        </div>
+        <small>
+          {badges.earned}/{badges.total} earned
+          {badges.latest ? <> · latest <b>{badges.latest.label}</b></> : null}
+          {!badges.latest && nextUp ? <> · closest <b>{nextUp.label}</b></> : null}
+        </small>
       </div>
       <ol className={styles.feedList} aria-live="polite">
         {entries.length ? entries.map((entry) => (
