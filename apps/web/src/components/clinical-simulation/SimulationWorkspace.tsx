@@ -451,11 +451,26 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
           <div aria-hidden="true">{scenario.patient.name.split(" ").map((part) => part[0]).join("")}</div>
           <span><strong>{scenario.patient.name}</strong><small>{scenario.patient.age} years / {scenario.patient.sex} / Room {scenario.patient.room}</small></span>
         </div>
-        <dl>
-          <div><dt>Allergies</dt><dd>{scenario.patient.allergies.join(", ")}</dd></div>
-          <div><dt>Code</dt><dd>{scenario.patient.codeStatus}</dd></div>
-          <div><dt>Isolation</dt><dd>{scenario.patient.isolation}</dd></div>
-        </dl>
+        <div className={styles.headerVitals} aria-label="Current vital signs">
+          {[
+            { key: "HR", value: Math.round(state.vitals.heartRate), unit: "bpm", bad: state.vitals.heartRate < 50 || state.vitals.heartRate > 120 },
+            { key: "BP", value: `${Math.round(state.vitals.systolic)}/${Math.round(state.vitals.diastolic)}`, unit: `MAP ${Math.round(state.vitals.map)}`, bad: state.vitals.map < 65 },
+            { key: "SpO₂", value: Math.round(state.vitals.spo2), unit: "%", bad: state.vitals.spo2 < 92 },
+            { key: "RR", value: Math.round(state.vitals.respiratoryRate), unit: "/min", bad: state.vitals.respiratoryRate < 10 || state.vitals.respiratoryRate > 24 },
+            { key: "Temp", value: state.vitals.temperatureC.toFixed(1), unit: "°C", bad: state.vitals.temperatureC >= 38.3 },
+          ].map((v) => (
+            <div key={v.key} data-bad={v.bad}>
+              <span>{v.key}</span>
+              <strong>{v.value}</strong>
+              <small>{v.unit}</small>
+            </div>
+          ))}
+          <div className={styles.headerFlags}>
+            {scenario.patient.allergies.length ? <em data-kind="allergy" title={`Allergies: ${scenario.patient.allergies.join(", ")}`}>⚠ {scenario.patient.allergies[0]}</em> : <em data-kind="ok">No known allergies</em>}
+            <em data-kind="code">{scenario.patient.codeStatus}</em>
+            {/^(?!none)/i.test(scenario.patient.isolation) ? <em data-kind="iso" title={scenario.patient.isolation}>{scenario.patient.isolation.split(" ").slice(0, 2).join(" ")}</em> : null}
+          </div>
+        </div>
         <div className={styles.clockControls}>
           <output aria-label={`Simulation time ${formatClock(state.virtualMinute)}`}>{formatClock(state.virtualMinute)}</output>
           <button type="button" disabled={saving} title={state.clockPaused ? "Resume clock" : "Pause clock"} aria-label={state.clockPaused ? "Resume simulation clock" : "Pause simulation clock"} onClick={() => void perform({ operation: "set_paused", paused: !state.clockPaused })}>{state.clockPaused ? <Play aria-hidden="true" /> : <Pause aria-hidden="true" />}</button>
