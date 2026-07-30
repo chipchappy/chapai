@@ -278,6 +278,13 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const workingRef = useRef(false);
   const debriefTracked = useRef(false);
 
+  // Immersive mode: hide site chrome while a simulation is running so the room
+  // fills the viewport. Reverted on unmount so navigating away restores the site.
+  useEffect(() => {
+    document.body.setAttribute("data-sim-immersive", "true");
+    return () => document.body.removeAttribute("data-sim-immersive");
+  }, []);
+
   useEffect(() => {
     const connection = navigator as Navigator & { connection?: { saveData?: boolean } };
     const constrained = (navigator.hardwareConcurrency ?? 8) <= 4 || Boolean(connection.connection?.saveData) || window.matchMedia("(max-width: 520px)").matches;

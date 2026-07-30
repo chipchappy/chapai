@@ -32344,3 +32344,23 @@ h1, h2, h3, .highlights-band__title, .quiz-catalog-title, .dash-hero__title,
 [data-theme="dark"] .readiness-banner .text-muted {
   color: var(--c-text-body);
 }
+
+/* ── Clinical Simulation immersive mode ──
+   While a simulation is running, the marketing header and footer are hidden so
+   the room fills the viewport and the experience reads as an application rather
+   than a page. SimulationWorkspace sets and clears this attribute on mount and
+   unmount, so every other route is unaffected. */
+body[data-sim-immersive="true"] > header,
+body[data-sim-immersive="true"] > footer {
+  display: none !important;
+}
+
+body[data-sim-immersive="true"] {
+  overflow: hidden;
+}
+
+body[data-sim-immersive="true"] > main {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}

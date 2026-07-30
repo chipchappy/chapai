@@ -611,9 +611,9 @@
 }
 
 .patientHeader {
-  position: sticky;
-  top: 78px;
+  position: relative;
   z-index: 40;
+  flex-shrink: 0;
   display: grid;
   grid-template-columns: minmax(230px, 0.7fr) minmax(340px, 1fr) auto;
   align-items: center;
@@ -2641,3 +2641,13 @@
   .patientHeader { grid-template-columns: minmax(0, 1fr) auto; }
   .headerVitals { order: 3; grid-column: 1 / -1; }
 }
+
+/* ── immersive shell: only the scene flexes; every band keeps its height so the
+      action bar and Complete/debrief controls are always on screen ── */
+.actionBar,
+.workspaceFooter,
+.codePanel,
+.workspaceAlert { flex-shrink: 0; }
+
+/* The developer panel is a testing surface — never let it squeeze the room. */
+.devPanel { flex-shrink: 0; max-height: 24vh; overflow-y: auto; }
