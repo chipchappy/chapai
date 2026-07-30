@@ -596,17 +596,24 @@
   color: #9a4338 !important;
 }
 
-/* Active workstation */
+/* Active workstation.
+   Flex column so the room takes every pixel the bands do not need. Without
+   `display: flex` here the `flex: 1` on .clinicalView is inert and the page
+   falls back to stacked blocks with unused space below the scene. */
 .workspace {
   --sim-ink: #2f2a20;
   --sim-muted: #7a6a52;
   --sim-line: #ddcfb2;
   --sim-sage: #5d7e68;
   --sim-teal: #327681;
-  width: min(1600px, 100%);
-  min-height: 900px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   margin: 0 auto;
-  background: #f3f5f2;
+  overflow: hidden;
+  background: #f7f2e7;
   color: var(--sim-ink);
 }
 
@@ -617,18 +624,17 @@
   display: grid;
   grid-template-columns: minmax(230px, 0.7fr) minmax(340px, 1fr) auto;
   align-items: center;
-  gap: 20px;
-  min-height: 62px;
-  padding: 8px 20px;
-  border-bottom: 1px solid #cbd5d0;
-  background: rgba(251, 252, 249, 0.96);
-  backdrop-filter: blur(12px);
+  gap: 16px;
+  min-height: 52px;
+  padding: 6px 16px;
+  border-bottom: 1px solid #ddcfb2;
+  background: #faf5ea;
 }
 
 .patientCompact > div {
-  width: 40px;
-  height: 40px;
-  background: #dce9df;
+  width: 34px;
+  height: 34px;
+  background: #e8dcc4;
 }
 
 .patientCompact small {
@@ -659,7 +665,7 @@
 .clockControls > button,
 .clockControls > a {
   display: inline-flex;
-  min-height: 40px;
+  min-height: 34px;
   align-items: center;
   justify-content: center;
   gap: 7px;
@@ -676,7 +682,7 @@
 }
 
 .clockControls > button {
-  width: 40px;
+  width: 34px;
   padding: 0;
 }
 
@@ -1484,14 +1490,13 @@
 .workspaceFooter {
   z-index: 35;
   display: flex;
-  min-height: 64px;
+  min-height: 48px;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
-  padding: 10px 20px;
+  gap: 10px;
+  padding: 6px 16px;
   border-top: 1px solid #d8c9ab;
-  background: rgba(249, 251, 248, 0.97);
-  backdrop-filter: blur(10px);
+  background: #faf5ea;
 }
 
 .workspaceFooter > div {
@@ -1503,7 +1508,7 @@
 }
 
 .workspaceFooter button {
-  min-height: 42px;
+  min-height: 36px;
   border-color: var(--sim-sage);
   background: var(--sim-sage);
   color: #fff;
@@ -1511,7 +1516,7 @@
 
 .workspaceFooter a {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 36px;
   align-items: center;
   gap: 7px;
   border: 1px solid var(--sim-line);
@@ -2454,14 +2459,18 @@
 .monitorCompact .monitorAudio { display: none; }
 .monitorCompact .waveform { min-height: 0; flex: 1; }
 .monitorCompact .monitorValues {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* NIBP renders as "96/58" and needs roughly twice the width of a single
+     three-digit value, or it truncates to "96…" on the wall screen. */
+  grid-template-columns: 0.78fr 1.44fr 0.78fr;
   margin: 0 2px 2px;
   gap: 1px;
 }
 .monitorCompact .monitorValues > div { padding: 1px 3px; grid-template-columns: minmax(0, 1fr); }
 .monitorCompact .monitorValues span { font-size: 0.34rem; letter-spacing: 0; }
 .monitorCompact .monitorValues small { display: none; }
-.monitorCompact .monitorValues strong { font-size: 0.66rem; }
+.monitorCompact .monitorValues strong { font-size: 0.66rem; text-overflow: clip; }
+/* The paired systolic/diastolic reading is set a touch smaller so it fits whole. */
+.monitorCompact .monitorValues > div:nth-child(2) strong { font-size: 0.58rem; }
 /* Only HR / NIBP / SpO2 fit legibly on a real wall screen; RR + Temp live in the
    expanded view, which is one click away. */
 .monitorCompact .monitorValues > div:nth-child(n + 4) { display: none; }
@@ -2470,26 +2479,29 @@
 .monitorCompact footer { padding: 1px 5px; font-size: 0.38rem; }
 .monitorCompact .trendArrow { display: none; }
 
-/* ==== four bedside actions ==== */
+/* ==== four bedside actions ====
+   Compact horizontal dock: icon and label on one line, hint beneath, so the
+   band costs ~58px instead of ~104px and the room keeps the difference. */
 .actionBar {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  padding: 14px 18px 16px;
+  gap: 8px;
+  padding: 8px 14px 9px;
   background: #f5efe2;
   border-top: 1px solid #ddcfb2;
 }
 
 .actionBar button {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  min-height: 74px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0 9px;
+  min-height: 44px;
   border: 1px solid #ddcfb2;
-  border-radius: 13px;
-  padding: 12px 15px;
+  border-radius: 11px;
+  padding: 7px 13px;
   background: #fdf8ee;
   color: #3f3527;
   font: inherit;
@@ -2498,9 +2510,13 @@
   transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
 }
 
-.actionBar button svg { color: #7a6a52; margin-bottom: 3px; }
-.actionBar button span { font-size: 0.92rem; font-weight: 800; }
-.actionBar button small { color: #9a8a6d; font-size: 0.7rem; }
+.actionBar button svg { grid-row: 1 / 3; color: #7a6a52; margin: 0; }
+.actionBar button span { font-size: 0.86rem; font-weight: 800; line-height: 1.2; }
+.actionBar button small { color: #9a8a6d; font-size: 0.66rem; line-height: 1.25; }
+
+@media (prefers-reduced-motion: reduce) {
+  .actionBar button { transition: none; }
+}
 
 .actionBar button:hover {
   border-color: #b08430;

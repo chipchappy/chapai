@@ -51,9 +51,12 @@ function septicScenario() {
 }
 
 describe("clinical simulation scenario library", () => {
-  it("loads six unique, fully validated clinical environments", () => {
-    assert.equal(clinicalScenarios.length, 6);
-    assert.equal(new Set(clinicalScenarios.map((scenario) => scenario.id)).size, 6);
+  it("loads a unique, fully validated, unit-diverse scenario library", () => {
+    // Grows as the library grows; the invariants below are what actually matter.
+    assert.ok(clinicalScenarios.length >= 20, `expected at least 20 scenarios, found ${clinicalScenarios.length}`);
+    assert.equal(new Set(clinicalScenarios.map((scenario) => scenario.id)).size, clinicalScenarios.length);
+    assert.equal(new Set(clinicalScenarios.map((scenario) => scenario.slug)).size, clinicalScenarios.length);
+    // Every clinical environment the schema supports must be represented.
     assert.deepEqual(new Set(clinicalScenarios.map((scenario) => scenario.unit)), new Set([
       "medical-surgical",
       "telemetry",
@@ -62,6 +65,7 @@ describe("clinical simulation scenario library", () => {
       "procedural",
       "psychiatric",
     ]));
+    // Nothing ships as published until a clinician has signed it off.
     for (const scenario of clinicalScenarios) {
       assert.equal(validateScenarioDefinition(scenario).success, true, scenario.slug);
       assert.ok(scenario.actions.length >= 6, scenario.slug);

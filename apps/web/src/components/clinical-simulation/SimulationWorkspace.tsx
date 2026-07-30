@@ -8,11 +8,7 @@ import {
   AlertTriangle,
   BookOpen,
   Check,
-  ChevronRight,
   ClipboardCheck,
-  Clock3,
-  HeartPulse,
-  ListChecks,
   Lock,
   LogOut,
   MessageSquareText,
@@ -23,11 +19,9 @@ import {
   ShieldAlert,
   Siren,
   Stethoscope,
-  TestTube2,
   Zap,
 } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
-import ClinicalImpactPanel from "@/components/clinical-simulation/ClinicalImpactPanel";
 import ChartEhr from "@/components/clinical-simulation/ChartEhr";
 import SimEventFeed from "@/components/clinical-simulation/SimEventFeed";
 import DeviceStation from "@/components/clinical-simulation/DeviceStation";
@@ -44,7 +38,6 @@ import { trackEvent } from "@/lib/analytics";
 import styles from "./clinical-simulation.module.css";
 
 type StationId = "assessment" | "computer" | "phone" | "interventions";
-type TabId = "patient" | "assessment" | "chart" | "orders" | "mar" | "labs" | "diagnostics" | "interventions" | "communication" | "documentation" | "timeline";
 type Operation =
   | { operation: "act"; actionId: string; selectedElements: string[] }
   | { operation: "advance"; minutes: number }
@@ -73,35 +66,12 @@ function errorMessage(body: unknown, fallback: string) {
   return fallback;
 }
 
-const tabs: Array<{ id: TabId; label: string; icon: typeof Activity }> = [
-  { id: "patient", label: "Patient", icon: HeartPulse },
-  { id: "assessment", label: "Assessment", icon: Stethoscope },
-  { id: "chart", label: "Chart", icon: BookOpen },
-  { id: "orders", label: "Orders", icon: ListChecks },
-  { id: "mar", label: "MAR", icon: Pill },
-  { id: "labs", label: "Labs", icon: TestTube2 },
-  { id: "diagnostics", label: "Diagnostics", icon: Activity },
-  { id: "interventions", label: "Interventions", icon: ShieldAlert },
-  { id: "communication", label: "Communication", icon: MessageSquareText },
-  { id: "documentation", label: "Documentation", icon: ClipboardCheck },
-  { id: "timeline", label: "Timeline", icon: Clock3 },
-];
-
-/** Groups the workspace tabs by clinical workflow so the nav reads as a shift routine rather than a flat list. */
 /** The only four things a student chooses between; everything else is inside one. */
 const STATIONS: Array<{ id: StationId; label: string; hint: string; icon: typeof Activity }> = [
   { id: "assessment", label: "Assessment", hint: "Systems · talk to patient", icon: Stethoscope },
   { id: "computer", label: "Computer", hint: "Chart · MAR · labs · orders", icon: BookOpen },
   { id: "phone", label: "Phone", hint: "Provider · RRT · RT", icon: MessageSquareText },
   { id: "interventions", label: "Interventions", hint: "Treat · position · safety", icon: ShieldAlert },
-];
-
-const tabGroups: Array<{ label: string; ids: TabId[] }> = [
-  { label: "Bedside", ids: ["patient", "assessment"] },
-  { label: "Chart", ids: ["chart", "orders", "labs", "diagnostics"] },
-  { label: "Act", ids: ["mar", "interventions"] },
-  { label: "Team", ids: ["communication", "documentation"] },
-  { label: "Review", ids: ["timeline"] },
 ];
 
 function formatClock(minute: number) {
@@ -266,10 +236,9 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [visualOverrides, setVisualOverrides] = useState<VisualDebugOverrides>({});
   const [scenePerformance, setScenePerformance] = useState<ScenePerformanceSample | null>(null);
   const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
-  const [activeTab, setActiveTab] = useState<TabId>("patient");
   const [station, setStation] = useState<StationId | null>(null);
-  /** Virtual minute each tab was last opened — drives "new result" badges. */
-  const [tabSeenAt, setTabSeenAt] = useState<Partial<Record<TabId, number>>>({});
+  /** Virtual minute each result stream was last reviewed — drives "new result" badges. */
+  const [resultsSeenAt, setResultsSeenAt] = useState<{ labs: number; diagnostics: number }>({ labs: -1, diagnostics: -1 });
   const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [speed, setSpeed] = useState<1 | 5>(1);
   const [loading, setLoading] = useState(true);
@@ -365,20 +334,22 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
     void perform({ operation: "debrief_viewed" });
   }, [debrief, perform, scenario.id, scenario.unit]);
 
-  // Results that landed after the student last opened that tab.
+  // Results that landed since the student last opened the workstation.
   const newResultCounts = useMemo(() => {
     const minute = state?.virtualMinute ?? 0;
-    const since = (tab: TabId) => tabSeenAt[tab] ?? -1;
     return {
-      labs: scenario.chart.labs.filter((lab) => lab.availableAtMinute > 0 && lab.availableAtMinute <= minute && lab.availableAtMinute > since("labs")).length,
-      diagnostics: scenario.chart.diagnostics.filter((item) => item.availableAtMinute > 0 && item.availableAtMinute <= minute && item.availableAtMinute > since("diagnostics")).length,
-    } as Partial<Record<TabId, number>>;
-  }, [scenario.chart.diagnostics, scenario.chart.labs, state?.virtualMinute, tabSeenAt]);
+      labs: scenario.chart.labs.filter((lab) => lab.availableAtMinute > 0 && lab.availableAtMinute <= minute && lab.availableAtMinute > resultsSeenAt.labs).length,
+      diagnostics: scenario.chart.diagnostics.filter((item) => item.availableAtMinute > 0 && item.availableAtMinute <= minute && item.availableAtMinute > resultsSeenAt.diagnostics).length,
+    };
+  }, [scenario.chart.diagnostics, scenario.chart.labs, state?.virtualMinute, resultsSeenAt]);
 
+  // Opening the workstation is what marks results as reviewed, so the badge
+  // clears when the student has actually had a chance to read them.
   useEffect(() => {
-    if (!state) return;
-    setTabSeenAt((current) => (current[activeTab] === state.virtualMinute ? current : { ...current, [activeTab]: state.virtualMinute }));
-  }, [activeTab, state]);
+    if (station !== "computer" || !state) return;
+    const minute = state.virtualMinute;
+    setResultsSeenAt((current) => (current.labs === minute && current.diagnostics === minute ? current : { labs: minute, diagnostics: minute }));
+  }, [station, state]);
 
   const actionsByCategory = useMemo(() => {
     const map = new Map<ScenarioAction["category"], ScenarioAction[]>();
@@ -432,10 +403,6 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
   const simulationState = state;
   const canComplete = canCompleteSimulation(scenario, state);
-  const visibleFindings = scenario.assessments
-    .filter((assessment) => state.revealedFindingIds.includes(assessment.id))
-    .map((assessment) => ({ ...assessment, record: state.assessmentRecords.find((record) => record.assessmentId === assessment.id) }));
-  const latestNotices = state.notices.slice(-4).reverse();
 
   function renderActions(actions: ScenarioAction[] | undefined) {
     if (!actions?.length) return <p className={styles.emptyState}>No actions are available in this workspace for the current scenario.</p>;
@@ -512,7 +479,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       <nav className={styles.actionBar} aria-label="Bedside actions">
         {STATIONS.map((item) => {
           const Icon = item.icon;
-          const badge = item.id === "computer" ? (newResultCounts.labs ?? 0) + (newResultCounts.diagnostics ?? 0) : 0;
+          const badge = item.id === "computer" ? newResultCounts.labs + newResultCounts.diagnostics : 0;
           return (
             <button key={item.id} type="button" data-active={station === item.id} onClick={() => setStation(item.id)} aria-haspopup="dialog">
               <Icon size={19} aria-hidden="true" />

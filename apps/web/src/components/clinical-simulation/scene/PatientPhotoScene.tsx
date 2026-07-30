@@ -96,11 +96,31 @@ const ADULT_MALE_ROOM: PhotoConfig = {
   ],
 };
 
+// Scenes are assigned to match the scenario's patient, so a male patient never
+// renders against a female photograph. ADULT_MALE_ROOM is the full room plate
+// (wall monitor, ventilator, pumps, headwall) and suits ventilated and
+// higher-acuity cases; ADULT_FEMALE_SIDE is the closer bedside framing.
 const PHOTO_PATIENTS: Record<string, PhotoConfig> = {
+  // female patients
   "septic-shock": ADULT_FEMALE_SIDE,
   "postoperative-deterioration": ADULT_FEMALE_SIDE,
-  "evolving-acute-coronary-syndrome": ADULT_FEMALE_SIDE,
+  "acute-transfusion-reaction": ADULT_FEMALE_SIDE,
+  "intravenous-antibiotic-anaphylaxis": ADULT_FEMALE_SIDE,
+  "hyperkalemia-missed-dialysis": ADULT_FEMALE_SIDE,
+  "flash-pulmonary-edema": ADULT_FEMALE_SIDE,
+  "ward-sepsis-recognition": ADULT_FEMALE_SIDE,
+  "postoperative-pulmonary-embolism": ADULT_FEMALE_SIDE,
+  // male patients
   "acute-respiratory-deterioration": ADULT_MALE_ROOM,
+  "evolving-acute-coronary-syndrome": ADULT_MALE_ROOM,
+  "insulin-induced-hypoglycemia": ADULT_MALE_ROOM,
+  "diabetic-ketoacidosis": ADULT_MALE_ROOM,
+  "acute-ischemic-stroke-code": ADULT_MALE_ROOM,
+  "severe-alcohol-withdrawal": ADULT_MALE_ROOM,
+  "variceal-upper-gi-hemorrhage": ADULT_MALE_ROOM,
+  "raised-intracranial-pressure": ADULT_MALE_ROOM,
+  "postoperative-delirium-fall-risk": ADULT_MALE_ROOM,
+  "tension-pneumothorax-after-line": ADULT_MALE_ROOM,
 };
 
 export function getPhotoPatient(slug: string): PhotoConfig | null {

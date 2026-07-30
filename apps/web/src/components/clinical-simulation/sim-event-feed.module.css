@@ -140,19 +140,189 @@
 .feedLegend span[data-kind="progression"] { background: #b08430; }
 .feedLegend span[data-kind="team"]        { background: #7a5c96; }
 
+/* ── console modes ── */
+.feedModes {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+  padding: 5px 6px;
+  border-bottom: 1px solid #e2d6bd;
+  background: #f0e6d2;
+}
+
+.feedModes button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 0;
+  border-radius: 8px;
+  padding: 5px 2px 4px;
+  background: transparent;
+  color: #8a7a5d;
+  font: inherit;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.feedModes button span {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.feedModes button:hover { background: #e7dbc2; color: #5d4f36; }
+.feedModes button:focus-visible { outline: 2px solid #3c5a52; outline-offset: 1px; }
+.feedModes button[data-active="true"] { background: #fdfaf3; color: #2f4740; box-shadow: 0 1px 3px rgba(120, 96, 52, 0.18); }
+
+.feedModes button em {
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  min-width: 14px;
+  border-radius: 999px;
+  padding: 0 3px;
+  background: #b0453b;
+  color: #fff;
+  font-size: 0.55rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 14px;
+  text-align: center;
+}
+
+/* ── scrolling pane shared by tasks / performance ── */
+.feedPane {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding: 10px 12px 14px;
+}
+
+.feedPaneTitle {
+  margin: 14px 0 7px;
+  color: #6b5c42;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.feedPaneTitle:first-child { margin-top: 2px; }
+
+.feedEmpty { margin: 0; color: #9a8a6d; font-size: 0.74rem; line-height: 1.5; }
+
+.taskList { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+
+.taskList li {
+  border-left: 3px solid #b9a88a;
+  border-radius: 8px;
+  padding: 7px 11px;
+  background: #fdfaf3;
+}
+.taskList li[data-severity="critical"] { border-left-color: #b0453b; background: #fbeeeb; }
+.taskList li[data-severity="warning"] { border-left-color: #c9992e; background: #faf3e2; }
+.taskList li[data-severity="pending"] { border-left-color: #3a7192; background: #f2f6f9; }
+
+.taskList strong { display: block; color: #3f3527; font-size: 0.78rem; font-weight: 700; }
+.taskList p { margin: 2px 0 0; color: #6b5c42; font-size: 0.72rem; line-height: 1.45; }
+
+/* ── performance metrics ── */
+.feedMetrics { display: grid; gap: 0; margin: 10px 0 0; }
+.feedMetrics > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 2px;
+  border-bottom: 1px solid #efe7d8;
+}
+.feedMetrics dt { color: #9a8a6d; font-size: 0.72rem; font-weight: 700; }
+.feedMetrics dd { margin: 0; color: #3f3527; font-size: 0.8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.feedMetrics dd[data-bad="true"] { color: #b0453b; }
+
+.feedHeadline { margin: 9px 0 0; color: #5d5344; font-size: 0.76rem; line-height: 1.5; }
+
+.feedFocus {
+  margin: 11px 0 0;
+  border-left: 3px solid #3c5a52;
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: #eef3ee;
+  color: #3c4f48;
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+.feedFocus strong {
+  display: block;
+  color: #2f4740;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.feedBadgeNote { display: block; margin-top: 7px; color: #9a8a6d; font-size: 0.64rem; font-variant-numeric: tabular-nums; }
+.feedBadgeNote b { color: #7a6a52; font-weight: 800; }
+
+/* ── per-card patient response and team reply ── */
+.feedResponse,
+.feedTeam {
+  display: block;
+  margin: 5px 0 0 !important;
+  border-radius: 7px;
+  padding: 5px 8px;
+  font-size: 0.71rem !important;
+  line-height: 1.45;
+}
+
+.feedResponse { background: #faf2e4; color: #85601f !important; }
+.feedResponse[data-direction="improved"] { background: #eef5ee; color: #2c5c42 !important; }
+.feedResponse[data-direction="worsened"] { background: #fbeeeb; color: #8f382f !important; }
+.feedTeam { background: #f4eff8; color: #5f477a !important; }
+
+.feedResponse span,
+.feedTeam span {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.feedReassess {
+  display: inline-block;
+  margin-top: 5px;
+  border: 1px dashed #b08430;
+  border-radius: 999px;
+  padding: 1px 8px;
+  color: #85601f;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 /* ── live scoring strip ── */
 .feedScore {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e2d6bd;
+  border-radius: 11px;
   background: #e2d6bd;
-  border-bottom: 1px solid #e2d6bd;
 }
-.feedScore > div { display: grid; gap: 1px; padding: 7px 10px; background: #f7f1e4; }
+.feedScore > div { display: grid; gap: 1px; padding: 8px 10px; background: #fdfaf3; }
 .feedScore span { color: #9a8a6d; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
-.feedScore strong { color: #3f7d5c; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.feedScore strong { color: #3f7d5c; font-size: 1.15rem; font-variant-numeric: tabular-nums; line-height: 1.1; }
 .feedScore strong[data-hot="true"] { color: #b0703b; }
+.feedScore[data-band="developing"] > div:first-child strong { color: #b08430; }
+.feedScore[data-band="unsafe"] > div:first-child strong { color: #b0453b; }
 
 /* ── rewind affordance ── */
 .feedRewind {

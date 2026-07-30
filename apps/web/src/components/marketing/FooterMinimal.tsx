@@ -116,7 +116,8 @@ export default function FooterMinimal() {
             <li><Link href="/pricing">Pricing</Link></li>
             <li><Link href="/auth/login">Sign in</Link></li>
             <li><Link href="/auth/signup">Start free</Link></li>
-            <li><Link href="/account/settings">Settings</Link></li>
+            {/* /account/settings has never existed; the account surface is /account. */}
+            <li><Link href="/account">Settings</Link></li>
             <li><a href="mailto:support@chapaisolutions.com">Contact</a></li>
             <li><Link href="/faq">FAQ</Link></li>
           </ul>

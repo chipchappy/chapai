@@ -576,9 +576,15 @@ function deriveOutcome(
   essentialRatio: number,
   failure: ReturnType<typeof matchingFailureCondition>,
 ) {
+  // A deeply sedated, mechanically ventilated patient has a low GCS by design, so
+  // the coma criterion only signals deterioration when it is not explained by
+  // sedation. Without this, every neurocritical or ventilated scenario would score
+  // as "deteriorated" no matter how well the student performed.
+  const pharmacologicallySedated = (state.sedationScore != null && state.sedationScore <= -3)
+    || /endotracheal|mechanical ventilation|ventilator/i.test(state.oxygenDevice ?? "");
   const criticalPhysiology = state.vitals.map < 50
     || state.vitals.spo2 < 82
-    || (state.gcs != null && state.gcs <= 8)
+    || (state.gcs != null && state.gcs <= 8 && !pharmacologicallySedated)
     || state.flags.criticalDeterioration === true;
   if (failure || criticalPhysiology || state.criticalErrors.length > 0 || essentialRatio < 0.5) return "deteriorated" as const;
 

@@ -4,6 +4,7 @@ import {
   type ClinicalScenarioInput,
   type CompetencyDomain,
 } from "./schema";
+import { extendedScenarios } from "./scenarios-extended";
 
 type ActionInput = ClinicalScenarioInput["actions"][number];
 type ActionOptions = Partial<Omit<ActionInput, "id" | "label" | "category" | "baseClassification" | "rationale" | "evidenceIds" | "description" | "feedback">> & {
@@ -46,7 +47,8 @@ function action(
     rationale,
     evidenceIds,
     description: options.description ?? rationale,
-    feedback: options.feedback ?? `${label} changed the available clinical picture or plan of care.`,
+    // Matches authoring.ts: fall back to the clinical rationale, not boilerplate.
+    feedback: options.feedback ?? rationale,
     prerequisites: [],
     safetyChecks: [],
     effects: [],
@@ -649,6 +651,7 @@ export const clinicalScenarios: ClinicalScenario[] = [
   septicShock,
   sedationCompromise,
   psychiatricSafety,
+  ...extendedScenarios,
 ].map(assertValidScenario);
 
 export function getClinicalScenarioBySlug(slug: string) {

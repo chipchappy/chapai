@@ -1,10 +1,13 @@
+/* The frame around the photograph is deliberately dark so the room reads as the
+   lit subject, but the neutral is warmed toward the brand's sand and adobe range
+   rather than the cold slate it used to be. */
 .photoShell {
   display: flex;
   flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
-  background: #1a2320;
-  box-shadow: 0 10px 34px rgba(20, 28, 26, 0.22);
+  background: #241d15;
+  box-shadow: 0 10px 34px rgba(60, 44, 26, 0.24);
 }
 
 .photoToolbar {
@@ -12,12 +15,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 9px 15px;
-  background: linear-gradient(180deg, #2a3733, #222d2a);
-  color: #e7efe9;
+  padding: 8px 15px;
+  background: linear-gradient(180deg, #3a2f22, #2e251a);
+  color: #f2e9d8;
 }
 
-.photoToolbar span { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; color: #9db3ab; }
+.photoToolbar span { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; color: #c2ab86; }
 .photoToolbar strong { display: block; font-size: 0.86rem; font-weight: 600; }
 
 .photoAlarm {
@@ -264,15 +267,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  padding: 10px 14px;
-  background: #222d2a;
+  padding: 8px 14px;
+  background: #2e251a;
 }
 
 .photoCues span {
   border-radius: 999px;
   padding: 3px 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #cdddd5;
+  background: rgba(255, 240, 214, 0.1);
+  color: #e6d7bc;
   font-size: 0.68rem;
   font-weight: 600;
   text-transform: capitalize;
@@ -346,17 +349,30 @@
    A faint dashed edge is always present so students can see what is
    interactable; it brightens and labels on hover/focus, and "show targets"
    makes every outline solid at once. */
+/* Equipment regions are invisible until the cursor finds them (or the student
+   asks to see every target). Permanent boxes over a photographic room read as
+   a wireframe, not a bedside. */
 .deviceOutline {
   position: absolute;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  border: 1.5px dashed rgba(255, 236, 200, 0.34);
+  border: 1.5px dashed transparent;
   border-radius: 10px;
   background: transparent;
   padding: 0;
   cursor: pointer;
   transition: border-color 170ms ease, background 170ms ease, box-shadow 170ms ease;
+}
+
+.photoStage[data-show-targets="true"] .deviceOutline {
+  border-color: rgba(255, 236, 200, 0.34);
+}
+
+.photoStage[data-show-targets="true"] .deviceOutline > em { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .deviceOutline { transition: none; }
 }
 
 .deviceOutline > em {
