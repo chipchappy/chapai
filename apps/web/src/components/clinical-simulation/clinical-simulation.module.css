@@ -2461,8 +2461,12 @@
 .monitorCompact .monitorValues > div { padding: 1px 3px; grid-template-columns: minmax(0, 1fr); }
 .monitorCompact .monitorValues span { font-size: 0.34rem; letter-spacing: 0; }
 .monitorCompact .monitorValues small { display: none; }
-.monitorCompact .monitorValues strong { font-size: 0.68rem; }
-.monitorCompact .monitorValues > div:nth-child(2) strong { font-size: 0.56rem; }
+.monitorCompact .monitorValues strong { font-size: 0.66rem; }
+/* Only HR / NIBP / SpO2 fit legibly on a real wall screen; RR + Temp live in the
+   expanded view, which is one click away. */
+.monitorCompact .monitorValues > div:nth-child(n + 4) { display: none; }
+.monitorCompact .waveform { min-height: 34%; }
+.monitorCompact footer { display: none; }
 .monitorCompact footer { padding: 1px 5px; font-size: 0.38rem; }
 .monitorCompact .trendArrow { display: none; }
 
