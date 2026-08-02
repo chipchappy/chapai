@@ -40,6 +40,173 @@
   line-height: 1.65;
 }
 
+/* ── Featured one-time bundle (periwinkle) ──────────────────────────────────
+   Scoped tokens so the accent lives in one place and can be re-themed without
+   hunting hex values through the file. Periwinkle is the only cool-violet note
+   in an otherwise warm sand palette, which is exactly why it reads as the
+   standout offer against the sage and ocean plan cards. */
+.guarantee {
+  --pw: #6d6fb5;
+  --pw-deep: #55578f;
+  --pw-soft: #8f92d6;
+  --pw-wash: rgba(109, 111, 181, 0.09);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.4rem;
+  margin-top: 2rem;
+  border: 2px solid var(--pw);
+  border-radius: 0.9rem;
+  padding: 1.6rem 1.5rem;
+  background: linear-gradient(180deg, var(--pw-wash), var(--c-bg-elevated) 65%);
+  box-shadow: 0 24px 56px rgba(75, 77, 140, 0.16);
+}
+
+@media (min-width: 860px) {
+  .guarantee {
+    grid-template-columns: minmax(0, 1.55fr) minmax(240px, 0.85fr);
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.guaranteeMain {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.guaranteeHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.guaranteeBadge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  background: var(--pw);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.guaranteeName {
+  margin: 0;
+  color: var(--c-text);
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.05;
+}
+
+.guaranteePrice {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  color: var(--c-text);
+}
+
+.guaranteePrice strong {
+  color: var(--pw-deep);
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.guaranteePrice span {
+  padding-bottom: 0.35rem;
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.guaranteeTagline {
+  margin: 0;
+  max-width: 42ch;
+  color: var(--c-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.guaranteeFeatures {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guaranteeFeatures li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--c-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.guaranteeFeatures li::before {
+  content: "";
+  position: absolute;
+  top: 0.46em;
+  left: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--pw-soft);
+}
+
+.guaranteeAside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.guaranteeCta {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  background: var(--pw);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background 160ms ease;
+}
+
+.guaranteeCta:hover:not(:disabled) { background: var(--pw-deep); }
+.guaranteeCta:focus-visible { outline: 2px solid var(--pw-deep); outline-offset: 2px; }
+
+/* Fine print: legible, but clearly subordinate to the offer. */
+.guaranteeFinePrint {
+  margin: 0;
+  color: var(--c-text-muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .guarantee {
+  --pw: #9093d8;
+  --pw-deep: #b4b6ea;
+  --pw-soft: #8285c4;
+  --pw-wash: rgba(144, 147, 216, 0.12);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.42);
+}
+
+[data-theme="dark"] .guaranteeBadge,
+[data-theme="dark"] .guaranteeCta { color: #1b1c2e; }
+
+@media (prefers-reduced-motion: reduce) {
+  .guaranteeCta { transition: none; }
+}
+
 .cards {
   display: grid;
   gap: 1rem;

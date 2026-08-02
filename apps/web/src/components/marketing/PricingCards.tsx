@@ -61,7 +61,12 @@ const paidTiers: PaidTier[] = [
   },
 ];
 
+/** Fine print for the guarantee — deliberately quiet, deliberately complete. */
+const GUARANTEE_TERMS = "Refund eligibility requires completing all five readiness exams and 2,000 practice questions before your test date, and emailing your official NCLEX result letter within 30 days of your exam. One-time purchase includes a 180-day access window. Full terms at checkout.";
+
 export default function PricingCards() {
+  const passGuarantee = getLaunchOffer("nclex_pass_guarantee");
+
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
@@ -73,6 +78,44 @@ export default function PricingCards() {
             elite rationales - never a $300+ question-bank tax.
           </p>
         </div>
+
+        {/* Featured one-time bundle. Sits above the plan grid rather than inside it
+            so the four-column layout is unchanged at every breakpoint. */}
+        {passGuarantee ? (
+          <article className={styles.guarantee} data-tone="periwinkle">
+            <div className={styles.guaranteeMain}>
+              <div className={styles.guaranteeHead}>
+                <span className={styles.guaranteeBadge}>Pass guarantee</span>
+                <h3 className={styles.guaranteeName}>Pass Guarantee Bundle</h3>
+                <div className={styles.guaranteePrice}>
+                  <strong>${passGuarantee.price}</strong>
+                  <span>one-time</span>
+                </div>
+                <p className={styles.guaranteeTagline}>
+                  Full access until your exam date &mdash; and if you don&rsquo;t pass, you get your money back.
+                </p>
+              </div>
+              <ul className={styles.guaranteeFeatures}>
+                <li>Everything in Premium, no subscription</li>
+                <li>Full NCLEX NGN bank + AI tutor on every question</li>
+                <li>All 5 timed readiness exams</li>
+                <li>Advanced weak-area analytics</li>
+              </ul>
+            </div>
+            <div className={styles.guaranteeAside}>
+              <CheckoutButton
+                checkoutMode={passGuarantee.checkoutMode}
+                planCode={passGuarantee.planCode}
+                examTrack={passGuarantee.examTrackScope === "all" ? undefined : passGuarantee.examTrackScope}
+                packageLabel={passGuarantee.label}
+                className={styles.guaranteeCta}
+              >
+                Get the Pass Guarantee
+              </CheckoutButton>
+              <p className={styles.guaranteeFinePrint}>{GUARANTEE_TERMS}</p>
+            </div>
+          </article>
+        ) : null}
 
         <div className={styles.cards}>
           <article className={styles.card} data-tone="free" data-highlight="true">

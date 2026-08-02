@@ -8,13 +8,15 @@ export type LaunchPlanCode =
   | "nclex_4day_pass"
   | "ccrn_4day_pass"
   | "core_monthly"
-  | "all_access_monthly";
+  | "all_access_monthly"
+  | "nclex_pass_guarantee";
 
 export type LaunchPlanType =
   | "track-pass"
   | "track-base-monthly"
   | "core-monthly"
-  | "all-access-monthly";
+  | "all-access-monthly"
+  | "pass-guarantee";
 export type LaunchBillingTier = "plus" | "pro";
 export type LaunchExamTrackScope = "all" | "nclex" | "ccrn";
 
@@ -195,6 +197,31 @@ const LAUNCH_OFFER_MAP: Record<LaunchPlanCode, LaunchOfferPolicy> = {
     activeForSale: false,
     marketingBadge: "Most practical",
   },
+  // One-time bundle sold against a test date rather than a billing cycle. The
+  // access window is a fixed 180 days, which comfortably covers the gap between
+  // buying prep and sitting the exam — the marketing copy and the fine print both
+  // say so, because "until your exam date" is a promise the schema cannot express.
+  nclex_pass_guarantee: {
+    planCode: "nclex_pass_guarantee",
+    planType: "pass-guarantee",
+    billingTier: "pro",
+    label: "NCLEX Pass Guarantee Bundle",
+    shortLabel: "Pass Guarantee",
+    description: "One-time full NCLEX access through exam day — the complete live bank, all 5 readiness exams, AI tutor, and advanced analytics, backed by a money-back pass guarantee.",
+    price: 50,
+    checkoutMode: "payment",
+    examTrackScope: "nclex",
+    accessHours: 4320,
+    questionBankAccessPercent: 100,
+    practiceExamLimit: 5,
+    entitlements: ALL_ACCESS_ENTITLEMENTS,
+    canUseTutor: true,
+    canUseRichModes: true,
+    canUseIcuSimBeta: false,
+    canUseAdvancedAnalytics: true,
+    activeForSale: true,
+    marketingBadge: "Pass guarantee",
+  },
   all_access_monthly: {
     planCode: "all_access_monthly",
     planType: "all-access-monthly",
@@ -236,7 +263,8 @@ export function isLaunchPlanCode(value: string | null | undefined): value is Lau
     || value === "nclex_4day_pass"
     || value === "ccrn_4day_pass"
     || value === "core_monthly"
-    || value === "all_access_monthly";
+    || value === "all_access_monthly"
+    || value === "nclex_pass_guarantee";
 }
 
 export function getLaunchOffer(planCode: string | null | undefined) {

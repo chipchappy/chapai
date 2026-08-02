@@ -127,6 +127,12 @@ export default function SuccessActivationClient({
       return `Your ${packageLabel} keeps both tracks active, includes the full live qbank, richer study modes, and ${practiceExamLimit} total practice exams.`;
     }
 
+    if (planCode === "nclex_pass_guarantee") {
+      // Stated in days, not hours — "4320 hours" is nobody's mental model.
+      const days = Math.round(accessHours / 24);
+      return `Your ${packageLabel} is active for the next ${days} days. It includes the full ${examLabel} question bank, the AI tutor on every question, all ${practiceExamLimit} readiness exams, and advanced analytics. Complete all ${practiceExamLimit} readiness exams and 2,000 practice questions before your test date to stay eligible for the money-back guarantee.`;
+    }
+
     if (
       planCode === "nclex_24h_pass"
       || planCode === "ccrn_24h_pass"

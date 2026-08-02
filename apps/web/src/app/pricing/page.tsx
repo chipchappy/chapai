@@ -3,7 +3,7 @@ import PricingCards from "@/components/marketing/PricingCards";
 
 export const metadata: Metadata = {
   title: "Pricing | Clarity NCLEX",
-  description: "Clarity NCLEX pricing: $9.99/mo for NCLEX Monthly, $15.99/mo for Premium, and a $4.99 7-day pass.",
+  description: "Clarity NCLEX pricing: a $50 one-time Pass Guarantee Bundle with money-back guarantee, $9.99/mo for NCLEX Monthly, $15.99/mo for Premium, and a $4.99 7-day pass.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -22,7 +22,11 @@ const PRICING_FAQS: Array<{ q: string; a: string }> = [
   },
   {
     q: "Is there a pass guarantee?",
-    a: "The Clarity Pass Pledge: complete all five readiness exams on Dual Premium with “On Track” scores before your test date, and if you don’t pass the NCLEX, email your official result letter within 30 days — we’ll add 3 months of Dual Premium free while you prepare to retest.",
+    a: "Two, and they work differently. The $50 Pass Guarantee Bundle is a one-time purchase with a money-back guarantee — if you complete the content and still don’t pass, you get a refund. On subscription plans, the Clarity Pass Pledge instead adds 3 months of Dual Premium free: complete all five readiness exams with “On Track” scores before your test date, don’t pass, and email your official result letter within 30 days.",
+  },
+  {
+    q: "What is the $50 Pass Guarantee Bundle?",
+    a: "A one-time $50 purchase that unlocks everything — the full NCLEX NGN bank, the AI tutor on every question, all 5 timed readiness exams, and advanced analytics — with a 180-day access window that covers you through exam day. No subscription and nothing to cancel. If you complete all five readiness exams and 2,000 practice questions before your test date and still don’t pass, email your official NCLEX result letter within 30 days of your exam and we’ll refund the $50 in full.",
   },
   {
     q: "How does Clarity compare to UWorld or Kaplan at this price?",
