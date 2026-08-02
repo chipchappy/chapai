@@ -26,7 +26,7 @@ const PRICING_FAQS: Array<{ q: string; a: string }> = [
   },
   {
     q: "What is the $50 Pass Guarantee Bundle?",
-    a: "A one-time $50 purchase that unlocks everything — the full NCLEX NGN bank, the AI tutor on every question, all 5 timed readiness exams, and advanced analytics — with a 180-day access window that covers you through exam day. No subscription and nothing to cancel. If you complete all five readiness exams and 2,000 practice questions before your test date and still don’t pass, email your official NCLEX result letter within 30 days of your exam and we’ll refund the $50 in full.",
+    a: "A one-time $50 purchase that unlocks everything — the full NCLEX NGN bank, the AI tutor on every question, all 5 timed readiness exams, and advanced analytics — with a 180-day access window that covers you through exam day. No subscription and nothing to cancel. If you complete all five readiness exams and 2,000 unique practice questions before your test date and still don’t pass, email your official NCLEX result letter within 30 days of your exam and we’ll refund the $50 in full. Your progress against both requirements is tracked live on your dashboard, so you always know where you stand.",
   },
   {
     q: "How does Clarity compare to UWorld or Kaplan at this price?",

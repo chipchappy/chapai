@@ -62,7 +62,7 @@ const paidTiers: PaidTier[] = [
 ];
 
 /** Fine print for the guarantee — deliberately quiet, deliberately complete. */
-const GUARANTEE_TERMS = "Refund eligibility requires completing all five readiness exams and 2,000 practice questions before your test date, and emailing your official NCLEX result letter within 30 days of your exam. One-time purchase includes a 180-day access window. Full terms at checkout.";
+const GUARANTEE_TERMS = "Refund eligibility requires completing all five readiness exams and 2,000 unique practice questions before your test date, and emailing your official NCLEX result letter within 30 days of your exam. Progress is tracked on your dashboard. One-time purchase includes a 180-day access window. Full terms at checkout.";
 
 export default function PricingCards() {
   const passGuarantee = getLaunchOffer("nclex_pass_guarantee");

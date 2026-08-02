@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { StudyResource } from "@/lib/study-resources";
 import ReadinessBanner from "@/components/dashboard/ReadinessBanner";
+import PassGuaranteeCard from "@/components/dashboard/PassGuaranteeCard";
 
 interface SessionSummary {
   id: string;
@@ -344,6 +345,9 @@ export default function StudyDashboard() {
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">
+      {/* Renders itself away for accounts without the pass-guarantee bundle. */}
+      <PassGuaranteeCard />
+
       <ReadinessBanner
         accuracy={overallAccuracy}
         totalAnswered={data?.totalAnswered ?? 0}
