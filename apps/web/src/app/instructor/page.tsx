@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import InstructorDashboard from "@/components/dashboard/InstructorDashboard";
 import { getAuthenticatedUser } from "@/lib/supabase/server";
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
-import { getInstructorContext, getCohortRoster } from "@/lib/instructor-access";
+import { getInstructorContext, getCohortRoster, EMPTY_COHORT_AGGREGATE } from "@/lib/instructor-access";
 
 export const metadata: Metadata = {
   title: "Instructor Dashboard",
@@ -27,7 +27,7 @@ export default async function InstructorPage() {
   const env = resolveEnv();
   const roster = hasDatabase(env)
     ? await getCohortRoster(getDB(env), ctx.cohort)
-    : { students: [], aggregate: { count: 0, active7: 0, onTrack: 0, atRisk: 0, avgAccuracy: 0 } };
+    : { students: [], aggregate: EMPTY_COHORT_AGGREGATE };
 
   return (
     <main className="min-h-screen bg-bg px-4 py-8 md:py-12">

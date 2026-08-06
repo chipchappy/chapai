@@ -17,7 +17,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
-import type { StudentRow } from "@/lib/instructor-access";
+import type { CohortAggregate, StudentRow } from "@/lib/instructor-access";
 
 const TONE: Record<StudentRow["readiness"]["tone"], string> = {
   sage: "border-[rgba(111,141,118,0.28)] bg-[rgba(111,141,118,0.12)] text-[#55715e]",
@@ -26,9 +26,18 @@ const TONE: Record<StudentRow["readiness"]["tone"], string> = {
   blue: "border-[rgba(90,127,136,0.24)] bg-[rgba(90,127,136,0.1)] text-[#4f6f77]",
 };
 
-type Aggregate = { count: number; active7: number; onTrack: number; atRisk: number; avgAccuracy: number };
+type Aggregate = CohortAggregate;
 type SortMode = "priority" | "activity" | "accuracy" | "volume";
-type MetricFilter = "all" | "active" | "onTrack" | "support" | "accuracy";
+type MetricFilter = "all" | "active" | "onTrack" | "support" | "accuracy" | "notStarted";
+
+/** Accuracy band -> the bar colour that encodes it without relying on the number. */
+const BAND_TONE: Record<StudentRow["band"], "sage" | "gold" | "clay" | "blue"> = {
+  strong: "sage",
+  "on-track": "sage",
+  borderline: "gold",
+  "at-risk": "clay",
+  insufficient: "blue",
+};
 type StatTone = "blue" | "teal" | "sage" | "clay" | "gold";
 
 const STAT_STYLE: Record<StatTone, { surface: string; icon: string; value: string; bar: string }> = {
@@ -146,20 +155,30 @@ function StatTile({
   );
 }
 
-function ProgressBar({ value, tone = "sage" }: { value: number; tone?: "sage" | "gold" | "clay" | "blue" }) {
+function ProgressBar({ value, tone = "sage", hatched = false }: { value: number; tone?: "sage" | "gold" | "clay" | "blue"; hatched?: boolean }) {
   const colors = { sage: "bg-[#7e9d86]", gold: "bg-[#c9a15a]", clay: "bg-[#c47956]", blue: "bg-[#5a7f88]" };
+  const hatch = { backgroundImage: "repeating-linear-gradient(90deg, currentColor 0 4px, transparent 4px 8px)" };
   return (
     <span className="block h-2 w-full overflow-hidden rounded-full bg-[rgba(74,85,89,0.1)]" aria-hidden="true">
-      <span className={`block h-full rounded-full ${colors[tone]}`} style={{ width: `${Math.max(value > 0 ? 4 : 0, Math.min(100, value))}%` }} />
+      <span
+        className={`block h-full rounded-full ${colors[tone]} ${hatched ? "text-[#5a7f88]" : ""}`}
+        style={{
+          width: `${Math.max(value > 0 ? 4 : 0, Math.min(100, value))}%`,
+          ...(hatched ? { backgroundColor: "transparent", ...hatch } : {}),
+        }}
+      />
     </span>
   );
 }
 
+// Never-started seats rank first: in a cohort where most seats are unused,
+// activation is the action a professor can actually take.
 function priorityRank(student: StudentRow) {
-  if (student.answered >= 50 && student.accuracy < 58) return 0;
-  if (student.answered < 25) return 1;
-  if (student.accuracy < 65) return 2;
-  return 3;
+  if (student.answered === 0) return 0;
+  if (student.band === "at-risk") return 1;
+  if (student.band === "insufficient") return 2;
+  if (student.band === "borderline") return 3;
+  return 4;
 }
 
 export default function InstructorDashboard({
@@ -187,15 +206,18 @@ export default function InstructorDashboard({
       : [...students];
     const filtered = searched.filter((student) => {
       if (metricFilter === "active") return student.recentAnswered > 0;
-      if (metricFilter === "onTrack") return student.answered >= 25 && student.accuracy >= 65;
-      if (metricFilter === "support") return student.answered >= 50 && student.accuracy < 58;
+      if (metricFilter === "onTrack") return student.band === "on-track" || student.band === "strong";
+      if (metricFilter === "support") return student.band === "at-risk";
+      if (metricFilter === "notStarted") return student.answered === 0;
       return true;
     });
+    // Students with no data sort last on accuracy views rather than reading as 0%.
+    const acc = (s: StudentRow) => s.accuracy ?? -1;
     return filtered.sort((a, b) => {
       if (sort === "activity") return (b.lastActive ?? 0) - (a.lastActive ?? 0);
-      if (sort === "accuracy") return b.accuracy - a.accuracy || b.answered - a.answered;
+      if (sort === "accuracy") return acc(b) - acc(a) || b.answered - a.answered;
       if (sort === "volume") return b.answered - a.answered;
-      return priorityRank(a) - priorityRank(b) || a.accuracy - b.accuracy;
+      return priorityRank(a) - priorityRank(b) || acc(a) - acc(b);
     });
   }, [metricFilter, query, sort, students]);
 
@@ -238,12 +260,35 @@ export default function InstructorDashboard({
         <p className="mt-5 max-w-3xl border-l-2 border-[#c9a15a] pl-3 text-sm leading-6 text-dark">{cohortNote}</p>
       </section>
 
-      <section className="grid grid-cols-2 gap-3 xl:grid-cols-5 [&>button:last-child]:col-span-2 xl:[&>button:last-child]:col-span-1" aria-label="Cohort summary">
-        <StatTile icon={Users} label="Students" value={aggregate.count} sub="View the full cohort" tone="blue" progress={aggregate.count ? 100 : 0} active={metricFilter === "all"} onClick={() => selectMetric("all")} />
-        <StatTile icon={Activity} label="Active this week" value={aggregate.active7} sub={`${inactive} currently inactive`} tone="teal" progress={aggregate.count ? (aggregate.active7 / aggregate.count) * 100 : 0} active={metricFilter === "active"} onClick={() => selectMetric("active", "activity")} />
-        <StatTile icon={CheckCircle2} label="On track" value={aggregate.onTrack} sub="65%+ with practice volume" tone="sage" progress={aggregate.count ? (aggregate.onTrack / aggregate.count) * 100 : 0} active={metricFilter === "onTrack"} onClick={() => selectMetric("onTrack", "accuracy")} />
-        <StatTile icon={AlertTriangle} label="Needs support" value={aggregate.atRisk} sub="Prioritize faculty follow-up" tone="clay" progress={aggregate.count ? (aggregate.atRisk / aggregate.count) * 100 : 0} active={metricFilter === "support"} onClick={() => selectMetric("support", "priority")} />
-        <StatTile icon={Target} label="Cohort accuracy" value={aggregate.avgAccuracy ? `${aggregate.avgAccuracy}%` : "n/a"} sub="Rank students by accuracy" tone="gold" progress={aggregate.avgAccuracy} active={metricFilter === "accuracy"} onClick={() => selectMetric("accuracy", "accuracy")} />
+      {/* Ordered by what needs a decision. Unused seats lead: a cohort accuracy
+          computed over two active students is not the first thing faculty should
+          see when fourteen have never opened the bank. */}
+      <section className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6" aria-label="Cohort summary">
+        <StatTile
+          icon={AlertTriangle}
+          label="Not started"
+          value={aggregate.notStarted}
+          sub={`of ${aggregate.count} seats redeemed`}
+          tone="clay"
+          progress={aggregate.count ? (aggregate.notStarted / aggregate.count) * 100 : 0}
+          active={metricFilter === "notStarted"}
+          onClick={() => selectMetric("notStarted", "priority")}
+        />
+        <StatTile icon={Activity} label="Active this week" value={aggregate.active7} sub={`${inactive} inactive`} tone="teal" progress={aggregate.count ? (aggregate.active7 / aggregate.count) * 100 : 0} active={metricFilter === "active"} onClick={() => selectMetric("active", "activity")} />
+        <StatTile icon={CheckCircle2} label="On track" value={aggregate.onTrack} sub={`of ${aggregate.everActive} who practised`} tone="sage" progress={aggregate.everActive ? (aggregate.onTrack / aggregate.everActive) * 100 : 0} active={metricFilter === "onTrack"} onClick={() => selectMetric("onTrack", "accuracy")} />
+        <StatTile icon={AlertTriangle} label="Needs support" value={aggregate.atRisk} sub="Prioritize follow-up" tone="clay" progress={aggregate.everActive ? (aggregate.atRisk / aggregate.everActive) * 100 : 0} active={metricFilter === "support"} onClick={() => selectMetric("support", "priority")} />
+        <StatTile
+          icon={Target}
+          label="Cohort accuracy"
+          value={aggregate.avgAccuracy == null ? "—" : `${aggregate.avgAccuracy}%`}
+          // Pooled, and honest about how thin the sample is.
+          sub={aggregate.avgAccuracy == null ? "no practice yet" : `pooled over ${aggregate.totalAnswered} answers${aggregate.lowConfidence ? " — thin" : ""}`}
+          tone="gold"
+          progress={aggregate.avgAccuracy ?? 0}
+          active={metricFilter === "accuracy"}
+          onClick={() => selectMetric("accuracy", "accuracy")}
+        />
+        <StatTile icon={Users} label="All students" value={aggregate.count} sub={`${aggregate.totalAnswered} questions answered`} tone="blue" progress={aggregate.count ? 100 : 0} active={metricFilter === "all"} onClick={() => selectMetric("all")} />
       </section>
 
       <section className="study-console-panel overflow-hidden !p-0">
@@ -306,11 +351,17 @@ export default function InstructorDashboard({
                     <span className="min-w-0">
                       <span className="block truncate text-sm font-semibold text-dark">{studentName(student)}</span>
                       <span className="block truncate text-xs text-muted">{student.email}</span>
-                      <span className="mt-1 block w-full"><ProgressBar value={student.accuracy} tone={student.accuracy >= 65 ? "sage" : student.accuracy >= 55 ? "gold" : "clay"} /></span>
+                      <span className="mt-1 block w-full"><ProgressBar value={student.accuracy ?? 0} tone={BAND_TONE[student.band]} /></span>
                     </span>
                     <span className="text-right">
-                      <span className="block text-sm font-bold text-dark">{student.answered ? `${student.accuracy}%` : "--"}</span>
-                      <span className="block text-[0.68rem] text-muted">{student.recentAnswered} this week</span>
+                      {/* Sample size rides with the number: 100% on 3 questions is
+                          not a top performer, and must not read like one. */}
+                      <span className={`block text-sm font-bold ${student.accuracy == null ? "text-muted" : "text-dark"}`}>
+                        {student.accuracy == null ? "—" : `${student.accuracy}%`}
+                      </span>
+                      <span className="block text-[0.68rem] text-muted">
+                        {student.answered === 0 ? "not started" : `n=${student.answered}`}
+                      </span>
                     </span>
                   </button>
                 );
@@ -336,7 +387,9 @@ export default function InstructorDashboard({
 }
 
 function StudentDetail({ student }: { student: StudentRow }) {
-  const ringValue = student.answered ? student.accuracy : 0;
+  const ringValue = student.accuracy ?? 0;
+  const hasData = student.accuracy != null;
+  const thin = hasData && student.band === "insufficient";
   return (
     <div className="space-y-6">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -354,29 +407,43 @@ function StudentDetail({ student }: { student: StudentRow }) {
         <div className="flex items-center justify-center rounded-lg border border-[rgba(74,85,89,0.12)] bg-white/45 p-4">
           <div
             className="grid h-28 w-28 place-items-center rounded-full p-[9px]"
-            style={{ background: `conic-gradient(#7e9d86 ${ringValue * 3.6}deg, rgba(74,85,89,0.1) 0deg)` }}
-            aria-label={`${student.accuracy}% overall accuracy`}
+            style={{ background: `conic-gradient(${thin ? "#9aa8a2" : "#7e9d86"} ${ringValue * 3.6}deg, rgba(74,85,89,0.1) 0deg)` }}
+            aria-label={hasData ? `${student.accuracy}% accuracy from ${student.answered} answered questions` : "No questions answered yet"}
           >
             <div className="grid h-full w-full place-items-center rounded-full bg-[#fbfaf7] text-center">
               <span>
-                <strong className="block font-serif text-2xl leading-none text-dark">{student.answered ? `${student.accuracy}%` : "--"}</strong>
-                <span className="mt-1 block text-[0.65rem] uppercase text-muted">accuracy</span>
+                <strong className={`block font-serif text-2xl leading-none ${hasData ? "text-dark" : "text-muted"}`}>
+                  {hasData ? `${student.accuracy}%` : "—"}
+                </strong>
+                <span className="mt-1 block text-[0.65rem] uppercase text-muted">
+                  {hasData ? `of ${student.answered}` : "no data"}
+                </span>
               </span>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[rgba(74,85,89,0.12)] bg-[rgba(74,85,89,0.1)]">
           <DetailMetric icon={BarChart3} label="Answered" value={String(student.answered)} />
+          {/* Coverage vs volume: answering 74 questions across 51 unique items
+              means revisiting, which is invisible from a single total. */}
+          <DetailMetric icon={Target} label="Unique covered" value={String(student.uniqueQuestions)} />
           <DetailMetric icon={Activity} label="This week" value={String(student.recentAnswered)} />
-          <DetailMetric icon={TrendingUp} label="Sessions" value={String(student.sessions)} />
           <DetailMetric icon={Clock3} label="Avg. time" value={student.averageTimeSeconds ? `${student.averageTimeSeconds}s` : "--"} />
         </div>
       </div>
 
+      {thin ? (
+        <p className="rounded-lg border border-[rgba(90,127,136,0.24)] bg-[rgba(90,127,136,0.08)] px-3 py-2 text-xs leading-5 text-muted">
+          Only {student.answered} question{student.answered === 1 ? "" : "s"} answered — too few to read this accuracy as a strength or a gap yet.
+        </p>
+      ) : null}
+
       <section>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-sm font-bold text-dark">Faculty guidance</h3>
-          <span className="text-xs text-muted">Last active {relativeDay(student.lastActive).toLowerCase()}</span>
+          <span className="text-xs text-muted">
+            {student.lastActive ? `Last active ${relativeDay(student.lastActive).toLowerCase()}` : "No activity yet"}
+          </span>
         </div>
         <div className="mt-2 rounded-lg border border-[rgba(201,161,90,0.25)] bg-[rgba(201,161,90,0.08)] p-3 text-sm leading-6 text-dark">
           {student.recommendation}
@@ -395,20 +462,35 @@ function StudentDetail({ student }: { student: StudentRow }) {
       <section>
         <h3 className="text-sm font-bold text-dark">Performance by category</h3>
         {student.categories.length ? (
-          <div className="mt-3 space-y-3">
-            {student.categories.slice(0, 7).map((category) => (
-              <div key={category.category} className="grid grid-cols-[minmax(0,1fr)_48px] items-center gap-3">
-                <div className="min-w-0">
-                  <div className="mb-1 flex items-baseline justify-between gap-3 text-xs">
-                    <span className="truncate font-medium text-dark">{category.category}</span>
-                    <span className="shrink-0 text-muted">{category.correct}/{category.answered} correct</span>
-                  </div>
-                  <ProgressBar value={category.accuracy} tone={category.accuracy >= 65 ? "sage" : category.accuracy >= 55 ? "gold" : "clay"} />
-                </div>
-                <strong className="text-right text-sm text-dark">{category.accuracy}%</strong>
-              </div>
-            ))}
-          </div>
+          <>
+            <p className="mt-1 text-xs text-muted">Weakest lane first. Bars are hatched below 5 questions — too thin to read as a strength or a gap.</p>
+            <div className="mt-3 space-y-3">
+              {[...student.categories]
+                // Surface the gap, not the alphabet: worst accuracy first, and
+                // push thin lanes down so a 3/3 does not top the list.
+                .sort((a, b) => (a.answered < 5 ? 1 : 0) - (b.answered < 5 ? 1 : 0) || a.accuracy - b.accuracy)
+                .slice(0, 8)
+                .map((category) => {
+                  const thinLane = category.answered < 5;
+                  return (
+                    <div key={category.category} className="grid grid-cols-[minmax(0,1fr)_48px] items-center gap-3">
+                      <div className="min-w-0">
+                        <div className="mb-1 flex items-baseline justify-between gap-3 text-xs">
+                          <span className="truncate font-medium text-dark">{category.category}</span>
+                          <span className="shrink-0 text-muted">{category.correct}/{category.answered} correct</span>
+                        </div>
+                        <ProgressBar
+                          value={category.accuracy}
+                          tone={thinLane ? "blue" : category.accuracy >= 65 ? "sage" : category.accuracy >= 55 ? "gold" : "clay"}
+                          hatched={thinLane}
+                        />
+                      </div>
+                      <strong className={`text-right text-sm ${thinLane ? "text-muted" : "text-dark"}`}>{category.accuracy}%</strong>
+                    </div>
+                  );
+                })}
+            </div>
+          </>
         ) : <p className="mt-2 text-sm text-muted">Category detail appears after the student completes practice questions.</p>}
       </section>
 
