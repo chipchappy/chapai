@@ -1,5 +1,6 @@
 import CtaButtons from "./CtaButtons";
 import styles from "./HeroCTA.module.css";
+import AuroraParallax from "./heroAnatomy/AuroraParallax";
 import { CcrnAnatomyArt, HomeAnatomyArt, NclexAnatomyArt } from "./heroAnatomy";
 import type { HeroAnatomyArtKey } from "./marketingArtwork";
 
@@ -18,7 +19,13 @@ function renderHeroArt(heroArt: HeroAnatomyArtKey) {
     return <CcrnAnatomyArt className={className} />;
   }
 
-  return <HomeAnatomyArt className={className} />;
+  // Aurora A8: the parallax wrapper is purely additive — it sets CSS variables
+  // the orb's layer groups read. Without it the artwork is unchanged.
+  return (
+    <AuroraParallax className="premium-hero-anatomy-parallax">
+      <HomeAnatomyArt className={className} />
+    </AuroraParallax>
+  );
 }
 
 export default function HeroCTA({ heroArt = "home" }: HeroCTAProps) {

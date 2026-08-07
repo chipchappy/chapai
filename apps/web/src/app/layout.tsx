@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Newsreader, Outfit, Yeseva_One } from "next/font/google";
+import { Fraunces, IBM_Plex_Mono, Instrument_Serif, Inter, Lato, Newsreader, Outfit, Yeseva_One } from "next/font/google";
 import "@/styles/globals.css";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import BrandHeader from "@/components/marketing/BrandHeader";
@@ -10,6 +10,17 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Typography direction 02 — Humanist Warmth. Lato's humanist proportions and
+// slightly flared terminals read warmer and softer than Inter's neutral grotesque
+// while staying fully legible in four-option answer lists and lab tables. Inter is
+// kept as the immediate fallback so nothing shifts if Lato fails to load.
+const lato = Lato({
+  subsets: ["latin"],
+  variable: "--font-lato",
+  weight: ["400", "700", "900"],
   display: "swap",
 });
 
@@ -212,7 +223,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const env = getServerEnv();
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${yesevaOne.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${lato.variable} ${newsreader.variable} ${ibmPlexMono.variable} ${outfit.variable} ${fraunces.variable} ${instrumentSerif.variable} ${yesevaOne.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

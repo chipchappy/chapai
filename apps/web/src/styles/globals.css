@@ -3726,8 +3726,18 @@
      letterforms. Lighter visual weight, reads premium + groovy. Instrument
      Serif + Fraunces + Newsreader carry fallbacks for any glyph it doesn't
      cover. */
-  --font-serif: var(--font-yeseva-one), var(--font-instrument-serif), var(--font-fraunces), var(--font-newsreader), "Source Serif Pro", Georgia, serif;
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Every var() below carries its own literal fallback deliberately. A bare
+     var(--font-x) that resolves to nothing makes the WHOLE declaration invalid at
+     computed-value time — so a single missing next/font variable silently
+     collapsed the entire stack to Times New Roman. With fallbacks a missing
+     variable costs one family, not the typeface. */
+  --font-serif: var(--font-yeseva-one, "Yeseva One"), var(--font-instrument-serif, "Instrument Serif"), var(--font-fraunces, "Fraunces"), var(--font-newsreader, "Newsreader"), "Source Serif Pro", Georgia, serif;
+  /* Typography direction 02 — Humanist Warmth. Lato leads: humanist proportions
+     and slightly flared terminals read warmer and softer than Inter's neutral
+     grotesque, without losing legibility in four-option answer lists. Inter stays
+     next in the stack so a failed load degrades to the previous face rather than
+     to a system default. */
+  --font-sans: var(--font-lato, "Lato"), var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-serif);
   --font-playfair: var(--font-serif);
   --color-bg: var(--c-bg);
@@ -32363,4 +32373,27 @@ body[data-sim-immersive="true"] > main {
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
+}
+
+/* ── Aurora A8: cursor-responsive depth ──────────────────────────────────────
+   Each layer group translates by its own depth multiplier. --aurora-x/y are set
+   by AuroraParallax and default to 0, so without the wrapper (or with reduced
+   motion, or on touch) the orb is exactly where it has always been. */
+.aurora-depth {
+  transform: translate(
+    calc(var(--aurora-x, 0) * var(--aurora-depth, 1) * 13px),
+    calc(var(--aurora-y, 0) * var(--aurora-depth, 1) * 9px)
+  );
+  transition: transform 90ms linear;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-depth { transform: none; transition: none; }
+}
+
+/* The parallax wrapper must not change layout — it exists only to own the
+   pointer-driven custom properties the orb's layers read. */
+.premium-hero-anatomy-parallax {
+  display: contents;
 }

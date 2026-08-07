@@ -76,13 +76,23 @@ export default function HomeAnatomyArt({ className }: AnatomyArtProps) {
         </filter>
       </defs>
 
-      <circle cx={cx} cy={cy} r="420" fill="url(#h-mint)" filter="url(#h-mint-blur)" />
-      <circle cx={cx} cy={cy} r="355" fill="url(#h-pink-outer)" filter="url(#h-pink-blur)" />
-      <circle cx={cx} cy={cy} r="265" fill="url(#h-pink-mid)" />
-      <circle cx={cx} cy={cy} r="192" fill="url(#h-pink-deep)" />
-      <circle cx={cx} cy={cy} r="125" fill="url(#h-yellow)" />
-      <circle cx={cx} cy={cy} r="65"  fill="url(#h-teal)" filter="url(#h-teal-glow)" />
-      <circle cx={cx} cy={cy} r="44"  fill="url(#h-teal)" />
+      {/* Aurora A8 — three parallax depths. The transforms read --aurora-x/y set
+          by AuroraParallax; with no wrapper, no pointer, or reduced motion those
+          variables are unset and every group falls back to translate(0,0), so the
+          orb renders exactly as it always has. */}
+      <g className="aurora-depth" style={{ "--aurora-depth": 1 } as React.CSSProperties}>
+        <circle cx={cx} cy={cy} r="420" fill="url(#h-mint)" filter="url(#h-mint-blur)" />
+        <circle cx={cx} cy={cy} r="355" fill="url(#h-pink-outer)" filter="url(#h-pink-blur)" />
+      </g>
+      <g className="aurora-depth" style={{ "--aurora-depth": 2.4 } as React.CSSProperties}>
+        <circle cx={cx} cy={cy} r="265" fill="url(#h-pink-mid)" />
+        <circle cx={cx} cy={cy} r="192" fill="url(#h-pink-deep)" />
+      </g>
+      <g className="aurora-depth" style={{ "--aurora-depth": 4.2 } as React.CSSProperties}>
+        <circle cx={cx} cy={cy} r="125" fill="url(#h-yellow)" />
+        <circle cx={cx} cy={cy} r="65"  fill="url(#h-teal)" filter="url(#h-teal-glow)" />
+        <circle cx={cx} cy={cy} r="44"  fill="url(#h-teal)" />
+      </g>
     </svg>
   );
 }
