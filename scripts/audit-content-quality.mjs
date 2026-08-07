@@ -146,6 +146,51 @@ const VITAL_BOUNDS = [
   { re: /\bpH\s*(?:of\s*)?(\d(?:\.\d{1,2})?)\b/gi, min: 6.6, max: 7.8, label: "implausible-ph" },
 ];
 
+// ── chart-tab distinctness ──────────────────────────────────────────────────
+// An NGN chart is only worth navigating if each tab carries information the
+// others do not. Observed in production: `hpi` frequently holds nothing but the
+// case title, the caption and the item instructions, with `timeline` repeating
+// the caption verbatim — so a student who reads one tab has read them all, and
+// the "synthesise across the chart" claim is false.
+function normalizeSentences(value) {
+  const parts = Array.isArray(value) ? value : [value];
+  return parts
+    .flatMap((part) => String(part ?? "").split(/(?<=[.;])\s+|\n+/))
+    .map((s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim())
+    .filter((s) => s.split(" ").length >= 4);
+}
+
+function checkTabDistinctness(row) {
+  const chart = json(row.chart_review, null);
+  if (!chart || typeof chart !== "object") return null;
+
+  const hpi = normalizeSentences(chart.hpi);
+  const notes = normalizeSentences(chart.notes);
+  const timeline = normalizeSentences(chart.timeline);
+  if (!hpi.length && !notes.length) return null;
+
+  const overlap = (a, b) => {
+    if (!a.length || !b.length) return 0;
+    const setB = new Set(b);
+    return a.filter((s) => setB.has(s)).length / a.length;
+  };
+
+  const hpiVsNotes = overlap(hpi, notes);
+  const hpiVsTimeline = overlap(hpi, timeline);
+  const flags = [];
+  if (!hpi.length) flags.push("hpi-empty");
+  else if (hpi.length < 2) flags.push("hpi-too-thin");
+  if (!notes.length) flags.push("notes-empty");
+  if (hpiVsNotes >= 0.5) flags.push("hpi-duplicates-notes");
+  if (hpiVsTimeline >= 0.5) flags.push("hpi-duplicates-timeline");
+
+  // HPI that is really just the title/caption/instruction restated.
+  const caption = normalizeSentences([chart.patientTitle, chart.patientCaption]);
+  if (hpi.length && overlap(hpi, caption) >= 0.4) flags.push("hpi-is-caption-restated");
+
+  return flags.length ? flags : null;
+}
+
 function checkConsistency(row) {
   const flags = [];
   const blob = [row.stem, row.scenario, row.additional_info, row.chart_review, row.exhibits]
@@ -221,6 +266,10 @@ const tiers = [0, 0, 0, 0, 0];
 const riskCounts = new Map();
 const flagCounts = new Map();
 const remediation = [];
+const tabCounts = new Map();
+const tabQueue = [];
+let chartsScanned = 0;
+let chartsWithFlags = 0;
 const consistency = [];
 
 for (const row of rows) {
@@ -231,6 +280,14 @@ for (const row of rows) {
   if (quality.tier >= 3) {
     remediation.push({ id: row.id, type: row.type, category: row.category, score: quality.score, tier: quality.tier, rationaleWords: quality.rationaleWords, risks: quality.risks });
   }
+
+  const tabFlags = checkTabDistinctness(row);
+  if (tabFlags) {
+    for (const f of tabFlags) tabCounts.set(f, (tabCounts.get(f) ?? 0) + 1);
+    chartsWithFlags += 1;
+    tabQueue.push({ id: row.id, type: row.type, flags: tabFlags });
+  }
+  if (checkTabDistinctness && json(row.chart_review, null)) chartsScanned += 1;
 
   const flags = checkConsistency(row);
   if (flags.length) {
@@ -248,6 +305,9 @@ const summary = {
   tiers: { premium: tiers[0], strong: tiers[1], acceptable: tiers[2], weak: tiers[3], unusable: tiers[4] },
   premiumPoolPercent: Math.round(((tiers[0] + tiers[1]) / Math.max(1, rows.length)) * 100),
   qualityRisks: Object.fromEntries([...riskCounts.entries()].sort((a, b) => b[1] - a[1])),
+  chartsScanned,
+  chartsWithDistinctnessFlags: chartsWithFlags,
+  tabDistinctnessFlags: Object.fromEntries([...tabCounts.entries()].sort((a,b)=>b[1]-a[1])),
   consistencyFlagged: consistency.length,
   consistencyFlags: Object.fromEntries([...flagCounts.entries()].sort((a, b) => b[1] - a[1])),
 };
@@ -262,6 +322,7 @@ writeFileSync(OUT, JSON.stringify({
   tier4Ids,
   remediationQueue: remediation.slice(0, 2000),
   consistencyQueue: consistency.slice(0, 2000),
+  tabDistinctnessQueue: tabQueue.slice(0, 3000),
 }, null, 2));
 
 console.log("\n── Quality tiers ─────────────────────────────");
