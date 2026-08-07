@@ -252,8 +252,17 @@ const summary = {
   consistencyFlags: Object.fromEntries([...flagCounts.entries()].sort((a, b) => b[1] - a[1])),
 };
 
+// The tier-4 id list is written UNCAPPED because it doubles as the revert
+// manifest for any bulk publish-state change.
+const tier4Ids = remediation.filter((item) => item.tier === 4).map((item) => item.id);
+
 mkdirSync(dirname(OUT), { recursive: true });
-writeFileSync(OUT, JSON.stringify({ summary, remediationQueue: remediation.slice(0, 2000), consistencyQueue: consistency.slice(0, 2000) }, null, 2));
+writeFileSync(OUT, JSON.stringify({
+  summary,
+  tier4Ids,
+  remediationQueue: remediation.slice(0, 2000),
+  consistencyQueue: consistency.slice(0, 2000),
+}, null, 2));
 
 console.log("\n── Quality tiers ─────────────────────────────");
 console.log(`  premium (0)    ${tiers[0]}`);
