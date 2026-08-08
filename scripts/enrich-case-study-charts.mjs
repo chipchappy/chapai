@@ -47,22 +47,43 @@ function d1(sql) {
   return JSON.parse(raw.slice(raw.indexOf("[")))[0]?.results ?? [];
 }
 
+// The free tier returns 503 "Worker local total request limit reached (16/16)"
+// when its shared pool is saturated. That clears in minutes, not seconds, so the
+// backoff is exponential with a long ceiling — and every request carries an
+// explicit timeout, because Node's fetch has none and one hung connection
+// otherwise stalls the entire run forever with no error and no recovery.
+const REQUEST_TIMEOUT_MS = 90_000;
+const MAX_ATTEMPTS = 6;
+
 async function chat(messages, { maxTokens = 2200, temperature = 0.4 } = {}) {
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
-    const response = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ model: MODEL, messages, max_tokens: maxTokens, temperature }),
-    });
-    if (response.status === 429 || response.status >= 500) {
-      await sleep(attempt * 4000);   // free tier is rate limited; back off rather than fail the row
-      continue;
+  let lastReason = "unknown";
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
+    try {
+      const response = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ model: MODEL, messages, max_tokens: maxTokens, temperature }),
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      });
+      if (response.status === 429 || response.status >= 500) {
+        lastReason = `${response.status}`;
+        // 8s, 20s, 45s, 90s, 150s — rides out a saturated shared pool.
+        const wait = [8_000, 20_000, 45_000, 90_000, 150_000][attempt - 1] ?? 150_000;
+        console.log(`    (capacity ${lastReason}, waiting ${Math.round(wait / 1000)}s — attempt ${attempt}/${MAX_ATTEMPTS})`);
+        await sleep(wait);
+        continue;
+      }
+      if (!response.ok) throw new Error(`${response.status} ${(await response.text()).slice(0, 180)}`);
+      const payload = await response.json();
+      return payload.choices?.[0]?.message?.content ?? "";
+    } catch (error) {
+      lastReason = error?.name === "TimeoutError" ? "timeout" : (error?.message ?? "error");
+      if (attempt === MAX_ATTEMPTS) break;
+      console.log(`    (${lastReason}, retrying — attempt ${attempt}/${MAX_ATTEMPTS})`);
+      await sleep(10_000 * attempt);
     }
-    if (!response.ok) throw new Error(`${response.status} ${(await response.text()).slice(0, 180)}`);
-    const payload = await response.json();
-    return payload.choices?.[0]?.message?.content ?? "";
   }
-  throw new Error("exhausted retries");
+  throw new Error(`exhausted retries (${lastReason})`);
 }
 
 const SYSTEM = `You are a nurse educator who writes NCLEX Next Generation case study charts.
