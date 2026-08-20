@@ -309,9 +309,16 @@ async function loadLivePracticeQuestions(exam: Exam) {
         ELSE 3
       END`,
       sql`${questions.structuredRationale} IS NULL`,
-      sql`${questions.distractorRationales} IS NULL`,
+      // Distractor and visual rationales only exist for option-based items.
+      // matrix / ordering / bow_tie have no distractors by construction, so
+      // ranking them on a NULL here pushed every NGN format to the bottom of
+      // the candidate pool: measured 10.1% NGN in the top 1,000 against 16.5%
+      // in the bank. Scoring those types as "not applicable" rather than
+      // "missing" restores NGN representation (measured 16.9%) while leaving
+      // mcq/sata ranking identical.
+      sql`CASE WHEN ${questions.type} IN ('mcq','sata') AND ${questions.distractorRationales} IS NULL THEN 1 ELSE 0 END`,
       sql`${questions.referencesJson} IS NULL`,
-      sql`${questions.visualRationale} IS NULL`,
+      sql`CASE WHEN ${questions.type} IN ('mcq','sata') AND ${questions.visualRationale} IS NULL THEN 1 ELSE 0 END`,
       questions.id,
     )
     .limit(candidateLimit);

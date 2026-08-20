@@ -181,22 +181,50 @@ function priorityRank(student: StudentRow) {
   return 4;
 }
 
+/** One entry in the admin scope picker. A link, not a button: the scope lives in
+ *  the query string so a given view is shareable and survives a reload. */
+function ScopeLink({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      aria-current={active ? "page" : undefined}
+      className={`rounded-full border px-3 py-1 text-xs transition ${
+        active
+          ? "border-[rgba(111,141,118,0.45)] bg-[rgba(111,141,118,0.14)] text-[#55715e]"
+          : "border-[rgba(90,127,136,0.2)] text-muted hover:border-[rgba(90,127,136,0.4)]"
+      }`}
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function InstructorDashboard({
   institution,
   cohort,
   accessExpiresAt,
   students,
   aggregate,
+  isPlatformAdmin = false,
+  cohortOptions = [],
+  activeScope = "all",
 }: {
   institution: string | null;
   cohort: string;
-  accessExpiresAt: number;
+  /** null for a platform admin, who holds no time-limited instructor grant. */
+  accessExpiresAt: number | null;
   students: StudentRow[];
   aggregate: Aggregate;
+  isPlatformAdmin?: boolean;
+  cohortOptions?: Array<{ cohort: string; institution: string | null; students: number }>;
+  activeScope?: string;
 }) {
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortMode>("priority");
   const [metricFilter, setMetricFilter] = useState<MetricFilter>("all");
+  // Admin-only: narrow the platform-wide roster to paying or free users. Kept
+  // out of MetricFilter because it composes with every one of those filters.
+  const [tierFilter, setTierFilter] = useState<"all" | "paid" | "free">("all");
   const [selectedEmail, setSelectedEmail] = useState(students[0]?.email ?? "");
 
   const visibleStudents = useMemo(() => {
@@ -204,7 +232,10 @@ export default function InstructorDashboard({
     const searched = normalized
       ? students.filter((student) => `${studentName(student)} ${student.email}`.toLowerCase().includes(normalized))
       : [...students];
-    const filtered = searched.filter((student) => {
+    const byTier = tierFilter === "all"
+      ? searched
+      : searched.filter((student) => (tierFilter === "paid" ? student.tier !== "free" : student.tier === "free"));
+    const filtered = byTier.filter((student) => {
       if (metricFilter === "active") return student.recentAnswered > 0;
       if (metricFilter === "onTrack") return student.band === "on-track" || student.band === "strong";
       if (metricFilter === "support") return student.band === "at-risk";
@@ -219,12 +250,14 @@ export default function InstructorDashboard({
       if (sort === "volume") return b.answered - a.answered;
       return priorityRank(a) - priorityRank(b) || acc(a) - acc(b);
     });
-  }, [metricFilter, query, sort, students]);
+  }, [metricFilter, query, sort, students, tierFilter]);
 
   const selected = visibleStudents.find((student) => student.email === selectedEmail)
     ?? visibleStudents[0]
     ?? null;
   const inactive = Math.max(0, aggregate.count - aggregate.active7);
+  const paidCount = students.filter((student) => student.tier !== "free").length;
+  const freeCount = students.length - paidCount;
   const cohortNote = aggregate.count === 0
     ? "Students will appear as soon as they join with the program access key."
     : aggregate.atRisk > 0
@@ -247,16 +280,64 @@ export default function InstructorDashboard({
             <h1 className="mt-2 font-serif text-[1.9rem] leading-tight text-dark md:text-[2.25rem]">
               {institution ?? "Cohort overview"}
             </h1>
-            <p className="mt-1 break-words text-sm text-muted">Cohort <code className="text-[0.82em]">{cohort}</code></p>
-          </div>
-          <div className="flex flex-col items-end gap-2 text-right">
-            <span className="signal-pill signal-pill-sage">Instructor access</span>
-            <p className="flex items-center gap-1.5 text-xs text-muted">
-              <CalendarClock aria-hidden="true" className="h-3.5 w-3.5" />
-              Demo access through {expiryDate(accessExpiresAt)}
+            <p className="mt-1 break-words text-sm text-muted">
+              {cohort === "all"
+                ? `Every registered account — ${paidCount} paid, ${freeCount} free`
+                : <>Cohort <code className="text-[0.82em]">{cohort}</code></>}
             </p>
           </div>
+          <div className="flex flex-col items-end gap-2 text-right">
+            <span className="signal-pill signal-pill-sage">
+              {isPlatformAdmin ? "Platform admin" : "Instructor access"}
+            </span>
+            {accessExpiresAt != null && (
+              <p className="flex items-center gap-1.5 text-xs text-muted">
+                <CalendarClock aria-hidden="true" className="h-3.5 w-3.5" />
+                Demo access through {expiryDate(accessExpiresAt)}
+              </p>
+            )}
+          </div>
         </div>
+
+        {/* Scope picker — admin only. Instructors have exactly one cohort, so
+            showing them a picker with a single entry would be noise. */}
+        {isPlatformAdmin && (
+          <div className="mt-5 flex flex-wrap items-center gap-2">
+            <span className="terminal-label mr-1">Viewing</span>
+            <ScopeLink href="/instructor?scope=all" active={activeScope === "all"}>
+              All students
+            </ScopeLink>
+            {cohortOptions.map((option) => (
+              <ScopeLink
+                key={option.cohort}
+                href={`/instructor?scope=${encodeURIComponent(option.cohort)}`}
+                active={activeScope === option.cohort}
+              >
+                {option.institution ?? option.cohort} ({option.students})
+              </ScopeLink>
+            ))}
+            {activeScope === "all" && (
+              <div className="ml-auto flex items-center gap-2">
+                <span className="terminal-label mr-1">Plan</span>
+                {(["all", "paid", "free"] as const).map((value) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => setTierFilter(value)}
+                    aria-pressed={tierFilter === value}
+                    className={`rounded-full border px-3 py-1 text-xs transition ${
+                      tierFilter === value
+                        ? "border-[rgba(92,145,145,0.45)] bg-[rgba(92,145,145,0.14)] text-[#3f6e6e]"
+                        : "border-[rgba(90,127,136,0.2)] text-muted hover:border-[rgba(90,127,136,0.4)]"
+                    }`}
+                  >
+                    {value === "all" ? "All plans" : value === "paid" ? "Paid" : "Free"}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
         <p className="mt-5 max-w-3xl border-l-2 border-[#c9a15a] pl-3 text-sm leading-6 text-dark">{cohortNote}</p>
       </section>
 

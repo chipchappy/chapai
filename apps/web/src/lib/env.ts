@@ -48,6 +48,9 @@ const serverEnvSchema = workerBindingSchema.extend({
   DEMO_MODE: rawBoolean.default(false),
   CLINICAL_SIMULATION_ENABLED: rawBoolean.default(false),
   CLINICAL_SIMULATION_ADMIN_EMAILS: z.string().optional(),
+  // Comma-separated emails allowed to read every cohort and the whole user base
+  // via /instructor. Strictly above instructor scope; see lib/platform-admin.ts.
+  PLATFORM_ADMIN_EMAILS: z.string().optional(),
   TELEGRAM_BOT_TOKEN: z.string().optional(),
   DEMO_KEY: z.string().optional(),
   SENTRY_DSN: z.string().url().optional(),

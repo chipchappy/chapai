@@ -52,6 +52,13 @@ export async function getInstructorContext(input: { userId?: string | null; emai
 export type StudentRow = {
   name: string | null;
   email: string;
+  /** free | plus | pro — lets a platform-wide view separate organic free
+   *  signups from paying subscribers. Defaults to "free" for any user row
+   *  without an explicit tier. */
+  tier: "free" | "plus" | "pro";
+  /** Cohort slug when the student holds an institutional grant, null for an
+   *  organic signup who belongs to no school. */
+  cohort: string | null;
   /** Questions actually answered (attempts). Denominator for accuracy. */
   answered: number;
   correct: number;
@@ -132,23 +139,64 @@ export const EMPTY_COHORT_AGGREGATE: CohortAggregate = {
   totalAnswered: 0, avgAccuracy: null, lowConfidence: true,
 };
 
-export async function getCohortRoster(db: DB, cohort: string): Promise<{ students: StudentRow[]; aggregate: CohortAggregate }> {
+/**
+ * Which students a roster covers.
+ *
+ * `cohort` is the instructor-facing scope and remains strictly limited to one
+ * cohort's grant holders — that is the isolation guarantee faculty rely on.
+ * `all` is the platform-admin scope: every registered user, including organic
+ * free signups who hold no institutional grant and are therefore invisible to
+ * every cohort query. Only callers that have already passed a platform-admin
+ * check may pass `all`; see lib/platform-admin.ts.
+ */
+export type RosterScope = { kind: "cohort"; cohort: string } | { kind: "all" };
+
+export async function getCohortRoster(
+  db: DB,
+  scope: string | RosterScope,
+): Promise<{ students: StudentRow[]; aggregate: CohortAggregate }> {
+  const resolved: RosterScope = typeof scope === "string" ? { kind: "cohort", cohort: scope } : scope;
   const binding = raw(resolveEnv());
   if (!binding) return { students: [], aggregate: { ...EMPTY_COHORT_AGGREGATE } };
 
-  // 1. Student emails in THIS cohort only (the scoping guarantee).
-  const grantRows = (await binding
-    .prepare(`SELECT DISTINCT email FROM access_key_grants WHERE cohort = ? AND role = 'student' AND email IS NOT NULL LIMIT 200`)
-    .bind(cohort)
-    .all<{ email: string }>()).results ?? [];
-  const emails = grantRows.map((g) => g.email).filter(Boolean);
+  // 1. Which emails are in scope.
+  let emails: string[];
+  if (resolved.kind === "all") {
+    const everyone = (await binding
+      .prepare(`SELECT email FROM users WHERE email IS NOT NULL ORDER BY created_at DESC LIMIT 1000`)
+      .all<{ email: string }>()).results ?? [];
+    emails = everyone.map((u) => u.email).filter(Boolean);
+  } else {
+    // Grant holders in THIS cohort only — the scoping guarantee.
+    const grantRows = (await binding
+      .prepare(`SELECT DISTINCT email FROM access_key_grants WHERE cohort = ? AND role = 'student' AND email IS NOT NULL LIMIT 200`)
+      .bind(resolved.cohort)
+      .all<{ email: string }>()).results ?? [];
+    emails = grantRows.map((g) => g.email).filter(Boolean);
+  }
   if (!emails.length) return { students: [], aggregate: { ...EMPTY_COHORT_AGGREGATE } };
 
-  // 2. Map emails -> hosted user ids.
-  const hosted = await db.select({ id: users.id, email: users.email, name: users.name }).from(users).where(inArray(users.email, emails));
+  // 2. Map emails -> hosted user ids, tier and cohort membership.
+  const hosted = await db
+    .select({ id: users.id, email: users.email, name: users.name, tier: users.tier })
+    .from(users)
+    .where(inArray(users.email, emails));
   const idByEmail = new Map(hosted.map((h) => [h.email, h.id]));
   const nameByEmail = new Map(hosted.map((h) => [h.email, h.name]));
+  const tierByEmail = new Map(hosted.map((h) => [h.email, (h.tier ?? "free") as StudentRow["tier"]]));
   const ids = hosted.map((h) => h.id);
+
+  // Cohort label per student. In the `all` scope most users have none.
+  const cohortByEmail = new Map<string, string>();
+  {
+    const ph = emails.map(() => "?").join(",");
+    const rows = (await binding
+      .prepare(`SELECT email, cohort FROM access_key_grants
+                WHERE role = 'student' AND cohort IS NOT NULL AND email IN (${ph})`)
+      .bind(...emails)
+      .all<{ email: string; cohort: string }>()).results ?? [];
+    for (const r of rows) cohortByEmail.set(r.email, r.cohort);
+  }
 
   // 3. All-time + 7-day aggregates.
   //
@@ -288,6 +336,8 @@ export async function getCohortRoster(db: DB, cohort: string): Promise<{ student
     return {
       name: nameByEmail.get(email) ?? null,
       email,
+      tier: tierByEmail.get(email) ?? "free",
+      cohort: cohortByEmail.get(email) ?? null,
       answered,
       correct,
       uniqueQuestions: Number(a?.uniqueQuestions ?? 0),
