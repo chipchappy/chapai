@@ -300,13 +300,16 @@ export default function InstructorDashboard({
   const paidCount = students.filter((student) => segmentOf(student) === "paid").length;
   const freeCount = students.filter((student) => segmentOf(student) === "free").length;
 
-  // Grouped rendering only when nothing is narrowed — inside a single segment a
-  // heading repeating that segment's name would be noise.
-  const groupedRoster = segmentFilter === "all"
+  // Grouped rendering only when the roster actually mixes populations. A single
+  // group — an instructor's cohort, or an admin narrowed to one segment — gets a
+  // plain list, since a heading repeating what every row already is reads as noise.
+  const rosterGroups = segmentFilter === "all"
     ? SEGMENT_ORDER
         .map((segment) => ({ segment, rows: visibleStudents.filter((s) => segmentOf(s) === segment) }))
         .filter((group) => group.rows.length > 0)
     : [{ segment: segmentFilter, rows: visibleStudents }];
+  const showGroupHeadings = rosterGroups.length > 1;
+  const groupedRoster = rosterGroups;
   const cohortNote = aggregate.count === 0
     ? "Students will appear as soon as they join with the program access key."
     : aggregate.atRisk > 0
@@ -492,7 +495,7 @@ export default function InstructorDashboard({
               </div>
               {visibleStudents.length ? groupedRoster.map((group) => (
                 <div key={group.segment}>
-                  {segmentFilter === "all" && (
+                  {showGroupHeadings && (
                     <div className="flex items-baseline justify-between border-t border-[rgba(74,85,89,0.14)] bg-[rgba(90,127,136,0.06)] px-4 py-1.5">
                       <span className="terminal-label">{SEGMENT_LABEL[group.segment]}</span>
                       <span className="text-[0.68rem] text-muted">{group.rows.length}</span>
