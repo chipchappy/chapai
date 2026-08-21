@@ -339,6 +339,12 @@ export default function InstructorDashboard({
           </div>
         )}
         <p className="mt-5 max-w-3xl border-l-2 border-[#c9a15a] pl-3 text-sm leading-6 text-dark">{cohortNote}</p>
+        {aggregate.hiddenAutomationAccounts > 0 && (
+          <p className="mt-2 text-xs text-muted">
+            {aggregate.hiddenAutomationAccounts} automated test account
+            {aggregate.hiddenAutomationAccounts === 1 ? " is" : "s are"} excluded from this view.
+          </p>
+        )}
       </section>
 
       {/* Ordered by what needs a decision. Unused seats lead: a cohort accuracy

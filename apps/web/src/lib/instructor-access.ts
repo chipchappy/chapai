@@ -28,6 +28,27 @@ function raw(env: Partial<Env>): RawBinding | null {
   return env.DB as unknown as RawBinding;
 }
 
+// D1 caps how many parameters one statement may bind. Every roster query below
+// binds one parameter per student, which was harmless while a roster meant a
+// single cohort of ~16 but breaks the moment the platform-admin `all` scope
+// passes the whole user base in. Chunking keeps each statement well under the
+// cap and keeps the queries O(users) instead of failing outright as we grow.
+const D1_BIND_CHUNK = 60;
+
+function chunk<T>(items: T[], size = D1_BIND_CHUNK): T[][] {
+  if (items.length <= size) return items.length ? [items] : [];
+  const out: T[][] = [];
+  for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+  return out;
+}
+
+/** Run `query` once per chunk and flatten, so no single statement exceeds the cap. */
+async function gather<In, Out>(items: In[], query: (batch: In[]) => Promise<Out[]>): Promise<Out[]> {
+  const results: Out[] = [];
+  for (const batch of chunk(items)) results.push(...await query(batch));
+  return results;
+}
+
 export type InstructorContext = { isInstructor: true; cohort: string; institution: string | null; expiresAt: number } | { isInstructor: false };
 
 export async function getInstructorContext(input: { userId?: string | null; email?: string | null }): Promise<InstructorContext> {
@@ -132,11 +153,13 @@ export type CohortAggregate = {
   avgAccuracy: number | null;
   /** True when the cohort has answered too little for the figure to mean much. */
   lowConfidence: boolean;
+  /** Automation/smoke accounts excluded from the `all` scope. 0 for a cohort. */
+  hiddenAutomationAccounts: number;
 };
 
 export const EMPTY_COHORT_AGGREGATE: CohortAggregate = {
   count: 0, active7: 0, notStarted: 0, everActive: 0, onTrack: 0, atRisk: 0,
-  totalAnswered: 0, avgAccuracy: null, lowConfidence: true,
+  totalAnswered: 0, avgAccuracy: null, lowConfidence: true, hiddenAutomationAccounts: 0,
 };
 
 /**
@@ -161,11 +184,25 @@ export async function getCohortRoster(
 
   // 1. Which emails are in scope.
   let emails: string[];
+  let hiddenAutomationAccounts = 0;
   if (resolved.kind === "all") {
+    // Smoke, checkout and codex runs each create a throwaway account, and they
+    // outnumbered the real students badly enough to make the roster unreadable
+    // (42 of 115, only 2 of which ever answered a question). Matched on the
+    // automation prefixes rather than the @chapaisolutions.com domain, so real
+    // staff accounts on that domain are kept. The count is reported rather than
+    // silently dropped.
+    const AUTOMATION = `(email LIKE 'clarity.smoke+%' OR email LIKE 'codex.%'
+        OR email LIKE 'checkout-smoke-%' OR email LIKE 'checkout-tail-%'
+        OR email LIKE 'launch-smoke-%')`;
     const everyone = (await binding
-      .prepare(`SELECT email FROM users WHERE email IS NOT NULL ORDER BY created_at DESC LIMIT 1000`)
+      .prepare(`SELECT email FROM users WHERE email IS NOT NULL AND NOT ${AUTOMATION}
+                ORDER BY created_at DESC LIMIT 1000`)
       .all<{ email: string }>()).results ?? [];
     emails = everyone.map((u) => u.email).filter(Boolean);
+    hiddenAutomationAccounts = Number((await binding
+      .prepare(`SELECT COUNT(*) AS n FROM users WHERE email IS NOT NULL AND ${AUTOMATION}`)
+      .all<{ n: number }>()).results?.[0]?.n ?? 0);
   } else {
     // Grant holders in THIS cohort only — the scoping guarantee.
     const grantRows = (await binding
@@ -177,10 +214,10 @@ export async function getCohortRoster(
   if (!emails.length) return { students: [], aggregate: { ...EMPTY_COHORT_AGGREGATE } };
 
   // 2. Map emails -> hosted user ids, tier and cohort membership.
-  const hosted = await db
+  const hosted = await gather(emails, (batch) => db
     .select({ id: users.id, email: users.email, name: users.name, tier: users.tier })
     .from(users)
-    .where(inArray(users.email, emails));
+    .where(inArray(users.email, batch)));
   const idByEmail = new Map(hosted.map((h) => [h.email, h.id]));
   const nameByEmail = new Map(hosted.map((h) => [h.email, h.name]));
   const tierByEmail = new Map(hosted.map((h) => [h.email, (h.tier ?? "free") as StudentRow["tier"]]));
@@ -189,12 +226,11 @@ export async function getCohortRoster(
   // Cohort label per student. In the `all` scope most users have none.
   const cohortByEmail = new Map<string, string>();
   {
-    const ph = emails.map(() => "?").join(",");
-    const rows = (await binding
+    const rows = await gather(emails, async (batch) => (await binding
       .prepare(`SELECT email, cohort FROM access_key_grants
-                WHERE role = 'student' AND cohort IS NOT NULL AND email IN (${ph})`)
-      .bind(...emails)
-      .all<{ email: string; cohort: string }>()).results ?? [];
+                WHERE role = 'student' AND cohort IS NOT NULL AND email IN (${batch.map(() => "?").join(",")})`)
+      .bind(...batch)
+      .all<{ email: string; cohort: string }>()).results ?? []);
     for (const r of rows) cohortByEmail.set(r.email, r.cohort);
   }
 
@@ -206,26 +242,22 @@ export async function getCohortRoster(
   // student practising past the deck produced accuracy above 100% (observed live:
   // a 25-question deck with 47 answers and 32 correct rendered as 128%).
   const sevenDaysAgo = Math.floor(Date.now() / 1000) - 7 * 24 * 60 * 60;
-  const allTime = ids.length
-    ? await db.select({
-        userId: quizAnswers.userId,
-        attempts: sql<number>`count(*)`,
-        correct: sql<number>`sum(case when ${quizAnswers.isCorrect} = 1 then 1 else 0 end)`,
-        uniqueQuestions: sql<number>`count(distinct ${quizAnswers.questionId})`,
-        lastAt: sql<number>`max(${quizAnswers.answeredAt})`,
-        avgTimeMs: sql<number>`avg(${quizAnswers.timeSpentMs})`,
-      }).from(quizAnswers).where(inArray(quizAnswers.userId, ids)).groupBy(quizAnswers.userId)
-    : [];
-  const recent = ids.length
-    ? await db.select({ userId: quizAnswers.userId, attempts: sql<number>`count(*)` })
-        .from(quizAnswers).where(and(inArray(quizAnswers.userId, ids), gte(quizAnswers.answeredAt, sevenDaysAgo))).groupBy(quizAnswers.userId)
-    : [];
+  const allTime = await gather(ids, (batch) => db.select({
+    userId: quizAnswers.userId,
+    attempts: sql<number>`count(*)`,
+    correct: sql<number>`sum(case when ${quizAnswers.isCorrect} = 1 then 1 else 0 end)`,
+    uniqueQuestions: sql<number>`count(distinct ${quizAnswers.questionId})`,
+    lastAt: sql<number>`max(${quizAnswers.answeredAt})`,
+    avgTimeMs: sql<number>`avg(${quizAnswers.timeSpentMs})`,
+  }).from(quizAnswers).where(inArray(quizAnswers.userId, batch)).groupBy(quizAnswers.userId));
+  const recent = await gather(ids, (batch) => db
+    .select({ userId: quizAnswers.userId, attempts: sql<number>`count(*)` })
+    .from(quizAnswers).where(and(inArray(quizAnswers.userId, batch), gte(quizAnswers.answeredAt, sevenDaysAgo))).groupBy(quizAnswers.userId));
   // Session count stays on quiz_sessions — it is a count, not a ratio, so it was
   // never affected by the denominator problem.
-  const sessionCounts = ids.length
-    ? await db.select({ userId: quizSessions.userId, sessions: sql<number>`count(*)` })
-        .from(quizSessions).where(and(inArray(quizSessions.userId, ids), isNotNull(quizSessions.completedAt))).groupBy(quizSessions.userId)
-    : [];
+  const sessionCounts = await gather(ids, (batch) => db
+    .select({ userId: quizSessions.userId, sessions: sql<number>`count(*)` })
+    .from(quizSessions).where(and(inArray(quizSessions.userId, batch), isNotNull(quizSessions.completedAt))).groupBy(quizSessions.userId));
   const allById = new Map(allTime.map((r) => [r.userId, r]));
   const recentById = new Map(recent.map((r) => [r.userId, Number(r.attempts)]));
   const sessionCountById = new Map(sessionCounts.map((r) => [r.userId, Number(r.sessions)]));
@@ -247,37 +279,32 @@ export async function getCohortRoster(
     started_at: number;
   };
 
-  const placeholders = ids.map(() => "?").join(",");
-  const categoryRows = ids.length
-    ? (await binding.prepare(`
+  const categoryRows = await gather(ids, async (batch) => (await binding.prepare(`
         SELECT qa.user_id, q.category, COUNT(*) AS answered,
           SUM(CASE WHEN qa.is_correct = 1 THEN 1 ELSE 0 END) AS correct,
           AVG(qa.time_spent_ms) AS avg_time_ms
         FROM quiz_answers qa
         JOIN questions q ON q.id = qa.question_id
-        WHERE qa.user_id IN (${placeholders})
+        WHERE qa.user_id IN (${batch.map(() => "?").join(",")})
         GROUP BY qa.user_id, q.category
         ORDER BY answered DESC
-      `).bind(...ids).all<CategoryAggregate>()).results ?? []
-    : [];
+      `).bind(...batch).all<CategoryAggregate>()).results ?? []);
   // Per-session totals also come from the answer rows. `total_questions` is the
   // planned deck and `correct_count` is the live tally, so dividing one by the
   // other was the source of the >100% figures on the roster and in the session
   // history alike.
-  const recentSessionRows = ids.length
-    ? (await binding.prepare(`
+  const recentSessionRows = await gather(ids, async (batch) => (await binding.prepare(`
         SELECT s.id, s.user_id, s.exam, s.category, s.started_at,
           COUNT(a.id) AS answered,
           COALESCE(SUM(CASE WHEN a.is_correct = 1 THEN 1 ELSE 0 END), 0) AS correct
         FROM quiz_sessions s
         LEFT JOIN quiz_answers a ON a.session_id = s.id
-        WHERE s.user_id IN (${placeholders}) AND s.completed_at IS NOT NULL
+        WHERE s.user_id IN (${batch.map(() => "?").join(",")}) AND s.completed_at IS NOT NULL
         GROUP BY s.id
         HAVING answered > 0
         ORDER BY s.started_at DESC
         LIMIT 1000
-      `).bind(...ids).all<RecentSession>()).results ?? []
-    : [];
+      `).bind(...batch).all<RecentSession>()).results ?? []);
 
   const categoriesById = new Map<string, StudentRow["categories"]>();
   const timeById = new Map<string, { weightedMs: number; answered: number }>();
@@ -386,6 +413,7 @@ export async function getCohortRoster(
     // three answers moves the cohort figure as much as one with three hundred.
     avgAccuracy: pooledAccuracy(withData.map((s) => ({ correct: s.correct, attempts: s.answered }))),
     lowConfidence: withData.reduce((sum, s) => sum + s.answered, 0) < LOW_CONFIDENCE_ATTEMPTS * 3,
+    hiddenAutomationAccounts,
   };
   return { students, aggregate };
 }
