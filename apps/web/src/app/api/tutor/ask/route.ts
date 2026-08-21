@@ -629,10 +629,21 @@ ${approvedContext}
       // OpenAI-compatible fallbacks — proven free-tier providers from the
       // content engine. Non-streaming completion piped through the SSE shape.
       // Cerebras gpt-oss-120b (a 120B reasoning model at "medium" effort) is the
-      // smartest free option and goes FIRST; Groq's llama-3.3-70b is the backup.
+      // smartest free option and goes FIRST; Groq backs it up.
+      //
+      // Several candidates per provider, because one hard-coded model name is a
+      // silent single point of failure. Groq retired llama-3.3-70b-versatile and
+      // the tutor served canned fallback text to every user until someone read
+      // the worker logs — the key still authenticated (model_not_found, not
+      // invalid_api_key), so only the name was stale. Walking a list means any
+      // single decommissioned model costs one fast 404 instead of the feature.
+      const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
       const openAiCompatible: Array<{ name: string; key: string | undefined; url: string; model: string; reasoning?: string }> = [
         { name: "cerebras", key: cerebrasKey, url: "https://api.cerebras.ai/v1/chat/completions", model: "gpt-oss-120b", reasoning: "medium" },
-        { name: "groq", key: groqKey, url: "https://api.groq.com/openai/v1/chat/completions", model: "llama-3.3-70b-versatile" },
+        { name: "groq", key: groqKey, url: GROQ_URL, model: "openai/gpt-oss-120b" },
+        { name: "groq", key: groqKey, url: GROQ_URL, model: "meta-llama/llama-4-maverick-17b-128e-instruct" },
+        { name: "groq", key: groqKey, url: GROQ_URL, model: "llama-3.3-70b-versatile" },
+        { name: "groq", key: groqKey, url: GROQ_URL, model: "llama-3.1-8b-instant" },
       ];
       for (const provider of openAiCompatible) {
         if (!provider.key) continue;
