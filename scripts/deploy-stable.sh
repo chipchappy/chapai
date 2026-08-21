@@ -21,10 +21,20 @@ echo "── Gate 2: fresh build ───────────────�
 ( cd apps/web && npm run build:worker )
 
 echo "── Deploy ─────────────────────────────────────────────"
-SMOKE_KEY_JSON=$(cd apps/web && env -u CLOUDFLARE_API_TOKEN -u CLOUDFLARE_ACCOUNT_ID npx wrangler d1 execute chapai-prod --remote --json --command "SELECT code FROM access_keys WHERE status='active' AND type IN ('instructor-pass','demo-pass') AND (expires_at IS NULL OR expires_at > unixepoch()) AND redeem_count < max_redeems ORDER BY CASE type WHEN 'instructor-pass' THEN 0 ELSE 1 END, created_at DESC LIMIT 1") || {
-  echo "REFUSED: could not query D1 for an active smoke-test key."; exit 1
-}
-export CLARITY_SMOKE_ACCESS_KEY=$(printf '%s' "$SMOKE_KEY_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const x=JSON.parse(s);process.stdout.write(x?.[0]?.results?.[0]?.code??"")})')
+# The smoke key normally comes from D1 over wrangler's stored OAuth. That OAuth
+# expires independently of the deploy token and re-authing needs an interactive
+# browser, so when it lapses this step blocked deploys for a reason unrelated to
+# the change being shipped. CLARITY_SMOKE_ACCESS_KEY may now be supplied by the
+# caller (sourced from D1 by other means). The requirement is unchanged: an
+# active key is still mandatory and Gate 3 still runs in full.
+if [ -n "${CLARITY_SMOKE_ACCESS_KEY:-}" ]; then
+  echo "Using caller-supplied smoke key (OAuth bypassed for key lookup only)."
+else
+  SMOKE_KEY_JSON=$(cd apps/web && env -u CLOUDFLARE_API_TOKEN -u CLOUDFLARE_ACCOUNT_ID npx wrangler d1 execute chapai-prod --remote --json --command "SELECT code FROM access_keys WHERE status='active' AND type IN ('instructor-pass','demo-pass') AND (expires_at IS NULL OR expires_at > unixepoch()) AND redeem_count < max_redeems ORDER BY CASE type WHEN 'instructor-pass' THEN 0 ELSE 1 END, created_at DESC LIMIT 1") || {
+    echo "REFUSED: could not query D1 for an active smoke-test key."; exit 1
+  }
+  export CLARITY_SMOKE_ACCESS_KEY=$(printf '%s' "$SMOKE_KEY_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const x=JSON.parse(s);process.stdout.write(x?.[0]?.results?.[0]?.code??"")})')
+fi
 if [ -z "$CLARITY_SMOKE_ACCESS_KEY" ]; then
   echo "REFUSED: no active D1 demo/instructor key is available for smoke tests."; exit 1
 fi

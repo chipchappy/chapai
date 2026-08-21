@@ -31,7 +31,9 @@ const flag = (n, d) => { const i = args.indexOf(`--${n}`); return i >= 0 && args
 const LIMIT = Number(flag("limit", "5"));
 const SHOW = args.includes("--show");
 const OUT = resolve(ROOT, flag("out", "packages/content/staging/case-study-charts.jsonl"));
-const MODEL = flag("model", "meta/llama-3.3-70b-instruct");
+// llama-3.3-70b on NVIDIA NIM is saturated: probed 2026-08-14, times out at 90s.
+// 3.1-70b answers the same prompt in ~36s and returns clean minified JSON.
+const MODEL = flag("model", "meta/llama-3.1-70b-instruct");
 
 // Env keys in this shell are quote-wrapped; strip them or auth fails with 401.
 const API_KEY = (process.env.NVIDIA_API_KEY ?? "").replace(/^["']|["']$/g, "").trim();
@@ -55,7 +57,7 @@ function d1(sql) {
 const REQUEST_TIMEOUT_MS = 90_000;
 const MAX_ATTEMPTS = 6;
 
-async function chat(messages, { maxTokens = 2200, temperature = 0.4 } = {}) {
+async function chat(messages, { maxTokens = 1400, temperature = 0.4 } = {}) {
   let lastReason = "unknown";
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
     try {
@@ -68,7 +70,7 @@ async function chat(messages, { maxTokens = 2200, temperature = 0.4 } = {}) {
       if (response.status === 429 || response.status >= 500) {
         lastReason = `${response.status}`;
         // 8s, 20s, 45s, 90s, 150s — rides out a saturated shared pool.
-        const wait = [8_000, 20_000, 45_000, 90_000, 150_000][attempt - 1] ?? 150_000;
+        const wait = [15_000, 45_000, 120_000, 240_000, 360_000][attempt - 1] ?? 150_000;
         console.log(`    (capacity ${lastReason}, waiting ${Math.round(wait / 1000)}s — attempt ${attempt}/${MAX_ATTEMPTS})`);
         await sleep(wait);
         continue;
