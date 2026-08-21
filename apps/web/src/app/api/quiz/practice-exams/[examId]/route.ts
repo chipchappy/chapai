@@ -109,6 +109,37 @@ function buildAssemblyMetadata(
   };
 }
 
+/**
+ * Per-form ceiling on how many questions of each quality tier may be taken.
+ *
+ * The five readiness forms are non-overlapping and were built in order, each
+ * reserving what it picked. Because candidates are ordered best-first, form 1
+ * drained the premium supply and form 5 got the remainder: measured live, form 1
+ * held 62 tier-0 items and form 5 held none.
+ *
+ * That makes the forms non-comparable, which defeats their purpose — a student's
+ * readiness score should not depend on which form they happened to draw. The
+ * quota spreads each tier across the forms instead, trading form 1's peak for
+ * five forms that measure the same thing. Exhausting a quota is not a failure:
+ * selection simply moves to the next tier, and the existing remainder and
+ * overflow passes still guarantee a full-length form.
+ */
+type TierQuota = Map<number, number>;
+
+function quotaAllows(quota: TierQuota | undefined, question: PracticeQuestion) {
+  if (!quota) return true;
+  const tier = getQuestionQualityProfile(question).tier;
+  const left = quota.get(tier);
+  return left === undefined || left > 0;
+}
+
+function quotaConsume(quota: TierQuota | undefined, question: PracticeQuestion) {
+  if (!quota) return;
+  const tier = getQuestionQualityProfile(question).tier;
+  const left = quota.get(tier);
+  if (left !== undefined) quota.set(tier, left - 1);
+}
+
 function takeUniqueQuestions(
   candidates: PracticeQuestion[],
   limit: number,
@@ -116,6 +147,7 @@ function takeUniqueQuestions(
   reservedSignatures: Set<string>,
   usedIds: Set<string>,
   usedSignatures: Set<string>,
+  tierQuota?: TierQuota,
 ) {
   const picked: PracticeQuestion[] = [];
 
@@ -126,11 +158,13 @@ function takeUniqueQuestions(
       || reservedSignatures.has(signature)
       || usedIds.has(question.id)
       || usedSignatures.has(signature)
+      || !quotaAllows(tierQuota, question)
     ) {
       continue;
     }
     usedIds.add(question.id);
     usedSignatures.add(signature);
+    quotaConsume(tierQuota, question);
     picked.push(question);
     if (picked.length >= limit) {
       break;
@@ -155,6 +189,7 @@ function selectByBlueprint(
   reservedSignatures: Set<string> = new Set(),
   initialQuestions: PracticeQuestion[] = [],
   allowReservedReuse = false,
+  tierQuota?: TierQuota,
 ) {
   const buckets = new Map<string, PracticeQuestion[]>();
 
@@ -186,6 +221,7 @@ function selectByBlueprint(
       reservedSignatures,
       usedInManifest,
       usedSignatures,
+      tierQuota,
     ));
   }
 
@@ -366,6 +402,21 @@ async function buildManifestIndex(exam: Exam) {
   const reservedIds = new Set<string>();
   const reservedSignatures = new Set<string>();
 
+  // Share each quality tier across the forms rather than letting the first one
+  // drain it. Supply is counted once, up front, from the same standalone pool
+  // every form draws from; the +1 slack keeps rounding from stranding the last
+  // item of a tier. CCRN has two forms and NCLEX five, so the divisor follows
+  // the definition count instead of being hard-coded.
+  const formCount = Math.max(1, definitions.filter((item) => item.exam === exam).length);
+  const tierSupply = new Map<number, number>();
+  for (const question of standaloneQuestions) {
+    const tier = getQuestionQualityProfile(question).tier;
+    tierSupply.set(tier, (tierSupply.get(tier) ?? 0) + 1);
+  }
+  const perFormTierCeiling = () => new Map(
+    [...tierSupply.entries()].map(([tier, total]) => [tier, Math.ceil(total / formCount) + 1] as const),
+  );
+
   for (const definition of definitions.filter((item) => item.exam === exam)) {
     const caseQuestions = exam === "nclex"
       ? qualityFirstCaseGroups(practiceQuestions, definition.seed)
@@ -383,6 +434,7 @@ async function buildManifestIndex(exam: Exam) {
       reservedSignatures,
       caseQuestions,
       !strictExposureControl,
+      perFormTierCeiling(),
     );
     selectedQuestions.forEach((question) => reservedIds.add(question.id));
     selectedQuestions.forEach((question) => reservedSignatures.add(questionSignature(question)));
