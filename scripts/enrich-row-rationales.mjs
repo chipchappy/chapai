@@ -56,18 +56,45 @@ const SECTION_MARKER = "Why each of these belongs where it does:";
 const BULLET = "•";
 const DASH = "—";
 
-function d1(sql) {
+// Retries because wrangler's OAuth token expires on a fixed clock (8h) and is
+// refreshed lazily on the NEXT invocation. A multi-hour run will therefore cross
+// an expiry, and the single call that lands on it returns 7403 while every call
+// after it succeeds. Without a retry the whole run died on that one call, 24
+// rows in. Sleeps between attempts to let the refresh land.
+const D1_ATTEMPTS = 4;
+const D1_BACKOFF_MS = [3_000, 10_000, 30_000];
+
+function d1Once(sql) {
   const env = { ...process.env };
   delete env.CLOUDFLARE_API_TOKEN;   // deploy-scoped; D1 rejects it with 7403
   delete env.CLOUDFLARE_ACCOUNT_ID;
-  const argv = WRANGLER.endsWith(".js")
-    ? [WRANGLER, "d1", "execute", "chapai-prod", "--remote", "--json", "--command", sql.replace(/\s+/g, " ").trim()]
-    : null;
-  const raw = argv
-    ? execFileSync(process.execPath, argv, { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 })
-    : execFileSync(WRANGLER, ["d1", "execute", "chapai-prod", "--remote", "--json", "--command", sql.replace(/\s+/g, " ").trim()],
-        { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
+  const cmd = ["d1", "execute", "chapai-prod", "--remote", "--json", "--command", sql.replace(/\s+/g, " ").trim()];
+  const raw = WRANGLER.endsWith(".js")
+    ? execFileSync(process.execPath, [WRANGLER, ...cmd], { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 })
+    : execFileSync(WRANGLER, cmd, { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
   return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+}
+
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+function d1(sql) {
+  let last;
+  for (let attempt = 1; attempt <= D1_ATTEMPTS; attempt += 1) {
+    try {
+      return d1Once(sql);
+    } catch (error) {
+      last = error;
+      const text = `${error?.stdout ?? ""}${error?.message ?? ""}`;
+      const transient = text.includes("7403") || text.includes("Authentication") || text.includes("fetch failed");
+      if (!transient || attempt === D1_ATTEMPTS) break;
+      const wait = D1_BACKOFF_MS[attempt - 1] ?? 30_000;
+      console.log(`    (D1 auth/transient failure, retrying in ${wait / 1000}s ${DASH} attempt ${attempt}/${D1_ATTEMPTS})`);
+      sleepSync(wait);
+    }
+  }
+  throw last;
 }
 
 const esc = (v) => String(v).replace(/'/g, "''");
@@ -124,34 +151,54 @@ You produce ONLY valid minified JSON. No prose, no markdown, no code fences.`;
 
 // The model still returns JSON -- it is a reliable transport for a keyed map.
 // We convert it to prose before it ever reaches the database.
-function buildMatrixPrompt(row, labels) {
+// Responses are keyed by INDEX ("1", "2", ...), never by the row label.
+// Matrix labels are full sentences ("Confirming the client understands the
+// procedure, risks, and alternatives."); requiring the model to echo one back
+// byte-for-byte as a JSON key failed constantly on punctuation and truncation,
+// and every one of those failures looked like a missing rationale. The index is
+// mapped back to its label here, where it cannot drift.
+function buildMatrixPrompt(row, items) {
   const columns = safeJson(row.matrix_columns, []);
-  return `You are given a matrix question about "${row.stem}".
-The matrix has these columns: ${columns.join(" and ")}.
-For each finding below, write ONE OR TWO sentences explaining why that specific finding belongs in its assigned column.
-Findings: ${labels.map((l) => `"${l}"`).join(", ")}.
-Return a JSON object whose keys are the exact finding strings above and whose values are the rationale strings.
-Each rationale must be at least 15 words and must mention the specific finding explicitly.
+  return `You are given an NGN matrix question about: "${row.stem}"
+The columns are: ${columns.join(" | ")}.
+Each finding below is followed by the column it has been assigned to.
+For each one, write ONE OR TWO sentences explaining why that finding belongs in THAT column.
+Name the specific clinical mechanism — do not restate the assignment.
+
+${items.map((it) => `${it.key}. "${it.label}" -> assigned to: ${it.assignment ?? "(see stem)"}`).join("\n")}
+
+Return a JSON object whose keys are the numbers above as strings ("1", "2", ...)
+and whose values are the rationale strings. At least 15 words each.
 Do NOT add any extra text.`;
 }
 
-function buildOrderingPrompt(row, orderedSteps) {
-  return `You are given an ordering question about "${row.stem}".
-The correct order of steps is: ${orderedSteps.map((s, i) => `${i + 1}. ${s}`).join(" -> ")}.
-For each step EXCEPT the last, write ONE OR TWO sentences explaining why that step should come before the next step, using priority frameworks (ABC, safety, assessment-before-intervention).
-Return a JSON object whose keys are the exact step texts and whose values are the rationale strings.
-Each rationale must be at least 15 words and must mention the specific step explicitly.
+function buildOrderingPrompt(row, items, lastStep) {
+  return `You are given an NGN ordering question about: "${row.stem}"
+The correct sequence is:
+${items.map((it) => `${it.key}. ${it.label}`).join("\n")}
+${items.length + 1}. ${lastStep}
+
+For each numbered step listed above, write ONE OR TWO sentences explaining why it
+must come before the step that follows it. Use priority frameworks explicitly
+(ABC, safety, assessment-before-intervention, Maslow).
+
+Return a JSON object whose keys are the numbers above as strings ("1", "2", ...)
+and whose values are the rationale strings. At least 15 words each.
 Do NOT add any extra text.`;
 }
 
-function gateRationales(obj, keys, noun) {
+function gateRationales(obj, items) {
   const problems = [];
-  if (!obj || typeof obj !== "object") return [`model returned no usable JSON object`];
-  for (const key of keys) {
-    const val = obj[key];
-    if (typeof val !== "string") { problems.push(`missing rationale for ${noun} "${key.slice(0, 40)}"`); continue; }
+  if (!obj || typeof obj !== "object") return ["model returned no usable JSON object"];
+  for (const it of items) {
+    const val = obj[it.key];
+    if (typeof val !== "string") { problems.push(`no rationale for #${it.key}`); continue; }
     const words = val.trim().split(/\s+/).filter(Boolean);
-    if (words.length < 15) problems.push(`rationale for "${key.slice(0, 40)}" too short (${words.length} words)`);
+    if (words.length < 15) problems.push(`#${it.key} too short (${words.length} words)`);
+    // Catches the model restating the assignment instead of explaining it.
+    if (/^(this|the)\s+(finding|step|option)\s+(is|belongs)/i.test(val.trim())) {
+      problems.push(`#${it.key} is a restatement, not a mechanism`);
+    }
   }
   return problems;
 }
@@ -167,10 +214,12 @@ function parseJson(raw) {
 // ---- prose composition ----------------------------------------------------
 // This is the whole point of the rewrite: what lands in the database is text a
 // student can read, not a serialised object.
-function composeProse(existing, keys, rationales, { numbered }) {
-  const lines = keys.map((key, i) => {
-    const label = numbered ? `Step ${i + 1} ${DASH} ${key}` : key;
-    return `${BULLET} ${label}: ${rationales[key].trim()}`;
+function composeProse(existing, items, rationales, { numbered }) {
+  const lines = items.map((it) => {
+    const head = numbered
+      ? `Step ${it.key} ${DASH} ${it.label}`
+      : it.assignment ? `${it.label} ${DASH} ${it.assignment}` : it.label;
+    return `${BULLET} ${head}: ${rationales[it.key].trim()}`;
   });
   const section = `${SECTION_MARKER}\n${lines.join("\n")}`;
   const base = String(existing ?? "").trim();
@@ -207,29 +256,41 @@ function composeProse(existing, keys, rationales, { numbered }) {
 
   let accepted = 0, rejected = 0, skipped = 0;
   for (const row of rows) {
-    // Derive the keys we need rationales for, guarding every JSON column.
-    let keys = [];
+    // Derive the items needing rationales, guarding every JSON column. Items
+    // carry {key, label, assignment}; the key is the index the model answers on.
+    let items = [];
     let numbered = false;
+    let lastStep = "";
     if (row.type === "matrix") {
       const matrixRows = safeJson(row.matrix_rows, []);
-      keys = matrixRows.map((r) => r?.label).filter((l) => typeof l === "string" && l.trim());
+      items = matrixRows
+        .filter((r) => typeof r?.label === "string" && r.label.trim())
+        .map((r, i) => ({ key: String(i + 1), label: r.label.trim(), assignment: r.answer ?? null }));
     } else {
       const options = safeJson(row.options, []);
       const answer = safeJson(row.answer, []);
+      // Legacy ordering rows store options as [] and answer as "0,1,2,3,4";
+      // there is no step text to reason about, so they are reported and skipped
+      // rather than fed to the model as empty strings.
       const idToText = Object.fromEntries(options.map((o) => [o?.id, o?.text]));
-      const ordered = answer.map((id) => idToText[id]).filter((t) => typeof t === "string" && t.trim());
-      keys = ordered.slice(0, Math.max(0, ordered.length - 1)); // last step has no "before" to explain
+      const ordered = (Array.isArray(answer) ? answer : [])
+        .map((id) => idToText[id])
+        .filter((t) => typeof t === "string" && t.trim());
+      items = ordered.slice(0, Math.max(0, ordered.length - 1))
+        .map((label, i) => ({ key: String(i + 1), label: label.trim(), assignment: null }));
+      lastStep = ordered[ordered.length - 1] ?? "";
       numbered = true;
     }
 
-    if (keys.length < 2) {
+    if (items.length < 2) {
       skipped += 1;
-      console.log(`  - ${row.id} (${row.type}) ${DASH} skipped, malformed or too few rows`);
+      console.log(`  - ${row.id} (${row.type}) ${DASH} skipped, no usable rows (legacy shape)`);
       continue;
     }
 
-    const prompt = row.type === "matrix" ? buildMatrixPrompt(row, keys) : buildOrderingPrompt(row, keys);
-    const noun = row.type === "matrix" ? "finding" : "step";
+    const prompt = row.type === "matrix"
+      ? buildMatrixPrompt(row, items)
+      : buildOrderingPrompt(row, items, lastStep);
 
     let rationales = null, problems = ["not attempted"];
     for (let attempt = 1; attempt <= 3 && problems.length; attempt += 1) {
@@ -241,7 +302,7 @@ function composeProse(existing, keys, rationales, { numbered }) {
         }
         const raw = await chat(messages, { temperature: 0, response_format: { type: "json_object" } });
         rationales = parseJson(raw);
-        problems = gateRationales(rationales, keys, noun);
+        problems = gateRationales(rationales, items);
       } catch (error) {
         problems = [`request failed: ${error.message}`];
       }
@@ -254,7 +315,7 @@ function composeProse(existing, keys, rationales, { numbered }) {
       continue;
     }
 
-    const next = composeProse(row.deep_rationale, keys, rationales, { numbered });
+    const next = composeProse(row.deep_rationale, items, rationales, { numbered });
     accepted += 1;
 
     if (SHOW || DRY) {
@@ -267,7 +328,7 @@ function composeProse(existing, keys, rationales, { numbered }) {
 
     d1(`UPDATE questions SET deep_rationale = '${esc(next)}' WHERE id = '${esc(row.id)}' AND type IN ('matrix','ordering')`);
     appendFileSync(OUT_FILE, `${JSON.stringify({ id: row.id, type: row.type, model: MODEL, generatedAt: new Date().toISOString() })}\n`);
-    console.log(`  + ${row.id} (${row.type}) ${DASH} appended ${keys.length} row rationales`);
+    console.log(`  + ${row.id} (${row.type}) ${DASH} appended ${items.length} row rationales`);
   }
 
   console.log(`\naccepted ${accepted}   rejected ${rejected}   skipped ${skipped}`);
