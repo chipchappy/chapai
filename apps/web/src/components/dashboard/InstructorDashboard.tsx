@@ -27,6 +27,35 @@ const TONE: Record<StudentRow["readiness"]["tone"], string> = {
 };
 
 type Aggregate = CohortAggregate;
+
+/**
+ * The three populations on the platform. They behave differently enough that
+ * averaging across them hides what matters: a demo cohort is a seeded roster
+ * where non-participation is the signal, whereas an independent free account
+ * self-selected in and its drop-off is a funnel question, not a teaching one.
+ */
+type Segment = "demo" | "paid" | "free";
+
+const SEGMENT_LABEL: Record<Segment, string> = {
+  demo: "Demo cohort",
+  paid: "Independent paid",
+  free: "Independent free",
+};
+
+const SEGMENT_HINT: Record<Segment, string> = {
+  demo: "Seeded through an institutional access key",
+  paid: "Self-serve subscribers, no cohort",
+  free: "Self-serve free accounts, no cohort",
+};
+
+/** Cohort membership wins over tier: a demo student on a paid tier is still a
+ *  demo student, because the question you ask about them is the cohort's. */
+function segmentOf(student: StudentRow): Segment {
+  if (student.cohort) return "demo";
+  return student.tier === "free" ? "free" : "paid";
+}
+
+const SEGMENT_ORDER: Segment[] = ["demo", "paid", "free"];
 type SortMode = "priority" | "activity" | "accuracy" | "volume";
 type MetricFilter = "all" | "active" | "onTrack" | "support" | "accuracy" | "notStarted";
 
@@ -222,9 +251,11 @@ export default function InstructorDashboard({
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortMode>("priority");
   const [metricFilter, setMetricFilter] = useState<MetricFilter>("all");
-  // Admin-only: narrow the platform-wide roster to paying or free users. Kept
-  // out of MetricFilter because it composes with every one of those filters.
-  const [tierFilter, setTierFilter] = useState<"all" | "paid" | "free">("all");
+  // Admin-only: which population the roster shows. Kept out of MetricFilter
+  // because a segment composes with every one of those filters — "at risk"
+  // means something different inside a demo cohort than among paying self-serve
+  // users, and you want to ask it of each population separately.
+  const [segmentFilter, setSegmentFilter] = useState<Segment | "all">("all");
   const [selectedEmail, setSelectedEmail] = useState(students[0]?.email ?? "");
 
   const visibleStudents = useMemo(() => {
@@ -232,10 +263,10 @@ export default function InstructorDashboard({
     const searched = normalized
       ? students.filter((student) => `${studentName(student)} ${student.email}`.toLowerCase().includes(normalized))
       : [...students];
-    const byTier = tierFilter === "all"
+    const bySegment = segmentFilter === "all"
       ? searched
-      : searched.filter((student) => (tierFilter === "paid" ? student.tier !== "free" : student.tier === "free"));
-    const filtered = byTier.filter((student) => {
+      : searched.filter((student) => segmentOf(student) === segmentFilter);
+    const filtered = bySegment.filter((student) => {
       if (metricFilter === "active") return student.recentAnswered > 0;
       if (metricFilter === "onTrack") return student.band === "on-track" || student.band === "strong";
       if (metricFilter === "support") return student.band === "at-risk";
@@ -250,14 +281,32 @@ export default function InstructorDashboard({
       if (sort === "volume") return b.answered - a.answered;
       return priorityRank(a) - priorityRank(b) || acc(a) - acc(b);
     });
-  }, [metricFilter, query, sort, students, tierFilter]);
+  }, [metricFilter, query, segmentFilter, sort, students]);
 
   const selected = visibleStudents.find((student) => student.email === selectedEmail)
     ?? visibleStudents[0]
     ?? null;
   const inactive = Math.max(0, aggregate.count - aggregate.active7);
-  const paidCount = students.filter((student) => student.tier !== "free").length;
-  const freeCount = students.length - paidCount;
+  // Counts come from the full roster, not the filtered view, so the chips keep
+  // showing the size of each population while you are inside one of them.
+  const segmentStats = SEGMENT_ORDER.map((segment) => {
+    const members = students.filter((student) => segmentOf(student) === segment);
+    return {
+      segment,
+      total: members.length,
+      active: members.filter((student) => student.answered > 0).length,
+    };
+  });
+  const paidCount = students.filter((student) => segmentOf(student) === "paid").length;
+  const freeCount = students.filter((student) => segmentOf(student) === "free").length;
+
+  // Grouped rendering only when nothing is narrowed — inside a single segment a
+  // heading repeating that segment's name would be noise.
+  const groupedRoster = segmentFilter === "all"
+    ? SEGMENT_ORDER
+        .map((segment) => ({ segment, rows: visibleStudents.filter((s) => segmentOf(s) === segment) }))
+        .filter((group) => group.rows.length > 0)
+    : [{ segment: segmentFilter, rows: visibleStudents }];
   const cohortNote = aggregate.count === 0
     ? "Students will appear as soon as they join with the program access key."
     : aggregate.atRisk > 0
@@ -316,26 +365,43 @@ export default function InstructorDashboard({
                 {option.institution ?? option.cohort} ({option.students})
               </ScopeLink>
             ))}
-            {activeScope === "all" && (
-              <div className="ml-auto flex items-center gap-2">
-                <span className="terminal-label mr-1">Plan</span>
-                {(["all", "paid", "free"] as const).map((value) => (
-                  <button
-                    key={value}
-                    type="button"
-                    onClick={() => setTierFilter(value)}
-                    aria-pressed={tierFilter === value}
-                    className={`rounded-full border px-3 py-1 text-xs transition ${
-                      tierFilter === value
-                        ? "border-[rgba(92,145,145,0.45)] bg-[rgba(92,145,145,0.14)] text-[#3f6e6e]"
-                        : "border-[rgba(90,127,136,0.2)] text-muted hover:border-[rgba(90,127,136,0.4)]"
-                    }`}
-                  >
-                    {value === "all" ? "All plans" : value === "paid" ? "Paid" : "Free"}
-                  </button>
-                ))}
-              </div>
-            )}
+          </div>
+        )}
+
+        {/* Population split. Shown whenever the roster mixes segments — inside a
+            single cohort every student is a demo student and the chips are noise. */}
+        {isPlatformAdmin && activeScope === "all" && (
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="terminal-label mr-1">Group</span>
+            <button
+              type="button"
+              onClick={() => setSegmentFilter("all")}
+              aria-pressed={segmentFilter === "all"}
+              className={`rounded-full border px-3 py-1 text-xs transition ${
+                segmentFilter === "all"
+                  ? "border-[rgba(92,145,145,0.45)] bg-[rgba(92,145,145,0.14)] text-[#3f6e6e]"
+                  : "border-[rgba(90,127,136,0.2)] text-muted hover:border-[rgba(90,127,136,0.4)]"
+              }`}
+            >
+              Everyone ({students.length})
+            </button>
+            {segmentStats.filter((s) => s.total > 0).map(({ segment, total, active }) => (
+              <button
+                key={segment}
+                type="button"
+                onClick={() => setSegmentFilter(segment)}
+                aria-pressed={segmentFilter === segment}
+                title={SEGMENT_HINT[segment]}
+                className={`rounded-full border px-3 py-1 text-xs transition ${
+                  segmentFilter === segment
+                    ? "border-[rgba(92,145,145,0.45)] bg-[rgba(92,145,145,0.14)] text-[#3f6e6e]"
+                    : "border-[rgba(90,127,136,0.2)] text-muted hover:border-[rgba(90,127,136,0.4)]"
+                }`}
+              >
+                {SEGMENT_LABEL[segment]} ({total})
+                <span className="ml-1 opacity-70">· {active} active</span>
+              </button>
+            ))}
           </div>
         )}
         <p className="mt-5 max-w-3xl border-l-2 border-[#c9a15a] pl-3 text-sm leading-6 text-dark">{cohortNote}</p>
@@ -424,7 +490,15 @@ export default function InstructorDashboard({
                 <span>{visibleStudents.length} student{visibleStudents.length === 1 ? "" : "s"}</span>
                 <span>7-day activity</span>
               </div>
-              {visibleStudents.length ? visibleStudents.map((student) => {
+              {visibleStudents.length ? groupedRoster.map((group) => (
+                <div key={group.segment}>
+                  {segmentFilter === "all" && (
+                    <div className="flex items-baseline justify-between border-t border-[rgba(74,85,89,0.14)] bg-[rgba(90,127,136,0.06)] px-4 py-1.5">
+                      <span className="terminal-label">{SEGMENT_LABEL[group.segment]}</span>
+                      <span className="text-[0.68rem] text-muted">{group.rows.length}</span>
+                    </div>
+                  )}
+                  {group.rows.map((student) => {
                 const active = selected?.email === student.email;
                 return (
                   <button
@@ -452,7 +526,9 @@ export default function InstructorDashboard({
                     </span>
                   </button>
                 );
-              }) : (
+                  })}
+                </div>
+              )) : (
                 <p className="border-t border-[rgba(74,85,89,0.1)] p-6 text-center text-sm text-muted">No students match that search.</p>
               )}
             </div>
@@ -485,6 +561,12 @@ function StudentDetail({ student }: { student: StudentRow }) {
           <div className="min-w-0">
             <h2 className="truncate font-serif text-2xl leading-tight text-dark">{studentName(student)}</h2>
             <p className="truncate text-sm text-muted">{student.email}</p>
+            {/* Which population this student belongs to. Shown here because the
+                same accuracy number means different things across segments. */}
+            <p className="mt-1 truncate text-xs text-muted">
+              {SEGMENT_LABEL[segmentOf(student)]}
+              {student.cohort ? ` · ${student.cohort}` : ` · ${student.tier} plan`}
+            </p>
           </div>
         </div>
         <span className={`inline-flex w-fit rounded-full border px-3 py-1 text-xs font-semibold ${TONE[student.readiness.tone]}`}>{student.readiness.label}</span>
