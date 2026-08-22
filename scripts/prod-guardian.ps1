@@ -9,7 +9,7 @@
 #
 # Install (one time):
 #   schtasks /Create /TN "Clarity Prod Guardian" /SC MINUTE /MO 7 /RL LIMITED ^
-#     /TR "powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\Chapman\Desktop\ai\chapai-p0.1-rewrite-distractors\scripts\prod-guardian.ps1"
+#     /TR "powershell -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\Chapman\Desktop\ai\chapai-p0.1-rewrite-distractors\scripts\prod-guardian.ps1"
 
 $ErrorActionPreference = 'Continue'
 $stable = 'C:\Users\Chapman\Desktop\ai\chapai-p0.1-rewrite-distractors'

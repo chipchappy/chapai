@@ -12,6 +12,7 @@ import type { PracticeCounts } from "@/lib/practice-data";
 import type { PracticePhase } from "@/lib/practice-session";
 import type { QuestionType } from "@/lib/types";
 import type { AnsweredRow } from "@/lib/weak-area-prompt";
+import { evaluateCat, type CatResponse } from "@/lib/adaptive-cat";
 
 type Exam = "nclex" | "ccrn";
 
@@ -158,6 +159,29 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     onResetSession,
     onStartMissedReview,
   } = props;
+
+  // Variable-length delivery. The bounds come from the assembled form, not the
+  // live 85-150 range: a form of N items cannot stop later than N, and claiming
+  // the real range on a shorter form would misrepresent the exam.
+  const catBounds = useMemo(
+    () => ({
+      minItems: Math.max(1, Math.ceil((session?.questions.length ?? 0) * 0.55)),
+      maxItems: Math.max(1, session?.questions.length ?? 1),
+    }),
+    [session?.questions.length],
+  );
+  const catState = useMemo(() => {
+    if (!session?.adaptive) return null;
+    const responses: CatResponse[] = session.questions
+      .filter((question) => session.answers[question.id])
+      .map((question) => ({
+        difficulty: question.difficulty,
+        correct: session.answers[question.id].correct,
+      }));
+    return evaluateCat(responses, catBounds);
+  }, [catBounds, session]);
+  const hideRunningTotal = Boolean(session?.adaptive);
+
   const nclexExamActive = Boolean(session && phase !== "catalog" && phase !== "results" && currentQuestion?.exam === "nclex");
 
   // Free-tier meter: lifetime questions used toward the 200 free allowance.
@@ -204,7 +228,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
               {phase === "catalog"
                 ? "Launch a live clinical study run."
                 : session
-                  ? `${session.exam.toUpperCase()} · ${session.mode.replace("-", " ")} · question ${session.currentIndex + 1} of ${session.questions.length}`
+                  ? `${session.exam.toUpperCase()} · ${session.mode.replace("-", " ")} · question ${session.currentIndex + 1}${hideRunningTotal ? "" : ` of ${session.questions.length}`}`
                   : runStatus}
             </p>
           </div>
@@ -221,7 +245,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
             <>
               <span className="quiz-chip">{session.exam.toUpperCase()}</span>
               <span className="quiz-chip">{session.mode.replace("-", " ")}</span>
-              <span className="quiz-chip">q {session.currentIndex + 1}/{session.questions.length}</span>
+              <span className="quiz-chip">q {session.currentIndex + 1}{hideRunningTotal ? "" : `/${session.questions.length}`}</span>
               {currentQuestion?.category ? <span className="quiz-chip">{currentQuestion.category}</span> : null}
             </>
           ) : null}
@@ -450,7 +474,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                 <span>{getExamTitle(session.exam)}</span>
                 <span className="text-center">Clarity Clinical Prep</span>
                 <span className="text-left md:text-right">
-                  {remainingSeconds !== null ? formatTime(remainingSeconds) : formatTime(elapsedSeconds)} | Question {session.currentIndex + 1} of {session.questions.length}
+                  {remainingSeconds !== null ? formatTime(remainingSeconds) : formatTime(elapsedSeconds)} | Question {session.currentIndex + 1}{hideRunningTotal ? "" : ` of ${session.questions.length}`}
                 </span>
               </div>
               <div className="flex flex-wrap items-center justify-between gap-2 bg-[#d9e9f4] px-4 py-2 text-sm font-semibold text-[#17475a]">
@@ -476,7 +500,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                   <span className="quiz-chip quiz-chip-accent">{session.label}</span>
                   <span className="quiz-chip">{session.exam.toUpperCase()}</span>
                   <span className="quiz-chip">{session.mode.replace("-", " ")}</span>
-                  <span className="quiz-chip">q {session.currentIndex + 1}/{session.questions.length}</span>
+                  <span className="quiz-chip">q {session.currentIndex + 1}{hideRunningTotal ? "" : `/${session.questions.length}`}</span>
                 </div>
                 <div className="quiz-session-status-strip">
                   <div className="quiz-session-mini-stat">

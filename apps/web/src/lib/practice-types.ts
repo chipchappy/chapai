@@ -249,6 +249,9 @@ export interface PracticeSessionState {
   answers: Record<string, PracticeAnswerRecord>;
   finishedAt?: number;
   reviewOnly?: boolean;
+  /** Variable-length adaptive delivery: the form may end before its last
+   *  item, and the running total is hidden from the candidate. */
+  adaptive?: boolean;
 }
 
 export interface PracticeEvaluation {

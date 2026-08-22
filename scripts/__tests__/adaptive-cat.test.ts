@@ -113,3 +113,20 @@ test("the candidate is never told how many items remain", () => {
   // No "total", no "remaining" — not knowing when it ends is the simulation.
   assert.ok(!("total" in progress) && !("remaining" in progress));
 });
+
+test("bounds can be narrowed for a shorter assembled form", () => {
+  // A practice form of 40 items cannot reproduce the live 85-150 range. The
+  // rule still applies; only where it may stop changes.
+  const short = { minItems: 20, maxItems: 40 };
+  assert.equal(evaluateCat(run(19, true, 4), short).done, false, "still respects its own floor");
+  assert.equal(evaluateCat(run(20, true, 4), short).done, true, "can stop at the narrowed floor");
+  const capped = evaluateCat(borderline(40), short);
+  assert.equal(capped.done, true);
+  assert.equal(capped.reason, "max-length");
+});
+
+test("narrowed bounds are reported to the candidate, not the real-exam ones", () => {
+  const progress = candidateProgress(evaluateCat(borderline(30), { minItems: 20, maxItems: 40 }), { minItems: 20, maxItems: 40 });
+  assert.equal(progress.minimum, 20);
+  assert.equal(progress.maximum, 40);
+});

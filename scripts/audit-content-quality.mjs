@@ -81,15 +81,22 @@ function scoreQuestion(row) {
   const hasStructured = Boolean(structured?.overview && structured?.mechanism && structured?.whyCorrect);
   if (hasStructured) score += 20;
 
-  // distractor coverage
-  const optionCount = Array.isArray(options) ? options.length : 0;
-  const distractorCount = Array.isArray(distractors)
-    ? distractors.length
-    : distractors && typeof distractors === "object" ? Object.keys(distractors).length : 0;
-  const needed = Math.max(0, optionCount - 1);
-  const coverage = needed > 0 ? Math.min(1, distractorCount / needed) : 1;
+  // distractor coverage (only for mcq and sata)
+  let coverage = 1;
+  let optionCount = 0;
+  if (row.type === 'mcq' || row.type === 'sata') {
+    const optCount = Array.isArray(options) ? options.length : 0;
+    const distractorCount = Array.isArray(distractors)
+      ? distractors.length
+      : distractors && typeof distractors === "object" ? Object.keys(distractors).length : 0;
+    const needed = Math.max(0, optCount - 1);
+    coverage = needed > 0 ? Math.min(1, distractorCount / needed) : 1;
+    optionCount = optCount;
+  }
   score += Math.round(coverage * 15);
-  if (coverage < 0.66 && optionCount >= 3) risks.push("incomplete-distractor-teaching");
+  if (coverage < 0.66 && optionCount >= 3 && (row.type === 'mcq' || row.type === 'sata')) {
+    risks.push("incomplete-distractor-teaching");
+  }
 
   // citations + visuals
   const hasRefs = (Array.isArray(references) ? references.length : 0) > 0;

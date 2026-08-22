@@ -19,11 +19,10 @@ function renderHeroArt(heroArt: HeroAnatomyArtKey) {
     return <CcrnAnatomyArt className={className} />;
   }
 
-  // Home hero: contour-map artwork. It is a raster vignette drawn on the same
-  // sand ground as the page, so it takes its own class rather than the SVG one —
-  // the anatomy SVGs inherit stroke colour from --hero-art-ink, which does
-  // nothing for an image and would only mislead the next reader.
-  return <TopographyHero className="premium-hero-topography" />;
+  // Home hero: a whole contour-mapped globe that turns. It carries its own
+  // styles and ink token rather than the anatomy SVGs' --hero-art-ink, because
+  // it is three independently moving layers rather than one stroked drawing.
+  return <TopographyHero />;
 }
 
 export default function HeroCTA({ heroArt = "home" }: HeroCTAProps) {

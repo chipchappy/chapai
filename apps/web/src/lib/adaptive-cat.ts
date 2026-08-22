@@ -120,12 +120,20 @@ export function estimateAbility(responses: CatResponse[]): { ability: number; st
  * Below MIN_ITEMS the exam never stops, however lopsided the responses — the
  * real exam does the same, and it is what stops a run of luck ending a test.
  */
-export function evaluateCat(responses: CatResponse[]): CatState {
+export type CatBounds = { minItems?: number; maxItems?: number };
+
+export function evaluateCat(responses: CatResponse[], bounds: CatBounds = {}): CatState {
+  // Bounds are injectable because the live exam runs 85-150 while an assembled
+  // practice form may be shorter. The rule is the same either way; only where
+  // it is allowed to stop changes, and a caller must not silently get the real
+  // exam range from a form that cannot supply it.
+  const minItems = Math.max(1, bounds.minItems ?? MIN_ITEMS);
+  const maxItems = Math.max(minItems, bounds.maxItems ?? MAX_ITEMS);
   const answered = responses.length;
   const { ability, standardError } = estimateAbility(responses);
   const base: CatState = { ability, standardError, answered, decision: null, reason: null, done: false };
 
-  if (answered < MIN_ITEMS) return base;
+  if (answered < minItems) return base;
 
   const margin = CONFIDENCE_Z * standardError;
   if (ability - margin > PASSING_STANDARD) {
@@ -134,7 +142,7 @@ export function evaluateCat(responses: CatResponse[]): CatState {
   if (ability + margin < PASSING_STANDARD) {
     return { ...base, decision: "fail", reason: "confident", done: true };
   }
-  if (answered >= MAX_ITEMS) {
+  if (answered >= maxItems) {
     // Out of items. The live exam decides on the final ability estimate alone,
     // which is the one case where a near-standard candidate is resolved by a
     // coin-flip-thin margin — so it is reported as max-length, not confident.
@@ -165,6 +173,10 @@ export function nextDifficulty(state: Pick<CatState, "ability" | "answered">): n
  * What the candidate is allowed to see. Deliberately omits how many items
  * remain: concealing that is the feature, not an oversight.
  */
-export function candidateProgress(state: CatState): { answered: number; minimum: number; maximum: number } {
-  return { answered: state.answered, minimum: MIN_ITEMS, maximum: MAX_ITEMS };
+export function candidateProgress(state: CatState, bounds: CatBounds = {}): { answered: number; minimum: number; maximum: number } {
+  return {
+    answered: state.answered,
+    minimum: bounds.minItems ?? MIN_ITEMS,
+    maximum: bounds.maxItems ?? MAX_ITEMS,
+  };
 }

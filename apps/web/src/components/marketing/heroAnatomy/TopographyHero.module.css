@@ -1,0 +1,94 @@
+/* ---------------------------------------------------------------------------
+   Hero globe.
+
+   A square stage holding three stacked layers. Square matters: the sphere must
+   stay circular at every breakpoint, so the box is sized by aspect-ratio rather
+   than by separate width and height that could drift apart.
+
+   All three layers are masked/tinted through currentColor so the whole globe
+   re-inks for dark mode from one token, and every animation is a transform so
+   nothing repaints while it turns.
+--------------------------------------------------------------------------- */
+
+.globe {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+  color: var(--globe-ink, rgba(122, 96, 62, 0.86));
+  --globe-scroll: 0;
+  /* Scroll contributes a slow extra turn on top of the ambient rotation.
+     0.012deg per pixel is about 12 degrees over a full page. */
+  --globe-scroll-turn: calc(var(--globe-scroll) * 0.012deg);
+}
+
+:global([data-theme="dark"]) .globe {
+  --globe-ink: rgba(226, 205, 165, 0.5);
+}
+
+.contours,
+.orbits {
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  will-change: transform;
+}
+
+.contours {
+  -webkit-mask-image: url("/brand/globe-contours.svg");
+  mask-image: url("/brand/globe-contours.svg");
+  animation: globe-spin 180s linear infinite;
+  transform: rotate(var(--globe-scroll-turn));
+}
+
+.orbits {
+  /* Wider than the sphere so the rings swing outside its rim. */
+  inset: -14%;
+  opacity: 0.92;
+  -webkit-mask-image: url("/brand/globe-orbits.svg");
+  mask-image: url("/brand/globe-orbits.svg");
+  /* Counter-rotation, and slower: matching speed or direction makes the two
+     layers look welded into one object. */
+  animation: globe-spin-reverse 260s linear infinite;
+}
+
+.mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26%;
+  height: auto;
+  translate: -50% -50%;
+  /* Never rotates. It is a logo sitting on the globe, not painted onto it. */
+}
+
+:global([data-theme="dark"]) .mark {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.62;
+}
+
+@keyframes globe-spin {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes globe-spin-reverse {
+  from { rotate: 0deg; }
+  to { rotate: -360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contours,
+  .orbits {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}

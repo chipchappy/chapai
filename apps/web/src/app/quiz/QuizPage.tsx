@@ -166,6 +166,7 @@ function createClientSession(input: {
   questions: PracticeQuestion[];
   timeLimitMinutes?: number;
   reviewOnly?: boolean;
+  adaptive?: boolean;
 }): PracticeSessionState {
   return {
     id: input.id ?? globalThis.crypto.randomUUID(),
@@ -180,6 +181,7 @@ function createClientSession(input: {
     flaggedQuestionIds: [],
     answers: {},
     reviewOnly: input.reviewOnly,
+    adaptive: input.adaptive,
   };
 }
 
@@ -759,9 +761,13 @@ export default function QuizPage({
     // with a transient 5xx (503/1102). Retry a couple of times so a cold start
     // is invisible to the student instead of surfacing an error.
     const launchId = globalThis.crypto.randomUUID();
+    // Opt-in for now: ?adaptive=1 on the quiz URL. Variable-length delivery
+    // changes how the assessment behaves, so it does not become the default
+    // for every student on the strength of one deploy.
+    const adaptiveRequested = new URLSearchParams(window.location.search).get("adaptive") === "1";
     let response: Response | null = null;
     for (let attempt = 0; attempt < 3; attempt++) {
-      response = await fetch(`/api/quiz/practice-exams/${examId}?launchId=${encodeURIComponent(launchId)}`);
+      response = await fetch(`/api/quiz/practice-exams/${examId}?launchId=${encodeURIComponent(launchId)}${adaptiveRequested ? "&adaptive=1" : ""}`);
       if (response.ok || (response.status !== 503 && response.status < 500 && response.status !== 429)) break;
       await new Promise((resolve) => setTimeout(resolve, 900 * (attempt + 1)));
     }
@@ -802,6 +808,7 @@ export default function QuizPage({
         description: data.definition.description,
         questions: orderedQuestions,
         timeLimitMinutes: data.definition.timeLimitMinutes,
+        adaptive: Boolean(data.assembly?.adaptive),
       }),
     });
   }

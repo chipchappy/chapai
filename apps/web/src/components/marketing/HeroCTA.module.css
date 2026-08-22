@@ -30,8 +30,10 @@
 .figure {
   position: relative;
   display: flex;
-  /* Taller so the globe reads as a whole sphere rather than a clipped arc. */
-  height: clamp(24rem, 42vw, 40rem);
+  /* Sized to hold a WHOLE sphere. The globe component keeps itself square via
+     aspect-ratio, so this only has to give it room. */
+  height: auto;
+  min-height: clamp(20rem, 36vw, 34rem);
   align-items: center;
   justify-content: flex-end;
   color: var(--hero-art-ink);
@@ -43,11 +45,11 @@
 }
 
 .artFigure {
-  /* Large and pushed off the right edge: the mark is a globe, and a globe that
-     fits neatly inside a column reads as a logo instead of a horizon. */
-  width: min(175%, 58rem);
+  /* Fully on the page now. The sphere is generated whole, so clipping it would
+     throw away the thing that makes it read as a globe. */
+  width: min(118%, 40rem);
   margin-left: auto;
-  margin-right: clamp(-7rem, -4vw, -1rem);
+  margin-right: 0;
   transform: translateY(0);
   animation: premium-hero-float-y 8s ease-in-out infinite;
   /* No drop-shadow: this is flat contour line-work on the page ground, and a
@@ -163,30 +165,8 @@
 }
 
 
-/* ---- contour hero artwork -------------------------------------------- */
-
-.figure :global(.premium-hero-topography) {
-  display: block;
-  width: 100%;
-  height: auto;
-  /* Feather every edge into the page. The source is a rectangle on a matching
-     sand field, so without this the crop line is visible wherever the viewport
-     tint and the artwork tint fail to match exactly. */
-  /* The asset carries a real alpha channel (luminance mapped to opacity at
-     build time), so the sand field is gone and the ink composites directly on
-     whatever is behind it. No blend mode: .inner sets z-index:1, which creates
-     a stacking context that isolates mix-blend-mode from the page anyway. */
-  /* Feather only the outermost rim so the sphere stays whole. */
-  -webkit-mask-image: radial-gradient(132% 118% at 68% 50%, black 66%, transparent 96%);
-  mask-image: radial-gradient(132% 118% at 68% 50%, black 66%, transparent 96%);
-}
-
-:global([data-theme="dark"]) .figure :global(.premium-hero-topography) {
-  /* Sepia ink disappears on the dark ground; inverting lifts it to a warm
-     light without touching the alpha channel. */
-  filter: invert(1) hue-rotate(180deg);
-  opacity: 0.45;
-}
+/* The globe styles itself (TopographyHero.module.css). The mask and blend
+   rules that used to live here belonged to the flat raster it replaced. */
 
 @media (prefers-reduced-motion: reduce) {
   .artFigure { animation: none; }

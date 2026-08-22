@@ -13,6 +13,7 @@ import { ensureHostedUser } from "@/lib/billing-store";
 import { isLaunchPlanCode } from "@/lib/launch-offers";
 import { canUnlockPracticeExam, FREE_PRACTICE_EXAM_ID, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
 import { getQuestionQualityProfile, qualityFirstDiverseOrder } from "@/lib/question-quality";
+import { MAX_ITEMS as CAT_MAX_ITEMS } from "@/lib/adaptive-cat";
 import {
   CCRN_CATEGORIES,
   NCLEX_READINESS_BLUEPRINT,
