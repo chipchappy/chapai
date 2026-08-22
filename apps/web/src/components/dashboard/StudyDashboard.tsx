@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { StudyResource } from "@/lib/study-resources";
 import ReadinessBanner from "@/components/dashboard/ReadinessBanner";
 import PassGuaranteeCard from "@/components/dashboard/PassGuaranteeCard";
+import ErrorPatternCard from "@/components/dashboard/ErrorPatternCard";
 
 interface SessionSummary {
   id: string;
@@ -353,7 +354,14 @@ export default function StudyDashboard() {
         totalAnswered={data?.totalAnswered ?? 0}
         sevenDayAccuracy={data?.sevenDayAccuracy ?? 0}
       />
+
 
+
+
+      {/* The readiness verdict says how ready. This says what is standing in the way. */}
+
+
+      <ErrorPatternCard />
       <section className="dashboard-hub overflow-hidden rounded-[30px] p-6 md:p-9">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
