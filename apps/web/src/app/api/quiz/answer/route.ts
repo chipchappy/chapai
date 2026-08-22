@@ -24,6 +24,7 @@ const schema = z.object({
   selectedAnswer: z.union([z.string(), z.array(z.string()), z.record(z.string(), z.union([z.string(), z.array(z.string())]))]).optional(),
   selectedOptionId: z.string().optional(),
   timeSpentMs:    z.number().int().positive().optional(),
+  confidence:     z.enum(["sure", "unsure", "guess"]).optional(), // self-reported certainty, feeds confidence-calibration
 });
 
 /** Look up a question from the in-memory demo deck (used when D1 is empty) */
@@ -205,7 +206,7 @@ export async function POST(req: NextRequest) {
       });
     }
     const serializedSelectedAnswer = serializeAnswer(selectedAnswer);
-    const { sessionId, questionId, timeSpentMs } = parsed;
+    const { sessionId, questionId, timeSpentMs, confidence } = parsed;
 
     // Account requirement: grading + rationales are protected study content.
     // A signed-in user or a valid preview/demo access key must be present —
@@ -351,6 +352,7 @@ export async function POST(req: NextRequest) {
         userId: hostedUser?.id,
         selectedAnswer: serializedSelectedAnswer,
         isCorrect,
+        confidence,
         pointsEarned: bowTieScore?.pointsEarned,
         pointsPossible: bowTieScore?.pointsPossible,
         partialCredit: bowTieScore?.partialCredit,

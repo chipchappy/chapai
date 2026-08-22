@@ -1,15 +1,21 @@
 /* ---------------------------------------------------------------------------
-   Full-page contour field.
+   Full-page topographic ground.
 
-   Fixed to the viewport and edge-to-edge, sitting behind every section rather
-   than inside the hero, so the topography runs the whole page instead of
-   stopping at the fold.
+   Draws a real contour map (scripts/generate-topography.mjs — value noise sliced
+   by marching squares, with every fifth line thickened as an index contour).
 
-   Motion is compositor-only. The ring geometry is painted once per layer and
-   then moved with translate3d/scale driven by a single custom property; the
-   gradients themselves are never re-rasterised on scroll. Animating the
-   gradient centres instead would repaint a full-viewport layer on every frame,
-   which is exactly the kind of thing that quietly wrecks scrolling on a phone.
+   It is NOT built from repeating-radial-gradient any more. That draws perfect
+   concentric circles, and two or three of those layered together interfere into
+   a woven grid — which is what the earlier version looked like. Terrain has to
+   be irregular and nested to read as terrain.
+
+   The SVG is applied as a MASK rather than a background image so the ink colour
+   stays a CSS token: an <img> or background-image could not be re-tinted for
+   dark mode, and the contours have to invert with the theme.
+
+   Motion is compositor-only. Scroll writes one custom property on the
+   container; each layer multiplies it by its own depth in CSS. The mask itself
+   is rasterised once per layer and only ever translated.
 --------------------------------------------------------------------------- */
 
 .field {
@@ -18,83 +24,76 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  /* Set by the component on scroll: 0 at the top of the document, growing with
-     distance scrolled. Layers below multiply it by their own depth factor. */
   --topo-y: 0;
-
-  /* Ink strength. Strong enough to read as intentional line-work across the
-     sand ground, low enough that body copy never fights it. */
-  --topo-ink: rgba(122, 96, 62, 0.11);
-  --topo-ink-soft: rgba(122, 96, 62, 0.075);
+  --topo-ink: rgba(122, 96, 62, 0.20);
+  --topo-ink-soft: rgba(122, 96, 62, 0.12);
 }
 
 :global([data-theme="dark"]) .field {
-  /* On the dark ground the same brown disappears; warm light at low alpha
-     keeps the contours legible without turning them into glare. */
-  --topo-ink: rgba(226, 205, 165, 0.085);
-  --topo-ink-soft: rgba(226, 205, 165, 0.055);
+  --topo-ink: rgba(226, 205, 165, 0.14);
+  --topo-ink-soft: rgba(226, 205, 165, 0.085);
 }
 
 .layer {
   position: absolute;
-  /* Oversized so translation never exposes an edge, and so the field bleeds
-     past both sides of the viewport at every scroll position. */
-  inset: -45% -30%;
+  /* Oversized so translation never exposes an edge and the field always bleeds
+     past both sides of the viewport. */
+  inset: -40% -25%;
+  -webkit-mask-image: url("/brand/topography-field.svg");
+  mask-image: url("/brand/topography-field.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
   will-change: transform;
 }
 
-/* Three fields at different periods and origins. Because they translate at
-   different rates, the interference between them changes continuously as you
-   scroll — the topography reads as shifting rather than sliding. */
+/* Two passes of the same map at different scales and offsets. Because they
+   translate at different rates the terrain appears to shift as you scroll,
+   without a second asset. */
 .layerFar {
-  background: repeating-radial-gradient(
-    circle at 74% 34%,
-    transparent 0 26px,
-    var(--topo-ink-soft) 26px 27.5px
-  );
-  transform: translate3d(0, calc(var(--topo-y) * -0.055px), 0);
-}
-
-.layerMid {
-  background: repeating-radial-gradient(
-    circle at 18% 62%,
-    transparent 0 34px,
-    var(--topo-ink) 34px 35.5px
-  );
-  transform: translate3d(0, calc(var(--topo-y) * -0.11px), 0)
-    scale(calc(1 + var(--topo-y) * 0.00004));
+  background: var(--topo-ink-soft);
+  -webkit-mask-size: 165% auto;
+  mask-size: 165% auto;
+  transform: translate3d(0, calc(var(--topo-y) * -0.05px), 0);
 }
 
 .layerNear {
-  background: repeating-radial-gradient(
-    circle at 52% 108%,
-    transparent 0 19px,
-    var(--topo-ink-soft) 19px 20.25px
-  );
-  transform: translate3d(0, calc(var(--topo-y) * -0.185px), 0);
+  background: var(--topo-ink);
+  -webkit-mask-size: 108% auto;
+  mask-size: 108% auto;
+  -webkit-mask-position: 22% 40%;
+  mask-position: 22% 40%;
+  transform: translate3d(0, calc(var(--topo-y) * -0.15px), 0);
 }
 
-/* Keeps the very top of the page calm behind the headline, and stops the
-   contours colliding with the footer, without hard edges anywhere. */
+/* Keeps the densest terrain away from the middle of the page where the copy
+   sits, and stops the field ending on a hard line at the bottom. Blank ground
+   between contour groups is intended, not a gap to fill. */
 .veil {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    120% 78% at 50% 42%,
-    transparent 0%,
-    transparent 46%,
-    var(--c-bg) 100%
+    128% 82% at 46% 44%,
+    var(--c-bg) 0%,
+    rgba(0, 0, 0, 0) 58%,
+    rgba(0, 0, 0, 0) 100%
   );
-  opacity: 0.55;
+  opacity: 0.62;
 }
 
 @media (max-width: 767px) {
   .field {
-    /* Phones show far less of the field at once, so the same alpha reads
-       heavier. Pulled back to keep dense copy comfortable. */
-    --topo-ink: rgba(122, 96, 62, 0.085);
-    --topo-ink-soft: rgba(122, 96, 62, 0.055);
+    /* A phone shows a much smaller slice of the map, so the same alpha reads
+       heavier behind dense copy. */
+    --topo-ink: rgba(122, 96, 62, 0.155);
+    --topo-ink-soft: rgba(122, 96, 62, 0.09);
   }
+
+  /* Zoom in so a phone gets a legible piece of terrain rather than the whole
+     map shrunk into noise. */
+  .layerFar { -webkit-mask-size: 320% auto; mask-size: 320% auto; }
+  .layerNear { -webkit-mask-size: 230% auto; mask-size: 230% auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

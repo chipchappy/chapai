@@ -551,6 +551,7 @@ export async function recordAnswer(
     userId?: string;
     selectedAnswer: string;
     isCorrect: boolean;
+    confidence?: "sure" | "unsure" | "guess";
     pointsEarned?: number;
     pointsPossible?: number;
     partialCredit?: number;
@@ -563,6 +564,7 @@ export async function recordAnswer(
     userId: params.userId ?? null,
     selectedAnswer: params.selectedAnswer,
     isCorrect: params.isCorrect,
+    confidence: params.confidence ?? null,
     pointsEarned: params.pointsEarned ?? (params.isCorrect ? 1 : 0),
     pointsPossible: params.pointsPossible ?? 1,
     partialCredit: params.partialCredit ?? (params.isCorrect ? 1 : 0),

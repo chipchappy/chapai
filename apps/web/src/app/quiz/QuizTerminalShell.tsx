@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import StartHerePicker from "./StartHerePicker";
 
 import BrandMark from "@/components/brand/BrandMark";
 import PracticeQuestionPane from "@/components/practice/PracticeQuestionPane";
 import PracticeTutorDrawer from "@/components/practice/PracticeTutorDrawer";
+import WeakAreaConversion from "@/components/practice/WeakAreaConversion";
 import type { PracticeCatalogCard, PracticeExamDefinition, PracticeAnswerRecord, PracticeQuestion, PracticeSessionState } from "@/lib/practice-types";
 import type { PracticeCounts } from "@/lib/practice-data";
 import type { PracticePhase } from "@/lib/practice-session";
 import type { QuestionType } from "@/lib/types";
+import type { AnsweredRow } from "@/lib/weak-area-prompt";
 
 type Exam = "nclex" | "ccrn";
 
@@ -177,6 +179,19 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     };
   }, [tier]);
   const freeRemaining = freeUsed === null ? null : Math.max(0, 200 - freeUsed);
+
+  // Only questions with a recorded answer count — an in-progress question sitting
+  // in session.questions with no entry in session.answers is not a wrong answer,
+  // it is an unanswered one, and must not be counted as either.
+  const weakAreaRows = useMemo<AnsweredRow[]>(() => {
+    if (!session) return [];
+    return session.questions
+      .filter((question) => session.answers[question.id] != null)
+      .map((question) => ({
+        category: question.category,
+        isCorrect: session.answers[question.id]?.correct === true,
+      }));
+  }, [session]);
 
   return (
     <div className={`quiz-terminal-app quiz-terminal-tier-${tier}`} data-study-theme={studyTheme}>
@@ -605,6 +620,10 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              <div className="mt-6">
+                <WeakAreaConversion rows={weakAreaRows} tier={tier} />
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3">

@@ -30,7 +30,8 @@
 .figure {
   position: relative;
   display: flex;
-  height: clamp(19rem, 33vw, 29rem);
+  /* Taller so the globe reads as a whole sphere rather than a clipped arc. */
+  height: clamp(24rem, 42vw, 40rem);
   align-items: center;
   justify-content: flex-end;
   color: var(--hero-art-ink);
@@ -42,9 +43,11 @@
 }
 
 .artFigure {
-  width: min(140%, 46rem);
+  /* Large and pushed off the right edge: the mark is a globe, and a globe that
+     fits neatly inside a column reads as a logo instead of a horizon. */
+  width: min(175%, 58rem);
   margin-left: auto;
-  margin-right: clamp(-7rem, -4vw, -2rem);
+  margin-right: clamp(-7rem, -4vw, -1rem);
   transform: translateY(0);
   animation: premium-hero-float-y 8s ease-in-out infinite;
   /* No drop-shadow: this is flat contour line-work on the page ground, and a
@@ -135,11 +138,16 @@
      the headline. */
   .figure {
     position: absolute;
-    inset: 0 -18% auto auto;
+    /* Centred, not tucked into a corner. On a phone this is the only place the
+       globe can be large enough to read, and it sits behind the copy as a
+       watermark rather than beside it. */
+    inset: 0;
     z-index: 0;
-    height: auto;
-    width: 78%;
-    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.42;
   }
 
   .copy {
@@ -148,8 +156,8 @@
   }
 
   .artFigure {
-    width: 100%;
-    margin-right: 0;
+    width: 150%;
+    margin: 0 auto;
     animation: none;
   }
 }
@@ -168,8 +176,9 @@
      build time), so the sand field is gone and the ink composites directly on
      whatever is behind it. No blend mode: .inner sets z-index:1, which creates
      a stacking context that isolates mix-blend-mode from the page anyway. */
-  -webkit-mask-image: radial-gradient(120% 104% at 76% 50%, black 44%, transparent 82%);
-  mask-image: radial-gradient(120% 104% at 76% 50%, black 44%, transparent 82%);
+  /* Feather only the outermost rim so the sphere stays whole. */
+  -webkit-mask-image: radial-gradient(132% 118% at 68% 50%, black 66%, transparent 96%);
+  mask-image: radial-gradient(132% 118% at 68% 50%, black 66%, transparent 96%);
 }
 
 :global([data-theme="dark"]) .figure :global(.premium-hero-topography) {

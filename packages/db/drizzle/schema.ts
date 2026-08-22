@@ -236,6 +236,8 @@ export const quizAnswers = sqliteTable("quiz_answers", {
   userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
   selectedAnswer: text("selected_answer").notNull(),
   isCorrect: integer("is_correct", { mode: "boolean" }).notNull(),
+  // Self-reported at answer time; null for every row that predates this feature.
+  confidence: text("confidence", { enum: ["sure", "unsure", "guess"] }),
   pointsEarned: real("points_earned"),
   pointsPossible: real("points_possible"),
   partialCredit: real("partial_credit"),

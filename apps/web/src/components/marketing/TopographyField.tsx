@@ -56,7 +56,6 @@ export default function TopographyField() {
   return (
     <div ref={ref} className={styles.field} aria-hidden="true">
       <div className={`${styles.layer} ${styles.layerFar}`} />
-      <div className={`${styles.layer} ${styles.layerMid}`} />
       <div className={`${styles.layer} ${styles.layerNear}`} />
       <div className={styles.veil} />
     </div>
