@@ -276,7 +276,11 @@ export function computeSessionScore(session: PracticeSessionState) {
 
   const categoryBreakdown: Record<string, { correct: number; total: number }> = {};
 
+  // Only ANSWERED questions count toward a lane. Counting the whole deck made
+  // every untouched category look like a total miss, so a student who stopped
+  // after 3 of 25 questions was told six lanes were weak.
   for (const question of session.questions) {
+    if (!session.answers[question.id]) continue;
     const bucket = categoryBreakdown[question.category] ?? { correct: 0, total: 0 };
     bucket.total += 1;
     if (session.answers[question.id]?.correct) {
@@ -285,8 +289,11 @@ export function computeSessionScore(session: PracticeSessionState) {
     categoryBreakdown[question.category] = bucket;
   }
 
+  // A lane needs enough answers for the rate to mean anything. Without this a
+  // single wrong answer in a category labelled it weak.
+  const WEAK_LANE_MIN_ANSWERS = 4;
   const weakCategories = Object.entries(categoryBreakdown)
-    .filter(([, entry]) => entry.total > 0 && entry.correct / entry.total < 0.65)
+    .filter(([, entry]) => entry.total >= WEAK_LANE_MIN_ANSWERS && entry.correct / entry.total < 0.65)
     .map(([category]) => category);
 
   const missedQuestionIds = session.questions

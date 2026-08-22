@@ -1,3 +1,4 @@
+import { accuracyPercent } from "@/lib/quiz-accuracy";
 import type { DB } from "./db";
 import type { QuizQuestion, QuizSessionConfig, QuizResults } from "./types";
 import { CCRN_CATEGORIES, NCLEX_CATEGORIES } from "./types";
@@ -637,17 +638,22 @@ export async function getResults(db: DB, sessionId: string): Promise<QuizResults
     ...fallbackRows.map((question) => ({ id: question.id, category: question.category })),
   ];
 
+  // Denominator is answers actually recorded, never the planned deck. Counting
+  // unanswered questions marked them wrong, so an abandoned session reported
+  // categories as weak that the student never saw.
   const byCategory: Record<string, { correct: number; total: number }> = {};
   for (const q of questionRows) {
+    const answer = answers.find((a) => a.questionId === q.id);
+    if (!answer) continue;
     const cat = q.category;
     if (!byCategory[cat]) byCategory[cat] = { correct: 0, total: 0 };
     byCategory[cat].total++;
-    const answer = answers.find((a) => a.questionId === q.id);
-    if (answer?.isCorrect) byCategory[cat].correct++;
+    if (answer.isCorrect) byCategory[cat].correct++;
   }
 
+  const WEAK_CATEGORY_MIN_ANSWERS = 4;
   const weakCategories = Object.entries(byCategory)
-    .filter(([, v]) => v.total > 0 && v.correct / v.total < 0.6)
+    .filter(([, v]) => v.total >= WEAK_CATEGORY_MIN_ANSWERS && v.correct / v.total < 0.6)
     .map(([k]) => k);
 
   const timeSpentMs = session.completedAt
@@ -656,9 +662,14 @@ export async function getResults(db: DB, sessionId: string): Promise<QuizResults
 
   return {
     sessionId,
-    score: session.totalQuestions > 0
-      ? Math.round((session.correctCount / session.totalQuestions) * 100)
-      : 0,
+    // correctCount is a live tally and totalQuestions is the deck size chosen
+    // when the session was created and never grows. Dividing one by the other
+    // is exactly what rendered 128% on the instructor dashboard; accuracy comes
+    // from the recorded answers or not at all.
+    score: accuracyPercent(
+      answers.filter((a) => a.isCorrect).length,
+      answers.length,
+    ) ?? 0,
     totalQuestions: session.totalQuestions,
     correctCount: session.correctCount,
     byCategory,
