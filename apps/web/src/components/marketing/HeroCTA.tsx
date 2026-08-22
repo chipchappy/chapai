@@ -1,7 +1,7 @@
 import CtaButtons from "./CtaButtons";
 import styles from "./HeroCTA.module.css";
-import AuroraParallax from "./heroAnatomy/AuroraParallax";
-import { CcrnAnatomyArt, HomeAnatomyArt, NclexAnatomyArt } from "./heroAnatomy";
+import TopographyHero from "./heroAnatomy/TopographyHero";
+import { CcrnAnatomyArt, NclexAnatomyArt } from "./heroAnatomy";
 import type { HeroAnatomyArtKey } from "./marketingArtwork";
 
 type HeroCTAProps = {
@@ -19,13 +19,11 @@ function renderHeroArt(heroArt: HeroAnatomyArtKey) {
     return <CcrnAnatomyArt className={className} />;
   }
 
-  // Aurora A8: the parallax wrapper is purely additive — it sets CSS variables
-  // the orb's layer groups read. Without it the artwork is unchanged.
-  return (
-    <AuroraParallax className="premium-hero-anatomy-parallax">
-      <HomeAnatomyArt className={className} />
-    </AuroraParallax>
-  );
+  // Home hero: contour-map artwork. It is a raster vignette drawn on the same
+  // sand ground as the page, so it takes its own class rather than the SVG one —
+  // the anatomy SVGs inherit stroke colour from --hero-art-ink, which does
+  // nothing for an image and would only mislead the next reader.
+  return <TopographyHero className="premium-hero-topography" />;
 }
 
 export default function HeroCTA({ heroArt = "home" }: HeroCTAProps) {

@@ -2,8 +2,10 @@
   position: relative;
   overflow: hidden;
   --hero-art-ink: rgba(35, 42, 45, 0.45);
-  background: var(--c-bg);
-  padding: clamp(1.5rem, 3vw, 2.75rem) 1rem 1.25rem;
+  /* Transparent on purpose. The contour ground is TopographyField — a fixed
+     layer behind the whole page — and repainting the sand colour here would
+     occlude it for the entire first screen. The body supplies the ground. */
+  background: transparent;
 }
 
 .hero[data-art="nclex"] {
@@ -32,7 +34,9 @@
   align-items: center;
   justify-content: flex-end;
   color: var(--hero-art-ink);
-  background: radial-gradient(circle at 62% 46%, rgba(126, 157, 134, 0.18), transparent 66%);
+  /* The sage wash existed to bloom behind the aurora orb. The contour art
+     carries its own ground, so a second tint muddies the paper. */
+  background: none;
   pointer-events: none;
   overflow: visible;
 }
@@ -43,9 +47,13 @@
   margin-right: clamp(-7rem, -4vw, -2rem);
   transform: translateY(0);
   animation: premium-hero-float-y 8s ease-in-out infinite;
-  filter: drop-shadow(0 16px 30px rgba(35, 42, 45, 0.08));
-  -webkit-mask-image: linear-gradient(180deg, black 92%, transparent 100%);
-  mask-image: linear-gradient(180deg, black 92%, transparent 100%);
+  /* No drop-shadow: this is flat contour line-work on the page ground, and a
+     shadow makes it read as a pasted-on card rather than printed paper.
+
+     No mask here either, deliberately. mask-image creates a stacking context,
+     which isolates the child's mix-blend-mode so it composites against this
+     wrapper instead of the page — the raster's sand rectangle stayed visible.
+     The image carries its own radial mask, so one is enough. */
 }
 
 .eyebrow {
@@ -120,7 +128,57 @@
     grid-template-columns: 1fr;
   }
 
+  /* The orb this replaced was decoration and was simply hidden here. The
+     contour mark is brand artwork, and roughly four in five sessions are on a
+     phone, so hiding it would mean most people never see it. It moves behind
+     the copy as a corner vignette instead: still present, never competing with
+     the headline. */
   .figure {
-    display: none;
+    position: absolute;
+    inset: 0 -18% auto auto;
+    z-index: 0;
+    height: auto;
+    width: 78%;
+    opacity: 0.5;
   }
+
+  .copy {
+    position: relative;
+    z-index: 1;
+  }
+
+  .artFigure {
+    width: 100%;
+    margin-right: 0;
+    animation: none;
+  }
+}
+
+
+/* ---- contour hero artwork -------------------------------------------- */
+
+.figure :global(.premium-hero-topography) {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Feather every edge into the page. The source is a rectangle on a matching
+     sand field, so without this the crop line is visible wherever the viewport
+     tint and the artwork tint fail to match exactly. */
+  /* The asset carries a real alpha channel (luminance mapped to opacity at
+     build time), so the sand field is gone and the ink composites directly on
+     whatever is behind it. No blend mode: .inner sets z-index:1, which creates
+     a stacking context that isolates mix-blend-mode from the page anyway. */
+  -webkit-mask-image: radial-gradient(120% 104% at 76% 50%, black 44%, transparent 82%);
+  mask-image: radial-gradient(120% 104% at 76% 50%, black 44%, transparent 82%);
+}
+
+:global([data-theme="dark"]) .figure :global(.premium-hero-topography) {
+  /* Sepia ink disappears on the dark ground; inverting lifts it to a warm
+     light without touching the alpha channel. */
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artFigure { animation: none; }
 }

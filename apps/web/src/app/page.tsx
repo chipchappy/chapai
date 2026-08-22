@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CtaButtons from "@/components/marketing/CtaButtons";
 import HeroCTA from "@/components/marketing/HeroCTA";
+import TopographyField from "@/components/marketing/TopographyField";
 import PricingCards from "@/components/marketing/PricingCards";
 import TrustStrip from "@/components/marketing/TrustStrip";
 import DailyQuestionSignup from "@/components/marketing/DailyQuestionSignup";
@@ -71,6 +72,9 @@ export default async function HomePage() {
 
   return (
     <main>
+      {/* Full-page contour ground. Fixed and behind everything, so the
+          topography runs the whole page rather than stopping at the fold. */}
+      <TopographyField />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }} />
       <HeroCTA />
       <TrustStrip questionCount={stats.nclexLive} examCount={5} ngnCount={stats.nclexNgnLive} />
