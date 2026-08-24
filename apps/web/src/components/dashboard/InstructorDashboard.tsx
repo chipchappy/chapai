@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { CohortAggregate, StudentRow } from "@/lib/instructor-access";
+import { formatTimeOnSite, segmentOf, type Segment } from "@/lib/roster-format";
 
 const TONE: Record<StudentRow["readiness"]["tone"], string> = {
   sage: "border-[rgba(111,141,118,0.28)] bg-[rgba(111,141,118,0.12)] text-[#55715e]",
@@ -28,13 +29,11 @@ const TONE: Record<StudentRow["readiness"]["tone"], string> = {
 
 type Aggregate = CohortAggregate;
 
-/**
- * The three populations on the platform. They behave differently enough that
- * averaging across them hides what matters: a demo cohort is a seeded roster
- * where non-participation is the signal, whereas an independent free account
- * self-selected in and its drop-off is a funnel question, not a teaching one.
- */
-type Segment = "demo" | "paid" | "free";
+// Segment classification (segmentOf) and time-on-site formatting live in
+// lib/roster-format.ts, not here — this file is "use client" and importing a
+// runtime export from instructor-access.ts (which starts with
+// `import "server-only"`) would break the client bundle. See that file for
+// the segment/cohort-vs-tier rule.
 
 const SEGMENT_LABEL: Record<Segment, string> = {
   demo: "Demo cohort",
@@ -48,12 +47,18 @@ const SEGMENT_HINT: Record<Segment, string> = {
   free: "Self-serve free accounts, no cohort",
 };
 
-/** Cohort membership wins over tier: a demo student on a paid tier is still a
- *  demo student, because the question you ask about them is the cohort's. */
-function segmentOf(student: StudentRow): Segment {
-  if (student.cohort) return "demo";
-  return student.tier === "free" ? "free" : "paid";
-}
+/** Short tag for the per-row segment pill, which sits right next to a name
+ *  and email and has no room for the fuller SEGMENT_LABEL text. */
+const SEGMENT_TAG: Record<Segment, string> = { demo: "Demo", paid: "Paid", free: "Free" };
+
+/** Reuses the readiness palette (TONE, below) rather than inventing a new
+ *  colour system — the three segments just need to read as distinct at a
+ *  glance, not ranked good-to-bad. */
+const SEGMENT_TONE: Record<Segment, StudentRow["readiness"]["tone"]> = {
+  demo: "blue",
+  paid: "sage",
+  free: "gold",
+};
 
 const SEGMENT_ORDER: Segment[] = ["demo", "paid", "free"];
 type SortMode = "priority" | "activity" | "accuracy" | "volume";
@@ -131,6 +136,12 @@ function shortDate(ts: number) {
   return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(new Date(ts * 1000));
 }
 
+// Sign-up date carries a year, unlike shortDate: a roster is read over the
+// program's whole lifetime, so "Aug 3" alone would go ambiguous across years.
+function joinedDate(ts: number) {
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(ts * 1000));
+}
+
 function expiryDate(ts: number) {
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -181,6 +192,19 @@ function StatTile({
         <span className={`block h-full rounded-full transition-[width] duration-500 ${style.bar}`} style={{ width: `${Math.max(progress > 0 ? 5 : 0, Math.min(100, progress))}%` }} />
       </span>
     </button>
+  );
+}
+
+/** Compact per-row identity badge — the roster's "at a glance" answer to
+ *  which population an account belongs to, without repeating the fuller
+ *  SEGMENT_LABEL text that group headings and the detail panel already show. */
+function SegmentPill({ segment }: { segment: Segment }) {
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center rounded-full border px-1.5 py-px text-[0.62rem] font-semibold uppercase tracking-wide ${TONE[SEGMENT_TONE[segment]]}`}
+    >
+      {SEGMENT_TAG[segment]}
+    </span>
   );
 }
 
@@ -516,6 +540,19 @@ export default function InstructorDashboard({
                       <span className="block truncate text-sm font-semibold text-dark">{studentName(student)}</span>
                       <span className="block truncate text-xs text-muted">{student.email}</span>
                       <span className="mt-1 block w-full"><ProgressBar value={student.accuracy ?? 0} tone={BAND_TONE[student.band]} /></span>
+                      {/* Account type, sign-up date, and time on site — the three
+                          things a platform admin scans a mixed roster for. This
+                          wraps onto its own line(s) inside the existing column
+                          rather than adding grid columns, so it never pushes the
+                          row wider than the phone screen. */}
+                      <span className="mt-1.5 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[0.68rem] text-muted">
+                        <SegmentPill segment={segmentOf(student)} />
+                        <span className="whitespace-nowrap">
+                          Joined {student.signedUpAt != null ? joinedDate(student.signedUpAt) : "—"}
+                        </span>
+                        <span aria-hidden="true">·</span>
+                        <span className="whitespace-nowrap">{formatTimeOnSite(student.timeOnSiteMs)} on site</span>
+                      </span>
                     </span>
                     <span className="text-right">
                       {/* Sample size rides with the number: 100% on 3 questions is

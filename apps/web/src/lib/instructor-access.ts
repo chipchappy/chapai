@@ -80,6 +80,15 @@ export type StudentRow = {
   /** Cohort slug when the student holds an institutional grant, null for an
    *  organic signup who belongs to no school. */
   cohort: string | null;
+  /** Unix seconds from users.created_at. Null only if the roster email holds
+   *  a grant but never actually completed signup (no hosted user row yet). */
+  signedUpAt: number | null;
+  /** Sum of quiz_answers.time_spent_ms across every answer the student has
+   *  made, in milliseconds. Null when the student has no timed answers at
+   *  all — most rows fall here, since time_spent_ms is only populated on a
+   *  fraction of answers. Never coerced to 0: that would misreport "never
+   *  measured" as "measured and spent no time". */
+  timeOnSiteMs: number | null;
   /** Questions actually answered (attempts). Denominator for accuracy. */
   answered: number;
   correct: number;
@@ -215,12 +224,13 @@ export async function getCohortRoster(
 
   // 2. Map emails -> hosted user ids, tier and cohort membership.
   const hosted = await gather(emails, (batch) => db
-    .select({ id: users.id, email: users.email, name: users.name, tier: users.tier })
+    .select({ id: users.id, email: users.email, name: users.name, tier: users.tier, createdAt: users.createdAt })
     .from(users)
     .where(inArray(users.email, batch)));
   const idByEmail = new Map(hosted.map((h) => [h.email, h.id]));
   const nameByEmail = new Map(hosted.map((h) => [h.email, h.name]));
   const tierByEmail = new Map(hosted.map((h) => [h.email, (h.tier ?? "free") as StudentRow["tier"]]));
+  const createdAtByEmail = new Map(hosted.map((h) => [h.email, h.createdAt]));
   const ids = hosted.map((h) => h.id);
 
   // Cohort label per student. In the `all` scope most users have none.
@@ -249,6 +259,11 @@ export async function getCohortRoster(
     uniqueQuestions: sql<number>`count(distinct ${quizAnswers.questionId})`,
     lastAt: sql<number>`max(${quizAnswers.answeredAt})`,
     avgTimeMs: sql<number>`avg(${quizAnswers.timeSpentMs})`,
+    // SQL SUM ignores NULL rows, and itself returns NULL (not 0) when every
+    // row in the group is NULL — exactly the null-vs-zero split the roster
+    // needs (a student with no timed answers gets `null` here for free, with
+    // no second query, instead of a manufactured 0).
+    totalTimeMs: sql<number>`sum(${quizAnswers.timeSpentMs})`,
   }).from(quizAnswers).where(inArray(quizAnswers.userId, batch)).groupBy(quizAnswers.userId));
   const recent = await gather(ids, (batch) => db
     .select({ userId: quizAnswers.userId, attempts: sql<number>`count(*)` })
@@ -365,6 +380,9 @@ export async function getCohortRoster(
       email,
       tier: tierByEmail.get(email) ?? "free",
       cohort: cohortByEmail.get(email) ?? null,
+      signedUpAt: createdAtByEmail.get(email) ?? null,
+      // `!= null`, not truthy — a real 0ms sum must stay 0, not fall back to null.
+      timeOnSiteMs: a?.totalTimeMs != null ? Number(a.totalTimeMs) : null,
       answered,
       correct,
       uniqueQuestions: Number(a?.uniqueQuestions ?? 0),
