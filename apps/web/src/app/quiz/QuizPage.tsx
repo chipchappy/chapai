@@ -761,10 +761,9 @@ export default function QuizPage({
     // with a transient 5xx (503/1102). Retry a couple of times so a cold start
     // is invisible to the student instead of surfacing an error.
     const launchId = globalThis.crypto.randomUUID();
-    // Opt-in for now: ?adaptive=1 on the quiz URL. Variable-length delivery
-    // changes how the assessment behaves, so it does not become the default
-    // for every student on the strength of one deploy.
-    const adaptiveRequested = new URLSearchParams(window.location.search).get("adaptive") === "1";
+    // Adaptive by default; ?adaptive=0 opts back out. The real exam is
+    // variable-length, so matching it is the realistic behaviour.
+    const adaptiveRequested = new URLSearchParams(window.location.search).get("adaptive") !== "0";
     let response: Response | null = null;
     for (let attempt = 0; attempt < 3; attempt++) {
       response = await fetch(`/api/quiz/practice-exams/${examId}?launchId=${encodeURIComponent(launchId)}${adaptiveRequested ? "&adaptive=1" : ""}`);

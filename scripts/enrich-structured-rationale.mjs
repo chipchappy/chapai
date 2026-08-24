@@ -28,6 +28,7 @@ import { execFileSync } from "node:child_process";
 import { appendFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
+import { complete, mapConcurrent, parseJsonLoose } from "./lib/llm.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const LOCAL_WRANGLER = resolve(ROOT, "node_modules/wrangler/bin/wrangler.js");
@@ -38,13 +39,18 @@ const flag = (n, d) => { const i = args.indexOf(`--${n}`); return i >= 0 && args
 const LIMIT = Number(flag("limit", "25"));
 const DRY = args.includes("--dry-run");
 const SHOW = args.includes("--show");
-const MODEL = flag("model", "meta/llama-3.1-70b-instruct");
+// Concurrency, not model choice, is the lever now that Cerebras answers in
+// ~1s. 12 in flight sits far under the 1000 req/min ceiling.
+const CONCURRENCY = Number(flag("concurrency", "12"));
+const WRITE_BATCH = Number(flag("batch", "40"));
 
 const OUT_FILE = resolve(ROOT, "scripts/staging/structured-rationale.jsonl");
 const REVERT_FILE = resolve(ROOT, "reports/structured-rationale-revert.jsonl");
 
-const API_KEY = (process.env.NVIDIA_API_KEY ?? "").replace(/^["']|["']$/g, "").trim();
-if (!API_KEY) { console.error("NVIDIA_API_KEY is required."); process.exit(1); }
+if (!process.env.CEREBRAS_API_KEY && !process.env.NVIDIA_API_KEY) {
+  console.error("Set CEREBRAS_API_KEY (preferred) or NVIDIA_API_KEY.");
+  process.exit(1);
+}
 
 const DASH = "—";
 
@@ -91,43 +97,9 @@ const safeJson = (v, fb) => {
   try { return JSON.parse(v) ?? fb; } catch { return fb; }
 };
 
-// ─── model ───────────────────────────────────────────────────────────────────
-const REQUEST_TIMEOUT_MS = 600_000;
-const MAX_ATTEMPTS = 6;
-
-async function chat(messages, options = {}) {
-  let lastReason = "unknown";
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
-    try {
-      const response = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: MODEL, messages,
-          max_tokens: options.maxTokens ?? 1600,
-          temperature: options.temperature ?? 0.3,
-          ...(options.response_format ? { response_format: options.response_format } : {}),
-        }),
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-      });
-      if (response.status === 429 || response.status >= 500) {
-        lastReason = `${response.status}`;
-        const wait = [15_000, 45_000, 120_000, 240_000, 360_000][attempt - 1] ?? 150_000;
-        console.log(`    (capacity ${lastReason}, waiting ${Math.round(wait / 1000)}s ${DASH} ${attempt}/${MAX_ATTEMPTS})`);
-        await sleep(wait);
-        continue;
-      }
-      if (!response.ok) throw new Error(`${response.status} ${(await response.text()).slice(0, 180)}`);
-      return (await response.json()).choices?.[0]?.message?.content ?? "";
-    } catch (error) {
-      lastReason = error?.name === "TimeoutError" ? "timeout" : (error?.message ?? "error");
-      if (attempt === MAX_ATTEMPTS) break;
-      console.log(`    (${lastReason}, retrying ${DASH} ${attempt}/${MAX_ATTEMPTS})`);
-      await sleep(10_000 * attempt);
-    }
-  }
-  throw new Error(`exhausted retries (${lastReason})`);
-}
+// Model access lives in scripts/lib/llm.mjs: Cerebras first (~1s/call, 1000
+// req/min) with NVIDIA as fallback (~36s/call). The gap is why this script is
+// concurrent rather than serial.
 
 const SYSTEM = `You are a nurse educator writing NCLEX-RN teaching rationales.
 You produce ONLY valid minified JSON. No prose, no markdown, no code fences.`;
@@ -198,13 +170,6 @@ function gate(obj, optionIds, correctIds) {
   return problems;
 }
 
-function parseJson(raw) {
-  const cleaned = String(raw).replace(/```json|```/g, "").trim();
-  const start = cleaned.indexOf("{");
-  const end = cleaned.lastIndexOf("}");
-  if (start < 0 || end < 0) return null;
-  try { return JSON.parse(cleaned.slice(start, end + 1)); } catch { return null; }
-}
 
 // ─── main ────────────────────────────────────────────────────────────────────
 (async () => {
@@ -230,21 +195,21 @@ function parseJson(raw) {
     LIMIT ${LIMIT + done.size}
   `)?.results?.filter((r) => !done.has(r.id)).slice(0, LIMIT) ?? [];
 
-  console.log(`Processing ${rows.length} with ${MODEL}${DRY ? "  (dry run)" : ""}\n`);
+  console.log(`Processing ${rows.length} with Cerebras->NVIDIA chain${DRY ? "  (dry run)" : ""}\n`);
   mkdirSync(dirname(OUT_FILE), { recursive: true });
   mkdirSync(dirname(REVERT_FILE), { recursive: true });
 
   let accepted = 0, rejected = 0, skipped = 0;
-  for (const row of rows) {
+  const providers = new Map();
+  const pending = [];
+
+  const produced = await mapConcurrent(rows, CONCURRENCY, async (row) => {
     const options = safeJson(row.options, []);
     const optionIds = options.map((o) => o?.id).filter((id) => typeof id === "string");
     const answer = safeJson(row.answer, row.answer);
     const correctIds = (Array.isArray(answer) ? answer : [answer]).filter((id) => typeof id === "string");
-
     if (optionIds.length < 2 || !correctIds.length || correctIds.some((id) => !optionIds.includes(id))) {
-      skipped += 1;
-      console.log(`  - ${row.id} ${DASH} skipped, malformed options/answer`);
-      continue;
+      return { row, skip: "malformed options/answer" };
     }
 
     let result = null, problems = ["not attempted"];
@@ -255,35 +220,43 @@ function parseJson(raw) {
           messages.push({ role: "assistant", content: JSON.stringify(result ?? {}) });
           messages.push({ role: "user", content: `Rejected: ${problems.join("; ")}. Fix these and return corrected JSON only.` });
         }
-        const raw = await chat(messages, { temperature: 0.25, response_format: { type: "json_object" } });
-        result = parseJson(raw);
+        const { text, provider } = await complete(messages, { temperature: 0.25, maxTokens: 1800 });
+        providers.set(provider, (providers.get(provider) ?? 0) + 1);
+        result = parseJsonLoose(text);
         problems = gate(result, optionIds, correctIds);
       } catch (error) {
         problems = [`request failed: ${error.message}`];
       }
-      if (problems.length) await sleep(1200);
     }
+    return problems.length ? { row, problems } : { row, result };
+  });
 
-    if (problems.length) {
-      rejected += 1;
-      console.log(`  x ${row.id} ${DASH} ${problems.slice(0, 2).join("; ")}`);
-      continue;
-    }
-
+  for (const item of produced) {
+    if (item.skip) { skipped += 1; continue; }
+    if (!item.result) { rejected += 1; console.log(`  x ${item.row.id} ${DASH} ${item.problems.slice(0, 2).join("; ")}`); continue; }
     accepted += 1;
-    const payload = JSON.stringify(result);
-    if (SHOW || DRY) console.log(`\n--- ${row.id} ---\n${JSON.stringify(result, null, 1).slice(0, 900)}\n`);
-    if (DRY) continue;
-
-    // Only fills a NULL. The WHERE guard means a concurrent writer cannot be
-    // clobbered even if two runs overlap.
-    appendFileSync(REVERT_FILE, `${JSON.stringify({ id: row.id, before: null })}\n`);
-    d1(`UPDATE questions SET structured_rationale = '${esc(payload)}'
-        WHERE id = '${esc(row.id)}' AND (structured_rationale IS NULL OR structured_rationale = '')`);
-    appendFileSync(OUT_FILE, `${JSON.stringify({ id: row.id, model: MODEL, at: new Date().toISOString() })}\n`);
-    console.log(`  + ${row.id} ${DASH} ${Object.keys(result.whyWrong).length} distractors, ${result.citations.length} citations`);
+    if (SHOW || DRY) console.log(`\n--- ${item.row.id} ---\n${JSON.stringify(item.result, null, 1).slice(0, 700)}\n`);
+    if (!DRY) pending.push({ id: item.row.id, payload: JSON.stringify(item.result) });
   }
 
+  // One statement per batch rather than one per row: every wrangler call spawns
+  // a node process, and that dominated the runtime once generation stopped
+  // being the bottleneck. The NULL guard stays in the WHERE so a concurrent
+  // run can never clobber a row someone else just filled.
+  for (let i = 0; i < pending.length; i += WRITE_BATCH) {
+    const slice = pending.slice(i, i + WRITE_BATCH);
+    const cases = slice.map((r) => `WHEN '${esc(r.id)}' THEN '${esc(r.payload)}'`).join(" ");
+    const ids = slice.map((r) => `'${esc(r.id)}'`).join(",");
+    d1(`UPDATE questions SET structured_rationale = CASE id ${cases} END
+        WHERE id IN (${ids}) AND (structured_rationale IS NULL OR structured_rationale = '')`);
+    for (const r of slice) {
+      appendFileSync(REVERT_FILE, `${JSON.stringify({ id: r.id, before: null })}\n`);
+      appendFileSync(OUT_FILE, `${JSON.stringify({ id: r.id, at: new Date().toISOString() })}\n`);
+    }
+    process.stdout.write(`\r  written ${Math.min(i + WRITE_BATCH, pending.length)}/${pending.length}`);
+  }
+  if (pending.length) process.stdout.write("\n");
+  console.log(`providers: ${[...providers].map(([k, v]) => `${k}=${v}`).join(" ") || "none"}`);
   console.log(`\naccepted ${accepted}   rejected ${rejected}   skipped ${skipped}`);
   if (!DRY && accepted) console.log(`Revert manifest: ${REVERT_FILE}`);
 })();

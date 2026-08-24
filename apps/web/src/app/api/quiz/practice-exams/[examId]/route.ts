@@ -571,9 +571,11 @@ export async function GET(request: Request, context: RouteContext) {
   const { user, access } = await getServerAccessContext();
   const previewAccess = access.source === "founder-key" || access.source === "preview-key";
   const requestedLaunchId = new URL(request.url).searchParams.get("launchId")?.trim();
-  // Opt-in. Variable-length delivery changes how the assessment behaves, so it
-  // is requested explicitly rather than becoming the default for everyone.
-  const adaptiveRequested = new URL(request.url).searchParams.get("adaptive") === "1";
+  // Adaptive is the DEFAULT for readiness exams: the live NCLEX-RN is
+  // variable-length, so a fixed 85-item form is the unrealistic option. ?adaptive=0
+  // still returns the fixed form, which keeps a way back without a deploy if a
+  // student hits trouble mid-exam.
+  const adaptiveRequested = new URL(request.url).searchParams.get("adaptive") !== "0";
   const launchIdResult = launchIdSchema.safeParse(requestedLaunchId);
   const launchId = launchIdResult.success ? launchIdResult.data : crypto.randomUUID();
 
