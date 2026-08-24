@@ -75,6 +75,10 @@ function buildAssemblyMetadata(
   definition: PracticeExamDefinition,
   selectedQuestions: PracticeQuestion[],
   strictExposureControl: boolean,
+  // Part of the contract rather than spread on afterwards, so the client can
+  // rely on the field existing on every form and read false rather than
+  // undefined for the fixed ones.
+  adaptive = false,
 ) {
   const caseGroups = new Map<string, number>();
   const clientNeedCounts: Record<string, number> = {};
@@ -106,6 +110,7 @@ function buildAssemblyMetadata(
     caseStudyIds: [...caseGroups.keys()],
     clientNeedCounts,
     qualityTierCounts,
+    adaptive,
     evidenceNotice: "Source-verified content remains pending independent licensed clinical review and psychometric calibration.",
   };
 }
@@ -446,6 +451,53 @@ async function buildManifestIndex(exam: Exam) {
     });
   }
 
+  // Adaptive variants, keyed "<examId>:adaptive".
+  //
+  // Assembled at the real CAT ceiling so a variable-length run can actually
+  // stop anywhere in the live 85-150 range. A fixed 85-item form cannot: it
+  // can never stop later than 85, and advertising the real range on it would
+  // misrepresent the exam.
+  //
+  // Built with its OWN empty reservation sets rather than continuing the
+  // fixed forms’ chain. An adaptive run is a separate sitting, so overlapping
+  // the fixed forms is correct; inheriting their reservations would instead
+  // starve it of the pool’s best items, which is the failure the fixed forms
+  // already had before quality was shared across them.
+  for (const definition of definitions.filter((item) => item.exam === exam)) {
+    const adaptiveDefinition: PracticeExamDefinition = {
+      ...definition,
+      id: `${definition.id}:adaptive`,
+      length: CAT_MAX_ITEMS,
+      seed: `${definition.seed}:adaptive`,
+    };
+    const adaptiveCases = exam === "nclex"
+      ? qualityFirstCaseGroups(practiceQuestions, adaptiveDefinition.seed)
+        .filter((group) => getCaseStudyReleaseIssues(group.questions).length === 0)
+        .slice(0, NCLEX_CASE_STUDY_SET_COUNT)
+        .flatMap((group) => group.questions)
+      : [];
+    // Quota sized for a single form of this length, not shared across five.
+    const adaptiveQuota = new Map(
+      [...tierSupply.entries()].map(([tier, total]) => [tier, total] as const),
+    );
+    const adaptiveQuestions = selectByBlueprint(
+      standaloneQuestions,
+      blueprint,
+      adaptiveDefinition.length,
+      adaptiveDefinition.seed,
+      new Set<string>(),
+      new Set<string>(),
+      adaptiveCases,
+      true,
+      adaptiveQuota,
+    );
+    manifestIndex.set(adaptiveDefinition.id, {
+      definition: adaptiveDefinition,
+      questions: adaptiveQuestions,
+      assembly: buildAssemblyMetadata(adaptiveDefinition, adaptiveQuestions, strictExposureControl, true),
+    });
+  }
+
   return manifestIndex;
 }
 
@@ -479,13 +531,18 @@ async function getManifestIndex(exam: Exam) {
   }
 }
 
-async function buildManifest(examId: string) {
+async function buildManifest(examId: string, adaptive = false) {
   const exam = examId.startsWith("ccrn") ? "ccrn" : examId.startsWith("nclex") ? "nclex" : null;
   if (!exam) {
     return null;
   }
 
   const manifestIndex = await getManifestIndex(exam);
+  if (adaptive) {
+    // Fall back to the fixed form if an adaptive variant is somehow absent:
+    // a student mid-exam should get a working form, not a 404.
+    return manifestIndex.get(`${examId}:adaptive`) ?? manifestIndex.get(examId) ?? null;
+  }
   return manifestIndex.get(examId) ?? null;
 }
 
@@ -514,6 +571,9 @@ export async function GET(request: Request, context: RouteContext) {
   const { user, access } = await getServerAccessContext();
   const previewAccess = access.source === "founder-key" || access.source === "preview-key";
   const requestedLaunchId = new URL(request.url).searchParams.get("launchId")?.trim();
+  // Opt-in. Variable-length delivery changes how the assessment behaves, so it
+  // is requested explicitly rather than becoming the default for everyone.
+  const adaptiveRequested = new URL(request.url).searchParams.get("adaptive") === "1";
   const launchIdResult = launchIdSchema.safeParse(requestedLaunchId);
   const launchId = launchIdResult.success ? launchIdResult.data : crypto.randomUUID();
 
@@ -539,7 +599,7 @@ export async function GET(request: Request, context: RouteContext) {
 
   let manifest: Awaited<ReturnType<typeof buildManifest>>;
   try {
-    manifest = await buildManifest(parsed.data);
+    manifest = await buildManifest(parsed.data, adaptiveRequested);
   } catch (error) {
     console.error("Readiness form assembly failed", {
       examId: parsed.data,

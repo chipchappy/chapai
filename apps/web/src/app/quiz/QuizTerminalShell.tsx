@@ -12,7 +12,7 @@ import type { PracticeCounts } from "@/lib/practice-data";
 import type { PracticePhase } from "@/lib/practice-session";
 import type { QuestionType } from "@/lib/types";
 import type { AnsweredRow } from "@/lib/weak-area-prompt";
-import { evaluateCat, type CatResponse } from "@/lib/adaptive-cat";
+import { MAX_ITEMS as CAT_MAX_ITEMS, MIN_ITEMS as CAT_MIN_ITEMS, evaluateCat, type CatResponse } from "@/lib/adaptive-cat";
 
 type Exam = "nclex" | "ccrn";
 
@@ -160,16 +160,20 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
     onStartMissedReview,
   } = props;
 
-  // Variable-length delivery. The bounds come from the assembled form, not the
-  // live 85-150 range: a form of N items cannot stop later than N, and claiming
-  // the real range on a shorter form would misrepresent the exam.
-  const catBounds = useMemo(
-    () => ({
-      minItems: Math.max(1, Math.ceil((session?.questions.length ?? 0) * 0.55)),
-      maxItems: Math.max(1, session?.questions.length ?? 1),
-    }),
-    [session?.questions.length],
-  );
+  // Variable-length delivery. Adaptive forms are assembled at the real CAT
+  // ceiling, so they get the live 85-150 rule. A shorter form falls back to a
+  // proportional range instead of borrowing numbers it cannot honour — a form
+  // of N items can never stop later than N.
+  const catBounds = useMemo(() => {
+    const length = session?.questions.length ?? 0;
+    if (length >= CAT_MAX_ITEMS) {
+      return { minItems: CAT_MIN_ITEMS, maxItems: CAT_MAX_ITEMS };
+    }
+    return {
+      minItems: Math.max(1, Math.ceil(length * 0.55)),
+      maxItems: Math.max(1, length),
+    };
+  }, [session?.questions.length]);
   const catState = useMemo(() => {
     if (!session?.adaptive) return null;
     const responses: CatResponse[] = session.questions
