@@ -20,7 +20,9 @@
 // a "Unicode bug" when it was really an escaping bug.
 // ---------------------------------------------------------------------------
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync, unlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { randomUUID } from "node:crypto";
 import { dirname, resolve } from "node:path";
 
 const ROOT = resolve(import.meta.dirname, "..");
@@ -36,14 +38,33 @@ const REPORT = resolve(ROOT, flagValue("report", "reports/case-study-charts-appl
 const BATCH = Number(flagValue("batch", "60"));
 const LIMIT = Number(flagValue("limit", "0"));
 
+// Windows caps a process command line near 32KB. A batch of chart_review
+// payloads blows past that easily — it failed here at 350/562 with an opaque
+// spawn error that looked like a D1 fault. Large SQL goes via a temp file and
+// --file, which has no such limit.
+const SQL_INLINE_LIMIT = 6_000;
+
 function d1(sql) {
   const env = { ...process.env };
   delete env.CLOUDFLARE_API_TOKEN;   // deploy-scoped; D1 rejects it with 7403
   delete env.CLOUDFLARE_ACCOUNT_ID;
-  const raw = execFileSync(process.execPath, [
-    WRANGLER, "d1", "execute", "chapai-prod", "--remote", "--json", "--command", sql.replace(/\s+/g, " ").trim(),
-  ], { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
-  return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+  const flat = sql.replace(/\s+/g, " ").trim();
+  let tmp = null;
+  const cmd = ["d1", "execute", "chapai-prod", "--remote", "--json"];
+  if (flat.length > SQL_INLINE_LIMIT) {
+    tmp = resolve(tmpdir(), `d1-${randomUUID()}.sql`);
+    writeFileSync(tmp, flat, "utf8");
+    cmd.push("--file", tmp);
+  } else {
+    cmd.push("--command", flat);
+  }
+  try {
+    const raw = execFileSync(process.execPath, [WRANGLER, ...cmd],
+      { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
+    return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+  } finally {
+    if (tmp) { try { unlinkSync(tmp); } catch {} }
+  }
 }
 
 // ---- gate (identical contract to the generator) ---------------------------

@@ -25,7 +25,9 @@
 // display, so JSON here is correct — the opposite of the row-rationale script.
 // ---------------------------------------------------------------------------
 import { execFileSync } from "node:child_process";
-import { appendFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
+import { appendFileSync, mkdirSync, readFileSync, existsSync, writeFileSync, unlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { randomUUID } from "node:crypto";
 import { dirname, resolve } from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 import { complete, mapConcurrent, parseJsonLoose } from "./lib/llm.mjs";
@@ -61,15 +63,34 @@ const DASH = "—";
 const D1_ATTEMPTS = 4;
 const D1_BACKOFF_MS = [3_000, 10_000, 30_000];
 
+// Windows caps a process command line near 32KB. A batch of 40 rationales is
+// roughly 57KB of SQL, so passing it via --command failed with an opaque spawn
+// error that looked like a D1 problem. Anything large goes through a temp file
+// with --file instead, which has no such limit.
+const SQL_INLINE_LIMIT = 6_000;
+
 function d1Once(sql) {
   const env = { ...process.env };
   delete env.CLOUDFLARE_API_TOKEN;   // deploy-scoped; D1 rejects it with 7403
   delete env.CLOUDFLARE_ACCOUNT_ID;
-  const cmd = ["d1", "execute", "chapai-prod", "--remote", "--json", "--command", sql.replace(/\s+/g, " ").trim()];
-  const raw = WRANGLER.endsWith(".js")
-    ? execFileSync(process.execPath, [WRANGLER, ...cmd], { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 })
-    : execFileSync(WRANGLER, cmd, { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
-  return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+  const flat = sql.replace(/\s+/g, " ").trim();
+  let tmp = null;
+  let cmd;
+  if (flat.length > SQL_INLINE_LIMIT) {
+    tmp = resolve(tmpdir(), `d1-${randomUUID()}.sql`);
+    writeFileSync(tmp, flat, "utf8");
+    cmd = ["d1", "execute", "chapai-prod", "--remote", "--json", "--file", tmp];
+  } else {
+    cmd = ["d1", "execute", "chapai-prod", "--remote", "--json", "--command", flat];
+  }
+  try {
+    const raw = WRANGLER.endsWith(".js")
+      ? execFileSync(process.execPath, [WRANGLER, ...cmd], { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 })
+      : execFileSync(WRANGLER, cmd, { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
+    return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+  } finally {
+    if (tmp) { try { unlinkSync(tmp); } catch {} }
+  }
 }
 
 function sleepSync(ms) {

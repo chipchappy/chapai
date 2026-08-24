@@ -23,6 +23,7 @@ import { execFileSync } from "node:child_process";
 import { appendFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
+import { complete } from "./lib/llm.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const WRANGLER = resolve(ROOT, "node_modules/wrangler/bin/wrangler.js");
@@ -57,35 +58,13 @@ function d1(sql) {
 const REQUEST_TIMEOUT_MS = 90_000;
 const MAX_ATTEMPTS = 6;
 
+// Cerebras first, NVIDIA as fallback (scripts/lib/llm.mjs). Cerebras answers
+// in ~1s against NVIDIA's ~36s, which is the difference between this job
+// taking minutes and taking hours. The surrounding retry and Jaccard gate are
+// unchanged - only where the text comes from moved.
 async function chat(messages, { maxTokens = 1400, temperature = 0.4 } = {}) {
-  let lastReason = "unknown";
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
-    try {
-      const response = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${API_KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ model: MODEL, messages, max_tokens: maxTokens, temperature }),
-        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-      });
-      if (response.status === 429 || response.status >= 500) {
-        lastReason = `${response.status}`;
-        // 8s, 20s, 45s, 90s, 150s — rides out a saturated shared pool.
-        const wait = [15_000, 45_000, 120_000, 240_000, 360_000][attempt - 1] ?? 150_000;
-        console.log(`    (capacity ${lastReason}, waiting ${Math.round(wait / 1000)}s — attempt ${attempt}/${MAX_ATTEMPTS})`);
-        await sleep(wait);
-        continue;
-      }
-      if (!response.ok) throw new Error(`${response.status} ${(await response.text()).slice(0, 180)}`);
-      const payload = await response.json();
-      return payload.choices?.[0]?.message?.content ?? "";
-    } catch (error) {
-      lastReason = error?.name === "TimeoutError" ? "timeout" : (error?.message ?? "error");
-      if (attempt === MAX_ATTEMPTS) break;
-      console.log(`    (${lastReason}, retrying — attempt ${attempt}/${MAX_ATTEMPTS})`);
-      await sleep(10_000 * attempt);
-    }
-  }
-  throw new Error(`exhausted retries (${lastReason})`);
+  const { text } = await complete(messages, { maxTokens, temperature, json: true });
+  return text;
 }
 
 const SYSTEM = `You are a nurse educator who writes NCLEX Next Generation case study charts.
