@@ -10,8 +10,14 @@ type QuestionLike = {
   options?: OptionLike[] | null;
 };
 
-const OPTION_BASED_TYPES = new Set(["mcq", "sata", "scenario_mcq", "decision_map_mcq"]);
-const OPTION_BASED_KINDS = new Set(["mcq", "multi-select", "scenario-mcq", "decision-map-mcq"]);
+// case_study items are option-based in every respect — a normal id/text option
+// array and an answer that is an option id (or a list of them). Leaving the
+// type off this list discarded the whyWrong rationales of 372 published case
+// studies that were already written and already keyed correctly. Matrix and
+// bow-tie stay off: their answers are keyed by row label and by bow-tie slot,
+// so there is no option id to match and their teaching belongs in whyCorrect.
+const OPTION_BASED_TYPES = new Set(["mcq", "sata", "scenario_mcq", "decision_map_mcq", "case_study"]);
+const OPTION_BASED_KINDS = new Set(["mcq", "multi-select", "scenario-mcq", "decision-map-mcq", "case-study"]);
 const NON_TEACHING_TEXT = [
   /^n\s*\/?\s*a\b/i,
   /^none\b/i,
