@@ -1508,6 +1508,16 @@ export default function PracticeTerminalPane({
                               <strong>Why the correct answer works</strong>
                               <span><DrugLinkedText text={structuredRationale.whyCorrect} /></span>
                             </div>
+                            {/* Only rendered when a strategy note exists. The field
+                                was added after ~4,100 rows were written, and a
+                                hollow "remember to prioritise" would teach less
+                                than showing nothing. */}
+                            {structuredRationale.strategy ? (
+                              <div className="quiz-rail-row flex-col items-start gap-1">
+                                <strong>Test-taking strategy</strong>
+                                <span><DrugLinkedText text={structuredRationale.strategy} /></span>
+                              </div>
+                            ) : null}
                           </div>
                         </div>
                       ) : null}

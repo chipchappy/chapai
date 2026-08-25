@@ -103,6 +103,16 @@ export interface StructuredRationale {
   whyCorrect: string;
   whyWrong: Record<string, string>;
   citations: StructuredRationaleCitation[];
+  /**
+   * How to READ an item of this shape — the transferable move, not the clinical
+   * content. "Three options intervene and one assesses; the stem already
+   * establishes the problem, so the assessment is the distractor."
+   *
+   * Optional because it was added after ~4,100 rows already existed. A question
+   * without one must render nothing rather than a placeholder: a hollow
+   * "remember to prioritise" teaches less than silence.
+   */
+  strategy?: string;
 }
 
 export interface ContentQualityMetadata {
