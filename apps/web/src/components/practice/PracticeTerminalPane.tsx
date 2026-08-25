@@ -9,6 +9,7 @@ import { buildPracticeChartReviewModel, type ChartReviewTab } from "@/lib/chart-
 import { getDisplayableDistractorRationales } from "@/lib/distractor-rationale-display";
 import DrugLinkedText from "@/components/practice/DrugLinkedText";
 import { getStudyResourcesForQuestion } from "@/lib/study-resources";
+import { soundStrategy } from "@/lib/strategy-quality";
 import type { PracticeAnswer, PracticeAnswerRecord, PracticeQuestion } from "@/lib/practice-types";
 
 type IntelTab = QuestionIntelTab | "tutor";
@@ -1512,10 +1513,14 @@ export default function PracticeTerminalPane({
                                 was added after ~4,100 rows were written, and a
                                 hollow "remember to prioritise" would teach less
                                 than showing nothing. */}
-                            {structuredRationale.strategy ? (
+                            {soundStrategy(structuredRationale.strategy) ? (
                               <div className="quiz-rail-row flex-col items-start gap-1">
                                 <strong>Test-taking strategy</strong>
-                                <span><DrugLinkedText text={structuredRationale.strategy} /></span>
+                                <span>
+                                  <DrugLinkedText
+                                    text={soundStrategy(structuredRationale.strategy) as string}
+                                  />
+                                </span>
                               </div>
                             ) : null}
                           </div>
