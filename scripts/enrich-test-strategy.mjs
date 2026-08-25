@@ -218,7 +218,12 @@ function gate(payload, correctIds, isSata) {
   const produced = await mapConcurrent(todo, CONCURRENCY, async (row) => {
     const options = safeJson(row.options, []);
     const answer = safeJson(row.answer, row.answer);
-    const correctIds = (Array.isArray(answer) ? answer : [answer]).filter((v) => typeof v === "string");
+    // Answers come in three shapes: ["a","c"], a bare "a", and a comma list
+    // "a,b,c". The app comma-splits too (practice-session.ts), so the last
+    // form grades correctly for students and only this pass was skipping it.
+    const correctIds = (Array.isArray(answer) ? answer : String(answer ?? "").split(","))
+      .map((id) => String(id).trim())
+      .filter(Boolean);
     const existing = safeJson(row.structured_rationale, null);
     if (!existing || !options.length || !correctIds.length) return { row, skip: "malformed row" };
 
