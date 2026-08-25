@@ -180,7 +180,10 @@ function gate(payload, correctIds, isSata) {
   const rows = d1(`
     SELECT id, stem, options, answer, structured_rationale
     FROM questions
-    WHERE publish_state = 'published' AND type IN ('mcq','sata')
+    -- case_study is option-based too, so the same structure-plus-principle
+    -- shape applies; matrix and bow-tie get theirs assembled by
+    -- enrich-matrix-rationale.mjs, which knows their row layout.
+    WHERE publish_state = 'published' AND type IN ('mcq','sata','case_study')
       AND structured_rationale IS NOT NULL AND structured_rationale <> ''
       ${REDO ? "" : "AND json_extract(structured_rationale,'$.strategy') IS NULL"}
     ORDER BY id
