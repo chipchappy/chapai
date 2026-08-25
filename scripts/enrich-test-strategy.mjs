@@ -37,7 +37,11 @@ const CONCURRENCY = Number(flag("concurrency", "12"));
 const WRITE_BATCH = Number(flag("batch", "20"));
 const DRY = args.includes("--dry-run");
 const SHOW = args.includes("--show");
-const REDO = args.includes("--redo");
+// --force replaces every stored note, not only the unsound ones: the v1 rows
+// were free text judged by a gate that needed correcting twice, whereas a
+// catalog note is sound by construction.
+const FORCE = args.includes("--force");
+const REDO = args.includes("--redo") || FORCE;
 
 const OUT_FILE = resolve(ROOT, "scripts/staging/test-strategy-v2.jsonl");
 const SQL_INLINE_LIMIT = 6_000;   // Windows caps a command line near 32KB
@@ -184,7 +188,7 @@ function gate(payload, correctIds, isSata) {
 
   const todo = rows.filter((row) => {
     if (done.has(row.id)) return false;
-    if (!REDO) return true;
+    if (FORCE || !REDO) return true;
     const current = safeJson(row.structured_rationale, {})?.strategy;
     return !current || auditStrategy(current).length > 0;
   }).slice(0, LIMIT);
