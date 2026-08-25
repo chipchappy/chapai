@@ -210,7 +210,10 @@ function gate(obj, optionIds, correctIds) {
     SELECT id, type, category, stem, options, answer, rationale
     FROM questions
     WHERE publish_state = 'published'
-      AND type IN ('mcq','sata')
+      -- case_study is option-based in every respect: an id/text option array
+      -- and an answer that is an option id or a list of them. Matrix and
+      -- bow-tie are keyed by row label and slot, and are handled separately.
+      AND type IN ('mcq','sata','case_study')
       AND (structured_rationale IS NULL OR structured_rationale = '')
     ORDER BY id
     LIMIT ${LIMIT + done.size}

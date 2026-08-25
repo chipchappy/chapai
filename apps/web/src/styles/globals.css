@@ -8160,6 +8160,10 @@ body:has(.quiz-route-screen) > footer {
   color: rgba(231, 223, 211, 0.72);
   font-size: 0.86rem;
   line-height: 1.55;
+  /* Matrix rationales walk one grid row per line, and eight of them in a single
+     block is unreadable on a phone. pre-line keeps those breaks while still
+     collapsing the incidental whitespace every other rationale contains. */
+  white-space: pre-line;
 }
 
 .quiz-terminal-matrix {
