@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { auditStrategy, soundStrategy } from "../../apps/web/src/lib/strategy-quality";
+import { PRINCIPLES } from "../../apps/web/src/lib/nclex-principles";
+// @ts-expect-error — the enrichment pass runs under plain node, so its copy is .mjs
+import { PRINCIPLES as SCRIPT_PRINCIPLES } from "../lib/nclex-principles.mjs";
 
 // Real strings taken from the first backfill's output. These are the shapes the
 // gate exists to stop, so they are asserted verbatim rather than paraphrased.
@@ -47,5 +50,29 @@ test("principle stems match inflected words", () => {
       !auditStrategy(note).includes("names no transferable principle"),
       `"${word}" should satisfy the principle check`,
     );
+  }
+});
+
+// The render gate and the enrichment pass each need the catalog, in TypeScript
+// and in plain ESM respectively. Two copies can drift, and a drifted copy means
+// the pass writes a rule the UI then refuses to render.
+test("the two copies of the principle catalog are identical", () => {
+  assert.deepEqual(SCRIPT_PRINCIPLES, PRINCIPLES);
+});
+
+// Every catalog rule must survive the render gate whatever structure sentence
+// precedes it, or the pass could write notes that are silently never shown.
+test("every catalog principle composes into a note the render gate accepts", () => {
+  const structures = [
+    "Three options intervene and one assesses.",
+    "All four options are assessments.",
+    "One option escalates to the prescriber; the other three are independent actions.",
+    "Two options differ only in timing.",
+  ];
+  for (const [id, rule] of Object.entries(PRINCIPLES)) {
+    for (const structure of structures) {
+      const note = `${structure} ${rule}`;
+      assert.deepEqual(auditStrategy(note), [], `${id} rejected after "${structure}"`);
+    }
   }
 });

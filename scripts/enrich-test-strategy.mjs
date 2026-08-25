@@ -1,19 +1,21 @@
 #!/usr/bin/env node
 // ---------------------------------------------------------------------------
-// Add a test-taking strategy note to structured_rationale.
+// Write a test-taking strategy note into structured_rationale.
 //
-//   node scripts/enrich-test-strategy.mjs --dry-run --limit 3
-//   node scripts/enrich-test-strategy.mjs --limit 400
+//   node scripts/enrich-test-strategy.mjs --dry-run --limit 10 --show
+//   node scripts/enrich-test-strategy.mjs --limit 500
+//   node scripts/enrich-test-strategy.mjs --redo --limit 500   # replace unsound
 //
-// Measured before building this: only 30% of published questions contained any
-// strategy language at all, and none of it came from the enrichment passes —
-// the field did not exist. Every other pass taught the CONTENT of an item. This
-// teaches how to read the item, which is the part that transfers to the next
-// question a student has never seen.
+// v2. The first version let the model write the transferable rule itself, and
+// an audit of the 3,382 rows it produced found 37% unsound — including 82 that
+// asserted escalating to the prescriber is the correct choice, the inverse of
+// what the exam tests. The model no longer writes rules. It names the option
+// STRUCTURE and SELECTS a principle from scripts/lib/nclex-principles.mjs,
+// whose text is emitted verbatim, so an invented or inverted rule is not
+// representable.
 //
-// MERGES, never overwrites. The row's existing overview/mechanism/whyCorrect/
-// whyWrong/citations are re-serialised untouched and only `strategy` is added,
-// so a failure here can never cost work the earlier passes did.
+// MERGES, never overwrites: the row's existing overview/mechanism/whyCorrect/
+// whyWrong/citations are preserved and only `strategy` is set.
 // ---------------------------------------------------------------------------
 import { execFileSync } from "node:child_process";
 import { appendFileSync, mkdirSync, readFileSync, existsSync, writeFileSync, unlinkSync } from "node:fs";
@@ -21,6 +23,8 @@ import { tmpdir } from "node:os";
 import { randomUUID } from "node:crypto";
 import { dirname, resolve } from "node:path";
 import { complete, mapConcurrent, parseJsonLoose } from "./lib/llm.mjs";
+import { PRINCIPLES, PRINCIPLE_IDS, PRINCIPLE_MENU, applicabilityProblem } from "./lib/nclex-principles.mjs";
+import { auditStrategy } from "./lib/strategy-gate.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const LOCAL_WRANGLER = resolve(ROOT, "node_modules/wrangler/bin/wrangler.js");
@@ -33,27 +37,26 @@ const CONCURRENCY = Number(flag("concurrency", "12"));
 const WRITE_BATCH = Number(flag("batch", "20"));
 const DRY = args.includes("--dry-run");
 const SHOW = args.includes("--show");
+const REDO = args.includes("--redo");
 
-const OUT_FILE = resolve(ROOT, "scripts/staging/test-strategy.jsonl");
-const REVERT_FILE = resolve(ROOT, "reports/test-strategy-revert.jsonl");
+const OUT_FILE = resolve(ROOT, "scripts/staging/test-strategy-v2.jsonl");
 const SQL_INLINE_LIMIT = 6_000;   // Windows caps a command line near 32KB
 
 function d1(sql) {
   const env = { ...process.env };
-  delete env.CLOUDFLARE_API_TOKEN;
-  delete env.CLOUDFLARE_ACCOUNT_ID;
+  delete env.CLOUDFLARE_API_TOKEN; delete env.CLOUDFLARE_ACCOUNT_ID;
   const flat = sql.replace(/\s+/g, " ").trim();
   let tmp = null;
   const cmd = ["d1", "execute", "chapai-prod", "--remote", "--json"];
   if (flat.length > SQL_INLINE_LIMIT) {
     tmp = resolve(tmpdir(), `d1-${randomUUID()}.sql`);
-    writeFileSync(tmp, flat, "utf8");
-    cmd.push("--file", tmp);
-  } else {
-    cmd.push("--command", flat);
-  }
+    writeFileSync(tmp, flat, "utf8"); cmd.push("--file", tmp);
+  } else cmd.push("--command", flat);
   try {
     let last;
+    // wrangler's OAuth refreshes lazily on the next invocation, so a long run
+    // always crosses an expiry: the one call that lands on it fails and every
+    // call after it succeeds.
     for (let attempt = 1; attempt <= 4; attempt += 1) {
       try {
         const raw = execFileSync(process.execPath, [WRANGLER, ...cmd],
@@ -67,90 +70,100 @@ function d1(sql) {
       }
     }
     throw last;
-  } finally {
-    if (tmp) { try { unlinkSync(tmp); } catch {} }
-  }
+  } finally { if (tmp) { try { unlinkSync(tmp); } catch {} } }
 }
 
 const esc = (v) => String(v).replace(/'/g, "''");
 const safeJson = (v, fb) => { try { return JSON.parse(v) ?? fb; } catch { return fb; } };
 
-const SYSTEM = `You write NCLEX-RN test-taking strategy notes.
+const SYSTEM = `You classify NCLEX-RN item structure.
 You produce ONLY valid minified JSON. No prose, no markdown, no code fences.`;
 
 function buildPrompt(row, options, correctIds) {
-  return `Write the TEST-TAKING STRATEGY note for this NCLEX-RN item.
+  const optionLines = options
+    .map((o) => `  ${o.id}: ${o.text}${correctIds.includes(o.id) ? "   <-- CORRECT (never reveal this)" : ""}`)
+    .join("\n");
+  return `Classify this NCLEX-RN item so a strategy note can be assembled.
 
 STEM: ${row.stem}
 
 OPTIONS:
-${options.map((o) => `  ${o.id}: ${o.text}${correctIds.includes(o.id) ? "   <-- CORRECT (never reveal this)" : ""}`).join("\n")}
+${optionLines}
 
-The rationale already explains the clinical content. Do NOT repeat it. This note
-teaches how to READ an item built like this one, so the skill carries to a
-question the student has never seen.
+Return two things.
 
-Write EXACTLY two sentences:
+1. "structure" — ONE sentence naming what KIND of thing each option is, counted.
+   Describe the option set only. Never hint which one is correct.
+     "Three options intervene and one assesses."
+     "Two options differ only in timing."
+     "All four options are assessments."
+     "One option escalates to the prescriber; the other three are independent actions."
 
-  SENTENCE 1 — name the STRUCTURE of the option set, by category, counting them.
-    "Three options intervene and one assesses."
-    "Two options differ only in timing."
-    "One option escalates to the provider; the rest are independent actions."
+2. "principle" — the id of the ONE rule below that a student would use to
+   resolve that structure. Choose the rule that actually decides this item.
 
-  SENTENCE 2 — the transferable RULE that resolves that structure, stated as a
-    general principle a student could apply to any item of this shape.
-    "When the stem already establishes the problem, the assessment is the distractor."
-    "When options differ only by timing, the item is testing sequence, not choice."
-    "Escalation is rarely first while an independent nursing action remains."
+${PRINCIPLE_MENU}
 
 HARD RULES
-  - NEVER indicate which option is correct. No "focus on the option that...",
-    no "one offers...", no describing the key's content. A student rereading
-    this must still have to do the work.
-  - Do NOT begin with "Identify", "Recognize", "Note that" or "Understand".
-    Start with the structure itself.
-  - No clinical specifics: no drug names, doses, lab values or diagnoses.
-  - 20 to 45 words total.
+  - "structure" must never indicate which option is correct, and must never
+    describe the content of the correct option specifically.
+  - No drug names, doses, lab values or diagnoses in "structure".
+  - "structure" is 8 to 30 words, exactly one sentence.
+  - "principle" must be one of the ids above, copied exactly.
 
-Return JSON: {"strategy":"<two sentences>"}`;
+Return JSON: {"structure":"<one sentence>","principle":"<id>"}`;
 }
-const FILLER = /\b(read (the question )?carefully|use your (nursing )?judg|trust your instincts|eliminate wrong answers|study hard|remember to (think|prioriti))/i;
 
-// Openers that turn every note into the same sentence.
-const DEAD_OPENER = /^\s*(identify|recognize|recognise|note|understand|remember|observe|realize)\b/i;
-
-// Language that points at the key. The first sample run passed the length and
-// filler checks while saying "focus on the option that escalates the current
-// therapy" — which is an answer, not a strategy. Gating on length alone let
-// that through.
-const POINTS_AT_ANSWER = /\b(focus on the option|choose the option|select the option|the option that|one option (?:offers|provides|is correct)|the best option is|pick the)\b/i;
-
-// A strategy note that names a drug, dose or lab value has drifted back into
-// clinical content, which the rationale already covers.
+const COUNTED = /\b(one|two|three|four|five|six|seven|eight|all|every|each|both|\d+)\b/i;
+const POINTS_AT_ANSWER = /\b(focus on the option|choose the option|select the option|the correct|the best option|the answer|pick the|is correct)\b/i;
+// A structure sentence that argues with itself — "three options intervene and
+// one assesses, but all options are actually interventions" — was the model
+// talking its way past the applicability check rather than classifying.
+const SELF_CONTRADICTION = /(but|however|although|though)[^.]*(actually|in fact|really)|there (is|are) no/i;
 const CLINICAL_SPECIFIC = /\b\d+\s*(mg|mcg|mL|mmol|mEq|units?|bpm|mmHg)\b|\b(diuretic|heparin|insulin|amiodarone|furosemide|metoprolol|warfarin|BNP|troponin)\b/i;
 
-function gate(payload, correctIds) {
+/** @returns {string[]} problems; empty means the pair is usable. */
+function gate(payload, correctIds, isSata) {
   const problems = [];
-  const s = payload?.strategy;
-  if (typeof s !== "string") return ["no strategy string"];
-  const text = s.trim();
-  const words = text.split(/\s+/).filter(Boolean).length;
-  if (words < 18) problems.push(`too short (${words} words)`);
-  if (words > 55) problems.push(`too long (${words} words)`);
-  if (FILLER.test(text)) problems.push("generic filler");
-  if (DEAD_OPENER.test(text)) problems.push("formulaic opener");
-  if (POINTS_AT_ANSWER.test(text)) problems.push("points at the correct option");
-  if (CLINICAL_SPECIFIC.test(text)) problems.push("repeats clinical content instead of strategy");
-  const letter = new RegExp(`\\boption\\s+${correctIds[0]}\\b|\\banswer\\s+is\\s+${correctIds[0]}\\b`, "i");
-  if (letter.test(text)) problems.push("names the correct option outright");
-  // Two sentences is the specified shape; one long sentence is the failure mode.
-  const sentences = text.split(/(?<=[.!?])\s+/).filter((x) => x.trim().length > 3);
-  if (sentences.length < 2) problems.push("not two sentences");
+  const structure = typeof payload?.structure === "string" ? payload.structure.trim() : "";
+  const principle = typeof payload?.principle === "string" ? payload.principle.trim() : "";
+  if (!structure) problems.push("no structure sentence");
+  if (!PRINCIPLE_IDS.includes(principle)) {
+    problems.push(`unknown principle "${principle}"`);
+    return problems;
+  }
+
+  const words = structure.split(/\s+/).filter(Boolean).length;
+  if (words < 8) problems.push(`structure too short (${words} words)`);
+  if (words > 30) problems.push(`structure too long (${words} words)`);
+  const sentences = structure.split(/(?<=[.!?])\s+/).filter((x) => x.trim().length > 3);
+  if (sentences.length > 1) problems.push("structure is more than one sentence");
+  if (!COUNTED.test(structure)) problems.push("structure does not count the options");
+  if (POINTS_AT_ANSWER.test(structure)) problems.push("structure points at the correct option");
+  if (CLINICAL_SPECIFIC.test(structure)) problems.push("structure repeats clinical content");
+  if (SELF_CONTRADICTION.test(structure)) problems.push("structure contradicts itself");
+  const letter = new RegExp(`\\boption\\s+${correctIds[0]}\\b`, "i");
+  if (letter.test(structure)) problems.push("structure names the correct option outright");
+
+  // A sound rule that does not bite on this structure is still wrong: it can
+  // discard an option the item does not contain.
+  if (!problems.length) {
+    const mismatch = applicabilityProblem(principle, structure, isSata);
+    if (mismatch) problems.push(mismatch);
+  }
+
+  // The composed note must also survive the gate that guards the render path,
+  // so nothing can be written that the UI would then refuse to show.
+  if (!problems.length) {
+    const composed = `${structure} ${PRINCIPLES[principle]}`;
+    const reasons = auditStrategy(composed);
+    if (reasons.length) problems.push(`composed note fails render gate: ${reasons.join("; ")}`);
+  }
   return problems;
 }
+
 (async () => {
   mkdirSync(dirname(OUT_FILE), { recursive: true });
-  mkdirSync(dirname(REVERT_FILE), { recursive: true });
   const done = new Set(
     existsSync(OUT_FILE)
       ? readFileSync(OUT_FILE, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l).id)
@@ -158,59 +171,67 @@ function gate(payload, correctIds) {
   );
   console.log(`Already processed locally: ${done.size}`);
 
-  // Only rows that already have a structured rationale: this augments that
-  // object, and there is nothing to merge into otherwise.
+  // --redo also revisits rows whose stored note fails the gate; the default
+  // only fills rows that have no note at all.
   const rows = d1(`
     SELECT id, stem, options, answer, structured_rationale
     FROM questions
     WHERE publish_state = 'published' AND type IN ('mcq','sata')
       AND structured_rationale IS NOT NULL AND structured_rationale <> ''
-      AND instr(structured_rationale, '"strategy"') = 0
+      ${REDO ? "" : "AND json_extract(structured_rationale,'$.strategy') IS NULL"}
     ORDER BY id
-    LIMIT ${LIMIT + done.size}
-  `)?.results?.filter((r) => !done.has(r.id)).slice(0, LIMIT) ?? [];
+  `)?.results ?? [];
 
-  console.log(`Processing ${rows.length}${DRY ? "  (dry run)" : ""}\n`);
+  const todo = rows.filter((row) => {
+    if (done.has(row.id)) return false;
+    if (!REDO) return true;
+    const current = safeJson(row.structured_rationale, {})?.strategy;
+    return !current || auditStrategy(current).length > 0;
+  }).slice(0, LIMIT);
+
+  console.log(`Processing ${todo.length}${DRY ? "  (dry run)" : ""}\n`);
 
   let accepted = 0, rejected = 0, skipped = 0;
   const pending = [];
   const providers = new Map();
+  const chosen = new Map();
 
-  const produced = await mapConcurrent(rows, CONCURRENCY, async (row) => {
+  const produced = await mapConcurrent(todo, CONCURRENCY, async (row) => {
     const options = safeJson(row.options, []);
     const answer = safeJson(row.answer, row.answer);
     const correctIds = (Array.isArray(answer) ? answer : [answer]).filter((v) => typeof v === "string");
     const existing = safeJson(row.structured_rationale, null);
-    if (!existing || !options.length || !correctIds.length) {
-      return { row, skip: "malformed row" };
-    }
+    if (!existing || !options.length || !correctIds.length) return { row, skip: "malformed row" };
 
     let payload = null, problems = ["not attempted"];
     for (let attempt = 1; attempt <= 3 && problems.length; attempt += 1) {
       try {
-        const messages = [{ role: "system", content: SYSTEM }, { role: "user", content: buildPrompt(row, options, correctIds) }];
+        const messages = [
+          { role: "system", content: SYSTEM },
+          { role: "user", content: buildPrompt(row, options, correctIds) },
+        ];
         if (problems[0] !== "not attempted") {
           messages.push({ role: "assistant", content: JSON.stringify(payload ?? {}) });
           messages.push({ role: "user", content: `Rejected: ${problems.join("; ")}. Return corrected JSON only.` });
         }
-        const { text, provider } = await complete(messages, { temperature: 0.4, maxTokens: 400 });
+        const { text, provider } = await complete(messages, { temperature: 0.3, maxTokens: 300 });
         providers.set(provider, (providers.get(provider) ?? 0) + 1);
         payload = parseJsonLoose(text);
-        problems = gate(payload, correctIds);
+        problems = gate(payload, correctIds, correctIds.length > 1);
       } catch (error) { problems = [`request failed: ${error.message}`]; }
     }
     if (problems.length) return { row, problems };
 
-    // MERGE. Every existing key is preserved byte-for-byte; only `strategy` is
-    // added. This pass must never be able to cost the earlier ones their work.
-    return { row, merged: { ...existing, strategy: payload.strategy.trim() } };
+    const strategy = `${payload.structure.trim()} ${PRINCIPLES[payload.principle]}`;
+    return { row, principle: payload.principle, merged: { ...existing, strategy } };
   });
 
   for (const item of produced) {
     if (item.skip) { skipped += 1; continue; }
     if (!item.merged) { rejected += 1; console.log(`  x ${item.row.id} — ${item.problems.slice(0, 2).join("; ")}`); continue; }
     accepted += 1;
-    if (SHOW || DRY) console.log(`  ${item.row.id}\n    ${item.merged.strategy}\n`);
+    chosen.set(item.principle, (chosen.get(item.principle) ?? 0) + 1);
+    if (SHOW || DRY) console.log(`  ${item.row.id}  [${item.principle}]\n    ${item.merged.strategy}\n`);
     if (!DRY) pending.push({ id: item.row.id, payload: JSON.stringify(item.merged) });
   }
 
@@ -218,17 +239,13 @@ function gate(payload, correctIds) {
     const slice = pending.slice(i, i + WRITE_BATCH);
     const cases = slice.map((r) => `WHEN '${esc(r.id)}' THEN '${esc(r.payload)}'`).join(" ");
     const ids = slice.map((r) => `'${esc(r.id)}'`).join(",");
-    // The instr guard makes a re-run idempotent and stops two overlapping runs
-    // from writing over each other.
-    d1(`UPDATE questions SET structured_rationale = CASE id ${cases} END
-        WHERE id IN (${ids}) AND instr(structured_rationale, '"strategy"') = 0`);
-    for (const r of slice) {
-      appendFileSync(REVERT_FILE, `${JSON.stringify({ id: r.id, note: "strategy key added; remove it to revert" })}\n`);
-      appendFileSync(OUT_FILE, `${JSON.stringify({ id: r.id, at: new Date().toISOString() })}\n`);
-    }
+    d1(`UPDATE questions SET structured_rationale = CASE id ${cases} END WHERE id IN (${ids})`);
+    for (const r of slice) appendFileSync(OUT_FILE, `${JSON.stringify({ id: r.id, at: new Date().toISOString() })}\n`);
     process.stdout.write(`\r  written ${Math.min(i + WRITE_BATCH, pending.length)}/${pending.length}`);
   }
   if (pending.length) process.stdout.write("\n");
+
   console.log(`providers: ${[...providers].map(([k, v]) => `${k}=${v}`).join(" ") || "none"}`);
+  console.log(`principles: ${[...chosen].sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k}=${v}`).join(" ") || "none"}`);
   console.log(`\naccepted ${accepted}   rejected ${rejected}   skipped ${skipped}`);
 })();

@@ -9,6 +9,10 @@
 // stricter than the one that produced those rows.
 // ---------------------------------------------------------------------------
 
+import { PRINCIPLES } from "./nclex-principles.mjs";
+
+const CATALOG_RULES = new Set(Object.values(PRINCIPLES));
+
 // NOTE: no trailing \b on truncated stems — `escalat\b` cannot match
 // "escalation", which silently mis-flagged sound notes in the first audit.
 export const PRINCIPLE =
@@ -51,6 +55,9 @@ export function auditStrategy(text) {
   if (!s) return ["empty"];
   const parts = s.split(/(?<=[.!?])\s+/).filter((x) => x.trim().length > 3);
   const rule = parts.slice(1).join(" ") || s;
+  // A rule drawn from the catalog is validated by construction: it was
+  // selected, not written, so none of the invention checks below apply.
+  if (CATALOG_RULES.has(rule.trim())) return [];
   const out = [];
   if (WRONG_ESCALATION.test(rule) || ESCALATION_OUTRANKS.test(rule))
     out.push("inverted escalation advice");

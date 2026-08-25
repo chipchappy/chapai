@@ -15,6 +15,8 @@
  * Mirrored by scripts/lib/strategy-gate.mjs, which gates on write.
  */
 
+import { PRINCIPLE_RULES } from "./nclex-principles";
+
 // No trailing \b on truncated stems: /escalat\b/ cannot match "escalation".
 const PRINCIPLE =
   /(ABC|airway|breathing|circulat|Maslow|safety|safe|assess|escalat|independent|sequence|timing|priorit|scope|stabiliz|least invasive|first|before|delegat|invasive|reversible|life.?threat|acute|onset|trend|baseline|expected|abnormal)/i;
@@ -58,6 +60,9 @@ export function auditStrategy(value: string | undefined | null): string[] {
   const text = String(value ?? "").trim();
   if (!text) return ["empty"];
   const rule = sentences(text).slice(1).join(" ") || text;
+  // A rule drawn from the catalog is validated by construction: it was
+  // selected, not written, so none of the invention checks below apply.
+  if (PRINCIPLE_RULES.has(rule.trim())) return [];
   const problems: string[] = [];
   if (WRONG_ESCALATION.test(rule) || ESCALATION_OUTRANKS.test(rule))
     problems.push("inverted escalation advice");
