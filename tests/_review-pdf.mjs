@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 const ROOT = "C:/Users/Chapman/Desktop/ai/chapai-p0.1-rewrite-distractors";
 const OUT = "C:/Users/Chapman/AppData/Local/Temp/claude/C--Users-Chapman-Desktop-ai-ccrn-agent/37c30503-c9ea-40a9-9549-9fabb5476110/scratchpad/distractor-review.pdf";
 
-const rows = readFileSync(`${ROOT}/packages/content/staging/distractor-rewrites.jsonl`, "utf8")
+const rows = readFileSync(`${ROOT}/packages/content/staging/distractor-sample.jsonl`, "utf8")
   .split("\n").filter(Boolean).map((l) => JSON.parse(l));
 
 const esc = (v) => String(v ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

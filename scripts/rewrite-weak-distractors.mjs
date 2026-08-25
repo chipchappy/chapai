@@ -66,9 +66,23 @@ function d1(sql) {
     cmd.push("--command", flat);
   }
   try {
-    const raw = execFileSync(process.execPath, [WRANGLER, ...cmd],
-      { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
-    return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+    // Retried because wrangler's OAuth expires on a fixed clock and refreshes
+    // lazily on the next invocation: a long apply always crosses an expiry, and
+    // the single call that lands on it fails while every later call succeeds.
+    let last;
+    for (let attempt = 1; attempt <= 4; attempt += 1) {
+      try {
+        const raw = execFileSync(process.execPath, [WRANGLER, ...cmd],
+          { cwd: resolve(ROOT, "apps/web"), env, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
+        return JSON.parse(raw.slice(raw.indexOf("[")))[0];
+      } catch (error) {
+        last = error;
+        const text = `${error?.stdout ?? ""}${error?.message ?? ""}`;
+        if (!/7403|Authentication|fetch failed/.test(text) || attempt === 4) break;
+        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, [3_000, 10_000, 30_000][attempt - 1]);
+      }
+    }
+    throw last;
   } finally {
     if (tmp) { try { unlinkSync(tmp); } catch {} }
   }
@@ -272,8 +286,12 @@ function gateRewrite(payload, options, correctIds) {
   const ids = options.map((o) => o.id);
   for (const id of Object.keys(rewritten)) {
     if (!ids.includes(id)) problems.push(`unknown option id "${id}"`);
-    // Guarantee 3: the key's meaning is not the model's to change.
-    if (correctIds.includes(id)) problems.push(`tried to rewrite the correct option "${id}"`);
+    // A returned key entry is IGNORED, not rejected. The rewrite is applied by
+    // id and skips correct ids entirely (below), so the key is frozen BY
+    // CONSTRUCTION rather than by the model complying with an instruction —
+    // which is the stronger guarantee. Rejecting here discarded 137 of 150
+    // otherwise-sound items in the first 400-item run, for a failure mode that
+    // structurally cannot reach production.
     const text = rewritten[id];
     if (typeof text !== "string" || text.trim().split(/\s+/).length < 4) problems.push(`option "${id}" too short`);
     if (/\b(always|never|prove[sn]?|all patients|no patient)\b/i.test(String(text))) {
@@ -315,8 +333,13 @@ function gateRewrite(payload, options, correctIds) {
 
   if (APPLY) {
     const rows = readFileSync(STAGING, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l));
-    const ok = rows.filter((r) => r.verdict === "pass");
-    console.log(`staged ${rows.length}, eligible ${ok.length}`);
+    const alreadyApplied = new Set(
+      existsSync(APPLIED)
+        ? readFileSync(APPLIED, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l).id)
+        : [],
+    );
+    const ok = rows.filter((r) => r.verdict === "pass" && !alreadyApplied.has(r.id));
+    console.log(`staged ${rows.length}, eligible ${ok.length}, already applied ${alreadyApplied.size}`);
     if (!ok.length) return;
     for (const r of ok) {
       // Options replaced BY ID, order preserved, `answer` never in the statement.
@@ -387,7 +410,10 @@ function gateRewrite(payload, options, correctIds) {
         payload = parseJsonLoose(text);
         problems = gateRewrite(payload, options, correctIds);
         if (!problems.length) {
-          after = options.map((o) => ({ ...o, text: payload.options[o.id] ?? o.text }));
+          after = options.map((o) => (
+            // The key passes through untouched whatever the model returned.
+            correctIds.includes(o.id) ? o : { ...o, text: payload.options[o.id] ?? o.text }
+          ));
           problems = [...parallelismProblems(after, correctIds), ...contentProblems(after, correctIds)];
         }
       } catch (error) { problems = [`writer failed: ${error.message}`]; }
