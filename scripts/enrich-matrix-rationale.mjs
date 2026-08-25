@@ -43,6 +43,15 @@ function d1(sql) {
   const env = { ...process.env };
   delete env.CLOUDFLARE_API_TOKEN; delete env.CLOUDFLARE_ACCOUNT_ID;
   const flat = sql.replace(/\s+/g, " ").trim();
+  // A -- comment survives the flatten above as a comment on the ENTIRE
+  // remaining query, which silently drops the WHERE clause and selects the
+  // whole table. Ids such as "q001--matrix" are unaffected: a comment has
+  // whitespace around it.
+  // Quoted literals are stripped first: a rationale may legitimately contain
+  // " -- ", and only a comment outside a string can swallow the query.
+  if (/(^|\s)--\s/.test(flat.replace(/'(?:[^']|'')*'/g, "''"))) {
+    throw new Error("SQL contains a -- comment, which flattening turns into a comment on the rest of the query. Move it outside the template literal.");
+  }
   let tmp = null;
   const cmd = ["d1", "execute", "chapai-prod", "--remote", "--json"];
   if (flat.length > SQL_INLINE_LIMIT) {
@@ -77,6 +86,15 @@ You produce ONLY valid minified JSON. No prose, no markdown, no code fences.`;
 
 /** Row label -> assigned column, for whichever NGN shape this row uses. */
 function extractRows(row) {
+  // Ordering items store the sequence as "c,f,d,e,g,b,a" against lettered
+  // options, so the rows are positions and the teaching is why each step has
+  // to precede the next.
+  if (row.type === "ordering") {
+    const order = String(row.answer ?? "").split(",").map((part) => part.trim()).filter(Boolean);
+    const byId = new Map(safeJson(row.options, []).map((option) => [option.id, option.text]));
+    return Object.fromEntries(order.map((id, index) => [`Step ${index + 1}`, byId.get(id) ?? id]));
+  }
+
   const answer = safeJson(row.answer, null);
   if (answer && typeof answer === "object" && !Array.isArray(answer)) {
     // Bow-tie stores slots rather than a row map.
@@ -99,7 +117,7 @@ function buildPrompt(row, rows, columns) {
 STEM: ${row.stem}
 ${columns.length ? `\nCOLUMN CHOICES: ${columns.join(" | ")}` : ""}
 
-CORRECT CLASSIFICATION OF EACH ROW:
+${row.type === "ordering" ? "THE CORRECT SEQUENCE:" : "CORRECT CLASSIFICATION OF EACH ROW:"}
 ${rowLines}
 
 EXISTING SHORT RATIONALE (replace it with something far deeper, do not quote it):
@@ -115,9 +133,9 @@ Return JSON with exactly these keys:
                  that makes that pattern behave the way it does. This is the
                  part a student can carry to a different item.
 
-  "whyCorrect" — walk EVERY row above, in order. For each one, say why it lands
-                 in the column it does AND what would tempt a student toward the
-                 other column. Refer to each row by its wording so the student
+  "whyCorrect" — walk EVERY row above, in order. ${row.type === "ordering"
+    ? "For each step, say why it\n                 must come after the one before it and what goes wrong if a student\n                 moves it earlier or later."
+    : "For each one, say why it lands\n                 in the column it does AND what would tempt a student toward the\n                 other column."} Refer to each row by its wording so the student
                  can follow along. This is the longest field.
                  Start each row on its own line, as "<row wording> — <why>", and
                  separate rows with a single newline. Most students read this on
@@ -190,7 +208,7 @@ function gate(payload, rows) {
   const rowsIn = d1(`
     SELECT id, type, stem, options, answer, rationale
     FROM questions
-    WHERE publish_state = 'published' AND type IN ('matrix','bow_tie')
+    WHERE publish_state = 'published' AND type IN ('matrix','bow_tie','ordering')
       AND (structured_rationale IS NULL OR structured_rationale = '')
     ORDER BY id
   `)?.results?.filter((r) => !done.has(r.id)).slice(0, LIMIT) ?? [];
@@ -225,12 +243,15 @@ function gate(payload, rows) {
     }
     if (problems.length) return { row, problems };
 
-    // Every row of a matrix is judged on its own against the same standard,
-    // which is exactly the catalog's judge-each-option rule; taking the text
-    // from the catalog keeps these notes identical in kind to the rest.
-    const structure = row.type === "bow_tie"
-      ? "Each slot of the bow-tie is filled from the same set of findings."
-      : `All ${Object.keys(rows).length} rows are classified against the same standard.`;
+    // Taking the rule text from the catalog keeps these notes identical in kind
+    // to the rest of the bank: a matrix row is judged on its own against the
+    // standard, while an ordering item is testing sequence rather than choice.
+    const rowCount = Object.keys(rows).length;
+    const [structure, principle] = row.type === "bow_tie"
+      ? ["Each slot of the bow-tie is filled from the same set of findings.", "judge-each-option"]
+      : row.type === "ordering"
+        ? [`The same ${rowCount} steps appear in every option; only their order differs.`, "sequence-not-choice"]
+        : [`All ${rowCount} rows are classified against the same standard.`, "judge-each-option"];
 
     return {
       row,
@@ -243,7 +264,7 @@ function gate(payload, rows) {
         // page. The per-row teaching is in whyCorrect instead.
         whyWrong: {},
         citations: [],
-        strategy: `${structure} ${PRINCIPLES["judge-each-option"]}`,
+        strategy: `${structure} ${PRINCIPLES[principle]}`,
       },
     };
   });

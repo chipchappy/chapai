@@ -74,6 +74,15 @@ function d1Once(sql) {
   delete env.CLOUDFLARE_API_TOKEN;   // deploy-scoped; D1 rejects it with 7403
   delete env.CLOUDFLARE_ACCOUNT_ID;
   const flat = sql.replace(/\s+/g, " ").trim();
+  // A -- comment survives the flatten above as a comment on the ENTIRE
+  // remaining query, which silently drops the WHERE clause and selects the
+  // whole table. Ids such as "q001--matrix" are unaffected: a comment has
+  // whitespace around it.
+  // Quoted literals are stripped first: a rationale may legitimately contain
+  // " -- ", and only a comment outside a string can swallow the query.
+  if (/(^|\s)--\s/.test(flat.replace(/'(?:[^']|'')*'/g, "''"))) {
+    throw new Error("SQL contains a -- comment, which flattening turns into a comment on the rest of the query. Move it outside the template literal.");
+  }
   let tmp = null;
   let cmd;
   if (flat.length > SQL_INLINE_LIMIT) {
@@ -206,13 +215,17 @@ function gate(obj, optionIds, correctIds) {
   // mcq and sata only: matrix/ordering/bow_tie have no option-based distractors
   // for whyWrong to explain, and forcing the shape onto them would produce
   // exactly the kind of empty teaching the audit already flags.
+  // case_study is option-based in every respect: an id/text option array and
+  // an answer that is an option id or a list of them. Matrix, ordering and
+  // bow-tie are keyed by row label and slot, and enrich-matrix-rationale.mjs
+  // handles those.
+  //
+  // No -- comments inside this template: d1() flattens the SQL onto one line,
+  // which turns a line comment into a comment on everything after it.
   const rows = d1(`
     SELECT id, type, category, stem, options, answer, rationale
     FROM questions
     WHERE publish_state = 'published'
-      -- case_study is option-based in every respect: an id/text option array
-      -- and an answer that is an option id or a list of them. Matrix and
-      -- bow-tie are keyed by row label and slot, and are handled separately.
       AND type IN ('mcq','sata','case_study')
       AND (structured_rationale IS NULL OR structured_rationale = '')
     ORDER BY id

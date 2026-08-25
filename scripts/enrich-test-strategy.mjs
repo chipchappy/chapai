@@ -50,6 +50,15 @@ function d1(sql) {
   const env = { ...process.env };
   delete env.CLOUDFLARE_API_TOKEN; delete env.CLOUDFLARE_ACCOUNT_ID;
   const flat = sql.replace(/\s+/g, " ").trim();
+  // A -- comment survives the flatten above as a comment on the ENTIRE
+  // remaining query, which silently drops the WHERE clause and selects the
+  // whole table. Ids such as "q001--matrix" are unaffected: a comment has
+  // whitespace around it.
+  // Quoted literals are stripped first: a rationale may legitimately contain
+  // " -- ", and only a comment outside a string can swallow the query.
+  if (/(^|\s)--\s/.test(flat.replace(/'(?:[^']|'')*'/g, "''"))) {
+    throw new Error("SQL contains a -- comment, which flattening turns into a comment on the rest of the query. Move it outside the template literal.");
+  }
   let tmp = null;
   const cmd = ["d1", "execute", "chapai-prod", "--remote", "--json"];
   if (flat.length > SQL_INLINE_LIMIT) {
@@ -177,12 +186,15 @@ function gate(payload, correctIds, isSata) {
 
   // --redo also revisits rows whose stored note fails the gate; the default
   // only fills rows that have no note at all.
+  // case_study is option-based too, so the same structure-plus-principle shape
+  // applies; matrix, ordering and bow-tie get theirs from
+  // enrich-matrix-rationale.mjs, which knows their row layout.
+  //
+  // No -- comments inside this template: d1() flattens the SQL onto one line,
+  // which turns a line comment into a comment on everything after it.
   const rows = d1(`
     SELECT id, stem, options, answer, structured_rationale
     FROM questions
-    -- case_study is option-based too, so the same structure-plus-principle
-    -- shape applies; matrix and bow-tie get theirs assembled by
-    -- enrich-matrix-rationale.mjs, which knows their row layout.
     WHERE publish_state = 'published' AND type IN ('mcq','sata','case_study')
       AND structured_rationale IS NOT NULL AND structured_rationale <> ''
       ${REDO ? "" : "AND json_extract(structured_rationale,'$.strategy') IS NULL"}
