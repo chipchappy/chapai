@@ -7,7 +7,7 @@
     "start": "next start",
     "build": "node scripts/clean-next-build.cjs && next build && node scripts/ensure-required-server-files.cjs",
     "build:worker": "next build && opennextjs-cloudflare build",
-    "deploy": "opennextjs-cloudflare deploy",
+    "deploy": "node -e \"console.error('REFUSED: this is the main proposal checkout. Production ships ONLY via the stable gate: bash scripts/deploy-stable.sh from the chapai-p0.1-rewrite-distractors worktree.'); process.exit(1)\"",
     "preview": "opennextjs-cloudflare preview",
     "seed:d1:questions": "node scripts/export-d1-question-seed.mjs",
     "d1:migrate:prod": "wrangler d1 execute chapai-prod --remote --file=../../packages/db/drizzle/migration-0001.sql",
