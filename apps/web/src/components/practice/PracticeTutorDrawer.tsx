@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getStudyResourcesForQuestion } from "@/lib/study-resources";
 import type { PracticeAnswer, PracticeQuestion } from "@/lib/practice-types";
 
@@ -22,6 +22,33 @@ function answerLabel(answer: PracticeAnswer | undefined) {
   return typeof answer === "string" && answer ? answer.toUpperCase() : "unknown";
 }
 
+function tutorStorageAnswerKey(answer: PracticeAnswer | undefined) {
+  if (Array.isArray(answer)) return answer.join(",");
+  if (answer && typeof answer === "object") {
+    return Object.entries(answer)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, value]) => `${key}:${value}`)
+      .join("|");
+  }
+  return typeof answer === "string" ? answer : "unknown";
+}
+
+function readStoredMessages(storageKey: string): Message[] {
+  try {
+    const raw = window.localStorage.getItem(storageKey) ?? window.sessionStorage.getItem(storageKey);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((entry): entry is Message => {
+      if (!entry || typeof entry !== "object") return false;
+      const record = entry as Record<string, unknown>;
+      return (record.role === "user" || record.role === "assistant") && typeof record.content === "string";
+    });
+  } catch {
+    return [];
+  }
+}
+
 function pillClass(tone: "sage" | "blue" | "gold" | "neutral" = "neutral") {
   return tone === "sage"
     ? "border-[rgba(126,157,134,0.22)] bg-[rgba(126,157,134,0.10)] text-[#55715e]"
@@ -36,12 +63,43 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const studyResources = question.studyResources ?? getStudyResourcesForQuestion(question);
+  const storageKey = useMemo(
+    () => `clarity-ai-tutor:${question.id}:${tutorStorageAnswerKey(selectedAnswer)}`,
+    [question.id, selectedAnswer],
+  );
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    setHydrated(false);
+    setMessages(readStoredMessages(storageKey));
+    setHydrated(true);
+  }, [storageKey]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      if (messages.length === 0) {
+        window.localStorage.removeItem(storageKey);
+        window.sessionStorage.removeItem(storageKey);
+        return;
+      }
+      const serialized = JSON.stringify(messages);
+      window.localStorage.setItem(storageKey, serialized);
+      window.sessionStorage.setItem(storageKey, serialized);
+    } catch {
+      try {
+        window.sessionStorage.setItem(storageKey, JSON.stringify(messages));
+      } catch {
+        // Keep the in-memory tutor thread if browser storage is unavailable.
+      }
+    }
+  }, [hydrated, messages, storageKey]);
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
@@ -58,13 +116,14 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
     const trimmed = text.trim();
     if (!trimmed || streaming) return;
 
-    const history = [...messages, { role: "user" as const, content: trimmed }];
-    setMessages([...history, { role: "assistant" as const, content: "" }]);
+    const userMessage = { role: "user" as const, content: trimmed };
+    const history = messages.slice(-5);
+    setMessages([...messages, userMessage, { role: "assistant" as const, content: "" }]);
     setInput("");
     setStreaming(true);
 
     try {
-      const res = await fetch("/api/tutor", {
+      const res = await fetch("/api/tutor/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -116,7 +175,14 @@ export default function PracticeTutorDrawer({ question, selectedAnswer, answered
     } catch {
       setMessages((prev) => {
         const updated = [...prev];
-        updated[updated.length - 1] = { role: "assistant", content: "Tutor unavailable right now. Try again shortly." };
+        updated[updated.length - 1] = {
+          role: "assistant",
+          content: [
+            "Tutor connection failed, but use the approved rationale first.",
+            question.takeaway ? `Pattern: ${question.takeaway}` : `Pattern: ${question.rationale}`,
+            "Next rep: name the highest-risk cue, eliminate the tempting distractor, then choose the safest priority action.",
+          ].join(" "),
+        };
         return updated;
       });
     } finally {

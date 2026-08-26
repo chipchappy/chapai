@@ -1,4 +1,1 @@
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
-
-export { POST } from "./ask/route";
+export { dynamic, POST, runtime } from "./ask/route";
