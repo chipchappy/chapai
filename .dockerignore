@@ -1,0 +1,50 @@
+# Keep the build context small. Without this the context is ~27 GB and the
+# build either takes forever or dies.
+
+# Dependencies and build output — reinstalled/rebuilt inside the image
+node_modules
+**/node_modules
+.next
+**/.next
+.open-next
+**/.open-next
+.turbo
+**/.turbo
+.wrangler
+**/.wrangler
+*.tsbuildinfo
+
+# Content generations: 500 MB of staging JSON that the app does not read at
+# runtime. These live in R2 (content/<date>/*.tar.gz) and are restored on demand
+# only when syncing the bank, never to build or serve the site.
+packages/content/staging
+
+# Scratch, temp, logs
+.tmp-*
+.genverify-tmp
+.local-state
+tmp-*.log
+*.log
+reports
+audit
+
+# Secrets must never enter an image layer
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+public-dashboard-cookie.txt
+public-dashboard-login-headers.txt
+
+# VCS and editor
+.git
+.github
+.claude
+**/.DS_Store
+
+# Root-level scratch scripts
+debug_*.js
+test_*.js
+test_*.py
+public-dashboard-page.html
