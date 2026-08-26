@@ -32401,3 +32401,147 @@ body[data-sim-immersive="true"] > main {
 .premium-hero-anatomy-parallax {
   display: contents;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Rationale tone coding (Aug 2026)
+
+   The post-answer rationale carries three different kinds of teaching, and a
+   student reading a wall of one colour cannot tell them apart at a glance:
+
+     sage green  — why the correct answer works, plus the surrounding knowledge
+     adobe red   — why each wrong option is wrong
+     periwinkle  — the transferable NCLEX test-taking strategy
+
+   Periwinkle is deliberately the only cool hue in a warm sand palette: the
+   strategy note is the one line that transfers to the next question, so it
+   should not read as more clinical detail.
+
+   Defined in their own block rather than beside --quiz-sage, which is redefined
+   in ten separate scopes; these four selectors cover every theme path the quiz
+   shell can be in (system dark default, system light, and both explicit picks).
+   ──────────────────────────────────────────────────────────────────────────── */
+
+.quiz-terminal-app {
+  --quiz-tone-correct: #93ac93;
+  --quiz-tone-correct-wash: rgba(147, 172, 147, 0.13);
+  --quiz-tone-correct-edge: rgba(147, 172, 147, 0.42);
+  --quiz-tone-wrong: #dd9b88;
+  --quiz-tone-wrong-wash: rgba(221, 155, 136, 0.12);
+  --quiz-tone-wrong-edge: rgba(221, 155, 136, 0.4);
+  --quiz-tone-strategy: #a8b6ea;
+  --quiz-tone-strategy-wash: rgba(168, 182, 234, 0.13);
+  --quiz-tone-strategy-edge: rgba(168, 182, 234, 0.42);
+  --quiz-tone-ink: rgba(228, 235, 228, 0.86);
+}
+
+@media (prefers-color-scheme: light) {
+  .quiz-terminal-app:not([data-study-theme="dark"]) {
+    --quiz-tone-correct: #4f6f53;
+    --quiz-tone-correct-wash: rgba(79, 111, 83, 0.1);
+    --quiz-tone-correct-edge: rgba(79, 111, 83, 0.34);
+    --quiz-tone-wrong: #a2513c;
+    --quiz-tone-wrong-wash: rgba(162, 81, 60, 0.09);
+    --quiz-tone-wrong-edge: rgba(162, 81, 60, 0.32);
+    --quiz-tone-strategy: #4f5da8;
+    --quiz-tone-strategy-wash: rgba(79, 93, 168, 0.1);
+    --quiz-tone-strategy-edge: rgba(79, 93, 168, 0.34);
+    --quiz-tone-ink: #2f4145;
+  }
+}
+
+.quiz-terminal-app[data-study-theme="light"] {
+  --quiz-tone-correct: #4f6f53;
+  --quiz-tone-correct-wash: rgba(79, 111, 83, 0.1);
+  --quiz-tone-correct-edge: rgba(79, 111, 83, 0.34);
+  --quiz-tone-wrong: #a2513c;
+  --quiz-tone-wrong-wash: rgba(162, 81, 60, 0.09);
+  --quiz-tone-wrong-edge: rgba(162, 81, 60, 0.32);
+  --quiz-tone-strategy: #4f5da8;
+  --quiz-tone-strategy-wash: rgba(79, 93, 168, 0.1);
+  --quiz-tone-strategy-edge: rgba(79, 93, 168, 0.34);
+  --quiz-tone-ink: #2f4145;
+}
+
+.quiz-terminal-app[data-study-theme="dark"] {
+  --quiz-tone-correct: #93ac93;
+  --quiz-tone-correct-wash: rgba(147, 172, 147, 0.13);
+  --quiz-tone-correct-edge: rgba(147, 172, 147, 0.42);
+  --quiz-tone-wrong: #dd9b88;
+  --quiz-tone-wrong-wash: rgba(221, 155, 136, 0.12);
+  --quiz-tone-wrong-edge: rgba(221, 155, 136, 0.4);
+  --quiz-tone-strategy: #a8b6ea;
+  --quiz-tone-strategy-wash: rgba(168, 182, 234, 0.13);
+  --quiz-tone-strategy-edge: rgba(168, 182, 234, 0.42);
+  --quiz-tone-ink: rgba(228, 235, 228, 0.86);
+}
+
+/* Row variants. The left edge carries the hue at full strength so the three
+   kinds stay distinguishable even where the wash is nearly invisible. */
+.quiz-rail-row.quiz-tone-correct,
+.quiz-rail-row.quiz-tone-wrong,
+.quiz-rail-row.quiz-tone-strategy {
+  border-left-width: 3px;
+  border-left-style: solid;
+}
+
+.quiz-rail-row.quiz-tone-correct {
+  background: var(--quiz-tone-correct-wash);
+  border-color: var(--quiz-tone-correct-edge);
+  border-left-color: var(--quiz-tone-correct);
+}
+
+.quiz-rail-row.quiz-tone-wrong {
+  background: var(--quiz-tone-wrong-wash);
+  border-color: var(--quiz-tone-wrong-edge);
+  border-left-color: var(--quiz-tone-wrong);
+}
+
+.quiz-rail-row.quiz-tone-strategy {
+  background: var(--quiz-tone-strategy-wash);
+  border-color: var(--quiz-tone-strategy-edge);
+  border-left-color: var(--quiz-tone-strategy);
+}
+
+/* --quiz-muted measures 4.15:1 on the light study theme, under the 4.5:1 AA
+   floor for body text; the tone washes shaved it further. Toned rows carry
+   their own body ink so the added colour does not cost legibility. */
+.quiz-rail-row.quiz-tone-correct > span,
+.quiz-rail-row.quiz-tone-wrong > span,
+.quiz-rail-row.quiz-tone-strategy > span { color: var(--quiz-tone-ink); }
+
+.quiz-rail-row.quiz-tone-correct > strong,
+.quiz-rail-row.quiz-tone-correct > summary { color: var(--quiz-tone-correct); }
+.quiz-rail-row.quiz-tone-wrong > strong,
+.quiz-rail-row.quiz-tone-wrong > summary { color: var(--quiz-tone-wrong); }
+.quiz-rail-row.quiz-tone-strategy > strong,
+.quiz-rail-row.quiz-tone-strategy > summary { color: var(--quiz-tone-strategy); }
+
+/* Legend above the structured rationale, so the coding is taught once rather
+   than left for the student to infer. */
+.quiz-rationale-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  margin-top: 0.7rem;
+}
+
+.quiz-rationale-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--quiz-muted);
+}
+
+.quiz-rationale-legend-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.quiz-rationale-legend-swatch[data-tone="correct"]  { background: var(--quiz-tone-correct); }
+.quiz-rationale-legend-swatch[data-tone="wrong"]    { background: var(--quiz-tone-wrong); }
+.quiz-rationale-legend-swatch[data-tone="strategy"] { background: var(--quiz-tone-strategy); }

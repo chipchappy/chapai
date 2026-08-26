@@ -7,7 +7,7 @@
  */
 
 /** Lifetime practice questions a free signed-in account may answer. */
-export const FREE_QUESTION_LIMIT = 300;
+export const FREE_QUESTION_LIMIT = 200;
 
 /** Completed readiness ("dynamic competency") exams included on the free plan. */
 export const FREE_PRACTICE_EXAM_LIMIT = 1;

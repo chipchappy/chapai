@@ -1496,16 +1496,32 @@ export default function PracticeTerminalPane({
                       {structuredRationale ? (
                         <div className="quiz-rail-card">
                           <p className="quiz-terminal-kicker">structured rationale</p>
+                          {/* Teach the colour coding once, here, rather than
+                              leaving the student to infer what the hues mean. */}
+                          <div className="quiz-rationale-legend">
+                            <span className="quiz-rationale-legend-item">
+                              <span className="quiz-rationale-legend-swatch" data-tone="correct" aria-hidden="true" />
+                              why it works
+                            </span>
+                            <span className="quiz-rationale-legend-item">
+                              <span className="quiz-rationale-legend-swatch" data-tone="wrong" aria-hidden="true" />
+                              why others fail
+                            </span>
+                            <span className="quiz-rationale-legend-item">
+                              <span className="quiz-rationale-legend-swatch" data-tone="strategy" aria-hidden="true" />
+                              test-taking strategy
+                            </span>
+                          </div>
                           <div className="mt-3 grid gap-3">
-                            <div className="quiz-rail-row flex-col items-start gap-1">
+                            <div className="quiz-rail-row quiz-tone-correct flex-col items-start gap-1">
                               <strong>Overview</strong>
                               <span><DrugLinkedText text={structuredRationale.overview} /></span>
                             </div>
-                            <div className="quiz-rail-row flex-col items-start gap-1">
+                            <div className="quiz-rail-row quiz-tone-correct flex-col items-start gap-1">
                               <strong>Clinical mechanism</strong>
                               <span><DrugLinkedText text={structuredRationale.mechanism} /></span>
                             </div>
-                            <div className="quiz-rail-row flex-col items-start gap-1">
+                            <div className="quiz-rail-row quiz-tone-correct flex-col items-start gap-1">
                               <strong>Why the correct answer works</strong>
                               <span><DrugLinkedText text={structuredRationale.whyCorrect} /></span>
                             </div>
@@ -1514,7 +1530,7 @@ export default function PracticeTerminalPane({
                                 hollow "remember to prioritise" would teach less
                                 than showing nothing. */}
                             {soundStrategy(structuredRationale.strategy) ? (
-                              <div className="quiz-rail-row flex-col items-start gap-1">
+                              <div className="quiz-rail-row quiz-tone-strategy flex-col items-start gap-1">
                                 <strong>Test-taking strategy</strong>
                                 <span>
                                   <DrugLinkedText
@@ -1531,8 +1547,8 @@ export default function PracticeTerminalPane({
                           <p className="quiz-terminal-kicker">why each wrong</p>
                           <div className="mt-3 grid gap-2">
                             {Object.entries(whyWrongRationales).map(([label, explanation]) => (
-                              <details key={label} className="quiz-rail-row flex-col items-start gap-2">
-                                <summary className="cursor-pointer font-semibold text-[var(--quiz-ink-strong)]">
+                              <details key={label} className="quiz-rail-row quiz-tone-wrong flex-col items-start gap-2">
+                                <summary className="cursor-pointer font-semibold">
                                   Option {label.toUpperCase()}
                                 </summary>
                                 <span><DrugLinkedText text={explanation} /></span>
