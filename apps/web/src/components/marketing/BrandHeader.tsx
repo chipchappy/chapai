@@ -185,7 +185,6 @@ export default function BrandHeader() {
           <BrandMark />
         </Link>
         <nav className={`${styles.nav} ${auth.clinicalSimulationEnabled ? styles.navWithSimulation : ""}`} aria-label="Primary">
-          <Link href="/nclex">NCLEX</Link>
           <Link href="/quiz">Study now</Link>
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/pricing">Pricing</Link>

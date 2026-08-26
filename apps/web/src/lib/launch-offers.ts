@@ -251,6 +251,7 @@ const ACTIVE_LAUNCH_PLAN_CODES: LaunchPlanCode[] = [
   "nclex_base_monthly",
   "ccrn_base_monthly",
   "all_access_monthly",
+  "nclex_pass_guarantee",
 ];
 
 export const LAUNCH_OFFERS = ACTIVE_LAUNCH_PLAN_CODES.map((planCode) => LAUNCH_OFFER_MAP[planCode]);

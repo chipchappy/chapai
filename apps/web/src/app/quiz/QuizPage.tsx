@@ -544,6 +544,7 @@ export default function QuizPage({
       used: meter?.used ?? freeMeter?.used,
       limit: meter?.limit ?? freeMeter?.limit,
       exam,
+      bankSize: liveCounts?.[exam] ?? accessibleLiveCount,
     });
     return true;
   }

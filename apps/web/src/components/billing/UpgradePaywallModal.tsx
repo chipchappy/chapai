@@ -2,7 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { LAUNCH_OFFERS } from "@/lib/launch-offers";
-import { FREE_LIMIT_CODES, FREE_QUESTION_LIMIT, type FreeLimitCode } from "@/lib/free-plan-limits";
+import { COMPETITOR_PRICES, COMPETITOR_PRICING_VERIFIED_ON } from "@/lib/competitor-pricing";
+import {
+  FREE_LIMIT_CODES,
+  FREE_PRACTICE_EXAM_LIMIT,
+  FREE_QUESTION_LIMIT,
+  type FreeLimitCode,
+} from "@/lib/free-plan-limits";
 import styles from "./UpgradePaywallModal.module.css";
 
 export type PaywallReason = FreeLimitCode;
@@ -16,7 +22,12 @@ export type PaywallContext = {
   limit?: number;
   /** Which track the student is studying, so we surface the relevant plans. */
   exam?: "nclex" | "ccrn";
+  /** Reviewed items in this track's bank, for the "how much is left" figure. */
+  bankSize?: number;
 };
+
+/** Total readiness forms built; the free plan includes one of them. */
+const TOTAL_READINESS_EXAMS = 5;
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -77,15 +88,16 @@ export default function UpgradePaywallModal({
       .sort((a, b) => a.price - b.price);
   }, [context]);
 
-  // The plan that unlocks every simulation for the lowest price is the one we
-  // point at — it is the honest recommendation for someone who just ran out.
-  const featuredPlanCode = useMemo(() => {
-    const unlimited = plans.filter((offer) => offer.practiceExamLimit >= 5);
-    if (unlimited.length > 0) {
-      return unlimited.reduce((best, offer) => (offer.price < best.price ? offer : best)).planCode;
-    }
-    return plans.length > 0 ? plans[plans.length - 1].planCode : null;
-  }, [plans]);
+  // Two plans get colour: the cheapest recurring way into the full bank, and
+  // the one-time bundle that carries the pass guarantee.
+  const valuePlanCode = useMemo(
+    () => plans.find((offer) => offer.planType === "track-base-monthly")?.planCode ?? null,
+    [plans],
+  );
+  const flagshipPlanCode = useMemo(
+    () => plans.find((offer) => offer.planType === "pass-guarantee")?.planCode ?? null,
+    [plans],
+  );
 
   const handleClose = useCallback(() => onClose(), [onClose]);
 
@@ -142,6 +154,20 @@ export default function UpgradePaywallModal({
   const showMeter = context.reason === FREE_LIMIT_CODES.questions;
   const pct = limit > 0 ? Math.round((used / limit) * 100) : 100;
 
+  // Only claim a number we can actually back. Without a measured bank size,
+  // fall back to the vaguer-but-true "thousands more".
+  const remaining = context.bankSize ? context.bankSize - limit : 0;
+  const remainingLabel =
+    remaining >= 1000
+      ? `${(Math.floor(remaining / 100) / 10).toFixed(1).replace(/\.0$/, "")}k+`
+      : remaining > 0
+        ? `${remaining.toLocaleString()}`
+        : "Thousands";
+
+  // Cheapest recurring plan, used as our side of the competitor comparison.
+  const cheapestMonthly =
+    plans.filter((offer) => offer.checkoutMode === "subscription").sort((a, b) => a.price - b.price)[0] ?? null;
+
   return (
     <div
       className={styles.overlay}
@@ -171,6 +197,21 @@ export default function UpgradePaywallModal({
           {context.message ?? subtitle}
         </p>
 
+        <div className={styles.unlocks}>
+          <div className={styles.unlock}>
+            <span className={styles.unlockNum}>{TOTAL_READINESS_EXAMS - FREE_PRACTICE_EXAM_LIMIT} more</span>
+            <span className={styles.unlockLabel}>
+              full-length adaptive readiness exams, 85&ndash;150 items each
+            </span>
+          </div>
+          <div className={styles.unlock}>
+            <span className={styles.unlockNum}>{remainingLabel}</span>
+            <span className={styles.unlockLabel}>
+              more reviewed questions with rationales and citations
+            </span>
+          </div>
+        </div>
+
         {showMeter ? (
           <div className={styles.meter}>
             <div className={styles.meterRow}>
@@ -194,7 +235,8 @@ export default function UpgradePaywallModal({
 
         <div className={styles.plans}>
           {plans.map((offer) => {
-            const featured = offer.planCode === featuredPlanCode;
+            const isValue = offer.planCode === valuePlanCode;
+            const isFlagship = offer.planCode === flagshipPlanCode;
             const unit =
               offer.checkoutMode === "subscription"
                 ? "per month"
@@ -202,18 +244,38 @@ export default function UpgradePaywallModal({
                   ? `${Math.round(offer.accessHours / 24)}-day access`
                   : "one time";
 
+            // Say exactly what this plan includes — the base plan carries fewer
+            // simulations than the flagship, and overstating that is the kind of
+            // claim that ends up in a chargeback.
+            const extraExams = offer.practiceExamLimit - FREE_PRACTICE_EXAM_LIMIT;
+            const examPerk =
+              offer.practiceExamLimit >= TOTAL_READINESS_EXAMS
+                ? `All ${TOTAL_READINESS_EXAMS} readiness exams`
+                : extraExams > 0
+                  ? `${extraExams} more readiness exam${extraExams === 1 ? "" : "s"}`
+                  : "Readiness exam included";
+
             return (
               <a
                 key={offer.planCode}
-                className={`${styles.plan} ${featured ? styles.planFeatured : ""}`}
+                className={[
+                  styles.plan,
+                  isValue ? styles.planValue : "",
+                  isFlagship ? styles.planFlagship : "",
+                ].filter(Boolean).join(" ")}
                 href={`/upgrade?plan=${encodeURIComponent(offer.planCode)}`}
               >
                 <span className={styles.planBody}>
                   <span className={styles.planHead}>
                     <span className={styles.planName}>{offer.label}</span>
-                    {featured ? <span className={styles.badge}>Best value</span> : null}
+                    {isValue ? <span className={`${styles.badge} ${styles.badgeValue}`}>Best value</span> : null}
+                    {isFlagship ? <span className={`${styles.badge} ${styles.badgeFlagship}`}>Pass guarantee</span> : null}
                   </span>
-                  <span className={styles.planDesc}>{offer.description}</span>
+                  <ul className={styles.planPerks}>
+                    <li>{examPerk}</li>
+                    <li>Full reviewed bank</li>
+                    {offer.canUseTutor ? <li>AI tutor</li> : null}
+                  </ul>
                 </span>
                 <span className={styles.planPrice}>
                   <span className={styles.priceAmount}>${offer.price}</span>
@@ -224,9 +286,37 @@ export default function UpgradePaywallModal({
           })}
         </div>
 
+        {cheapestMonthly ? (
+          <div className={styles.compare}>
+            <p className={styles.compareTitle}>What the same prep costs elsewhere</p>
+            <div className={styles.compareRows}>
+              {COMPETITOR_PRICES.map((rival) => (
+                <div className={styles.compareRow} key={rival.name}>
+                  <span className={styles.compareName}>
+                    {rival.name}
+                    <em>{rival.plan}</em>
+                  </span>
+                  <span className={styles.compareCost}>${rival.price} / {rival.term}</span>
+                </div>
+              ))}
+              <div className={`${styles.compareRow} ${styles.compareUs}`}>
+                <span className={styles.compareName}>
+                  Clarity
+                  <em>{cheapestMonthly.label}</em>
+                </span>
+                <span className={styles.compareCost}>${cheapestMonthly.price} / month</span>
+              </div>
+            </div>
+            <p className={styles.compareNote}>
+              Competitor list prices for their cheapest question-bank plan, checked{" "}
+              {COMPETITOR_PRICING_VERIFIED_ON}. Prices change &mdash; verify before you buy.
+            </p>
+          </div>
+        ) : null}
+
         <div className={styles.footer}>
-          <a className={styles.compare} href="/upgrade">
-            Compare every plan →
+          <a className={styles.allPlans} href="/upgrade">
+            Compare every plan &rarr;
           </a>
           <p className={styles.reassure}>
             Secure Stripe checkout. Your answered questions, weak-area history, and progress stay on
