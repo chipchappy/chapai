@@ -11,7 +11,14 @@ import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { mapQuestionRowToQuizQuestion } from "@/lib/quiz-engine";
 import { ensureHostedUser } from "@/lib/billing-store";
 import { isLaunchPlanCode } from "@/lib/launch-offers";
-import { canUnlockPracticeExam, FREE_PRACTICE_EXAM_ID, recordPracticeExamUnlock } from "@/lib/practice-exam-access";
+import {
+  canUnlockPracticeExam,
+  countCompletedFreeExamAttempts,
+  FREE_PRACTICE_EXAM_ID,
+  FREE_PRACTICE_EXAM_LIMIT,
+  recordPracticeExamUnlock,
+} from "@/lib/practice-exam-access";
+import { FREE_LIMIT_CODES } from "@/lib/free-plan-limits";
 import { getQuestionQualityProfile, qualityFirstDiverseOrder } from "@/lib/question-quality";
 import { MAX_ITEMS as CAT_MAX_ITEMS } from "@/lib/adaptive-cat";
 import {
@@ -651,6 +658,20 @@ export async function GET(request: Request, context: RouteContext) {
 
   if (!hostedUser) {
     return Response.json({ success: false, error: "Hosted account lookup failed." }, { status: 503 });
+  }
+
+  // Free plan: the included readiness exam may be *finished* once. Abandoned
+  // sittings don't count, so a dropped connection never burns the allowance.
+  if (isFreeExam && access.tier === "free" && !previewAccess) {
+    const completed = await countCompletedFreeExamAttempts(db, hostedUser.id);
+    if (completed >= FREE_PRACTICE_EXAM_LIMIT) {
+      return Response.json({
+        success: false,
+        error: "You've finished your free readiness exam. Upgrade to unlock the remaining full-length simulations and your diagnostic breakdown.",
+        code: FREE_LIMIT_CODES.exam,
+        freeExams: { used: completed, limit: FREE_PRACTICE_EXAM_LIMIT },
+      }, { status: 403 });
+    }
   }
 
   // The free exam skips plan-scope checks and unlock accounting entirely.

@@ -1,3 +1,5 @@
+import { FREE_QUESTION_LIMIT } from "@/lib/free-plan-limits";
+
 type Props = {
   firstName: string | null;
   questionsAnswered: number;
@@ -74,7 +76,8 @@ export default function PricingPersonalizedHero({
         <p className="pricing-personalized__body">
           Students who hit Pro with your starting readiness ({readinessScore}) typically jump to{" "}
           <strong>{projectedScore}</strong> in 6 weeks of weak-area-focused practice — that&apos;s the curve
-          flattening past 2,500 questions. The free plan caps you at 10/day. At {questionsAnswered.toLocaleString()}{" "}
+          flattening past 2,500 questions. The free plan includes {FREE_QUESTION_LIMIT.toLocaleString()} practice
+          questions and one full-length readiness exam. At {questionsAnswered.toLocaleString()}{" "}
           answered, you&apos;re past the sample-stage and ready for the full bank.
         </p>
         <figure

@@ -5,6 +5,8 @@ import BrandMark from "@/components/brand/BrandMark";
 import PracticeQuestionPane from "@/components/practice/PracticeQuestionPane";
 import PracticeTutorDrawer from "@/components/practice/PracticeTutorDrawer";
 import QuizTerminalShell from "./QuizTerminalShell";
+import UpgradePaywallModal, { type PaywallContext } from "@/components/billing/UpgradePaywallModal";
+import { isPaywallCode, FREE_PRACTICE_EXAM_ID } from "@/lib/free-plan-limits";
 import { getAccessibleQuestionBankCount } from "@/lib/launch-offers";
 import {
   getPracticeCatalogCards,
@@ -310,6 +312,10 @@ export default function QuizPage({
   const [ngnOnly, setNgnOnly] = useState<boolean>(sanitizeNgnOnly(initialNgnOnly));
   const [studyTheme, setStudyTheme] = useState<StudyTheme>("light");
   const [error, setError] = useState<string | null>(null);
+  // Free-plan paywall. A 403 carrying a known limit code opens this modal
+  // instead of setError, so the student sees plans rather than a dead end.
+  const [paywall, setPaywall] = useState<PaywallContext | null>(null);
+  const [freeMeter, setFreeMeter] = useState<{ used: number; limit: number } | null>(null);
   const [isPending, startTransition] = useTransition();
   const [now, setNow] = useState(Date.now());
   const hydratedRef = useRef(false);
@@ -511,6 +517,37 @@ export default function QuizPage({
     window.location.assign(payload?.loginUrl ?? payload?.details?.loginUrl ?? `/auth/signup?next=${next}`);
   }
 
+  /**
+   * Open the upgrade paywall for a failed response that carries a free-plan
+   * limit code. Returns true when it handled the response, so callers can stop
+   * without also setting an inline error.
+   */
+  function openPaywallFor(
+    payload:
+      | {
+          code?: string;
+          error?: string;
+          freeQuestions?: { used?: number; limit?: number };
+          details?: { freeQuestions?: { used?: number; limit?: number } };
+        }
+      | null,
+    exam: Exam,
+  ) {
+    const code = payload?.code;
+    if (!isPaywallCode(code)) return false;
+    // jsonError nests extra data under `details`; the practice-exam route
+    // returns a bare Response.json, so accept either shape.
+    const meter = payload?.freeQuestions ?? payload?.details?.freeQuestions;
+    setPaywall({
+      reason: code,
+      message: payload?.error ?? null,
+      used: meter?.used ?? freeMeter?.used,
+      limit: meter?.limit ?? freeMeter?.limit,
+      exam,
+    });
+    return true;
+  }
+
   async function openStandardSession(exam: Exam, count: number | "unlimited") {
     setError(null);
     const endless = count === "unlimited";
@@ -540,12 +577,18 @@ export default function QuizPage({
         redirectToAccountGate(payload);
         return;
       }
+      if (openPaywallFor(payload, exam)) {
+        return;
+      }
       setError(payload?.error ?? "Could not start the live-bank session. Please try again.");
       return;
     }
 
     const payload = await response.json();
     const data = payload.data ?? payload;
+    if (data.freeQuestions) {
+      setFreeMeter({ used: data.freeQuestions.used, limit: data.freeQuestions.limit });
+    }
     const questions = mapLiveQuestionBank(data.questions, "standard");
     setIsEndless(endless);
     dispatch({
@@ -587,10 +630,18 @@ export default function QuizPage({
         }),
       });
       if (!response.ok) {
+        // Endless mode used to stop dead here with no explanation. If the batch
+        // was refused because the free allowance ran out, say so with the
+        // upgrade path instead of silently starving the queue.
+        const failure = await response.json().catch(() => null);
+        openPaywallFor(failure, state.session.exam);
         return 0;
       }
       const payload = await response.json();
       const data = payload.data ?? payload;
+      if (data.freeQuestions) {
+        setFreeMeter({ used: data.freeQuestions.used, limit: data.freeQuestions.limit });
+      }
       const more = mapLiveQuestionBank(data.questions, "standard").filter((question) => !seenSet.has(question.id));
       if (more.length > 0) {
         dispatch({ type: "append-questions", questions: more });
@@ -752,7 +803,11 @@ export default function QuizPage({
   async function openPracticeExam(examId: string) {
     setError(null);
     setIsEndless(false);
-    if (!canUsePracticeExams) {
+    // The included readiness exam must reach the server even on the free plan —
+    // the server owns that allowance (and how much of it is left). Gating it
+    // here on canUsePracticeExams (false for free) made the advertised free
+    // exam unreachable for exactly the students it was meant for.
+    if (!canUsePracticeExams && examId !== FREE_PRACTICE_EXAM_ID) {
       setError(getPremiumLockMessage("practice-exams"));
       return;
     }
@@ -780,6 +835,9 @@ export default function QuizPage({
       }
 
       if (response?.status === 403) {
+        if (openPaywallFor(payload, selectedExam)) {
+          return;
+        }
         setError(
           payload?.error
             ?? `This account can open ${practiceExamLimit} practice exam${practiceExamLimit === 1 ? "" : "s"}. Upgrade to unlock more simulations.`,
@@ -1145,6 +1203,7 @@ export default function QuizPage({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [canAdvanceQuestion, canOpenTutor, currentQuestion, currentRecord, session, state.activeAnswer, state.phase]);
   return (
+    <>
     <QuizTerminalShell
       phase={state.phase}
       tier={tier}
@@ -1258,6 +1317,8 @@ export default function QuizPage({
       onResetSession={() => dispatch({ type: "reset" })}
       onStartMissedReview={startMissedReview}
     />
+    <UpgradePaywallModal context={paywall} onClose={() => setPaywall(null)} />
+    </>
   );
   /* legacy quiz renderer retained temporarily for rollback reference
   return (

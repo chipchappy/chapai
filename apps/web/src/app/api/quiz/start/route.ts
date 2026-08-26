@@ -12,6 +12,7 @@ import { getStandardPreviewDeck } from "@/lib/practice-data";
 import { getServerAccessContext } from "@/lib/server-access";
 import { ACCESS_KEY_COOKIE, validateAccessKeyRuntime } from "@/lib/access-keys";
 import { matchesQuestionCategory } from "@/lib/nclex-client-needs";
+import { FREE_LIMIT_CODES, FREE_QUESTION_LIMIT } from "@/lib/free-plan-limits";
 import type { ResolvedPremiumAccess } from "@/lib/premium-access";
 import type { QuizSessionConfig, QuizQuestion } from "@/lib/types";
 import { z } from "zod";
@@ -194,11 +195,10 @@ export async function POST(req: NextRequest) {
           name: typeof user.user_metadata?.full_name === "string" ? user.user_metadata.full_name : null,
         })
       : null;
-    // Free plan: 200 lifetime practice questions, then the paywall. The batch is
-    // capped to the remaining allowance and the response carries the meter so the
-    // UI can gamify progress toward the limit.
-    const FREE_QUESTION_LIMIT = 200;
-    let freeQuestions: { used: number; limit: number } | null = null;
+    // Free plan: a lifetime practice-question allowance, then the paywall. The
+    // batch is capped to what remains and the response carries the meter so the
+    // UI can show progress toward the limit before the student hits it.
+    let freeQuestions: { used: number; limit: number; remaining: number } | null = null;
     let effectiveConfig = config;
     if (hostedUser && access.tier === "free" && !previewAccess) {
       const usedRows = await db
@@ -209,14 +209,14 @@ export async function POST(req: NextRequest) {
       if (used >= FREE_QUESTION_LIMIT) {
         return jsonError(
           403,
-          "FREE_LIMIT_REACHED",
+          FREE_LIMIT_CODES.questions,
           `You've completed all ${FREE_QUESTION_LIMIT} free questions — upgrade to unlock the full reviewed bank, all readiness exams, and the AI tutor.`,
-          requestContext,
+          { ...requestContext, freeQuestions: { used, limit: FREE_QUESTION_LIMIT, remaining: 0 } },
           { requestId: requestContext.requestId },
         );
       }
-      freeQuestions = { used, limit: FREE_QUESTION_LIMIT };
       const remaining = FREE_QUESTION_LIMIT - used;
+      freeQuestions = { used, limit: FREE_QUESTION_LIMIT, remaining };
       const requested = typeof config.count === "number" ? config.count : 10;
       // count is a literal union in the schema; the capped value is still a
       // plain positive int, which is all the engine/session code needs.
