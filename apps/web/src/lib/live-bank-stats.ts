@@ -1,4 +1,4 @@
-import { eq, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import { questions } from "@chapai/db/schema";
 import { getDB, hasDatabase, resolveEnv } from "@/lib/db";
 import { getLiveContentSummary } from "@/lib/live-content-summary";
@@ -30,12 +30,16 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
 
   try {
     const db = getDB(env);
+    // Only count rows that are actually live/playable. The live quiz selector
+    // serves ONLY publish_state='published', so the marketed count must match
+    // that — otherwise drafts + the ~3.3k NULL-state re-sync residue inflate it.
     const examRows = await db
       .select({
         exam: questions.exam,
         count: sql<number>`count(*)`,
       })
       .from(questions)
+      .where(eq(questions.publishState, "published"))
       .groupBy(questions.exam);
 
     const nclexTypeRows = await db
@@ -44,7 +48,7 @@ export async function getLiveBankStats(): Promise<LiveBankStats> {
         count: sql<number>`count(*)`,
       })
       .from(questions)
-      .where(eq(questions.exam, "nclex"))
+      .where(and(eq(questions.exam, "nclex"), eq(questions.publishState, "published")))
       .groupBy(questions.type);
 
     const ccrnLive = Number(examRows.find((row) => row.exam === "ccrn")?.count ?? fallback.ccrnLive);
