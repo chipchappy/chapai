@@ -70,3 +70,9 @@ Thumbs.db
 # committing 10 MB of regenerable JSON helps nobody.
 packages/content/staging/promoted-v5/
 packages/content/staging/promoted-v6/
+
+# Review manifests embed candidate question stems. The repo is public; unshipped
+# content stays out of it. Regenerate with review-nclex-candidate-bank.mjs.
+reports/promoted-v5-review.json
+reports/*-review.json
+reports/*-flat.json
