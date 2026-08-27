@@ -1,0 +1,996 @@
+{
+  "batchId": "clean-batch-012",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb1154-n010",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "anaphylaxis_epinephrine_first",
+      "subcategory": "Anaphylaxis",
+      "difficulty": 3,
+      "stem": "A client develops wheezing, facial swelling, and hypotension during an IV antibiotic infusion. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "Anaphylaxis rescue sequence",
+      "scenario": "The client is anxious and struggling to speak in full sentences.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop the infusion and call for immediate help"
+        },
+        {
+          "id": "b",
+          "text": "Administer epinephrine per protocol"
+        },
+        {
+          "id": "c",
+          "text": "Support airway and oxygenation"
+        },
+        {
+          "id": "d",
+          "text": "Prepare for additional fluids and monitoring after first-line treatment"
+        }
+      ],
+      "answer": [
+        "a",
+        "c",
+        "b",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Anaphylaxis becomes easier to answer when the nurse spots the airway-perfusion emergency pattern and moves rapidly. Stop the trigger, support oxygenation, give epinephrine, and then continue the resuscitation bundle with fluids and monitoring.",
+      "distractorRationales": {},
+      "tags": [
+        "NGN",
+        "anaphylaxis",
+        "ordering",
+        "priority",
+        "Anaphylaxis",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Anaphylaxis is a trigger-off, airway-support, epinephrine-first sequence.",
+      "speedCue": "Wheeze plus swelling plus hypotension should make you stop the medication and think epinephrine, not antihistamine-only care.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Stop the infusion and call for immediate help; C: Support airway and oxygenation; B: Administer epinephrine per protocol; D: Prepare for additional fluids and monitoring after first-line treatment. Anaphylaxis becomes easier to answer when the nurse spots the airway-perfusion emergency pattern and moves rapidly. Stop the trigger, support oxygenation, give epinephrine, and then continue the resuscitation bundle with fluids and monitoring. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Anaphylaxis through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Stop the infusion and call for immediate help; C: Support airway and oxygenation; B: Administer epinephrine per protocol; D: Prepare for additional fluids and monitoring after first-line treatment is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {},
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Anaphylaxis Epinephrine First",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a603002.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Anaphylaxis Epinephrine First",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+          "citation": "NIH MedlinePlus drug monograph: Epinephrine Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a603002.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1031-n001",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "meningococcal_sepsis_petechiae",
+      "subcategory": "meningococcal_sepsis_petechiae",
+      "difficulty": 5,
+      "stem": "Which findings in this febrile client support the nurse's concern for meningococcal sepsis? Select all that apply.",
+      "scenarioTitle": "Petechial sepsis clues",
+      "scenario": "A college student arrives with fever, severe headache, malaise, and rapidly worsening illness.",
+      "additionalInfo": "The nurse is deciding which additional findings would strengthen concern for a meningococcal emergency rather than a routine viral illness.",
+      "options": [
+        {
+          "id": "a",
+          "text": "A nonblanching petechial or purpuric rash"
+        },
+        {
+          "id": "b",
+          "text": "Hypotension or rapidly worsening perfusion"
+        },
+        {
+          "id": "c",
+          "text": "Neck stiffness and photophobia"
+        },
+        {
+          "id": "d",
+          "text": "A mild itchy rash that fades with pressure"
+        },
+        {
+          "id": "e",
+          "text": "Warm, stable vitals with improving symptoms after fluids"
+        },
+        {
+          "id": "f",
+          "text": "Acute confusion or worsening mental status"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "f"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Meningococcal sepsis clues cluster around invasive infection and rapid deterioration: nonblanching rash, perfusion decline, meningeal irritation, and mental-status change. The nurse should exclude benign or improving patterns that do not fit invasive sepsis.",
+      "distractorRationales": {
+        "d": "\"A mild itchy rash that fades with pressure\" misses the bedside risk. The cue \"Meningococcal sepsis clues cluster around invasive infection and rapid deterioration: nonblanching rash, perfusion decline, meningeal irritation\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "e": "The safer response addresses infection progression; \"Warm, stable vitals with improving symptoms after fluids\" moves care toward diagnostic reassurance before infection or sepsis escalation."
+      },
+      "tags": [
+        "meningococcal_sepsis_petechiae",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The fast clue is not fever alone, but fever plus rash and collapse signs.",
+      "speedCue": "Nonblanching rash plus neuro change or shock is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: A nonblanching petechial or purpuric rash; B: Hypotension or rapidly worsening perfusion; C: Neck stiffness and photophobia; F: Acute confusion or worsening mental status. Meningococcal sepsis clues cluster around invasive infection and rapid deterioration: nonblanching rash, perfusion decline, meningeal irritation, and mental-status change. The nurse should exclude benign or improving patterns that do not fit invasive sepsis. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Meningococcal Sepsis Petechiae through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: A nonblanching petechial or purpuric rash; B: Hypotension or rapidly worsening perfusion; C: Neck stiffness and photophobia; F: Acute confusion or worsening mental status is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "d": "\"A mild itchy rash that fades with pressure\" misses the bedside risk. The cue \"Meningococcal sepsis clues cluster around invasive infection and rapid deterioration: nonblanching rash, perfusion decline, meningeal irritation\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "e": "The safer response addresses infection progression; \"Warm, stable vitals with improving symptoms after fluids\" moves care toward diagnostic reassurance before infection or sepsis escalation. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Meningococcal Sepsis Petechiae",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Meningococcal Sepsis Petechiae",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1000-n004",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "neuroleptic_malignant_syndrome",
+      "subcategory": "neuroleptic_malignant_syndrome",
+      "difficulty": 3,
+      "stem": "For each client finding, click to specify whether the finding is more consistent with neuroleptic malignant syndrome or less consistent with neuroleptic malignant syndrome.",
+      "scenarioTitle": "NMS versus look-alikes",
+      "scenario": "The client recently started a high-potency antipsychotic and now has fever and confusion.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "More consistent with NMS"
+        },
+        {
+          "id": "b",
+          "text": "Less consistent with NMS"
+        }
+      ],
+      "answer": {
+        "Lead-pipe rigidity": "More consistent with NMS",
+        "Autonomic instability": "More consistent with NMS",
+        "Marked hyperreflexia and diarrhea": "Less consistent with NMS",
+        "Recent serotonergic antibiotic overlap": "Less consistent with NMS"
+      },
+      "matrixColumns": [
+        "More consistent with NMS",
+        "Less consistent with NMS"
+      ],
+      "matrixRows": [
+        {
+          "label": "Lead-pipe rigidity",
+          "answer": "More consistent with NMS"
+        },
+        {
+          "label": "Autonomic instability",
+          "answer": "More consistent with NMS"
+        },
+        {
+          "label": "Marked hyperreflexia and diarrhea",
+          "answer": "Less consistent with NMS"
+        },
+        {
+          "label": "Recent serotonergic antibiotic overlap",
+          "answer": "Less consistent with NMS"
+        }
+      ],
+      "rationale": "NMS is easier to recognize when the learner locks onto severe rigidity and autonomic instability after dopamine-blocking medication exposure. Hyperreflexia and diarrhea push the pattern away from NMS and more toward serotonin syndrome.",
+      "distractorRationales": {
+        "a": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"the row-specific answer pattern\" fits the safer response to the cue \"The client recently started a high-potency antipsychotic and now has fever and confusion\".",
+        "b": "The cue \"Hyperreflexia and diarrhea push the pattern away from NMS and more toward serotonin syndrome\" suggests medication toxicity, so \"Less consistent with NMS\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "neuroleptic_malignant_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rigidity after antipsychotic exposure should move NMS higher than serotonin syndrome.",
+      "speedCue": "When a high-fever medication question includes rigidity, slow down and separate rigidity from hyperreflexia.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neuroleptic_malignant_syndrome",
+        "caption": "Rigidity after antipsychotic exposure should move NMS higher than serotonin syndrome.",
+        "conclusion": "Rigidity after antipsychotic exposure should move NMS higher than serotonin syndrome."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is Lead Pipe Rigidity: More consistent with NMS; Autonomic Instability: More consistent with NMS; Marked Hyperreflexia And Diarrhea: Less consistent with NMS; Recent Serotonergic Antibiotic Overlap: Less consistent with NMS. NMS is easier to recognize when the learner locks onto severe rigidity and autonomic instability after dopamine-blocking medication exposure. Hyperreflexia and diarrhea push the pattern away from NMS and more toward serotonin syndrome. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Neuroleptic Malignant Syndrome through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "Lead Pipe Rigidity: More consistent with NMS; Autonomic Instability: More consistent with NMS; Marked Hyperreflexia And Diarrhea: Less consistent with NMS; Recent Serotonergic Antibiotic Overlap: Less consistent with NMS is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"the row-specific answer pattern\" fits the safer response to the cue \"The client recently started a high-potency antipsychotic and now has fever and confusion\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The cue \"Hyperreflexia and diarrhea push the pattern away from NMS and more toward serotonin syndrome\" suggests medication toxicity, so \"Less consistent with NMS\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Neuroleptic Malignant Syndrome",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Neuroleptic Malignant Syndrome",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1013-n006",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "neuroleptic_malignant_syndrome",
+      "subcategory": "neuroleptic_malignant_syndrome",
+      "difficulty": 2,
+      "stem": "Which conclusion should drive the nurse's next move in this medication reaction?",
+      "scenarioTitle": "Rigid fevered client after antipsychotic change",
+      "scenario": "A client who started fluphenazine 2 days ago is febrile, diaphoretic, rigid, and difficult to arouse.",
+      "additionalInfo": "Heart rate is 132/min, blood pressure is fluctuating, and the client has no diarrhea or inducible clonus.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation"
+        },
+        {
+          "id": "b",
+          "text": "Expected sedation that only needs extra rest"
+        },
+        {
+          "id": "c",
+          "text": "Serotonin syndrome because fever is present"
+        },
+        {
+          "id": "d",
+          "text": "A benign viral illness unrelated to the medication"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is rigidity, fever, autonomic instability, and recent antipsychotic exposure. The nurse should connect the rigid high-fever picture to neuroleptic malignant syndrome and escalate quickly instead of drifting toward softer explanations.",
+      "distractorRationales": {
+        "b": "The cue \"Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity\" suggests medication toxicity, so \"Expected sedation that only needs extra rest\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "This distractor shifts care toward premature attribution instead of medication-safety intervention. The stem cue \"The pattern is rigidity, fever, autonomic instability\" makes medication toxicity the active safety concern.",
+        "d": "\"A benign viral illness unrelated to the medication\" misses the bedside risk. The cue \"Heart rate is 132/min, blood pressure is fluctuating\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "neuroleptic_malignant_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity.",
+      "speedCue": "High fever plus rigidity after a dopamine-blocking drug is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "neuroleptic_malignant_syndrome",
+        "caption": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity.",
+        "conclusion": "Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation. The pattern is rigidity, fever, autonomic instability, and recent antipsychotic exposure. The nurse should connect the rigid high-fever picture to neuroleptic malignant syndrome and escalate quickly instead of drifting toward softer explanations. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Neuroleptic Malignant Syndrome through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Neuroleptic malignant syndrome requiring immediate medication hold and urgent escalation is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The cue \"Rigidity is the speed clue that keeps this pattern from being mistaken for serotonin toxicity\" suggests medication toxicity, so \"Expected sedation that only needs extra rest\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "This distractor shifts care toward premature attribution instead of medication-safety intervention. The stem cue \"The pattern is rigidity, fever, autonomic instability\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"A benign viral illness unrelated to the medication\" misses the bedside risk. The cue \"Heart rate is 132/min, blood pressure is fluctuating\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Neuroleptic Malignant Syndrome",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Neuroleptic Malignant Syndrome",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1013-n002",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "organophosphate_poisoning",
+      "subcategory": "organophosphate_poisoning",
+      "difficulty": 3,
+      "stem": "Which decision map best fits this toxic-exposure presentation?",
+      "scenarioTitle": "Cholinergic toxicity map",
+      "scenario": "A farm worker arrives drenched in pesticide with wheezing, salivation, diarrhea, and pinpoint pupils.",
+      "additionalInfo": "The client is bradycardic, sweaty, and increasingly confused.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation"
+        },
+        {
+          "id": "b",
+          "text": "Opioid overdose because the pupils are constricted"
+        },
+        {
+          "id": "c",
+          "text": "Simple gastroenteritis with incidental wheezing"
+        },
+        {
+          "id": "d",
+          "text": "Expected heat exhaustion that only needs water and rest"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The speed clue is the wet cholinergic cluster: secretions, wheezing, diarrhea, bradycardia, and miosis after pesticide exposure. The nurse should choose the map that removes exposure risk and treats the toxidrome fast.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward premature attribution instead of airway and breathing intervention. The stem cue \"increasingly confused\" makes oxygenation or ventilation the active safety concern.",
+        "c": "\"Simple gastroenteritis with incidental wheezing\" normalizes a finding that needs reassessment. The cue \"The client is bradycardic, sweaty\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before reassurance.",
+        "d": "The cue \"The client is bradycardic, sweaty\" suggests oxygenation or ventilation, so \"Expected heat exhaustion that only needs water and rest\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "organophosphate_poisoning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When the stem looks wet in every direction, think cholinergic toxicity before you chase one isolated symptom.",
+      "speedCue": "Wet lungs, wet skin, wet gut, small pupils, pesticide.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation. The speed clue is the wet cholinergic cluster: secretions, wheezing, diarrhea, bradycardia, and miosis after pesticide exposure. The nurse should choose the map that removes exposure risk and treats the toxidrome fast. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Organophosphate Poisoning through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Organophosphate poisoning requiring decontamination, airway support, and antidote-focused escalation is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward premature attribution instead of airway and breathing intervention. The stem cue \"increasingly confused\" makes oxygenation or ventilation the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Simple gastroenteritis with incidental wheezing\" normalizes a finding that needs reassessment. The cue \"The client is bradycardic, sweaty\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"The client is bradycardic, sweaty\" suggests oxygenation or ventilation, so \"Expected heat exhaustion that only needs water and rest\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Organophosphate Poisoning",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Organophosphate Poisoning",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1040-n005",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "thyroid_storm_rapid_decompensation",
+      "subcategory": "thyroid_storm_rapid_decompensation",
+      "difficulty": 2,
+      "stem": "Which conclusion should guide the nurse's next move when a hyperthyroid client suddenly deteriorates?",
+      "scenarioTitle": "Thyroid storm case",
+      "scenario": "A client with untreated hyperthyroidism becomes agitated, febrile, tachycardic, and diaphoretic after surgery.",
+      "additionalInfo": "The client is now vomiting and appears increasingly confused.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat this as thyroid storm and escalate rapid supportive and medication-focused care"
+        },
+        {
+          "id": "b",
+          "text": "Reassure the client that postoperative anxiety explains all of the findings"
+        },
+        {
+          "id": "c",
+          "text": "Delay action until the temperature trend is repeated in several hours"
+        },
+        {
+          "id": "d",
+          "text": "Encourage ambulation to reduce the heart rate and agitation"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Hyperthermia, severe tachycardia, agitation, and GI symptoms in a hyperthyroid client point to thyroid storm. The nurse should escalate immediately because this is a decompensation pattern, not routine anxiety or pain alone.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward premature teaching instead of medication-safety intervention. The stem cue \"Fever plus tachycardia plus agitation in hyperthyroidism is storm until proved otherwise\" makes medication toxicity the active safety concern.",
+        "c": "\"Delay action until the temperature trend is repeated in several hours\" misses the bedside risk. The cue \"The nurse should escalate immediately because this is a decompensation pattern, not routine anxiety or pain alone\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Encourage ambulation to reduce the heart rate and agitation\" answers a lower-acuity part of the scenario. The cue \"Hyperthermia, severe tachycardia, agitation\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care."
+      },
+      "tags": [
+        "thyroid_storm_rapid_decompensation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus tachycardia plus agitation in hyperthyroidism is storm until proved otherwise.",
+      "speedCue": "Hot, fast, agitated, hyperthyroid after stress means storm thinking now.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Treat this as thyroid storm and escalate rapid supportive and medication-focused care. Hyperthermia, severe tachycardia, agitation, and GI symptoms in a hyperthyroid client point to thyroid storm. The nurse should escalate immediately because this is a decompensation pattern, not routine anxiety or pain alone. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Thyroid Storm Rapid Decompensation through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Treat this as thyroid storm and escalate rapid supportive and medication-focused care is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward premature teaching instead of medication-safety intervention. The stem cue \"Fever plus tachycardia plus agitation in hyperthyroidism is storm until proved otherwise\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Delay action until the temperature trend is repeated in several hours\" misses the bedside risk. The cue \"The nurse should escalate immediately because this is a decompensation pattern, not routine anxiety or pain alone\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Encourage ambulation to reduce the heart rate and agitation\" answers a lower-acuity part of the scenario. The cue \"Hyperthermia, severe tachycardia, agitation\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Thyroid Storm Rapid Decompensation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Thyroid Storm Rapid Decompensation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb971-n010",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "transsphenoidal_csf_leak",
+      "subcategory": "transsphenoidal_csf_leak",
+      "difficulty": 3,
+      "stem": "A client is 8 hours post transsphenoidal hypophysectomy. Which findings should make the nurse suspect a cerebrospinal fluid leak?",
+      "scenarioTitle": "Pituitary postop leak clues",
+      "scenario": "The client reports a salty taste and keeps swallowing frequently.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Clear drainage from the nose"
+        },
+        {
+          "id": "b",
+          "text": "Halo on the drainage dressing"
+        },
+        {
+          "id": "c",
+          "text": "Frequent swallowing"
+        },
+        {
+          "id": "d",
+          "text": "Expected sore throat after intubation only"
+        },
+        {
+          "id": "e",
+          "text": "Sudden headache increase"
+        },
+        {
+          "id": "f",
+          "text": "Small amount of dried blood on the lip"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "After transsphenoidal surgery, the nurse should connect clear drainage, halo sign, frequent swallowing, and worsening headache to possible CSF leak rather than normal nasal drainage. Early recognition reduces meningitis and pressure complications.",
+      "distractorRationales": {
+        "d": "\"Expected sore throat after intubation only\" normalizes a finding that needs reassessment. The cue \"worsening headache to possible CSF leak rather than normal nasal drainage\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance.",
+        "f": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Clear drainage from the nose plus Halo on the drainage dressing plus Frequent swallowing plus Sudden\" fits the safer response to the cue \"After transsphenoidal surgery, the nurse should connect clear drainage, halo sign, frequent swallowing\"."
+      },
+      "tags": [
+        "transsphenoidal_csf_leak",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Clear nasal drainage after transsphenoidal surgery is a leak clue until proven otherwise.",
+      "speedCue": "The exam shortcut is clear drainage plus swallowing after pituitary surgery, not just postop discomfort.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Clear drainage from the nose; B: Halo on the drainage dressing; C: Frequent swallowing; E: Sudden headache increase. After transsphenoidal surgery, the nurse should connect clear drainage, halo sign, frequent swallowing, and worsening headache to possible CSF leak rather than normal nasal drainage. Early recognition reduces meningitis and pressure complications. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Transsphenoidal Csf Leak through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Clear drainage from the nose; B: Halo on the drainage dressing; C: Frequent swallowing; E: Sudden headache increase is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "d": "\"Expected sore throat after intubation only\" normalizes a finding that needs reassessment. The cue \"worsening headache to possible CSF leak rather than normal nasal drainage\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "f": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Clear drainage from the nose plus Halo on the drainage dressing plus Frequent swallowing plus Sudden\" fits the safer response to the cue \"After transsphenoidal surgery, the nurse should connect clear drainage, halo sign, frequent swallowing\". Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Transsphenoidal Csf Leak",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Transsphenoidal Csf Leak",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1340-n009",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "acute_rejection_transplant",
+      "subcategory": "acute_rejection_transplant",
+      "difficulty": 3,
+      "stem": "Which clinical pattern should the nurse connect first in this recent kidney transplant client?",
+      "scenarioTitle": "Renal graft instability map",
+      "scenario": "A client 16 days after kidney transplant reports fever, tenderness over the graft, and a noticeable drop in urine output since yesterday.",
+      "additionalInfo": "Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply sore near the transplant site.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute rejection pattern requiring prompt escalation and immunosuppressant-focused follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Expected transplant recovery with routine hydration encouragement only"
+        },
+        {
+          "id": "c",
+          "text": "Incisional discomfort from overactivity without graft compromise"
+        },
+        {
+          "id": "d",
+          "text": "Benign low-grade fever that can wait for the next clinic visit"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Fever, graft tenderness, and falling urine output shortly after transplant create a rejection pattern. The nurse should connect the unstable graft clues first and escalate immediately instead of reassuring the client.",
+      "distractorRationales": {
+        "b": "\"Expected transplant recovery with routine hydration encouragement only\" treats active deterioration as something safe to watch. The cue \"Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply\" raises concern for infection progression, so infection or sepsis escalation is needed before routine observation.",
+        "c": "The cue \"Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply\" suggests infection progression, so \"Incisional discomfort from overactivity without graft compromise\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "\"Benign low-grade fever that can wait for the next clinic visit\" misses the bedside risk. The cue \"Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "acute_rejection_transplant",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In a recent transplant client, fever plus graft pain plus oliguria should be treated as possible rejection until proven otherwise.",
+      "speedCue": "The fastest route is to link graft tenderness and lower urine output to the transplant timeline before you get distracted by the incision.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Acute rejection pattern requiring prompt escalation and immunosuppressant-focused follow-up. Fever, graft tenderness, and falling urine output shortly after transplant create a rejection pattern. The nurse should connect the unstable graft clues first and escalate immediately instead of reassuring the client. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Acute Rejection Transplant through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Acute rejection pattern requiring prompt escalation and immunosuppressant-focused follow-up is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Expected transplant recovery with routine hydration encouragement only\" treats active deterioration as something safe to watch. The cue \"Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply\" raises concern for infection progression, so infection or sepsis escalation is needed before routine observation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply\" suggests infection progression, so \"Incisional discomfort from overactivity without graft compromise\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Benign low-grade fever that can wait for the next clinic visit\" misses the bedside risk. The cue \"Blood pressure is 154/92 mm Hg and the client says the incision looks fine but feels more deeply\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Acute Rejection Transplant",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Acute Rejection Transplant",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1013-n001",
+      "exam": "nclex",
+      "type": "decision_map_mcq",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "cord_prolapse_positioning",
+      "difficulty": 1,
+      "stem": "Which decision map should guide the nurse's next move in this fetal emergency?",
+      "scenarioTitle": "Cord pressure relief map",
+      "scenario": "Immediately after spontaneous rupture of membranes, the fetal heart rate drops to 70/min and remains there.",
+      "additionalInfo": "The nurse palpates a pulsating loop of cord in the vagina while the client is still in bed.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation"
+        },
+        {
+          "id": "b",
+          "text": "Normal transient deceleration that only needs continued monitoring"
+        },
+        {
+          "id": "c",
+          "text": "Placenta previa with no positioning urgency"
+        },
+        {
+          "id": "d",
+          "text": "Benign fetal sleep cycle that should resolve without bedside action"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The pattern is rupture of membranes, sudden profound bradycardia, and a palpable cord. The nurse should answer from relieving cord compression first, not from interpreting this as a softer tracing issue.",
+      "distractorRationales": {
+        "b": "\"Normal transient deceleration that only needs continued monitoring\" normalizes a finding that needs reassessment. The cue \"The life-saving move is driven by pressure relief, not by waiting for better fetal data\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance.",
+        "c": "\"Placenta previa with no positioning urgency\" commits to a competing cause before checking the dangerous pattern. The cue \"Immediately after spontaneous rupture of membranes, the fetal heart rate drops to 70/min and remains there\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before diagnostic reassurance.",
+        "d": "The option can leave circulation or perfusion untreated because it normalizes a finding that needs reassessment. \"Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation\" fits the safer response to the cue \"The nurse palpates a pulsating loop of cord in the vagina while the client is still in bed\"."
+      },
+      "tags": [
+        "cord_prolapse_positioning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "The life-saving move is driven by pressure relief, not by waiting for better fetal data.",
+      "speedCue": "A visible or palpable cord plus fetal bradycardia should make the map immediate.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation. The pattern is rupture of membranes, sudden profound bradycardia, and a palpable cord. The nurse should answer from relieving cord compression first, not from interpreting this as a softer tracing issue. The clinical focus is umbilical cord compression, so the review should connect the answer to cord, compression, fetal, bradycardia.",
+        "mechanism": "This item tests Cord Prolapse Positioning through umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. These cord, compression, fetal, bradycardia cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation is correct because it directly addresses umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Normal transient deceleration that only needs continued monitoring\" normalizes a finding that needs reassessment. The cue \"The life-saving move is driven by pressure relief, not by waiting for better fetal data\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before reassurance. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "c": "\"Placenta previa with no positioning urgency\" commits to a competing cause before checking the dangerous pattern. The cue \"Immediately after spontaneous rupture of membranes, the fetal heart rate drops to 70/min and remains there\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before diagnostic reassurance. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "d": "The option can leave circulation or perfusion untreated because it normalizes a finding that needs reassessment. \"Cord prolapse requiring immediate pressure relief from the presenting part and rapid birth preparation\" fits the safer response to the cue \"The nurse palpates a pulsating loop of cord in the vagina while the client is still in bed\". Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Cord Prolapse Positioning",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Cord Prolapse Positioning",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "p1-cjmm-01-stemi-hypoperfusion-04",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "subcategory": "Cardiac / Perfusion",
+      "difficulty": 5,
+      "caseStudyId": "p1-cjmm-01-stemi-hypoperfusion",
+      "cjmmStep": "generate-solutions",
+      "scenarioTitle": "Chest Pain With Evolving STEMI",
+      "scenario": "A 58-year-old client with crushing substernal chest pain. Pain started 45 minutes ago and radiates to the left jaw with diaphoresis. Hypertension, tobacco use, and father with myocardial infarction at age 52.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' note",
+          "body": "Pain started 45 minutes ago and radiates to the left jaw with diaphoresis. Cool clammy skin, nausea, and new anxiety that the client describes as a sense of doom."
+        },
+        {
+          "type": "assessment",
+          "title": "Assessment",
+          "items": [
+            "Cool clammy skin, nausea, and new anxiety that the client describes as a sense of doom.",
+            "Inferior ST elevation with hypotension and diaphoresis"
+          ]
+        },
+        {
+          "type": "vitals",
+          "title": "Vital signs",
+          "items": [
+            "BP: 92/58 mm Hg",
+            "HR: 118/min",
+            "RR: 24/min",
+            "SpO2: 93% on room air"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostics / labs",
+          "items": [
+            "Troponin: pending",
+            "Potassium: 4.1 mEq/L",
+            "Glucose: 146 mg/dL"
+          ]
+        },
+        {
+          "type": "orders",
+          "title": "Current orders",
+          "items": [
+            "Obtain 12-lead ECG",
+            "Chewable aspirin if not contraindicated",
+            "Nitroglycerin protocol if systolic BP is safe"
+          ]
+        },
+        {
+          "type": "timeline",
+          "title": "Timeline",
+          "items": [
+            "0905: Chest pain rated 9/10",
+            "0910: ECG shows ST elevation in II, III, and aVF"
+          ]
+        }
+      ],
+      "stem": "Which solution best addresses the priority hypothesis?",
+      "options": [
+        {
+          "id": "a",
+          "text": "begin discharge teaching and outpatient follow-up planning"
+        },
+        {
+          "id": "b",
+          "text": "activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated"
+        },
+        {
+          "id": "c",
+          "text": "continue routine observation and reassess during the next scheduled rounds"
+        },
+        {
+          "id": "d",
+          "text": "focus on comfort measures before treating the underlying acute myocardial infarction with unstable coronary perfusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The best solution is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated. This matches the active physiology and avoids delaying stabilization for comfort, teaching, or routine reassessment.",
+      "distractorRationales": {
+        "a": "\"begin discharge teaching and outpatient follow-up planning\" does not address the immediate physiology; the safer plan is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated.",
+        "c": "\"continue routine observation and reassess during the next scheduled rounds\" does not address the immediate physiology; the safer plan is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated.",
+        "d": "\"focus on comfort measures before treating the underlying acute myocardial infarction with unstable coronary perfusion\" does not address the immediate physiology; the safer plan is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated."
+      },
+      "tags": [
+        "cardiac",
+        "CJMM",
+        "generate-solutions"
+      ],
+      "takeaway": "Generate a solution that treats the physiologic risk first.",
+      "sourceStage": "draft",
+      "sourcePath": "scripts/generate-p1-ngn-case-studies.mjs",
+      "structuredRationale": {
+        "overview": "The safest answer is B: activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated. The best solution is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated. This matches the active physiology and avoids delaying stabilization for comfort, teaching, or routine reassessment. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Cardiac / Perfusion through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"begin discharge teaching and outpatient follow-up planning\" does not address the immediate physiology; the safer plan is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"continue routine observation and reassess during the next scheduled rounds\" does not address the immediate physiology; the safer plan is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"focus on comfort measures before treating the underlying acute myocardial infarction with unstable coronary perfusion\" does not address the immediate physiology; the safer plan is to activate rapid coronary reperfusion pathway while giving aspirin if not contraindicated. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Physiological Adaptation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Generate Solutions",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Physiological Adaptation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Generate Solutions",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

@@ -1,0 +1,829 @@
+{
+  "batchId": "clean-batch-002",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb749-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_corticosteroid_teaching",
+      "subcategory": "Pharmacology / Corticosteroid Teaching",
+      "difficulty": 2,
+      "stem": "A patient is being discharged on prednisone 40 mg daily for 10 days following an acute COPD exacerbation. Which statement by the patient indicates that ADDITIONAL teaching is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should not stop this medication suddenly without talking to my doctor.'"
+        },
+        {
+          "id": "b",
+          "text": "'I can stop taking this medication early if I start feeling better.'"
+        },
+        {
+          "id": "c",
+          "text": "'I should monitor my blood sugar more closely while taking this medication.'"
+        },
+        {
+          "id": "d",
+          "text": "'I should take this medication in the morning with food.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset.",
+      "tags": [
+        "Pharmacology / Corticosteroid Teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Corticosteroid teaching: complete the full course, do not stop early or abruptly. Monitor blood glucose. Take in morning with food. Know signs of infection (immunosuppression). Report mood changes, edema, GI symptoms.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: 'I can stop taking this medication early if I start feeling better.'. Stopping corticosteroids abruptly or early is dangerous and incorrect. Even a 10-day course suppresses the hypothalamic-pituitary-adrenal (HPA) axis and requires a tapering strategy if used longer, and should always be completed as prescribed for a short course. Early discontinuation risks adrenal insufficiency and relapse of the condition being treated. The patient should understand that the full course must be completed, and that stopping suddenly (in longer courses) can cause an adrenal crisis. Statement A is correct — do not stop without medical advice. Statement C is correct — steroids cause hyperglycemia. Statement D is correct — morning administration mimics cortisol's natural diurnal rhythm and reduces GI upset. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Pharmacology / Corticosteroid Teaching through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: 'I can stop taking this medication early if I start feeling better.' is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "Option A is weaker because \"'I should not stop this medication suddenly without talking to my doctor.'\" does not address adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The keyed response better protects adrenal, cortisol, steroid in this stem.",
+          "c": "Option C is weaker because \"'I should monitor my blood sugar more closely while taking this medication.'\" does not address adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The keyed response better protects adrenal, cortisol, steroid in this stem.",
+          "d": "Option D is weaker because \"'I should take this medication in the morning with food.'\" does not address adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The keyed response better protects adrenal, cortisol, steroid in this stem."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pharmacology Corticosteroid Teaching",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pharmacology Corticosteroid Teaching",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb750-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 1,
+      "stem": "A nurse is completing an admission assessment on a 79-year-old patient transferred from a nursing facility. Which combination of factors identifies the HIGHEST fall risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Age >65 and female gender"
+        },
+        {
+          "id": "b",
+          "text": "History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing)"
+        },
+        {
+          "id": "c",
+          "text": "Mild bilateral hearing loss and BMI of 29"
+        },
+        {
+          "id": "d",
+          "text": "Mild arthritis in both knees and occasional evening confusion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives — alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension — directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors.",
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Highest fall risk: prior fall + polypharmacy (antihypertensives) + orthostatic hypotension. Prior fall is the strongest single predictor. Target modifiable risk factors aggressively.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing). The highest fall risk constellation combines: (1) Prior fall history — the single strongest predictor of future falls in the elderly; (2) Polypharmacy with antihypertensives — alpha-blockers, diuretics, and calcium channel blockers commonly cause orthostatic hypotension and syncope; (3) Documented orthostatic hypotension — directly causes dizziness and falls upon position change. Both the Morse Fall Scale and STRATIFY risk tool weight prior falls most heavily. Key interventions: bed in lowest position, non-skid footwear, call light within reach, scheduled toileting (most falls occur during nighttime toileting), orthostatic vital signs before ambulation, and urgent medication review. Age and gender alone are poor predictors without functional factors. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Gerontology through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: History of fall in the past 6 months, taking 3 antihypertensive medications, and orthostatic hypotension (systolic drop >20 mmHg on standing) is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "Option A is weaker because \"Age >65 and female gender\" does not address adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The keyed response better protects adrenal, cortisol, steroid in this stem.",
+          "c": "Option C is weaker because \"Mild bilateral hearing loss and BMI of 29\" does not address adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The keyed response better protects adrenal, cortisol, steroid in this stem.",
+          "d": "Option D is weaker because \"Mild arthritis in both knees and occasional evening confusion\" does not address adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The keyed response better protects adrenal, cortisol, steroid in this stem."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb753-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression, and GERD takes: amlodipine, diphenhydramine (for sleep), amitriptyline, ibuprofen, and omeprazole. Using Beers Criteria principles, which medications present the GREATEST risk for this elderly patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Omeprazole and amlodipine — both increase fall risk and should be avoided in elderly"
+        },
+        {
+          "id": "b",
+          "text": "Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS Beers Criteria"
+        },
+        {
+          "id": "c",
+          "text": "Ibuprofen alone — GI bleeding is the only significant concern in this patient"
+        },
+        {
+          "id": "d",
+          "text": "Amlodipine and ibuprofen — calcium channel blockers are contraindicated over age 80"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The 2023 AGS Beers Criteria identifies medications potentially inappropriate in adults ≥65. Diphenhydramine (first-generation antihistamine) and amitriptyline (tricyclic antidepressant) are both strongly anticholinergic and explicitly listed as 'avoid' in elderly. Anticholinergic effects (cumulative burden): cognitive impairment, delirium, urinary retention, constipation, dry mouth, tachycardia, blurred vision, and increased fall risk. Amitriptyline additionally causes orthostatic hypotension (fall risk), cardiac conduction abnormalities, and QT prolongation. Additional concerns in this patient: ibuprofen (NSAID) — risk of GI bleeding (especially with GERD), renal impairment, and cardiovascular events (also Beers listed — prefer acetaminophen). Safer alternatives: melatonin or low-dose doxepin for insomnia; SSRIs/SNRIs for depression (avoid TCAs); acetaminophen for pain.",
+      "distractorRationales": {
+        "a": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS\" fits the safer response to the cue \"An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression\".",
+        "c": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS\" fits the safer response to the cue \"Additional concerns in this patient: ibuprofen (NSAID) — risk of GI bleeding (especially with GERD), renal impairment\".",
+        "d": "The safer response addresses bleeding or anticoagulation injury; \"Amlodipine and ibuprofen — calcium channel blockers are contraindicated over age 80\" moves care toward routine care before bleeding-risk intervention."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Beers Criteria: anticholinergics (diphenhydramine, TCAs like amitriptyline) are highest risk in elderly — cause delirium, falls, urinary retention. NSAIDs also Beers-listed. Review medications at every hospitalization.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS Beers Criteria. The 2023 AGS Beers Criteria identifies medications potentially inappropriate in adults ≥65. Diphenhydramine (first-generation antihistamine) and amitriptyline (tricyclic antidepressant) are both strongly anticholinergic and explicitly listed as 'avoid' in elderly. Anticholinergic effects (cumulative burden): cognitive impairment, delirium, urinary retention, constipation, dry mouth, tachycardia, blurred vision, and increased fall risk. Amitriptyline additionally causes orthostatic hypotension (fall risk), cardiac conduction abnormalities, and QT prolongation. Additional concerns in this patient: ibuprofen (NSAID) — risk of GI bleeding (especially with GERD), renal impairment, and cardiovascular events (also Beers listed — prefer acetaminophen). Safer alternatives: melatonin or low-dose doxepin for insomnia; SSRIs/SNRIs for depression (avoid TCAs); acetaminophen for pain. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Gerontology through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS Beers Criteria is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS\" fits the safer response to the cue \"An 83-year-old patient with hypertension, chronic insomnia, chronic pain, depression\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"Diphenhydramine and amitriptyline — both are highly anticholinergic and explicitly listed as inappropriate in the AGS\" fits the safer response to the cue \"Additional concerns in this patient: ibuprofen (NSAID) — risk of GI bleeding (especially with GERD), renal impairment\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "The safer response addresses bleeding or anticoagulation injury; \"Amlodipine and ibuprofen — calcium channel blockers are contraindicated over age 80\" moves care toward routine care before bleeding-risk intervention. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb757-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after a negative test 6 months ago. Chest X-ray is negative. The patient has no symptoms. What is the recommended follow-up management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the PPD in 3 months to confirm conversion"
+        },
+        {
+          "id": "b",
+          "text": "No treatment needed — latent TB does not require intervention if the patient is asymptomatic"
+        },
+        {
+          "id": "c",
+          "text": "Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity"
+        },
+        {
+          "id": "d",
+          "text": "Start a 4-drug RIPE regimen (rifampin, isoniazid, pyrazinamide, ethambutol) for active TB"
+        }
+      ],
+      "answer": "c",
+      "rationale": "A recent PPD conversion (negative → positive within 2 years) with negative chest X-ray indicates latent TB infection (LTBI). Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard; (2) Rifapentine + INH weekly × 12 weeks (3HP) — shorter, increasingly preferred; (3) Rifampin daily × 4 months. INH monitoring: monthly clinical evaluation for hepatotoxicity symptoms (jaundice, nausea, fatigue, RUQ pain); baseline LFTs for high-risk patients; hold INH if AST >3× ULN with symptoms or >5× ULN asymptomatic. 4-drug RIPE is for active TB, not LTBI.",
+      "distractorRationales": {
+        "a": "The option can leave medication toxicity untreated because it moves to activity, intake, or discharge planning too early. \"Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity\" fits the safer response to the cue \"Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients)\".",
+        "b": "\"No treatment needed — latent TB does not require intervention if the patient is asymptomatic\" moves to activity, intake, or discharge planning too early. The cue \"First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard\" raises concern for medication toxicity, so medication-safety intervention is needed before ambulation, intake, or discharge teaching.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Recent PPD conversion + negative CXR = LTBI → INH prophylaxis 9 months (or 3HP 12 weeks); monitor monthly for INH hepatotoxicity; 4-drug RIPE is for active TB only.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity. A recent PPD conversion (negative → positive within 2 years) with negative chest X-ray indicates latent TB infection (LTBI). Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients). First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard; (2) Rifapentine + INH weekly × 12 weeks (3HP) — shorter, increasingly preferred; (3) Rifampin daily × 4 months. INH monitoring: monthly clinical evaluation for hepatotoxicity symptoms (jaundice, nausea, fatigue, RUQ pain); baseline LFTs for high-risk patients; hold INH if AST >3× ULN with symptoms or >5× ULN asymptomatic. 4-drug RIPE is for active TB, not LTBI. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Community Health through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave medication toxicity untreated because it moves to activity, intake, or discharge planning too early. \"Initiate INH (isoniazid) prophylaxis for 9 months; monitor monthly for hepatotoxicity\" fits the safer response to the cue \"Treatment of LTBI prevents progression to active TB (10% lifetime risk, higher in immunocompromised patients)\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "\"No treatment needed — latent TB does not require intervention if the patient is asymptomatic\" moves to activity, intake, or discharge planning too early. The cue \"First-line LTBI regimens: (1) INH daily × 9 months (9H) — standard\" raises concern for medication toxicity, so medication-safety intervention is needed before ambulation, intake, or discharge teaching. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A public health nurse identifies a patient who recently converted to a positive PPD (tuberculin skin test) after\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Community Health",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Community Health",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb751-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_endocrine_thyroid_storm",
+      "subcategory": "Pharmacology / Endocrine / Thyroid Storm",
+      "difficulty": 4,
+      "stem": "A patient with untreated hyperthyroidism is admitted postoperatively with HR 148 bpm (AF), temperature 39.8°C, BP 158/92 mmHg, and extreme agitation. The nurse suspects thyroid storm. Which medication sequence reflects the CORRECT pharmacological management priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid"
+        },
+        {
+          "id": "b",
+          "text": "Methimazole first → then radioactive iodine → then atenolol"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol first → then PTU → then potassium iodide → then hydrocortisone"
+        },
+        {
+          "id": "d",
+          "text": "Potassium iodide first → then PTU → then propranolol"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Thyroid storm management follows a specific pharmacological sequence to block thyroid hormone synthesis and release: (1) PTU first — blocks new hormone synthesis AND peripheral T4-to-T3 conversion (this is why PTU is preferred over methimazole in storm). (2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect). Giving iodine before the antithyroid drug would paradoxically worsen hormone synthesis. (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). (4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency. Radioactive iodine is NOT used in thyroid storm — it is an elective outpatient treatment.",
+      "distractorRationales": {
+        "b": "The cue \"(4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency\" suggests medication toxicity, so \"Methimazole first → then radioactive iodine → then atenolol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Propranolol first → then PTU → then potassium iodide → then hydrocortisone\" misses the bedside risk. The cue \"(4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Potassium iodide first → then PTU → then propranolol\" misses the bedside risk. The cue \"(3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Pharmacology / Endocrine / Thyroid Storm",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm Rx sequence: PTU → (wait 1h) → Potassium iodide → Propranolol → Hydrocortisone. KEY: PTU BEFORE iodine (blocking synthesis before blocking release). Never give iodine first — it can fuel more hormone synthesis if the gland isn't blocked.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid. Thyroid storm management follows a specific pharmacological sequence to block thyroid hormone synthesis and release: (1) PTU first — blocks new hormone synthesis AND peripheral T4-to-T3 conversion (this is why PTU is preferred over methimazole in storm). (2) Potassium iodide (Lugol's) given 1 hour AFTER PTU — blocks thyroid hormone release (the Wolff-Chaikoff effect). Giving iodine before the antithyroid drug would paradoxically worsen hormone synthesis. (3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor). (4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency. Radioactive iodine is NOT used in thyroid storm — it is an elective outpatient treatment. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Pharmacology / Endocrine / Thyroid Storm through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Propylthiouracil (PTU) first → then potassium iodide → then propranolol → then glucocorticoid is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The cue \"(4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency\" suggests medication toxicity, so \"Methimazole first → then radioactive iodine → then atenolol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"Propranolol first → then PTU → then potassium iodide → then hydrocortisone\" misses the bedside risk. The cue \"(4) Glucocorticoids (hydrocortisone/dexamethasone) — reduce peripheral T4-to-T3 conversion and prevent relative adrenal insufficiency\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Potassium iodide first → then PTU → then propranolol\" misses the bedside risk. The cue \"(3) Propranolol — controls adrenergic symptoms (tachycardia, hypertension, tremor)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pharmacology Endocrine Thyroid Storm",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pharmacology Endocrine Thyroid Storm",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb760-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_hypertensive_emergency",
+      "subcategory": "Cardiovascular / Hypertensive Emergency",
+      "difficulty": 4,
+      "stem": "A patient presents with BP 218/130 mmHg, severe headache, blurred vision, and confusion. Fundoscopic exam shows papilledema. Urinalysis shows proteinuria and hematuria. Which condition is present and what is the correct blood pressure management approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypertensive urgency — oral labetalol and discharge home with follow-up"
+        },
+        {
+          "id": "b",
+          "text": "Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Hypertensive emergency — lower BP rapidly to < 120/80 mmHg within 1 hour to prevent further end-organ damage"
+        },
+        {
+          "id": "d",
+          "text": "Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This patient has hypertensive emergency (malignant hypertension) — severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments — a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage — treated with oral agents over hours to days.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature activity instead of neurologic safety assessment. The stem cue \"A patient presents with BP 218/130 mmHg, severe headache, blurred vision\" makes neurologic deterioration the active safety concern.",
+        "c": "This distractor shifts care toward premature attribution instead of neurologic safety assessment. The stem cue \"A patient presents with BP 218/130 mmHg, severe headache, blurred vision\" makes neurologic deterioration the active safety concern.",
+        "d": "The safer response addresses neurologic deterioration; \"Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening\" moves care toward routine observation before neurologic safety assessment."
+      },
+      "tags": [
+        "Cardiovascular / Hypertensive Emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Hypertensive Emergency",
+        "caption": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP.",
+        "conclusion": "Hypertensive emergency: severe HTN + end-organ damage = IV antihypertensives, reduce MAP ≤ 25% in hour 1. Then 160/100 over 2-6h. Then normalize over 24-48h. Rapid BP lowering causes ischemia — the brain has autoregulated UP."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia. This patient has hypertensive emergency (malignant hypertension) — severely elevated BP with end-organ damage: neurological (headache, confusion, papilledema = hypertensive encephalopathy), renal (proteinuria, hematuria). This requires IV antihypertensives (labetalol, nicardipine, or clevidipine) with arterial line monitoring. The critical teaching point: do NOT lower BP too rapidly. The target is to reduce MAP by no more than 25% in the first hour. Organs autoregulate to high-pressure environments — a rapid drop can cause ischemic stroke, MI, or renal infarction as perfusion pressure suddenly falls. Hypertensive urgency has severe elevation but NO end-organ damage — treated with oral agents over hours to days. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Cardiovascular / Hypertensive Emergency through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Hypertensive emergency (malignant hypertension) — lower MAP by no more than 25% in the first hour using IV antihypertensives, with careful monitoring for ischemia is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward premature activity instead of neurologic safety assessment. The stem cue \"A patient presents with BP 218/130 mmHg, severe headache, blurred vision\" makes neurologic deterioration the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "This distractor shifts care toward premature attribution instead of neurologic safety assessment. The stem cue \"A patient presents with BP 218/130 mmHg, severe headache, blurred vision\" makes neurologic deterioration the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The safer response addresses neurologic deterioration; \"Severe hypertension without emergency — reassess BP after 30 minutes of rest before intervening\" moves care toward routine observation before neurologic safety assessment. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Cardiovascular Hypertensive Emergency",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Cardiovascular Hypertensive Emergency",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb760-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure. The nurse inspects the perineum and notes a 4 cm tense, purple, fluctuant mass on the right labia. What does this indicate, and what is the priority nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Normal postpartum edema; apply ice pack and reassure the patient"
+        },
+        {
+          "id": "b",
+          "text": "Vulvar hematoma; notify the provider immediately and monitor vital signs"
+        },
+        {
+          "id": "c",
+          "text": "Episiotomy dehiscence; apply sterile dressing and call the surgeon"
+        },
+        {
+          "id": "d",
+          "text": "Bartholin's cyst; apply warm compresses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "A tense, purple, fluctuant (fluid-filled), rapidly expanding perineal mass with severe pain is a vulvar hematoma — accumulation of blood in soft tissue from injured blood vessels, often after vaginal delivery or episiotomy. Small hematomas (<3–4 cm) may be managed conservatively with ice and observation; larger or expanding hematomas require surgical incision and evacuation. The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise, and apply an ice pack for comfort. Normal edema (A) is soft, not fluctuant or purple. Episiotomy dehiscence (C) would show wound separation. A Bartholin's cyst (D) is not a postpartum complication.",
+      "distractorRationales": {
+        "a": "\"Normal postpartum edema; apply ice pack and reassure the patient\" misses the bedside risk. The cue \"A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "\"Episiotomy dehiscence; apply sterile dressing and call the surgeon\" relies on notification without the bedside safety step. The cue \"A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before waiting for a callback.",
+        "d": "The safer response addresses bleeding or anticoagulation injury; \"Bartholin's cyst; apply warm compresses\" moves care toward routine care before bleeding-risk intervention."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Perineal hematoma: tense, fluctuant, purple mass with severe pain post-delivery — notify provider immediately; monitor for expansion and hemodynamic instability.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Vulvar hematoma; notify the provider immediately and monitor vital signs. A tense, purple, fluctuant (fluid-filled), rapidly expanding perineal mass with severe pain is a vulvar hematoma — accumulation of blood in soft tissue from injured blood vessels, often after vaginal delivery or episiotomy. Small hematomas (<3–4 cm) may be managed conservatively with ice and observation; larger or expanding hematomas require surgical incision and evacuation. The immediate nursing priority is to notify the provider, monitor vital signs for hemodynamic compromise, and apply an ice pack for comfort. Normal edema (A) is soft, not fluctuant or purple. Episiotomy dehiscence (C) would show wound separation. A Bartholin's cyst (D) is not a postpartum complication. The clinical focus is uterine atony hemorrhage, so the review should connect the answer to postpartum, hemorrhage, uterine, atony.",
+        "mechanism": "This item tests Postpartum Hemorrhage through uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. These postpartum, hemorrhage, uterine, atony cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Vulvar hematoma; notify the provider immediately and monitor vital signs is correct because it directly addresses uterine atony hemorrhage. uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Normal postpartum edema; apply ice pack and reassure the patient\" misses the bedside risk. The cue \"A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+          "c": "\"Episiotomy dehiscence; apply sterile dressing and call the surgeon\" relies on notification without the bedside safety step. The cue \"A patient who delivered 2 hours ago reports sudden, severe perineal pain and pressure\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before waiting for a callback. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+          "d": "The safer response addresses bleeding or anticoagulation injury; \"Bartholin's cyst; apply warm compresses\" moves care toward routine care before bleeding-risk intervention. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Postpartum Hemorrhage",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Postpartum Hemorrhage",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb754-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A home health nurse is assessing fall risk in a 78-year-old patient living independently. The patient completes the Timed Up and Go (TUG) test in 16 seconds. How should the nurse interpret this result and what intervention is indicated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "TUG <20 seconds is normal for age; no intervention needed"
+        },
+        {
+          "id": "b",
+          "text": "TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention program"
+        },
+        {
+          "id": "c",
+          "text": "TUG is only valid in a clinical setting; results cannot be applied to home fall risk"
+        },
+        {
+          "id": "d",
+          "text": "TUG >30 seconds indicates fall risk; 16 seconds is normal"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The Timed Up and Go (TUG) test measures functional mobility: the patient rises from a standard chair, walks 3 meters, turns, walks back, and sits down. Scoring: <10 seconds = freely mobile, low fall risk; 10–19 seconds = mostly independent but increased fall risk; 20–29 seconds = variable mobility, moderate fall risk; ≥30 seconds = impaired mobility, high fall risk and need for assistance. A TUG of 16 seconds places this patient in the moderate fall risk category, warranting physical therapy referral, home safety assessment (remove throw rugs, install grab bars), medication review (sedatives, antihypertensives), and fall prevention education.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward false reassurance instead of medication-safety intervention. The stem cue \"≥30 seconds = impaired mobility, high fall risk and need for assistance\" makes medication toxicity the active safety concern.",
+        "c": "The cue \"Scoring: <10 seconds = freely mobile, low fall risk\" suggests medication toxicity, so \"TUG is only valid in a clinical setting; results cannot be applied to home fall risk\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The cue \"Scoring: <10 seconds = freely mobile, low fall risk\" suggests medication toxicity, so \"TUG >30 seconds indicates fall risk; 16 seconds is normal\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "TUG test: <10s = low risk; 10–19s = increased risk; ≥20s = moderate-high risk. TUG ≥12 seconds in elderly → fall risk; refer to PT, home safety assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention program. The Timed Up and Go (TUG) test measures functional mobility: the patient rises from a standard chair, walks 3 meters, turns, walks back, and sits down. Scoring: <10 seconds = freely mobile, low fall risk; 10–19 seconds = mostly independent but increased fall risk; 20–29 seconds = variable mobility, moderate fall risk; ≥30 seconds = impaired mobility, high fall risk and need for assistance. A TUG of 16 seconds places this patient in the moderate fall risk category, warranting physical therapy referral, home safety assessment (remove throw rugs, install grab bars), medication review (sedatives, antihypertensives), and fall prevention education. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Community Health through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: TUG ≥12 seconds indicates increased fall risk; refer to physical therapy and implement a fall prevention program is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward false reassurance instead of medication-safety intervention. The stem cue \"≥30 seconds = impaired mobility, high fall risk and need for assistance\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"Scoring: <10 seconds = freely mobile, low fall risk\" suggests medication toxicity, so \"TUG is only valid in a clinical setting; results cannot be applied to home fall risk\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"Scoring: <10 seconds = freely mobile, low fall risk\" suggests medication toxicity, so \"TUG >30 seconds indicates fall risk; 16 seconds is normal\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Community Health",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Community Health",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb759-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "mandatory_reporting",
+      "subcategory": "Mandatory Reporting",
+      "difficulty": 3,
+      "stem": "A nurse discovers that a colleague has been diverting controlled substances — taking opioids from the medication dispensing cabinet that are charted as wasted but are not being wasted appropriately. The colleague appears to be under the influence during a shift. Which action is the nurse's ethical and legal obligation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Speak privately with the colleague and give them a chance to self-report before taking action"
+        },
+        {
+          "id": "b",
+          "text": "Document the suspicion in a personal diary for future reference if the behavior continues"
+        },
+        {
+          "id": "c",
+          "text": "Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion"
+        },
+        {
+          "id": "d",
+          "text": "Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Suspected drug diversion by a healthcare colleague must be reported immediately through the chain of command — charge nurse and supervisor — per facility policy. This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the ANA Code of Ethics, and triggers the appropriate investigation process. Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction. Personal documentation (B) does not fulfill the reporting obligation. Going directly to the State BON (D) bypasses the facility process, which should occur first — BON involvement follows internal reporting.",
+      "distractorRationales": {
+        "a": "\"Speak privately with the colleague and give them a chance to self-report before taking action\" commits to a competing cause before checking the dangerous pattern. The cue \"Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction\" raises concern for medication toxicity, so medication-safety intervention is needed before diagnostic reassurance.",
+        "b": "The cue \"Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction\" suggests medication toxicity, so \"Document the suspicion in a personal diary for future reference if the behavior continues\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration\" misses the bedside risk. The cue \"This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Mandatory Reporting",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected drug diversion: report immediately to charge nurse and supervisor per facility policy — patient safety is the priority; ethical obligation requires reporting, not covering up.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion. Suspected drug diversion by a healthcare colleague must be reported immediately through the chain of command — charge nurse and supervisor — per facility policy. This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the ANA Code of Ethics, and triggers the appropriate investigation process. Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction. Personal documentation (B) does not fulfill the reporting obligation. Going directly to the State BON (D) bypasses the facility process, which should occur first — BON involvement follows internal reporting. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Mandatory Reporting through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Report immediately to the charge nurse and nursing supervisor, following facility policy for suspected substance diversion is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Speak privately with the colleague and give them a chance to self-report before taking action\" commits to a competing cause before checking the dangerous pattern. The cue \"Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction\" raises concern for medication toxicity, so medication-safety intervention is needed before diagnostic reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The cue \"Giving the colleague time to self-report (A) delays patient safety action and may allow evidence destruction\" suggests medication toxicity, so \"Document the suspicion in a personal diary for future reference if the behavior continues\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Contact the State Board of Nursing directly to file a formal complaint without involving hospital administration\" misses the bedside risk. The cue \"This protects patient safety (a potentially impaired nurse poses immediate risk), fulfills the nurse's ethical obligation under the\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Mandatory Reporting",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Mandatory Reporting",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb759-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "neurological_seizure_management",
+      "subcategory": "Neurological / Seizure Management",
+      "difficulty": 3,
+      "stem": "A nurse is with a patient who suddenly begins experiencing a generalized tonic-clonic seizure. What is the PRIORITY nursing action during the seizure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insert an oral airway to prevent tongue biting and aspiration"
+        },
+        {
+          "id": "b",
+          "text": "Restrain the patient's limbs to prevent injury"
+        },
+        {
+          "id": "c",
+          "text": "Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure"
+        },
+        {
+          "id": "d",
+          "text": "Administer diazepam 10 mg IV immediately per standing orders"
+        }
+      ],
+      "answer": "c",
+      "rationale": "During an active seizure, the nursing priorities are safety and observation: protect the head (soft padding), clear hazardous objects from the immediate environment, position on the side (lateral decubitus) to prevent aspiration when the seizure subsides, and time the duration. Nothing should be inserted into the mouth during an active seizure — this can cause injury to the patient and the nurse, and the jaw cannot be pried open safely. Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Medication (benzodiazepine) is indicated for prolonged seizures (> 5 minutes, status epilepticus) — not every seizure automatically requires IV medication.",
+      "distractorRationales": {
+        "a": "\"Insert an oral airway to prevent tongue biting and aspiration\" misses the bedside risk. The cue \"Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "\"Restrain the patient's limbs to prevent injury\" misses the bedside risk. The cue \"Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Administer diazepam 10 mg IV immediately per standing orders\" misses the bedside risk. The cue \"Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Neurological / Seizure Management",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Neurological / Seizure Management",
+        "caption": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes).",
+        "conclusion": "Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT restrain limbs. Post-seizure: lateral recovery position, assess airway, vitals, neuro. Administer benzodiazepines for status epilepticus (> 5 minutes)."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure. During an active seizure, the nursing priorities are safety and observation: protect the head (soft padding), clear hazardous objects from the immediate environment, position on the side (lateral decubitus) to prevent aspiration when the seizure subsides, and time the duration. Nothing should be inserted into the mouth during an active seizure — this can cause injury to the patient and the nurse, and the jaw cannot be pried open safely. Physical restraint can cause musculoskeletal injury during tonic-clonic movements. Medication (benzodiazepine) is indicated for prolonged seizures (> 5 minutes, status epilepticus) — not every seizure automatically requires IV medication. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Neurological / Seizure Management through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Protect the patient's head, clear the environment of hazards, turn the patient on their side, and time the seizure is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Insert an oral airway to prevent tongue biting and aspiration\" misses the bedside risk. The cue \"Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "\"Restrain the patient's limbs to prevent injury\" misses the bedside risk. The cue \"Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Administer diazepam 10 mg IV immediately per standing orders\" misses the bedside risk. The cue \"Active seizure: PROTECT (head, environment, airway position) → TIME → DO NOT insert objects in mouth, DO NOT\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Neurological Seizure Management",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Neurological Seizure Management",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

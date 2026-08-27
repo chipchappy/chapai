@@ -1,0 +1,1004 @@
+{
+  "batchId": "clean-batch-009",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "p1-cjmm-14-tension-pneumothorax-01",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "subcategory": "Respiratory / Oxygenation",
+      "difficulty": 5,
+      "caseStudyId": "p1-cjmm-14-tension-pneumothorax",
+      "cjmmStep": "recognize-cues",
+      "scenarioTitle": "Tension Pneumothorax After Chest Trauma",
+      "scenario": "A 31-year-old client after a motor vehicle crash. The client suddenly becomes more dyspneic during trauma observation. Left rib fractures and pulmonary contusion.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' note",
+          "body": "The client suddenly becomes more dyspneic during trauma observation. Tracheal deviation to the right, absent left breath sounds, and distended neck veins."
+        },
+        {
+          "type": "assessment",
+          "title": "Assessment",
+          "items": [
+            "Tracheal deviation to the right, absent left breath sounds, and distended neck veins.",
+            "absent unilateral breath sounds with hypotension and tracheal deviation"
+          ]
+        },
+        {
+          "type": "vitals",
+          "title": "Vital signs",
+          "items": [
+            "BP: 76/44 mm Hg",
+            "HR: 142/min",
+            "RR: 36/min",
+            "SpO2: 80%"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostics / labs",
+          "items": [
+            "ABG: PaO2 50 mm Hg",
+            "Hemoglobin: 12.8 g/dL"
+          ]
+        },
+        {
+          "type": "orders",
+          "title": "Current orders",
+          "items": [
+            "High-flow oxygen",
+            "Prepare for needle decompression or chest tube",
+            "Notify trauma team"
+          ]
+        },
+        {
+          "type": "timeline",
+          "title": "Timeline",
+          "items": [
+            "1715: Breath sounds diminished",
+            "1725: Hypotension and tracheal shift"
+          ]
+        }
+      ],
+      "stem": "Which finding is the most important cue for the nurse to recognize first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HR: 142/min"
+        },
+        {
+          "id": "b",
+          "text": "ABG: PaO2 50 mm Hg"
+        },
+        {
+          "id": "c",
+          "text": "High-flow oxygen"
+        },
+        {
+          "id": "d",
+          "text": "absent unilateral breath sounds with hypotension and tracheal deviation"
+        }
+      ],
+      "answer": "d",
+      "rationale": "absent unilateral breath sounds with hypotension and tracheal deviation is the cue that makes this case unsafe because it points to tension pneumothorax obstructing venous return and ventilation. Recognizing it first keeps the nurse focused on the immediate threat instead of routine data.",
+      "distractorRationales": {
+        "a": "\"HR: 142/min\" may be relevant, but it does not signal the immediate tension pneumothorax obstructing venous return and ventilation risk as strongly as absent unilateral breath sounds with hypotension and tracheal deviation.",
+        "b": "\"ABG: PaO2 50 mm Hg\" may be relevant, but it does not signal the immediate tension pneumothorax obstructing venous return and ventilation risk as strongly as absent unilateral breath sounds with hypotension and tracheal deviation.",
+        "c": "\"High-flow oxygen\" may be relevant, but it does not signal the immediate tension pneumothorax obstructing venous return and ventilation risk as strongly as absent unilateral breath sounds with hypotension and tracheal deviation."
+      },
+      "tags": [
+        "respiratory",
+        "CJMM",
+        "recognize-cues"
+      ],
+      "takeaway": "Recognize absent unilateral breath sounds with hypotension and tracheal deviation as the cue that changes the pace of care.",
+      "sourceStage": "draft",
+      "sourcePath": "scripts/generate-p1-ngn-case-studies.mjs",
+      "structuredRationale": {
+        "overview": "The safest answer is D: absent unilateral breath sounds with hypotension and tracheal deviation. absent unilateral breath sounds with hypotension and tracheal deviation is the cue that makes this case unsafe because it points to tension pneumothorax obstructing venous return and ventilation. Recognizing it first keeps the nurse focused on the immediate threat instead of routine data. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Respiratory / Oxygenation through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "D: absent unilateral breath sounds with hypotension and tracheal deviation is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"HR: 142/min\" may be relevant, but it does not signal the immediate tension pneumothorax obstructing venous return and ventilation risk as strongly as absent unilateral breath sounds with hypotension and tracheal deviation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "b": "\"ABG: PaO2 50 mm Hg\" may be relevant, but it does not signal the immediate tension pneumothorax obstructing venous return and ventilation risk as strongly as absent unilateral breath sounds with hypotension and tracheal deviation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"High-flow oxygen\" may be relevant, but it does not signal the immediate tension pneumothorax obstructing venous return and ventilation risk as strongly as absent unilateral breath sounds with hypotension and tracheal deviation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Physiological Adaptation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Recognize Cues",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Physiological Adaptation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Recognize Cues",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1341-n017",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "serotonin_syndrome",
+      "subcategory": "serotonin_syndrome",
+      "difficulty": 3,
+      "stem": "A client taking sertraline started linezolid yesterday and is now restless. Which findings support serotonin syndrome?",
+      "scenarioTitle": "Medication interaction recognition",
+      "scenario": "The client is flushed and pacing in the room during assessment.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hyperreflexia"
+        },
+        {
+          "id": "b",
+          "text": "Diarrhea"
+        },
+        {
+          "id": "c",
+          "text": "Fever"
+        },
+        {
+          "id": "d",
+          "text": "Lead-pipe muscle rigidity only"
+        },
+        {
+          "id": "e",
+          "text": "Agitation"
+        },
+        {
+          "id": "f",
+          "text": "Bradykinesia"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia. The nurse should sort this pattern away from neuroleptic malignant syndrome, which is more classically linked to severe rigidity rather than brisk reflexes and diarrhea.",
+      "distractorRationales": {
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Hyperreflexia plus Diarrhea plus Fever plus Agitation\" fits the safer response to the cue \"Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia\".",
+        "f": "\"Bradykinesia\" misses the bedside risk. The cue \"Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "serotonin_syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Agitation plus fever plus hyperreflexia after serotonergic overlap points to serotonin syndrome fast.",
+      "speedCue": "Hyperreflexia helps separate serotonin syndrome from other high-fever medication syndromes.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Hyperreflexia; B: Diarrhea; C: Fever; E: Agitation. Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia. The nurse should sort this pattern away from neuroleptic malignant syndrome, which is more classically linked to severe rigidity rather than brisk reflexes and diarrhea. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Serotonin Syndrome through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Hyperreflexia; B: Diarrhea; C: Fever; E: Agitation is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Hyperreflexia plus Diarrhea plus Fever plus Agitation\" fits the safer response to the cue \"Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "f": "\"Bradykinesia\" misses the bedside risk. The cue \"Serotonin syndrome is recognized by combining mental-status change with autonomic instability and neuromuscular hyperactivity such as hyperreflexia\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Serotonin Syndrome",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Serotonin Syndrome",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1916-n024",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chain_of_command_unsafe_order",
+      "subcategory": "chain_of_command_unsafe_order",
+      "difficulty": 3,
+      "stem": "A provider prescribes a medication dose that is outside the recommended range for a client. The nurse reviews the chart and sees no justification for the dose. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Clarify the order with the provider before administering the medication"
+        },
+        {
+          "id": "b",
+          "text": "Administer the medication because the provider is responsible for the prescription"
+        },
+        {
+          "id": "c",
+          "text": "Document the order as written and wait until the next shift to address it"
+        },
+        {
+          "id": "d",
+          "text": "Ask the client to decide whether to receive the medication"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The nurse is accountable for safe medication administration. When an order is questionable, the nurse should clarify before giving it and escalate through the chain of command if needed. Administering an unsafe dose or delaying action places the client at risk.",
+      "distractorRationales": {
+        "b": "\"Administer the medication because the provider is responsible for the prescription\" relies on notification without the bedside safety step. The cue \"The nurse is accountable for safe medication administration\" raises concern for medication toxicity, so medication-safety intervention is needed before waiting for a callback.",
+        "c": "\"Document the order as written and wait until the next shift to address it\" treats active deterioration as something safe to watch. The cue \"The nurse is accountable for safe medication administration\" raises concern for medication toxicity, so medication-safety intervention is needed before routine observation.",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Clarify the order with the provider before administering the medication\" fits the safer response to the cue \"A provider prescribes a medication dose that is outside the recommended range for a client\"."
+      },
+      "tags": [
+        "chain_of_command_unsafe_order",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "If an order looks unsafe, clarify and escalate before you give it.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Clarify the order with the provider before administering the medication. The nurse is accountable for safe medication administration. When an order is questionable, the nurse should clarify before giving it and escalate through the chain of command if needed. Administering an unsafe dose or delaying action places the client at risk. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Chain Of Command Unsafe Order through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Clarify the order with the provider before administering the medication is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Administer the medication because the provider is responsible for the prescription\" relies on notification without the bedside safety step. The cue \"The nurse is accountable for safe medication administration\" raises concern for medication toxicity, so medication-safety intervention is needed before waiting for a callback. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Document the order as written and wait until the next shift to address it\" treats active deterioration as something safe to watch. The cue \"The nurse is accountable for safe medication administration\" raises concern for medication toxicity, so medication-safety intervention is needed before routine observation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Clarify the order with the provider before administering the medication\" fits the safer response to the cue \"A provider prescribes a medication dose that is outside the recommended range for a client\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Chain Of Command Unsafe Order",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Chain Of Command Unsafe Order",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb838-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_intake",
+      "subcategory": "fever_and_intake",
+      "difficulty": 1,
+      "stem": "A child with fever is refusing fluids and has a dry tongue. What is the nurse's priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess for dehydration and monitor intake and output"
+        },
+        {
+          "id": "b",
+          "text": "Reassure the parent that fever always causes this"
+        },
+        {
+          "id": "c",
+          "text": "Wait until the next meal to encourage fluids"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the finding if the child is still playing"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake with fever can lead to dehydration, especially in children. **Why the others are wrong:** - B Fever can contribute, but assessment is still needed. - C Waiting can worsen fluid deficit. - D Playfulness does not rule out dehydration.",
+      "distractorRationales": {
+        "b": "The cue \"Poor intake with fever can lead to dehydration, especially in children\" suggests infection progression, so \"Reassure the parent that fever always causes this\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "c": "The safer response addresses infection progression; \"Wait until the next meal to encourage fluids\" moves care toward routine observation before infection or sepsis escalation.",
+        "d": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"assessment is still needed\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "fever_and_intake",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus poor intake should prompt dehydration assessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Assess for dehydration and monitor intake and output. Poor intake with fever can lead to dehydration, especially in children. **Why the others are wrong:** - B Fever can contribute, but assessment is still needed. - C Waiting can worsen fluid deficit. - D Playfulness does not rule out dehydration. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Fever And Intake through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Assess for dehydration and monitor intake and output is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The cue \"Poor intake with fever can lead to dehydration, especially in children\" suggests infection progression, so \"Reassure the parent that fever always causes this\" would not correct the active problem. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The safer response addresses infection progression; \"Wait until the next meal to encourage fluids\" moves care toward routine observation before infection or sepsis escalation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"assessment is still needed\" makes infection progression the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Fever And Intake",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Fever And Intake",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1037-n021",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity_dehydration",
+      "subcategory": "lithium_toxicity_dehydration",
+      "difficulty": 3,
+      "stem": "A client taking lithium for bipolar disorder has vomiting, coarse hand tremors, and increasing confusion after several days of diarrhea. Which action should the nurse take first?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the lithium and notify the provider."
+        },
+        {
+          "id": "b",
+          "text": "Give the lithium with crackers to reduce stomach upset."
+        },
+        {
+          "id": "c",
+          "text": "Teach the client to double the next dose."
+        },
+        {
+          "id": "d",
+          "text": "Encourage the client to restrict sodium intake further."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Vomiting, worsening tremor, and confusion after fluid loss suggest lithium toxicity. The nurse should stop further doses and notify the provider for prompt evaluation. Dehydration and sodium loss can raise lithium levels, so more restriction or additional dosing would be unsafe.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"Hold the lithium and notify the provider\" fits the safer response to the cue \"A client taking lithium for bipolar disorder has vomiting, coarse hand tremors\".",
+        "c": "The option can leave medication toxicity untreated because it uses teaching before the physiologic risk is controlled. \"Hold the lithium and notify the provider\" fits the safer response to the cue \"confusion after fluid loss suggest lithium toxicity\".",
+        "d": "The safer response addresses medication toxicity; \"Encourage the client to restrict sodium intake further\" moves care toward routine care before medication-safety intervention."
+      },
+      "tags": [
+        "lithium_toxicity_dehydration",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "GI loss plus confusion and coarse tremor on lithium should be treated as toxicity until proven otherwise.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Hold the lithium and notify the provider.. Vomiting, worsening tremor, and confusion after fluid loss suggest lithium toxicity. The nurse should stop further doses and notify the provider for prompt evaluation. Dehydration and sodium loss can raise lithium levels, so more restriction or additional dosing would be unsafe. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Lithium Toxicity Dehydration through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Hold the lithium and notify the provider. is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"Hold the lithium and notify the provider\" fits the safer response to the cue \"A client taking lithium for bipolar disorder has vomiting, coarse hand tremors\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave medication toxicity untreated because it uses teaching before the physiologic risk is controlled. \"Hold the lithium and notify the provider\" fits the safer response to the cue \"confusion after fluid loss suggest lithium toxicity\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The safer response addresses medication toxicity; \"Encourage the client to restrict sodium intake further\" moves care toward routine care before medication-safety intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Lithium Toxicity Dehydration",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Lithium Toxicity Dehydration",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "p1-cjmm-28-thyroid-storm-05",
+      "exam": "nclex",
+      "type": "case_study",
+      "category": "physiological_adaptation",
+      "subcategory": "Endocrine / Metabolic",
+      "difficulty": 5,
+      "caseStudyId": "p1-cjmm-28-thyroid-storm",
+      "cjmmStep": "take-actions",
+      "scenarioTitle": "Thyroid Storm",
+      "scenario": "A 38-year-old client with untreated hyperthyroidism. The client arrives extremely agitated after a respiratory infection. Weight loss, heat intolerance, and stopped methimazole.",
+      "exhibits": [
+        {
+          "type": "note",
+          "title": "Nurses' note",
+          "body": "The client arrives extremely agitated after a respiratory infection. Tremor, severe restlessness, diarrhea, and bounding pulses."
+        },
+        {
+          "type": "assessment",
+          "title": "Assessment",
+          "items": [
+            "Tremor, severe restlessness, diarrhea, and bounding pulses.",
+            "hyperthermia with extreme tachycardia and agitation"
+          ]
+        },
+        {
+          "type": "vitals",
+          "title": "Vital signs",
+          "items": [
+            "BP: 164/72 mm Hg",
+            "HR: 168/min",
+            "RR: 30/min",
+            "Temp: 40.2 C"
+          ]
+        },
+        {
+          "type": "labs",
+          "title": "Diagnostics / labs",
+          "items": [
+            "TSH: very low",
+            "Free T4: high",
+            "Glucose: 188 mg/dL"
+          ]
+        },
+        {
+          "type": "orders",
+          "title": "Current orders",
+          "items": [
+            "Cooling measures",
+            "Beta blocker as prescribed",
+            "Antithyroid medication and iodine sequence per protocol"
+          ]
+        },
+        {
+          "type": "timeline",
+          "title": "Timeline",
+          "items": [
+            "1000: Fever and agitation",
+            "1015: HR 168/min with diarrhea and tremor"
+          ]
+        }
+      ],
+      "stem": "Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ask the client to ambulate to clarify symptom severity"
+        },
+        {
+          "id": "b",
+          "text": "start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy"
+        },
+        {
+          "id": "c",
+          "text": "administering iodine before antithyroid medication if the protocol requires blocking synthesis first"
+        },
+        {
+          "id": "d",
+          "text": "document the findings and recheck after routine medications"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The first action is to start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy. administering iodine before antithyroid medication if the protocol requires blocking synthesis first would place a lower-priority task ahead of stabilization and escalation.",
+      "distractorRationales": {
+        "a": "\"ask the client to ambulate to clarify symptom severity\" can delay stabilization; the nurse should first start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy.",
+        "c": "\"administering iodine before antithyroid medication if the protocol requires blocking synthesis first\" can delay stabilization; the nurse should first start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy.",
+        "d": "\"document the findings and recheck after routine medications\" can delay stabilization; the nurse should first start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy."
+      },
+      "tags": [
+        "endocrine",
+        "CJMM",
+        "take-actions"
+      ],
+      "takeaway": "Take action before the risk progresses.",
+      "sourceStage": "draft",
+      "sourcePath": "scripts/generate-p1-ngn-case-studies.mjs",
+      "structuredRationale": {
+        "overview": "The safest answer is B: start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy. The first action is to start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy. administering iodine before antithyroid medication if the protocol requires blocking synthesis first would place a lower-priority task ahead of stabilization and escalation. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Endocrine / Metabolic through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"ask the client to ambulate to clarify symptom severity\" can delay stabilization; the nurse should first start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"administering iodine before antithyroid medication if the protocol requires blocking synthesis first\" can delay stabilization; the nurse should first start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"document the findings and recheck after routine medications\" can delay stabilization; the nurse should first start cooling and notify the provider while preparing prescribed beta blocker and antithyroid therapy. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Physiological Adaptation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Take Actions",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Physiological Adaptation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Take Actions",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb861-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage_boggy_fundus",
+      "subcategory": "postpartum_hemorrhage_boggy_fundus",
+      "difficulty": 3,
+      "stem": "One hour after birth a client has a boggy fundus, saturates a perineal pad in 15 minutes, and has a pulse of 118/min. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Massage the fundus and call for assistance."
+        },
+        {
+          "id": "b",
+          "text": "Ask the client to breastfeed before intervening."
+        },
+        {
+          "id": "c",
+          "text": "Prepare the client for discharge teaching."
+        },
+        {
+          "id": "d",
+          "text": "Recheck the lochia in 1 hour."
+        }
+      ],
+      "answer": "a",
+      "rationale": "A boggy fundus with heavy bleeding suggests uterine atony, the most common cause of postpartum hemorrhage. The nurse should massage the fundus immediately while summoning help and preparing further interventions. Waiting or delaying treatment increases the risk of rapid hemodynamic deterioration.",
+      "distractorRationales": {
+        "b": "The cue \"has a pulse of 118/min\" suggests bleeding or anticoagulation injury, so \"Ask the client to breastfeed before intervening\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "The safer response addresses bleeding or anticoagulation injury; \"Prepare the client for discharge teaching\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention.",
+        "d": "This distractor shifts care toward misprioritization instead of bleeding-risk intervention. The stem cue \"One hour after birth a client has a boggy fundus, saturates a perineal pad in 15 minutes\" makes bleeding or anticoagulation injury the active safety concern."
+      },
+      "tags": [
+        "postpartum_hemorrhage_boggy_fundus",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy fundus plus heavy lochia means treat uterine atony immediately with fundal massage and escalation.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Massage the fundus and call for assistance.. A boggy fundus with heavy bleeding suggests uterine atony, the most common cause of postpartum hemorrhage. The nurse should massage the fundus immediately while summoning help and preparing further interventions. Waiting or delaying treatment increases the risk of rapid hemodynamic deterioration. The clinical focus is uterine atony hemorrhage, so the review should connect the answer to postpartum, hemorrhage, uterine, atony.",
+        "mechanism": "This item tests Postpartum Hemorrhage Boggy Fundus through uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. These postpartum, hemorrhage, uterine, atony cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Massage the fundus and call for assistance. is correct because it directly addresses uterine atony hemorrhage. uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The cue \"has a pulse of 118/min\" suggests bleeding or anticoagulation injury, so \"Ask the client to breastfeed before intervening\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+          "c": "The safer response addresses bleeding or anticoagulation injury; \"Prepare the client for discharge teaching\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+          "d": "This distractor shifts care toward misprioritization instead of bleeding-risk intervention. The stem cue \"One hour after birth a client has a boggy fundus, saturates a perineal pad in 15 minutes\" makes bleeding or anticoagulation injury the active safety concern. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Postpartum Hemorrhage Boggy Fundus",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Postpartum Hemorrhage Boggy Fundus",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1040-n023",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "aminoglycoside_peak_trough_nephrotoxicity",
+      "subcategory": "aminoglycoside_peak_trough_nephrotoxicity",
+      "difficulty": 4,
+      "stem": "For each finding, click to specify whether the finding supports aminoglycoside toxicity concern or routine expected monitoring without clear toxicity concern.",
+      "scenarioTitle": "Aminoglycoside toxicity sort",
+      "scenario": "A client is receiving gentamicin for a resistant infection.",
+      "additionalInfo": "The nurse is reviewing bedside clues and laboratory trends before the next dose.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports toxicity concern"
+        },
+        {
+          "id": "b",
+          "text": "Routine monitoring without clear toxicity concern"
+        }
+      ],
+      "answer": {
+        "Rising creatinine and decreasing urine output": "Supports toxicity concern",
+        "New tinnitus or hearing change": "Supports toxicity concern",
+        "Documented trough level checked as ordered": "Routine monitoring without clear toxicity concern",
+        "Stable renal function with therapeutic trend review": "Routine monitoring without clear toxicity concern"
+      },
+      "matrixColumns": [
+        "Supports toxicity concern",
+        "Routine monitoring without clear toxicity concern"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rising creatinine and decreasing urine output",
+          "answer": "Supports toxicity concern"
+        },
+        {
+          "label": "New tinnitus or hearing change",
+          "answer": "Supports toxicity concern"
+        },
+        {
+          "label": "Documented trough level checked as ordered",
+          "answer": "Routine monitoring without clear toxicity concern"
+        },
+        {
+          "label": "Stable renal function with therapeutic trend review",
+          "answer": "Routine monitoring without clear toxicity concern"
+        }
+      ],
+      "rationale": "Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being checked. The nurse should connect renal decline and hearing changes to a hold-and-escalate mindset rather than treating every monitoring step as danger.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being\" makes medication toxicity the active safety concern.",
+        "b": "This distractor shifts care toward delayed assessment instead of medication-safety intervention. The stem cue \"Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "aminoglycoside_peak_trough_nephrotoxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Monitoring is routine; toxicity is when renal or hearing clues shift.",
+      "speedCue": "Creatinine up or tinnitus new means think aminoglycoside toxicity fast.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is Rising Creatinine And Decreasing Urine Output: Supports toxicity concern; New Tinnitus Or Hearing Change: Supports toxicity concern; Documented Trough Level Checked As Ordered: Routine monitoring without clear toxicity concern; Stable Renal Function With Therapeutic Trend Review: Routine monitoring without clear toxicity concern. Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being checked. The nurse should connect renal decline and hearing changes to a hold-and-escalate mindset rather than treating every monitoring step as danger. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Aminoglycoside Peak Trough Nephrotoxicity through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "Rising Creatinine And Decreasing Urine Output: Supports toxicity concern; New Tinnitus Or Hearing Change: Supports toxicity concern; Documented Trough Level Checked As Ordered: Routine monitoring without clear toxicity concern; Stable Renal Function With Therapeutic Trend Review: Routine monitoring without clear toxicity concern is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "This distractor shifts care toward delayed assessment instead of medication-safety intervention. The stem cue \"Aminoglycoside toxicity shows up through nephrotoxicity and ototoxicity clues, not just through the fact that levels are being\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Aminoglycoside Peak Trough Nephrotoxicity",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Aminoglycoside Peak Trough Nephrotoxicity",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1000-n009",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "ectopic_pregnancy_rupture",
+      "subcategory": "ectopic_pregnancy_rupture",
+      "difficulty": 3,
+      "stem": "A client with a positive pregnancy test reports sudden unilateral pelvic pain, dizziness, and left shoulder pain. Which findings support the nurse's concern for a ruptured ectopic pregnancy?",
+      "scenarioTitle": "Early-pregnancy shock clues",
+      "scenario": "The client looks pale and anxious in triage. Blood pressure is 86/48 mm Hg and heart rate is 128/min.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Hypotension"
+        },
+        {
+          "id": "b",
+          "text": "Shoulder pain"
+        },
+        {
+          "id": "c",
+          "text": "Rigid abdomen"
+        },
+        {
+          "id": "d",
+          "text": "Light pink spotting only"
+        },
+        {
+          "id": "e",
+          "text": "Tachycardia"
+        },
+        {
+          "id": "f",
+          "text": "Improving pelvic discomfort after rest"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Ruptured ectopic pregnancy should be recognized quickly from the clue cluster of unilateral pain, hypotension, tachycardia, and referred shoulder pain from intraperitoneal bleeding. The nurse should connect these findings to hemorrhagic instability instead of treating them as routine first-trimester discomfort.",
+      "distractorRationales": {
+        "c": "This distractor shifts care toward misprioritization instead of bleeding-risk intervention. The stem cue \"referred shoulder pain from intraperitoneal bleeding\" makes bleeding or anticoagulation injury the active safety concern.",
+        "d": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"Hypotension plus Shoulder pain plus Tachycardia\" fits the safer response to the cue \"shock signs appear together, think ruptured ectopic fast\".",
+        "f": "The safer response addresses bleeding or anticoagulation injury; \"Improving pelvic discomfort after rest\" moves care toward routine care before bleeding-risk intervention."
+      },
+      "tags": [
+        "ectopic_pregnancy_rupture",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When pregnancy, unilateral pain, shoulder pain, and shock signs appear together, think ruptured ectopic fast.",
+      "speedCue": "Pregnancy plus unilateral pain plus shoulder pain plus hypotension is a hemorrhage pattern, not a routine discomfort pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Hypotension; B: Shoulder pain; E: Tachycardia. Ruptured ectopic pregnancy should be recognized quickly from the clue cluster of unilateral pain, hypotension, tachycardia, and referred shoulder pain from intraperitoneal bleeding. The nurse should connect these findings to hemorrhagic instability instead of treating them as routine first-trimester discomfort. The clinical focus is ruptured ectopic pregnancy hemorrhage, so the review should connect the answer to ectopic, bleeding, hemorrhage, perfusion.",
+        "mechanism": "This item tests Ectopic Pregnancy Rupture through ruptured ectopic pregnancy hemorrhage: intra-abdominal bleeding threatens perfusion, so urgent surgical evaluation and hemodynamic support outrank teaching. These ectopic, bleeding, hemorrhage, perfusion cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Hypotension; B: Shoulder pain; E: Tachycardia is correct because it directly addresses ruptured ectopic pregnancy hemorrhage. intra-abdominal bleeding threatens perfusion, so urgent surgical evaluation and hemodynamic support outrank teaching. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "c": "This distractor shifts care toward misprioritization instead of bleeding-risk intervention. The stem cue \"referred shoulder pain from intraperitoneal bleeding\" makes bleeding or anticoagulation injury the active safety concern. Clinically, this misses ruptured ectopic pregnancy hemorrhage: intra-abdominal bleeding threatens perfusion, so urgent surgical evaluation and hemodynamic support outrank teaching.",
+          "d": "The option can leave bleeding or anticoagulation injury untreated because it answers a lower-acuity part of the scenario. \"Hypotension plus Shoulder pain plus Tachycardia\" fits the safer response to the cue \"shock signs appear together, think ruptured ectopic fast\". Clinically, this misses ruptured ectopic pregnancy hemorrhage: intra-abdominal bleeding threatens perfusion, so urgent surgical evaluation and hemodynamic support outrank teaching.",
+          "f": "The safer response addresses bleeding or anticoagulation injury; \"Improving pelvic discomfort after rest\" moves care toward routine care before bleeding-risk intervention. Clinically, this misses ruptured ectopic pregnancy hemorrhage: intra-abdominal bleeding threatens perfusion, so urgent surgical evaluation and hemodynamic support outrank teaching."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Ectopic Pregnancy Rupture",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Ectopic Pregnancy Rupture",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb860-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hyperkalemia_ecg_emergency",
+      "subcategory": "hyperkalemia_ecg_emergency",
+      "difficulty": 1,
+      "stem": "A client with acute kidney injury has a potassium level of 6.8 mEq/L and peaked T waves on the cardiac monitor. Which action is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prepare to administer IV calcium gluconate."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to increase oral fluids."
+        },
+        {
+          "id": "c",
+          "text": "Place the client on a potassium-restricted diet."
+        },
+        {
+          "id": "d",
+          "text": "Repeat the potassium level in 4 hours."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hyperkalemia with ECG changes places the client at immediate risk for lethal dysrhythmias. IV calcium gluconate stabilizes the cardiac membrane while other therapies work to lower serum potassium. Dietary teaching and delayed reassessment do not address the urgent electrical instability.",
+      "distractorRationales": {
+        "b": "The cue \"8 mEq/L and peaked T waves on the cardiac monitor\" suggests circulation or perfusion, so \"Encourage the client to increase oral fluids\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Place the client on a potassium-restricted diet\" answers a lower-acuity part of the scenario. The cue \"8 mEq/L and peaked T waves on the cardiac monitor\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "\"Repeat the potassium level in 4 hours\" moves to activity, intake, or discharge planning too early. The cue \"8 mEq/L and peaked T waves on the cardiac monitor\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before ambulation, intake, or discharge teaching."
+      },
+      "tags": [
+        "hyperkalemia_ecg_emergency",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Hyperkalemia plus peaked T waves is a cardiac emergency: stabilize the myocardium first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Prepare to administer IV calcium gluconate.. Hyperkalemia with ECG changes places the client at immediate risk for lethal dysrhythmias. IV calcium gluconate stabilizes the cardiac membrane while other therapies work to lower serum potassium. Dietary teaching and delayed reassessment do not address the urgent electrical instability. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Hyperkalemia Ecg Emergency through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Prepare to administer IV calcium gluconate. is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The cue \"8 mEq/L and peaked T waves on the cardiac monitor\" suggests circulation or perfusion, so \"Encourage the client to increase oral fluids\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"Place the client on a potassium-restricted diet\" answers a lower-acuity part of the scenario. The cue \"8 mEq/L and peaked T waves on the cardiac monitor\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Repeat the potassium level in 4 hours\" moves to activity, intake, or discharge planning too early. The cue \"8 mEq/L and peaked T waves on the cardiac monitor\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before ambulation, intake, or discharge teaching. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Hyperkalemia Ecg Emergency",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Hyperkalemia Ecg Emergency",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

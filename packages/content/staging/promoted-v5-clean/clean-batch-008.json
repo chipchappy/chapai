@@ -1,0 +1,851 @@
+{
+  "batchId": "clean-batch-008",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb859-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "digoxin_toxicity",
+      "subcategory": "digoxin_toxicity",
+      "difficulty": 3,
+      "stem": "A client taking digoxin reports nausea, poor appetite, and seeing yellow halos around lights. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the digoxin and assess the apical pulse."
+        },
+        {
+          "id": "b",
+          "text": "Give the dose with food to reduce gastric upset."
+        },
+        {
+          "id": "c",
+          "text": "Teach the client that visual changes are expected."
+        },
+        {
+          "id": "d",
+          "text": "Administer an antacid and reassess in 1 hour."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Nausea and yellow visual halos are classic early signs of digoxin toxicity. The nurse should withhold the medication and assess the apical pulse before giving any additional doses. Telling the client the findings are expected or simply treating stomach upset misses a potentially dangerous cardiac medication problem.",
+      "distractorRationales": {
+        "b": "The cue \"Nausea and yellow visual halos are classic early signs of digoxin toxicity\" suggests medication toxicity, so \"Give the dose with food to reduce gastric upset\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Teach the client that visual changes are expected\" normalizes a finding that needs reassessment. The cue \"Nausea and yellow visual halos are classic early signs of digoxin toxicity\" raises concern for medication toxicity, so medication-safety intervention is needed before reassurance.",
+        "d": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"Hold the digoxin and assess the apical pulse\" fits the safer response to the cue \"A client taking digoxin reports nausea, poor appetite\"."
+      },
+      "tags": [
+        "digoxin_toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected digoxin toxicity means hold the dose first and assess before giving more.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Hold the digoxin and assess the apical pulse.. Nausea and yellow visual halos are classic early signs of digoxin toxicity. The nurse should withhold the medication and assess the apical pulse before giving any additional doses. Telling the client the findings are expected or simply treating stomach upset misses a potentially dangerous cardiac medication problem. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Digoxin Toxicity through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Hold the digoxin and assess the apical pulse. is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The cue \"Nausea and yellow visual halos are classic early signs of digoxin toxicity\" suggests medication toxicity, so \"Give the dose with food to reduce gastric upset\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Teach the client that visual changes are expected\" normalizes a finding that needs reassessment. The cue \"Nausea and yellow visual halos are classic early signs of digoxin toxicity\" raises concern for medication toxicity, so medication-safety intervention is needed before reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"Hold the digoxin and assess the apical pulse\" fits the safer response to the cue \"A client taking digoxin reports nausea, poor appetite\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Digoxin Toxicity",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Digoxin Toxicity",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb863-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dka_fluid_priority",
+      "subcategory": "dka_fluid_priority",
+      "difficulty": 5,
+      "stem": "A client with diabetic ketoacidosis is lethargic, has dry mucous membranes, blood pressure 88/54 mmHg, and blood glucose 620 mg/dL. Which intervention should the nurse anticipate first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rapid isotonic fluid replacement."
+        },
+        {
+          "id": "b",
+          "text": "Long-acting insulin by subcutaneous injection."
+        },
+        {
+          "id": "c",
+          "text": "A potassium-restricted diet."
+        },
+        {
+          "id": "d",
+          "text": "Sodium bicarbonate for all clients with DKA."
+        }
+      ],
+      "answer": "a",
+      "rationale": "The immediate threat in DKA is severe volume depletion and impaired perfusion. Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status and response. Subcutaneous long-acting insulin and routine bicarbonate do not address the acute circulatory problem first.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of glucose rescue or metabolic stabilization. The stem cue \"In DKA with hypotension and dehydration, restore circulating volume first\" makes unstable glucose physiology the active safety concern.",
+        "c": "\"A potassium-restricted diet\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up.",
+        "d": "\"Sodium bicarbonate for all clients with DKA\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up."
+      },
+      "tags": [
+        "dka_fluid_priority",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In DKA with hypotension and dehydration, restore circulating volume first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Rapid isotonic fluid replacement.. The immediate threat in DKA is severe volume depletion and impaired perfusion. Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status and response. Subcutaneous long-acting insulin and routine bicarbonate do not address the acute circulatory problem first. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Dka Fluid Priority through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Rapid isotonic fluid replacement. is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward misprioritization instead of glucose rescue or metabolic stabilization. The stem cue \"In DKA with hypotension and dehydration, restore circulating volume first\" makes unstable glucose physiology the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"A potassium-restricted diet\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Sodium bicarbonate for all clients with DKA\" misses the bedside risk. The cue \"Isotonic fluid replacement is the first major intervention, followed by insulin and electrolyte management based on potassium status\" points to unstable glucose physiology. Glucose instability can progress quickly, so medication timing and metabolic rescue come before routine follow-up. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Dka Fluid Priority",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Insulin",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/insulin.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Dka Fluid Priority",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "citation": "NIH MedlinePlus drug monograph: Insulin - Medication safety",
+          "href": "https://medlineplus.gov/insulin.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb837-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_irritability",
+      "subcategory": "fever_and_irritability",
+      "difficulty": 2,
+      "stem": "A toddler with fever is irritable, has fewer tears when crying, and is not drinking well. What is the nurse's biggest concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may be becoming dehydrated"
+        },
+        {
+          "id": "b",
+          "text": "Irritability always means the fever is harmless"
+        },
+        {
+          "id": "c",
+          "text": "Fewer tears are normal in every sick child"
+        },
+        {
+          "id": "d",
+          "text": "Drinking less is only a concern in adults"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Irritability, fewer tears, and poor intake can all point to dehydration in young children. **Why the others are wrong:** - B Irritability does not make fever safe. - C Fewer tears can be a dehydration sign. - D Children are often more vulnerable to fluid loss.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Pediatric dehydration can show up as crying changes and poor intake\" makes infection progression the active safety concern.",
+        "c": "\"Fewer tears are normal in every sick child\" normalizes a finding that needs reassessment. The cue \"poor intake can all point to dehydration in young children\" raises concern for infection progression, so infection or sepsis escalation is needed before reassurance.",
+        "d": "\"Drinking less is only a concern in adults\" answers a lower-acuity part of the scenario. The cue \"poor intake can all point to dehydration in young children\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care."
+      },
+      "tags": [
+        "fever_and_irritability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as crying changes and poor intake.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: The child may be becoming dehydrated. Irritability, fewer tears, and poor intake can all point to dehydration in young children. **Why the others are wrong:** - B Irritability does not make fever safe. - C Fewer tears can be a dehydration sign. - D Children are often more vulnerable to fluid loss. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Fever And Irritability through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: The child may be becoming dehydrated is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Pediatric dehydration can show up as crying changes and poor intake\" makes infection progression the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Fewer tears are normal in every sick child\" normalizes a finding that needs reassessment. The cue \"poor intake can all point to dehydration in young children\" raises concern for infection progression, so infection or sepsis escalation is needed before reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Drinking less is only a concern in adults\" answers a lower-acuity part of the scenario. The cue \"poor intake can all point to dehydration in young children\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Fever And Irritability",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Fever And Irritability",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb837-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "fever_and_perfusion",
+      "subcategory": "fever_and_perfusion",
+      "difficulty": 3,
+      "stem": "A child with fever is sleepy, has dry mucous membranes, and has not had a wet diaper since morning. What is the nurse's best concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The child may have significant dehydration and needs prompt evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Sleepiness means the fever is improving"
+        },
+        {
+          "id": "c",
+          "text": "Dry mucous membranes are not meaningful in children"
+        },
+        {
+          "id": "d",
+          "text": "A wet diaper is irrelevant if the child ate breakfast"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sleepiness, dry mucous membranes, and reduced urine output together suggest a significant fluid deficit. **Why the others are wrong:** - B Sleepiness can be a danger sign. - C Mucous membranes are a useful clue. - D Intake and urine output matter more than breakfast alone.",
+      "distractorRationales": {
+        "b": "The option can leave infection progression untreated because it normalizes a finding that needs reassessment. \"The child may have significant dehydration and needs prompt evaluation\" fits the safer response to the cue \"A child with fever is sleepy, has dry mucous membranes\".",
+        "c": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"The child may have significant dehydration and needs prompt evaluation\" fits the safer response to the cue \"A child with fever is sleepy, has dry mucous membranes\".",
+        "d": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Fever plus low urine output and sleepiness can mean dehydration\" makes infection progression the active safety concern."
+      },
+      "tags": [
+        "fever_and_perfusion",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fever plus low urine output and sleepiness can mean dehydration.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "fever_and_perfusion",
+        "caption": "Fever plus low urine output and sleepiness can mean dehydration.",
+        "conclusion": "Fever plus low urine output and sleepiness can mean dehydration."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: The child may have significant dehydration and needs prompt evaluation. Sleepiness, dry mucous membranes, and reduced urine output together suggest a significant fluid deficit. **Why the others are wrong:** - B Sleepiness can be a danger sign. - C Mucous membranes are a useful clue. - D Intake and urine output matter more than breakfast alone. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Fever And Perfusion through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: The child may have significant dehydration and needs prompt evaluation is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The option can leave infection progression untreated because it normalizes a finding that needs reassessment. \"The child may have significant dehydration and needs prompt evaluation\" fits the safer response to the cue \"A child with fever is sleepy, has dry mucous membranes\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave infection progression untreated because it answers a lower-acuity part of the scenario. \"The child may have significant dehydration and needs prompt evaluation\" fits the safer response to the cue \"A child with fever is sleepy, has dry mucous membranes\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward misprioritization instead of infection or sepsis escalation. The stem cue \"Fever plus low urine output and sleepiness can mean dehydration\" makes infection progression the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Fever And Perfusion",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Fever And Perfusion",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb755-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 4,
+      "stem": "The nurse is assessing two patients. Patient A has BP 80/50, sodium 124 mEq/L, potassium 6.1 mEq/L, and hyperpigmentation. Patient B has BP 158/94, sodium 148 mEq/L, potassium 3.1 mEq/L, and truncal obesity with purple striae. Which conditions CORRECTLY match these presentations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patient A: Cushing's syndrome; Patient B: Addison's disease"
+        },
+        {
+          "id": "b",
+          "text": "Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome"
+        },
+        {
+          "id": "c",
+          "text": "Patient A: Hypothyroidism; Patient B: Hyperaldosteronism"
+        },
+        {
+          "id": "d",
+          "text": "Patient A: SIADH; Patient B: Diabetes insipidus"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Addison's disease (primary adrenal insufficiency): cortisol and aldosterone deficiency → hyponatremia, hyperkalemia, hypotension, and hyperpigmentation (elevated ACTH stimulates melanocytes). Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae, and moon face from chronic cortisol excess. These are opposite presentations driven by opposite hormonal states.",
+      "distractorRationales": {
+        "a": "The cue \"Patient A has BP 80/50, sodium 124 mEq/L, potassium 6\" suggests renal injury, so \"Patient A: Cushing's syndrome; Patient B: Addison's disease\" would not correct the active problem. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.",
+        "c": "\"Patient A: Hypothyroidism; Patient B: Hyperaldosteronism\" answers a lower-acuity part of the scenario. The cue \"Patient A has BP 80/50, sodium 124 mEq/L, potassium 6\" raises concern for renal injury, so renal protection is needed before routine care.",
+        "d": "The option can leave renal injury untreated because it answers a lower-acuity part of the scenario. \"Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome\" fits the safer response to the cue \"Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae\"."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addison's = hypoNa, hyperK, hypotension, hyperpigmentation. Cushing's = hyperNa, hypoK, hypertension, truncal obesity, striae.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome. Addison's disease (primary adrenal insufficiency): cortisol and aldosterone deficiency → hyponatremia, hyperkalemia, hypotension, and hyperpigmentation (elevated ACTH stimulates melanocytes). Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae, and moon face from chronic cortisol excess. These are opposite presentations driven by opposite hormonal states. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Medical Surgical Advanced through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"Patient A has BP 80/50, sodium 124 mEq/L, potassium 6\" suggests renal injury, so \"Patient A: Cushing's syndrome; Patient B: Addison's disease\" would not correct the active problem. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"Patient A: Hypothyroidism; Patient B: Hyperaldosteronism\" answers a lower-acuity part of the scenario. The cue \"Patient A has BP 80/50, sodium 124 mEq/L, potassium 6\" raises concern for renal injury, so renal protection is needed before routine care. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "The option can leave renal injury untreated because it answers a lower-acuity part of the scenario. \"Patient A: Addison's disease (adrenal insufficiency); Patient B: Cushing's syndrome\" fits the safer response to the cue \"Cushing's syndrome (cortisol excess): hypertension, hypokalemia, hypernatremia, central obesity, purple striae\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Medical Surgical Advanced",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Medical Surgical Advanced",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb841-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "wheezing_after_medication",
+      "subcategory": "wheezing_after_medication",
+      "difficulty": 4,
+      "stem": "After receiving a new medication, a patient develops wheezing and itching. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an allergic reaction"
+        },
+        {
+          "id": "b",
+          "text": "The medication is working as expected"
+        },
+        {
+          "id": "c",
+          "text": "Wheezing is only important if fever is present"
+        },
+        {
+          "id": "d",
+          "text": "The patient should be reassured and sent to bed"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action. **Why the others are wrong:** - B These are not expected therapeutic effects. - C Fever is not required for an allergic response. - D Reassurance without reassessment is unsafe.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"The patient may be having an allergic reaction\" fits the safer response to the cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\".",
+        "c": "\"Wheezing is only important if fever is present\" misses the bedside risk. The cue \"New wheeze after a medication can be an allergy clue\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"The patient may be having an allergic reaction\" fits the safer response to the cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\"."
+      },
+      "tags": [
+        "wheezing_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New wheeze after a medication can be an allergy clue.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: The patient may be having an allergic reaction. Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action. **Why the others are wrong:** - B These are not expected therapeutic effects. - C Fever is not required for an allergic response. - D Reassurance without reassessment is unsafe. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Wheezing After Medication through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: The patient may be having an allergic reaction is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"The patient may be having an allergic reaction\" fits the safer response to the cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Wheezing is only important if fever is present\" misses the bedside risk. The cue \"New wheeze after a medication can be an allergy clue\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"The patient may be having an allergic reaction\" fits the safer response to the cue \"Wheezing and itching after medication can signal hypersensitivity or an allergic reaction that needs quick action\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Wheezing After Medication",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Wheezing After Medication",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb908-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cord_prolapse_positioning",
+      "subcategory": "cord_prolapse_positioning",
+      "difficulty": 2,
+      "stem": "After rupture of membranes, the fetal heart rate suddenly drops to 70/min and the nurse sees a loop of umbilical cord at the vaginal opening. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a gloved hand to lift the presenting part and position the client to relieve cord compression."
+        },
+        {
+          "id": "b",
+          "text": "Push the cord back into the vagina."
+        },
+        {
+          "id": "c",
+          "text": "Apply internal fetal scalp monitoring."
+        },
+        {
+          "id": "d",
+          "text": "Delay action until the provider arrives."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Visible cord with acute fetal bradycardia indicates umbilical cord prolapse, an obstetric emergency. The nurse should immediately relieve pressure on the cord by lifting the presenting part and repositioning the client while calling for help. Handling the cord unnecessarily or waiting increases fetal hypoxia risk.",
+      "distractorRationales": {
+        "b": "The safer response addresses circulation or perfusion; \"Push the cord back into the vagina\" moves care toward routine care before circulation and perfusion support.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"After rupture of membranes, the fetal heart rate suddenly drops to 70/min and the nurse sees a loop\" makes circulation or perfusion the active safety concern.",
+        "d": "The safer response addresses circulation or perfusion; \"Delay action until the provider arrives\" moves care toward routine observation before circulation and perfusion support."
+      },
+      "tags": [
+        "cord_prolapse_positioning",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Cord prolapse is a relieve-the-compression-now emergency.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Use a gloved hand to lift the presenting part and position the client to relieve cord compression.. Visible cord with acute fetal bradycardia indicates umbilical cord prolapse, an obstetric emergency. The nurse should immediately relieve pressure on the cord by lifting the presenting part and repositioning the client while calling for help. Handling the cord unnecessarily or waiting increases fetal hypoxia risk. The clinical focus is umbilical cord compression, so the review should connect the answer to cord, compression, fetal, bradycardia.",
+        "mechanism": "This item tests Cord Prolapse Positioning through umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. These cord, compression, fetal, bradycardia cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Use a gloved hand to lift the presenting part and position the client to relieve cord compression. is correct because it directly addresses umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The safer response addresses circulation or perfusion; \"Push the cord back into the vagina\" moves care toward routine care before circulation and perfusion support. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"After rupture of membranes, the fetal heart rate suddenly drops to 70/min and the nurse sees a loop\" makes circulation or perfusion the active safety concern. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "d": "The safer response addresses circulation or perfusion; \"Delay action until the provider arrives\" moves care toward routine observation before circulation and perfusion support. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Cord Prolapse Positioning",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Cord Prolapse Positioning",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb841-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "weak_pulse_and_delayed_refill",
+      "subcategory": "weak_pulse_and_delayed_refill",
+      "difficulty": 4,
+      "stem": "A child is pale, has a weak pulse, and delayed capillary refill after a day of poor intake. What is the best interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Circulation may be compromised and dehydration may be present"
+        },
+        {
+          "id": "b",
+          "text": "The child is likely just sleepy"
+        },
+        {
+          "id": "c",
+          "text": "Capillary refill is not useful in children"
+        },
+        {
+          "id": "d",
+          "text": "Poor intake cannot affect circulation"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Poor intake can affect circulation in children, and weak perfusion signs should prompt reassessment. **Why the others are wrong:** - B Sleepiness does not explain the perfusion findings. - C Capillary refill is very useful in pediatrics. - D Intake and circulation are closely linked.",
+      "distractorRationales": {
+        "b": "\"The child is likely just sleepy\" misses the bedside risk. The cue \"weak perfusion signs should prompt reassessment\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "\"Capillary refill is not useful in children\" answers a lower-acuity part of the scenario. The cue \"- D Intake and circulation are closely linked\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care.",
+        "d": "The cue \"weak perfusion signs should prompt reassessment\" suggests circulation or perfusion, so \"Poor intake cannot affect circulation\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "weak_pulse_and_delayed_refill",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pediatric dehydration can show up as weak perfusion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Circulation may be compromised and dehydration may be present. Poor intake can affect circulation in children, and weak perfusion signs should prompt reassessment. **Why the others are wrong:** - B Sleepiness does not explain the perfusion findings. - C Capillary refill is very useful in pediatrics. - D Intake and circulation are closely linked. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Weak Pulse And Delayed Refill through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Circulation may be compromised and dehydration may be present is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"The child is likely just sleepy\" misses the bedside risk. The cue \"weak perfusion signs should prompt reassessment\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Capillary refill is not useful in children\" answers a lower-acuity part of the scenario. The cue \"- D Intake and circulation are closely linked\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"weak perfusion signs should prompt reassessment\" suggests circulation or perfusion, so \"Poor intake cannot affect circulation\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Weak Pulse And Delayed Refill",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Weak Pulse And Delayed Refill",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1037-n015",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "tb_medication_teaching",
+      "subcategory": "tb_medication_teaching",
+      "difficulty": 3,
+      "stem": "A client prescribed isoniazid for tuberculosis asks what to watch for at home. Which symptom should the nurse instruct the client to report immediately?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Numbness or tingling in the hands or feet."
+        },
+        {
+          "id": "b",
+          "text": "Orange discoloration of tears and urine."
+        },
+        {
+          "id": "c",
+          "text": "A mild metallic taste after the dose."
+        },
+        {
+          "id": "d",
+          "text": "An increased appetite in the evening."
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Isoniazid can cause peripheral neuropathy, especially in clients with nutritional risk factors, so numbness or tingling should be reported. Orange body fluid discoloration is expected with rifampin rather than isoniazid. Good teaching helps the client distinguish expected effects from adverse findings that need intervention.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Good teaching helps the client distinguish expected effects from adverse findings that need intervention\" makes medication toxicity the active safety concern.",
+        "c": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"Numbness or tingling in the hands or feet\" fits the safer response to the cue \"Good teaching helps the client distinguish expected effects from adverse findings that need intervention\".",
+        "d": "\"An increased appetite in the evening\" misses the bedside risk. The cue \"Orange body fluid discoloration is expected with rifampin rather than isoniazid\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "tb_medication_teaching",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Teach clients taking isoniazid to report peripheral neuropathy symptoms early.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Numbness or tingling in the hands or feet.. Isoniazid can cause peripheral neuropathy, especially in clients with nutritional risk factors, so numbness or tingling should be reported. Orange body fluid discoloration is expected with rifampin rather than isoniazid. Good teaching helps the client distinguish expected effects from adverse findings that need intervention. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Tb Medication Teaching through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Numbness or tingling in the hands or feet. is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Good teaching helps the client distinguish expected effects from adverse findings that need intervention\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"Numbness or tingling in the hands or feet\" fits the safer response to the cue \"Good teaching helps the client distinguish expected effects from adverse findings that need intervention\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"An increased appetite in the evening\" misses the bedside risk. The cue \"Orange body fluid discoloration is expected with rifampin rather than isoniazid\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Tb Medication Teaching",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Tb Medication Teaching",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb841-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "instability_after_medication",
+      "subcategory": "instability_after_medication",
+      "difficulty": 3,
+      "stem": "After receiving a blood pressure medication, a patient becomes dizzy and their blood pressure drops significantly. What should the nurse do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess the patient and hold further medication until the situation is clarified"
+        },
+        {
+          "id": "b",
+          "text": "Give the next dose because the medication is already scheduled"
+        },
+        {
+          "id": "c",
+          "text": "Tell the patient the dizziness is normal and temporary"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the blood pressure because the patient is awake"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Medication can cause hypotension. The nurse must reassess before giving more medication. **Why the others are wrong:** - B Scheduling does not override safety. - C Dizziness with a major BP drop needs action. - D Awake status does not make hypotension safe.",
+      "distractorRationales": {
+        "b": "The safer response addresses medication toxicity; \"Give the next dose because the medication is already scheduled\" moves care toward diagnostic reassurance before medication-safety intervention.",
+        "c": "This distractor shifts care toward false reassurance instead of medication-safety intervention. The stem cue \"Medication can cause hypotension\" makes medication toxicity the active safety concern.",
+        "d": "The safer response addresses medication toxicity; \"Ignore the blood pressure because the patient is awake\" moves care toward diagnostic reassurance before medication-safety intervention."
+      },
+      "tags": [
+        "instability_after_medication",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "New hypotension after a medication needs immediate reassessment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Reassess the patient and hold further medication until the situation is clarified. Medication can cause hypotension. The nurse must reassess before giving more medication. **Why the others are wrong:** - B Scheduling does not override safety. - C Dizziness with a major BP drop needs action. - D Awake status does not make hypotension safe. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Instability After Medication through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Reassess the patient and hold further medication until the situation is clarified is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The safer response addresses medication toxicity; \"Give the next dose because the medication is already scheduled\" moves care toward diagnostic reassurance before medication-safety intervention. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "This distractor shifts care toward false reassurance instead of medication-safety intervention. The stem cue \"Medication can cause hypotension\" makes medication toxicity the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "The safer response addresses medication toxicity; \"Ignore the blood pressure because the patient is awake\" moves care toward diagnostic reassurance before medication-safety intervention. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Instability After Medication",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Instability After Medication",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

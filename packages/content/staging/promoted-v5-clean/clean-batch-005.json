@@ -1,0 +1,861 @@
+{
+  "batchId": "clean-batch-005",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb760-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 2,
+      "stem": "A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements, and facial grimacing that persist even when the medication is held. Which condition does this describe?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute dystonia"
+        },
+        {
+          "id": "b",
+          "text": "Tardive dyskinesia"
+        },
+        {
+          "id": "c",
+          "text": "Akathisia"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Tardive dyskinesia (TD) develops after months to years of antipsychotic use. It is characterized by involuntary, repetitive, purposeless movements of the face, tongue, and extremities (lip smacking, tongue protrusion, choreiform movements). Key feature: movements PERSIST or worsen when the antipsychotic is reduced/stopped initially. It may be irreversible. VMAT2 inhibitors (valbenazine, deutetrabenazine) are FDA-approved treatments. Acute dystonia (A) is sudden onset within days and responds to anticholinergics. Akathisia (C) is restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease.",
+      "distractorRationales": {
+        "a": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Tardive dyskinesia\" fits the safer response to the cue \"Acute dystonia (A) is sudden onset within days and responds to anticholinergics\".",
+        "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements\" makes medication toxicity the active safety concern.",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Tardive dyskinesia\" fits the safer response to the cue \"Acute dystonia (A) is sudden onset within days and responds to anticholinergics\"."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Tardive dyskinesia: involuntary repetitive orofacial movements after years of antipsychotic use — may be irreversible; treat with VMAT2 inhibitors.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Tardive dyskinesia. Tardive dyskinesia (TD) develops after months to years of antipsychotic use. It is characterized by involuntary, repetitive, purposeless movements of the face, tongue, and extremities (lip smacking, tongue protrusion, choreiform movements). Key feature: movements PERSIST or worsen when the antipsychotic is reduced/stopped initially. It may be irreversible. VMAT2 inhibitors (valbenazine, deutetrabenazine) are FDA-approved treatments. Acute dystonia (A) is sudden onset within days and responds to anticholinergics. Akathisia (C) is restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Antipsychotic Medication Safety through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Tardive dyskinesia is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Tardive dyskinesia\" fits the safer response to the cue \"Acute dystonia (A) is sudden onset within days and responds to anticholinergics\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A patient who has been on chlorpromazine for 10 years develops involuntary, repetitive tongue protrusions, lip-smacking movements\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Tardive dyskinesia\" fits the safer response to the cue \"Acute dystonia (A) is sudden onset within days and responds to anticholinergics\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Antipsychotic Medication Safety",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Antipsychotic Medication Safety",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb756-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 3,
+      "stem": "A patient on lithium for bipolar disorder presents with tremor, ataxia, slurred speech, and confusion. Serum lithium level is 2.4 mEq/L. Which intervention is the priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hold the next lithium dose and recheck level in 12 hours"
+        },
+        {
+          "id": "b",
+          "text": "Administer activated charcoal to reduce absorption"
+        },
+        {
+          "id": "c",
+          "text": "Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Lithium toxicity: therapeutic range 0.6–1.2 mEq/L. Level 1.5–2.0 = mild toxicity (nausea, tremor, polyuria). Level 2.0–2.5 = moderate toxicity (ataxia, confusion, slurred speech — this patient). Level >2.5 = severe (seizures, coma, cardiac arrest). Moderate-severe toxicity requires: stop lithium, IV NS hydration (promotes renal lithium excretion), and consideration for hemodialysis (most effective removal method). Simply holding a dose (A) is inadequate. Activated charcoal (B) does not bind lithium effectively. Sodium bicarbonate (D) is used for salicylate toxicity, not lithium.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Lithium toxicity: therapeutic range 0\" makes medication toxicity the active safety concern.",
+        "b": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation\" fits the safer response to the cue \"Sodium bicarbonate (D) is used for salicylate toxicity, not lithium\".",
+        "d": "\"Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion\" misses the bedside risk. The cue \"5 = severe (seizures, coma, cardiac arrest)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium level >2.0 mEq/L with neurological symptoms: stop lithium, IV NS hydration, evaluate for hemodialysis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation. Lithium toxicity: therapeutic range 0.6–1.2 mEq/L. Level 1.5–2.0 = mild toxicity (nausea, tremor, polyuria). Level 2.0–2.5 = moderate toxicity (ataxia, confusion, slurred speech — this patient). Level >2.5 = severe (seizures, coma, cardiac arrest). Moderate-severe toxicity requires: stop lithium, IV NS hydration (promotes renal lithium excretion), and consideration for hemodialysis (most effective removal method). Simply holding a dose (A) is inadequate. Activated charcoal (B) does not bind lithium effectively. Sodium bicarbonate (D) is used for salicylate toxicity, not lithium. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Lithium Toxicity through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Lithium toxicity: therapeutic range 0\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Discontinue lithium, provide IV normal saline hydration, and prepare for dialysis evaluation\" fits the safer response to the cue \"Sodium bicarbonate (D) is used for salicylate toxicity, not lithium\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Administer sodium bicarbonate to alkalinize urine and enhance lithium excretion\" misses the bedside risk. The cue \"5 = severe (seizures, coma, cardiac arrest)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Lithium Toxicity",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Lithium Toxicity",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb756-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 2,
+      "stem": "A patient in a long leg cast following tibial fracture reports severe, unrelenting pain rated 9/10 that is not relieved by opioids, along with paresthesia in the foot and tenseness of the cast. Which action is the NURSE'S PRIORITY?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the PRN opioid analgesic and elevate the extremity above heart level"
+        },
+        {
+          "id": "b",
+          "text": "Assess the 6 P's and notify the provider immediately"
+        },
+        {
+          "id": "c",
+          "text": "Apply ice pack to reduce swelling and reassess in 30 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Loosen the cast padding and document as a comfort measure"
+        }
+      ],
+      "answer": "b",
+      "rationale": "This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia, and paresthesia (early sign of nerve ischemia). The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment. The nurse must notify the provider IMMEDIATELY — compartment syndrome is a surgical emergency requiring fasciotomy within 6 hours to prevent permanent nerve and muscle damage. Elevating above heart level (A) decreases arterial perfusion, worsening ischemia. Ice (C) and cast loosening (D) delay definitive treatment.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia\" makes medication toxicity the active safety concern.",
+        "c": "\"Apply ice pack to reduce swelling and reassess in 30 minutes\" misses the bedside risk. The cue \"The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The cue \"The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment\" suggests medication toxicity, so \"Loosen the cast padding and document as a comfort measure\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Compartment syndrome 6 P's: pain out of proportion is the EARLIEST sign. Fasciotomy must occur within 6 hours to prevent permanent damage.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Assess the 6 P's and notify the provider immediately. This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia, and paresthesia (early sign of nerve ischemia). The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment. The nurse must notify the provider IMMEDIATELY — compartment syndrome is a surgical emergency requiring fasciotomy within 6 hours to prevent permanent nerve and muscle damage. Elevating above heart level (A) decreases arterial perfusion, worsening ischemia. Ice (C) and cast loosening (D) delay definitive treatment. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Medical Surgical Advanced through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Assess the 6 P's and notify the provider immediately is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"This presentation suggests acute compartment syndrome: pain out of proportion to the injury, unrelieved by analgesia\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Apply ice pack to reduce swelling and reassess in 30 minutes\" misses the bedside risk. The cue \"The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"The 6 P's (Pain, Pressure, Paralysis, Paresthesia, Pallor, Pulselessness) guide assessment\" suggests medication toxicity, so \"Loosen the cast padding and document as a comfort measure\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Medical Surgical Advanced",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Medical Surgical Advanced",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb754-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_fall_prevention",
+      "subcategory": "Safety and Infection Control / Fall Prevention",
+      "difficulty": 4,
+      "stem": "A nurse is admitting a 79-year-old patient with a history of orthostatic hypotension, recent fall, and current use of furosemide and lisinopril. Which intervention is HIGHEST priority for fall prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place a fall-risk bracelet on the patient and document in the chart"
+        },
+        {
+          "id": "b",
+          "text": "Educate the patient to call for help before getting out of bed and place the call light within reach"
+        },
+        {
+          "id": "c",
+          "text": "Request a physical therapy consult for gait evaluation"
+        },
+        {
+          "id": "d",
+          "text": "Move the patient to a room closer to the nursing station"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The highest-impact, immediately actionable fall prevention measure is patient education combined with environmental setup: instructing the patient to call for assistance before ambulating and ensuring the call light is accessible. This directly addresses the behavioral mechanism of most falls (attempting to get up unassisted) and is executable immediately at the bedside. Applying a fall-risk bracelet without the behavioral intervention does not prevent falls. PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection.",
+      "distractorRationales": {
+        "a": "The safer response addresses infection progression; \"Place a fall-risk bracelet on the patient and document in the chart\" moves care toward routine care before infection or sepsis escalation.",
+        "c": "The option can leave infection progression untreated because it relies on notification without the bedside safety step. \"Educate the patient to call for help before getting out of bed and place the call\" fits the safer response to the cue \"PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection\".",
+        "d": "\"Move the patient to a room closer to the nursing station\" answers a lower-acuity part of the scenario. The cue \"Applying a fall-risk bracelet without the behavioral intervention does not prevent falls\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care."
+      },
+      "tags": [
+        "Safety and Infection Control / Fall Prevention",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Fall Prevention",
+        "caption": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care.",
+        "conclusion": "Fall prevention priority: immediate behavioral intervention (call before rising, call light in reach) > documentation/labeling alone. Identification of risk means nothing without active mitigation at the point of care."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Educate the patient to call for help before getting out of bed and place the call light within reach. The highest-impact, immediately actionable fall prevention measure is patient education combined with environmental setup: instructing the patient to call for assistance before ambulating and ensuring the call light is accessible. This directly addresses the behavioral mechanism of most falls (attempting to get up unassisted) and is executable immediately at the bedside. Applying a fall-risk bracelet without the behavioral intervention does not prevent falls. PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Safety And Infection Control / Fall Prevention through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Educate the patient to call for help before getting out of bed and place the call light within reach is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses infection progression; \"Place a fall-risk bracelet on the patient and document in the chart\" moves care toward routine care before infection or sepsis escalation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "The option can leave infection progression untreated because it relies on notification without the bedside safety step. \"Educate the patient to call for help before getting out of bed and place the call\" fits the safer response to the cue \"PT consult and room relocation are appropriate secondary measures but do not provide immediate direct protection\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Move the patient to a room closer to the nursing station\" answers a lower-acuity part of the scenario. The cue \"Applying a fall-risk bracelet without the behavioral intervention does not prevent falls\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Safety And Infection Control Fall Prevention",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Furosemide",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682858.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Safety And Infection Control Fall Prevention",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Furosemide",
+          "citation": "NIH MedlinePlus drug monograph: Furosemide - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682858.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb752-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 2,
+      "stem": "A 6-month-old infant is admitted with RSV bronchiolitis. SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding. The physician orders albuterol. Which nursing action is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer albuterol as ordered; it is the standard of care for RSV bronchiolitis"
+        },
+        {
+          "id": "b",
+          "text": "Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning and supportive care"
+        },
+        {
+          "id": "c",
+          "text": "Hold the albuterol and administer corticosteroids instead"
+        },
+        {
+          "id": "d",
+          "text": "Administer albuterol only if SpO2 drops below 88%"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSV bronchiolitis is managed with supportive care only per AAP guidelines: nasal suctioning (most effective intervention for symptom relief), adequate hydration (NG feeds if needed), and supplemental O2 for SpO2 <90–92%. Bronchodilators (albuterol) and corticosteroids are NOT recommended because bronchiolitis involves viral-induced inflammation and mucus plugging — not bronchospasm — making bronchodilators ineffective. Multiple RCTs have shown no benefit. The nurse should question the order and clarify before administration. Contact precautions (RSV is spread via droplet/contact) are required.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"supplemental O2 for SpO2 <90–92%\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The cue \"SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding\" suggests oxygenation or ventilation, so \"Hold the albuterol and administer corticosteroids instead\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The safer response addresses oxygenation or ventilation; \"Administer albuterol only if SpO2 drops below 88%\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%.",
+        "conclusion": "RSV bronchiolitis = supportive care: nasal suction > bronchodilators; albuterol NOT routine treatment (no bronchospasm mechanism); contact precautions; O2 if SpO2 <90–92%."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning and supportive care. RSV bronchiolitis is managed with supportive care only per AAP guidelines: nasal suctioning (most effective intervention for symptom relief), adequate hydration (NG feeds if needed), and supplemental O2 for SpO2 <90–92%. Bronchodilators (albuterol) and corticosteroids are NOT recommended because bronchiolitis involves viral-induced inflammation and mucus plugging — not bronchospasm — making bronchodilators ineffective. Multiple RCTs have shown no benefit. The nurse should question the order and clarify before administration. Contact precautions (RSV is spread via droplet/contact) are required. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Pediatric Nursing through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Question the order; bronchodilators are not recommended as routine treatment for bronchiolitis — prioritize nasal suctioning and supportive care is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"supplemental O2 for SpO2 <90–92%\" makes oxygenation or ventilation the active safety concern. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "c": "The cue \"SpO2 is 91% on room air, RR 58, mild intercostal retractions, poor feeding\" suggests oxygenation or ventilation, so \"Hold the albuterol and administer corticosteroids instead\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "d": "The safer response addresses oxygenation or ventilation; \"Administer albuterol only if SpO2 drops below 88%\" moves care toward routine care before airway and breathing intervention. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pediatric Nursing",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Albuterol Oral Inhalation",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682145.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pediatric Nursing",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Albuterol Oral Inhalation",
+          "citation": "NIH MedlinePlus drug monograph: Albuterol Oral Inhalation - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682145.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb753-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_stable_vs_unstable",
+      "subcategory": "Safety and Infection Control / Stable vs. Unstable",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access. The nurse finds the patient diaphoretic, the right groin dressing saturated with blood, and the patient's blood pressure has dropped from 128/76 to 88/50 mmHg. What is the PRIORITY nursing action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply direct, firm manual pressure to the right groin site immediately"
+        },
+        {
+          "id": "b",
+          "text": "Elevate the foot of the bed and call the provider"
+        },
+        {
+          "id": "c",
+          "text": "Obtain a STAT hemoglobin and hematocrit"
+        },
+        {
+          "id": "d",
+          "text": "Increase the IV fluid rate per standing orders and reassess in 15 minutes"
+        }
+      ],
+      "answer": "a",
+      "rationale": "The patient is showing signs of femoral artery hemorrhage with hemodynamic instability (hypotension, diaphoresis, saturated dressing). The priority is hemorrhage control: applying immediate, firm manual pressure directly over the puncture site. This is the most time-critical intervention to stop ongoing blood loss. Calling the provider and obtaining labs are necessary but are performed concurrently by a second nurse after pressure is established. Trendelenburg positioning is not recommended for vascular hemorrhage, and delaying for 15 minutes risks cardiovascular collapse.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward incomplete escalation instead of bleeding-risk intervention. The stem cue \"A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access\" makes bleeding or anticoagulation injury the active safety concern.",
+        "c": "\"Obtain a STAT hemoglobin and hematocrit\" misses the bedside risk. The cue \"After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "The cue \"After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency\" suggests bleeding or anticoagulation injury, so \"Increase the IV fluid rate per standing orders and reassess in 15 minutes\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "Safety and Infection Control / Stable vs. Unstable",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency. Stop the bleed first (manual pressure), then call and escalate. Hemorrhage control precedes all other actions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Apply direct, firm manual pressure to the right groin site immediately. The patient is showing signs of femoral artery hemorrhage with hemodynamic instability (hypotension, diaphoresis, saturated dressing). The priority is hemorrhage control: applying immediate, firm manual pressure directly over the puncture site. This is the most time-critical intervention to stop ongoing blood loss. Calling the provider and obtaining labs are necessary but are performed concurrently by a second nurse after pressure is established. Trendelenburg positioning is not recommended for vascular hemorrhage, and delaying for 15 minutes risks cardiovascular collapse. The clinical focus is umbilical cord compression, so the review should connect the answer to cord, compression, fetal, bradycardia.",
+        "mechanism": "This item tests Safety And Infection Control / Stable Vs. Unstable through umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. These cord, compression, fetal, bradycardia cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Apply direct, firm manual pressure to the right groin site immediately is correct because it directly addresses umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward incomplete escalation instead of bleeding-risk intervention. The stem cue \"A nurse is caring for a patient 4 hours post-cardiac catheterization via right femoral access\" makes bleeding or anticoagulation injury the active safety concern. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "c": "\"Obtain a STAT hemoglobin and hematocrit\" misses the bedside risk. The cue \"After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "d": "The cue \"After femoral cardiac catheterization, a saturated groin dressing + hypotension = vascular bleeding emergency\" suggests bleeding or anticoagulation injury, so \"Increase the IV fluid rate per standing orders and reassess in 15 minutes\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Safety And Infection Control Stable Vs Unstable",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Safety And Infection Control Stable Vs Unstable",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb758-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "hellp_syndrome",
+      "subcategory": "HELLP Syndrome",
+      "difficulty": 3,
+      "stem": "A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea, and malaise. Labs reveal: AST 280 U/L, LDH 950 U/L, platelets 74,000/mm3, hemoglobin 9.8 g/dL with schistocytes on smear, and normal creatinine. Which condition do these findings indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute fatty liver of pregnancy (AFLP)"
+        },
+        {
+          "id": "b",
+          "text": "HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)"
+        },
+        {
+          "id": "c",
+          "text": "Thrombotic thrombocytopenic purpura (TTP)"
+        },
+        {
+          "id": "d",
+          "text": "Viral hepatitis with thrombocytopenia"
+        }
+      ],
+      "answer": "b",
+      "rationale": "HELLP syndrome is a variant of severe preeclampsia: Hemolysis (schistocytes, elevated LDH, low Hgb), Elevated Liver enzymes (AST >70 U/L), Low Platelets (<100,000). RUQ/epigastric pain from hepatic capsule distension is classic. Definitive treatment is delivery. AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism. TTP (C) presents with the pentad including fever and renal failure. Viral hepatitis (D) would not present with schistocytes and would have different epidemiology.",
+      "distractorRationales": {
+        "a": "\"Acute fatty liver of pregnancy (AFLP)\" misses the bedside risk. The cue \"AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "\"Thrombotic thrombocytopenic purpura (TTP)\" misses the bedside risk. The cue \"A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "The option can leave bleeding or anticoagulation injury untreated because it commits to a competing cause before checking the dangerous pattern. \"HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)\" fits the safer response to the cue \"RUQ/epigastric pain from hepatic capsule distension is classic\"."
+      },
+      "tags": [
+        "HELLP Syndrome",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "HELLP = Hemolysis (schistocytes + elevated LDH) + Elevated Liver enzymes + Low Platelets; treatment is delivery regardless of gestational age.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets). HELLP syndrome is a variant of severe preeclampsia: Hemolysis (schistocytes, elevated LDH, low Hgb), Elevated Liver enzymes (AST >70 U/L), Low Platelets (<100,000). RUQ/epigastric pain from hepatic capsule distension is classic. Definitive treatment is delivery. AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism. TTP (C) presents with the pentad including fever and renal failure. Viral hepatitis (D) would not present with schistocytes and would have different epidemiology. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests HELLP Syndrome through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets) is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Acute fatty liver of pregnancy (AFLP)\" misses the bedside risk. The cue \"AFLP (A) presents with marked coagulopathy (elevated PT/INR, hypoglycemia, jaundice) due to hepatocyte fat infiltration — different mechanism\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Thrombotic thrombocytopenic purpura (TTP)\" misses the bedside risk. The cue \"A pregnant patient at 31 weeks presents with epigastric/RUQ pain, headache, nausea\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave bleeding or anticoagulation injury untreated because it commits to a competing cause before checking the dangerous pattern. \"HELLP syndrome (Hemolysis, Elevated Liver enzymes, Low Platelets)\" fits the safer response to the cue \"RUQ/epigastric pain from hepatic capsule distension is classic\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Hellp Syndrome",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Hellp Syndrome",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb758-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A nurse is working at a migrant farmworker health clinic. A patient presents with signs of pesticide exposure: miosis, excessive salivation, lacrimation, urination, defecation, emesis, and muscle fasciculations. Which class of pesticide is most likely involved and what is the priority antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pyrethroid insecticide; administer diphenhydramine for allergic response"
+        },
+        {
+          "id": "b",
+          "text": "Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates"
+        },
+        {
+          "id": "c",
+          "text": "Organochlorine; administer activated charcoal and benzodiazepines"
+        },
+        {
+          "id": "d",
+          "text": "Herbicide (glyphosate); administer IV sodium bicarbonate"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Organophosphate and carbamate pesticides inhibit acetylcholinesterase, causing accumulation of acetylcholine at muscarinic and nicotinic receptors. Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating. Nicotinic: muscle fasciculations, weakness, paralysis. CNS: seizures, coma. Antidote: (1) Atropine IV (competitive muscarinic antagonist) — dose titrated to dry secretions, not pupil size; (2) Pralidoxime (2-PAM) reactivates cholinesterase if given early (before 'aging') — effective for organophosphates, not carbamates. Migrant farmworkers are at high risk due to occupational pesticide exposure.",
+      "distractorRationales": {
+        "a": "\"Pyrethroid insecticide; administer diphenhydramine for allergic response\" misses the bedside risk. The cue \"high risk in farmworkers\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates\" fits the safer response to the cue \"Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating\".",
+        "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates\" fits the safer response to the cue \"Migrant farmworkers are at high risk due to occupational pesticide exposure\"."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Organophosphate poisoning (DUMBELS): atropine (blocks muscarinic effects) + pralidoxime/2-PAM (reactivates cholinesterase); high risk in farmworkers; titrate atropine to dry secretions.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates. Organophosphate and carbamate pesticides inhibit acetylcholinesterase, causing accumulation of acetylcholine at muscarinic and nicotinic receptors. Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating. Nicotinic: muscle fasciculations, weakness, paralysis. CNS: seizures, coma. Antidote: (1) Atropine IV (competitive muscarinic antagonist) — dose titrated to dry secretions, not pupil size; (2) Pralidoxime (2-PAM) reactivates cholinesterase if given early (before 'aging') — effective for organophosphates, not carbamates. Migrant farmworkers are at high risk due to occupational pesticide exposure. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Community Health through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Pyrethroid insecticide; administer diphenhydramine for allergic response\" misses the bedside risk. The cue \"high risk in farmworkers\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates\" fits the safer response to the cue \"Muscarinic (DUMBELS): Diarrhea/Defecation, Urination, Miosis, Bradycardia/Bronchospasm/Bronchorrhea, Emesis, Lacrimation, Salivation/Sweating\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Organophosphate or carbamate; administer atropine IV to block muscarinic effects, followed by pralidoxime (2-PAM) for organophosphates\" fits the safer response to the cue \"Migrant farmworkers are at high risk due to occupational pesticide exposure\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Community Health",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Community Health",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb759-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "critical_care_fundamentals",
+      "subcategory": "Critical Care Fundamentals",
+      "difficulty": 3,
+      "stem": "A nurse is titrating norepinephrine for a patient in septic shock. Current MAP is 58 mmHg on norepinephrine 0.18 mcg/kg/min. Lactate is 5.4 mmol/L. The provider orders vasopressin 0.03 units/min added as a second vasopressor. The nurse understands the rationale for vasopressin addition is PRIMARILY to:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace endogenous vasopressin that is depleted in prolonged septic shock"
+        },
+        {
+          "id": "b",
+          "text": "Improve cardiac output by increasing stroke volume"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the oxygen demand of the myocardium by lowering heart rate"
+        },
+        {
+          "id": "d",
+          "text": "Decrease SVR to improve tissue perfusion in high-output septic shock"
+        }
+      ],
+      "answer": "a",
+      "rationale": "In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the shock state. Exogenous vasopressin (0.03–0.04 units/min) is added as a fixed-dose adjunct — not titrated — to replace depleted stores and allow reduction ('sparing') of norepinephrine dose (to reduce NE-related adverse effects). Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate (C). It does NOT reduce SVR (D).",
+      "distractorRationales": {
+        "b": "The safer response addresses medication toxicity; \"Improve cardiac output by increasing stroke volume\" moves care toward routine care before medication-safety intervention.",
+        "c": "\"Reduce the oxygen demand of the myocardium by lowering heart rate\" misses the bedside risk. The cue \"Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Decrease SVR to improve tissue perfusion in high-output septic shock\" answers a lower-acuity part of the scenario. The cue \"Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect)\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care."
+      },
+      "tags": [
+        "Critical Care Fundamentals",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect). Fixed dose, not titrated.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-critical-care-fundamentals-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Replace endogenous vasopressin that is depleted in prolonged septic shock. In septic shock, endogenous arginine vasopressin (ADH) stores are depleted within hours due to continuous release during the shock state. Exogenous vasopressin (0.03–0.04 units/min) is added as a fixed-dose adjunct — not titrated — to replace depleted stores and allow reduction ('sparing') of norepinephrine dose (to reduce NE-related adverse effects). Vasopressin acts on V1 receptors to cause vasoconstriction, NOT to improve cardiac output (B) or reduce heart rate (C). It does NOT reduce SVR (D). The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Critical Care Fundamentals through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Replace endogenous vasopressin that is depleted in prolonged septic shock is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The safer response addresses medication toxicity; \"Improve cardiac output by increasing stroke volume\" moves care toward routine care before medication-safety intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Reduce the oxygen demand of the myocardium by lowering heart rate\" misses the bedside risk. The cue \"Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Decrease SVR to improve tissue perfusion in high-output septic shock\" answers a lower-acuity part of the scenario. The cue \"Vasopressin in septic shock: replaces depleted endogenous stores, allows NE dose reduction (NE-sparing effect)\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Critical Care Fundamentals",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Critical Care Fundamentals",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb754-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with hyperthyroidism develops sudden-onset temperature 39.8°C, HR 148 with atrial fibrillation, tremor, and confusion after an emergency appendectomy. Which sequence of pharmacologic interventions is CORRECT for thyroid storm?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Iodine → propylthiouracil (PTU) → propranolol"
+        },
+        {
+          "id": "b",
+          "text": "Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU)"
+        },
+        {
+          "id": "c",
+          "text": "Propranolol → iodine → PTU"
+        },
+        {
+          "id": "d",
+          "text": "Methimazole → iodine → esmolol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The correct sequence for thyroid storm is: (1) PTU first — blocks new thyroid hormone synthesis AND peripheral T4→T3 conversion; (2) propranolol — controls tachycardia and sympathetic symptoms; (3) iodine (Lugol's solution or SSKI) given at least 1 hour AFTER PTU. Iodine must be given after PTU because iodine provides substrate for thyroid hormone production — if given before a thionamide, it can worsen the storm (Jod-Basedow effect). Methimazole (D) does not block peripheral conversion.",
+      "distractorRationales": {
+        "a": "\"Iodine → propylthiouracil (PTU) → propranolol\" answers a lower-acuity part of the scenario. The cue \"(2) propranolol — controls tachycardia and sympathetic symptoms\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "c": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU)\" fits the safer response to the cue \"Never give iodine first\".",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Never give iodine first\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Thyroid storm drug sequence: PTU → propranolol → iodine (1 hour after PTU). Never give iodine first.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU). The correct sequence for thyroid storm is: (1) PTU first — blocks new thyroid hormone synthesis AND peripheral T4→T3 conversion; (2) propranolol — controls tachycardia and sympathetic symptoms; (3) iodine (Lugol's solution or SSKI) given at least 1 hour AFTER PTU. Iodine must be given after PTU because iodine provides substrate for thyroid hormone production — if given before a thionamide, it can worsen the storm (Jod-Basedow effect). Methimazole (D) does not block peripheral conversion. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Medical Surgical Advanced through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU) is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Iodine → propylthiouracil (PTU) → propranolol\" answers a lower-acuity part of the scenario. The cue \"(2) propranolol — controls tachycardia and sympathetic symptoms\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Propylthiouracil (PTU) → propranolol → iodine (one hour after PTU)\" fits the safer response to the cue \"Never give iodine first\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Never give iodine first\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Medical Surgical Advanced",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Medical Surgical Advanced",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

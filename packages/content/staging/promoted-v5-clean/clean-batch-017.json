@@ -1,0 +1,100 @@
+{
+  "batchId": "clean-batch-017",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 1
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb834-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_clue",
+      "subcategory": "dehydration_clue",
+      "difficulty": 1,
+      "stem": "A patient has dry mucous membranes, poor skin turgor, tachycardia, and low urine output. Which interpretation is most useful?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be volume depleted"
+        },
+        {
+          "id": "b",
+          "text": "The patient is fluid overloaded"
+        },
+        {
+          "id": "c",
+          "text": "Low urine output is unrelated to hydration"
+        },
+        {
+          "id": "d",
+          "text": "Tachycardia is expected and not useful"
+        }
+      ],
+      "answer": "a",
+      "rationale": "These signs are consistent with dehydration and possible reduced circulating volume.",
+      "distractorRationales": {
+        "b": "\"The patient is fluid overloaded\" answers a lower-acuity part of the scenario. The cue \"A patient has dry mucous membranes, poor skin turgor, tachycardia\" raises concern for renal injury, so renal protection is needed before routine care.",
+        "c": "The safer response addresses renal injury; \"Low urine output is unrelated to hydration\" moves care toward routine care before renal protection.",
+        "d": "\"Tachycardia is expected and not useful\" normalizes a finding that needs reassessment. The cue \"A patient has dry mucous membranes, poor skin turgor, tachycardia\" raises concern for renal injury, so renal protection is needed before reassurance."
+      },
+      "tags": [
+        "dehydration_clue",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low urine output plus dry assessment findings suggests volume depletion.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: The patient may be volume depleted. These signs are consistent with dehydration and possible reduced circulating volume. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Dehydration Clue through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: The patient may be volume depleted is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"The patient is fluid overloaded\" answers a lower-acuity part of the scenario. The cue \"A patient has dry mucous membranes, poor skin turgor, tachycardia\" raises concern for renal injury, so renal protection is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The safer response addresses renal injury; \"Low urine output is unrelated to hydration\" moves care toward routine care before renal protection. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Tachycardia is expected and not useful\" normalizes a finding that needs reassessment. The cue \"A patient has dry mucous membranes, poor skin turgor, tachycardia\" raises concern for renal injury, so renal protection is needed before reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Dehydration Clue",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Dehydration Clue",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

@@ -1,0 +1,895 @@
+{
+  "batchId": "clean-batch-001",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb757-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 16-year-old male with no prior anesthesia history is 45 minutes into general anesthesia for scoliosis repair using sevoflurane and succinylcholine for intubation. Temperature is now 41.8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg, and the patient is diffusely rigid. The team administers dantrolene 2.5 mg/kg IV. Which statement about dantrolene's mechanism AND the most critical additional intervention is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dantrolene blocks acetylcholine release at the neuromuscular junction; administer succinylcholine for complete muscle relaxation"
+        },
+        {
+          "id": "b",
+          "text": "Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves"
+        },
+        {
+          "id": "c",
+          "text": "Dantrolene reduces hepatic glucose metabolism to decrease heat production; IV acetaminophen and ice packs alone are sufficient once dantrolene is given"
+        },
+        {
+          "id": "d",
+          "text": "Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Dantrolene mechanism: selectively blocks the RYR1 (ryanodine receptor type 1) on the sarcoplasmic reticulum membrane, directly preventing the uncontrolled calcium efflux that drives the MH hypermetabolic crisis. Without continuous calcium release, muscle contraction ceases, and hyperthermia, rigidity, and acidosis begin to resolve. In this case, sevoflurane MUST be stopped immediately — if it was not stopped when masseter rigidity first occurred during succinylcholine administration (an early warning sign), this was a critical error that escalated the crisis. After first dantrolene bolus: (1) Repeat dantrolene 2.5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total); (2) Hyperventilate 100% O2 at high flow (flush volatile agent, treat hypercapnia); (3) Active cooling (ice packs to axillae, groin, neck); (4) Treat VT — avoid calcium channel blockers (interact fatally with dantrolene causing cardiovascular collapse); (5) Sodium bicarbonate for severe acidosis; (6) Treat hyperkalemia. Masseter spasm after succinylcholine should always trigger MH protocol and cessation of volatile agent.",
+      "distractorRationales": {
+        "a": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL\" fits the safer response to the cue \"8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg\".",
+        "c": "This distractor shifts care toward premature activity instead of patient teaching and medication-safety reinforcement. The stem cue \"8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg\" makes oxygenation or ventilation the active safety concern.",
+        "d": "\"Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly\" answers a lower-acuity part of the scenario. The cue \"5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total)\" raises concern for oxygenation or ventilation, so patient teaching and medication-safety reinforcement is needed before routine care."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Dantrolene blocks RYR1 calcium release — the direct MH mechanism. Masseter spasm after succinylcholine = abort case immediately, activate MH protocol. Repeat dantrolene q5 min. Avoid calcium channel blockers (interact fatally with dantrolene).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves. Dantrolene mechanism: selectively blocks the RYR1 (ryanodine receptor type 1) on the sarcoplasmic reticulum membrane, directly preventing the uncontrolled calcium efflux that drives the MH hypermetabolic crisis. Without continuous calcium release, muscle contraction ceases, and hyperthermia, rigidity, and acidosis begin to resolve. In this case, sevoflurane MUST be stopped immediately — if it was not stopped when masseter rigidity first occurred during succinylcholine administration (an early warning sign), this was a critical error that escalated the crisis. After first dantrolene bolus: (1) Repeat dantrolene 2.5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total); (2) Hyperventilate 100% O2 at high flow (flush volatile agent, treat hypercapnia); (3) Active cooling (ice packs to axillae, groin, neck); (4) Treat VT — avoid calcium channel blockers (interact fatally with dantrolene causing cardiovascular collapse); (5) Sodium bicarbonate for severe acidosis; (6) Treat hyperkalemia. Masseter spasm after succinylcholine should always trigger MH protocol and cessation of volatile agent. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Perioperative Care through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL triggering agents (sevoflurane) immediately and repeat dantrolene 2.5 mg/kg every 5 minutes until crisis resolves is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Dantrolene blocks the RYR1 ryanodine receptor, stopping uncontrolled calcium release from the sarcoplasmic reticulum; stop ALL\" fits the safer response to the cue \"8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "This distractor shifts care toward premature activity instead of patient teaching and medication-safety reinforcement. The stem cue \"8°C, HR is 194 (VT on monitor), SpO2 81%, ETCO2 102 mmHg\" makes oxygenation or ventilation the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Dantrolene is a vasodilator that reduces core temperature; one dose is sufficient if given promptly\" answers a lower-acuity part of the scenario. The cue \"5 mg/kg IV every 5 minutes until rigidity resolves and ETCO2 normalizes (may require 5-10 mg/kg total)\" raises concern for oxygenation or ventilation, so patient teaching and medication-safety reinforcement is needed before routine care. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Perioperative Care",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Perioperative Care",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb757-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 4,
+      "stem": "An 85-year-old with moderate Alzheimer's dementia becomes extremely agitated, combative, and confused every evening around 5-6 PM (sundowning behavior). She repeatedly attempts to climb out of bed and is at high fall risk. Her family requests soft wrist restraints. Which nursing approach is MOST appropriate as first-line management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning"
+        },
+        {
+          "id": "b",
+          "text": "Administer haloperidol 5 mg IV as a PRN order for agitation episodes"
+        },
+        {
+          "id": "c",
+          "text": "Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection"
+        },
+        {
+          "id": "d",
+          "text": "Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Physical restraints in elderly dementia patients with sundowning WORSEN outcomes: they increase agitation and distress, increase fall and injury risk (patients attempt to escape restraints), contribute to delirium, cause pressure injuries, aspiration, and death. Restraints are a last resort, never first-line, and require physician order with regular reassessment. Evidence-based non-pharmacological first-line approaches: (1) Light therapy — bright light exposure in the morning resets circadian rhythm; reduce stimulation in the evening; (2) Consistent daily routine and familiar environment; (3) Family presence during peak agitation times (5-7 PM); (4) Structured meaningful activity during the day prevents excessive daytime sleeping; (5) Calm, simple, one-step verbal redirection. If pharmacotherapy is needed after non-pharmacological failure, low-dose scheduled quetiapine may be considered. High-dose IV haloperidol is not appropriate first-line. Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall risk.",
+      "distractorRationales": {
+        "a": "\"Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning\" treats active deterioration as something safe to watch. The cue \"High-dose IV haloperidol is not appropriate first-line\" raises concern for medication toxicity, so medication-safety intervention is needed before routine observation.",
+        "b": "The cue \"High-dose IV haloperidol is not appropriate first-line\" suggests medication toxicity, so \"Administer haloperidol 5 mg IV as a PRN order for agitation episodes\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "\"Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation\" answers a lower-acuity part of the scenario. The cue \"High-dose IV haloperidol is not appropriate first-line\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sundowning first-line: non-pharmacological — light therapy, routine, family presence, daytime activity, redirection. Physical restraints WORSEN agitation and cause harm. Benzodiazepines contraindicated in elderly dementia patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection. Physical restraints in elderly dementia patients with sundowning WORSEN outcomes: they increase agitation and distress, increase fall and injury risk (patients attempt to escape restraints), contribute to delirium, cause pressure injuries, aspiration, and death. Restraints are a last resort, never first-line, and require physician order with regular reassessment. Evidence-based non-pharmacological first-line approaches: (1) Light therapy — bright light exposure in the morning resets circadian rhythm; reduce stimulation in the evening; (2) Consistent daily routine and familiar environment; (3) Family presence during peak agitation times (5-7 PM); (4) Structured meaningful activity during the day prevents excessive daytime sleeping; (5) Calm, simple, one-step verbal redirection. If pharmacotherapy is needed after non-pharmacological failure, low-dose scheduled quetiapine may be considered. High-dose IV haloperidol is not appropriate first-line. Lorazepam and all benzodiazepines are explicitly Beers Criteria-inappropriate in elderly dementia patients — they worsen confusion and fall risk. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Gerontology through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Implement non-pharmacological interventions: increased daytime activity and light exposure, consistent routine, family presence during peak agitation time, reduced evening stimulation, and calm redirection is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Apply soft wrist restraints bilaterally — this is the safest approach to prevent falls during sundowning\" treats active deterioration as something safe to watch. The cue \"High-dose IV haloperidol is not appropriate first-line\" raises concern for medication toxicity, so medication-safety intervention is needed before routine observation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The cue \"High-dose IV haloperidol is not appropriate first-line\" suggests medication toxicity, so \"Administer haloperidol 5 mg IV as a PRN order for agitation episodes\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Request a standing order for lorazepam 1 mg PO nightly as a preventive measure against evening agitation\" answers a lower-acuity part of the scenario. The cue \"High-dose IV haloperidol is not appropriate first-line\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb755-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A morbidly obese patient with symptomatic GERD requires urgent surgery. The anesthesiologist plans rapid sequence induction (RSI). During RSI, which nursing action is most important to reduce pulmonary aspiration risk?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Place the patient in Trendelenburg position to maximize airway visualization"
+        },
+        {
+          "id": "b",
+          "text": "Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is confirmed"
+        },
+        {
+          "id": "c",
+          "text": "Insert a nasogastric tube immediately before induction to fully decompress the stomach"
+        },
+        {
+          "id": "d",
+          "text": "Administer metoclopramide IV push 10 minutes before induction to empty the stomach"
+        }
+      ],
+      "answer": "b",
+      "rationale": "RSI is used for patients at elevated aspiration risk (obesity, GERD, full stomach, pregnancy, bowel obstruction). It combines: pre-oxygenation → simultaneous administration of a rapid induction agent (propofol/ketamine) and a fast-onset neuromuscular blocking agent (succinylcholine or high-dose rocuronium) → immediate intubation without manual ventilation. The nurse's critical role: apply firm downward pressure on the cricoid cartilage (Sellick maneuver) to compress the esophagus between the cricoid ring and the cervical vertebra, preventing passive regurgitation of gastric contents until ETT cuff is inflated and placement confirmed by capnography. If active vomiting occurs, cricoid pressure must be released immediately (holds vomiting in and increases aspiration risk). NGT cannot adequately empty the stomach in time and does not protect the airway. Trendelenburg (head-down) increases aspiration risk. Metoclopramide is adjunctive preparation, not a substitute for RSI or cricoid pressure.",
+      "distractorRationales": {
+        "a": "\"Place the patient in Trendelenburg position to maximize airway visualization\" is lower acuity or expected in this context, so it is not the finding requiring follow-up. The keyed answer better signals oxygenation or ventilation and needs airway and breathing intervention.",
+        "c": "\"Insert a nasogastric tube immediately before induction to fully decompress the stomach\" is lower acuity or expected in this context, so it is not the finding requiring follow-up. The keyed answer better signals oxygenation or ventilation and needs airway and breathing intervention.",
+        "d": "\"Administer metoclopramide IV push 10 minutes before induction to empty the stomach\" is lower acuity or expected in this context, so it is not the finding requiring follow-up. The keyed answer better signals oxygenation or ventilation and needs airway and breathing intervention."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "RSI aspiration prevention: nurse applies cricoid pressure (Sellick maneuver) — compresses esophagus to prevent passive regurgitation during intubation. Release if active vomiting occurs. Used for all high-risk aspiration patients.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is confirmed. RSI is used for patients at elevated aspiration risk (obesity, GERD, full stomach, pregnancy, bowel obstruction). It combines: pre-oxygenation → simultaneous administration of a rapid induction agent (propofol/ketamine) and a fast-onset neuromuscular blocking agent (succinylcholine or high-dose rocuronium) → immediate intubation without manual ventilation. The nurse's critical role: apply firm downward pressure on the cricoid cartilage (Sellick maneuver) to compress the esophagus between the cricoid ring and the cervical vertebra, preventing passive regurgitation of gastric contents until ETT cuff is inflated and placement confirmed by capnography. If active vomiting occurs, cricoid pressure must be released immediately (holds vomiting in and increases aspiration risk). NGT cannot adequately empty the stomach in time and does not protect the airway. Trendelenburg (head-down) increases aspiration risk. Metoclopramide is adjunctive preparation, not a substitute for RSI or cricoid pressure. The clinical focus is umbilical cord compression, so the review should connect the answer to cord, compression, fetal, bradycardia.",
+        "mechanism": "This item tests Perioperative Care through umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. These cord, compression, fetal, bradycardia cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Apply firm cricoid pressure (Sellick maneuver) as directed by the anesthesia provider until ETT placement is confirmed is correct because it directly addresses umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Place the patient in Trendelenburg position to maximize airway visualization\" is lower acuity or expected in this context, so it is not the finding requiring follow-up. The keyed answer better signals oxygenation or ventilation and needs airway and breathing intervention. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "c": "\"Insert a nasogastric tube immediately before induction to fully decompress the stomach\" is lower acuity or expected in this context, so it is not the finding requiring follow-up. The keyed answer better signals oxygenation or ventilation and needs airway and breathing intervention. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first.",
+          "d": "\"Administer metoclopramide IV push 10 minutes before induction to empty the stomach\" is lower acuity or expected in this context, so it is not the finding requiring follow-up. The keyed answer better signals oxygenation or ventilation and needs airway and breathing intervention. Clinically, this misses umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Perioperative Care",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Perioperative Care",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb753-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 4,
+      "stem": "A patient is 4 hours post right hemicolectomy. Current vital signs: HR 132, BP 78/50 (was 120/74 post-op), RR 26, SpO2 93%, patient is anxious and diaphoretic. The surgical drain has collected 310 mL of bright red blood in the past 2 hours. What is the nurse's correct priority sequence of actions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the IV fluid rate, administer a scheduled analgesic, and notify the physician within the next 30-60 minutes"
+        },
+        {
+          "id": "b",
+          "text": "Clamp the surgical drain to slow blood loss; place the patient in standard Trendelenburg (head-down 30°)"
+        },
+        {
+          "id": "c",
+          "text": "Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20°), infuse ordered IV fluids rapidly, notify the surgeon STAT, activate the massive transfusion protocol, and prepare the patient for possible emergent return to OR"
+        },
+        {
+          "id": "d",
+          "text": "Administer protamine sulfate IV to reverse any residual surgical anticoagulation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "This patient is in post-operative hemorrhagic shock (Class II-III): bright red surgical drain output 310 mL/2 hrs (active arterial bleeding), compensatory tachycardia, hypotension, tachypnea, diaphoresis, and anxiety. Priority sequence: (1) Ensure 2 large-bore IVs (16g or larger) if not already present; (2) Modified Trendelenburg (legs elevated 15-20°) — provides passive autotransfusion of ~500 mL and assesses fluid responsiveness; DO NOT use classic Trendelenburg (head-down), which impairs respiratory mechanics and venous return; (3) Rapid IV fluid infusion + packed RBCs (O-negative if type-and-screen pending); (4) Activate massive transfusion protocol (1:1:1 ratio of PRBCs:FFP:platelets) for suspected massive hemorrhage; (5) Notify surgeon STAT — post-operative hemorrhage requires surgical re-exploration; (6) Prepare for emergency OR. Clamping the drain causes hematoma formation and masks ongoing hemorrhage without stopping the bleeding. Protamine reverses heparin anticoagulation — not indicated here.",
+      "distractorRationales": {
+        "a": "\"Increase the IV fluid rate, administer a scheduled analgesic, and notify the physician within the next 30-60 minutes\" misses the bedside risk. The cue \"Post-op hemorrhagic shock: bright red drain + tachycardia + hypotension = surgical emergency\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "b": "\"Clamp the surgical drain to slow blood loss; place the patient in standard Trendelenburg (head-down 30°)\" misses the bedside risk. The cue \"Protamine reverses heparin anticoagulation — not indicated here\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20°), infuse ordered IV fluids rapidly, notify\" fits the safer response to the cue \"(3) Rapid IV fluid infusion + packed RBCs (O-negative if type-and-screen pending)\"."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op hemorrhagic shock: bright red drain + tachycardia + hypotension = surgical emergency. Large-bore IVs + fluids + blood + notify surgeon STAT + MTP + OR. Modified Trendelenburg (legs up), NOT classic head-down. Do not clamp drain.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20°), infuse ordered IV fluids rapidly, notify the surgeon STAT, activate the massive transfusion protocol, and prepare the patient for possible emergent return to OR. This patient is in post-operative hemorrhagic shock (Class II-III): bright red surgical drain output 310 mL/2 hrs (active arterial bleeding), compensatory tachycardia, hypotension, tachypnea, diaphoresis, and anxiety. Priority sequence: (1) Ensure 2 large-bore IVs (16g or larger) if not already present; (2) Modified Trendelenburg (legs elevated 15-20°) — provides passive autotransfusion of ~500 mL and assesses fluid responsiveness; DO NOT use classic Trendelenburg (head-down), which impairs respiratory mechanics and venous return; (3) Rapid IV fluid infusion + packed RBCs (O-negative if type-and-screen pending); (4) Activate massive transfusion protocol (1:1:1 ratio of PRBCs:FFP:platelets) for suspected massive hemorrhage; (5) Notify surgeon STAT — post-operative hemorrhage requires surgical re-exploration; (6) Prepare for emergency OR. Clamping the drain causes hematoma formation and masks ongoing hemorrhage without stopping the bleeding. Protamine reverses heparin anticoagulation — not indicated here. The clinical focus is Guillain-Barre respiratory muscle weakness, so the review should connect the answer to ventilation, vital capacity, respiratory, neuromuscular.",
+        "mechanism": "This item tests Perioperative Care through Guillain-Barre respiratory muscle weakness: ascending neuromuscular weakness can impair ventilation, so declining vital capacity signals airway and breathing risk. These ventilation, vital capacity, respiratory, neuromuscular cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20°), infuse ordered IV fluids rapidly, notify the surgeon STAT, activate the massive transfusion protocol, and prepare the patient for possible emergent return to OR is correct because it directly addresses Guillain-Barre respiratory muscle weakness. ascending neuromuscular weakness can impair ventilation, so declining vital capacity signals airway and breathing risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Increase the IV fluid rate, administer a scheduled analgesic, and notify the physician within the next 30-60 minutes\" misses the bedside risk. The cue \"Post-op hemorrhagic shock: bright red drain + tachycardia + hypotension = surgical emergency\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses Guillain-Barre respiratory muscle weakness: ascending neuromuscular weakness can impair ventilation, so declining vital capacity signals airway and breathing risk.",
+          "b": "\"Clamp the surgical drain to slow blood loss; place the patient in standard Trendelenburg (head-down 30°)\" misses the bedside risk. The cue \"Protamine reverses heparin anticoagulation — not indicated here\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses Guillain-Barre respiratory muscle weakness: ascending neuromuscular weakness can impair ventilation, so declining vital capacity signals airway and breathing risk.",
+          "d": "The option can leave oxygenation or ventilation untreated because it answers a lower-acuity part of the scenario. \"Ensure large-bore IV access, apply modified Trendelenburg (elevate legs 15-20°), infuse ordered IV fluids rapidly, notify\" fits the safer response to the cue \"(3) Rapid IV fluid infusion + packed RBCs (O-negative if type-and-screen pending)\". Clinically, this misses Guillain-Barre respiratory muscle weakness: ascending neuromuscular weakness can impair ventilation, so declining vital capacity signals airway and breathing risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Perioperative Care",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Heparin Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682826.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Perioperative Care",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Heparin Injection",
+          "citation": "NIH MedlinePlus drug monograph: Heparin Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682826.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb756-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A patient is 6 hours post open abdominal surgery and reports pain rated 8/10. The patient is on scheduled ketorolac IV and a hydromorphone PCA but frequently presses the PCA demand button. Respiratory rate is 14 and SpO2 is 97%. Which is the most appropriate nursing response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact the physician to increase the PCA demand dose — the patient clearly has inadequate pain control"
+        },
+        {
+          "id": "b",
+          "text": "Withhold all PCA doses and reassess in 2 hours — respiratory rate below 16 requires opioid restriction"
+        },
+        {
+          "id": "c",
+          "text": "Reassess pain using a validated scale, review PCA usage data and lockout history, maximize non-opioid adjuncts (IV acetaminophen if not given), and contact physician if pain remains uncontrolled"
+        },
+        {
+          "id": "d",
+          "text": "Administer naloxone 0.4 mg IV prophylactically to protect respiratory reserve before adjusting the PCA"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Effective post-operative pain management requires a systematic, multimodal approach. Steps: (1) Reassess pain thoroughly — PQRST (location, quality, timing — is this expected surgical pain or a new complication like wound dehiscence?); (2) Review PCA data — are demand attempts successful or being locked out? Is the patient pressing correctly? Is the demand dose reaching the lockout ceiling?; (3) Ensure non-opioid adjuncts are maximized: scheduled acetaminophen (reduces opioid requirements 20-30%), ketorolac, and consider regional analgesia; (4) Contact physician if pain remains uncontrolled despite optimized non-opioids. SpO2 97% + RR 14 indicates adequate ventilation — opioids are NOT contraindicated. The outdated practice of withholding opioids for RR <16 without clinical signs of respiratory depression is not evidence-based and results in undertreated pain. Prophylactic naloxone reverses analgesia and is inappropriate without signs of opioid toxicity.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"SpO2 97% + RR 14 indicates adequate ventilation — opioids are NOT contraindicated\" makes oxygenation or ventilation the active safety concern.",
+        "b": "This distractor shifts care toward delayed assessment instead of airway and breathing intervention. The stem cue \"Respiratory rate is 14 and SpO2 is 97%\" makes oxygenation or ventilation the active safety concern.",
+        "d": "This distractor shifts care toward incomplete escalation instead of airway and breathing intervention. The stem cue \"Respiratory rate is 14 and SpO2 is 97%\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-op pain: systematic multimodal assessment — maximize non-opioids (acetaminophen, NSAIDs), review PCA data, then escalate to MD. RR 14 + SpO2 97% with no signs of toxicity does NOT justify withholding opioids.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Reassess pain using a validated scale, review PCA usage data and lockout history, maximize non-opioid adjuncts (IV acetaminophen if not given), and contact physician if pain remains uncontrolled. Effective post-operative pain management requires a systematic, multimodal approach. Steps: (1) Reassess pain thoroughly — PQRST (location, quality, timing — is this expected surgical pain or a new complication like wound dehiscence?); (2) Review PCA data — are demand attempts successful or being locked out? Is the patient pressing correctly? Is the demand dose reaching the lockout ceiling?; (3) Ensure non-opioid adjuncts are maximized: scheduled acetaminophen (reduces opioid requirements 20-30%), ketorolac, and consider regional analgesia; (4) Contact physician if pain remains uncontrolled despite optimized non-opioids. SpO2 97% + RR 14 indicates adequate ventilation — opioids are NOT contraindicated. The outdated practice of withholding opioids for RR <16 without clinical signs of respiratory depression is not evidence-based and results in undertreated pain. Prophylactic naloxone reverses analgesia and is inappropriate without signs of opioid toxicity. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Perioperative Care through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Reassess pain using a validated scale, review PCA usage data and lockout history, maximize non-opioid adjuncts (IV acetaminophen if not given), and contact physician if pain remains uncontrolled is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"SpO2 97% + RR 14 indicates adequate ventilation — opioids are NOT contraindicated\" makes oxygenation or ventilation the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "This distractor shifts care toward delayed assessment instead of airway and breathing intervention. The stem cue \"Respiratory rate is 14 and SpO2 is 97%\" makes oxygenation or ventilation the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward incomplete escalation instead of airway and breathing intervention. The stem cue \"Respiratory rate is 14 and SpO2 is 97%\" makes oxygenation or ventilation the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Perioperative Care",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Naloxone",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a612022.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Perioperative Care",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Naloxone",
+          "citation": "NIH MedlinePlus drug monograph: Naloxone - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a612022.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb751-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "perioperative_care",
+      "subcategory": "Perioperative Care",
+      "difficulty": 3,
+      "stem": "A 19-year-old with no prior medical or anesthesia history is 30 minutes into general anesthesia for appendectomy. The PACU nurse is called to the OR: temperature 39.9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%, and ETCO2 82 mmHg. What is the priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer acetaminophen IV and cooling blankets for a likely febrile surgical response"
+        },
+        {
+          "id": "b",
+          "text": "Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart"
+        },
+        {
+          "id": "c",
+          "text": "Administer succinylcholine to relieve the masseter rigidity and improve ventilation"
+        },
+        {
+          "id": "d",
+          "text": "Treat the hyperkalemia first with calcium gluconate — MH-induced hyperkalemia is the immediate threat"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Malignant hyperthermia (MH) is a life-threatening pharmacogenetic disorder triggered in susceptible individuals (RYR1 gene mutation) by volatile anesthetic agents (sevoflurane, desflurane, halothane) and succinylcholine. Uncontrolled calcium release from the sarcoplasmic reticulum causes: sustained muscle contraction → hyperthermia (temperature rises 1°C every 5 minutes if untreated), diffuse rigidity, masseter spasm (early sign), respiratory and metabolic acidosis (CO2 soaring), rhabdomyolysis, hyperkalemia, and ventricular dysrhythmias. Untreated MH mortality exceeds 80%. Protocol: (1) Stop ALL triggering agents immediately; (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia); (3) Dantrolene 2.5 mg/kg IV bolus — repeat every 5 minutes until crisis resolves (max ~10 mg/kg); (4) Cooling measures; (5) Treat hyperkalemia, acidosis, and dysrhythmias as they arise. Succinylcholine IS a triggering agent — administering it would worsen MH.",
+      "distractorRationales": {
+        "a": "\"Administer acetaminophen IV and cooling blankets for a likely febrile surgical response\" answers a lower-acuity part of the scenario. The cue \"(2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia)\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "c": "\"Administer succinylcholine to relieve the masseter rigidity and improve ventilation\" answers a lower-acuity part of the scenario. The cue \"9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "d": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene\" fits the safer response to the cue \"Protocol: (1) Stop ALL triggering agents immediately\"."
+      },
+      "tags": [
+        "Perioperative Care",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "MH: rising temp + masseter rigidity + high ETCO2 + tachycardia during general anesthesia. STOP triggering agents immediately. Dantrolene 2.5 mg/kg IV STAT (repeat q5 min). Succinylcholine triggers MH — never give.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-perioperative-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart. Malignant hyperthermia (MH) is a life-threatening pharmacogenetic disorder triggered in susceptible individuals (RYR1 gene mutation) by volatile anesthetic agents (sevoflurane, desflurane, halothane) and succinylcholine. Uncontrolled calcium release from the sarcoplasmic reticulum causes: sustained muscle contraction → hyperthermia (temperature rises 1°C every 5 minutes if untreated), diffuse rigidity, masseter spasm (early sign), respiratory and metabolic acidosis (CO2 soaring), rhabdomyolysis, hyperkalemia, and ventricular dysrhythmias. Untreated MH mortality exceeds 80%. Protocol: (1) Stop ALL triggering agents immediately; (2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia); (3) Dantrolene 2.5 mg/kg IV bolus — repeat every 5 minutes until crisis resolves (max ~10 mg/kg); (4) Cooling measures; (5) Treat hyperkalemia, acidosis, and dysrhythmias as they arise. Succinylcholine IS a triggering agent — administering it would worsen MH. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Perioperative Care through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene sodium 2.5 mg/kg IV, and call for the MH cart is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Administer acetaminophen IV and cooling blankets for a likely febrile surgical response\" answers a lower-acuity part of the scenario. The cue \"(2) Hyperventilate with 100% O2 at 2-3× normal minute ventilation (flush volatile agents, treat hypercapnia)\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"Administer succinylcholine to relieve the masseter rigidity and improve ventilation\" answers a lower-acuity part of the scenario. The cue \"9°C and rising, masseter muscle rigidity (jaw locked), HR 162 and irregular, SpO2 87%\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "The option can leave oxygenation or ventilation untreated because it moves to activity, intake, or discharge planning too early. \"Activate the malignant hyperthermia (MH) protocol: stop all triggering agents, hyperventilate with 100% O2, administer dantrolene\" fits the safer response to the cue \"Protocol: (1) Stop ALL triggering agents immediately\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Perioperative Care",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Perioperative Care",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb755-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "Which age-related physiological changes MOST directly alter drug pharmacokinetics in elderly patients, creating the highest risk of toxicity?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increased gastric acid production and increased GI motility → reduced oral drug absorption for most medications"
+        },
+        {
+          "id": "b",
+          "text": "Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally and hepatically cleared drugs accumulate and fat-soluble drugs have prolonged half-lives"
+        },
+        {
+          "id": "c",
+          "text": "Increased plasma albumin levels → less free drug available, requiring higher doses in elderly"
+        },
+        {
+          "id": "d",
+          "text": "Increased cardiac output → faster distribution, shorter half-lives, and need for higher doses"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Key age-related pharmacokinetic changes: (1) Renal — GFR declines ~1 mL/min/year after age 40 (Cockcroft-Gault may overestimate renal function in elderly with low muscle mass) → renally cleared drugs accumulate: digoxin, metformin, aminoglycosides, NSAIDs, methotrexate; (2) Hepatic — reduced hepatic mass, blood flow, and CYP450 activity → first-pass metabolism reduced (increased oral bioavailability), phase I reactions (oxidation, reduction) more impaired than phase II (conjugation); (3) Body composition — increased fat, decreased lean mass, decreased total body water → fat-soluble drugs (benzodiazepines, diazepam, amiodarone) have larger volume of distribution and prolonged half-lives; water-soluble drugs (lithium, digoxin) reach higher concentrations with same dose; (4) Protein — decreased albumin → increased free fraction of highly protein-bound drugs (warfarin, phenytoin). GI motility decreases (not increases) with age. Cardiac output decreases.",
+      "distractorRationales": {
+        "a": "The safer response addresses bleeding or anticoagulation injury; \"Increased gastric acid production and increased GI motility → reduced oral drug absorption for most medications\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention.",
+        "c": "The safer response addresses bleeding or anticoagulation injury; \"Increased plasma albumin levels → less free drug available, requiring higher doses in elderly\" moves care toward routine care before bleeding-risk intervention.",
+        "d": "\"Increased cardiac output → faster distribution, shorter half-lives, and need for higher doses\" misses the bedside risk. The cue \"(2) Hepatic — reduced hepatic mass, blood flow\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Elderly pharmacokinetics: decreased GFR (drug accumulation), decreased hepatic clearance, increased fat (prolonged half-lives of fat-soluble drugs), decreased albumin (more free drug). Principle: 'Start low, go slow.'",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally and hepatically cleared drugs accumulate and fat-soluble drugs have prolonged half-lives. Key age-related pharmacokinetic changes: (1) Renal — GFR declines ~1 mL/min/year after age 40 (Cockcroft-Gault may overestimate renal function in elderly with low muscle mass) → renally cleared drugs accumulate: digoxin, metformin, aminoglycosides, NSAIDs, methotrexate; (2) Hepatic — reduced hepatic mass, blood flow, and CYP450 activity → first-pass metabolism reduced (increased oral bioavailability), phase I reactions (oxidation, reduction) more impaired than phase II (conjugation); (3) Body composition — increased fat, decreased lean mass, decreased total body water → fat-soluble drugs (benzodiazepines, diazepam, amiodarone) have larger volume of distribution and prolonged half-lives; water-soluble drugs (lithium, digoxin) reach higher concentrations with same dose; (4) Protein — decreased albumin → increased free fraction of highly protein-bound drugs (warfarin, phenytoin). GI motility decreases (not increases) with age. Cardiac output decreases. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Gerontology through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Decreased renal GFR, decreased hepatic mass and blood flow, and increased body fat percentage → renally and hepatically cleared drugs accumulate and fat-soluble drugs have prolonged half-lives is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses bleeding or anticoagulation injury; \"Increased gastric acid production and increased GI motility → reduced oral drug absorption for most medications\" moves care toward ambulation, intake, or discharge teaching before bleeding-risk intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The safer response addresses bleeding or anticoagulation injury; \"Increased plasma albumin levels → less free drug available, requiring higher doses in elderly\" moves care toward routine care before bleeding-risk intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Increased cardiac output → faster distribution, shorter half-lives, and need for higher doses\" misses the bedside risk. The cue \"(2) Hepatic — reduced hepatic mass, blood flow\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Amiodarone",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a687009.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Warfarin",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682277.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Amiodarone",
+          "citation": "NIH MedlinePlus drug monograph: Amiodarone - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a687009.html"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Warfarin",
+          "citation": "NIH MedlinePlus drug monograph: Warfarin - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682277.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb759-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 5,
+      "stem": "An 86-year-old woman with CKD stage 3, atrial fibrillation, type 2 diabetes, hypertension, and heart failure takes: warfarin, metformin, lisinopril, furosemide, spironolactone, digoxin, and glipizide. She is admitted with dizziness, yellow-green visual halos, nausea, and bradycardia (HR 44, irregular). INR is 5.1 and potassium is 3.0 mEq/L. Which drug-drug-disease interaction cascade best explains her presentation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms"
+        },
+        {
+          "id": "b",
+          "text": "Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia"
+        },
+        {
+          "id": "c",
+          "text": "Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance from CKD stage 3"
+        },
+        {
+          "id": "d",
+          "text": "Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding"
+        }
+      ],
+      "answer": "c",
+      "rationale": "The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia, heart block, dysrhythmias), and visual changes (yellow-green halos, blurred vision, scotomas). Precipitating cascade: (1) Furosemide → hypokalemia (K+ 3.0 mEq/L); (2) Spironolactone partially counteracts furosemide-induced K+ loss but is insufficient; (3) Hypokalemia increases digoxin-Na+/K+-ATPase binding affinity → potentiates digoxin effect even at previously therapeutic serum levels; (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation; (5) Supratherapeutic INR (5.1) is a separate finding — likely from dietary change or drug interaction affecting warfarin metabolism. Management: hold digoxin, carefully replete potassium (IV in symptomatic bradycardia), cardiac monitoring, Digibind (digoxin immune Fab) for severe bradycardia or life-threatening dysrhythmia; hold warfarin and administer vitamin K for INR reversal.",
+      "distractorRationales": {
+        "a": "\"Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms\" misses the bedside risk. The cue \"The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "b": "\"Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia\" misses the bedside risk. The cue \"The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "The cue \"The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia\" suggests bleeding or anticoagulation injury, so \"Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Digoxin toxicity: yellow-green halos + bradycardia + nausea. Hypokalemia potentiates digoxin toxicity even at 'therapeutic' levels. CKD reduces digoxin clearance. Treat: hold digoxin, correct K+, Digibind for severe cases.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance from CKD stage 3. The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia, heart block, dysrhythmias), and visual changes (yellow-green halos, blurred vision, scotomas). Precipitating cascade: (1) Furosemide → hypokalemia (K+ 3.0 mEq/L); (2) Spironolactone partially counteracts furosemide-induced K+ loss but is insufficient; (3) Hypokalemia increases digoxin-Na+/K+-ATPase binding affinity → potentiates digoxin effect even at previously therapeutic serum levels; (4) CKD stage 3 reduces renal digoxin clearance → drug accumulation; (5) Supratherapeutic INR (5.1) is a separate finding — likely from dietary change or drug interaction affecting warfarin metabolism. Management: hold digoxin, carefully replete potassium (IV in symptomatic bradycardia), cardiac monitoring, Digibind (digoxin immune Fab) for severe bradycardia or life-threatening dysrhythmia; hold warfarin and administer vitamin K for INR reversal. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Gerontology through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Digoxin toxicity (yellow-green visual halos, bradycardia, nausea) precipitated by furosemide-induced hypokalemia, compounded by reduced renal clearance from CKD stage 3 is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Metformin toxicity causing lactic acidosis, with glipizide-induced hypoglycemia masking neurological symptoms\" misses the bedside risk. The cue \"The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "b": "\"Supratherapeutic warfarin (INR 5.1) causing a bleeding stroke, presenting as visual disturbances and bradycardia\" misses the bedside risk. The cue \"The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "The cue \"The clinical picture is classic digoxin toxicity: the pathognomonic triad of GI symptoms (nausea, anorexia), cardiac effects (bradycardia\" suggests bleeding or anticoagulation injury, so \"Lisinopril-induced hyperkalemia causing bradycardia, with warfarin causing visual disturbances through retinal bleeding\" would not correct the active problem. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Furosemide",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682858.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Warfarin",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682277.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Furosemide",
+          "citation": "NIH MedlinePlus drug monograph: Furosemide - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682858.html"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Warfarin",
+          "citation": "NIH MedlinePlus drug monograph: Warfarin - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682277.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb756-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 2,
+      "stem": "A home health nurse visits a 77-year-old woman living with her adult son. The patient is visibly malnourished, has multiple bruises in different stages of healing on her upper arms and back, appears fearful, defers all answers to her son, and the son insists on remaining present. He controls her bank accounts and medications. What is the nurse's priority action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document the findings carefully and schedule a follow-up visit to gather more data before acting"
+        },
+        {
+          "id": "b",
+          "text": "Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to speak with the patient privately"
+        },
+        {
+          "id": "c",
+          "text": "Confront the son directly about the suspicious bruising during the current visit"
+        },
+        {
+          "id": "d",
+          "text": "Provide the patient with an elder abuse pamphlet and leave a hotline number for her to call independently"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Nurses are mandatory reporters of suspected elder abuse in all U.S. states and territories. Elder abuse types present here: physical (bruises in varied healing stages, suggesting repeated events), psychological (fearfulness, deferring all answers), financial (son controlling finances), and neglect (malnutrition). Mandatory reporting requires only reasonable suspicion — confirmation is not needed before reporting. Priority actions: (1) Report to APS; (2) Attempt to interview the patient ALONE — abusers typically prevent private access; observe if the patient speaks differently without the abuser present; (3) Document objectively and specifically (bruise size, location, color indicating healing stage). Confronting the abuser directly may escalate danger. Delaying for more data when indicators are already clear is inappropriate and potentially harmful. The nurse's legal obligation overrides deference to family dynamics.",
+      "distractorRationales": {
+        "a": "The cue \"(2) Attempt to interview the patient ALONE — abusers typically prevent private access\" suggests medication toxicity, so \"Document the findings carefully and schedule a follow-up visit to gather more data before acting\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "The cue \"Priority actions: (1) Report to APS\" suggests medication toxicity, so \"Confront the son directly about the suspicious bruising during the current visit\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The safer response addresses medication toxicity; \"Provide the patient with an elder abuse pamphlet and leave a hotline number for her to call independently\" moves care toward waiting for a callback before medication-safety intervention."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Elder abuse: mandatory report to APS on reasonable suspicion — no confirmation required. Attempt private interview with patient. Document objectively. Confronting the abuser can escalate danger to the patient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to speak with the patient privately. Nurses are mandatory reporters of suspected elder abuse in all U.S. states and territories. Elder abuse types present here: physical (bruises in varied healing stages, suggesting repeated events), psychological (fearfulness, deferring all answers), financial (son controlling finances), and neglect (malnutrition). Mandatory reporting requires only reasonable suspicion — confirmation is not needed before reporting. Priority actions: (1) Report to APS; (2) Attempt to interview the patient ALONE — abusers typically prevent private access; observe if the patient speaks differently without the abuser present; (3) Document objectively and specifically (bruise size, location, color indicating healing stage). Confronting the abuser directly may escalate danger. Delaying for more data when indicators are already clear is inappropriate and potentially harmful. The nurse's legal obligation overrides deference to family dynamics. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Gerontology through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Report suspected elder abuse to adult protective services (APS) as a mandatory reporter and attempt to speak with the patient privately is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"(2) Attempt to interview the patient ALONE — abusers typically prevent private access\" suggests medication toxicity, so \"Document the findings carefully and schedule a follow-up visit to gather more data before acting\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"Priority actions: (1) Report to APS\" suggests medication toxicity, so \"Confront the son directly about the suspicious bruising during the current visit\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The safer response addresses medication toxicity; \"Provide the patient with an elder abuse pamphlet and leave a hotline number for her to call independently\" moves care toward waiting for a callback before medication-safety intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb752-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "gerontology",
+      "subcategory": "Gerontology",
+      "difficulty": 3,
+      "stem": "Patient A (83 yo) has sudden-onset inattention, waxing-and-waning confusion, and visual hallucinations appearing 2 days after starting opioids post-hip surgery. Patient B (79 yo) has 4 years of progressive memory loss, gets lost in familiar environments, and repeatedly asks the same questions. Which statement correctly classifies these presentations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both have dementia; Patient A has early-onset and Patient B has late-stage Alzheimer's disease"
+        },
+        {
+          "id": "b",
+          "text": "Patient A has delirium (acute, fluctuating, reversible, identifiable cause); Patient B has dementia (insidious, progressive, irreversible)"
+        },
+        {
+          "id": "c",
+          "text": "Patient A has depression (pseudodementia) from opioid use; Patient B has Lewy body dementia"
+        },
+        {
+          "id": "d",
+          "text": "Both require CT head imaging to differentiate — clinical assessment alone is insufficient"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Delirium vs Dementia: Delirium — ACUTE onset (hours to days), FLUCTUATING course, typically reversible with treatment of precipitant (opioids, infection, metabolic derangement, post-op state), hallucinations (especially visual) common, INATTENTION is the cardinal distinguishing feature. Dementia — INSIDIOUS onset (months to years), PROGRESSIVE course, irreversible underlying pathology, recent memory loss predominates, attention relatively preserved until late stages. Patient A has delirium (acute, precipitant-identified — opioids) and Patient B has dementia (gradual progression). Treatment of delirium: remove or reduce offending drug, provide reorientation, preserve sleep-wake cycle, family presence, early mobility; low-dose haloperidol for severe agitation. Delirium in hospitalized elderly is associated with significantly increased mortality and prolonged hospitalization. Use CAM (Confusion Assessment Method) to screen.",
+      "distractorRationales": {
+        "a": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Patient A has delirium (acute, fluctuating, reversible, identifiable cause); Patient B has dementia (insidious, progressive, irreversible)\" fits the safer response to the cue \"Delirium and dementia can coexist — dementia is the #1 risk factor for delirium\".",
+        "c": "\"Patient A has depression (pseudodementia) from opioid use; Patient B has Lewy body dementia\" commits to a competing cause before checking the dangerous pattern. The cue \"Patient A (83 yo) has sudden-onset inattention, waxing-and-waning confusion\" raises concern for medication toxicity, so patient teaching and medication-safety reinforcement is needed before diagnostic reassurance.",
+        "d": "The safer response addresses medication toxicity; \"Both require CT head imaging to differentiate — clinical assessment alone is insufficient\" moves care toward routine care before patient teaching and medication-safety reinforcement."
+      },
+      "tags": [
+        "Gerontology",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Delirium: acute onset, fluctuating, reversible, identifiable cause, inattention is cardinal. Dementia: insidious, progressive, irreversible. Delirium and dementia can coexist — dementia is the #1 risk factor for delirium.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-gerontology-wave6.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Patient A has delirium (acute, fluctuating, reversible, identifiable cause); Patient B has dementia (insidious, progressive, irreversible). Delirium vs Dementia: Delirium — ACUTE onset (hours to days), FLUCTUATING course, typically reversible with treatment of precipitant (opioids, infection, metabolic derangement, post-op state), hallucinations (especially visual) common, INATTENTION is the cardinal distinguishing feature. Dementia — INSIDIOUS onset (months to years), PROGRESSIVE course, irreversible underlying pathology, recent memory loss predominates, attention relatively preserved until late stages. Patient A has delirium (acute, precipitant-identified — opioids) and Patient B has dementia (gradual progression). Treatment of delirium: remove or reduce offending drug, provide reorientation, preserve sleep-wake cycle, family presence, early mobility; low-dose haloperidol for severe agitation. Delirium in hospitalized elderly is associated with significantly increased mortality and prolonged hospitalization. Use CAM (Confusion Assessment Method) to screen. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Gerontology through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Patient A has delirium (acute, fluctuating, reversible, identifiable cause); Patient B has dementia (insidious, progressive, irreversible) is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Patient A has delirium (acute, fluctuating, reversible, identifiable cause); Patient B has dementia (insidious, progressive, irreversible)\" fits the safer response to the cue \"Delirium and dementia can coexist — dementia is the #1 risk factor for delirium\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Patient A has depression (pseudodementia) from opioid use; Patient B has Lewy body dementia\" commits to a competing cause before checking the dangerous pattern. The cue \"Patient A (83 yo) has sudden-onset inattention, waxing-and-waning confusion\" raises concern for medication toxicity, so patient teaching and medication-safety reinforcement is needed before diagnostic reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The safer response addresses medication toxicity; \"Both require CT head imaging to differentiate — clinical assessment alone is insufficient\" moves care toward routine care before patient teaching and medication-safety reinforcement. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Gerontology",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Gerontology",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

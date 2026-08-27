@@ -1,0 +1,876 @@
+{
+  "batchId": "clean-batch-004",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb759-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A parent asks the nurse why their 8-year-old child cannot be given aspirin for a fever during this influenza illness. The nurse's teaching should be based on which evidence-based concern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Aspirin causes gastrointestinal bleeding in children under 12"
+        },
+        {
+          "id": "b",
+          "text": "Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome — a rare but potentially fatal encephalopathy and hepatotoxicity"
+        },
+        {
+          "id": "c",
+          "text": "Aspirin causes febrile seizures in school-age children"
+        },
+        {
+          "id": "d",
+          "text": "Aspirin inhibits platelet function and increases bleeding risk in children with viral infections"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Reye's syndrome is a rare but life-threatening condition characterized by non-inflammatory encephalopathy and microvesicular hepatic steatosis. It is strongly associated with aspirin use in children during viral illnesses, particularly influenza (types A and B) and varicella. Pathophysiology: salicylate-induced mitochondrial dysfunction during viral illness. Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%). Since the CDC advisory in the 1980s recommending against aspirin in children <18 during viral illnesses, Reye's syndrome incidence has fallen dramatically. Preferred antipyretics: acetaminophen or ibuprofen.",
+      "distractorRationales": {
+        "a": "The safer response addresses medication toxicity; \"Aspirin causes gastrointestinal bleeding in children under 12\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "c": "\"Aspirin causes febrile seizures in school-age children\" misses the bedside risk. The cue \"Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%)\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.",
+        "d": "\"Aspirin inhibits platelet function and increases bleeding risk in children with viral infections\" commits to a competing cause before checking the dangerous pattern. The cue \"The nurse's teaching should be based on which evidence-based concern\" raises concern for medication toxicity, so patient teaching and medication-safety reinforcement is needed before diagnostic reassurance."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen.",
+        "conclusion": "Reye's syndrome: aspirin + viral illness (influenza, varicella) in children → encephalopathy + hepatotoxicity; never give aspirin to children <18 with viral illness; use acetaminophen or ibuprofen."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome — a rare but potentially fatal encephalopathy and hepatotoxicity. Reye's syndrome is a rare but life-threatening condition characterized by non-inflammatory encephalopathy and microvesicular hepatic steatosis. It is strongly associated with aspirin use in children during viral illnesses, particularly influenza (types A and B) and varicella. Pathophysiology: salicylate-induced mitochondrial dysfunction during viral illness. Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%). Since the CDC advisory in the 1980s recommending against aspirin in children <18 during viral illnesses, Reye's syndrome incidence has fallen dramatically. Preferred antipyretics: acetaminophen or ibuprofen. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Pediatric Nursing through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Aspirin use in children with viral illness (especially influenza and varicella) is associated with Reye's syndrome — a rare but potentially fatal encephalopathy and hepatotoxicity is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses medication toxicity; \"Aspirin causes gastrointestinal bleeding in children under 12\" moves care toward routine care before patient teaching and medication-safety reinforcement. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Aspirin causes febrile seizures in school-age children\" misses the bedside risk. The cue \"Presentation: viral prodrome → vomiting → altered mental status → cerebral edema → death (mortality 20–40%)\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Aspirin inhibits platelet function and increases bleeding risk in children with viral infections\" commits to a competing cause before checking the dangerous pattern. The cue \"The nurse's teaching should be based on which evidence-based concern\" raises concern for medication toxicity, so patient teaching and medication-safety reinforcement is needed before diagnostic reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pediatric Nursing",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pediatric Nursing",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb752-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "cardiovascular_heart_failure",
+      "subcategory": "Cardiovascular / Heart Failure",
+      "difficulty": 3,
+      "stem": "A nurse is caring for a patient with acute decompensated heart failure who has a new order for furosemide 40 mg IV push. Which assessment finding is MOST important to report to the provider before administering this medication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient's weight is 4 lbs above their dry weight"
+        },
+        {
+          "id": "b",
+          "text": "The patient's serum potassium is 3.0 mEq/L"
+        },
+        {
+          "id": "c",
+          "text": "The patient has bilateral 2+ pitting edema of the lower extremities"
+        },
+        {
+          "id": "d",
+          "text": "The patient reports urinary urgency"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Furosemide is a loop diuretic that causes potassium wasting. A pre-dose potassium of 3.0 mEq/L (hypokalemia) is a critical safety concern — administering furosemide will further lower potassium, increasing the risk of life-threatening cardiac arrhythmias (torsades de pointes, ventricular fibrillation), especially in heart failure patients who may be on digoxin. Potassium replacement should be confirmed or ordered before or concurrent with diuresis. Weight gain above dry weight and bilateral edema are the indications FOR furosemide, not contraindications. Urinary urgency is an expected diuretic side effect.",
+      "distractorRationales": {
+        "a": "\"The patient's weight is 4 lbs above their dry weight\" answers a lower-acuity part of the scenario. The cue \"5 mEq/L, notify provider and hold or replace K+ first\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "c": "The safer response addresses medication toxicity; \"The patient has bilateral 2+ pitting edema of the lower extremities\" moves care toward routine observation before medication-safety intervention.",
+        "d": "\"The patient reports urinary urgency\" answers a lower-acuity part of the scenario. The cue \"5 mEq/L, notify provider and hold or replace K+ first\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care."
+      },
+      "tags": [
+        "Cardiovascular / Heart Failure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Cardiovascular / Heart Failure",
+        "caption": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias.",
+        "conclusion": "Before furosemide: check K+. If < 3.5 mEq/L, notify provider and hold or replace K+ first. Diuretics + hypokalemia = arrhythmia risk. This is especially critical in patients on digoxin or with baseline dysrhythmias."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: The patient's serum potassium is 3.0 mEq/L. Furosemide is a loop diuretic that causes potassium wasting. A pre-dose potassium of 3.0 mEq/L (hypokalemia) is a critical safety concern — administering furosemide will further lower potassium, increasing the risk of life-threatening cardiac arrhythmias (torsades de pointes, ventricular fibrillation), especially in heart failure patients who may be on digoxin. Potassium replacement should be confirmed or ordered before or concurrent with diuresis. Weight gain above dry weight and bilateral edema are the indications FOR furosemide, not contraindications. Urinary urgency is an expected diuretic side effect. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Cardiovascular / Heart Failure through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: The patient's serum potassium is 3.0 mEq/L is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"The patient's weight is 4 lbs above their dry weight\" answers a lower-acuity part of the scenario. The cue \"5 mEq/L, notify provider and hold or replace K+ first\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The safer response addresses medication toxicity; \"The patient has bilateral 2+ pitting edema of the lower extremities\" moves care toward routine observation before medication-safety intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"The patient reports urinary urgency\" answers a lower-acuity part of the scenario. The cue \"5 mEq/L, notify provider and hold or replace K+ first\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Cardiovascular Heart Failure",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Furosemide",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682858.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Cardiovascular Heart Failure",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Furosemide",
+          "citation": "NIH MedlinePlus drug monograph: Furosemide - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682858.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb751-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_prioritization",
+      "subcategory": "Safety and Infection Control / Prioritization",
+      "difficulty": 5,
+      "stem": "A nurse receives a SBAR hand-off report. The oncoming nurse should be MOST concerned about which patient?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline"
+        },
+        {
+          "id": "b",
+          "text": "A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours"
+        },
+        {
+          "id": "c",
+          "text": "A 78-year-old post-hip replacement who refuses to ambulate and states 'I'm tired'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Urine output of 15 mL/hr for 3 consecutive hours (total 45 mL in 3 hours, target minimum 30 mL/hr) in a patient with sepsis signals inadequate renal perfusion and worsening organ dysfunction. This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider notification and likely fluid resuscitation. The COPD patient's 91% sat is their established baseline; the hip replacement refusal is important but not acutely threatening; the pending aPTT should be followed but is not immediately dangerous.",
+      "distractorRationales": {
+        "a": "\"A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline\" misses the bedside risk. The cue \"This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "The option can leave bleeding or anticoagulation injury untreated because it moves to activity, intake, or discharge planning too early. \"A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours\" fits the safer response to the cue \"the pending aPTT should be followed but is not immediately dangerous\".",
+        "d": "The safer response addresses bleeding or anticoagulation injury; \"A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago\" moves care toward diagnostic reassurance before bleeding-risk intervention."
+      },
+      "tags": [
+        "Safety and Infection Control / Prioritization",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Safety and Infection Control / Prioritization",
+        "caption": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results.",
+        "conclusion": "In sepsis, urine output < 0.5 mL/kg/hr for > 2 hours is an organ dysfunction criterion under Sepsis-3. Prioritize signs of end-organ perfusion failure over subjective complaints or pending results."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours. Urine output of 15 mL/hr for 3 consecutive hours (total 45 mL in 3 hours, target minimum 30 mL/hr) in a patient with sepsis signals inadequate renal perfusion and worsening organ dysfunction. This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider notification and likely fluid resuscitation. The COPD patient's 91% sat is their established baseline; the hip replacement refusal is important but not acutely threatening; the pending aPTT should be followed but is not immediately dangerous. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Safety And Infection Control / Prioritization through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"A 67-year-old with COPD whose O2 sat is 91% on 2L nasal cannula, which is their baseline\" misses the bedside risk. The cue \"This meets criteria for oliguria and may indicate septic shock progression or acute kidney injury, requiring immediate provider\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave bleeding or anticoagulation injury untreated because it moves to activity, intake, or discharge planning too early. \"A 52-year-old with sepsis whose urine output has been 15 mL/hour for the past 3 hours\" fits the safer response to the cue \"the pending aPTT should be followed but is not immediately dangerous\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The safer response addresses bleeding or anticoagulation injury; \"A 45-year-old on heparin infusion whose aPTT result is pending from 2 hours ago\" moves care toward diagnostic reassurance before bleeding-risk intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Safety And Infection Control Prioritization",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Heparin Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682826.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Safety And Infection Control Prioritization",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Heparin Injection",
+          "citation": "NIH MedlinePlus drug monograph: Heparin Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682826.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb754-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days. The infant appears hungry after vomiting. Labs show: Na 138, K 3.0, Cl 88, HCO3 34, pH 7.56. What diagnosis and lab pattern does this represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Biliary atresia; direct hyperbilirubinemia with elevated GGT"
+        },
+        {
+          "id": "b",
+          "text": "Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis"
+        },
+        {
+          "id": "c",
+          "text": "Intussusception; normal electrolytes with currant jelly stools"
+        },
+        {
+          "id": "d",
+          "text": "Gastroenteritis; isotonic dehydration with normal bicarbonate"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Pyloric stenosis presents in male infants 2–8 weeks old with projectile non-bilious vomiting (pyloric obstruction is proximal to bile entry), hungry behavior post-vomiting, and a palpable 'olive-shaped' mass in the epigastrium. Repeated vomiting of gastric contents (HCl) causes: loss of H+ → metabolic alkalosis (HCO3 34, pH 7.56), loss of Cl- → hypochloremia (Cl 88), and compensatory renal K+ wasting → hypokalemia (K 3.0). Diagnosis: ultrasound (pyloric wall thickness >3–4 mm, length >14–16 mm). Treatment: surgical pyloromyotomy (Ramstedt procedure) after electrolyte correction.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature attribution instead of renal protection. The stem cue \"A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days\" makes renal injury the active safety concern.",
+        "c": "\"Intussusception; normal electrolytes with currant jelly stools\" misses the bedside risk. The cue \"compensatory renal K+ wasting → hypokalemia (K 3\" points to renal injury. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.",
+        "d": "The option can leave renal injury untreated because it normalizes a finding that needs reassessment. \"Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis\" fits the safer response to the cue \"0, Cl 88, HCO3 34, pH 7\"."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction.",
+        "conclusion": "Pyloric stenosis: male infant, non-bilious projectile vomiting, hungry baby → hypochloremic, hypokalemic metabolic alkalosis; dx by ultrasound; tx surgical pyloromyotomy after electrolyte correction."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis. Pyloric stenosis presents in male infants 2–8 weeks old with projectile non-bilious vomiting (pyloric obstruction is proximal to bile entry), hungry behavior post-vomiting, and a palpable 'olive-shaped' mass in the epigastrium. Repeated vomiting of gastric contents (HCl) causes: loss of H+ → metabolic alkalosis (HCO3 34, pH 7.56), loss of Cl- → hypochloremia (Cl 88), and compensatory renal K+ wasting → hypokalemia (K 3.0). Diagnosis: ultrasound (pyloric wall thickness >3–4 mm, length >14–16 mm). Treatment: surgical pyloromyotomy (Ramstedt procedure) after electrolyte correction. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Pediatric Nursing through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward premature attribution instead of renal protection. The stem cue \"A 3-week-old male infant presents with non-bilious projectile vomiting immediately after every feeding for the past 5 days\" makes renal injury the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Intussusception; normal electrolytes with currant jelly stools\" misses the bedside risk. The cue \"compensatory renal K+ wasting → hypokalemia (K 3\" points to renal injury. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave renal injury untreated because it normalizes a finding that needs reassessment. \"Pyloric stenosis; hypochloremic, hypokalemic metabolic alkalosis\" fits the safer response to the cue \"0, Cl 88, HCO3 34, pH 7\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pediatric Nursing",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pediatric Nursing",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb760-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_infection_control",
+      "subcategory": "Delegation / Infection Control",
+      "difficulty": 4,
+      "stem": "A nurse is caring for a patient with C. difficile (CDI) colitis. Which instruction is MOST important to give the nursing assistant assigned to this patient's room?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread"
+        },
+        {
+          "id": "b",
+          "text": "Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room"
+        },
+        {
+          "id": "c",
+          "text": "Wear only gloves since C. diff is transmitted via droplets"
+        },
+        {
+          "id": "d",
+          "text": "Apply an N95 respirator before entering the room due to airborne risk"
+        }
+      ],
+      "answer": "b",
+      "rationale": "C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers — soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions.",
+      "distractorRationales": {
+        "a": "The safer response addresses infection progression; \"Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "c": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"diff is not airborne or droplet-transmitted, so N95s are not required\" makes infection progression the active safety concern.",
+        "d": "The cue \"Key isolation requirements: contact precautions (gloves AND gown for all room entry)\" suggests infection progression, so \"Apply an N95 respirator before entering the room due to airborne risk\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Delegation / Infection Control",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "C. diff = contact precautions (gloves + gown) + soap and water handwashing. Alcohol hand sanitizer does NOT kill C. diff spores. This is one of the few situations where soap/water is explicitly superior to ABHR.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room. C. difficile is transmitted via the fecal-oral route through hardy spores. Key isolation requirements: contact precautions (gloves AND gown for all room entry), and crucially, soap and water handwashing rather than alcohol-based hand rub (ABHR). C. diff spores are NOT killed by alcohol-based sanitizers — soap and water physically removes spores from hands. ABHR is not effective against C. diff. C. diff is not airborne or droplet-transmitted, so N95s are not required. Gloves alone (without gown) are insufficient for contact precautions. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Delegation / Infection Control through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Wear gloves and gown for all contact with the patient and environment, and wash hands with soap and water before leaving the room is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses infection progression; \"Use alcohol-based hand sanitizer after all patient contact to prevent C. diff spread\" moves care toward routine care before patient teaching and medication-safety reinforcement. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "c": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"diff is not airborne or droplet-transmitted, so N95s are not required\" makes infection progression the active safety concern. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "d": "The cue \"Key isolation requirements: contact precautions (gloves AND gown for all room entry)\" suggests infection progression, so \"Apply an N95 respirator before entering the room due to airborne risk\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Delegation Infection Control",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Delegation Infection Control",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb760-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation_safe_staffing",
+      "subcategory": "Delegation / Safe Staffing",
+      "difficulty": 3,
+      "stem": "A registered nurse receives a new patient assignment at shift start. The RN reviews the five patients and determines that patient care tasks need to be distributed. Which of the following tasks can be appropriately delegated to a licensed practical nurse (LPN)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the admission assessment for a new patient with unstable angina"
+        },
+        {
+          "id": "b",
+          "text": "Develop the care plan for a patient with newly diagnosed type 1 diabetes"
+        },
+        {
+          "id": "c",
+          "text": "Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm"
+        },
+        {
+          "id": "d",
+          "text": "Educate the patient and family about a new diagnosis of atrial fibrillation"
+        }
+      ],
+      "answer": "c",
+      "rationale": "LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate — appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation — this is an RN function.",
+      "distractorRationales": {
+        "a": "The cue \"RN scope: initial assessment, care planning, teaching, evaluating unstable patients\" suggests medication toxicity, so \"Perform the admission assessment for a new patient with unstable angina\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "This distractor shifts care toward premature attribution instead of medication-safety intervention. The stem cue \"RNs cannot delegate assessment, teaching, or care planning\" makes medication toxicity the active safety concern.",
+        "d": "The option can leave medication toxicity untreated because it uses teaching before the physiologic risk is controlled. \"Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a\" fits the safer response to the cue \"LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five\"."
+      },
+      "tags": [
+        "Delegation / Safe Staffing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications to stable patients, perform routine procedures, collect data for stable conditions. RN scope: initial assessment, care planning, teaching, evaluating unstable patients, and tasks requiring clinical judgment. RNs cannot delegate assessment, teaching, or care planning.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mixed-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm. LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five rights of medication administration. This is a routine, scheduled medication for a stable patient with an appropriate heart rate — appropriate for LPN delegation. Admission assessment requires comprehensive RN-level assessment skills. Care plan development requires RN clinical judgment and nursing diagnosis formulation. Patient/family education for a new diagnosis requires RN-level assessment of learning needs, teaching, and evaluation — this is an RN function. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Delegation / Safe Staffing through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a heart rate of 72 bpm is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"RN scope: initial assessment, care planning, teaching, evaluating unstable patients\" suggests medication toxicity, so \"Perform the admission assessment for a new patient with unstable angina\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "This distractor shifts care toward premature attribution instead of medication-safety intervention. The stem cue \"RNs cannot delegate assessment, teaching, or care planning\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it uses teaching before the physiologic risk is controlled. \"Administer a scheduled dose of metoprolol 25 mg PO to a stable cardiac patient with a\" fits the safer response to the cue \"LPNs/LVNs can administer medications (including PO medications) to stable patients within their scope of practice, following the five\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Delegation Safe Staffing",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Delegation Safe Staffing",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb751-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A clinic nurse suspects a patient has active tuberculosis based on symptoms and a positive QuantiFERON test. The patient has not yet been confirmed by sputum culture. What is the nurse's legal obligation regarding reporting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for confirmed sputum culture before reporting to the health department"
+        },
+        {
+          "id": "b",
+          "text": "Report only if the patient is homeless or a healthcare worker"
+        },
+        {
+          "id": "c",
+          "text": "Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The physician is solely responsible for reporting; nurses have no legal duty to report"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing.",
+      "distractorRationales": {
+        "a": "The safer response addresses clinical safety risk; \"Wait for confirmed sputum culture before reporting to the health department\" moves care toward routine observation before bedside safety action.",
+        "b": "\"Report only if the patient is homeless or a healthcare worker\" moves to activity, intake, or discharge planning too early. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"The physician is solely responsible for reporting; nurses have no legal duty to report\" answers a lower-acuity part of the scenario. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before routine care."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Mandatory reportable diseases: report on suspicion (not confirmation); TB, STIs, meningitis, hepatitis — nurse has independent duty to report to public health; do not wait for lab confirmation.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation. Mandatorily reportable diseases are reported on the basis of clinical suspicion, not confirmation. For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention. Reportable diseases vary by state but consistently include TB, STIs (gonorrhea, syphilis, chlamydia), meningococcal disease, hepatitis A/B/C, HIV, measles, pertussis, and foodborne illness outbreaks. Nurses have an independent legal duty to report regardless of physician action. The report goes to the local/state health department, which then initiates contact tracing. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Community Health through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Report the suspected case to the local public health department — TB is reportable on suspicion, not confirmation is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses clinical safety risk; \"Wait for confirmed sputum culture before reporting to the health department\" moves care toward routine observation before bedside safety action. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "b": "\"Report only if the patient is homeless or a healthcare worker\" moves to activity, intake, or discharge planning too early. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "d": "\"The physician is solely responsible for reporting; nurses have no legal duty to report\" answers a lower-acuity part of the scenario. The cue \"For TB and other high-priority communicable diseases, waiting for laboratory confirmation delays contact tracing and public health intervention\" raises concern for clinical safety risk, so bedside safety action is needed before routine care. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Community Health",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Community Health",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb759-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "lithium_toxicity",
+      "subcategory": "Lithium Toxicity",
+      "difficulty": 3,
+      "stem": "A nurse is teaching a patient newly prescribed lithium about safety monitoring. Which statement by the patient indicates correct understanding of lithium toxicity prevention?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'I should limit salt in my diet to prevent water retention since lithium can cause edema.'"
+        },
+        {
+          "id": "b",
+          "text": "'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.'"
+        },
+        {
+          "id": "c",
+          "text": "'I can stop taking lithium when I feel better, as long as my mood is stable.'"
+        },
+        {
+          "id": "d",
+          "text": "'Ibuprofen is safe to take for headaches while on lithium.'"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Lithium is excreted by the kidney and competes with sodium for reabsorption. When sodium levels drop (from low-sodium diet, diarrhea, vomiting, sweating, diuretics), the kidney retains lithium — causing toxicity. Consistent sodium and fluid intake, and monitoring for dehydration causes, are essential safety measures. Low-sodium diet (A) increases lithium retention and toxicity risk — the opposite of safe. Abrupt discontinuation (C) causes rebound mania. NSAIDs like ibuprofen (D) decrease renal lithium excretion, raising lithium levels significantly — they are contraindicated.",
+      "distractorRationales": {
+        "a": "\"'I should limit salt in my diet to prevent water retention since lithium can cause edema.'\" misses the bedside risk. The cue \"Lithium safety: maintain consistent sodium/fluid intake\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.",
+        "c": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"A nurse is teaching a patient newly prescribed lithium about safety monitoring\" makes medication toxicity the active safety concern.",
+        "d": "The cue \"Lithium is excreted by the kidney and competes with sodium for reabsorption\" suggests medication toxicity, so \"'Ibuprofen is safe to take for headaches while on lithium.'\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Lithium Toxicity",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Lithium safety: maintain consistent sodium/fluid intake; avoid NSAIDs (raise lithium levels); report vomiting/diarrhea/excessive sweating immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.'. Lithium is excreted by the kidney and competes with sodium for reabsorption. When sodium levels drop (from low-sodium diet, diarrhea, vomiting, sweating, diuretics), the kidney retains lithium — causing toxicity. Consistent sodium and fluid intake, and monitoring for dehydration causes, are essential safety measures. Low-sodium diet (A) increases lithium retention and toxicity risk — the opposite of safe. Abrupt discontinuation (C) causes rebound mania. NSAIDs like ibuprofen (D) decrease renal lithium excretion, raising lithium levels significantly — they are contraindicated. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Lithium Toxicity through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: 'I should maintain consistent sodium and fluid intake and notify my doctor if I have diarrhea, vomiting, or excessive sweating.' is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"'I should limit salt in my diet to prevent water retention since lithium can cause edema.'\" misses the bedside risk. The cue \"Lithium safety: maintain consistent sodium/fluid intake\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "This distractor shifts care toward misprioritization instead of patient teaching and medication-safety reinforcement. The stem cue \"A nurse is teaching a patient newly prescribed lithium about safety monitoring\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"Lithium is excreted by the kidney and competes with sodium for reabsorption\" suggests medication toxicity, so \"'Ibuprofen is safe to take for headaches while on lithium.'\" would not correct the active problem. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Lithium Toxicity",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Lithium Toxicity",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb759-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 5,
+      "stem": "A patient undergoes repair of a ruptured abdominal aortic aneurysm. Post-operatively, the nurse notes urine output 10 mL/hr for 3 consecutive hours, lower extremity mottling, pain and weakness of both legs, and absent dorsalis pedis pulses bilaterally. MAP is 62 mmHg. Which complication BEST explains all findings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acute kidney injury from contrast nephropathy"
+        },
+        {
+          "id": "b",
+          "text": "Abdominal compartment syndrome with visceral and spinal cord ischemia"
+        },
+        {
+          "id": "c",
+          "text": "Bilateral femoral artery thrombosis from arterial catheter placement"
+        },
+        {
+          "id": "d",
+          "text": "Graft limb occlusion with distal ischemia and atheroembolism"
+        }
+      ],
+      "answer": "b",
+      "rationale": "After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop. Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis), and causes visceral ischemia. Mottling and absent pedal pulses in combination with oliguria and leg weakness after AAA repair point to ACS causing multi-organ ischemia. Bladder pressure >20 mmHg with organ dysfunction confirms the diagnosis. Bilateral femoral thrombosis (C) would not explain oliguria. Contrast nephropathy (A) would not explain limb ischemia.",
+      "distractorRationales": {
+        "a": "The option can leave circulation or perfusion untreated because it commits to a competing cause before checking the dangerous pattern. \"Abdominal compartment syndrome with visceral and spinal cord ischemia\" fits the safer response to the cue \"After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop\".",
+        "c": "\"Bilateral femoral artery thrombosis from arterial catheter placement\" treats active deterioration as something safe to watch. The cue \"Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis)\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine observation.",
+        "d": "\"Graft limb occlusion with distal ischemia and atheroembolism\" misses the bedside risk. The cue \"Post-AAA oliguria + lower extremity ischemia + elevated bladder pressure = abdominal compartment syndrome\" points to circulation or perfusion. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-AAA oliguria + lower extremity ischemia + elevated bladder pressure = abdominal compartment syndrome. Measure bladder pressure.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Abdominal compartment syndrome with visceral and spinal cord ischemia. After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop. Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis), and causes visceral ischemia. Mottling and absent pedal pulses in combination with oliguria and leg weakness after AAA repair point to ACS causing multi-organ ischemia. Bladder pressure >20 mmHg with organ dysfunction confirms the diagnosis. Bilateral femoral thrombosis (C) would not explain oliguria. Contrast nephropathy (A) would not explain limb ischemia. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Medical Surgical Advanced through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Abdominal compartment syndrome with visceral and spinal cord ischemia is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The option can leave circulation or perfusion untreated because it commits to a competing cause before checking the dangerous pattern. \"Abdominal compartment syndrome with visceral and spinal cord ischemia\" fits the safer response to the cue \"After large-volume resuscitation and abdominal surgery, abdominal compartment syndrome (ACS) can develop\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Bilateral femoral artery thrombosis from arterial catheter placement\" treats active deterioration as something safe to watch. The cue \"Elevated intra-abdominal pressure compresses the renal veins and IVC (oliguria), decreases spinal cord perfusion (lower extremity weakness/paralysis)\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine observation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Graft limb occlusion with distal ischemia and atheroembolism\" misses the bedside risk. The cue \"Post-AAA oliguria + lower extremity ischemia + elevated bladder pressure = abdominal compartment syndrome\" points to circulation or perfusion. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Medical Surgical Advanced",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Medical Surgical Advanced",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb758-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pediatric_nursing",
+      "subcategory": "Pediatric Nursing",
+      "difficulty": 3,
+      "stem": "A 5-year-old is admitted with meningococcal meningitis. Which isolation precautions should be initiated immediately, and for how long should they be maintained?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact precautions; maintain until discharge"
+        },
+        {
+          "id": "b",
+          "text": "Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy"
+        },
+        {
+          "id": "c",
+          "text": "Airborne precautions in a negative-pressure room; maintain for 48 hours"
+        },
+        {
+          "id": "d",
+          "text": "Standard precautions only; meningococcal meningitis is not transmissible person-to-person"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neisseria meningitidis (meningococcal meningitis) is transmitted via respiratory droplets (large droplets, short range <3 feet) — not airborne (small droplet nuclei). Droplet precautions are required: surgical mask within 3 feet, private room or cohorting, mask for transport. Duration: droplet precautions are maintained for the first 24 hours after initiation of effective antibiotic therapy (typically ceftriaxone), after which the organism is no longer detectable in respiratory secretions. Close contacts (household members, childcare contacts) should receive prophylaxis with rifampin, ciprofloxacin, or ceftriaxone.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature activity instead of airway and breathing intervention. The stem cue \"Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics\" makes oxygenation or ventilation the active safety concern.",
+        "c": "The safer response addresses oxygenation or ventilation; \"Airborne precautions in a negative-pressure room; maintain for 48 hours\" moves care toward routine care before airway and breathing intervention.",
+        "d": "The safer response addresses oxygenation or ventilation; \"Standard precautions only; meningococcal meningitis is not transmissible person-to-person\" moves care toward routine care before airway and breathing intervention."
+      },
+      "tags": [
+        "Pediatric Nursing",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pediatric-batch-001.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "Pediatric Nursing",
+        "caption": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin).",
+        "conclusion": "Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics; close contacts need chemoprophylaxis (rifampin or ciprofloxacin)."
+      },
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy. Neisseria meningitidis (meningococcal meningitis) is transmitted via respiratory droplets (large droplets, short range <3 feet) — not airborne (small droplet nuclei). Droplet precautions are required: surgical mask within 3 feet, private room or cohorting, mask for transport. Duration: droplet precautions are maintained for the first 24 hours after initiation of effective antibiotic therapy (typically ceftriaxone), after which the organism is no longer detectable in respiratory secretions. Close contacts (household members, childcare contacts) should receive prophylaxis with rifampin, ciprofloxacin, or ceftriaxone. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Pediatric Nursing through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Droplet precautions; maintain for the first 24 hours of effective antibiotic therapy is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward premature activity instead of airway and breathing intervention. The stem cue \"Meningococcal meningitis: droplet precautions (NOT airborne) for first 24 hours of effective antibiotics\" makes oxygenation or ventilation the active safety concern. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "c": "The safer response addresses oxygenation or ventilation; \"Airborne precautions in a negative-pressure room; maintain for 48 hours\" moves care toward routine care before airway and breathing intervention. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "d": "The safer response addresses oxygenation or ventilation; \"Standard precautions only; meningococcal meningitis is not transmissible person-to-person\" moves care toward routine care before airway and breathing intervention. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pediatric Nursing",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pediatric Nursing",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

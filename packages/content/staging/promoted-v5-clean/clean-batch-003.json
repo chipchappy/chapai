@@ -1,0 +1,868 @@
+{
+  "batchId": "clean-batch-003",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb755-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 4,
+      "stem": "A patient with severe preeclampsia is receiving IV magnesium sulfate. The nurse assesses: RR 10, deep tendon reflexes absent, urine output 20 mL/hr, serum magnesium level 12 mEq/L. Which action is the immediate priority?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decrease the magnesium infusion rate by 50% and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly"
+        },
+        {
+          "id": "c",
+          "text": "Notify the provider and document the findings"
+        },
+        {
+          "id": "d",
+          "text": "Increase IV fluid rate to improve urine output and enhance magnesium excretion"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9–10 mEq/L. This patient has multiple toxicity signs (RR 10, absent DTRs, oliguria, Mg 12 mEq/L). The infusion must be stopped immediately. Calcium gluconate 1 g IV (10 mL of 10% solution over 3–5 minutes) is the antidote — calcium antagonizes magnesium's effects. Decreasing the rate (A) is insufficient when toxicity is already established with respiratory compromise. Notifying the provider (C) happens simultaneously but stopping the infusion is the first action. Fluids (D) may help excretion but not fast enough to address impending respiratory arrest.",
+      "distractorRationales": {
+        "a": "\"Decrease the magnesium infusion rate by 50% and continue monitoring\" treats active deterioration as something safe to watch. The cue \"Magnesium toxicity: stop infusion immediately + calcium gluconate 1 g IV as antidote\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation.",
+        "c": "This distractor shifts care toward incomplete escalation instead of airway and breathing intervention. The stem cue \"Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9–10 mEq/L\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The cue \"A patient with severe preeclampsia is receiving IV magnesium sulfate\" suggests oxygenation or ventilation, so \"Increase IV fluid rate to improve urine output and enhance magnesium excretion\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium toxicity: stop infusion immediately + calcium gluconate 1 g IV as antidote; monitor RR and DTRs every hour during infusion.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly. Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9–10 mEq/L. This patient has multiple toxicity signs (RR 10, absent DTRs, oliguria, Mg 12 mEq/L). The infusion must be stopped immediately. Calcium gluconate 1 g IV (10 mL of 10% solution over 3–5 minutes) is the antidote — calcium antagonizes magnesium's effects. Decreasing the rate (A) is insufficient when toxicity is already established with respiratory compromise. Notifying the provider (C) happens simultaneously but stopping the infusion is the first action. Fluids (D) may help excretion but not fast enough to address impending respiratory arrest. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Severe Preeclampsia through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Stop the magnesium infusion and administer calcium gluconate 1 g IV slowly is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Decrease the magnesium infusion rate by 50% and continue monitoring\" treats active deterioration as something safe to watch. The cue \"Magnesium toxicity: stop infusion immediately + calcium gluconate 1 g IV as antidote\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine observation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "This distractor shifts care toward incomplete escalation instead of airway and breathing intervention. The stem cue \"Signs of magnesium toxicity: RR <12/min, absent DTRs, urine output <25 mL/hr, serum Mg >9–10 mEq/L\" makes oxygenation or ventilation the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"A patient with severe preeclampsia is receiving IV magnesium sulfate\" suggests oxygenation or ventilation, so \"Increase IV fluid rate to improve urine output and enhance magnesium excretion\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Severe Preeclampsia",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a601072.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Severe Preeclampsia",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+          "citation": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a601072.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb848-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "delegation",
+      "difficulty": 3,
+      "stem": "The registered nurse is planning assignments for a UAP (unlicensed assistive personnel) on the medical-surgical floor. Which task is APPROPRIATE to delegate to the UAP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform a focused cardiovascular assessment on a patient with new-onset chest pain"
+        },
+        {
+          "id": "b",
+          "text": "Teach a diabetic patient how to perform foot care and inspect for wounds"
+        },
+        {
+          "id": "c",
+          "text": "Obtain vital signs on a stable post-operative patient and document findings"
+        },
+        {
+          "id": "d",
+          "text": "Evaluate whether a patient's pain is adequately controlled after analgesic administration"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Obtaining and documenting vital signs on a stable patient is within the UAP scope of practice and is appropriate to delegate. The key factors are: the task is routine and non-complex, the patient is stable, and the findings are objective measurements. Assessment (A) requires RN judgment and cannot be delegated. Patient education (B) is an RN responsibility requiring clinical judgment and adaptation. Pain evaluation after medication (D) involves clinical judgment about medication effectiveness — always an RN function. The Five Rights of Delegation: right task, right circumstance, right person, right direction/communication, right supervision.",
+      "distractorRationales": {
+        "a": "The cue \"Assessment (A) requires RN judgment and cannot be delegated\" suggests medication toxicity, so \"Perform a focused cardiovascular assessment on a patient with new-onset chest pain\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "The cue \"Assessment (A) requires RN judgment and cannot be delegated\" suggests medication toxicity, so \"Teach a diabetic patient how to perform foot care and inspect for wounds\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The safer response addresses medication toxicity; \"Evaluate whether a patient's pain is adequately controlled after analgesic administration\" moves care toward routine care before medication-safety intervention."
+      },
+      "tags": [
+        "delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "UAPs can: obtain vital signs, record I&O, assist with ADLs, ambulate stable patients, collect specimens. RNs cannot delegate: assessment, teaching, care planning, medication administration evaluation, or tasks requiring clinical judgment.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Obtain vital signs on a stable post-operative patient and document findings. Obtaining and documenting vital signs on a stable patient is within the UAP scope of practice and is appropriate to delegate. The key factors are: the task is routine and non-complex, the patient is stable, and the findings are objective measurements. Assessment (A) requires RN judgment and cannot be delegated. Patient education (B) is an RN responsibility requiring clinical judgment and adaptation. Pain evaluation after medication (D) involves clinical judgment about medication effectiveness — always an RN function. The Five Rights of Delegation: right task, right circumstance, right person, right direction/communication, right supervision. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Delegation through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Obtain vital signs on a stable post-operative patient and document findings is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"Assessment (A) requires RN judgment and cannot be delegated\" suggests medication toxicity, so \"Perform a focused cardiovascular assessment on a patient with new-onset chest pain\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The cue \"Assessment (A) requires RN judgment and cannot be delegated\" suggests medication toxicity, so \"Teach a diabetic patient how to perform foot care and inspect for wounds\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The safer response addresses medication toxicity; \"Evaluate whether a patient's pain is adequately controlled after analgesic administration\" moves care toward routine care before medication-safety intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Delegation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Delegation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb760-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "severe_preeclampsia",
+      "subcategory": "Severe Preeclampsia",
+      "difficulty": 5,
+      "stem": "A nurse caring for a patient with severe preeclampsia on magnesium sulfate should assess for which finding FIRST in each nursing assessment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blood pressure and fetal heart rate"
+        },
+        {
+          "id": "b",
+          "text": "Deep tendon reflexes and respiratory rate"
+        },
+        {
+          "id": "c",
+          "text": "Urine output and temperature"
+        },
+        {
+          "id": "d",
+          "text": "Level of consciousness and oxygen saturation"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. DTRs serve as an early warning before respiratory arrest occurs — absent DTRs (loss of patellar reflex) signal dangerously high magnesium levels and the need to stop the infusion. This assessment should occur every 1 hour during magnesium infusion. BP and FHR (A) are important but reflect preeclampsia status, not magnesium toxicity. Urine output (C) is also important (magnesium is renally excreted; oliguria leads to accumulation), but the respiratory/reflex check is the most time-critical toxicity indicator.",
+      "distractorRationales": {
+        "a": "\"Blood pressure and fetal heart rate\" answers a lower-acuity part of the scenario. The cue \"This assessment should occur every 1 hour during magnesium infusion\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care.",
+        "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"the respiratory/reflex check is the most time-critical toxicity indicator\" makes oxygenation or ventilation the active safety concern.",
+        "d": "The cue \"Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory\" suggests oxygenation or ventilation, so \"Level of consciousness and oxygen saturation\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation."
+      },
+      "tags": [
+        "Severe Preeclampsia",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory arrest.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Deep tendon reflexes and respiratory rate. The first signs of magnesium toxicity are loss of deep tendon reflexes (DTRs) and respiratory rate <12/min. DTRs serve as an early warning before respiratory arrest occurs — absent DTRs (loss of patellar reflex) signal dangerously high magnesium levels and the need to stop the infusion. This assessment should occur every 1 hour during magnesium infusion. BP and FHR (A) are important but reflect preeclampsia status, not magnesium toxicity. Urine output (C) is also important (magnesium is renally excreted; oliguria leads to accumulation), but the respiratory/reflex check is the most time-critical toxicity indicator. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Severe Preeclampsia through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Deep tendon reflexes and respiratory rate is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Blood pressure and fetal heart rate\" answers a lower-acuity part of the scenario. The cue \"This assessment should occur every 1 hour during magnesium infusion\" raises concern for oxygenation or ventilation, so airway and breathing intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"the respiratory/reflex check is the most time-critical toxicity indicator\" makes oxygenation or ventilation the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"Magnesium monitoring priority: DTRs (patellar reflex) and respiratory rate every hour — absent DTRs signal toxicity before respiratory\" suggests oxygenation or ventilation, so \"Level of consciousness and oxygen saturation\" would not correct the active problem. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Severe Preeclampsia",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a601072.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Severe Preeclampsia",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection",
+          "citation": "NIH MedlinePlus drug monograph: Magnesium Sulfate Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a601072.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb756-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_and_infection_control_medication_safety",
+      "subcategory": "Safety and Infection Control / Medication Safety",
+      "difficulty": 5,
+      "stem": "A nurse is about to administer a scheduled dose of digoxin 0.25 mg IV to a patient with heart failure. The patient's apical heart rate is 54 bpm. What should the nurse do FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer the dose as scheduled since the order is valid"
+        },
+        {
+          "id": "b",
+          "text": "Hold the dose and notify the provider of the patient's heart rate"
+        },
+        {
+          "id": "c",
+          "text": "Administer half the dose and recheck the heart rate in 30 minutes"
+        },
+        {
+          "id": "d",
+          "text": "Check the patient's most recent serum digoxin level before acting"
+        }
+      ],
+      "answer": "b",
+      "rationale": "The standard safety parameter for digoxin is to hold the dose and notify the provider if the apical pulse is < 60 bpm in adults. Digoxin slows AV conduction; administering it to a patient with a heart rate of 54 bpm risks further bradycardia, heart block, and cardiovascular compromise. Administering the full dose ignores a critical safety parameter. Administering half the dose is not within standard nursing scope without a specific provider order. While checking the digoxin level is part of toxicity monitoring, the immediate safety action is to hold and notify.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"The standard safety parameter for digoxin is to hold the dose and notify the provider if the apical\" makes medication toxicity the active safety concern.",
+        "c": "The cue \"While checking the digoxin level is part of toxicity monitoring, the immediate safety action is to hold\" suggests medication toxicity, so \"Administer half the dose and recheck the heart rate in 30 minutes\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Administering the full dose ignores a critical safety parameter\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "Safety and Infection Control / Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Digoxin safety rule: Hold and notify if apical HR < 60 bpm (adults). This applies regardless of whether the serum level is available. Safety parameters come before scheduled administration.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-safety-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Hold the dose and notify the provider of the patient's heart rate. The standard safety parameter for digoxin is to hold the dose and notify the provider if the apical pulse is < 60 bpm in adults. Digoxin slows AV conduction; administering it to a patient with a heart rate of 54 bpm risks further bradycardia, heart block, and cardiovascular compromise. Administering the full dose ignores a critical safety parameter. Administering half the dose is not within standard nursing scope without a specific provider order. While checking the digoxin level is part of toxicity monitoring, the immediate safety action is to hold and notify. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Safety And Infection Control / Medication Safety through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Hold the dose and notify the provider of the patient's heart rate is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"The standard safety parameter for digoxin is to hold the dose and notify the provider if the apical\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"While checking the digoxin level is part of toxicity monitoring, the immediate safety action is to hold\" suggests medication toxicity, so \"Administer half the dose and recheck the heart rate in 30 minutes\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Administering the full dose ignores a critical safety parameter\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Safety And Infection Control Medication Safety",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Safety And Infection Control Medication Safety",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb755-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chain_of_command",
+      "subcategory": "Chain of Command",
+      "difficulty": 1,
+      "stem": "An RN is concerned that a patient's deteriorating condition is not being addressed. She has called the resident twice and the attending once, but no orders have been given and the patient's condition is worsening. What is the next appropriate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Document that the physician was notified and continue monitoring"
+        },
+        {
+          "id": "b",
+          "text": "Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer"
+        },
+        {
+          "id": "c",
+          "text": "Call the patient's family to inform them of the situation and have them contact the physician"
+        },
+        {
+          "id": "d",
+          "text": "Administer PRN medications independently based on nursing judgment"
+        }
+      ],
+      "answer": "b",
+      "rationale": "When a nurse cannot get a timely response from the physician and patient safety is at risk, the chain of command must be activated: charge nurse → nursing supervisor → department director → chief of staff/chief of medicine → risk management/patient safety officer. Many hospitals also have rapid response teams (RRT) that can be activated by nursing. Documentation alone (A) does not protect the patient. Contacting family (C) violates HIPAA and does not address the immediate clinical problem. Administering medications without orders (D) is outside RN scope of practice and illegal.",
+      "distractorRationales": {
+        "a": "The cue \"no orders have been given and the patient's condition is worsening\" suggests medication toxicity, so \"Document that the physician was notified and continue monitoring\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Call the patient's family to inform them of the situation and have them contact the physician\" relies on notification without the bedside safety step. The cue \"no orders have been given and the patient's condition is worsening\" raises concern for medication toxicity, so medication-safety intervention is needed before waiting for a callback.",
+        "d": "\"Administer PRN medications independently based on nursing judgment\" misses the bedside risk. The cue \"no orders have been given and the patient's condition is worsening\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Chain of Command",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "When physician is unresponsive to clinical concerns: activate chain of command (charge nurse → supervisor → administrator) and/or call rapid response — document all attempts.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer. When a nurse cannot get a timely response from the physician and patient safety is at risk, the chain of command must be activated: charge nurse → nursing supervisor → department director → chief of staff/chief of medicine → risk management/patient safety officer. Many hospitals also have rapid response teams (RRT) that can be activated by nursing. Documentation alone (A) does not protect the patient. Contacting family (C) violates HIPAA and does not address the immediate clinical problem. Administering medications without orders (D) is outside RN scope of practice and illegal. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Chain Of Command through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Initiate the chain of command by notifying the charge nurse, nursing supervisor, and if necessary the chief of staff or patient safety officer is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"no orders have been given and the patient's condition is worsening\" suggests medication toxicity, so \"Document that the physician was notified and continue monitoring\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Call the patient's family to inform them of the situation and have them contact the physician\" relies on notification without the bedside safety step. The cue \"no orders have been given and the patient's condition is worsening\" raises concern for medication toxicity, so medication-safety intervention is needed before waiting for a callback. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Administer PRN medications independently based on nursing judgment\" misses the bedside risk. The cue \"no orders have been given and the patient's condition is worsening\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Chain Of Command",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Chain Of Command",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb757-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "documentation",
+      "subcategory": "Documentation",
+      "difficulty": 2,
+      "stem": "An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400. How should this be documented correctly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Backdate the entry to 0900 to reflect the actual time of administration"
+        },
+        {
+          "id": "b",
+          "text": "Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response"
+        },
+        {
+          "id": "c",
+          "text": "Use correction fluid (Wite-Out) to correct the medication administration record if paper-based"
+        },
+        {
+          "id": "d",
+          "text": "Skip documenting the medication since it was already administered and observed to have been effective"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Late entry documentation: write the current date and time, clearly label as 'late entry,' include the actual time the event occurred, and document the relevant information. This maintains an accurate legal and clinical record without misrepresentation. Backdating (A) is falsification of medical records — a criminal offense and grounds for license revocation. Correction fluid (C) is never used in medical records; errors are corrected by drawing a single line through the error, initialing, dating, and noting 'error' — never obliterating. Omitting documentation (D) creates a legal and clinical record gap.",
+      "distractorRationales": {
+        "a": "The cue \"An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400\" suggests medication toxicity, so \"Backdate the entry to 0900 to reflect the actual time of administration\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Use correction fluid (Wite-Out) to correct the medication administration record if paper-based\" answers a lower-acuity part of the scenario. The cue \"An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "d": "The cue \"An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400\" suggests medication toxicity, so \"Skip documenting the medication since it was already administered and observed to have been effective\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Documentation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Late entry: write current time, label 'late entry,' include actual event time — backdating is falsification; never use Wite-Out on medical records.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response. Late entry documentation: write the current date and time, clearly label as 'late entry,' include the actual time the event occurred, and document the relevant information. This maintains an accurate legal and clinical record without misrepresentation. Backdating (A) is falsification of medical records — a criminal offense and grounds for license revocation. Correction fluid (C) is never used in medical records; errors are corrected by drawing a single line through the error, initialing, dating, and noting 'error' — never obliterating. Omitting documentation (D) creates a legal and clinical record gap. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Documentation through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Write the current time (1400), note 'late entry,' document the actual time of administration (0900), and record the medication and patient response is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400\" suggests medication toxicity, so \"Backdate the entry to 0900 to reflect the actual time of administration\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Use correction fluid (Wite-Out) to correct the medication administration record if paper-based\" answers a lower-acuity part of the scenario. The cue \"An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"An RN realizes she forgot to document a medication administered at 0900 and is now documenting at 1400\" suggests medication toxicity, so \"Skip documenting the medication since it was already administered and observed to have been effective\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Documentation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Documentation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb758-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "involuntary_commitment",
+      "subcategory": "Involuntary Commitment",
+      "difficulty": 2,
+      "stem": "A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization. He has not slept in 5 days, believes he is receiving messages from aliens, and stated he plans to 'make his neighbor pay' for 'spying on him.' Which criterion most legally supports involuntary psychiatric commitment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Presence of a psychiatric diagnosis requiring treatment"
+        },
+        {
+          "id": "b",
+          "text": "Refusal of recommended medication"
+        },
+        {
+          "id": "c",
+          "text": "Danger to others based on specific expressed threat"
+        },
+        {
+          "id": "d",
+          "text": "Inability to care for personal hygiene and nutrition"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Involuntary psychiatric commitment (civil commitment) requires that the person poses a danger to self, danger to others, or is gravely disabled (unable to meet basic needs of food, clothing, shelter due to mental illness). This patient's specific threat to 'make his neighbor pay' combined with active psychosis meets the danger-to-others criterion. Having a psychiatric diagnosis alone (A) is not sufficient for commitment. Medication refusal (B) alone does not meet criteria. While grave disability (D) could apply, the most legally defensible criterion here is the specific threat to another person.",
+      "distractorRationales": {
+        "a": "\"Presence of a psychiatric diagnosis requiring treatment\" misses the bedside risk. The cue \"A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Danger to others based on specific expressed threat\" fits the safer response to the cue \"Medication refusal (B) alone does not meet criteria\".",
+        "d": "The cue \"He has not slept in 5 days, believes he is receiving messages from aliens\" suggests medication toxicity, so \"Inability to care for personal hygiene and nutrition\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Involuntary Commitment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Involuntary commitment requires: danger to self, danger to others (specific threat + mental illness), or grave disability — psychiatric diagnosis alone is insufficient.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Danger to others based on specific expressed threat. Involuntary psychiatric commitment (civil commitment) requires that the person poses a danger to self, danger to others, or is gravely disabled (unable to meet basic needs of food, clothing, shelter due to mental illness). This patient's specific threat to 'make his neighbor pay' combined with active psychosis meets the danger-to-others criterion. Having a psychiatric diagnosis alone (A) is not sufficient for commitment. Medication refusal (B) alone does not meet criteria. While grave disability (D) could apply, the most legally defensible criterion here is the specific threat to another person. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Involuntary Commitment through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Danger to others based on specific expressed threat is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"Presence of a psychiatric diagnosis requiring treatment\" misses the bedside risk. The cue \"A 35-year-old patient with bipolar disorder refuses psychiatric hospitalization\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The option can leave medication toxicity untreated because it answers a lower-acuity part of the scenario. \"Danger to others based on specific expressed threat\" fits the safer response to the cue \"Medication refusal (B) alone does not meet criteria\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"He has not slept in 5 days, believes he is receiving messages from aliens\" suggests medication toxicity, so \"Inability to care for personal hygiene and nutrition\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Involuntary Commitment",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Involuntary Commitment",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb841-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "safety_priority_which_patient_first",
+      "subcategory": "safety_priority_which_patient_first",
+      "difficulty": 4,
+      "stem": "The nurse is caring for four patients on a medical-surgical floor. Which patient should the nurse assess FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A 74-year-old with COPD, SpO₂ 91% on 2L nasal cannula, baseline, requesting a warm blanket"
+        },
+        {
+          "id": "b",
+          "text": "A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site"
+        },
+        {
+          "id": "c",
+          "text": "A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong'"
+        },
+        {
+          "id": "d",
+          "text": "A 45-year-old with DVT on heparin infusion, asking when they can ambulate today"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute confusion in a patient with heart failure is a red-flag symptom. Sudden onset confusion can signal decreased cerebral perfusion from worsening cardiac output, hyponatremia, medication toxicity (digoxin), or hypoxia — all potentially life-threatening. The patient's verbalization that 'something is wrong' (sense of impending doom) is a significant subjective cue. Using the ABCs and Maslow's hierarchy, altered mental status indicating possible hemodynamic compromise takes priority. The COPD patient (A) is at stable baseline. Post-op pain (B) is expected and not emergent. The heparin patient (D) has a non-urgent question.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"Acute mental status change = priority assessment\" makes bleeding or anticoagulation injury the active safety concern.",
+        "b": "\"A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site\" answers a lower-acuity part of the scenario. The cue \"The COPD patient (A) is at stable baseline\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before routine care.",
+        "d": "\"A 45-year-old with DVT on heparin infusion, asking when they can ambulate today\" moves to activity, intake, or discharge planning too early. The cue \"Post-op pain (B) is expected and not emergent\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before ambulation, intake, or discharge teaching."
+      },
+      "tags": [
+        "safety_priority_which_patient_first",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute mental status change = priority assessment. In heart failure, sudden confusion may signal worsening CO, hyponatremia, or hypoxia. 'Feeling like something is wrong' is a significant clinical cue — always assess these patients first.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-review-batches.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong'. Acute confusion in a patient with heart failure is a red-flag symptom. Sudden onset confusion can signal decreased cerebral perfusion from worsening cardiac output, hyponatremia, medication toxicity (digoxin), or hypoxia — all potentially life-threatening. The patient's verbalization that 'something is wrong' (sense of impending doom) is a significant subjective cue. Using the ABCs and Maslow's hierarchy, altered mental status indicating possible hemodynamic compromise takes priority. The COPD patient (A) is at stable baseline. Post-op pain (B) is expected and not emergent. The heparin patient (D) has a non-urgent question. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Safety Priority Which Patient First through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: A 66-year-old with heart failure who suddenly became confused and reports 'feeling like something is wrong' is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward premature attribution instead of bleeding-risk intervention. The stem cue \"Acute mental status change = priority assessment\" makes bleeding or anticoagulation injury the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "\"A 58-year-old post-cholecystectomy (day 2) reporting pain 6/10 at the incision site\" answers a lower-acuity part of the scenario. The cue \"The COPD patient (A) is at stable baseline\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"A 45-year-old with DVT on heparin infusion, asking when they can ambulate today\" moves to activity, intake, or discharge planning too early. The cue \"Post-op pain (B) is expected and not emergent\" raises concern for bleeding or anticoagulation injury, so bleeding-risk intervention is needed before ambulation, intake, or discharge teaching. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Safety Priority Which Patient First",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Heparin Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a682826.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Safety Priority Which Patient First",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Heparin Injection",
+          "citation": "NIH MedlinePlus drug monograph: Heparin Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a682826.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb749-n005",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "pharmacology_metformin_safety",
+      "subcategory": "Pharmacology / Metformin Safety",
+      "difficulty": 2,
+      "stem": "A nurse reviews orders for a patient admitted for an elective knee MRI with IV contrast scheduled for tomorrow. The patient takes metformin 1000 mg BID for type 2 diabetes. Which nursing action is MOST appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer metformin as scheduled since the procedure is elective"
+        },
+        {
+          "id": "b",
+          "text": "Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider"
+        },
+        {
+          "id": "c",
+          "text": "Switch the patient to insulin therapy permanently before the procedure"
+        },
+        {
+          "id": "d",
+          "text": "Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order.",
+      "tags": [
+        "Pharmacology / Metformin Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Metformin + IV contrast: hold the day of and 48h after. Risk is lactic acidosis from metformin accumulation if contrast causes AKI. Check creatinine/eGFR before restarting. This applies to any iodinated contrast study.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-pharm-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider. Metformin is renally cleared. IV iodinated contrast can cause contrast-induced nephropathy (CIN), acutely impairing renal function. If renal function is reduced by CIN, metformin accumulates and raises the risk of lactic acidosis — a rare but potentially fatal complication. Standard protocol: hold metformin on the day of contrast administration and for 48 hours after, then re-assess renal function (creatinine/eGFR) before resuming. Permanent insulin switch is not necessary. Administering on the day of the procedure violates the safety protocol. The provider should be notified to confirm the hold order. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Pharmacology / Metformin Safety through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Hold metformin beginning the day of and for 48 hours after contrast administration, and notify the ordering provider is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "Option A is weaker because \"Administer metformin as scheduled since the procedure is elective\" does not address lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The keyed response better protects lithium, toxicity, renal in this stem.",
+          "c": "Option C is weaker because \"Switch the patient to insulin therapy permanently before the procedure\" does not address lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The keyed response better protects lithium, toxicity, renal in this stem.",
+          "d": "Option D is weaker because \"Administer metformin with the morning meal on the day of the procedure and hold only for 24 hours post-contrast\" does not address lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The keyed response better protects lithium, toxicity, renal in this stem."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pharmacology Metformin Safety",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Insulin",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/insulin.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pharmacology Metformin Safety",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Insulin",
+          "citation": "NIH MedlinePlus drug monograph: Insulin - Medication safety",
+          "href": "https://medlineplus.gov/insulin.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb753-n003",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "community_health",
+      "subcategory": "Community Health",
+      "difficulty": 3,
+      "stem": "A community health nurse is planning an immunization education program. Which statement about adult immunization schedules is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Tdap booster is recommended annually for all adults"
+        },
+        {
+          "id": "b",
+          "text": "Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine is recommended annually for everyone 6 months and older"
+        },
+        {
+          "id": "c",
+          "text": "The shingles (zoster) vaccine is recommended for adults 40 years and older"
+        },
+        {
+          "id": "d",
+          "text": "The MMR vaccine is required annually for healthcare workers"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Current ACIP adult immunization priorities: (1) Influenza: annually for everyone ≥6 months; (2) Tdap: once as an adult, then Td booster every 10 years; Tdap specifically recommended during each pregnancy at 27–36 weeks gestation (protects newborn via transplacental antibodies); (3) Pneumococcal: PCV15 or PCV20 for all adults ≥65; PCV20 or PCV15 + PPSV23 for high-risk adults 19–64; (4) Zoster (Shingrix): recommended for adults ≥50 years (not 40), 2-dose series; (5) MMR: not annual; 2-dose series if no immunity; HCWs need 2-dose MMR if no evidence of immunity.",
+      "distractorRationales": {
+        "a": "The safer response addresses medication toxicity; \"The Tdap booster is recommended annually for all adults\" moves care toward routine care before patient teaching and medication-safety reinforcement.",
+        "c": "\"The shingles (zoster) vaccine is recommended for adults 40 years and older\" misses the bedside risk. The cue \"2-dose series if no immunity\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency.",
+        "d": "\"The MMR vaccine is required annually for healthcare workers\" misses the bedside risk. The cue \"2-dose series if no immunity\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency."
+      },
+      "tags": [
+        "Community Health",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Key immunization schedule: flu annually (all ≥6 mo); Tdap in pregnancy (27–36w); pneumococcal at 65+; Shingrix (zoster) at 50+, 2-dose series; Tdap once as adult, Td booster q10y.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-community-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine is recommended annually for everyone 6 months and older. Current ACIP adult immunization priorities: (1) Influenza: annually for everyone ≥6 months; (2) Tdap: once as an adult, then Td booster every 10 years; Tdap specifically recommended during each pregnancy at 27–36 weeks gestation (protects newborn via transplacental antibodies); (3) Pneumococcal: PCV15 or PCV20 for all adults ≥65; PCV20 or PCV15 + PPSV23 for high-risk adults 19–64; (4) Zoster (Shingrix): recommended for adults ≥50 years (not 40), 2-dose series; (5) MMR: not annual; 2-dose series if no immunity; HCWs need 2-dose MMR if no evidence of immunity. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Community Health through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Pneumococcal vaccine (PCV15 or PCV20) is recommended for all adults 65 years and older; influenza vaccine is recommended annually for everyone 6 months and older is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses medication toxicity; \"The Tdap booster is recommended annually for all adults\" moves care toward routine care before patient teaching and medication-safety reinforcement. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"The shingles (zoster) vaccine is recommended for adults 40 years and older\" misses the bedside risk. The cue \"2-dose series if no immunity\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"The MMR vaccine is required annually for healthcare workers\" misses the bedside risk. The cue \"2-dose series if no immunity\" points to medication toxicity. Teaching items should reinforce the specific medication, symptom, or safety rule rather than inventing a new emergency. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Community Health",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Community Health",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

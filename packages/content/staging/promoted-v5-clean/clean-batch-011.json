@@ -1,0 +1,906 @@
+{
+  "batchId": "clean-batch-011",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb860-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "adrenal_crisis_hypotension",
+      "subcategory": "adrenal_crisis_hypotension",
+      "difficulty": 4,
+      "stem": "A client with adrenal insufficiency has vomiting, weakness, blood pressure 82/48 mmHg, and sodium 128 mEq/L. Which provider prescription should the nurse implement first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer IV hydrocortisone and isotonic fluids."
+        },
+        {
+          "id": "b",
+          "text": "Restrict oral fluids and monitor weight."
+        },
+        {
+          "id": "c",
+          "text": "Hold corticosteroids until the morning cortisol level is drawn."
+        },
+        {
+          "id": "d",
+          "text": "Teach the client about low-sodium foods."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward premature activity instead of circulation and perfusion support. The stem cue \"sodium 128 mEq/L\" makes circulation or perfusion the active safety concern.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"sodium 128 mEq/L\" makes circulation or perfusion the active safety concern.",
+        "d": "\"Teach the client about low-sodium foods\" misses the bedside risk. The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "adrenal_crisis_hypotension",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Suspected adrenal crisis requires steroids and isotonic fluids right away.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Administer IV hydrocortisone and isotonic fluids.. Hypotension, hyponatremia, vomiting, and weakness in a client with adrenal insufficiency suggest adrenal crisis. The priority is rapid steroid replacement and volume support to prevent circulatory collapse. Delaying treatment for further testing can be life-threatening. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Adrenal Crisis Hypotension through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Administer IV hydrocortisone and isotonic fluids. is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward premature activity instead of circulation and perfusion support. The stem cue \"sodium 128 mEq/L\" makes circulation or perfusion the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"sodium 128 mEq/L\" makes circulation or perfusion the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Teach the client about low-sodium foods\" misses the bedside risk. The cue \"The priority is rapid steroid replacement and volume support to prevent circulatory collapse\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Adrenal Crisis Hypotension",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Adrenal Crisis Hypotension",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb908-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "amniotic_fluid_embolism",
+      "subcategory": "amniotic_fluid_embolism",
+      "difficulty": 3,
+      "stem": "During labor a client suddenly becomes short of breath, cyanotic, and hypotensive. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Call for immediate emergency support and begin high-flow oxygen."
+        },
+        {
+          "id": "b",
+          "text": "Reposition the client and wait to see if the symptoms pass."
+        },
+        {
+          "id": "c",
+          "text": "Obtain a routine pain score before intervening."
+        },
+        {
+          "id": "d",
+          "text": "Document the event as an anxiety reaction."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency. The nurse should escalate immediately and support oxygenation and circulation. Delay can rapidly endanger both the client and fetus.",
+      "distractorRationales": {
+        "b": "\"Reposition the client and wait to see if the symptoms pass\" misses the bedside risk. The cue \"Sudden maternal collapse in labor requires immediate emergency response and oxygenation support\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "c": "\"Obtain a routine pain score before intervening\" misses the bedside risk. The cue \"Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation.",
+        "d": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"During labor a client suddenly becomes short of breath, cyanotic\" makes oxygenation or ventilation the active safety concern."
+      },
+      "tags": [
+        "amniotic_fluid_embolism",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Sudden maternal collapse in labor requires immediate emergency response and oxygenation support.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Call for immediate emergency support and begin high-flow oxygen.. Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency. The nurse should escalate immediately and support oxygenation and circulation. Delay can rapidly endanger both the client and fetus. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Amniotic Fluid Embolism through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Call for immediate emergency support and begin high-flow oxygen. is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Reposition the client and wait to see if the symptoms pass\" misses the bedside risk. The cue \"Sudden maternal collapse in labor requires immediate emergency response and oxygenation support\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "\"Obtain a routine pain score before intervening\" misses the bedside risk. The cue \"Sudden hypoxia and hypotension during labor raise concern for amniotic fluid embolism, a catastrophic obstetric emergency\" points to oxygenation or ventilation. Airway assessment, positioning, oxygen support, or rapid escalation protects ventilation before teaching or documentation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "This distractor shifts care toward misprioritization instead of airway and breathing intervention. The stem cue \"During labor a client suddenly becomes short of breath, cyanotic\" makes oxygenation or ventilation the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Amniotic Fluid Embolism",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Amniotic Fluid Embolism",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1037-n001",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "c_diff_transmission_prevention_bundle",
+      "subcategory": "C_diff_transmission_prevention_bundle",
+      "difficulty": 2,
+      "stem": "A client with profuse diarrhea tests positive for C. difficile. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "C. difficile bundle sequence",
+      "scenario": "The nurse receives the result just before transferring the client to a semi-private room.",
+      "additionalInfo": "The unit has gowns, gloves, soap-and-water handwashing sinks, and sporicidal disinfectant available.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Initiate contact-plus-enteric precautions with gown and gloves"
+        },
+        {
+          "id": "b",
+          "text": "Place the client in an appropriate room and dedicate equipment when possible"
+        },
+        {
+          "id": "c",
+          "text": "Perform soap-and-water hand hygiene after care"
+        },
+        {
+          "id": "d",
+          "text": "Ensure the environment is cleaned with a sporicidal product"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "C. difficile prevention works as a bundle: start precautions, protect room placement and equipment, use soap-and-water hand hygiene, and ensure sporicidal cleaning. The sequence keeps spores from spreading while also protecting the next patient environment.",
+      "distractorRationales": {},
+      "tags": [
+        "C_diff_transmission_prevention_bundle",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning.",
+      "speedCue": "The shortcut is spores: alcohol gel alone is not enough.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": {
+        "type": "overview",
+        "title": "C_diff_transmission_prevention_bundle",
+        "caption": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning.",
+        "conclusion": "For C. difficile, think gloves and gown, room protection, soap-and-water, then sporicidal cleaning."
+      },
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Initiate contact-plus-enteric precautions with gown and gloves; B: Place the client in an appropriate room and dedicate equipment when possible; C: Perform soap-and-water hand hygiene after care; D: Ensure the environment is cleaned with a sporicidal product. C. difficile prevention works as a bundle: start precautions, protect room placement and equipment, use soap-and-water hand hygiene, and ensure sporicidal cleaning. The sequence keeps spores from spreading while also protecting the next patient environment. The clinical focus is C. difficile spore transmission, so the review should connect the answer to diarrhea, spores, sporicidal, contact.",
+        "mechanism": "This item tests C Diff Transmission Prevention Bundle through C. difficile spore transmission: C. difficile spores persist in the environment, so contact precautions, soap-and-water hygiene, and sporicidal cleaning interrupt transmission. These diarrhea, spores, sporicidal, contact cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Initiate contact-plus-enteric precautions with gown and gloves; B: Place the client in an appropriate room and dedicate equipment when possible; C: Perform soap-and-water hand hygiene after care; D: Ensure the environment is cleaned with a sporicidal product is correct because it directly addresses C. difficile spore transmission. C. difficile spores persist in the environment, so contact precautions, soap-and-water hygiene, and sporicidal cleaning interrupt transmission. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {},
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "C Diff Transmission Prevention Bundle",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - C Diff Transmission Prevention Bundle",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1911-n024",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "incident_report_near_miss",
+      "subcategory": "incident_report_near_miss",
+      "difficulty": 1,
+      "stem": "A nurse discovers that a medication was nearly administered to the wrong client, but the error was caught before the medication was given. Which action should the nurse take?",
+      "scenarioTitle": null,
+      "scenario": null,
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Complete an incident report according to facility policy"
+        },
+        {
+          "id": "b",
+          "text": "Do nothing since no harm occurred"
+        },
+        {
+          "id": "c",
+          "text": "Change the documentation to remove the near-miss from the record"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the provider to request a report before taking action"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Near misses are reported to improve system safety and prevent future harm. Incident reporting is separate from the medical record and supports quality improvement. Not reporting or altering documentation undermines safety culture and is unethical.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Report near misses per policy to strengthen safety systems\" makes medication toxicity the active safety concern.",
+        "c": "\"Change the documentation to remove the near-miss from the record\" commits to a competing cause before checking the dangerous pattern. The cue \"the error was caught before the medication was given\" raises concern for medication toxicity, so medication-safety intervention is needed before diagnostic reassurance.",
+        "d": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"Complete an incident report according to facility policy\" fits the safer response to the cue \"Report near misses per policy to strengthen safety systems\"."
+      },
+      "tags": [
+        "incident_report_near_miss",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Report near misses per policy to strengthen safety systems.",
+      "speedCue": null,
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Complete an incident report according to facility policy. Near misses are reported to improve system safety and prevent future harm. Incident reporting is separate from the medical record and supports quality improvement. Not reporting or altering documentation undermines safety culture and is unethical. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Incident Report Near Miss through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Complete an incident report according to facility policy is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"Report near misses per policy to strengthen safety systems\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Change the documentation to remove the near-miss from the record\" commits to a competing cause before checking the dangerous pattern. The cue \"the error was caught before the medication was given\" raises concern for medication toxicity, so medication-safety intervention is needed before diagnostic reassurance. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it treats active deterioration as something safe to watch. \"Complete an incident report according to facility policy\" fits the safer response to the cue \"Report near misses per policy to strengthen safety systems\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Incident Report Near Miss",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Incident Report Near Miss",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1040-n004",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "lumbar_puncture_positioning_complications",
+      "subcategory": "lumbar_puncture_positioning_complications",
+      "difficulty": 2,
+      "stem": "Which conclusion should guide the nurse's next move before and after a lumbar puncture?",
+      "scenarioTitle": "Lumbar puncture case",
+      "scenario": "A client is scheduled for a lumbar puncture to evaluate suspected meningitis.",
+      "additionalInfo": "After the procedure, the client reports a severe headache that worsens when sitting upright.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Support correct positioning for the procedure and recognize post-dural headache as a complication to report and manage"
+        },
+        {
+          "id": "b",
+          "text": "Keep the client prone after the procedure and encourage repeated ambulation to clear the headache"
+        },
+        {
+          "id": "c",
+          "text": "Tell the client the headache proves the test was successful and needs no follow-up"
+        },
+        {
+          "id": "d",
+          "text": "Delay provider notification because headache is expected after any spinal procedure"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "The nurse positions the client to widen spinal spaces and then monitors for complications such as post-dural headache. Worsening upright headache after lumbar puncture is not a shrug-off finding and should be reported and managed.",
+      "distractorRationales": {
+        "b": "\"Keep the client prone after the procedure and encourage repeated ambulation to clear the headache\" moves to activity, intake, or discharge planning too early. The cue \"After the procedure, the client reports a severe headache that worsens when sitting upright\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching.",
+        "c": "\"Tell the client the headache proves the test was successful and needs no follow-up\" misses the bedside risk. The cue \"After the procedure, the client reports a severe headache that worsens when sitting upright\" points to clinical safety risk. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care.",
+        "d": "The option can leave clinical safety risk untreated because it treats active deterioration as something safe to watch. \"Support correct positioning for the procedure and recognize post-dural headache as a complication to report\" fits the safer response to the cue \"Worsening upright headache after lumbar puncture is not a shrug-off finding and should be reported and managed\"."
+      },
+      "tags": [
+        "lumbar_puncture_positioning_complications",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Post-lumbar-puncture headache is a complication clue, not just routine discomfort.",
+      "speedCue": "Headache worse upright after LP means think complication, not reassurance.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Support correct positioning for the procedure and recognize post-dural headache as a complication to report and manage. The nurse positions the client to widen spinal spaces and then monitors for complications such as post-dural headache. Worsening upright headache after lumbar puncture is not a shrug-off finding and should be reported and managed. The clinical focus is bacterial meningitis with possible sepsis, so the review should connect the answer to meningitis, infection, sepsis, antibiotics.",
+        "mechanism": "This item tests Lumbar Puncture Positioning Complications through bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. These meningitis, infection, sepsis, antibiotics cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Support correct positioning for the procedure and recognize post-dural headache as a complication to report and manage is correct because it directly addresses bacterial meningitis with possible sepsis. delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Keep the client prone after the procedure and encourage repeated ambulation to clear the headache\" moves to activity, intake, or discharge planning too early. The cue \"After the procedure, the client reports a severe headache that worsens when sitting upright\" raises concern for clinical safety risk, so bedside safety action is needed before ambulation, intake, or discharge teaching. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "c": "\"Tell the client the headache proves the test was successful and needs no follow-up\" misses the bedside risk. The cue \"After the procedure, the client reports a severe headache that worsens when sitting upright\" points to clinical safety risk. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care. Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk.",
+          "d": "The option can leave clinical safety risk untreated because it treats active deterioration as something safe to watch. \"Support correct positioning for the procedure and recognize post-dural headache as a complication to report\" fits the safer response to the cue \"Worsening upright headache after lumbar puncture is not a shrug-off finding and should be reported and managed\". Clinically, this misses bacterial meningitis with possible sepsis: delayed antibiotics or missing droplet isolation can worsen neurologic injury, septic shock, and transmission risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Lumbar Puncture Positioning Complications",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Lumbar Puncture Positioning Complications",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1031-n005",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "pericardial_tamponade_pressure",
+      "subcategory": "pericardial_tamponade_pressure",
+      "difficulty": 3,
+      "stem": "Which interpretation should guide the nurse's next move in this hemodynamic decline?",
+      "scenarioTitle": "Tamponade filling-pressure case",
+      "scenario": "A client recovering from cardiac surgery develops muffled heart sounds, jugular venous distention, narrowing pulse pressure, and worsening hypotension.",
+      "additionalInfo": "Urine output is falling and the client becomes more anxious with each reassessment.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation"
+        },
+        {
+          "id": "b",
+          "text": "Routine postoperative pain causing temporary vital-sign changes"
+        },
+        {
+          "id": "c",
+          "text": "Simple fluid overload that only needs a diuretic first"
+        },
+        {
+          "id": "d",
+          "text": "Expected anxiety after surgery without true perfusion compromise"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Muffled heart sounds, JVD, and hypotension create a tamponade map because the heart is failing to fill effectively. The nurse should answer from obstructed cardiac output and urgent escalation, not from pain or anxiety assumptions.",
+      "distractorRationales": {
+        "b": "This distractor shifts care toward delayed assessment instead of circulation and perfusion support. The stem cue \"Low pressure with JVD after cardiac surgery should make filling failure feel immediate\" makes circulation or perfusion the active safety concern.",
+        "c": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation\" fits the safer response to the cue \"Low pressure with JVD after cardiac surgery should make filling failure feel immediate\".",
+        "d": "\"Expected anxiety after surgery without true perfusion compromise\" misses the bedside risk. The cue \"The nurse should answer from obstructed cardiac output and urgent escalation, not from pain or anxiety assumptions\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "pericardial_tamponade_pressure",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Low pressure with JVD after cardiac surgery should make filling failure feel immediate.",
+      "speedCue": "JVD plus muffled tones plus hypotension is the shortcut.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation. Muffled heart sounds, JVD, and hypotension create a tamponade map because the heart is failing to fill effectively. The nurse should answer from obstructed cardiac output and urgent escalation, not from pain or anxiety assumptions. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Pericardial Tamponade Pressure through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "This distractor shifts care toward delayed assessment instead of circulation and perfusion support. The stem cue \"Low pressure with JVD after cardiac surgery should make filling failure feel immediate\" makes circulation or perfusion the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "The option can leave circulation or perfusion untreated because it answers a lower-acuity part of the scenario. \"Pericardial tamponade impairing ventricular filling and requiring urgent cardiac escalation\" fits the safer response to the cue \"Low pressure with JVD after cardiac surgery should make filling failure feel immediate\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"Expected anxiety after surgery without true perfusion compromise\" misses the bedside risk. The cue \"The nurse should answer from obstructed cardiac output and urgent escalation, not from pain or anxiety assumptions\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Pericardial Tamponade Pressure",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Pericardial Tamponade Pressure",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1154-n004",
+      "exam": "nclex",
+      "type": "sata",
+      "category": "acute_rejection_transplant",
+      "subcategory": "Transplant rejection",
+      "difficulty": 3,
+      "stem": "A client is 2 weeks after kidney transplant. Which findings should make the nurse suspect acute rejection and notify the provider right away?",
+      "scenarioTitle": "Early transplant warning cluster",
+      "scenario": "The client reports decreased appetite and generally not feeling well since yesterday.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fever"
+        },
+        {
+          "id": "b",
+          "text": "Tenderness over the graft site"
+        },
+        {
+          "id": "c",
+          "text": "Decreased urine output"
+        },
+        {
+          "id": "d",
+          "text": "Blood pressure lower than baseline after standing once"
+        },
+        {
+          "id": "e",
+          "text": "Rising serum creatinine"
+        },
+        {
+          "id": "f",
+          "text": "Mild tremor after tacrolimus dose"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Acute rejection is recognized by combining graft tenderness, fever, falling urine output, and worsening renal function rather than treating each clue in isolation. The nurse should move quickly because early escalation protects graft function.",
+      "distractorRationales": {
+        "d": "\"Blood pressure lower than baseline after standing once\" answers a lower-acuity part of the scenario. The cue \"A client is 2 weeks after kidney transplant\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care.",
+        "f": "\"Mild tremor after tacrolimus dose\" misses the bedside risk. The cue \"A client is 2 weeks after kidney transplant\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care."
+      },
+      "tags": [
+        "NGN",
+        "transplant",
+        "rejection",
+        "sata",
+        "Transplant rejection",
+        "NCLEX source rotation",
+        "zeroed-batch-repair"
+      ],
+      "takeaway": "Fever plus graft tenderness plus low urine output after transplant is a rejection pattern until proven otherwise.",
+      "speedCue": "On exam day, pair transplant timing with graft tenderness and kidney decline before you anchor on medication side effects.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "zeroed-batch-repair: regenerated from the existing ChapAI NCLEX draft library because the original promoted batch contained only NUL bytes.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Fever; B: Tenderness over the graft site; C: Decreased urine output; E: Rising serum creatinine. Acute rejection is recognized by combining graft tenderness, fever, falling urine output, and worsening renal function rather than treating each clue in isolation. The nurse should move quickly because early escalation protects graft function. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Transplant Rejection through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Fever; B: Tenderness over the graft site; C: Decreased urine output; E: Rising serum creatinine is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "d": "\"Blood pressure lower than baseline after standing once\" answers a lower-acuity part of the scenario. The cue \"A client is 2 weeks after kidney transplant\" raises concern for infection progression, so infection or sepsis escalation is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "f": "\"Mild tremor after tacrolimus dose\" misses the bedside risk. The cue \"A client is 2 weeks after kidney transplant\" points to infection progression. Infection control or sepsis escalation limits spread and organ hypoperfusion before lower-acuity care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Acute Rejection Transplant",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Acute Rejection Transplant",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1000-n001",
+      "exam": "nclex",
+      "type": "ordering",
+      "category": "postpartum_hemorrhage_boggy_fundus",
+      "subcategory": "postpartum_hemorrhage_boggy_fundus",
+      "difficulty": 3,
+      "stem": "A client one hour after delivery has heavy bleeding and a boggy uterus. Place the nursing actions in the order the nurse should take them.",
+      "scenarioTitle": "Uterine atony rescue sequence",
+      "scenario": "The pad is saturated and the client reports dizziness while holding the newborn.",
+      "additionalInfo": null,
+      "options": [
+        {
+          "id": "a",
+          "text": "Massage the fundus"
+        },
+        {
+          "id": "b",
+          "text": "Call for help and bring hemorrhage support to the bedside"
+        },
+        {
+          "id": "c",
+          "text": "Assess bladder fullness and assist with emptying if needed"
+        },
+        {
+          "id": "d",
+          "text": "Prepare uterotonic medication after initial bedside measures"
+        }
+      ],
+      "answer": [
+        "b",
+        "a",
+        "c",
+        "d"
+      ],
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Heavy postpartum bleeding with a boggy uterus is managed as a hemorrhage problem first. The nurse brings help, massages the fundus, corrects bladder-related atony contributors, and prepares uterotonic support without waiting for routine reassessment.",
+      "distractorRationales": {},
+      "tags": [
+        "postpartum_hemorrhage_boggy_fundus",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus means act on atony now, not after more observation.",
+      "speedCue": "On exam day, boggy plus bleeding should push uterine atony to the top immediately.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Call for help and bring hemorrhage support to the bedside; A: Massage the fundus; C: Assess bladder fullness and assist with emptying if needed; D: Prepare uterotonic medication after initial bedside measures. Heavy postpartum bleeding with a boggy uterus is managed as a hemorrhage problem first. The nurse brings help, massages the fundus, corrects bladder-related atony contributors, and prepares uterotonic support without waiting for routine reassessment. The clinical focus is uterine atony hemorrhage, so the review should connect the answer to postpartum, hemorrhage, uterine, atony.",
+        "mechanism": "This item tests Postpartum Hemorrhage Boggy Fundus through uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. These postpartum, hemorrhage, uterine, atony cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Call for help and bring hemorrhage support to the bedside; A: Massage the fundus; C: Assess bladder fullness and assist with emptying if needed; D: Prepare uterotonic medication after initial bedside measures is correct because it directly addresses uterine atony hemorrhage. uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {},
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Postpartum Hemorrhage Boggy Fundus",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Postpartum Hemorrhage Boggy Fundus",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb1040-n022",
+      "exam": "nclex",
+      "type": "matrix",
+      "category": "acute_kidney_injury_rifle_staging",
+      "subcategory": "acute_kidney_injury_RIFLE_staging",
+      "difficulty": 4,
+      "stem": "For each finding, click to specify whether the finding supports worsening acute kidney injury or a less urgent monitoring picture.",
+      "scenarioTitle": "AKI trend sort",
+      "scenario": "The nurse is comparing several renal function trends for a client whose kidney status is worsening.",
+      "additionalInfo": "The provider asks the nurse to identify which findings point to deterioration that needs faster action.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supports worsening acute kidney injury"
+        },
+        {
+          "id": "b",
+          "text": "Less urgent monitoring picture"
+        }
+      ],
+      "answer": {
+        "Rising creatinine with falling urine output": "Supports worsening acute kidney injury",
+        "Progressive edema and increasing potassium": "Supports worsening acute kidney injury",
+        "Stable creatinine with adequate hourly urine output": "Less urgent monitoring picture",
+        "Improved intake with steady daily weight": "Less urgent monitoring picture"
+      },
+      "matrixColumns": [
+        "Supports worsening acute kidney injury",
+        "Less urgent monitoring picture"
+      ],
+      "matrixRows": [
+        {
+          "label": "Rising creatinine with falling urine output",
+          "answer": "Supports worsening acute kidney injury"
+        },
+        {
+          "label": "Progressive edema and increasing potassium",
+          "answer": "Supports worsening acute kidney injury"
+        },
+        {
+          "label": "Stable creatinine with adequate hourly urine output",
+          "answer": "Less urgent monitoring picture"
+        },
+        {
+          "label": "Improved intake with steady daily weight",
+          "answer": "Less urgent monitoring picture"
+        }
+      ],
+      "rationale": "Acute kidney injury becomes more urgent when urine output falls, creatinine rises, and electrolyte complications emerge. Stable output and renal trends belong on the less urgent side because they do not signal deterioration.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of renal protection. The stem cue \"Falling urine plus rising creatinine is the shortcut to worsening AKI\" makes renal injury the active safety concern.",
+        "b": "The safer response addresses renal injury; \"Less urgent monitoring picture\" moves care toward routine care before renal protection."
+      },
+      "tags": [
+        "acute_kidney_injury_RIFLE_staging",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Falling urine plus rising creatinine is the shortcut to worsening AKI.",
+      "speedCue": "Creatinine up and urine down means kidney injury is moving the wrong way.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is Rising Creatinine With Falling Urine Output: Supports worsening acute kidney injury; Progressive Edema And Increasing Potassium: Supports worsening acute kidney injury; Stable Creatinine With Adequate Hourly Urine Output: Less urgent monitoring picture; Improved Intake With Steady Daily Weight: Less urgent monitoring picture. Acute kidney injury becomes more urgent when urine output falls, creatinine rises, and electrolyte complications emerge. Stable output and renal trends belong on the less urgent side because they do not signal deterioration. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Acute Kidney Injury RIFLE Staging through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "Rising Creatinine With Falling Urine Output: Supports worsening acute kidney injury; Progressive Edema And Increasing Potassium: Supports worsening acute kidney injury; Stable Creatinine With Adequate Hourly Urine Output: Less urgent monitoring picture; Improved Intake With Steady Daily Weight: Less urgent monitoring picture is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of renal protection. The stem cue \"Falling urine plus rising creatinine is the shortcut to worsening AKI\" makes renal injury the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "The safer response addresses renal injury; \"Less urgent monitoring picture\" moves care toward routine care before renal protection. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Acute Kidney Injury Rifle Staging",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Acute Kidney Injury Rifle Staging",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb972-n009",
+      "exam": "nclex",
+      "type": "scenario_mcq",
+      "category": "acute_rejection_transplant",
+      "subcategory": "acute_rejection_transplant",
+      "difficulty": 2,
+      "stem": "Which finding in this newly transplanted client should the nurse treat as the strongest evidence of acute kidney rejection?",
+      "scenarioTitle": "Kidney transplant day-14 reassessment",
+      "scenario": "A client is 14 days after kidney transplant and reports malaise, tenderness over the graft, and lower urine output than yesterday.",
+      "additionalInfo": "Morning data: temperature 100.8 F (38.2 C), creatinine up from 1.1 to 1.9 mg/dL, blood pressure 148/92 mm Hg, incision clean and dry.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rising creatinine with graft tenderness and falling urine output"
+        },
+        {
+          "id": "b",
+          "text": "Mild hand tremor after the tacrolimus dose"
+        },
+        {
+          "id": "c",
+          "text": "Poor appetite and mild constipation"
+        },
+        {
+          "id": "d",
+          "text": "Trace edema at the ankles after walking"
+        }
+      ],
+      "answer": "a",
+      "matrixColumns": null,
+      "matrixRows": null,
+      "rationale": "Acute rejection is recognized fastest by clustering graft tenderness, reduced urine output, and worsening kidney function. The nurse should move toward urgent escalation instead of anchoring on medication side effects or vague discomfort.",
+      "distractorRationales": {
+        "b": "\"Mild hand tremor after the tacrolimus dose\" misses the bedside risk. The cue \"2 C), creatinine up from 1\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "The cue \"lower urine output than yesterday\" suggests medication toxicity, so \"Poor appetite and mild constipation\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The option can leave medication toxicity untreated because it moves to activity, intake, or discharge planning too early. \"Rising creatinine with graft tenderness and falling urine output\" fits the safer response to the cue \"9 mg/dL, blood pressure 148/92 mm Hg, incision clean and dry\"."
+      },
+      "tags": [
+        "acute_rejection_transplant",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In a fresh transplant, graft tenderness plus kidney decline is rejection until proven otherwise.",
+      "speedCue": "Time from transplant plus graft pain plus creatinine rise is the clue cluster that should outrank softer postoperative complaints.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-ngn-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Rising creatinine with graft tenderness and falling urine output. Acute rejection is recognized fastest by clustering graft tenderness, reduced urine output, and worsening kidney function. The nurse should move toward urgent escalation instead of anchoring on medication side effects or vague discomfort. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Acute Rejection Transplant through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Rising creatinine with graft tenderness and falling urine output is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Mild hand tremor after the tacrolimus dose\" misses the bedside risk. The cue \"2 C), creatinine up from 1\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"lower urine output than yesterday\" suggests medication toxicity, so \"Poor appetite and mild constipation\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it moves to activity, intake, or discharge planning too early. \"Rising creatinine with graft tenderness and falling urine output\" fits the safer response to the cue \"9 mg/dL, blood pressure 148/92 mm Hg, incision clean and dry\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Acute Rejection Transplant",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Acute Rejection Transplant",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}

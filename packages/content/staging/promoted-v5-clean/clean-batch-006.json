@@ -1,0 +1,846 @@
+{
+  "batchId": "clean-batch-006",
+  "generatedAt": "2026-08-27T22:11:37.929Z",
+  "generatedBy": {
+    "agentId": "boilerplate-filter",
+    "runtime": "deterministic",
+    "promptSource": "manual audit 2026-08-27",
+    "sourceGeneration": "promoted-v5"
+  },
+  "examMix": {
+    "nclex": 10
+  },
+  "validation": {
+    "valid": true,
+    "errors": []
+  },
+  "questions": [
+    {
+      "id": "mb760-n004",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion, and vomiting following a viral illness. Which initial interventions are CORRECT? (Select all that apply.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Administer hydrocortisone 100 mg IV bolus immediately"
+        },
+        {
+          "id": "b",
+          "text": "Initiate 0.9% normal saline 1 L IV bolus for hemodynamic support"
+        },
+        {
+          "id": "c",
+          "text": "Administer fludrocortisone 0.1 mg orally for mineralocorticoid replacement"
+        },
+        {
+          "id": "d",
+          "text": "Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority), and (2) aggressive NS fluid resuscitation for hypovolemia and hyponatremia (B). Fludrocortisone (C) is used for chronic mineralocorticoid replacement but is not the initial treatment in a crisis — hydrocortisone at high doses provides sufficient mineralocorticoid activity. Withholding steroids to do testing (D) is dangerous — diagnosis is clinical in a crisis. ACTH stimulation can be done later.",
+      "distractorRationales": {
+        "b": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"Administer hydrocortisone 100 mg IV bolus immediately\" fits the safer response to the cue \"A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion\".",
+        "c": "This distractor shifts care toward premature activity instead of medication-safety intervention. The stem cue \"Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority)\" makes medication toxicity the active safety concern.",
+        "d": "The safer response addresses medication toxicity; \"Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency\" moves care toward routine care before medication-safety intervention."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Addisonian crisis: hydrocortisone 100 mg IV + NS bolus immediately. Do not delay for confirmatory testing.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Administer hydrocortisone 100 mg IV bolus immediately. Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority), and (2) aggressive NS fluid resuscitation for hypovolemia and hyponatremia (B). Fludrocortisone (C) is used for chronic mineralocorticoid replacement but is not the initial treatment in a crisis — hydrocortisone at high doses provides sufficient mineralocorticoid activity. Withholding steroids to do testing (D) is dangerous — diagnosis is clinical in a crisis. ACTH stimulation can be done later. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Medical Surgical Advanced through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Administer hydrocortisone 100 mg IV bolus immediately is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "The option can leave medication toxicity untreated because it normalizes a finding that needs reassessment. \"Administer hydrocortisone 100 mg IV bolus immediately\" fits the safer response to the cue \"A patient with known Addison's disease is admitted in Addisonian (adrenal) crisis with BP 68/40, confusion\". Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "This distractor shifts care toward premature activity instead of medication-safety intervention. The stem cue \"Addisonian crisis is life-threatening and requires: (1) immediate hydrocortisone 100 mg IV (glucocorticoid replacement — the priority)\" makes medication toxicity the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "The safer response addresses medication toxicity; \"Hold corticosteroids until ACTH stimulation test confirms adrenal insufficiency\" moves care toward routine care before medication-safety intervention. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Medical Surgical Advanced",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Medical Surgical Advanced",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb750-n009",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "A patient delivers vaginally and 30 minutes later has an estimated blood loss of 750 mL with a soft, boggy uterus displaced to the right. BP is 94/58, HR 118. Which sequence of interventions is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider"
+        },
+        {
+          "id": "b",
+          "text": "Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement"
+        },
+        {
+          "id": "c",
+          "text": "Call the provider, obtain type and crossmatch, begin blood transfusion"
+        },
+        {
+          "id": "d",
+          "text": "Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage.",
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Boggy uterus displaced to the right after delivery = full bladder; empty bladder first, then fundal massage + oxytocin.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement. Postpartum hemorrhage (PPH) from uterine atony management: (1) Massage the fundus — stimulates uterine contraction. (2) Empty the bladder — a full bladder displaces the uterus and prevents contraction (uterus displaced to the right = full bladder). (3) IV oxytocin — first-line uterotonic. (4) Notify provider if no response. Bladder emptying is critical and often overlooked — the displaced, boggy uterus signals bladder distension. Epinephrine (D) and hysterectomy are not indicated at this stage. The clinical focus is umbilical cord compression, so the review should connect the answer to cord, compression, fetal, bradycardia.",
+        "mechanism": "This item tests Postpartum Hemorrhage through umbilical cord compression: cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. These cord, compression, fetal, bradycardia cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Empty the bladder, fundal massage, IV oxytocin infusion, call the provider if no improvement is correct because it directly addresses umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "Option A is weaker because \"IV oxytocin infusion, bimanual uterine compression, empty the bladder, call the provider\" does not address umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The keyed response better protects cord, compression, fetal in this stem.",
+          "c": "Option C is weaker because \"Call the provider, obtain type and crossmatch, begin blood transfusion\" does not address umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The keyed response better protects cord, compression, fetal in this stem.",
+          "d": "Option D is weaker because \"Place in Trendelenburg, administer IV epinephrine, call for hysterectomy consent\" does not address umbilical cord compression. cord compression reduces fetal perfusion and oxygenation, so relieving pressure and mobilizing emergency birth support come first. The keyed response better protects cord, compression, fetal in this stem."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Postpartum Hemorrhage",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a603002.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Postpartum Hemorrhage",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+          "citation": "NIH MedlinePlus drug monograph: Epinephrine Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a603002.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb755-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 3,
+      "stem": "A patient on clozapine for treatment-resistant schizophrenia develops fever 39.8°C, diaphoresis, severe muscle rigidity ('lead pipe'), altered mental status, and autonomic instability (fluctuating BP, tachycardia). Which condition is this, and what is the immediate action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serotonin syndrome; administer cyproheptadine and stop all serotonergic agents"
+        },
+        {
+          "id": "b",
+          "text": "Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; administer IV diphenhydramine 50 mg"
+        },
+        {
+          "id": "d",
+          "text": "Anticholinergic toxicity from clozapine; administer physostigmine"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Neuroleptic malignant syndrome (NMS) is a life-threatening idiosyncratic reaction to antipsychotics characterized by the tetrad: hyperthermia, severe muscle rigidity, altered mental status, and autonomic instability. It develops over days-weeks. Immediate management: stop the antipsychotic, aggressive cooling, IV fluids, dantrolene (muscle relaxant) and/or bromocriptine (dopamine agonist). Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. Acute dystonia (C) does not include fever or autonomic instability.",
+      "distractorRationales": {
+        "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A patient on clozapine for treatment-resistant schizophrenia develops fever 39\" makes medication toxicity the active safety concern.",
+        "c": "The cue \"Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine\" suggests medication toxicity, so \"Acute dystonia; administer IV diphenhydramine 50 mg\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine\" fits the safer response to the cue \"A patient on clozapine for treatment-resistant schizophrenia develops fever 39\"."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "NMS tetrad: hyperthermia + lead-pipe rigidity + altered mental status + autonomic instability — stop antipsychotic immediately; treat with dantrolene and/or bromocriptine.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine. Neuroleptic malignant syndrome (NMS) is a life-threatening idiosyncratic reaction to antipsychotics characterized by the tetrad: hyperthermia, severe muscle rigidity, altered mental status, and autonomic instability. It develops over days-weeks. Immediate management: stop the antipsychotic, aggressive cooling, IV fluids, dantrolene (muscle relaxant) and/or bromocriptine (dopamine agonist). Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine. Acute dystonia (C) does not include fever or autonomic instability. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Antipsychotic Medication Safety through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"A patient on clozapine for treatment-resistant schizophrenia develops fever 39\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"Serotonin syndrome (A) has similar features but presents with hyperreflexia and clonus (not lead-pipe rigidity) and requires cyproheptadine\" suggests medication toxicity, so \"Acute dystonia; administer IV diphenhydramine 50 mg\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave medication toxicity untreated because it commits to a competing cause before checking the dangerous pattern. \"Neuroleptic malignant syndrome (NMS); discontinue antipsychotic immediately and initiate supportive care with dantrolene or bromocriptine\" fits the safer response to the cue \"A patient on clozapine for treatment-resistant schizophrenia develops fever 39\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Antipsychotic Medication Safety",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Antipsychotic Medication Safety",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb751-n010",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "delegation",
+      "subcategory": "Delegation",
+      "difficulty": 3,
+      "stem": "An RN delegates to an LPN/LVN. Which task is within the LPN's scope of practice in most states?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform the initial nursing admission assessment for a newly admitted patient"
+        },
+        {
+          "id": "b",
+          "text": "Administer oral, IM, and subcutaneous medications and monitor response"
+        },
+        {
+          "id": "c",
+          "text": "Develop and update the nursing care plan based on patient assessment findings"
+        },
+        {
+          "id": "d",
+          "text": "Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol"
+        }
+      ],
+      "answer": "b",
+      "rationale": "LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens, and monitoring and reporting patient status. Initial assessments (A) require RN-level nursing judgment and are an RN responsibility. Care plan development (C) is an RN function. Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. The key distinction is that LPNs implement care under RN supervision; RNs assess, plan, evaluate, and teach.",
+      "distractorRationales": {
+        "a": "The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" suggests medication toxicity, so \"Perform the initial nursing admission assessment for a newly admitted patient\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "c": "\"Develop and update the nursing care plan based on patient assessment findings\" answers a lower-acuity part of the scenario. The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care.",
+        "d": "The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" suggests medication toxicity, so \"Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Delegation",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "LPN scope: administer medications, perform basic wound care, collect data, implement established care — initial assessment, care planning, and teaching are RN responsibilities.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-leadership-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Administer oral, IM, and subcutaneous medications and monitor response. LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens, and monitoring and reporting patient status. Initial assessments (A) require RN-level nursing judgment and are an RN responsibility. Care plan development (C) is an RN function. Interpreting arrhythmias and adjusting vasopressors (D) requires advanced critical care RN knowledge. The key distinction is that LPNs implement care under RN supervision; RNs assess, plan, evaluate, and teach. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Delegation through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Administer oral, IM, and subcutaneous medications and monitor response is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" suggests medication toxicity, so \"Perform the initial nursing admission assessment for a newly admitted patient\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "\"Develop and update the nursing care plan based on patient assessment findings\" answers a lower-acuity part of the scenario. The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" raises concern for medication toxicity, so medication-safety intervention is needed before routine care. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The cue \"LPN/LVN scope of practice typically includes: administering medications (oral, IM, SC, topical), performing basic wound care, collecting specimens\" suggests medication toxicity, so \"Interpret cardiac rhythm strips and adjust IV vasopressor infusions per protocol\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Delegation",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Delegation",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb751-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "antipsychotic_medication_safety",
+      "subcategory": "Antipsychotic Medication Safety",
+      "difficulty": 2,
+      "stem": "A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward), and severe muscle rigidity within 3 days of starting the medication. Which type of extrapyramidal symptom (EPS) is this, and what is the antidote?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tardive dyskinesia; no effective antidote, may require medication discontinuation"
+        },
+        {
+          "id": "b",
+          "text": "Akathisia; treat with propranolol or benzodiazepines"
+        },
+        {
+          "id": "c",
+          "text": "Acute dystonia; treat with IV/IM diphenhydramine or benztropine"
+        },
+        {
+          "id": "d",
+          "text": "Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose"
+        }
+      ],
+      "answer": "c",
+      "rationale": "Acute dystonia presents within hours to days of starting a high-potency antipsychotic (like haloperidol) as sudden, painful muscle spasms — torticollis, oculogyric crisis, opisthotonus. Treatment is IV or IM diphenhydramine (Benadryl) or benztropine (Cogentin), which are anticholinergic agents. Tardive dyskinesia (A) develops after months-years of use as involuntary repetitive movements (lip smacking, tongue protrusion). Akathisia (B) is inner restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia.",
+      "distractorRationales": {
+        "a": "The cue \"Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia\" suggests medication toxicity, so \"Tardive dyskinesia; no effective antidote, may require medication discontinuation\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "b": "\"Akathisia; treat with propranolol or benzodiazepines\" moves to activity, intake, or discharge planning too early. The cue \"A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward)\" raises concern for medication toxicity, so medication-safety intervention is needed before ambulation, intake, or discharge teaching.",
+        "d": "\"Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose\" misses the bedside risk. The cue \"A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug."
+      },
+      "tags": [
+        "Antipsychotic Medication Safety",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Acute dystonia (torticollis, oculogyric crisis) within days of antipsychotic = IV/IM diphenhydramine or benztropine (anticholinergics).",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-mental-health-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is C: Acute dystonia; treat with IV/IM diphenhydramine or benztropine. Acute dystonia presents within hours to days of starting a high-potency antipsychotic (like haloperidol) as sudden, painful muscle spasms — torticollis, oculogyric crisis, opisthotonus. Treatment is IV or IM diphenhydramine (Benadryl) or benztropine (Cogentin), which are anticholinergic agents. Tardive dyskinesia (A) develops after months-years of use as involuntary repetitive movements (lip smacking, tongue protrusion). Akathisia (B) is inner restlessness and urge to move. Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Antipsychotic Medication Safety through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "C: Acute dystonia; treat with IV/IM diphenhydramine or benztropine is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The cue \"Pseudoparkinsonism (D) mimics Parkinson's disease with tremor, rigidity, bradykinesia\" suggests medication toxicity, so \"Tardive dyskinesia; no effective antidote, may require medication discontinuation\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "b": "\"Akathisia; treat with propranolol or benzodiazepines\" moves to activity, intake, or discharge planning too early. The cue \"A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward)\" raises concern for medication toxicity, so medication-safety intervention is needed before ambulation, intake, or discharge teaching. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "\"Pseudoparkinsonism; treat with amantadine or reduce antipsychotic dose\" misses the bedside risk. The cue \"A 24-year-old on haloperidol develops sudden onset torticollis (involuntary neck twisting), oculogyric crisis (eyes fixed upward)\" points to medication toxicity. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Antipsychotic Medication Safety",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Antipsychotic Medication Safety",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb753-n007",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "postpartum_hemorrhage",
+      "subcategory": "Postpartum Hemorrhage",
+      "difficulty": 3,
+      "stem": "After fundal massage and oxytocin, a postpartum patient's uterus remains atonic and bleeding continues. The provider orders methylergonovine (Methergine) 0.2 mg IM. Which patient condition is an absolute contraindication to this medication?",
+      "options": [
+        {
+          "id": "a",
+          "text": "History of asthma"
+        },
+        {
+          "id": "b",
+          "text": "Hypertension with BP currently 158/100 mmHg"
+        },
+        {
+          "id": "c",
+          "text": "Breastfeeding"
+        },
+        {
+          "id": "d",
+          "text": "Gestational diabetes"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Methylergonovine (Methergine) is an ergot alkaloid uterotonic that causes powerful vasoconstriction. It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke, and coronary artery spasm. Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine. Breastfeeding (C) is not a contraindication — it is safe during breastfeeding. Gestational diabetes (D) is not a contraindication.",
+      "distractorRationales": {
+        "a": "\"History of asthma\" misses the bedside risk. The cue \"Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "c": "\"Breastfeeding\" misses the bedside risk. The cue \"Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing.",
+        "d": "\"Gestational diabetes\" misses the bedside risk. The cue \"It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing."
+      },
+      "tags": [
+        "Postpartum Hemorrhage",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Methylergonovine (Methergine) is absolutely contraindicated in hypertension — causes severe vasospasm and hypertensive crisis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-maternal-newborn-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Hypertension with BP currently 158/100 mmHg. Methylergonovine (Methergine) is an ergot alkaloid uterotonic that causes powerful vasoconstriction. It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke, and coronary artery spasm. Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine. Breastfeeding (C) is not a contraindication — it is safe during breastfeeding. Gestational diabetes (D) is not a contraindication. The clinical focus is uterine atony hemorrhage, so the review should connect the answer to postpartum, hemorrhage, uterine, atony.",
+        "mechanism": "This item tests Postpartum Hemorrhage through uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. These postpartum, hemorrhage, uterine, atony cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Hypertension with BP currently 158/100 mmHg is correct because it directly addresses uterine atony hemorrhage. uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "\"History of asthma\" misses the bedside risk. The cue \"Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+          "c": "\"Breastfeeding\" misses the bedside risk. The cue \"Asthma (A) is a relative contraindication for prostaglandins (like carboprost/Hemabate) but not for Methergine\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation.",
+          "d": "\"Gestational diabetes\" misses the bedside risk. The cue \"It is absolutely contraindicated in hypertension (including pre-eclampsia) because it can cause severe hypertensive crisis, stroke\" points to bleeding or anticoagulation injury. Bleeding risk requires assessment and source control before comfort measures, teaching, or routine medication timing. Clinically, this misses uterine atony hemorrhage: uterine atony allows continued bleeding, so fundal massage, help, and uterotonic support protect circulation."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Postpartum Hemorrhage",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Postpartum Hemorrhage",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb752-n001",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "medical_surgical_advanced",
+      "subcategory": "Medical-Surgical Advanced",
+      "difficulty": 3,
+      "stem": "A patient with a known adrenal mass is scheduled for laparoscopic adrenalectomy for pheochromocytoma. The pre-operative medication orders include phenoxybenzamine (alpha-blocker). The surgeon also wants to start a beta-blocker. The nurse understands that the CORRECT order for pre-operative blockade is:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Beta-blocker first, then alpha-blocker after adequate heart rate control"
+        },
+        {
+          "id": "b",
+          "text": "Alpha-blocker first for 7–14 days, then beta-blocker added if needed"
+        },
+        {
+          "id": "c",
+          "text": "Both alpha and beta-blockers started simultaneously on day 1"
+        },
+        {
+          "id": "d",
+          "text": "Beta-blocker alone is sufficient; alpha-blockers are unnecessary pre-operatively"
+        }
+      ],
+      "answer": "b",
+      "rationale": "Alpha-blockade MUST be established before beta-blockade in pheochromocytoma. Pheos release primarily epinephrine and norepinephrine, causing vasoconstriction via alpha receptors. If a beta-blocker is given first, it blocks the vasodilatory beta-2 effect without blocking alpha-mediated vasoconstriction — resulting in paradoxical, unopposed hypertensive crisis. Alpha-blockade (phenoxybenzamine or doxazosin) is initiated 7–14 days pre-op; beta-blocker is added only after alpha-blockade is established, if needed for tachycardia.",
+      "distractorRationales": {
+        "a": "The safer response addresses medication toxicity; \"Beta-blocker first, then alpha-blocker after adequate heart rate control\" moves care toward routine care before medication-safety intervention.",
+        "c": "The cue \"A patient with a known adrenal mass is scheduled for laparoscopic adrenalectomy for pheochromocytoma\" suggests medication toxicity, so \"Both alpha and beta-blockers started simultaneously on day 1\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug.",
+        "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"The pre-operative medication orders include phenoxybenzamine (alpha-blocker)\" makes medication toxicity the active safety concern."
+      },
+      "tags": [
+        "Medical-Surgical Advanced",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Pheochromocytoma pre-op: alpha-block FIRST (7–14 days), then add beta-blocker. Never beta-block first — causes unopposed hypertensive crisis.",
+      "sourceStage": "draft",
+      "sourcePath": "ccrn-agent/data/review_batches/nclex-med-surg-advanced-batch-001.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the NCLEX review-batch library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is B: Alpha-blocker first for 7–14 days, then beta-blocker added if needed. Alpha-blockade MUST be established before beta-blockade in pheochromocytoma. Pheos release primarily epinephrine and norepinephrine, causing vasoconstriction via alpha receptors. If a beta-blocker is given first, it blocks the vasodilatory beta-2 effect without blocking alpha-mediated vasoconstriction — resulting in paradoxical, unopposed hypertensive crisis. Alpha-blockade (phenoxybenzamine or doxazosin) is initiated 7–14 days pre-op; beta-blocker is added only after alpha-blockade is established, if needed for tachycardia. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Medical Surgical Advanced through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "B: Alpha-blocker first for 7–14 days, then beta-blocker added if needed is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "a": "The safer response addresses medication toxicity; \"Beta-blocker first, then alpha-blocker after adequate heart rate control\" moves care toward routine care before medication-safety intervention. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The cue \"A patient with a known adrenal mass is scheduled for laparoscopic adrenalectomy for pheochromocytoma\" suggests medication toxicity, so \"Both alpha and beta-blockers started simultaneously on day 1\" would not correct the active problem. Medication safety depends on checking contraindications, labs, and adverse effects before giving or continuing the drug. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "This distractor shifts care toward misprioritization instead of medication-safety intervention. The stem cue \"The pre-operative medication orders include phenoxybenzamine (alpha-blocker)\" makes medication toxicity the active safety concern. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Medical Surgical Advanced",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          },
+          {
+            "source": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+            "chapter": "Medication safety",
+            "href": "https://medlineplus.gov/druginfo/meds/a603002.html",
+            "note": "Used only as a public drug-monograph anchor; item-specific teaching still requires clinical review before full-bank promotion."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Medical Surgical Advanced",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        },
+        {
+          "title": "NIH MedlinePlus drug monograph: Epinephrine Injection",
+          "citation": "NIH MedlinePlus drug monograph: Epinephrine Injection - Medication safety",
+          "href": "https://medlineplus.gov/druginfo/meds/a603002.html"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb911-n002",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "transsphenoidal_csf_leak",
+      "subcategory": "transsphenoidal_csf_leak",
+      "difficulty": 3,
+      "stem": "A client 12 hours after transsphenoidal hypophysectomy has a steady drip of clear drainage from the nose and reports a salty taste in the throat. Which action should the nurse take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Notify the provider because the findings suggest a cerebrospinal fluid leak."
+        },
+        {
+          "id": "b",
+          "text": "Encourage the client to cough and deep-breathe to clear the drainage."
+        },
+        {
+          "id": "c",
+          "text": "Insert nasal packing to stop the drainage."
+        },
+        {
+          "id": "d",
+          "text": "Place the client flat and ask about seasonal allergies."
+        }
+      ],
+      "answer": "a",
+      "rationale": "Clear nasal drainage with a salty taste after transsphenoidal surgery is a high-yield clue for CSF leak. The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal pressure. The exam shortcut is to link the postop route with the drainage description rather than overthinking routine sinus drainage.",
+      "distractorRationales": {
+        "b": "\"Encourage the client to cough and deep-breathe to clear the drainage\" moves to activity, intake, or discharge planning too early. The cue \"The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before ambulation, intake, or discharge teaching.",
+        "c": "\"Insert nasal packing to stop the drainage\" misses the bedside risk. The cue \"The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "d": "The cue \"The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal\" suggests circulation or perfusion, so \"Place the client flat and ask about seasonal allergies\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up."
+      },
+      "tags": [
+        "transsphenoidal_csf_leak",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Clear salty nasal drainage after transsphenoidal surgery is a report-now CSF leak pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/nclex-diversity-seeds.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance and curated-seed preference.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Notify the provider because the findings suggest a cerebrospinal fluid leak.. Clear nasal drainage with a salty taste after transsphenoidal surgery is a high-yield clue for CSF leak. The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal pressure. The exam shortcut is to link the postop route with the drainage description rather than overthinking routine sinus drainage. The clinical focus is post-lumbar-puncture complication monitoring, so the review should connect the answer to lumbar, puncture, headache, post-dural.",
+        "mechanism": "This item tests Transsphenoidal Csf Leak through post-lumbar-puncture complication monitoring: a severe positional headache after puncture can reflect cerebrospinal fluid leak and needs assessment instead of routine ambulation or dismissal. These lumbar, puncture, headache, post-dural cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Notify the provider because the findings suggest a cerebrospinal fluid leak. is correct because it directly addresses post-lumbar-puncture complication monitoring. a severe positional headache after puncture can reflect cerebrospinal fluid leak and needs assessment instead of routine ambulation or dismissal. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Encourage the client to cough and deep-breathe to clear the drainage\" moves to activity, intake, or discharge planning too early. The cue \"The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before ambulation, intake, or discharge teaching. Clinically, this misses post-lumbar-puncture complication monitoring: a severe positional headache after puncture can reflect cerebrospinal fluid leak and needs assessment instead of routine ambulation or dismissal.",
+          "c": "\"Insert nasal packing to stop the drainage\" misses the bedside risk. The cue \"The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses post-lumbar-puncture complication monitoring: a severe positional headache after puncture can reflect cerebrospinal fluid leak and needs assessment instead of routine ambulation or dismissal.",
+          "d": "The cue \"The nurse should report it immediately and protect the repair by avoiding maneuvers that raise intracranial or nasal\" suggests circulation or perfusion, so \"Place the client flat and ask about seasonal allergies\" would not correct the active problem. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses post-lumbar-puncture complication monitoring: a severe positional headache after puncture can reflect cerebrospinal fluid leak and needs assessment instead of routine ambulation or dismissal."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Transsphenoidal Csf Leak",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Transsphenoidal Csf Leak",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb836-n008",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "chest_pain_with_instability",
+      "subcategory": "chest_pain_with_instability",
+      "difficulty": 3,
+      "stem": "A patient reports chest pressure and becomes hypotensive and tachycardic. What is the most useful bedside interpretation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The patient may be having an acute cardiovascular emergency"
+        },
+        {
+          "id": "b",
+          "text": "The pain is likely harmless because the patient is still awake"
+        },
+        {
+          "id": "c",
+          "text": "The heart rate change is the only issue"
+        },
+        {
+          "id": "d",
+          "text": "The blood pressure will likely fix itself without reassessment"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment. **Why the others are wrong:** - B Awake status does not make the chest pain safe. - C The whole pattern matters, not just the heart rate. - D Waiting for spontaneous correction is unsafe.",
+      "distractorRationales": {
+        "b": "\"The pain is likely harmless because the patient is still awake\" misses the bedside risk. The cue \"Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up.",
+        "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Chest pain plus unstable vitals is a high-risk pattern\" makes circulation or perfusion the active safety concern.",
+        "d": "\"The blood pressure will likely fix itself without reassessment\" treats active deterioration as something safe to watch. The cue \"**Why the others are wrong:** - B Awake status does not make the chest pain safe\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine observation."
+      },
+      "tags": [
+        "chest_pain_with_instability",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "Chest pain plus unstable vitals is a high-risk pattern.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: The patient may be having an acute cardiovascular emergency. Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment. **Why the others are wrong:** - B Awake status does not make the chest pain safe. - C The whole pattern matters, not just the heart rate. - D Waiting for spontaneous correction is unsafe. The clinical focus is adrenal crisis with shock risk, so the review should connect the answer to adrenal, cortisol, steroid, shock.",
+        "mechanism": "This item tests Chest Pain With Instability through adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. These adrenal, cortisol, steroid, shock cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: The patient may be having an acute cardiovascular emergency is correct because it directly addresses adrenal crisis with shock risk. cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"The pain is likely harmless because the patient is still awake\" misses the bedside risk. The cue \"Chest pressure with hypotension and tachycardia is concerning for an unstable cardiac event and requires immediate reassessment\" points to circulation or perfusion. Perfusion problems require rapid assessment and stabilization before comfort measures or delayed provider follow-up. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "c": "This distractor shifts care toward misprioritization instead of circulation and perfusion support. The stem cue \"Chest pain plus unstable vitals is a high-risk pattern\" makes circulation or perfusion the active safety concern. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive.",
+          "d": "\"The blood pressure will likely fix itself without reassessment\" treats active deterioration as something safe to watch. The cue \"**Why the others are wrong:** - B Awake status does not make the chest pain safe\" raises concern for circulation or perfusion, so circulation and perfusion support is needed before routine observation. Clinically, this misses adrenal crisis with shock risk: cortisol deficiency can cause refractory hypotension and shock, so steroid replacement and fluids are time-sensitive."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Chest Pain With Instability",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Chest Pain With Instability",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    },
+    {
+      "id": "mb836-n006",
+      "exam": "nclex",
+      "type": "mcq",
+      "category": "dehydration_assessment",
+      "subcategory": "dehydration_assessment",
+      "difficulty": 2,
+      "stem": "A toddler has had vomiting and diarrhea for two days. Which finding should the nurse recognize as most concerning for dehydration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fewer wet diapers than usual"
+        },
+        {
+          "id": "b",
+          "text": "Asking for water"
+        },
+        {
+          "id": "c",
+          "text": "Mild irritability at nap time"
+        },
+        {
+          "id": "d",
+          "text": "A normal appetite earlier in the week"
+        }
+      ],
+      "answer": "a",
+      "rationale": "Decreased urine output is a key dehydration clue in young children and should be taken seriously. **Why the others are wrong:** - B Asking for water is not the strongest warning sign. - C Mild irritability is nonspecific. - D A prior normal appetite does not answer the current question.",
+      "distractorRationales": {
+        "b": "\"Asking for water\" misses the bedside risk. The cue \"Decreased urine output is a key dehydration clue in young children and should be taken seriously\" points to renal injury. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk.",
+        "c": "The option can leave renal injury untreated because it normalizes a finding that needs reassessment. \"Fewer wet diapers than usual\" fits the safer response to the cue \"In children, fewer wet diapers can be an important dehydration sign\".",
+        "d": "The option can leave renal injury untreated because it normalizes a finding that needs reassessment. \"Fewer wet diapers than usual\" fits the safer response to the cue \"In children, fewer wet diapers can be an important dehydration sign\"."
+      },
+      "tags": [
+        "dehydration_assessment",
+        "NCLEX source rotation"
+      ],
+      "takeaway": "In children, fewer wet diapers can be an important dehydration sign.",
+      "sourceStage": "draft",
+      "sourcePath": "packages/content/questions/nclex/draft/imported-nclex-drafts.json",
+      "visualRationale": null,
+      "editorial_notes": "source-rotation: selected from the current ChapAI NCLEX draft library with recent-family avoidance.",
+      "structuredRationale": {
+        "overview": "The safest answer is A: Fewer wet diapers than usual. Decreased urine output is a key dehydration clue in young children and should be taken seriously. **Why the others are wrong:** - B Asking for water is not the strongest warning sign. - C Mild irritability is nonspecific. - D A prior normal appetite does not answer the current question. The clinical focus is lithium toxicity and renal clearance, so the review should connect the answer to lithium, toxicity, renal, fluid.",
+        "mechanism": "This item tests Dehydration Assessment through lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. These lithium, toxicity, renal, fluid cues determine whether the nurse must act now, escalate care, or withhold routine teaching until safety is protected.",
+        "whyCorrect": "A: Fewer wet diapers than usual is correct because it directly addresses lithium toxicity and renal clearance. dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk. The attached study resources can reinforce NCLEX exam blueprint and NGN item format.",
+        "whyWrong": {
+          "b": "\"Asking for water\" misses the bedside risk. The cue \"Decreased urine output is a key dehydration clue in young children and should be taken seriously\" points to renal injury. Renal protection depends on hydration, medication review, and creatinine follow-up before assuming the study is low risk. Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "c": "The option can leave renal injury untreated because it normalizes a finding that needs reassessment. \"Fewer wet diapers than usual\" fits the safer response to the cue \"In children, fewer wet diapers can be an important dehydration sign\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk.",
+          "d": "The option can leave renal injury untreated because it normalizes a finding that needs reassessment. \"Fewer wet diapers than usual\" fits the safer response to the cue \"In children, fewer wet diapers can be an important dehydration sign\". Clinically, this misses lithium toxicity and renal clearance: dehydration or reduced renal clearance raises lithium levels, increasing neurologic toxicity and safety risk."
+        },
+        "citations": [
+          {
+            "source": "NCSBN Test Plan 2026",
+            "chapter": "Dehydration Assessment",
+            "href": "https://www.nclex.com/test-plans",
+            "note": "Used to anchor the item to NCLEX client-need and clinical-judgment expectations."
+          },
+          {
+            "source": "NCSBN NGN sample questions and exam preview",
+            "chapter": "Clinical judgment item format",
+            "href": "https://www.nclex.com/prepare",
+            "note": "Used to align item review with official NCLEX preparation and clinical-judgment examples."
+          }
+        ]
+      },
+      "references": [
+        {
+          "title": "NCSBN Test Plan 2026",
+          "citation": "NCSBN Test Plan 2026 - Dehydration Assessment",
+          "href": "https://www.nclex.com/test-plans"
+        },
+        {
+          "title": "NCSBN NGN sample questions and exam preview",
+          "citation": "NCSBN NGN sample questions and exam preview - Clinical judgment item format",
+          "href": "https://www.nclex.com/prepare"
+        }
+      ],
+      "reviewStatus": "review",
+      "revision": 2
+    }
+  ]
+}
