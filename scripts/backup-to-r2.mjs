@@ -19,7 +19,7 @@
  * that has not been read back is a guess, not a backup.
  */
 
-import { execFileSync } from "node:child_process";
+import { execFileSync, execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, existsSync, statSync, rmSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
@@ -40,6 +40,14 @@ const mb = (n) => `${(n / 1048576).toFixed(1)} MB`;
 
 function run(cmd, cmdArgs, opts = {}) {
   if (DRY) { log(`  [dry-run] ${cmd} ${cmdArgs.join(" ")}`); return ""; }
+  // Node 24 refuses to execFile a .cmd shim directly on Windows (EINVAL), so
+  // .cmd goes through a shell with each argument quoted. Everything else keeps
+  // the safer argv form.
+  const needsShell = process.platform === "win32" && /\.cmd$/i.test(cmd);
+  if (needsShell) {
+    const line = [cmd, ...cmdArgs.map((a) => (/[\s"]/.test(a) ? `"${String(a).replace(/"/g, '\\"')}"` : a))].join(" ");
+    return execSync(line, { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], maxBuffer: 1 << 28, ...opts });
+  }
   return execFileSync(cmd, cmdArgs, { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], maxBuffer: 1 << 28, ...opts });
 }
 
