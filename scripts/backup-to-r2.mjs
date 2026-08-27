@@ -13,7 +13,7 @@
  *
  * What IS backed up, because it exists in exactly one place:
  *   - the chapai-prod D1 database (the live question bank, users, billing)
- *   - packages/content/staging/promoted-v* (untracked; feeds the prod sync)
+ *   - packages/content/staging/promoted-v5 (untracked; feeds the prod sync)
  *
  * Every upload is verified by re-downloading and comparing SHA-256. A backup
  * that has not been read back is a guess, not a backup.
@@ -87,7 +87,7 @@ function backupD1() {
 
 function backupContent() {
   const staging = join(ROOT, "packages", "content", "staging");
-  const dirs = ["promoted-v3", "promoted-v4"].filter((d) => existsSync(join(staging, d)));
+  const dirs = ["promoted-v5", "promoted-v6"].filter((d) => existsSync(join(staging, d)));
   if (dirs.length === 0) { log("\nNo untracked content generations found — skipping."); return; }
 
   for (const d of dirs) {
