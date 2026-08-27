@@ -65,3 +65,8 @@ Thumbs.db
 *.bak
 
 *.tsbuildinfo
+
+# Deduped candidate sets are derived from promoted-v* and archived to R2;
+# committing 10 MB of regenerable JSON helps nobody.
+packages/content/staging/promoted-v5/
+packages/content/staging/promoted-v6/
