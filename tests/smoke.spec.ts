@@ -381,8 +381,13 @@ test.describe("core product", () => {
 
   test("start-here picker recommends a readiness exam for a close test date", async ({ page }) => {
     await gotoStable(page, "/quiz");
-    await page.locator("button", { hasText: "Not sure where to start" }).first().click();
+    const toggle = page.locator("button", { hasText: "Not sure where to start" }).first();
     const picker = page.getByTestId("start-here-picker");
+    // A freshly propagated bundle can render before this client component hydrates.
+    await expect(async () => {
+      await toggle.click();
+      await expect(picker).toBeVisible({ timeout: 2_000 });
+    }).toPass({ timeout: 20_000 });
     await picker.locator("button", { hasText: "NCLEX" }).first().click();
     await picker.locator("button", { hasText: "Under 4 weeks" }).click();
     await picker.locator("button", { hasText: "Test-day readiness" }).click();
