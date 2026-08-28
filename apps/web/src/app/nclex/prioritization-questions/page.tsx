@@ -37,7 +37,7 @@ export default function NclexPrioritizationQuestionsPage() {
       accentLabel="Safety-first study flow"
       primaryHref="/upgrade"
       primaryLabel="Choose NCLEX package"
-      secondaryHref="/nclex"
+      secondaryHref="/quiz"
       secondaryLabel="See NCLEX surface"
       whyTitle="This page is for the buyer who is specifically looking for prioritization help."
       whyBody="That search intent usually means the student is struggling with next-best-action, unstable-patient triage, or who-to-see-first logic. The page should answer that directly, then move into the NCLEX package."

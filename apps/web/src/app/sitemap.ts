@@ -50,7 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const core: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: "daily", priority: 1 },
-    { url: `${base}/nclex`, lastModified: now, changeFrequency: "daily", priority: 0.95 },
     { url: `${base}/quiz`, lastModified: now, changeFrequency: "daily", priority: 0.88 },
     { url: `${base}/pricing`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/upgrade`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

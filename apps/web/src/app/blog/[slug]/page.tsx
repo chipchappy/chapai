@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               Full NGN bank, realistic test-mode questions, and a calmer study system for $9.99/mo.
             </p>
             <Link
-              href="/nclex"
+              href="/quiz"
               className="mt-4 inline-flex items-center justify-center rounded-[12px] bg-[#7E9D86] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#6F8D76]"
             >
               Explore Clarity NCLEX

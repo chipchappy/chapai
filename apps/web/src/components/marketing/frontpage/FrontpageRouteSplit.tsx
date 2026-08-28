@@ -5,7 +5,7 @@ const routes = [
     eyebrow: "nclex route",
     title: "priority, safety, ngn, delegation",
     body: "Open the reviewed NCLEX qbank, stay in one testing deck, and move straight into rationale, diagram cues, and tutor-backed review.",
-    href: "/nclex",
+    href: "/quiz",
     cta: "open nclex",
   },
   {

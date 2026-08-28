@@ -99,7 +99,7 @@ export const marketingThemes = {
         eyebrow: "NCLEX path",
         title: "Prioritization, delegation, safety, and next-step logic for bedside readiness.",
         body: "A focused NCLEX route built for calmer review and stronger decision making.",
-        href: "/nclex",
+        href: "/quiz",
         hrefLabel: "Explore NCLEX",
       },
       {
@@ -121,7 +121,7 @@ export const marketingThemes = {
         label: "Open practice center",
       },
       secondaryAction: {
-        href: "/nclex",
+        href: "/quiz",
         label: "Open NCLEX",
       },
     },

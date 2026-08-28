@@ -276,7 +276,7 @@ export default function QuizTerminalShell(props: QuizTerminalShellProps) {
             <button type="button" onClick={onBackToCatalog} className="quiz-terminal-link">exit run</button>
           ) : (
             <>
-              <a href="/nclex" className="quiz-terminal-link">nclex</a>
+              <a href="/quiz" className="quiz-terminal-link">qbank</a>
               <a href="/upgrade" className="quiz-terminal-link">plans</a>
             </>
           )}
