@@ -446,9 +446,13 @@ function latestCreditablePerformance(state: PatientState, actionId: string) {
     .find((entry) => entry.actionId === actionId && CREDITABLE_CLASSIFICATIONS.has(entry.classification));
 }
 
+function reassessmentSourceIds(action: ScenarioAction) {
+  return [...new Set([...action.prerequisites, ...action.reassessmentForActionIds])];
+}
+
 function reassessmentDueMinute(scenario: ClinicalScenario, state: PatientState, action: ScenarioAction) {
   if (action.category !== "assessment" || !action.repeatable) return null;
-  const dueMinutes = action.prerequisites.flatMap((sourceId) => {
+  const dueMinutes = reassessmentSourceIds(action).flatMap((sourceId) => {
     const source = scenario.actions.find((candidate) => candidate.id === sourceId);
     const performance = latestCreditablePerformance(state, sourceId);
     if (!source || !performance) return [];
@@ -465,7 +469,9 @@ export function getPendingReassessments(scenario: ClinicalScenario, state: Patie
     const performance = latestCreditablePerformance(state, source.id);
     if (!performance) return [];
     const followUps = scenario.actions.filter(
-      (candidate) => candidate.category === "assessment" && candidate.repeatable && candidate.prerequisites.includes(source.id),
+      (candidate) => candidate.category === "assessment"
+        && candidate.repeatable
+        && reassessmentSourceIds(candidate).includes(source.id),
     );
     if (!followUps.length) return [];
     const dueMinute = performance.virtualMinute + delay;

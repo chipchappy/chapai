@@ -186,6 +186,7 @@ const actionSchema = z.object({
   rationale: z.string().min(16),
   evidenceIds: z.array(z.string()).min(1),
   prerequisites: z.array(z.string()).default([]),
+  reassessmentForActionIds: z.array(z.string()).default([]),
   safetyChecks: z.array(z.string()).default([]),
   optimalByMinute: z.number().int().nonnegative().optional(),
   lateAfterMinute: z.number().int().nonnegative().optional(),
@@ -356,7 +357,10 @@ export function validateScenarioDefinition(input: unknown) {
   }
 
   for (const action of scenario.actions) {
-    for (const reference of [...action.prerequisites, ...action.safetyChecks]) {
+    if (action.reassessmentForActionIds.length > 0 && (action.category !== "assessment" || !action.repeatable)) {
+      issues.push({ path: `actions.${action.id}.reassessmentForActionIds`, message: "Only repeatable assessments can close a reassessment loop." });
+    }
+    for (const reference of [...action.prerequisites, ...action.reassessmentForActionIds, ...action.safetyChecks]) {
       if (!actionIds.has(reference)) issues.push({ path: `actions.${action.id}`, message: `Broken action reference ${reference}.` });
     }
   }

@@ -197,6 +197,27 @@ describe("clinical simulation state engine", () => {
     assert.equal(getPendingReassessments(scenario, reassessed.state).length, 0);
   });
 
+  it("links medication response timing to a recovery assessment without making the medication a prerequisite", () => {
+    const scenario = clinicalScenarios.find((candidate) => candidate.slug === "sedation-airway-compromise");
+    assert.ok(scenario);
+    const recovery = scenario.actions.find((action) => action.id === "reassess-recovery");
+    assert.ok(recovery);
+    assert.deepEqual(recovery.prerequisites, ["reposition-airway"]);
+    assert.deepEqual(recovery.reassessmentForActionIds, ["administer-naloxone"]);
+
+    let state = createInitialPatientState(scenario, 9205, "guided");
+    state = performWithDependencies(scenario, state, "administer-naloxone");
+    const immediate = applySimulationAction(scenario, state, recovery.id);
+    assert.equal(immediate.entry.classification, "premature");
+    assert.equal(immediate.state.completedActionIds.includes(recovery.id), false);
+    assert.deepEqual(getPendingReassessments(scenario, immediate.state).map((loop) => [loop.dueMinute, loop.status]), [[2, "waiting"]]);
+
+    state = advanceSimulation(scenario, immediate.state, 2);
+    const reassessed = applySimulationAction(scenario, state, recovery.id);
+    assert.equal(reassessed.entry.classification, "essential");
+    assert.equal(getPendingReassessments(scenario, reassessed.state).length, 0);
+  });
+
   it("adds state-aware provider orders to the evolving chart", () => {
     const scenario = clinicalScenarios.find((candidate) => candidate.slug === "acute-respiratory-deterioration");
     assert.ok(scenario);
