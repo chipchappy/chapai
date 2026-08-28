@@ -54,7 +54,13 @@ const examIdSchema = z.enum([
 
 const NCLEX_CASE_STUDY_SET_COUNT = 3;
 const MAX_NCLEX_READINESS_QUALITY_TIER = 2;
-const NCLEX_READINESS_CANDIDATE_LIMIT = 1_000;
+// Five 150-item forms need 750 distinct items. Drawing them from a 1,000-row
+// pool forces heavy repetition between forms, and the forms are assembled in
+// independent requests so they cannot reserve against each other. Widening the
+// pool is what lets the per-form seeded shuffle actually diverge. Kept well
+// below the full 4,612 published rows because every candidate carries its full
+// stem, options and rationale text into Worker memory.
+const NCLEX_READINESS_CANDIDATE_LIMIT = 2_000;
 const launchIdSchema = z.string().uuid();
 
 function normalizeStem(stem: string) {
@@ -351,10 +357,18 @@ async function loadLivePracticeQuestions(exam: Exam) {
         WHEN 'approved' THEN 2
         ELSE 3
       END`,
+      // Rank on the deepest teaching text available, not the flat rationale.
+      // Only 395 of 4,612 published rows carry >=700 chars in `rationale`,
+      // while 4,609 carry >=700 in `deep_rationale` — that is where the
+      // premium teaching actually lives. Ranking on the flat column alone
+      // pushed ~4,200 premium items to the bottom of the candidate pool and
+      // left all five forms drawing from the same few hundred rows: measured
+      // 82% item overlap between any two forms and only 223 distinct items
+      // across 750 slots, with one case study appearing in all five.
       sql`CASE
-        WHEN length(${questions.rationale}) >= 700 THEN 0
-        WHEN length(${questions.rationale}) >= 350 THEN 1
-        WHEN length(${questions.rationale}) >= 180 THEN 2
+        WHEN length(COALESCE(deep_rationale, rationale)) >= 700 THEN 0
+        WHEN length(COALESCE(deep_rationale, rationale)) >= 350 THEN 1
+        WHEN length(COALESCE(deep_rationale, rationale)) >= 180 THEN 2
         ELSE 3
       END`,
       sql`${questions.structuredRationale} IS NULL`,
