@@ -139,7 +139,7 @@
   border: 2px solid rgba(255, 255, 255, 0.85);
   background: rgba(103, 220, 152, 0.16);
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.14), 0 0 14px rgba(103, 220, 152, 0.35);
-  opacity: 0;
+  opacity: 0.28;
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
@@ -182,6 +182,39 @@
 
 .photoToolbarRight { display: inline-flex; align-items: center; gap: 8px; }
 
+.photoIdentity {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.presentationThumb {
+  display: inline-flex;
+  width: 34px;
+  height: 40px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(222, 200, 161, 0.5);
+  border-radius: 6px;
+  padding: 0;
+  background: #17130e;
+  cursor: pointer;
+}
+
+.presentationThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.presentationThumb:hover,
+.presentationThumb:focus-visible {
+  border-color: #e0b873;
+  outline: 2px solid rgba(224, 184, 115, 0.36);
+  outline-offset: 1px;
+}
+
 .targetToggle {
   display: inline-flex;
   align-items: center;
@@ -223,6 +256,50 @@
 }
 
 .photoFocus > header button { border: 0; background: transparent; color: #6a7d76; cursor: pointer; display: inline-flex; }
+
+.presentationFocus {
+  display: grid;
+  grid-template-columns: 94px minmax(0, 1fr);
+  gap: 11px;
+  align-items: center;
+  margin: 0;
+  padding: 10px 12px 4px;
+}
+
+.presentationFocus img {
+  width: 94px;
+  aspect-ratio: 147 / 187;
+  border: 1px solid #d7c9b3;
+  border-radius: 7px;
+  object-fit: cover;
+  object-position: 50% 18%;
+  background: #ddd2c0;
+}
+
+.presentationFocus figcaption {
+  display: grid;
+  gap: 3px;
+  color: #394a44;
+}
+
+.presentationFocus figcaption span {
+  color: #8b7352;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.presentationFocus figcaption strong {
+  font-size: 0.84rem;
+  text-transform: capitalize;
+}
+
+.presentationFocus figcaption small {
+  color: #64736d;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  text-transform: capitalize;
+}
 
 .photoFocusActions { display: grid; gap: 6px; padding: 10px 12px 12px; }
 
@@ -315,11 +392,30 @@
   border-radius: 2px;
   overflow: hidden;
   background: #04100c;
-  cursor: zoom-in;
+  cursor: default;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
   transition: box-shadow 160ms ease;
 }
-.wallScreen:hover, .wallScreen:focus-visible { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6), 0 0 0 2px rgba(103, 220, 152, 0.7); }
+.wallScreen:hover { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6), 0 0 0 2px rgba(103, 220, 152, 0.7); }
+
+.monitorExpand {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(196, 239, 219, 0.46);
+  border-radius: 3px;
+  padding: 0;
+  background: rgba(2, 18, 13, 0.78);
+  color: #d8f7e7;
+  cursor: zoom-in;
+}
+.monitorExpand:hover, .monitorExpand:focus-visible { background: #173e31; outline: 1px solid #6ddaa6; }
 
 .monitorExpanded {
   position: absolute;
@@ -357,7 +453,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  border: 1.5px dashed transparent;
+  border: 1.5px dashed rgba(255, 236, 200, 0.28);
   border-radius: 10px;
   background: transparent;
   padding: 0;

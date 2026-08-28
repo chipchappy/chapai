@@ -63,6 +63,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .feedList li { animation: none; }
+  .feedCoach { animation: none; }
 }
 
 /* ── colour semantics ── */
@@ -191,6 +192,41 @@
   font-weight: 800;
   line-height: 14px;
   text-align: center;
+}
+
+.feedCoach {
+  margin: 8px 10px 0;
+  border-left: 3px solid #c9992e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #faf3e2;
+  color: #6f5519;
+  animation: coachingIn 280ms ease both;
+}
+
+.feedCoach[data-tone="unsafe"] {
+  border-left-color: #b0453b;
+  background: #fbeeeb;
+  color: #7d3029;
+}
+
+.feedCoach strong {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.feedCoach p {
+  margin: 3px 0 0;
+  font-size: 0.71rem;
+  line-height: 1.45;
+}
+
+@keyframes coachingIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* ── scrolling pane shared by tasks / performance ── */

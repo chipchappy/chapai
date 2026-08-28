@@ -1,9 +1,10 @@
 "use client";
 
 import { memo, useMemo, useState, type CSSProperties } from "react";
-import { Activity, Check, Crosshair, Play, Stethoscope, X } from "lucide-react";
+import { Activity, Check, Crosshair, Maximize2, Play, Stethoscope, X } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
+import { getPatientPresentation } from "@/lib/clinical-simulation/patient-presentations";
 import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
 import type { PatientVisualState } from "@/lib/clinical-simulation/visual-state";
 import styles from "./patient-photo-scene.module.css";
@@ -102,8 +103,8 @@ const ADULT_MALE_ROOM: PhotoConfig = {
 // higher-acuity cases; ADULT_FEMALE_SIDE is the closer bedside framing.
 const PHOTO_PATIENTS: Record<string, PhotoConfig> = {
   // female patients
-  "septic-shock": ADULT_FEMALE_SIDE,
-  "postoperative-deterioration": ADULT_FEMALE_SIDE,
+  "septic-shock": ADULT_MALE_ROOM,
+  "postoperative-deterioration": ADULT_MALE_ROOM,
   "acute-transfusion-reaction": ADULT_FEMALE_SIDE,
   "intravenous-antibiotic-anaphylaxis": ADULT_FEMALE_SIDE,
   "hyperkalemia-missed-dialysis": ADULT_FEMALE_SIDE,
@@ -113,6 +114,7 @@ const PHOTO_PATIENTS: Record<string, PhotoConfig> = {
   // male patients
   "acute-respiratory-deterioration": ADULT_MALE_ROOM,
   "evolving-acute-coronary-syndrome": ADULT_MALE_ROOM,
+  "sedation-airway-compromise": ADULT_MALE_ROOM,
   "insulin-induced-hypoglycemia": ADULT_MALE_ROOM,
   "diabetic-ketoacidosis": ADULT_MALE_ROOM,
   "acute-ischemic-stroke-code": ADULT_MALE_ROOM,
@@ -163,6 +165,10 @@ function PatientPhotoScene({
   const [showTargets, setShowTargets] = useState(false);
   const [monitorOpen, setMonitorOpen] = useState(false);
   const skin = visual.skin;
+  const presentation = useMemo(
+    () => getPatientPresentation(scenario.slug, scenario.patient.name, state),
+    [scenario.patient.name, scenario.slug, state],
+  );
   const alarming = state.vitals.spo2 < 90 || state.vitals.map < 65 || state.vitals.heartRate > 125 || state.vitals.respiratoryRate < 8;
 
   const breathStyle = {
@@ -197,7 +203,28 @@ function PatientPhotoScene({
   return (
     <section className={styles.photoShell} data-testid="patient-scene" data-source={visual.source} data-alarming={alarming} aria-label="Reactive photoreal patient bedside">
       <header className={styles.photoToolbar}>
-        <div><span>Reactive bedside</span><strong>{scenario.patient.name} · {visual.consciousness.level}</strong></div>
+        <div className={styles.photoIdentity}>
+          {presentation ? (
+            <button
+              type="button"
+              className={styles.presentationThumb}
+              onClick={() => setFocus("face")}
+              aria-label={`Inspect ${scenario.patient.name}'s current presentation`}
+              title="Inspect current presentation"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- authored simulation-state asset, served directly by the worker */}
+              <img
+                key={presentation.src}
+                src={presentation.src}
+                alt=""
+                data-testid="patient-presentation"
+                data-stage={presentation.stage}
+                draggable={false}
+              />
+            </button>
+          ) : null}
+          <div><span>Reactive bedside</span><strong>{scenario.patient.name} · {visual.consciousness.level}</strong></div>
+        </div>
         <div className={styles.photoToolbarRight}>
           {alarming ? <span className={styles.photoAlarm}><Activity size={13} aria-hidden="true" /> Alarm — check patient</span> : null}
           <button type="button" className={styles.targetToggle} aria-pressed={showTargets} onClick={() => setShowTargets((v) => !v)} title="Show interactable areas">
@@ -206,7 +233,7 @@ function PatientPhotoScene({
         </div>
       </header>
 
-      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport" data-show-targets={showTargets}>
+      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport" data-show-targets={showTargets} data-presentation-stage={presentation?.stage ?? 0}>
         <div className={styles.photoBreath} style={breathStyle} data-reduced={visual.reducedMotion}>
           {/* eslint-disable-next-line @next/next/no-img-element -- static bedside asset, no optimization pipeline in the worker runtime */}
           <img className={styles.photoBase} src={config.src} alt={visual.accessibleDescription} draggable={false} onError={() => setImageReady(false)} onLoad={() => setImageReady(true)} />
@@ -229,15 +256,15 @@ function PatientPhotoScene({
 
         {/* ── Live monitor: inset into the room's own wall screen ── */}
         {config.monitorRect ? (
-          <button
-            type="button"
+          <div
             className={styles.wallScreen}
             style={{ left: `${config.monitorRect.x}%`, top: `${config.monitorRect.y}%`, width: `${config.monitorRect.w}%`, height: `${config.monitorRect.h}%` }}
-            onClick={() => setMonitorOpen(true)}
-            aria-label="Expand bedside monitor"
           >
             <BedsideMonitor state={state} compact />
-          </button>
+            <button type="button" className={styles.monitorExpand} onClick={() => setMonitorOpen(true)} aria-label="Expand bedside monitor" title="Expand bedside monitor">
+              <Maximize2 size={10} aria-hidden="true" />
+            </button>
+          </div>
         ) : (
           <div className={styles.photoMonitor} style={{ ...pct(config.monitor), width: `${config.monitorWidth ?? 30}%` }}>
             <BedsideMonitor state={state} />
@@ -279,6 +306,17 @@ function PatientPhotoScene({
         {focus ? (
           <aside className={styles.photoFocus} aria-live="polite">
             <header><strong>{focusMeta[focus].label}</strong><button type="button" onClick={() => setFocus(null)} aria-label="Close focused view"><X size={15} aria-hidden="true" /></button></header>
+            {presentation ? (
+              <figure className={styles.presentationFocus}>
+                {/* eslint-disable-next-line @next/next/no-img-element -- authored simulation-state asset, served directly by the worker */}
+                <img src={presentation.src} alt={presentation.alt} draggable={false} />
+                <figcaption>
+                  <span>Current presentation</span>
+                  <strong>{visual.consciousness.level}</strong>
+                  <small>{visual.respiration.rate}/min · {visual.respiration.work} work of breathing</small>
+                </figcaption>
+              </figure>
+            ) : null}
             {focusActions.length ? <div className={styles.photoFocusActions}>
               {focusActions.map((action) => {
                 const done = state.completedActionIds.includes(action.id);

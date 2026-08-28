@@ -7,6 +7,7 @@ import { buildAchievements, achievementSummary } from "@/lib/clinical-simulation
 import { summarizeStateChanges } from "@/lib/clinical-simulation/clinical-language";
 import { buildConcerns } from "@/lib/clinical-simulation/concerns";
 import { gradeBestPracticeRoute } from "@/lib/clinical-simulation/best-practice";
+import { getGuidedCoachingTip } from "@/lib/clinical-simulation/coaching";
 import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
 import styles from "./sim-event-feed.module.css";
 
@@ -193,6 +194,7 @@ export default function SimEventFeed({
   const nextUp = achievements.filter((a) => !a.earned && (a.progress ?? 0) > 0).sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))[0];
   const concerns = useMemo(() => buildConcerns(state), [state]);
   const grade = useMemo(() => gradeBestPracticeRoute(scenario, state), [scenario, state]);
+  const coachingTip = useMemo(() => getGuidedCoachingTip(state, scenario), [scenario, state]);
 
   // Required care that has not happened yet — the "what am I forgetting" list.
   const outstanding = useMemo(
@@ -241,6 +243,13 @@ export default function SimEventFeed({
           );
         })}
       </nav>
+
+      {coachingTip ? (
+        <div className={styles.feedCoach} data-tone={coachingTip.tone} role="status">
+          <strong>{coachingTip.title}</strong>
+          <p>{coachingTip.message}</p>
+        </div>
+      ) : null}
 
       {mode === "tasks" ? (
         <div className={styles.feedPane}>

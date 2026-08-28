@@ -14,6 +14,7 @@ import {
   type PatientState,
 } from "../../apps/web/src/lib/clinical-simulation/engine";
 import { clinicalScenarios } from "../../apps/web/src/lib/clinical-simulation/scenarios";
+import { getGuidedCoachingTip } from "../../apps/web/src/lib/clinical-simulation/coaching";
 import { futureScenarioOutlines } from "../../apps/web/src/lib/clinical-simulation/future-scenario-outlines";
 import {
   validateScenarioDefinition,
@@ -115,6 +116,22 @@ describe("clinical simulation scenario library", () => {
       assert.equal(completed.debrief.outcome, "stabilized", scenario.slug);
       assert.ok(completed.debrief.timeline.length >= scenario.completion.minimumActions, scenario.slug);
       assert.ok(completed.debrief.domainScores.length >= 4, scenario.slug);
+    }
+  });
+
+  it("offers richer decision sets in the authored presentation scenarios", () => {
+    const slugs = [
+      "postoperative-deterioration",
+      "evolving-acute-coronary-syndrome",
+      "acute-respiratory-deterioration",
+      "septic-shock",
+      "sedation-airway-compromise",
+    ];
+    for (const slug of slugs) {
+      const scenario = clinicalScenarios.find((candidate) => candidate.slug === slug);
+      assert.ok(scenario, slug);
+      assert.ok(scenario.actions.length >= 12, `${slug} has ${scenario.actions.length} actions`);
+      assert.ok(scenario.actions.every((action) => action.rationale.length >= 40 && action.evidenceIds.length > 0), slug);
     }
   });
 });
@@ -227,6 +244,19 @@ describe("clinical simulation state engine", () => {
     assert.equal(triggered.state.processedEventIds.includes("recognition-delay"), true);
     assert.ok(triggered.notice.message.startsWith("[Test event]"));
     assert.ok(triggered.notice.stateChanges.some((change) => change.path === "vitals.map"));
+  });
+
+  it("offers guided coaching only after two consecutive unsafe or low-value decisions", () => {
+    const scenario = clinicalScenarios.find((candidate) => candidate.slug === "acute-respiratory-deterioration");
+    assert.ok(scenario);
+    let state = createInitialPatientState(scenario, 8122, "guided");
+    state = applySimulationAction(scenario, state, "pursed-lip-only").state;
+    assert.equal(getGuidedCoachingTip(state, scenario), null);
+    state = applySimulationAction(scenario, state, "sedate-for-niv").state;
+    const tip = getGuidedCoachingTip(state, scenario);
+    assert.equal(tip?.tone, "unsafe");
+    assert.match(tip?.message ?? "", /depress ventilation and airway protection/i);
+    assert.equal(getGuidedCoachingTip({ ...state, mode: "independent" }, scenario), null);
   });
 });
 

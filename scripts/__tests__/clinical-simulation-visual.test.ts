@@ -9,6 +9,7 @@ import {
 } from "../../apps/web/src/lib/clinical-simulation/engine";
 import { getSceneAnchors, getSceneConnections, sceneGeometryIsFinite } from "../../apps/web/src/lib/clinical-simulation/scene-geometry";
 import { findMissingSceneAssets, getActiveSceneAssetIds, sceneAssetRegistry } from "../../apps/web/src/lib/clinical-simulation/scene-assets";
+import { derivePatientPresentationStage, getPatientPresentation } from "../../apps/web/src/lib/clinical-simulation/patient-presentations";
 import { clinicalScenarios } from "../../apps/web/src/lib/clinical-simulation/scenarios";
 import type { ClinicalScenario, ScenarioAction } from "../../apps/web/src/lib/clinical-simulation/schema";
 import {
@@ -75,6 +76,29 @@ describe("clinical simulation visual-state adapter", () => {
     assert.equal(deriveConsciousnessVisual({ ...state, levelOfConsciousness: "unresponsive", gcs: 6 }).level, "unresponsive");
     assert.equal(deriveConsciousnessVisual({ ...state, levelOfConsciousness: "unresponsive to voice", sedationScore: -4 }).level, "sedated");
     assert.equal(deriveConsciousnessVisual({ ...state, levelOfConsciousness: "alert", orientation: "oriented x4", behavior: "calm", agitation: 0, anxiety: 0 }).level, "alert");
+  });
+
+  it("maps engine deterioration to authored patient presentations without identity drift", () => {
+    const respiratory = scenario("acute-respiratory-deterioration");
+    const initial = createInitialPatientState(respiratory, 4102, "guided");
+    const stable = {
+      ...initial,
+      vitals: { ...initial.vitals, spo2: 96, respiratoryRate: 18, temperatureC: 37, pain: 0 },
+      levelOfConsciousness: "alert",
+      respiratoryEffort: "unlabored",
+      skin: "warm and dry",
+      anxiety: 1,
+      agitation: 0,
+      gcs: 15,
+    };
+    assert.equal(derivePatientPresentationStage(stable), 1);
+    assert.equal(derivePatientPresentationStage({ ...stable, skin: "pale and diaphoretic" }), 2);
+    assert.equal(derivePatientPresentationStage({ ...stable, vitals: { ...stable.vitals, spo2: 72 } }), 2);
+    assert.equal(derivePatientPresentationStage({ ...stable, levelOfConsciousness: "difficult to arouse", gcs: 11 }), 3);
+    assert.equal(derivePatientPresentationStage({ ...stable, behavior: "confused and agitated", agitation: 8 }), 4);
+    assert.equal(derivePatientPresentationStage({ ...stable, levelOfConsciousness: "responds only to painful stimulus", gcs: 7 }), 5);
+    assert.match(getPatientPresentation(respiratory.slug, respiratory.patient.name, stable)?.src ?? "", /james-carter-stable-baseline/);
+    assert.equal(getPatientPresentation(respiratory.slug, "Different Patient", stable), null);
   });
 
   it("derives regional perfusion overlays while preserving all baseline palettes", () => {
