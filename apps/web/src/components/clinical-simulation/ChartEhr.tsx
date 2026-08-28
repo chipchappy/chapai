@@ -137,6 +137,12 @@ export default function ChartEhr({ scenario, state }: { scenario: ClinicalScenar
         {section === "orders" ? <>
           <h2>Active orders</h2>
           <ul className={styles.ehrPlain}>{scenario.chart.orders.map((item) => <li key={item}>{item}</li>)}</ul>
+          {state.activeOrders.length ? <>
+            <h2>New orders during this event</h2>
+            <ul className={styles.ehrPlain} data-testid="simulation-new-orders">
+              {state.activeOrders.map((item, index) => <li key={`${item}-${index}`}><strong>New</strong> — {item}</li>)}
+            </ul>
+          </> : null}
           <h2>PRN orders</h2>
           <ul className={styles.ehrPlain}>{scenario.chart.prnOrders.length ? scenario.chart.prnOrders.map((item) => <li key={item}>{item}</li>) : <li>None</li>}</ul>
           <h2>Active infusions and medications</h2>

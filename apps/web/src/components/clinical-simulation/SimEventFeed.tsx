@@ -1,14 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Activity, ClipboardList, Gauge, ListChecks, MessageSquare } from "lucide-react";
-import type { PatientState } from "@/lib/clinical-simulation/engine";
+import { Activity, ClipboardList, Flame, Gauge, ListChecks, MessageSquare } from "lucide-react";
+import { getPendingReassessments, type PatientState } from "@/lib/clinical-simulation/engine";
 import { buildAchievements, achievementSummary } from "@/lib/clinical-simulation/achievements";
 import { summarizeStateChanges } from "@/lib/clinical-simulation/clinical-language";
 import { buildConcerns } from "@/lib/clinical-simulation/concerns";
 import { gradeBestPracticeRoute } from "@/lib/clinical-simulation/best-practice";
 import { getGuidedCoachingTip } from "@/lib/clinical-simulation/coaching";
 import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
+import { deriveClinicalTrajectory } from "@/lib/clinical-simulation/trajectory";
 import styles from "./sim-event-feed.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -195,6 +196,8 @@ export default function SimEventFeed({
   const concerns = useMemo(() => buildConcerns(state), [state]);
   const grade = useMemo(() => gradeBestPracticeRoute(scenario, state), [scenario, state]);
   const coachingTip = useMemo(() => getGuidedCoachingTip(state, scenario), [scenario, state]);
+  const trajectory = useMemo(() => deriveClinicalTrajectory(state), [state]);
+  const reassessments = useMemo(() => getPendingReassessments(scenario, state), [scenario, state]);
 
   // Required care that has not happened yet — the "what am I forgetting" list.
   const outstanding = useMemo(
@@ -217,7 +220,10 @@ export default function SimEventFeed({
     <aside className={styles.feed} aria-label="Clinical console" data-testid="sim-event-feed">
       <header>
         <span>Clinical console</span>
-        <em>{entries.length} events</em>
+        <div>
+          <em data-trajectory={trajectory.status} title={trajectory.detail}>{trajectory.label}</em>
+          <em>{entries.length} events</em>
+        </div>
       </header>
 
       <nav className={styles.feedModes} aria-label="Console view">
@@ -253,6 +259,22 @@ export default function SimEventFeed({
 
       {mode === "tasks" ? (
         <div className={styles.feedPane}>
+          <h3 className={styles.feedPaneTitle}>Close the loop</h3>
+          {reassessments.length ? (
+            <ol className={styles.taskList}>
+              {reassessments.map((loop) => (
+                <li key={loop.sourceActionId} data-severity={loop.status === "overdue" ? "critical" : loop.status === "due" ? "warning" : "pending"}>
+                  <strong>Reassess after {loop.sourceLabel}</strong>
+                  <p>{loop.status === "waiting"
+                    ? `Expected response window opens at minute ${loop.dueMinute}.`
+                    : loop.status === "due"
+                      ? "The expected response window is open now."
+                      : `Reassessment is overdue from minute ${loop.dueMinute}.`}</p>
+                </li>
+              ))}
+            </ol>
+          ) : <p className={styles.feedEmpty}>No intervention or medication reassessment is currently due.</p>}
+
           <h3 className={styles.feedPaneTitle}>Needs attention</h3>
           {concerns.length ? (
             <ol className={styles.taskList}>
@@ -281,7 +303,7 @@ export default function SimEventFeed({
         <div className={styles.feedPane}>
           <div className={styles.feedScore} data-band={grade.band} aria-label="Clinical judgment score">
             <div><span>Best practice</span><strong>{grade.score}%</strong></div>
-            <div><span>Streak</span><strong data-hot={scoring.streak >= 3}>{scoring.streak}{scoring.streak >= 3 ? " 🔥" : ""}</strong></div>
+            <div><span>Streak</span><strong data-hot={scoring.streak >= 3}>{scoring.streak}{scoring.streak >= 3 ? <Flame size={15} aria-hidden="true" /> : null}</strong></div>
             <div><span>Decisions</span><strong>{scoring.total}</strong></div>
           </div>
           <p className={styles.feedHeadline}>{grade.headline}</p>

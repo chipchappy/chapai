@@ -617,6 +617,48 @@
   color: var(--sim-ink);
 }
 
+.decisionPulse {
+  position: fixed;
+  z-index: 120;
+  top: 68px;
+  right: 18px;
+  display: grid;
+  width: min(360px, calc(100vw - 28px));
+  gap: 3px;
+  border: 1px solid #bad0c0;
+  border-left: 4px solid #3f7d5c;
+  border-radius: 8px;
+  padding: 11px 13px;
+  background: rgba(239, 247, 240, 0.97);
+  box-shadow: 0 12px 30px rgba(31, 44, 38, 0.2);
+  color: #294d38;
+  pointer-events: none;
+  animation: decisionPulseIn 220ms ease both;
+}
+
+.decisionPulse[data-tone="reasonable"] { border-color: #dfca92; border-left-color: #b08430; background: rgba(251, 246, 230, 0.97); color: #75551b; }
+.decisionPulse[data-tone="caution"] { border-color: #dfbd79; border-left-color: #c08022; background: rgba(255, 244, 220, 0.98); color: #754d12; }
+.decisionPulse[data-tone="unsafe"] { border-color: #d9a39d; border-left-color: #b0453b; background: rgba(253, 237, 235, 0.98); color: #7d3029; }
+
+.decisionPulse span {
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.decisionPulse strong { font-size: 0.86rem; line-height: 1.35; }
+.decisionPulse p { margin: 0; font-size: 0.73rem; line-height: 1.42; }
+
+@keyframes decisionPulseIn {
+  from { opacity: 0; transform: translate3d(10px, -4px, 0) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decisionPulse { animation: none; }
+}
+
 .patientHeader {
   position: relative;
   z-index: 40;
@@ -2564,6 +2606,7 @@
 
 @media (max-width: 720px) {
   .actionBar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .decisionPulse { top: 104px; right: 10px; left: 10px; width: auto; }
 }
 
 /* ==== debrief: best-practice route analysis ==== */

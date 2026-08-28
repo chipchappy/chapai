@@ -70,11 +70,24 @@ async function performAction(page: Page, attemptId: string, scenario: Scenario, 
     await performAction(page, attemptId, scenario, dependency, completed);
   }
   const selectedElements = action!.communication?.requiredElementIds ?? action!.documentation?.requiredFieldIds ?? [];
-  const response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, {
+  let response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, {
     data: { operation: "act", actionId, selectedElements },
   });
   expect(response.status()).toBe(200);
-  const result = await response.json();
+  let result = await response.json();
+  const reassessmentMinute = /(?:reassessment|response) window opens at minute (\d+)/i.exec(result.data.entry?.feedback ?? "")?.[1];
+  if (result.data.entry?.classification === "premature" && reassessmentMinute) {
+    const advanceBy = Number(reassessmentMinute) - Number(result.data.state.virtualMinute);
+    if (advanceBy > 0) {
+      response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, { data: { operation: "advance", minutes: advanceBy } });
+      expect(response.status()).toBe(200);
+      const advanced = await response.json();
+      expect(advanced.data.state.virtualMinute).toBe(Number(reassessmentMinute));
+    }
+    response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, { data: { operation: "act", actionId, selectedElements } });
+    expect(response.status()).toBe(200);
+    result = await response.json();
+  }
   if (result.data.state.completedActionIds.includes(actionId)) completed.add(actionId);
 }
 
@@ -132,7 +145,7 @@ test.describe("Clinical Simulation enabled vertical slice", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/clinical-simulation", { waitUntil: "domcontentloaded" });
     await expect(page.getByRole("heading", { name: "Clinical Simulation", level: 1 })).toBeVisible();
-    await expect(page.locator("article")).toHaveCount(6);
+    await expect(page.locator("article")).toHaveCount(20);
     await expect(page.getByRole("combobox", { name: "Unit" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Clinical Simulation" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
@@ -166,6 +179,39 @@ test.describe("Clinical Simulation enabled vertical slice", () => {
     await expect(page.getByRole("heading", { name: "Patient stabilized", level: 1 })).toBeVisible();
     await expect(page.getByRole("link", { name: "Replay", exact: true })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+  });
+
+  test("persists treatment-response timing and dynamic team orders in the rendered workspace @desktopOnly", async ({ page }) => {
+    const started = await startAttempt(page, "acute-respiratory-deterioration", 260_718);
+    const attemptId = started.data.id;
+    const loaded = await loadAttempt(page, attemptId);
+    const completed = new Set<string>();
+    await performAction(page, attemptId, loaded.data.scenario, "assess-neuro", completed);
+    await performAction(page, attemptId, loaded.data.scenario, "start-niv", completed);
+
+    const earlyReassessment = await page.request.patch("/api/clinical-simulation/attempts/" + attemptId, {
+      data: { operation: "act", actionId: "reassess-niv", selectedElements: [] },
+    });
+    expect(earlyReassessment.status()).toBe(200);
+    const earlyResult = await earlyReassessment.json();
+    expect(earlyResult.data.entry.classification).toBe("premature");
+    expect(earlyResult.data.state.completedActionIds).not.toContain("reassess-niv");
+
+    await page.goto("/clinical-simulation/acute-respiratory-deterioration/run?attempt=" + attemptId, { waitUntil: "domcontentloaded" });
+    await expect(page.getByTestId("sim-event-feed").locator("[data-trajectory='responding']")).toBeVisible();
+    await page.getByRole("button", { name: /^Tasks/ }).click();
+    await expect(page.getByText("Reassess after Initiate ordered noninvasive ventilation")).toBeVisible();
+    await expect(page.getByText("Expected response window opens at minute 5.")).toBeVisible();
+
+    const advance = await page.request.patch("/api/clinical-simulation/attempts/" + attemptId, {
+      data: { operation: "advance", minutes: 1 },
+    });
+    expect(advance.status()).toBe(200);
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await page.getByRole("button", { name: /^Computer/ }).click();
+    await page.getByTestId("chart-ehr").getByRole("button", { name: "Orders", exact: true }).click();
+    await expect(page.getByTestId("simulation-new-orders")).toContainText("Repeat blood gas after NIV initiation");
+    await expect(page.getByTestId("simulation-new-orders")).toContainText("Escalate for invasive airway evaluation if NIV fails");
   });
 
   test("operates protected developer controls through the rendered panel", async ({ page }) => {

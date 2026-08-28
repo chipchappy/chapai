@@ -66,11 +66,24 @@ export async function performClinicalAction(page: Page, attemptId: string, scena
     await performClinicalAction(page, attemptId, scenario, dependency, completed);
   }
   const selectedElements = action!.communication?.requiredElementIds ?? action!.documentation?.requiredFieldIds ?? [];
-  const response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, {
+  let response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, {
     data: { operation: "act", actionId, selectedElements },
   });
   expect(response.status()).toBe(200);
-  const result = await response.json();
+  let result = await response.json();
+  const reassessmentMinute = /(?:reassessment|response) window opens at minute (\d+)/i.exec(result.data.entry?.feedback ?? "")?.[1];
+  if (result.data.entry?.classification === "premature" && reassessmentMinute) {
+    const advanceBy = Number(reassessmentMinute) - Number(result.data.state.virtualMinute);
+    if (advanceBy > 0) {
+      response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, { data: { operation: "advance", minutes: advanceBy } });
+      expect(response.status()).toBe(200);
+      const advanced = await response.json();
+      expect(advanced.data.state.virtualMinute).toBe(Number(reassessmentMinute));
+    }
+    response = await page.request.patch(`/api/clinical-simulation/attempts/${attemptId}`, { data: { operation: "act", actionId, selectedElements } });
+    expect(response.status()).toBe(200);
+    result = await response.json();
+  }
   if (result.data.state.completedActionIds.includes(actionId)) completed.add(actionId);
 }
 

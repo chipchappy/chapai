@@ -6,6 +6,7 @@ import {
   canCompleteSimulation,
   completeSimulation,
   createInitialPatientState,
+  getPendingReassessments,
   minutesToNextMeaningfulEvent,
   normalizePatientState,
   scoreSimulation,
@@ -15,6 +16,7 @@ import {
 } from "../../apps/web/src/lib/clinical-simulation/engine";
 import { clinicalScenarios } from "../../apps/web/src/lib/clinical-simulation/scenarios";
 import { getGuidedCoachingTip } from "../../apps/web/src/lib/clinical-simulation/coaching";
+import { deriveClinicalTrajectory } from "../../apps/web/src/lib/clinical-simulation/trajectory";
 import { futureScenarioOutlines } from "../../apps/web/src/lib/clinical-simulation/future-scenario-outlines";
 import {
   validateScenarioDefinition,
@@ -42,6 +44,11 @@ function performWithDependencies(
     state = performWithDependencies(scenario, state, dependency, visiting);
   }
   visiting.delete(actionId);
+  const reassessment = getPendingReassessments(scenario, state)
+    .find((loop) => loop.followUpActionIds.includes(actionId));
+  if (reassessment && state.virtualMinute < reassessment.dueMinute) {
+    state = advanceSimulation(scenario, state, reassessment.dueMinute - state.virtualMinute);
+  }
   return applySimulationAction(scenario, state, action.id, selectedElements(action)).state;
 }
 
@@ -75,6 +82,18 @@ describe("clinical simulation scenario library", () => {
       assert.equal(scenario.status, "clinical-review");
       assert.equal(scenario.clinicalReviewerStatus, "needs-review");
       assert.ok(scenario.evidence.every((source) => source.url.startsWith("https://")));
+    }
+    for (const slug of [
+      "postoperative-deterioration",
+      "evolving-acute-coronary-syndrome",
+      "acute-respiratory-deterioration",
+      "septic-shock",
+      "sedation-airway-compromise",
+      "agitation-and-suicide-risk",
+    ]) {
+      const scenario = clinicalScenarios.find((candidate) => candidate.slug === slug);
+      assert.ok(scenario);
+      assert.ok(scenario.actions.some((action) => (action.communication?.responses.length ?? 0) > 0), slug);
     }
   });
 
@@ -158,6 +177,51 @@ describe("clinical simulation state engine", () => {
     const advanced = advanceSimulation(scenario, state, due - state.virtualMinute);
     assert.equal(advanced.pendingEffects.length, 0);
     assert.ok(advanced.notices.some((notice) => notice.id.startsWith(target.id)));
+  });
+
+  it("does not award reassessment credit before the treatment response window", () => {
+    const scenario = clinicalScenarios.find((candidate) => candidate.slug === "acute-respiratory-deterioration");
+    assert.ok(scenario);
+    let state = createInitialPatientState(scenario, 9202, "guided");
+    state = performWithDependencies(scenario, state, "start-niv");
+
+    const immediate = applySimulationAction(scenario, state, "reassess-niv");
+    assert.equal(immediate.entry.classification, "premature");
+    assert.equal(immediate.state.completedActionIds.includes("reassess-niv"), false);
+    assert.deepEqual(getPendingReassessments(scenario, immediate.state).map((loop) => [loop.dueMinute, loop.status]), [[5, "waiting"]]);
+
+    state = advanceSimulation(scenario, immediate.state, 5);
+    assert.equal(getPendingReassessments(scenario, state)[0]?.status, "due");
+    const reassessed = applySimulationAction(scenario, state, "reassess-niv");
+    assert.equal(reassessed.entry.classification, "essential");
+    assert.equal(getPendingReassessments(scenario, reassessed.state).length, 0);
+  });
+
+  it("adds state-aware provider orders to the evolving chart", () => {
+    const scenario = clinicalScenarios.find((candidate) => candidate.slug === "acute-respiratory-deterioration");
+    assert.ok(scenario);
+    let state = createInitialPatientState(scenario, 9203, "independent");
+    state = performWithDependencies(scenario, state, "assess-neuro");
+    state = performWithDependencies(scenario, state, "review-blood-gas");
+    const contact = scenario.actions.find((action) => action.id === "contact-rt");
+    assert.ok(contact);
+    const result = applySimulationAction(scenario, state, contact.id, selectedElements(contact));
+    assert.match(result.entry.teamResponse ?? "", /bilevel NIV trial/i);
+    state = advanceSimulation(scenario, result.state, 1);
+    assert.ok(state.activeOrders.some((order) => /repeat blood gas/i.test(order)));
+    assert.ok(state.activeOrders.some((order) => /NIV fails/i.test(order)));
+  });
+
+  it("derives an objective live trajectory from patient-state changes", () => {
+    const scenario = clinicalScenarios.find((candidate) => candidate.slug === "acute-respiratory-deterioration");
+    assert.ok(scenario);
+    const initial = createInitialPatientState(scenario, 9204, "guided");
+    const worsened = applySimulationAction(scenario, initial, "remove-oxygen").state;
+    assert.ok(["worsening", "critical"].includes(deriveClinicalTrajectory(worsened).status));
+
+    let responding = createInitialPatientState(scenario, 9204, "guided");
+    responding = performWithDependencies(scenario, responding, "start-niv");
+    assert.equal(deriveClinicalTrajectory(responding).status, "responding");
   });
 
   it("classifies a medication attempt without required safety checks as unsafe", () => {
@@ -256,6 +320,7 @@ describe("clinical simulation state engine", () => {
     const tip = getGuidedCoachingTip(state, scenario);
     assert.equal(tip?.tone, "unsafe");
     assert.match(tip?.message ?? "", /depress ventilation and airway protection/i);
+    assert.match(tip?.message ?? "", /Next clinical priority:/i);
     assert.equal(getGuidedCoachingTip({ ...state, mode: "independent" }, scenario), null);
   });
 });
@@ -273,7 +338,7 @@ describe("ICU septic shock trajectories", () => {
     assert.equal(debrief.outcome, "stabilized");
     assert.ok(debrief.finalPatientState.map >= 65);
     assert.ok(debrief.finalPatientState.urineOutputMlHr >= 20);
-    assert.equal(debrief.metrics.timeToEscalation, 0);
+    assert.equal(debrief.metrics.timeToEscalation, 2);
     assert.match(debrief.outcomeExplanation, /MAP of \d+ mmHg/);
   });
 

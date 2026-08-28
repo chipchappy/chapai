@@ -60,6 +60,14 @@ export type VitalsSample = {
   respiratoryRate: number;
 };
 
+export type ReassessmentLoop = {
+  sourceActionId: string;
+  sourceLabel: string;
+  dueMinute: number;
+  followUpActionIds: string[];
+  status: "waiting" | "due" | "overdue";
+};
+
 export type PatientState = ClinicalScenario["initialState"] & {
   virtualMinute: number;
   status: AttemptStatus;
@@ -179,6 +187,7 @@ function normalizePatientStateInPlace(state: PatientState) {
   state.actionLog = state.actionLog.map((entry) => ({ ...entry, stateChanges: entry.stateChanges ?? [], teamResponse: entry.teamResponse ?? null }));
   state.notices = state.notices.map((notice) => ({ ...notice, stateChanges: notice.stateChanges ?? [] }));
   state.activeComplications ??= [];
+  state.activeOrders ??= [];
   state.position ??= "semi-fowler";
   state.headOfBedDegrees = clamp(Number(state.headOfBedDegrees ?? 30), -15, 90);
   state.timeSinceLastReassessment = Math.max(0, Math.round(state.timeSinceLastReassessment ?? 0));
@@ -417,6 +426,70 @@ function completenessClassification(action: ScenarioAction, selectedElements: st
   return null;
 }
 
+const CREDITABLE_CLASSIFICATIONS = new Set<ActionClassification>([
+  "essential",
+  "high_priority",
+  "appropriate",
+  "acceptable_alternative",
+  "delayed",
+]);
+
+function reassessmentDelay(action: ScenarioAction) {
+  if (action.medication?.reassessmentMinutes) return action.medication.reassessmentMinutes;
+  const delays = action.delayedEffects.map((effect) => effect.delayMinutes);
+  return delays.length ? Math.min(...delays) : 0;
+}
+
+function latestCreditablePerformance(state: PatientState, actionId: string) {
+  return [...state.actionLog]
+    .reverse()
+    .find((entry) => entry.actionId === actionId && CREDITABLE_CLASSIFICATIONS.has(entry.classification));
+}
+
+function reassessmentDueMinute(scenario: ClinicalScenario, state: PatientState, action: ScenarioAction) {
+  if (action.category !== "assessment" || !action.repeatable) return null;
+  const dueMinutes = action.prerequisites.flatMap((sourceId) => {
+    const source = scenario.actions.find((candidate) => candidate.id === sourceId);
+    const performance = latestCreditablePerformance(state, sourceId);
+    if (!source || !performance) return [];
+    const delay = reassessmentDelay(source);
+    return delay > 0 ? [performance.virtualMinute + delay] : [];
+  });
+  return dueMinutes.length ? Math.max(...dueMinutes) : null;
+}
+
+export function getPendingReassessments(scenario: ClinicalScenario, state: PatientState): ReassessmentLoop[] {
+  return scenario.actions.flatMap((source) => {
+    const delay = reassessmentDelay(source);
+    if (delay <= 0) return [];
+    const performance = latestCreditablePerformance(state, source.id);
+    if (!performance) return [];
+    const followUps = scenario.actions.filter(
+      (candidate) => candidate.category === "assessment" && candidate.repeatable && candidate.prerequisites.includes(source.id),
+    );
+    if (!followUps.length) return [];
+    const dueMinute = performance.virtualMinute + delay;
+    const completedAfterWindow = state.actionLog.some(
+      (entry) => followUps.some((candidate) => candidate.id === entry.actionId)
+        && entry.virtualMinute >= dueMinute
+        && CREDITABLE_CLASSIFICATIONS.has(entry.classification),
+    );
+    if (completedAfterWindow) return [];
+    const status: ReassessmentLoop["status"] = state.virtualMinute < dueMinute
+      ? "waiting"
+      : state.virtualMinute <= dueMinute + 2
+        ? "due"
+        : "overdue";
+    return [{
+      sourceActionId: source.id,
+      sourceLabel: source.label,
+      dueMinute,
+      followUpActionIds: followUps.map((candidate) => candidate.id),
+      status,
+    }];
+  }).sort((a, b) => a.dueMinute - b.dueMinute);
+}
+
 export function applySimulationAction(
   scenario: ClinicalScenario,
   current: PatientState,
@@ -449,8 +522,13 @@ export function applySimulationAction(
     feedback = `This action was reasonable but premature because prerequisite assessment or preparation was incomplete. ${action.rationale}`;
     applyClinicalEffects = false;
   } else {
+    const dueMinute = reassessmentDueMinute(scenario, state, action);
     const incomplete = completenessClassification(action, selectedElements);
-    if (incomplete) {
+    if (dueMinute != null && state.virtualMinute < dueMinute) {
+      classification = "premature";
+      feedback = `The response cannot be interpreted yet. The expected reassessment window opens at minute ${dueMinute}; continue monitoring and reassess then. ${action.rationale}`;
+      applyClinicalEffects = false;
+    } else if (incomplete) {
       classification = incomplete;
       feedback = `The action was initiated, but required clinical information was omitted. ${action.rationale}`;
       applyClinicalEffects = false;

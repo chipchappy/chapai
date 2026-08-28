@@ -30,8 +30,9 @@ import PatientScene, { type ScenePerformanceSample } from "@/components/clinical
 import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simulation/scene/PatientPhotoScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
 import SimulationDebrief from "@/components/clinical-simulation/SimulationDebrief";
-import { canCompleteSimulation, type PatientState, type SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
+import { canCompleteSimulation, type ActionLogEntry, type PatientState, type SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
 import { gradeBestPracticeRoute } from "@/lib/clinical-simulation/best-practice";
+import { summarizeStateChanges } from "@/lib/clinical-simulation/clinical-language";
 import type { ClinicalScenario, ScenarioAction } from "@/lib/clinical-simulation/schema";
 import { derivePatientVisualState, type SceneQuality, type VisualDebugOverrides } from "@/lib/clinical-simulation/visual-state";
 import { trackEvent } from "@/lib/analytics";
@@ -57,6 +58,30 @@ type AttemptMeta = {
   status: "in_progress" | "completed" | "abandoned";
   scenarioVersion: string;
 };
+
+type DecisionPulse = {
+  id: string;
+  tone: "strong" | "reasonable" | "caution" | "unsafe";
+  heading: string;
+  action: string;
+  response: string;
+};
+
+function decisionPulseFor(entry: ActionLogEntry): DecisionPulse {
+  const response = summarizeStateChanges(entry.stateChanges)?.text
+    ?? entry.teamResponse
+    ?? "No immediate measurable change is established; continue monitoring for the expected response.";
+  if (entry.classification === "unsafe" || entry.classification === "critical_error") {
+    return { id: entry.id, tone: "unsafe", heading: "Safety risk", action: entry.label, response };
+  }
+  if (["low_value", "incomplete", "premature", "delayed"].includes(entry.classification)) {
+    return { id: entry.id, tone: "caution", heading: "Reconsider the priority", action: entry.label, response };
+  }
+  if (entry.classification === "appropriate" || entry.classification === "acceptable_alternative") {
+    return { id: entry.id, tone: "reasonable", heading: "Reasonable action", action: entry.label, response };
+  }
+  return { id: entry.id, tone: "strong", heading: "Strong clinical judgment", action: entry.label, response };
+}
 
 function errorMessage(body: unknown, fallback: string) {
   if (!body || typeof body !== "object") return fallback;
@@ -238,20 +263,25 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
   const [station, setStation] = useState<StationId | null>(null);
   /** Virtual minute each result stream was last reviewed — drives "new result" badges. */
-  const [resultsSeenAt, setResultsSeenAt] = useState<{ labs: number; diagnostics: number }>({ labs: -1, diagnostics: -1 });
+  const [resultsSeenAt, setResultsSeenAt] = useState<{ labs: number; diagnostics: number; orders: number }>({ labs: -1, diagnostics: -1, orders: 0 });
   const [selections, setSelections] = useState<Record<string, string[]>>({});
   const [speed, setSpeed] = useState<1 | 5>(1);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [decisionPulse, setDecisionPulse] = useState<DecisionPulse | null>(null);
   const workingRef = useRef(false);
   const debriefTracked = useRef(false);
+  const pulseTimerRef = useRef<number | null>(null);
 
   // Immersive mode: hide site chrome while a simulation is running so the room
   // fills the viewport. Reverted on unmount so navigating away restores the site.
   useEffect(() => {
     document.body.setAttribute("data-sim-immersive", "true");
-    return () => document.body.removeAttribute("data-sim-immersive");
+    return () => {
+      document.body.removeAttribute("data-sim-immersive");
+      if (pulseTimerRef.current != null) window.clearTimeout(pulseTimerRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -298,6 +328,9 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         setDebrief(body.data.debrief);
       }
       if (operation.operation === "act" && body.data.entry) {
+        setDecisionPulse(decisionPulseFor(body.data.entry));
+        if (pulseTimerRef.current != null) window.clearTimeout(pulseTimerRef.current);
+        pulseTimerRef.current = window.setTimeout(() => setDecisionPulse(null), 3600);
         if (["unsafe", "critical_error"].includes(body.data.entry.classification)) {
           trackEvent("simulation_unsafe_action_attempted", { scenarioId: scenario.id, unit: scenario.unit, actionId: operation.actionId });
         }
@@ -340,15 +373,19 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
     return {
       labs: scenario.chart.labs.filter((lab) => lab.availableAtMinute > 0 && lab.availableAtMinute <= minute && lab.availableAtMinute > resultsSeenAt.labs).length,
       diagnostics: scenario.chart.diagnostics.filter((item) => item.availableAtMinute > 0 && item.availableAtMinute <= minute && item.availableAtMinute > resultsSeenAt.diagnostics).length,
+      orders: Math.max(0, (state?.activeOrders.length ?? 0) - resultsSeenAt.orders),
     };
-  }, [scenario.chart.diagnostics, scenario.chart.labs, state?.virtualMinute, resultsSeenAt]);
+  }, [scenario.chart.diagnostics, scenario.chart.labs, state?.activeOrders.length, state?.virtualMinute, resultsSeenAt]);
 
   // Opening the workstation is what marks results as reviewed, so the badge
   // clears when the student has actually had a chance to read them.
   useEffect(() => {
     if (station !== "computer" || !state) return;
     const minute = state.virtualMinute;
-    setResultsSeenAt((current) => (current.labs === minute && current.diagnostics === minute ? current : { labs: minute, diagnostics: minute }));
+    const orders = state.activeOrders.length;
+    setResultsSeenAt((current) => (current.labs === minute && current.diagnostics === minute && current.orders === orders
+      ? current
+      : { labs: minute, diagnostics: minute, orders }));
   }, [station, state]);
 
   const actionsByCategory = useMemo(() => {
@@ -420,6 +457,13 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
   return (
     <main className={styles.workspace}>
+      {decisionPulse ? (
+        <output className={styles.decisionPulse} data-tone={decisionPulse.tone} role="status" aria-live="polite">
+          <span>{decisionPulse.heading}</span>
+          <strong>{decisionPulse.action}</strong>
+          <p>{decisionPulse.response}</p>
+        </output>
+      ) : null}
       <header className={styles.patientHeader}>
         <div className={styles.patientCompact}>
           <div aria-hidden="true">{scenario.patient.name.split(" ").map((part) => part[0]).join("")}</div>
@@ -479,7 +523,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       <nav className={styles.actionBar} aria-label="Bedside actions">
         {STATIONS.map((item) => {
           const Icon = item.icon;
-          const badge = item.id === "computer" ? newResultCounts.labs + newResultCounts.diagnostics : 0;
+          const badge = item.id === "computer" ? newResultCounts.labs + newResultCounts.diagnostics + newResultCounts.orders : 0;
           return (
             <button key={item.id} type="button" data-active={station === item.id} onClick={() => setStation(item.id)} aria-haspopup="dialog">
               <Icon size={19} aria-hidden="true" />

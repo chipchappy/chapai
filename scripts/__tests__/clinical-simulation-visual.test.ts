@@ -4,6 +4,7 @@ import {
   advanceSimulation,
   applySimulationAction,
   createInitialPatientState,
+  getPendingReassessments,
   triggerScenarioEvent,
   type PatientState,
 } from "../../apps/web/src/lib/clinical-simulation/engine";
@@ -41,6 +42,11 @@ function performWithDependencies(currentScenario: ClinicalScenario, initial: Pat
   let state = initial;
   for (const dependency of [...action.prerequisites, ...action.safetyChecks]) state = performWithDependencies(currentScenario, state, dependency, visiting);
   visiting.delete(actionId);
+  const reassessment = getPendingReassessments(currentScenario, state)
+    .find((loop) => loop.followUpActionIds.includes(actionId));
+  if (reassessment && state.virtualMinute < reassessment.dueMinute) {
+    state = advanceSimulation(currentScenario, state, reassessment.dueMinute - state.virtualMinute);
+  }
   return applySimulationAction(currentScenario, state, action.id, selectedElements(action)).state;
 }
 

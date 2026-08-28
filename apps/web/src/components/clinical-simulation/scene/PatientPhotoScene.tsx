@@ -201,7 +201,17 @@ function PatientPhotoScene({
   ].filter(Boolean) as string[];
 
   return (
-    <section className={styles.photoShell} data-testid="patient-scene" data-source={visual.source} data-alarming={alarming} aria-label="Reactive photoreal patient bedside">
+    <section
+      className={styles.photoShell}
+      data-testid="patient-scene"
+      data-source={visual.source}
+      data-room={scenario.unit}
+      data-position={visual.position.kind}
+      data-oxygen={visual.devices.oxygen}
+      data-loc={visual.consciousness.level}
+      data-alarming={alarming}
+      aria-label="Reactive photoreal patient bedside"
+    >
       <header className={styles.photoToolbar}>
         <div className={styles.photoIdentity}>
           {presentation ? (
@@ -233,7 +243,7 @@ function PatientPhotoScene({
         </div>
       </header>
 
-      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport" data-show-targets={showTargets} data-presentation-stage={presentation?.stage ?? 0}>
+      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport" data-show-targets={showTargets} data-presentation-stage={presentation?.stage ?? 0} data-lighting={visual.roomLighting} data-reduced-motion={visual.reducedMotion}>
         <div className={styles.photoBreath} style={breathStyle} data-reduced={visual.reducedMotion}>
           {/* eslint-disable-next-line @next/next/no-img-element -- static bedside asset, no optimization pipeline in the worker runtime */}
           <img className={styles.photoBase} src={config.src} alt={visual.accessibleDescription} draggable={false} onError={() => setImageReady(false)} onLoad={() => setImageReady(true)} />
@@ -242,16 +252,16 @@ function PatientPhotoScene({
 
         {/* ── Reactive clinical overlays, opacity driven by engine state ── */}
         <div className={styles.overlayLayer} aria-hidden="true">
-          {skin.pallor > 0 ? <span className={styles.ovPallor} style={{ ...pct(config.face), opacity: 0.06 + skin.pallor * 0.05 }} /> : null}
-          {skin.diaphoresis > 0 ? <span className={styles.ovDiaphoresis} style={{ ...pct(config.face), opacity: 0.18 + skin.diaphoresis * 0.14 }} /> : null}
-          {skin.flushing > 0 ? <span className={styles.ovFlush} style={{ ...pct(config.face), opacity: 0.1 + skin.flushing * 0.09 }} /> : null}
+          {skin.pallor > 0 ? <span className={styles.ovPallor} data-skin-overlay="pallor" style={{ ...pct(config.face), opacity: 0.06 + skin.pallor * 0.05 }} /> : null}
+          {skin.diaphoresis > 0 ? <span className={styles.ovDiaphoresis} data-skin-overlay="diaphoresis" style={{ ...pct(config.face), opacity: 0.18 + skin.diaphoresis * 0.14 }} /> : null}
+          {skin.flushing > 0 ? <span className={styles.ovFlush} data-skin-overlay="flushing" style={{ ...pct(config.face), opacity: 0.1 + skin.flushing * 0.09 }} /> : null}
           {skin.cyanosis > 0 ? <>
-            <span className={styles.ovCyanosis} style={{ ...pct(config.lips), opacity: 0.22 + skin.cyanosis * 0.12, width: "6%", height: "3.5%" }} />
-            <span className={styles.ovCyanosis} style={{ ...pct(config.hand), opacity: 0.18 + skin.cyanosis * 0.1, width: "7%", height: "5%" }} />
-            <span className={styles.ovCyanosis} style={{ ...pct(config.feet), opacity: 0.18 + skin.cyanosis * 0.1, width: "9%", height: "6%" }} />
+            <span className={styles.ovCyanosis} data-skin-overlay="cyanosis" style={{ ...pct(config.lips), opacity: 0.22 + skin.cyanosis * 0.12, width: "6%", height: "3.5%" }} />
+            <span className={styles.ovCyanosis} data-skin-overlay="cyanosis" style={{ ...pct(config.hand), opacity: 0.18 + skin.cyanosis * 0.1, width: "7%", height: "5%" }} />
+            <span className={styles.ovCyanosis} data-skin-overlay="cyanosis" style={{ ...pct(config.feet), opacity: 0.18 + skin.cyanosis * 0.1, width: "9%", height: "6%" }} />
           </> : null}
-          {skin.mottling > 0 ? <span className={styles.ovMottling} style={{ ...pct(config.legs), opacity: 0.12 + skin.mottling * 0.11 }} /> : null}
-          {skin.edema > 0 ? <span className={styles.ovEdema} style={{ ...pct(config.feet), opacity: 0.1 + skin.edema * 0.08 }} /> : null}
+          {skin.mottling > 0 ? <span className={styles.ovMottling} data-skin-overlay="mottling" style={{ ...pct(config.legs), opacity: 0.12 + skin.mottling * 0.11 }} /> : null}
+          {skin.edema > 0 ? <span className={styles.ovEdema} data-skin-overlay="edema" style={{ ...pct(config.feet), opacity: 0.1 + skin.edema * 0.08 }} /> : null}
         </div>
 
         {/* ── Live monitor: inset into the room's own wall screen ── */}
@@ -304,7 +314,7 @@ function PatientPhotoScene({
         </div>
 
         {focus ? (
-          <aside className={styles.photoFocus} aria-live="polite">
+          <aside className={styles.photoFocus} data-testid="patient-focus-panel" data-focus={focus} aria-live="polite">
             <header><strong>{focusMeta[focus].label}</strong><button type="button" onClick={() => setFocus(null)} aria-label="Close focused view"><X size={15} aria-hidden="true" /></button></header>
             {presentation ? (
               <figure className={styles.presentationFocus}>

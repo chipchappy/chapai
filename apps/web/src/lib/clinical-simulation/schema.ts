@@ -121,6 +121,7 @@ const initialStateSchema = z.object({
   ivPatency: z.string().default("Patent without complication"),
   infusionRates: z.record(z.union([z.string(), z.number()])).default({}),
   activeComplications: z.array(z.string()).default([]),
+  activeOrders: z.array(z.string()).default([]),
   timeSinceLastReassessment: z.number().int().nonnegative().default(0),
   labs: z.record(z.union([z.string(), z.number()])),
   devices: z.record(z.string()),
