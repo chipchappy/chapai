@@ -1,0 +1,15 @@
+# Cloudflare Workers static-asset headers.
+#
+# Everything under /_next/static carries a content hash in its filename, so the
+# bytes at a given URL can never change — a new build produces a new filename.
+# They were being served `max-age=0, must-revalidate`, which made a returning
+# visitor issue a conditional request for all 18 assets on /quiz before the page
+# became interactive. On mobile, where most of this traffic lives, that is a
+# round trip per file for content that is immutable by construction.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts and images shipped from /public are stable but not content-hashed, so
+# they get a shorter life and revalidate rather than being pinned for a year.
+/brand/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path((?:home|nclex|ccrn|pricing|upgrade|compare/.*|privacy|terms|free/.*|tools/.*|nclex-glossary|nclex-lab-values|nclex-requirements/.*|faq).*)",
+        source: "/:path((?:home|pricing|upgrade|compare/.*|privacy|terms|free/.*|tools/.*|nclex-glossary|nclex-lab-values|nclex-requirements/.*|faq).*)",
         headers: [
           {
             key: "Cache-Control",
