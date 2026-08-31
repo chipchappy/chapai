@@ -9,6 +9,7 @@ import { createRequestContext, log, logError } from "@/lib/logger";
 import { mapQuestionRowToQuizQuestion } from "@/lib/quiz-engine";
 import { getServerAccessContext } from "@/lib/server-access";
 import { FREE_DAILY_TUTOR_LIMIT, getTutorUsageToday, recordTutorUsage } from "@/lib/tutor-usage";
+import { checkRateLimit, rateLimitHeaders, rateLimitIdentity } from "@/lib/rate-limit";
 import { getStudyResourcesForQuestion, type StudyResource } from "@/lib/study-resources";
 import type { QuestionAnswer, QuizQuestion, StructuredRationale } from "@/lib/types";
 
@@ -513,6 +514,23 @@ export async function POST(req: NextRequest) {
 
     if (!question.rationale || !question.stem || !question.answer) {
       return streamFallback("I do not have enough approved source material on this item to give a reliable tutor explanation yet. Please use the written rationale first.");
+    }
+
+    // Burst limit, applied to everyone including paid accounts. The daily cap
+    // below governs entitlement; this governs cost and abuse. Every call here
+    // spends real inference budget, so an uncapped loop is expensive whoever
+    // is running it.
+    const tutorLimit = await checkRateLimit({
+      route: "tutor",
+      identity: rateLimitIdentity(req, user?.id),
+      limit: 12,
+      windowSeconds: 60,
+    });
+    if (!tutorLimit.allowed) {
+      return jsonError(429, "RATE_LIMITED", "That is a lot of questions at once. Give it a moment and ask again.", requestContext, {
+        requestId: requestContext.requestId,
+        ...rateLimitHeaders(tutorLimit),
+      });
     }
 
     // Free-tier daily allowance (premium + access-key users skip this).

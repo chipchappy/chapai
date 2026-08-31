@@ -13,6 +13,7 @@ import { getServerAccessContext } from "@/lib/server-access";
 import { ACCESS_KEY_COOKIE, validateAccessKeyRuntime } from "@/lib/access-keys";
 import { matchesQuestionCategory } from "@/lib/nclex-client-needs";
 import { FREE_LIMIT_CODES, FREE_QUESTION_LIMIT } from "@/lib/free-plan-limits";
+import { checkRateLimit, rateLimitHeaders, rateLimitIdentity } from "@/lib/rate-limit";
 import type { ResolvedPremiumAccess } from "@/lib/premium-access";
 import type { QuizSessionConfig, QuizQuestion } from "@/lib/types";
 import { z } from "zod";
@@ -147,6 +148,22 @@ export async function POST(req: NextRequest) {
         previewAccess = Boolean(await validateAccessKeyRuntime(previewCookie).catch(() => null));
       }
     }
+    // Serving a session costs D1 reads and adaptive selection CPU. This is
+    // generous enough that normal study — including the endless mode, which
+    // refills in 25-question batches — never touches it.
+    const startLimit = await checkRateLimit({
+      route: "quiz-start",
+      identity: rateLimitIdentity(req, user?.id),
+      limit: 40,
+      windowSeconds: 60,
+    });
+    if (!startLimit.allowed) {
+      return jsonError(429, "RATE_LIMITED", "Too many sessions started at once. Give it a moment.", {
+        ...requestContext,
+        ...rateLimitHeaders(startLimit),
+      }, { requestId: requestContext.requestId });
+    }
+
     if (!user?.id && !previewAccess) {
       return jsonError(401, "AUTH_REQUIRED", "Create a free account to start practicing.", {
         ...requestContext,

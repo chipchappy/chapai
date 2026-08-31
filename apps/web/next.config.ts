@@ -30,11 +30,20 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // The homepage is force-dynamic and OpenNext runs with a dummy
+        // incremental cache, so ISR is unavailable and every edge-cache miss
+        // executes the Worker plus its D1 stat queries. Measured live that is
+        // ~1.2s against ~0.24s on a hit, and misses were roughly half of
+        // samples at s-maxage=600 because each PoP caches independently.
+        //
+        // The only thing on this page that moves is the live bank count, which
+        // is itself memoised for 60s, so a 30-minute edge window costs nothing
+        // in freshness and removes most of the slow path.
         source: "/",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, s-maxage=600, stale-while-revalidate=86400",
+            value: "public, s-maxage=1800, stale-while-revalidate=86400",
           },
         ],
       },
@@ -43,7 +52,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, s-maxage=600, stale-while-revalidate=86400",
+            value: "public, s-maxage=1800, stale-while-revalidate=86400",
           },
         ],
       },

@@ -44,7 +44,13 @@ function applySecurityHeaders(response: NextResponse, local = false) {
       "font-src 'self' data: https://fonts.gstatic.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       `script-src 'self' 'unsafe-inline'${local ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://static.cloudflareinsights.com`,
-      `connect-src 'self'${local ? " ws: http:" : ""} https:`,
+      // `https:` here allowed the page to talk to any host on the internet,
+      // which is the channel an injected script would use to exfiltrate. The
+      // list below is what the browser actually needs: Supabase for auth,
+      // Stripe for checkout, GA/GTM for analytics, and Cloudflare's RUM beacon.
+      // The AI providers are called from the Worker, not the browser, so they
+      // are deliberately absent.
+      `connect-src 'self'${local ? " ws: http:" : ""} https://*.supabase.co https://api.stripe.com https://*.google-analytics.com https://www.googletagmanager.com https://*.cloudflareinsights.com`,
       "frame-src https://js.stripe.com https://checkout.stripe.com",
     ].join("; "),
   );
@@ -79,6 +85,17 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.host = CANONICAL_HOST;
     url.pathname = "/";
+    return applySecurityHeaders(NextResponse.redirect(url, 301));
+  }
+
+  // The /nclex landing page is retired. It carried external backlinks and
+  // ranked on its own terms, so it redirects rather than 404s. Only the bare
+  // path — the /nclex/* SEO pages below it are still live and must fall through.
+  if (request.nextUrl.pathname === "/nclex") {
+    const url = request.nextUrl.clone();
+    url.host = CANONICAL_HOST;
+    url.pathname = "/";
+    url.search = "";
     return applySecurityHeaders(NextResponse.redirect(url, 301));
   }
 
