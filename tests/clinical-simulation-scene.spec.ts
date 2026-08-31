@@ -26,7 +26,53 @@ test.describe("Reactive patient scene", () => {
     await expect(scene).toHaveAttribute("data-source", "engine");
     await expect(scene).toHaveAttribute("data-room", "intensive-care");
     await expect(scene.locator("img[class*='photoBase']")).toBeVisible();
+    await expect.poll(() => scene.locator("img[class*='photoBase']").evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     await expect(scene.locator("canvas")).toHaveCount(1);
+    const tools = page.getByTestId("simulation-tool-rail");
+    await expect(tools).toBeVisible();
+    await expect(tools.getByRole("button")).toHaveCount(8);
+    await expect(page.getByRole("button", { name: /Assessment: Patient/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Oxygen: Oxygen/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Meds: MAR/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Orders: Active provider orders/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: /Charting: EHR/ })).toBeVisible();
+    await expect(tools.getByRole("button", { name: "End Simulation" })).toBeDisabled();
+    for (const [toolName, dialogName] of [
+      [/Assessment: Patient/, "Patient assessment"],
+      [/Oxygen: Oxygen/, "Bedside care"],
+      [/Meds: MAR/, "Medication administration record"],
+      [/IV Fluids: Lines/, "IV access and fluids"],
+      [/Orders: Active provider orders/, "Active orders"],
+      [/Charting: EHR/, "Electronic health record"],
+      [/Team Chat: SBAR/, "Care team"],
+    ] as const) {
+      await tools.getByRole("button", { name: toolName }).click();
+      await expect(page.getByRole("dialog", { name: dialogName })).toBeVisible();
+      await page.keyboard.press("Escape");
+      await expect(page.getByRole("dialog", { name: dialogName })).toHaveCount(0);
+    }
+
+    const sceneBounds = await scene.boundingBox();
+    const dockBounds = await tools.boundingBox();
+    expect(sceneBounds).not.toBeNull();
+    expect(dockBounds).not.toBeNull();
+    expect(sceneBounds?.height).toBeGreaterThan(500);
+    expect((dockBounds?.x ?? 0) + (dockBounds?.width ?? 0)).toBeLessThanOrEqual((sceneBounds?.x ?? 0) + (sceneBounds?.width ?? 0) + 1);
+    expect((dockBounds?.y ?? 0) + (dockBounds?.height ?? 0)).toBeLessThanOrEqual((sceneBounds?.y ?? 0) + (sceneBounds?.height ?? 0) + 1);
+    if (process.env.CAPTURE_CLINICAL_SIM === "true") await page.screenshot({ path: "test-results/vsim-desktop.png", fullPage: false });
+
+    const integratedMonitor = page.getByTestId("integrated-wall-monitor");
+    await expect(integratedMonitor).toBeVisible();
+    await expect(integratedMonitor.locator("section")).toHaveClass(/monitorEmbedded/);
+    const monitorChrome = await integratedMonitor.evaluate((element) => ({
+      border: getComputedStyle(element).borderWidth,
+      radius: getComputedStyle(element).borderRadius,
+    }));
+    expect(monitorChrome).toEqual({ border: "0px", radius: "0px" });
+
+    const ehrTarget = page.getByTestId("room-target-computer");
+    await expect(ehrTarget).toBeVisible();
+    expect(await ehrTarget.evaluate((element) => getComputedStyle(element).borderStyle)).toBe("solid");
     await scene.getByRole("button", { name: "Expand bedside monitor" }).click();
     await expect(scene.getByRole("dialog", { name: "Bedside monitor" }).locator("canvas").first()).toBeVisible();
     await scene.getByRole("button", { name: "Close monitor" }).click();
@@ -38,7 +84,7 @@ test.describe("Reactive patient scene", () => {
       stage: await page.getByTestId("patient-scene-viewport").getAttribute("data-presentation-stage"),
       position: await scene.getAttribute("data-position"),
     };
-    expect(profile.image).toBeTruthy();
+    expect(profile.image).toContain("hospital-simulation-sarah-johnson.webp");
     expect(profile.stage).toBeTruthy();
 
     await page.reload({ waitUntil: "domcontentloaded" });
@@ -118,11 +164,12 @@ test.describe("Reactive patient scene", () => {
     await expect(scene).toHaveAttribute("data-oxygen", "mechanical-ventilation");
     await expect(page.getByTestId("patient-scene-viewport")).toHaveAttribute("data-reduced-motion", "true");
 
-    const breathingAnimation = await scene.locator("[class*='photoBreath']").evaluate((element) => ({
+    const patientMotion = await page.getByTestId("patient-static-state").evaluate((element) => ({
       name: getComputedStyle(element).animationName,
-      state: getComputedStyle(element).animationPlayState,
+      transform: getComputedStyle(element).transform,
     }));
-    expect(breathingAnimation.name).toBe("none");
+    expect(patientMotion.name).toBe("none");
+    expect(patientMotion.transform).toBe("none");
 
   });
 
@@ -139,5 +186,6 @@ test.describe("Reactive patient scene", () => {
     expect(focusBounds?.x).toBeGreaterThanOrEqual(0);
     expect((focusBounds?.x ?? 0) + (focusBounds?.width ?? 0)).toBeLessThanOrEqual(390);
     await expect(page.getByTestId("patient-focus-panel").getByRole("button").first()).toBeVisible();
+    if (process.env.CAPTURE_CLINICAL_SIM === "true") await page.screenshot({ path: "test-results/vsim-mobile.png", fullPage: false });
   });
 });

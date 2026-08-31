@@ -6,19 +6,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
   AlertTriangle,
-  BookOpen,
   Check,
   ClipboardCheck,
   Lock,
   LogOut,
-  MessageSquareText,
+  MoreVertical,
   Pause,
   Pill,
   Play,
   Save,
   ShieldAlert,
   Siren,
-  Stethoscope,
   Zap,
 } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
@@ -30,15 +28,16 @@ import PatientScene, { type ScenePerformanceSample } from "@/components/clinical
 import PatientPhotoScene, { getPhotoPatient } from "@/components/clinical-simulation/scene/PatientPhotoScene";
 import SimulationDeveloperPanel, { type DeveloperScenarioInfo } from "@/components/clinical-simulation/SimulationDeveloperPanel";
 import SimulationDebrief from "@/components/clinical-simulation/SimulationDebrief";
+import SimulationToolRail from "@/components/clinical-simulation/SimulationToolRail";
 import { canCompleteSimulation, type ActionLogEntry, type PatientState, type SimulationDebrief as Debrief } from "@/lib/clinical-simulation/engine";
 import { gradeBestPracticeRoute } from "@/lib/clinical-simulation/best-practice";
 import { summarizeStateChanges } from "@/lib/clinical-simulation/clinical-language";
 import type { ClinicalScenario, ScenarioAction } from "@/lib/clinical-simulation/schema";
 import { derivePatientVisualState, type SceneQuality, type VisualDebugOverrides } from "@/lib/clinical-simulation/visual-state";
+import { actionsForTool, toolForAction, type SimulationToolId } from "@/lib/clinical-simulation/workspace-tools";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./clinical-simulation.module.css";
 
-type StationId = "assessment" | "computer" | "phone" | "interventions";
 type Operation =
   | { operation: "act"; actionId: string; selectedElements: string[] }
   | { operation: "advance"; minutes: number }
@@ -90,14 +89,6 @@ function errorMessage(body: unknown, fallback: string) {
   if (error && typeof error === "object" && typeof (error as { message?: unknown }).message === "string") return (error as { message: string }).message;
   return fallback;
 }
-
-/** The only four things a student chooses between; everything else is inside one. */
-const STATIONS: Array<{ id: StationId; label: string; hint: string; icon: typeof Activity }> = [
-  { id: "assessment", label: "Assessment", hint: "Systems · talk to patient", icon: Stethoscope },
-  { id: "computer", label: "Computer", hint: "Chart · MAR · labs · orders", icon: BookOpen },
-  { id: "phone", label: "Phone", hint: "Provider · RRT · RT", icon: MessageSquareText },
-  { id: "interventions", label: "Interventions", hint: "Treat · position · safety", icon: ShieldAlert },
-];
 
 function formatClock(minute: number) {
   const hour = 7 + Math.floor(minute / 60);
@@ -261,7 +252,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [visualOverrides, setVisualOverrides] = useState<VisualDebugOverrides>({});
   const [scenePerformance, setScenePerformance] = useState<ScenePerformanceSample | null>(null);
   const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
-  const [station, setStation] = useState<StationId | null>(null);
+  const [station, setStation] = useState<SimulationToolId | null>(null);
   /** Virtual minute each result stream was last reviewed — drives "new result" badges. */
   const [resultsSeenAt, setResultsSeenAt] = useState<{ labs: number; diagnostics: number; orders: number }>({ labs: -1, diagnostics: -1, orders: 0 });
   const [selections, setSelections] = useState<Record<string, string[]>>({});
@@ -380,19 +371,13 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   // Opening the workstation is what marks results as reviewed, so the badge
   // clears when the student has actually had a chance to read them.
   useEffect(() => {
-    if (station !== "computer" || !state) return;
+    if ((station !== "chart" && station !== "orders") || !state) return;
     const minute = state.virtualMinute;
     const orders = state.activeOrders.length;
     setResultsSeenAt((current) => (current.labs === minute && current.diagnostics === minute && current.orders === orders
       ? current
       : { labs: minute, diagnostics: minute, orders }));
   }, [station, state]);
-
-  const actionsByCategory = useMemo(() => {
-    const map = new Map<ScenarioAction["category"], ScenarioAction[]>();
-    for (const action of scenario.actions) map.set(action.category, [...(map.get(action.category) ?? []), action]);
-    return map;
-  }, [scenario.actions]);
 
   async function restartAttempt(seed?: number) {
     if (!state) return;
@@ -440,6 +425,13 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
   const simulationState = state;
   const canComplete = canCompleteSimulation(scenario, state);
+  const recommendedTool = state.mode === "guided"
+    ? scenario.completion.requiredActionIds
+      .filter((id) => !state.completedActionIds.includes(id))
+      .map((id) => scenario.actions.find((action) => action.id === id))
+      .filter((action): action is ScenarioAction => Boolean(action))
+      .map(toolForAction)[0] ?? null
+    : null;
 
   function renderActions(actions: ScenarioAction[] | undefined) {
     if (!actions?.length) return <p className={styles.emptyState}>No actions are available in this workspace for the current scenario.</p>;
@@ -499,18 +491,36 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
             <button type="button" disabled={saving} onClick={() => void perform({ operation: "advance_next" })}>Next event</button>
           </div>
           <Link href="/clinical-simulation" title="Save and exit"><Save size={17} aria-hidden="true" /> Save & exit</Link>
+          <details className={styles.simulationMenu}>
+            <summary aria-label="Simulation options" title="Simulation options"><MoreVertical aria-hidden="true" /></summary>
+            <button type="button" disabled={saving} onClick={() => void abandonAttempt()}><LogOut size={15} aria-hidden="true" /> Abandon attempt</button>
+          </details>
         </div>
       </header>
 
       <section className={styles.clinicalView} data-photo={Boolean(photoPatient)}>
-        {photoPatient ? (
-          <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setStation("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} onOpenTab={(tab) => setStation(tab === "chart" || tab === "mar" ? "computer" : tab === "assessment" ? "assessment" : "interventions")} busy={saving} />
-        ) : (
-          <>
+        <div className={styles.simulationStage}>
+          {photoPatient ? (
+            <PatientPhotoScene scenario={scenario} state={state} visual={patientVisualState} config={photoPatient} onOpenAssessment={() => setStation("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} onOpenTab={setStation} busy={saving} />
+          ) : (
+            <div className={styles.fallbackClinicalScene}>
             <PatientScene scenario={scenario} state={state} visual={patientVisualState} onOpenAssessment={() => setStation("assessment")} onPerformAction={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} busy={saving} onPerformanceSample={developerToolsEnabled ? updateScenePerformance : undefined} />
             <BedsideMonitor state={state} />
-          </>
-        )}
+            </div>
+          )}
+          <SimulationToolRail
+            active={station}
+            badges={{
+              chart: newResultCounts.labs + newResultCounts.diagnostics,
+              orders: newResultCounts.orders,
+            }}
+            recommended={recommendedTool}
+            canComplete={canComplete}
+            busy={saving}
+            onSelect={setStation}
+            onComplete={() => void perform({ operation: "complete" })}
+          />
+        </div>
         <SimEventFeed scenario={scenario} state={state} busy={saving} onRewind={(keepActions) => void perform({ operation: "rewind", keepActions })} />
       </section>
 
@@ -518,48 +528,47 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
 
       <CodeBluePanel scenario={scenario} state={simulationState} busy={saving} onAct={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
 
-
-      {/* ── Four bedside actions. Everything else lives inside a station. ── */}
-      <nav className={styles.actionBar} aria-label="Bedside actions">
-        {STATIONS.map((item) => {
-          const Icon = item.icon;
-          const badge = item.id === "computer" ? newResultCounts.labs + newResultCounts.diagnostics + newResultCounts.orders : 0;
-          return (
-            <button key={item.id} type="button" data-active={station === item.id} onClick={() => setStation(item.id)} aria-haspopup="dialog">
-              <Icon size={19} aria-hidden="true" />
-              <span>{item.label}</span>
-              <small>{item.hint}</small>
-              {badge > 0 ? <em className={styles.actionBadge} aria-label={`${badge} new results`}>{badge}</em> : null}
-            </button>
-          );
-        })}
-      </nav>
-
       <DeviceStation open={station === "assessment"} title="Patient assessment" subtitle="Bedside" onClose={() => setStation(null)}>
         <AssessmentStation scenario={scenario} state={simulationState} busy={saving} onPerform={(actionId) => void perform({ operation: "act", actionId, selectedElements: selections[actionId] ?? [] })} />
       </DeviceStation>
 
-      <DeviceStation open={station === "computer"} title="Workstation — patient chart" subtitle="Computer" tone="screen" onClose={() => setStation(null)}>
-        <ChartEhr scenario={scenario} state={state} />
+      <DeviceStation open={station === "care"} title="Bedside care" subtitle="Oxygen · positioning · safety" onClose={() => setStation(null)}>
+        <p className={styles.stationHint}>Choose the intervention that addresses the patient&apos;s immediate physiologic or safety priority.</p>
+        {renderActions(actionsForTool(scenario.actions, "care"))}
+      </DeviceStation>
+
+      <DeviceStation open={station === "medications"} title="Medication administration record" subtitle="MAR" tone="screen" onClose={() => setStation(null)}>
+        <ChartEhr scenario={scenario} state={state} focusSection="orders" />
         <div className={styles.stationSection}>
           <h3><Pill size={15} aria-hidden="true" /> Medication administration record</h3>
           <p className={styles.stationHint}>Pull from the cabinet and verify every right before administering.</p>
-          {renderActions(actionsByCategory.get("medication"))}
+          {renderActions(actionsForTool(scenario.actions, "medications"))}
         </div>
+      </DeviceStation>
+
+      <DeviceStation open={station === "fluids"} title="IV access and fluids" subtitle="Lines · infusions · blood products" onClose={() => setStation(null)}>
+        <ChartEhr scenario={scenario} state={state} focusSection="io" />
+        <div className={styles.stationSection}>
+          <h3>Available IV and fluid actions</h3>
+          {renderActions(actionsForTool(scenario.actions, "fluids"))}
+        </div>
+      </DeviceStation>
+
+      <DeviceStation open={station === "orders"} title="Active orders" subtitle="Provider orders" tone="screen" onClose={() => setStation(null)}>
+        <ChartEhr scenario={scenario} state={state} focusSection="orders" />
+      </DeviceStation>
+
+      <DeviceStation open={station === "chart"} title="Electronic health record" subtitle="Chart · results · documentation" tone="screen" onClose={() => setStation(null)}>
+        <ChartEhr scenario={scenario} state={state} />
         <div className={styles.stationSection}>
           <h3><ClipboardCheck size={15} aria-hidden="true" /> Documentation</h3>
-          {renderActions(actionsByCategory.get("documentation"))}
+          {renderActions(actionsForTool(scenario.actions, "chart"))}
         </div>
       </DeviceStation>
 
-      <DeviceStation open={station === "phone"} title="Care team" subtitle="Phone" tone="phone" onClose={() => setStation(null)}>
+      <DeviceStation open={station === "team"} title="Care team" subtitle="Phone · SBAR · escalation" tone="phone" onClose={() => setStation(null)}>
         <p className={styles.stationHint}>Report what you have actually assessed. The response depends on what you include and how urgent the patient truly is.</p>
-        {renderActions(actionsByCategory.get("communication"))}
-      </DeviceStation>
-
-      <DeviceStation open={station === "interventions"} title="Interventions" subtitle="Bedside care" onClose={() => setStation(null)}>
-        <p className={styles.stationHint}>Actions are judged on indication, timing, sequence, and patient-specific safety.</p>
-        {renderActions([...(actionsByCategory.get("intervention") ?? []), ...(actionsByCategory.get("safety") ?? [])])}
+        {renderActions(actionsForTool(scenario.actions, "team"))}
       </DeviceStation>
 
 
@@ -582,12 +591,6 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
         onVisualOverrides={setVisualOverrides}
       /> : null}
 
-      <footer className={styles.workspaceFooter}>
-        <div><span>{state.actionLog.length} actions recorded</span><span>{state.criticalErrors.length} critical errors</span><span>{state.clockPaused ? "Clock paused" : `${speed}x clock active`}</span>{saving ? <span>Saving...</span> : null}</div>
-        <button type="button" disabled={!canComplete || saving} onClick={() => void perform({ operation: "complete" })}><ClipboardCheck size={17} aria-hidden="true" /> Complete and debrief</button>
-        <button className={styles.abandonAction} type="button" disabled={saving} onClick={() => void abandonAttempt()}><LogOut size={17} aria-hidden="true" /> Abandon</button>
-        <Link href="/clinical-simulation"><LogOut size={17} aria-hidden="true" /> Save & exit</Link>
-      </footer>
     </main>
   );
 }
