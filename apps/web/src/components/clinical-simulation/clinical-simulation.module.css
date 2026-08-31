@@ -1059,37 +1059,8 @@
   margin: 10px 18px 0;
 }
 
-.developerShell {
-  border-bottom: 1px solid #cbd5d0;
-  background: #edf1ed;
-}
-
-.developerToggle {
-  display: flex;
-  width: 100%;
-  min-height: 44px;
-  align-items: center;
-  gap: 8px;
-  border: 0;
-  padding: 0 22px;
-  background: #243a3b;
-  color: #f4f7f3;
-  font: inherit;
-  font-size: 0.76rem;
-  font-weight: 750;
-  cursor: pointer;
-}
-
-.developerToggle span {
-  margin-left: auto;
-  color: #bed0c4;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-}
-
 .developerPanel {
   padding: 22px;
-  border-top: 3px solid var(--sim-gold);
 }
 
 .developerPanel > header {
@@ -2831,26 +2802,36 @@
   list-style: none;
 }
 .simulationMenu summary::-webkit-details-marker { display: none; }
-.simulationMenu > button {
+.simulationMenuItems {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
   z-index: 80;
-  display: inline-flex;
-  min-width: 164px;
-  align-items: center;
-  gap: 7px;
+  display: grid;
+  min-width: 190px;
+  overflow: hidden;
   border: 1px solid #dacbc0;
   border-radius: 7px;
-  padding: 9px 11px;
   background: #fff;
   box-shadow: 0 10px 24px rgba(45, 39, 32, 0.18);
-  color: #8d3c34;
+}
+.simulationMenuItems button {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  border-bottom: 1px solid #ebe2db;
+  padding: 9px 11px;
+  background: #fff;
+  color: var(--sim-ink);
   font: inherit;
   font-size: 0.75rem;
   font-weight: 750;
   cursor: pointer;
 }
+.simulationMenuItems button:last-child { border-bottom: 0; color: #8d3c34; }
+.simulationMenuItems button:hover { background: #f8f3ea; }
 
 .ehr[data-focused="true"] { grid-template-columns: minmax(0, 1fr); min-height: 0; }
 .ehr[data-focused="true"] .ehrPane { max-height: 460px; }

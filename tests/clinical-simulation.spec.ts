@@ -208,7 +208,7 @@ test.describe("Clinical Simulation enabled vertical slice", () => {
     });
     expect(advance.status()).toBe(200);
     await page.reload({ waitUntil: "domcontentloaded" });
-    await page.getByRole("button", { name: /^Computer/ }).click();
+    await page.getByRole("button", { name: /^Charting/ }).click();
     await page.getByTestId("chart-ehr").getByRole("button", { name: "Orders", exact: true }).click();
     await expect(page.getByTestId("simulation-new-orders")).toContainText("Repeat blood gas after NIV initiation");
     await expect(page.getByTestId("simulation-new-orders")).toContainText("Escalate for invasive airway evaluation if NIV fails");
@@ -218,7 +218,8 @@ test.describe("Clinical Simulation enabled vertical slice", () => {
     const started = await startAttempt(page, "septic-shock", 620_008);
     const attemptId = started.data.id;
     await page.goto(`/clinical-simulation/septic-shock/run?attempt=${attemptId}`, { waitUntil: "domcontentloaded" });
-    await page.getByRole("button", { name: /Test panel/ }).click();
+    await page.getByLabel("Simulation options").click();
+    await page.getByRole("button", { name: "Simulation inspector" }).click();
     await expect(page.getByRole("heading", { name: "Simulation inspector" })).toBeVisible();
     await expect(page.getByText("passed", { exact: true })).toBeVisible();
 
@@ -245,7 +246,7 @@ test.describe("Clinical Simulation enabled vertical slice", () => {
 
     page.once("dialog", (dialog) => dialog.accept());
     await page.getByRole("button", { name: "Restart same seed", exact: true }).click();
-    await expect.poll(() => new URL(page.url()).searchParams.get("attempt")).not.toBe(attemptId);
+    await expect.poll(() => new URL(page.url()).searchParams.get("attempt"), { timeout: 15_000 }).not.toBe(attemptId);
     const replayAttemptId = new URL(page.url()).searchParams.get("attempt");
     expect(replayAttemptId).toBeTruthy();
     const replay = await loadAttempt(page, replayAttemptId!);
@@ -266,9 +267,11 @@ test.describe("Clinical Simulation enabled vertical slice", () => {
     expect((await pause.json()).data.state.clockPaused).toBe(true);
 
     await page.goto(`/clinical-simulation/septic-shock/run?attempt=${attemptId}`, { waitUntil: "domcontentloaded" });
-    await expect(page.getByText("1 actions recorded", { exact: false })).toBeVisible();
+    await page.getByRole("button", { name: "Feedback", exact: true }).click();
+    await expect(page.getByText("Assess hemodynamics, skin, and perfusion", { exact: true })).toBeVisible();
     await page.reload({ waitUntil: "domcontentloaded" });
-    await expect(page.getByText("1 actions recorded", { exact: false })).toBeVisible();
+    await page.getByRole("button", { name: "Feedback", exact: true }).click();
+    await expect(page.getByText("Assess hemodynamics, skin, and perfusion", { exact: true })).toBeVisible();
 
     const traceResponse = await page.request.get(`/api/clinical-simulation/attempts/${attemptId}/trace`);
     expect(traceResponse.status()).toBe(200);

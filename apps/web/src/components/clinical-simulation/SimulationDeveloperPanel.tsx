@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import {
-  Bug,
   Copy,
   Download,
   FastForward,
@@ -64,7 +63,6 @@ export default function SimulationDeveloperPanel({
   scenePerformance,
   onVisualOverrides,
 }: Props) {
-  const [open, setOpen] = useState(false);
   const [eventId, setEventId] = useState(info.events.find((event) => !state.processedEventIds.includes(event.id))?.id ?? info.events[0]?.id ?? "");
   const [message, setMessage] = useState<string | null>(null);
   const scores = useMemo(() => scoreSimulation(scenario, state), [scenario, state]);
@@ -130,13 +128,7 @@ export default function SimulationDeveloperPanel({
   }
 
   return (
-    <section className={styles.developerShell} aria-label="Clinical Simulation test tools">
-      <button className={styles.developerToggle} type="button" aria-expanded={open} onClick={() => setOpen((current) => !current)}>
-        <Bug size={17} aria-hidden="true" /> Test panel
-        <span>{scenario.version} / seed {seed}</span>
-      </button>
-
-      {open ? <div className={styles.developerPanel}>
+    <div className={styles.developerPanel}>
         <header>
           <div><span>Protected development controls</span><h2>Simulation inspector</h2></div>
           <dl>
@@ -181,7 +173,6 @@ export default function SimulationDeveloperPanel({
           <details><summary>Recent actions</summary><pre>{JSON.stringify(state.actionLog.slice(-10), null, 2)}</pre></details>
           <details><summary>Processed events</summary><pre>{JSON.stringify(state.notices.filter((notice) => state.processedEventIds.includes(notice.id)), null, 2)}</pre></details>
         </div>
-      </div> : null}
-    </section>
+    </div>
   );
 }

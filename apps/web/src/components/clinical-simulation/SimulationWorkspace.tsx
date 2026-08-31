@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
   AlertTriangle,
+  Bug,
   Check,
   ClipboardCheck,
   Lock,
@@ -249,6 +250,7 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
   const [attemptMeta, setAttemptMeta] = useState<AttemptMeta | null>(null);
   const [developerInfo, setDeveloperInfo] = useState<DeveloperScenarioInfo | null>(null);
   const [developerToolsEnabled, setDeveloperToolsEnabled] = useState(false);
+  const [developerPanelOpen, setDeveloperPanelOpen] = useState(false);
   const [visualOverrides, setVisualOverrides] = useState<VisualDebugOverrides>({});
   const [scenePerformance, setScenePerformance] = useState<ScenePerformanceSample | null>(null);
   const [sceneQuality, setSceneQuality] = useState<SceneQuality>("full");
@@ -493,7 +495,10 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
           <Link href="/clinical-simulation" title="Save and exit"><Save size={17} aria-hidden="true" /> Save & exit</Link>
           <details className={styles.simulationMenu}>
             <summary aria-label="Simulation options" title="Simulation options"><MoreVertical aria-hidden="true" /></summary>
-            <button type="button" disabled={saving} onClick={() => void abandonAttempt()}><LogOut size={15} aria-hidden="true" /> Abandon attempt</button>
+            <div className={styles.simulationMenuItems}>
+              {developerToolsEnabled ? <button type="button" onClick={() => setDeveloperPanelOpen(true)}><Bug size={15} aria-hidden="true" /> Simulation inspector</button> : null}
+              <button type="button" disabled={saving} onClick={() => void abandonAttempt()}><LogOut size={15} aria-hidden="true" /> Abandon attempt</button>
+            </div>
           </details>
         </div>
       </header>
@@ -572,24 +577,28 @@ export default function SimulationWorkspace({ scenario, attemptId }: { scenario:
       </DeviceStation>
 
 
-      {developerToolsEnabled && developerInfo && attemptMeta ? <SimulationDeveloperPanel
-        scenario={scenario}
-        attemptId={attemptId}
-        seed={attemptMeta.seed}
-        state={state}
-        info={developerInfo}
-        busy={saving}
-        onPause={async (paused) => { await perform({ operation: "set_paused", paused }); }}
-        onAdvance={async (minutes) => { await perform({ operation: "advance", minutes }); }}
-        onAdvanceNext={async () => { await perform({ operation: "advance_next" }); }}
-        onReset={async (seed) => { await perform({ operation: "reset", ...(seed ? { seed } : {}) }); setSelections({}); }}
-        onRestart={restartAttempt}
-        onTriggerEvent={async (eventId) => { await perform({ operation: "trigger_event", eventId }); }}
-        visualState={patientVisualState}
-        visualOverrides={visualOverrides}
-        scenePerformance={scenePerformance}
-        onVisualOverrides={setVisualOverrides}
-      /> : null}
+      {developerToolsEnabled && developerInfo && attemptMeta ? (
+        <DeviceStation open={developerPanelOpen} title="Simulation inspector" subtitle={`${scenario.version} · seed ${attemptMeta.seed}`} tone="screen" onClose={() => setDeveloperPanelOpen(false)}>
+          <SimulationDeveloperPanel
+            scenario={scenario}
+            attemptId={attemptId}
+            seed={attemptMeta.seed}
+            state={state}
+            info={developerInfo}
+            busy={saving}
+            onPause={async (paused) => { await perform({ operation: "set_paused", paused }); }}
+            onAdvance={async (minutes) => { await perform({ operation: "advance", minutes }); }}
+            onAdvanceNext={async () => { await perform({ operation: "advance_next" }); }}
+            onReset={async (seed) => { await perform({ operation: "reset", ...(seed ? { seed } : {}) }); setSelections({}); }}
+            onRestart={restartAttempt}
+            onTriggerEvent={async (eventId) => { await perform({ operation: "trigger_event", eventId }); }}
+            visualState={patientVisualState}
+            visualOverrides={visualOverrides}
+            scenePerformance={scenePerformance}
+            onVisualOverrides={setVisualOverrides}
+          />
+        </DeviceStation>
+      ) : null}
 
     </main>
   );

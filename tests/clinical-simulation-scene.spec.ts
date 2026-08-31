@@ -151,7 +151,8 @@ test.describe("Reactive patient scene", () => {
     const started = await startClinicalAttempt(page, "septic-shock", 931_025);
     const attemptId = started.data.id;
     await page.goto(`/clinical-simulation/septic-shock/run?attempt=${attemptId}`, { waitUntil: "domcontentloaded" });
-    await page.getByRole("button", { name: /Test panel/ }).click();
+    await page.getByLabel("Simulation options").click();
+    await page.getByRole("button", { name: "Simulation inspector" }).click();
     await expect(page.getByRole("heading", { name: "Simulation inspector" })).toBeVisible();
 
     await page.getByLabel("Defibrillation pads").selectOption("anterior-lateral");

@@ -26,7 +26,7 @@ async function openFrozenScene(page: Page, scenarioSlug: string, seed: number, p
   await page.goto(`/clinical-simulation/${scenarioSlug}/run?attempt=${started.data.id}`, { waitUntil: "domcontentloaded" });
   const scene = page.getByTestId("patient-scene");
   await expect(scene).toBeVisible();
-  await expect(scene.getByRole("button", { name: "Bedside view" })).toBeVisible();
+  await expect(page.getByTestId("simulation-tool-rail")).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
   return started.data.id;
 }
@@ -97,7 +97,8 @@ test.describe("Reactive patient scene visual regression", () => {
 
   test("protected ventilated ICU visual matrix @desktopOnly", async ({ page }) => {
     await openFrozenScene(page, "septic-shock", 941_111);
-    await page.getByRole("button", { name: /Test panel/ }).click();
+    await page.getByLabel("Simulation options").click();
+    await page.getByRole("button", { name: "Simulation inspector" }).click();
     const controls = page.locator('section[aria-label="Protected patient scene controls"]');
     await controls.locator('select:has(option[value="ebony"])').selectOption("ebony");
     await controls.locator('select:has(option[value="unresponsive"])').selectOption("unresponsive");
@@ -105,6 +106,7 @@ test.describe("Reactive patient scene visual regression", () => {
     await controls.locator('select:has(option[value="mechanical-ventilation"])').selectOption("mechanical-ventilation");
     await controls.locator('input[type="number"]').fill("16");
     await controls.getByLabel("Ventilator", { exact: true }).check();
+    await page.getByRole("button", { name: "Close Simulation inspector and return to the room" }).click();
     await expectSceneScreenshot(page, "ventilated-unresponsive-ebony.png");
   });
 
