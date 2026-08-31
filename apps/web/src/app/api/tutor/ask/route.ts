@@ -523,11 +523,11 @@ export async function POST(req: NextRequest) {
     const tutorLimit = await checkRateLimit({
       route: "tutor",
       identity: rateLimitIdentity(req, user?.id),
-      limit: 12,
-      windowSeconds: 60,
+      limit: 200,
+      windowSeconds: 3600,
     });
     if (!tutorLimit.allowed) {
-      return jsonError(429, "RATE_LIMITED", "That is a lot of questions at once. Give it a moment and ask again.", requestContext, {
+      return jsonError(429, "RATE_LIMITED", "You have reached the hourly tutor limit. It resets shortly.", requestContext, {
         requestId: requestContext.requestId,
         ...rateLimitHeaders(tutorLimit),
       });

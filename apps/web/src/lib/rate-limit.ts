@@ -10,12 +10,17 @@ import { getServerEnv } from "@/lib/env";
  *    is worse than the abuse it prevents — and this sits in front of the study
  *    flow paying customers use.
  *
- * 2. **It is a fixed window, not a sliding one.** KV allows roughly one write
- *    per second per key and is eventually consistent, so a determined attacker
- *    can exceed a burst at a window boundary. That is an accepted trade: the
- *    goal is to stop runaway clients and casual scraping of a bank that costs
- *    money to serve, not to survive a targeted attack. Cloudflare's own WAF
- *    rate-limiting rules are the right tool for that.
+ * 2. **The window is deliberately long — an hour, not a minute.** KV caches
+ *    reads at the edge for up to 60 seconds, so a per-minute counter reads
+ *    stale for most of its own window. Measured against production: 45 rapid
+ *    requests against a 40/min limit incremented the stored counters to only
+ *    4 and 7, and nothing was ever blocked. Over an hour that same 60s lag is
+ *    noise, and the limiter behaves.
+ *
+ *    The consequence is that this catches sustained abuse and runaway clients,
+ *    not a short burst. Cloudflare's WAF rate-limiting rules are the right tool
+ *    for burst protection, and are worth adding at the edge where they cost no
+ *    Worker time at all.
  */
 
 export type RateLimitResult = {

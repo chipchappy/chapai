@@ -154,11 +154,11 @@ export async function POST(req: NextRequest) {
     const startLimit = await checkRateLimit({
       route: "quiz-start",
       identity: rateLimitIdentity(req, user?.id),
-      limit: 40,
-      windowSeconds: 60,
+      limit: 400,
+      windowSeconds: 3600,
     });
     if (!startLimit.allowed) {
-      return jsonError(429, "RATE_LIMITED", "Too many sessions started at once. Give it a moment.", {
+      return jsonError(429, "RATE_LIMITED", "You have started an unusual number of sessions this hour. Try again shortly.", {
         ...requestContext,
         ...rateLimitHeaders(startLimit),
       }, { requestId: requestContext.requestId });

@@ -50,7 +50,12 @@ function applySecurityHeaders(response: NextResponse, local = false) {
       // Stripe for checkout, GA/GTM for analytics, and Cloudflare's RUM beacon.
       // The AI providers are called from the Worker, not the browser, so they
       // are deliberately absent.
-      `connect-src 'self'${local ? " ws: http:" : ""} https://*.supabase.co https://api.stripe.com https://*.google-analytics.com https://www.googletagmanager.com https://*.cloudflareinsights.com`,
+      //
+      // GA4 does not post only to google-analytics.com. Measured in a real
+      // browser against production, it also beacons analytics.google.com,
+      // stats.g.doubleclick.net and www.google.com/g/collect — omitting those
+      // silently drops analytics while the page looks perfectly healthy.
+      `connect-src 'self'${local ? " ws: http:" : ""} https://*.supabase.co https://api.stripe.com https://*.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://www.googletagmanager.com https://*.cloudflareinsights.com`,
       "frame-src https://js.stripe.com https://checkout.stripe.com",
     ].join("; "),
   );
