@@ -82,7 +82,7 @@ function TrendGlyph({ direction }: { direction: TrendDirection }) {
   return <em className={styles.trendArrow} data-trend={direction} aria-label={direction === "up" ? "trending up" : "trending down"}>{direction === "up" ? "▲" : "▼"}</em>;
 }
 
-export default function BedsideMonitor({ state, compact = false }: { state: PatientState; compact?: boolean }) {
+export default function BedsideMonitor({ state, compact = false, embedded = false }: { state: PatientState; compact?: boolean; embedded?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const stateRef = useRef(state);
   stateRef.current = state;
@@ -326,7 +326,7 @@ export default function BedsideMonitor({ state, compact = false }: { state: Pati
 
   return (
     <section
-      className={`${styles.monitor}${alarming ? ` ${styles.monitorAlarming}` : ""}${compact ? ` ${styles.monitorCompact}` : ""}`}
+      className={`${styles.monitor}${alarming ? ` ${styles.monitorAlarming}` : ""}${compact ? ` ${styles.monitorCompact}` : ""}${embedded ? ` ${styles.monitorEmbedded}` : ""}`}
       aria-label={`Bedside monitor. Rhythm ${state.cardiacRhythm}. Heart rate ${Math.round(state.vitals.heartRate)}. Oxygen saturation ${Math.round(state.vitals.spo2)} percent.`}
     >
       <header>

@@ -179,6 +179,16 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformActi
     "--blink-duration": `${visual.consciousness.blinkSeconds}s`,
     "--movement-intensity": String(visual.movement.intensity),
   } as CSSProperties;
+  const visualSignature = [
+    visual.position.kind,
+    visual.consciousness.level,
+    visual.respiration.pattern,
+    visual.devices.oxygen,
+    visual.skin.cyanosis,
+    visual.skin.mottling,
+    visual.skin.diaphoresis,
+    visual.movement.intensity,
+  ].join("-");
 
   function chooseView(next: SceneView) {
     setView(next);
@@ -211,7 +221,7 @@ function PatientScene({ scenario, state, visual, onOpenAssessment, onPerformActi
         data-work={visual.respiration.work}
         data-lighting={visual.roomLighting}
       >
-        <svg data-testid="patient-scene-svg" viewBox="0 0 1200 680" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby={`${idPrefix}-title ${idPrefix}-description`}>
+        <svg key={visualSignature} className={styles.stateFrame} data-testid="patient-scene-svg" viewBox="0 0 1200 680" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby={`${idPrefix}-title ${idPrefix}-description`}>
           <title id={`${idPrefix}-title`}>{`${scenario.patient.name} in the ${visual.roomPreset.replaceAll("-", " ")} bedside scene`}</title>
           <desc id={`${idPrefix}-description`}>{visual.accessibleDescription}</desc>
           <defs>

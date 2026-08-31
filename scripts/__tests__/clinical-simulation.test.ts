@@ -18,6 +18,7 @@ import { clinicalScenarios } from "../../apps/web/src/lib/clinical-simulation/sc
 import { getGuidedCoachingTip } from "../../apps/web/src/lib/clinical-simulation/coaching";
 import { deriveClinicalTrajectory } from "../../apps/web/src/lib/clinical-simulation/trajectory";
 import { futureScenarioOutlines } from "../../apps/web/src/lib/clinical-simulation/future-scenario-outlines";
+import { actionsForTool, toolForAction, type SimulationToolId } from "../../apps/web/src/lib/clinical-simulation/workspace-tools";
 import {
   validateScenarioDefinition,
   type ClinicalScenario,
@@ -177,6 +178,16 @@ describe("clinical simulation state engine", () => {
     const advanced = advanceSimulation(scenario, state, due - state.virtualMinute);
     assert.equal(advanced.pendingEffects.length, 0);
     assert.ok(advanced.notices.some((notice) => notice.id.startsWith(target.id)));
+  });
+
+  it("assigns every authored action to exactly one direct clinical tool", () => {
+    const tools: SimulationToolId[] = ["assessment", "care", "medications", "fluids", "orders", "chart", "team"];
+    for (const scenario of clinicalScenarios) {
+      const routed = tools.flatMap((tool) => actionsForTool(scenario.actions, tool));
+      assert.equal(routed.length, scenario.actions.length, scenario.slug);
+      assert.equal(new Set(routed.map((action) => action.id)).size, scenario.actions.length, scenario.slug);
+      for (const action of scenario.actions) assert.ok(tools.includes(toolForAction(action)), `${scenario.slug}:${action.id}`);
+    }
   });
 
   it("does not award reassessment credit before the treatment response window", () => {

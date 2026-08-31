@@ -219,7 +219,7 @@ export default function SimEventFeed({
   return (
     <aside className={styles.feed} aria-label="Clinical console" data-testid="sim-event-feed">
       <header>
-        <span>Clinical console</span>
+        <span>Live events</span>
         <div>
           <em data-trajectory={trajectory.status} title={trajectory.detail}>{trajectory.label}</em>
           <em>{entries.length} events</em>

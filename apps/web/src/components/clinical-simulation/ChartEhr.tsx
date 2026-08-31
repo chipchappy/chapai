@@ -17,9 +17,9 @@ import styles from "./clinical-simulation.module.css";
 // Deliberately shallow-clicking: one rail, one pane, no nested modals.
 // ─────────────────────────────────────────────────────────────────────────────
 
-type SectionId = "overview" | "history" | "handoff" | "orders" | "labs" | "trends" | "io" | "notes";
+export type ChartSectionId = "overview" | "history" | "handoff" | "orders" | "labs" | "trends" | "io" | "notes";
 
-const sections: Array<{ id: SectionId; label: string; icon: typeof User }> = [
+const sections: Array<{ id: ChartSectionId; label: string; icon: typeof User }> = [
   { id: "overview", label: "Overview", icon: User },
   { id: "history", label: "History", icon: FileText },
   { id: "handoff", label: "Handoff", icon: Stethoscope },
@@ -66,8 +66,9 @@ function Trend({ samples, pick, label, unit, low, high }: {
   );
 }
 
-export default function ChartEhr({ scenario, state }: { scenario: ClinicalScenario; state: PatientState }) {
-  const [section, setSection] = useState<SectionId>("overview");
+export default function ChartEhr({ scenario, state, focusSection }: { scenario: ClinicalScenario; state: PatientState; focusSection?: ChartSectionId }) {
+  const [selectedSection, setSelectedSection] = useState<ChartSectionId>(focusSection ?? "overview");
+  const section = focusSection ?? selectedSection;
   const patient = scenario.patient;
   const samples = state.vitalsHistory ?? [];
 
@@ -79,19 +80,19 @@ export default function ChartEhr({ scenario, state }: { scenario: ClinicalScenar
   const documentation = state.actionLog.filter((entry) => entry.category === "documentation" || entry.category === "communication");
 
   return (
-    <div className={styles.ehr} data-testid="chart-ehr">
-      <nav className={styles.ehrRail} aria-label="Chart sections">
+    <div className={styles.ehr} data-testid="chart-ehr" data-focused={Boolean(focusSection)}>
+      {!focusSection ? <nav className={styles.ehrRail} aria-label="Chart sections">
         {sections.map((item) => {
           const Icon = item.icon;
           const badge = item.id === "labs" && availableLabs.some((lab) => lab.flag === "critical");
           return (
-            <button key={item.id} type="button" data-active={section === item.id} onClick={() => setSection(item.id)} aria-current={section === item.id}>
+            <button key={item.id} type="button" data-active={section === item.id} onClick={() => setSelectedSection(item.id)} aria-current={section === item.id}>
               <Icon size={15} aria-hidden="true" /> {item.label}
               {badge ? <em className={styles.ehrCritical} aria-label="critical result">!</em> : null}
             </button>
           );
         })}
-      </nav>
+      </nav> : null}
 
       <div className={styles.ehrPane}>
         {section === "overview" ? <>

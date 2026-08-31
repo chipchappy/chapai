@@ -599,6 +599,27 @@
   .chestMotion { animation: reducedBreath 5s ease-in-out infinite; }
 }
 
+/* Patient presentation is a sequence of authored states, not a looping avatar.
+   The bedside remains still between clinical changes; a short reveal marks a
+   genuinely new state after an intervention or unfolding event. */
+.sceneViewport .chestMotion,
+.sceneViewport .accessoryMotion,
+.sceneViewport .headMotion,
+.sceneViewport .ambulatoryPatient,
+.sceneViewport .eyeTrack,
+.sceneViewport .diaphoresis {
+  animation: none !important;
+}
+
+.stateFrame { animation: sceneStateReveal 360ms ease-out both; }
+
+@keyframes sceneStateReveal {
+  from { opacity: 0.78; filter: saturate(0.78) brightness(0.92); }
+  to { opacity: 1; filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) { .stateFrame { animation: none; } }
+
 @media (prefers-contrast: more) {
   .sceneShell { border-color: #263c38; }
   .sceneToolbar,

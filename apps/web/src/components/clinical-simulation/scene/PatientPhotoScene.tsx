@@ -1,12 +1,13 @@
 "use client";
 
 import { memo, useMemo, useState, type CSSProperties } from "react";
-import { Activity, Check, Crosshair, Maximize2, Play, Stethoscope, X } from "lucide-react";
+import { Check, Maximize2, Play, Stethoscope, X } from "lucide-react";
 import BedsideMonitor from "@/components/clinical-simulation/BedsideMonitor";
 import type { PatientState } from "@/lib/clinical-simulation/engine";
 import { getPatientPresentation } from "@/lib/clinical-simulation/patient-presentations";
 import type { ClinicalScenario } from "@/lib/clinical-simulation/schema";
 import type { PatientVisualState } from "@/lib/clinical-simulation/visual-state";
+import type { SimulationToolId } from "@/lib/clinical-simulation/workspace-tools";
 import styles from "./patient-photo-scene.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -20,9 +21,8 @@ import styles from "./patient-photo-scene.module.css";
 //   - equipment hotspots that route into the matching workspace panel
 //     (computer -> Chart, pumps -> MAR, headwall/vent -> Interventions, …)
 //
-// Affordances are deliberately subtle (spec: no big rings over everything):
-// invisible at rest, ring + label on hover/keyboard focus, plus an explicit
-// "show targets" toggle that reveals every interactive zone with its label.
+// Affordances are deliberately subtle: equipment is softly outlined at rest
+// and becomes explicit on hover or keyboard focus.
 // Anchors are percentages of the image so zones stay aligned at every size.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -33,7 +33,7 @@ type DeviceHotspot = {
   label: string;
   anchor: Anchor;
   /** Workspace tab this device opens. */
-  tab: string;
+  tab: SimulationToolId;
   /** Optional outline bounds (% of image) so the whole object is traced, not
    *  just a point — this is what makes equipment read as interactable. */
   rect?: { x: number; y: number; w: number; h: number };
@@ -85,36 +85,38 @@ const ADULT_MALE_ROOM: PhotoConfig = {
   legs: { x: 45, y: 61 },
   feet: { x: 34, y: 74 },
   monitor: { x: 48.4, y: 13.6 },
-  monitorRect: { x: 42.9, y: 6.8, w: 11.2, h: 13.6 },
+  monitorRect: { x: 43.82, y: 8.35, w: 9.62, h: 10.82 },
   devices: [
     { id: "computer", label: "Chart (EHR)", anchor: { x: 9, y: 22 }, tab: "chart", rect: { x: 1, y: 12, w: 17, h: 26 } },
-    { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "mar", rect: { x: 28.5, y: 24, w: 10, h: 16 } },
-    { id: "ventilator", label: "Ventilator", anchor: { x: 78, y: 42 }, tab: "interventions", rect: { x: 70.5, y: 28, w: 15, h: 46 } },
-    { id: "headwall", label: "O₂ & suction", anchor: { x: 88, y: 18 }, tab: "interventions", rect: { x: 82, y: 10, w: 15, h: 16 } },
-    { id: "airway", label: "Airway supplies", anchor: { x: 92, y: 32 }, tab: "interventions", rect: { x: 87, y: 24, w: 11, h: 17 } },
+    { id: "pumps", label: "IV pumps · MAR", anchor: { x: 33.5, y: 29 }, tab: "medications", rect: { x: 28.5, y: 24, w: 10, h: 16 } },
+    { id: "ventilator", label: "Respiratory support", anchor: { x: 78, y: 42 }, tab: "care", rect: { x: 70.5, y: 28, w: 15, h: 46 } },
+    { id: "headwall", label: "O₂ & suction", anchor: { x: 88, y: 18 }, tab: "care", rect: { x: 82, y: 10, w: 15, h: 16 } },
+    { id: "airway", label: "Airway supplies", anchor: { x: 92, y: 32 }, tab: "care", rect: { x: 87, y: 24, w: 11, h: 17 } },
     { id: "foley", label: "Foley & output", anchor: { x: 31, y: 79 }, tab: "assessment", rect: { x: 27, y: 71, w: 8, h: 16 } },
-    { id: "crashcart", label: "Crash cart", anchor: { x: 94, y: 62 }, tab: "interventions", rect: { x: 89, y: 46, w: 11, h: 34 } },
+    { id: "crashcart", label: "Emergency care", anchor: { x: 94, y: 62 }, tab: "care", rect: { x: 89, y: 46, w: 11, h: 34 } },
   ],
 };
 
-// Scenes are assigned to match the scenario's patient, so a male patient never
-// renders against a female photograph. ADULT_MALE_ROOM is the full room plate
-// (wall monitor, ventilator, pumps, headwall) and suits ventilated and
-// higher-acuity cases; ADULT_FEMALE_SIDE is the closer bedside framing.
+const patientMatchedRoom = (src: string): PhotoConfig => ({ ...ADULT_MALE_ROOM, src });
+
+// The five authored presentation families use matched full-room plates so the
+// chart identity, evolving portrait, and bedside patient remain the same person.
+// Other scenarios use a sex-matched fallback until a reviewed plate exists.
 const PHOTO_PATIENTS: Record<string, PhotoConfig> = {
-  // female patients
-  "septic-shock": ADULT_MALE_ROOM,
-  "postoperative-deterioration": ADULT_MALE_ROOM,
+  "postoperative-deterioration": patientMatchedRoom("/sim/rooms/hospital-simulation-maria-gonzalez.webp"),
+  "evolving-acute-coronary-syndrome": patientMatchedRoom("/sim/rooms/hospital-simulation-david-lee.webp"),
+  "acute-respiratory-deterioration": ADULT_MALE_ROOM,
+  "septic-shock": patientMatchedRoom("/sim/rooms/hospital-simulation-sarah-johnson.webp"),
+  "sedation-airway-compromise": patientMatchedRoom("/sim/rooms/hospital-simulation-william-thompson.webp"),
+
+  // Female fallbacks
   "acute-transfusion-reaction": ADULT_FEMALE_SIDE,
   "intravenous-antibiotic-anaphylaxis": ADULT_FEMALE_SIDE,
   "hyperkalemia-missed-dialysis": ADULT_FEMALE_SIDE,
   "flash-pulmonary-edema": ADULT_FEMALE_SIDE,
   "ward-sepsis-recognition": ADULT_FEMALE_SIDE,
   "postoperative-pulmonary-embolism": ADULT_FEMALE_SIDE,
-  // male patients
-  "acute-respiratory-deterioration": ADULT_MALE_ROOM,
-  "evolving-acute-coronary-syndrome": ADULT_MALE_ROOM,
-  "sedation-airway-compromise": ADULT_MALE_ROOM,
+  // Male fallbacks
   "insulin-induced-hypoglycemia": ADULT_MALE_ROOM,
   "diabetic-ketoacidosis": ADULT_MALE_ROOM,
   "acute-ischemic-stroke-code": ADULT_MALE_ROOM,
@@ -157,12 +159,11 @@ function PatientPhotoScene({
   config: PhotoConfig;
   onOpenAssessment: () => void;
   onPerformAction?: (actionId: string) => void;
-  onOpenTab?: (tab: string) => void;
+  onOpenTab?: (tab: SimulationToolId) => void;
   busy?: boolean;
 }) {
   const [focus, setFocus] = useState<FocusId | null>(null);
   const [imageReady, setImageReady] = useState(true);
-  const [showTargets, setShowTargets] = useState(false);
   const [monitorOpen, setMonitorOpen] = useState(false);
   const skin = visual.skin;
   const presentation = useMemo(
@@ -171,10 +172,19 @@ function PatientPhotoScene({
   );
   const alarming = state.vitals.spo2 < 90 || state.vitals.map < 65 || state.vitals.heartRate > 125 || state.vitals.respiratoryRate < 8;
 
-  const breathStyle = {
-    "--breath-duration": `${visual.respiration.breathDurationSeconds}s`,
-    "--breath-scale": String(1 + visual.respiration.chestAmplitude * 0.02),
-  } as CSSProperties;
+  const visualSignature = [
+    presentation?.stage ?? 0,
+    visual.position.kind,
+    visual.devices.oxygen,
+    visual.devices.oxygenFlow,
+    visual.consciousness.level,
+    skin.pallor,
+    skin.diaphoresis,
+    skin.flushing,
+    skin.cyanosis,
+    skin.mottling,
+    skin.edema,
+  ].join("-");
 
   const focusActions = useMemo(() => {
     if (!focus || !onPerformAction) return [];
@@ -191,15 +201,6 @@ function PatientPhotoScene({
     { id: "legs", anchor: config.legs },
   ];
 
-  const cues = [
-    visual.consciousness.level,
-    `${visual.respiration.rate}/min · ${visual.respiration.work}`,
-    visual.devices.oxygen === "room-air" ? "room air" : `${visual.devices.oxygen.replaceAll("-", " ")} ${visual.devices.oxygenFlow}`,
-    skin.mottling > 0 ? "mottling" : null,
-    skin.cyanosis > 0 ? "cyanosis" : null,
-    skin.diaphoresis > 0 ? "diaphoretic" : null,
-  ].filter(Boolean) as string[];
-
   return (
     <section
       className={styles.photoShell}
@@ -212,39 +213,8 @@ function PatientPhotoScene({
       data-alarming={alarming}
       aria-label="Reactive photoreal patient bedside"
     >
-      <header className={styles.photoToolbar}>
-        <div className={styles.photoIdentity}>
-          {presentation ? (
-            <button
-              type="button"
-              className={styles.presentationThumb}
-              onClick={() => setFocus("face")}
-              aria-label={`Inspect ${scenario.patient.name}'s current presentation`}
-              title="Inspect current presentation"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element -- authored simulation-state asset, served directly by the worker */}
-              <img
-                key={presentation.src}
-                src={presentation.src}
-                alt=""
-                data-testid="patient-presentation"
-                data-stage={presentation.stage}
-                draggable={false}
-              />
-            </button>
-          ) : null}
-          <div><span>Reactive bedside</span><strong>{scenario.patient.name} · {visual.consciousness.level}</strong></div>
-        </div>
-        <div className={styles.photoToolbarRight}>
-          {alarming ? <span className={styles.photoAlarm}><Activity size={13} aria-hidden="true" /> Alarm — check patient</span> : null}
-          <button type="button" className={styles.targetToggle} aria-pressed={showTargets} onClick={() => setShowTargets((v) => !v)} title="Show interactable areas">
-            <Crosshair size={13} aria-hidden="true" /> {showTargets ? "Hide targets" : "Show targets"}
-          </button>
-        </div>
-      </header>
-
-      <div className={styles.photoStage} style={{ aspectRatio: String(config.aspect) }} data-testid="patient-scene-viewport" data-show-targets={showTargets} data-presentation-stage={presentation?.stage ?? 0} data-lighting={visual.roomLighting} data-reduced-motion={visual.reducedMotion}>
-        <div className={styles.photoBreath} style={breathStyle} data-reduced={visual.reducedMotion}>
+      <div className={styles.photoStage} data-testid="patient-scene-viewport" data-show-targets="false" data-presentation-stage={presentation?.stage ?? 0} data-lighting={visual.roomLighting} data-reduced-motion={visual.reducedMotion}>
+        <div key={visualSignature} className={styles.photoStill} data-testid="patient-static-state" data-reduced={visual.reducedMotion}>
           {/* eslint-disable-next-line @next/next/no-img-element -- static bedside asset, no optimization pipeline in the worker runtime */}
           <img className={styles.photoBase} src={config.src} alt={visual.accessibleDescription} draggable={false} onError={() => setImageReady(false)} onLoad={() => setImageReady(true)} />
         </div>
@@ -268,9 +238,10 @@ function PatientPhotoScene({
         {config.monitorRect ? (
           <div
             className={styles.wallScreen}
+            data-testid="integrated-wall-monitor"
             style={{ left: `${config.monitorRect.x}%`, top: `${config.monitorRect.y}%`, width: `${config.monitorRect.w}%`, height: `${config.monitorRect.h}%` }}
           >
-            <BedsideMonitor state={state} compact />
+            <BedsideMonitor state={state} compact embedded />
             <button type="button" className={styles.monitorExpand} onClick={() => setMonitorOpen(true)} aria-label="Expand bedside monitor" title="Expand bedside monitor">
               <Maximize2 size={10} aria-hidden="true" />
             </button>
@@ -302,12 +273,14 @@ function PatientPhotoScene({
               className={styles.deviceOutline}
               style={{ left: `${device.rect.x}%`, top: `${device.rect.y}%`, width: `${device.rect.w}%`, height: `${device.rect.h}%` }}
               aria-label={device.label}
+              data-tool={device.tab}
+              data-testid={`room-target-${device.id}`}
               onClick={() => onOpenTab?.(device.tab)}
             >
               <em>{device.label}</em>
             </button>
           ) : (
-            <button key={device.id} type="button" className={styles.deviceHotspot} style={pct(device.anchor)} aria-label={device.label} onClick={() => onOpenTab?.(device.tab)}>
+            <button key={device.id} type="button" className={styles.deviceHotspot} style={pct(device.anchor)} aria-label={device.label} data-tool={device.tab} onClick={() => onOpenTab?.(device.tab)}>
               <span /><em>{device.label}</em>
             </button>
           ))}
@@ -337,7 +310,6 @@ function PatientPhotoScene({
         ) : null}
       </div>
 
-      <div className={styles.photoCues} aria-hidden="true">{cues.map((cue) => <span key={cue}>{cue}</span>)}</div>
       <p className={styles.srOnly} aria-live="polite">{visual.accessibleDescription}</p>
     </section>
   );
